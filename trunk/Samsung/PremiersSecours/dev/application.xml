@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Application>
+    <Entry>PremiersSecours</Entry>
+    <Name>
+        <English>PremiersSecours</English>
+        <eng-GB>PremiersSecours</eng-GB>
+    </Name>
+    <Vendor/>
+    <Description/>
+    <Icons>
+        <MainMenu>PremiersSecours.png<Type1>PremiersSecours.png</Type1>
+            <Type2/>
+        </MainMenu>
+        <Setting/>
+        <Ticker/>
+        <QuickPanel/>
+        <LaunchImage>Splash.png<Type1>Splash.png</Type1>
+            <Type2/>
+        </LaunchImage>
+    </Icons>
+    <AutoScaling>
+        <Enabled>true</Enabled>
+        <BaseResolution>480x800</BaseResolution>
+    </AutoScaling>
+</Application>

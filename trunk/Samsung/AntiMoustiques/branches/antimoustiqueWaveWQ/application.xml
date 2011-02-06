@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Application>
+    <Entry>antimoustiqueWaveWQ</Entry>
+    <Name>
+        <English>AntimoustiqueWaveWQ</English>
+        <eng-GB>AntimoustiqueWaveWQ</eng-GB>
+    </Name>
+    <Vendor/>
+    <Description/>
+    <Icons>
+        <MainMenu>AntiMoustique.png<Type1>AntiMoustique.png</Type1>
+            <Type2/>
+        </MainMenu>
+        <Setting/>
+        <Ticker/>
+        <QuickPanel/>
+        <LaunchImage>Splash.png<Type1>Splash.png</Type1>
+            <Type2/>
+        </LaunchImage>
+    </Icons>
+    <AutoScaling>
+        <Enabled>true</Enabled>
+        <BaseResolution>240x400</BaseResolution>
+    </AutoScaling>
+</Application>

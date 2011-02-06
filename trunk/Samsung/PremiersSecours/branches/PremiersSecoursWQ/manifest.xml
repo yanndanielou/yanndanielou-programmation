@@ -1,0 +1,19 @@
+<?xml version='1.0' ?>
+<Manifest>
+    <Id>1731tc8b10</Id>
+    <Secret>AA6530CA33E8BDE9221ADAAC9B17BA25</Secret>
+  <AppVersion>2.1.0</AppVersion>
+  <ManifestVersion>1.1</ManifestVersion>
+    <Privileges>
+    </Privileges>
+    <DeviceProfile>
+        <APIVersion>1.1</APIVersion>
+        <CPU>ARM9</CPU>
+        <ScreenSize>240x400</ScreenSize>
+        <Connectivity>Bluetooth</Connectivity>
+        <Connectivity>Wi-Fi</Connectivity>
+        <Sensor>GPS</Sensor>
+        <Sensor>Wi-Fi_and_cell-based_positioning</Sensor>
+        <Sensor>Accelerometer</Sensor>
+    </DeviceProfile>
+</Manifest>

@@ -1,0 +1,17 @@
+<?xml version='1.0' ?>
+<Manifest>
+    <Id>6kaic6pfd2</Id>
+    <Secret>761ECC80BCFA6574F8B5BF0B492781CB</Secret>
+  <AppVersion>1.0.0</AppVersion>
+    <Privileges>
+    </Privileges>
+    <DeviceProfile>
+      <CPU>ARM9</CPU>
+      <MinimumHeapSize>16</MinimumHeapSize>
+      <MinimumVRAMSize>4</MinimumVRAMSize>
+      <InputDevice>Touch</InputDevice>
+      <ScreenSize>480x800</ScreenSize>
+      <SoundMixing>Enable</SoundMixing>
+      <APIVersion>1.0</APIVersion>
+    </DeviceProfile>
+</Manifest>

@@ -1,0 +1,23 @@
+<?xml version='1.0' ?>
+<Manifest>
+    <Id>vt0t5h01o2</Id>
+    <Secret>1844387AD87880BAAF26DA9D15C30C72</Secret>
+  <AppVersion>1.0.0</AppVersion>
+  <ManifestVersion>1.1</ManifestVersion>
+    <Privileges>
+        <Privilege>
+            <Name>SYSTEM_SERVICE</Name>
+        </Privilege>
+    </Privileges>
+    <DeviceProfile>
+        <APIVersion>1.1</APIVersion>
+        <CPU>ARM9</CPU>
+        <ScreenSize>240x400</ScreenSize>
+        <Connectivity>Bluetooth</Connectivity>
+        <Connectivity>Wi-Fi</Connectivity>
+        <Sensor>GPS</Sensor>
+        <Sensor>Wi-Fi_and_cell-based_positioning</Sensor>
+        <Sensor>Accelerometer</Sensor>
+        <Sensor>Positioning</Sensor>
+    </DeviceProfile>
+</Manifest>
