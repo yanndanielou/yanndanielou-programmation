@@ -1,19 +1,29 @@
 package Hmi;
 
+import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
 
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 
-public class MainWindow extends JFrame
+public class MainWindow extends JFrame implements ActionListener
 {
 	//Singleton
 	static MainWindow _Instance;
+	
+	JInternalFrame fenetreUnique;
+
+	JLabel         info = new JLabel(" ");
+
+	JDesktopPane   jdp  = new JDesktopPane();
+	
 	
 	private JMenuBar menuBar 	= new JMenuBar();
 	
@@ -26,8 +36,7 @@ public class MainWindow extends JFrame
 	private JMenu menuAbout 		= new JMenu("?");
 		
 	//Menu fenêtres
-	private JMenuItem itemToutFermer = new JMenuItem("Tout fermer");
-	
+	private JMenuItem itemToutFermer = new JMenuItem("Tout fermer");	
 	//Menu Comptes
 	private JMenuItem itemCreationComptes 			= new JMenuItem("Création des comptes");
 	private JMenuItem itemOuvrirCompte    			= new JMenuItem("Ouvrir un compte");
@@ -36,18 +45,19 @@ public class MainWindow extends JFrame
 	private JMenuItem itemOperationsAutomatiques    = new JMenuItem("Opérations automatiques");
 	private JMenuItem itemExporterEcritures		    = new JMenuItem("Exporter les écritures");
 	private JMenuItem itemEffacerEcritures		    = new JMenuItem("Effacer les écritures");
-	
 	//Menu écritures
 	private JMenuItem itemSaisieEcritures		    = new JMenuItem("Effacer les écritures");
 	private JMenuItem itemTableauEcritures		    = new JMenuItem("Tableau des écritures");
-	
 	//Menu about
 	private JMenuItem itemAbout		    			= new JMenuItem("A propos");
 
+	
+	
+	
 	private MainWindow()
 	{
 	    setTitle("Ma première fenêtre java");
-	    setSize(400, 500);
+	    setSize(800, 600);
 	    //positionnement au centre
 	    setLocationRelativeTo(null);
 	    //Fermeture sur clic "Fermer" !
@@ -68,7 +78,7 @@ public class MainWindow extends JFrame
 		menuFenetres.add(itemToutFermer);
 			
 		menuComptes.add(itemCreationComptes);
-		itemCreationComptes.addActionListener(new CreateAccountListener());
+		itemCreationComptes.addActionListener(this);
 		menuComptes.add(itemOuvrirCompte);
 		menuComptes.add(itemFermerCompte);
 		menuComptes.addSeparator();
@@ -84,6 +94,13 @@ public class MainWindow extends JFrame
 		
 		menuAbout.add(itemAbout);
 		
+	    // on place l'interface graphique
+	    Container cont = getContentPane();
+	 	 
+	    jdp.putClientProperty("JDesktopPane.dragMode", "outline");
+	    cont.add(jdp, BorderLayout.CENTER);
+	 
+	    cont.add(info, BorderLayout.SOUTH);
 		
 		setVisible(true);
 	    
@@ -96,11 +113,22 @@ public class MainWindow extends JFrame
 		
 		return _Instance;
 	}
-}
+	
+	  public void actionPerformed(ActionEvent e)
+	  {
+	        fenetreUnique = new AccountManagementWindow(this); // on peut l'iconifier
+	        jdp.removeAll();
+	        jdp.repaint();
+	        jdp.add(fenetreUnique);
+	 
+	        info.setText("On crée la fenêtre");
+
+	  }
+}	
 
 
 
-
+/*
 class CreateAccountListener implements ActionListener
 {
     @Override
@@ -112,3 +140,4 @@ class CreateAccountListener implements ActionListener
            	
     }    
 }
+*/
