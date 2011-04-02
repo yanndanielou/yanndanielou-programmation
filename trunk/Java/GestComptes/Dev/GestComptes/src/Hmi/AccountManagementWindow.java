@@ -1,19 +1,25 @@
 package Hmi;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
-public class AccountManagementWindow extends JInternalFrame implements InternalFrameListener
+public class AccountManagementWindow extends JInternalFrame implements InternalFrameListener, ActionListener
 {
 	private MainWindow _parent;
 	
@@ -32,7 +38,13 @@ public class AccountManagementWindow extends JInternalFrame implements InternalF
 	private JTextField soldeCritique = new JTextField(10);
 	private JTextField password = new JTextField(8);
     private JCheckBox  soldeCritiqueActif    = new JCheckBox("Actif");
+    
+    private JButton    saveAccount = new JButton("Créer");
 	
+    
+    private static final int WIDTH_FIRST_COLUMN = 1;
+    private static final int WEIGHT_FIRST_COLUMN = 0;
+    private static final int WEIGHT_OTHER_COLUMNS = 1;
        
     
 	public AccountManagementWindow(MainWindow parent)
@@ -40,88 +52,131 @@ public class AccountManagementWindow extends JInternalFrame implements InternalF
 		super("Créations, modifications, suppression comptes",
                 false,  // on peut changer la taille
                 true,  // on peut la fermer
-                true,  // on peut la maximiser
+                false,  // on peut la maximiser
                 false); // on peut l'iconifier
 		
 		setLayout(null);
 
 		_parent = parent;
 		
-		setSize((int)(parent.getWidth()*0.8), (int)(parent.getHeight()*0.8));
-		setLocation((int)(parent.getWidth()*0.1), (int)(parent.getHeight()*0.1));
-		
-		int width = getWidth();
-		int height = getHeight();
-
-		int margeGauche = (int) (width * 0.1);
-		int margeDroite = margeGauche;
-
-		int margeHaut = (int) (height * 0.1);
-		int margeBas  = margeHaut;
-		
-		
-		
-		
 		JPanel panRensBanc = new JPanel();
 		panRensBanc.setBackground(Color.white);
 		panRensBanc.setPreferredSize(new Dimension(220, 60));
 		panRensBanc.setBorder(BorderFactory.createTitledBorder("Renseignements bancaires"));
-		panRensBanc.setLayout(null);
-				
-	//	labelNumeroCompte.setHorizontalAlignment(SwingConstants.LEFT);
-//		labelNumeroCompte.
-		
-		labelNumeroCompte.setSize(new Dimension(labelNumeroCompte.getText().length()*labelNumeroCompte.getFont().getSize()/2, labelNumeroCompte.getFont().getSize()*2));
-		numeroCompte.setSize(new Dimension(numeroCompte.getColumns()*numeroCompte.getFont().getSize()*2,numeroCompte.getFont().getSize()*2));
 	
-		int deuxiemeColonne = margeGauche + labelNumeroCompte.getWidth() + margeGauche;
+		panRensBanc.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		
+		
+		//Première ligne
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridwidth = WIDTH_FIRST_COLUMN;
+		c.weightx = WEIGHT_FIRST_COLUMN;
+		panRensBanc.add(labelNumeroCompte, c);
+
+		c.gridx += c.gridwidth;
+		c.gridy = 0;
+		c.gridwidth = 2;
+		c.weightx = WEIGHT_OTHER_COLUMNS;
+		panRensBanc.add(numeroCompte, c);
+
+		c.gridx += c.gridwidth;
+		c.gridy = 0;
+		c.gridwidth = 1;
+		panRensBanc.add(labelPassword, c);
+
+		c.gridx += c.gridwidth;
+		c.gridy = 0;
+		c.gridwidth = 1;
+		panRensBanc.add(password, c);
+		
+		//Deuxième ligne
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = WIDTH_FIRST_COLUMN;
+		c.weightx = WEIGHT_FIRST_COLUMN;
+		panRensBanc.add(labelCodeGuichet, c);
+
+		c.gridx += c.gridwidth;
+		c.gridy = 1;
+		c.gridwidth = 1;
+		c.weightx = WEIGHT_OTHER_COLUMNS;
+		panRensBanc.add(codeGuichet, c);
+
+		//Troisième ligne
+		c.gridx = 0;
+		c.gridy = 2;
+		c.gridwidth = WIDTH_FIRST_COLUMN;
+		c.weightx = WEIGHT_FIRST_COLUMN;
+		panRensBanc.add(labelNomBanque, c);
+
+		c.gridx += c.gridwidth;
+		c.gridy = 2;
+		c.gridwidth = 4;
+		c.weightx = WEIGHT_OTHER_COLUMNS;
+		panRensBanc.add(nomBanque, c);
 
 
-		labelNumeroCompte.setLocation(margeGauche,margeHaut);
-		numeroCompte.setLocation(deuxiemeColonne, margeHaut);
-		
-		panRensBanc.add(labelNumeroCompte);
-		panRensBanc.add(numeroCompte);
-	/*	
-		JPanel premiereLigne = new JPanel();
-		premiereLigne.setLayout(new GridLayout(0,4));
-		
-		premiereLigne.add(labelNumeroCompte);
-		premiereLigne.add(numeroCompte);
-		premiereLigne.add(labelPassword);
-		premiereLigne.add(password);
+
+		//Quatrième ligne
+		c.gridx = 0;
+		c.gridy = 3;
+		c.gridwidth = WIDTH_FIRST_COLUMN;
+		c.weightx = WEIGHT_FIRST_COLUMN;
+		panRensBanc.add(labelNomAgence, c);
+
+		c.gridx += c.gridwidth;
+		c.gridy = 3;
+		c.gridwidth = 4;
+		c.weightx = WEIGHT_OTHER_COLUMNS;
+		panRensBanc.add(nomAgence, c);
 		
 
-		JPanel deuxiemeLigne = new JPanel();
-		deuxiemeLigne.setLayout(new FlowLayout());
-		
-		deuxiemeLigne.add(labelCodeGuichet);
-		deuxiemeLigne.add(codeGuichet);
-		
-		
-		
-		JPanel content = new JPanel();
-		content.setLayout(new GridLayout(3,0));
-		content.add(premiereLigne);
-		content.add(deuxiemeLigne);
-		*/
-		setContentPane(panRensBanc);
-		
-		/*
-		addComponent(labelNumeroCompte,0,0,1,1,GridBagConstraints.CENTER, GridBagConstraints.BOTH);
-		addComponent(numeroCompte,1,0,1,1,GridBagConstraints.CENTER, GridBagConstraints.BOTH);
-		addComponent(labelPassword,2,0,1,1,GridBagConstraints.CENTER, GridBagConstraints.BOTH);
-		addComponent(password,3,0,1,1,GridBagConstraints.CENTER, GridBagConstraints.BOTH);
-		
 
-		addComponent(labelNomBanque,0,1,1,1,GridBagConstraints.CENTER, GridBagConstraints.BOTH);
-		addComponent(nomBanque,1,1,2,1,GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+		//Cinquième ligne
+		c.gridx = 0;
+		c.gridy = 4;
+		c.gridwidth = WIDTH_FIRST_COLUMN;
+		c.weightx = WEIGHT_FIRST_COLUMN;
+		panRensBanc.add(labelSoldeCritique, c);
+
+		c.gridx += c.gridwidth;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		c.weightx = WEIGHT_OTHER_COLUMNS;
+		panRensBanc.add(soldeCritique, c);
+
+		c.gridx += c.gridwidth;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		panRensBanc.add(soldeCritiqueActif, c);
 		
-	this.*/
+		JPanel contentPane = new JPanel();
+		contentPane.setLayout(new BorderLayout());
 		
-        setDefaultCloseOperation(JInternalFrame.HIDE_ON_CLOSE);
+		contentPane.add(panRensBanc, BorderLayout.CENTER);
+		
+		
+		JPanel buttonsPanel = new JPanel();
+		buttonsPanel.setLayout(new FlowLayout());
+		buttonsPanel.add(saveAccount);
+		contentPane.add(buttonsPanel, BorderLayout.SOUTH);
+		
+		setContentPane(contentPane);
+		
+		
+		//Création des écouteurs
+		saveAccount.addActionListener(this);
+		
         addInternalFrameListener(this);
+		
+	
+        setDefaultCloseOperation(JInternalFrame.HIDE_ON_CLOSE);
         setVisible(true);
+        
+        setSize(500,200);
 		
 	}
 	
@@ -164,6 +219,18 @@ public class AccountManagementWindow extends JInternalFrame implements InternalF
 	@Override
 	public void internalFrameOpened(InternalFrameEvent e) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0)
+	{
+		// TODO Auto-generated method stub
+		if(arg0.getSource() == saveAccount)
+		{
+			System.out.println("Création du compte");
+			setVisible(false);
+		}
 		
 	}
 
