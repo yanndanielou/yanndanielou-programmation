@@ -8,18 +8,20 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.event.InternalFrameEvent;
-import javax.swing.event.InternalFrameListener;
 
-public class AccountManagementWindow extends JInternalFrame implements InternalFrameListener, ActionListener
+public class AccountManagementWindow extends JInternalFrame implements ActionListener, KeyListener
 {
 	private MainWindow _parent;
 	
@@ -31,13 +33,13 @@ public class AccountManagementWindow extends JInternalFrame implements InternalF
 	private JLabel labelSoldeCritique	= new JLabel("Solde Critique");
 
 	
-	private JTextField numeroCompte = new JTextField(20);
-	private JTextField codeGuichet = new JTextField(6);
-	private JTextField nomBanque = new JTextField(45);
-	private JTextField nomAgence = new JTextField(45);
-	private JTextField soldeCritique = new JTextField(10);
-	private JTextField password = new JTextField(8);
-    private JCheckBox  soldeCritiqueActif    = new JCheckBox("Actif");
+	private JFormattedTextField numeroCompte;
+	private JFormattedTextField codeGuichet;
+	private JTextField 			nomBanque;
+	private JTextField 			nomAgence;
+	private JFormattedTextField soldeCritique;
+	private JTextField 			password;
+    private JCheckBox  			soldeCritiqueActif;
     
     private JButton    saveAccount = new JButton("Créer");
 	
@@ -58,6 +60,17 @@ public class AccountManagementWindow extends JInternalFrame implements InternalF
 		setLayout(null);
 
 		_parent = parent;
+		
+		//Construction des contrôles
+		numeroCompte 		= new JFormattedTextField(java.text.NumberFormat.getInstance());
+		codeGuichet 		= new JFormattedTextField(java.text.NumberFormat.getInstance());
+		nomBanque 			= new JTextField(45);
+		nomAgence 			= new JTextField(45);
+		soldeCritique 		= new JFormattedTextField(java.text.NumberFormat.getInstance());
+		password 			= new JTextField(8);
+	    soldeCritiqueActif  = new JCheckBox("Actif", true);
+	  
+		
 		
 		JPanel panRensBanc = new JPanel();
 		panRensBanc.setBackground(Color.white);
@@ -119,7 +132,6 @@ public class AccountManagementWindow extends JInternalFrame implements InternalF
 		panRensBanc.add(nomBanque, c);
 
 
-
 		//Quatrième ligne
 		c.gridx = 0;
 		c.gridy = 3;
@@ -133,7 +145,6 @@ public class AccountManagementWindow extends JInternalFrame implements InternalF
 		c.weightx = WEIGHT_OTHER_COLUMNS;
 		panRensBanc.add(nomAgence, c);
 		
-
 
 		//Cinquième ligne
 		c.gridx = 0;
@@ -153,12 +164,14 @@ public class AccountManagementWindow extends JInternalFrame implements InternalF
 		c.gridwidth = 1;
 		panRensBanc.add(soldeCritiqueActif, c);
 		
+		
+		//Création du JPanel servant de conteneur à la frame
 		JPanel contentPane = new JPanel();
 		contentPane.setLayout(new BorderLayout());
 		
 		contentPane.add(panRensBanc, BorderLayout.CENTER);
 		
-		
+		//Création du Panel contenant les boutons		
 		JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setLayout(new FlowLayout());
 		buttonsPanel.add(saveAccount);
@@ -169,8 +182,16 @@ public class AccountManagementWindow extends JInternalFrame implements InternalF
 		
 		//Création des écouteurs
 		saveAccount.addActionListener(this);
+		soldeCritiqueActif.addActionListener(this);
 		
-        addInternalFrameListener(this);
+		numeroCompte.addKeyListener(this);
+		codeGuichet.addKeyListener(this);
+		nomBanque.addKeyListener(this);
+		nomAgence.addKeyListener(this);
+		soldeCritique.addKeyListener(this);
+		password.addKeyListener(this);
+	    soldeCritiqueActif.addKeyListener(this);
+	    saveAccount.addKeyListener(this);
 		
 	
         setDefaultCloseOperation(JInternalFrame.HIDE_ON_CLOSE);
@@ -181,57 +202,52 @@ public class AccountManagementWindow extends JInternalFrame implements InternalF
 	}
 	
 	@Override
-	public void internalFrameActivated(InternalFrameEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void internalFrameClosed(InternalFrameEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void internalFrameClosing(InternalFrameEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void internalFrameDeactivated(InternalFrameEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void internalFrameDeiconified(InternalFrameEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void internalFrameIconified(InternalFrameEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void internalFrameOpened(InternalFrameEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void actionPerformed(ActionEvent arg0)
 	{
-		// TODO Auto-generated method stub
-		if(arg0.getSource() == saveAccount)
+		if(arg0.getSource() == soldeCritiqueActif)
 		{
-			System.out.println("Création du compte");
-			setVisible(false);
+			soldeCritique.setEnabled(soldeCritiqueActif.isSelected());			
 		}
-		
+		else if(arg0.getSource() == saveAccount)
+		{
+			
+			//On vérifie que le compte a au moins un numéro (seule info indispensable)
+			if(numeroCompte.getText().isEmpty() ||
+			   numeroCompte.isEditValid() == false)
+			{
+				 new JOptionPane().showMessageDialog(null, "Le numéro de compte ne doit pas être vide", "Info manquante", JOptionPane.ERROR_MESSAGE);
+				 numeroCompte.setText("");
+			}
+			else
+			{
+				System.out.println("Création du compte " + numeroCompte.getText());
+				setVisible(false);	
+			}
+				
+		}
+		else 
+		{
+			System.out.println("Pas d'action définie pour " + arg0.getSource());
+		}		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+	     if (e.getKeyCode() == KeyEvent.VK_ENTER)
+	     {
+	    	saveAccount.setSelected(true);
+			saveAccount.doClick();
+	     }		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub		
 	}
 
 }
