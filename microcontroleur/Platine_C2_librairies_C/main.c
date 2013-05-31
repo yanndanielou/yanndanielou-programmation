@@ -5,7 +5,10 @@
 #include "interruptions.h"
 #include "config_pic.h"
 
+//#include	"p18f6722.inc"
+
 //Configuration bits
+
 #pragma	CONFIG OSC = HS
 #pragma	CONFIG FCMEN = OFF
 #pragma	CONFIG IESO = OFF
@@ -55,9 +58,64 @@
 
 
 
-
 void main (void);
 void init_registres(void);
+
+
+void config_bytes(void)
+{
+/*
+_asm
+	CONFIG OSC = HS
+	CONFIG FCMEN = OFF
+	CONFIG IESO = OFF
+	CONFIG PWRT = OFF
+	CONFIG BOREN = SBORDIS;3d7 OFF problème d'afficheur 
+	CONFIG BORV = 0
+	CONFIG WDT = OFF
+	CONFIG WDTPS = 1024
+	CONFIG MCLRE = ON
+	CONFIG LPT1OSC = OFF
+	CONFIG CCP2MX = PORTC;3b7 commentaire mis ;commentaire enlevé
+	CONFIG STVREN = OFF
+	CONFIG LVP = OFF
+	CONFIG BBSIZ = BB2K
+	CONFIG XINST = OFF
+	CONFIG DEBUG = ON
+	CONFIG CP0 = OFF
+	CONFIG CP1 = OFF
+	CONFIG CP2 = OFF
+	CONFIG CP3 = OFF
+	CONFIG CP4 = OFF
+	CONFIG CP5 = OFF
+	CONFIG CP6 = OFF
+	CONFIG CP7 = OFF
+	CONFIG CPB = OFF
+	CONFIG CPD = OFF
+	CONFIG WRT0 = OFF
+	CONFIG WRT1 = OFF
+	CONFIG WRT2 = OFF
+	CONFIG WRT3 = OFF
+	CONFIG WRT4 = OFF
+	CONFIG WRT5 = OFF
+	CONFIG WRT6 = OFF
+	CONFIG WRT7 = OFF
+	CONFIG WRTB = OFF
+	CONFIG WRTC = OFF
+	CONFIG WRTD = OFF
+	CONFIG EBTR0 = OFF
+	CONFIG EBTR1 = OFF
+	CONFIG EBTR2 = OFF
+	CONFIG EBTR3 = OFF
+	CONFIG EBTR4 = OFF
+	CONFIG EBTR5 = OFF
+	CONFIG EBTR6 = OFF
+	CONFIG EBTR7 = OFF
+	CONFIG EBTRB = OFF
+_endasm
+*/
+}
+
 
 
 
@@ -65,7 +123,7 @@ void main ()
 {
 const char AT_INIT[] = "ATE0V0S0=0X0\\V2+GCI=3D\r";
 
-
+config_bytes();
 init_registres();
 
 lcd_init();
@@ -75,10 +133,30 @@ lcd_gotoxy(1,1);
 
 //Delay10KTCYx(200);
 
-usart1_send_at(AT_INIT);
+//usart1_send_at(AT_INIT);
 
 	while(1)
 	{
+		
+		/*********************************************
+		;***  Initialisation du modem en Identitel ***
+		;*********************************************/
+		if(	FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET_HARD_SYNC == 0	&&
+			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_ATA_ENCOURS 	== 0	&&
+			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_CONNECTE 		== 0	&&
+			FLAG_MODEM_SI2457Bits.Bits.f_RING_EN_COURS			== 0	&&
+			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_INIT			== 1	&&
+			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET			== 0)
+		{
+			INIT_MODEM_IDCALLER();
+			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_INIT = 0;
+		}
+			
+		
+	
+	
+	
+	
 		Delay10KTCYx(200);
 	}
 	 
