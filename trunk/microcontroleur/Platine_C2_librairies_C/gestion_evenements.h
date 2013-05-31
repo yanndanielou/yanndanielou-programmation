@@ -30,6 +30,7 @@ typedef union
 
 
 void ENTER_CRITICAL (void);
-void END_CRITICAL (void);
+void EXIT_CRITICAL (void);
+void gestionEvenementsInit(void);
 
 #endif

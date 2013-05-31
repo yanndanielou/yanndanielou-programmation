@@ -2,6 +2,8 @@
 #include "modem_si2457.h"
 #include "tempo.h"
 #include "c2_pass.h"
+#include "gestion_evenements.h"
+#include "usart.h"
 
 unsigned char TIMER_INIT_MODEM = 0;
 unsigned char TIMER_RESET_MODEM = 0;	// pour générer le reset sur la broche RESET_SI2457
@@ -144,5 +146,18 @@ void INIT_MODEM_IDCALLER(void)
 {
 //	FLAG_MODEM_SI2457Bits.Bits.f_SMS_FRM_ENVOYE = 0;
 //	FLAG_MODEM_SI2457Bits.Bits.f_SMS_ATDT_EN_COURS = 0;	
+	
+	const char AT_INIT[]="ATE0V0S0=0X0\\V2+GCI=3D\r";
+	const char AT_IDCALLER_ON[]="AT+VCDT=1\r";
+	const char AT_IDCALLER_FORMAT[]="AT+VCID=1\r";
+	const char AT_U67[]="AT:U67,0008\r";		//Parametre de la ligne
+	const char AT_ATA[]="ATA\r"	; // Décrocher et synchroniser avec le modem distant
+//	const char AT_INIT[]="ATE0V0S0=0X0\\V2+GCI=3D\r";
+	
+	ENTER_CRITICAL();	
+	usart1_send_at(AT_INIT);
+	EXIT_CRITICAL();
+
+
 }
 

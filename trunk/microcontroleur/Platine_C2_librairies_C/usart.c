@@ -13,7 +13,7 @@ int i;
 	for(i=0;i<longueur;i++)
 	{	
 		usart1_putc(a_envoyer[i]);
-		lcd_putc(a_envoyer[i]);
+		//lcd_putc(a_envoyer[i]);
 	}
 tempo_20ms;									//on attend entre chaque octet
 }
@@ -27,6 +27,7 @@ tempo_20ms;									//on attend entre chaque octet
 void RECEPTION_USART1_intrc1(void)
 {
 	char octet_recu = RCREG1;
+	lcd_putc(octet_recu);
 //	if(f_PAS_DE_CABLE_PC == 1)
 	if(1==1)
 	{
@@ -56,7 +57,7 @@ void usart1_send_at(const char at_command[])
 	do
 	{
 		usart1_putc(at_command[i]);
-		lcd_putc(at_command[i]);
+//		lcd_putc(at_command[i]);
 		i++;
 	}while(at_command[i-1] != '\r');
 
