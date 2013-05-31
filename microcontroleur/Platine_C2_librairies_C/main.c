@@ -4,6 +4,7 @@
 #include "modem_si2457.h"
 #include "interruptions.h"
 #include "config_pic.h"
+#include "gestion_evenements.h"
 
 //#include	"p18f6722.inc"
 
@@ -128,6 +129,9 @@ init_registres();
 
 lcd_init();
 init_usar1_9600();
+gestionEvenementsInit();
+
+
 lcd_gotoxy(1,1);
 //lcd_putrs("ok");
 

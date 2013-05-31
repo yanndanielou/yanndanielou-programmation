@@ -3,13 +3,24 @@
 #include "gestion_evenements.h"
 
 
-void ENTER_CRITICAL (void)
-{
 
+void gestionEvenementsInit(void)
+{
+	save_intBits.data = 0;
 }
 
-void END_CRITICAL (void)
+void ENTER_CRITICAL (void)
 {
+	save_intBits.Bits.SAVE_GIE = INTCONbits.GIE;
+	INTCONbits.GIE = 0;
+}
 
+void EXIT_CRITICAL (void)
+{
+	INTCONbits.GIE = 0;
+	if(save_intBits.Bits.SAVE_GIE == 1)
+	{
+		INTCONbits.GIE = 1;
+	}
 }
 
