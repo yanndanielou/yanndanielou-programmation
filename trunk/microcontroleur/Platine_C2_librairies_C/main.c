@@ -3,6 +3,7 @@
 #include "usart.h"
 #include "modem_si2457.h"
 #include "interruptions.h"
+#include "config_pic.h"
 
 //Configuration bits
 #pragma	CONFIG OSC = HS
