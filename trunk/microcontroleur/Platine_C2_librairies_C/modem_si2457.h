@@ -76,6 +76,7 @@ typedef union
 	unsigned char FLAG_MODEM_SI2457_2 = 0;
 	unsigned char FLAG_MODEM_SI2457_3 = 0;
 	FLAG_MODEM_SI2457 FLAG_MODEM_SI2457Bits;
+	//FLAG_MODEM_SI2457Bits.data = 0;
 #else
  //   extern unsigned char FLAG_MODEM_SI2457;
     extern unsigned char FLAG_MODEM_SI2457_2;
@@ -92,5 +93,6 @@ void reset_modem_hard(void);
 void INIT_MODEM_int1s(void);
 void START_RESET_MODEM(char seconds);
 void SHUTDOWN_MODEM(void);
+void INIT_MODEM_IDCALLER(void);
 
 #endif

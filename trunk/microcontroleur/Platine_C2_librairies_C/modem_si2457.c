@@ -140,3 +140,9 @@ void reset_modem_hard(void)
 	TIMER_RESET_MODEM = 55;
 }
 
+void INIT_MODEM_IDCALLER(void)
+{
+//	FLAG_MODEM_SI2457Bits.Bits.f_SMS_FRM_ENVOYE = 0;
+//	FLAG_MODEM_SI2457Bits.Bits.f_SMS_ATDT_EN_COURS = 0;	
+}
+
