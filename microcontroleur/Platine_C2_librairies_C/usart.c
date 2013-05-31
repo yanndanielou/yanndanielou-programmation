@@ -1,6 +1,8 @@
 #include <p18f6722.h>
 #include "lcd.h"
 #include "usart.h"
+#include "config_pic.h"
+#include "modem_si2457.h"
 
 char octet;					//contient le type d'instruction: il est lu lors du traitement du parametre
 
@@ -16,6 +18,36 @@ int i;
 tempo_20ms;									//on attend entre chaque octet
 }
 
+
+
+/****************************************
+;***  Reception d'octet sur l'USART1  ***
+;****************************************
+; à chaque reception d'un octet sur l'USART */
+void RECEPTION_USART1_intrc1(void)
+{
+	char octet_recu = RCREG1;
+//	if(f_PAS_DE_CABLE_PC == 1)
+	if(1==1)
+	{
+		//Mode distant
+		
+		//Est ce que le modem est connecté à un modem distant ?
+		if(FLAG_MODEM_SI2457Bits.Bits.f_MODEM_CONNECTE == 1)
+		{
+			//RECEPTION_TRAME_LOGIDIESE
+		}
+		else
+		{
+			//pas_connecte
+		}
+	}
+	else
+	{
+		//Mode local
+		//RECEPTION_TRAME_LOGIDIESE();
+	}
+}
 
 void usart1_send_at(const char at_command[])
 {
