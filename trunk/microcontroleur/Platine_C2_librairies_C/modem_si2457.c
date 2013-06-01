@@ -157,7 +157,65 @@ void INIT_MODEM_IDCALLER(void)
 	ENTER_CRITICAL();	
 	usart1_send_at(AT_INIT);
 	EXIT_CRITICAL();
+}
 
+/****************************
+;***  Detection du modem  ***
+;****************************
+Appeler seulement au demarrage de la platine
+ Méthode :
+ - Effectuer un RESET hard
+ - Envoyer "\r"
+ - Recevoir l'echo avec timeout de 200 ms (reponse mesuré à 54ms)
+ - Si aucun echo reçu, il n'y a pas de modem */
+void DETECT_MODEM(void)
+{
+	unsigned char vidage_buffer = 0;
+	unsigned char i = 200;	//200 ms de timeout
+	unsigned char caractere_recu = 0;
+	unsigned char modem_detecte = 0;
 
+	//RESET hard du modem
+	ENTER_CRITICAL();	
+	RESET_MODEM_HARD_noint();
+	EXIT_CRITICAL();
+	
+	//Vider le bufer de réception
+	vidage_buffer = RCREG1;
+	
+	//Envoyer le \r
+	usart1_putc('\r');
+	
+	//loop
+	while(	i-- > 0 && PIR1bits.RCIF == 0);
+	
+	if(PIR1bits.RCIF == 1)
+	{
+		//char_recu
+		caractere_recu = RCREG1;
+		if(caractere_recu == '\r')
+		{
+			//OK le modem est là
+			modem_detecte = 1;
+		}
+	}
+	
+
+	if(modem_detecte == 0)
+	{
+		// Pas de modem sur la carte
+		FLAG_MODEM_SI2457Bits.Bits.f_MODEM_DETECTE = 0;
+		RESET_SI2457 = 0; //3b7
+	}
+	else
+	{
+		FLAG_MODEM_SI2457Bits.Bits.f_MODEM_DETECTE = 1;
+
+		//Eteindre le modem pour le moment (ne pas recevoir de "RING\r")
+		RESET_SI2457 = 0; //3b7
+			
+		START_RESET_MODEM(2);	
+	}
+	
 }
 

@@ -85,7 +85,7 @@ void init_usart (int spbrg)
 
 void init_usar1_9600(void)
 {
-	init_usart(123);//123
+	init_usart(CONFIG_SPBRG1_9600);//123
 //	init_usart(CONFIG_SPBRG1_9600);//123
 }
 

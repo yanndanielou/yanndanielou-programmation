@@ -94,5 +94,6 @@ void INIT_MODEM_int1s(void);
 void START_RESET_MODEM(char seconds);
 void SHUTDOWN_MODEM(void);
 void INIT_MODEM_IDCALLER(void);
+void DETECT_MODEM(void);
 
 #endif
