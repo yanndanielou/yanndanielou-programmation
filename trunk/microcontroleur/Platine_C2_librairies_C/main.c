@@ -82,11 +82,11 @@ void main ()
 		/*********************************************
 		;***  Initialisation du modem en Identitel ***
 		;*********************************************/
-		if(	FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET_HARD_SYNC == 0	&&
-			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_ATA_ENCOURS 	== 0	&&
+		if(	FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET_HARD_SYNC 	== 0	&&
+			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_ATA_ENCOURS 		== 0	&&
 			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_CONNECTE 		== 0	&&
 			FLAG_MODEM_SI2457Bits.Bits.f_RING_EN_COURS			== 0	&&
-			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_INIT			== 1	&&
+			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_INIT				== 1	&&
 			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET			== 0)
 		{
 			INIT_MODEM_IDCALLER();
@@ -147,6 +147,9 @@ void init(void)
 	//nombre de fiches
 	
 	// Affichage Date et Heure
+	
+	//Autorisation des interruptions
+	ENABLE_INTERRUPTS;
 	
 }
 
