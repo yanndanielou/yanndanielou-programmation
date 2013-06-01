@@ -5,139 +5,76 @@
 #include "interruptions.h"
 #include "config_pic.h"
 #include "gestion_evenements.h"
+#include "c2_pass.h"
 
 //#include	"p18f6722.inc"
 
-//Configuration bits
+//CONFIGUration bits
 
-#pragma	CONFIG OSC = HS
-#pragma	CONFIG FCMEN = OFF
-#pragma	CONFIG IESO = OFF
-#pragma	CONFIG PWRT = OFF
-#pragma	CONFIG BOREN = SBORDIS//3d7 OFF problème d'afficheur 
-#pragma	CONFIG BORV = 0
-#pragma	CONFIG WDT = OFF
-#pragma	CONFIG WDTPS = 1024
-#pragma	CONFIG MCLRE = ON
-#pragma	CONFIG LPT1OSC = OFF
-#pragma	CONFIG CCP2MX = PORTC//3b7 commentaire mis ;commentaire enlevé
-#pragma	CONFIG STVREN = OFF
-#pragma	CONFIG LVP = OFF
-#pragma	CONFIG BBSIZ = BB2K
-#pragma	CONFIG XINST = OFF
-#pragma	CONFIG DEBUG = ON
-#pragma	CONFIG CP0 = OFF
-#pragma	CONFIG CP1 = OFF
-#pragma	CONFIG CP2 = OFF
-#pragma	CONFIG CP3 = OFF
-#pragma	CONFIG CP4 = OFF
-#pragma	CONFIG CP5 = OFF
-#pragma	CONFIG CP6 = OFF
-#pragma	CONFIG CP7 = OFF
-#pragma	CONFIG CPB = OFF
-#pragma	CONFIG CPD = OFF
-#pragma	CONFIG WRT0 = OFF
-#pragma	CONFIG WRT1 = OFF
-#pragma	CONFIG WRT2 = OFF
-#pragma	CONFIG WRT3 = OFF
-#pragma	CONFIG WRT4 = OFF
-#pragma	CONFIG WRT5 = OFF
-#pragma	CONFIG WRT6 = OFF
-#pragma	CONFIG WRT7 = OFF
-#pragma	CONFIG WRTB = OFF
-#pragma	CONFIG WRTC = OFF
-#pragma	CONFIG WRTD = OFF
-#pragma	CONFIG EBTR0 = OFF
-#pragma	CONFIG EBTR1 = OFF
-#pragma	CONFIG EBTR2 = OFF
-#pragma	CONFIG EBTR3 = OFF
-#pragma	CONFIG EBTR4 = OFF
-#pragma	CONFIG EBTR5 = OFF
-#pragma	CONFIG EBTR6 = OFF
-#pragma	CONFIG EBTR7 = OFF
-#pragma	CONFIG EBTRB = OFF
-
+#pragma	config OSC = HS
+#pragma	config FCMEN = OFF
+#pragma	config IESO = OFF
+#pragma	config PWRT = OFF
+#pragma	config BOREN = SBORDIS//3d7 OFF problème d'afficheur 
+#pragma	config BORV = 0
+#pragma	config WDT = OFF
+#pragma	config WDTPS = 1024
+#pragma	config MCLRE = ON
+#pragma	config LPT1OSC = OFF
+#pragma	config CCP2MX = PORTC//3b7 commentaire mis ;commentaire enlevé
+#pragma	config STVREN = OFF
+#pragma	config LVP = OFF
+#pragma	config BBSIZ = BB2K
+#pragma	config XINST = OFF
+#pragma	config DEBUG = ON
+#pragma	config CP0 = OFF
+#pragma	config CP1 = OFF
+#pragma	config CP2 = OFF
+#pragma	config CP3 = OFF
+#pragma	config CP4 = OFF
+#pragma	config CP5 = OFF
+#pragma	config CP6 = OFF
+#pragma	config CP7 = OFF
+#pragma	config CPB = OFF
+#pragma	config CPD = OFF
+#pragma	config WRT0 = OFF
+#pragma	config WRT1 = OFF
+#pragma	config WRT2 = OFF
+#pragma	config WRT3 = OFF
+#pragma	config WRT4 = OFF
+#pragma	config WRT5 = OFF
+#pragma	config WRT6 = OFF
+#pragma	config WRT7 = OFF
+#pragma	config WRTB = OFF
+#pragma	config WRTC = OFF
+#pragma	config WRTD = OFF
+#pragma	config EBTR0 = OFF
+#pragma	config EBTR1 = OFF
+#pragma	config EBTR2 = OFF
+#pragma	config EBTR3 = OFF
+#pragma	config EBTR4 = OFF
+#pragma	config EBTR5 = OFF
+#pragma	config EBTR6 = OFF
+#pragma	config EBTR7 = OFF
+#pragma	config EBTRB = OFF
 
 
 void main (void);
 void init_registres(void);
-
-
-void config_bytes(void)
-{
-/*
-_asm
-	CONFIG OSC = HS
-	CONFIG FCMEN = OFF
-	CONFIG IESO = OFF
-	CONFIG PWRT = OFF
-	CONFIG BOREN = SBORDIS;3d7 OFF problème d'afficheur 
-	CONFIG BORV = 0
-	CONFIG WDT = OFF
-	CONFIG WDTPS = 1024
-	CONFIG MCLRE = ON
-	CONFIG LPT1OSC = OFF
-	CONFIG CCP2MX = PORTC;3b7 commentaire mis ;commentaire enlevé
-	CONFIG STVREN = OFF
-	CONFIG LVP = OFF
-	CONFIG BBSIZ = BB2K
-	CONFIG XINST = OFF
-	CONFIG DEBUG = ON
-	CONFIG CP0 = OFF
-	CONFIG CP1 = OFF
-	CONFIG CP2 = OFF
-	CONFIG CP3 = OFF
-	CONFIG CP4 = OFF
-	CONFIG CP5 = OFF
-	CONFIG CP6 = OFF
-	CONFIG CP7 = OFF
-	CONFIG CPB = OFF
-	CONFIG CPD = OFF
-	CONFIG WRT0 = OFF
-	CONFIG WRT1 = OFF
-	CONFIG WRT2 = OFF
-	CONFIG WRT3 = OFF
-	CONFIG WRT4 = OFF
-	CONFIG WRT5 = OFF
-	CONFIG WRT6 = OFF
-	CONFIG WRT7 = OFF
-	CONFIG WRTB = OFF
-	CONFIG WRTC = OFF
-	CONFIG WRTD = OFF
-	CONFIG EBTR0 = OFF
-	CONFIG EBTR1 = OFF
-	CONFIG EBTR2 = OFF
-	CONFIG EBTR3 = OFF
-	CONFIG EBTR4 = OFF
-	CONFIG EBTR5 = OFF
-	CONFIG EBTR6 = OFF
-	CONFIG EBTR7 = OFF
-	CONFIG EBTRB = OFF
-_endasm
-*/
-}
-
-
+void init(void);
 
 
 void main ()
 {
-const char AT_INIT[] = "ATE0V0S0=0X0\\V2+GCI=3D\r";
+	const char AT_INIT[] = "ATE0V0S0=0X0\\V2+GCI=3D\r";
 
-config_bytes();
-init_registres();
+	init();
+	
+	//lcd_putrs("ok");
 
-lcd_init();
-init_usar1_9600();
-gestionEvenementsInit();
+	//Delay10KTCYx(200);
 
-
-lcd_gotoxy(1,1);
-//lcd_putrs("ok");
-
-//Delay10KTCYx(200);
-
-//usart1_send_at(AT_INIT);
+	//usart1_send_at(AT_INIT);
 
 	while(1)
 	{
@@ -157,14 +94,63 @@ lcd_gotoxy(1,1);
 		}
 			
 		
-	
-	
-	
-	
 		Delay10KTCYx(200);
 	}
 	 
 }
+
+
+
+//Point de démarrage
+void init(void)
+{
+	//  Initialisation de toutes la RAM (GPRs, pas SFR) à zéro
+
+	//	Mémorisation de RCON,T0 (car éffacé au permier clrwdt)
+	
+	//	Allumer le Watchdog
+	
+	//Initialisation des registres
+	init_registres();
+	
+	//Initialisation uart pour modem
+	init_usar1_9600();
+	
+	//
+	gestionEvenementsInit();
+	
+	//Initialisation des TIMER
+	//init_timer(); : déja fait dans init_registres
+	
+	//Initialisation de l'ecran LCD
+	lcd_init();
+	lcd_gotoxy(1,1);
+	
+	// Initialisation de l'EEPROM
+	//avec les données portes
+	
+	//Initialisation de la mémoire Flash
+	
+	//Initialisation Horloge Temps Reel
+	
+	//Détection du modem
+	DETECT_MODEM();	
+	
+	//Initialisation pour C2pass
+	PRISE_DE_LIGNE = 0;
+	MICRO = 0;
+	HAUT_PARLEUR;
+	
+	//Initialisation du type de produit
+	
+	//affichage message initialisation
+	//nombre de fiches
+	
+	// Affichage Date et Heure
+	
+}
+
+
 
 
 
@@ -191,7 +177,7 @@ void init_registres(void)
 	TRISF=CONFIGURE_PORTF;
 	TRISG=CONFIGURE_PORTG;
 	
-	//CONFIG INTERRUPTION
+	//config INTERRUPTION
 	RCONbits.IPEN=0;					//enable les priorités sur les interruptions
 	INTCON = INTERRUPTIONS_INTCON;
 	INTCON2 = INTERRUPTIONS_INTCON2;
