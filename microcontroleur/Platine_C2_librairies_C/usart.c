@@ -27,6 +27,7 @@ tempo_20ms;									//on attend entre chaque octet
 void RECEPTION_USART1_intrc1(void)
 {
 	char octet_recu = RCREG1;
+	lcd_putrs("Char recu:");
 	lcd_putc(octet_recu);
 //	if(f_PAS_DE_CABLE_PC == 1)
 	if(1==1)

@@ -3,5 +3,6 @@
 
 void tempo_20ms(void);
 void tempo_100ms(void);
+void tempo_1ms(void);
 
 #endif

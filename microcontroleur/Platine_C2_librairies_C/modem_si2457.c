@@ -183,11 +183,16 @@ void DETECT_MODEM(void)
 	//Vider le bufer de réception
 	vidage_buffer = RCREG1;
 	
+	ENTER_CRITICAL();	
 	//Envoyer le \r
 	usart1_putc('\r');
 	
 	//loop
-	while(	i-- > 0 && PIR1bits.RCIF == 0);
+	while(	i-- >= 0 && PIR1bits.RCIF == 0)
+	{
+		tempo_1ms();
+	}
+	EXIT_CRITICAL();
 	
 	if(PIR1bits.RCIF == 1)
 	{
