@@ -4,25 +4,15 @@
 #include "c2_pass.h"
 #include "gestion_evenements.h"
 #include "usart.h"
+#include "lcd.h"
 
 unsigned char TIMER_INIT_MODEM = 0;
 unsigned char TIMER_RESET_MODEM = 0;	// pour générer le reset sur la broche RESET_SI2457
 unsigned char TIMER_CONNEXION_MODEM = 0;
 
-
-
 void modem_si2457_init (void)
 {
-
-}
-
-void f_PAS_DE_CABLE_PC(void)
-{
-	FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET = 1;	//Ce flag annonce que le modem effecue un RESET
-	
-	RESET_SI2457 = 0; //Etat bas 3b7
-	
-	TIMER_RESET_MODEM = 55;
+	FLAG_MODEM_SI2457Bits.data = 0;
 }
 
 void RESET_MODEM_HARD_int10ms(void)
@@ -154,9 +144,17 @@ void INIT_MODEM_IDCALLER(void)
 	const char AT_ATA[]="ATA\r"	; // Décrocher et synchroniser avec le modem distant
 //	const char AT_INIT[]="ATE0V0S0=0X0\\V2+GCI=3D\r";
 	
+	
+	MODEM_RESULT_CODE_ATTENDU = 0;
+	MODEM_ECHO_ATTENDU = 1;
 	ENTER_CRITICAL();	
 	usart1_send_at(AT_INIT);
 	EXIT_CRITICAL();
+	while(FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO == 0);
+	
+	MODEM_RESULT_CODE_ATTENDU = 1;
+	while(FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE == 0);
+	
 }
 
 /****************************
@@ -174,6 +172,8 @@ void DETECT_MODEM(void)
 	unsigned char i = 200;	//200 ms de timeout
 	unsigned char caractere_recu = 0;
 	unsigned char modem_detecte = 0;
+	
+	modem_si2457_init();
 
 	//RESET hard du modem
 	ENTER_CRITICAL();	
@@ -190,7 +190,7 @@ void DETECT_MODEM(void)
 	//loop
 	while(	i-- >= 0 && PIR1bits.RCIF == 0)
 	{
-		tempo_1ms();
+		tempo_1ms;
 	}
 	EXIT_CRITICAL();
 	
@@ -221,6 +221,77 @@ void DETECT_MODEM(void)
 			
 		START_RESET_MODEM(2);	
 	}
-	
 }
+
+
+void MODEM_PARSE_BUFFER(void)
+{
+	int i= 0, result_code = 0, temp = 0;
+	if(MODEM_ECHO_ATTENDU == 1)
+	{
+		FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 1;
+	}
+	else if(MODEM_RESULT_CODE_ATTENDU == 1)
+	{
+		temp = convert_result_code();
+		if(temp != -1)
+		{
+			result_code = temp;
+			lcd_gotoxy(1,2);
+			lcd_putrs("Res: ");
+			lcd_puti(result_code);
+		}
+	}
+	else
+	{
+		for(i=0;i<NB_BYTE_BUFFER_USART1;i++)
+		{
+			lcd_gotoxy(1,1);
+			lcd_putc(BUFFER_USART1[i]);
+		}
+	}
+	MODEM_ECHO_ATTENDU = 0;
+	MODEM_RESULT_CODE_ATTENDU = 0;
+	NB_BYTE_BUFFER_USART1 = 0;
+}
+
+/*
+ ici, NB_BYTE_BUFFER_USART1 peut etre egal à 1,2 ou 3
+ 1 = on a reçu seulement \r, on ignore
+ 2 = ex "0\r" (OK)
+ 3 = ex "30\r" (Caller ID mark detected)
+*/
+	
+//	Conversion du result code ASCII -> binaire naturel
+int convert_result_code(void)
+{
+	int result = -1;
+	unsigned char dizaines = 0, unites = 0;
+	if(NB_BYTE_BUFFER_USART1 == 1)
+	{
+		//on l'ignore
+		lcd_gotoxy(1,1);
+		lcd_putrs("Result code ignore");
+	}
+	else if(NB_BYTE_BUFFER_USART1 == 2)
+	{
+		result = BUFFER_USART1[0] - 0x30;
+	}
+	else if(NB_BYTE_BUFFER_USART1 == 3)
+	{
+		//D'abord dizaines
+		dizaines = BUFFER_USART1[0] - 0x30;
+		unites = BUFFER_USART1[1] - 0x30;
+		result = 10 * dizaines + unites;
+	}
+	else
+	{
+		lcd_gotoxy(1,1);
+		lcd_putrs("Result code ignore");
+	}
+	return result;
+}
+
+
+
 

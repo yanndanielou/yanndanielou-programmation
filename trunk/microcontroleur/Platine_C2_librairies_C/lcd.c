@@ -1,5 +1,5 @@
 #include "lcd.h"
-
+#include "tempo.h"
 /*
 ********************************************************************************************************
 ****    CE FICHIER A ETE CONCU POUR UNE AUTRE CARTE, CERTAINES FONCTIONS N'ONT PAS ETE VERIFIEES   *****

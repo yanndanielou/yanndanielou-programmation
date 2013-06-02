@@ -2,11 +2,9 @@
 #define __LCD_H_ 1
 
 #include	<p18f6722.h>
-#include	<delays.h>
 #include 	<stdlib.h>
 #include <string.h>
 
-#define	tempo_20ms	Delay10KTCYx(50)
 #define lcd_RW	PORTDbits.RD5
 #define lcd_E	PORTDbits.RD4
 #define lcd_RS	PORTDbits.RD6
