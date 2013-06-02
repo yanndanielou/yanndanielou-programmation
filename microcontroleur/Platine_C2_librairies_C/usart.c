@@ -1,8 +1,10 @@
 #include <p18f6722.h>
+#define VAR_GLOBALES_USART
 #include "lcd.h"
 #include "usart.h"
 #include "config_pic.h"
 #include "modem_si2457.h"
+#include "tempo.h"
 
 char octet;					//contient le type d'instruction: il est lu lors du traitement du parametre
 
@@ -15,7 +17,7 @@ int i;
 		usart1_putc(a_envoyer[i]);
 		//lcd_putc(a_envoyer[i]);
 	}
-tempo_20ms;									//on attend entre chaque octet
+//tempo_20ms;									//on attend entre chaque octet
 }
 
 
@@ -27,8 +29,8 @@ tempo_20ms;									//on attend entre chaque octet
 void RECEPTION_USART1_intrc1(void)
 {
 	char octet_recu = RCREG1;
-	lcd_putrs("Char recu:");
-	lcd_putc(octet_recu);
+//	lcd_putrs("Char recu:");
+//	lcd_putc(octet_recu);
 //	if(f_PAS_DE_CABLE_PC == 1)
 	if(1==1)
 	{
@@ -42,6 +44,24 @@ void RECEPTION_USART1_intrc1(void)
 		else
 		{
 			//pas_connecte
+			
+			// Si il s'agit du premier octet à placer dans le buffer
+			// et si cette octet est "\n", il faut l'ignorer et ne pas le placer dans le buffer
+			if(octet_recu == '\n' && NB_BYTE_BUFFER_USART1 == 0)
+			{
+				//return
+			}
+			else
+			{
+				BUFFER_USART1[NB_BYTE_BUFFER_USART1] = octet_recu;
+				NB_BYTE_BUFFER_USART1++;
+				
+				if(octet_recu == '\r')
+				{
+					MODEM_PARSE_BUFFER();
+				}
+
+			}
 		}
 	}
 	else

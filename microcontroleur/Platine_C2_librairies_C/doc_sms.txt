@@ -1,0 +1,27 @@
+AT+CMGS (envoyer message)
+AT+CMSS (envoyer message depuis stockage)
+AT+CMGL (lister messages)
+AT+CMGR (lire message)
+
+************************************************************************
+
+Numéros de centre de messagerie:
+
+Orange, Virgin Mobile, M6 Mobile :
++33689004000
+
+Bouygues Telecom, Universal Mobile :
++33660660001 ou +33660003000
+
+SFR:
++33609001390
+
+Free Mobile :
++33695000695
+
+************************************************************************
+
+Codes d'erreur lors de l'envoi SMS Gigaset
+E0 Secret permanent du numéro activé ou présentation du numéro non activée (ou non autorisée).
+FE Erreur lors de la transmission du SMS.
+FD Erreur lors de la connexion au centre SMS, voir Auto-assistance.

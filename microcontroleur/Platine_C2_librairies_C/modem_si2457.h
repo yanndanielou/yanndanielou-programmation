@@ -76,12 +76,17 @@ typedef union
 	unsigned char FLAG_MODEM_SI2457_2 = 0;
 	unsigned char FLAG_MODEM_SI2457_3 = 0;
 	FLAG_MODEM_SI2457 FLAG_MODEM_SI2457Bits;
-	//FLAG_MODEM_SI2457Bits.data = 0;
+	
+	//TODO: remplacer par un enum
+	unsigned char MODEM_RESULT_CODE_ATTENDU = 0;
+	unsigned char MODEM_ECHO_ATTENDU = 0;
 #else
  //   extern unsigned char FLAG_MODEM_SI2457;
     extern unsigned char FLAG_MODEM_SI2457_2;
     extern unsigned char FLAG_MODEM_SI2457_3;
 	extern FLAG_MODEM_SI2457 FLAG_MODEM_SI2457Bits;
+	extern unsigned char MODEM_RESULT_CODE_ATTENDU;
+	extern unsigned char MODEM_ECHO_ATTENDU;
 #endif
 
 
@@ -95,5 +100,7 @@ void START_RESET_MODEM(char seconds);
 void SHUTDOWN_MODEM(void);
 void INIT_MODEM_IDCALLER(void);
 void DETECT_MODEM(void);
+void MODEM_PARSE_BUFFER(void);
+int convert_result_code(void);
 
 #endif
