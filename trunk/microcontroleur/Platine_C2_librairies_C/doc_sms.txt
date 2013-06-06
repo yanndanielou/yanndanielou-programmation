@@ -25,3 +25,107 @@ Codes d'erreur lors de l'envoi SMS Gigaset
 E0 Secret permanent du numéro activé ou présentation du numéro non activée (ou non autorisée).
 FE Erreur lors de la transmission du SMS.
 FD Erreur lors de la connexion au centre SMS, voir Auto-assistance.
+
+
+************************************************************************
+	Tests SMS avec puce mobicarte (Diese Telecom)
+************************************************************************
+
+--	Test 1: réglages base + combiné d'usine:
+Centre serveur d'informations: 0033609001390
+Centre de serveur 1 (configuré emetteur)
+			SMS / mini messages: 080910100*
+			EMAIL: 8888
+			
+Centre de serveur 2:
+			SMS / mini messages: 014100490*
+			EMAIL: VIDE
+	
+RESULT:Erreur FD
+
+
+-- Test 2:
+Centre serveur d'informations: 0033609001390
+Centre de serveur 1 (configuré emetteur)
+			SMS / mini messages: 068900400*
+			EMAIL: 8888
+			
+Centre de serveur 2:
+			SMS / mini messages: 014100490*
+			EMAIL: VIDE
+	
+RESULT:Erreur FD
+
+
+-- Test 3:
+Centre serveur d'informations: 0033609001390
+Centre de serveur 1 (configuré emetteur)
+			SMS / mini messages: 068900400*
+			EMAIL: 8888
+			
+Centre de serveur 2:
+			SMS / mini messages: 014100490*
+			EMAIL: VIDE
+	
+RESULT:Erreur FD
+
+
+-- Test 4:
+Centre serveur d'informations: VIDE
+Centre de serveur 1 (configuré emetteur)
+			SMS / mini messages: 068900400*
+			EMAIL: 8888
+			
+Centre de serveur 2:
+			SMS / mini messages: 014100490*
+			EMAIL: VIDE
+	
+RESULT:Erreur FD
+
+
+-- Test 5:
+Centre serveur d'informations: VIDE
+Centre de serveur 1 (configuré emetteur)
+			SMS / mini messages: 068900400*
+			EMAIL: 8888
+			
+Centre de serveur 2:
+			SMS / mini messages: VIDE
+			EMAIL: VIDE
+	
+RESULT:Erreur FD
+
+************************************************************************
+	Tests SMS avec puce SFR (astreintes Siemens)
+************************************************************************
+
+Test 1: réglages usines
+Centre 1 (emetteur)	SMS	: 080910100*
+					EMAIL: 8888
+Centre 2 			: 014100490*
+Erreur FE
+
+Test 2: réglage centre 1:
+Centre 1 (emetteur)	: 060900139
+Centre 2 			: 014100490*
+Erreur FE
+
+Test 2: réglage centre 1:
+Centre 1 (emetteur)	: 060900139*
+Centre 2 			: 014100490*
+Erreur FD
+
+Test 2: réglage centre 1:
+Centre 1 (emetteur)	SMS	: 060900139*
+					EMAIL: vide
+Centre 2 			: vide
+Erreur FE
+
+Test 2: réglage centre 1:
+Centre 1 (emetteur)	SMS	: 060900139*
+					EMAIL: vide
+Centre 2 			: 060900139*
+Pas de réponse
+
+
+
