@@ -70,31 +70,32 @@ void INIT_MODEM_int1s(void)
 	{
 		//no_conect
 		if(TIMER_INIT_MODEM > 0)
+		{
 			TIMER_INIT_MODEM--;
 			
-		if(TIMER_INIT_MODEM == 0)
-		{
-			/* Est ce qu'on doit faire une INIT ?
-			oui si :
-			-  un modem à été detecté
-				&& le cable PC n'est pas branché
-				&& le modem n'est pas connecté
-				&& on n'est pas en train de recevoir un appel
-				&& le modem n'est pas dans la phase de reinitialisation pour une communication avec un modem distant
-				&& le modem n'est en train de se synchroniser
-			*/
-			
-			if(	FLAG_MODEM_SI2457Bits.Bits.f_MODEM_DETECTE == 1			&&
-			//	FLAG_MODEM_SI2457Bits.Bits.f_PAS_DE_CABLE_PC == 1 			&&
-				FLAG_MODEM_SI2457Bits.Bits.f_MODEM_CONNECTE == 0			&&
-				FLAG_MODEM_SI2457Bits.Bits.f_RING_EN_COURS == 0			&&
-				FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET_HARD_SYNC == 0	&&
-				FLAG_MODEM_SI2457Bits.Bits.f_MODEM_ATA_ENCOURS == 0)
+			if(TIMER_INIT_MODEM == 0)
 			{
-				FLAG_MODEM_SI2457Bits.Bits.f_MODEM_INIT = 1;
-				reset_modem_hard();				
+				/* Est ce qu'on doit faire une INIT ?
+				oui si :
+				-  un modem à été detecté
+					&& le cable PC n'est pas branché
+					&& le modem n'est pas connecté
+					&& on n'est pas en train de recevoir un appel
+					&& le modem n'est pas dans la phase de reinitialisation pour une communication avec un modem distant
+					&& le modem n'est en train de se synchroniser
+				*/
+				
+				if(	FLAG_MODEM_SI2457Bits.Bits.f_MODEM_DETECTE == 1			&&
+				//	FLAG_MODEM_SI2457Bits.Bits.f_PAS_DE_CABLE_PC == 1 			&&
+					FLAG_MODEM_SI2457Bits.Bits.f_MODEM_CONNECTE == 0			&&
+					FLAG_MODEM_SI2457Bits.Bits.f_RING_EN_COURS == 0			&&
+					FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET_HARD_SYNC == 0	&&
+					FLAG_MODEM_SI2457Bits.Bits.f_MODEM_ATA_ENCOURS == 0)
+				{
+					FLAG_MODEM_SI2457Bits.Bits.f_MODEM_INIT = 1;
+					reset_modem_hard();				
+				}
 			}
-			
 		}
 			
 	}
