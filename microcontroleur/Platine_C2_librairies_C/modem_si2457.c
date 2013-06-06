@@ -141,10 +141,16 @@ void INIT_MODEM_IDCALLER(void)
 	const char AT_IDCALLER_ON[]="AT+VCDT=1\r";
 	const char AT_IDCALLER_FORMAT[]="AT+VCID=1\r";
 	const char AT_U67[]="AT:U67,0008\r";		//Parametre de la ligne
-	const char AT_ATA[]="ATA\r"	; // Décrocher et synchroniser avec le modem distant
-//	const char AT_INIT[]="ATE0V0S0=0X0\\V2+GCI=3D\r";
+	const char AT_ATA[]="ATA\r"	;				// Décrocher et synchroniser avec le modem distant
+	const char AT_FCLASS[]="AT+FCLASS=256\r";		// Prepares the modem for handling SMS calls.
 	
 	
+	//AT_INIT
+	//On attend un echo puis un result code
+	LCD_CLEAR_FIRST_LINE;
+	lcd_putrs("AT_INIT");
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 0;
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 0;
 	MODEM_RESULT_CODE_ATTENDU = 0;
 	MODEM_ECHO_ATTENDU = 1;
 	ENTER_CRITICAL();	
@@ -154,6 +160,49 @@ void INIT_MODEM_IDCALLER(void)
 	
 	MODEM_RESULT_CODE_ATTENDU = 1;
 	while(FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE == 0);
+	
+	//AT_IDCALLER_ON
+	//On attend un result code
+	LCD_CLEAR_FIRST_LINE;
+	lcd_putrs("AT_IDCALLER_ON");
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 0;
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 0;
+	MODEM_RESULT_CODE_ATTENDU = 1;
+	MODEM_ECHO_ATTENDU = 0;
+	ENTER_CRITICAL();	
+	usart1_send_at(AT_IDCALLER_ON);
+	EXIT_CRITICAL();
+	while(FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE == 0);
+
+	//AT_IDCALLER_FORMAT
+	//On attend un result code
+	LCD_CLEAR_FIRST_LINE;
+	lcd_putrs("AT_IDCALLER_FOR");
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 0;
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 0;
+	MODEM_RESULT_CODE_ATTENDU = 1;
+	MODEM_ECHO_ATTENDU = 0;
+	ENTER_CRITICAL();	
+	usart1_send_at(AT_IDCALLER_FORMAT);
+	EXIT_CRITICAL();
+	while(FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE == 0);
+
+	
+	//AT_FCLASS
+	//On attend un result code
+/*	LCD_CLEAR_FIRST_LINE;
+	lcd_putrs("AT_FCLASS");
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 0;
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 0;
+	MODEM_RESULT_CODE_ATTENDU = 1;
+	MODEM_ECHO_ATTENDU = 0;
+	ENTER_CRITICAL();	
+	usart1_send_at(AT_FCLASS);
+	EXIT_CRITICAL();
+	while(FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE == 0);
+*/
+	
+	
 	
 }
 
@@ -240,13 +289,14 @@ void MODEM_PARSE_BUFFER(void)
 			lcd_gotoxy(1,2);
 			lcd_putrs("Res: ");
 			lcd_puti(result_code);
+			FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 1;
 		}
 	}
 	else
 	{
 		for(i=0;i<NB_BYTE_BUFFER_USART1;i++)
 		{
-			lcd_gotoxy(1,1);
+			LCD_CLEAR_FIRST_LINE;
 			lcd_putc(BUFFER_USART1[i]);
 		}
 	}
@@ -270,8 +320,8 @@ int convert_result_code(void)
 	if(NB_BYTE_BUFFER_USART1 == 1)
 	{
 		//on l'ignore
-		lcd_gotoxy(1,1);
-		lcd_putrs("Result code ignore");
+		LCD_CLEAR_FIRST_LINE;
+		lcd_putrs("Res code ignore");
 	}
 	else if(NB_BYTE_BUFFER_USART1 == 2)
 	{
@@ -286,12 +336,9 @@ int convert_result_code(void)
 	}
 	else
 	{
-		lcd_gotoxy(1,1);
-		lcd_putrs("Result code ignore");
+		LCD_CLEAR_FIRST_LINE;
+		lcd_putrs("Res code ignore");
 	}
 	return result;
 }
-
-
-
 
