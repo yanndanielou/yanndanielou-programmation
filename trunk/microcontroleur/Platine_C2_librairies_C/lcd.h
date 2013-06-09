@@ -12,7 +12,7 @@
 #define LCD_LINE_SIZE 16
 
 #define LCD_CLEAR_FIRST_LINE lcd_clear_line(1)
-#define LCD_CLEAR_SECOND_LINE lcd_clear_line(1)
+#define LCD_CLEAR_SECOND_LINE lcd_clear_line(2)
 
 void lcd_init (void);
 void lcd_putc(char);
