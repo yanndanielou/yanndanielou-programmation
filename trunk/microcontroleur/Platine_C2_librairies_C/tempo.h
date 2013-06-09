@@ -8,5 +8,6 @@
 #define	tempo_1ms	Delay1KTCYx(5)
 
 void tempo_100ms(void);
+void tempo_942ms(void);
 
 #endif

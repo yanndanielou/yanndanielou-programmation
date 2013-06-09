@@ -9,10 +9,21 @@
 unsigned char TIMER_INIT_MODEM = 0;
 unsigned char TIMER_RESET_MODEM = 0;	// pour générer le reset sur la broche RESET_SI2457
 unsigned char TIMER_CONNEXION_MODEM = 0;
+unsigned char NB_RING = 0;
+
+const char AT_INIT[]="ATE0V0S0=0X0\\V2+GCI=3D\r";
+const char AT_IDCALLER_ON[]="AT+VCDT=1\r";
+const char AT_IDCALLER_FORMAT[]="AT+VCID=1\r";
+const char AT_U67[]="AT:U67,0008\r";		//Parametre de la ligne
+const char AT_ATA[]="ATA\r"	;				// Décrocher et synchroniser avec le modem distant
+const char AT_FCLASS[]="AT+FCLASS=256\r";		// Prepares the modem for handling SMS calls.
+const char AT_DT[]="ATDT;\r";
+
 
 void modem_si2457_init (void)
 {
 	FLAG_MODEM_SI2457Bits.data = 0;
+	FLAG_MODEM_SI2457_3Bits.data = 0;
 }
 
 void RESET_MODEM_HARD_int10ms(void)
@@ -93,7 +104,7 @@ void INIT_MODEM_int1s(void)
 					FLAG_MODEM_SI2457Bits.Bits.f_MODEM_ATA_ENCOURS == 0)
 				{
 					FLAG_MODEM_SI2457Bits.Bits.f_MODEM_INIT = 1;
-					reset_modem_hard();				
+					RESET_MODEM_HARD();				
 				}
 			}
 		}
@@ -126,7 +137,7 @@ void START_RESET_MODEM(char seconds)
 	TIMER_INIT_MODEM = seconds;
 }
 
-void reset_modem_hard(void)
+void RESET_MODEM_HARD(void)
 {
 	FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET = 1;
 	RESET_SI2457 = 0;
@@ -137,13 +148,6 @@ void INIT_MODEM_IDCALLER(void)
 {
 //	FLAG_MODEM_SI2457Bits.Bits.f_SMS_FRM_ENVOYE = 0;
 //	FLAG_MODEM_SI2457Bits.Bits.f_SMS_ATDT_EN_COURS = 0;	
-	
-	const char AT_INIT[]="ATE0V0S0=0X0\\V2+GCI=3D\r";
-	const char AT_IDCALLER_ON[]="AT+VCDT=1\r";
-	const char AT_IDCALLER_FORMAT[]="AT+VCID=1\r";
-	const char AT_U67[]="AT:U67,0008\r";		//Parametre de la ligne
-	const char AT_ATA[]="ATA\r"	;				// Décrocher et synchroniser avec le modem distant
-	const char AT_FCLASS[]="AT+FCLASS=256\r";		// Prepares the modem for handling SMS calls.
 	
 	
 	//AT_INIT
@@ -204,7 +208,125 @@ void INIT_MODEM_IDCALLER(void)
 */
 	
 	
+	//AT_DT
+	//On attend un result code
+/*	LCD_CLEAR_FIRST_LINE;
+	lcd_putrs("AT_DT");
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 0;
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 0;
+	MODEM_RESULT_CODE_ATTENDU = 1;
+	MODEM_ECHO_ATTENDU = 0;
+	ENTER_CRITICAL();	
+	usart1_send_at(AT_DT);
+	EXIT_CRITICAL();
+	while(FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE == 0);
+
+	*/
 	
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 0;
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 0;
+	
+}
+
+/***********************************
+;***  Acces modem via Identitel  ***
+;***********************************/
+void acces_modem(void)
+{
+	DECROCHE_MODEM();
+}
+
+/*****************************************************
+;***  Décrocher / Racrocher au bout de x sonnerie  ***
+;****************************************************/
+void DECRO_RACRO_MAX_SONNERIE(void)
+{
+	ENTER_CRITICAL();
+	
+	if(NB_RING >= nbr_sonneries_max)
+	{
+		decroche_racroche();
+	}
+	EXIT_CRITICAL();
+
+}
+
+
+void decroche_racroche(void)
+{
+	FLAG_MODEM_SI2457_3Bits.Bits.f_CHECK_NB_RING 	= 0;
+
+	//Décroché 
+	PRISE_DE_LIGNE = 1;
+	tempo_942ms();
+	PRISE_DE_LIGNE = 0;	
+}
+
+/****************************
+;***  Décrocher le modem  ***
+;****************************/
+void DECROCHE_MODEM(void)
+{
+	NB_RING = 0;
+	
+	//passer en phase de synchro
+	FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET_HARD_SYNC = 1;
+	
+	//demarrer le reset pour la ré-initialisation du modem
+	RESET_MODEM_HARD();
+}
+
+
+void INIT_MODEM_SYNCHRO(void)
+{
+	FLAG_MODEM_SI2457Bits.Bits.f_RING_EN_COURS = 0;
+	
+	//AT_INIT
+	//On attend un echo puis un result code
+	LCD_CLEAR_FIRST_LINE;
+	lcd_putrs("AT_INIT");
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 0;
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 0;
+	MODEM_RESULT_CODE_ATTENDU = 0;
+	MODEM_ECHO_ATTENDU = 1;
+	ENTER_CRITICAL();	
+	usart1_send_at(AT_INIT);
+	EXIT_CRITICAL();
+	while(FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO == 0);
+	
+	MODEM_RESULT_CODE_ATTENDU = 1;
+	while(FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE == 0);
+	
+	//AT_U67
+	//On attend un result code
+	LCD_CLEAR_FIRST_LINE;
+	lcd_putrs("AT_U67");
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 0;
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 0;
+	MODEM_RESULT_CODE_ATTENDU = 0;
+	MODEM_ECHO_ATTENDU = 1;
+	ENTER_CRITICAL();	
+	usart1_send_at(AT_U67);
+	EXIT_CRITICAL();
+	while(FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO == 0);
+	
+	//AT_ATA
+	//On attend un result code
+	LCD_CLEAR_FIRST_LINE;
+	lcd_putrs("AT_ATA");
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 0;
+	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 0;
+	MODEM_RESULT_CODE_ATTENDU = 0;
+	MODEM_ECHO_ATTENDU = 1;
+	ENTER_CRITICAL();	
+	usart1_send_at(AT_ATA);
+	EXIT_CRITICAL();
+	while(FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO == 0);
+	
+
+	
+	FLAG_MODEM_SI2457Bits.Bits.f_MODEM_ATA_ENCOURS = 1;
+	FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET_HARD_SYNC = 0;
 }
 
 /****************************
@@ -273,10 +395,56 @@ void DETECT_MODEM(void)
 	}
 }
 
+void SCAN_RESULT_CODE_MODEM(unsigned char res_code)
+{
+	//A t'on reçu un RESULT_CODE ?
+	if(FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE == 1)
+	{
+		//Recu ANS_CONNECT ?
+		if(res_code  == ANS_CONNECT)
+		{
+			LCD_CLEAR_FIRST_LINE;
+			lcd_putrs("ANS_CONNECT");		
+		}
+		//Recu ANS_RING ?
+		else if(res_code  == ANS_RING)
+		{
+			LCD_CLEAR_FIRST_LINE;
+			lcd_putrs("ANS_RING");
+			
+			FLAG_MODEM_SI2457Bits.Bits.f_RING_EN_COURS = 1;
+			//bcf		f_RESULT_CODE
+			
+			//incremente le nombre de sonnerie
+			NB_RING ++;		
+			
+			FLAG_MODEM_SI2457_3Bits.Bits.f_CHECK_NB_RING = 1;
+		}
+		//Recu ANS_NO_CARRIER ?
+		else if(res_code  == ANS_NO_CARRIER)
+		{
+			LCD_CLEAR_FIRST_LINE;
+			lcd_putrs("ANS_NO_CARRIER");
+			//reset;
+		
+		}
+		//Recu ANS_CIDM ?
+		else if(res_code  == ANS_CIDM)
+		{
+			LCD_CLEAR_FIRST_LINE;
+			lcd_putrs("ANS_CIDM");
+			
+			FLAG_MODEM_SI2457_3Bits.Bits.f_CIDM_RECU = 1;
+			//bcf		f_RESULT_CODE
+			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_ATA_ENCOURS = 0;
+		}
+	
+	}
+}
 
 void MODEM_PARSE_BUFFER(void)
 {
-	int i= 0, result_code = 0, temp = 0;
+	char i= 0, result_code = 0, temp = 0;
 	if(MODEM_ECHO_ATTENDU == 1)
 	{
 		FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 1;
@@ -291,14 +459,54 @@ void MODEM_PARSE_BUFFER(void)
 			lcd_putrs("Res: ");
 			lcd_puti(result_code);
 			FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 1;
+			
+			SCAN_RESULT_CODE_MODEM(result_code);
 		}
 	}
 	else
 	{
-		for(i=0;i<NB_BYTE_BUFFER_USART1;i++)
+	
+		//"DATE = 0901\r" (1er septembre)
+		if( BUFFER_USART1[0] == 'D' &&
+			BUFFER_USART1[1] == 'A' &&
+			BUFFER_USART1[2] == 'T' &&
+			BUFFER_USART1[3] == 'E')
 		{
+			//ID_DATE_RECU
 			LCD_CLEAR_FIRST_LINE;
-			lcd_putc(BUFFER_USART1[i]);
+			lcd_putrs("DATE RECUE");			
+		}
+		//"TIME = 1725\r" (17 h 25)
+		else if( BUFFER_USART1[0] == 'T' &&
+			BUFFER_USART1[1] == 'I' &&
+			BUFFER_USART1[2] == 'M' &&
+			BUFFER_USART1[3] == 'E')
+		{
+			//ID_DATE_RECU
+			LCD_CLEAR_FIRST_LINE;
+			lcd_putrs("TIME RECUE");			
+		}
+		//"NMBR = 0671943190\r"
+		else if( BUFFER_USART1[0] == 'N' &&
+			BUFFER_USART1[1] == 'M' &&
+			BUFFER_USART1[2] == 'B' &&
+			BUFFER_USART1[3] == 'R')
+		{
+			//ID_DATE_RECU
+			LCD_CLEAR_FIRST_LINE;
+			lcd_putrs("NMBR RECUE");			
+		}
+		else
+		{
+			for(i=0;i<NB_BYTE_BUFFER_USART1;i++)
+			{
+				LCD_CLEAR_FIRST_LINE;
+				lcd_putc(BUFFER_USART1[i]);
+			}
+			
+			//YDA TEST TEMP
+			MODEM_RESULT_CODE_ATTENDU = 1;
+			MODEM_PARSE_BUFFER();
 		}
 	}
 	MODEM_ECHO_ATTENDU = 0;
@@ -314,9 +522,9 @@ void MODEM_PARSE_BUFFER(void)
 */
 	
 //	Conversion du result code ASCII -> binaire naturel
-int convert_result_code(void)
+char convert_result_code(void)
 {
-	int result = -1;
+	char result = -1;
 	unsigned char dizaines = 0, unites = 0;
 	if(NB_BYTE_BUFFER_USART1 == 1)
 	{
@@ -343,3 +551,13 @@ int convert_result_code(void)
 	return result;
 }
 
+void AUTORISATION_IDENTITEL(void)
+{
+	if(FLAG_MODEM_SI2457Bits.Bits.f_ID_NMBR_RECU == 1)
+	{
+		FLAG_MODEM_SI2457Bits.Bits.f_ID_NMBR_RECU = 0;
+		
+		LCD_CLEAR_FIRST_LINE;
+		lcd_putrs("AUTORISATION_IDE");
+	}
+}

@@ -93,6 +93,28 @@ void main ()
 			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_INIT = 0;
 		}
 			
+		/****************************************
+		;***  Phase de synchronisation modem  ***
+		;****************************************/
+		// phase de synchro = reset + reinitialisation du modem + envoie d'"ATA\r"
+
+		if(	FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET_HARD_SYNC 	== 1	&&	//Est on en phase de synchro ?
+			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET			== 0)		//Est ce que le RESET hard est terminé ?
+		{
+			INIT_MODEM_SYNCHRO();
+		}
+		
+		
+		/*******************************************
+		;*** Ouverture des porte via Identitel  ***
+		;*******************************************/
+		AUTORISATION_IDENTITEL(); //maitre
+
+		if(	FLAG_MODEM_SI2457_3Bits.Bits.f_CHECK_NB_RING 	== 1)
+		{
+			DECRO_RACRO_MAX_SONNERIE();
+		}
+
 		
 		Delay10KTCYx(200);
 	}

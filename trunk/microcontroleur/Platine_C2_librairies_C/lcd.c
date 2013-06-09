@@ -73,6 +73,7 @@ void lcd_putc (char lettre)				//affichage d'un caractere
 	PORTD=PORTD|lettre&0x0f;
 	lcd_E=0;
 	attendre_busy_flag();
+	tempo_1ms;
 }
 
 void lcd_puts(const char chaine[])
