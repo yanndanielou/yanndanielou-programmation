@@ -13,6 +13,22 @@
 ;*****************/
 #define	RESET_SI2457	PORTCbits.RC0	// ;3b7
 
+#define nbr_sonneries_max	3
+
+
+/******************************
+;***  Numeric Result Codes  ***
+;******************************/
+// Le "Result Code" est reçu en ASCII et suivi d'un \r
+#define	ANS_OK			0
+#define	ANS_CONNECT		1
+#define	ANS_RING		2
+#define	ANS_NO_CARRIER	3
+#define	ANS_ERROR		4
+#define	ANS_NO_ANSWER	8
+#define	ANS_CIDM		30
+#define	ANS_NO_LINE		42
+
 
 /*
 #define	f_MODEM_DETECTE			FLAG_MODEM_SI2457,0		; 1 : si le modem à été détecté au démarrage de la platine
@@ -69,22 +85,36 @@ typedef union
   unsigned int data;
   }FLAG_MODEM_SI2457;
   
+  
+struct FLAG_MODEM_SI2457_3Bits
+  {
+	  unsigned f_IDENTITEL_VALIDE:1;
+	  unsigned f_CHECK_NB_RING:1;
+	  unsigned f_CIDM_RECU:1;
+	  unsigned f_IDENTITEL_MASQUE:1;
+	  unsigned f_IDENTITEL_NON_VALIDE:1;
+  };
+
+/*--- FLAG_MODEM_SI2457_3 bits union ---*/
+
+typedef union
+  {
+  struct FLAG_MODEM_SI2457_3Bits Bits; 
+  unsigned char data;
+  }FLAG_MODEM_SI2457_3;
+
 
 
 #ifdef VAR_GLOBALES_MODEM_SI2457
-//	unsigned char FLAG_MODEM_SI2457 = 0;
-	unsigned char FLAG_MODEM_SI2457_2 = 0;
-	unsigned char FLAG_MODEM_SI2457_3 = 0;
 	FLAG_MODEM_SI2457 FLAG_MODEM_SI2457Bits;
+	FLAG_MODEM_SI2457_3 FLAG_MODEM_SI2457_3Bits;
 	
 	//TODO: remplacer par un enum
 	unsigned char MODEM_RESULT_CODE_ATTENDU = 0;
 	unsigned char MODEM_ECHO_ATTENDU = 0;
 #else
- //   extern unsigned char FLAG_MODEM_SI2457;
-    extern unsigned char FLAG_MODEM_SI2457_2;
-    extern unsigned char FLAG_MODEM_SI2457_3;
 	extern FLAG_MODEM_SI2457 FLAG_MODEM_SI2457Bits;
+	extern FLAG_MODEM_SI2457_3 FLAG_MODEM_SI2457_3Bits;
 	extern unsigned char MODEM_RESULT_CODE_ATTENDU;
 	extern unsigned char MODEM_ECHO_ATTENDU;
 #endif
@@ -94,13 +124,20 @@ typedef union
 void modem_si2457_init (void);
 void RESET_MODEM_HARD_int10ms(void);
 void RESET_MODEM_HARD_noint(void);
-void reset_modem_hard(void);
+void RESET_MODEM_HARD(void);
 void INIT_MODEM_int1s(void);
 void START_RESET_MODEM(char seconds);
 void SHUTDOWN_MODEM(void);
 void INIT_MODEM_IDCALLER(void);
+void INIT_MODEM_SYNCHRO(void);
 void DETECT_MODEM(void);
 void MODEM_PARSE_BUFFER(void);
-int convert_result_code(void);
+char convert_result_code(void);
+void DECROCHE_MODEM(void);
+void acces_modem(void);
+void decroche_racroche(void);
+void DECRO_RACRO_MAX_SONNERIE(void);
+void SCAN_RESULT_CODE_MODEM(unsigned char res_code);
+void AUTORISATION_IDENTITEL(void);
 
 #endif
