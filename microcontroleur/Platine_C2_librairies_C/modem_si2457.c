@@ -403,14 +403,18 @@ void SCAN_RESULT_CODE_MODEM(unsigned char res_code)
 		//Recu ANS_CONNECT ?
 		if(res_code  == ANS_CONNECT)
 		{
-			LCD_CLEAR_FIRST_LINE;
-			lcd_putrs("ANS_CONNECT");		
+		//	LCD_CLEAR_FIRST_LINE;
+		//	lcd_putrs("ANS_CONNECT");
+		
+			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_CONNECTE = 1;
+			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET_HARD_SYNC = 0;
+			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_ATA_ENCOURS = 0;
 		}
 		//Recu ANS_RING ?
 		else if(res_code  == ANS_RING)
 		{
-			LCD_CLEAR_FIRST_LINE;
-			lcd_putrs("ANS_RING");
+		//	LCD_CLEAR_FIRST_LINE;
+		//	lcd_putrs("ANS_RING");
 			
 			FLAG_MODEM_SI2457Bits.Bits.f_RING_EN_COURS = 1;
 			//bcf		f_RESULT_CODE
@@ -423,16 +427,16 @@ void SCAN_RESULT_CODE_MODEM(unsigned char res_code)
 		//Recu ANS_NO_CARRIER ?
 		else if(res_code  == ANS_NO_CARRIER)
 		{
-			LCD_CLEAR_FIRST_LINE;
-			lcd_putrs("ANS_NO_CARRIER");
+		//	LCD_CLEAR_FIRST_LINE;
+		//	lcd_putrs("ANS_NO_CARRIER");
 			//reset;
 		
 		}
 		//Recu ANS_CIDM ?
 		else if(res_code  == ANS_CIDM)
 		{
-			LCD_CLEAR_FIRST_LINE;
-			lcd_putrs("ANS_CIDM");
+		//	LCD_CLEAR_FIRST_LINE;
+		//	lcd_putrs("ANS_CIDM");
 			
 			FLAG_MODEM_SI2457_3Bits.Bits.f_CIDM_RECU = 1;
 			//bcf		f_RESULT_CODE
@@ -455,9 +459,9 @@ void MODEM_PARSE_BUFFER(void)
 		if(temp != -1)
 		{
 			result_code = temp;
-			lcd_gotoxy(1,2);
-			lcd_putrs("Res: ");
-			lcd_puti(result_code);
+		//	lcd_gotoxy(1,2);
+		//	lcd_putrs("Res: ");
+		//	lcd_puti(result_code);
 			FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 1;
 			
 			SCAN_RESULT_CODE_MODEM(result_code);
@@ -498,11 +502,12 @@ void MODEM_PARSE_BUFFER(void)
 		}
 		else
 		{
+			/*	LCD_CLEAR_FIRST_LINE;
 			for(i=0;i<NB_BYTE_BUFFER_USART1;i++)
 			{
-				LCD_CLEAR_FIRST_LINE;
-				lcd_putc(BUFFER_USART1[i]);
+			/	lcd_putc(BUFFER_USART1[i]);
 			}
+			*/
 			
 			//YDA TEST TEMP
 			MODEM_RESULT_CODE_ATTENDU = 1;
@@ -529,8 +534,8 @@ char convert_result_code(void)
 	if(NB_BYTE_BUFFER_USART1 == 1)
 	{
 		//on l'ignore
-		LCD_CLEAR_FIRST_LINE;
-		lcd_putrs("Res code ignore");
+	//	LCD_CLEAR_FIRST_LINE;
+	//	lcd_putrs("Res code ignore");
 	}
 	else if(NB_BYTE_BUFFER_USART1 == 2)
 	{
@@ -545,8 +550,8 @@ char convert_result_code(void)
 	}
 	else
 	{
-		LCD_CLEAR_FIRST_LINE;
-		lcd_putrs("Res code ignore");
+	//	LCD_CLEAR_FIRST_LINE;
+	//	lcd_putrs("Res code ignore");
 	}
 	return result;
 }
