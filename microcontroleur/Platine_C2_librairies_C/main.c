@@ -67,7 +67,7 @@ void init(void);
 void main ()
 {
 	const char AT_INIT[] = "ATE0V0S0=0X0\\V2+GCI=3D\r";
-
+	char i = 0;
 	init();
 	
 	//lcd_putrs("ok");
@@ -115,8 +115,85 @@ void main ()
 			DECRO_RACRO_MAX_SONNERIE();
 		}
 
+		switch(premiereLigneLCD)
+		{
+			case RIEN_A_AFFICHER:
+				break;
+			case ECHO_RECU:
+				premiereLigneLCD = RIEN_A_AFFICHER;
+				break;
+			case RESULT_CODE_RECU:
+				premiereLigneLCD = RIEN_A_AFFICHER;
+				break;
+			case DATE_RECU:
+				//ID_DATE_RECU
+				LCD_CLEAR_FIRST_LINE;
+				lcd_putrs("DATE RECUE");	
+				premiereLigneLCD = RIEN_A_AFFICHER;
+				break;
+			case TIME_RECU:
+				//ID_DATE_RECU
+				LCD_CLEAR_FIRST_LINE;
+				lcd_putrs("TIME RECUE");
+				premiereLigneLCD = RIEN_A_AFFICHER;
+				break;
+			case NMBR_RECU:
+				//ID_NMBR_RECU
+				LCD_CLEAR_FIRST_LINE;
+				for(i=0; i< CALLER_PHONE_NUMBER_LENGTH; ++i)
+				{
+					lcd_putc(CALLER_PHONE_NUMBER[i]);
+				}
+				premiereLigneLCD = RIEN_A_AFFICHER;				
+				break;
+			case NAME_RECU:
+				//ID_NAME_RECU
+				LCD_CLEAR_FIRST_LINE;
+				lcd_putrs("NAME RECU");
+				premiereLigneLCD = RIEN_A_AFFICHER;
+				break;
+			case MESG_RECU:
+				//ID_MESG_RECU
+				LCD_CLEAR_FIRST_LINE;
+				lcd_putrs("MESG RECU");
+				premiereLigneLCD = RIEN_A_AFFICHER;
+				break;
+			case CHAMP_INCONNU_RECU:
+				i = 0;
+				premiereLigneLCD = RIEN_A_AFFICHER;
+				break;
+		}
 		
-		Delay10KTCYx(200);
+		
+		
+		switch(deuxiemeLigneLCD)
+		{
+			case LCD_RIEN_A_AFFICHER:
+				break;
+			case LCD_ANS_CONNECT:
+				LCD_CLEAR_SECOND_LINE;
+				lcd_putrs("ANS CONNECT");
+				deuxiemeLigneLCD = RIEN_A_AFFICHER;
+				break;
+			case LCD_ANS_RING:
+				LCD_CLEAR_SECOND_LINE;
+				lcd_putrs("ANS RING");
+				deuxiemeLigneLCD = RIEN_A_AFFICHER;
+				break;
+			case LCD_ANS_NO_CARRIER:
+				LCD_CLEAR_SECOND_LINE;
+				lcd_putrs("ANS NO CARRIER");
+				deuxiemeLigneLCD = RIEN_A_AFFICHER;
+				break;
+			case LCD_ANS_CIDM:
+				LCD_CLEAR_SECOND_LINE;
+				lcd_putrs("ANS CIDM");
+				deuxiemeLigneLCD = RIEN_A_AFFICHER;
+				break;
+		}
+		
+		
+	//	Delay10KTCYx(200);
 	}
 	 
 }

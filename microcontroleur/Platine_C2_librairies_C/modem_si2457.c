@@ -22,8 +22,16 @@ const char AT_DT[]="ATDT;\r";
 
 void modem_si2457_init (void)
 {
+	char i;
+	
 	FLAG_MODEM_SI2457Bits.data = 0;
 	FLAG_MODEM_SI2457_3Bits.data = 0;
+	
+	for(i=0; i<CALLER_PHONE_NUMBER_LENGTH; ++i)
+	{
+		CALLER_PHONE_NUMBER[i] = 'x';
+	}
+	
 }
 
 void RESET_MODEM_HARD_int10ms(void)
@@ -168,8 +176,8 @@ void INIT_MODEM_IDCALLER(void)
 	
 	//AT_IDCALLER_ON
 	//On attend un result code
-	LCD_CLEAR_FIRST_LINE;
-	lcd_putrs("AT_IDCALLER_ON");
+//	LCD_CLEAR_FIRST_LINE;
+//	lcd_putrs("AT_IDCALLER_ON");
 	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 0;
 	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 0;
 	MODEM_RESULT_CODE_ATTENDU = 1;
@@ -181,8 +189,8 @@ void INIT_MODEM_IDCALLER(void)
 
 	//AT_IDCALLER_FORMAT
 	//On attend un result code
-	LCD_CLEAR_FIRST_LINE;
-	lcd_putrs("AT_IDCALLER_FOR");
+//	LCD_CLEAR_FIRST_LINE;
+//	lcd_putrs("AT_IDCALLER_FOR");
 	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 0;
 	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 0;
 	MODEM_RESULT_CODE_ATTENDU = 1;
@@ -283,8 +291,8 @@ void INIT_MODEM_SYNCHRO(void)
 	
 	//AT_INIT
 	//On attend un echo puis un result code
-	LCD_CLEAR_FIRST_LINE;
-	lcd_putrs("AT_INIT");
+//	LCD_CLEAR_FIRST_LINE;
+//	lcd_putrs("AT_INIT");
 	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 0;
 	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 0;
 	MODEM_RESULT_CODE_ATTENDU = 0;
@@ -299,8 +307,8 @@ void INIT_MODEM_SYNCHRO(void)
 	
 	//AT_U67
 	//On attend un result code
-	LCD_CLEAR_FIRST_LINE;
-	lcd_putrs("AT_U67");
+//	LCD_CLEAR_FIRST_LINE;
+//	lcd_putrs("AT_U67");
 	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 0;
 	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 0;
 	MODEM_RESULT_CODE_ATTENDU = 0;
@@ -312,8 +320,8 @@ void INIT_MODEM_SYNCHRO(void)
 	
 	//AT_ATA
 	//On attend un result code
-	LCD_CLEAR_FIRST_LINE;
-	lcd_putrs("AT_ATA");
+//	LCD_CLEAR_FIRST_LINE;
+//	lcd_putrs("AT_ATA");
 	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 0;
 	FLAG_MODEM_SI2457Bits.Bits.f_RESULT_CODE = 0;
 	MODEM_RESULT_CODE_ATTENDU = 0;
@@ -403,8 +411,7 @@ void SCAN_RESULT_CODE_MODEM(unsigned char res_code)
 		//Recu ANS_CONNECT ?
 		if(res_code  == ANS_CONNECT)
 		{
-		//	LCD_CLEAR_FIRST_LINE;
-		//	lcd_putrs("ANS_CONNECT");
+			deuxiemeLigneLCD = LCD_ANS_CONNECT;
 		
 			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_CONNECTE = 1;
 			FLAG_MODEM_SI2457Bits.Bits.f_MODEM_RESET_HARD_SYNC = 0;
@@ -412,9 +419,8 @@ void SCAN_RESULT_CODE_MODEM(unsigned char res_code)
 		}
 		//Recu ANS_RING ?
 		else if(res_code  == ANS_RING)
-		{
-		//	LCD_CLEAR_FIRST_LINE;
-		//	lcd_putrs("ANS_RING");
+		{			
+			deuxiemeLigneLCD = LCD_ANS_RING;
 			
 			FLAG_MODEM_SI2457Bits.Bits.f_RING_EN_COURS = 1;
 			//bcf		f_RESULT_CODE
@@ -427,16 +433,14 @@ void SCAN_RESULT_CODE_MODEM(unsigned char res_code)
 		//Recu ANS_NO_CARRIER ?
 		else if(res_code  == ANS_NO_CARRIER)
 		{
-		//	LCD_CLEAR_FIRST_LINE;
-		//	lcd_putrs("ANS_NO_CARRIER");
+			deuxiemeLigneLCD = LCD_ANS_NO_CARRIER;
 			//reset;
 		
 		}
 		//Recu ANS_CIDM ?
 		else if(res_code  == ANS_CIDM)
 		{
-		//	LCD_CLEAR_FIRST_LINE;
-		//	lcd_putrs("ANS_CIDM");
+			deuxiemeLigneLCD = LCD_ANS_CIDM;
 			
 			FLAG_MODEM_SI2457_3Bits.Bits.f_CIDM_RECU = 1;
 			//bcf		f_RESULT_CODE
@@ -449,12 +453,18 @@ void SCAN_RESULT_CODE_MODEM(unsigned char res_code)
 void MODEM_PARSE_BUFFER(void)
 {
 	char i= 0, result_code = 0, temp = 0;
+	char begin_caller_number_in_buffer = 0;
 	if(MODEM_ECHO_ATTENDU == 1)
 	{
+		premiereLigneLCD = ECHO_RECU;
+		
 		FLAG_MODEM_SI2457Bits.Bits.f_RESULT_ECHO = 1;
 	}
 	else if(MODEM_RESULT_CODE_ATTENDU == 1)
 	{
+		
+		premiereLigneLCD = RESULT_CODE_RECU;
+		
 		temp = convert_result_code();
 		if(temp != -1)
 		{
@@ -476,9 +486,7 @@ void MODEM_PARSE_BUFFER(void)
 			BUFFER_USART1[2] == 'T' &&
 			BUFFER_USART1[3] == 'E')
 		{
-			//ID_DATE_RECU
-			LCD_CLEAR_FIRST_LINE;
-			lcd_putrs("DATE RECUE");			
+			premiereLigneLCD = DATE_RECU;		
 		}
 		//"TIME = 1725\r" (17 h 25)
 		else if( BUFFER_USART1[0] == 'T' &&
@@ -486,9 +494,7 @@ void MODEM_PARSE_BUFFER(void)
 			BUFFER_USART1[2] == 'M' &&
 			BUFFER_USART1[3] == 'E')
 		{
-			//ID_DATE_RECU
-			LCD_CLEAR_FIRST_LINE;
-			lcd_putrs("TIME RECUE");			
+			premiereLigneLCD = TIME_RECU;
 		}
 		//"NMBR = 0671943190\r"
 		else if( BUFFER_USART1[0] == 'N' &&
@@ -496,12 +502,57 @@ void MODEM_PARSE_BUFFER(void)
 			BUFFER_USART1[2] == 'B' &&
 			BUFFER_USART1[3] == 'R')
 		{
-			//ID_DATE_RECU
-			LCD_CLEAR_FIRST_LINE;
-			lcd_putrs("NMBR RECUE");			
+			premiereLigneLCD = NMBR_RECU;
+
+			//Cas des téléphones au format internationnal (++33...) : ex +33689201132
+			if(BUFFER_USART1[7] == '+')
+			{
+				i = 0;
+				CALLER_PHONE_NUMBER[i++] = '0';
+				begin_caller_number_in_buffer = 9;
+			}
+			
+			//Cas des téléphones au format internationnal (0033...) : ex 0033689201132
+			else if(BUFFER_USART1[7] == '0' && BUFFER_USART1[8] == '0')
+			{
+				i = 0;
+				CALLER_PHONE_NUMBER[i++] = '0';
+				begin_caller_number_in_buffer = 10;
+			}
+			
+			
+			//Cas des numéros de téléphones au format francais: (0......) : ex 0689201223
+			else if(BUFFER_USART1[7] == '0')
+			{
+				i = 0;
+				begin_caller_number_in_buffer = 7;
+			}
+			
+			
+			for(; i < CALLER_PHONE_NUMBER_LENGTH; ++i)
+			{
+				CALLER_PHONE_NUMBER[i] = BUFFER_USART1[begin_caller_number_in_buffer+i];
+			}			
+		}
+		//"NAME = ...\r"
+		else if( BUFFER_USART1[0] == 'N' &&
+			BUFFER_USART1[1] == 'A' &&
+			BUFFER_USART1[2] == 'M' &&
+			BUFFER_USART1[3] == 'E')
+		{
+			premiereLigneLCD = NAME_RECU;
+		}
+		//"MESG = ...\r"
+		else if( BUFFER_USART1[0] == 'M' &&
+			BUFFER_USART1[1] == 'E' &&
+			BUFFER_USART1[2] == 'S' &&
+			BUFFER_USART1[3] == 'G')
+		{
+			premiereLigneLCD = MESG_RECU;
 		}
 		else
 		{
+			premiereLigneLCD = CHAMP_INCONNU_RECU;
 			/*	LCD_CLEAR_FIRST_LINE;
 			for(i=0;i<NB_BYTE_BUFFER_USART1;i++)
 			{
