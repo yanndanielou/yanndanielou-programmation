@@ -13,7 +13,7 @@ SOLK=<src>|main.c|lcd.c|usart.c|modem_si2457.c|interruptions.c|tempo.c|gestion_e
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
-DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File001]
 Location=D:\Nouveau dossier\Platine_C2_librairies_C\tmp\lcd.o
 Folder=Intermediary
@@ -26,7 +26,7 @@ SOLK=<src>|main.c|lcd.c|usart.c|modem_si2457.c|interruptions.c|tempo.c|gestion_e
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
-DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File002]
 Location=D:\Nouveau dossier\Platine_C2_librairies_C\tmp\usart.o
 Folder=Intermediary
@@ -39,7 +39,7 @@ SOLK=<src>|main.c|lcd.c|usart.c|modem_si2457.c|interruptions.c|tempo.c|gestion_e
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
-DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File003]
 Location=D:\Nouveau dossier\Platine_C2_librairies_C\tmp\modem_si2457.o
 Folder=Intermediary
@@ -52,7 +52,7 @@ SOLK=<src>|main.c|lcd.c|usart.c|modem_si2457.c|interruptions.c|tempo.c|gestion_e
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
-DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File004]
 Location=D:\Nouveau dossier\Platine_C2_librairies_C\tmp\interruptions.o
 Folder=Intermediary
@@ -65,7 +65,7 @@ SOLK=<src>|main.c|lcd.c|usart.c|modem_si2457.c|interruptions.c|tempo.c|gestion_e
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
-DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File005]
 Location=D:\Nouveau dossier\Platine_C2_librairies_C\tmp\tempo.o
 Folder=Intermediary
@@ -78,7 +78,7 @@ SOLK=<src>|main.c|lcd.c|usart.c|modem_si2457.c|interruptions.c|tempo.c|gestion_e
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
-DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File006]
 Location=D:\Nouveau dossier\Platine_C2_librairies_C\tmp\gestion_evenements.o
 Folder=Intermediary
@@ -91,7 +91,7 @@ SOLK=<src>|main.c|lcd.c|usart.c|modem_si2457.c|interruptions.c|tempo.c|gestion_e
 SuiteArgsString=
 ToolArgsString=-Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 TraceCmdString=
-DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File007]
 Location=D:\Nouveau dossier\Platine_C2_librairies_C\bin\liaison_serie.cof
 Folder=Output
@@ -104,7 +104,7 @@ SOLK=<src>|main.c|lcd.c|usart.c|modem_si2457.c|interruptions.c|tempo.c|gestion_e
 SuiteArgsString=
 ToolArgsString=/o"$(BINDIR_)$(TARGETBASE).cof" /M"$(BINDIR_)$(TARGETBASE).map" /W
 TraceCmdString=
-DebugOptions=/z__MPLAB_DEBUG=1 /z__MPLAB_DEBUGGER_ICD3=1 /z__ICD2RAM=1
+DebugOptions=/z__MPLAB_DEBUG=1 /z__MPLAB_DEBUGGER_ICD2=1 /z__ICD2RAM=1
 [File008]
 Location=D:\Nouveau dossier\Platine_C2_librairies_C\bin\liaison_serie.hex
 Folder=Output
@@ -117,7 +117,7 @@ SOLK=<src>|main.c|lcd.c|usart.c|modem_si2457.c|interruptions.c|tempo.c|gestion_e
 SuiteArgsString=
 ToolArgsString=/o"$(BINDIR_)$(TARGETBASE).cof" /M"$(BINDIR_)$(TARGETBASE).map" /W
 TraceCmdString=
-DebugOptions=/z__MPLAB_DEBUG=1 /z__MPLAB_DEBUGGER_ICD3=1 /z__ICD2RAM=1
+DebugOptions=/z__MPLAB_DEBUG=1 /z__MPLAB_DEBUGGER_ICD2=1 /z__ICD2RAM=1
 [TOOL_LOC_STAMPS]
 tool_loc{96C98149-AA1B-4CF9-B967-FAE79CAB663C}=C:\MCC18\bin\mplink.exe
 tool_loc{E56A1C86-9D32-4DF6-8C34-FE0388B1B644}=C:\MCC18\bin\mcc18.exe
