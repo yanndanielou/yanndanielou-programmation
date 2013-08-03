@@ -1,5 +1,7 @@
+#define VAR_GLOBALES_LCD
 #include "lcd.h"
 #include "tempo.h"
+#include "modem_si2457.h"
 /*
 ********************************************************************************************************
 ****    CE FICHIER A ETE CONCU POUR UNE AUTRE CARTE, CERTAINES FONCTIONS N'ONT PAS ETE VERIFIEES   *****
@@ -185,4 +187,87 @@ void lcd_clear_line(int line_nb)
 		lcd_putc(' ');
 		
 	lcd_gotoxy(1,line_nb);
+}
+
+
+void update_lcd_display()
+{
+	char i = 0;
+	
+	switch(premiereLigneLCD)
+	{
+		case RIEN_A_AFFICHER:
+			break;
+		case ECHO_RECU:
+			premiereLigneLCD = RIEN_A_AFFICHER;
+			break;
+		case RESULT_CODE_RECU:
+			premiereLigneLCD = RIEN_A_AFFICHER;
+			break;
+		case DATE_RECU:
+			//ID_DATE_RECU
+			LCD_CLEAR_FIRST_LINE;
+			lcd_putrs("DATE RECUE");	
+			premiereLigneLCD = RIEN_A_AFFICHER;
+			break;
+		case TIME_RECU:
+			//ID_DATE_RECU
+			LCD_CLEAR_FIRST_LINE;
+			lcd_putrs("TIME RECUE");
+			premiereLigneLCD = RIEN_A_AFFICHER;
+			break;
+		case NMBR_RECU:
+			//ID_NMBR_RECU
+			LCD_CLEAR_FIRST_LINE;
+			for(i=0; i< CALLER_PHONE_NUMBER_LENGTH; ++i)
+			{
+				lcd_putc(CALLER_PHONE_NUMBER[i]);
+			}
+			premiereLigneLCD = RIEN_A_AFFICHER;				
+			break;
+		case NAME_RECU:
+			//ID_NAME_RECU
+			LCD_CLEAR_FIRST_LINE;
+			lcd_putrs("NAME RECU");
+			premiereLigneLCD = RIEN_A_AFFICHER;
+			break;
+		case MESG_RECU:
+			//ID_MESG_RECU
+			LCD_CLEAR_FIRST_LINE;
+			lcd_putrs("MESG RECU");
+			premiereLigneLCD = RIEN_A_AFFICHER;
+			break;
+		case CHAMP_INCONNU_RECU:
+			i = 0;
+			premiereLigneLCD = RIEN_A_AFFICHER;
+			break;
+	}
+	
+	
+	
+	switch(deuxiemeLigneLCD)
+	{
+		case LCD_RIEN_A_AFFICHER:
+			break;
+		case LCD_ANS_CONNECT:
+			LCD_CLEAR_SECOND_LINE;
+			lcd_putrs("ANS CONNECT");
+			deuxiemeLigneLCD = RIEN_A_AFFICHER;
+			break;
+		case LCD_ANS_RING:
+			LCD_CLEAR_SECOND_LINE;
+			lcd_putrs("ANS RING");
+			deuxiemeLigneLCD = RIEN_A_AFFICHER;
+			break;
+		case LCD_ANS_NO_CARRIER:
+			LCD_CLEAR_SECOND_LINE;
+			lcd_putrs("ANS NO CARRIER");
+			deuxiemeLigneLCD = RIEN_A_AFFICHER;
+			break;
+		case LCD_ANS_CIDM:
+			LCD_CLEAR_SECOND_LINE;
+			lcd_putrs("ANS CIDM");
+			deuxiemeLigneLCD = RIEN_A_AFFICHER;
+			break;
+	}
 }

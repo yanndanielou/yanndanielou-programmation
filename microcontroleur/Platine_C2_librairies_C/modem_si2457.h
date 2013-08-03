@@ -32,27 +32,6 @@
 #define	ANS_NO_LINE		42
 
 
-enum PREMIERE_LIGNE_LCD{
-	 RIEN_A_AFFICHER,
-	 ECHO_RECU,
-	 RESULT_CODE_RECU,
-	 DATE_RECU,
-	 TIME_RECU,
-	 NMBR_RECU,
-	 NAME_RECU,
-	 MESG_RECU,
-	 CHAMP_INCONNU_RECU
-	 };
-	 
-	 
-enum DEUXIEME_LIGNE_LCD{
-	 LCD_RIEN_A_AFFICHER,
-	 LCD_ANS_CONNECT,
-	 LCD_ANS_RING,
-	 LCD_ANS_NO_CARRIER,
-	 LCD_ANS_CIDM
-	 };
-
 /*
 #define	f_MODEM_DETECTE			FLAG_MODEM_SI2457,0		; 1 : si le modem à été détecté au démarrage de la platine
 #define	f_MODEM_INIT			FLAG_MODEM_SI2457,1		; 1 : pendant une phase d'initialisation (reset HARD + reset SOFT)
@@ -136,16 +115,12 @@ typedef union
 	unsigned char MODEM_RESULT_CODE_ATTENDU = 0;
 	unsigned char MODEM_ECHO_ATTENDU = 0;
 	unsigned char CALLER_PHONE_NUMBER[CALLER_PHONE_NUMBER_LENGTH];
-	enum PREMIERE_LIGNE_LCD premiereLigneLCD = RIEN_A_AFFICHER;
-	enum DEUXIEME_LIGNE_LCD deuxiemeLigneLCD = LCD_RIEN_A_AFFICHER;
 #else
 	extern FLAG_MODEM_SI2457 FLAG_MODEM_SI2457Bits;
 	extern FLAG_MODEM_SI2457_3 FLAG_MODEM_SI2457_3Bits;
 	extern unsigned char MODEM_RESULT_CODE_ATTENDU;
 	extern unsigned char MODEM_ECHO_ATTENDU;
 	extern unsigned char CALLER_PHONE_NUMBER[CALLER_PHONE_NUMBER_LENGTH];
-	extern enum PREMIERE_LIGNE_LCD premiereLigneLCD;
-	extern enum DEUXIEME_LIGNE_LCD deuxiemeLigneLCD;
 #endif
 
 
