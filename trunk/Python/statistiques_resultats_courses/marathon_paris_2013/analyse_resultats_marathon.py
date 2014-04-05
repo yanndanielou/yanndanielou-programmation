@@ -1,8 +1,26 @@
 # -*-coding:Latin-1 -*
 
+import csv
+import datetime
 import time
 
-class Resultat:
+def getDateTimetimeFromStr(time_str):
+#Cas où la durée est au format str (hh:mm:ss)
+	if isinstance(time_str, str):
+		#découpage des heures minutes secondes
+		duree_split = time_str.split(":")
+		
+		hours = int(duree_split[0])
+		minutes = int(duree_split[1])
+		seconds = int(duree_split[2])
+		
+		return datetime.time(hours, minutes, seconds)
+	else:
+		print(time_str, "should be str and is", type(time_str))
+	
+
+class Course:
+	"""Classe représentant une course"""
 
 	categories = dict()
 	liste_courreurs = list()
@@ -10,11 +28,11 @@ class Resultat:
 	def GetCategorie(cls, nom_categorie):
 		"""Méthode de classe permettant de retourner une catégorie en fonction de son nom. Crée la catégorie si elle n'existe pas"""
 	
-		if nom_categorie in Resultat.categories.keys():
-			return Resultat.categories[nom_categorie]
+		if nom_categorie in Course.categories.keys():
+			return Course.categories[nom_categorie]
 		else:
 			nouvelle_categorie = Categorie(nom_categorie)
-			Resultat.categories[nom_categorie] = nouvelle_categorie
+			Course.categories[nom_categorie] = nouvelle_categorie
 			return nouvelle_categorie		
 	GetCategorie = classmethod(GetCategorie)
 	
@@ -22,7 +40,7 @@ class Resultat:
 		"""Création d'un courreur"""
 	
 		nouveau_courreur = CourreurArrive(classement_officiel, dossard, nom, prenom, classement_categorie, categorie, temps_reel, temps_officiel)
-		Resultat.liste_courreurs.append(nouveau_courreur)
+		Course.liste_courreurs.append(nouveau_courreur)
 		
 	CreerCourreur = classmethod(CreerCourreur)
 	
@@ -32,6 +50,7 @@ class Resultat:
 class Categorie:
 	"""Classe représentant une catégorie"""	
 	def __init__(self, nom_categorie):
+		"""Constructeur d'une catégorie"""
 		self.id = nom_categorie
 		self.homme = "homme" in nom_categorie.lower()
 		self.liste_courreurs = list()
@@ -55,48 +74,39 @@ class CourreurArrive:
 		self.nom = nom
 		self.prenom = prenom
 		self.classement_categorie = classement_categorie
-		self.categorie = Resultat.GetCategorie(categorie)
+		self.categorie = Course.GetCategorie(categorie)
 		self.categorie.ajouterCourreur(self)
-		self.temps_reel = temps_reel
-		self.temps_officiel = temps_officiel
+		self.temps_reel = getDateTimetimeFromStr(temps_reel)
+		self.temps_officiel = getDateTimetimeFromStr(temps_officiel)
+		self.attente_dans_sas = datetime.timedelta(hours=self.temps_reel.hour - self.temps_officiel.hour, minutes=self.temps_reel.minute - self.temps_officiel.minute, seconds=self.temps_reel.second - self.temps_officiel.second)
 
 
-			
-# Programme principal			
-			
-				
-			
+	
+####################################################################################
+###################			 Programme principal		############################
+####################################################################################
+
 
 #ouverture et lecture du fichier en lecture seule
-fichier_csv_resultats = open("D:\\programmation\\Python\\statistiques_resultats_courses\\marathon_paris_2013\\Data\\Resultats marathon 2013.csv", "r")
-lignes_contenu_fichier_csv_resultats = fichier_csv_resultats.readlines()
-fichier_csv_resultats.close()
-
-
-#parcours du contenu extrait du fichier
-for line in lignes_contenu_fichier_csv_resultats:
-# pour debug: affichage du fichier
-#	print(line)
-
-	#extraction des différentes colonnes
-	line_splited = line.split(';')
+csvfile = open('D:\\programmation\\Python\\statistiques_resultats_courses\\marathon_paris_2013\\Data\\Resultats marathon 2013.csv', 'r')		
+csv_reader = csv.DictReader(csvfile, delimiter=';', quotechar='|')	
+for row in csv_reader:
+	#print(row)
+	classement_officiel = row["CLASS. OFFICIEL"]
+	dossard = row["DOSSARD"]
+	nom = row["NOM"]
+	prenom = row["PRÉNOM"]
+	classement_categorie = row["CLASS. CATÉGORIE"]
+	categorie = row["CATÉGORIE"]
+	temps_reel = row["TEMPS RÉEL"]
+	temps_officiel = row["TEMPS OFFICIEL"]
 	
-	if len(line_splited) == 8:
-		classement_officiel = line_splited[0]
-		dossard = line_splited[1]
-		nom = line_splited[2]
-		prenom = line_splited[3]
-		classement_categorie = line_splited[4]
-		categorie = line_splited[5]
-		temps_reel = line_splited[6]
-		temps_officiel = line_splited[7]
-		
-		#Création du coureur
-		nouveau_coureur = CourreurArrive(classement_officiel, dossard, nom, prenom, classement_categorie, categorie, temps_reel, temps_officiel)
+	#Création du coureur
+	nouveau_coureur = CourreurArrive(classement_officiel, dossard, nom, prenom, classement_categorie, categorie, temps_reel, temps_officiel)
 		
 
 # affichage du nombre de coureurs par catégorie
-for nom_cat, cat in Resultat.categories.items():
+for nom_cat, cat in Course.categories.items():
 	print(len(cat.liste_courreurs), "courreurs dans categorie", nom_cat)
 
 
