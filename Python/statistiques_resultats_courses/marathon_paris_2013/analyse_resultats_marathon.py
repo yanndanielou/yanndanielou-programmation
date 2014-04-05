@@ -14,6 +14,19 @@ QUARTILE = 4
 MEDIANE = 2
 
 
+def affiche_infos_liste_courreurs(liste_courreurs, premier_temps_reel_s, i, unite_absisse):
+	#trie de la liste
+	liste_courreurs_tries_temps_reel = sorted(liste_courreurs, key = lambda x: x._temps_reel)
+	if i > 1:
+		nombre_courreurs_arrives = len([x for x in liste_courreurs_tries_temps_reel if math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) <= int(i * unite_absisse) and math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) > int((i - 1) * unite_absisse)])
+	else:
+		nombre_courreurs_arrives = 0
+		
+	nombre_courreurs_arrives_cumule = len([x for x in liste_courreurs_tries_temps_reel if math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) <= int(i * unite_absisse)])
+	
+	return nombre_courreurs_arrives, nombre_courreurs_arrives_cumule
+	
+
 def affiche_quantile(valeur_quantile):
 	print()		#Ligne vide pour visibilité
 	i = 1
@@ -172,28 +185,36 @@ print("ecart_entre_premier_dernier_seconds",ecart_entre_premier_dernier_seconds)
 print("unite_absisse",unite_absisse)
 
 with open('D:\\programmation\\Python\\statistiques_resultats_courses\\marathon_paris_2013\\nombre_courreurs_arrives_fonction_temps.csv', 'w') as nombre_courreurs_arrives_fonction_temps:
-	#nombre_courreurs_arrives_fonction_temps.writerow(["Temps course","Nombre courreurs arrivés"])
-   
-	#spamwriter = csv.writer(nombre_courreurs_arrives_fonction_temps, delimiter='\t')
+
+	#Nom des colonnes
+	nombre_courreurs_arrives_fonction_temps.write("Temps Reel;Nombre courreurs arrivés;Nombre courreurs arrivés cumulé")
 	
+	for cats in Course.categories.keys():
+		nombre_courreurs_arrives_fonction_temps.write(";Nombre " + cats + " arrivés;Nombre " + cats + " arrivés cumulé")
+	
+	nombre_courreurs_arrives_fonction_temps.write("\n")
 	
 	i = 0
 	while i <= NOMBRE_VALEURS_GRAPHIQUE_X:
 		
-		#Nombre de coureurs qui sont 
-		courreurs_arrives = [x for x in liste_courreurs_tries_temps_reel if math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) <= int(i * unite_absisse)]
-		
 		#Temps de course
 		premier_temps_reel_datetime = datetime.datetime(100,1,1,premier_temps_reel_s.hour,premier_temps_reel_s.minute,premier_temps_reel_s.second)
 		temps_course = (premier_temps_reel_datetime + datetime.timedelta(0,int(i * unite_absisse))).time() # days, seconds, then other fields.
+		row = "{}".format(temps_course)
 		
-		row = "{};{}".format(len(courreurs_arrives),temps_course)
+		#Nombre de coureurs qui sont arrivés
+		nombre_courreurs_arrives, nombre_courreurs_arrives_cumule = affiche_infos_liste_courreurs(liste_courreurs_tries_temps_reel, premier_temps_reel_s, i, unite_absisse)	
+		row += ";{};{}".format(nombre_courreurs_arrives, nombre_courreurs_arrives_cumule)
+		
+		for cats in Course.categories.keys():
+			nombre_courreurs_arrives, nombre_courreurs_arrives_cumule = affiche_infos_liste_courreurs(Course.GetCategorie(cats).liste_courreurs, premier_temps_reel_s, i, unite_absisse)	
+			row += ";{};{}".format(nombre_courreurs_arrives, nombre_courreurs_arrives_cumule)
+	
+
 		
 		print(row)
 		
-		row  = row  + "\n"
-
-		nombre_courreurs_arrives_fonction_temps.write(row)
+		nombre_courreurs_arrives_fonction_temps.write(row + "\n")
 	
 		i += 1
 
