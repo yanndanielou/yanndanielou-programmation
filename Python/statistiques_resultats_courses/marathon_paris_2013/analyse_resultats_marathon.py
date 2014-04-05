@@ -120,8 +120,8 @@ class CourreurArrive:
 
 
 #ouverture et lecture du fichier en lecture seule
-csvfile = open('D:\\programmation\\Python\\statistiques_resultats_courses\\marathon_paris_2013\\Data\\Resultats marathon 2013.csv', 'r')		
-csv_reader = csv.DictReader(csvfile, delimiter=';', quotechar='|')
+inputResultsFile = open('D:\\programmation\\Python\\statistiques_resultats_courses\\marathon_paris_2013\\Data\\Resultats marathon 2013.csv', 'r')		
+csv_reader = csv.DictReader(inputResultsFile, delimiter=';', quotechar='|')
 for row in csv_reader:
 	#print(row)
 	classement_officiel = row["CLASS. OFFICIEL"]
@@ -136,7 +136,7 @@ for row in csv_reader:
 	#Création du coureur
 	nouveau_coureur = Course.CreerCourreur(classement_officiel, dossard, nom, prenom, classement_categorie, categorie, temps_reel, temps_officiel)
 
-csvfile.close()			
+inputResultsFile.close()			
 
 # affichage du nombre de coureurs par catégorie
 print()	#Ligne vide pour visibilité
@@ -164,22 +164,36 @@ affiche_quantile(QUARTILE)
 affiche_quantile(MEDIANE)
 
 #On souhaite faire une courbe avec NOMBRE_VALEURS_GRAPHIQUE_X valeurs
-unite_absisse = ecart_entre_premier_dernier_seconds // NOMBRE_VALEURS_GRAPHIQUE_X
-i = 1
-while i < NOMBRE_VALEURS_GRAPHIQUE_X:
-	
-	#Nombre de coureurs qui sont 
-	courreurs_arrives = [x for x in liste_courreurs_tries_temps_reel if math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) < i * unite_absisse]
-	
-	print(len(courreurs_arrives))
-	
-	i += 1
+unite_absisse = ecart_entre_premier_dernier_seconds / NOMBRE_VALEURS_GRAPHIQUE_X
 
+print("premier_temps_reel_s",premier_temps_reel_s)
+print("dernier_temps_reel_s",dernier_temps_reel_s)
+print("ecart_entre_premier_dernier_seconds",ecart_entre_premier_dernier_seconds)
+print("unite_absisse",unite_absisse)
 
-#affichage du nombre d'hommes et de femmes
-#print(len(CourreurArrive.liste_hommes), "hommes et ", len(CourreurArrive.liste_femmes), "femmes")
+with open('D:\\programmation\\Python\\statistiques_resultats_courses\\marathon_paris_2013\\nombre_courreurs_arrives_fonction_temps.csv', 'w') as nombre_courreurs_arrives_fonction_temps:
+	#nombre_courreurs_arrives_fonction_temps.writerow(["Temps course","Nombre courreurs arrivés"])
+   
+	#spamwriter = csv.writer(nombre_courreurs_arrives_fonction_temps, delimiter='\t')
 	
+	
+	i = 0
+	while i <= NOMBRE_VALEURS_GRAPHIQUE_X:
+		
+		#Nombre de coureurs qui sont 
+		courreurs_arrives = [x for x in liste_courreurs_tries_temps_reel if math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) <= int(i * unite_absisse)]
+		
+		#Temps de course
+		premier_temps_reel_datetime = datetime.datetime(100,1,1,premier_temps_reel_s.hour,premier_temps_reel_s.minute,premier_temps_reel_s.second)
+		temps_course = (premier_temps_reel_datetime + datetime.timedelta(0,int(i * unite_absisse))).time() # days, seconds, then other fields.
+		
+		row = "{};{}".format(len(courreurs_arrives),temps_course)
+		
+		print(row)
+		
+		row  = row  + "\n"
 
-#Parcours de la liste des coureurs créés
-
+		nombre_courreurs_arrives_fonction_temps.write(row)
+	
+		i += 1
 
