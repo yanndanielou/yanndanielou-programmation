@@ -96,23 +96,23 @@ class CourreurArrive:
 
 	def __init__(self, classement_officiel, dossard, nom, prenom, classement_categorie, categorie, temps_reel, temps_officiel):
 		"""Constructeur de CourreurArrive"""
-		self.classement_officiel = classement_officiel
-		self.dossard = dossard
-		self.nom = nom
-		self.prenom = prenom
-		self.classement_categorie = classement_categorie
-		self.categorie = Course.GetCategorie(categorie)
-		self.categorie.ajouterCourreur(self)
-		self.temps_reel_str = temps_reel
-		self.temps_reel = getDateTimetimeFromStr(self.temps_reel_str)
-		self.temps_officiel_str = temps_officiel
-		self.temps_officiel = getDateTimetimeFromStr(self.temps_officiel_str)
-		self.attente_dans_sas = datetime.timedelta(hours=self.temps_reel.hour - self.temps_officiel.hour, minutes=self.temps_reel.minute - self.temps_officiel.minute, seconds=self.temps_reel.second - self.temps_officiel.second)
+		self._classement_officiel = classement_officiel
+		self._dossard = dossard
+		self._nom = nom
+		self._prenom = prenom
+		self._classement_categorie = classement_categorie
+		self._categorie = Course.GetCategorie(categorie)
+		self._categorie.ajouterCourreur(self)
+		self._temps_reel_str = temps_reel
+		self._temps_reel = getDateTimetimeFromStr(self._temps_reel_str)
+		self._temps_officiel_str = temps_officiel
+		self._temps_officiel = getDateTimetimeFromStr(self._temps_officiel_str)
+		self._attente_dans_sas = datetime.timedelta(hours=self._temps_reel.hour - self._temps_officiel.hour, minutes=self._temps_reel.minute - self._temps_officiel.minute, seconds=self._temps_reel.second - self._temps_officiel.second)
 
 	def __repr__(self):
 		"""Quand on entre notre objet dans l'interpréteur"""
 		return "{} {}, temps reel ({}), temps officiel ({}) \t".format(
-				self.prenom, self.nom, self.temps_reel_str, self.temps_officiel_str)	
+				self._prenom, self._nom, self._temps_reel_str, self._temps_officiel_str)	
 	
 ####################################################################################
 ###################			 Programme principal		############################
@@ -146,10 +146,10 @@ for nom_cat, cat in Course.categories.items():
 
 # Calcul du nombre de courreurs arrivés en fonction du temps réel
 # Pour tracer la courbe des arrivées
-liste_courreurs_tries_temps_reel = sorted(Course.liste_courreurs, key = lambda x: x.temps_reel)
+liste_courreurs_tries_temps_reel = sorted(Course.liste_courreurs, key = lambda x: x._temps_reel)
 #Réccupération du premier et dernier temps
-premier_temps_reel_s = liste_courreurs_tries_temps_reel[0].temps_reel
-dernier_temps_reel_s = liste_courreurs_tries_temps_reel[len(liste_courreurs_tries_temps_reel) - 1].temps_reel
+premier_temps_reel_s = liste_courreurs_tries_temps_reel[0]._temps_reel
+dernier_temps_reel_s = liste_courreurs_tries_temps_reel[len(liste_courreurs_tries_temps_reel) - 1]._temps_reel
 
 #Calcul de la durée en secondes entre premier et dernier
 ecart_entre_premier_dernier = datetime.timedelta(hours=dernier_temps_reel_s.hour - premier_temps_reel_s.hour, minutes=dernier_temps_reel_s.minute - premier_temps_reel_s.minute, seconds=dernier_temps_reel_s.second - premier_temps_reel_s.second)
@@ -158,18 +158,22 @@ ecart_entre_premier_dernier_seconds = math.floor(ecart_entre_premier_dernier.tot
 #Extraction des centiles, deciles, quartiles, médiane
 #Décile
 affiche_quantile(DECILE)
-#Décile
+#Quartile
 affiche_quantile(QUARTILE)
 #Médiane
 affiche_quantile(MEDIANE)
 
-	
-#Médiane
-print()		#Ligne vide pour visibilité
-print("Le coureur médian est", liste_courreurs_tries_temps_reel[len(liste_courreurs_tries_temps_reel)// 2])
-
 #On souhaite faire une courbe avec NOMBRE_VALEURS_GRAPHIQUE_X valeurs
 unite_absisse = ecart_entre_premier_dernier_seconds // NOMBRE_VALEURS_GRAPHIQUE_X
+i = 1
+while i < NOMBRE_VALEURS_GRAPHIQUE_X:
+	
+	#Nombre de coureurs qui sont 
+	courreurs_arrives = [x for x in liste_courreurs_tries_temps_reel if math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) < i * unite_absisse]
+	
+	print(len(courreurs_arrives))
+	
+	i += 1
 
 
 #affichage du nombre d'hommes et de femmes
