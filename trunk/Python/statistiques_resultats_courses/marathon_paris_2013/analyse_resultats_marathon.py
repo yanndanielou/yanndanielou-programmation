@@ -13,19 +13,6 @@ DECILE = 10
 QUARTILE = 4
 MEDIANE = 2
 
-
-def affiche_infos_liste_courreurs(liste_courreurs_triee, premier_temps_reel_s, i, unite_absisse):
-
-	if i > 1:
-		nombre_courreurs_arrives = len([x for x in liste_courreurs_triee if math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) <= int(i * unite_absisse) and math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) > int((i - 1) * unite_absisse)])
-	else:
-		nombre_courreurs_arrives = 0
-		
-	nombre_courreurs_arrives_cumule = len([x for x in liste_courreurs_triee if math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) <= int(i * unite_absisse)])
-	
-	return nombre_courreurs_arrives, nombre_courreurs_arrives_cumule
-	
-
 def affiche_quantile(valeur_quantile):
 	print()		#Ligne vide pour visibilité
 	i = 1
@@ -214,16 +201,32 @@ with open('D:\\programmation\\Python\\statistiques_resultats_courses\\marathon_p
 		temps_course = (premier_temps_reel_datetime + datetime.timedelta(0,int(i * unite_absisse))).time() # days, seconds, then other fields.
 		row = "{}".format(temps_course)
 		
-		#Nombre de coureurs qui sont arrivés
-		nombre_courreurs_arrives, nombre_courreurs_arrives_cumule = affiche_infos_liste_courreurs(liste_courreurs_tries_temps_reel, premier_temps_reel_s, i, unite_absisse)	
+		#coureurs qui sont arrivés
+		if i > 1:
+			courreurs_arrives = [x for x in liste_courreurs_tries_temps_reel if math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) <= int(i * unite_absisse) and math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) > int((i - 1) * unite_absisse)]
+			nombre_courreurs_arrives = len(courreurs_arrives)
+		else:
+			nombre_courreurs_arrives = 0
+			
+		courreurs_arrives_cumule = [x for x in liste_courreurs_tries_temps_reel if math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) <= int(i * unite_absisse)]
+		nombre_courreurs_arrives_cumule = len(courreurs_arrives_cumule)
+		
 		row += ";{};{}".format(nombre_courreurs_arrives, nombre_courreurs_arrives_cumule)
 		
-		for cats in Course.categories.keys():
-			nombre_courreurs_arrives, nombre_courreurs_arrives_cumule = affiche_infos_liste_courreurs(Course.GetCategorie(cats).getListeCoureurTrieeParTempsReel(), premier_temps_reel_s, i, unite_absisse)	
-			row += ";{};{}".format(nombre_courreurs_arrives, nombre_courreurs_arrives_cumule)
-	
+		#Trie par catégorie
+		for cats in Course.categories.values():
 
+			if nombre_courreurs_arrives > 0:
+				courreurs_arrives_cat = [x for x in courreurs_arrives if x._categorie == cats]
+				nombre_courreurs_arrives_cat = len(courreurs_arrives_cat)
+			else:
+				nombre_courreurs_arrives_cat = 0
+			
+			courreurs_arrives_cat_cumule = [x for x in courreurs_arrives_cumule if x._categorie == cats]
+			nombre_courreurs_arrives_cat_cumule = len(courreurs_arrives_cat_cumule)
 		
+			row += ";{};{}".format(nombre_courreurs_arrives_cat, nombre_courreurs_arrives_cat_cumule)
+	
 		print(row)
 		
 		nombre_courreurs_arrives_fonction_temps.write(row + "\n")
