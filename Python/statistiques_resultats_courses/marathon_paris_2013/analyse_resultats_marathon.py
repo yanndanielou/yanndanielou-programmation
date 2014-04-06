@@ -14,15 +14,14 @@ QUARTILE = 4
 MEDIANE = 2
 
 
-def affiche_infos_liste_courreurs(liste_courreurs, premier_temps_reel_s, i, unite_absisse):
-	#trie de la liste
-	liste_courreurs_tries_temps_reel = sorted(liste_courreurs, key = lambda x: x._temps_reel)
+def affiche_infos_liste_courreurs(liste_courreurs_triee, premier_temps_reel_s, i, unite_absisse):
+
 	if i > 1:
-		nombre_courreurs_arrives = len([x for x in liste_courreurs_tries_temps_reel if math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) <= int(i * unite_absisse) and math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) > int((i - 1) * unite_absisse)])
+		nombre_courreurs_arrives = len([x for x in liste_courreurs_triee if math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) <= int(i * unite_absisse) and math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) > int((i - 1) * unite_absisse)])
 	else:
 		nombre_courreurs_arrives = 0
 		
-	nombre_courreurs_arrives_cumule = len([x for x in liste_courreurs_tries_temps_reel if math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) <= int(i * unite_absisse)])
+	nombre_courreurs_arrives_cumule = len([x for x in liste_courreurs_triee if math.floor(datetime.timedelta(hours=x._temps_reel.hour - premier_temps_reel_s.hour, minutes=x._temps_reel.minute - premier_temps_reel_s.minute, seconds=x._temps_reel.second - premier_temps_reel_s.second).total_seconds()) <= int(i * unite_absisse)])
 	
 	return nombre_courreurs_arrives, nombre_courreurs_arrives_cumule
 	
@@ -91,15 +90,28 @@ class Categorie:
 	"""Classe représentant une catégorie"""	
 	def __init__(self, nom_categorie):
 		"""Constructeur d'une catégorie"""
-		self.id = nom_categorie
-		self.homme = "homme" in nom_categorie.lower()
-		self.liste_courreurs = list()
+		self._id = nom_categorie
+		self._homme = "homme" in nom_categorie.lower()
+		self._liste_courreurs = list()
+		self._liste_courreurs_par_temps_reel = list()
+		self._liste_courreurs_par_temps_reel_est_triee = False
 		
-		print("Création de la catégorie", nom_categorie, " qui est un homme:", self.homme)
+		print("Création de la catégorie", nom_categorie, " qui est un homme:", self._homme)
 		
 	def ajouterCourreur(self, courreur):
 		"""Ajout d'un courreur dans une catégorie"""
-		self.liste_courreurs.append(courreur)
+		self._liste_courreurs.append(courreur)
+		self._liste_courreurs_par_temps_reel_est_triee = False
+		
+	def getListeCoureurTrieeParTempsReel(self):
+	
+		if self._liste_courreurs_par_temps_reel_est_triee == False:
+			#trie de la liste
+			self._liste_courreurs_par_temps_reel = sorted(self._liste_courreurs, key = lambda x: x._temps_reel)
+	
+			self._liste_courreurs_par_temps_reel_est_triee = True
+			
+		return self._liste_courreurs_par_temps_reel
 	
 	
 #
@@ -154,7 +166,7 @@ inputResultsFile.close()
 # affichage du nombre de coureurs par catégorie
 print()	#Ligne vide pour visibilité
 for nom_cat, cat in Course.categories.items():
-	print(len(cat.liste_courreurs), "courreurs dans categorie", nom_cat)
+	print(len(cat._liste_courreurs), "courreurs dans categorie", nom_cat)
 
 
 # Calcul du nombre de courreurs arrivés en fonction du temps réel
@@ -207,7 +219,7 @@ with open('D:\\programmation\\Python\\statistiques_resultats_courses\\marathon_p
 		row += ";{};{}".format(nombre_courreurs_arrives, nombre_courreurs_arrives_cumule)
 		
 		for cats in Course.categories.keys():
-			nombre_courreurs_arrives, nombre_courreurs_arrives_cumule = affiche_infos_liste_courreurs(Course.GetCategorie(cats).liste_courreurs, premier_temps_reel_s, i, unite_absisse)	
+			nombre_courreurs_arrives, nombre_courreurs_arrives_cumule = affiche_infos_liste_courreurs(Course.GetCategorie(cats).getListeCoureurTrieeParTempsReel(), premier_temps_reel_s, i, unite_absisse)	
 			row += ";{};{}".format(nombre_courreurs_arrives, nombre_courreurs_arrives_cumule)
 	
 
