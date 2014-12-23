@@ -13,7 +13,7 @@ DECILE = 10
 QUARTILE = 4
 MEDIANE = 2
 
-def affiche_quantile(valeur_quantile):
+def affiche_quantile(valeur_quantile, liste_courreurs_tries_temps_reel):
 	print()		#Ligne vide pour visibilité
 	i = 1
 	while(i < valeur_quantile):
@@ -169,11 +169,11 @@ ecart_entre_premier_dernier_seconds = math.floor(ecart_entre_premier_dernier.tot
 
 #Extraction des centiles, deciles, quartiles, médiane
 #Décile
-affiche_quantile(DECILE)
+affiche_quantile(DECILE, liste_courreurs_tries_temps_reel)
 #Quartile
-affiche_quantile(QUARTILE)
+affiche_quantile(QUARTILE, liste_courreurs_tries_temps_reel)
 #Médiane
-affiche_quantile(MEDIANE)
+affiche_quantile(MEDIANE, liste_courreurs_tries_temps_reel)
 
 #On souhaite faire une courbe avec NOMBRE_VALEURS_GRAPHIQUE_X valeurs
 unite_absisse = ecart_entre_premier_dernier_seconds / NOMBRE_VALEURS_GRAPHIQUE_X
