@@ -1,104 +1,163 @@
-import java.io.*;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
+class SousTitres {
 
-class SousTitres{
-	public static final char CHOIX_AJOUTER_TEMPS = 'a';
-	public static final char CHOIX_RETIRER_TEMPS = 'r';
+	static final int OFFSET_TIMESTAMP_START_DISPLAY = 0;
+	static final int OFFSET_TIMESTAMP_END_DISPLAY = 17;
 
-	public static void main (String [] args)throws Exception{
+	public void run() {
 
-	Scanner sc = new Scanner(System.in);
+		UserInputs userInputs = new UserInputs();
+		UserInputsUI userInputsUI = new UserInputsUI();
 
-	System.out.println("Quel fichier .srt souhaitez vous modifier?");
-	String nomFichier = sc.nextLine() + ".srt";
+		userInputsUI.fillUserInputs(userInputs);
 
-	
-	System.out.println("Souhaitez vous ajouter (tapez " + CHOIX_AJOUTER_TEMPS + ") ou retirer (tapez " + CHOIX_RETIRER_TEMPS + ") du temps??\n");
-	char ChoixAjouterRetirer = sc.nextLine().charAt(0);
+		File inputSubtitlesFile = userInputs.getInputSubtitlesFile();
 
-
-	System.out.println("Combien de temps voulez vous ajouter ou retirer? Tapez en chiffres le temps en milisecondes)\n");
-	int nombreMiliSecondesModification = sc.nextInt();
-
-
-	System.out.println("A partir de quand souhaitez vous modifier le temps des sous titres? Tapez en chiffre la minute de debut des modifications (0 pour des le debut)\n");
-	int minuteDebutModifications = sc.nextInt();
-
-	BufferedReader  reader = new BufferedReader(new FileReader("in.srt"));
-	PrintWriter writer = new PrintWriter(new FileWriter("out.srt"));
-	String ligne = reader.readLine();
-
-		
-		while(ligne != null){
-
-			if((ligne.length() == 29)&&(ligne.charAt(2) == ':')&&(ligne.charAt(5) == ':')&&(ligne.charAt(8) == ',')){
-				System.out.println(ligne + " devient ");
-				ligne = modifierTemps(ligne, 0, ChoixAjouterRetirer, nombreMiliSecondesModification);
-			
-				ligne = modifierTemps(ligne, 17, ChoixAjouterRetirer, nombreMiliSecondesModification);
-				System.out.println(ligne + "\n");
-				
-			}
-			
-						
-			writer.println(ligne);
-			ligne = reader.readLine();
-		
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new FileReader(inputSubtitlesFile.getAbsolutePath()));
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-		
-		
-	reader.close();
-	writer.close();
-	}
-	
-	static String modifierTemps(String ligne, int offset, int ChoixAjouterRetirer, int nombreMiliSecondesModification){
-		//try { Thread.sleep(100); } catch (InterruptedException e) {}
-				int heures=(ligne.charAt(offset + 0)-'0')*10 + (ligne.charAt(offset + 1)-'0');
-				int minutes=(ligne.charAt(offset + 3)-'0')*10 + (ligne.charAt(offset + 4)-'0');
-				int secondes=(ligne.charAt(offset + 6)-'0')*10 + (ligne.charAt(offset + 7)-'0');
-				int milliemes=(ligne.charAt(offset + 9)-'0')*100 + (ligne.charAt(offset + 10)-'0')*10 +(ligne.charAt(offset + 11)-'0');
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter(
+					new FileWriter(inputSubtitlesFile.getParentFile().getAbsolutePath() + "\\out.srt"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String ligne = null;
+		try {
+			ligne = reader.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-				
-				int temps = milliemes + 1000*secondes + 60000 * minutes + 3600000 * heures;
-				
-				if(ChoixAjouterRetirer==CHOIX_AJOUTER_TEMPS){
-					temps += nombreMiliSecondesModification;
-				}
-				
-				else if(ChoixAjouterRetirer==CHOIX_RETIRER_TEMPS){
-					temps -= nombreMiliSecondesModification;
-				}
-				
-				
-				milliemes = temps %1000;
-				secondes = (temps /1000);
-				minutes = secondes /60;
-				heures = minutes /60;
-				
-				secondes %= 60;
-				minutes  %= 60;
-				
-				char []  ligneTableau = ligne.toCharArray();
-				
-				ligneTableau[offset + 0] =	(char) (heures/10 + '0');
-				ligneTableau[offset + 1] =  (char)(heures%10 + '0');
-				
-				ligneTableau[offset + 3] =  (char)(minutes/10+ '0');
-				ligneTableau[offset + 4] =  (char)(minutes%10 + '0');
-				
-				ligneTableau[offset + 6] =  (char)(secondes/10 + '0');
-				ligneTableau[offset + 7] =  (char)(secondes%10 + '0');
-				
-			
-				ligneTableau[offset + 9] =  (char)(milliemes/100 + '0');
-				ligneTableau[offset + 10] =  (char)((milliemes/10)%10 + '0');
-				ligneTableau[offset + 11] =  (char)(milliemes%10 + '0');
-				
-				
-				
-				String finale = new String(ligneTableau);
-				
-				return finale;
+		while (ligne != null) {
+
+			if (isTimestampLine(ligne)) {
+				System.out.println(ligne + " devient ");
+				ligne = modifyTimestamp(ligne, userInputs);
+				System.out.println(ligne + "\n");
+
+			}
+
+			writer.println(ligne);
+			try {
+				ligne = reader.readLine();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+		try {
+			reader.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		writer.close();
+	}
+
+	private String modifyTimestamp(String ligne, UserInputs userInputs) {
+		ligne = modifyTimestamp(ligne, OFFSET_TIMESTAMP_START_DISPLAY, userInputs);
+		ligne = modifyTimestamp(ligne, OFFSET_TIMESTAMP_END_DISPLAY, userInputs);
+		return ligne;
+	}
+
+	private String modifyTimestamp(String ligne, int offsetTimestampStartDisplay, UserInputs userInputs) {
+		Action action = userInputs.getAction();
+
+		if (action == Action.ADD_TIME || action == Action.REMOVE_TIME) {
+			return modifyTimestampWithAddOrRemoveMilliseconds(ligne, offsetTimestampStartDisplay, userInputs);
+		} else if (action == Action.BALANCE_TIME) {
+			return modifyTimestampWithBalanceTime(ligne, offsetTimestampStartDisplay, userInputs);
+		}
+
+		return null;
+	}
+
+	private boolean isTimestampLine(String line) {
+		return (line.length() == 29) && (line.charAt(2) == ':') && (line.charAt(5) == ':') && (line.charAt(8) == ',');
+	}
+
+	private int getTimeInMilliSeconds(String ligne, int offset) {
+		int hours = (ligne.charAt(offset + 0) - '0') * 10 + (ligne.charAt(offset + 1) - '0');
+		int minutes = (ligne.charAt(offset + 3) - '0') * 10 + (ligne.charAt(offset + 4) - '0');
+		int seconds = (ligne.charAt(offset + 6) - '0') * 10 + (ligne.charAt(offset + 7) - '0');
+		int milliseconds = (ligne.charAt(offset + 9) - '0') * 100 + (ligne.charAt(offset + 10) - '0') * 10
+				+ (ligne.charAt(offset + 11) - '0');
+
+		return milliseconds + 1000 * seconds + 60000 * minutes + 3600000 * hours;
+	}
+
+	private String buildAndReplaceTimeStampInLine(String line, int newTimeStampInMillisecond, int offset) {
+
+		int milliseconds = newTimeStampInMillisecond % 1000;
+		int seconds = (newTimeStampInMillisecond / 1000);
+		int minutes = seconds / 60;
+		int hours = minutes / 60;
+
+		seconds %= 60;
+		minutes %= 60;
+
+		char[] ligneTableau = line.toCharArray();
+
+		ligneTableau[offset + 0] = (char) (hours / 10 + '0');
+		ligneTableau[offset + 1] = (char) (hours % 10 + '0');
+
+		ligneTableau[offset + 3] = (char) (minutes / 10 + '0');
+		ligneTableau[offset + 4] = (char) (minutes % 10 + '0');
+
+		ligneTableau[offset + 6] = (char) (seconds / 10 + '0');
+		ligneTableau[offset + 7] = (char) (seconds % 10 + '0');
+
+		ligneTableau[offset + 9] = (char) (milliseconds / 100 + '0');
+		ligneTableau[offset + 10] = (char) ((milliseconds / 10) % 10 + '0');
+		ligneTableau[offset + 11] = (char) (milliseconds % 10 + '0');
+
+		return new String(ligneTableau);
+	}
+
+	private String modifyTimestampWithBalanceTime(String line, int offsetTimestampStartDisplay, UserInputs userInputs) {
+		int originalTimestamp = getTimeInMilliSeconds(line, offsetTimestampStartDisplay);
+
+		int newTimestamp = (int) (originalTimestamp * userInputs.getBalanceRatio());
+		return buildAndReplaceTimeStampInLine(line, newTimestamp, offsetTimestampStartDisplay);
+	}
+
+	private String modifyTimestampWithAddOrRemoveMilliseconds(String line, int offset, UserInputs userInputs) {
+
+		int nombreMilisecondsModification = userInputs.getNombreMilisecondsModification();
+		int minuteDebutModifications = userInputs.getMinuteDebutModifications();
+		Action action = userInputs.getAction();
+
+		int originalTimestamp = getTimeInMilliSeconds(line, offset);
+		int originalTimestampInMinutes = originalTimestamp / 1000 / 60;
+		int newTimestamp = originalTimestamp;
+
+		if (minuteDebutModifications == 0 || minuteDebutModifications >= originalTimestampInMinutes) {
+			if (action == Action.ADD_TIME) {
+				newTimestamp += nombreMilisecondsModification;
+			}
+
+			else if (action == Action.REMOVE_TIME) {
+				newTimestamp -= nombreMilisecondsModification;
+			}
+		}
+
+		return buildAndReplaceTimeStampInLine(line, newTimestamp, offset);
 	}
 }
