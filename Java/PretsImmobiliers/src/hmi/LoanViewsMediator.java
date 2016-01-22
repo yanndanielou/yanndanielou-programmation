@@ -2,7 +2,7 @@ package hmi;
 
 import hmi.views.EcheancesView;
 import hmi.views.LoanOverviewView;
-import hmi.views.LoanPropertiesView;
+import hmi.views.EmpruntsInitiauxPropertiesView;
 import hmi.views.MainView;
 import hmi.views.RealEstateView;
 import model.ProjetImmobilier;
@@ -12,7 +12,7 @@ public class LoanViewsMediator {
 
   private EcheancesView echeancesView;
   private LoanOverviewView loanOverviewView;
-  private LoanPropertiesView loanPropertiesView;
+  private EmpruntsInitiauxPropertiesView empruntsInitiauxPropertiesView;
   private RealEstateView realEstateView;
   private MainView mainView;
 
@@ -40,6 +40,11 @@ public class LoanViewsMediator {
     realEstateView.afterPrixNetAcheteurModified();
   }
 
+  public void onFraisAgenceModified(int fraisAgence) {
+    projetImmobilier.getRealEstate().setFraisAgence(fraisAgence);
+    realEstateView.afterFraisAgenceModified();
+  }
+
   public void onEmpruntAdded(Double capitalEmprunte, Double annualInterestRate, Double monthlyPayment, Long nombreMensualites) {
     projetImmobilier.addEmprunt(capitalEmprunte, annualInterestRate, monthlyPayment, nombreMensualites);
     afterEmpruntCreated();
@@ -53,8 +58,8 @@ public class LoanViewsMediator {
     this.loanOverviewView = loanOverviewView;
   }
 
-  public void setLoanPropertiesView(LoanPropertiesView loanPropertiesView) {
-    this.loanPropertiesView = loanPropertiesView;
+  public void setLoanPropertiesView(EmpruntsInitiauxPropertiesView empruntsInitiauxPropertiesView) {
+    this.empruntsInitiauxPropertiesView = empruntsInitiauxPropertiesView;
   }
 
   public void setMainView(MainView mainView) {

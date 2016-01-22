@@ -17,6 +17,8 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
 
   private JLabel prixNetAcheteurLabel;
   private JFormattedTextField prixNetAcheteurInput;
+  private JLabel fraisAgenceLabel;
+  private JFormattedTextField fraisAgenceInput;
   private JLabel apportPersonnelLabel;
   private JFormattedTextField apportPersonnelInput;
   private JLabel fraisNotaireLabel;
@@ -35,6 +37,9 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
     prixNetAcheteurLabel = new JLabel("Prix net acheteur");
     prixNetAcheteurInput = new JFormattedTextField(NumberFormat.getNumberInstance());
     prixNetAcheteurInput.getDocument().addDocumentListener(this);
+    fraisAgenceLabel = new JLabel("Frais agence");
+    fraisAgenceInput = new JFormattedTextField(NumberFormat.getNumberInstance());
+    fraisAgenceInput.getDocument().addDocumentListener(this);
     apportPersonnelLabel = new JLabel("Apport personnel");
     apportPersonnelInput = new JFormattedTextField(NumberFormat.getNumberInstance());
     fraisNotaireLabel = new JLabel("Frais notaire");
@@ -44,10 +49,12 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
   @Override
   protected void placeWidgets() {
     int columns = 2;
-    int rows = 3;
+    int rows = 4;
     setLayout(new GridLayout(rows, columns));
     add(prixNetAcheteurLabel);
     add(prixNetAcheteurInput);
+    add(fraisAgenceLabel);
+    add(fraisAgenceInput);
     add(apportPersonnelLabel);
     add(apportPersonnelInput);
     add(fraisNotaireLabel);
@@ -77,7 +84,14 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
     } else if (textField == apportPersonnelInput) {
       int apportPersonnel = getTextAsInt(apportPersonnelInput);
       onApportPersonnelModified(apportPersonnel);
+    } else if (textField == fraisAgenceInput) {
+      int fraisAgence = getTextAsInt(fraisAgenceInput);
+      onFraisAgenceModified(fraisAgence);
     }
+  }
+
+  private void onFraisAgenceModified(int fraisAgence) {
+    loanViewsMediator.onFraisAgenceModified(fraisAgence);
   }
 
   private void onApportPersonnelModified(int apportPersonnel) {
@@ -94,6 +108,8 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
       return prixNetAcheteurInput;
     } else if (eventDocument == apportPersonnelInput.getDocument()) {
       return apportPersonnelInput;
+    } else if (eventDocument == fraisAgenceInput.getDocument()) {
+      return fraisAgenceInput;
     }
     return null;
   }
@@ -102,7 +118,12 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
     updateFraisNotaireValue();
   }
 
+  public void afterFraisAgenceModified() {
+    updateFraisNotaireValue();
+  }
+
   private void updateFraisNotaireValue() {
     fraisNotaireValue.setText(String.valueOf(projetImmobilier.getRealEstate().getFraisNotaire()));
   }
+
 }

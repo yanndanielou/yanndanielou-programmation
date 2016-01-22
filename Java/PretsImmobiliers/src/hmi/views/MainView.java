@@ -45,7 +45,7 @@ public class MainView extends JFrame {
 
     getContentPane().add(RealEstateView.getInstance(), BorderLayout.NORTH);
     getContentPane().add(EcheancesView.getInstance(), BorderLayout.CENTER);
-    getContentPane().add(LoanPropertiesView.getInstance(), BorderLayout.EAST);
+    getContentPane().add(EmpruntsInitiauxPropertiesView.getInstance(), BorderLayout.EAST);
     getContentPane().add(LoanOverviewView.getInstance(), BorderLayout.SOUTH);
 
     setVisible(true);

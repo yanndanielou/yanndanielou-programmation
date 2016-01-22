@@ -3,9 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjetImmoimport java.util.ArrayList;
-import java.util.List;
-yList<Emprunt>();
+public class ProjetImmobilier {
+  private List<Emprunt> emprunts = new ArrayList<Emprunt>();
   private RealEstate realEstate;
 
   private static final ProjetImmobilier INSTANCE = new ProjetImmobilier();
