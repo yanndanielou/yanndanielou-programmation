@@ -1,0 +1,17 @@
+*.fdt
+*.frq
+*.gen
+*.zip
+*.log
+*.lock
+Java/eclipse-workspace/.metadata/.mylyn/.taskListIndex/segments_1
+Java/eclipse-workspace/.metadata/.plugins/org.eclipse.core.resources/.history/c7/10625b2bdc7f0015110ee23011d63a42
+*.history
+*.tis
+*.tii
+*.prx
+*.nrm
+*.fnm
+*.fdx
+*.js
+*.json
