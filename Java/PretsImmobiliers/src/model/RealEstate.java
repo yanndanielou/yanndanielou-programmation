@@ -2,7 +2,7 @@ package model;
 
 public class RealEstate {
 
-  private static final double TAUX_GROSSIER_FRAIS_NOTAIRE = 0.075;
+  private static final double TAUX_GROSSIER_FRAIS_NOTAIRE = 0.076;
 
   private double prixNetAcheteur;
   private double fraisAgence;

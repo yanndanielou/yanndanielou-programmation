@@ -1,5 +1,7 @@
 package hmi.views;
 
+import hmi.widgets.MoneyTextField;
+
 import java.awt.GridLayout;
 import java.text.NumberFormat;
 
@@ -16,11 +18,11 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
   private static final RealEstateView INSTANCE = new RealEstateView();
 
   private JLabel prixNetAcheteurLabel;
-  private JFormattedTextField prixNetAcheteurInput;
+  private MoneyTextField prixNetAcheteurInput;
   private JLabel fraisAgenceLabel;
-  private JFormattedTextField fraisAgenceInput;
+  private MoneyTextField fraisAgenceInput;
   private JLabel apportPersonnelLabel;
-  private JFormattedTextField apportPersonnelInput;
+  private MoneyTextField apportPersonnelInput;
   private JLabel fraisNotaireLabel;
   private JLabel fraisNotaireValue;
 
@@ -35,13 +37,13 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
   @Override
   protected void createWidgets() {
     prixNetAcheteurLabel = new JLabel("Prix net acheteur");
-    prixNetAcheteurInput = new JFormattedTextField(NumberFormat.getNumberInstance());
+    prixNetAcheteurInput = new MoneyTextField(NumberFormat.getNumberInstance());
     prixNetAcheteurInput.getDocument().addDocumentListener(this);
     fraisAgenceLabel = new JLabel("Frais agence");
-    fraisAgenceInput = new JFormattedTextField(NumberFormat.getNumberInstance());
+    fraisAgenceInput = new MoneyTextField(NumberFormat.getNumberInstance());
     fraisAgenceInput.getDocument().addDocumentListener(this);
     apportPersonnelLabel = new JLabel("Apport personnel");
-    apportPersonnelInput = new JFormattedTextField(NumberFormat.getNumberInstance());
+    apportPersonnelInput = new MoneyTextField(NumberFormat.getNumberInstance());
     fraisNotaireLabel = new JLabel("Frais notaire");
     fraisNotaireValue = new JLabel();
   }
@@ -76,20 +78,6 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
     onTextFieldChanged(event);
   }
 
-  private void onTextFieldChanged(DocumentEvent event) {
-    JFormattedTextField textField = getTextFieldFromEvent(event);
-    if (textField == prixNetAcheteurInput) {
-      int prixNetAcheteur = getTextAsInt(prixNetAcheteurInput);
-      onPrixNetAcheteurModified(prixNetAcheteur);
-    } else if (textField == apportPersonnelInput) {
-      int apportPersonnel = getTextAsInt(apportPersonnelInput);
-      onApportPersonnelModified(apportPersonnel);
-    } else if (textField == fraisAgenceInput) {
-      int fraisAgence = getTextAsInt(fraisAgenceInput);
-      onFraisAgenceModified(fraisAgence);
-    }
-  }
-
   private void onFraisAgenceModified(int fraisAgence) {
     loanViewsMediator.onFraisAgenceModified(fraisAgence);
   }
@@ -100,6 +88,20 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
 
   private void onPrixNetAcheteurModified(int prixNetAcheteur) {
     loanViewsMediator.onPrixNetAcheteurModified(prixNetAcheteur);
+  }
+
+  private void onTextFieldChanged(DocumentEvent event) {
+    JFormattedTextField textField = getTextFieldFromEvent(event);
+    if (textField == prixNetAcheteurInput) {
+      int prixNetAcheteur = prixNetAcheteurInput.getTextAsInt();
+      onPrixNetAcheteurModified(prixNetAcheteur);
+    } else if (textField == apportPersonnelInput) {
+      int apportPersonnel = apportPersonnelInput.getTextAsInt();
+      onApportPersonnelModified(apportPersonnel);
+    } else if (textField == fraisAgenceInput) {
+      int fraisAgence = fraisAgenceInput.getTextAsInt();
+      onFraisAgenceModified(fraisAgence);
+    }
   }
 
   private JFormattedTextField getTextFieldFromEvent(DocumentEvent event) {

@@ -36,6 +36,14 @@ public class LoanOverviewView extends ProjetImmobilierBaseView {
   }
 
   public void afterEmpruntCreated() {
+    updateMontantTotalInteretsField();
+  }
+
+  public void afterEmpruntModified() {
+    updateMontantTotalInteretsField();
+  }
+
+  private void updateMontantTotalInteretsField() {
     String text = String.valueOf(projetImmobilier.getMontantTotalInterets());
     montantTotalInteretsValue.setText(text);
   }

@@ -4,6 +4,7 @@ import hmi.EcheancesTableModel;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -12,6 +13,7 @@ public class EcheancesView extends ProjetImmobilierBaseView {
 
   private static final EcheancesView INSTANCE = new EcheancesView();
 
+  private JLabel title;
   private JTable echeancesTable;
   private EcheancesTableModel echeancesTableModel;
 
@@ -25,19 +27,23 @@ public class EcheancesView extends ProjetImmobilierBaseView {
 
   @Override
   protected void createWidgets() {
+    title = new JLabel("Echeances");
     echeancesTableModel = new EcheancesTableModel();
     echeancesTable = new JTable(echeancesTableModel);
   }
 
   @Override
   protected void placeWidgets() {
+    setLayout(new BorderLayout());
+    add(title, BorderLayout.NORTH);
     add(new JScrollPane(echeancesTable), BorderLayout.CENTER);
   }
 
   public void afterEmpruntCreated() {
-    //   echeancesTable.repaint();
     echeancesTableModel.fireTableStructureChanged();
-    //    echeancesTableModel.fireTableDataChanged();
+  }
 
+  public void afterEmpruntModified() {
+    echeancesTableModel.fireTableStructureChanged();
   }
 }

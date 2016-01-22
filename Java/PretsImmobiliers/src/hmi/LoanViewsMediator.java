@@ -1,10 +1,11 @@
 package hmi;
 
 import hmi.views.EcheancesView;
-import hmi.views.LoanOverviewView;
 import hmi.views.EmpruntsInitiauxPropertiesView;
+import hmi.views.LoanOverviewView;
 import hmi.views.MainView;
 import hmi.views.RealEstateView;
+import model.Emprunt;
 import model.ProjetImmobilier;
 
 public class LoanViewsMediator {
@@ -26,11 +27,6 @@ public class LoanViewsMediator {
     return INSTANCE;
   }
 
-  public void afterEmpruntCreated() {
-    EcheancesView.getInstance().afterEmpruntCreated();
-    LoanOverviewView.getInstance().afterEmpruntCreated();
-  }
-
   public void onApportPersonnelModified(int apportPersonnel) {
     projetImmobilier.getRealEstate().setApportPersonnel(apportPersonnel);
   }
@@ -45,11 +41,23 @@ public class LoanViewsMediator {
     realEstateView.afterFraisAgenceModified();
   }
 
-  public void onEmpruntAdded(Double capitalEmprunte, Double annualInterestRate, Double monthlyPayment, Long nombreMensualites) {
-    projetImmobilier.addEmprunt(capitalEmprunte, annualInterestRate, monthlyPayment, nombreMensualites);
-    afterEmpruntCreated();
+  public void onEmpruntAdded() {
+    Emprunt empruntCreated = projetImmobilier.addEmprunt();
+    afterEmpruntCreated(empruntCreated);
   }
 
+  private void afterEmpruntCreated(Emprunt emprunt) {
+    EcheancesView.getInstance().afterEmpruntCreated();
+    EmpruntsInitiauxPropertiesView.getInstance().afterEmpruntCreated(emprunt);
+    LoanOverviewView.getInstance().afterEmpruntCreated();
+  }
+
+  /*
+    public void onEmpruntAdded(Double capitalEmprunte, Double annualInterestRate, Double monthlyPayment, Long nombreMensualites) {
+      Emprunt empruntCreated = projetImmobilier.addEmprunt(capitalEmprunte, annualInterestRate, monthlyPayment, nombreMensualites);
+      afterEmpruntCreated(empruntCreated);
+    }
+  */
   public void setEcheancesView(EcheancesView echeancesView) {
     this.echeancesView = echeancesView;
   }
@@ -68,6 +76,32 @@ public class LoanViewsMediator {
 
   public void setRealEstateView(RealEstateView realEstateView) {
     this.realEstateView = realEstateView;
+  }
+
+  public void onCapitalEmprunteModified(Emprunt emprunt, double capitalEmprunte) {
+    emprunt.modifyCapitalEmprunte(capitalEmprunte);
+    afterEmpruntModified(emprunt);
+  }
+
+  public void onAnnualInterestRateModified(Emprunt emprunt, double tauxAnnuel) {
+    emprunt.modifyTauxAnnuel(tauxAnnuel);
+    afterEmpruntModified(emprunt);
+  }
+
+  public void onMensualiteHorsAssuranceModified(Emprunt emprunt, double monthlyPayment) {
+    emprunt.modifyMensualiteHorsAssurance(monthlyPayment);
+    afterEmpruntModified(emprunt);
+  }
+
+  public void onNombreEcheancesDesireModified(Emprunt emprunt, int nombreEcheances) {
+    emprunt.modifyNombreEcheancesDesire(nombreEcheances);
+    afterEmpruntModified(emprunt);
+  }
+
+  private void afterEmpruntModified(Emprunt emprunt) {
+    EcheancesView.getInstance().afterEmpruntModified();
+    EmpruntsInitiauxPropertiesView.getInstance().afterEmpruntModified(emprunt);
+    LoanOverviewView.getInstance().afterEmpruntModified();
   }
 
 }
