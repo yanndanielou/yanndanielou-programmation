@@ -17,7 +17,7 @@ public class Echeance {
     return montantCapital + montantInteret;
   }
 
-  public double getCapitalRestantAEmprunter() {
+  public double getCapitalRestantARembourser() {
     return capitalRestantAEmprunter;
   }
 

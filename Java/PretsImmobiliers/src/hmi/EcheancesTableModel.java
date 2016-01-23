@@ -135,7 +135,7 @@ public class EcheancesTableModel extends AbstractTableModel {
       return getRoundedValueForDisplay(echeance.getMontantInteret());
     }
     if (isCapitalMontantAEmprunterColumn(columnIndex)) {
-      return echeance.getCapitalRestantAEmprunter();
+      return getRoundedValueForDisplay(echeance.getCapitalRestantARembourser());
     }
     return BAD_LOGIC;
   }

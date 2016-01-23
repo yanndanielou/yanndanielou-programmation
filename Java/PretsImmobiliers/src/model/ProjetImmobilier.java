@@ -23,6 +23,7 @@ public class ProjetImmobilier {
 
   public Emprunt addEmprunt() {
     Emprunt newEmprunt = new Emprunt();
+    newEmprunt.modifyCapitalEmprunte(getCapitalRestantAEmprunter());
     emprunts.add(newEmprunt);
     return newEmprunt;
   }
@@ -43,6 +44,21 @@ public class ProjetImmobilier {
       return newEmprunt;
     }
   */
+
+  public double getCapitalEmprunte() {
+    double capitalEmprunte = 0;
+    for (Emprunt emprunt : emprunts) {
+      capitalEmprunte += emprunt.getCapitalEmprunte();
+    }
+    return capitalEmprunte;
+  }
+
+  public double getCapitalRestantAEmprunter() {
+    double capitalEmprunte = getCapitalEmprunte();
+    double capitalRestanteAEmprunter = realEstate.getPrixNetAcheteur() - capitalEmprunte - realEstate.getApportPersonnel() + realEstate.getFraisNotaire();
+    return Math.max(capitalRestanteAEmprunter, 0L);
+  }
+
   public double getMontantTotalInterets() {
     double montantTotalInterets = 0;
     for (Emprunt emprunt : emprunts) {

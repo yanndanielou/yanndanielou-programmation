@@ -54,6 +54,9 @@ public class Emprunt {
       while (capitalRestantARembourser > 0) {
         double montantInteret = capitalRestantARembourser * tauxPeriodique;
         double montantCapital = Math.min(mensualiteHorsAssurance - montantInteret, capitalRestantARembourser);
+        if (montantCapital < 0) {
+          return;
+        }
         Echeance echeance = new Echeance(this, capitalRestantARembourser, montantCapital, montantInteret);
         capitalRestantARembourser -= montantCapital;
         echeances.add(echeance);

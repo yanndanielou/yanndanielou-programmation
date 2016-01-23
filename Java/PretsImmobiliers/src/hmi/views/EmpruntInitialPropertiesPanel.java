@@ -42,6 +42,8 @@ public class EmpruntInitialPropertiesPanel extends JPanel implements DocumentLis
     loanViewsMediator = LoanViewsMediator.getInstance();
     createWidgets();
     placeWidgets();
+    double capitalEmprunte = emprunt.getCapitalEmprunte();
+    capitalEmprunteInput.setValue(capitalEmprunte);
   }
 
   protected void createWidgets() {
@@ -141,14 +143,10 @@ public class EmpruntInitialPropertiesPanel extends JPanel implements DocumentLis
 
   public void refresh() {
     if (!emprunt.isMensualiteHorsAssuranceFilled() && emprunt.getMensualiteHorsAssurance() != null) {
-      mensualiteHorsAssuranceInput.getDocument().removeDocumentListener(this);
-      mensualiteHorsAssuranceInput.setValue(emprunt.getMensualiteHorsAssurance());
-      mensualiteHorsAssuranceInput.getDocument().addDocumentListener(this);
+      mensualiteHorsAssuranceInput.changeValueWithoutCallingObservers(emprunt.getMensualiteHorsAssurance(), this);
     }
     if (!emprunt.isNombreEcheancesFilled() && emprunt.getActualNombreEcheances() > 0) {
-      nombreEcheancesInput.getDocument().removeDocumentListener(this);
-      nombreEcheancesInput.setValue(emprunt.getActualNombreEcheances());
-      nombreEcheancesInput.getDocument().addDocumentListener(this);
+      nombreEcheancesInput.changeValueWithoutCallingObservers(emprunt.getActualNombreEcheances(), this);
     }
   }
 }

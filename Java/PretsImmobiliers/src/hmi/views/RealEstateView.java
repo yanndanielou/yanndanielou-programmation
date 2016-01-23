@@ -44,6 +44,7 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
     fraisAgenceInput.getDocument().addDocumentListener(this);
     apportPersonnelLabel = new JLabel("Apport personnel");
     apportPersonnelInput = new MoneyTextField(NumberFormat.getNumberInstance());
+    apportPersonnelInput.getDocument().addDocumentListener(this);
     fraisNotaireLabel = new JLabel("Frais notaire");
     fraisNotaireValue = new JLabel();
   }
@@ -125,7 +126,9 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
   }
 
   private void updateFraisNotaireValue() {
-    fraisNotaireValue.setText(String.valueOf(projetImmobilier.getRealEstate().getFraisNotaire()));
+    double fraisNotaire = projetImmobilier.getRealEstate().getFraisNotaire();
+    String fraisNotairesAffiches = String.valueOf(fraisNotaire);
+    fraisNotaireValue.setText(fraisNotairesAffiches);
   }
 
 }

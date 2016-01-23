@@ -4,9 +4,7 @@ import static Core.StringUtils.*;
 
 import java.text.NumberFormat;
 
-import javax.swing.JFormattedTextField;
-
-public class NumberTextField extends JFormattedTextField {
+public class NumberTextField extends TextField {
 
   private static final long serialVersionUID = 685178584720700695L;
 
@@ -21,6 +19,9 @@ public class NumberTextField extends JFormattedTextField {
     } else if (valueAsObject instanceof Integer) {
       Integer valueAsInteger = (Integer) valueAsObject;
       return valueAsInteger;
+    } else if (getValueAsLong() != null) {
+      long valueAsLong = getValueAsLong();
+      return (int) valueAsLong;
     }
     return null;
   }
