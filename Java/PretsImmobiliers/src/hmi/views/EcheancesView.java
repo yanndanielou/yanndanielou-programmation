@@ -34,7 +34,7 @@ public class EcheancesView extends ProjetImmobilierBaseView {
   }
 
   @Override
-  protected void placeWidgets() {
+  protected void placeWidgetsAtInit() {
     setLayout(new BorderLayout());
     add(title, BorderLayout.NORTH);
     add(new JScrollPane(echeancesTable), BorderLayout.CENTER);

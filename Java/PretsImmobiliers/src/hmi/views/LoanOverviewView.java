@@ -2,11 +2,12 @@ package hmi.views;
 
 import hmi.widgets.DoubleValueLabel;
 
-import java.awt.GridLayout;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 import javax.swing.JLabel;
 
-public class LoanOverviewView extends ProjetImmobilierBaseView {
+public class LoanOverviewView extends ProjetImmobilierBaseView implements ComponentListener {
   private static final long serialVersionUID = -3015965288824537079L;
 
   private static final LoanOverviewView INSTANCE = new LoanOverviewView();
@@ -22,6 +23,8 @@ public class LoanOverviewView extends ProjetImmobilierBaseView {
 
   private LoanOverviewView() {
     loanViewsMediator.setLoanOverviewView(this);
+    addComponentListener(this);
+
     // setBackground(Color.BLUE);
   }
 
@@ -30,10 +33,18 @@ public class LoanOverviewView extends ProjetImmobilierBaseView {
   }
 
   @Override
-  protected void placeWidgets() {
-    int columns = 2;
-    int rows = 4;
-    setLayout(new GridLayout(rows, columns));
+  protected void placeWidgetsAtInit() {
+    setLayout(null);
+    addWidgets();
+    replaceWidgets();
+  }
+
+  private void replaceWidgets() {
+    resizeWidgets();
+    placeWidgetsWithoutLayout();
+  }
+
+  private void addWidgets() {
     add(montantTotalEmprunteLabel);
     add(montantTotalEmprunteValue);
     add(montantTotalInteretsLabel);
@@ -42,6 +53,39 @@ public class LoanOverviewView extends ProjetImmobilierBaseView {
     add(montantTotalAssurancesValue);
     add(fraisNotaireLabel);
     add(fraisNotaireValue);
+  }
+
+  private void resizeWidgets() {
+    setLabelSize(montantTotalEmprunteLabel);
+    setLabelSize(montantTotalEmprunteValue);
+
+    setLabelSize(montantTotalInteretsLabel);
+    setLabelSize(montantTotalInteretsValue);
+
+    setLabelSize(montantTotalAssurancesLabel);
+    setLabelSize(montantTotalAssurancesValue);
+
+    setLabelSize(fraisNotaireLabel);
+    setLabelSize(fraisNotaireValue);
+  }
+
+  private void placeWidgetsWithoutLayout() {
+    int nombreElements = getComponentCount();
+    int nombreChampsARemplir = nombreElements / 2;
+    int margeRestante = getWidth() - 2 * horizontal_margin_from_component_and_first_widgets - nombreChampsARemplir * marginBetweenLabelAndValue - getTotalComponentWidth();
+    int margeEntreInputs = margeRestante / nombreChampsARemplir;
+
+    montantTotalEmprunteLabel.setLocation(horizontal_margin_from_component_and_first_widgets, vertical_margin_from_component_and_first_widgets);
+    montantTotalEmprunteValue.setLocation(montantTotalEmprunteLabel.getX() + montantTotalEmprunteLabel.getWidth() + marginBetweenLabelAndValue, vertical_margin_from_component_and_first_widgets);
+
+    montantTotalInteretsLabel.setLocation(montantTotalEmprunteValue.getX() + montantTotalEmprunteValue.getWidth() + margeEntreInputs, vertical_margin_from_component_and_first_widgets);
+    montantTotalInteretsValue.setLocation(montantTotalInteretsLabel.getX() + montantTotalInteretsLabel.getWidth() + marginBetweenLabelAndValue, vertical_margin_from_component_and_first_widgets);
+
+    montantTotalAssurancesLabel.setLocation(montantTotalInteretsValue.getX() + montantTotalInteretsValue.getWidth() + margeEntreInputs, vertical_margin_from_component_and_first_widgets);
+    montantTotalAssurancesValue.setLocation(montantTotalAssurancesLabel.getX() + montantTotalAssurancesLabel.getWidth() + marginBetweenLabelAndValue, vertical_margin_from_component_and_first_widgets);
+
+    fraisNotaireLabel.setLocation(montantTotalAssurancesValue.getX() + montantTotalAssurancesValue.getWidth() + margeEntreInputs, vertical_margin_from_component_and_first_widgets);
+    fraisNotaireValue.setLocation(fraisNotaireLabel.getX() + fraisNotaireLabel.getWidth() + marginBetweenLabelAndValue, vertical_margin_from_component_and_first_widgets);
   }
 
   @Override
@@ -92,4 +136,22 @@ public class LoanOverviewView extends ProjetImmobilierBaseView {
     montantTotalEmprunteValue.setTextWithRoundedValue(capitalEmprunte);
   }
 
+  @Override
+  public void componentResized(ComponentEvent event) {
+    if (event.getComponent() == this) {
+      replaceWidgets();
+    }
+  }
+
+  @Override
+  public void componentMoved(ComponentEvent e) {
+  }
+
+  @Override
+  public void componentShown(ComponentEvent e) {
+  }
+
+  @Override
+  public void componentHidden(ComponentEvent e) {
+  }
 }

@@ -41,7 +41,7 @@ public class EmpruntsInitiauxPropertiesView extends ProjetImmobilierBaseView imp
   }
 
   @Override
-  protected void placeWidgets() {
+  protected void placeWidgetsAtInit() {
     setLayout(new BorderLayout());
     add(title, BorderLayout.NORTH);
     add(empruntsInitauxContainerPanel, BorderLayout.CENTER);
@@ -62,7 +62,7 @@ public class EmpruntsInitiauxPropertiesView extends ProjetImmobilierBaseView imp
 
   public void redraw() {
     removeAll();
-    placeWidgets();
+    placeWidgetsAtInit();
   }
 
   @Override

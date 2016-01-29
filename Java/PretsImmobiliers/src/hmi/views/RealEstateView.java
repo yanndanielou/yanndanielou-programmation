@@ -1,7 +1,6 @@
 package hmi.views;
 
 import hmi.widgets.MoneyTextField;
-import hmi.widgets.TextField;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -18,11 +17,6 @@ import javax.swing.text.Document;
 public class RealEstateView extends ProjetImmobilierBaseView implements DocumentListener, ComponentListener {
 
   private static final long serialVersionUID = 863212423235558907L;
-
-  public static final int marginBetweenLabelAndValue = 5;
-  public static final int horizontal_margin_from_component_and_first_widgets = 5;
-  public static final int vertical_margin_from_component_and_first_widgets = 5;
-  public static final int widget_height = 20;
 
   private static final RealEstateView INSTANCE = new RealEstateView();
 
@@ -62,10 +56,13 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
   }
 
   @Override
-  protected void placeWidgets() {
-    // placeWidgetsGridLayout();
+  protected void placeWidgetsAtInit() {
     setLayout(null);
     addWidgets();
+    replaceWidgets();
+  }
+
+  private void replaceWidgets() {
     resizeWidgets();
     placeWidgetsWithoutLayout();
   }
@@ -103,7 +100,7 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
   private void placeWidgetsWithoutLayout() {
     int nombreElements = getComponentCount();
     int nombreChampsARemplir = nombreElements / 2;
-    int margeRestante = getWidth() - 2 * horizontal_margin_from_component_and_first_widgets - nombreChampsARemplir * marginBetweenLabelAndValue - prixNetAcheteurLabel.getWidth() - prixNetAcheteurInput.getWidth() - fraisAgenceLabel.getWidth() - fraisAgenceInput.getWidth() - apportPersonnelLabel.getWidth() - apportPersonnelInput.getWidth() - fraisNotaireLabel.getWidth() - fraisNotaireInput.getWidth();
+    int margeRestante = getWidth() - 2 * horizontal_margin_from_component_and_first_widgets - nombreChampsARemplir * marginBetweenLabelAndValue - getTotalComponentWidth();
     int margeEntreInputs = margeRestante / nombreChampsARemplir;
 
     prixNetAcheteurLabel.setLocation(horizontal_margin_from_component_and_first_widgets, vertical_margin_from_component_and_first_widgets);
@@ -117,14 +114,6 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
 
     fraisNotaireLabel.setLocation(apportPersonnelInput.getX() + apportPersonnelInput.getWidth() + margeEntreInputs, vertical_margin_from_component_and_first_widgets);
     fraisNotaireInput.setLocation(fraisNotaireLabel.getX() + fraisNotaireLabel.getWidth() + marginBetweenLabelAndValue, vertical_margin_from_component_and_first_widgets);
-  }
-
-  private void setTextFieldSize(TextField textField, int numberOfDigitsMaxValue) {
-    textField.setSize(numberOfDigitsMaxValue * 10, widget_height);
-  }
-
-  private void setLabelSize(JLabel label) {
-    label.setSize((int) label.getPreferredSize().getWidth(), widget_height);
   }
 
   protected void placeWidgetsGridLayout() {
@@ -227,8 +216,7 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
   public void componentResized(ComponentEvent event) {
     if (event.getComponent() == this) {
       System.out.println("Main view: componentResized:" + event);
-      resizeWidgets();
-      placeWidgetsWithoutLayout();
+      replaceWidgets();
     }
   }
 
@@ -242,7 +230,6 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
 
   @Override
   public void componentHidden(ComponentEvent e) {
-
   }
 
 }
