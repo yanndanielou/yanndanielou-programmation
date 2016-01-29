@@ -1,12 +1,15 @@
 package hmi.views;
 
 import hmi.LoanViewsMediator;
+import hmi.widgets.DoubleValueLabel;
 import hmi.widgets.MoneyTextField;
 import hmi.widgets.NumberTextField;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.text.NumberFormat;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,6 +35,10 @@ public class EmpruntInitialPropertiesPanel extends JPanel implements DocumentLis
   private MoneyTextField mensualiteHorsAssuranceInput;
   private JLabel nombreEcheancesLabel;
   private NumberTextField nombreEcheancesInput;
+  private JLabel montantInteretsLabel;
+  private DoubleValueLabel montantInteretsValue;
+  private JLabel montantAssurancesLabel;
+  private DoubleValueLabel montantAssurancesValue;
 
   public EmpruntInitialPropertiesPanel(Emprunt emprunt) {
     this.emprunt = emprunt;
@@ -44,6 +51,7 @@ public class EmpruntInitialPropertiesPanel extends JPanel implements DocumentLis
     placeWidgets();
     double capitalEmprunte = emprunt.getCapitalEmprunte();
     capitalEmprunteInput.setValue(capitalEmprunte);
+    setBorder(BorderFactory.createLineBorder(Color.black));
   }
 
   protected void createWidgets() {
@@ -51,7 +59,9 @@ public class EmpruntInitialPropertiesPanel extends JPanel implements DocumentLis
     capitalEmprunteInput = new MoneyTextField(NumberFormat.getNumberInstance());
     capitalEmprunteInput.getDocument().addDocumentListener(this);
     annualInterestRateLabel = new JLabel("Taux intérêt annuel");
-    annualInterestRateInput = new NumberTextField(NumberFormat.getPercentInstance());
+    NumberFormat percentInstance = NumberFormat.getPercentInstance();
+    percentInstance.setMaximumFractionDigits(3);
+    annualInterestRateInput = new NumberTextField(percentInstance);
     annualInterestRateInput.getDocument().addDocumentListener(this);
     mensualiteHorsAssuranceLabel = new JLabel("Mensualité");
     mensualiteHorsAssuranceInput = new MoneyTextField(NumberFormat.getNumberInstance());
@@ -59,11 +69,15 @@ public class EmpruntInitialPropertiesPanel extends JPanel implements DocumentLis
     nombreEcheancesLabel = new JLabel("Nombre Echeances");
     nombreEcheancesInput = new NumberTextField(NumberFormat.getIntegerInstance());
     nombreEcheancesInput.getDocument().addDocumentListener(this);
+    montantInteretsLabel = new JLabel("Montant total interets");
+    montantInteretsValue = new DoubleValueLabel();
+    montantAssurancesLabel = new JLabel("Montant total assurances");
+    montantAssurancesValue = new DoubleValueLabel();
   }
 
   protected void placeWidgets() {
     int columns = 2;
-    int rows = 4;
+    int rows = 6;
     setLayout(new GridLayout(rows, columns));
     add(capitalEmprunteLabel);
     add(capitalEmprunteInput);
@@ -73,6 +87,10 @@ public class EmpruntInitialPropertiesPanel extends JPanel implements DocumentLis
     add(mensualiteHorsAssuranceInput);
     add(nombreEcheancesLabel);
     add(nombreEcheancesInput);
+    add(montantInteretsLabel);
+    add(montantInteretsValue);
+    add(montantAssurancesLabel);
+    add(montantAssurancesValue);
   }
 
   private void onCapitalEmprunteModified(double capitalEmprunte) {
@@ -141,6 +159,16 @@ public class EmpruntInitialPropertiesPanel extends JPanel implements DocumentLis
     return emprunt;
   }
 
+  public void refreshMontantInterets() {
+    double montantTotalInterets = emprunt.getMontantTotalInterets();
+    montantInteretsValue.setTextWithRoundedValue(montantTotalInterets);
+  }
+
+  public void refreshMontantAssurance() {
+    double montantTotalAssurance = emprunt.getMontantTotalAssurance();
+    montantAssurancesValue.setTextWithRoundedValue(montantTotalAssurance);
+  }
+
   public void refresh() {
     if (!emprunt.isMensualiteHorsAssuranceFilled() && emprunt.getMensualiteHorsAssurance() != null) {
       mensualiteHorsAssuranceInput.changeValueWithoutCallingObservers(emprunt.getMensualiteHorsAssurance(), this);
@@ -148,5 +176,7 @@ public class EmpruntInitialPropertiesPanel extends JPanel implements DocumentLis
     if (!emprunt.isNombreEcheancesFilled() && emprunt.getActualNombreEcheances() > 0) {
       nombreEcheancesInput.changeValueWithoutCallingObservers(emprunt.getActualNombreEcheances(), this);
     }
+    refreshMontantInterets();
+    refreshMontantAssurance();
   }
 }

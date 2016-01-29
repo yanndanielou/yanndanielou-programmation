@@ -34,11 +34,19 @@ public class LoanViewsMediator {
   public void onPrixNetAcheteurModified(int prixNetAcheteur) {
     projetImmobilier.getRealEstate().setPrixNetAcheteur(prixNetAcheteur);
     realEstateView.afterPrixNetAcheteurModified();
+    loanOverviewView.afterPrixNetAcheteurModified();
   }
 
   public void onFraisAgenceModified(int fraisAgence) {
     projetImmobilier.getRealEstate().setFraisAgence(fraisAgence);
     realEstateView.afterFraisAgenceModified();
+    loanOverviewView.afterFraisAgenceModified();
+  }
+
+  public void onFraisNotaireModified(int fraisNotaire) {
+    projetImmobilier.getRealEstate().setFraisNotaire(fraisNotaire);
+    realEstateView.afterFraisNotaireModified();
+    loanOverviewView.afterFraisNotaireModified();
   }
 
   public void onEmpruntAdded() {

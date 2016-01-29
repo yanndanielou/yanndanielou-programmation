@@ -5,12 +5,14 @@ public class Echeance {
   private double capitalRestantAEmprunter;
   private double montantCapital;
   private double montantInteret;
+  private double montantAssurance;
 
   public Echeance(Emprunt emprunt, double capitalRestantAEmprunter, double montantCapital, double montantInteret) {
     this.emprunt = emprunt;
     this.capitalRestantAEmprunter = capitalRestantAEmprunter;
     this.montantCapital = montantCapital;
     this.montantInteret = montantInteret;
+    montantAssurance = 0;
   }
 
   public double getMensualiteHorsAssurance() {
@@ -27,5 +29,9 @@ public class Echeance {
 
   public double getMontantInteret() {
     return montantInteret;
+  }
+
+  public double getMontantAssurance() {
+    return montantAssurance;
   }
 }

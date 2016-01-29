@@ -1,5 +1,7 @@
 package hmi;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
@@ -7,6 +9,7 @@ import javax.swing.table.AbstractTableModel;
 import model.Echeance;
 import model.Emprunt;
 import model.ProjetImmobilier;
+import Core.DisplayUtils;
 
 public class EcheancesTableModel extends AbstractTableModel {
   private static final long serialVersionUID = 508691973838270560L;
@@ -62,7 +65,7 @@ public class EcheancesTableModel extends AbstractTableModel {
   private boolean isColumnParEmprunt(int column, int columnToCheck) {
     boolean empruntColumn = isEmpruntColumn(column);
     if (empruntColumn) {
-      int columnByEmpruntIndex = column - NOMBRE_COLONNES_FIXES;
+      int columnByEmpruntIndex = (column - NOMBRE_COLONNES_FIXES) % PAR_EMPRUNT_NOMBRE_COLUMNS;
       return columnByEmpruntIndex == columnToCheck;
     } else {
       return false;
@@ -118,31 +121,34 @@ public class EcheancesTableModel extends AbstractTableModel {
   @Override
   public Object getValueAt(int rowIndex, int columnIndex) {
     if (isEcheanceNumberColumn(columnIndex)) {
-      return rowIndex;
+      return rowIndex + 1;
     }
     if (isEcheanceDateColumn(columnIndex)) {
-      return rowIndex;
+      Date now = new Date();
+      Calendar calendar = Calendar.getInstance();
+      calendar.setTime(now);
+      calendar.add(Calendar.MONTH, rowIndex + 1);
+      Date time = calendar.getTime();
+      int echeanceYear = time.getYear() + 1900;
+      int echeanceMonth = time.getMonth() + 1;
+      String echeanceDate = "" + echeanceYear + "/" + echeanceMonth;
+      return echeanceDate;
     }
     Emprunt emprunt = getEmprunt(columnIndex);
     Echeance echeance = emprunt.getEcheances().get(rowIndex);
     if (isMensualiteHorsAssuranceColumn(columnIndex)) {
-      return getRoundedValueForDisplay(echeance.getMensualiteHorsAssurance());
+      return DisplayUtils.getRoundedValueForDisplay(echeance.getMensualiteHorsAssurance());
     }
     if (isMontantCapitalColumn(columnIndex)) {
-      return getRoundedValueForDisplay(echeance.getMontantCapital());
+      return DisplayUtils.getRoundedValueForDisplay(echeance.getMontantCapital());
     }
     if (isMontantInteretsColumn(columnIndex)) {
-      return getRoundedValueForDisplay(echeance.getMontantInteret());
+      return DisplayUtils.getRoundedValueForDisplay(echeance.getMontantInteret());
     }
     if (isCapitalMontantAEmprunterColumn(columnIndex)) {
-      return getRoundedValueForDisplay(echeance.getCapitalRestantARembourser());
+      return DisplayUtils.getRoundedValueForDisplay(echeance.getCapitalRestantARembourser());
     }
     return BAD_LOGIC;
   }
 
-  private double getRoundedValueForDisplay(double value) {
-    int valueFoix10 = (int) (value * 100);
-    double roundedValue = ((double) valueFoix10) / 100;
-    return roundedValue;
-  }
 }

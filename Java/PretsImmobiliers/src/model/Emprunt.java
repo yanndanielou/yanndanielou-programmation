@@ -82,6 +82,14 @@ public class Emprunt {
     return montantTotalInterets;
   }
 
+  public double getMontantTotalAssurance() {
+    double montantTotalAssurance = 0;
+    for (Echeance echeance : echeances) {
+      montantTotalAssurance += echeance.getMontantAssurance();
+    }
+    return montantTotalAssurance;
+  }
+
   public double getCapitalEmprunte() {
     return capitalEmprunte;
   }

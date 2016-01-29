@@ -25,6 +25,7 @@ public class EmpruntsInitiauxPropertiesView extends ProjetImmobilierBaseView imp
   private EmpruntsInitiauxPropertiesView() {
     empruntInitiauxPropertyPanels = new ArrayList<EmpruntInitialPropertiesPanel>();
     loanViewsMediator.setLoanPropertiesView(this);
+    //setBackground(Color.RED);
   }
 
   public static EmpruntsInitiauxPropertiesView getInstance() {

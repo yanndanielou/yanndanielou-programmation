@@ -27,4 +27,12 @@ public abstract class ProjetImmobilierBaseView extends JPanel {
 
   protected abstract void placeWidgets();
 
+  public void printLocationAndSize() {
+    String viewType = getClass().getSimpleName();
+    System.out.println(viewType + ": x=" + getX() + ", y=" + getY() + ", width:" + getWidth() + ", height:" + getHeight());
+  }
+
+  public Integer getRequiredHeight() {
+    return null;
+  }
 }
