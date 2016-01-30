@@ -239,11 +239,11 @@ public class EmpruntInitialPropertiesPanel extends ProjetImmobilierBaseView impl
 
   @Override
   public Integer getRequiredHeight() {
-    return montantAssurancesValue.getBottom() + horizontal_margin_from_component_and_last_widgets;
+    return montantAssurancesValue.getBottom() + vertical_margin_from_component_and_last_widgets;
   }
 
   @Override
   public Integer getRequiredWidth() {
-    return getRightOfComponentWithBiggestRight();
+    return getRightOfComponentWithBiggestRight() + horizontal_margin_from_component_and_last_widgets;
   }
 }

@@ -1,5 +1,7 @@
 package hmi.widgets;
 
+import hmi.util.WidgetUtil;
+
 import javax.swing.JLabel;
 
 public class Label extends JLabel {
@@ -14,10 +16,14 @@ public class Label extends JLabel {
   }
 
   public int getRight() {
-    return getX() + getWidth();
+    return WidgetUtil.getWidgetRight(this);
   }
 
   public int getBottom() {
-    return getY() + getHeight();
+    return WidgetUtil.getWidgetBottom(this);
+  }
+
+  public void setWidth(int width) {
+    WidgetUtil.setWidgetWidth(this, width);
   }
 }

@@ -1,5 +1,7 @@
 package hmi.widgets;
 
+import hmi.util.WidgetUtil;
+
 import java.text.NumberFormat;
 
 import javax.swing.JFormattedTextField;
@@ -20,14 +22,14 @@ public class TextField extends JFormattedTextField {
   }
 
   public int getRight() {
-    return getX() + getWidth();
+    return WidgetUtil.getWidgetRight(this);
   }
 
   public int getBottom() {
-    return getY() + getHeight();
+    return WidgetUtil.getWidgetBottom(this);
   }
 
   public void setWidth(int width) {
-    setSize(width, getHeight());
+    WidgetUtil.setWidgetWidth(this, width);
   }
 }
