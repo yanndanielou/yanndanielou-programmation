@@ -121,7 +121,8 @@ public class EcheancesTableModel extends AbstractTableModel {
   @Override
   public int getColumnCount() {
     List<Emprunt> emprunts = projetImmobilier.getEmprunts();
-    return NOMBRE_COLONNES_FIXES + emprunts.size() * PAR_EMPRUNT_NOMBRE_COLUMNS - (emprunts.isEmpty() ? 0 : 1);
+    int noSeparatorForLastEmprunt = 1;
+    return NOMBRE_COLONNES_FIXES + emprunts.size() * PAR_EMPRUNT_NOMBRE_COLUMNS - noSeparatorForLastEmprunt;
   }
 
   @Override
