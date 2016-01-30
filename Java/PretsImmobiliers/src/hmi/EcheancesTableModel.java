@@ -41,7 +41,7 @@ public class EcheancesTableModel extends AbstractTableModel {
     if (!isEmpruntColumn(column)) {
       return null;
     }
-    int empruntNumber = 0;
+    int empruntNumber = (column - NOMBRE_COLONNES_FIXES) / PAR_EMPRUNT_NOMBRE_COLUMNS;
     List<Emprunt> emprunts = projetImmobilier.getEmprunts();
     return emprunts.get(empruntNumber);
   }
@@ -135,18 +135,23 @@ public class EcheancesTableModel extends AbstractTableModel {
       return echeanceDate;
     }
     Emprunt emprunt = getEmprunt(columnIndex);
-    Echeance echeance = emprunt.getEcheances().get(rowIndex);
-    if (isMensualiteHorsAssuranceColumn(columnIndex)) {
-      return DisplayUtils.getRoundedValueForDisplay(echeance.getMensualiteHorsAssurance());
+    if (emprunt.getEcheances().size() > rowIndex) {
+      Echeance echeance = emprunt.getEcheances().get(rowIndex);
+      if (isMensualiteHorsAssuranceColumn(columnIndex)) {
+        return DisplayUtils.getRoundedValueForDisplay(echeance.getMensualiteHorsAssurance());
+      }
+      if (isMontantCapitalColumn(columnIndex)) {
+        return DisplayUtils.getRoundedValueForDisplay(echeance.getMontantCapital());
+      }
+      if (isMontantInteretsColumn(columnIndex)) {
+        return DisplayUtils.getRoundedValueForDisplay(echeance.getMontantInteret());
+      }
+      if (isCapitalMontantAEmprunterColumn(columnIndex)) {
+        return DisplayUtils.getRoundedValueForDisplay(echeance.getCapitalRestantARembourser());
+      }
     }
-    if (isMontantCapitalColumn(columnIndex)) {
-      return DisplayUtils.getRoundedValueForDisplay(echeance.getMontantCapital());
-    }
-    if (isMontantInteretsColumn(columnIndex)) {
-      return DisplayUtils.getRoundedValueForDisplay(echeance.getMontantInteret());
-    }
-    if (isCapitalMontantAEmprunterColumn(columnIndex)) {
-      return DisplayUtils.getRoundedValueForDisplay(echeance.getCapitalRestantARembourser());
+    else {
+      return "";
     }
     return BAD_LOGIC;
   }

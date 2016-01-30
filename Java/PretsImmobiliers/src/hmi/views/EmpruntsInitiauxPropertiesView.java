@@ -2,7 +2,6 @@ package hmi.views;
 
 import hmi.widgets.Label;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
@@ -51,12 +50,13 @@ public class EmpruntsInitiauxPropertiesView extends ProjetImmobilierBaseView imp
   private void fillEmprunts() {
     empruntsInitauxContainerPanel.removeAll();
     empruntsInitauxContainerPanel.setLayout(null);
-    empruntsInitauxContainerPanel.setBackground(Color.RED);
+    //  empruntsInitauxContainerPanel.setBackground(Color.RED);
     if (empruntInitiauxPropertyPanels != null) {
-      for (EmpruntInitialPropertiesPanel empruntInitialPropertiesPanel : empruntInitiauxPropertyPanels) {
+      for (int i = 0; i < empruntInitiauxPropertyPanels.size(); i++) {
+        EmpruntInitialPropertiesPanel empruntInitialPropertiesPanel = empruntInitiauxPropertyPanels.get(i);
         empruntsInitauxContainerPanel.add(empruntInitialPropertiesPanel);
         empruntInitialPropertiesPanel.setSize(empruntsInitauxContainerPanel.getWidth(), empruntInitialPropertiesPanel.getRequiredHeight());
-        empruntInitialPropertiesPanel.setLocation(0, 0);
+        empruntInitialPropertiesPanel.setLocation(0, i * empruntInitialPropertiesPanel.getHeight() + vertial_margin_beween_widgets);
       }
     }
   }
