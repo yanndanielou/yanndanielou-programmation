@@ -3,6 +3,7 @@ package hmi.views;
 import hmi.EcheancesTableModel;
 
 import java.awt.BorderLayout;
+import java.awt.event.ComponentEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -46,5 +47,12 @@ public class EcheancesView extends ProjetImmobilierBaseView {
 
   public void afterEmpruntModified() {
     echeancesTableModel.fireTableStructureChanged();
+  }
+
+  @Override
+  public void componentResized(ComponentEvent event) {
+    if (event.getComponent() == this) {
+      replaceWidgets();
+    }
   }
 }

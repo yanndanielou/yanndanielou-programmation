@@ -5,7 +5,6 @@ import hmi.widgets.MoneyTextField;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.text.NumberFormat;
 
 import javax.swing.JFormattedTextField;
@@ -14,7 +13,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.Document;
 
-public class RealEstateView extends ProjetImmobilierBaseView implements DocumentListener, ComponentListener {
+public class RealEstateView extends ProjetImmobilierBaseView implements DocumentListener {
 
   private static final long serialVersionUID = 863212423235558907L;
 
@@ -32,7 +31,6 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
   private RealEstateView() {
     loanViewsMediator.setRealEstateView(this);
     setBackground(Color.PINK);
-    addComponentListener(this);
   }
 
   public static RealEstateView getInstance() {
@@ -62,12 +60,14 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
     replaceWidgets();
   }
 
-  private void replaceWidgets() {
+  @Override
+  protected void replaceWidgets() {
     resizeWidgets();
     placeWidgetsWithoutLayout();
   }
 
-  private void addWidgets() {
+  @Override
+  protected void addWidgets() {
     add(prixNetAcheteurLabel);
     add(prixNetAcheteurInput);
     add(fraisAgenceLabel);
@@ -78,7 +78,8 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
     add(fraisNotaireInput);
   }
 
-  private void resizeWidgets() {
+  @Override
+  protected void resizeWidgets() {
     setLabelSize(prixNetAcheteurLabel);
     setTextFieldSize(prixNetAcheteurInput, 8);
 
@@ -209,27 +210,14 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
     double fraisNotaire = projetImmobilier.getRealEstate().getFraisNotaire();
     String fraisNotairesAffiches = String.valueOf(fraisNotaire);
     fraisNotaireInput.setText(fraisNotairesAffiches);
-    fraisNotaireInput.getDocument().removeDocumentListener(this);
+    fraisNotaireInput.getDocument().addDocumentListener(this);
   }
 
   @Override
   public void componentResized(ComponentEvent event) {
     if (event.getComponent() == this) {
-      System.out.println("Main view: componentResized:" + event);
       replaceWidgets();
     }
-  }
-
-  @Override
-  public void componentMoved(ComponentEvent e) {
-  }
-
-  @Override
-  public void componentShown(ComponentEvent e) {
-  }
-
-  @Override
-  public void componentHidden(ComponentEvent e) {
   }
 
 }

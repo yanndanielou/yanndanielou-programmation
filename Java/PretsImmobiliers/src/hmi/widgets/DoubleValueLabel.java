@@ -1,12 +1,17 @@
 package hmi.widgets;
 
-import javax.swing.JLabel;
-
 import Core.DisplayUtils;
 
-public class DoubleValueLabel extends JLabel {
+public class DoubleValueLabel extends Label {
 
   private static final long serialVersionUID = 6667073742788924547L;
+
+  public DoubleValueLabel() {
+  }
+
+  public DoubleValueLabel(String text) {
+    super(text);
+  }
 
   public void setTextWithRoundedValue(double valueToRound) {
     double roundedValueForDisplay = DisplayUtils.getRoundedValueForDisplay(valueToRound);

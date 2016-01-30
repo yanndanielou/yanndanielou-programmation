@@ -2,7 +2,6 @@ package hmi.views;
 
 import hmi.LoanViewsMediator;
 
-import java.awt.BorderLayout;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
@@ -38,18 +37,6 @@ public class MainView extends JFrame implements ComponentListener {
     placeViewsWithGridBagLayout();
   }
 
-  private void placeViewsWithBorderLayout() {
-    removeComponentListener(this);
-
-    getContentPane().setLayout(new BorderLayout());
-
-    getContentPane().add(RealEstateView.getInstance(), BorderLayout.NORTH);
-    getContentPane().add(EcheancesView.getInstance(), BorderLayout.CENTER);
-    getContentPane().add(EmpruntsInitiauxPropertiesView.getInstance(), BorderLayout.EAST);
-    getContentPane().add(LoanOverviewView.getInstance(), BorderLayout.SOUTH);
-
-  }
-
   private void placeViewsWithGridBagLayout() {
     //    System.out.println("Main view: placeViews: begin");
 
@@ -64,14 +51,16 @@ public class MainView extends JFrame implements ComponentListener {
     getContentPane().add(realEstateView);
     //    realEstateView.printLocationAndSize();
 
+    EmpruntsInitiauxPropertiesView empruntsInitiauxPropertiesView = EmpruntsInitiauxPropertiesView.getInstance();
+    int echeancesViewWidth = empruntsInitiauxPropertiesView.getRequiredWidth() != null ? empruntsInitiauxPropertiesView.getRequiredWidth() : (int) (getWidth() * 0.2);
+
     EcheancesView echeancesView = EcheancesView.getInstance();
-    echeancesView.setSize((int) (getWidth() * 0.8), (int) (getHeight() * 0.8));
+    echeancesView.setSize(getWidth() - echeancesViewWidth, (int) (getHeight() * 0.8));
     echeancesView.setLocation(0, realEstateView.getHeight());
     getContentPane().add(echeancesView);
     //   echeancesView.printLocationAndSize();
 
-    EmpruntsInitiauxPropertiesView empruntsInitiauxPropertiesView = EmpruntsInitiauxPropertiesView.getInstance();
-    empruntsInitiauxPropertiesView.setSize(getWidth() - echeancesView.getWidth(), echeancesView.getHeight());
+    empruntsInitiauxPropertiesView.setSize(echeancesViewWidth, echeancesView.getHeight());
     empruntsInitiauxPropertiesView.setLocation(echeancesView.getWidth(), realEstateView.getHeight());
     getContentPane().add(empruntsInitiauxPropertiesView);
     //    empruntsInitiauxPropertiesView.printLocationAndSize();
@@ -129,6 +118,10 @@ public class MainView extends JFrame implements ComponentListener {
     setVisible(true);
   }
 
+  public void afterEmpruntCreated() {
+    placeViews();
+  }
+
   @Override
   public void componentResized(ComponentEvent event) {
     if (event.getComponent() == this) {
@@ -154,4 +147,5 @@ public class MainView extends JFrame implements ComponentListener {
   private void printSize() {
     System.out.println("Main view: width:" + getWidth() + ", height:" + getHeight());
   }
+
 }

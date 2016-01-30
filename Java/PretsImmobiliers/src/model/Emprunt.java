@@ -20,24 +20,6 @@ public class Emprunt {
     resetComputedValues();
   }
 
-  /*
-    public Emprunt(double capitalEmprunte, double tauxAnnuel, double mensualiteHorsAssurance) {
-      this(capitalEmprunte, tauxAnnuel);
-      this.mensualiteHorsAssurance = mensualiteHorsAssurance;
-      createEcheances();
-    }
-  public Emprunt(double capitalEmprunte, double tauxAnnuel, int nombreEcheances) {
-    this(capitalEmprunte, tauxAnnuel);
-    mensualiteHorsAssurance = computeEcheanceConstante(nombreEcheances);
-    createEcheances(nombreEcheances);
-  }
-  public Emprunt(Double capitalEmprunte, Double tauxAnnuel) {
-    this.capitalEmprunte = capitalEmprunte;
-    this.tauxAnnuel = tauxAnnuel;
-    tauxPeriodique = tauxAnnuel / NOMBRE_ECHEANCES_PAR_AN;
-  }
-  */
-
   /**
   * Formule du calcul de l'échéance:   {@link http://www.cbanque.com/credit/principe.php}} 
   */

@@ -1,84 +1,112 @@
 package hmi.views;
 
-import hmi.LoanViewsMediator;
 import hmi.widgets.DoubleValueLabel;
+import hmi.widgets.Label;
 import hmi.widgets.MoneyTextField;
 import hmi.widgets.NumberTextField;
 
 import java.awt.Color;
-import java.awt.GridLayout;
+import java.awt.event.ComponentEvent;
 import java.text.NumberFormat;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.Document;
 
 import model.Emprunt;
 
-public class EmpruntInitialPropertiesPanel extends JPanel implements DocumentListener {
+public class EmpruntInitialPropertiesPanel extends ProjetImmobilierBaseView implements DocumentListener {
 
   private static final long serialVersionUID = -5637680529592116720L;
 
-  protected LoanViewsMediator loanViewsMediator;
-
   protected Emprunt emprunt;
 
-  private JLabel capitalEmprunteLabel;
+  private Label capitalEmprunteLabel;
   private MoneyTextField capitalEmprunteInput;
-  private JLabel annualInterestRateLabel;
+  private Label annualInterestRateLabel;
   private NumberTextField annualInterestRateInput;
-  private JLabel mensualiteHorsAssuranceLabel;
+  private Label mensualiteHorsAssuranceLabel;
   private MoneyTextField mensualiteHorsAssuranceInput;
-  private JLabel nombreEcheancesLabel;
+  private Label nombreEcheancesLabel;
   private NumberTextField nombreEcheancesInput;
-  private JLabel montantInteretsLabel;
+  private Label montantInteretsLabel;
   private DoubleValueLabel montantInteretsValue;
-  private JLabel montantAssurancesLabel;
+  private Label montantAssurancesLabel;
   private DoubleValueLabel montantAssurancesValue;
 
   public EmpruntInitialPropertiesPanel(Emprunt emprunt) {
     this.emprunt = emprunt;
-    init();
-  }
-
-  private void init() {
-    loanViewsMediator = LoanViewsMediator.getInstance();
-    createWidgets();
-    placeWidgets();
     double capitalEmprunte = emprunt.getCapitalEmprunte();
     capitalEmprunteInput.setValue(capitalEmprunte);
     setBorder(BorderFactory.createLineBorder(Color.black));
   }
 
+  @Override
+  protected void placeWidgetsAtInit() {
+    setLayout(null);
+    addWidgets();
+    replaceWidgets();
+  }
+
+  @Override
+  protected void replaceWidgets() {
+    resizeWidgets();
+    placeWidgets();
+  }
+
+  @Override
+  protected void resizeWidgets() {
+    setLabelSize(capitalEmprunteLabel);
+    setTextFieldSize(capitalEmprunteInput, 8);
+
+    setLabelSize(annualInterestRateLabel);
+    setTextFieldSize(annualInterestRateInput, 7);
+
+    setLabelSize(mensualiteHorsAssuranceLabel);
+    setTextFieldSize(mensualiteHorsAssuranceInput, 5);
+
+    setLabelSize(nombreEcheancesLabel);
+    setTextFieldSize(nombreEcheancesInput, 3);
+
+    setLabelSize(montantInteretsLabel);
+    setTextFieldSize(montantInteretsValue, 5);
+
+    setLabelSize(montantAssurancesLabel);
+    setTextFieldSize(montantAssurancesValue, 5);
+
+    int widerInput = getWiderComponentWidth(capitalEmprunteInput, annualInterestRateInput, mensualiteHorsAssuranceInput, nombreEcheancesInput);
+    capitalEmprunteInput.setWidth(widerInput);
+    annualInterestRateInput.setWidth(widerInput);
+    mensualiteHorsAssuranceInput.setWidth(widerInput);
+    nombreEcheancesInput.setWidth(widerInput);
+  }
+
+  @Override
   protected void createWidgets() {
-    capitalEmprunteLabel = new JLabel("Capital emprunte");
+    capitalEmprunteLabel = new Label("Capital emprunte");
     capitalEmprunteInput = new MoneyTextField(NumberFormat.getNumberInstance());
     capitalEmprunteInput.getDocument().addDocumentListener(this);
-    annualInterestRateLabel = new JLabel("Taux intérêt annuel");
+    annualInterestRateLabel = new Label("Taux intérêt annuel");
     NumberFormat percentInstance = NumberFormat.getPercentInstance();
     percentInstance.setMaximumFractionDigits(3);
     annualInterestRateInput = new NumberTextField(percentInstance);
     annualInterestRateInput.getDocument().addDocumentListener(this);
-    mensualiteHorsAssuranceLabel = new JLabel("Mensualité");
+    mensualiteHorsAssuranceLabel = new Label("Mensualité");
     mensualiteHorsAssuranceInput = new MoneyTextField(NumberFormat.getNumberInstance());
     mensualiteHorsAssuranceInput.getDocument().addDocumentListener(this);
-    nombreEcheancesLabel = new JLabel("Nombre Echeances");
+    nombreEcheancesLabel = new Label("Nombre Echeances");
     nombreEcheancesInput = new NumberTextField(NumberFormat.getIntegerInstance());
     nombreEcheancesInput.getDocument().addDocumentListener(this);
-    montantInteretsLabel = new JLabel("Montant total interets");
+    montantInteretsLabel = new Label("Montant total interets");
     montantInteretsValue = new DoubleValueLabel();
-    montantAssurancesLabel = new JLabel("Montant total assurances");
+    montantAssurancesLabel = new Label("Montant total assurances");
     montantAssurancesValue = new DoubleValueLabel();
   }
 
-  protected void placeWidgets() {
-    int columns = 2;
-    int rows = 6;
-    setLayout(new GridLayout(rows, columns));
+  @Override
+  protected void addWidgets() {
     add(capitalEmprunteLabel);
     add(capitalEmprunteInput);
     add(annualInterestRateLabel);
@@ -91,6 +119,28 @@ public class EmpruntInitialPropertiesPanel extends JPanel implements DocumentLis
     add(montantInteretsValue);
     add(montantAssurancesLabel);
     add(montantAssurancesValue);
+  }
+
+  protected void placeWidgets() {
+    int widerLabel = getWiderComponentWidth(capitalEmprunteLabel, annualInterestRateLabel, mensualiteHorsAssuranceLabel, nombreEcheancesLabel, montantInteretsLabel, montantAssurancesLabel);
+
+    capitalEmprunteLabel.setLocation(horizontal_margin_from_component_and_first_widgets, vertical_margin_from_component_and_first_widgets);
+    capitalEmprunteInput.setLocation(horizontal_margin_from_component_and_first_widgets + widerLabel + marginBetweenLabelAndValue, capitalEmprunteLabel.getY());
+
+    annualInterestRateLabel.setLocation(horizontal_margin_from_component_and_first_widgets, capitalEmprunteInput.getBottom() + vertial_margin_beween_widgets);
+    annualInterestRateInput.setLocation(horizontal_margin_from_component_and_first_widgets + widerLabel + marginBetweenLabelAndValue, annualInterestRateLabel.getY());
+
+    mensualiteHorsAssuranceLabel.setLocation(horizontal_margin_from_component_and_first_widgets, annualInterestRateInput.getBottom() + vertial_margin_beween_widgets);
+    mensualiteHorsAssuranceInput.setLocation(horizontal_margin_from_component_and_first_widgets + widerLabel + marginBetweenLabelAndValue, mensualiteHorsAssuranceLabel.getY());
+
+    nombreEcheancesLabel.setLocation(horizontal_margin_from_component_and_first_widgets, mensualiteHorsAssuranceInput.getBottom() + vertial_margin_beween_widgets);
+    nombreEcheancesInput.setLocation(horizontal_margin_from_component_and_first_widgets + widerLabel + marginBetweenLabelAndValue, nombreEcheancesLabel.getY());
+
+    montantInteretsLabel.setLocation(horizontal_margin_from_component_and_first_widgets, nombreEcheancesInput.getBottom() + vertial_margin_beween_widgets);
+    montantInteretsValue.setLocation(horizontal_margin_from_component_and_first_widgets + widerLabel + marginBetweenLabelAndValue, montantInteretsLabel.getY());
+
+    montantAssurancesLabel.setLocation(horizontal_margin_from_component_and_first_widgets, montantInteretsValue.getBottom() + vertial_margin_beween_widgets);
+    montantAssurancesValue.setLocation(horizontal_margin_from_component_and_first_widgets + widerLabel + marginBetweenLabelAndValue, montantAssurancesLabel.getY());
   }
 
   private void onCapitalEmprunteModified(double capitalEmprunte) {
@@ -178,5 +228,22 @@ public class EmpruntInitialPropertiesPanel extends JPanel implements DocumentLis
     }
     refreshMontantInterets();
     refreshMontantAssurance();
+  }
+
+  @Override
+  public void componentResized(ComponentEvent event) {
+    if (event.getComponent() == this) {
+      replaceWidgets();
+    }
+  }
+
+  @Override
+  public Integer getRequiredHeight() {
+    return montantAssurancesValue.getBottom() + horizontal_margin_from_component_and_last_widgets;
+  }
+
+  @Override
+  public Integer getRequiredWidth() {
+    return getRightOfComponentWithBiggestRight();
   }
 }

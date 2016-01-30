@@ -3,11 +3,10 @@ package hmi.views;
 import hmi.widgets.DoubleValueLabel;
 
 import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 
 import javax.swing.JLabel;
 
-public class LoanOverviewView extends ProjetImmobilierBaseView implements ComponentListener {
+public class LoanOverviewView extends ProjetImmobilierBaseView {
   private static final long serialVersionUID = -3015965288824537079L;
 
   private static final LoanOverviewView INSTANCE = new LoanOverviewView();
@@ -23,8 +22,6 @@ public class LoanOverviewView extends ProjetImmobilierBaseView implements Compon
 
   private LoanOverviewView() {
     loanViewsMediator.setLoanOverviewView(this);
-    addComponentListener(this);
-
     // setBackground(Color.BLUE);
   }
 
@@ -39,12 +36,14 @@ public class LoanOverviewView extends ProjetImmobilierBaseView implements Compon
     replaceWidgets();
   }
 
-  private void replaceWidgets() {
+  @Override
+  protected void replaceWidgets() {
     resizeWidgets();
     placeWidgetsWithoutLayout();
   }
 
-  private void addWidgets() {
+  @Override
+  protected void addWidgets() {
     add(montantTotalEmprunteLabel);
     add(montantTotalEmprunteValue);
     add(montantTotalInteretsLabel);
@@ -55,7 +54,8 @@ public class LoanOverviewView extends ProjetImmobilierBaseView implements Compon
     add(fraisNotaireValue);
   }
 
-  private void resizeWidgets() {
+  @Override
+  protected void resizeWidgets() {
     setLabelSize(montantTotalEmprunteLabel);
     setLabelSize(montantTotalEmprunteValue);
 
@@ -143,15 +143,4 @@ public class LoanOverviewView extends ProjetImmobilierBaseView implements Compon
     }
   }
 
-  @Override
-  public void componentMoved(ComponentEvent e) {
-  }
-
-  @Override
-  public void componentShown(ComponentEvent e) {
-  }
-
-  @Override
-  public void componentHidden(ComponentEvent e) {
-  }
 }

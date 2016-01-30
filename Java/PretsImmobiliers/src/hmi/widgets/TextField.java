@@ -18,4 +18,16 @@ public class TextField extends JFormattedTextField {
     setValue(value);
     getDocument().addDocumentListener(listener);
   }
+
+  public int getRight() {
+    return getX() + getWidth();
+  }
+
+  public int getBottom() {
+    return getY() + getHeight();
+  }
+
+  public void setWidth(int width) {
+    setSize(width, getHeight());
+  }
 }

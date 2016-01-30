@@ -58,6 +58,7 @@ public class LoanViewsMediator {
     EcheancesView.getInstance().afterEmpruntCreated();
     EmpruntsInitiauxPropertiesView.getInstance().afterEmpruntCreated(emprunt);
     LoanOverviewView.getInstance().afterEmpruntCreated();
+    MainView.getInstance().afterEmpruntCreated();
   }
 
   /*
