@@ -28,29 +28,20 @@ public class ProjetImmobilier {
     return newEmprunt;
   }
 
-  /*
-    public Emprunt addEmprunt(Double capitalEmprunte, Double annualInterestRate, Double monthlyPayment, Long nombreMensualites) {
-      Emprunt newEmprunt = null;
-      if (monthlyPayment != null) {
-        newEmprunt = new Emprunt(capitalEmprunte, annualInterestRate, monthlyPayment);
-      } else if (nombreMensualites != null) {
-        long nombreMensualitesUnboxed = nombreMensualites;
-        newEmprunt = new Emprunt(capitalEmprunte, annualInterestRate, (int) nombreMensualitesUnboxed);
-      }
-
-      if (newEmprunt != null) {
-        emprunts.add(newEmprunt);
-      }
-      return newEmprunt;
-    }
-  */
-
   public double getCapitalEmprunte() {
     double capitalEmprunte = 0;
     for (Emprunt emprunt : emprunts) {
       capitalEmprunte += emprunt.getCapitalEmprunte();
     }
     return capitalEmprunte;
+  }
+
+  public int getNombreEcheances() {
+    int nombreEcheances = 0;
+    for (Emprunt emprunt : emprunts) {
+      nombreEcheances = Math.max(nombreEcheances, emprunt.getEcheances().size());
+    }
+    return nombreEcheances;
   }
 
   public double getCapitalRestantAEmprunter() {
