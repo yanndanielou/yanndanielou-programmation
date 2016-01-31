@@ -104,6 +104,10 @@ public class LoanOverviewView extends ProjetImmobilierBaseView {
     updateMontantTotalInteretsField();
   }
 
+  public void afterEmpruntDeleted() {
+    updateMontantTotalInteretsField();
+  }
+
   public void afterEmpruntModified() {
     updateMontantTotalInteretsField();
     montantTotalEmprunteField();

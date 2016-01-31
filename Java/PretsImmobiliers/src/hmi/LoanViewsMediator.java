@@ -51,14 +51,17 @@ public class LoanViewsMediator {
 
   public void onEmpruntAdded() {
     Emprunt empruntCreated = projetImmobilier.addEmprunt();
-    afterEmpruntCreated(empruntCreated);
-  }
-
-  private void afterEmpruntCreated(Emprunt emprunt) {
     EcheancesView.getInstance().afterEmpruntCreated();
-    EmpruntsInitiauxPropertiesView.getInstance().afterEmpruntCreated(emprunt);
+    EmpruntsInitiauxPropertiesView.getInstance().afterEmpruntCreated(empruntCreated);
     LoanOverviewView.getInstance().afterEmpruntCreated();
     MainView.getInstance().afterEmpruntCreated();
+  }
+
+  public void onEmpruntDeleted(Emprunt empruntToDelete) {
+    projetImmobilier.removeEmprunt(empruntToDelete);
+    EcheancesView.getInstance().afterEmpruntDeleted();
+    EmpruntsInitiauxPropertiesView.getInstance().afterEmpruntDeleted(empruntToDelete);
+    LoanOverviewView.getInstance().afterEmpruntDeleted();
   }
 
   /*

@@ -101,6 +101,17 @@ public class EmpruntsInitiauxPropertiesView extends ProjetImmobilierBaseView imp
     fillEmprunts();
   }
 
+  public void afterEmpruntDeleted(Emprunt empruntToDelete) {
+    for (EmpruntInitialPropertiesPanel empruntInitialPropertiesPanel : empruntInitiauxPropertyPanels) {
+      if (empruntInitialPropertiesPanel.getEmprunt() == empruntToDelete) {
+        empruntInitiauxPropertyPanels.remove(empruntInitialPropertiesPanel);
+        fillEmprunts();
+        empruntsInitauxContainerPanel.repaint();
+        return;
+      }
+    }
+  }
+
   public void afterEmpruntModified(Emprunt emprunt) {
     for (EmpruntInitialPropertiesPanel empruntInitialPropertiesPanel : empruntInitiauxPropertyPanels) {
       if (empruntInitialPropertiesPanel.getEmprunt() == emprunt) {
@@ -124,4 +135,5 @@ public class EmpruntsInitiauxPropertiesView extends ProjetImmobilierBaseView imp
       return empruntInitiauxPropertyPanels.get(0).getRequiredWidth();
     }
   }
+
 }

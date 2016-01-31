@@ -28,6 +28,10 @@ public class ProjetImmobilier {
     return newEmprunt;
   }
 
+  public void removeEmprunt(Emprunt empruntToDelete) {
+    emprunts.remove(empruntToDelete);
+  }
+
   public double getCapitalEmprunte() {
     double capitalEmprunte = 0;
     for (Emprunt emprunt : emprunts) {
@@ -61,4 +65,5 @@ public class ProjetImmobilier {
   public RealEstate getRealEstate() {
     return realEstate;
   }
+
 }

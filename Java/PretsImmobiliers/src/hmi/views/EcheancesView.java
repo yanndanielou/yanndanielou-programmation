@@ -45,6 +45,10 @@ public class EcheancesView extends ProjetImmobilierBaseView {
     echeancesTableModel.fireTableStructureChanged();
   }
 
+  public void afterEmpruntDeleted() {
+    echeancesTableModel.fireTableStructureChanged();
+  }
+
   public void afterEmpruntModified() {
     echeancesTableModel.fireTableStructureChanged();
   }
@@ -55,4 +59,5 @@ public class EcheancesView extends ProjetImmobilierBaseView {
       replaceWidgets();
     }
   }
+
 }

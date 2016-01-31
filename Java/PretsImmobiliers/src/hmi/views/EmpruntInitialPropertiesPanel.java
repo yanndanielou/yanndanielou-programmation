@@ -6,10 +6,13 @@ import hmi.widgets.MoneyTextField;
 import hmi.widgets.NumberTextField;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.text.NumberFormat;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -17,7 +20,7 @@ import javax.swing.text.Document;
 
 import model.Emprunt;
 
-public class EmpruntInitialPropertiesPanel extends ProjetImmobilierBaseView implements DocumentListener {
+public class EmpruntInitialPropertiesPanel extends ProjetImmobilierBaseView implements DocumentListener, ActionListener {
 
   private static final long serialVersionUID = -5637680529592116720L;
 
@@ -35,6 +38,7 @@ public class EmpruntInitialPropertiesPanel extends ProjetImmobilierBaseView impl
   private DoubleValueLabel montantInteretsValue;
   private Label montantAssurancesLabel;
   private DoubleValueLabel montantAssurancesValue;
+  private JButton deleteEmpruntButton;
 
   public EmpruntInitialPropertiesPanel(Emprunt emprunt) {
     this.emprunt = emprunt;
@@ -81,6 +85,8 @@ public class EmpruntInitialPropertiesPanel extends ProjetImmobilierBaseView impl
     annualInterestRateInput.setWidth(widerInput);
     mensualiteHorsAssuranceInput.setWidth(widerInput);
     nombreEcheancesInput.setWidth(widerInput);
+
+    deleteEmpruntButton.setSize((int) (getWidth() * 0.4), widget_height);
   }
 
   @Override
@@ -103,6 +109,8 @@ public class EmpruntInitialPropertiesPanel extends ProjetImmobilierBaseView impl
     montantInteretsValue = new DoubleValueLabel();
     montantAssurancesLabel = new Label("Montant total assurances");
     montantAssurancesValue = new DoubleValueLabel();
+    deleteEmpruntButton = new JButton("Delete");
+    deleteEmpruntButton.addActionListener(this);
   }
 
   @Override
@@ -119,6 +127,7 @@ public class EmpruntInitialPropertiesPanel extends ProjetImmobilierBaseView impl
     add(montantInteretsValue);
     add(montantAssurancesLabel);
     add(montantAssurancesValue);
+    add(deleteEmpruntButton);
   }
 
   protected void placeWidgets() {
@@ -141,6 +150,8 @@ public class EmpruntInitialPropertiesPanel extends ProjetImmobilierBaseView impl
 
     montantAssurancesLabel.setLocation(horizontal_margin_from_component_and_first_widgets, montantInteretsValue.getBottom() + vertial_margin_beween_widgets);
     montantAssurancesValue.setLocation(horizontal_margin_from_component_and_first_widgets + widerLabel + marginBetweenLabelAndValue, montantAssurancesLabel.getY());
+
+    deleteEmpruntButton.setLocation((getWidth() - deleteEmpruntButton.getWidth()) / 2, montantAssurancesValue.getBottom() + vertial_margin_beween_widgets);
   }
 
   private void onCapitalEmprunteModified(double capitalEmprunte) {
@@ -238,8 +249,15 @@ public class EmpruntInitialPropertiesPanel extends ProjetImmobilierBaseView impl
   }
 
   @Override
+  public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == deleteEmpruntButton) {
+      loanViewsMediator.onEmpruntDeleted(emprunt);
+    }
+  }
+
+  @Override
   public Integer getRequiredHeight() {
-    return montantAssurancesValue.getBottom() + vertical_margin_from_component_and_last_widgets;
+    return getBottomOfTheMostBottomComponent() + vertical_margin_from_component_and_last_widgets;
   }
 
   @Override

@@ -1,6 +1,7 @@
 package hmi.views;
 
 import hmi.LoanViewsMediator;
+import hmi.util.WidgetUtil;
 
 import java.awt.Component;
 import java.awt.event.ComponentEvent;
@@ -57,10 +58,22 @@ public abstract class ProjetImmobilierBaseView extends JPanel implements Compone
     return getRightOfComponentWithBiggestRight(getComponents());
   }
 
+  protected int getBottomOfTheMostBottomComponent() {
+    return getBottomOfTheMostBottomComponent(getComponents());
+  }
+
+  protected int getBottomOfTheMostBottomComponent(Component... components) {
+    int biggestBottom = 0;
+    for (Component component : components) {
+      biggestBottom = Math.max(biggestBottom, WidgetUtil.getWidgetBottom(component));
+    }
+    return biggestBottom;
+  }
+
   protected int getRightOfComponentWithBiggestRight(Component... components) {
     int biggestRight = 0;
     for (Component component : components) {
-      biggestRight = Math.max(biggestRight, component.getX() + component.getWidth());
+      biggestRight = Math.max(biggestRight, WidgetUtil.getWidgetRight(component));
     }
     return biggestRight;
   }
