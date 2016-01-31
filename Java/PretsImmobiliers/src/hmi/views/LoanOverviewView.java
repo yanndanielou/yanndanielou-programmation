@@ -125,9 +125,18 @@ public class LoanOverviewView extends ProjetImmobilierBaseView {
     updateFraisNotaireField();
   }
 
+  public void afterAssurancesMensuellesModified() {
+    updateMontantTotalAssurancesField();
+  }
+
   private void updateMontantTotalInteretsField() {
     double montantTotalInterets = projetImmobilier.getMontantTotalInterets();
     montantTotalInteretsValue.setTextWithRoundedValue(montantTotalInterets);
+  }
+
+  private void updateMontantTotalAssurancesField() {
+    double montantTotalInterets = projetImmobilier.getMontantTotalAssurances();
+    montantTotalAssurancesValue.setTextWithRoundedValue(montantTotalInterets);
   }
 
   private void updateFraisNotaireField() {

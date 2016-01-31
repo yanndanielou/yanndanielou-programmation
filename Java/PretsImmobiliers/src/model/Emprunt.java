@@ -12,6 +12,7 @@ public class Emprunt {
 
   private boolean isMensualiteHorsAssuranceFilled = false;
   private Double mensualiteHorsAssurance;
+  private Double assurancesMensuelles;
   private boolean isNombreEcheancesFilled = false;
   private Integer nombreEcheancesDesire;
   private List<Echeance> echeances = new ArrayList<Echeance>();
@@ -108,6 +109,17 @@ public class Emprunt {
     createEcheances();
   }
 
+  public void modifyAssurancesMensuelles(double assurancesMensuelles) {
+    this.assurancesMensuelles = assurancesMensuelles;
+    updateAssurancesInEcheances();
+  }
+
+  private void updateAssurancesInEcheances() {
+    for (Echeance echeance : echeances) {
+      echeance.setMontantAssurance(assurancesMensuelles);
+    }
+  }
+
   public void modifyNombreEcheancesDesire(int nombreEcheancesDesire) {
     resetComputedValues();
     this.nombreEcheancesDesire = nombreEcheancesDesire;
@@ -142,4 +154,5 @@ public class Emprunt {
       nombreEcheancesDesire = null;
     }
   }
+
 }

@@ -16,7 +16,7 @@ public abstract class ProjetImmobilierBaseView extends JPanel implements Compone
   private static final long serialVersionUID = -5601747344003397604L;
 
   public static final int marginBetweenLabelAndValue = 5;
-  public static final int vertial_margin_beween_widgets = 5;
+  public static final int vertical_margin_beween_widgets = 5;
   public static final int horizontal_margin_from_component_and_first_widgets = 5;
   public static final int horizontal_margin_from_component_and_last_widgets = horizontal_margin_from_component_and_first_widgets;
   public static final int vertical_margin_from_component_and_first_widgets = 5;

@@ -12,7 +12,6 @@ public class Echeance {
     this.capitalRestantAEmprunter = capitalRestantAEmprunter;
     this.montantCapital = montantCapital;
     this.montantInteret = montantInteret;
-    montantAssurance = 0;
   }
 
   public double getMensualiteHorsAssurance() {
@@ -29,6 +28,10 @@ public class Echeance {
 
   public double getMontantInteret() {
     return montantInteret;
+  }
+
+  public void setMontantAssurance(double montantAssurance) {
+    this.montantAssurance = montantAssurance;
   }
 
   public double getMontantAssurance() {

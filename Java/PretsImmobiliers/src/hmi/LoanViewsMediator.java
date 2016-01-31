@@ -105,6 +105,13 @@ public class LoanViewsMediator {
     afterEmpruntModified(emprunt);
   }
 
+  public void onAssurancesMensuellesModified(Emprunt emprunt, double assurancesMensuelles) {
+    emprunt.modifyAssurancesMensuelles(assurancesMensuelles);
+    EcheancesView.getInstance().afterAssurancesMensuellesModified();
+    EmpruntsInitiauxPropertiesView.getInstance().afterAssurancesMensuellesModified(emprunt);
+    LoanOverviewView.getInstance().afterAssurancesMensuellesModified();
+  }
+
   public void onNombreEcheancesDesireModified(Emprunt emprunt, int nombreEcheances) {
     emprunt.modifyNombreEcheancesDesire(nombreEcheances);
     afterEmpruntModified(emprunt);

@@ -56,7 +56,7 @@ public class EmpruntsInitiauxPropertiesView extends ProjetImmobilierBaseView imp
         EmpruntInitialPropertiesPanel empruntInitialPropertiesPanel = empruntInitiauxPropertyPanels.get(i);
         empruntsInitauxContainerPanel.add(empruntInitialPropertiesPanel);
         empruntInitialPropertiesPanel.setSize(empruntsInitauxContainerPanel.getWidth(), empruntInitialPropertiesPanel.getRequiredHeight());
-        empruntInitialPropertiesPanel.setLocation(0, i * empruntInitialPropertiesPanel.getHeight() + vertial_margin_beween_widgets);
+        empruntInitialPropertiesPanel.setLocation(0, i * empruntInitialPropertiesPanel.getHeight() + vertical_margin_beween_widgets);
       }
     }
   }
@@ -79,12 +79,12 @@ public class EmpruntsInitiauxPropertiesView extends ProjetImmobilierBaseView imp
   protected void resizeWidgets() {
     setLabelSize(title);
     addEmpruntButton.setSize((int) (getWidth() * 0.3), widget_height);
-    empruntsInitauxContainerPanel.setSize(getWidth() - horizontal_margin_from_component_and_first_widgets - horizontal_margin_from_component_and_last_widgets, getHeight() - title.getHeight() - addEmpruntButton.getHeight() - vertical_margin_from_component_and_first_widgets - vertial_margin_beween_widgets - vertical_margin_from_component_and_last_widgets);
+    empruntsInitauxContainerPanel.setSize(getWidth() - horizontal_margin_from_component_and_first_widgets - horizontal_margin_from_component_and_last_widgets, getHeight() - title.getHeight() - addEmpruntButton.getHeight() - vertical_margin_from_component_and_first_widgets - vertical_margin_beween_widgets - vertical_margin_from_component_and_last_widgets);
   }
 
   private void placeWidgets() {
     title.setLocation((getWidth() - title.getWidth()) / 2, vertical_margin_from_component_and_first_widgets);
-    addEmpruntButton.setLocation((getWidth() - addEmpruntButton.getWidth()) / 2, title.getBottom() + vertial_margin_beween_widgets);
+    addEmpruntButton.setLocation((getWidth() - addEmpruntButton.getWidth()) / 2, title.getBottom() + vertical_margin_beween_widgets);
     empruntsInitauxContainerPanel.setLocation(0, addEmpruntButton.getY() + addEmpruntButton.getHeight());
   }
 
@@ -102,21 +102,34 @@ public class EmpruntsInitiauxPropertiesView extends ProjetImmobilierBaseView imp
   }
 
   public void afterEmpruntDeleted(Emprunt empruntToDelete) {
+
+    EmpruntInitialPropertiesPanel empruntInitialPropertiesPanel = getEmpruntInitialPropertiesPanel(empruntToDelete);
+    empruntInitiauxPropertyPanels.remove(empruntInitialPropertiesPanel);
+    fillEmprunts();
+    empruntsInitauxContainerPanel.repaint();
+    return;
+  }
+
+  private EmpruntInitialPropertiesPanel getEmpruntInitialPropertiesPanel(Emprunt emprunt) {
     for (EmpruntInitialPropertiesPanel empruntInitialPropertiesPanel : empruntInitiauxPropertyPanels) {
-      if (empruntInitialPropertiesPanel.getEmprunt() == empruntToDelete) {
-        empruntInitiauxPropertyPanels.remove(empruntInitialPropertiesPanel);
-        fillEmprunts();
-        empruntsInitauxContainerPanel.repaint();
-        return;
+      if (empruntInitialPropertiesPanel.getEmprunt() == emprunt) {
+        return empruntInitialPropertiesPanel;
       }
     }
+    return null;
   }
 
   public void afterEmpruntModified(Emprunt emprunt) {
-    for (EmpruntInitialPropertiesPanel empruntInitialPropertiesPanel : empruntInitiauxPropertyPanels) {
-      if (empruntInitialPropertiesPanel.getEmprunt() == emprunt) {
-        empruntInitialPropertiesPanel.refresh();
-      }
+    EmpruntInitialPropertiesPanel empruntInitialPropertiesPanel = getEmpruntInitialPropertiesPanel(emprunt);
+    if (empruntInitialPropertiesPanel != null) {
+      empruntInitialPropertiesPanel.refresh();
+    }
+  }
+
+  public void afterAssurancesMensuellesModified(Emprunt emprunt) {
+    EmpruntInitialPropertiesPanel empruntInitialPropertiesPanel = getEmpruntInitialPropertiesPanel(emprunt);
+    if (empruntInitialPropertiesPanel != null) {
+      empruntInitialPropertiesPanel.afterAssurancesMensuellesModified();
     }
   }
 

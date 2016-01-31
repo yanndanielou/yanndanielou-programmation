@@ -62,6 +62,14 @@ public class ProjetImmobilier {
     return montantTotalInterets;
   }
 
+  public double getMontantTotalAssurances() {
+    double montantTotalAssurances = 0;
+    for (Emprunt emprunt : emprunts) {
+      montantTotalAssurances += emprunt.getMontantTotalAssurance();
+    }
+    return montantTotalAssurances;
+  }
+
   public RealEstate getRealEstate() {
     return realEstate;
   }
