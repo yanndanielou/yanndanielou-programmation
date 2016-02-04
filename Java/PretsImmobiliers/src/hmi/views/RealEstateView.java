@@ -3,7 +3,6 @@ package hmi.views;
 import hmi.widgets.MoneyTextField;
 
 import java.awt.Color;
-import java.awt.GridLayout;
 import java.awt.event.ComponentEvent;
 import java.text.NumberFormat;
 
@@ -115,20 +114,6 @@ public class RealEstateView extends ProjetImmobilierBaseView implements Document
 
     fraisNotaireLabel.setLocation(apportPersonnelInput.getX() + apportPersonnelInput.getWidth() + margeEntreInputs, vertical_margin_from_component_and_first_widgets);
     fraisNotaireInput.setLocation(fraisNotaireLabel.getX() + fraisNotaireLabel.getWidth() + marginBetweenLabelAndValue, vertical_margin_from_component_and_first_widgets);
-  }
-
-  protected void placeWidgetsGridLayout() {
-    int columns = 2;
-    int rows = 4;
-    setLayout(new GridLayout(rows, columns));
-    add(prixNetAcheteurLabel);
-    add(prixNetAcheteurInput);
-    add(fraisAgenceLabel);
-    add(fraisAgenceInput);
-    add(apportPersonnelLabel);
-    add(apportPersonnelInput);
-    add(fraisNotaireLabel);
-    add(fraisNotaireInput);
   }
 
   @Override

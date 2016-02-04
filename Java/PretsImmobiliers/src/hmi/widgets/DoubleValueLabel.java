@@ -1,6 +1,6 @@
 package hmi.widgets;
 
-import Core.DisplayUtils;
+import Core.util.DisplayUtils;
 
 public class DoubleValueLabel extends Label {
 

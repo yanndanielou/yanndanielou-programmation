@@ -9,7 +9,7 @@ import javax.swing.table.AbstractTableModel;
 import model.Echeance;
 import model.Emprunt;
 import model.ProjetImmobilier;
-import Core.DisplayUtils;
+import Core.util.DisplayUtils;
 
 public class EcheancesTableModel extends AbstractTableModel {
   private static final long serialVersionUID = 508691973838270560L;
@@ -21,7 +21,8 @@ public class EcheancesTableModel extends AbstractTableModel {
   private final int ECHEANCE_DATE_COLUMN_INDEX = ECHEANCE_NUMBER_COLUMN_INDEX + 1;
   private final int NOMBRE_COLONNES_FIXES = ECHEANCE_DATE_COLUMN_INDEX + 1;
 
-  private final int PAR_EMPRUNT_MENSUALITE_HORS_ASSURANCE_COLUMN_INDEX = 0;
+  private final int PAR_EMPRUNT_ACTION_COLUMN_INDEX = 0;
+  private final int PAR_EMPRUNT_MENSUALITE_HORS_ASSURANCE_COLUMN_INDEX = PAR_EMPRUNT_ACTION_COLUMN_INDEX + 1;
   private final int PAR_EMPRUNT_MONTANT_CAPITAL_COLUMN_INDEX = PAR_EMPRUNT_MENSUALITE_HORS_ASSURANCE_COLUMN_INDEX + 1;
   private final int PAR_EMPRUNT_MONTANT_INTERETS_COLUMN_INDEX = PAR_EMPRUNT_MONTANT_CAPITAL_COLUMN_INDEX + 1;
   private final int PAR_EMPRUNT_MONTANT_CAPITAL_RESTANT_A_REMBOURSER_COLUMN_INDEX = PAR_EMPRUNT_MONTANT_INTERETS_COLUMN_INDEX + 1;
@@ -45,6 +46,10 @@ public class EcheancesTableModel extends AbstractTableModel {
     int empruntNumber = (column - NOMBRE_COLONNES_FIXES) / PAR_EMPRUNT_NOMBRE_COLUMNS;
     List<Emprunt> emprunts = projetImmobilier.getEmprunts();
     return emprunts.get(empruntNumber);
+  }
+
+  private boolean isActionColumn(int column) {
+    return isColumnParEmprunt(column, PAR_EMPRUNT_ACTION_COLUMN_INDEX);
   }
 
   private boolean isMensualiteHorsAssuranceColumn(int column) {
@@ -92,6 +97,9 @@ public class EcheancesTableModel extends AbstractTableModel {
     }
     if (isEcheanceDateColumn(column)) {
       return "Date";
+    }
+    if (isActionColumn(column)) {
+      return "Action";
     }
     if (isMensualiteHorsAssuranceColumn(column)) {
       return "Mensualite hors assurance";
@@ -142,6 +150,9 @@ public class EcheancesTableModel extends AbstractTableModel {
     Emprunt emprunt = getEmprunt(columnIndex);
     if (emprunt.getEcheances().size() > rowIndex) {
       Echeance echeance = emprunt.getEcheances().get(rowIndex);
+      if (isActionColumn(columnIndex)) {
+        return echeance.getModificationEcheanceAction();
+      }
       if (isMensualiteHorsAssuranceColumn(columnIndex)) {
         return DisplayUtils.getRoundedValueForDisplay(echeance.getMensualiteHorsAssurance());
       }

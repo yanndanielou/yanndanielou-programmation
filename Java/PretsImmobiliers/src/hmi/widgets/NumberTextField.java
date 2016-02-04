@@ -1,6 +1,6 @@
 package hmi.widgets;
 
-import static Core.StringUtils.*;
+import static Core.util.StringUtils.*;
 
 import java.text.NumberFormat;
 

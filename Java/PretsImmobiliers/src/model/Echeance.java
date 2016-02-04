@@ -1,11 +1,15 @@
 package model;
 
+import Core.ModificationAction.DoublementPonctuelEcheanceAction;
+import Core.ModificationAction.ModificationEcheanceAction;
+
 public class Echeance {
   private Emprunt emprunt;
   private double capitalRestantAEmprunter;
   private double montantCapital;
   private double montantInteret;
   private double montantAssurance;
+  private ModificationEcheanceAction modificationEcheanceAction;
 
   public Echeance(Emprunt emprunt, double capitalRestantAEmprunter, double montantCapital, double montantInteret) {
     this.emprunt = emprunt;
@@ -28,6 +32,10 @@ public class Echeance {
 
   public double getMontantInteret() {
     return montantInteret;
+  }
+
+  public ModificationEcheanceAction getModificationEcheanceAction() {
+    return new DoublementPonctuelEcheanceAction();
   }
 
   public void setMontantAssurance(double montantAssurance) {

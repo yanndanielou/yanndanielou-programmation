@@ -10,10 +10,10 @@ public class Emprunt {
   private double tauxAnnuel;
   private double capitalEmprunte;
 
-  private boolean isMensualiteHorsAssuranceFilled = false;
+  private boolean isMensualiteHorsAssuranceFilledByUser = false;
   private Double mensualiteHorsAssurance;
   private Double assurancesMensuelles;
-  private boolean isNombreEcheancesFilled = false;
+  private boolean isNombreEcheancesFilledByUser = false;
   private Integer nombreEcheancesDesire;
   private List<Echeance> echeances = new ArrayList<Echeance>();
 
@@ -33,7 +33,7 @@ public class Emprunt {
   private void createEcheances() {
     double capitalRestantARembourser = capitalEmprunte;
     final double tauxPeriodique = getTauxPeriodique();
-    if (isMensualiteHorsAssuranceFilled) {
+    if (isMensualiteHorsAssuranceFilledByUser) {
       while (capitalRestantARembourser > 0) {
         double montantInteret = capitalRestantARembourser * tauxPeriodique;
         double montantCapital = Math.min(mensualiteHorsAssurance - montantInteret, capitalRestantARembourser);
@@ -44,7 +44,10 @@ public class Emprunt {
         capitalRestantARembourser -= montantCapital;
         echeances.add(echeance);
       }
-    } else if (isNombreEcheancesFilled) {
+    } else if (isNombreEcheancesFilledByUser) {
+      if (mensualiteHorsAssurance == null) {
+        mensualiteHorsAssurance = computeEcheanceConstante();
+      }
       for (int i = 0; i < nombreEcheancesDesire; i++) {
         double montantInteret = capitalRestantARembourser * tauxPeriodique;
         double montantCapital = mensualiteHorsAssurance - montantInteret;
@@ -104,8 +107,8 @@ public class Emprunt {
   public void modifyMensualiteHorsAssurance(double mensualiteHorsAssurance) {
     resetComputedValues();
     this.mensualiteHorsAssurance = mensualiteHorsAssurance;
-    isMensualiteHorsAssuranceFilled = true;
-    isNombreEcheancesFilled = false;
+    isMensualiteHorsAssuranceFilledByUser = true;
+    isNombreEcheancesFilledByUser = false;
     createEcheances();
   }
 
@@ -123,18 +126,17 @@ public class Emprunt {
   public void modifyNombreEcheancesDesire(int nombreEcheancesDesire) {
     resetComputedValues();
     this.nombreEcheancesDesire = nombreEcheancesDesire;
-    mensualiteHorsAssurance = computeEcheanceConstante();
-    isMensualiteHorsAssuranceFilled = false;
-    isNombreEcheancesFilled = true;
+    isMensualiteHorsAssuranceFilledByUser = false;
+    isNombreEcheancesFilledByUser = true;
     createEcheances();
   }
 
   public boolean isNombreEcheancesFilled() {
-    return isNombreEcheancesFilled;
+    return isNombreEcheancesFilledByUser;
   }
 
   public boolean isMensualiteHorsAssuranceFilled() {
-    return isMensualiteHorsAssuranceFilled;
+    return isMensualiteHorsAssuranceFilledByUser;
   }
 
   public Double getMensualiteHorsAssurance() {
@@ -147,10 +149,10 @@ public class Emprunt {
 
   private void resetComputedValues() {
     echeances.clear();
-    if (!isMensualiteHorsAssuranceFilled) {
+    if (!isMensualiteHorsAssuranceFilledByUser) {
       mensualiteHorsAssurance = null;
     }
-    if (!isNombreEcheancesFilled) {
+    if (!isNombreEcheancesFilledByUser) {
       nombreEcheancesDesire = null;
     }
   }

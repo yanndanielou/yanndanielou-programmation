@@ -31,6 +31,8 @@ public class EcheancesView extends ProjetImmobilierBaseView {
     title = new JLabel("Echeances");
     echeancesTableModel = new EcheancesTableModel();
     echeancesTable = new JTable(echeancesTableModel);
+    //  echeancesTable.setDefaultRenderer(DoublementPonctuelEcheanceAction.class, new EcheancesTableCellRenderer());
+
     //    setBackground(Color.YELLOW);
   }
 
