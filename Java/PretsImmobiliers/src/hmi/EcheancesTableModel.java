@@ -1,10 +1,14 @@
 package hmi;
 
+import hmi.editors.ActionEditor;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableColumn;
 
 import model.Echeance;
 import model.Emprunt;
@@ -15,6 +19,8 @@ public class EcheancesTableModel extends AbstractTableModel {
   private static final long serialVersionUID = 508691973838270560L;
 
   private ProjetImmobilier projetImmobilier;
+
+  private JTable table;
 
   // Columns
   private final int ECHEANCE_NUMBER_COLUMN_INDEX = 0;
@@ -39,7 +45,17 @@ public class EcheancesTableModel extends AbstractTableModel {
     return column >= NOMBRE_COLONNES_FIXES;
   }
 
-  private Emprunt getEmprunt(int column) {
+  public Echeance getEcheance(int row, int column) {
+    Emprunt emprunt = getEmprunt(column);
+
+    if (emprunt.getEcheances().size() > row) {
+      Echeance echeance = emprunt.getEcheances().get(row);
+      return echeance;
+    }
+    return null;
+  }
+
+  public Emprunt getEmprunt(int column) {
     if (!isEmpruntColumn(column)) {
       return null;
     }
@@ -147,9 +163,9 @@ public class EcheancesTableModel extends AbstractTableModel {
       String echeanceDate = "" + echeanceYear + "/" + echeanceMonth;
       return echeanceDate;
     }
-    Emprunt emprunt = getEmprunt(columnIndex);
-    if (emprunt.getEcheances().size() > rowIndex) {
-      Echeance echeance = emprunt.getEcheances().get(rowIndex);
+
+    Echeance echeance = getEcheance(rowIndex, columnIndex);
+    if (echeance != null) {
       if (isActionColumn(columnIndex)) {
         return echeance.getModificationEcheanceAction();
       }
@@ -175,4 +191,30 @@ public class EcheancesTableModel extends AbstractTableModel {
     return BAD_LOGIC;
   }
 
+  @Override
+  public void fireTableStructureChanged() {
+    super.fireTableStructureChanged();
+    recreateEditors();
+  }
+
+  @Override
+  public boolean isCellEditable(int row, int col) {
+    if (isActionColumn(col)) {
+      return true;
+    }
+    return false;
+  }
+
+  private void recreateEditors() {
+    for (int columnNumber = 0; columnNumber < table.getColumnCount(); columnNumber++) {
+      TableColumn tableColumn = table.getColumnModel().getColumn(columnNumber);
+      if (isActionColumn(columnNumber)) {
+        tableColumn.setCellEditor(new ActionEditor(this));
+      }
+    }
+  }
+
+  public void setTable(JTable table) {
+    this.table = table;
+  }
 }

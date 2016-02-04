@@ -4,9 +4,10 @@
  */
 package Core.ModificationAction;
 
-public class DoublementPonctuelEcheanceAction extends ModificationEcheanceAction {
+public class NoOperationAction extends ModificationEcheanceAction {
+
   @Override
   public String toString() {
-    return "Double";
-  }
+    return "-";
+  };
 }

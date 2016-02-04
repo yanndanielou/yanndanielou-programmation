@@ -4,6 +4,16 @@
  */
 package Core.ModificationAction;
 
-public interface ModificationEcheanceAction {
+import model.Echeance;
 
+public abstract class ModificationEcheanceAction {
+  protected Echeance echeance;
+
+  public void setEcheance(Echeance echeance) {
+    this.echeance = echeance;
+  }
+
+  public Echeance getEcheance() {
+    return echeance;
+  }
 }
