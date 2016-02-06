@@ -24,5 +24,10 @@ public abstract class ModificationEcheanceAction {
     return ponctuel;
   }
 
+  protected EcheanceProperties getEcheanceReference() {
+    EcheanceProperties echeanceReference = echeance.hasEcheanceRecalee() ? echeance.getEcheanceRecalee() : echeance.getEcheanceInitiale();
+    return echeanceReference;
+  }
+
   public abstract EcheanceProperties createEcheanceRecalee();
 }

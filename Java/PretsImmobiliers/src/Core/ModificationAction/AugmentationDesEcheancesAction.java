@@ -17,17 +17,16 @@ public class AugmentationDesEcheancesAction extends ModificationEcheanceAction {
 
   @Override
   public EcheanceProperties createEcheanceRecalee() {
-    EcheanceProperties echeanceInitiale = echeance.getEcheanceInitiale();
+    EcheanceProperties echeanceReference = getEcheanceReference();
     EcheanceProperties echeanceRecalee = new EcheanceProperties();
     // TODO: à vérifier
-    echeanceRecalee.setMontantAssurance(echeanceInitiale.getMontantAssurance());
-    double montantCapitalInitial = echeanceInitiale.getMontantCapital();
+    echeanceRecalee.setMontantAssurance(echeanceReference.getMontantAssurance());
+    double montantCapitalInitial = echeanceReference.getMontantCapital();
     double montantCapital = montantCapitalInitial + montantCapitalInitial * augmentationPourcentage / 100;
     echeanceRecalee.setMontantCapital(montantCapital);
     //TODO: à vérifier
-    echeanceRecalee.setMontantInteret(echeanceInitiale.getMontantInteret());
-    //FIXME
-    echeanceRecalee.setCapitalRestantARembourser(echeanceInitiale.getCapitalRestantARembourser());
+    echeanceRecalee.setMontantInteret(echeanceReference.getMontantInteret());
+    echeanceRecalee.setCapitalRestantARembourser(echeanceReference.getCapitalRestantARembourser());
 
     return echeanceRecalee;
   }
