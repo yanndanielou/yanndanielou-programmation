@@ -5,21 +5,14 @@
 package Core.ModificationAction;
 
 public class AugmentationDesEcheancesAction extends ModificationEcheanceAction {
-  private Integer augmentationPourcentage;
+  private int augmentationPourcentage;
 
-  public AugmentationDesEcheancesAction() {
-  }
-
-  public void setAugmentationPourcentage(Integer augmentationPourcentage) {
+  public AugmentationDesEcheancesAction(int augmentationPourcentage) {
     this.augmentationPourcentage = augmentationPourcentage;
   }
 
   @Override
   public String toString() {
-    if (augmentationPourcentage == null) {
-      return "Augmentation";
-    } else {
-      return "Augmentation :" + augmentationPourcentage + "%";
-    }
+    return "Augmentation :" + augmentationPourcentage + "%";
   }
 }

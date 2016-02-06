@@ -1,7 +1,7 @@
 package hmi.views;
 
 import hmi.EcheancesTableModel;
-import hmi.editors.EcheancesTablePopupMenu;
+import hmi.editors.EcheancesTablePopupMenuHandler;
 
 import java.awt.BorderLayout;
 import java.awt.event.ComponentEvent;
@@ -33,7 +33,8 @@ public class EcheancesView extends ProjetImmobilierBaseView {
     echeancesTableModel = new EcheancesTableModel();
     echeancesTable = new JTable(echeancesTableModel);
     echeancesTableModel.setTable(echeancesTable);
-    echeancesTable.setComponentPopupMenu(new EcheancesTablePopupMenu(echeancesTable, echeancesTableModel));
+    echeancesTable.addMouseListener(new EcheancesTablePopupMenuHandler(echeancesTable, echeancesTableModel));
+    //echeancesTable.setComponentPopupMenu(new EcheancesTablePopupMenu(echeancesTable, echeancesTableModel));
   }
 
   @Override

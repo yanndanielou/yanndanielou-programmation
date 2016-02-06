@@ -14,7 +14,7 @@ public class EcheancesTablePopupMenu extends JPopupMenu {
   private static final long serialVersionUID = -386683607360574896L;
 
   public EcheancesTablePopupMenu(JTable echeancesTable, EcheancesTableModel echeancesTableModel) {
-    addPopupMenuListener(new EcheancesTablePopupMenuHandler(echeancesTable, echeancesTableModel, this));
+    //    addPopupMenuListener(new EcheancesTablePopupMenuHandler(echeancesTable, echeancesTableModel, this));
   }
 
 }
