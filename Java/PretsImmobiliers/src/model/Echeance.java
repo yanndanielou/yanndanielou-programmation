@@ -35,6 +35,10 @@ public class Echeance {
     return montantInteret;
   }
 
+  public void setModificationEcheanceAction(ModificationEcheanceAction modificationEcheanceAction) {
+    this.modificationEcheanceAction = modificationEcheanceAction;
+  }
+
   public ModificationEcheanceAction getModificationEcheanceAction() {
     return modificationEcheanceAction;
   }
@@ -45,5 +49,9 @@ public class Echeance {
 
   public double getMontantAssurance() {
     return montantAssurance;
+  }
+
+  public Emprunt getEmprunt() {
+    return emprunt;
   }
 }

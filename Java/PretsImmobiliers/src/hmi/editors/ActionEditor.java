@@ -14,7 +14,7 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 
-import model.Echeance;
+import Core.ModificationAction.AugmentationDesEcheancesAction;
 import Core.ModificationAction.DoublementPonctuelEcheanceAction;
 import Core.ModificationAction.ModificationEcheanceAction;
 import Core.ModificationAction.NoOperationAction;
@@ -31,6 +31,7 @@ public class ActionEditor extends DefaultCellEditor implements ItemListener {
     this.echeancesTableModel = echeancesTableModel;
     comboBox().addItem(new NoOperationAction());
     comboBox().addItem(new DoublementPonctuelEcheanceAction());
+    comboBox().addItem(new AugmentationDesEcheancesAction());
     comboBox().addItemListener(this);
   }
 
@@ -46,16 +47,27 @@ public class ActionEditor extends DefaultCellEditor implements ItemListener {
 
   @Override
   public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-    ModificationEcheanceAction action = (ModificationEcheanceAction) value;
-    Echeance echeance = echeancesTableModel.getEcheance(row, column);
-    action.setEcheance(echeance);
+    /* ModificationEcheanceAction action = (ModificationEcheanceAction) value;
+     Echeance echeance = echeancesTableModel.getEcheance(row, column);
+     action.setEcheance(echeance);*/
     return super.getTableCellEditorComponent(table, value, isSelected, row, column);
   }
 
   @Override
   public void itemStateChanged(ItemEvent event) {
-    Object item = event.getItem();
-    ModificationEcheanceAction action = (ModificationEcheanceAction) item;
-    event.getStateChange();
+    /*  Object item = event.getItem();
+      ItemSelectable itemSelectable = event.getItemSelectable();
+      Object source = event.getSource();
+      ModificationEcheanceAction action = (ModificationEcheanceAction) item;
+      JComboBox<ModificationEcheanceAction> comboBox = comboBox();
+      Container parent = comboBox.getParent();
+
+      if (action instanceof AugmentationDesEcheancesAction) {
+        AugmentationDesEcheancesAction augmentationDesEcheancesAction = (AugmentationDesEcheancesAction) action;
+        ChoixAugmentationEcheancePopup choixAugmentationEcheancePopup = new ChoixAugmentationEcheancePopup();
+        int pourcentageAugmentationEcheance = choixAugmentationEcheancePopup.getPourcentageAugmentationEcheance();
+        augmentationDesEcheancesAction.setAugmentationPourcentage(pourcentageAugmentationEcheance);
+      }*/
+    //   action.getEcheance().setModificationEcheanceAction(action);
   }
 }

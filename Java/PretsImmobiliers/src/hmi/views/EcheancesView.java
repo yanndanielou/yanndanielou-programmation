@@ -1,6 +1,7 @@
 package hmi.views;
 
 import hmi.EcheancesTableModel;
+import hmi.editors.EcheancesTablePopupMenu;
 
 import java.awt.BorderLayout;
 import java.awt.event.ComponentEvent;
@@ -31,11 +32,8 @@ public class EcheancesView extends ProjetImmobilierBaseView {
     title = new JLabel("Echeances");
     echeancesTableModel = new EcheancesTableModel();
     echeancesTable = new JTable(echeancesTableModel);
-    //echeancesTable.setDefaultEditor(DoublementPonctuelEcheanceAction.class, new ActionEditor());
     echeancesTableModel.setTable(echeancesTable);
-    //  echeancesTable.setDefaultRenderer(DoublementPonctuelEcheanceAction.class, new EcheancesTableCellRenderer());
-
-    //    setBackground(Color.YELLOW);
+    echeancesTable.setComponentPopupMenu(new EcheancesTablePopupMenu(echeancesTable, echeancesTableModel));
   }
 
   @Override
@@ -46,7 +44,6 @@ public class EcheancesView extends ProjetImmobilierBaseView {
   }
 
   public void afterEmpruntCreated() {
-    echeancesTableModel.fireTableStructureChanged();
   }
 
   public void afterEmpruntDeleted() {

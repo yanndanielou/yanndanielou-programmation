@@ -118,7 +118,9 @@ public class LoanViewsMediator {
   }
 
   private void afterEmpruntModified(Emprunt emprunt) {
-    EcheancesView.getInstance().afterEmpruntModified();
+    if (!emprunt.getEcheances().isEmpty()) {
+      EcheancesView.getInstance().afterEmpruntModified();
+    }
     EmpruntsInitiauxPropertiesView.getInstance().afterEmpruntModified(emprunt);
     LoanOverviewView.getInstance().afterEmpruntModified();
   }

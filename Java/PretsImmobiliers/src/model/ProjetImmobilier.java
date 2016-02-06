@@ -22,7 +22,7 @@ public class ProjetImmobilier {
   }
 
   public Emprunt addEmprunt() {
-    Emprunt newEmprunt = new Emprunt();
+    Emprunt newEmprunt = new Emprunt("Emprunt " + String.valueOf(emprunts.size() + 1));
     newEmprunt.modifyCapitalEmprunte(getCapitalRestantAEmprunter());
     emprunts.add(newEmprunt);
     return newEmprunt;

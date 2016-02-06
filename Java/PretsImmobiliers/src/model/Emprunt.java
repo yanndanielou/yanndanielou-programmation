@@ -10,6 +10,7 @@ public class Emprunt {
   private double tauxAnnuel;
   private double capitalEmprunte;
 
+  private String name;
   private boolean isMensualiteHorsAssuranceFilledByUser = false;
   private Double mensualiteHorsAssurance;
   private Double assurancesMensuelles;
@@ -17,7 +18,8 @@ public class Emprunt {
   private Integer nombreEcheancesDesire;
   private List<Echeance> echeances = new ArrayList<Echeance>();
 
-  public Emprunt() {
+  public Emprunt(String name) {
+    this.name = name;
     resetComputedValues();
   }
 
@@ -145,6 +147,14 @@ public class Emprunt {
 
   public int getActualNombreEcheances() {
     return echeances.size();
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void modifyName(String name) {
+    this.name = name;
   }
 
   private void resetComputedValues() {

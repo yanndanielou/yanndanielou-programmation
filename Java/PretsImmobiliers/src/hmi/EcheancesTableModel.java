@@ -4,7 +4,9 @@ import hmi.editors.ActionEditor;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
@@ -48,9 +50,11 @@ public class EcheancesTableModel extends AbstractTableModel {
   public Echeance getEcheance(int row, int column) {
     Emprunt emprunt = getEmprunt(column);
 
-    if (emprunt.getEcheances().size() > row) {
-      Echeance echeance = emprunt.getEcheances().get(row);
-      return echeance;
+    if (emprunt != null) {
+      if (emprunt.getEcheances().size() > row) {
+        Echeance echeance = emprunt.getEcheances().get(row);
+        return echeance;
+      }
     }
     return null;
   }
@@ -62,6 +66,39 @@ public class EcheancesTableModel extends AbstractTableModel {
     int empruntNumber = (column - NOMBRE_COLONNES_FIXES) / PAR_EMPRUNT_NOMBRE_COLUMNS;
     List<Emprunt> emprunts = projetImmobilier.getEmprunts();
     return emprunts.get(empruntNumber);
+  }
+
+  public Set<Echeance> getDisplayedEcheancesAtRow(int row) {
+    Set<Echeance> displayedEcheances = new HashSet<Echeance>();
+    for (int column = 0; column < getColumnCount(); column++) {
+      Echeance echeance = getEcheance(row, column);
+      if (echeance != null) {
+        displayedEcheances.add(echeance);
+      }
+    }
+    return displayedEcheances;
+  }
+
+  public Set<Emprunt> getDisplayedEmpruntsAtRow(int row) {
+    Set<Emprunt> displayedEmprunts = new HashSet<Emprunt>();
+    for (int column = 0; column < getColumnCount(); column++) {
+      Echeance echeance = getEcheance(row, column);
+      if (echeance != null) {
+        displayedEmprunts.add(echeance.getEmprunt());
+      }
+    }
+    return displayedEmprunts;
+  }
+
+  public Set<Emprunt> getDisplayedEmprunts() {
+    Set<Emprunt> displayedEmprunts = new HashSet<Emprunt>();
+    for (int column = 0; column < getColumnCount(); column++) {
+      Emprunt emprunt = getEmprunt(column);
+      if (emprunt != null) {
+        displayedEmprunts.add(emprunt);
+      }
+    }
+    return displayedEmprunts;
   }
 
   private boolean isActionColumn(int column) {
