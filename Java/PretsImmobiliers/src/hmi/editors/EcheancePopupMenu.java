@@ -14,6 +14,7 @@ public class EcheancePopupMenu extends JMenu {
   private Echeance echeance;
 
   private ChoixAugmentationMenuItem augmenter10Pourcents;
+  private ChoixDoublementPonctuelEcheanceMenuItem doublementPonctuelEcheanceMenuItem;
 
   public EcheancePopupMenu(Echeance echeance) {
     super(echeance.getEmprunt().getName());
@@ -22,5 +23,8 @@ public class EcheancePopupMenu extends JMenu {
 
     augmenter10Pourcents = new ChoixAugmentationMenuItem(10, echeance);
     add(augmenter10Pourcents);
+    
+    doublementPonctuelEcheanceMenuItem = new ChoixDoublementPonctuelEcheanceMenuItem( echeance);
+    add(doublementPonctuelEcheanceMenuItem);
   }
 }

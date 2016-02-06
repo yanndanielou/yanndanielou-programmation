@@ -1,7 +1,5 @@
 package hmi;
 
-import hmi.editors.ActionEditor;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -10,7 +8,6 @@ import java.util.Set;
 
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableColumn;
 
 import model.Echeance;
 import model.Emprunt;
@@ -25,19 +22,27 @@ public class EcheancesTableModel extends AbstractTableModel {
   private JTable table;
 
   // Columns
-  private final int ECHEANCE_NUMBER_COLUMN_INDEX = 0;
-  private final int ECHEANCE_DATE_COLUMN_INDEX = ECHEANCE_NUMBER_COLUMN_INDEX + 1;
-  private final int NOMBRE_COLONNES_FIXES = ECHEANCE_DATE_COLUMN_INDEX + 1;
+  private static final int ECHEANCE_NUMBER_COLUMN_INDEX = 0;
+  private static final int ECHEANCE_DATE_COLUMN_INDEX = ECHEANCE_NUMBER_COLUMN_INDEX + 1;
+  private static final int NOMBRE_COLONNES_FIXES = ECHEANCE_DATE_COLUMN_INDEX + 1;
 
-  private final int PAR_EMPRUNT_ACTION_COLUMN_INDEX = 0;
-  private final int PAR_EMPRUNT_MENSUALITE_HORS_ASSURANCE_COLUMN_INDEX = PAR_EMPRUNT_ACTION_COLUMN_INDEX + 1;
-  private final int PAR_EMPRUNT_MONTANT_CAPITAL_COLUMN_INDEX = PAR_EMPRUNT_MENSUALITE_HORS_ASSURANCE_COLUMN_INDEX + 1;
-  private final int PAR_EMPRUNT_MONTANT_INTERETS_COLUMN_INDEX = PAR_EMPRUNT_MONTANT_CAPITAL_COLUMN_INDEX + 1;
-  private final int PAR_EMPRUNT_MONTANT_CAPITAL_RESTANT_A_REMBOURSER_COLUMN_INDEX = PAR_EMPRUNT_MONTANT_INTERETS_COLUMN_INDEX + 1;
-  private final int PAR_EMPRUNT_SEPARATION_ENTRE_EMPRUNT_COLUMN_INDEX = PAR_EMPRUNT_MONTANT_CAPITAL_RESTANT_A_REMBOURSER_COLUMN_INDEX + 1;
-  private final int PAR_EMPRUNT_NOMBRE_COLUMNS = PAR_EMPRUNT_SEPARATION_ENTRE_EMPRUNT_COLUMN_INDEX + 1;
+  private static final int PAR_EMPRUNT_ACTION_COLUMN_INDEX = 0;
 
-  private final static String BAD_LOGIC = "Bad logic";
+  private static final int PAR_EMPRUNT_ECHEANCE_INITIALE_MONTANT_CAPITAL_RESTANT_A_REMBOURSER_COLUMN_INDEX = PAR_EMPRUNT_ACTION_COLUMN_INDEX + 1;
+  private static final int PAR_EMPRUNT_ECHEANCE_INITIALE_MENSUALITE_HORS_ASSURANCE_COLUMN_INDEX = PAR_EMPRUNT_ECHEANCE_INITIALE_MONTANT_CAPITAL_RESTANT_A_REMBOURSER_COLUMN_INDEX + 1;
+  private static final int PAR_EMPRUNT_ECHEANCE_INITIALE_MONTANT_CAPITAL_COLUMN_INDEX = PAR_EMPRUNT_ECHEANCE_INITIALE_MENSUALITE_HORS_ASSURANCE_COLUMN_INDEX + 1;
+  private static final int PAR_EMPRUNT_ECHEANCE_INITIALE_MONTANT_INTERETS_COLUMN_INDEX = PAR_EMPRUNT_ECHEANCE_INITIALE_MONTANT_CAPITAL_COLUMN_INDEX + 1;
+
+  private static final int PAR_EMPRUNT_ECHEANCE_RECALEE_MONTANT_CAPITAL_RESTANT_A_REMBOURSER_COLUMN_INDEX = PAR_EMPRUNT_ECHEANCE_INITIALE_MONTANT_INTERETS_COLUMN_INDEX + 1;
+  private static final int PAR_EMPRUNT_ECHEANCE_RECALEE_MENSUALITE_HORS_ASSURANCE_COLUMN_INDEX = PAR_EMPRUNT_ECHEANCE_RECALEE_MONTANT_CAPITAL_RESTANT_A_REMBOURSER_COLUMN_INDEX + 1;
+  private static final int PAR_EMPRUNT_ECHEANCE_RECALEE_MONTANT_CAPITAL_COLUMN_INDEX = PAR_EMPRUNT_ECHEANCE_RECALEE_MENSUALITE_HORS_ASSURANCE_COLUMN_INDEX + 1;
+  private static final int PAR_EMPRUNT_ECHEANCE_RECALEE_MONTANT_INTERETS_COLUMN_INDEX = PAR_EMPRUNT_ECHEANCE_RECALEE_MONTANT_CAPITAL_COLUMN_INDEX + 1;
+
+  private static final int PAR_EMPRUNT_SEPARATION_ENTRE_EMPRUNT_COLUMN_INDEX = PAR_EMPRUNT_ECHEANCE_RECALEE_MONTANT_INTERETS_COLUMN_INDEX + 1;
+  private static final int PAR_EMPRUNT_NOMBRE_COLUMNS = PAR_EMPRUNT_SEPARATION_ENTRE_EMPRUNT_COLUMN_INDEX + 1;
+
+  private static final String BAD_LOGIC = "Bad logic";
+  private static final String EMPTY_CELL = "";
 
   public EcheancesTableModel() {
     projetImmobilier = ProjetImmobilier.getInstance();
@@ -105,20 +110,36 @@ public class EcheancesTableModel extends AbstractTableModel {
     return isColumnParEmprunt(column, PAR_EMPRUNT_ACTION_COLUMN_INDEX);
   }
 
-  private boolean isMensualiteHorsAssuranceColumn(int column) {
-    return isColumnParEmprunt(column, PAR_EMPRUNT_MENSUALITE_HORS_ASSURANCE_COLUMN_INDEX);
+  private boolean isEcheanceInitialeMensualiteHorsAssuranceColumn(int column) {
+    return isColumnParEmprunt(column, PAR_EMPRUNT_ECHEANCE_INITIALE_MENSUALITE_HORS_ASSURANCE_COLUMN_INDEX);
   }
 
-  private boolean isMontantCapitalColumn(int column) {
-    return isColumnParEmprunt(column, PAR_EMPRUNT_MONTANT_CAPITAL_COLUMN_INDEX);
+  private boolean isEcheanceInitialeMontantCapitalColumn(int column) {
+    return isColumnParEmprunt(column, PAR_EMPRUNT_ECHEANCE_INITIALE_MONTANT_CAPITAL_COLUMN_INDEX);
   }
 
-  private boolean isMontantInteretsColumn(int column) {
-    return isColumnParEmprunt(column, PAR_EMPRUNT_MONTANT_INTERETS_COLUMN_INDEX);
+  private boolean isEcheanceInitialeMontantInteretsColumn(int column) {
+    return isColumnParEmprunt(column, PAR_EMPRUNT_ECHEANCE_INITIALE_MONTANT_INTERETS_COLUMN_INDEX);
   }
 
-  private boolean isCapitalMontantAEmprunterColumn(int column) {
-    return isColumnParEmprunt(column, PAR_EMPRUNT_MONTANT_CAPITAL_RESTANT_A_REMBOURSER_COLUMN_INDEX);
+  private boolean isEcheanceInitialeCapitalMontantARembourserColumn(int column) {
+    return isColumnParEmprunt(column, PAR_EMPRUNT_ECHEANCE_INITIALE_MONTANT_CAPITAL_RESTANT_A_REMBOURSER_COLUMN_INDEX);
+  }
+
+  private boolean isEcheanceRecaleeMensualiteHorsAssuranceColumn(int column) {
+    return isColumnParEmprunt(column, PAR_EMPRUNT_ECHEANCE_RECALEE_MENSUALITE_HORS_ASSURANCE_COLUMN_INDEX);
+  }
+
+  private boolean isEcheanceRecaleeMontantCapitalColumn(int column) {
+    return isColumnParEmprunt(column, PAR_EMPRUNT_ECHEANCE_RECALEE_MONTANT_CAPITAL_COLUMN_INDEX);
+  }
+
+  private boolean isEcheanceRecaleeMontantInteretsColumn(int column) {
+    return isColumnParEmprunt(column, PAR_EMPRUNT_ECHEANCE_RECALEE_MONTANT_INTERETS_COLUMN_INDEX);
+  }
+
+  private boolean isEcheanceRecaleeCapitalMontantARembourserColumn(int column) {
+    return isColumnParEmprunt(column, PAR_EMPRUNT_ECHEANCE_RECALEE_MONTANT_CAPITAL_RESTANT_A_REMBOURSER_COLUMN_INDEX);
   }
 
   private boolean isSeparationEntreEmpruntsColumn(int column) {
@@ -154,16 +175,28 @@ public class EcheancesTableModel extends AbstractTableModel {
     if (isActionColumn(column)) {
       return "Action";
     }
-    if (isMensualiteHorsAssuranceColumn(column)) {
+    if (isEcheanceInitialeMensualiteHorsAssuranceColumn(column)) {
       return "Mensualite hors assurance";
     }
-    if (isMontantCapitalColumn(column)) {
+    if (isEcheanceInitialeMontantCapitalColumn(column)) {
       return "Montant capital";
     }
-    if (isMontantInteretsColumn(column)) {
+    if (isEcheanceInitialeMontantInteretsColumn(column)) {
       return "Montant interets";
     }
-    if (isCapitalMontantAEmprunterColumn(column)) {
+    if (isEcheanceInitialeCapitalMontantARembourserColumn(column)) {
+      return "Capital restant à rembourser";
+    }
+    if (isEcheanceRecaleeMensualiteHorsAssuranceColumn(column)) {
+      return "Mensualite hors assurance";
+    }
+    if (isEcheanceRecaleeMontantCapitalColumn(column)) {
+      return "Montant capital";
+    }
+    if (isEcheanceRecaleeMontantInteretsColumn(column)) {
+      return "Montant interets";
+    }
+    if (isEcheanceRecaleeCapitalMontantARembourserColumn(column)) {
       return "Capital restant à rembourser";
     }
     if (isSeparationEntreEmpruntsColumn(column)) {
@@ -206,24 +239,52 @@ public class EcheancesTableModel extends AbstractTableModel {
       if (isActionColumn(columnIndex)) {
         return echeance.getModificationEcheanceAction();
       }
-      if (isMensualiteHorsAssuranceColumn(columnIndex)) {
-        return DisplayUtils.getRoundedValueForDisplay(echeance.getMensualiteHorsAssurance());
+      if (isEcheanceInitialeMensualiteHorsAssuranceColumn(columnIndex)) {
+        return DisplayUtils.getRoundedValueForDisplay(echeance.getEcheanceInitiale().getMensualiteHorsAssurance());
       }
-      if (isMontantCapitalColumn(columnIndex)) {
-        return DisplayUtils.getRoundedValueForDisplay(echeance.getMontantCapital());
+      if (isEcheanceInitialeMontantCapitalColumn(columnIndex)) {
+        return DisplayUtils.getRoundedValueForDisplay(echeance.getEcheanceInitiale().getMontantCapital());
       }
-      if (isMontantInteretsColumn(columnIndex)) {
-        return DisplayUtils.getRoundedValueForDisplay(echeance.getMontantInteret());
+      if (isEcheanceInitialeMontantInteretsColumn(columnIndex)) {
+        return DisplayUtils.getRoundedValueForDisplay(echeance.getEcheanceInitiale().getMontantInteret());
       }
-      if (isCapitalMontantAEmprunterColumn(columnIndex)) {
-        return DisplayUtils.getRoundedValueForDisplay(echeance.getCapitalRestantARembourser());
+      if (isEcheanceInitialeCapitalMontantARembourserColumn(columnIndex)) {
+        return DisplayUtils.getRoundedValueForDisplay(echeance.getEcheanceInitiale().getCapitalRestantARembourser());
+      }
+      if (isEcheanceRecaleeMensualiteHorsAssuranceColumn(columnIndex)) {
+        if (echeance.hasEcheanceRecalee()) {
+          return DisplayUtils.getRoundedValueForDisplay(echeance.getEcheanceRecalee().getMensualiteHorsAssurance());
+        } else {
+          return EMPTY_CELL;
+        }
+      }
+      if (isEcheanceRecaleeMontantCapitalColumn(columnIndex)) {
+        if (echeance.hasEcheanceRecalee()) {
+          return DisplayUtils.getRoundedValueForDisplay(echeance.getEcheanceRecalee().getMontantCapital());
+        } else {
+          return EMPTY_CELL;
+        }
+      }
+      if (isEcheanceRecaleeMontantInteretsColumn(columnIndex)) {
+        if (echeance.hasEcheanceRecalee()) {
+          return DisplayUtils.getRoundedValueForDisplay(echeance.getEcheanceRecalee().getMontantInteret());
+        } else {
+          return EMPTY_CELL;
+        }
+      }
+      if (isEcheanceRecaleeCapitalMontantARembourserColumn(columnIndex)) {
+        if (echeance.hasEcheanceRecalee()) {
+          return DisplayUtils.getRoundedValueForDisplay(echeance.getEcheanceRecalee().getCapitalRestantARembourser());
+        } else {
+          return EMPTY_CELL;
+        }
       }
       if (isSeparationEntreEmpruntsColumn(columnIndex)) {
-        return "";
+        return EMPTY_CELL;
       }
     }
     else {
-      return "";
+      return EMPTY_CELL;
     }
     return BAD_LOGIC;
   }
@@ -231,7 +292,6 @@ public class EcheancesTableModel extends AbstractTableModel {
   @Override
   public void fireTableStructureChanged() {
     super.fireTableStructureChanged();
-    recreateEditors();
   }
 
   @Override
@@ -240,15 +300,6 @@ public class EcheancesTableModel extends AbstractTableModel {
       return true;
     }
     return false;
-  }
-
-  private void recreateEditors() {
-    for (int columnNumber = 0; columnNumber < table.getColumnCount(); columnNumber++) {
-      TableColumn tableColumn = table.getColumnModel().getColumn(columnNumber);
-      if (isActionColumn(columnNumber)) {
-        tableColumn.setCellEditor(new ActionEditor(this));
-      }
-    }
   }
 
   public void setTable(JTable table) {

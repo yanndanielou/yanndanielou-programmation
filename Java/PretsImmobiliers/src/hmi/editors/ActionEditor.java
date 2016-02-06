@@ -14,10 +14,7 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 
-import Core.ModificationAction.AugmentationDesEcheancesAction;
-import Core.ModificationAction.DoublementPonctuelEcheanceAction;
 import Core.ModificationAction.ModificationEcheanceAction;
-import Core.ModificationAction.NoOperationAction;
 
 //CTRL + SHIFT + O pour générer les imports
 public class ActionEditor extends DefaultCellEditor implements ItemListener {
@@ -29,9 +26,9 @@ public class ActionEditor extends DefaultCellEditor implements ItemListener {
   public ActionEditor(EcheancesTableModel echeancesTableModel) {
     super(new JComboBox<ModificationEcheanceAction>());
     this.echeancesTableModel = echeancesTableModel;
-    comboBox().addItem(new NoOperationAction());
-    comboBox().addItem(new DoublementPonctuelEcheanceAction());
-    comboBox().addItem(new AugmentationDesEcheancesAction());
+    //  comboBox().addItem(new NoOperationAction());
+    //  comboBox().addItem(new DoublementPonctuelEcheanceAction());
+    // comboBox().addItem(new AugmentationDesEcheancesAction());
     comboBox().addItemListener(this);
   }
 

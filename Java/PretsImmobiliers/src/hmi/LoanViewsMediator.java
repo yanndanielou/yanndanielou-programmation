@@ -125,4 +125,8 @@ public class LoanViewsMediator {
     LoanOverviewView.getInstance().afterEmpruntModified();
   }
 
+  public void onModificationEcheanceActionPerformed() {
+    EcheancesView.getInstance().afterModificationEcheanceActionPerformed();
+  }
+
 }

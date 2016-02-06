@@ -59,6 +59,10 @@ public class EcheancesView extends ProjetImmobilierBaseView {
     echeancesTableModel.fireTableStructureChanged();
   }
 
+  public void afterModificationEcheanceActionPerformed() {
+    echeancesTableModel.fireTableStructureChanged();
+  }
+
   @Override
   public void componentResized(ComponentEvent event) {
     if (event.getComponent() == this) {

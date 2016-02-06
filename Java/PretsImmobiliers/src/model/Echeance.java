@@ -5,50 +5,40 @@ import Core.ModificationAction.NoOperationAction;
 
 public class Echeance {
   private Emprunt emprunt;
-  private double capitalRestantAEmprunter;
-  private double montantCapital;
-  private double montantInteret;
-  private double montantAssurance;
+
+  private EcheanceProperties echeanceInitiale;
+  private EcheanceProperties echeanceRecalee;
+
   private ModificationEcheanceAction modificationEcheanceAction;
 
-  public Echeance(Emprunt emprunt, double capitalRestantAEmprunter, double montantCapital, double montantInteret) {
+  public Echeance(Emprunt emprunt, double capitalRestantARembourser, double montantCapital, double montantInteret) {
     this.emprunt = emprunt;
-    this.capitalRestantAEmprunter = capitalRestantAEmprunter;
-    this.montantCapital = montantCapital;
-    this.montantInteret = montantInteret;
-    modificationEcheanceAction = new NoOperationAction();
+    echeanceInitiale = new EcheanceProperties();
+    echeanceInitiale.setMontantCapital(montantCapital);
+    echeanceInitiale.setMontantInteret(montantInteret);
+    echeanceInitiale.setCapitalRestantARembourser(capitalRestantARembourser);
+    modificationEcheanceAction = new NoOperationAction(this);
   }
 
-  public double getMensualiteHorsAssurance() {
-    return montantCapital + montantInteret;
-  }
-
-  public double getCapitalRestantARembourser() {
-    return capitalRestantAEmprunter;
-  }
-
-  public double getMontantCapital() {
-    return montantCapital;
-  }
-
-  public double getMontantInteret() {
-    return montantInteret;
-  }
-
-  public void setModificationEcheanceAction(ModificationEcheanceAction modificationEcheanceAction) {
+  public void applyAction(ModificationEcheanceAction modificationEcheanceAction) {
     this.modificationEcheanceAction = modificationEcheanceAction;
+    echeanceRecalee = modificationEcheanceAction.createEcheanceRecalee();
   }
 
   public ModificationEcheanceAction getModificationEcheanceAction() {
     return modificationEcheanceAction;
   }
 
-  public void setMontantAssurance(double montantAssurance) {
-    this.montantAssurance = montantAssurance;
+  public EcheanceProperties getEcheanceInitiale() {
+    return echeanceInitiale;
   }
 
-  public double getMontantAssurance() {
-    return montantAssurance;
+  public boolean hasEcheanceRecalee() {
+    return echeanceRecalee != null;
+  }
+
+  public EcheanceProperties getEcheanceRecalee() {
+    return echeanceRecalee;
   }
 
   public Emprunt getEmprunt() {

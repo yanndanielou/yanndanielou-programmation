@@ -1,7 +1,11 @@
 package model;
 
+import hmi.LoanViewsMediator;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import Core.ModificationAction.ModificationEcheanceAction;
 
 public class Emprunt {
 
@@ -65,7 +69,7 @@ public class Emprunt {
   public double getMontantTotalInterets() {
     double montantTotalInterets = 0;
     for (Echeance echeance : echeances) {
-      montantTotalInterets += echeance.getMontantInteret();
+      montantTotalInterets += echeance.getEcheanceInitiale().getMontantInteret();
     }
     return montantTotalInterets;
   }
@@ -73,7 +77,7 @@ public class Emprunt {
   public double getMontantTotalAssurance() {
     double montantTotalAssurance = 0;
     for (Echeance echeance : echeances) {
-      montantTotalAssurance += echeance.getMontantAssurance();
+      montantTotalAssurance += echeance.getEcheanceInitiale().getMontantAssurance();
     }
     return montantTotalAssurance;
   }
@@ -121,7 +125,7 @@ public class Emprunt {
 
   private void updateAssurancesInEcheances() {
     for (Echeance echeance : echeances) {
-      echeance.setMontantAssurance(assurancesMensuelles);
+      echeance.getEcheanceInitiale().setMontantAssurance(assurancesMensuelles);
     }
   }
 
@@ -167,4 +171,14 @@ public class Emprunt {
     }
   }
 
+  public void applyAction(ModificationEcheanceAction modificationEcheanceAction, Echeance echeance) {
+    echeance.applyAction(modificationEcheanceAction);
+    updateSubsequentEcheancesRecalees(modificationEcheanceAction, echeance);
+    LoanViewsMediator.getInstance().onModificationEcheanceActionPerformed();
+  }
+
+  private void updateSubsequentEcheancesRecalees(ModificationEcheanceAction modificationEcheanceAction, Echeance echeance) {
+    // TODO Auto-generated method stub
+
+  }
 }
