@@ -14,6 +14,7 @@ public class ActionPonctuelleEcheancePopupMenu extends JMenu {
   private Echeance echeance;
 
   private ChoixDoublementPonctuelEcheanceMenuItem doublementPonctuelEcheanceMenuItem;
+  private ActionRemboursementsAnticipesCapitalPopupMenu actionRemboursementsAnticipesCapitalPopupMenu;
 
   public ActionPonctuelleEcheancePopupMenu(Echeance echeance) {
     super("Action ponctuelle");
@@ -22,5 +23,8 @@ public class ActionPonctuelleEcheancePopupMenu extends JMenu {
 
     doublementPonctuelEcheanceMenuItem = new ChoixDoublementPonctuelEcheanceMenuItem(echeance);
     add(doublementPonctuelEcheanceMenuItem);
+
+    actionRemboursementsAnticipesCapitalPopupMenu = new ActionRemboursementsAnticipesCapitalPopupMenu(echeance);
+    add(actionRemboursementsAnticipesCapitalPopupMenu);
   }
 }
