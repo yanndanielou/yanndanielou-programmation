@@ -132,21 +132,25 @@ public class LoanOverviewView extends ProjetImmobilierBaseView {
   private void updateMontantTotalInteretsField() {
     double montantTotalInterets = projetImmobilier.getMontantTotalInterets();
     montantTotalInteretsValue.setTextWithRoundedValue(montantTotalInterets);
+    replaceWidgets();
   }
 
   private void updateMontantTotalAssurancesField() {
     double montantTotalInterets = projetImmobilier.getMontantTotalAssurances();
     montantTotalAssurancesValue.setTextWithRoundedValue(montantTotalInterets);
+    replaceWidgets();
   }
 
   private void updateFraisNotaireField() {
     double montantTotalInterets = projetImmobilier.getRealEstate().getFraisNotaire();
     fraisNotaireValue.setTextWithRoundedValue(montantTotalInterets);
+    replaceWidgets();
   }
 
   private void montantTotalEmprunteField() {
     double capitalEmprunte = projetImmobilier.getCapitalEmprunte();
     montantTotalEmprunteValue.setTextWithRoundedValue(capitalEmprunte);
+    replaceWidgets();
   }
 
   @Override
