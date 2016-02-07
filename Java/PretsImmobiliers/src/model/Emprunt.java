@@ -240,7 +240,8 @@ public class Emprunt {
       double capitalRestantARembourser = previousEcheanceRecalee.getCapitalRestantARembourser() - previousEcheanceRecalee.getMontantCapital();
       if (capitalRestantARembourser >= previousEcheanceRecalee.getMontantCapital()) {
         echeanceRecalee.setCapitalRestantARembourser(capitalRestantARembourser);
-        echeanceRecalee.setMontantCapital(echeanceRecaleeWithActionApplied.getMensualiteHorsAssurance() - echeanceRecalee.getMontantInteret());
+        double mensualiteHorsAssurance = modificationEcheanceAction.isPonctuel() ? echeanceARecaler.getEcheanceReferenceBeforeRecalage().getMensualiteHorsAssurance() : echeanceRecaleeWithActionApplied.getMensualiteHorsAssurance();
+        echeanceRecalee.setMontantCapital(mensualiteHorsAssurance - echeanceRecalee.getMontantInteret());
         echeanceRecalee.setMontantAssurance(echeanceRecaleeWithActionApplied.getMontantAssurance());
         echeanceARecaler.setEcheanceRecalee(echeanceRecalee);
         previousEcheance = echeanceARecaler;

@@ -25,7 +25,7 @@ public abstract class ModificationEcheanceAction {
   }
 
   protected EcheanceProperties getEcheanceReference() {
-    EcheanceProperties echeanceReference = echeance.hasEcheanceRecalee() ? echeance.getEcheanceRecalee() : echeance.getEcheanceInitiale();
+    EcheanceProperties echeanceReference = echeance.getEcheanceReferenceBeforeRecalage();
     return echeanceReference;
   }
 

@@ -44,6 +44,10 @@ public class Echeance {
     return echeanceRecalee;
   }
 
+  public EcheanceProperties getEcheanceReferenceBeforeRecalage() {
+    return hasEcheanceRecalee() ? getEcheanceRecalee() : getEcheanceInitiale();
+  }
+
   public void setEcheanceRecalee(EcheanceProperties echeanceRecalee) {
     this.echeanceRecalee = echeanceRecalee;
   }
