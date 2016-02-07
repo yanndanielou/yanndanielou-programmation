@@ -41,4 +41,8 @@ public class EcheanceProperties {
   public void setCapitalRestantARembourser(double capitalRestantAEmprunter) {
     this.capitalRestantARembourser = capitalRestantAEmprunter;
   }
+
+  public Echeance getEcheance() {
+    return echeance;
+  }
 }

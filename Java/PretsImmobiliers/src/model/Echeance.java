@@ -36,12 +36,21 @@ public class Echeance {
     return echeanceRecalee != null;
   }
 
+  public boolean hasEcheanceInitiale() {
+    return echeanceInitiale != null;
+  }
+
   public EcheanceProperties getEcheanceRecalee() {
     return echeanceRecalee;
   }
 
   public void setEcheanceRecalee(EcheanceProperties echeanceRecalee) {
     this.echeanceRecalee = echeanceRecalee;
+  }
+
+  public void deleteEcheanceRecalee() {
+    setEcheanceRecalee(null);
+    modificationEcheanceAction = new NoOperationAction(this);
   }
 
   public Emprunt getEmprunt() {

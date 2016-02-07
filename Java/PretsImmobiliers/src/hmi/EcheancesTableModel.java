@@ -41,6 +41,9 @@ public class EcheancesTableModel extends AbstractTableModel {
   private static final int PAR_EMPRUNT_SEPARATION_ENTRE_EMPRUNT_COLUMN_INDEX = PAR_EMPRUNT_ECHEANCE_RECALEE_MONTANT_INTERETS_COLUMN_INDEX + 1;
   private static final int PAR_EMPRUNT_NOMBRE_COLUMNS = PAR_EMPRUNT_SEPARATION_ENTRE_EMPRUNT_COLUMN_INDEX + 1;
 
+  private static final int EMPTY_ROW_BETWEEN_ECHEANCE_AND_TOTAL = 1;
+  private static final int TOTALS_ROW = 1;
+
   private static final String BAD_LOGIC = "Bad logic";
   private static final String EMPTY_CELL = "";
 
@@ -164,6 +167,14 @@ public class EcheancesTableModel extends AbstractTableModel {
     return column == ECHEANCE_DATE_COLUMN_INDEX;
   }
 
+  private boolean isEmptyRowBetweenEcheanceAndTotal(int row) {
+    return row == getRowCount() - TOTALS_ROW - EMPTY_ROW_BETWEEN_ECHEANCE_AND_TOTAL;
+  }
+
+  private boolean isTotalsRow(int row) {
+    return row == getRowCount() - TOTALS_ROW;
+  }
+
   @Override
   public String getColumnName(int column) {
     if (isEcheanceNumberColumn(column)) {
@@ -207,7 +218,11 @@ public class EcheancesTableModel extends AbstractTableModel {
 
   @Override
   public int getRowCount() {
-    return projetImmobilier.getNombreEcheances();
+    int nombreEcheances = projetImmobilier.getNombreEcheances();
+    if (nombreEcheances > 0) {
+      return nombreEcheances + EMPTY_ROW_BETWEEN_ECHEANCE_AND_TOTAL + TOTALS_ROW;
+    }
+    return 0;
   }
 
   @Override
@@ -219,6 +234,27 @@ public class EcheancesTableModel extends AbstractTableModel {
 
   @Override
   public Object getValueAt(int rowIndex, int columnIndex) {
+    if (isEmptyRowBetweenEcheanceAndTotal(rowIndex)) {
+      return EMPTY_CELL;
+    } else if (isTotalsRow(rowIndex)) {
+      if (isEcheanceNumberColumn(columnIndex)) {
+        return "Totals";
+      }
+      Emprunt emprunt = getEmprunt(columnIndex);
+      if (isEcheanceInitialeMontantCapitalColumn(columnIndex)) {
+        return DisplayUtils.getRoundedValueForDisplay(emprunt.getMontantTotalCapitalRembourseInitial());
+      }
+      if (isEcheanceInitialeMontantInteretsColumn(columnIndex)) {
+        return DisplayUtils.getRoundedValueForDisplay(emprunt.getMontantTotalInteretsInitial());
+      }
+      if (isEcheanceRecaleeMontantInteretsColumn(columnIndex)) {
+        return DisplayUtils.getRoundedValueForDisplay(emprunt.getMontantTotalInteretsRecale());
+      }
+      if (isEcheanceRecaleeMontantCapitalColumn(columnIndex)) {
+        return DisplayUtils.getRoundedValueForDisplay(emprunt.getMontantTotalCapitalRembourseRecale());
+      }
+      return EMPTY_CELL;
+    }
     if (isEcheanceNumberColumn(columnIndex)) {
       return rowIndex + 1;
     }

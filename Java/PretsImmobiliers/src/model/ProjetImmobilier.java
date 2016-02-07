@@ -57,7 +57,7 @@ public class ProjetImmobilier {
   public double getMontantTotalInterets() {
     double montantTotalInterets = 0;
     for (Emprunt emprunt : emprunts) {
-      montantTotalInterets += emprunt.getMontantTotalInterets();
+      montantTotalInterets += emprunt.getMontantTotalInteretsInitial();
     }
     return montantTotalInterets;
   }
@@ -65,7 +65,7 @@ public class ProjetImmobilier {
   public double getMontantTotalAssurances() {
     double montantTotalAssurances = 0;
     for (Emprunt emprunt : emprunts) {
-      montantTotalAssurances += emprunt.getMontantTotalAssurance();
+      montantTotalAssurances += emprunt.getMontantTotalAssuranceInitial();
     }
     return montantTotalAssurances;
   }

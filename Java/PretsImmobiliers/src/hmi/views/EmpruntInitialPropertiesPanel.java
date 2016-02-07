@@ -246,12 +246,12 @@ public class EmpruntInitialPropertiesPanel extends ProjetImmobilierBaseView impl
   }
 
   public void refreshMontantInterets() {
-    double montantTotalInterets = emprunt.getMontantTotalInterets();
+    double montantTotalInterets = emprunt.getMontantTotalInteretsInitial();
     montantInteretsValue.setTextWithRoundedValue(montantTotalInterets);
   }
 
   public void refreshMontantAssurance() {
-    double montantTotalAssurance = emprunt.getMontantTotalAssurance();
+    double montantTotalAssurance = emprunt.getMontantTotalAssuranceInitial();
     montantAssurancesValue.setTextWithRoundedValue(montantTotalAssurance);
   }
 
