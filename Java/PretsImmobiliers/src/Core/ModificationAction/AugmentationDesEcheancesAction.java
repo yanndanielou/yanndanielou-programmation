@@ -7,11 +7,11 @@ package Core.ModificationAction;
 import model.Echeance;
 import model.EcheanceProperties;
 
-public class AugmentationDesEcheancesAction extends ChangementDefinitifDesEcheancesAction {
+public class AugmentationDesEcheancesAction extends ModificationEcheanceAction {
   private int augmentationPourcentage;
 
   public AugmentationDesEcheancesAction(int augmentationPourcentage, Echeance echeance) {
-    super(echeance);
+    super(false, echeance);
     this.augmentationPourcentage = augmentationPourcentage;
   }
 
