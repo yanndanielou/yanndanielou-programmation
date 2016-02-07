@@ -16,7 +16,7 @@ public class Echeance {
     echeanceInitiale = new EcheanceProperties(this);
     echeanceInitiale.setMontantCapital(montantCapital);
     echeanceInitiale.setCapitalRestantARembourser(capitalRestantARembourser);
-    modificationEcheanceAction = new NoOperationAction(this);
+    modificationEcheanceAction = null;
   }
 
   public void applyAction(ModificationEcheanceAction modificationEcheanceAction) {

@@ -106,6 +106,26 @@ public class Emprunt {
     return montantTotalCapitalRembourse;
   }
 
+  public double getMontantTotalMensualitesHorsAssuranceInitial() {
+    double montantTotalMensualitesHorsAssurance = 0;
+    for (Echeance echeance : echeances) {
+      if (echeance.hasEcheanceInitiale()) {
+        montantTotalMensualitesHorsAssurance += echeance.getEcheanceInitiale().getMensualiteHorsAssurance();
+      }
+    }
+    return montantTotalMensualitesHorsAssurance;
+  }
+
+  public double getMontantTotalMensualitesHorsAssuranceRecale() {
+    double montantTotalMensualitesHorsAssurance = 0;
+    for (Echeance echeance : echeances) {
+      if (echeance.hasEcheanceRecalee()) {
+        montantTotalMensualitesHorsAssurance += echeance.getEcheanceRecalee().getMensualiteHorsAssurance();
+      }
+    }
+    return montantTotalMensualitesHorsAssurance;
+  }
+
   public double getMontantTotalAssuranceInitial() {
     double montantTotalAssurance = 0;
     for (Echeance echeance : echeances) {

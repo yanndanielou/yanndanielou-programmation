@@ -241,11 +241,17 @@ public class EcheancesTableModel extends AbstractTableModel {
         return "Totals";
       }
       Emprunt emprunt = getEmprunt(columnIndex);
+      if (isEcheanceInitialeMensualiteHorsAssuranceColumn(columnIndex)) {
+        return DisplayUtils.getRoundedValueForDisplay(emprunt.getMontantTotalMensualitesHorsAssuranceInitial());
+      }
       if (isEcheanceInitialeMontantCapitalColumn(columnIndex)) {
         return DisplayUtils.getRoundedValueForDisplay(emprunt.getMontantTotalCapitalRembourseInitial());
       }
       if (isEcheanceInitialeMontantInteretsColumn(columnIndex)) {
         return DisplayUtils.getRoundedValueForDisplay(emprunt.getMontantTotalInteretsInitial());
+      }
+      if (isEcheanceRecaleeMensualiteHorsAssuranceColumn(columnIndex)) {
+        return DisplayUtils.getRoundedValueForDisplay(emprunt.getMontantTotalMensualitesHorsAssuranceRecale());
       }
       if (isEcheanceRecaleeMontantInteretsColumn(columnIndex)) {
         return DisplayUtils.getRoundedValueForDisplay(emprunt.getMontantTotalInteretsRecale());
