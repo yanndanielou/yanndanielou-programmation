@@ -105,7 +105,7 @@ public class LoanViewsMediator {
   }
 
   public void onMensualiteHorsAssuranceModified(Emprunt emprunt, double monthlyPayment) {
-    if (emprunt.getMensualiteHorsAssurance() != monthlyPayment) {
+    if (emprunt.getMensualiteHorsAssurance() == null || emprunt.getMensualiteHorsAssurance() != monthlyPayment) {
       emprunt.modifyMensualiteHorsAssurance(monthlyPayment);
       afterEmpruntModified(emprunt);
     }

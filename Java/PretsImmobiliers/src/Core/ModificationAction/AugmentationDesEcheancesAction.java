@@ -19,14 +19,13 @@ public class AugmentationDesEcheancesAction extends ChangementDefinitifDesEchean
   public EcheanceProperties createEcheanceRecalee() {
     EcheanceProperties echeanceReference = getEcheanceReference();
     EcheanceProperties echeanceRecalee = new EcheanceProperties(echeance);
+    echeanceRecalee.setCapitalRestantARembourser(echeanceReference.getCapitalRestantARembourser());
+    double mensualiteHorsAssuranceAvantAction = echeanceReference.getMensualiteHorsAssurance();
+    double newMensualiteHorsAssurance = mensualiteHorsAssuranceAvantAction + mensualiteHorsAssuranceAvantAction * augmentationPourcentage / 100;
+    echeanceRecalee.setMontantCapital(newMensualiteHorsAssurance - echeanceRecalee.getMontantInteret());
+
     // TODO: à vérifier
     echeanceRecalee.setMontantAssurance(echeanceReference.getMontantAssurance());
-    double montantCapitalInitial = echeanceReference.getMontantCapital();
-    double montantCapital = montantCapitalInitial + montantCapitalInitial * augmentationPourcentage / 100;
-    echeanceRecalee.setMontantCapital(montantCapital);
-    //TODO: à vérifier
-    echeanceRecalee.setCapitalRestantARembourser(echeanceReference.getCapitalRestantARembourser());
-
     return echeanceRecalee;
   }
 
