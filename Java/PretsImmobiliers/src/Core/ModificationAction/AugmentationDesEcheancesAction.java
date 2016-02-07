@@ -7,25 +7,24 @@ package Core.ModificationAction;
 import model.Echeance;
 import model.EcheanceProperties;
 
-public class AugmentationDesEcheancesAction extends ModificationEcheanceAction {
+public class AugmentationDesEcheancesAction extends ChangementDefinitifDesEcheancesAction {
   private int augmentationPourcentage;
 
   public AugmentationDesEcheancesAction(int augmentationPourcentage, Echeance echeance) {
-    super(false, echeance);
+    super(echeance);
     this.augmentationPourcentage = augmentationPourcentage;
   }
 
   @Override
   public EcheanceProperties createEcheanceRecalee() {
     EcheanceProperties echeanceReference = getEcheanceReference();
-    EcheanceProperties echeanceRecalee = new EcheanceProperties();
+    EcheanceProperties echeanceRecalee = new EcheanceProperties(echeance);
     // TODO: à vérifier
     echeanceRecalee.setMontantAssurance(echeanceReference.getMontantAssurance());
     double montantCapitalInitial = echeanceReference.getMontantCapital();
     double montantCapital = montantCapitalInitial + montantCapitalInitial * augmentationPourcentage / 100;
     echeanceRecalee.setMontantCapital(montantCapital);
     //TODO: à vérifier
-    echeanceRecalee.setMontantInteret(echeanceReference.getMontantInteret());
     echeanceRecalee.setCapitalRestantARembourser(echeanceReference.getCapitalRestantARembourser());
 
     return echeanceRecalee;
@@ -33,7 +32,7 @@ public class AugmentationDesEcheancesAction extends ModificationEcheanceAction {
 
   @Override
   public String toString() {
-    return "Augmentation :" + augmentationPourcentage + "%";
+    return "+ " + augmentationPourcentage + "%";
   }
 
 }

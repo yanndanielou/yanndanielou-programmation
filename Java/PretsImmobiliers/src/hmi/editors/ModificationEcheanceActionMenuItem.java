@@ -28,6 +28,6 @@ public abstract class ModificationEcheanceActionMenuItem extends JMenuItem imple
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    echeance.getEmprunt().applyAction(modificationEcheanceAction, echeance);
+    echeance.getEmprunt().applyModificationEcheanceAction(modificationEcheanceAction, echeance);
   }
 }

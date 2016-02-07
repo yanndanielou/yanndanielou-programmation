@@ -20,6 +20,6 @@ public class NoOperationAction extends ModificationEcheanceAction {
 
   @Override
   public EcheanceProperties createEcheanceRecalee() {
-    return null;
+    return getEcheanceReference();
   }
 }

@@ -1,10 +1,14 @@
 package model;
 
 public class EcheanceProperties {
+  private Echeance echeance;
   private double montantCapital;
-  private double montantInteret;
   private double montantAssurance;
   private double capitalRestantARembourser;
+
+  public EcheanceProperties(Echeance echeance) {
+    this.echeance = echeance;
+  }
 
   public double getMontantAssurance() {
     return montantAssurance;
@@ -23,15 +27,11 @@ public class EcheanceProperties {
   }
 
   public double getMontantInteret() {
-    return montantInteret;
-  }
-
-  public void setMontantInteret(double montantInteret) {
-    this.montantInteret = montantInteret;
+    return capitalRestantARembourser * echeance.getEmprunt().getTauxPeriodique();
   }
 
   public double getMensualiteHorsAssurance() {
-    return montantCapital + montantInteret;
+    return montantCapital + getMontantInteret();
   }
 
   public double getCapitalRestantARembourser() {

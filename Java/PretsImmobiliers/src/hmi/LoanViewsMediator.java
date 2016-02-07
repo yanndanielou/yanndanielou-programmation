@@ -91,18 +91,24 @@ public class LoanViewsMediator {
   }
 
   public void onCapitalEmprunteModified(Emprunt emprunt, double capitalEmprunte) {
-    emprunt.modifyCapitalEmprunte(capitalEmprunte);
-    afterEmpruntModified(emprunt);
+    if (emprunt.getCapitalEmprunte() != capitalEmprunte) {
+      emprunt.modifyCapitalEmprunte(capitalEmprunte);
+      afterEmpruntModified(emprunt);
+    }
   }
 
   public void onAnnualInterestRateModified(Emprunt emprunt, double tauxAnnuel) {
-    emprunt.modifyTauxAnnuel(tauxAnnuel);
-    afterEmpruntModified(emprunt);
+    if (emprunt.getTauxAnnuel() != tauxAnnuel) {
+      emprunt.modifyTauxAnnuel(tauxAnnuel);
+      afterEmpruntModified(emprunt);
+    }
   }
 
   public void onMensualiteHorsAssuranceModified(Emprunt emprunt, double monthlyPayment) {
-    emprunt.modifyMensualiteHorsAssurance(monthlyPayment);
-    afterEmpruntModified(emprunt);
+    if (emprunt.getMensualiteHorsAssurance() != monthlyPayment) {
+      emprunt.modifyMensualiteHorsAssurance(monthlyPayment);
+      afterEmpruntModified(emprunt);
+    }
   }
 
   public void onAssurancesMensuellesModified(Emprunt emprunt, double assurancesMensuelles) {
@@ -113,8 +119,10 @@ public class LoanViewsMediator {
   }
 
   public void onNombreEcheancesDesireModified(Emprunt emprunt, int nombreEcheances) {
-    emprunt.modifyNombreEcheancesDesire(nombreEcheances);
-    afterEmpruntModified(emprunt);
+    if (emprunt.getEcheances().size() != nombreEcheances) {
+      afterEmpruntModified(emprunt);
+      emprunt.modifyNombreEcheancesDesire(nombreEcheances);
+    }
   }
 
   private void afterEmpruntModified(Emprunt emprunt) {

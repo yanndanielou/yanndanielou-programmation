@@ -21,11 +21,10 @@ public class DoublementPonctuelEcheanceAction extends ModificationEcheanceAction
   @Override
   public EcheanceProperties createEcheanceRecalee() {
     EcheanceProperties echeanceReference = getEcheanceReference();
-    EcheanceProperties echeanceRecalee = new EcheanceProperties();
+    EcheanceProperties echeanceRecalee = new EcheanceProperties(echeance);
     echeanceRecalee.setMontantAssurance(echeanceReference.getMontantAssurance() * 2);
     echeanceRecalee.setMontantCapital(echeanceReference.getMontantCapital() * 2);
     //TODO: à vérifier
-    echeanceRecalee.setMontantInteret(echeanceReference.getMontantInteret());
     echeanceRecalee.setCapitalRestantARembourser(echeanceReference.getCapitalRestantARembourser());
     return echeanceRecalee;
   }

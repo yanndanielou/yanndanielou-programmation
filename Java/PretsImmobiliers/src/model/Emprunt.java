@@ -46,7 +46,7 @@ public class Emprunt {
         if (montantCapital < 0) {
           return;
         }
-        Echeance echeance = new Echeance(this, capitalRestantARembourser, montantCapital, montantInteret);
+        Echeance echeance = new Echeance(this, capitalRestantARembourser, montantCapital);
         capitalRestantARembourser -= montantCapital;
         echeances.add(echeance);
       }
@@ -57,7 +57,7 @@ public class Emprunt {
       for (int i = 0; i < nombreEcheancesDesire; i++) {
         double montantInteret = capitalRestantARembourser * tauxPeriodique;
         double montantCapital = mensualiteHorsAssurance - montantInteret;
-        Echeance echeance = new Echeance(this, capitalRestantARembourser, montantCapital, montantInteret);
+        Echeance echeance = new Echeance(this, capitalRestantARembourser, montantCapital);
         capitalRestantARembourser -= montantCapital;
         echeances.add(echeance);
       }
@@ -171,14 +171,27 @@ public class Emprunt {
     }
   }
 
-  public void applyAction(ModificationEcheanceAction modificationEcheanceAction, Echeance echeance) {
-    echeance.applyAction(modificationEcheanceAction);
-    updateSubsequentEcheancesRecalees(modificationEcheanceAction, echeance);
+  public void applyModificationEcheanceAction(ModificationEcheanceAction modificationEcheanceAction, Echeance echeanceWithActionApplied) {
+    echeanceWithActionApplied.applyAction(modificationEcheanceAction);
+    updateSubsequentEcheancesRecalees(modificationEcheanceAction, echeanceWithActionApplied);
     LoanViewsMediator.getInstance().onModificationEcheanceActionPerformed();
   }
 
-  private void updateSubsequentEcheancesRecalees(ModificationEcheanceAction modificationEcheanceAction, Echeance echeance) {
-    // TODO Auto-generated method stub
+  private void updateSubsequentEcheancesRecalees(ModificationEcheanceAction modificationEcheanceAction, Echeance echeanceWithActionApplied) {
+    int indexEcheanceAvecAction = echeances.indexOf(echeanceWithActionApplied);
+    EcheanceProperties echeanceRecaleeWithActionApplied = echeanceWithActionApplied.getEcheanceRecalee();
 
+    Echeance previousEcheance = echeanceWithActionApplied;
+    for (int i = indexEcheanceAvecAction + 1; i < echeances.size(); i++) {
+      Echeance echeanceARecaler = echeances.get(i);
+      EcheanceProperties echeanceRecalee = new EcheanceProperties(echeanceARecaler);
+      EcheanceProperties previousEcheanceRecalee = previousEcheance.getEcheanceRecalee();
+      double capitalRestantARembourser = previousEcheanceRecalee.getCapitalRestantARembourser();
+      echeanceRecalee.setCapitalRestantARembourser(capitalRestantARembourser - previousEcheanceRecalee.getMontantCapital());
+      echeanceRecalee.setMontantCapital(echeanceRecaleeWithActionApplied.getMensualiteHorsAssurance() - echeanceRecalee.getMontantInteret());
+      echeanceRecalee.setMontantAssurance(echeanceRecaleeWithActionApplied.getMontantAssurance());
+      echeanceARecaler.setEcheanceRecalee(echeanceRecalee);
+      previousEcheance = echeanceARecaler;
+    }
   }
 }
