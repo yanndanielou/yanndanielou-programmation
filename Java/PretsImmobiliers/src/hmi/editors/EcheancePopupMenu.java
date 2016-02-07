@@ -13,18 +13,18 @@ public class EcheancePopupMenu extends JMenu {
   private static final long serialVersionUID = 980990651567443340L;
   private Echeance echeance;
 
-  private ChoixAugmentationMenuItem augmenter10Pourcents;
-  private ChoixDoublementPonctuelEcheanceMenuItem doublementPonctuelEcheanceMenuItem;
+  private ActionPonctuelleEcheancePopupMenu actionPonctuelleEcheancePopupMenu;
+  private ActionRecurrenteEcheancePopupMenu actionRecurrenteEcheancePopupMenu;
 
   public EcheancePopupMenu(Echeance echeance) {
     super(echeance.getEmprunt().getName());
     this.echeance = echeance;
     addActionListener(new EcheancePopupMenuListener());
 
-    augmenter10Pourcents = new ChoixAugmentationMenuItem(10, echeance);
-    add(augmenter10Pourcents);
-    
-    doublementPonctuelEcheanceMenuItem = new ChoixDoublementPonctuelEcheanceMenuItem( echeance);
-    add(doublementPonctuelEcheanceMenuItem);
+    actionPonctuelleEcheancePopupMenu = new ActionPonctuelleEcheancePopupMenu(echeance);
+    add(actionPonctuelleEcheancePopupMenu);
+
+    actionRecurrenteEcheancePopupMenu = new ActionRecurrenteEcheancePopupMenu(echeance);
+    add(actionRecurrenteEcheancePopupMenu);
   }
 }
