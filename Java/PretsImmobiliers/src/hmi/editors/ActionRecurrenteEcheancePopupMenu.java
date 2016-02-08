@@ -1,7 +1,3 @@
-/*
- * Controlguide
- * Copyright (c) Siemens AG 2016, All Rights Reserved, Confidential
- */
 package hmi.editors;
 
 import javax.swing.JMenu;
