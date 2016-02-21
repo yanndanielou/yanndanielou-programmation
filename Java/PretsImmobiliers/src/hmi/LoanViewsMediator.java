@@ -120,8 +120,8 @@ public class LoanViewsMediator {
 
   public void onNombreEcheancesDesireModified(Emprunt emprunt, int nombreEcheances) {
     if (emprunt.getEcheances().size() != nombreEcheances) {
-      afterEmpruntModified(emprunt);
       emprunt.modifyNombreEcheancesDesire(nombreEcheances);
+      afterEmpruntModified(emprunt);
     }
   }
 
