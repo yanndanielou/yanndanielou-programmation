@@ -235,7 +235,7 @@ public class Emprunt {
   public void applyModificationEcheanceAction(ModificationEcheanceAction modificationEcheanceAction, Echeance echeanceWithActionApplied) {
     copyEcheanceInitialeToEcheancesRecaleesForEcheancesPriorToThisAction(echeanceWithActionApplied);
     echeanceWithActionApplied.applyAction(modificationEcheanceAction);
-    updateSubsequentEcheancesRecalees(modificationEcheanceAction, echeanceWithActionApplied);
+    modificationEcheanceAction.updateSubsequentEcheancesRecalees(modificationEcheanceAction, echeanceWithActionApplied);
     LoanViewsMediator.getInstance().onModificationEcheanceActionPerformed();
   }
 
@@ -257,41 +257,4 @@ public class Emprunt {
 
   }
 
-  private void updateSubsequentEcheancesRecalees(ModificationEcheanceAction modificationEcheanceAction, Echeance echeanceWithActionApplied) {
-    int indexEcheanceAvecAction = echeances.indexOf(echeanceWithActionApplied);
-    EcheanceProperties echeanceRecaleeWithActionApplied = echeanceWithActionApplied.getEcheanceRecalee();
-
-    Echeance previousEcheance = echeanceWithActionApplied;
-    for (int i = indexEcheanceAvecAction + 1; i < echeances.size(); i++) {
-      Echeance echeanceARecaler = echeances.get(i);
-      EcheanceProperties echeanceRecalee = new EcheanceProperties(echeanceARecaler);
-      EcheanceProperties previousEcheanceRecalee = previousEcheance.getEcheanceRecalee();
-      double capitalRestantARembourser = previousEcheanceRecalee.getCapitalRestantARembourser() - previousEcheanceRecalee.getMontantCapital();
-      if (capitalRestantARembourser >= previousEcheanceRecalee.getMontantCapital()) {
-        echeanceRecalee.setCapitalRestantARembourser(capitalRestantARembourser);
-        double mensualiteHorsAssurance = modificationEcheanceAction.isPonctuel() ? echeanceARecaler.getEcheanceReferenceBeforeRecalage().getMensualiteHorsAssurance() : echeanceRecaleeWithActionApplied.getMensualiteHorsAssurance();
-        echeanceRecalee.setMontantCapital(mensualiteHorsAssurance - echeanceRecalee.getMontantInteret());
-        echeanceRecalee.setMontantAssurance(echeanceRecaleeWithActionApplied.getMontantAssurance());
-        echeanceARecaler.setEcheanceRecalee(echeanceRecalee);
-        previousEcheance = echeanceARecaler;
-      } else {
-        echeanceRecalee.setCapitalRestantARembourser(capitalRestantARembourser);
-        echeanceRecalee.setMontantCapital(capitalRestantARembourser - echeanceRecalee.getMontantInteret());
-        echeanceRecalee.setMontantAssurance(echeanceRecaleeWithActionApplied.getMontantAssurance());
-        echeanceARecaler.setEcheanceRecalee(echeanceRecalee);
-
-        deleteNextEcheanceRecaleesBecauseEverythingIsPaidBack(echeanceRecalee);
-        return;
-      }
-    }
-  }
-
-  private void deleteNextEcheanceRecaleesBecauseEverythingIsPaidBack(EcheanceProperties lastEcheanceRecalee) {
-    Echeance lastEcheanceAvecRecalage = lastEcheanceRecalee.getEcheance();
-    int indexEcheanceAvecAction = echeances.indexOf(lastEcheanceAvecRecalage);
-    for (int i = indexEcheanceAvecAction + 1; i < echeances.size(); i++) {
-      Echeance echeanceASupprimerLeRecalage = echeances.get(i);
-      echeanceASupprimerLeRecalage.deleteEcheanceRecalee();
-    }
-  }
 }
