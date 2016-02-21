@@ -134,6 +134,15 @@ public class Emprunt {
     return montantTotalAssurance;
   }
 
+  public boolean hasEcheanceRecalee() {
+    for (Echeance echeance : echeances) {
+      if (echeance.hasEcheanceRecalee()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public double getCapitalEmprunte() {
     return capitalEmprunte;
   }
