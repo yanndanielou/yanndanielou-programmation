@@ -2,6 +2,7 @@ package Core.ModificationAction;
 
 import java.util.List;
 
+import Core.EcheancesCalculateur;
 import model.Echeance;
 import model.EcheanceProperties;
 import model.Emprunt;
@@ -9,10 +10,14 @@ import model.Emprunt;
 public abstract class ModificationEcheanceAction {
   protected Echeance echeance;
   private boolean ponctuel;
+  private boolean gardeNombreEcheances;
+  private boolean gardeMensualite;
 
-  public ModificationEcheanceAction(boolean ponctuel, Echeance echeance) {
+  public ModificationEcheanceAction(boolean ponctuel, Echeance echeance, boolean gardeNombreEcheances, boolean gardeMensualite) {
     this.ponctuel = ponctuel;
     this.echeance = echeance;
+    this.gardeNombreEcheances = gardeNombreEcheances;
+    this.gardeMensualite = gardeMensualite;
   }
 
   public Echeance getEcheance() {
@@ -29,6 +34,10 @@ public abstract class ModificationEcheanceAction {
   }
 
   public void updateSubsequentEcheancesRecalees(ModificationEcheanceAction modificationEcheanceAction, Echeance echeanceWithActionApplied) {
+
+    EcheanceProperties echeanceReferenceBeforeRecalage = echeance.getEcheanceReferenceBeforeRecalage();
+    echeance.applyAction(modificationEcheanceAction);
+
     Emprunt emprunt = echeanceWithActionApplied.getEmprunt();
     List<Echeance> echeances = emprunt.getEcheances();
 
@@ -36,41 +45,56 @@ public abstract class ModificationEcheanceAction {
     EcheanceProperties echeanceRecaleeWithActionApplied = echeanceWithActionApplied.getEcheanceRecalee();
 
     Echeance previousEcheance = echeanceWithActionApplied;
-    for (int i = indexEcheanceAvecAction + 1; i < echeances.size(); i++) {
-      Echeance echeanceARecaler = echeances.get(i);
-      EcheanceProperties echeanceRecalee = new EcheanceProperties(echeanceARecaler);
-      EcheanceProperties previousEcheanceRecalee = previousEcheance.getEcheanceRecalee();
-      double capitalRestantARembourser = previousEcheanceRecalee.getCapitalRestantARembourser() - previousEcheanceRecalee.getMontantCapital();
-      if (capitalRestantARembourser >= previousEcheanceRecalee.getMontantCapital()) {
-        echeanceRecalee.setCapitalRestantARembourser(capitalRestantARembourser);
-        double mensualiteHorsAssurance = modificationEcheanceAction.isPonctuel() ? echeanceARecaler.getEcheanceReferenceBeforeRecalage().getMensualiteHorsAssurance() : echeanceRecaleeWithActionApplied.getMensualiteHorsAssurance();
-        echeanceRecalee.setMontantCapital(mensualiteHorsAssurance - echeanceRecalee.getMontantInteret());
-        echeanceRecalee.setMontantAssurance(echeanceRecaleeWithActionApplied.getMontantAssurance());
-        echeanceARecaler.setEcheanceRecalee(echeanceRecalee);
-        previousEcheance = echeanceARecaler;
-      } else {
-        echeanceRecalee.setCapitalRestantARembourser(capitalRestantARembourser);
-        echeanceRecalee.setMontantCapital(capitalRestantARembourser - echeanceRecalee.getMontantInteret());
-        echeanceRecalee.setMontantAssurance(echeanceRecaleeWithActionApplied.getMontantAssurance());
-        echeanceARecaler.setEcheanceRecalee(echeanceRecalee);
 
-        deleteNextEcheanceRecaleesBecauseEverythingIsPaidBack(echeanceRecalee);
-        return;
+    double nouveauCapitalRestantARembourser = echeance.getEcheanceRecalee().getCapitalRestantARembourserApresEcheance();
+
+    if (gardeNombreEcheances) {
+      List<EcheanceProperties> echeanceRecalees = EcheancesCalculateur.computeEcheancesProperties(nouveauCapitalRestantARembourser, null, emprunt.getActualNombreEcheances() - indexEcheanceAvecAction, emprunt.getTauxPeriodique());
+      int indexEcheance = indexEcheanceAvecAction;
+      for (EcheanceProperties echeanceRecalee : echeanceRecalees) {
+        Echeance echeanceARecaler = echeances.get(indexEcheance);
+        echeanceARecaler.setEcheanceRecalee(echeanceRecalee);
+        echeanceRecalee.setEcheance(echeanceARecaler);
+        indexEcheance++;
+      }
+    } else {
+      if (gardeMensualite) {
+        int indexEcheance = indexEcheanceAvecAction;
+        List<EcheanceProperties> echeanceRecalees = EcheancesCalculateur.computeEcheancesProperties(nouveauCapitalRestantARembourser, echeanceReferenceBeforeRecalage.getMensualiteHorsAssurance(), null, emprunt.getTauxPeriodique());
+        for (EcheanceProperties echeanceRecalee : echeanceRecalees) {
+          indexEcheance++;
+          Echeance echeanceARecaler = echeances.get(indexEcheance);
+          echeanceARecaler.setEcheanceRecalee(echeanceRecalee);
+          echeanceRecalee.setEcheance(echeanceARecaler);
+        }
+        EcheancesCalculateur.deleteNextEcheanceRecaleesBecauseEverythingIsPaidBack(emprunt.getEcheances().get(indexEcheance).getEcheanceRecalee());
+      }
+      else {
+        for (int i = indexEcheanceAvecAction + 1; i < echeances.size(); i++) {
+          Echeance echeanceARecaler = echeances.get(i);
+          EcheanceProperties echeanceRecalee = new EcheanceProperties(echeanceARecaler);
+          EcheanceProperties previousEcheanceRecalee = previousEcheance.getEcheanceRecalee();
+          double capitalRestantARembourser = previousEcheanceRecalee.getCapitalRestantARembourserAvantEcheance() - previousEcheanceRecalee.getMontantCapital();
+          if (capitalRestantARembourser >= previousEcheanceRecalee.getMontantCapital()) {
+            echeanceRecalee.setCapitalRestantARembourserAvantEcheance(capitalRestantARembourser);
+            double mensualiteHorsAssurance = modificationEcheanceAction.isPonctuel() ? echeanceARecaler.getEcheanceReferenceBeforeRecalage().getMensualiteHorsAssurance() : echeanceRecaleeWithActionApplied.getMensualiteHorsAssurance();
+            echeanceRecalee.setMontantCapital(mensualiteHorsAssurance - echeanceRecalee.getMontantInteret());
+            echeanceRecalee.setMontantAssurance(echeanceRecaleeWithActionApplied.getMontantAssurance());
+            echeanceARecaler.setEcheanceRecalee(echeanceRecalee);
+            previousEcheance = echeanceARecaler;
+          } else {
+            echeanceRecalee.setCapitalRestantARembourserAvantEcheance(capitalRestantARembourser);
+            echeanceRecalee.setMontantCapital(capitalRestantARembourser - echeanceRecalee.getMontantInteret());
+            echeanceRecalee.setMontantAssurance(echeanceRecaleeWithActionApplied.getMontantAssurance());
+            echeanceARecaler.setEcheanceRecalee(echeanceRecalee);
+
+            EcheancesCalculateur.deleteNextEcheanceRecaleesBecauseEverythingIsPaidBack(echeanceRecalee);
+            return;
+          }
+        }
       }
     }
-  }
 
-  protected void deleteNextEcheanceRecaleesBecauseEverythingIsPaidBack(EcheanceProperties lastEcheanceRecalee) {
-    Echeance echeance = lastEcheanceRecalee.getEcheance();
-    Emprunt emprunt = echeance.getEmprunt();
-    List<Echeance> echeances = emprunt.getEcheances();
-
-    Echeance lastEcheanceAvecRecalage = echeance;
-    int indexEcheanceAvecAction = echeances.indexOf(lastEcheanceAvecRecalage);
-    for (int i = indexEcheanceAvecAction + 1; i < echeances.size(); i++) {
-      Echeance echeanceASupprimerLeRecalage = echeances.get(i);
-      echeanceASupprimerLeRecalage.deleteEcheanceRecalee();
-    }
   }
 
   public abstract EcheanceProperties createEcheanceRecalee();

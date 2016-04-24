@@ -325,7 +325,7 @@ public class EcheancesTableModel extends AbstractTableModel {
         return DisplayUtils.getRoundedValueForDisplay(echeance.getEcheanceInitiale().getMontantInteret());
       }
       if (isEcheanceInitialeCapitalMontantARembourserColumn(columnIndex)) {
-        return DisplayUtils.getRoundedValueForDisplay(echeance.getEcheanceInitiale().getCapitalRestantARembourser());
+        return DisplayUtils.getRoundedValueForDisplay(echeance.getEcheanceInitiale().getCapitalRestantARembourserAvantEcheance());
       }
       if (echeance.getEmprunt().hasEcheanceRecalee()) {
         if (isEcheanceRecaleeMensualiteHorsAssuranceColumn(columnIndex)) {
@@ -351,7 +351,7 @@ public class EcheancesTableModel extends AbstractTableModel {
         }
         if (isEcheanceRecaleeCapitalMontantARembourserColumn(columnIndex)) {
           if (echeance.hasEcheanceRecalee()) {
-            return DisplayUtils.getRoundedValueForDisplay(echeance.getEcheanceRecalee().getCapitalRestantARembourser());
+            return DisplayUtils.getRoundedValueForDisplay(echeance.getEcheanceRecalee().getCapitalRestantARembourserAvantEcheance());
           } else {
             return EMPTY_CELL;
           }

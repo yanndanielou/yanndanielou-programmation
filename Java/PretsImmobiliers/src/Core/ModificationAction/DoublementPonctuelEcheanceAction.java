@@ -6,7 +6,7 @@ import model.EcheanceProperties;
 public class DoublementPonctuelEcheanceAction extends ModificationEcheanceAction {
 
   public DoublementPonctuelEcheanceAction(Echeance echeance) {
-    super(true, echeance);
+    super(true, echeance, false, true);
   }
 
   @Override
@@ -19,7 +19,7 @@ public class DoublementPonctuelEcheanceAction extends ModificationEcheanceAction
     EcheanceProperties echeanceReference = getEcheanceReference();
     double mensualiteHorsAssuranceAvantAction = echeanceReference.getMensualiteHorsAssurance();
     EcheanceProperties echeanceRecalee = new EcheanceProperties(echeance);
-    echeanceRecalee.setCapitalRestantARembourser(echeanceReference.getCapitalRestantARembourser());
+    echeanceRecalee.setCapitalRestantARembourserAvantEcheance(echeanceReference.getCapitalRestantARembourserAvantEcheance());
     echeanceRecalee.setMontantCapital(mensualiteHorsAssuranceAvantAction * 2 - echeanceRecalee.getMontantInteret());
     // TODO: à vérifier
     echeanceRecalee.setMontantAssurance(echeanceReference.getMontantAssurance() * 2);

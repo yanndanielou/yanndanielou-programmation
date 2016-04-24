@@ -5,11 +5,11 @@ import java.text.NumberFormat;
 import model.Echeance;
 import model.EcheanceProperties;
 
-public class RemboursementAnticipeCapitalAction extends ModificationEcheanceAction {
-  private int capitalRembourse;
+public abstract class RemboursementAnticipeCapitalAction extends ModificationEcheanceAction {
+  protected int capitalRembourse;
 
-  public RemboursementAnticipeCapitalAction(int capitalRembourse, Echeance echeance) {
-    super(true, echeance);
+  public RemboursementAnticipeCapitalAction(int capitalRembourse, Echeance echeance, boolean gardeNombreEcheances, boolean gardeMensualite) {
+    super(true, echeance, gardeNombreEcheances, gardeMensualite);
     this.capitalRembourse = capitalRembourse;
   }
 
@@ -23,7 +23,7 @@ public class RemboursementAnticipeCapitalAction extends ModificationEcheanceActi
     EcheanceProperties echeanceReference = getEcheanceReference();
     double mensualiteHorsAssuranceAvantAction = echeanceReference.getMensualiteHorsAssurance();
     EcheanceProperties echeanceRecalee = new EcheanceProperties(echeance);
-    echeanceRecalee.setCapitalRestantARembourser(echeanceReference.getCapitalRestantARembourser());
+    echeanceRecalee.setCapitalRestantARembourserAvantEcheance(echeanceReference.getCapitalRestantARembourserAvantEcheance());
     echeanceRecalee.setMontantCapital(mensualiteHorsAssuranceAvantAction + capitalRembourse - echeanceRecalee.getMontantInteret());
     // TODO: à vérifier
     echeanceRecalee.setMontantAssurance(echeanceReference.getMontantAssurance() * 2);

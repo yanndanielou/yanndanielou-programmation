@@ -4,10 +4,13 @@ public class EcheanceProperties {
   private Echeance echeance;
   private double montantCapital;
   private double montantAssurance;
-  private double capitalRestantARembourser;
+  private double capitalRestantARembourserAvantEcheance;
 
   public EcheanceProperties(Echeance echeance) {
     this.echeance = echeance;
+  }
+
+  public EcheanceProperties() {
   }
 
   public double getMontantAssurance() {
@@ -27,22 +30,30 @@ public class EcheanceProperties {
   }
 
   public double getMontantInteret() {
-    return capitalRestantARembourser * echeance.getEmprunt().getTauxPeriodique();
+    return capitalRestantARembourserAvantEcheance * echeance.getEmprunt().getTauxPeriodique();
   }
 
   public double getMensualiteHorsAssurance() {
     return montantCapital + getMontantInteret();
   }
 
-  public double getCapitalRestantARembourser() {
-    return capitalRestantARembourser;
+  public double getCapitalRestantARembourserAvantEcheance() {
+    return capitalRestantARembourserAvantEcheance;
   }
 
-  public void setCapitalRestantARembourser(double capitalRestantAEmprunter) {
-    this.capitalRestantARembourser = capitalRestantAEmprunter;
+  public void setCapitalRestantARembourserAvantEcheance(double capitalRestantAEmprunterAvantEcheance) {
+    this.capitalRestantARembourserAvantEcheance = capitalRestantAEmprunterAvantEcheance;
+  }
+
+  public double getCapitalRestantARembourserApresEcheance() {
+    return capitalRestantARembourserAvantEcheance - montantCapital;
   }
 
   public Echeance getEcheance() {
     return echeance;
+  }
+
+  public void setEcheance(Echeance echeance) {
+    this.echeance = echeance;
   }
 }

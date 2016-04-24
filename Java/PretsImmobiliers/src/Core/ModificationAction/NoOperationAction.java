@@ -6,7 +6,7 @@ import model.EcheanceProperties;
 public class NoOperationAction extends ModificationEcheanceAction {
 
   public NoOperationAction(Echeance echeance) {
-    super(true, echeance);
+    super(true, echeance, true, true);
   }
 
   @Override

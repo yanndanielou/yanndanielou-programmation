@@ -5,6 +5,7 @@ import hmi.LoanViewsMediator;
 import java.util.ArrayList;
 import java.util.List;
 
+import Core.EcheancesCalculateur;
 import Core.ModificationAction.ModificationEcheanceAction;
 
 public class Emprunt {
@@ -27,42 +28,16 @@ public class Emprunt {
     resetComputedValues();
   }
 
-  /**
-  * Formule du calcul de l'échéance:   {@link http://www.cbanque.com/credit/principe.php}} 
-  */
-  private double computeEcheanceConstante() {
-    final double tauxPeriodique = getTauxPeriodique();
-    double echeance = (capitalEmprunte * tauxPeriodique * Math.pow(1 + tauxPeriodique, nombreEcheancesDesire)) / (Math.pow(1 + tauxPeriodique, nombreEcheancesDesire) - 1);
-    return echeance;
-  }
-
   private void createEcheances() {
-    double capitalRestantARembourser = capitalEmprunte;
-    final double tauxPeriodique = getTauxPeriodique();
-    if (isMensualiteHorsAssuranceFilledByUser) {
-      while (capitalRestantARembourser > 0) {
-        double montantInteret = capitalRestantARembourser * tauxPeriodique;
-        double montantCapital = Math.min(mensualiteHorsAssurance - montantInteret, capitalRestantARembourser);
-        if (montantCapital < 0) {
-          return;
-        }
-        Echeance echeance = new Echeance(this, capitalRestantARembourser, montantCapital);
-        capitalRestantARembourser -= montantCapital;
-        echeances.add(echeance);
+    // A simplifier. calculer ici l'échéance constante si le nombre de mensualité a été entré par l'utilisateur
+    Double mensualiteHorsAssuranceFixed = isMensualiteHorsAssuranceFilledByUser ? mensualiteHorsAssurance : null;
+    Integer nombreEcheancesFixed = isNombreEcheancesFilledByUser ? nombreEcheancesDesire : null;
+    echeances = EcheancesCalculateur.computeEcheances(this, capitalEmprunte, mensualiteHorsAssuranceFixed, nombreEcheancesFixed, getTauxPeriodique());
+
+    if (!isMensualiteHorsAssuranceFilledByUser) {
+      if (!echeances.isEmpty()) {
+        mensualiteHorsAssurance = echeances.get(0).getEcheanceInitiale().getMensualiteHorsAssurance();
       }
-    } else if (isNombreEcheancesFilledByUser) {
-      if (mensualiteHorsAssurance == null) {
-        mensualiteHorsAssurance = computeEcheanceConstante();
-      }
-      for (int i = 0; i < nombreEcheancesDesire; i++) {
-        double montantInteret = capitalRestantARembourser * tauxPeriodique;
-        double montantCapital = mensualiteHorsAssurance - montantInteret;
-        Echeance echeance = new Echeance(this, capitalRestantARembourser, montantCapital);
-        capitalRestantARembourser -= montantCapital;
-        echeances.add(echeance);
-      }
-    } else {
-      // Bad logic
     }
   }
 
@@ -234,13 +209,11 @@ public class Emprunt {
 
   public void applyModificationEcheanceAction(ModificationEcheanceAction modificationEcheanceAction, Echeance echeanceWithActionApplied) {
     copyEcheanceInitialeToEcheancesRecaleesForEcheancesPriorToThisAction(echeanceWithActionApplied);
-    echeanceWithActionApplied.applyAction(modificationEcheanceAction);
     modificationEcheanceAction.updateSubsequentEcheancesRecalees(modificationEcheanceAction, echeanceWithActionApplied);
     LoanViewsMediator.getInstance().onModificationEcheanceActionPerformed();
   }
 
   private void copyEcheanceInitialeToEcheancesRecaleesForEcheancesPriorToThisAction(Echeance echeanceWithActionApplied) {
-
     for (Echeance echeance : echeances) {
       if (echeance == echeanceWithActionApplied) {
         return;
@@ -248,7 +221,7 @@ public class Emprunt {
       if (!echeance.hasEcheanceRecalee()) {
         EcheanceProperties echeanceInitiale = echeance.getEcheanceInitiale();
         EcheanceProperties echeanceRecalee = new EcheanceProperties(echeance);
-        echeanceRecalee.setCapitalRestantARembourser(echeanceInitiale.getCapitalRestantARembourser());
+        echeanceRecalee.setCapitalRestantARembourserAvantEcheance(echeanceInitiale.getCapitalRestantARembourserAvantEcheance());
         echeanceRecalee.setMontantCapital(echeanceInitiale.getMontantCapital());
         echeanceRecalee.setMontantAssurance(echeanceInitiale.getMontantAssurance());
         echeance.setEcheanceRecalee(echeanceRecalee);

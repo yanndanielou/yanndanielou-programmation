@@ -9,14 +9,19 @@ public class Echeance {
   private EcheanceProperties echeanceInitiale;
   private EcheanceProperties echeanceRecalee;
 
-  private ModificationEcheanceAction modificationEcheanceAction;
+  private ModificationEcheanceAction modificationEcheanceAction = null;
 
   public Echeance(Emprunt emprunt, double capitalRestantARembourser, double montantCapital) {
     this.emprunt = emprunt;
     echeanceInitiale = new EcheanceProperties(this);
     echeanceInitiale.setMontantCapital(montantCapital);
-    echeanceInitiale.setCapitalRestantARembourser(capitalRestantARembourser);
-    modificationEcheanceAction = null;
+    echeanceInitiale.setCapitalRestantARembourserAvantEcheance(capitalRestantARembourser);
+  }
+
+  public Echeance(Emprunt emprunt, EcheanceProperties echeanceInitiale) {
+    this.emprunt = emprunt;
+    this.echeanceInitiale = echeanceInitiale;
+    echeanceInitiale.setEcheance(this);
   }
 
   public void applyAction(ModificationEcheanceAction modificationEcheanceAction) {
