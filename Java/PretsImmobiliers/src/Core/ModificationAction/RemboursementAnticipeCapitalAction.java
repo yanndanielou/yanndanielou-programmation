@@ -21,10 +21,9 @@ public abstract class RemboursementAnticipeCapitalAction extends ModificationEch
   @Override
   public EcheanceProperties createEcheanceRecalee() {
     EcheanceProperties echeanceReference = getEcheanceReference();
-    double mensualiteHorsAssuranceAvantAction = echeanceReference.getMensualiteHorsAssurance();
     EcheanceProperties echeanceRecalee = new EcheanceProperties(echeance);
     echeanceRecalee.setCapitalRestantARembourserAvantEcheance(echeanceReference.getCapitalRestantARembourserAvantEcheance());
-    echeanceRecalee.setMontantCapital(mensualiteHorsAssuranceAvantAction + capitalRembourse - echeanceRecalee.getMontantInteret());
+    echeanceRecalee.setMontantCapital(echeanceReference.getMontantCapital() + capitalRembourse);
     // TODO: à vérifier
     echeanceRecalee.setMontantAssurance(echeanceReference.getMontantAssurance() * 2);
     return echeanceRecalee;

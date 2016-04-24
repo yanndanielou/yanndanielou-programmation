@@ -49,13 +49,13 @@ public abstract class ModificationEcheanceAction {
     double nouveauCapitalRestantARembourser = echeance.getEcheanceRecalee().getCapitalRestantARembourserApresEcheance();
 
     if (gardeNombreEcheances) {
-      List<EcheanceProperties> echeanceRecalees = EcheancesCalculateur.computeEcheancesProperties(nouveauCapitalRestantARembourser, null, emprunt.getActualNombreEcheances() - indexEcheanceAvecAction, emprunt.getTauxPeriodique());
+      List<EcheanceProperties> echeanceRecalees = EcheancesCalculateur.computeEcheancesProperties(nouveauCapitalRestantARembourser, null, emprunt.getActualNombreEcheances() - indexEcheanceAvecAction - 1, emprunt.getTauxPeriodique());
       int indexEcheance = indexEcheanceAvecAction;
       for (EcheanceProperties echeanceRecalee : echeanceRecalees) {
+        indexEcheance++;
         Echeance echeanceARecaler = echeances.get(indexEcheance);
         echeanceARecaler.setEcheanceRecalee(echeanceRecalee);
         echeanceRecalee.setEcheance(echeanceARecaler);
-        indexEcheance++;
       }
     } else {
       if (gardeMensualite) {
