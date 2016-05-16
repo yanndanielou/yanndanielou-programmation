@@ -1,11 +1,13 @@
 package application;
 
 import core.ItunesToAndroidProcessor;
+import ihm.UserInputsMainView;
 
 public class ItunesToAndroidApplication {
 
   public static void main(String[] args) {
-    ItunesToAndroidProcessor itunesToAndroidProcessor = new ItunesToAndroidProcessor();
-    itunesToAndroidProcessor.run();
+
+    UserInputsMainView mainView = new UserInputsMainView();
+
   }
 }

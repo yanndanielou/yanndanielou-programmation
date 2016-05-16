@@ -1,16 +1,13 @@
 package core;
 
-import ihm.UserInputsUi;
+import ihm.UserInputsMainView;
 
 public class ItunesToAndroidProcessor {
 
   private UserInputs userInputs;
-  private UserInputsUi userInputsUi;
+  private UserInputsMainView mainView;
 
-  public void run() {
-
-    userInputsUi = new UserInputsUi();
-    userInputs = userInputsUi.retrieveUserInputs();
+  public void run(UserInputs userInputs) {
 
   }
 }
