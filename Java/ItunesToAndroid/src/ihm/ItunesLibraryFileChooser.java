@@ -23,7 +23,7 @@ public class ItunesLibraryFileChooser extends JPanel {
     JFileChooser inputFileChooser = new JFileChooser();
     //To be deleted
     inputFileChooser.setCurrentDirectory(new File("D:\\temp\\itunes_librarires"));
-    FileFilter fileFilter = new FileNameExtensionFilter("Itunes libraries extensions", "txt", "xml");
+    FileFilter fileFilter = new FileNameExtensionFilter("Itunes libraries extensions", "xml");
     inputFileChooser.setFileFilter(fileFilter);
     inputFileChooser.setDialogTitle("Itunes library");
     inputFileChooser.showOpenDialog(this);

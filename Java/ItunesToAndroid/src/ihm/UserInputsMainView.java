@@ -19,7 +19,6 @@ public class UserInputsMainView extends JFrame {
   private JPanel container = new JPanel();
 
   private Label libraryLabel = new Label("Itunes library");
-  private Label libraryFileValue = new Label();
   private JButton chooseLibraryFileButton = new JButton("Choose...");
 
   private JButton runButton = new JButton("Run");
@@ -110,6 +109,7 @@ public class UserInputsMainView extends JFrame {
   private class RunButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
+      setVisible(false);
       ItunesToAndroidProcessor itunesToAndroidProcessor = new ItunesToAndroidProcessor();
       itunesToAndroidProcessor.run(userInputs);
     }
