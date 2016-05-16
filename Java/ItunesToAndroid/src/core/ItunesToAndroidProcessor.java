@@ -1,5 +1,9 @@
 package core;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 import org.w3c.dom.Document;
@@ -36,6 +40,74 @@ public class ItunesToAndroidProcessor {
 
   public void compareWithTargetFolder() {
     itunesLibraryModel.consolidate();
+    buildDiagnostic();
+  }
+
+  private void buildDiagnostic() {
+    handleMissingFilesAndDirectoryInTarget();
+    handleFilesAndDirectoryToDeleteInTarget();
+  }
+
+  private void handleMissingFilesAndDirectoryInTarget() {
+
+    // Starting from top level folder in source
+    File localTopLevelFolder = userInputs.getLocalTopLevelFolder();
+    File targetTopLevelFolder = userInputs.getTargetTopLevelFolder();
+    handleMissingFilesAndDirectoryInTarget(localTopLevelFolder, targetTopLevelFolder);
+
+  }
+
+  private void handleMissingFilesAndDirectoryInTarget(File localFolder, File targetFolder) {
+    List<File> localChildren = itunesLibraryModel.getChildren(localFolder);
+
+    for (File localChild : localChildren) {
+      String name = localChild.getName();
+
+      if (localChild.isDirectory()) {
+        File targetChild = new File(targetFolder.getAbsolutePath() + "\\" + name);
+        if (!targetChild.exists()) {
+          System.out.println("diagnostic; target folder " + targetChild.getAbsolutePath() + " does not exist");
+          handleAllMissingFilesAndDirectoryBecauseMissingFolder(localChild, targetChild);
+
+          if (!userInputs.isNoOperation()) {
+            boolean mkdir = targetChild.mkdir();
+            if (!mkdir) {
+              System.out.println("ERROR; could not create folder:" + targetChild.getAbsolutePath());
+            }
+          }
+        }
+        handleMissingFilesAndDirectoryInTarget(localChild, targetChild);
+      } else {
+        File targetChild = new File(targetFolder.getAbsolutePath() + "\\" + name);
+        if (!targetChild.exists()) {
+          System.out.println("diagnostic; target file " + targetChild.getAbsolutePath() + " does not exist");
+          if (!userInputs.isNoOperation()) {
+            Path source = localChild.toPath();
+            Path newdir = targetFolder.toPath();
+            Path newCopiedFile = null;
+            try {
+              newCopiedFile = Files.copy(source, newdir.resolve(source.getFileName()));
+            } catch (IOException e) {
+              e.printStackTrace();
+              System.out.println("ERROR; could not copy file:" + targetChild.getAbsolutePath() + " . Error:" + e.getMessage());
+            }
+            if (newCopiedFile == null) {
+              System.out.println("ERROR; could not create folder:" + targetChild.getAbsolutePath());
+            }
+          }
+        }
+      }
+
+    }
+
+  }
+
+  private void handleAllMissingFilesAndDirectoryBecauseMissingFolder(File localDirectory, File missingTargetDirectory) {
+    //  System.out.println("diagnostic; target folder " + targetChild.getAbsolutePath() + " does not exist");
+
+  }
+
+  private void handleFilesAndDirectoryToDeleteInTarget() {
 
   }
 

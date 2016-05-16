@@ -35,7 +35,6 @@ public class ItunesLibraryModel {
     for (Song song : allSongs()) {
       File songFile = song.getFile();
       registerFileUntilTopLevel(songFile);
-      File parentFile = songFile.getParentFile();
     }
   }
 
@@ -53,6 +52,15 @@ public class ItunesLibraryModel {
       if (!parentFile.equals(userInputs.getLocalTopLevelFolder())) {
         registerFileUntilTopLevel(parentFile);
       }
+    }
+  }
+
+  public List<File> getChildren(File file) {
+    if (parentAndChildrenRelations.containsKey(file)) {
+      return parentAndChildrenRelations.get(file);
+    }
+    else {
+      return new ArrayList<>();
     }
   }
 

@@ -18,6 +18,8 @@ public class ItunesToAndroidApplication {
 
     itunesToAndroidProcessor.loadItunesLibraryXml();
 
+    userInputs.setExcludeDisabled(true);
+
     LocalTopLevelDirectoryChooser localTopLevelDirectoryChooser = new LocalTopLevelDirectoryChooser();
     userInputs.setLocalTopLevelFolder(localTopLevelDirectoryChooser.retrieveLocalTopLevelFolder());
 

@@ -8,6 +8,7 @@ public class UserInputs {
   private File targetTopLevelFolder;
   private File itunesLibraryFile;
   private boolean excludeDisabled;
+  private boolean noOperation = false;
 
   public void setItunesLibraryFile(File itunesLibraryFile) {
     this.itunesLibraryFile = itunesLibraryFile;
@@ -15,6 +16,10 @@ public class UserInputs {
 
   public File getItunesLibraryFile() {
     return itunesLibraryFile;
+  }
+
+  public void setExcludeDisabled(boolean excludeDisabled) {
+    this.excludeDisabled = excludeDisabled;
   }
 
   public boolean isExcludeDisabled() {
@@ -37,4 +42,7 @@ public class UserInputs {
     return targetTopLevelFolder;
   }
 
+  public boolean isNoOperation() {
+    return noOperation;
+  }
 }
