@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.w3c.dom.Document;
 
-import ihm.UserInputsMainView;
 import model.ItunesLibraryModel;
 import model.ListOfSongs;
 import model.Song;
@@ -12,16 +11,16 @@ import model.Song;
 public class ItunesToAndroidProcessor {
 
   private UserInputs userInputs;
-  private UserInputsMainView mainView;
 
   private ItunesLibraryModelBuilder itunesLibraryModelBuilder;
   private ItunesLibraryModel itunesLibraryModel;
 
-  public ItunesToAndroidProcessor() {
+  public ItunesToAndroidProcessor(UserInputs userInputs) {
     itunesLibraryModelBuilder = new ItunesLibraryModelBuilder();
+    this.userInputs = userInputs;
   }
 
-  public void run(UserInputs userInputs) {
+  public void loadItunesLibraryXml() {
 
     XmlItunesLibraryParser xmlItunesLibraryParser = new XmlItunesLibraryParser();
     Document document = xmlItunesLibraryParser.parse(userInputs.getItunesLibraryFile());
@@ -31,9 +30,13 @@ public class ItunesToAndroidProcessor {
     }
     printDocumentInfos(document);
     itunesLibraryModel = itunesLibraryModelBuilder.build(document, userInputs);
-    itunesLibraryModel.consolidate();
 
     //  printItunesLibraryInfos();
+  }
+
+  public void compareWithTargetFolder() {
+    itunesLibraryModel.consolidate();
+
   }
 
   protected void printItunesLibraryInfos() {

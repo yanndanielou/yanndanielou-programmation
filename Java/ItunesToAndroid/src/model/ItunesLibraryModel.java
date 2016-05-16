@@ -50,7 +50,7 @@ public class ItunesLibraryModel {
         childrenFiles.add(file);
       }
 
-      if (!parentFile.equals(userInputs.getTopLevelFolder())) {
+      if (!parentFile.equals(userInputs.getLocalTopLevelFolder())) {
         registerFileUntilTopLevel(parentFile);
       }
     }

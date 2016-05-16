@@ -14,7 +14,7 @@ public class ItunesLibraryFileChooser extends JPanel {
   /**
    * 
    */
-  private static final long serialVersionUID = -2416668889091277077L;
+  private static final long serialVersionUID = 1067643505599785851L;
 
   public ItunesLibraryFileChooser() {
   }

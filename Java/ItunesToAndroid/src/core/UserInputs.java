@@ -4,7 +4,8 @@ import java.io.File;
 
 public class UserInputs {
 
-  private File topLevelFolder = new File("D:\\temp\\musique");
+  private File localTopLevelFolder;
+  private File targetTopLevelFolder;
   private File itunesLibraryFile;
   private boolean excludeDisabled;
 
@@ -20,12 +21,20 @@ public class UserInputs {
     return excludeDisabled;
   }
 
-  public void setTopLevelFolder(File topLevelFolder) {
-    this.topLevelFolder = topLevelFolder;
+  public void setLocalTopLevelFolder(File topLevelFolder) {
+    this.localTopLevelFolder = topLevelFolder;
   }
 
-  public File getTopLevelFolder() {
-    return topLevelFolder;
+  public File getLocalTopLevelFolder() {
+    return localTopLevelFolder;
+  }
+
+  public void setTargetTopLevelFolder(File targetTopLevelFolder) {
+    this.targetTopLevelFolder = targetTopLevelFolder;
+  }
+
+  public File getTargetTopLevelFolder() {
+    return targetTopLevelFolder;
   }
 
 }
