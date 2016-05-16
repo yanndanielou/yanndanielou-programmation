@@ -26,4 +26,11 @@ public class ItunesLibraryModelBuilderTest {
     assertThat(asDate, is(notNullValue()));
   }
 
+  @Test
+  public void asInt_bigInt() {
+    String intAsString = "3509968257";
+
+    assertThat(itunesLibraryModelBuilder.asInt(intAsString), is(notNullValue()));
+  }
+
 }

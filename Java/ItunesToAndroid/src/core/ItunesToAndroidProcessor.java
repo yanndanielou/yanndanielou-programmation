@@ -41,8 +41,9 @@ public class ItunesToAndroidProcessor {
     for (ListOfSongs listOfSongs : listOfSongsDictionnaries) {
       System.out.println("list of songs dictionnary. Number of songs:" + listOfSongs.size());
       for (Song song : listOfSongs) {
-        System.out.println("  Song:  ");
+        System.out.println("Begin song");
         song.printFields();
+        System.out.println("End song");
       }
     }
   }

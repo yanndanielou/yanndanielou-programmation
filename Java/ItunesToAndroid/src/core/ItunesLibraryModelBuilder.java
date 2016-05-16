@@ -27,8 +27,6 @@ public class ItunesLibraryModelBuilder {
 
     final Element root = document.getDocumentElement();
 
-    //    printReccursively(root);
-
     final NodeList rootChildNodes = root.getChildNodes();
     final int rootChildNodesCount = rootChildNodes.getLength();
 
@@ -133,9 +131,9 @@ public class ItunesLibraryModelBuilder {
     return ret;
   }
 
-  private Integer asInt(String valueAsString) {
+  protected Long asInt(String valueAsString) {
     try {
-      return Integer.valueOf(valueAsString);
+      return Long.valueOf(valueAsString);
     } catch (NumberFormatException e) {
       e.printStackTrace();
       System.out.println("Could not parse [" + valueAsString + "] as int");
