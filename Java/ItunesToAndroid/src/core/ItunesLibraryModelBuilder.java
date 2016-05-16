@@ -1,5 +1,11 @@
 package core;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -20,6 +26,9 @@ public class ItunesLibraryModelBuilder {
     ItunesLibraryModel itunesLibraryModel = new ItunesLibraryModel();
 
     final Element root = document.getDocumentElement();
+
+    //    printReccursively(root);
+
     final NodeList rootChildNodes = root.getChildNodes();
     final int rootChildNodesCount = rootChildNodes.getLength();
 
@@ -30,8 +39,6 @@ public class ItunesLibraryModelBuilder {
 
     for (int i = 0; i < rootChildNodesCount; i++) {
       Node rootChildNode = rootChildNodes.item(i);
-
-      printNodeGeneralInfos("rootChildNode", rootChildNode);
 
       if (TOP_lEVEL_DICTIONNARY_BALISE_NAME.equals(rootChildNode.getNodeName())) {
         buildTopLevelDictionnary(rootChildNode, itunesLibraryModel);
@@ -78,54 +85,85 @@ public class ItunesLibraryModelBuilder {
 
     for (int i = 0; i < songNodeChildNodesCount; i++) {
       Node songFieldNameNode = songNodeChildNodes.item(i);
-      String songFieldName = songFieldNameNode.getNodeName();
+      String songFieldNodeName = songFieldNameNode.getNodeName();
+      String songFieldTextContent = songFieldNameNode.getTextContent();
 
-      final NodeList songFieldNameNodeChildNodes = songFieldNameNode.getChildNodes();
-      final int songFieldNameNodeChildNodesCount = songFieldNameNodeChildNodes.getLength();
-
-      if ("#text".equals(songFieldName) || "key".equals(songFieldName)) {
+      if (!"key".equals(songFieldNodeName)) {
         continue;
       }
 
       Node songFieldValueNode = songNodeChildNodes.item(i + 1);
 
-      String songFieldValue = songFieldValueNode.getNodeName();
+      Object value = getValue(songFieldValueNode);
 
-      song.setAttribute(songFieldName, songFieldValue);
+      song.setAttribute(songFieldTextContent, value);
       i++;
     }
 
-    printNodeGeneralInfos("Song", songNode);
   }
 
-  private void fillSongField(Node songFieldNode, Song song) {
-    final NodeList songFieldNodeChildNodes = songFieldNode.getChildNodes();
-    final int songFieldNodeChildNodesCount = songFieldNodeChildNodes.getLength();
+  private Object getValue(Node node) {
+    String type = node.getNodeName();
+    String valueAsString = node.getTextContent();
+    Object ret = null;
 
-    String songFieldNodeName = songFieldNode.getNodeName();
-
-    if (songFieldNodeChildNodesCount == 1) {
-      Node songFieldValue = songFieldNodeChildNodes.item(0);
-      String songFieldValueNodeName = songFieldValue.getNodeName();
-
-      String songFieldNodeTextContent = songFieldNode.getTextContent();
-      String songFieldValueTextContent = songFieldValue.getTextContent();
-
-      final NodeList songFieldValueChildNodes = songFieldValue.getChildNodes();
-      final int songFieldValueChildNodesCount = songFieldValueChildNodes.getLength();
-
-      printNodeGeneralInfos("songFieldValue", songFieldValue);
-
-      song.setAttribute(songFieldNodeName, songFieldValueNodeName);
+    switch (type) {
+    case "string":
+      ret = valueAsString;
+      break;
+    case "integer":
+      ret = asInt(valueAsString);
+      break;
+    case "date":
+      ret = asDate(valueAsString);
+      break;
+    case "true":
+      ret = true;
+      break;
+    case "false":
+      ret = false;
+      break;
     }
-    if (songFieldNodeChildNodesCount > 1) {
-      System.out.println("ERROR; More than 1 child for songFieldNode (" + songFieldNodeChildNodesCount + ")");
+
+    if (ret == null) {
+      System.out.println("ERROR; Unsupported type [" + type + "] with value [" + valueAsString + "]. Will be handled as a string");
+      ret = valueAsString;
     }
 
-    //  printNodeGeneralInfos("Song field", songFieldNode);
+    return ret;
   }
 
-  private void printReccursively(Node node) {
+  private Integer asInt(String valueAsString) {
+    try {
+      return Integer.valueOf(valueAsString);
+    } catch (NumberFormatException e) {
+      e.printStackTrace();
+      System.out.println("Could not parse [" + valueAsString + "] as int");
+      return null;
+    }
+  }
+
+  protected Date asDate(String valueAsString) {
+    String ISO_8061_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ssX";
+    DateFormat dateFormat = new SimpleDateFormat(ISO_8061_DATE_FORMAT);
+    dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+    try {
+      Date date = dateFormat.parse(valueAsString);
+      return date;
+    } catch (ParseException e) {
+      e.printStackTrace();
+      System.out.println("Could not parse [" + valueAsString + "] as date with format " + ISO_8061_DATE_FORMAT);
+      return null;
+    }
+  }
+
+  protected void printReccursively(Element element) {
+    System.out.println("Start printing reccursively element " + element);
+    doPrintReccursively(element, 0);
+    System.out.println("End printing reccursively node " + element);
+  }
+
+  protected void printReccursively(Node node) {
     System.out.println("Start printing reccursively node " + node.getNodeName());
     doPrintReccursively(node, 0);
     System.out.println("End printing reccursively node " + node.getNodeName());
@@ -142,7 +180,7 @@ public class ItunesLibraryModelBuilder {
       System.out.print("  ");
     }
 
-    System.out.println("Node: " + node.getNodeName() + ", number of attributes: " + attributesCount + ", number of child nodes: " + nodeChildNodesCount);
+    System.out.println("Node: " + node.getNodeName() + ", number of attributes: " + attributesCount + ", number of child nodes: " + nodeChildNodesCount + ", text content: " + node.getTextContent());
 
     for (int i = 0; i < nodeChildNodesCount; i++) {
       Node childNode = nodeChildNodes.item(i);
@@ -150,7 +188,7 @@ public class ItunesLibraryModelBuilder {
     }
   }
 
-  private void printNodeGeneralInfos(String context, Node node) {
+  protected void printNodeGeneralInfos(String context, Node node) {
     NodeList childNodes = node.getChildNodes();
     int childNodesCount = childNodes.getLength();
 

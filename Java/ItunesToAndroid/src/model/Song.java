@@ -13,7 +13,7 @@ public class Song {
     fields = new HashMap<String, Object>();
   }
 
-  public void setAttribute(String songFieldNodeName, String songFieldValueNodeName) {
+  public void setAttribute(String songFieldNodeName, Object songFieldValueNodeName) {
     if (fields.containsKey(songFieldNodeName)) {
       System.out.println("Field: [" + songFieldNodeName + "] is alreadt defined. Cannot set value [" + songFieldValueNodeName + "]");
     }
