@@ -82,11 +82,11 @@ public class ItunesToAndroidProcessor {
         if (!targetChild.exists()) {
           System.out.println("diagnostic; target file " + targetChild.getAbsolutePath() + " does not exist");
           if (!userInputs.isNoOperation()) {
-            Path source = localChild.toPath();
-            Path newdir = targetFolder.toPath();
+            Path sourcePath = localChild.toPath();
+            Path targetDirectoryPath = targetFolder.toPath();
             Path newCopiedFile = null;
             try {
-              newCopiedFile = Files.copy(source, newdir.resolve(source.getFileName()));
+              newCopiedFile = Files.copy(sourcePath, targetDirectoryPath.resolve(sourcePath.getFileName()));
             } catch (IOException e) {
               e.printStackTrace();
               System.out.println("ERROR; could not copy file:" + targetChild.getAbsolutePath() + " . Error:" + e.getMessage());
@@ -97,9 +97,7 @@ public class ItunesToAndroidProcessor {
           }
         }
       }
-
     }
-
   }
 
   private void handleAllMissingFilesAndDirectoryBecauseMissingFolder(File localDirectory, File missingTargetDirectory) {
