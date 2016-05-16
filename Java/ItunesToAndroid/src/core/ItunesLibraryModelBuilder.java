@@ -22,8 +22,8 @@ public class ItunesLibraryModelBuilder {
   public static final String LIST_OF_SONGS_DICTIONNARY_BALISE_NAME = "dict";
   public static final String SONG_BALISE_NAME = "dict";
 
-  public ItunesLibraryModel build(Document document) {
-    ItunesLibraryModel itunesLibraryModel = new ItunesLibraryModel();
+  public ItunesLibraryModel build(Document document, UserInputs userInputs) {
+    ItunesLibraryModel itunesLibraryModel = new ItunesLibraryModel(userInputs);
 
     final Element root = document.getDocumentElement();
 
@@ -107,7 +107,7 @@ public class ItunesLibraryModelBuilder {
 
     switch (type) {
     case "string":
-      ret = valueAsString;
+      ret = asString(valueAsString);
       break;
     case "integer":
       ret = asInt(valueAsString);
@@ -129,6 +129,10 @@ public class ItunesLibraryModelBuilder {
     }
 
     return ret;
+  }
+
+  protected String asString(String valueAsString) {
+    return valueAsString;
   }
 
   protected Long asInt(String valueAsString) {

@@ -30,19 +30,20 @@ public class ItunesToAndroidProcessor {
       return;
     }
     printDocumentInfos(document);
-    itunesLibraryModel = itunesLibraryModelBuilder.build(document);
+    itunesLibraryModel = itunesLibraryModelBuilder.build(document, userInputs);
+    itunesLibraryModel.consolidate();
 
-    printItunesLibraryInfos();
+    //  printItunesLibraryInfos();
   }
 
-  private void printItunesLibraryInfos() {
+  protected void printItunesLibraryInfos() {
     List<ListOfSongs> listOfSongsDictionnaries = itunesLibraryModel.getListOfSongsDictionnaries();
 
     for (ListOfSongs listOfSongs : listOfSongsDictionnaries) {
       System.out.println("list of songs dictionnary. Number of songs:" + listOfSongs.size());
       for (Song song : listOfSongs) {
         System.out.println("Begin song");
-        song.printFields();
+        song.printAllAttributes();
         System.out.println("End song");
       }
     }
