@@ -65,6 +65,8 @@ public class ItunesToAndroidProcessor {
   }
 
   private void handleMissingFilesAndDirectoryInTarget(File localFolder, File targetFolder) {
+    System.out.println("diagnostic (debug); Analyzing " + localFolder.getAbsolutePath() + " to detect if exists in target " + targetFolder.getAbsolutePath());
+
     List<File> localChildren = itunesLibraryModel.getChildren(localFolder);
 
     for (File localChild : localChildren) {
@@ -79,6 +81,8 @@ public class ItunesToAndroidProcessor {
           if (!userInputs.isNoOperation()) {
             FileUtils.createFolder(targetChild);
           }
+        } else {
+          System.out.println("diagnostic (debug); target folder " + targetChild.getName() + " exists in both directories. Nothing to be done");
         }
         handleMissingFilesAndDirectoryInTarget(localChild, targetChild);
       } else {
@@ -88,6 +92,8 @@ public class ItunesToAndroidProcessor {
           if (!userInputs.isNoOperation()) {
             FileUtils.copyFile(localChild, targetFolder);
           }
+        } else {
+          System.out.println("diagnostic (debug); target file " + targetChild.getName() + " exists in both directories. Nothing to be done");
         }
       }
     }
@@ -104,6 +110,8 @@ public class ItunesToAndroidProcessor {
   }
 
   private void handleFilesAndDirectoryToDeleteInTarget(File localFolder, File targetFolder) {
+    System.out.println("diagnostic (debug); Analyzing directory " + targetFolder.getAbsolutePath() + " to detect if something must be deleted");
+
     if (targetFolder.isDirectory()) {
       File[] targetChildren = targetFolder.listFiles();
       for (File targetChild : targetChildren) {
@@ -117,6 +125,8 @@ public class ItunesToAndroidProcessor {
             FileUtils.deleteFileOrDirectory(targetChild);
           }
         } else {
+          System.out.println("diagnostic (debug); target file " + targetChild.getName() + " exists in both directories. Nothing to be done");
+
           handleFilesAndDirectoryToDeleteInTarget(localChildWithSameName, targetChild);
         }
       }

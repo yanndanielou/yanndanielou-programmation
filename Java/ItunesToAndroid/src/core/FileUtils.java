@@ -32,6 +32,8 @@ public final class FileUtils {
     boolean result = emptyDirectory.delete();
     if (!result) {
       System.out.println("ERROR; Could not delete directory:" + emptyDirectory.getAbsolutePath());
+    } else {
+      System.out.println("DEBUG; directory " + emptyDirectory.getAbsolutePath() + " deleted with success");
     }
     return result;
   }
@@ -40,6 +42,8 @@ public final class FileUtils {
     boolean result = file.delete();
     if (!result) {
       System.out.println("ERROR; Could not delete file:" + file.getAbsolutePath());
+    } else {
+      System.out.println("DEBUG; file " + file.getAbsolutePath() + " deleted with success");
     }
     return result;
   }
@@ -61,9 +65,12 @@ public final class FileUtils {
     } catch (IOException e) {
       e.printStackTrace();
       System.out.println("ERROR; could not copy file:" + destination.getAbsolutePath() + " . Error:" + e.getMessage());
+      return;
     }
     if (newCopiedFile == null) {
-      System.out.println("ERROR; could not create folder:" + destination.getAbsolutePath());
+      System.out.println("ERROR; could not copy folder:" + destination.getAbsolutePath());
+    } else {
+      System.out.println("DEBUG; file " + source.getAbsolutePath() + " copied to " + destination.getAbsolutePath() + " with success");
     }
   }
 
@@ -71,6 +78,8 @@ public final class FileUtils {
     boolean mkdir = directoryToCreate.mkdir();
     if (!mkdir) {
       System.out.println("ERROR; could not create folder:" + directoryToCreate.getAbsolutePath());
+    } else {
+      System.out.println("DEBUG; folder created with success:" + directoryToCreate.getAbsolutePath());
     }
   }
 
