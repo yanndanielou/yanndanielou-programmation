@@ -3,7 +3,9 @@ package model;
 import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -14,6 +16,8 @@ public class Song {
   public static final String DISABLED = "Disabled";
 
   private Map<String, Object> attributes;
+
+  private List<File> parentFilesHierarchy = null;
 
   private String path;
   private File file;
@@ -99,6 +103,23 @@ public class Song {
 
   public File getFile() {
     return file;
+  }
+
+  public List<File> getParentFilesHierarchy() {
+    if (parentFilesHierarchy == null) {
+      buildParentFilesHierarchy();
+    }
+    return parentFilesHierarchy;
+  }
+
+  public void buildParentFilesHierarchy() {
+    parentFilesHierarchy = new ArrayList<>();
+
+    File currentFile = file;
+    while ((currentFile = currentFile.getParentFile()) != null) {
+      parentFilesHierarchy.add(currentFile);
+    }
+
   }
 
   public boolean isDisabled() {

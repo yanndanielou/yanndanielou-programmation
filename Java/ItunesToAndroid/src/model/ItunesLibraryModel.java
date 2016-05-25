@@ -12,6 +12,7 @@ public class ItunesLibraryModel {
 
   private List<ListOfSongs> listOfSongsDictionnaries = new ArrayList<>();
   private Map<File, List<File>> parentAndChildrenRelations = new HashMap<>();
+  private File rootDirectoryOfAllSongs = null;
   private UserInputs userInputs;
 
   public ItunesLibraryModel(UserInputs userInputs) {
@@ -26,13 +27,38 @@ public class ItunesLibraryModel {
     return listOfSongsDictionnaries;
   }
 
-  public void consolidate() {
+  public void consolidateAfterLoadingItunesLibrary() {
     extractPathForAllSongs();
+    tryAndFindRootDirectoryOfAllSongs();
+  }
+
+  public void consolidate() {
     buildFilesHierarchy();
   }
 
+  public void tryAndFindRootDirectoryOfAllSongs() {
+    for (Song song : allSongsToTakeIntoAccount()) {
+      List<File> parentFilesOfCurrentSong = song.getParentFilesHierarchy();
+      for (File parentFile : parentFilesOfCurrentSong) {
+        boolean currentFileIsCandidate = true;
+        for (Song otherSong : allSongsToTakeIntoAccount()) {
+          if (song != otherSong) {
+            boolean otherSongContainsSameParent = otherSong.getParentFilesHierarchy().contains(parentFile);
+            currentFileIsCandidate = currentFileIsCandidate && otherSongContainsSameParent;
+          }
+        }
+        if (currentFileIsCandidate) {
+          rootDirectoryOfAllSongs = parentFile;
+          System.out.println("info; Common root directory for all songs found is:" + rootDirectoryOfAllSongs.getAbsolutePath());
+          return;
+        }
+      }
+    }
+    System.out.println("info; Could not find common root directory for all songs");
+  }
+
   private void buildFilesHierarchy() {
-    for (Song song : allSongs()) {
+    for (Song song : allSongsToTakeIntoAccount()) {
       File songFile = song.getFile();
       registerFileUntilTopLevel(songFile);
     }
@@ -64,8 +90,19 @@ public class ItunesLibraryModel {
     }
   }
 
+  public File getChildWithName(File file, String searchedName) {
+    List<File> children = getChildren(file);
+    for (File child : children) {
+      String childName = child.getName();
+      if (childName.equals(searchedName)) {
+        return child;
+      }
+    }
+    return null;
+  }
+
   private void extractPathForAllSongs() {
-    for (Song song : allSongs()) {
+    for (Song song : allSongsToTakeIntoAccount()) {
       song.extractPath();
     }
   }
@@ -80,11 +117,23 @@ public class ItunesLibraryModel {
     return allNotDisabledSongs;
   }
 
+  public List<Song> allSongsToTakeIntoAccount() {
+    if (userInputs.isExcludeDisabled()) {
+      return allNotDisabledSongs();
+    } else {
+      return allSongs();
+    }
+  }
+
   private List<Song> allSongs() {
     List<Song> allSongs = new ArrayList<>();
     for (ListOfSongs listOfSongsDictionnary : listOfSongsDictionnaries) {
       allSongs.addAll(listOfSongsDictionnary);
     }
     return allSongs;
+  }
+
+  public File getRootDirectoryOfAllSongs() {
+    return rootDirectoryOfAllSongs;
   }
 }

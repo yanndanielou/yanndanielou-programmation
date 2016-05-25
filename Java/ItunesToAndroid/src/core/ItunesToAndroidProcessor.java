@@ -2,7 +2,9 @@ package core;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -36,6 +38,11 @@ public class ItunesToAndroidProcessor {
     itunesLibraryModel = itunesLibraryModelBuilder.build(document, userInputs);
 
     //  printItunesLibraryInfos();
+    consolidateAfterLoadingItunesLibrary();
+  }
+
+  private void consolidateAfterLoadingItunesLibrary() {
+    itunesLibraryModel.consolidateAfterLoadingItunesLibrary();
   }
 
   public void compareWithTargetFolder() {
@@ -70,10 +77,7 @@ public class ItunesToAndroidProcessor {
           handleAllMissingFilesAndDirectoryBecauseMissingFolder(localChild, targetChild);
 
           if (!userInputs.isNoOperation()) {
-            boolean mkdir = targetChild.mkdir();
-            if (!mkdir) {
-              System.out.println("ERROR; could not create folder:" + targetChild.getAbsolutePath());
-            }
+            FileUtils.createFolder(targetChild);
           }
         }
         handleMissingFilesAndDirectoryInTarget(localChild, targetChild);
@@ -82,18 +86,7 @@ public class ItunesToAndroidProcessor {
         if (!targetChild.exists()) {
           System.out.println("diagnostic; target file " + targetChild.getAbsolutePath() + " does not exist");
           if (!userInputs.isNoOperation()) {
-            Path sourcePath = localChild.toPath();
-            Path targetDirectoryPath = targetFolder.toPath();
-            Path newCopiedFile = null;
-            try {
-              newCopiedFile = Files.copy(sourcePath, targetDirectoryPath.resolve(sourcePath.getFileName()));
-            } catch (IOException e) {
-              e.printStackTrace();
-              System.out.println("ERROR; could not copy file:" + targetChild.getAbsolutePath() + " . Error:" + e.getMessage());
-            }
-            if (newCopiedFile == null) {
-              System.out.println("ERROR; could not create folder:" + targetChild.getAbsolutePath());
-            }
+            FileUtils.copyFile(localChild, targetFolder);
           }
         }
       }
@@ -102,11 +95,32 @@ public class ItunesToAndroidProcessor {
 
   private void handleAllMissingFilesAndDirectoryBecauseMissingFolder(File localDirectory, File missingTargetDirectory) {
     //  System.out.println("diagnostic; target folder " + targetChild.getAbsolutePath() + " does not exist");
-
   }
 
   private void handleFilesAndDirectoryToDeleteInTarget() {
+    File localTopLevelFolder = userInputs.getLocalTopLevelFolder();
+    File targetTopLevelFolder = userInputs.getTargetTopLevelFolder();
+    handleFilesAndDirectoryToDeleteInTarget(localTopLevelFolder, targetTopLevelFolder);
+  }
 
+  private void handleFilesAndDirectoryToDeleteInTarget(File localFolder, File targetFolder) {
+    if (targetFolder.isDirectory()) {
+      File[] targetChildren = targetFolder.listFiles();
+      for (File targetChild : targetChildren) {
+        String childName = targetChild.getName();
+
+        File localChildWithSameName = itunesLibraryModel.getChildWithName(localFolder, childName);
+        if (localChildWithSameName == null) {
+          System.out.println("diagnostic; target file " + targetChild.getAbsolutePath() + " must be deleted because does not exist in local");
+
+          if (!userInputs.isNoOperation()) {
+            FileUtils.deleteFileOrDirectory(targetChild);
+          }
+        } else {
+          handleFilesAndDirectoryToDeleteInTarget(localChildWithSameName, targetChild);
+        }
+      }
+    }
   }
 
   protected void printItunesLibraryInfos() {
@@ -135,5 +149,9 @@ public class ItunesToAndroidProcessor {
     System.out.println("DocumentURI: " + document.getDocumentURI());
 
     System.out.println("DocumentElement: " + document.getDocumentElement());
+  }
+
+  public ItunesLibraryModel getItunesLibraryModel() {
+    return itunesLibraryModel;
   }
 }

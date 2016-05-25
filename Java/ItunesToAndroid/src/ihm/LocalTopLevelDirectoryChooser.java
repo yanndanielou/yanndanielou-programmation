@@ -22,7 +22,7 @@ public class LocalTopLevelDirectoryChooser extends JPanel {
   public File retrieveLocalTopLevelFolder() {
     JFileChooser inputFileChooser = new JFileChooser();
 
-    inputFileChooser.setCurrentDirectory(new File("D:\\temp"));
+    inputFileChooser.setCurrentDirectory(new File("D:\\temp\\itunes2Android__tests"));
     inputFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
     inputFileChooser.setDialogTitle("Local music directory");
