@@ -14,7 +14,7 @@ public class ItunesToAndroidApplication {
 
   public static void main(String[] args) {
 
-    Logger.configureLevel(Severity.DEBUG);
+    Logger.configureLevel(Severity.NOTE);
 
     UserInputs userInputs = new UserInputs();
     ItunesToAndroidProcessor itunesToAndroidProcessor = new ItunesToAndroidProcessor(userInputs);
@@ -23,6 +23,7 @@ public class ItunesToAndroidApplication {
     File itunesLibraryFile = itunesLibraryFileChooser.retrieveItunesLibraryFile();
 
     if (itunesLibraryFile == null) {
+      Logger.info("No itunes library file selected. Exiting application");
       return;
     }
 
@@ -40,7 +41,13 @@ public class ItunesToAndroidApplication {
     userInputs.setLocalTopLevelFolder(rootDirectoryOfAllSongs);
 
     TargetTopLevelFolderChooser targetTopLevelFolderChooser = new TargetTopLevelFolderChooser();
-    userInputs.setTargetTopLevelFolder(targetTopLevelFolderChooser.retrieveTargetTopLevelFolder());
+    File retrieveTargetTopLevelFolder = targetTopLevelFolderChooser.retrieveTargetTopLevelFolder();
+    if (retrieveTargetTopLevelFolder == null) {
+      Logger.info("No target top level folder selected. Exiting application");
+      return;
+    }
+
+    userInputs.setTargetTopLevelFolder(retrieveTargetTopLevelFolder);
 
     itunesToAndroidProcessor.compareWithTargetFolder();
 

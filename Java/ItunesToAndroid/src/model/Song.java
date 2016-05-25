@@ -73,7 +73,7 @@ public class Song {
   public void printAllAttributes() {
     Set<Entry<String, Object>> entrySet = attributes.entrySet();
     for (Entry<String, Object> entry : entrySet) {
-      System.out.println(entry.getKey() + " = " + entry.getValue());
+      Logger.debug(entry.getKey() + " = " + entry.getValue());
     }
   }
 

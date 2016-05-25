@@ -149,17 +149,17 @@ public class ItunesToAndroidProcessor {
 
   private void printDocumentInfos(Document document) {
     //Affiche la version de XML
-    Logger.info("XmlVersion: " + document.getXmlVersion());
+    Logger.note("XmlVersion: " + document.getXmlVersion());
 
     //Affiche l'encodage
-    Logger.info("XmlEncoding: " + document.getXmlEncoding());
+    Logger.note("XmlEncoding: " + document.getXmlEncoding());
 
     //Affiche s'il s'agit d'un document standalone    
-    Logger.info("XmlStandalone: " + document.getXmlStandalone());
+    Logger.note("XmlStandalone: " + document.getXmlStandalone());
 
-    Logger.info("DocumentURI: " + document.getDocumentURI());
+    Logger.note("DocumentURI: " + document.getDocumentURI());
 
-    Logger.info("DocumentElement: " + document.getDocumentElement());
+    Logger.note("DocumentElement: " + document.getDocumentElement());
   }
 
   public ItunesLibraryModel getItunesLibraryModel() {
