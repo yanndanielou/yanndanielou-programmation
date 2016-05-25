@@ -12,6 +12,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import common.Logger;
 import model.ItunesLibraryModel;
 import model.ListOfSongs;
 import model.Song;
@@ -33,7 +34,7 @@ public class ItunesLibraryModelBuilder {
     final NamedNodeMap rootAttributes = root.getAttributes();
     final int rootAttributesCount = rootAttributes != null ? rootAttributes.getLength() : 0;
 
-    System.out.println("Root: " + root.getNodeName() + ", rootChildNodesCount: " + rootChildNodesCount + ", rootAttributesCount: " + rootAttributesCount);
+    Logger.debug("Root: " + root.getNodeName() + ", rootChildNodesCount: " + rootChildNodesCount + ", rootAttributesCount: " + rootAttributesCount);
 
     for (int i = 0; i < rootChildNodesCount; i++) {
       Node rootChildNode = rootChildNodes.item(i);
@@ -124,7 +125,7 @@ public class ItunesLibraryModelBuilder {
     }
 
     if (ret == null) {
-      System.out.println("ERROR; Unsupported type [" + type + "] with value [" + valueAsString + "]. Will be handled as a string");
+      Logger.error("Unsupported type [" + type + "] with value [" + valueAsString + "]. Will be handled as a string");
       ret = valueAsString;
     }
 
@@ -140,7 +141,7 @@ public class ItunesLibraryModelBuilder {
       return Long.valueOf(valueAsString);
     } catch (NumberFormatException e) {
       e.printStackTrace();
-      System.out.println("Could not parse [" + valueAsString + "] as int");
+      Logger.error("Could not parse [" + valueAsString + "] as int");
       return null;
     }
   }
@@ -154,21 +155,21 @@ public class ItunesLibraryModelBuilder {
       return date;
     } catch (ParseException e) {
       e.printStackTrace();
-      System.out.println("Could not parse [" + valueAsString + "] as date with format " + ISO_8061_DATE_FORMAT);
+      Logger.error("Could not parse [" + valueAsString + "] as date with format " + ISO_8061_DATE_FORMAT);
       return null;
     }
   }
 
   protected void printReccursively(Element element) {
-    System.out.println("Start printing reccursively element " + element);
+    Logger.fullDebug("Start printing reccursively element " + element);
     doPrintReccursively(element, 0);
-    System.out.println("End printing reccursively node " + element);
+    Logger.fullDebug("End printing reccursively node " + element);
   }
 
   protected void printReccursively(Node node) {
-    System.out.println("Start printing reccursively node " + node.getNodeName());
+    Logger.fullDebug("Start printing reccursively node " + node.getNodeName());
     doPrintReccursively(node, 0);
-    System.out.println("End printing reccursively node " + node.getNodeName());
+    Logger.fullDebug("End printing reccursively node " + node.getNodeName());
   }
 
   private void doPrintReccursively(Node node, int reccursivite) {
@@ -179,10 +180,10 @@ public class ItunesLibraryModelBuilder {
     int attributesCount = getAttributesCount(attributes);
 
     for (int i = 0; i <= reccursivite; i++) {
-      System.out.print("  ");
+      Logger.fullDebug("  ");
     }
 
-    System.out.println("Node: " + node.getNodeName() + ", number of attributes: " + attributesCount + ", number of child nodes: " + nodeChildNodesCount + ", text content: " + node.getTextContent());
+    Logger.fullDebug("Node: " + node.getNodeName() + ", number of attributes: " + attributesCount + ", number of child nodes: " + nodeChildNodesCount + ", text content: " + node.getTextContent());
 
     for (int i = 0; i < nodeChildNodesCount; i++) {
       Node childNode = nodeChildNodes.item(i);
@@ -199,11 +200,10 @@ public class ItunesLibraryModelBuilder {
 
     String textContent = node.getTextContent();
 
-    System.out.println(context + ". Node: " + node.getNodeName() + ", number of attributes: " + attributesCount + ", number of child nodes: " + childNodesCount + ", text content: " + textContent);
+    Logger.fullDebug(context + ". Node: " + node.getNodeName() + ", number of attributes: " + attributesCount + ", number of child nodes: " + childNodesCount + ", text content: " + textContent);
   }
 
   private int getAttributesCount(NamedNodeMap map) {
     return map != null ? map.getLength() : 0;
-
   }
 }

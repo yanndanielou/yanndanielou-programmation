@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import common.Logger;
 import core.UserInputs;
 
 public class ItunesLibraryModel {
@@ -49,12 +50,12 @@ public class ItunesLibraryModel {
         }
         if (currentFileIsCandidate) {
           rootDirectoryOfAllSongs = parentFile;
-          System.out.println("info; Common root directory for all songs found is:" + rootDirectoryOfAllSongs.getAbsolutePath());
+          Logger.info("Common root directory for all songs found is:" + rootDirectoryOfAllSongs.getAbsolutePath());
           return;
         }
       }
     }
-    System.out.println("info; Could not find common root directory for all songs");
+    Logger.info("Could not find common root directory for all songs");
   }
 
   private void buildFilesHierarchy() {

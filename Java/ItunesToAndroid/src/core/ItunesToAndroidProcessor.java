@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.w3c.dom.Document;
 
+import common.Logger;
 import model.ItunesLibraryModel;
 import model.ListOfSongs;
 import model.Song;
@@ -31,13 +32,13 @@ public class ItunesToAndroidProcessor {
     XmlItunesLibraryParser xmlItunesLibraryParser = new XmlItunesLibraryParser();
     Document document = xmlItunesLibraryParser.parse(userInputs.getItunesLibraryFile());
     if (document == null) {
-      System.out.println("XML was invalid");
+      Logger.error("XML was invalid");
       return;
     }
     printDocumentInfos(document);
     itunesLibraryModel = itunesLibraryModelBuilder.build(document, userInputs);
 
-    //  printItunesLibraryInfos();
+    printItunesLibraryInfos();
     consolidateAfterLoadingItunesLibrary();
   }
 
@@ -65,7 +66,7 @@ public class ItunesToAndroidProcessor {
   }
 
   private void handleMissingFilesAndDirectoryInTarget(File localFolder, File targetFolder) {
-    System.out.println("diagnostic (debug); Analyzing " + localFolder.getAbsolutePath() + " to detect if exists in target " + targetFolder.getAbsolutePath());
+    Logger.debug("diagnostic (debug); Analyzing " + localFolder.getAbsolutePath() + " to detect if exists in target " + targetFolder.getAbsolutePath());
 
     List<File> localChildren = itunesLibraryModel.getChildren(localFolder);
 
@@ -75,25 +76,25 @@ public class ItunesToAndroidProcessor {
       if (localChild.isDirectory()) {
         File targetChild = new File(targetFolder.getAbsolutePath() + "\\" + name);
         if (!targetChild.exists()) {
-          System.out.println("diagnostic; target folder " + targetChild.getAbsolutePath() + " does not exist");
+          Logger.info("diagnostic; target folder " + targetChild.getAbsolutePath() + " does not exist");
           handleAllMissingFilesAndDirectoryBecauseMissingFolder(localChild, targetChild);
 
           if (!userInputs.isNoOperation()) {
             FileUtils.createFolder(targetChild);
           }
         } else {
-          System.out.println("diagnostic (debug); target folder " + targetChild.getName() + " exists in both directories. Nothing to be done");
+          Logger.note("diagnostic (debug); target folder " + targetChild.getName() + " exists in both directories. Nothing to be done");
         }
         handleMissingFilesAndDirectoryInTarget(localChild, targetChild);
       } else {
         File targetChild = new File(targetFolder.getAbsolutePath() + "\\" + name);
         if (!targetChild.exists()) {
-          System.out.println("diagnostic; target file " + targetChild.getAbsolutePath() + " does not exist");
+          Logger.info("diagnostic; target file " + targetChild.getAbsolutePath() + " does not exist");
           if (!userInputs.isNoOperation()) {
             FileUtils.copyFile(localChild, targetFolder);
           }
         } else {
-          System.out.println("diagnostic (debug); target file " + targetChild.getName() + " exists in both directories. Nothing to be done");
+          Logger.note("diagnostic (debug); target file " + targetChild.getName() + " exists in both directories. Nothing to be done");
         }
       }
     }
@@ -110,7 +111,7 @@ public class ItunesToAndroidProcessor {
   }
 
   private void handleFilesAndDirectoryToDeleteInTarget(File localFolder, File targetFolder) {
-    System.out.println("diagnostic (debug); Analyzing directory " + targetFolder.getAbsolutePath() + " to detect if something must be deleted");
+    Logger.debug("diagnostic (debug); Analyzing directory " + targetFolder.getAbsolutePath() + " to detect if something must be deleted");
 
     if (targetFolder.isDirectory()) {
       File[] targetChildren = targetFolder.listFiles();
@@ -119,13 +120,13 @@ public class ItunesToAndroidProcessor {
 
         File localChildWithSameName = itunesLibraryModel.getChildWithName(localFolder, childName);
         if (localChildWithSameName == null) {
-          System.out.println("diagnostic; target file " + targetChild.getAbsolutePath() + " must be deleted because does not exist in local");
+          Logger.info("diagnostic; target file " + targetChild.getAbsolutePath() + " must be deleted because does not exist in local");
 
           if (!userInputs.isNoOperation()) {
             FileUtils.deleteFileOrDirectory(targetChild);
           }
         } else {
-          System.out.println("diagnostic (debug); target file " + targetChild.getName() + " exists in both directories. Nothing to be done");
+          Logger.note("diagnostic (debug); target file " + targetChild.getName() + " exists in both directories. Nothing to be done");
 
           handleFilesAndDirectoryToDeleteInTarget(localChildWithSameName, targetChild);
         }
@@ -137,28 +138,28 @@ public class ItunesToAndroidProcessor {
     List<ListOfSongs> listOfSongsDictionnaries = itunesLibraryModel.getListOfSongsDictionnaries();
 
     for (ListOfSongs listOfSongs : listOfSongsDictionnaries) {
-      System.out.println("list of songs dictionnary. Number of songs:" + listOfSongs.size());
+      Logger.fullDebug("list of songs dictionnary. Number of songs:" + listOfSongs.size());
       for (Song song : listOfSongs) {
-        System.out.println("Begin song");
+        Logger.fullDebug("Begin song");
         song.printAllAttributes();
-        System.out.println("End song");
+        Logger.fullDebug("End song");
       }
     }
   }
 
   private void printDocumentInfos(Document document) {
     //Affiche la version de XML
-    System.out.println("XmlVersion: " + document.getXmlVersion());
+    Logger.info("XmlVersion: " + document.getXmlVersion());
 
     //Affiche l'encodage
-    System.out.println("XmlEncoding: " + document.getXmlEncoding());
+    Logger.info("XmlEncoding: " + document.getXmlEncoding());
 
     //Affiche s'il s'agit d'un document standalone    
-    System.out.println("XmlStandalone: " + document.getXmlStandalone());
+    Logger.info("XmlStandalone: " + document.getXmlStandalone());
 
-    System.out.println("DocumentURI: " + document.getDocumentURI());
+    Logger.info("DocumentURI: " + document.getDocumentURI());
 
-    System.out.println("DocumentElement: " + document.getDocumentElement());
+    Logger.info("DocumentElement: " + document.getDocumentElement());
   }
 
   public ItunesLibraryModel getItunesLibraryModel() {

@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import common.Logger;
+
 public class Song {
 
   public static final String FILE_LOCATION_PATH = "Location";
@@ -32,7 +34,7 @@ public class Song {
       return (Boolean) attribute;
     }
 
-    System.out.println("ERROR; Attribute [" + key + "] is not a boolean. Value is:" + attribute);
+    Logger.error("Attribute [" + key + "] is not a boolean. Value is:" + attribute);
     return null;
   }
 
@@ -42,7 +44,7 @@ public class Song {
       return (String) attribute;
     }
 
-    System.out.println("ERROR; Attribute [" + key + "] is not a string. Value is:" + attribute);
+    Logger.error("Attribute [" + key + "] is not a string. Value is:" + attribute);
     return null;
   }
 
@@ -55,13 +57,13 @@ public class Song {
       return attributes.get(key);
     }
 
-    System.out.println("ERROR; Cannot find attribute: [" + key + "] among attributes:" + attributes.keySet());
+    Logger.error("Cannot find attribute: [" + key + "] among attributes:" + attributes.keySet());
     return null;
   }
 
   public void setAttribute(String attributeName, Object attributeValue) {
     if (containsAttribute(attributeName)) {
-      System.out.println("Attribute: [" + attributeName + "] is alreadt defined. Cannot set value [" + attributeValue + "]");
+      Logger.error("Attribute: [" + attributeName + "] is already defined. Cannot set value [" + attributeValue + "]");
     }
     else {
       attributes.put(attributeName, attributeValue);
@@ -86,7 +88,7 @@ public class Song {
       uri = new URI(path);
     } catch (URISyntaxException | IllegalArgumentException e) {
       e.printStackTrace();
-      System.out.println("ERROR; path [" + path + "[ is not a valid URI for song. Error:" + e.getMessage());
+      Logger.error("path [" + path + "[ is not a valid URI for song. Error:" + e.getMessage());
       printAllAttributes();
       return;
     }
@@ -95,7 +97,7 @@ public class Song {
       file = new File(uri);
     } catch (IllegalArgumentException e) {
       e.printStackTrace();
-      System.out.println("ERROR; Cannot create file with path:" + path + ", uri:" + uri + ", error:" + e.getMessage());
+      Logger.error("Cannot create file with path:" + path + ", uri:" + uri + ", error:" + e.getMessage());
       printAllAttributes();
       return;
     }

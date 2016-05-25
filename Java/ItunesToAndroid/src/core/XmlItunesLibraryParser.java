@@ -10,6 +10,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import common.Logger;
+
 public class XmlItunesLibraryParser {
 
   public Document parse(File file) {
@@ -20,10 +22,13 @@ public class XmlItunesLibraryParser {
       final Document document = builder.parse(file);
       return document;
     } catch (final ParserConfigurationException e) {
+      Logger.error(e.getMessage());
       e.printStackTrace();
     } catch (final SAXException e) {
+      Logger.error(e.getMessage());
       e.printStackTrace();
     } catch (final IOException e) {
+      Logger.error(e.getMessage());
       e.printStackTrace();
     }
     return null;

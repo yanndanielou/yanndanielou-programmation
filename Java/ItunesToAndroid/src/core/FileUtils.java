@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import common.Logger;
+
 public final class FileUtils {
 
   private FileUtils() {
@@ -31,9 +33,9 @@ public final class FileUtils {
   private static boolean deleteEmptyDirectory(File emptyDirectory) {
     boolean result = emptyDirectory.delete();
     if (!result) {
-      System.out.println("ERROR; Could not delete directory:" + emptyDirectory.getAbsolutePath());
+      Logger.error("Could not delete directory:" + emptyDirectory.getAbsolutePath());
     } else {
-      System.out.println("DEBUG; directory " + emptyDirectory.getAbsolutePath() + " deleted with success");
+      Logger.note("FileUtils; directory " + emptyDirectory.getAbsolutePath() + " deleted with success");
     }
     return result;
   }
@@ -41,9 +43,9 @@ public final class FileUtils {
   public static boolean deleteFile(File file) {
     boolean result = file.delete();
     if (!result) {
-      System.out.println("ERROR; Could not delete file:" + file.getAbsolutePath());
+      Logger.error("Could not delete file:" + file.getAbsolutePath());
     } else {
-      System.out.println("DEBUG; file " + file.getAbsolutePath() + " deleted with success");
+      Logger.note("FileUtils; file " + file.getAbsolutePath() + " deleted with success");
     }
     return result;
   }
@@ -63,23 +65,22 @@ public final class FileUtils {
     try {
       newCopiedFile = Files.copy(sourcePath, targetDirectoryPath.resolve(sourcePath.getFileName()));
     } catch (IOException e) {
-      e.printStackTrace();
-      System.out.println("ERROR; could not copy file:" + destination.getAbsolutePath() + " . Error:" + e.getMessage());
+      Logger.error("could not copy file:" + destination.getAbsolutePath() + " . Error:" + e.getMessage());
       return;
     }
     if (newCopiedFile == null) {
-      System.out.println("ERROR; could not copy folder:" + destination.getAbsolutePath());
+      Logger.error("could not copy folder:" + destination.getAbsolutePath());
     } else {
-      System.out.println("DEBUG; file " + source.getAbsolutePath() + " copied to " + destination.getAbsolutePath() + " with success");
+      Logger.note("FileUtils; file " + source.getAbsolutePath() + " copied to " + destination.getAbsolutePath() + " with success");
     }
   }
 
   public static void createFolder(File directoryToCreate) {
     boolean mkdir = directoryToCreate.mkdir();
     if (!mkdir) {
-      System.out.println("ERROR; could not create folder:" + directoryToCreate.getAbsolutePath());
+      Logger.error("could not create folder:" + directoryToCreate.getAbsolutePath());
     } else {
-      System.out.println("DEBUG; folder created with success:" + directoryToCreate.getAbsolutePath());
+      Logger.note("FileUtils; folder created with success:" + directoryToCreate.getAbsolutePath());
     }
   }
 

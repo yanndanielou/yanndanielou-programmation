@@ -2,6 +2,8 @@ package application;
 
 import java.io.File;
 
+import common.Logger;
+import common.Severity;
 import core.ItunesToAndroidProcessor;
 import core.UserInputs;
 import ihm.ItunesLibraryFileChooser;
@@ -11,6 +13,8 @@ import ihm.TargetTopLevelFolderChooser;
 public class ItunesToAndroidApplication {
 
   public static void main(String[] args) {
+
+    Logger.configureLevel(Severity.DEBUG);
 
     UserInputs userInputs = new UserInputs();
     ItunesToAndroidProcessor itunesToAndroidProcessor = new ItunesToAndroidProcessor(userInputs);
