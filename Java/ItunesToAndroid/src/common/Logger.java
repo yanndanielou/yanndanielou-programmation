@@ -28,6 +28,11 @@ public class Logger {
     log(Severity.ERROR, trace);
   }
 
+  public static void fatal(String trace) {
+    log(Severity.FATAL, trace + ". Application is shut down");
+    Runtime.getRuntime().exit(0);
+  }
+
   public static void log(Severity level, String trace) {
     if (configuredLevel.include(level)) {
       System.out.println(level + ";" + trace);

@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 import common.Logger;
 
@@ -82,6 +84,33 @@ public final class FileUtils {
     } else {
       Logger.note("FileUtils; folder created with success:" + directoryToCreate.getAbsolutePath());
     }
+  }
+
+  public static List<File> getParentFilesHierarchy(File file) {
+    List<File> parentFilesHierarchy = new ArrayList<>();
+    File currentFile = file;
+    while ((currentFile = currentFile.getParentFile()) != null) {
+      parentFilesHierarchy.add(currentFile);
+    }
+    return parentFilesHierarchy;
+  }
+
+  public static boolean areTheSame(File left, File right) {
+    return left.equals(right);
+  }
+
+  public static boolean doesFolderContains(File folder, File searched) {
+    File[] children = folder.listFiles();
+    boolean contains = false;
+    for (File child : children) {
+      if (child.equals(searched)) {
+        contains = true;
+      }
+      if (child.isDirectory()) {
+        contains = contains || doesFolderContains(child, searched);
+      }
+    }
+    return contains;
   }
 
 }

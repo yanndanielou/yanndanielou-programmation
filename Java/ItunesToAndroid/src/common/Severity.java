@@ -6,7 +6,8 @@ public enum Severity {
   NOTE,
   INFO,
   WARNING,
-  ERROR;
+  ERROR,
+  FATAL;
 
   public boolean include(Severity isIncluded) {
     switch (isIncluded) {
@@ -22,6 +23,8 @@ public enum Severity {
       return includeWarning();
     case ERROR:
       return includeError();
+    case FATAL:
+      return includeFatal();
     default:
       return true;
     }
@@ -51,5 +54,8 @@ public enum Severity {
     return this == ERROR || includeWarning();
   }
 
+  private boolean includeFatal() {
+    return this == FATAL || includeError();
+  }
 }
 //common.all.enums.enum_

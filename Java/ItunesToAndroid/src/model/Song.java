@@ -3,7 +3,6 @@ package model;
 import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +10,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import common.Logger;
+import core.FileUtils;
 
 public class Song {
 
@@ -109,19 +109,9 @@ public class Song {
 
   public List<File> getParentFilesHierarchy() {
     if (parentFilesHierarchy == null) {
-      buildParentFilesHierarchy();
+      parentFilesHierarchy = FileUtils.getParentFilesHierarchy(file);
     }
     return parentFilesHierarchy;
-  }
-
-  public void buildParentFilesHierarchy() {
-    parentFilesHierarchy = new ArrayList<>();
-
-    File currentFile = file;
-    while ((currentFile = currentFile.getParentFile()) != null) {
-      parentFilesHierarchy.add(currentFile);
-    }
-
   }
 
   public boolean isDisabled() {

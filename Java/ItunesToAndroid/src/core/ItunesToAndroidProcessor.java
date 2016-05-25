@@ -52,8 +52,28 @@ public class ItunesToAndroidProcessor {
   }
 
   private void buildDiagnostic() {
+    checkThatSourceIsNotTarget();
+    checkThatSourceIsNotInsideTarget();
     handleMissingFilesAndDirectoryInTarget();
     handleFilesAndDirectoryToDeleteInTarget();
+  }
+
+  private void checkThatSourceIsNotTarget() {
+    File localTopLevelFolder = userInputs.getLocalTopLevelFolder();
+    File targetTopLevelFolder = userInputs.getTargetTopLevelFolder();
+
+    if (FileUtils.areTheSame(localTopLevelFolder, targetTopLevelFolder)) {
+      Logger.fatal("Target and source are the same :" + targetTopLevelFolder.getAbsolutePath());
+    }
+  }
+
+  private void checkThatSourceIsNotInsideTarget() {
+    File localTopLevelFolder = userInputs.getLocalTopLevelFolder();
+    File targetTopLevelFolder = userInputs.getTargetTopLevelFolder();
+
+    if (FileUtils.doesFolderContains(targetTopLevelFolder, localTopLevelFolder)) {
+      Logger.fatal("Target " + targetTopLevelFolder.getAbsolutePath() + " shoud not contain " + localTopLevelFolder.getAbsolutePath());
+    }
   }
 
   private void handleMissingFilesAndDirectoryInTarget() {

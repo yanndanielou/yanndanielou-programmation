@@ -14,7 +14,7 @@ public class ItunesToAndroidApplication {
 
   public static void main(String[] args) {
 
-    Logger.configureLevel(Severity.NOTE);
+    Logger.configureLevel(Severity.INFO);
 
     UserInputs userInputs = new UserInputs();
     ItunesToAndroidProcessor itunesToAndroidProcessor = new ItunesToAndroidProcessor(userInputs);
@@ -51,5 +51,6 @@ public class ItunesToAndroidApplication {
 
     itunesToAndroidProcessor.compareWithTargetFolder();
 
+    Logger.info("End of application");
   }
 }
