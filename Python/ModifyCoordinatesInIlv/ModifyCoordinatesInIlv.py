@@ -47,19 +47,23 @@ def getAttributeValue(attributeLine, valuePattern):
 	return(match_attribute_searched.group('value'))	
 	
 def findAfGadgetXOrigineAttributeName(attributes):
-	pattern_as_string = "[\s]*" + attributeType+"[\s]*"+ attributeName+ "[\s]*=.*"
+	pattern_as_string = "[\s]*" + "Int" +"[\s]*(?P<attributeName>[0-9A-Za-z_\"]*)\.xOrigin[\s]*=.*"
 	pattern = re.compile(pattern_as_string)
 
 	for attribute in attributes:
 		match_attribute_searched = pattern.match(attribute)
 	
 		if match_attribute_searched != None:
-			return attribute
+			logging.debug("xOrigin found in:" + attribute)
+			return match_attribute_searched.group('attributeName')
 
-	logging.error('Could not find attribute with type:' + attributeType + " name:" + attributeName + " with pattern:" + pattern_as_string + " among attributes:")
-	printAllAttributes(attributes)
-	sys.exit()
-	return ""
+	return None	
+	
+def findAfGadgetXOrigineAttributeLine(afGadgetXOrigine_class_name, attributes):
+	return findIntAttributeLine(afGadgetXOrigine_class_name+ ".xOrigin", attributes)
+	
+def findAfGadgetYOrigineAttributeLine(afGadgetXOrigine_class_name, attributes):
+	return findIntAttributeLine(afGadgetXOrigine_class_name+ ".yOrigin", attributes)
 
 def findNameAttributeLine(attributes):
 	return findStringAttributeLine('name', attributes)
@@ -149,7 +153,17 @@ def updateValuesSections(output_ilv_file_content, has_min_original_x, min_origin
 		original_x = getIntValue(x_attribute_line)
 		y_attribute_line = findYAttributeLine(value_attributes)
 		original_y = getIntValue(y_attribute_line)
-		afGadgetXOrigine_attribute_name = findAfGadgetXOrigineAttributeName(value_attributes)
+		afGadgetXOrigine_class_name = findAfGadgetXOrigineAttributeName(value_attributes)
+		afGadgetXOrigine_attribute_line = ""
+		afGadgetYOrigine_attribute_line = ""
+		original_afGadgetXOrigine = 0
+		original_afGadgetYOrigine = 0
+		if afGadgetXOrigine_class_name != None:
+			logging.debug("afGadgetXOrigine_class_name:" + name)
+			afGadgetXOrigine_attribute_line = findAfGadgetXOrigineAttributeLine(afGadgetXOrigine_class_name, value_attributes)
+			afGadgetYOrigine_attribute_line = findAfGadgetYOrigineAttributeLine(afGadgetXOrigine_class_name, value_attributes)
+			original_afGadgetXOrigine = getIntValue(afGadgetXOrigine_attribute_line)
+			original_afGadgetYOrigine = getIntValue(afGadgetYOrigine_attribute_line)
 		
 		logging.debug("    name:" + name)
 		logging.debug("    original_x:" + str(original_x))
@@ -167,6 +181,13 @@ def updateValuesSections(output_ilv_file_content, has_min_original_x, min_origin
 					new_x_attribute_line = updateIntValue(x_attribute_line,original_x,  new_x)
 					logging.debug("x attribute line was:" + x_attribute_line + " and beomes:" + new_x_attribute_line)
 					value_section_updated = value_section_updated.replace(x_attribute_line, new_x_attribute_line)
+					
+					if afGadgetXOrigine_class_name != None:
+						new_afGadgetXOrigine = original_afGadgetXOrigine + x_increment
+						logging.debug("    original_afGadgetXOrigine attribute:" + str(original_afGadgetXOrigine) + " of object:" + name + " must be updated to:" + str(new_afGadgetXOrigine))
+						new_afGadgetXOrigine_attribute_line = updateIntValue(afGadgetXOrigine_attribute_line,original_afGadgetXOrigine,  new_afGadgetXOrigine)
+						logging.debug("x attribute line was:" + afGadgetXOrigine_attribute_line + " and beomes:" + new_afGadgetXOrigine_attribute_line)
+						value_section_updated = value_section_updated.replace(afGadgetXOrigine_attribute_line, new_afGadgetXOrigine_attribute_line)
 				
 				if has_y_increment:
 					new_y = original_y + y_increment
@@ -174,6 +195,13 @@ def updateValuesSections(output_ilv_file_content, has_min_original_x, min_origin
 					new_y_attribute_line = updateIntValue(y_attribute_line,original_y,  new_y)
 					logging.debug("y attribute line was:" + y_attribute_line + " and beomes:" + new_y_attribute_line)
 					value_section_updated = value_section_updated.replace(y_attribute_line, new_y_attribute_line)
+					
+					if afGadgetXOrigine_class_name != None:
+						new_afGadgetYOrigine = original_afGadgetYOrigine + y_increment
+						logging.debug("    original_afGadgetYOrigine attribute:" + str(original_afGadgetYOrigine) + " of object:" + name + " must be updated to:" + str(new_afGadgetYOrigine))
+						new_afGadgetYOrigine_attribute_line = updateIntValue(afGadgetYOrigine_attribute_line,original_afGadgetYOrigine,  new_afGadgetYOrigine)
+						logging.debug("y attribute line was:" + afGadgetYOrigine_attribute_line + " and beomes:" + new_afGadgetYOrigine_attribute_line)
+						value_section_updated = value_section_updated.replace(afGadgetYOrigine_attribute_line, new_afGadgetYOrigine_attribute_line)
 			
 				logging.debug("Values section was:" + value_section + " and beomes:" + value_section_updated)
 				
