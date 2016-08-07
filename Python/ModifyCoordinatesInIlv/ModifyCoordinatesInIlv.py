@@ -29,7 +29,7 @@ def printAllAttributes(attributes):
 	 	logging.debug(attribute)
 
 def getStringValue(attributeLine):
-	return getAttributeValue(attributeLine, "[0-9A-Za-z_]*")
+	return getAttributeValue(attributeLine, "[0-9A-Za-z_\"]*")
 	
 def getIntValue(attributeLine):
 	return int(getAttributeValue(attributeLine, "\\d+"))
@@ -51,7 +51,7 @@ def findNameAttributeLine(attributes):
 	return findStringAttributeLine('name', attributes)
 
 def findStringAttributeLine(attributeName, attributes):
-	return findAttributeLine('String', attributeName, attributes, "[0-9A-Za-z_]*")
+	return findAttributeLine('String', attributeName, attributes, "[0-9A-Za-z_\"]*")
 
 def findXAttributeLine(attributes):
 	return findIntAttributeLine('x', attributes)
@@ -78,6 +78,64 @@ def findAttributeLine(attributeType, attributeName, attributes, valuePattern):
 	sys.exit()
 	return ""
 
+def updateValuesSections(output_ilv_file_content_in_one_line, replacement_string_for_new_line_caracter, has_min_original_x, min_original_x, has_max_original_x, max_original_x, has_x_increment, x_increment, has_min_original_y, min_original_y, has_max_original_y, max_original_y, has_y_increment, y_increment):
+	# Retrieve all values { } in the file
+	all_values = re.findall(r'values {[^}]*}', output_ilv_file_content_in_one_line)
+
+	logging.info("Number of values{} found: %d" , len(all_values))
+
+	value_number = 0
+	for value_section in all_values:
+		value_number = value_number + 1
+		logging.debug("Value %d", value_number)
+		value_attributes = value_section.split(replacement_string_for_new_line_caracter)
+		name_attribute_line = findNameAttributeLine(value_attributes)
+		name = getStringValue(name_attribute_line)
+		x_attribute_line = findXAttributeLine(value_attributes)
+		original_x = getIntValue(x_attribute_line)
+		y_attribute_line = findYAttributeLine(value_attributes)
+		original_y = getIntValue(y_attribute_line)
+		
+		logging.debug("    name:" + name)
+		logging.debug("    original_x:" + str(original_x))
+		logging.debug("    original_y:" + str(original_y))
+		
+		x_is_inside_range = True
+		if has_min_original_x:
+			x_is_inside_range = x_is_inside_range and (original_x >= min_original_x)
+		if has_max_original_x:
+			x_is_inside_range = x_is_inside_range and (original_x <= max_original_x)
+		
+		y_is_inside_range = True
+		if has_min_original_y:
+			y_is_inside_range = y_is_inside_range and (original_y >= min_original_y)
+		if has_max_original_y:
+			y_is_inside_range = y_is_inside_range and (original_y <= max_original_y)
+		
+		is_inside_range = x_is_inside_range and y_is_inside_range
+
+		if is_inside_range:
+			if has_x_increment or has_y_increment:
+				value_section_updated = value_section
+				
+				if has_x_increment:
+					new_x = original_x + x_increment
+					logging.debug("    original_x attribute:" + str(original_x) + " of object:" + name + " must be updated to:" + str(new_x))
+					new_x_attribute_line = updateIntValue(x_attribute_line,original_x,  new_x)
+					logging.debug("x attribute line was:" + x_attribute_line + " and beomes:" + new_x_attribute_line)
+					value_section_updated = value_section_updated.replace(x_attribute_line, new_x_attribute_line)
+				
+				if has_y_increment:
+					new_y = original_y + y_increment
+					logging.debug("    original_y attribute:" + str(original_y) + " of object:" + name + " must be updated to:" + str(new_y))
+					new_y_attribute_line = updateIntValue(y_attribute_line,original_y,  new_y)
+					logging.debug("y attribute line was:" + y_attribute_line + " and beomes:" + new_y_attribute_line)
+					value_section_updated = value_section_updated.replace(y_attribute_line, new_y_attribute_line)
+			
+				logging.debug("Values section was:" + value_section + " and beomes:" + value_section_updated)
+				
+				output_ilv_file_content_in_one_line = output_ilv_file_content_in_one_line.replace(value_section, value_section_updated)
+														 
 	
 def printActionsDependingOnArguments_onlyForDebugPurpose(application_file_name, input_ilv_file_name ,  output_ilv_file_name ,   has_min_original_x 	, min_original_x ,  has_max_original_x 	, max_original_x, 
                                                          has_x_increment, x_increment , has_min_original_y 	, min_original_y , has_max_original_y , max_original_y, has_y_increment , y_increment ):		
@@ -256,63 +314,10 @@ def main(argv):
 	output_ilv_file_content_in_one_line = input_ilv_file_content_in_one_line
 
 	logging.debug("Size of input file: %d" , len(input_ilv_file_content_in_one_line))
-
-	# Retrieve all values { } in the file
-	all_values = re.findall(r'values {[^}]*}', input_ilv_file_content_in_one_line)
-
-	logging.info("Number of values{} found: %d" , len(all_values))
-
-	value_number = 0
-	for value_section in all_values:
-		value_number = value_number + 1
-		logging.debug("Value %d", value_number)
-		value_attributes = value_section.split(replacement_string_for_new_line_caracter)
-		name_attribute_line = findNameAttributeLine(value_attributes)
-		name = getStringValue(name_attribute_line)
-		x_attribute_line = findXAttributeLine(value_attributes)
-		original_x = getIntValue(x_attribute_line)
-		y_attribute_line = findYAttributeLine(value_attributes)
-		original_y = getIntValue(y_attribute_line)
-		
-		logging.debug("    name:" + name)
-		logging.debug("    original_x:" + str(original_x))
-		logging.debug("    original_y:" + str(original_y))
-		
-		x_is_inside_range = True
-		if has_min_original_x:
-			x_is_inside_range = x_is_inside_range and (original_x >= min_original_x)
-		if has_max_original_x:
-			x_is_inside_range = x_is_inside_range and (original_x <= max_original_x)
-		
-		y_is_inside_range = True
-		if has_min_original_y:
-			y_is_inside_range = y_is_inside_range and (original_y >= min_original_y)
-		if has_max_original_y:
-			y_is_inside_range = y_is_inside_range and (original_y <= max_original_y)
-		
-		is_inside_range = x_is_inside_range and y_is_inside_range
-
-		if is_inside_range:
-			if has_x_increment or has_y_increment:
-				value_section_updated = value_section
-				
-				if has_x_increment:
-					new_x = original_x + x_increment
-					logging.debug("    original_x attribute:" + str(original_x) + " of object:" + name + " must be updated to:" + str(new_x))
-					new_x_attribute_line = updateIntValue(x_attribute_line,original_x,  new_x)
-					logging.debug("x attribute line was:" + x_attribute_line + " and beomes:" + new_x_attribute_line)
-					value_section_updated = value_section_updated.replace(x_attribute_line, new_x_attribute_line)
-				
-				if has_y_increment:
-					new_y = original_y + y_increment
-					logging.debug("    original_y attribute:" + str(original_y) + " of object:" + name + " must be updated to:" + str(new_y))
-					new_y_attribute_line = updateIntValue(y_attribute_line,original_y,  new_y)
-					logging.debug("y attribute line was:" + y_attribute_line + " and beomes:" + new_y_attribute_line)
-					value_section_updated = value_section_updated.replace(y_attribute_line, new_y_attribute_line)
-			
-				logging.debug("Values section was:" + value_section + " and beomes:" + value_section_updated)
-				
-				output_ilv_file_content_in_one_line = output_ilv_file_content_in_one_line.replace(value_section, value_section_updated)
+	
+	
+	output_ilv_file_content_in_one_line = updateValuesSections(output_ilv_file_content_in_one_line, replacement_string_for_new_line_caracter, has_min_original_x, min_original_x, has_max_original_x, max_original_x, has_x_increment, x_increment, has_min_original_y, min_original_y, has_max_original_y, max_original_y, has_y_increment, y_increment)
+	
 				
 	# Reput initial new lines caracters that were temporary replaced by temporary string
 	output_ilv_file_content_in_one_line = output_ilv_file_content_in_one_line.replace(replacement_string_for_new_line_caracter, '\n')
