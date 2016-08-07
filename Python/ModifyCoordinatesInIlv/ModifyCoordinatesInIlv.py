@@ -20,6 +20,11 @@ def getStringValue(attributeLine):
 def getIntValue(attributeLine):
 	return int(getAttributeValue(attributeLine, "\\d+"))
 
+def updateIntValue(originalAttributeLine, oldValue, newValue):
+	return updateValue(originalAttributeLine, str(oldValue), str(newValue))
+	
+def updateValue(originalAttributeLine, oldValue, newValue):
+	return originalAttributeLine.replace(oldValue, newValue)
 	
 def getAttributeValue(attributeLine, valuePattern):
 	pattern_as_string = ".*=[\s]*" + "(?P<value>" + valuePattern + ")" + "$"
@@ -223,12 +228,18 @@ def main(argv):
 	input_ilv_file = open(input_ilv_file_name, "r")
 
 	#
+	logging.info('Read input file:' + input_ilv_file_name)
 	input_ilv_file_content = input_ilv_file.read()
+	
+	# close ilv file
+	logging.info('Close input file:' + input_ilv_file_name)
+	input_ilv_file.close()
 
 	replacement_string_for_new_line_caracter = 'YANNNNNNNNNNNNNNNNNN'
 
 	# Temporary remove all new lines caracters (replace by temporary string) to be able to use regular expressions
 	input_ilv_file_content_in_one_line = input_ilv_file_content.replace('\n', replacement_string_for_new_line_caracter)
+	output_ilv_file_content_in_one_line = input_ilv_file_content_in_one_line
 
 	logging.debug("Size of input file: %d" , len(input_ilv_file_content_in_one_line))
 
@@ -286,12 +297,33 @@ def main(argv):
 		
 		if has_x_increment or has_y_increment:
 			value_section_updated = value_section
+			
+			if has_x_increment:
+				new_x_attribute_line = updateIntValue(x_attribute_line,x,  new_x_coordinate)
+				logging.debug("x attribute line was:" + x_attribute_line + " and became:" + new_x_attribute_line)
+				value_section_updated = value_section_updated.replace(x_attribute_line, new_x_attribute_line)
+			
+			if has_y_increment:
+				new_y_attribute_line = updateIntValue(y_attribute_line,x,  new_x_coordinate)
+				logging.debug("x attribute line was:" + y_attribute_line + " and became:" + new_y_attribute_line)
+				value_section_updated = value_section_updated.replace(y_attribute_line, new_y_attribute_line)
 		
+			logging.debug("Values section was:" + value_section + " and became:" + value_section_updated)
+			
+			output_ilv_file_content_in_one_line = output_ilv_file_content_in_one_line.replace(value_section, value_section_updated)
+			
+			
+	
+	output_ilv_file_content_in_one_line = output_ilv_file_content_in_one_line.replace(replacement_string_for_new_line_caracter, '\n')
+	
+	logging.info('Create output file:' + output_ilv_file_name)
+	output_ilv_file = open(output_ilv_file_name, "w")
+	logging.info('Fill output file:' + output_ilv_file_name)
+	output_ilv_file.write(output_ilv_file_content_in_one_line)
+	logging.info('Close output file:' + output_ilv_file_name)
+	output_ilv_file.close()
 
-	# close ilv file
-	logging.info('Closing input file:' + input_ilv_file_name)
-	input_ilv_file.close()
-
+	logging.info("End. Nominal end of application")
 
 if __name__ == "__main__":
    main(sys.argv[1:])
