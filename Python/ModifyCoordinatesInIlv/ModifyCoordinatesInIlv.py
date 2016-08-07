@@ -15,26 +15,36 @@ def printAllAttributes(attributes):
 	 	logging.debug(attribute)
 
 def getStringValue(attributeLine):
-	attributeLine.split("=")
+	return getAttributeValue(attributeLine, "[0-9A-Za-z_]*")
+	
+def getIntValue(attributeLine):
+	return int(getAttributeValue(attributeLine, "\\d+"))
 
-def findNameAttribute(attributes):
+	
+def getAttributeValue(attributeLine, valuePattern):
+	pattern_as_string = ".*=[\s]*" + "(?P<value>" + valuePattern + ")" + "$"
+	pattern = re.compile(pattern_as_string)
+	match_attribute_searched = pattern.match(attributeLine)	
+	return(match_attribute_searched.group('value'))	
+	
+
+def findNameAttributeLine(attributes):
 	return findStringAttributeLine('name', attributes)
 
 def findStringAttributeLine(attributeName, attributes):
-	return findAttributeValue('String', attributeName, attributes, "[0-9A-Za-z_]*")
+	return findAttributeLine('String', attributeName, attributes, "[0-9A-Za-z_]*")
 
-	
-def findXAttribute(attributes):
+def findXAttributeLine(attributes):
 	return findIntAttributeLine('x', attributes)
-
-def findYAttribute(attributes):
+	
+def findYAttributeLine(attributes):
 	return findIntAttributeLine('y', attributes)
 
 def findIntAttributeLine(attributeName, attributes):
-	return findAttributeValue('Int', attributeName, attributes, "\\d+")
+	return findAttributeLine('Int', attributeName, attributes, "\\d+")
 
-# Return the attribute attributeName in attributes
-def findAttributeValue(attributeType, attributeName, attributes, valuePattern):
+# 
+def findAttributeLine(attributeType, attributeName, attributes, valuePattern):
 	pattern_as_string = "[\s]*" + attributeType+"[\s]*"+ attributeName+ "[\s]*=[\s]*" + "(?P<value>" + valuePattern + ")" + "$"
 	pattern = re.compile(pattern_as_string)
 
@@ -42,16 +52,14 @@ def findAttributeValue(attributeType, attributeName, attributes, valuePattern):
 		match_attribute_searched = pattern.match(attribute)
 	
 		if match_attribute_searched != None:
-			return(match_attribute_searched.group('value'))	
+			return attribute
 
 	logging.error('Could not find attribute with type:' + attributeType + " name:" + attributeName + " with pattern:" + pattern_as_string + " among attributes:")
 	printAllAttributes(attributes)
 	sys.exit()
 	return ""
-	
-	
-	
 
+	
 def printActionsDependingOnArguments_onlyForDebugPurpose(application_file_name, input_ilv_file_name ,  output_ilv_file_name ,   has_min_original_x 	, min_original_x ,  has_max_original_x 	, max_original_x, 
                                                          has_x_increment, x_increment , has_min_original_y 	, min_original_y , has_max_original_y , max_original_y, has_y_increment , y_increment ):		
 	# Print all raw arguments
@@ -80,7 +88,7 @@ def printActionsDependingOnArguments_onlyForDebugPurpose(application_file_name, 
 		if has_min_original_x and has_max_original_x:
 			logging.info("%s only for objects with original X >= %d and original X =< %d", x_coordinates_action_as_string, min_original_x, max_original_x)
 		elif has_min_original_x:
-			logging.info("%s only for objects with original X <= %d" , x_coordinates_action_as_string, min_original_x)
+			logging.info("%s only for objects with original X => %d" , x_coordinates_action_as_string, min_original_x)
 		elif has_max_original_x:
 			logging.info("%s for objects with original X <= %d" , x_coordinates_action_as_string, max_original_x)
 		else:
@@ -99,7 +107,7 @@ def printActionsDependingOnArguments_onlyForDebugPurpose(application_file_name, 
 		if has_min_original_y and has_max_original_y:
 			logging.info("%s only for objects with original Y >= %d and original Y =< %d" , y_coordinates_action_as_string,  min_original_y, max_original_y)
 		elif has_min_original_y:
-			logging.info("%s only for objects with original Y <= %d" ,y_coordinates_action_as_string,  min_original_y)
+			logging.info("%s only for objects with original Y => %d" ,y_coordinates_action_as_string,  min_original_y)
 		elif has_max_original_y:
 			logging.info("%s for objects with original Y <= %d" , y_coordinates_action_as_string, max_original_y)
 		else:
@@ -234,15 +242,16 @@ def main(argv):
 		value_number = value_number + 1
 		logging.debug("Value %d", value_number)
 		value_attributes = value_section.split(replacement_string_for_new_line_caracter)
-		name_attribute = findNameAttribute(value_attributes)
-		x_attribute = findXAttribute(value_attributes)
-		x = int(x_attribute)
-		y_attribute = findYAttribute(value_attributes)
-		y = int(y_attribute)
+		name_attribute_line = findNameAttributeLine(value_attributes)
+		name = getStringValue(name_attribute_line)
+		x_attribute_line = findXAttributeLine(value_attributes)
+		x = getIntValue(x_attribute_line)
+		y_attribute_line = findYAttributeLine(value_attributes)
+		y = getIntValue(y_attribute_line)
 		
-		logging.debug("    name_attribute:" + name_attribute)
-		logging.debug("    x_attribute:" + x_attribute)
-		logging.debug("    y_attribute:" + y_attribute)
+		logging.debug("    name:" + name)
+		logging.debug("    x:" + str(x))
+		logging.debug("    y:" + str(y))
 		
 		# check if coordinates must be updated
 		update_x_coordinate = False
@@ -260,7 +269,7 @@ def main(argv):
 			if x_is_inside_range:
 				update_x_coordinate = True
 				new_x_coordinate = x + x_increment
-				logging.debug("    x attribute:" + str(x) + " of object:" + name_attribute + " must be updated to:" + str(new_x_coordinate))
+				logging.debug("    x attribute:" + str(x) + " of object:" + name + " must be updated to:" + str(new_x_coordinate))
 				
 		if has_y_increment:
 			y_is_inside_range = True
@@ -272,11 +281,11 @@ def main(argv):
 			if y_is_inside_range:
 				update_y_coordinate = True
 				new_y_coordinate = y + y_increment
-				logging.debug("    y attribute:" + str(y) + " of object:" + name_attribute + " must be updated to:" + str(new_y_coordinate))
+				logging.debug("    y attribute:" + str(y) + " of object:" + name + " must be updated to:" + str(new_y_coordinate))
 			
 		
-			if has_x_increment or has_y_increment:
-				value_section_updated = value_section
+		if has_x_increment or has_y_increment:
+			value_section_updated = value_section
 		
 
 	# close ilv file
