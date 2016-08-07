@@ -34,14 +34,10 @@ def findIntAttributeLine(attributeName, attributes):
 # Return the attribute attributeName in attributes
 def findAttributeValue(attributeType, attributeName, attributes, valuePattern):
 	pattern_as_string = "[\s]*" + attributeType+"[\s]*"+ attributeName+ "[\s]*=[\s]*" + "(?P<value>" + valuePattern + ")" + "$"
-	#logging.debug("pattern_as_string:" + pattern_as_string)
 	pattern = re.compile(pattern_as_string)
 
 	for attribute in attributes:
-	 	#logging.debug("Try to match string:" + attribute + " with pattern:" + pattern_as_string)
 		match_attribute_searched = pattern.match(attribute)
-		#logging.debug("Result:")
-		#logging.debug(match_attribute_searched)
 	
 		if match_attribute_searched != None:
 			return(match_attribute_searched.group('value'))	
@@ -74,14 +70,54 @@ logging.basicConfig(level=logging.DEBUG,
 logging.info('Start application')
 
 
-# check arguments
-if len(sys.argv) < 2:
-	logging.critical("Not enough arguments. End application")
-	sys.exit()
+# check arguments count
+application_file_name_arg_number	= 0
+input_ilv_file_name_arg_number 		= application_file_name_arg_number + 1
+output_ilv_file_name_arg_number		= input_ilv_file_name_arg_number + 1
+min_original_x_arg_number			= output_ilv_file_name_arg_number + 1
+max_original_x_arg_number			= min_original_x_arg_number + 1
+x_increment_arg_number				= max_original_x_arg_number + 1
+min_original_y_arg_number			= x_increment_arg_number + 1
+max_original_y_arg_number			= min_original_y_arg_number + 1
+y_increment_arg_number				= max_original_y_arg_number + 1
+arg_count							= y_increment_arg_number + 1
 
+
+
+if len(sys.argv) != arg_count:
+	logging.critical("Incorrect number of arguments. %d Arguments given, %d were expected. End application", len(sys.argv), arg_count)
+	sys.exit()
+	
+
+# Retrieve arguments
+application_file_name = sys.argv[0]
+input_ilv_file_name = sys.argv[1]
+output_ilv_file_name = sys.argv[2]
+min_original_x = sys.argv[3]
+max_original_x = sys.argv[4]
+x_increment = sys.argv[5]
+min_original_y = sys.argv[6]
+max_original_y = sys.argv[7]
+y_increment = sys.argv[8]
+
+if x_increment > 0:
+	logging.info("X coordinates must be incremented by:" + y_increment)
+elif x_increment == 0:
+	logging.info("X coordinates must not be touched");
+else:
+	logging.info("X coordinates must be decremented by:" + y_increment)
+
+
+
+
+if y_increment > 0:
+	logging.info("Y coordinates must be incremented by:" + y_increment)
+elif y_increment == 0:
+	logging.info("Y coordinates must not be touched");
+else:
+	logging.info("Y coordinates must be decremented by:" + y_increment)
 
 # open input ilv file
-input_ilv_file_name = sys.argv[1]
 
 logging.info('Opening input file:' + input_ilv_file_name)
 
@@ -119,6 +155,8 @@ for value in all_values:
 	logging.debug("    name_attribute:" + name_attribute)
 	logging.debug("    x_attribute:" + x_attribute)
 	logging.debug("    y_attribute:" + y_attribute)
+	
+	
 	
 
 	
