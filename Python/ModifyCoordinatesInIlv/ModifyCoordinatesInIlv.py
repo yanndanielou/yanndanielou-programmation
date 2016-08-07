@@ -8,6 +8,10 @@ import sys
 import re
 
 
+def printAllAttributes(attributes):
+	for attribute in attributes:
+	 	logging.debug(attribute)
+
 
 def findNameAttributeLine(attributes):
 	return findStringAttributeLine('name', attributes)
@@ -27,14 +31,22 @@ def findIntAttributeLine(attributeName, attributes):
 
 # Return the attribute attributeName in attributes
 def findAttributeLine(attributeType, attributeName, attributes, valuePattern):
-	pattern = re.compile(attributeName+"[\s]*"+ attributeName+ "[\s]*=[\s]*" + valuePattern + "$")
+	pattern_as_string = "[\s]*" + attributeType+"[\s]*"+ attributeName+ "[\s]*=[\s]*" + valuePattern + "$"
+	#logging.debug("pattern_as_string:" + pattern_as_string)
+	pattern = re.compile(pattern_as_string)
 
 	for attribute in attributes:
+	 	#logging.debug("Try to match string:" + attribute + " with pattern:" + pattern_as_string)
 		match_attribute_searched = pattern.match(attribute)
+		#logging.debug("Result:")
+		#logging.debug(match_attribute_searched)
+	
 		if match_attribute_searched != None:
 			return attribute
+		
 
-	logging.error('Could not find attribute with type:' + attributeType + " name:" + attributeName + " among attributes:")# + attributes)
+	logging.error('Could not find attribute with type:' + attributeType + " name:" + attributeName + " among attributes:")
+	printAllAttributes(attributes)
 	return ""
 	
 
