@@ -50,6 +50,64 @@ def findAttributeValue(attributeType, attributeName, attributes, valuePattern):
 	return ""
 	
 	
+	
+
+def printActionsDependingOnArguments_onlyForDebugPurpose(application_file_name, input_ilv_file_name ,  output_ilv_file_name ,   has_min_original_x 	, min_original_x ,  has_max_original_x 	, max_original_x, 
+                                                         has_x_increment, x_increment , has_min_original_y 	, min_original_y , has_max_original_y , max_original_y, has_y_increment , y_increment ):		
+	# Print all raw arguments
+	logging.debug("Arguments:")
+	logging.debug(" application_file_name:%s", application_file_name)
+	logging.debug(" input_ilv_file_name:%s", input_ilv_file_name)
+	logging.debug(" output_ilv_file_name:%s", output_ilv_file_name)
+	logging.debug(" min_original_x:%d", min_original_x)
+	logging.debug(" max_original_x:%d", max_original_x)
+	logging.debug(" x_increment:%d", x_increment)
+	logging.debug(" min_original_y:%d", min_original_y)
+	logging.debug(" max_original_y:%d", max_original_y)
+	logging.debug(" y_increment:%d", y_increment)
+		
+	# Print info about arguments (what this application will do and on which conditions)
+	logging.debug("Actions:")
+	
+		
+	if has_x_increment:
+		x_coordinates_action_as_string = ""
+		if x_increment > 0:
+			x_coordinates_action_as_string = "  X coordinates must be incremented by " + str(x_increment)
+		else:
+			x_coordinates_action_as_string = "  X coordinates must be decremented by " + str(x_increment)
+	
+		if has_min_original_x and has_max_original_x:
+			logging.info("%s only for objects with original X >= %d and original X =< %d", x_coordinates_action_as_string, min_original_x, max_original_x)
+		elif has_min_original_x:
+			logging.info("%s only for objects with original X <= %d" , x_coordinates_action_as_string, min_original_x)
+		elif has_max_original_x:
+			logging.info("%s for objects with original X <= %d" , x_coordinates_action_as_string, max_original_x)
+		else:
+			logging.info(x_coordinates_action_as_string + " for all objects ")
+	else:
+		logging.info("  X coordinates must not be touched")
+	
+
+	if has_y_increment:
+		y_coordinates_action_as_string = ""
+		if y_increment > 0:
+			y_coordinates_action_as_string = "  Y coordinates must be incremented by " + str(y_increment)
+		else:
+			y_coordinates_action_as_string = "  Y coordinates must be decremented by " + str(y_increment)
+	
+		if has_min_original_y and has_max_original_y:
+			logging.info("%s only for objects with original Y >= %d and original Y =< %d" , y_coordinates_action_as_string,  min_original_y, max_original_y)
+		elif has_min_original_y:
+			logging.info("%s only for objects with original Y <= %d" ,y_coordinates_action_as_string,  min_original_y)
+		elif has_max_original_y:
+			logging.info("%s for objects with original Y <= %d" , y_coordinates_action_as_string, max_original_y)
+		else:
+			logging.info(y_coordinates_action_as_string + " for all objects ")
+	else:
+		logging.info("  Y coordinates must not be touched")
+
+	
 def configureLogger():
 	logger_directory = "logs"
 	
@@ -69,22 +127,7 @@ def configureLogger():
 
 def main(argv):
 
-	logger_directory = "logs"
-	
-	if not os.path.exists(logger_directory):
-		os.makedirs(logger_directory)
-	
-	logging.basicConfig(level=logging.DEBUG,
-						format='%(asctime)s %(levelname)-8s %(message)s',
-						datefmt='%a, %d %b %Y %H:%M:%S',
-						filename=logger_directory+'\ModifyCoordinatesInIlv.log',
-						filemode='w')
-	#logging.debug
-	#logging.info
-	#logging.warning
-	#logging.error
-	#logging.critical	
-	
+	configureLogger()	
 	
 	logging.info('Start application')
 		
@@ -107,14 +150,20 @@ def main(argv):
 	y_increment 			= 0
 	
 	
-		
+	list_arguments_names = ["inputIlvFile=","outputIlvFile=","minOriginalXToChangeCoordinates=","maxOriginalXToChangeCoordinates=","xIncrement=","minOriginalYToChangeCoordinates=","maxOriginalYToChangeCoordinates=","yIncrement="]
+	
 	try:
-		opts, args = getopt.getopt(argv,"hi:o:",["inputIlvFile=","outputIlvFile=","minOriginalXToChangeCoordinates=","maxOriginalXToChangeCoordinates=","xIncrement=","minOriginalYToChangeCoordinates=","maxOriginalYToChangeCoordinates=","yIncrement="])
-	except getopt.GetoptError:
-		print('unsupported arguments list')
+		opts, args = getopt.getopt(argv,"hi:o:", list_arguments_names)
+	except getopt.GetoptError as err:
+		errorMessage = "Unsupported arguments list." + str(err) + " Allowed arguments:" + str(list_arguments_names) + ". Application stopped"
+		logging.critical(errorMessage)
+		print(errorMessage)
+		sys.exit()
 	for opt, arg in opts:
 		if opt in ("-h", "--help"):
-			print('unsupported arguments list')
+			message = "Allowed arguments:" + str(list_arguments_names) + ". Application stopped"
+			logging.info(message)
+			print(message)
 			sys.exit()
 		elif opt == "--inputIlvFile":
 			input_ilv_file_name = arg
@@ -145,62 +194,14 @@ def main(argv):
 			y_increment = int(y_increment_str)
 			has_y_increment = True
 		else:
-			logging.critical("Option:" + opt + " unknown with value:" + opt + ". Application stopped")
+			errorMessage = " Option:" + opt + " unknown with value:" + opt + ". Allowed arguments:" + str(list_arguments_names) + ". Application stopped"
+			logging.critical(errorMessage)
+			print(errorMessage)
 			sys.exit()
 		
 
-	# Print all raw arguments
-	logging.debug("Arguments:")
-	logging.debug(" application_file_name:%s", application_file_name)
-	logging.debug(" input_ilv_file_name:%s", input_ilv_file_name)
-	logging.debug(" output_ilv_file_name:%s", output_ilv_file_name)
-	logging.debug(" min_original_x:%d", min_original_x)
-	logging.debug(" max_original_x:%d", max_original_x)
-	logging.debug(" x_increment:%d", x_increment)
-	logging.debug(" min_original_y:%d", min_original_y)
-	logging.debug(" max_original_y:%d", max_original_y)
-	logging.debug(" y_increment:%d", y_increment)
-		
-	# Print info about arguments (what this application will do and on which conditions)
-	logging.debug("Actions:")
-	
-		
-	if has_x_increment:
-		x_coordinates_action_as_string = ""
-		if x_increment > 0:
-			x_coordinates_action_as_string = "X coordinates must be incremented by " + str(x_increment)
-		else:
-			x_coordinates_action_as_string = "X coordinates must be decremented by " + str(x_increment)
-	
-		if has_min_original_x and has_max_original_x:
-			logging.info("%s only for objects with original X >= %d and original X =< %d", x_coordinates_action_as_string, min_original_x, max_original_x)
-		elif has_min_original_x:
-			logging.info("%s only for objects with original X <= %d" , x_coordinates_action_as_string, min_original_x)
-		elif has_max_original_x:
-			logging.info("%s for objects with original X <= %d" , x_coordinates_action_as_string, max_original_x)
-		else:
-			logging.info(x_coordinates_action_as_string + " for all objects ")
-	else:
-		logging.info("X coordinates must not be touched")
-	
-
-	if has_y_increment:
-		y_coordinates_action_as_string = ""
-		if y_increment > 0:
-			y_coordinates_action_as_string = "Y coordinates must be incremented by " + str(y_increment)
-		else:
-			y_coordinates_action_as_string = "Y coordinates must be decremented by " + str(y_increment)
-	
-		if has_min_original_y and has_max_original_y:
-			logging.info("%s only for objects with original Y >= %d and original Y =< %d" , y_coordinates_action_as_string,  min_original_y, max_original_y)
-		elif has_min_original_y:
-			logging.info("%s only for objects with original Y <= %d" ,y_coordinates_action_as_string,  min_original_y)
-		elif has_max_original_y:
-			logging.info("%s for objects with original Y <= %d" , y_coordinates_action_as_string, max_original_y)
-		else:
-			logging.info(y_coordinates_action_as_string + " for all objects ")
-	else:
-		logging.info("Y coordinates must not be touched")
+	printActionsDependingOnArguments_onlyForDebugPurpose(application_file_name, input_ilv_file_name ,  output_ilv_file_name ,   has_min_original_x 	, min_original_x ,  has_max_original_x 	, max_original_x, 
+                                                         has_x_increment, x_increment , has_min_original_y 	, min_original_y , has_max_original_y , max_original_y, has_y_increment , y_increment )
 		
 
 	# open input ilv file
