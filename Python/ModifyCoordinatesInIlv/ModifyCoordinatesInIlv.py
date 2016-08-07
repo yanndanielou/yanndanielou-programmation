@@ -85,20 +85,23 @@ arg_count							= y_increment_arg_number + 1
 
 
 if len(sys.argv) != arg_count:
-	logging.critical("Incorrect number of arguments. %d Arguments given, %d were expected. End application", len(sys.argv), arg_count)
+	logging.critical("Incorrect number of arguments. %d Arguments given (%s), %d were expected. End application", len(sys.argv), str(sys.argv), arg_count)
 	sys.exit()
 	
 
 # Retrieve arguments
-application_file_name = sys.argv[0]
-input_ilv_file_name = sys.argv[1]
-output_ilv_file_name = sys.argv[2]
-min_original_x = sys.argv[3]
-max_original_x = sys.argv[4]
-x_increment = sys.argv[5]
-min_original_y = sys.argv[6]
-max_original_y = sys.argv[7]
-y_increment = sys.argv[8]
+application_file_name 	= sys.argv[application_file_name_arg_number]
+input_ilv_file_name 	= sys.argv[input_ilv_file_name_arg_number]
+output_ilv_file_name 	= sys.argv[output_ilv_file_name_arg_number]
+min_original_x 			= sys.argv[min_original_x_arg_number]
+max_original_x			= sys.argv[max_original_x_arg_number]
+x_increment 			= sys.argv[x_increment_arg_number]
+min_original_y 			= sys.argv[min_original_y_arg_number]
+max_original_y 			= sys.argv[max_original_y_arg_number]
+y_increment				= sys.argv[y_increment_arg_number]
+
+
+# Print info about arguments (what this application will do and on which conditions)
 
 if x_increment > 0:
 	logging.info("X coordinates must be incremented by:" + y_increment)
@@ -106,8 +109,6 @@ elif x_increment == 0:
 	logging.info("X coordinates must not be touched");
 else:
 	logging.info("X coordinates must be decremented by:" + y_increment)
-
-
 
 
 if y_increment > 0:
@@ -118,7 +119,6 @@ else:
 	logging.info("Y coordinates must be decremented by:" + y_increment)
 
 # open input ilv file
-
 logging.info('Opening input file:' + input_ilv_file_name)
 
 
