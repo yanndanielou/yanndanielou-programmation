@@ -8,6 +8,37 @@ import sys
 import re
 
 
+
+def findNameAttributeLine(attributes):
+	return findStringAttributeLine('name', attributes)
+
+def findStringAttributeLine(attributeName, attributes):
+	return findAttributeLine('String', attributeName, attributes, "[0-9A-Za-z_]*")
+
+	
+def findXAttributeLine(attributes):
+	return findIntAttributeLine('x', attributes)
+
+def findYAttributeLine(attributes):
+	return findIntAttributeLine('y', attributes)
+
+def findIntAttributeLine(attributeName, attributes):
+	return findAttributeLine('Int', attributeName, attributes, "[0-9]*")
+
+# Return the attribute attributeName in attributes
+def findAttributeLine(attributeType, attributeName, attributes, valuePattern):
+	pattern = re.compile(attributeName+"[\s]*"+ attributeName+ "[\s]*=[\s]*" + valuePattern + "$")
+
+	for attribute in attributes:
+		match_attribute_searched = pattern.match(attribute)
+		if match_attribute_searched != None:
+			return attribute
+
+	logging.error('Could not find attribute with type:' + attributeType + " name:" + attributeName + " among attributes:")# + attributes)
+	return ""
+	
+
+
 # configure logger
 logger_directory = "logs"
 
@@ -65,9 +96,21 @@ logging.info("Number of values{} found: %d" , len(all_values))
 value_number = 0
 for value in all_values:
 	value_number = value_number + 1
-	print("Value ", value_number, ":", value)
-
-
+	print("Value ", value_number)
+	logging.debug("Value %d", value_number)
+	value_attributes = value.split(replacement_string_for_new_line_caracter)
+	name_attribute_line = findNameAttributeLine(value_attributes)
+	x_attribute_line = findXAttributeLine(value_attributes)
+	y_attribute_line = findYAttributeLine(value_attributes)
+	
+	logging.debug("    name_attribute_line:" + name_attribute_line)
+	logging.debug("    x_attribute_line:" + x_attribute_line)
+	logging.debug("    y_attribute_line:" + y_attribute_line)
+	
+	for value_attribute in value_attributes:
+		print("    Attribute:",value_attribute)
+		logging.debug("    Attribute:" + value_attribute)
+		#search for x, y and name attributes
 
 #print(all_values)
 
@@ -82,3 +125,4 @@ for value in all_values:
 # close ilv file
 logging.info('Closing input file:' + input_ilv_file_name)
 input_ilv_file.close()
+
