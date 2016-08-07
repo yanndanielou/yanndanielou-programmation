@@ -12,26 +12,28 @@ def printAllAttributes(attributes):
 	for attribute in attributes:
 	 	logging.debug(attribute)
 
+def getStringValue(attributeLine):
+	attributeLine.split("=")
 
-def findNameAttributeLine(attributes):
+def findNameAttribute(attributes):
 	return findStringAttributeLine('name', attributes)
 
 def findStringAttributeLine(attributeName, attributes):
-	return findAttributeLine('String', attributeName, attributes, "[0-9A-Za-z_]*")
+	return findAttributeValue('String', attributeName, attributes, "[0-9A-Za-z_]*")
 
 	
-def findXAttributeLine(attributes):
+def findXAttribute(attributes):
 	return findIntAttributeLine('x', attributes)
 
-def findYAttributeLine(attributes):
+def findYAttribute(attributes):
 	return findIntAttributeLine('y', attributes)
 
 def findIntAttributeLine(attributeName, attributes):
-	return findAttributeLine('Int', attributeName, attributes, "[0-9]*")
+	return findAttributeValue('Int', attributeName, attributes, "\\d+")
 
 # Return the attribute attributeName in attributes
-def findAttributeLine(attributeType, attributeName, attributes, valuePattern):
-	pattern_as_string = "[\s]*" + attributeType+"[\s]*"+ attributeName+ "[\s]*=[\s]*" + valuePattern + "$"
+def findAttributeValue(attributeType, attributeName, attributes, valuePattern):
+	pattern_as_string = "[\s]*" + attributeType+"[\s]*"+ attributeName+ "[\s]*=[\s]*" + "(?P<value>" + valuePattern + ")" + "$"
 	#logging.debug("pattern_as_string:" + pattern_as_string)
 	pattern = re.compile(pattern_as_string)
 
@@ -42,11 +44,11 @@ def findAttributeLine(attributeType, attributeName, attributes, valuePattern):
 		#logging.debug(match_attribute_searched)
 	
 		if match_attribute_searched != None:
-			return attribute
-		
+			return(match_attribute_searched.group('value'))	
 
-	logging.error('Could not find attribute with type:' + attributeType + " name:" + attributeName + " among attributes:")
+	logging.error('Could not find attribute with type:' + attributeType + " name:" + attributeName + " with pattern:" + pattern_as_string + " among attributes:")
 	printAllAttributes(attributes)
+	sys.exit()
 	return ""
 	
 
@@ -108,21 +110,19 @@ logging.info("Number of values{} found: %d" , len(all_values))
 value_number = 0
 for value in all_values:
 	value_number = value_number + 1
-	print("Value ", value_number)
 	logging.debug("Value %d", value_number)
 	value_attributes = value.split(replacement_string_for_new_line_caracter)
-	name_attribute_line = findNameAttributeLine(value_attributes)
-	x_attribute_line = findXAttributeLine(value_attributes)
-	y_attribute_line = findYAttributeLine(value_attributes)
+	name_attribute = findNameAttribute(value_attributes)
+	x_attribute = findXAttribute(value_attributes)
+	y_attribute = findYAttribute(value_attributes)
 	
-	logging.debug("    name_attribute_line:" + name_attribute_line)
-	logging.debug("    x_attribute_line:" + x_attribute_line)
-	logging.debug("    y_attribute_line:" + y_attribute_line)
+	logging.debug("    name_attribute:" + name_attribute)
+	logging.debug("    x_attribute:" + x_attribute)
+	logging.debug("    y_attribute:" + y_attribute)
 	
-	for value_attribute in value_attributes:
-		print("    Attribute:",value_attribute)
-		logging.debug("    Attribute:" + value_attribute)
-		#search for x, y and name attributes
+
+	
+	
 
 #print(all_values)
 
