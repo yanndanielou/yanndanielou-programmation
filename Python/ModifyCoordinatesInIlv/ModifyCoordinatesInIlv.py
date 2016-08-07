@@ -222,7 +222,7 @@ def main(argv):
 	# Temporary remove all new lines caracters (replace by temporary string) to be able to use regular expressions
 	input_ilv_file_content_in_one_line = input_ilv_file_content.replace('\n', replacement_string_for_new_line_caracter)
 
-	logging.info("Size of input file: %d" , len(input_ilv_file_content_in_one_line))
+	logging.debug("Size of input file: %d" , len(input_ilv_file_content_in_one_line))
 
 	# Retrieve all values { } in the file
 	all_values = re.findall(r'values {[^}]*}', input_ilv_file_content_in_one_line)
@@ -230,33 +230,54 @@ def main(argv):
 	logging.info("Number of values{} found: %d" , len(all_values))
 
 	value_number = 0
-	for value in all_values:
+	for value_section in all_values:
 		value_number = value_number + 1
 		logging.debug("Value %d", value_number)
-		value_attributes = value.split(replacement_string_for_new_line_caracter)
+		value_attributes = value_section.split(replacement_string_for_new_line_caracter)
 		name_attribute = findNameAttribute(value_attributes)
 		x_attribute = findXAttribute(value_attributes)
+		x = int(x_attribute)
 		y_attribute = findYAttribute(value_attributes)
+		y = int(y_attribute)
 		
 		logging.debug("    name_attribute:" + name_attribute)
 		logging.debug("    x_attribute:" + x_attribute)
 		logging.debug("    y_attribute:" + y_attribute)
 		
+		# check if coordinates must be updated
+		update_x_coordinate = False
+		new_x_coordinate = None
+		update_y_coordinate = False
+		new_y_coordinate = None
 		
+		if has_x_increment:
+			x_is_inside_range = True
+			if has_min_original_x:
+				x_is_inside_range = x_is_inside_range and (x >= min_original_x)
+			if has_max_original_x:
+				x_is_inside_range = x_is_inside_range and (x <= max_original_x)
+			
+			if x_is_inside_range:
+				update_x_coordinate = True
+				new_x_coordinate = x + x_increment
+				logging.debug("    x attribute:" + str(x) + " of object:" + name_attribute + " must be updated to:" + str(new_x_coordinate))
+				
+		if has_y_increment:
+			y_is_inside_range = True
+			if has_min_original_y:
+				y_is_inside_range = y_is_inside_range and (y >= min_original_y)
+			if has_max_original_y:
+				y_is_inside_range = y_is_inside_range and (y <= max_original_y)
+			
+			if y_is_inside_range:
+				update_y_coordinate = True
+				new_y_coordinate = y + y_increment
+				logging.debug("    y attribute:" + str(y) + " of object:" + name_attribute + " must be updated to:" + str(new_y_coordinate))
+			
 		
-
+			if has_x_increment or has_y_increment:
+				value_section_updated = value_section
 		
-		
-
-	#print(all_values)
-
-
-	# Extracting content from input file
-	#current_line_number = 0
-	#for line in input_ilv_file:
-	#	current_line_number = current_line_number + 1
-	#	print("Line ", current_line_number, ":", line)
-
 
 	# close ilv file
 	logging.info('Closing input file:' + input_ilv_file_name)
