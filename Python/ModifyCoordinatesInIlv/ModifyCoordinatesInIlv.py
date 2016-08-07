@@ -46,6 +46,20 @@ def getAttributeValue(attributeLine, valuePattern):
 	match_attribute_searched = pattern.match(attributeLine)	
 	return(match_attribute_searched.group('value'))	
 	
+def findAfGadgetXOrigineAttributeName(attributes):
+	pattern_as_string = "[\s]*" + attributeType+"[\s]*"+ attributeName+ "[\s]*=.*"
+	pattern = re.compile(pattern_as_string)
+
+	for attribute in attributes:
+		match_attribute_searched = pattern.match(attribute)
+	
+		if match_attribute_searched != None:
+			return attribute
+
+	logging.error('Could not find attribute with type:' + attributeType + " name:" + attributeName + " with pattern:" + pattern_as_string + " among attributes:")
+	printAllAttributes(attributes)
+	sys.exit()
+	return ""
 
 def findNameAttributeLine(attributes):
 	return findStringAttributeLine('name', attributes)
@@ -77,8 +91,46 @@ def findAttributeLine(attributeType, attributeName, attributes, valuePattern):
 	printAllAttributes(attributes)
 	sys.exit()
 	return ""
+	
+	
+def isObjectInsideRange(original_x, original_y, has_min_original_x, min_original_x, has_max_original_x, max_original_x, has_min_original_y, min_original_y, has_max_original_y, max_original_y):
+	x_is_inside_range = True
+	if has_min_original_x:
+		x_is_inside_range = x_is_inside_range and (original_x >= min_original_x)
+	if has_max_original_x:
+		x_is_inside_range = x_is_inside_range and (original_x <= max_original_x)
+	
+	y_is_inside_range = True
+	if has_min_original_y:
+		y_is_inside_range = y_is_inside_range and (original_y >= min_original_y)
+	if has_max_original_y:
+		y_is_inside_range = y_is_inside_range and (original_y <= max_original_y)
+	
+	is_inside_range = x_is_inside_range and y_is_inside_range
+	return is_inside_range
 
-def updateValuesSections(output_ilv_file_content_in_one_line, replacement_string_for_new_line_caracter, has_min_original_x, min_original_x, has_max_original_x, max_original_x, has_x_increment, x_increment, has_min_original_y, min_original_y, has_max_original_y, max_original_y, has_y_increment, y_increment):
+
+# Update values {attributes...} sections in ILV file 
+# Each section has at least "x", "y" and "name" attributes
+#
+#Example:
+#     values {
+#        String length = 230
+#        String question = spocc.workstation.command_confirmation_message
+#        String arg1 = "RESET ALL ORIGIN COUNTERS"
+#        String arg2 = ATS
+#        String label = "&Reset All Origin Counters"
+#        Int x = 368
+#        Int y = 3
+#        Double scaleX = 4.6
+#        String name = SQ_ATS_SWITCH_RESET_ORIGIN_MOVEMENTS_COUNTERS
+#    }
+def updateValuesSections(output_ilv_file_content, has_min_original_x, min_original_x, has_max_original_x, max_original_x, has_x_increment, x_increment, has_min_original_y, min_original_y, has_max_original_y, max_original_y, has_y_increment, y_increment):
+	replacement_string_for_new_line_caracter = 'YANNNNNNNNNNNNNNNNNN'
+
+	# Temporary remove all new lines caracters (replace by temporary string) to be able to use regular expressions
+	output_ilv_file_content_in_one_line = output_ilv_file_content.replace('\n', replacement_string_for_new_line_caracter)
+	
 	# Retrieve all values { } in the file
 	all_values = re.findall(r'values {[^}]*}', output_ilv_file_content_in_one_line)
 
@@ -88,31 +140,22 @@ def updateValuesSections(output_ilv_file_content_in_one_line, replacement_string
 	for value_section in all_values:
 		value_number = value_number + 1
 		logging.debug("Value %d", value_number)
+		
 		value_attributes = value_section.split(replacement_string_for_new_line_caracter)
+		
 		name_attribute_line = findNameAttributeLine(value_attributes)
 		name = getStringValue(name_attribute_line)
 		x_attribute_line = findXAttributeLine(value_attributes)
 		original_x = getIntValue(x_attribute_line)
 		y_attribute_line = findYAttributeLine(value_attributes)
 		original_y = getIntValue(y_attribute_line)
+		afGadgetXOrigine_attribute_name = findAfGadgetXOrigineAttributeName(value_attributes)
 		
 		logging.debug("    name:" + name)
 		logging.debug("    original_x:" + str(original_x))
 		logging.debug("    original_y:" + str(original_y))
 		
-		x_is_inside_range = True
-		if has_min_original_x:
-			x_is_inside_range = x_is_inside_range and (original_x >= min_original_x)
-		if has_max_original_x:
-			x_is_inside_range = x_is_inside_range and (original_x <= max_original_x)
-		
-		y_is_inside_range = True
-		if has_min_original_y:
-			y_is_inside_range = y_is_inside_range and (original_y >= min_original_y)
-		if has_max_original_y:
-			y_is_inside_range = y_is_inside_range and (original_y <= max_original_y)
-		
-		is_inside_range = x_is_inside_range and y_is_inside_range
+		is_inside_range = isObjectInsideRange(original_x, original_y, has_min_original_x, min_original_x, has_max_original_x, max_original_x, has_min_original_y, min_original_y, has_max_original_y, max_original_y)
 
 		if is_inside_range:
 			if has_x_increment or has_y_increment:
@@ -135,7 +178,57 @@ def updateValuesSections(output_ilv_file_content_in_one_line, replacement_string
 				logging.debug("Values section was:" + value_section + " and beomes:" + value_section_updated)
 				
 				output_ilv_file_content_in_one_line = output_ilv_file_content_in_one_line.replace(value_section, value_section_updated)
-														 
+				
+	
+	# Reput initial new lines caracters that were temporary replaced by temporary string
+	return output_ilv_file_content_in_one_line.replace(replacement_string_for_new_line_caracter, '\n')
+
+		
+# x is always in the third position
+# y is always in the fourth position
+# Example
+# 7 IlvMessageLabel 4602 1311 96 68 F268435468 0 { IlvMessageItem 262145 4 16 4 "KEARNY\nPOCKET"  }   } 0
+# 83 AfGadgetTrain1Path 11466 2005 34 36 F268435456 2 1 6 1 1 0 2 0 -1 7 -1 "" "XX" "" 0 0 1 -1 0 } 32 "TB_3T_WT_01"
+def updateSimpleObjectDefinitionLines(output_ilv_file_content, has_min_original_x, min_original_x, has_max_original_x, max_original_x, has_x_increment, x_increment, has_min_original_y, min_original_y, has_max_original_y, max_original_y, has_y_increment, y_increment):
+	pattern_as_string = "(?P<id>\\d+) (?P<objectClass>[A-Za-z_][0-9A-Za-z_]*) (?P<x>\\d+) (?P<y>\\d+) (?P<width>\\d+) (?P<height>\\d+) .*"
+	pattern = re.compile(pattern_as_string)
+	
+	for line in output_ilv_file_content.split("\n"):
+	#	logging.debug(line)
+		match_line = pattern.match(line)
+	
+		if match_line != None:
+			logging.debug("updateSimpleIlvObjectLines: line:" + line + " is a simpe ilv object definition line")	
+			name = "todo"
+			id = match_line.group('id')
+			objectClass = match_line.group('objectClass')
+			original_x = int(match_line.group('x'))
+			original_y = int(match_line.group('y'))
+			
+			is_inside_range = isObjectInsideRange(original_x, original_y, has_min_original_x, min_original_x, has_max_original_x, max_original_x, has_min_original_y, min_original_y, has_max_original_y, max_original_y)
+			
+			if is_inside_range:
+				if has_x_increment or has_y_increment:
+					updated_line = line
+					
+					new_x = original_x
+					new_y = original_y
+					
+					if has_x_increment:
+						new_x = original_x + x_increment
+						logging.debug("    original_x attribute:" + str(original_x) + " of object:" + name + " must be updated to:" + str(new_x))
+					
+					if has_y_increment:
+						new_y = original_y + y_increment
+						logging.debug("    original_y attribute:" + str(original_y) + " of object:" + name + " must be updated to:" + str(new_y))
+						
+					
+					updated_line = updateValue(updated_line, id + " " + objectClass + " " + str(original_x) + " " + str(original_y),  id + " " + objectClass + " " + str(new_x) + " " + str(new_y))
+					
+					logging.debug("Line was:" + line + " and beomes:" + updated_line)
+					output_ilv_file_content = output_ilv_file_content.replace(line, updated_line)
+			
+	return output_ilv_file_content
 	
 def printActionsDependingOnArguments_onlyForDebugPurpose(application_file_name, input_ilv_file_name ,  output_ilv_file_name ,   has_min_original_x 	, min_original_x ,  has_max_original_x 	, max_original_x, 
                                                          has_x_increment, x_increment , has_min_original_y 	, min_original_y , has_max_original_y , max_original_y, has_y_increment , y_increment ):		
@@ -307,25 +400,16 @@ def main(argv):
 	logging.info('Close input file:' + input_ilv_file_name)
 	input_ilv_file.close()
 
-	replacement_string_for_new_line_caracter = 'YANNNNNNNNNNNNNNNNNN'
-
-	# Temporary remove all new lines caracters (replace by temporary string) to be able to use regular expressions
-	input_ilv_file_content_in_one_line = input_ilv_file_content.replace('\n', replacement_string_for_new_line_caracter)
-	output_ilv_file_content_in_one_line = input_ilv_file_content_in_one_line
-
-	logging.debug("Size of input file: %d" , len(input_ilv_file_content_in_one_line))
+	output_ilv_file_content = input_ilv_file_content
 	
-	
-	output_ilv_file_content_in_one_line = updateValuesSections(output_ilv_file_content_in_one_line, replacement_string_for_new_line_caracter, has_min_original_x, min_original_x, has_max_original_x, max_original_x, has_x_increment, x_increment, has_min_original_y, min_original_y, has_max_original_y, max_original_y, has_y_increment, y_increment)
-	
-				
-	# Reput initial new lines caracters that were temporary replaced by temporary string
-	output_ilv_file_content_in_one_line = output_ilv_file_content_in_one_line.replace(replacement_string_for_new_line_caracter, '\n')
+	output_ilv_file_content = updateValuesSections(output_ilv_file_content, has_min_original_x, min_original_x, has_max_original_x, max_original_x, has_x_increment, x_increment, has_min_original_y, min_original_y, has_max_original_y, max_original_y, has_y_increment, y_increment)
+	output_ilv_file_content = updateSimpleObjectDefinitionLines(output_ilv_file_content, has_min_original_x, min_original_x, has_max_original_x, max_original_x, has_x_increment, x_increment, has_min_original_y, min_original_y, has_max_original_y, max_original_y, has_y_increment, y_increment)
+			
 	
 	logging.info('Create output file:' + output_ilv_file_name)
 	output_ilv_file = open(output_ilv_file_name, "w")
 	logging.info('Fill output file:' + output_ilv_file_name)
-	output_ilv_file.write(output_ilv_file_content_in_one_line)
+	output_ilv_file.write(output_ilv_file_content)
 	logging.info('Close output file:' + output_ilv_file_name)
 	output_ilv_file.close()
 
