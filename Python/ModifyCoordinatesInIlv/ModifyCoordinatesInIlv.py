@@ -1,5 +1,19 @@
 # -*-coding:Utf-8 -*
 
+# This tools does some simple text edition of an ilv file.
+#
+# It reads the input file inputIlvFile and generates as output the file outputIlvFile
+#
+# It update the coordinates (x and y attributes) of objects, based on initial object coordonates
+# To be updated, the object must be located:
+# 	in X: between minOriginalXToChangeCoordinates (if defined) and maxOriginalXToChangeCoordinates (if defined) 
+# 	in Y: between minOriginalYToChangeCoordinates (if defined) and maxOriginalYToChangeCoordinates (if defined) 
+#
+# If the object is located in those ranges, it is updated as follow:
+# -  X value is incremented by xIncrement (if defined)
+# -  Y value is incremented by yIncrement (if defined)
+
+
 import logging
 
 import os
@@ -256,64 +270,51 @@ def main(argv):
 		name_attribute_line = findNameAttributeLine(value_attributes)
 		name = getStringValue(name_attribute_line)
 		x_attribute_line = findXAttributeLine(value_attributes)
-		x = getIntValue(x_attribute_line)
+		original_x = getIntValue(x_attribute_line)
 		y_attribute_line = findYAttributeLine(value_attributes)
-		y = getIntValue(y_attribute_line)
+		original_y = getIntValue(y_attribute_line)
 		
 		logging.debug("    name:" + name)
-		logging.debug("    x:" + str(x))
-		logging.debug("    y:" + str(y))
+		logging.debug("    original_x:" + str(original_x))
+		logging.debug("    original_y:" + str(original_y))
 		
-		# check if coordinates must be updated
-		update_x_coordinate = False
-		new_x_coordinate = None
-		update_y_coordinate = False
-		new_y_coordinate = None
+		x_is_inside_range = True
+		if has_min_original_x:
+			x_is_inside_range = x_is_inside_range and (original_x >= min_original_x)
+		if has_max_original_x:
+			x_is_inside_range = x_is_inside_range and (original_x <= max_original_x)
 		
-		if has_x_increment:
-			x_is_inside_range = True
-			if has_min_original_x:
-				x_is_inside_range = x_is_inside_range and (x >= min_original_x)
-			if has_max_original_x:
-				x_is_inside_range = x_is_inside_range and (x <= max_original_x)
-			
-			if x_is_inside_range:
-				update_x_coordinate = True
-				new_x_coordinate = x + x_increment
-				logging.debug("    x attribute:" + str(x) + " of object:" + name + " must be updated to:" + str(new_x_coordinate))
+		y_is_inside_range = True
+		if has_min_original_y:
+			y_is_inside_range = y_is_inside_range and (original_y >= min_original_y)
+		if has_max_original_y:
+			y_is_inside_range = y_is_inside_range and (original_y <= max_original_y)
+		
+		is_inside_range = x_is_inside_range and y_is_inside_range
+
+		if is_inside_range:
+			if has_x_increment or has_y_increment:
+				value_section_updated = value_section
 				
-		if has_y_increment:
-			y_is_inside_range = True
-			if has_min_original_y:
-				y_is_inside_range = y_is_inside_range and (y >= min_original_y)
-			if has_max_original_y:
-				y_is_inside_range = y_is_inside_range and (y <= max_original_y)
+				if has_x_increment:
+					new_x = original_x + x_increment
+					logging.debug("    original_x attribute:" + str(original_x) + " of object:" + name + " must be updated to:" + str(new_x))
+					new_x_attribute_line = updateIntValue(x_attribute_line,original_x,  new_x)
+					logging.debug("x attribute line was:" + x_attribute_line + " and beomes:" + new_x_attribute_line)
+					value_section_updated = value_section_updated.replace(x_attribute_line, new_x_attribute_line)
+				
+				if has_y_increment:
+					new_y = original_y + y_increment
+					logging.debug("    original_y attribute:" + str(original_y) + " of object:" + name + " must be updated to:" + str(new_y))
+					new_y_attribute_line = updateIntValue(y_attribute_line,original_y,  new_y)
+					logging.debug("y attribute line was:" + y_attribute_line + " and beomes:" + new_y_attribute_line)
+					value_section_updated = value_section_updated.replace(y_attribute_line, new_y_attribute_line)
 			
-			if y_is_inside_range:
-				update_y_coordinate = True
-				new_y_coordinate = y + y_increment
-				logging.debug("    y attribute:" + str(y) + " of object:" + name + " must be updated to:" + str(new_y_coordinate))
-			
-		
-		if has_x_increment or has_y_increment:
-			value_section_updated = value_section
-			
-			if has_x_increment:
-				new_x_attribute_line = updateIntValue(x_attribute_line,x,  new_x_coordinate)
-				logging.debug("x attribute line was:" + x_attribute_line + " and became:" + new_x_attribute_line)
-				value_section_updated = value_section_updated.replace(x_attribute_line, new_x_attribute_line)
-			
-			if has_y_increment:
-				new_y_attribute_line = updateIntValue(y_attribute_line,x,  new_x_coordinate)
-				logging.debug("x attribute line was:" + y_attribute_line + " and became:" + new_y_attribute_line)
-				value_section_updated = value_section_updated.replace(y_attribute_line, new_y_attribute_line)
-		
-			logging.debug("Values section was:" + value_section + " and became:" + value_section_updated)
-			
-			output_ilv_file_content_in_one_line = output_ilv_file_content_in_one_line.replace(value_section, value_section_updated)
-			
-			
-	
+				logging.debug("Values section was:" + value_section + " and beomes:" + value_section_updated)
+				
+				output_ilv_file_content_in_one_line = output_ilv_file_content_in_one_line.replace(value_section, value_section_updated)
+				
+	# Reput initial new lines caracters that were temporary replaced by temporary string
 	output_ilv_file_content_in_one_line = output_ilv_file_content_in_one_line.replace(replacement_string_for_new_line_caracter, '\n')
 	
 	logging.info('Create output file:' + output_ilv_file_name)
