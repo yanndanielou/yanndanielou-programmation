@@ -1,8 +1,12 @@
 # -*-coding:Utf-8 -*
 
 import logging
+
 import os
 import sys
+
+import re
+
 
 # configure logger
 logger_directory = "logs"
@@ -45,14 +49,34 @@ input_ilv_file = open(input_ilv_file_name, "r")
 
 #
 input_ilv_file_content = input_ilv_file.read()
-logging.info("Size of input file: %d'" , len(input_ilv_file_content))
+
+replacement_string_for_new_line_caracter = 'YANNNNNNNNNNNNNNNNNN'
+
+# Temporary remove all new lines caracters (replace by temporary string) to be able to use regular expressions
+input_ilv_file_content_in_one_line = input_ilv_file_content.replace('\n', replacement_string_for_new_line_caracter)
+
+logging.info("Size of input file: %d" , len(input_ilv_file_content_in_one_line))
+
+# Retrieve all values { } in the file
+all_values = re.findall(r'values {[^}]*}', input_ilv_file_content_in_one_line)
+
+logging.info("Number of values{} found: %d" , len(all_values))
+
+value_number = 0
+for value in all_values:
+	value_number = value_number + 1
+	print("Value ", value_number, ":", value)
+
+
+
+#print(all_values)
 
 
 # Extracting content from input file
-current_line_number = 0
-for line in input_ilv_file:
-	current_line_number = current_line_number + 1
-	print("Line ", current_line_number, ":", line)
+#current_line_number = 0
+#for line in input_ilv_file:
+#	current_line_number = current_line_number + 1
+#	print("Line ", current_line_number, ":", line)
 
 
 # close ilv file
