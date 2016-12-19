@@ -47,9 +47,21 @@ public class InfiniteNaturalNumberTest {
 		}
 
 		@Test
-		public void withCarry_5Plus6Equals11() {
-			InfiniteNaturalNumber additionResult = FIVE.plus(SIX);
-			assertTrue(additionResult.equals(ELEVEN));
+		public void withCarry_90Plus10Equals100() {
+			InfiniteNaturalNumber additionResult = NIGHTY.plus(TEN);
+			assertTrue(additionResult.equals(HUNDRED));
+		}
+
+		@Test
+		public void withCarry_9Plus1Equals10() {
+			InfiniteNaturalNumber additionResult = NINE.plus(ONE);
+			assertTrue(additionResult.equals(TEN));
+		}
+
+		@Test
+		public void withCarry_5Plus6Equals12() {
+			InfiniteNaturalNumber additionResult = FIVE.plus(SEVEN);
+			assertTrue(additionResult.equals(TWELVE));
 		}
 
 		@Test
@@ -74,11 +86,82 @@ public class InfiniteNaturalNumberTest {
 		}
 
 		@Test
+		public void hundredMinusNineIs91() {
+			InfiniteNaturalNumber substractionResult = HUNDRED.minus(NINE);
+			assertTrue(substractionResult.equals(NIGHTY_ONE));
+		}
+
+		@Test
 		public void tenMinusTwoIsHeight() {
 			InfiniteNaturalNumber substractionResult = TEN.minus(TWO);
 			assertTrue(substractionResult.equals(HEIGHT));
 		}
 
+		@Test
+		public void TwentyOneMinusTenIsEleven() {
+			InfiniteNaturalNumber substractionResult = TWENTY_ONE.minus(TEN);
+			assertTrue(substractionResult.equals(ELEVEN));
+		}
+
+	}
+
+	public class Multiplication {
+		@Test
+		public void tenTimesZeroIsZero() {
+			InfiniteNaturalNumber multiplicationResult = TEN.times(ZERO);
+			assertTrue(multiplicationResult.equals(ZERO));
+		}
+
+		@Test
+		public void tenTimesOneIsTen() {
+			InfiniteNaturalNumber multiplicationResult = TEN.times(ONE);
+			assertTrue(multiplicationResult.equals(TEN));
+		}
+
+		@Test
+		public void tenTimesTwoIsTwenty() {
+			InfiniteNaturalNumber multiplicationResult = TEN.times(TWO);
+			assertTrue(multiplicationResult.equals(TWENTY));
+		}
+
+		@Test
+		public void tenTimesTenIsHundred() {
+			InfiniteNaturalNumber multiplicationResult = TEN.times(TEN);
+			assertTrue(multiplicationResult.equals(HUNDRED));
+		}
+	}
+
+	public class Division {
+
+		@Test
+		public void tenDividedByTenIsOne() {
+			InfiniteNaturalNumber divisionResult = TEN.dividedBy(TEN);
+			assertTrue(divisionResult.equals(ONE));
+		}
+
+		@Test
+		public void hunderdDividedByOneIsHundred() {
+			InfiniteNaturalNumber divisionResult = HUNDRED.dividedBy(ONE);
+			assertTrue(divisionResult.equals(HUNDRED));
+		}
+
+		@Test
+		public void hunderdDividedByTenIsTen() {
+			InfiniteNaturalNumber divisionResult = HUNDRED.dividedBy(TEN);
+			assertTrue(divisionResult.equals(TEN));
+		}
+
+		@Test
+		public void hunderdDividedByNineIsEleven() {
+			InfiniteNaturalNumber divisionResult = HUNDRED.dividedBy(NINE);
+			assertTrue(divisionResult.equals(ELEVEN));
+		}
+
+		@Test
+		public void hunderdDividedByElevenIsNine() {
+			InfiniteNaturalNumber divisionResult = HUNDRED.dividedBy(ELEVEN);
+			assertTrue(divisionResult.equals(NINE));
+		}
 	}
 
 	public class Comparison {
@@ -103,6 +186,15 @@ public class InfiniteNaturalNumberTest {
 				InfiniteNaturalNumber ten = new InfiniteNaturalNumber("10");
 				InfiniteNaturalNumber one = new InfiniteNaturalNumber("1");
 				assertFalse(ten.equals(one));
+			}
+
+		}
+
+		public class GreaterOrEquals {
+
+			@Test
+			public void oneIsNotGreaterOrEquansToNine() {
+				assertFalse(ONE.isGreaterOrEqualsTo(NINE));
 			}
 
 		}

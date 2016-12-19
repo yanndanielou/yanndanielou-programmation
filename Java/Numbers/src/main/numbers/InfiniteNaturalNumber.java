@@ -19,9 +19,16 @@ public class InfiniteNaturalNumber implements Cloneable {
 
 	public static final InfiniteNaturalNumber TEN = new InfiniteNaturalNumber("10");
 	public static final InfiniteNaturalNumber ELEVEN = new InfiniteNaturalNumber("11");
+	public static final InfiniteNaturalNumber TWELVE = new InfiniteNaturalNumber("12");
 
 	public static final InfiniteNaturalNumber TWENTY = new InfiniteNaturalNumber("20");
 	public static final InfiniteNaturalNumber TWENTY_ONE = new InfiniteNaturalNumber("21");
+
+	public static final InfiniteNaturalNumber NIGHTY = new InfiniteNaturalNumber("90");
+	public static final InfiniteNaturalNumber NIGHTY_ONE = new InfiniteNaturalNumber("91");
+	public static final InfiniteNaturalNumber NIGHTY_NINE = new InfiniteNaturalNumber("99");
+
+	public static final InfiniteNaturalNumber HUNDRED = new InfiniteNaturalNumber("100");
 
 	// ordered from the bigger digit to the unit
 	private List<Byte> digits = new ArrayList<Byte>();
@@ -74,7 +81,7 @@ public class InfiniteNaturalNumber implements Cloneable {
 		boolean carry = false;
 
 		// lhs and rhs have same digit numbers
-		for (int i = 0; i < cloneLhs.getNumberOfDigits(); i++) {
+		for (int i = cloneLhs.getNumberOfDigits() - 1; i >= 0; i--) {
 			byte sumDigits = (byte) (cloneLhs.digits.get(i) + cloneRhs.digits.get(i));
 			if (carry) {
 				sumDigits++;
@@ -86,11 +93,11 @@ public class InfiniteNaturalNumber implements Cloneable {
 			} else
 				carry = false;
 
-			ret.digits.add(sumDigits);
+			ret.digits.add(0, sumDigits);
 		}
 
 		if (carry)
-			ret.digits.add((byte) 1);
+			ret.digits.add(0, (byte) 1);
 
 		return ret;
 	}
@@ -120,7 +127,7 @@ public class InfiniteNaturalNumber implements Cloneable {
 			if (carry)
 				difference--;
 
-			if (rhsDigit > lhsDigit) {
+			if (difference < 0) {
 				carry = true;
 				difference += 10;
 			} else {
@@ -130,12 +137,49 @@ public class InfiniteNaturalNumber implements Cloneable {
 			ret.digits.add(0, difference);
 		}
 
-		if (carry)
-			ret.digits.add((byte) 1);
+		// if (carry)
+		// ret.digits.add((byte) 1);
 
 		ret.removeUselessZeroDigits();
-		
+
 		return ret;
+	}
+
+	public InfiniteNaturalNumber times(InfiniteNaturalNumber factor2) {
+		InfiniteNaturalNumber res = ZERO;
+
+		for (InfiniteNaturalNumber i = ZERO; i.isStrictlySmallerThan(this); i = i.plus(ONE)) {
+			res = res.plus(factor2);
+		}
+
+		return res;
+	}
+
+	public InfiniteNaturalNumber dividedBy(InfiniteNaturalNumber divisor) {
+
+		// handle division by zero
+		if (divisor.equals(ZERO)) {
+			int throwException = 1 / 0;
+		}
+
+		InfiniteNaturalNumber quotient = ZERO;
+
+		InfiniteNaturalNumber dividend = this;
+
+		int nbDigitsDiviseurs = divisor.getNumberOfDigits();
+		int nbDigitsDividande = dividend.getNumberOfDigits();
+
+		int nbDigitsDifference = nbDigitsDiviseurs > nbDigitsDividande ? nbDigitsDiviseurs - nbDigitsDividande
+				: nbDigitsDividande - nbDigitsDiviseurs;
+
+		// if (nbDigitsDifference <= 1) {
+		while (dividend.isGreaterOrEqualsTo(divisor)) {
+			dividend = dividend.minus(divisor);
+			quotient = quotient.plus(ONE);
+		}
+		// }
+
+		return quotient;
 	}
 
 	// Comparisons
@@ -179,7 +223,7 @@ public class InfiniteNaturalNumber implements Cloneable {
 					return true;
 				}
 				if (digit_lhs < digit_rhs) {
-					return true;
+					return false;
 				}
 			}
 
@@ -232,4 +276,14 @@ public class InfiniteNaturalNumber implements Cloneable {
 		return false;
 	}
 
+	@Override
+	public String toString() {
+		String toString = "";
+		for (int i = 0; i < getNumberOfDigits(); i++) {
+			Byte byte1 = digits.get(i);
+			char c = (char) ('0' + byte1);
+			toString += c;
+		}
+		return toString;
+	}
 }
