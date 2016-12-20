@@ -140,6 +140,12 @@ public class InfiniteNaturalNumberTest {
 		}
 
 		@Test
+		public void tenDividedByElevenIsZero() {
+			InfiniteNaturalNumber divisionResult = TEN.dividedBy(ELEVEN);
+			assertTrue(divisionResult.equals(ZERO));
+		}
+
+		@Test
 		public void hunderdDividedByOneIsHundred() {
 			InfiniteNaturalNumber divisionResult = HUNDRED.dividedBy(ONE);
 			assertTrue(divisionResult.equals(HUNDRED));
