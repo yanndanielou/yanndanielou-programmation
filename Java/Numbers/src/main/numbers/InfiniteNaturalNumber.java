@@ -1,6 +1,7 @@
 package main.numbers;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class InfiniteNaturalNumber implements Cloneable {
@@ -29,6 +30,9 @@ public class InfiniteNaturalNumber implements Cloneable {
 	public static final InfiniteNaturalNumber NIGHTY_NINE = new InfiniteNaturalNumber("99");
 
 	public static final InfiniteNaturalNumber HUNDRED = new InfiniteNaturalNumber("100");
+	public static final InfiniteNaturalNumber HUNDRED_ONE = new InfiniteNaturalNumber("101");
+
+	public static final InfiniteNaturalNumber TWO_HUNDREDS = new InfiniteNaturalNumber("200");
 
 	// ordered from the bigger digit to the unit
 	private List<Byte> digits = new ArrayList<Byte>();
@@ -44,9 +48,17 @@ public class InfiniteNaturalNumber implements Cloneable {
 		digits = clone;
 	}
 
+	public InfiniteNaturalNumber(byte numberBetween0And9) {
+		throwExceptionIfNotValidDigit(numberBetween0And9);
+		digits.add(numberBetween0And9);
+	}
+
 	public InfiniteNaturalNumber(String asString) {
 		for (int i = 0; i < asString.length(); i++) {
 			char digitAsChar = asString.charAt(i);
+			if (isDigitIgnored(digitAsChar)) {
+				continue;
+			}
 			if (isDigitAllowed(digitAsChar)) {
 				digits.add(digitAsByte(digitAsChar));
 			} else {
@@ -145,6 +157,10 @@ public class InfiniteNaturalNumber implements Cloneable {
 		return ret;
 	}
 
+	public InfiniteNaturalNumber times(byte factor2) {
+		return times(new InfiniteNaturalNumber(factor2));
+	}
+
 	public InfiniteNaturalNumber times(InfiniteNaturalNumber factor2) {
 		InfiniteNaturalNumber res = ZERO;
 
@@ -159,27 +175,58 @@ public class InfiniteNaturalNumber implements Cloneable {
 
 		// handle division by zero
 		if (divisor.equals(ZERO)) {
-			int throwException = 1 / 0;
+			throw new IllegalStateException("Division by zero");
 		}
 
 		InfiniteNaturalNumber quotient = ZERO;
 
 		InfiniteNaturalNumber dividend = this;
 
-		int nbDigitsDiviseurs = divisor.getNumberOfDigits();
-		int nbDigitsDividande = dividend.getNumberOfDigits();
-
-		int nbDigitsDifference = nbDigitsDiviseurs > nbDigitsDividande ? nbDigitsDiviseurs - nbDigitsDividande
-				: nbDigitsDividande - nbDigitsDiviseurs;
-
-		// if (nbDigitsDifference <= 1) {
 		while (dividend.isGreaterOrEqualsTo(divisor)) {
 			dividend = dividend.minus(divisor);
 			quotient = quotient.plus(ONE);
 		}
-		// }
 
 		return quotient;
+	}
+
+	// base 10 operations
+
+	public InfiniteNaturalNumber getBase10DigitsMultiplication() {
+
+		InfiniteNaturalNumber numberToTest = this;
+
+		InfiniteNaturalNumber base10DigitsMultiplication = ONE;
+
+		if (numberToTest.containsDigit((byte) 0)) {
+			return ZERO;
+		}
+
+		for (int i = 0; i < numberToTest.getNumberOfDigits(); i++) {
+			byte digit = numberToTest.digits.get(i);
+			if (digit == 1) {
+				continue;
+			}
+			base10DigitsMultiplication = base10DigitsMultiplication.times(digit);
+		}
+
+		return base10DigitsMultiplication;
+	}
+
+	public InfiniteNaturalNumber getBase10DigitsInversion() {
+		InfiniteNaturalNumber base10DigitsInverted = new InfiniteNaturalNumber(this);
+		Collections.reverse(base10DigitsInverted.digits);
+		base10DigitsInverted.removeUselessZeroDigits();
+		return base10DigitsInverted;
+	}
+
+	public boolean isPalindrome() {
+		for (int i = 0; i < getNumberOfDigits() / 2; i++) {
+			if (digits.get(i) != digits.get(getNumberOfDigits() - 1 - i)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	// Comparisons
@@ -252,17 +299,61 @@ public class InfiniteNaturalNumber implements Cloneable {
 		return -1;
 	}
 
+	private boolean isDigitIgnored(char digit) {
+		return digit == '_';
+	}
+
 	private boolean isDigitAllowed(char digit) {
 		for (int i = 0; i < 10; i++) {
 			char iAsChar = (char) ('0' + i);
-			if (digit == iAsChar)
+			if (digit == iAsChar) {
 				return true;
+			}
 		}
 		return false;
 	}
 
 	public int getNumberOfDigits() {
 		return digits.size();
+	}
+
+	public boolean containsDigit(byte digit) {
+		throwExceptionIfNotValidDigit(digit);
+		return digits.contains(digit);
+	}
+
+	public boolean containsDigit(int digit) {
+		return containsDigit((byte) digit);
+	}
+
+	public boolean areDigitsOrderedInGrowingOrder() {
+		for (int i = 0; i < getNumberOfDigits() - 1; i++) {
+			if (digits.get(i) > digits.get(i + 1)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean containsOneOfDigits(int... digits) {
+		for (int digit : digits) {
+			if (containsDigit(digit)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private void throwExceptionIfNotValidDigit(byte digit) {
+		if (digit < 0 || digit > 9) {
+			throw new IllegalStateException("Digit" + digit + " must be between 0 and 9");
+		}
+	}
+
+	private void throwExceptionIfNotValidDigit(int digit) {
+		if (digit < 0 || digit > 9) {
+			throw new IllegalStateException("Digit" + digit + " must be between 0 and 9");
+		}
 	}
 
 	@Override
@@ -286,4 +377,5 @@ public class InfiniteNaturalNumber implements Cloneable {
 		}
 		return toString;
 	}
+
 }

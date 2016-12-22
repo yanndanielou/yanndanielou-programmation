@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="org.junit.Test"/>
 <fullyQualifiedTypeName name="main.InfiniteNaturalNumber"/>
-<fullyQualifiedTypeName name="main.numbers.InfiniteNaturalNumber"/>
 <fullyQualifiedTypeName name="org.junit.Ignore"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="main.LychrelNumbers"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="main.MultiplicationPersistence"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.time.Duration"/>
+<fullyQualifiedTypeName name="java.time.temporal.TemporalUnit"/>
+<fullyQualifiedTypeName name="java.time.LocalTime"/>
+<fullyQualifiedTypeName name="test.numbers.InfiniteNaturalNumberTest"/>
+<fullyQualifiedTypeName name="main.numbers.InfiniteNaturalNumber"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
