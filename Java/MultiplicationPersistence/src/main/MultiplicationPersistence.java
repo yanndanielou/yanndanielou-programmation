@@ -12,8 +12,6 @@ public class MultiplicationPersistence {
 	private LocalTime startTime = LocalTime.now();
 	private int maxMultiplicationPersistenceFound = 0;
 	private boolean activateDebugLogs = true;
-	private List<InfiniteNaturalNumber> numbersWithPersistenceEqualToPreviousHighestPersistenceFound = new ArrayList<>();
-	private List<InfiniteNaturalNumber> numbersWithPersistenceEqualToCurrentHighestPersistenceFound = new ArrayList<>();
 
 	public void findNumbersWithBiggestMultiplicativePersistence() {
 
@@ -49,21 +47,9 @@ public class MultiplicationPersistence {
 				maxMultiplicationPersistenceFound = multiplicationPersistence;
 				logged = true;
 
-				numbersWithPersistenceEqualToPreviousHighestPersistenceFound.clear();
-				numbersWithPersistenceEqualToPreviousHighestPersistenceFound
-						.addAll(numbersWithPersistenceEqualToCurrentHighestPersistenceFound);
-				numbersWithPersistenceEqualToCurrentHighestPersistenceFound.clear();
-
-				System.out.println("Numbers found with persistence: " + (maxMultiplicationPersistenceFound - 1) + " :"
-						+ numbersWithPersistenceEqualToPreviousHighestPersistenceFound);
-
 			} else if (activateDebugLogs && (i.getNumberOfDigits() > numberOfDigitsOfLastLoggedNumber + 2)) {
 				System.out.println(timeAndDurationForLogs(previousLoggedTime) + " still alive.., testing " + i);
 				logged = true;
-			}
-
-			if (multiplicationPersistence == maxMultiplicationPersistenceFound) {
-				numbersWithPersistenceEqualToCurrentHighestPersistenceFound.add(i);
 			}
 
 			if (logged) {
@@ -91,12 +77,6 @@ public class MultiplicationPersistence {
 		while (base10DigitsMultiplication.getNumberOfDigits() > 1) {
 
 			base10DigitsMultiplication = base10DigitsMultiplication.getBase10DigitsMultiplication();
-
-			if (base10DigitsMultiplication.getNumberOfDigits() > 2
-					&& !numbersWithPersistenceEqualToPreviousHighestPersistenceFound
-							.contains(base10DigitsMultiplication)) {
-				// return null;
-			}
 
 			// System.out.println(" multiplicative element:" + persistence + "
 			// of:" + number + " is:" + base10DigitsMultiplication);
@@ -132,18 +112,18 @@ public class MultiplicationPersistence {
 		long seconds = millis / 1000;
 
 		if (hours > 0) {
-			return hours + " hours " + minutes % 60 + " min";
+			return hours + "hours" + minutes % 60 + "min";
 		}
 
 		if (minutes > 0) {
-			return minutes + " min " + seconds % 60 + " s";
+			return minutes + "min " + seconds % 60 + "s";
 		}
 
 		if (seconds > 0) {
-			return seconds + " s " + millis % 1000 + " ms";
+			return seconds + "s" + millis % 1000 + "ms";
 		}
 
-		return millis + " ms";
+		return millis + "ms";
 	}
 
 }

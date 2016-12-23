@@ -25,6 +25,12 @@ public class InfiniteNaturalNumber implements Cloneable {
 	public static final InfiniteNaturalNumber TWENTY = new InfiniteNaturalNumber("20");
 	public static final InfiniteNaturalNumber TWENTY_ONE = new InfiniteNaturalNumber("21");
 
+	public static final InfiniteNaturalNumber THIRTY = new InfiniteNaturalNumber("30");
+
+	public static final InfiniteNaturalNumber FORTY = new InfiniteNaturalNumber("40");
+
+	public static final InfiniteNaturalNumber FIFTY = new InfiniteNaturalNumber("50");
+
 	public static final InfiniteNaturalNumber NIGHTY = new InfiniteNaturalNumber("90");
 	public static final InfiniteNaturalNumber NIGHTY_ONE = new InfiniteNaturalNumber("91");
 	public static final InfiniteNaturalNumber NIGHTY_NINE = new InfiniteNaturalNumber("99");
@@ -63,7 +69,8 @@ public class InfiniteNaturalNumber implements Cloneable {
 				digits.add(digitAsByte(digitAsChar));
 			} else {
 				digits.clear();
-				return;
+				throw new IllegalStateException(
+						"Cannot create number:" + asString + " because digit:" + digitAsChar + " is not allowed");
 			}
 		}
 	}
@@ -169,6 +176,15 @@ public class InfiniteNaturalNumber implements Cloneable {
 		}
 
 		return res;
+	}
+
+	public InfiniteNaturalNumber times10Power(int exponent) {
+		InfiniteNaturalNumber ret = new InfiniteNaturalNumber(this);
+
+		for (int i = 0; i < exponent; i++)
+			ret.digits.add((byte) 0);
+
+		return ret;
 	}
 
 	public InfiniteNaturalNumber dividedBy(InfiniteNaturalNumber divisor) {
@@ -296,7 +312,7 @@ public class InfiniteNaturalNumber implements Cloneable {
 				return ret;
 			}
 		}
-		return -1;
+		throw new IllegalStateException("Digit:" + digit + " is not valid");
 	}
 
 	private boolean isDigitIgnored(char digit) {
@@ -345,12 +361,6 @@ public class InfiniteNaturalNumber implements Cloneable {
 	}
 
 	private void throwExceptionIfNotValidDigit(byte digit) {
-		if (digit < 0 || digit > 9) {
-			throw new IllegalStateException("Digit" + digit + " must be between 0 and 9");
-		}
-	}
-
-	private void throwExceptionIfNotValidDigit(int digit) {
 		if (digit < 0 || digit > 9) {
 			throw new IllegalStateException("Digit" + digit + " must be between 0 and 9");
 		}

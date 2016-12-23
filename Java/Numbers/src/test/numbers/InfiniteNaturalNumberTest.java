@@ -16,11 +16,47 @@ import main.numbers.InfiniteNaturalNumber;
 public class InfiniteNaturalNumberTest {
 
 	@Ignore
-	public class Constructor {
+	public class Constructors {
 
 	}
 
 	public class ArithmeticalOperations {
+
+		public class Powers {
+
+			public class Powers10 {
+				@Test
+				public void Five_times10Power0__is_1() {
+					InfiniteNaturalNumber result = FIVE.times10Power(0);
+					assertTrue(result.equals(FIVE));
+				}
+
+				@Test
+				public void Five_times10Power1__is_50() {
+					InfiniteNaturalNumber result = FIVE.times10Power(1);
+					assertTrue(result.equals(FIFTY));
+				}
+
+				@Test
+				public void One_times10Power1__is_10() {
+					InfiniteNaturalNumber result = ONE.times10Power(1);
+					assertTrue(result.equals(TEN));
+				}
+
+				@Test
+				public void One_times10Power2__is_10() {
+					InfiniteNaturalNumber result = ONE.times10Power(2);
+					assertTrue(result.equals(HUNDRED));
+				}
+
+				@Test
+				public void Two_times10Power1__is_20() {
+					InfiniteNaturalNumber result = TWO.times10Power(1);
+					assertTrue(result.equals(TWENTY));
+				}
+			}
+
+		}
 
 		public class Elementary {
 
