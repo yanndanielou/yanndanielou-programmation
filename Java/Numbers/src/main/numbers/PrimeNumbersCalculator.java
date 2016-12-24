@@ -1,6 +1,6 @@
 package main.numbers;
 
-import static main.numbers.InfiniteNaturalNumber.THREE;
+import static main.numbers.InfiniteNaturalNumber.*;
 import static main.numbers.InfiniteNaturalNumber.TWO;
 
 import java.util.ArrayList;
@@ -17,12 +17,36 @@ public class PrimeNumbersCalculator {
 	}
 
 	public static InfiniteNaturalNumber getNextPrimeNumber(List<InfiniteNaturalNumber> previousPrimeNumbers) {
+		return getNextPrimeNumber(previousPrimeNumbers, null);
+	}
+
+	private static InfiniteNaturalNumber getNextPrimeNumber(List<InfiniteNaturalNumber> previousPrimeNumbers,
+			InfiniteNaturalNumber maxNumberToTest) {
 		if (previousPrimeNumbers.isEmpty()) {
 			return getFirstPrimeNumber();
-		} else {
-
 		}
-		return null;
+		if (previousPrimeNumbers.size() < admittedPrimeNumbers.size()) {
+			return admittedPrimeNumbers.get(previousPrimeNumbers.size());
+		} else {
+			InfiniteNaturalNumber potentialPrimeNumber = previousPrimeNumbers.get(previousPrimeNumbers.size() - 1);
+			while (true) {
+				potentialPrimeNumber = potentialPrimeNumber.plus(TWO);
+
+				if (maxNumberToTest != null && potentialPrimeNumber.isStrictlyGreaterThan(maxNumberToTest)) {
+					return null;
+				}
+
+				boolean isPotentialPrimeNumber = true;
+				for (InfiniteNaturalNumber primeNumber : previousPrimeNumbers) {
+					if (potentialPrimeNumber.isMultipleOf(primeNumber)) {
+						isPotentialPrimeNumber = false;
+						break;
+					}
+				}
+				if (isPotentialPrimeNumber)
+					return potentialPrimeNumber;
+			}
+		}
 	}
 
 	public static List<InfiniteNaturalNumber> findPrimeNumbersUpTo(InfiniteNaturalNumber maxNumberToTest) {
@@ -38,18 +62,17 @@ public class PrimeNumbersCalculator {
 		List<InfiniteNaturalNumber> foundPrimeNumbers = new ArrayList<>();
 		foundPrimeNumbers.addAll(admittedPrimeNumbers);
 
-		InfiniteNaturalNumber potentialPrimeNumber = foundPrimeNumbers.get(foundPrimeNumbers.size() - 1);
+		InfiniteNaturalNumber potentialPrimeNumber;
 
-		while ((potentialPrimeNumber = potentialPrimeNumber.plus(TWO)).isSmallerOrEqualsTo(maxNumberToTest)) {
-			boolean isPotentialPrimeNumber = true;
-			for (InfiniteNaturalNumber primeNumber : foundPrimeNumbers) {
-				if (potentialPrimeNumber.isMultipleOf(primeNumber)) {
-					isPotentialPrimeNumber = false;
-					break;
-				}
+		while ((potentialPrimeNumber = foundPrimeNumbers.get(foundPrimeNumbers.size() - 1))
+				.isSmallerOrEqualsTo(maxNumberToTest)) {
+
+			InfiniteNaturalNumber nextPrimeNumber = getNextPrimeNumber(foundPrimeNumbers, maxNumberToTest);
+			if (nextPrimeNumber == null) {
+				break;
 			}
-			if (isPotentialPrimeNumber)
-				foundPrimeNumbers.add(potentialPrimeNumber);
+			foundPrimeNumbers.add(nextPrimeNumber);
+
 		}
 
 		return foundPrimeNumbers;

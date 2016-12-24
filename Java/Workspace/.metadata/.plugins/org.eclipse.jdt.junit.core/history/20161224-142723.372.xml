@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestResult.Twelve_returns_2_3_5_7_11" project="Numbers" tests="7" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" incomplete="true">
+    <testcase name="ZERO_returnsEmpty" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.012"/>
+    <testcase name="Four_returns_2_3" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.003"/>
+    <testcase name="Two_returns_2" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.0"/>
+    <testcase name="Three_returns_2_3" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.001"/>
+    <testcase name="Eleven_returns_2_3_5_7_11" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.001"/>
+    <testcase name="Twelve_returns_2_3_5_7_11" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" incomplete="true"/>
+    <testcase name="One_returnsEmpty" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" incomplete="true"/>
+  </testsuite>
+</testrun>

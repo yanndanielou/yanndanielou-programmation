@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="PrimeNumbersCalculatorTest" project="Numbers" tests="12" started="8" failures="0" errors="0" ignored="0">
+  <testsuite name="test.numbers.PrimeNumbersCalculatorTest" incomplete="true">
+    <testsuite name="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" time="0.0">
+      <testsuite name="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.0">
+        <testcase name="ZERO_returnsEmpty" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.0"/>
+        <testcase name="Four_returns_2_3" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.0"/>
+        <testcase name="Two_returns_2" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.0"/>
+        <testcase name="Three_returns_2_3" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.0"/>
+        <testcase name="Eleven_returns_2_3_5_7_11" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.0"/>
+        <testcase name="Twelve_returns_2_3_5_7_11" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.0"/>
+        <testcase name="One_returnsEmpty" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.0"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber" incomplete="true">
+      <testsuite name="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" incomplete="true">
+        <testcase name="called_four_times" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" incomplete="true"/>
+        <testcase name="after_2_is_3" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" incomplete="true"/>
+        <testcase name="after_2_3_5_is_7" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" incomplete="true"/>
+        <testcase name="after_2_3_is_5" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" incomplete="true"/>
+        <testcase name="after_nothing_is_2" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" incomplete="true"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testrun>
