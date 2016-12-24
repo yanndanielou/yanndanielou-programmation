@@ -228,10 +228,18 @@ public class InfiniteNaturalNumber implements Cloneable {
 		}
 		if (divisor.equals(THREE)) {
 			if (this.getNumberOfDigits() > 1) {
-				return getBase10DigitsMultiplication().isMultipleOf(THREE);
+				return getBase10DigitsAddition().isMultipleOf(THREE);
 			} else {
 				int unitDigit = getUnitDigit();
 				return unitDigit == (byte) 3 || unitDigit == (byte) 6 || unitDigit == (byte) 9;
+			}
+		}
+		if (divisor.equals(FIVE)) {
+			int unitDigit = getUnitDigit();
+			if (getNumberOfDigits() > 1) {
+				return unitDigit == (byte) 0 || unitDigit == (byte) 5;
+			} else {
+				return unitDigit == (byte) 5;
 			}
 		}
 		return restOfDivisionBy(divisor).equals(ZERO);
@@ -244,6 +252,21 @@ public class InfiniteNaturalNumber implements Cloneable {
 	}
 
 	// base 10 operations
+	public InfiniteNaturalNumber getBase10DigitsAddition() {
+		InfiniteNaturalNumber numberToTest = this;
+
+		InfiniteNaturalNumber base10DigitsAddition = ZERO;
+
+		for (int i = 0; i < numberToTest.getNumberOfDigits(); i++) {
+			byte digit = numberToTest.digits.get(i);
+			if (digit == 0) {
+				continue;
+			}
+			base10DigitsAddition = base10DigitsAddition.plus(new InfiniteNaturalNumber(digit));
+		}
+
+		return base10DigitsAddition;
+	}
 
 	public InfiniteNaturalNumber getBase10DigitsMultiplication() {
 
@@ -334,8 +357,7 @@ public class InfiniteNaturalNumber implements Cloneable {
 	}
 
 	public boolean hasOnlyOneDigitPrimeDivisors() {
-		// List<InfiniteNaturalNumber> allPrimeDivisorsSmallerThan =
-		// getAllPrimeDivisorsSmallerThan(TEN);
+
 		return true;
 	}
 
@@ -348,26 +370,33 @@ public class InfiniteNaturalNumber implements Cloneable {
 
 		InfiniteNaturalNumber remainingNumber = new InfiniteNaturalNumber(this);
 
-		InfiniteNaturalNumber maxPotentialDivisor = remainingNumber.dividedBy(TWO);
+		InfiniteNaturalNumber nextPrimeDivisor;
 
+		while ((nextPrimeDivisor = remainingNumber.getNextPrimeDivisor(primeDivisors)) != null) {
+			primeDivisors.add(nextPrimeDivisor);
+			remainingNumber = remainingNumber.dividedBy(nextPrimeDivisor);
+		}
+
+		return primeDivisors;
+	}
+
+	private InfiniteNaturalNumber getNextPrimeDivisor(List<InfiniteNaturalNumber> primeDivisors) {
+		InfiniteNaturalNumber potentialPrimeNumberDivisor;
 		List<InfiniteNaturalNumber> primeNumbers = CollectionUtils.emptyList();
 
-		InfiniteNaturalNumber potentialPrimeNumberDivisor;
 		while (true) {
+
 			potentialPrimeNumberDivisor = PrimeNumbersCalculator.getNextPrimeNumber(primeNumbers);
-			if (!potentialPrimeNumberDivisor.isSmallerOrEqualsTo(remainingNumber)) {
+			if (potentialPrimeNumberDivisor == null || !potentialPrimeNumberDivisor.isSmallerOrEqualsTo(this)) {
 				break;
 			}
 			primeNumbers.add(potentialPrimeNumberDivisor);
 
-			while (remainingNumber.isMultipleOf(potentialPrimeNumberDivisor)) {
-				primeDivisors.add(potentialPrimeNumberDivisor);
-				remainingNumber = remainingNumber.dividedBy(potentialPrimeNumberDivisor);
+			while (this.isMultipleOf(potentialPrimeNumberDivisor)) {
+				return potentialPrimeNumberDivisor;
 			}
-
 		}
-
-		return primeDivisors;
+		return null;
 	}
 
 	private void removeUselessZeroDigits() {

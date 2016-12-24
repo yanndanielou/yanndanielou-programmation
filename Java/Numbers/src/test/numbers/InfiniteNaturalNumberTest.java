@@ -46,6 +46,40 @@ public class InfiniteNaturalNumberTest {
 
 	}
 
+	public class IsMultipleOf {
+
+		@Test
+		public void Zero_is_not_multiple_of_5() {
+			assertThat(ZERO.isMultipleOf(FIVE), is(false));
+		}
+
+		@Ignore
+		@Test
+		public void Zero_is_not_multiple_of_ONE() {
+			assertThat(ZERO.isMultipleOf(ONE), is(false));
+		}
+
+		@Test
+		public void Ten_is_multiple_of_5() {
+			assertThat(TEN.isMultipleOf(FIVE), is(true));
+		}
+
+		@Test
+		public void Five_is_multiple_of_5() {
+			assertThat(FIVE.isMultipleOf(FIVE), is(true));
+		}
+
+		@Test
+		public void _15_is_multiple_of_3() {
+			assertThat(new InfiniteNaturalNumber("15").isMultipleOf(THREE), is(true));
+		}
+
+		@Test
+		public void _111_is_multiple_of_3() {
+			assertThat(new InfiniteNaturalNumber("111").isMultipleOf(THREE), is(true));
+		}
+	}
+
 	public class ArithmeticalOperations {
 
 		private InfiniteNaturalNumber expectedResult;

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="InfiniteNaturalNumberTest" project="Numbers" tests="84" started="84" failures="0" errors="0" ignored="3">
+  <testsuite name="test.numbers.InfiniteNaturalNumberTest" time="2.02">
+    <testsuite name="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations" time="1.488">
+      <testsuite name="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary" time="1.484">
+        <testsuite name="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Addition" time="0.006">
+          <testcase name="onePlusTwoEqualsThree" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Addition" time="0.002"/>
+          <testcase name="onePlusOneEqualsTwo" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Addition" time="0.001"/>
+          <testcase name="withCarry_9Plus1Equals10" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Addition" time="0.0"/>
+          <testcase name="withCarry_90Plus10Equals100" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Addition" time="0.0"/>
+          <testcase name="onePlusTwentyEqualsTwentyOne" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Addition" time="0.001"/>
+          <testcase name="afterAdditionInitialNumbersAreUnchanged" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Addition" time="0.0"/>
+          <testcase name="onePlusTenEqualsEleven" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Addition" time="0.0"/>
+          <testcase name="withCarry_5Plus6Equals12" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Addition" time="0.002"/>
+        </testsuite>
+        <testsuite name="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Division" time="0.094">
+          <testcase name="hunderdDividedByNineIsEleven" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Division" time="0.002"/>
+          <testcase name="hunderdDividedByElevenIsNine" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Division" time="0.0"/>
+          <testcase name="tenDividedByTenIsOne" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Division" time="0.0"/>
+          <testcase name="hunderdDividedByTenIsTen" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Division" time="0.001"/>
+          <testcase name="hunderdDividedByOneIsHundred" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Division" time="0.001"/>
+          <testcase name="tenDividedByElevenIsZero" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Division" time="0.09"/>
+        </testsuite>
+        <testsuite name="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Multiplication" time="1.383">
+          <testsuite name="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Multiplication.PerfTests" time="1.38">
+            <testcase name="test_1_000_000_times_1_000_000" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Multiplication.PerfTests" time="1.369"/>
+            <testcase name="test_2_times_10_000" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Multiplication.PerfTests" time="0.001"/>
+            <testcase name="test_10_000_times_2" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Multiplication.PerfTests" time="0.0"/>
+            <testcase name="test_10_000_times_10_000" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Multiplication.PerfTests" time="0.01"/>
+          </testsuite>
+          <testsuite name="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Multiplication.TestResult" time="0.003">
+            <testcase name="tenTimesZeroIsZero" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Multiplication.TestResult" time="0.0"/>
+            <testcase name="tenTimesTwoIsTwenty" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Multiplication.TestResult" time="0.002"/>
+            <testcase name="tenTimesTenIsHundred" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Multiplication.TestResult" time="0.0"/>
+            <testcase name="tenTimesOneIsTen" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Multiplication.TestResult" time="0.001"/>
+          </testsuite>
+        </testsuite>
+        <testsuite name="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Substraction" time="0.001">
+          <testcase name="TwentyOneMinusTenIsEleven" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Substraction" time="0.0"/>
+          <testcase name="oneMinusOneIsZero" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Substraction" time="0.0"/>
+          <testcase name="tenMinusTwoIsHeight" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Substraction" time="0.0"/>
+          <testcase name="hundredMinusNineIs91" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Elementary.Substraction" time="0.001"/>
+        </testsuite>
+      </testsuite>
+      <testsuite name="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Powers" time="0.002">
+        <testsuite name="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Powers.Powers10" time="0.002">
+          <testcase name="Two_times10Power1__is_20" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Powers.Powers10" time="0.001"/>
+          <testcase name="Five_times10Power0__is_5" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Powers.Powers10" time="0.0"/>
+          <testcase name="One_times10Power1__is_10" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Powers.Powers10" time="0.0"/>
+          <testcase name="Five_times10Power1__is_50" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Powers.Powers10" time="0.001"/>
+          <testcase name="One_times10Power2__is_10" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Powers.Powers10" time="0.0"/>
+        </testsuite>
+      </testsuite>
+      <testsuite name="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.RestOfDivision" time="0.002">
+        <testcase name="_of_10_by_3_is_1" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.RestOfDivision" time="0.001"/>
+        <testcase name="_of_10_by_11_is_10" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.RestOfDivision" time="0.0"/>
+        <testcase name="_of_10_by_10_is_0" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.RestOfDivision" time="0.0"/>
+        <testcase name="_of_100_by_11_is_1" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.RestOfDivision" time="0.001"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="test.numbers.InfiniteNaturalNumberTest.Base10DigitsInversion" time="0.002">
+      <testcase name="getBase10DigitsInversion_of_102_is_201" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsInversion" time="0.0"/>
+      <testcase name="getBase10DigitsInversion_of_11_is_11" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsInversion" time="0.0"/>
+      <testcase name="getBase10DigitsInversion_of_0_is_0" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsInversion" time="0.001"/>
+      <testcase name="getBase10DigitsInversion_of_12_is_21" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsInversion" time="0.0"/>
+      <testcase name="getBase10DigitsInversion_of_100_is_1" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsInversion" time="0.0"/>
+      <testcase name="getBase10DigitsInversion_twice_of_number_returns_same_number" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsInversion" time="0.0"/>
+      <testcase name="getBase10DigitsInversion_of_10_is_1" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsInversion" time="0.001"/>
+    </testsuite>
+    <testsuite name="test.numbers.InfiniteNaturalNumberTest.Base10DigitsMultiplication" time="0.003">
+      <testcase name="Base10DigitsMultiplication_of_412_is_8" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsMultiplication" time="0.0"/>
+      <testcase name="Base10DigitsMultiplication_of_124_is_8" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsMultiplication" time="0.0"/>
+      <testcase name="Base10DigitsMultiplication_of_421_is_8" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsMultiplication" time="0.0"/>
+      <testcase name="Base10DigitsMultiplication_of_0_is_0" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsMultiplication" time="0.0"/>
+      <testcase name="Base10DigitsMultiplication_of_1_is_1" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsMultiplication" time="0.001"/>
+      <testcase name="Base10DigitsMultiplication_of_10_is_0" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsMultiplication" time="0.0"/>
+      <testcase name="Base10DigitsMultiplication_of_11_is_1" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsMultiplication" time="0.0"/>
+      <testcase name="Base10DigitsMultiplication_of_12_is_2" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsMultiplication" time="0.0"/>
+      <testcase name="Base10DigitsMultiplication_of_111_is_1" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsMultiplication" time="0.001"/>
+      <testcase name="Base10DigitsMultiplication_of_321_is_6" classname="test.numbers.InfiniteNaturalNumberTest.Base10DigitsMultiplication" time="0.001"/>
+    </testsuite>
+    <testsuite name="test.numbers.InfiniteNaturalNumberTest.Comparison" time="0.004">
+      <testsuite name="test.numbers.InfiniteNaturalNumberTest.Comparison.Equal" time="0.002">
+        <testcase name="oneAndTenAreNotEqual" classname="test.numbers.InfiniteNaturalNumberTest.Comparison.Equal" time="0.001"/>
+        <testcase name="tenAndTwentyAreNotEqual" classname="test.numbers.InfiniteNaturalNumberTest.Comparison.Equal" time="0.0"/>
+        <testcase name="sameNumberAreEquals" classname="test.numbers.InfiniteNaturalNumberTest.Comparison.Equal" time="0.001"/>
+      </testsuite>
+      <testsuite name="test.numbers.InfiniteNaturalNumberTest.Comparison.GreaterOrEquals" time="0.0">
+        <testcase name="oneIsNotGreaterOrEquansToNine" classname="test.numbers.InfiniteNaturalNumberTest.Comparison.GreaterOrEquals" time="0.0"/>
+      </testsuite>
+      <testsuite name="test.numbers.InfiniteNaturalNumberTest.Comparison.StrictlyGreater" time="0.002">
+        <testcase name="tenIsStricltlyGreaterThanOne" classname="test.numbers.InfiniteNaturalNumberTest.Comparison.StrictlyGreater" time="0.001"/>
+        <testcase name="twoIsStricltlyGreaterThanOne" classname="test.numbers.InfiniteNaturalNumberTest.Comparison.StrictlyGreater" time="0.0"/>
+        <testcase name="tenIsNotStricltlyGreaterThanTen_sameInstance" classname="test.numbers.InfiniteNaturalNumberTest.Comparison.StrictlyGreater" time="0.0"/>
+        <testcase name="tenIsNotStricltlyGreaterThanTen_differentInstances" classname="test.numbers.InfiniteNaturalNumberTest.Comparison.StrictlyGreater" time="0.001"/>
+        <testcase name="twentyTwoIsStricltlyGreaterThanEleven" classname="test.numbers.InfiniteNaturalNumberTest.Comparison.StrictlyGreater" time="0.0"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="test.numbers.InfiniteNaturalNumberTest.ContainsDigit" time="0.001">
+      <testsuite name="test.numbers.InfiniteNaturalNumberTest.ContainsDigit.AsByte" time="0.001">
+        <testcase name="Ten_containsDitig_1" classname="test.numbers.InfiniteNaturalNumberTest.ContainsDigit.AsByte" time="0.001"/>
+      </testsuite>
+      <testsuite name="test.numbers.InfiniteNaturalNumberTest.ContainsDigit.AsInt" time="0.0">
+        <testcase name="Ten_containsDitig_1" classname="test.numbers.InfiniteNaturalNumberTest.ContainsDigit.AsInt" time="0.0"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="test.numbers.InfiniteNaturalNumberTest.DigitsOrderedInGrowingOrder" time="0.004">
+      <testcase name="areDigitsOrderedInGrowingOrder_10_false" classname="test.numbers.InfiniteNaturalNumberTest.DigitsOrderedInGrowingOrder" time="0.001"/>
+      <testcase name="areDigitsOrderedInGrowingOrder_123_True" classname="test.numbers.InfiniteNaturalNumberTest.DigitsOrderedInGrowingOrder" time="0.0"/>
+      <testcase name="areDigitsOrderedInGrowingOrder_100_False" classname="test.numbers.InfiniteNaturalNumberTest.DigitsOrderedInGrowingOrder" time="0.0"/>
+      <testcase name="areDigitsOrderedInGrowingOrder_8_true" classname="test.numbers.InfiniteNaturalNumberTest.DigitsOrderedInGrowingOrder" time="0.0"/>
+      <testcase name="areDigitsOrderedInGrowingOrder_101_False" classname="test.numbers.InfiniteNaturalNumberTest.DigitsOrderedInGrowingOrder" time="0.001"/>
+      <testcase name="areDigitsOrderedInGrowingOrder_11_true" classname="test.numbers.InfiniteNaturalNumberTest.DigitsOrderedInGrowingOrder" time="0.0"/>
+      <testcase name="areDigitsOrderedInGrowingOrder_12_true" classname="test.numbers.InfiniteNaturalNumberTest.DigitsOrderedInGrowingOrder" time="0.002"/>
+    </testsuite>
+    <testsuite name="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder" time="0.516">
+      <testsuite name="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors" time="0.516">
+        <testsuite name="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors" time="0.516">
+          <testsuite name="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors.PerfTests" time="0.515">
+            <testcase name="of_10_000_are_2_2_2_2_5_5_5_5" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors.PerfTests" time="0.038"/>
+            <testcase name="of_2003_hasNoDivisor" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors.PerfTests" time="0.476"/>
+            <testcase name="of_24001_hasNoDivisor" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors.PerfTests" time="0.0" ignored="true"/>
+            <testcase name="of_11003_hasNoDivisor" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors.PerfTests" time="0.0" ignored="true"/>
+            <testcase name="of_49999_hasNoDivisor" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors.PerfTests" time="0.001" ignored="true"/>
+          </testsuite>
+          <testsuite name="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors.TestResult" time="0.001">
+            <testcase name="of_10_are_2_5" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors.TestResult" time="0.0"/>
+            <testcase name="of_6_are_2_3" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors.TestResult" time="0.001"/>
+            <testcase name="of_20_are_2_2_5" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors.TestResult" time="0.0"/>
+          </testsuite>
+        </testsuite>
+      </testsuite>
+    </testsuite>
+    <testsuite name="test.numbers.InfiniteNaturalNumberTest.Palindrome" time="0.002">
+      <testcase name="ZeroIsPalindrome" classname="test.numbers.InfiniteNaturalNumberTest.Palindrome" time="0.0"/>
+      <testcase name="HundredOneIsPalindrome" classname="test.numbers.InfiniteNaturalNumberTest.Palindrome" time="0.001"/>
+      <testcase name="OneIsPalindrome" classname="test.numbers.InfiniteNaturalNumberTest.Palindrome" time="0.0"/>
+      <testcase name="ElevenIsPalindrome" classname="test.numbers.InfiniteNaturalNumberTest.Palindrome" time="0.0"/>
+      <testcase name="HundredIsNotPalindrome" classname="test.numbers.InfiniteNaturalNumberTest.Palindrome" time="0.0"/>
+      <testcase name="TwelveIsNotPalindrome" classname="test.numbers.InfiniteNaturalNumberTest.Palindrome" time="0.001"/>
+    </testsuite>
+  </testsuite>
+</testrun>
