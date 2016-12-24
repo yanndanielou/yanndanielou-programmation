@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult.for_22_returns_false" project="Numbers" tests="7" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult" incomplete="true">
+    <testcase name="for_16_returns_true" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult" incomplete="true"/>
+    <testcase name="for_20_returns_true" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult" incomplete="true"/>
+    <testcase name="for_22_returns_false" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult" incomplete="true"/>
+    <testcase name="for_10_returns_true" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult" incomplete="true"/>
+    <testcase name="for_9_returns_true" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult" incomplete="true"/>
+    <testsuite name="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult.PerfTests" incomplete="true">
+      <testcase name="for_2048_returns_true" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult.PerfTests" incomplete="true"/>
+      <testcase name="for_2053_returns_false" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult.PerfTests" incomplete="true"/>
+    </testsuite>
+  </testsuite>
+</testrun>

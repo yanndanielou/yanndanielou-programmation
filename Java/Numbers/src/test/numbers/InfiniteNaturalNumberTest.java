@@ -425,6 +425,7 @@ public class InfiniteNaturalNumberTest {
 
 		public class PrimeDivisors {
 
+			@Ignore
 			public class HasOnlyOneDigitPrimeDivisors {
 				private boolean expectedResult;
 

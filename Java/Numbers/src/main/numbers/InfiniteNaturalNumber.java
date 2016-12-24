@@ -212,7 +212,28 @@ public class InfiniteNaturalNumber implements Cloneable {
 		return quotient;
 	}
 
+	public boolean isEven() {
+		int unitDigit = getUnitDigit();
+		return unitDigit == (byte) 0 || unitDigit == (byte) 2 || unitDigit == (byte) 4 || unitDigit == (byte) 6
+				|| unitDigit == (byte) 8;
+	}
+
+	public boolean isOdd() {
+		return !isEven();
+	}
+
 	public boolean isMultipleOf(InfiniteNaturalNumber divisor) {
+		if (divisor.equals(TWO)) {
+			return isEven();
+		}
+		if (divisor.equals(THREE)) {
+			if (this.getNumberOfDigits() > 1) {
+				return getBase10DigitsMultiplication().isMultipleOf(THREE);
+			} else {
+				int unitDigit = getUnitDigit();
+				return unitDigit == (byte) 3 || unitDigit == (byte) 6 || unitDigit == (byte) 9;
+			}
+		}
 		return restOfDivisionBy(divisor).equals(ZERO);
 	}
 
@@ -312,6 +333,12 @@ public class InfiniteNaturalNumber implements Cloneable {
 		return false;
 	}
 
+	public boolean hasOnlyOneDigitPrimeDivisors() {
+		// List<InfiniteNaturalNumber> allPrimeDivisorsSmallerThan =
+		// getAllPrimeDivisorsSmallerThan(TEN);
+		return true;
+	}
+
 	/*
 	 * 
 	 * 
@@ -326,8 +353,11 @@ public class InfiniteNaturalNumber implements Cloneable {
 		List<InfiniteNaturalNumber> primeNumbers = CollectionUtils.emptyList();
 
 		InfiniteNaturalNumber potentialPrimeNumberDivisor;
-		while ((potentialPrimeNumberDivisor = PrimeNumbersCalculator.getNextPrimeNumber(primeNumbers))
-				.isSmallerOrEqualsTo(remainingNumber.dividedBy(TWO))) {
+		while (true) {
+			potentialPrimeNumberDivisor = PrimeNumbersCalculator.getNextPrimeNumber(primeNumbers);
+			if (!potentialPrimeNumberDivisor.isSmallerOrEqualsTo(remainingNumber)) {
+				break;
+			}
 			primeNumbers.add(potentialPrimeNumberDivisor);
 
 			while (remainingNumber.isMultipleOf(potentialPrimeNumberDivisor)) {
@@ -373,6 +403,10 @@ public class InfiniteNaturalNumber implements Cloneable {
 
 	public int getNumberOfDigits() {
 		return digits.size();
+	}
+
+	public int getUnitDigit() {
+		return digits.get(digits.size() - 1);
 	}
 
 	public boolean containsDigit(byte digit) {
