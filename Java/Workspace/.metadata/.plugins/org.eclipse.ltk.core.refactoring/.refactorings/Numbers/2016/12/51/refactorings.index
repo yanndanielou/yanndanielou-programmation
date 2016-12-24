@@ -30,3 +30,6 @@
 1482580515938	Extract local variable 'findPrimeNumbersUpTo'
 1482584099078	Rename local variable 'potentialDivisor'
 1482585674197	Extract local variable 'nextPrimeNumber'
+1482590795815	Extract local variable 'unitDigit'
+1482590892815	Rename local variable 'base10DigitsMultiplication'
+1482591833808	Extract local variable 'allPrimeDivisorsSmallerThan'

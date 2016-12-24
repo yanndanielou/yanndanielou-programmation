@@ -20,7 +20,7 @@ public class PrimeNumbersCalculator {
 		return getNextPrimeNumber(previousPrimeNumbers, null);
 	}
 
-	private static InfiniteNaturalNumber getNextPrimeNumber(List<InfiniteNaturalNumber> previousPrimeNumbers,
+	public static InfiniteNaturalNumber getNextPrimeNumber(List<InfiniteNaturalNumber> previousPrimeNumbers,
 			InfiniteNaturalNumber maxNumberToTest) {
 		if (previousPrimeNumbers.isEmpty()) {
 			return getFirstPrimeNumber();

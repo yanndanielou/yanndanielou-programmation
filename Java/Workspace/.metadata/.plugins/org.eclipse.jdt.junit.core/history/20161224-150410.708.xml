@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestResult.of_10_are_2_5" project="Numbers" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors.TestResult" time="0.0">
+    <testcase name="of_10_are_2_5" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors.TestResult" time="0.0"/>
+    <testcase name="of_6_are_2_3" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors.TestResult" time="0.0"/>
+    <testcase name="of_20_are_2_2_5" classname="test.numbers.InfiniteNaturalNumberTest.DivisorsFinder.PrimeDivisors.AllPrimeDivisors.TestResult" time="0.0"/>
+  </testsuite>
+</testrun>

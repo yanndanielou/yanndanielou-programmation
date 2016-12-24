@@ -27,8 +27,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.List;
 
-import javax.swing.plaf.BorderUIResource.EmptyBorderUIResource;
-
 import org.junit.After;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -421,83 +419,158 @@ public class InfiniteNaturalNumberTest {
 		}
 	}
 
-	public class Divisors {
+	public class DivisorsFinder {
 
-		private List<InfiniteNaturalNumber> expectedDivisors;
-		private List<InfiniteNaturalNumber> foundDivisors;
 		private InfiniteNaturalNumber number;
 
-		protected void computeAndCheck() {
-			foundDivisors = number.getAllPrimeDivisors();
-			assertThat(foundDivisors, containsExactlyAll(expectedDivisors));
-		}
+		public class PrimeDivisors {
 
-		public class AllPrimeDivisors {
-			public class TestResult {
+			public class HasOnlyOneDigitPrimeDivisors {
+				private boolean expectedResult;
 
-				@After
-				public void after() {
-					computeAndCheck();
+				protected void computeAndCheck() {
+					boolean actualResult = number.hasOnlyOneDigitPrimeDivisors();
+					assertThat(actualResult, is(expectedResult));
 				}
 
-				@Test
-				public void of_6_are_2_3() {
-					number = SIX;
-					expectedDivisors = CollectionUtils.asList(TWO, THREE);
-				}
+				public class TestResult {
+					@After
+					public void after() {
+						computeAndCheck();
+					}
 
-				@Test
-				public void of_10_are_2_5() {
-					number = TEN;
-					expectedDivisors = CollectionUtils.asList(TWO, FIVE);
-				}
+					@Test
+					public void for_9_returns_true() {
+						number = SIX;
+						expectedResult = true;
+					}
 
-				@Test
-				public void of_20_are_2_2_5() {
-					number = TWENTY;
-					expectedDivisors = CollectionUtils.asList(TWO, TWO, FIVE);
+					@Test
+					public void for_10_returns_true() {
+						number = TEN;
+						expectedResult = true;
+					}
+
+					@Test
+					public void for_20_returns_true() {
+						number = TWENTY;
+						expectedResult = true;
+					}
+
+					@Test
+					public void for_22_returns_false() {
+						number = new InfiniteNaturalNumber("22");
+						expectedResult = false;
+					}
+
+					@Test
+					public void for_16_returns_true() {
+						number = TWENTY;
+						expectedResult = true;
+					}
+
+					public class PerfTests extends PerfTestScenario {
+
+						@After
+						public void after() {
+							computeAndCheck();
+							System.out.println("HasOnlyOneDigitPrimeDivisors divisors of " + number + " ran in "
+									+ FormatterUtils.GetDurationAsString(getTestDuration()));
+						}
+
+						@Test
+						public void for_2048_returns_true() {
+							number = new InfiniteNaturalNumber("2048");
+							expectedResult = true;
+						}
+
+						@Test
+						public void for_2053_returns_false() {
+							number = new InfiniteNaturalNumber("2053");
+							expectedResult = false;
+						}
+					}
 				}
 			}
 
-			public class PerfTests extends PerfTestScenario {
+			public class AllPrimeDivisors {
+				private List<InfiniteNaturalNumber> expectedDivisors;
+				private List<InfiniteNaturalNumber> foundDivisors;
 
-				@After
-				public void after() {
-					computeAndCheck();
-					System.out.println("Prime divisors of " + number + " found in "
-							+ FormatterUtils.GetDurationAsString(getTestDuration()));
+				protected void computeAndCheck() {
+					foundDivisors = number.getAllPrimeDivisors();
+					assertThat(foundDivisors, containsExactlyAll(expectedDivisors));
 				}
 
-				@Test
-				public void of_10_000_are_2_2_2_2_5_5_5_5() {
-					number = new InfiniteNaturalNumber("10_000");
-					expectedDivisors = CollectionUtils.asList(TWO, TWO, TWO, TWO, FIVE, FIVE, FIVE, FIVE);
+				public class TestResult {
+
+					@After
+					public void after() {
+						computeAndCheck();
+					}
+
+					@Test
+					public void of_6_are_2_3() {
+						number = SIX;
+						expectedDivisors = CollectionUtils.asList(TWO, THREE);
+					}
+
+					@Test
+					public void of_10_are_2_5() {
+						number = TEN;
+						expectedDivisors = CollectionUtils.asList(TWO, FIVE);
+					}
+
+					@Test
+					public void of_20_are_2_2_5() {
+						number = TWENTY;
+						expectedDivisors = CollectionUtils.asList(TWO, TWO, FIVE);
+					}
 				}
 
-				@Test
-				public void of_2003_hasNoDivisor() {
-					number = new InfiniteNaturalNumber("2003");
-					expectedDivisors = CollectionUtils.emptyList();
-				}
+				public class PerfTests extends PerfTestScenario {
 
-				@Test
-				public void of_11003_hasNoDivisor() {
-					number = new InfiniteNaturalNumber("11003");
-					expectedDivisors = CollectionUtils.emptyList();
-				}
+					@After
+					public void after() {
+						computeAndCheck();
+						System.out.println("Prime divisors of " + number + " found in "
+								+ FormatterUtils.GetDurationAsString(getTestDuration()));
+					}
 
-				@Test
-				public void of_24001_hasNoDivisor() {
-					number = new InfiniteNaturalNumber("24001");
-					expectedDivisors = CollectionUtils.emptyList();
-				}
+					@Test
+					public void of_10_000_are_2_2_2_2_5_5_5_5() {
+						number = new InfiniteNaturalNumber("10_000");
+						expectedDivisors = CollectionUtils.asList(TWO, TWO, TWO, TWO, FIVE, FIVE, FIVE, FIVE);
+					}
 
-				@Test
-				public void of_49999_hasNoDivisor() {
-					number = new InfiniteNaturalNumber("49999");
-					expectedDivisors = CollectionUtils.emptyList();
-				}
+					@Test
+					public void of_2003_hasNoDivisor() {
+						number = new InfiniteNaturalNumber("2003");
+						expectedDivisors = CollectionUtils.asList(number);
+					}
 
+					@Ignore
+					@Test
+					public void of_11003_hasNoDivisor() {
+						number = new InfiniteNaturalNumber("11003");
+						expectedDivisors = CollectionUtils.asList(number);
+					}
+
+					@Ignore
+					@Test
+					public void of_24001_hasNoDivisor() {
+						number = new InfiniteNaturalNumber("24001");
+						expectedDivisors = CollectionUtils.asList(number);
+					}
+
+					@Ignore
+					@Test
+					public void of_49999_hasNoDivisor() {
+						number = new InfiniteNaturalNumber("49999");
+						expectedDivisors = CollectionUtils.asList(number);
+					}
+
+				}
 			}
 		}
 	}
