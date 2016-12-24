@@ -15,6 +15,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 import org.junit.After;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -173,20 +174,22 @@ public class MultiplicationPersistenceCalculatorTest {
 			assertThat(multiplicationPersistence, is(9));
 		}
 
+		@Ignore
 		@Test
 		public void MultiplicativePersistence_of_3778888999_is_10() {
 			int multiplicationPersistence = multiplicationPersistenceCalculator
 					.getMultiplicationPersistence(new InfiniteNaturalNumber("3778888999"));
 			assertThat(multiplicationPersistence, is(10));
 		}
-		/*
-		 * @Test public void
-		 * MultiplicativePersistence_of_277777788888899_is_11() { int
-		 * multiplicationPersistence = multiplicationPersistenceCalculator
-		 * .getMultiplicationPersistence(new
-		 * InfiniteNaturalNumber("277777788888899"));
-		 * assertThat(multiplicationPersistence, is(11)); }
-		 */
+
+		@Ignore
+		@Test
+		public void MultiplicativePersistence_of_277777788888899_is_11() {
+			int multiplicationPersistence = multiplicationPersistenceCalculator
+					.getMultiplicationPersistence(new InfiniteNaturalNumber("277777788888899"));
+			assertThat(multiplicationPersistence, is(11));
+		}
+
 	}
 
 }
