@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="Powers10.Two_times10Power1__is_20" project="Numbers" tests="5" started="5" failures="0" errors="0" ignored="0">
-  <testsuite name="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Powers.Powers10" incomplete="true">
-    <testcase name="Two_times10Power1__is_20" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Powers.Powers10" time="0.004"/>
-    <testcase name="Five_times10Power0__is_1" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Powers.Powers10" time="0.0"/>
-    <testcase name="One_times10Power1__is_10" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Powers.Powers10" time="0.001"/>
-    <testcase name="Five_times10Power1__is_50" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Powers.Powers10" time="0.0"/>
-    <testcase name="One_times10Power2__is_10" classname="test.numbers.InfiniteNaturalNumberTest.ArithmeticalOperations.Powers.Powers10" incomplete="true"/>
-  </testsuite>
-</testrun>

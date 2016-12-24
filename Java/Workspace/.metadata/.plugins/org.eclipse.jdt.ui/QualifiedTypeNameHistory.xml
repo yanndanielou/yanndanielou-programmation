@@ -12,6 +12,7 @@
 <fullyQualifiedTypeName name="java.time.temporal.TemporalUnit"/>
 <fullyQualifiedTypeName name="java.time.LocalTime"/>
 <fullyQualifiedTypeName name="test.numbers.InfiniteNaturalNumberTest"/>
-<fullyQualifiedTypeName name="main.numbers.InfiniteNaturalNumber"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.lang.IllegalStateException"/>
+<fullyQualifiedTypeName name="main.numbers.InfiniteNaturalNumber"/>
 </qualifiedTypeNameHistroy>

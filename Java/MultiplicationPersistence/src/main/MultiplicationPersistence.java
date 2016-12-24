@@ -75,7 +75,18 @@ public class MultiplicationPersistence {
 		}
 
 		while (base10DigitsMultiplication.getNumberOfDigits() > 1) {
-
+/*
+			if (base10DigitsMultiplication.containsDigit(0)) {
+				// persistence is zero!
+				break;
+			}
+			if (base10DigitsMultiplication.containsDigit(5)
+					&& base10DigitsMultiplication.containsOneOfDigits(2, 4, 6, 8)) {
+				// will contain zero in the next element of the suite
+				multiplicativeSuite.add(base10DigitsMultiplication.getBase10DigitsMultiplication());
+				break;
+			}
+*/
 			base10DigitsMultiplication = base10DigitsMultiplication.getBase10DigitsMultiplication();
 
 			// System.out.println(" multiplicative element:" + persistence + "
