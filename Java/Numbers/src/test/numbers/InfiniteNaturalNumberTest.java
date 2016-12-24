@@ -171,7 +171,7 @@ public class InfiniteNaturalNumberTest {
 
 			}
 
-			public class Multiplication extends PerfTestScenario {
+			public class Multiplication {
 
 				private InfiniteNaturalNumber factor1;
 				private InfiniteNaturalNumber factor2;
@@ -179,9 +179,6 @@ public class InfiniteNaturalNumberTest {
 				@After
 				public void after() {
 					InfiniteNaturalNumber result = factor1.times(factor2);
-					System.out.println("Multiplication of " + factor1 + " and " + factor2 + " calculated in "
-							+ FormatterUtils.GetDurationAsString(getTestDuration()));
-
 					assertThat(result, is(expectedResult));
 				}
 
@@ -214,6 +211,13 @@ public class InfiniteNaturalNumberTest {
 				}
 
 				public class PerfTests extends PerfTestScenario {
+
+					@After
+					public void after() {
+						System.out.println("Multiplication of " + factor1 + " and " + factor2 + " calculated in "
+								+ FormatterUtils.GetDurationAsString(getTestDuration()));
+					}
+
 					@Test
 					public void test_10_000_times_2() {
 						factor1 = new InfiniteNaturalNumber("10_000");
