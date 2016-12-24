@@ -28,3 +28,4 @@
 1482578704450	Extract local variable 'subList'
 1482579728986	Rename local variable 'i'
 1482580515938	Extract local variable 'findPrimeNumbersUpTo'
+1482584099078	Rename local variable 'potentialDivisor'

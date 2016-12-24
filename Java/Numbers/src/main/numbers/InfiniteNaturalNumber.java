@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import main.util.CollectionUtils;
+
 public class InfiniteNaturalNumber implements Cloneable {
 
 	public static final InfiniteNaturalNumber ZERO = new InfiniteNaturalNumber("0");
@@ -321,16 +323,20 @@ public class InfiniteNaturalNumber implements Cloneable {
 
 		InfiniteNaturalNumber maxPotentialDivisor = remainingNumber.dividedBy(TWO);
 
-		List<InfiniteNaturalNumber> findPrimeNumbersUpTo = PrimeNumbersCalculator
-				.findPrimeNumbersUpTo(maxPotentialDivisor);
+		List<InfiniteNaturalNumber> primeNumbers = CollectionUtils.emptyList();
 
-		for (InfiniteNaturalNumber potentialDivisor : findPrimeNumbersUpTo) {
-			while (remainingNumber.isMultipleOf(potentialDivisor)) {
-				primeDivisors.add(potentialDivisor);
-				remainingNumber = remainingNumber.dividedBy(potentialDivisor);
+		InfiniteNaturalNumber potentialPrimeNumberDivisor;
+		while ((potentialPrimeNumberDivisor = PrimeNumbersCalculator.getNextPrimeNumber(primeNumbers))
+				.isSmallerOrEqualsTo(remainingNumber.dividedBy(TWO))) {
+			primeNumbers.add(potentialPrimeNumberDivisor);
+
+			while (remainingNumber.isMultipleOf(potentialPrimeNumberDivisor)) {
+				primeDivisors.add(potentialPrimeNumberDivisor);
+				remainingNumber = remainingNumber.dividedBy(potentialPrimeNumberDivisor);
 			}
 
 		}
+
 		return primeDivisors;
 	}
 

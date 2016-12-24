@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="PerfTest._2002_returns_2_3_5_7_11_13_17_19_23_29_31_37_41_43_47_etc" project="Numbers" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.PerfTest" time="1.561">
+    <testcase name="_1010_returns_2_3_5_7_11_13_17_19_23_29_31_37_41_43_47_53_59_61_67_71_73_79_83_89_97_101_103_107_109_113_127_131_137_139_149_151_157_163_167_173_179_181_191_193_197_199_211_223_227_229_233_239_241_251_257_263_269_271_277_281_283_293_307_311_313_317_331_337_347_349_353_359_367_373_379_383_389_397_401_409_419_421_431_433_439_443_449_457_461_463_467_479_487_491_499_503_509_521_523_541_547_557_563_569_571_577_587_593_599_601_607_613_617_619_631_641_643_647_653_659_661_673_677_683_691_701_709_719_727_733_739_743_751_757_761_769_773_787_797_809_811_821_823_827_829_839_853_857_859_863_877_881_883_887_907_911_919_929_937_941_947_953_967_971_977_983_991_997_1009" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.PerfTest" time="0.492"/>
+    <testcase name="_101_returns_2_3_5_7_11_13_17_19_23_29_31_37_41_43_47_53_59_61_67_71_73_79_83_89_97" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.PerfTest" time="0.003"/>
+    <testcase name="_2002_returns_2_3_5_7_11_13_17_19_23_29_31_37_41_43_47_etc" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.PerfTest" time="1.066"/>
+  </testsuite>
+</testrun>

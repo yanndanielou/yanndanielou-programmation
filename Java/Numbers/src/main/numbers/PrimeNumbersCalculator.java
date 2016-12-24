@@ -12,9 +12,13 @@ public class PrimeNumbersCalculator {
 
 	public static final List<InfiniteNaturalNumber> admittedPrimeNumbers = CollectionUtils.asList(TWO, THREE);
 
+	public static InfiniteNaturalNumber getFirstPrimeNumber() {
+		return admittedPrimeNumbers.get(0);
+	}
+
 	public static InfiniteNaturalNumber getNextPrimeNumber(List<InfiniteNaturalNumber> previousPrimeNumbers) {
 		if (previousPrimeNumbers.isEmpty()) {
-			return admittedPrimeNumbers.get(0);
+			return getFirstPrimeNumber();
 		} else {
 
 		}

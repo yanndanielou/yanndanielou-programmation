@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="PrimeNumbersCalculatorTest" project="Numbers" tests="14" started="13" failures="3" errors="2" ignored="0">
+  <testsuite name="test.numbers.PrimeNumbersCalculatorTest" time="0.488">
+    <testsuite name="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" time="0.48">
+      <testsuite name="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.PerfTest" time="0.471">
+        <testcase name="_101_returns_2_3_5_7_11_13_17_19_23_29_31_37_41_43_47_53_59_61_67_71_73_79_83_89_97" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.PerfTest" time="0.044"/>
+        <testcase name="_101_returns_2_3_5_7_11_13_17_19_23_29_31_37_41_43_47_53_59_61_67_71_73_79_83_89_97_101_103_107_109_113_127_131_137_139_149_151_157_163_167_173_179_181_191_193_197_199_211_223_227_229_233_239_241_251_257_263_269_271_277_281_283_293_307_311_313_317_331_337_347_349_353_359_367_373_379_383_389_397_401_409_419_421_431_433_439_443_449_457_461_463_467_479_487_491_499_503_509_521_523_541_547_557_563_569_571_577_587_593_599_601_607_613_617_619_631_641_643_647_653_659_661_673_677_683_691_701_709_719_727_733_739_743_751_757_761_769_773_787_797_809_811_821_823_827_829_839_853_857_859_863_877_881_883_887_907_911_919_929_937_941_947_953_967_971_977_983_991_997_1009" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.PerfTest" time="0.427"/>
+      </testsuite>
+      <testsuite name="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.009">
+        <testcase name="ZERO_returnsEmpty" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.001"/>
+        <testcase name="Four_returns_2_3" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.001"/>
+        <testcase name="Two_returns_2" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.0"/>
+        <testcase name="Three_returns_2_3" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.0"/>
+        <testcase name="Eleven_returns_2_3_5_7_11" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.001"/>
+        <testcase name="Twelve_returns_2_3_5_7_11" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.0"/>
+        <testcase name="One_returnsEmpty" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo.TestResult" time="0.006"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber">
+      <testcase name="test.numbers.PrimeNumbersCalculatorTest$GetNextPrimeNumber$PerfTest" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.PerfTest">
+        <error>java.lang.Exception: No contexts found!&#13;
+	at de.bechte.junit.runners.validation.ChildrenCountValidator.validate(ChildrenCountValidator.java:28)&#13;
+	at de.bechte.junit.runners.validation.BooleanValidator$OrValidator.validate(BooleanValidator.java:49)&#13;
+	at de.bechte.junit.runners.validation.BooleanValidator$AndValidator.validate(BooleanValidator.java:34)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.validate(HierarchicalContextRunner.java:64)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.&lt;init&gt;(HierarchicalContextRunner.java:58)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+java.lang.Exception: No tests found!&#13;
+	at de.bechte.junit.runners.validation.ChildrenCountValidator.validate(ChildrenCountValidator.java:28)&#13;
+	at de.bechte.junit.runners.validation.BooleanValidator$OrValidator.validate(BooleanValidator.java:49)&#13;
+	at de.bechte.junit.runners.validation.BooleanValidator$AndValidator.validate(BooleanValidator.java:34)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.validate(HierarchicalContextRunner.java:64)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.&lt;init&gt;(HierarchicalContextRunner.java:58)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testsuite name="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" time="0.007">
+        <testcase name="after_2_is_3" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" time="0.005">
+          <failure>java.lang.AssertionError: 
+Expected: is &lt;3&gt;
+     but: was null&#13;
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)&#13;
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:8)&#13;
+	at test.numbers.PrimeNumbersCalculatorTest$GetNextPrimeNumber.computeAndCheck(PrimeNumbersCalculatorTest.java:43)&#13;
+	at test.numbers.PrimeNumbersCalculatorTest$GetNextPrimeNumber.after(PrimeNumbersCalculatorTest.java:48)&#13;
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)&#13;
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)&#13;
+	at java.lang.reflect.Method.invoke(Unknown Source)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:33)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</failure>
+        </testcase>
+        <testcase name="after_2_3_5_is_7" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" time="0.0">
+          <failure>java.lang.AssertionError: 
+Expected: is &lt;7&gt;
+     but: was null&#13;
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)&#13;
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:8)&#13;
+	at test.numbers.PrimeNumbersCalculatorTest$GetNextPrimeNumber.computeAndCheck(PrimeNumbersCalculatorTest.java:43)&#13;
+	at test.numbers.PrimeNumbersCalculatorTest$GetNextPrimeNumber.after(PrimeNumbersCalculatorTest.java:48)&#13;
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)&#13;
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)&#13;
+	at java.lang.reflect.Method.invoke(Unknown Source)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:33)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</failure>
+        </testcase>
+        <testcase name="after_2_3_is_5" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" time="0.0">
+          <failure>java.lang.AssertionError: 
+Expected: is &lt;5&gt;
+     but: was null&#13;
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)&#13;
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:8)&#13;
+	at test.numbers.PrimeNumbersCalculatorTest$GetNextPrimeNumber.computeAndCheck(PrimeNumbersCalculatorTest.java:43)&#13;
+	at test.numbers.PrimeNumbersCalculatorTest$GetNextPrimeNumber.after(PrimeNumbersCalculatorTest.java:48)&#13;
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)&#13;
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)&#13;
+	at java.lang.reflect.Method.invoke(Unknown Source)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:33)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</failure>
+        </testcase>
+        <testcase name="after_nothing_is_2" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" time="0.0"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testrun>
