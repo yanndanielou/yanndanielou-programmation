@@ -2,11 +2,9 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="org.junit.Test"/>
 <fullyQualifiedTypeName name="main.InfiniteNaturalNumber"/>
-<fullyQualifiedTypeName name="org.junit.Ignore"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="main.LychrelNumbers"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="main.MultiplicationPersistence"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.time.Duration"/>
 <fullyQualifiedTypeName name="java.time.temporal.TemporalUnit"/>
@@ -15,4 +13,11 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.lang.IllegalStateException"/>
 <fullyQualifiedTypeName name="main.numbers.InfiniteNaturalNumber"/>
+<fullyQualifiedTypeName name="java.util.Collection"/>
+<fullyQualifiedTypeName name="org.hamcrest.Matcher"/>
+<fullyQualifiedTypeName name="main.util.CollectionUtils"/>
+<fullyQualifiedTypeName name="main.matcher.BasicMatchers"/>
+<fullyQualifiedTypeName name="main.MultiplicationPersistence"/>
+<fullyQualifiedTypeName name="javax.swing.event.TreeWillExpandListener"/>
+<fullyQualifiedTypeName name="org.junit.Ignore"/>
 </qualifiedTypeNameHistroy>

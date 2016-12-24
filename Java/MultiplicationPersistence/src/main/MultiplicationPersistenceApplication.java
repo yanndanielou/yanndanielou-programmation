@@ -3,7 +3,7 @@ package main;
 public class MultiplicationPersistenceApplication {
 	public static void main(String[] args) {
 
-		MultiplicationPersistence multiplicationPersistence = new MultiplicationPersistence();
+		MultiplicationPersistenceCalculator multiplicationPersistence = new MultiplicationPersistenceCalculator();
 		multiplicationPersistence.findNumbersWithBiggestMultiplicativePersistence();
 	}
 

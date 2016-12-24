@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.numbers.InfiniteNaturalNumber;
+import main.util.FormatterUtils;
 
-public class MultiplicationPersistence {
+public class MultiplicationPersistenceCalculator {
 
 	private LocalTime startTime = LocalTime.now();
 	private int maxMultiplicationPersistenceFound = 0;
@@ -57,7 +58,6 @@ public class MultiplicationPersistence {
 				numberOfDigitsOfLastLoggedNumber = i.getNumberOfDigits();
 			}
 		}
-
 	}
 
 	public List<InfiniteNaturalNumber> getMultiplicativeSuite(InfiniteNaturalNumber number) {
@@ -71,22 +71,19 @@ public class MultiplicationPersistence {
 		if (number.containsDigit(5) && number.containsOneOfDigits(2, 4, 6, 8)) {
 			// will contain zero in the next element of the suite
 			multiplicativeSuite.add(base10DigitsMultiplication.getBase10DigitsMultiplication());
+			multiplicativeSuite.add(InfiniteNaturalNumber.ZERO);
 			return multiplicativeSuite;
 		}
 
 		while (base10DigitsMultiplication.getNumberOfDigits() > 1) {
-/*
-			if (base10DigitsMultiplication.containsDigit(0)) {
-				// persistence is zero!
-				break;
-			}
-			if (base10DigitsMultiplication.containsDigit(5)
-					&& base10DigitsMultiplication.containsOneOfDigits(2, 4, 6, 8)) {
-				// will contain zero in the next element of the suite
-				multiplicativeSuite.add(base10DigitsMultiplication.getBase10DigitsMultiplication());
-				break;
-			}
-*/
+			/*
+			 * if (base10DigitsMultiplication.containsDigit(0)) { // persistence
+			 * is zero! break; } if (base10DigitsMultiplication.containsDigit(5)
+			 * && base10DigitsMultiplication.containsOneOfDigits(2, 4, 6, 8)) {
+			 * // will contain zero in the next element of the suite
+			 * multiplicativeSuite.add(base10DigitsMultiplication.
+			 * getBase10DigitsMultiplication()); break; }
+			 */
 			base10DigitsMultiplication = base10DigitsMultiplication.getBase10DigitsMultiplication();
 
 			// System.out.println(" multiplicative element:" + persistence + "
@@ -112,29 +109,8 @@ public class MultiplicationPersistence {
 		LocalTime now = LocalTime.now();
 		Duration durationSinceLastLog = Duration.between(previousLoggedTime, now);
 		Duration durationSinceStart = Duration.between(startTime, now);
-		return now + " (" + getDurationAsString(durationSinceStart) + " since beginning and "
-				+ getDurationAsString(durationSinceLastLog) + " since last log)";
-	}
-
-	private static String getDurationAsString(Duration duration) {
-		long hours = duration.toHours();
-		long minutes = duration.toMinutes();
-		long millis = duration.toMillis();
-		long seconds = millis / 1000;
-
-		if (hours > 0) {
-			return hours + "hours" + minutes % 60 + "min";
-		}
-
-		if (minutes > 0) {
-			return minutes + "min " + seconds % 60 + "s";
-		}
-
-		if (seconds > 0) {
-			return seconds + "s" + millis % 1000 + "ms";
-		}
-
-		return millis + "ms";
+		return now + " (" + FormatterUtils.GetDurationAsString(durationSinceStart) + " since beginning and "
+				+ FormatterUtils.GetDurationAsString(durationSinceLastLog) + " since last log)";
 	}
 
 }

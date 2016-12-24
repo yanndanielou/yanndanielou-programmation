@@ -12,3 +12,12 @@
 1482426704595	Extract local variable 'numberOfNumbersToTestUntilNextLig'
 1482427164238	Rename field 'activateLogs'
 1482428831095	Rename field 'numbersWithPersistenceEqualToHighestPersistenceFound'
+1482569024851	Copy compilation unit
+1482569027905	Rename type 'MultiplicationPersistence'
+1482569284211	Extract local variable 'multiplicativeSuite'
+1482569352219	Extract local variable 'multiplicativeSuite'
+1482569818976	Extract local variable 'multiplicationPersistence2'
+1482569864686	Rename type 'MultiplicationPersistence'
+1482569877362	Rename type 'MultiplicationPersistenceTest'
+1482569883547	Rename field 'multiplicationPersistence'
+1482569888585	Rename field 'multiplicationPersistencecalculator'

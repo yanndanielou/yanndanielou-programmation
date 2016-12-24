@@ -6,22 +6,23 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="gits.ad" key="selection"/>
+		<item value="assertThat" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="assertFalse"/>
+			<item value="assertTrue"/>
+			<item value=".equals("/>
+			<item value="CatchThrowableHamcrestMatchers"/>
+			<item value="DifferenceListener"/>
+			<item value="differenceListener"/>
 			<item value="gits.ad"/>
 			<item value="numbersWithPersistenceEqualToPreviousHighestPersistenceFound"/>
-			<item value="numberOfDigitsOfLastLoggedNumber"/>
-			<item value="&#x09;&#x09;int numberOfDigitsOfLastLoggedNumber = 0;"/>
-			<item value="numberOfNumberTestedSinceLastLog"/>
-			<item value="numberOfNumbersToTestUntilNextLog"/>
-			<item value="activateLogs"/>
-			<item value="isDigitIgnored"/>
 		</list>
 		<list key="replacehistory">
+			<item value="assertThat"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
