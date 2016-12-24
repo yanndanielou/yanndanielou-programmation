@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="PrimeNumbersCalculatorTest" project="Numbers" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="test.numbers.PrimeNumbersCalculatorTest" time="0.0">
+    <testsuite name="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" time="0.0">
+      <testcase name="ZERO_returnsEmpty" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" time="0.0"/>
+      <testcase name="Four_returns_2_3" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" time="0.0"/>
+      <testcase name="Two_returns_2" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" time="0.0"/>
+      <testcase name="Three_returns_2_3" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" time="0.0"/>
+      <testcase name="Eleven_returns_2_3_5_7_11" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" time="0.0"/>
+      <testcase name="Twelve_returns_2_3_5_7_11" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" time="0.0"/>
+      <testcase name="One_returnsEmpty" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" time="0.0"/>
+    </testsuite>
+  </testsuite>
+</testrun>

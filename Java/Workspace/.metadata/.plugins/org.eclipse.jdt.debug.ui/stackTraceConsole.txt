@@ -1,4 +1,4 @@
-@Test
-		public void areDigitsOrderedInGrowingOrder_10_false() {
-			assertFalse(TEN.areDigitsOrderedInGrowingOrder());
-		}
+		@Test
+			public void Ten_containsDitig_1() {
+				assertThat(TEN.containsDigit(1), is(true));
+			}

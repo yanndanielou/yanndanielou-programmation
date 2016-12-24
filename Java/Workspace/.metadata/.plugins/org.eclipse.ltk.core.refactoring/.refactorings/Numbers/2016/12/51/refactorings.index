@@ -27,3 +27,4 @@
 1482578663432	Extract local variable 'index'
 1482578704450	Extract local variable 'subList'
 1482579728986	Rename local variable 'i'
+1482580515938	Extract local variable 'findPrimeNumbersUpTo'

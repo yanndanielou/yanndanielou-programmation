@@ -314,11 +314,26 @@ public class InfiniteNaturalNumber implements Cloneable {
 	 * 
 	 * 
 	 */
-	/*
-	 * private List<InfiniteNaturalNumber> getAllPrimeDivisors() {
-	 * 
-	 * }
-	 */
+	public List<InfiniteNaturalNumber> getAllPrimeDivisors() {
+		List<InfiniteNaturalNumber> primeDivisors = new ArrayList<InfiniteNaturalNumber>();
+
+		InfiniteNaturalNumber remainingNumber = new InfiniteNaturalNumber(this);
+
+		InfiniteNaturalNumber maxPotentialDivisor = remainingNumber.dividedBy(TWO);
+
+		List<InfiniteNaturalNumber> findPrimeNumbersUpTo = PrimeNumbersCalculator
+				.findPrimeNumbersUpTo(maxPotentialDivisor);
+
+		for (InfiniteNaturalNumber potentialDivisor : findPrimeNumbersUpTo) {
+			while (remainingNumber.isMultipleOf(potentialDivisor)) {
+				primeDivisors.add(potentialDivisor);
+				remainingNumber = remainingNumber.dividedBy(potentialDivisor);
+			}
+
+		}
+		return primeDivisors;
+	}
+
 	private void removeUselessZeroDigits() {
 		while (digits.size() > 1 && digits.get(0) == 0) {
 			removeDigitAtHighestPosition();

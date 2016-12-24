@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="PerfTests.of_2003_hasNoDivisor" project="Numbers" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="test.numbers.InfiniteNaturalNumberTest.Divisors.AllPrimeDivisors.PerfTests" time="6.942">
+    <testcase name="of_10_000_are_2_2_2_2_5_5_5_5" classname="test.numbers.InfiniteNaturalNumberTest.Divisors.AllPrimeDivisors.PerfTests" time="6.707"/>
+    <testcase name="of_2003_hasNoDivisor" classname="test.numbers.InfiniteNaturalNumberTest.Divisors.AllPrimeDivisors.PerfTests" time="0.235"/>
+  </testsuite>
+</testrun>

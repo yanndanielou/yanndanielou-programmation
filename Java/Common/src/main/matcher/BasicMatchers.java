@@ -52,8 +52,14 @@ public class BasicMatchers {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static <E> org.hamcrest.Matcher<java.lang.Iterable<? extends E>> containsExactlyAll(
 			final Collection<? super E> collection) {
-		Matcher ret = containsExactly(collection.toArray());
-		return ret;
+
+		if (collection.isEmpty()) {
+			Matcher ret = is(empty());
+			return ret;
+		} else {
+			Matcher ret = containsExactly(collection.toArray());
+			return ret;
+		}
 	}
 
 	@SafeVarargs

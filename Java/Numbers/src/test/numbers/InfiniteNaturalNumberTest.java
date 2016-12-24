@@ -1,6 +1,7 @@
 
 package test.numbers;
 
+import static main.matcher.BasicMatchers.containsExactlyAll;
 import static main.matcher.BasicMatchers.is;
 import static main.matcher.BasicMatchers.not;
 import static main.numbers.InfiniteNaturalNumber.ELEVEN;
@@ -24,8 +25,9 @@ import static main.numbers.InfiniteNaturalNumber.TWO;
 import static main.numbers.InfiniteNaturalNumber.ZERO;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import java.time.Duration;
-import java.time.LocalTime;
+import java.util.List;
+
+import javax.swing.plaf.BorderUIResource.EmptyBorderUIResource;
 
 import org.junit.After;
 import org.junit.Ignore;
@@ -35,6 +37,7 @@ import org.junit.runner.RunWith;
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import main.junit.PerfTestScenario;
 import main.numbers.InfiniteNaturalNumber;
+import main.util.CollectionUtils;
 import main.util.FormatterUtils;
 
 @RunWith(HierarchicalContextRunner.class)
@@ -176,44 +179,51 @@ public class InfiniteNaturalNumberTest {
 				private InfiniteNaturalNumber factor1;
 				private InfiniteNaturalNumber factor2;
 
-				@After
-				public void after() {
+				protected void computeAndCheck() {
 					InfiniteNaturalNumber result = factor1.times(factor2);
 					assertThat(result, is(expectedResult));
 				}
 
-				@Test
-				public void tenTimesZeroIsZero() {
-					factor1 = TEN;
-					factor2 = ZERO;
-					expectedResult = ZERO;
-				}
+				public class TestResult {
+					@After
+					public void after() {
+						computeAndCheck();
+					}
 
-				@Test
-				public void tenTimesOneIsTen() {
-					factor1 = TEN;
-					factor2 = ONE;
-					expectedResult = TEN;
-				}
+					@Test
+					public void tenTimesZeroIsZero() {
+						factor1 = TEN;
+						factor2 = ZERO;
+						expectedResult = ZERO;
+					}
 
-				@Test
-				public void tenTimesTwoIsTwenty() {
-					factor1 = TEN;
-					factor2 = TWO;
-					expectedResult = TWENTY;
-				}
+					@Test
+					public void tenTimesOneIsTen() {
+						factor1 = TEN;
+						factor2 = ONE;
+						expectedResult = TEN;
+					}
 
-				@Test
-				public void tenTimesTenIsHundred() {
-					factor1 = TEN;
-					factor2 = TEN;
-					expectedResult = HUNDRED;
+					@Test
+					public void tenTimesTwoIsTwenty() {
+						factor1 = TEN;
+						factor2 = TWO;
+						expectedResult = TWENTY;
+					}
+
+					@Test
+					public void tenTimesTenIsHundred() {
+						factor1 = TEN;
+						factor2 = TEN;
+						expectedResult = HUNDRED;
+					}
 				}
 
 				public class PerfTests extends PerfTestScenario {
 
 					@After
 					public void after() {
+						computeAndCheck();
 						System.out.println("Multiplication of " + factor1 + " and " + factor2 + " calculated in "
 								+ FormatterUtils.GetDurationAsString(getTestDuration()));
 					}
@@ -408,6 +418,75 @@ public class InfiniteNaturalNumberTest {
 		@Test
 		public void areDigitsOrderedInGrowingOrder_123_True() {
 			assertThat(new InfiniteNaturalNumber("123").areDigitsOrderedInGrowingOrder(), is(true));
+		}
+	}
+
+	public class Divisors {
+
+		private List<InfiniteNaturalNumber> expectedDivisors;
+		private List<InfiniteNaturalNumber> foundDivisors;
+		private InfiniteNaturalNumber number;
+
+		protected void computeAndCheck() {
+			foundDivisors = number.getAllPrimeDivisors();
+			assertThat(foundDivisors, containsExactlyAll(expectedDivisors));
+		}
+
+		public class AllPrimeDivisors {
+			public class TestResult {
+
+				@After
+				public void after() {
+					computeAndCheck();
+				}
+
+				@Test
+				public void of_6_are_2_3() {
+					number = SIX;
+					expectedDivisors = CollectionUtils.asList(TWO, THREE);
+				}
+
+				@Test
+				public void of_10_are_2_5() {
+					number = TEN;
+					expectedDivisors = CollectionUtils.asList(TWO, FIVE);
+				}
+
+				@Test
+				public void of_20_are_2_2_5() {
+					number = TWENTY;
+					expectedDivisors = CollectionUtils.asList(TWO, TWO, FIVE);
+				}
+			}
+
+			public class PerfTests extends PerfTestScenario {
+
+				@After
+				public void after() {
+					computeAndCheck();
+					System.out.println("Prime divisors of " + number + " found in "
+							+ FormatterUtils.GetDurationAsString(getTestDuration()));
+				}
+
+				@Test
+				public void of_10_000_are_2_2_2_2_5_5_5_5() {
+					number = new InfiniteNaturalNumber("10_000");
+					expectedDivisors = CollectionUtils.asList(TWO, TWO, TWO, TWO, FIVE, FIVE, FIVE, FIVE);
+				}
+
+				@Test
+				public void of_2003_hasNoDivisor() {
+					number = new InfiniteNaturalNumber("2003");
+					expectedDivisors = CollectionUtils.emptyList();
+				}
+
+				@Test
+				public void of_49999_hasNoDivisor() {
+					number = new InfiniteNaturalNumber("49999");
+					expectedDivisors = CollectionUtils.emptyList();
+				}
+
+			}
 		}
 	}
 
