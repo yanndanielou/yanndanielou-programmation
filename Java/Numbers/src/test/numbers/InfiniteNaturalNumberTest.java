@@ -481,6 +481,18 @@ public class InfiniteNaturalNumberTest {
 				}
 
 				@Test
+				public void of_11003_hasNoDivisor() {
+					number = new InfiniteNaturalNumber("11003");
+					expectedDivisors = CollectionUtils.emptyList();
+				}
+
+				@Test
+				public void of_24001_hasNoDivisor() {
+					number = new InfiniteNaturalNumber("24001");
+					expectedDivisors = CollectionUtils.emptyList();
+				}
+
+				@Test
 				public void of_49999_hasNoDivisor() {
 					number = new InfiniteNaturalNumber("49999");
 					expectedDivisors = CollectionUtils.emptyList();
