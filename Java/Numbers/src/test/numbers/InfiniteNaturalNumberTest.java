@@ -563,6 +563,12 @@ public class InfiniteNaturalNumberTest {
 					}
 
 					@Test
+					public void of_0_is_empty() {
+						number = ZERO;
+						expectedDivisors = CollectionUtils.emptyList();
+					}
+
+					@Test
 					public void of_6_are_2_3() {
 						number = SIX;
 						expectedDivisors = CollectionUtils.asList(TWO, THREE);

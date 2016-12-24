@@ -21,3 +21,6 @@
 1482569877362	Rename type 'MultiplicationPersistenceTest'
 1482569883547	Rename field 'multiplicationPersistence'
 1482569888585	Rename field 'multiplicationPersistencecalculator'
+1482602309781	Extract local variable 'hasOnlyOneDigitPrimeDivisors'
+1482602574537	Extract local variable 'allPrimeDivisors'
+1482602631848	Extract local variable 'unitDigit'

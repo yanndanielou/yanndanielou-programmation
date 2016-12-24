@@ -6,22 +6,26 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="assertThat" key="selection"/>
+		<item value="(byte)" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="assertFalse"/>
-			<item value="assertTrue"/>
-			<item value=".equals("/>
-			<item value="CatchThrowableHamcrestMatchers"/>
-			<item value="DifferenceListener"/>
-			<item value="differenceListener"/>
-			<item value="gits.ad"/>
-			<item value="numbersWithPersistenceEqualToPreviousHighestPersistenceFound"/>
+			<item value="(byte)"/>
+			<item value="2003"/>
+			<item value="@Ignore"/>
+			<item value="Ignore"/>
+			<item value="ignore"/>
+			<item value="getAllPrimeDivisors"/>
+			<item value="has"/>
+			<item value="potentialPrimeNumberDivisor"/>
 		</list>
 		<list key="replacehistory">
+			<item value="expectedResult"/>
+			<item value="expectedResult = "/>
+			<item value="; factor2 = "/>
+			<item value="factor1 = "/>
 			<item value="assertThat"/>
 		</list>
 	</section>
@@ -29,7 +33,7 @@
 		<item value="336" key="DIALOG_WIDTH"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="452" key="DIALOG_HEIGHT"/>
-		<item value="801" key="DIALOG_X_ORIGIN"/>
-		<item value="224" key="DIALOG_Y_ORIGIN"/>
+		<item value="1166" key="DIALOG_X_ORIGIN"/>
+		<item value="252" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

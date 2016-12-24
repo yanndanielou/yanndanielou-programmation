@@ -3,9 +3,11 @@ package main;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import main.numbers.InfiniteNaturalNumber;
+import main.util.CollectionUtils;
 import main.util.FormatterUtils;
 
 public class MultiplicationPersistenceCalculator {
@@ -13,6 +15,25 @@ public class MultiplicationPersistenceCalculator {
 	private LocalTime startTime = LocalTime.now();
 	private int maxMultiplicationPersistenceFound = 0;
 	private boolean activateDebugLogs = true;
+
+	public InfiniteNaturalNumber findNumberHavingMultiplicative(InfiniteNaturalNumber multiplicative) {
+
+		// multiplicative is the result of n multiplication digits [2..9] (could
+		// contain 1 but we ignore it)
+
+		boolean hasOnlyOneDigitPrimeDivisors = multiplicative.hasOnlyOneDigitPrimeDivisors();
+		if (hasOnlyOneDigitPrimeDivisors) {
+			// We just have to concatenate all its divisors
+			List<InfiniteNaturalNumber> allPrimeDivisors = multiplicative.getAllPrimeDivisors();
+			List<Byte> numbersAsListOfBytes = CollectionUtils.emptyList();
+			for (InfiniteNaturalNumber allPrimeDivisor : allPrimeDivisors) {
+				byte divisorAsDigit = allPrimeDivisor.getUnitDigit();
+				numbersAsListOfBytes.add(divisorAsDigit);
+			}
+			return new InfiniteNaturalNumber(numbersAsListOfBytes);
+		}
+		return null;
+	}
 
 	public void findNumbersWithBiggestMultiplicativePersistence() {
 

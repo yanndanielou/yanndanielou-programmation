@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult.after_2_3_5_is_7" project="Numbers" tests="5" started="2" failures="0" errors="0" ignored="1">
-  <testsuite name="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" incomplete="true">
-    <testcase name="called_four_times" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" time="0.003" ignored="true"/>
-    <testcase name="after_2_is_3" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" incomplete="true"/>
-    <testcase name="after_2_3_5_is_7" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" incomplete="true"/>
-    <testcase name="after_2_3_is_5" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" incomplete="true"/>
-    <testcase name="after_nothing_is_2" classname="test.numbers.PrimeNumbersCalculatorTest.GetNextPrimeNumber.TestResult" incomplete="true"/>
-  </testsuite>
-</testrun>

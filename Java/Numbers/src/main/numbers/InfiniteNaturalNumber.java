@@ -1,6 +1,7 @@
 package main.numbers;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -61,8 +62,13 @@ public class InfiniteNaturalNumber implements Cloneable {
 	}
 
 	public InfiniteNaturalNumber(byte numberBetween0And9) {
-		throwExceptionIfNotValidDigit(numberBetween0And9);
 		addDigitAtUnit(numberBetween0And9);
+	}
+
+	public InfiniteNaturalNumber(Collection<Byte> numbersBetween0And9) {
+		for (Byte numberBetween0And9 : numbersBetween0And9) {
+			addDigitAtUnit(numberBetween0And9);
+		}
 	}
 
 	public InfiniteNaturalNumber(String asString) {
@@ -213,9 +219,8 @@ public class InfiniteNaturalNumber implements Cloneable {
 	}
 
 	public boolean isEven() {
-		int unitDigit = getUnitDigit();
-		return unitDigit == (byte) 0 || unitDigit == (byte) 2 || unitDigit == (byte) 4 || unitDigit == (byte) 6
-				|| unitDigit == (byte) 8;
+		byte unitDigit = getUnitDigit();
+		return unitDigit == 0 || unitDigit == 2 || unitDigit == 4 || unitDigit == 6 || unitDigit == 8;
 	}
 
 	public boolean isOdd() {
@@ -230,16 +235,16 @@ public class InfiniteNaturalNumber implements Cloneable {
 			if (this.getNumberOfDigits() > 1) {
 				return getBase10DigitsAddition().isMultipleOf(THREE);
 			} else {
-				int unitDigit = getUnitDigit();
-				return unitDigit == (byte) 3 || unitDigit == (byte) 6 || unitDigit == (byte) 9;
+				byte unitDigit = getUnitDigit();
+				return unitDigit == 3 || unitDigit == 6 || unitDigit == 9;
 			}
 		}
 		if (divisor.equals(FIVE)) {
-			int unitDigit = getUnitDigit();
+			byte unitDigit = getUnitDigit();
 			if (getNumberOfDigits() > 1) {
-				return unitDigit == (byte) 0 || unitDigit == (byte) 5;
+				return unitDigit == 0 || unitDigit == 5;
 			} else {
-				return unitDigit == (byte) 5;
+				return unitDigit == 5;
 			}
 		}
 		return restOfDivisionBy(divisor).equals(ZERO);
@@ -457,7 +462,7 @@ public class InfiniteNaturalNumber implements Cloneable {
 		return digits.size();
 	}
 
-	public int getUnitDigit() {
+	public byte getUnitDigit() {
 		return digits.get(digits.size() - 1);
 	}
 
@@ -489,6 +494,7 @@ public class InfiniteNaturalNumber implements Cloneable {
 	}
 
 	public void addDigitAtUnit(byte digit) {
+		throwExceptionIfNotValidDigit(digit);
 		digits.add(digit);
 		uniquedigits.add(digit);
 	}
