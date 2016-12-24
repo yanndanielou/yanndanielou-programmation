@@ -523,6 +523,25 @@ public class InfiniteNaturalNumberTest {
 							number = new InfiniteNaturalNumber("2053");
 							expectedResult = false;
 						}
+
+						@Test
+						public void for_49999_returns_false() {
+							number = new InfiniteNaturalNumber("49999");
+							expectedResult = false;
+						}
+
+						@Test
+						public void for_2power20_returns_true() {
+							number = new InfiniteNaturalNumber("1048576");
+							expectedResult = true;
+						}
+
+						@Ignore
+						@Test
+						public void for_2power24_returns_true() {
+							number = new InfiniteNaturalNumber("33554432");
+							expectedResult = true;
+						}
 					}
 				}
 			}
