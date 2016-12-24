@@ -357,8 +357,25 @@ public class InfiniteNaturalNumber implements Cloneable {
 	}
 
 	public boolean hasOnlyOneDigitPrimeDivisors() {
+		List<InfiniteNaturalNumber> primeDivisors = new ArrayList<InfiniteNaturalNumber>();
 
-		return true;
+		InfiniteNaturalNumber remainingNumber = new InfiniteNaturalNumber(this);
+
+		while (true) {
+			InfiniteNaturalNumber nextPrimeDivisor = remainingNumber.getNextPrimeDivisor(primeDivisors, TEN);
+			if (nextPrimeDivisor == null) {
+				if (remainingNumber.getNumberOfDigits() > 1) {
+					return false;
+				}
+			}
+			primeDivisors.add(nextPrimeDivisor);
+			remainingNumber = remainingNumber.dividedBy(nextPrimeDivisor);
+
+			if (remainingNumber.equals(ONE)) {
+				return true;
+			}
+		}
+
 	}
 
 	/*
@@ -381,12 +398,18 @@ public class InfiniteNaturalNumber implements Cloneable {
 	}
 
 	private InfiniteNaturalNumber getNextPrimeDivisor(List<InfiniteNaturalNumber> primeDivisors) {
+		return getNextPrimeDivisor(primeDivisors, null);
+	}
+
+	private InfiniteNaturalNumber getNextPrimeDivisor(List<InfiniteNaturalNumber> primeDivisors,
+			InfiniteNaturalNumber maxPotentialPrimeDivisorToTest) {
 		InfiniteNaturalNumber potentialPrimeNumberDivisor;
 		List<InfiniteNaturalNumber> primeNumbers = CollectionUtils.emptyList();
 
 		while (true) {
 
-			potentialPrimeNumberDivisor = PrimeNumbersCalculator.getNextPrimeNumber(primeNumbers);
+			potentialPrimeNumberDivisor = PrimeNumbersCalculator.getNextPrimeNumber(primeNumbers,
+					maxPotentialPrimeDivisorToTest);
 			if (potentialPrimeNumberDivisor == null || !potentialPrimeNumberDivisor.isSmallerOrEqualsTo(this)) {
 				break;
 			}

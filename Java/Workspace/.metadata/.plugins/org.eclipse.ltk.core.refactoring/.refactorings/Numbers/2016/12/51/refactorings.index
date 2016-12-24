@@ -33,3 +33,4 @@
 1482590795815	Extract local variable 'unitDigit'
 1482590892815	Rename local variable 'base10DigitsMultiplication'
 1482591833808	Extract local variable 'allPrimeDivisorsSmallerThan'
+1482595102537	Rename local variable 'primeDivisors'

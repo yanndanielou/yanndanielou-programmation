@@ -2,7 +2,9 @@ package main.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public final class CollectionUtils {
 
@@ -20,6 +22,10 @@ public final class CollectionUtils {
 		}
 		return ret;
 	}
+
+	  public static <T> Set<T> emptySet() {
+	    return new HashSet<>();
+	  }
 
 	public static <T> List<T> emptyList() {
 		return new ArrayList<>();
