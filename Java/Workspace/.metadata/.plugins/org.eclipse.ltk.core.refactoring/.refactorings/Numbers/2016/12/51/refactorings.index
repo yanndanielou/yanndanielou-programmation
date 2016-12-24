@@ -18,3 +18,12 @@
 1482521089901	Extract local variable 'result'
 1482573850746	Extract local variable 'byte1'
 1482574996275	Extract local variable 'times'
+1482576985358	Rename method 'asAtLeastAsManuDigitsThan'
+1482577514795	Delete element
+1482577529066	Copy compilation unit
+1482578049256	Copy compilation unit
+1482578055263	Rename type 'PrimeNumbersCalculator'
+1482578304595	Extract local variable 'primeNumbersFound'
+1482578663432	Extract local variable 'index'
+1482578704450	Extract local variable 'subList'
+1482579728986	Rename local variable 'i'

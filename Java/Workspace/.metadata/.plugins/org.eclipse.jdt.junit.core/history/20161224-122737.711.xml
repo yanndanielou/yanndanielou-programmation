@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="PrimeNumbersCalculatorTest" project="Numbers" tests="4" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="test.numbers.PrimeNumbersCalculatorTest" incomplete="true">
+    <testsuite name="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" incomplete="true">
+      <testcase name="ZERO_returnsEmpty" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" time="0.01"/>
+      <testcase name="Two_returns_2" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" incomplete="true"/>
+      <testcase name="Three_returns_2_3" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" incomplete="true"/>
+      <testcase name="One_returnsEmpty" classname="test.numbers.PrimeNumbersCalculatorTest.FindPrimeNumbersUpTo" incomplete="true"/>
+    </testsuite>
+  </testsuite>
+</testrun>

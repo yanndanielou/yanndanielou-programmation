@@ -49,7 +49,6 @@ public class InfiniteNaturalNumber implements Cloneable {
 	private Set<Byte> uniquedigits = new HashSet<Byte>();
 
 	private InfiniteNaturalNumber() {
-		// this("0");
 	}
 
 	public InfiniteNaturalNumber(InfiniteNaturalNumber toClone) {
@@ -81,7 +80,7 @@ public class InfiniteNaturalNumber implements Cloneable {
 
 	//
 
-	public InfiniteNaturalNumber asAtLeastAsManuDigitsThan(InfiniteNaturalNumber rhs) {
+	public InfiniteNaturalNumber asAtLeastAsManyDigitsThan(InfiniteNaturalNumber rhs) {
 		if (getNumberOfDigits() >= rhs.getNumberOfDigits()) {
 			return this;
 		} else {
@@ -96,8 +95,8 @@ public class InfiniteNaturalNumber implements Cloneable {
 	// Operations
 
 	public InfiniteNaturalNumber plus(InfiniteNaturalNumber rhs) {
-		InfiniteNaturalNumber cloneLhs = this.asAtLeastAsManuDigitsThan(rhs);
-		InfiniteNaturalNumber cloneRhs = rhs.asAtLeastAsManuDigitsThan(this);
+		InfiniteNaturalNumber cloneLhs = this.asAtLeastAsManyDigitsThan(rhs);
+		InfiniteNaturalNumber cloneRhs = rhs.asAtLeastAsManyDigitsThan(this);
 
 		InfiniteNaturalNumber ret = new InfiniteNaturalNumber();
 
@@ -134,8 +133,8 @@ public class InfiniteNaturalNumber implements Cloneable {
 			throw new IllegalStateException(getClass().getName() + " cannot be negative");
 		}
 
-		InfiniteNaturalNumber cloneLhs = this.asAtLeastAsManuDigitsThan(rhs);
-		InfiniteNaturalNumber cloneRhs = rhs.asAtLeastAsManuDigitsThan(this);
+		InfiniteNaturalNumber cloneLhs = this.asAtLeastAsManyDigitsThan(rhs);
+		InfiniteNaturalNumber cloneRhs = rhs.asAtLeastAsManyDigitsThan(this);
 
 		InfiniteNaturalNumber ret = new InfiniteNaturalNumber();
 		boolean carry = false;
@@ -209,6 +208,16 @@ public class InfiniteNaturalNumber implements Cloneable {
 		}
 
 		return quotient;
+	}
+
+	public boolean isMultipleOf(InfiniteNaturalNumber divisor) {
+		return restOfDivisionBy(divisor).equals(ZERO);
+	}
+
+	public InfiniteNaturalNumber restOfDivisionBy(InfiniteNaturalNumber divisor) {
+		InfiniteNaturalNumber quotient = this.dividedBy(divisor);
+		InfiniteNaturalNumber rest = this.minus(quotient.times(divisor));
+		return rest;
 	}
 
 	// base 10 operations
@@ -301,6 +310,15 @@ public class InfiniteNaturalNumber implements Cloneable {
 		return false;
 	}
 
+	/*
+	 * 
+	 * 
+	 */
+	/*
+	 * private List<InfiniteNaturalNumber> getAllPrimeDivisors() {
+	 * 
+	 * }
+	 */
 	private void removeUselessZeroDigits() {
 		while (digits.size() > 1 && digits.get(0) == 0) {
 			removeDigitAtHighestPosition();

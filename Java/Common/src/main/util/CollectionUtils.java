@@ -20,4 +20,8 @@ public final class CollectionUtils {
 		}
 		return ret;
 	}
+
+	public static <T> List<T> emptyList() {
+		return new ArrayList<>();
+	}
 }

@@ -49,9 +49,21 @@ public class BasicMatchers {
 		return org.hamcrest.collection.IsIterableContainingInOrder.<E>contains(items);
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static <E> org.hamcrest.Matcher<java.lang.Iterable<? extends E>> containsExactlyAll(
+			final Collection<? super E> collection) {
+		Matcher ret = containsExactly(collection.toArray());
+		return ret;
+	}
+
 	@SafeVarargs
 	public static <E> org.hamcrest.Matcher<java.lang.Iterable<? extends E>> containsExactly(
 			org.hamcrest.Matcher<? super E>... itemMatchers) {
+		return org.hamcrest.collection.IsIterableContainingInOrder.<E>contains(itemMatchers);
+	}
+
+	public static <E> org.hamcrest.Matcher<java.lang.Iterable<? extends E>> containsExactly(
+			java.util.List<org.hamcrest.Matcher<? super E>> itemMatchers) {
 		return org.hamcrest.collection.IsIterableContainingInOrder.<E>contains(itemMatchers);
 	}
 

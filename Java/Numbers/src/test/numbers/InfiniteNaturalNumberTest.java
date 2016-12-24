@@ -292,6 +292,47 @@ public class InfiniteNaturalNumberTest {
 			}
 
 		}
+
+		public class RestOfDivision {
+
+			private InfiniteNaturalNumber number;
+			private InfiniteNaturalNumber divisor;
+
+			@After
+			public void after() {
+				InfiniteNaturalNumber result = number.restOfDivisionBy(divisor);
+				assertThat(result, is(expectedResult));
+			}
+
+			@Test
+			public void _of_10_by_3_is_1() {
+				number = TEN;
+				divisor = THREE;
+				expectedResult = ONE;
+			}
+
+			@Test
+			public void _of_10_by_10_is_0() {
+				number = TEN;
+				divisor = TEN;
+				expectedResult = ZERO;
+			}
+
+			@Test
+			public void _of_10_by_11_is_10() {
+				number = TEN;
+				divisor = ELEVEN;
+				expectedResult = TEN;
+			}
+
+			@Test
+			public void _of_100_by_11_is_1() {
+				number = HUNDRED;
+				divisor = ELEVEN;
+				expectedResult = ONE;
+			}
+		}
+
 	}
 
 	public class Base10DigitsInversion {
