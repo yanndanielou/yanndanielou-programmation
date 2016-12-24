@@ -21,6 +21,7 @@ import org.junit.runner.RunWith;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import main.MultiplicationPersistenceCalculator;
+import main.junit.PerfTestScenario;
 import main.numbers.InfiniteNaturalNumber;
 import main.util.FormatterUtils;
 
@@ -77,14 +78,12 @@ public class MultiplicationPersistenceCalculatorTest {
 		}
 	}
 
-	public class MultiplicativePersistence {
+	public class MultiplicativePersistence extends PerfTestScenario {
 
 		@After
 		public void after() {
-			LocalTime now = LocalTime.now();
-			Duration duration = Duration.between(startTime, now);
-			System.out.println(
-					"MultiplicativePersistence was calculated in " + FormatterUtils.GetDurationAsString(duration));
+			System.out.println("MultiplicativePersistence was calculated in "
+					+ FormatterUtils.GetDurationAsString(getTestDuration()));
 		}
 
 		@Test

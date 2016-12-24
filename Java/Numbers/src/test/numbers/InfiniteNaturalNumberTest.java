@@ -24,12 +24,18 @@ import static main.numbers.InfiniteNaturalNumber.TWO;
 import static main.numbers.InfiniteNaturalNumber.ZERO;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import java.time.Duration;
+import java.time.LocalTime;
+
+import org.junit.After;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import de.bechte.junit.runners.context.HierarchicalContextRunner;
+import main.junit.PerfTestScenario;
 import main.numbers.InfiniteNaturalNumber;
+import main.util.FormatterUtils;
 
 @RunWith(HierarchicalContextRunner.class)
 public class InfiniteNaturalNumberTest {
@@ -40,6 +46,8 @@ public class InfiniteNaturalNumberTest {
 	}
 
 	public class ArithmeticalOperations {
+
+		private InfiniteNaturalNumber expectedResult;
 
 		public class Powers {
 
@@ -163,29 +171,80 @@ public class InfiniteNaturalNumberTest {
 
 			}
 
-			public class Multiplication {
+			public class Multiplication extends PerfTestScenario {
+
+				private InfiniteNaturalNumber factor1;
+				private InfiniteNaturalNumber factor2;
+
+				@After
+				public void after() {
+					InfiniteNaturalNumber result = factor1.times(factor2);
+					System.out.println("Multiplication of " + factor1 + " and " + factor2 + " calculated in "
+							+ FormatterUtils.GetDurationAsString(getTestDuration()));
+
+					assertThat(result, is(expectedResult));
+				}
+
 				@Test
 				public void tenTimesZeroIsZero() {
-					InfiniteNaturalNumber multiplicationResult = TEN.times(ZERO);
-					assertThat(multiplicationResult, is(ZERO));
+					factor1 = TEN;
+					factor2 = ZERO;
+					expectedResult = ZERO;
 				}
 
 				@Test
 				public void tenTimesOneIsTen() {
-					InfiniteNaturalNumber multiplicationResult = TEN.times(ONE);
-					assertThat(multiplicationResult, is(TEN));
+					factor1 = TEN;
+					factor2 = ONE;
+					expectedResult = TEN;
 				}
 
 				@Test
 				public void tenTimesTwoIsTwenty() {
-					InfiniteNaturalNumber multiplicationResult = TEN.times(TWO);
-					assertThat(multiplicationResult, is(TWENTY));
+					factor1 = TEN;
+					factor2 = TWO;
+					expectedResult = TWENTY;
 				}
 
 				@Test
 				public void tenTimesTenIsHundred() {
-					InfiniteNaturalNumber multiplicationResult = TEN.times(TEN);
-					assertThat(multiplicationResult, is(HUNDRED));
+					factor1 = TEN;
+					factor2 = TEN;
+					expectedResult = HUNDRED;
+				}
+
+				public class PerfTests extends PerfTestScenario {
+					@Test
+					public void test_10_000_times_2() {
+						factor1 = new InfiniteNaturalNumber("10_000");
+						factor2 = new InfiniteNaturalNumber("2");
+
+						expectedResult = new InfiniteNaturalNumber("20_000");
+					}
+
+					@Test
+					public void test_2_times_10_000() {
+						factor1 = new InfiniteNaturalNumber("2");
+						factor2 = new InfiniteNaturalNumber("10_000");
+
+						expectedResult = new InfiniteNaturalNumber("20_000");
+					}
+
+					@Test
+					public void test_10_000_times_10_000() {
+						factor1 = new InfiniteNaturalNumber("10_000");
+						factor2 = new InfiniteNaturalNumber("10_000");
+
+						expectedResult = new InfiniteNaturalNumber("100_000_000");
+					}
+
+					@Test
+					public void test_1_000_000_times_1_000_000() {
+						factor1 = new InfiniteNaturalNumber("1_000_000");
+						factor2 = new InfiniteNaturalNumber("1_000_000");
+
+						expectedResult = new InfiniteNaturalNumber("1_000_000_000_000");
+					}
 				}
 			}
 
@@ -482,4 +541,5 @@ public class InfiniteNaturalNumberTest {
 			}
 		}
 	}
+
 }
