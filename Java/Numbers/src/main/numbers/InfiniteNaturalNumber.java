@@ -2,7 +2,9 @@ package main.numbers;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class InfiniteNaturalNumber implements Cloneable {
 
@@ -43,6 +45,9 @@ public class InfiniteNaturalNumber implements Cloneable {
 	// ordered from the bigger digit to the unit
 	private List<Byte> digits = new ArrayList<Byte>();
 
+	// List of unique digits in base 10 (can contain up to 10 items)
+	private Set<Byte> uniquedigits = new HashSet<Byte>();
+
 	private InfiniteNaturalNumber() {
 		// this("0");
 	}
@@ -56,7 +61,7 @@ public class InfiniteNaturalNumber implements Cloneable {
 
 	public InfiniteNaturalNumber(byte numberBetween0And9) {
 		throwExceptionIfNotValidDigit(numberBetween0And9);
-		digits.add(numberBetween0And9);
+		addDigitAtUnit(numberBetween0And9);
 	}
 
 	public InfiniteNaturalNumber(String asString) {
@@ -66,9 +71,8 @@ public class InfiniteNaturalNumber implements Cloneable {
 				continue;
 			}
 			if (isDigitAllowed(digitAsChar)) {
-				digits.add(digitAsByte(digitAsChar));
+				addDigitAtUnit(digitAsByte(digitAsChar));
 			} else {
-				digits.clear();
 				throw new IllegalStateException(
 						"Cannot create number:" + asString + " because digit:" + digitAsChar + " is not allowed");
 			}
@@ -83,7 +87,7 @@ public class InfiniteNaturalNumber implements Cloneable {
 		} else {
 			InfiniteNaturalNumber clone = new InfiniteNaturalNumber(this);
 			while (clone.getNumberOfDigits() < rhs.getNumberOfDigits()) {
-				clone.digits.add(0, (byte) 0);
+				clone.addDigitAtHighestPosition((byte) 0);
 			}
 			return clone;
 		}
@@ -112,11 +116,11 @@ public class InfiniteNaturalNumber implements Cloneable {
 			} else
 				carry = false;
 
-			ret.digits.add(0, sumDigits);
+			ret.addDigitAtHighestPosition(sumDigits);
 		}
 
 		if (carry)
-			ret.digits.add(0, (byte) 1);
+			ret.addDigitAtHighestPosition((byte) 1);
 
 		return ret;
 	}
@@ -153,11 +157,8 @@ public class InfiniteNaturalNumber implements Cloneable {
 				carry = false;
 			}
 
-			ret.digits.add(0, difference);
+			ret.addDigitAtHighestPosition(difference);
 		}
-
-		// if (carry)
-		// ret.digits.add((byte) 1);
 
 		ret.removeUselessZeroDigits();
 
@@ -171,8 +172,12 @@ public class InfiniteNaturalNumber implements Cloneable {
 	public InfiniteNaturalNumber times(InfiniteNaturalNumber factor2) {
 		InfiniteNaturalNumber res = ZERO;
 
-		for (InfiniteNaturalNumber i = ZERO; i.isStrictlySmallerThan(this); i = i.plus(ONE)) {
-			res = res.plus(factor2);
+		InfiniteNaturalNumber factorWithLessDigits = factor2.getNumberOfDigits() < this.getNumberOfDigits() ? factor2
+				: this;
+		InfiniteNaturalNumber factorWithMostDigits = factor2 == factorWithLessDigits ? this : factor2;
+
+		for (InfiniteNaturalNumber i = ZERO; i.isStrictlySmallerThan(factorWithLessDigits); i = i.plus(ONE)) {
+			res = res.plus(factorWithMostDigits);
 		}
 
 		return res;
@@ -182,7 +187,7 @@ public class InfiniteNaturalNumber implements Cloneable {
 		InfiniteNaturalNumber ret = new InfiniteNaturalNumber(this);
 
 		for (int i = 0; i < exponent; i++)
-			ret.digits.add((byte) 0);
+			ret.addDigitAtUnit((byte) 0);
 
 		return ret;
 	}
@@ -297,11 +302,9 @@ public class InfiniteNaturalNumber implements Cloneable {
 	}
 
 	private void removeUselessZeroDigits() {
-
 		while (digits.size() > 1 && digits.get(0) == 0) {
-			digits.remove(0);
+			removeDigitAtHighestPosition();
 		}
-
 	}
 
 	private byte digitAsByte(char digit) {
@@ -335,7 +338,7 @@ public class InfiniteNaturalNumber implements Cloneable {
 
 	public boolean containsDigit(byte digit) {
 		throwExceptionIfNotValidDigit(digit);
-		return digits.contains(digit);
+		return uniquedigits.contains(digit);
 	}
 
 	public boolean containsDigit(int digit) {
@@ -358,6 +361,24 @@ public class InfiniteNaturalNumber implements Cloneable {
 			}
 		}
 		return false;
+	}
+
+	public void addDigitAtUnit(byte digit) {
+		digits.add(digit);
+		uniquedigits.add(digit);
+	}
+
+	public void removeDigitAtHighestPosition() {
+		Byte digitToRemove = digits.get(0);
+		digits.remove(0);
+		if (!digits.contains(digitToRemove)) {
+			uniquedigits.remove(digitToRemove);
+		}
+	}
+
+	public void addDigitAtHighestPosition(byte digit) {
+		digits.add(0, digit);
+		uniquedigits.add(digit);
 	}
 
 	private void throwExceptionIfNotValidDigit(byte digit) {

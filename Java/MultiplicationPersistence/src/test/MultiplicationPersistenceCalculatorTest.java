@@ -174,7 +174,6 @@ public class MultiplicationPersistenceCalculatorTest {
 			assertThat(multiplicationPersistence, is(9));
 		}
 
-		@Ignore
 		@Test
 		public void MultiplicativePersistence_of_3778888999_is_10() {
 			int multiplicationPersistence = multiplicationPersistenceCalculator
@@ -182,7 +181,6 @@ public class MultiplicationPersistenceCalculatorTest {
 			assertThat(multiplicationPersistence, is(10));
 		}
 
-		@Ignore
 		@Test
 		public void MultiplicativePersistence_of_277777788888899_is_11() {
 			int multiplicationPersistence = multiplicationPersistenceCalculator

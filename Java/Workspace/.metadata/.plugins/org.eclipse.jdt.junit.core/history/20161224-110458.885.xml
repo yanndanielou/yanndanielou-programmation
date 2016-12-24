@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MultiplicationPersistenceCalculatorTest" project="MultiplicationPersistence" tests="21" started="21" failures="0" errors="0" ignored="2">
+  <testsuite name="test.MultiplicationPersistenceCalculatorTest" time="0.855">
+    <testsuite name="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.847">
+      <testcase name="MultiplicativePersistence_of_6788_is_6" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.016"/>
+      <testcase name="MultiplicativePersistence_of_3778888999_is_10" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.001" ignored="true"/>
+      <testcase name="MultiplicativePersistence_of_6778892_is_8" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.25"/>
+      <testcase name="MultiplicativePersistence_of_26888999_is_9" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.537"/>
+      <testcase name="MultiplicativePersistence_of_10_is_1" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.001"/>
+      <testcase name="MultiplicativePersistence_of_11_is_1" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.0"/>
+      <testcase name="MultiplicativePersistence_of_0_is_0" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.001"/>
+      <testcase name="MultiplicativePersistence_of_4_is_0" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.0"/>
+      <testcase name="MultiplicativePersistence_of_25_is_2" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.001"/>
+      <testcase name="MultiplicativePersistence_of_77_is_4" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.001"/>
+      <testcase name="MultiplicativePersistence_of_679_is_5" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.0"/>
+      <testcase name="MultiplicativePersistence_of_277777788888899_is_11" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.0" ignored="true"/>
+      <testcase name="MultiplicativePersistence_of_2677889_is_8" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.035"/>
+      <testcase name="MultiplicativePersistence_of_39_is_3" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.001"/>
+      <testcase name="MultiplicativePersistence_of_68889_is_7" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.003"/>
+    </testsuite>
+    <testsuite name="test.MultiplicationPersistenceCalculatorTest.MultiplicativeSuite" time="0.008">
+      <testcase name="MultiplicativeSuite_of_4_is_empty" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativeSuite" time="0.003"/>
+      <testcase name="MultiplicativeSuite_of_0_is_empty" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativeSuite" time="0.001"/>
+      <testcase name="MultiplicativeSuite_of_10_is_0" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativeSuite" time="0.002"/>
+      <testcase name="MultiplicativeSuite_of_11_is_1" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativeSuite" time="0.001"/>
+      <testcase name="MultiplicativeSuite_of_25_is_10_0" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativeSuite" time="0.0"/>
+      <testcase name="MultiplicativeSuite_of_39_is_27_14_4" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativeSuite" time="0.001"/>
+    </testsuite>
+  </testsuite>
+</testrun>

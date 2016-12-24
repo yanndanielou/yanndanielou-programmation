@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MultiplicationPersistenceCalculatorTest" project="MultiplicationPersistence" tests="21" started="3" failures="0" errors="18" ignored="1">
+  <testsuite name="test.MultiplicationPersistenceCalculatorTest" time="75.735">
+    <testsuite name="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="75.73">
+      <testcase name="MultiplicativePersistence_of_6788_is_6" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.019"/>
+      <testcase name="MultiplicativePersistence_of_3778888999_is_10" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="75.701"/>
+      <testcase name="MultiplicativePersistence_of_6778892_is_8" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativePersistence_of_26888999_is_9" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativePersistence_of_10_is_1" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativePersistence_of_11_is_1" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativePersistence_of_0_is_0" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativePersistence_of_4_is_0" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativePersistence_of_25_is_2" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativePersistence_of_77_is_4" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativePersistence_of_679_is_5" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativePersistence_of_277777788888899_is_11" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence" time="0.001" ignored="true"/>
+      <testcase name="MultiplicativePersistence_of_2677889_is_8" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativePersistence_of_39_is_3" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativePersistence_of_68889_is_7" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativePersistence">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+    </testsuite>
+    <testsuite name="test.MultiplicationPersistenceCalculatorTest.MultiplicativeSuite">
+      <testcase name="MultiplicativeSuite_of_4_is_empty" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativeSuite">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativeSuite_of_0_is_empty" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativeSuite">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativeSuite_of_10_is_0" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativeSuite">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativeSuite_of_11_is_1" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativeSuite">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativeSuite_of_25_is_10_0" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativeSuite">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+      <testcase name="MultiplicativeSuite_of_39_is_27_14_4" classname="test.MultiplicationPersistenceCalculatorTest.MultiplicativeSuite">
+        <error>org.junit.runner.notification.StoppedByUserException&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestStarted(RunNotifier.java:116)&#13;
+	at org.junit.internal.runners.model.EachTestNotifier.fireTestStarted(EachTestNotifier.java:42)&#13;
+	at de.bechte.junit.runners.context.statements.MethodStatementExecutor.beforeExecution(MethodStatementExecutor.java:14)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:27)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:83)&#13;
+	at de.bechte.junit.runners.context.processing.MethodExecutor.run(MethodExecutor.java:57)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:26)&#13;
+	at de.bechte.junit.runners.context.processing.ContextExecutor.run(ContextExecutor.java:15)&#13;
+	at de.bechte.junit.runners.context.statements.RunChildren.evaluate(RunChildren.java:38)&#13;
+	at de.bechte.junit.runners.context.statements.RunAll.evaluate(RunAll.java:27)&#13;
+	at de.bechte.junit.runners.context.statements.StatementExecutor.execute(StatementExecutor.java:28)&#13;
+	at de.bechte.junit.runners.context.HierarchicalContextRunner.run(HierarchicalContextRunner.java:134)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:678)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)&#13;
+&#13;
+</error>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testrun>

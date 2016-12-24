@@ -26,5 +26,4 @@ INDEX VERSION 1.129+D:\temp\yanndanielou-programmation\Java\Workspace\.metadata\
 3248486245.index
 1583927216.index
 2017505986.index
-3927731188.index
 2167310551.index
