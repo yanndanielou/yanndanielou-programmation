@@ -89,6 +89,25 @@ public class MultiplicationPersistenceCalculatorTest {
 					multiplicative = new InfiniteNaturalNumber("39");
 				}
 			}
+
+			public class PerfTest extends PerfTestScenario {
+
+				@After
+				public void after() {
+					compute();
+					check();
+					System.out.println("NoNumberHasThisMultiplicative for " + multiplicative + " was calculated in "
+							+ FormatterUtils.GetDurationAsString(getTestDuration()));
+
+				}
+
+				@Ignore
+				@Test
+				public void _277777788888899() {
+					multiplicative = new InfiniteNaturalNumber("277777788888899");
+				}
+
+			}
 		}
 	}
 
