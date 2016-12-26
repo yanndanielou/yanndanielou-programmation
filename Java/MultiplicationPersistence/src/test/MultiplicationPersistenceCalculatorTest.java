@@ -3,6 +3,8 @@ package test;
 import static main.matcher.BasicMatchers.containsExactly;
 import static main.matcher.BasicMatchers.empty;
 import static main.matcher.BasicMatchers.is;
+import static main.matcher.BasicMatchers.notNullValue;
+import static main.matcher.BasicMatchers.nullValue;
 import static main.numbers.InfiniteNaturalNumber.ELEVEN;
 import static main.numbers.InfiniteNaturalNumber.FOUR;
 import static main.numbers.InfiniteNaturalNumber.ONE;
@@ -10,8 +12,6 @@ import static main.numbers.InfiniteNaturalNumber.TEN;
 import static main.numbers.InfiniteNaturalNumber.ZERO;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import java.time.Duration;
-import java.time.LocalTime;
 import java.util.List;
 
 import org.junit.After;
@@ -30,7 +30,67 @@ public class MultiplicationPersistenceCalculatorTest {
 
 	private MultiplicationPersistenceCalculator multiplicationPersistenceCalculator = new MultiplicationPersistenceCalculator();
 
-	LocalTime startTime = LocalTime.now();
+	public class FindNumberHavingMultiplicative {
+
+		private InfiniteNaturalNumber multiplicative;
+		private InfiniteNaturalNumber numberHavingMultiplicativeFound;
+
+		protected void compute() {
+			numberHavingMultiplicativeFound = multiplicationPersistenceCalculator
+					.findNumberHavingMultiplicative(multiplicative);
+		}
+
+		public class AtLeastOneNumberHasThisMultiplicative {
+
+			private int expectedPersistenceOfNumberFound;
+
+			protected void check() {
+				assertThat(numberHavingMultiplicativeFound, is(notNullValue()));
+				int multiplicationPersistence = multiplicationPersistenceCalculator
+						.getMultiplicationPersistence(numberHavingMultiplicativeFound);
+				assertThat(multiplicationPersistence, is(expectedPersistenceOfNumberFound));
+			}
+
+			@After
+			public void after() {
+				compute();
+				check();
+			}
+
+			@Test
+			public void of_25_has_persistence_3() {
+				multiplicative = new InfiniteNaturalNumber("25");
+				expectedPersistenceOfNumberFound = 3;
+			}
+
+		}
+
+		public class NoNumberHasThisMultiplicative {
+
+			protected void check() {
+				assertThat(numberHavingMultiplicativeFound, is(nullValue()));
+			}
+
+			public class TestResult {
+
+				@After
+				public void after() {
+					compute();
+					check();
+				}
+
+				@Test
+				public void _37() {
+					multiplicative = new InfiniteNaturalNumber("37");
+				}
+
+				@Test
+				public void _39() {
+					multiplicative = new InfiniteNaturalNumber("39");
+				}
+			}
+		}
+	}
 
 	public class MultiplicativeSuite {
 

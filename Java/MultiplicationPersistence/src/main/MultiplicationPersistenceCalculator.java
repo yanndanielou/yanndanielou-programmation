@@ -30,7 +30,9 @@ public class MultiplicationPersistenceCalculator {
 				byte divisorAsDigit = allPrimeDivisor.getUnitDigit();
 				numbersAsListOfBytes.add(divisorAsDigit);
 			}
-			return new InfiniteNaturalNumber(numbersAsListOfBytes);
+			InfiniteNaturalNumber ret = new InfiniteNaturalNumber(numbersAsListOfBytes);
+			System.out.println(ret + " has multiplicative:" + multiplicative);
+			return ret;
 		}
 		return null;
 	}
