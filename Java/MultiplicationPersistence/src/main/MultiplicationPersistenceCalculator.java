@@ -7,6 +7,8 @@ import java.util.Collection;
 import java.util.List;
 
 import main.numbers.InfiniteNaturalNumber;
+import main.numbers.JIntegerNaturalNumber;
+import main.numbers.NaturalNumber;
 import main.util.CollectionUtils;
 import main.util.FormatterUtils;
 
@@ -15,6 +17,63 @@ public class MultiplicationPersistenceCalculator {
 	private LocalTime startTime = LocalTime.now();
 	private int maxMultiplicationPersistenceFound = 0;
 	private boolean activateDebugLogs = true;
+
+	public JIntegerNaturalNumber findNumberHavingMultiplicativeOfNumberWithDigitsInAnyOrder(String numberAsString) {
+		List<Byte> asListOfDigits = NaturalNumber.asListOfDigits(numberAsString);
+		return findNumberHavingMultiplicativeOfNumberWithDigitsInAnyOrder(asListOfDigits);
+	}
+
+	private JIntegerNaturalNumber findNumberHavingMultiplicativeOfNumberWithDigitsInAnyOrder(List<Byte> listOfDigits) {
+		return findNumberHavingMultiplicativeOfNumberWithDigitsInAnyOrder(listOfDigits, CollectionUtils.emptyList());
+	}
+
+	private JIntegerNaturalNumber findNumberHavingMultiplicativeOfNumberWithDigitsInAnyOrder(List<Byte> listOfDigits,
+			List<Integer> previouslyAlreadyUsedIndexes) {
+
+		if (previouslyAlreadyUsedIndexes.size() == listOfDigits.size()) {
+			// construct number
+			List<Byte> numberAsDigits = CollectionUtils.emptyList();
+			for (int index : previouslyAlreadyUsedIndexes) {
+				numberAsDigits.add(listOfDigits.get(index));
+			}
+			JIntegerNaturalNumber number = new JIntegerNaturalNumber(numberAsDigits);
+			JIntegerNaturalNumber findNumberHavingMultiplicative = findNumberHavingMultiplicative(number);
+			return findNumberHavingMultiplicative;
+
+		} else {
+			for (int i = 0; i < listOfDigits.size(); i++) {
+				if (!previouslyAlreadyUsedIndexes.contains(i)) {
+					List<Integer> alreadyUsedIndexes = CollectionUtils.emptyList();
+					alreadyUsedIndexes.addAll(previouslyAlreadyUsedIndexes);
+					alreadyUsedIndexes.add(i);
+					JIntegerNaturalNumber numberHavingSearchedMultiplicative = findNumberHavingMultiplicativeOfNumberWithDigitsInAnyOrder(
+							listOfDigits, alreadyUsedIndexes);
+					if (numberHavingSearchedMultiplicative != null) {
+						return numberHavingSearchedMultiplicative;
+					}
+				}
+			}
+		}
+
+		return null;
+	}
+
+	public JIntegerNaturalNumber findNumberHavingMultiplicative(JIntegerNaturalNumber multiplicative) {
+		boolean hasOnlyOneDigitPrimeDivisors = multiplicative.hasOnlyOneDigitPrimeDivisors();
+		if (hasOnlyOneDigitPrimeDivisors) {
+			System.out.println(multiplicative + " has only one digits divisors!");
+			// We just have to concatenate all its divisors
+			List<JIntegerNaturalNumber> allPrimeDivisors = multiplicative.getAllPrimeDivisors();
+			System.out.println("Divisors are:" + allPrimeDivisors);
+			List<Byte> allPrimeDivisorsAsBytes = CollectionUtils.emptyList();
+			for (JIntegerNaturalNumber divisor : allPrimeDivisors) {
+				byte divisorAsByte = (byte) divisor.getValue();
+				allPrimeDivisorsAsBytes.add(divisorAsByte);
+			}
+			return new JIntegerNaturalNumber(allPrimeDivisorsAsBytes);
+		}
+		return null;
+	}
 
 	public InfiniteNaturalNumber findNumberHavingMultiplicative(InfiniteNaturalNumber multiplicative) {
 

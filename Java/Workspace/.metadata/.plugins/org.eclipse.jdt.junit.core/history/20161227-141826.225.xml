@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="JIntegerNaturalNumberTest" project="Numbers" tests="4" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="test.numbers.JIntegerNaturalNumberTest" incomplete="true">
+    <testsuite name="test.numbers.JIntegerNaturalNumberTest.Comparison" incomplete="true">
+      <testsuite name="test.numbers.JIntegerNaturalNumberTest.Comparison.Equal" incomplete="true">
+        <testcase name="oneAndTenAreNotEqual" classname="test.numbers.JIntegerNaturalNumberTest.Comparison.Equal" incomplete="true"/>
+        <testcase name="tenAndTwentyAreNotEqual" classname="test.numbers.JIntegerNaturalNumberTest.Comparison.Equal" incomplete="true"/>
+        <testcase name="sameNumberAreEquals" classname="test.numbers.JIntegerNaturalNumberTest.Comparison.Equal" incomplete="true"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="test.numbers.JIntegerNaturalNumberTest.Constructors" incomplete="true">
+      <testcase name="intAndListOfBytesConstructorsReturnSameNumber" classname="test.numbers.JIntegerNaturalNumberTest.Constructors" incomplete="true"/>
+    </testsuite>
+  </testsuite>
+</testrun>

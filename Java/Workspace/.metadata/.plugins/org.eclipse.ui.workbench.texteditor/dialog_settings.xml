@@ -6,20 +6,20 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="(byte)" key="selection"/>
+		<item value="InfiniteNaturalNumber" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="(byte)"/>
-			<item value="2003"/>
-			<item value="@Ignore"/>
-			<item value="Ignore"/>
-			<item value="ignore"/>
-			<item value="getAllPrimeDivisors"/>
-			<item value="has"/>
-			<item value="potentialPrimeNumberDivisor"/>
+			<item value="InfiniteNaturalNumber"/>
+			<item value="throw"/>
+			<item value="hasOnlyOneDigitPrimeDivisors"/>
+			<item value="Clone"/>
+			<item value="clone"/>
+			<item value="cloneOf"/>
+			<item value="getNextPrimeDivisor"/>
+			<item value="p"/>
 		</list>
 		<list key="replacehistory">
 			<item value="expectedResult"/>

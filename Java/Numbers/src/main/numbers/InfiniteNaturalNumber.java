@@ -71,24 +71,14 @@ public class InfiniteNaturalNumber implements Cloneable {
 		}
 	}
 
-	public InfiniteNaturalNumber(String asString) {
-		for (int i = 0; i < asString.length(); i++) {
-			char digitAsChar = asString.charAt(i);
-			if (isDigitIgnored(digitAsChar)) {
-				continue;
-			}
-			if (isDigitAllowed(digitAsChar)) {
-				addDigitAtUnit(digitAsByte(digitAsChar));
-			} else {
-				throw new IllegalStateException(
-						"Cannot create number:" + asString + " because digit:" + digitAsChar + " is not allowed");
-			}
+	public InfiniteNaturalNumber(String numberAsString) {
+		for (byte digit : NaturalNumber.asListOfDigits(numberAsString)) {
+			addDigitAtUnit(digit);
 		}
 	}
 
 	//
-
-	public InfiniteNaturalNumber asAtLeastAsManyDigitsThan(InfiniteNaturalNumber rhs) {
+	private InfiniteNaturalNumber asAtLeastAsManyDigitsThan(InfiniteNaturalNumber rhs) {
 		if (getNumberOfDigits() >= rhs.getNumberOfDigits()) {
 			return this;
 		} else {
@@ -431,31 +421,6 @@ public class InfiniteNaturalNumber implements Cloneable {
 		while (digits.size() > 1 && digits.get(0) == 0) {
 			removeDigitAtHighestPosition();
 		}
-	}
-
-	private byte digitAsByte(char digit) {
-		for (int i = 0; i < 10; i++) {
-			char iAsChar = (char) ('0' + i);
-			if (digit == iAsChar) {
-				byte ret = (byte) i;
-				return ret;
-			}
-		}
-		throw new IllegalStateException("Digit:" + digit + " is not valid");
-	}
-
-	private boolean isDigitIgnored(char digit) {
-		return digit == '_';
-	}
-
-	private boolean isDigitAllowed(char digit) {
-		for (int i = 0; i < 10; i++) {
-			char iAsChar = (char) ('0' + i);
-			if (digit == iAsChar) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	public int getNumberOfDigits() {

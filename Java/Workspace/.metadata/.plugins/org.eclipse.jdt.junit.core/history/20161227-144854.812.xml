@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="JIntegerNaturalNumberTest" project="Numbers" tests="14" started="14" failures="0" errors="0" ignored="0">
+  <testsuite name="test.numbers.JIntegerNaturalNumberTest" time="0.083">
+    <testsuite name="test.numbers.JIntegerNaturalNumberTest.Comparison" time="0.0">
+      <testsuite name="test.numbers.JIntegerNaturalNumberTest.Comparison.Equal" time="0.0">
+        <testcase name="oneAndTenAreNotEqual" classname="test.numbers.JIntegerNaturalNumberTest.Comparison.Equal" time="0.0"/>
+        <testcase name="tenAndTwentyAreNotEqual" classname="test.numbers.JIntegerNaturalNumberTest.Comparison.Equal" time="0.0"/>
+        <testcase name="sameNumberAreEquals" classname="test.numbers.JIntegerNaturalNumberTest.Comparison.Equal" time="0.0"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="test.numbers.JIntegerNaturalNumberTest.Constructors" time="0.0">
+      <testcase name="intAndListOfBytesConstructorsReturnSameNumber" classname="test.numbers.JIntegerNaturalNumberTest.Constructors" time="0.0"/>
+    </testsuite>
+    <testsuite name="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder" time="0.083">
+      <testsuite name="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder.PrimeDivisors" time="0.083">
+        <testsuite name="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors" time="0.083">
+          <testsuite name="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult" time="0.083">
+            <testcase name="for_16_returns_true" classname="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult" time="0.0"/>
+            <testcase name="for_20_returns_true" classname="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult" time="0.0"/>
+            <testcase name="for_22_returns_false" classname="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult" time="0.0"/>
+            <testcase name="for_10_returns_true" classname="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult" time="0.0"/>
+            <testcase name="for_9_returns_true" classname="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult" time="0.073"/>
+            <testsuite name="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult.PerfTests" time="0.01">
+              <testcase name="for_2048_returns_true" classname="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult.PerfTests" time="0.01"/>
+              <testcase name="for_2power24_returns_true" classname="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult.PerfTests" time="0.0"/>
+              <testcase name="for_2053_returns_false" classname="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult.PerfTests" time="0.0"/>
+              <testcase name="for_2power20_returns_true" classname="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult.PerfTests" time="0.0"/>
+              <testcase name="for_49999_returns_false" classname="test.numbers.JIntegerNaturalNumberTest.DivisorsFinder.PrimeDivisors.HasOnlyOneDigitPrimeDivisors.TestResult.PerfTests" time="0.0"/>
+            </testsuite>
+          </testsuite>
+        </testsuite>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testrun>

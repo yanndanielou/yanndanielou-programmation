@@ -23,12 +23,92 @@ import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import main.MultiplicationPersistenceCalculator;
 import main.junit.PerfTestScenario;
 import main.numbers.InfiniteNaturalNumber;
+import main.numbers.JIntegerNaturalNumber;
 import main.util.FormatterUtils;
 
 @RunWith(HierarchicalContextRunner.class)
 public class MultiplicationPersistenceCalculatorTest {
 
 	private MultiplicationPersistenceCalculator multiplicationPersistenceCalculator = new MultiplicationPersistenceCalculator();
+
+	public class FindNumberHavingMultiplicativeOfNumberWithDigitsInAnyOrder {
+
+		private String multiplicative;
+		private JIntegerNaturalNumber numberHavingMultiplicativeFound;
+
+		protected void compute() {
+			numberHavingMultiplicativeFound = multiplicationPersistenceCalculator
+					.findNumberHavingMultiplicativeOfNumberWithDigitsInAnyOrder(multiplicative);
+		}
+
+		public class AtLeastOneNumberHasThisMultiplicative {
+
+			protected void check() {
+				assertThat(numberHavingMultiplicativeFound, is(notNullValue()));
+			}
+
+			@After
+			public void after() {
+				compute();
+				check();
+			}
+
+			@Test
+			public void of_23() {
+				// 23 is prime
+				// 32 is no
+				multiplicative = "23";
+			}
+
+			@Test
+			public void of_277777788888899() {
+				multiplicative = "277777788888899";
+			}
+
+		}
+
+		public class NoNumberHasThisMultiplicative {
+
+			protected void check() {
+				assertThat(numberHavingMultiplicativeFound, is(nullValue()));
+			}
+
+			public class TestResult {
+
+				@After
+				public void after() {
+					compute();
+					check();
+				}
+
+				@Test
+				public void _19() {
+					// neither 19 nor 91 have only one digit divisor
+					multiplicative = "19";
+				}
+
+			}
+
+			public class PerfTest extends PerfTestScenario {
+
+				@After
+				public void after() {
+					compute();
+					check();
+					System.out.println("NoNumberHasThisMultiplicative for " + multiplicative + " was calculated in "
+							+ FormatterUtils.GetDurationAsString(getTestDuration()));
+
+				}
+
+				@Ignore
+				@Test
+				public void _277777788888899() {
+				}
+
+			}
+
+		}
+	}
 
 	public class FindNumberHavingMultiplicative {
 

@@ -17,16 +17,17 @@
 <fullyQualifiedTypeName name="org.junit.After"/>
 <fullyQualifiedTypeName name="org.junit.Before"/>
 <fullyQualifiedTypeName name="main.util.FormatterUtils"/>
-<fullyQualifiedTypeName name="org.junit.Ignore"/>
 <fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="main.junit.Scenario"/>
 <fullyQualifiedTypeName name="javax.swing.plaf.BorderUIResource.EmptyBorderUIResource"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="main.junit.PerfTestScenario"/>
 <fullyQualifiedTypeName name="main.numbers.PrimeNumbersCalculator"/>
 <fullyQualifiedTypeName name="java.util.Collection"/>
-<fullyQualifiedTypeName name="main.util.CollectionUtils"/>
 <fullyQualifiedTypeName name="main.numbers.InfiniteNaturalNumber"/>
+<fullyQualifiedTypeName name="main.junit.PerfTestScenario"/>
+<fullyQualifiedTypeName name="org.junit.Ignore"/>
+<fullyQualifiedTypeName name="main.util.CollectionUtils"/>
+<fullyQualifiedTypeName name="main.numbers.JIntegerNaturalNumber"/>
 </qualifiedTypeNameHistroy>

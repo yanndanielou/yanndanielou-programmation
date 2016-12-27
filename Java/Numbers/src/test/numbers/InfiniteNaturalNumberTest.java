@@ -41,9 +41,14 @@ import main.util.FormatterUtils;
 @RunWith(HierarchicalContextRunner.class)
 public class InfiniteNaturalNumberTest {
 
-	@Ignore
 	public class Constructors {
 
+		@Test
+		public void stringAndListOfBytesConstructorsReturnSameNumber() {
+			InfiniteNaturalNumber first = new InfiniteNaturalNumber("1");
+			InfiniteNaturalNumber second = new InfiniteNaturalNumber((byte) 1);
+			assertThat(first, is(second));
+		}
 	}
 
 	public class IsMultipleOf {
@@ -475,7 +480,7 @@ public class InfiniteNaturalNumberTest {
 
 					@Test
 					public void for_9_returns_true() {
-						number = SIX;
+						number = NINE;
 						expectedResult = true;
 					}
 
@@ -499,7 +504,7 @@ public class InfiniteNaturalNumberTest {
 
 					@Test
 					public void for_16_returns_true() {
-						number = TWENTY;
+						number = new InfiniteNaturalNumber("16");
 						expectedResult = true;
 					}
 
