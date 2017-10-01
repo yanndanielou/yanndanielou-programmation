@@ -1,0 +1,3 @@
+C:\Users\fr232487\AppData\Local\Programs\Python\Python36\python.exe calculate_number_of_secured_consists_from_tracking_messages.py --input_archive_extract_file_name=messages_tracking_every_30_min_deployment.txt --output_files_prefix=messages_tracking_every_30_min_deployment
+
+timeout 30
