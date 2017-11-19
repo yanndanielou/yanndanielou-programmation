@@ -1,11 +1,7 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
-    <tr>
-      <td colspan="10">
-        <strong>Decembre 2013
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Decembre 2013
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-decembre-2013/' title='Resultat tirage EuroMillions mardi 31 decembre 2013'>Mardi 31/12/2013
       </a>">
@@ -204,12 +200,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Novembre 2013
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Novembre 2013
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-novembre-2013/' title='Resultat tirage EuroMillions vendredi 29 novembre 2013'>Vendredi 29/11/2013
       </a>">
@@ -408,12 +400,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Octobre 2013
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Octobre 2013
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-octobre-2013/' title='Resultat tirage EuroMillions mardi 29 octobre 2013'>Mardi 29/10/2013
       </a>">
@@ -612,12 +600,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Septembre 2013
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Septembre 2013
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-septembre-2013/' title='Resultat tirage EuroMillions vendredi 27 septembre 2013'>Vendredi 27/09/2013
       </a>">
@@ -794,12 +778,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Aout 2013
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Aout 2013
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-aout-2013/' title='Resultat tirage EuroMillions vendredi 30 aout 2013'>Vendredi 30/08/2013
       </a>">
@@ -998,12 +978,8 @@
       <jackpot>32 550 628 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juillet 2013
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juillet 2013
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-juillet-2013/' title='Resultat tirage EuroMillions mardi 30 juillet 2013'>Mardi 30/07/2013
       </a>">
@@ -1202,12 +1178,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juin 2013
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juin 2013
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-juin-2013/' title='Resultat tirage Euromillions vendredi 28 juin 2013'>Vendredi 28/06/2013
       </a>">
@@ -1384,12 +1356,8 @@
       <jackpot>22 292 668 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mai 2013
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mai 2013
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-mai-2013/' title='Resultat tirage Euromillions vendredi 31 mai 2013'>Vendredi 31/05/2013
       </a>">
@@ -1588,12 +1556,8 @@
       <jackpot>25 320 531 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Avril 2013
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Avril 2013
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-avril-2013/' title='Resultat tirage Euromillions mardi 30 avril 2013'>Mardi 30/04/2013
       </a>">
@@ -1792,12 +1756,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mars 2013
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mars 2013
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-mars-2013/' title='Resultat tirage Euromillions vendredi 29 mars 2013'>Vendredi 29/03/2013
       </a>">
@@ -1996,12 +1956,8 @@
       <jackpot>32 728 379 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Fevrier 2013
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Fevrier 2013
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-26-fevrier-2013/' title='Resultat tirage Euromillions mardi 26 fevrier 2013'>Mardi 26/02/2013
       </a>">
@@ -2178,12 +2134,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Janvier 2013
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Janvier 2013
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-janvier-2013/' title='Resultat tirage Euromillions mardi 29 janvier 2013'>Mardi 29/01/2013
       </a>">

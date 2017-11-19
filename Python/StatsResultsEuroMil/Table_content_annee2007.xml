@@ -1,11 +1,7 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
-    <tr>
-      <td colspan="10">
-        <strong>Decembre 2007
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Decembre 2007
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-28-decembre/' title='Resultats du tirage Euromillions vendredi 28 decembre 2007'>Vendredi 28/12/2007
       </a>">
@@ -94,12 +90,8 @@
       <jackpot>27 552 424 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Novembre 2007
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Novembre 2007
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-30-novembre/' title='Resultats du tirage Euromillions vendredi 30 novembre 2007'>Vendredi 30/11/2007
       </a>">
@@ -210,12 +202,8 @@
       <jackpot>41 136 124 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Octobre 2007
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Octobre 2007
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-26-octobre/' title='Resultats tirage Euromillions vendredi 26 octobre 2007'>Vendredi 26/10/2007
       </a>">
@@ -304,12 +292,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Septembre 2007
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Septembre 2007
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-28-septembre/' title='Resultats tirage Euromillions vendredi 28 septembre 2007'>Vendredi 28/09/2007
       </a>">
@@ -398,12 +382,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Aout 2007
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Aout 2007
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-31-aout-2007/' title='Resultats du tirage Euromillions vendredi 31 Aout 2007'>Vendredi 31/08/2007
       </a>">
@@ -514,12 +494,8 @@
       <jackpot>39 185 012 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juillet 2007
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juillet 2007
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/tirage-euromillions-du-27-juillet-2007/' title='Resultat tirage Euromillions du vendredi 27 juillet 2007'>Vendredi 27/07/2007
       </a>">
@@ -602,12 +578,8 @@
       <jackpot>39 898 280 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juin 2007
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juin 2007
+    </mois>
     <tirage date="Vendredi 29/06/2007">
       <boule class='game_point'>28
       </boule>
@@ -708,12 +680,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mai 2007
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mai 2007
+    </mois>
     <tirage date="Vendredi 25/05/2007">
       <boule class='game_point'>49
       </boule>
@@ -794,12 +762,8 @@
       <jackpot>39 605 256 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Avril 2007
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Avril 2007
+    </mois>
     <tirage date="Vendredi 27/04/2007">
       <boule class='game_point'>44
       </boule>
@@ -880,12 +844,8 @@
       <jackpot>26 945 909 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mars 2007
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mars 2007
+    </mois>
     <tirage date="Vendredi 30/03/2007">
       <boule class='game_point'>19
       </boule>
@@ -986,12 +946,8 @@
       <jackpot>42 201 702 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Fevrier 2007
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Fevrier 2007
+    </mois>
     <tirage date="Vendredi 23/02/2007">
       <boule class='game_point'>20
       </boule>
@@ -1072,12 +1028,8 @@
       <jackpot>27 173 863 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Janvier 2007
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Janvier 2007
+    </mois>
     <tirage date="Vendredi 26/01/2007">
       <boule class='game_point'>38
       </boule>

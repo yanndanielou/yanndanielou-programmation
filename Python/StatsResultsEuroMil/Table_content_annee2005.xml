@@ -1,11 +1,7 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
-    <tr>
-      <td colspan="10">
-        <strong>Decembre 2005
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Decembre 2005
+    </mois>
     <tirage date="Vendredi 30/12/2005">
       <boule class='game_point'>19
       </boule>
@@ -106,12 +102,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Novembre 2005
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Novembre 2005
+    </mois>
     <tirage date="Vendredi 25/11/2005">
       <boule class='game_point'>27
       </boule>
@@ -192,12 +184,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Octobre 2005
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Octobre 2005
+    </mois>
     <tirage date="Vendredi 28/10/2005">
       <boule class='game_point'>14
       </boule>
@@ -278,12 +266,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Septembre 2005
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Septembre 2005
+    </mois>
     <tirage date="Vendredi 30/09/2005">
       <boule class='game_point'>11
       </boule>
@@ -384,12 +368,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Aout 2005
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Aout 2005
+    </mois>
     <tirage date="Vendredi 26/08/2005">
       <boule class='game_point'>29
       </boule>
@@ -470,12 +450,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juillet 2005
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juillet 2005
+    </mois>
     <tirage date="Vendredi 29/07/2005">
       <boule class='game_point'>50
       </boule>
@@ -576,12 +552,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juin 2005
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juin 2005
+    </mois>
     <tirage date="Vendredi 24/06/2005">
       <boule class='game_point'>6
       </boule>
@@ -662,12 +634,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mai 2005
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mai 2005
+    </mois>
     <tirage date="Vendredi 27/05/2005">
       <boule class='game_point'>50
       </boule>
@@ -748,12 +716,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Avril 2005
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Avril 2005
+    </mois>
     <tirage date="Vendredi 29/04/2005">
       <boule class='game_point'>42
       </boule>
@@ -854,12 +818,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mars 2005
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mars 2005
+    </mois>
     <tirage date="Vendredi 25/03/2005">
       <boule class='game_point'>29
       </boule>
@@ -940,12 +900,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Fevrier 2005
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Fevrier 2005
+    </mois>
     <tirage date="Vendredi 25/02/2005">
       <boule class='game_point'>43
       </boule>
@@ -1026,12 +982,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Janvier 2005
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Janvier 2005
+    </mois>
     <tirage date="Vendredi 28/01/2005">
       <boule class='game_point'>26
       </boule>

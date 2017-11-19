@@ -1,11 +1,7 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
-    <tr>
-      <td colspan="10">
-        <strong>Decembre 2015
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Decembre 2015
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-decembre-2015/' title='Resultat tirage EuroMillions mardi 29 decembre 2015'>Mardi 29/12/2015
       </a>">
@@ -204,12 +200,8 @@
       <jackpot>33 518 353 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Novembre 2015
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Novembre 2015
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-novembre-2015/' title='Resultat tirage EuroMillions vendredi 27 novembre 2015'>Vendredi 27/11/2015
       </a>">
@@ -386,12 +378,8 @@
       <jackpot>55 033 448 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Octobre 2015
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Octobre 2015
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-octobre-2015/' title='Resultat tirage EuroMillions vendredi 30 octobre 2015'>Vendredi 30/10/2015
       </a>">
@@ -590,12 +578,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Septembre 2015
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Septembre 2015
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-septembre-2015/' title='Resultat tirage EuroMillions mardi 29 septembre 2015'>Mardi 29/09/2015
       </a>">
@@ -794,12 +778,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Aout 2015
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Aout 2015
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-aout-2015/' title='Resultat tirage EuroMillions vendredi 28 aout 2015'>Vendredi 28/08/2015
       </a>">
@@ -976,12 +956,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juillet 2015
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juillet 2015
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-juillet-2015/' title='Resultat tirage EuroMillions vendredi 31 juillet 2015'>Vendredi 31/07/2015
       </a>">
@@ -1180,12 +1156,8 @@
       <jackpot>24 398 282 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juin 2015
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juin 2015
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-juin-2015/' title='Resultat tirage EuroMillions mardi 30 juin 2015'>Mardi 30/06/2015
       </a>">
@@ -1384,12 +1356,8 @@
       <jackpot>21 811 079 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mai 2015
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mai 2015
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-mai-2015/' title='Resultat tirage EuroMillions vendredi 29 mai 2015'>Vendredi 29/05/2015
       </a>">
@@ -1588,12 +1556,8 @@
       <jackpot>23 963 701 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Avril 2015
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Avril 2015
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-avril-2015/' title='Resultat tirage EuroMillions mardi 28 avril 2015'>Mardi 28/04/2015
       </a>">
@@ -1770,12 +1734,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mars 2015
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mars 2015
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-mars-2015/' title='Resultat tirage EuroMillions mardi 31 mars 2015'>Mardi 31/03/2015
       </a>">
@@ -1974,12 +1934,8 @@
       <jackpot>81 055 085 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Fevrier 2015
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Fevrier 2015
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-fevrier-2015/' title='Resultat tirage EuroMillions vendredi 27 fevrier 2015'>Vendredi 27/02/2015
       </a>">
@@ -2156,12 +2112,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Janvier 2015
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Janvier 2015
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-janvier-2015/' title='Resultat tirage EuroMillions vendredi 30 janvier 2015'>Vendredi 30/01/2015
       </a>">

@@ -1,11 +1,7 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
-    <tr>
-      <td colspan="10">
-        <strong>Decembre 2014
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Decembre 2014
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-decembre-2014/' title='Resultat tirage EuroMillions mardi 30 decembre 2014'>Mardi 30/12/2014
       </a>">
@@ -204,12 +200,8 @@
       <jackpot>72 971 665 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Novembre 2014
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Novembre 2014
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-novembre-2014/' title='Resultat tirage EuroMillions vendredi 28 novembre 2014'>Vendredi 28/11/2014
       </a>">
@@ -386,12 +378,8 @@
       <jackpot>22 206 694 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Octobre 2014
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Octobre 2014
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-octobre-2014/' title='Resultat tirage EuroMillions vendredi 31 octobre 2014'>Vendredi 31/10/2014
       </a>">
@@ -590,12 +578,8 @@
       <jackpot>100 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Septembre 2014
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Septembre 2014
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-septembre-2014/' title='Resultat tirage EuroMillions mardi 30 septembre 2014'>Mardi 30/09/2014
       </a>">
@@ -794,12 +778,8 @@
       <jackpot>37 624 288 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Aout 2014
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Aout 2014
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-aout-2014/' title='Resultat tirage EuroMillions vendredi 29 aout 2014'>Vendredi 29/08/2014
       </a>">
@@ -998,12 +978,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juillet 2014
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juillet 2014
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-juillet-2014/' title='Resultat tirage EuroMillions mardi 29 juillet 2014'>Mardi 29/07/2014
       </a>">
@@ -1202,12 +1178,8 @@
       <jackpot>31 752 213 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juin 2014
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juin 2014
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-juin-2014/' title='Resultat tirage EuroMillions vendredi 27 juin 2014'>Vendredi 27/06/2014
       </a>">
@@ -1384,12 +1356,8 @@
       <jackpot>88 945 682 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mai 2014
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mai 2014
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-mai-2014/' title='Resultat tirage EuroMillions vendredi 30 mai 2014'>Vendredi 30/05/2014
       </a>">
@@ -1588,12 +1556,8 @@
       <jackpot>89 166 455 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Avril 2014
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Avril 2014
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-avril-2014/' title='Resultat tirage EuroMillions mardi 29 avril 2014'>Mardi 29/04/2014
       </a>">
@@ -1792,12 +1756,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mars 2014
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mars 2014
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-mars-2014/' title='Resultat tirage EuroMillions vendredi 28 mars 2014'>Vendredi 28/03/2014
       </a>">
@@ -1974,12 +1934,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Fevrier 2014
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Fevrier 2014
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-fevrier-2014/' title='Resultat tirage EuroMillions vendredi 28 fevrier 2014'>Vendredi 28/02/2014
       </a>">
@@ -2156,12 +2112,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Janvier 2014
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Janvier 2014
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-janvier-2014/' title='Resultat tirage EuroMillions vendredi 31 janvier 2014'>Vendredi 31/01/2014
       </a>">

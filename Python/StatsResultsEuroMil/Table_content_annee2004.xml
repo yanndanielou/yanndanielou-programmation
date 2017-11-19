@@ -1,11 +1,7 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
-    <tr>
-      <td colspan="10">
-        <strong>Decembre 2004
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Decembre 2004
+    </mois>
     <tirage date="Vendredi 31/12/2004">
       <boule class='game_point'>8
       </boule>
@@ -106,12 +102,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Novembre 2004
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Novembre 2004
+    </mois>
     <tirage date="Vendredi 26/11/2004">
       <boule class='game_point'>24
       </boule>
@@ -192,12 +184,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Octobre 2004
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Octobre 2004
+    </mois>
     <tirage date="Vendredi 29/10/2004">
       <boule class='game_point'>32
       </boule>
@@ -298,12 +286,8 @@
       <jackpot>29 785 269 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Septembre 2004
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Septembre 2004
+    </mois>
     <tirage date="Vendredi 24/09/2004">
       <boule class='game_point'>48
       </boule>
@@ -384,12 +368,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Aout 2004
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Aout 2004
+    </mois>
     <tirage date="Vendredi 27/08/2004">
       <boule class='game_point'>28
       </boule>
@@ -470,12 +450,8 @@
       <jackpot>24 746 858 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juillet 2004
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juillet 2004
+    </mois>
     <tirage date="Vendredi 30/07/2004">
       <boule class='game_point'>50
       </boule>
@@ -576,12 +552,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juin 2004
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juin 2004
+    </mois>
     <tirage date="Vendredi 25/06/2004">
       <boule class='game_point'>30
       </boule>
@@ -662,12 +634,8 @@
       <jackpot>12 488 171 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mai 2004
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mai 2004
+    </mois>
     <tirage date="Vendredi 28/05/2004">
       <boule class='game_point'>41
       </boule>
@@ -748,12 +716,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Avril 2004
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Avril 2004
+    </mois>
     <tirage date="Vendredi 30/04/2004">
       <boule class='game_point'>27
       </boule>
@@ -854,12 +818,8 @@
       <jackpot>0 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mars 2004
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mars 2004
+    </mois>
     <tirage date="Vendredi 26/03/2004">
       <boule class='game_point'>23
       </boule>
@@ -940,12 +900,8 @@
       <jackpot>20 678 070 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Fevrier 2004
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Fevrier 2004
+    </mois>
     <tirage date="Vendredi 27/02/2004">
       <boule class='game_point'>37
       </boule>

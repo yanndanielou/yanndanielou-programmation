@@ -1,11 +1,7 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
-    <tr>
-      <td colspan="10">
-        <strong>Decembre 2016
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Decembre 2016
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-decembre-2016/' title='Resultat tirage EuroMillions vendredi 30 decembre 2016'>Vendredi 30/12/2016
       </a>">
@@ -204,12 +200,8 @@
       <jackpot>28 251 970 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Novembre 2016
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Novembre 2016
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-novembre-2016/' title='Resultat tirage EuroMillions mardi 29 novembre 2016'>Mardi 29/11/2016
       </a>">
@@ -408,12 +400,8 @@
       <jackpot>17 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Octobre 2016
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Octobre 2016
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-octobre-2016/' title='Resultat tirage EuroMillions vendredi 28 octobre 2016'>Vendredi 28/10/2016
       </a>">
@@ -590,12 +578,8 @@
       <jackpot>140 796 507 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Septembre 2016
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Septembre 2016
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-septembre-2016/' title='Resultat tirage EuroMillions vendredi 30 septembre 2016'>Vendredi 30/09/2016
       </a>">
@@ -794,12 +778,8 @@
       <jackpot>39 204 300 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Aout 2016
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Aout 2016
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-aout-2016/' title='Resultat tirage EuroMillions mardi 30 aout 2016'>Mardi 30/08/2016
       </a>">
@@ -998,12 +978,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juillet 2016
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juillet 2016
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-juillet-2016/' title='Resultat tirage EuroMillions vendredi 29 juillet 2016'>Vendredi 29/07/2016
       </a>">
@@ -1202,12 +1178,8 @@
       <jackpot>23 845 060 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juin 2016
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juin 2016
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-juin-2016/' title='Resultat tirage EuroMillions mardi 28 juin 2016'>Mardi 28/06/2016
       </a>">
@@ -1384,12 +1356,8 @@
       <jackpot>64 670 541 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mai 2016
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mai 2016
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-mai-2016/' title='Resultat tirage EuroMillions mardi 31 mai 2016'>Mardi 31/05/2016
       </a>">
@@ -1588,12 +1556,8 @@
       <jackpot>54 692 521 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Avril 2016
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Avril 2016
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-avril-2016/' title='Resultat tirage EuroMillions vendredi 29 avril 2016'>Vendredi 29/04/2016
       </a>">
@@ -1792,12 +1756,8 @@
       <jackpot>39 814 046 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mars 2016
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mars 2016
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-mars-2016/' title='Resultat tirage EuroMillions mardi 29 mars 2016'>Mardi 29/03/2016
       </a>">
@@ -1996,12 +1956,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Fevrier 2016
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Fevrier 2016
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-fevrier-2016/' title='Resultat tirage EuroMillions vendredi 26 fevrier 2016'>Vendredi 26/02/2016
       </a>">
@@ -2178,12 +2134,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Janvier 2016
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Janvier 2016
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-janvier-2016/' title='Resultat tirage EuroMillions vendredi 29 janvier 2016'>Vendredi 29/01/2016
       </a>">

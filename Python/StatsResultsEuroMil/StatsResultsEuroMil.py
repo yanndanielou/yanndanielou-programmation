@@ -97,6 +97,8 @@ def main(argv):
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("<winners><strong>", "<winners>")
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("</strong></winners>", "</winners>")
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("</jackpot></tr>", "</jackpot></tirage>")
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('<tr><td colspan="10"><strong>', "<mois>")
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("</strong></jackpot></tirage>", "</mois>")
 		
 		logging.info("Table balise compliant with XML format transformed with good fields:" + table_balise_content_as_xml_transformed_good_fields)
 		

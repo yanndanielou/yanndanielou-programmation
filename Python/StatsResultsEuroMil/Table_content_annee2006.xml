@@ -1,11 +1,7 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
-    <tr>
-      <td colspan="10">
-        <strong>Decembre 2006
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Decembre 2006
+    </mois>
     <tirage date="Vendredi 29/12/2006">
       <boule class='game_point'>14
       </boule>
@@ -106,12 +102,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Novembre 2006
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Novembre 2006
+    </mois>
     <tirage date="Vendredi 24/11/2006">
       <boule class='game_point'>8
       </boule>
@@ -192,12 +184,8 @@
       <jackpot>131 523 150 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Octobre 2006
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Octobre 2006
+    </mois>
     <tirage date="Vendredi 27/10/2006">
       <boule class='game_point'>3
       </boule>
@@ -278,12 +266,8 @@
       <jackpot>69 208 821 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Septembre 2006
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Septembre 2006
+    </mois>
     <tirage date="Vendredi 29/09/2006">
       <boule class='game_point'>1
       </boule>
@@ -384,12 +368,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Aout 2006
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Aout 2006
+    </mois>
     <tirage date="Vendredi 25/08/2006">
       <boule class='game_point'>47
       </boule>
@@ -470,12 +450,8 @@
       <jackpot>24 977 577 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juillet 2006
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juillet 2006
+    </mois>
     <tirage date="Vendredi 28/07/2006">
       <boule class='game_point'>3
       </boule>
@@ -556,12 +532,8 @@
       <jackpot>68 408 266 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juin 2006
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juin 2006
+    </mois>
     <tirage date="Vendredi 30/06/2006">
       <boule class='game_point'>16
       </boule>
@@ -662,12 +634,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mai 2006
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mai 2006
+    </mois>
     <tirage date="Vendredi 26/05/2006">
       <boule class='game_point'>21
       </boule>
@@ -748,12 +716,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Avril 2006
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Avril 2006
+    </mois>
     <tirage date="Vendredi 28/04/2006">
       <boule class='game_point'>17
       </boule>
@@ -834,12 +798,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mars 2006
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mars 2006
+    </mois>
     <tirage date="Vendredi 31/03/2006">
       <boule class='game_point'>50
       </boule>
@@ -940,12 +900,8 @@
       <jackpot>26 842 720 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Fevrier 2006
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Fevrier 2006
+    </mois>
     <tirage date="Vendredi 24/02/2006">
       <boule class='game_point'>18
       </boule>
@@ -1026,12 +982,8 @@
       <jackpot>183 573 077 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Janvier 2006
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Janvier 2006
+    </mois>
     <tirage date="Vendredi 27/01/2006">
       <boule class='game_point'>9
       </boule>

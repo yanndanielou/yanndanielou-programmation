@@ -1,11 +1,7 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
-    <tr>
-      <td colspan="10">
-        <strong>Decembre 2010
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Decembre 2010
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-decembre-2010/' title='Resultat tirage Euromillions vendredi 31 decembre 2010'>Vendredi 31/12/2010
       </a>">
@@ -116,12 +112,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Novembre 2010
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Novembre 2010
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-novembre-2010/' title='Resultat tirage Euromillions vendredi 26 novembre 2010'>Vendredi 26/11/2010
       </a>">
@@ -210,12 +202,8 @@
       <jackpot>29 087 861 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Octobre 2010
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Octobre 2010
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-octobre-2010/' title='Resultat tirage Euromillions vendredi 29 octobre 2010'>Vendredi 29/10/2010
       </a>">
@@ -326,12 +314,8 @@
       <jackpot>100 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Septembre 2010
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Septembre 2010
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-septembre-2010/' title='Resultat tirage Euromillions vendredi 24 septembre 2010'>Vendredi 24/09/2010
       </a>">
@@ -420,12 +404,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Aout 2010
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Aout 2010
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-aout-2010/' title='Resultat tirage Euromillions vendredi 27 aout 2010'>Vendredi 27/08/2010
       </a>">
@@ -514,12 +494,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juillet 2010
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juillet 2010
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-juillet-2010/' title='Resultat tirage Euromillions vendredi 30 juillet 2010'>Vendredi 30/07/2010
       </a>">
@@ -630,12 +606,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juin 2010
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juin 2010
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-juin-2010/' title='Resultat tirage Euromillions vendredi 25 juin 2010'>Vendredi 25/06/2010
       </a>">
@@ -724,12 +696,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mai 2010
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mai 2010
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-mai-2010/' title='Resultat tirage Euromillions vendredi 28 mai 2010'>Vendredi 28/05/2010
       </a>">
@@ -818,12 +786,8 @@
       <jackpot>78 821 704 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Avril 2010
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Avril 2010
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-avril-2010/' title='Resultat tirage Euromillions vendredi 30 avril 2010'>Vendredi 30/04/2010
       </a>">
@@ -934,12 +898,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mars 2010
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mars 2010
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-mars-2010/' title='Resultat tirage Euromillions vendredi 26 mars 2010'>Vendredi 26/03/2010
       </a>">
@@ -1028,12 +988,8 @@
       <jackpot>46 258 004 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Fevrier 2010
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Fevrier 2010
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-fevrier-2010/' title='Resultat tirage Euromillions vendredi 26 fevrier 2010'>Vendredi 26/02/2010
       </a>">
@@ -1122,12 +1078,8 @@
       <jackpot>100 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Janvier 2010
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Janvier 2010
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-janvier-2010/' title='Resultat tirage Euromillions vendredi 29 janvier 2010'>Vendredi 29/01/2010
       </a>">

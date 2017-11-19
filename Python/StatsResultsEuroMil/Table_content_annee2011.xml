@@ -1,11 +1,7 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
-    <tr>
-      <td colspan="10">
-        <strong>Decembre 2011
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Decembre 2011
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-decembre-2011/' title='Resultat tirage Euromillions vendredi 30 decembre 2011'>Vendredi 30/12/2011
       </a>">
@@ -204,12 +200,8 @@
       <jackpot>27 094 320 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Novembre 2011
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Novembre 2011
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-novembre-2011/' title='Resultat tirage Euromillions mardi 29 novembre 2011'>Mardi 29/11/2011
       </a>">
@@ -408,12 +400,8 @@
       <jackpot>33 703 338 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Octobre 2011
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Octobre 2011
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-octobre-2011/' title='Resultat tirage Euromillions vendredi 28 octobre 2011'>Vendredi 28/10/2011
       </a>">
@@ -590,12 +578,8 @@
       <jackpot>100 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Septembre 2011
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Septembre 2011
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-septembre-2011/' title='Resultat tirage Euromillions vendredi 30 septembre 2011'>Vendredi 30/09/2011
       </a>">
@@ -794,12 +778,8 @@
       <jackpot>115 692 111 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Aout 2011
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Aout 2011
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-aout-2011/' title='Resultat tirage Euromillions mardi 30 aout 2011'>Mardi 30/08/2011
       </a>">
@@ -998,12 +978,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juillet 2011
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juillet 2011
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-juillet-2011/' title='Resultat tirage Euromillions vendredi 29 juillet 2011'>Vendredi 29/07/2011
       </a>">
@@ -1202,12 +1178,8 @@
       <jackpot>156 881 529 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Juin 2011
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Juin 2011
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-juin-2011/' title='Resultat tirage Euromillions mardi 28 juin 2011'>Mardi 28/06/2011
       </a>">
@@ -1384,12 +1356,8 @@
       <jackpot>46 382 251 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mai 2011
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mai 2011
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-mai-2011/' title='Resultat tirage Euromillions mardi 31 mai 2011'>Mardi 31/05/2011
       </a>">
@@ -1566,12 +1534,8 @@
       <jackpot>28 772 008 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Avril 2011
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Avril 2011
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-avril-2011/' title='Resultat tirage Euromillions vendredi 29 avril 2011'>Vendredi 29/04/2011
       </a>">
@@ -1682,12 +1646,8 @@
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Mars 2011
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Mars 2011
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-mars-2011/' title='Resultat tirage Euromillions vendredi 25 mars 2011'>Vendredi 25/03/2011
       </a>">
@@ -1776,12 +1736,8 @@
       <jackpot>61 901 148 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Fevrier 2011
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Fevrier 2011
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-fevrier-2011/' title='Resultat tirage Euromillions vendredi 25 fevrier 2011'>Vendredi 25/02/2011
       </a>">
@@ -1870,12 +1826,8 @@
       <jackpot>28 947 728 EUR
       </jackpot>
     </tirage>
-    <tr>
-      <td colspan="10">
-        <strong>Janvier 2011
-        </strong>
-      </jackpot>
-    </tirage>
+    <mois>Janvier 2011
+    </mois>
     <tirage date="
       <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-janvier-2011/' title='Resultat tirage Euromillions vendredi 28 janvier 2011'>Vendredi 28/01/2011
       </a>">
