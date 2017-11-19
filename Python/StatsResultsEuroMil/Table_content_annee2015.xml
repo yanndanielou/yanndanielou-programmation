@@ -33,34 +33,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-decembre-2015/' title='Resultat tirage EuroMillions mardi 29 decembre 2015'>Mardi 29/12/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>32 342 225 EUR
@@ -71,34 +57,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-decembre-2015/' title='Resultat tirage EuroMillions vendredi 25 decembre 2015'>Vendredi 25/12/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>24 895 055 EUR
@@ -109,34 +81,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-22-decembre-2015/' title='Resultat tirage EuroMillions mardi 22 decembre 2015'>Mardi 22/12/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -147,34 +105,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-decembre-2015/' title='Resultat tirage EuroMillions vendredi 18 decembre 2015'>Vendredi 18/12/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -187,34 +131,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-15-decembre-2015/' title='Resultat tirage EuroMillions mardi 15 decembre 2015'>Mardi 15/12/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>71 034 372 EUR
@@ -225,34 +155,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-decembre-2015/' title='Resultat tirage EuroMillions vendredi 11 decembre 2015'>Vendredi 11/12/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>62 650 170 EUR
@@ -263,34 +179,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-8-decembre-2015/' title='Resultat tirage EuroMillions mardi 8 decembre 2015'>Mardi 08/12/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>51 436 264 EUR
@@ -301,34 +203,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-decembre-2015/' title='Resultat tirage EuroMillions vendredi 4 decembre 2015'>Vendredi 04/12/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>44 266 153 EUR
@@ -339,34 +227,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-1er-decembre-2015/' title='Resultat tirage EuroMillions mardi 1er decembre 2015'>Mardi 01/12/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>33 518 353 EUR
@@ -383,34 +257,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-novembre-2015/' title='Resultat tirage EuroMillions vendredi 27 novembre 2015'>Vendredi 27/11/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>26 179 692 EUR
@@ -421,34 +281,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-novembre-2015/' title='Resultat tirage EuroMillions mardi 24 novembre 2015'>Mardi 24/11/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -459,34 +305,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-novembre-2015/' title='Resultat tirage EuroMillions vendredi 20 novembre 2015'>Vendredi 20/11/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -499,34 +331,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-novembre-2015/' title='Resultat tirage EuroMillions mardi 17 novembre 2015'>Mardi 17/11/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>144 587 700 EUR
@@ -537,34 +355,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-novembre-2015/' title='Resultat tirage EuroMillions vendredi 13 novembre 2015'>Vendredi 13/11/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>130 868 296 EUR
@@ -575,34 +379,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-novembre-2015/' title='Resultat tirage EuroMillions mardi 10 novembre 2015'>Mardi 10/11/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>111 997 290 EUR
@@ -613,34 +403,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-novembre-2015/' title='Resultat tirage EuroMillions vendredi 6 novembre 2015'>Vendredi 06/11/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>100 000 000 EUR
@@ -651,34 +427,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-3-novembre-2015/' title='Resultat tirage EuroMillions mardi 3 novembre 2015'>Mardi 03/11/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>55 033 448 EUR
@@ -695,34 +457,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-octobre-2015/' title='Resultat tirage EuroMillions vendredi 30 octobre 2015'>Vendredi 30/10/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>47 542 339 EUR
@@ -733,34 +481,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-27-octobre-2015/' title='Resultat tirage EuroMillions mardi 27 octobre 2015'>Mardi 27/10/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>37 252 483 EUR
@@ -771,34 +505,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-octobre-2015/' title='Resultat tirage EuroMillions vendredi 23 octobre 2015'>Vendredi 23/10/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>30 630 412 EUR
@@ -809,34 +529,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-20-octobre-2015/' title='Resultat tirage EuroMillions mardi 20 octobre 2015'>Mardi 20/10/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>21 280 290 EUR
@@ -847,34 +553,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-octobre-2015/' title='Resultat tirage EuroMillions vendredi 16 octobre 2015'>Vendredi 16/10/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -885,34 +577,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-13-octobre-2015/' title='Resultat tirage EuroMillions mardi 13 octobre 2015'>Mardi 13/10/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -925,34 +603,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-octobre-2015/' title='Resultat tirage EuroMillions vendredi 9 octobre 2015'>Vendredi 09/10/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>24 386 729 EUR
@@ -963,34 +627,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-6-octobre-2015/' title='Resultat tirage EuroMillions mardi 6 octobre 2015'>Mardi 06/10/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1001,34 +651,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-octobre-2015/' title='Resultat tirage EuroMillions vendredi 2 octobre 2015'>Vendredi 02/10/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1045,34 +681,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-septembre-2015/' title='Resultat tirage EuroMillions mardi 29 septembre 2015'>Mardi 29/09/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1085,34 +707,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-septembre-2015/' title='Resultat tirage EuroMillions vendredi 25 septembre 2015'>Vendredi 25/09/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1125,34 +733,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-22-septembre-2015/' title='Resultat tirage EuroMillions mardi 22 septembre 2015'>Mardi 22/09/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>37 424 463 EUR
@@ -1163,34 +757,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-septembre-2015/' title='Resultat tirage EuroMillions vendredi 18 septembre 2015'>Vendredi 18/09/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>30 788 012 EUR
@@ -1201,34 +781,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-15-septembre-2015/' title='Resultat tirage EuroMillions mardi 15 septembre 2015'>Mardi 15/09/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>21 398 749 EUR
@@ -1239,34 +805,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-septembre-2015/' title='Resultat tirage EuroMillions vendredi 11 septembre 2015'>Vendredi 11/09/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1277,34 +829,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-8-septembre-2015/' title='Resultat tirage EuroMillions mardi 8 septembre 2015'>Mardi 08/09/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1317,34 +855,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-septembre-2015/' title='Resultat tirage EuroMillions vendredi 4 septembre 2015'>Vendredi 04/09/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>24 335 146 EUR
@@ -1355,34 +879,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-1er-septembre-2015/' title='Resultat tirage EuroMillions mardi 1er septembre 2015'>Mardi 01/09/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1399,34 +909,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-aout-2015/' title='Resultat tirage EuroMillions vendredi 28 aout 2015'>Vendredi 28/08/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1439,34 +935,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-25-aout-2015/' title='Resultat tirage EuroMillions mardi 25 aout 2015'>Mardi 25/08/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1479,34 +961,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-aout-2015/' title='Resultat tirage EuroMillions vendredi 21 aout 2015'>Vendredi 21/08/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>23 986 424 EUR
@@ -1517,34 +985,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-18-aout-2015/' title='Resultat tirage EuroMillions mardi 18 aout 2015'>Mardi 18/08/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1555,34 +1009,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-aout-2015/' title='Resultat tirage EuroMillions vendredi 14 aout 2015'>Vendredi 14/08/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1595,34 +1035,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-11-aout-2015/' title='Resultat tirage EuroMillions mardi 11 aout 2015'>Mardi 11/08/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>30 648 924 EUR
@@ -1633,34 +1059,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-aout-2015/' title='Resultat tirage EuroMillions vendredi 7 aout 2015'>Vendredi 07/08/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>24 090 340 EUR
@@ -1671,34 +1083,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-4-aout-2015/' title='Resultat tirage EuroMillions mardi 4 aout 2015'>Mardi 04/08/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1715,34 +1113,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-juillet-2015/' title='Resultat tirage EuroMillions vendredi 31 juillet 2015'>Vendredi 31/07/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1755,34 +1139,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-juillet-2015/' title='Resultat tirage EuroMillions mardi 28 juillet 2015'>Mardi 28/07/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1793,34 +1163,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-juillet-2015/' title='Resultat tirage EuroMillions vendredi 24 juillet 2015'>Vendredi 24/07/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1833,34 +1189,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-21-juillet-2015/' title='Resultat tirage EuroMillions mardi 21 juillet 2015'>Mardi 21/07/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>30 754 406 EUR
@@ -1871,34 +1213,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-juillet-2015/' title='Resultat tirage EuroMillions vendredi 17 juillet 2015'>Vendredi 17/07/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>24 215 184 EUR
@@ -1909,34 +1237,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-juillet-2015/' title='Resultat tirage EuroMillions mardi 14 juillet 2015'>Mardi 14/07/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1947,34 +1261,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-juillet-2015/' title='Resultat tirage EuroMillions vendredi 10 juillet 2015'>Vendredi 10/07/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1987,34 +1287,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-juillet-2015/' title='Resultat tirage EuroMillions mardi 7 juillet 2015'>Mardi 07/07/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>31 077 433 EUR
@@ -2025,34 +1311,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-juillet-2015/' title='Resultat tirage EuroMillions vendredi 3 juillet 2015'>Vendredi 03/07/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>24 398 282 EUR
@@ -2069,34 +1341,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-juin-2015/' title='Resultat tirage EuroMillions mardi 30 juin 2015'>Mardi 30/06/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2107,34 +1365,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-juin-2015/' title='Resultat tirage EuroMillions vendredi 26 juin 2015'>Vendredi 26/06/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2147,34 +1391,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-23-juin-2015/' title='Resultat tirage EuroMillions mardi 23 juin 2015'>Mardi 23/06/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2185,34 +1415,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-juin-2015/' title='Resultat tirage EuroMillions vendredi 19 juin 2015'>Vendredi 19/06/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2225,34 +1441,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-16-juin-2015/' title='Resultat tirage EuroMillions mardi 16 juin 2015'>Mardi 16/06/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2263,34 +1465,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-juin-2015/' title='Resultat tirage EuroMillions vendredi 12 juin 2015'>Vendredi 12/06/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2303,34 +1491,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-9-juin-2015/' title='Resultat tirage EuroMillions mardi 9 juin 2015'>Mardi 09/06/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>112 140 115 EUR
@@ -2341,34 +1515,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-juin-2015/' title='Resultat tirage EuroMillions vendredi 5 juin 2015'>Vendredi 05/06/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>100 000 000 EUR
@@ -2379,34 +1539,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-2-juin-2015/' title='Resultat tirage EuroMillions mardi 2 juin 2015'>Mardi 02/06/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>21 811 079 EUR
@@ -2423,34 +1569,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-mai-2015/' title='Resultat tirage EuroMillions vendredi 29 mai 2015'>Vendredi 29/05/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2461,34 +1593,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-26-mai-2015/' title='Resultat tirage EuroMillions mardi 26 mai 2015'>Mardi 26/05/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2501,34 +1619,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-mai-2015/' title='Resultat tirage EuroMillions vendredi 22 mai 2015'>Vendredi 22/05/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>31 141 927 EUR
@@ -2539,34 +1643,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-19-mai-2015/' title='Resultat tirage EuroMillions mardi 19 mai 2015'>Mardi 19/05/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>21 489 111 EUR
@@ -2577,34 +1667,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-mai-2015/' title='Resultat tirage EuroMillions vendredi 15 mai 2015'>Vendredi 15/05/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2615,34 +1691,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-12-mai-2015/' title='Resultat tirage EuroMillions mardi 12 mai 2015'>Mardi 12/05/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2655,34 +1717,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-mai-2015/' title='Resultat tirage EuroMillions vendredi 8 mai 2015'>Vendredi 08/05/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>40 655 810 EUR
@@ -2693,34 +1741,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-5-mai-2015/' title='Resultat tirage EuroMillions mardi 5 mai 2015'>Mardi 05/05/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>30 744 734 EUR
@@ -2731,34 +1765,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-mai-2015/' title='Resultat tirage EuroMillions vendredi 1er mai 2015'>Vendredi 01/05/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>23 963 701 EUR
@@ -2775,34 +1795,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-avril-2015/' title='Resultat tirage EuroMillions mardi 28 avril 2015'>Mardi 28/04/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2813,34 +1819,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-avril-2015/' title='Resultat tirage EuroMillions vendredi 24 avril 2015'>Vendredi 24/04/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2853,34 +1845,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-21-avril-2015/' title='Resultat tirage EuroMillions mardi 21 avril 2015'>Mardi 21/04/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>39 055 477 EUR
@@ -2891,34 +1869,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-avril-2015/' title='Resultat tirage EuroMillions vendredi 17 avril 2015'>Vendredi 17/04/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>31 605 188 EUR
@@ -2929,34 +1893,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-avril-2015/' title='Resultat tirage EuroMillions mardi 14 avril 2015'>Mardi 14/04/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>21 697 826 EUR
@@ -2967,34 +1917,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-avril-2015/' title='Resultat tirage EuroMillions vendredi 10 avril 2015'>Vendredi 10/04/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3005,34 +1941,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-avril-2015/' title='Resultat tirage EuroMillions mardi 7 avril 2015'>Mardi 07/04/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -3045,34 +1967,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-avril-2015/' title='Resultat tirage EuroMillions vendredi 3 avril 2015'>Vendredi 03/04/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3089,34 +1997,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-mars-2015/' title='Resultat tirage EuroMillions mardi 31 mars 2015'>Mardi 31/03/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -3129,34 +2023,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-mars-2015/' title='Resultat tirage EuroMillions vendredi 27 mars 2015'>Vendredi 27/03/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>65 065 695 EUR
@@ -3167,34 +2047,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-mars-2015/' title='Resultat tirage EuroMillions mardi 24 mars 2015'>Mardi 24/03/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>52 905 388 EUR
@@ -3205,34 +2071,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-mars-2015/' title='Resultat tirage EuroMillions vendredi 20 mars 2015'>Vendredi 20/03/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>45 000 000 EUR
@@ -3243,34 +2095,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-mars-2015/' title='Resultat tirage EuroMillions mardi 17 mars 2015'>Mardi 17/03/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>33 000 000 EUR
@@ -3281,34 +2119,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-mars-2015/' title='Resultat tirage EuroMillions vendredi 13 mars 2015'>Vendredi 13/03/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>27 214 552 EUR
@@ -3319,34 +2143,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-mars-2015/' title='Resultat tirage EuroMillions mardi 10 mars 2015'>Mardi 10/03/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3357,34 +2167,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-mars-2015/' title='Resultat tirage EuroMillions vendredi 6 mars 2015'>Vendredi 06/03/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -3397,34 +2193,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-3-mars-2015/' title='Resultat tirage EuroMillions mardi 3 mars 2015'>Mardi 03/03/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>81 055 085 EUR
@@ -3441,34 +2223,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-fevrier-2015/' title='Resultat tirage EuroMillions vendredi 27 fevrier 2015'>Vendredi 27/02/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>71 791 059 EUR
@@ -3479,34 +2247,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-fevrier-2015/' title='Resultat tirage EuroMillions mardi 24 fevrier 2015'>Mardi 24/02/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>58 852 109 EUR
@@ -3517,34 +2271,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-fevrier-2015/' title='Resultat tirage EuroMillions vendredi 20 fevrier 2015'>Vendredi 20/02/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>51 125 126 EUR
@@ -3555,34 +2295,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-fevrier-2015/' title='Resultat tirage EuroMillions mardi 17 fevrier 2015'>Mardi 17/02/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>40 422 821 EUR
@@ -3593,34 +2319,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-fevrier-2015/' title='Resultat tirage EuroMillions vendredi 13 fevrier 2015'>Vendredi 13/02/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>33 327 954 EUR
@@ -3631,34 +2343,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-fevrier-2015/' title='Resultat tirage EuroMillions mardi 10 fevrier 2015'>Mardi 10/02/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>21 653 156 EUR
@@ -3669,34 +2367,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-fevrier-2015/' title='Resultat tirage EuroMillions vendredi 6 fevrier 2015'>Vendredi 06/02/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3707,34 +2391,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-3-fevrier-2015/' title='Resultat tirage EuroMillions mardi 3 fevrier 2015'>Mardi 03/02/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -3753,34 +2423,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-janvier-2015/' title='Resultat tirage EuroMillions vendredi 30 janvier 2015'>Vendredi 30/01/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -3793,34 +2449,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-27-janvier-2015/' title='Resultat tirage EuroMillions mardi 27 janvier 2015'>Mardi 27/01/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -3833,34 +2475,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-janvier-2015/' title='Resultat tirage EuroMillions vendredi 23 janvier 2015'>Vendredi 23/01/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3871,34 +2499,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-20-janvier-2015/' title='Resultat tirage EuroMillions mardi 20 janvier 2015'>Mardi 20/01/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>32 539 304 EUR
@@ -3909,34 +2523,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-janvier-2015/' title='Resultat tirage EuroMillions vendredi 16 janvier 2015'>Vendredi 16/01/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>25 492 644 EUR
@@ -3947,34 +2547,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-13-janvier-2015/' title='Resultat tirage EuroMillions mardi 13 janvier 2015'>Mardi 13/01/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3985,34 +2571,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-janvier-2015/' title='Resultat tirage EuroMillions vendredi 9 janvier 2015'>Vendredi 09/01/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -4025,34 +2597,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-6-janvier-2015/' title='Resultat tirage EuroMillions mardi 6 janvier 2015'>Mardi 06/01/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>21 570 078 EUR
@@ -4063,34 +2621,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-janvier-2015/' title='Resultat tirage EuroMillions vendredi 2 janvier 2015'>Vendredi 02/01/2015
         </a>
       </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR

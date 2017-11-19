@@ -33,34 +33,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-decembre-2011/' title='Resultat tirage Euromillions vendredi 30 decembre 2011'>Vendredi 30/12/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>51 792 389 EUR
@@ -71,34 +57,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-27-decembre-2011/' title='Resultat tirage Euromillions mardi 27 decembre 2011'>Mardi 27/12/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>38 129 375 EUR
@@ -109,34 +81,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-decembre-2012/' title='Resultat tirage Euromillions vendredi 23 decembre 2011'>Vendredi 23/12/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>30 860 915 EUR
@@ -147,34 +105,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-20-decembre-2011/' title='Resultat tirage Euromillions mardi 20 decembre 2011'>Mardi 20/12/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -185,34 +129,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-decembre-2011/' title='Resultat tirage Euromillions vendredi 16 decembre 2011'>Vendredi 16/12/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -225,34 +155,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-13-decembre-2011/' title='Resultat tirage Euromillions mardi 13 decembre 2011'>Mardi 13/12/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>34 268 472 EUR
@@ -263,34 +179,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-decembre-2011/' title='Resultat tirage Euromillions vendredi 9 decembre 2011'>Vendredi 09/12/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>26 824 531 EUR
@@ -301,34 +203,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-6-decembre-2011/' title='Resultat tirage Euromillions mardi 6 decembre 2011'>Mardi 06/12/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -339,34 +227,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-decembre-2011/' title='Resultat tirage Euromillions vendredi 2 decembre 2011'>Vendredi 02/12/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -385,34 +259,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-novembre-2011/' title='Resultat tirage Euromillions mardi 29 novembre 2011'>Mardi 29/11/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -423,34 +283,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-novembre-2011/' title='Resultat tirage Euromillions vendredi 25 novembre 2011'>Vendredi 25/11/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -463,34 +309,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-22-novembre-2011/' title='Resultat tirage Euromillions mardi 22 novembre 2011'>Mardi 22/11/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>21 897 137 EUR
@@ -501,34 +333,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-novembre-2011/' title='Resultat tirage Euromillions vendredi 18 novembre 2011'>Vendredi 18/11/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -539,34 +357,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-15-novembre-2011/' title='Resultat tirage Euromillions mardi 15 novembre 2011'>Mardi 15/11/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -579,34 +383,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-novembre-2011/' title='Resultat tirage Euromillions vendredi 11 novembre 2011'>Vendredi 11/11/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -619,34 +409,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-8-novembre-2011/' title='Resultat tirage Euromillions mardi 8 novembre 2011'>Mardi 08/11/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>54 417 326 EUR
@@ -657,34 +433,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-novembre-2011/' title='Resultat tirage Euromillions vendredi 4 novembre 2011'>Vendredi 04/11/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>46 270 560 EUR
@@ -695,34 +457,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-1er-novembre-2011/' title='Resultat tirage Euromillions mardi 1er novembre 2011'>Mardi 01/11/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>33 703 338 EUR
@@ -739,34 +487,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-octobre-2011/' title='Resultat tirage Euromillions vendredi 28 octobre 2011'>Vendredi 28/10/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>26 983 680 EUR
@@ -777,34 +511,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-25-octobre-2011/' title='Resultat tirage Euromillions mardi 25 octobre 2011'>Mardi 25/10/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -815,34 +535,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-octobre-2011/' title='Resultat tirage Euromillions vendredi 21 octobre 2011'>Vendredi 21/10/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -855,34 +561,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-18-octobre-2011/' title='Resultat tirage Euromillions mardi 18 octobre 2011'>Mardi 18/10/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>35 273 363 EUR
@@ -893,34 +585,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-octobre-2011/' title='Resultat tirage Euromillions vendredi 14 octobre 2011'>Vendredi 14/10/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>27 483 912 EUR
@@ -931,34 +609,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-11-octobre-2011/' title='Resultat tirage Euromillions mardi 11 octobre 2011'>Mardi 11/10/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -969,34 +633,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-octobre-2011/' title='Resultat tirage Euromillions vendredi 7 octobre 2011'>Vendredi 07/10/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1009,34 +659,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-4-octobre-2011/' title='Resultat tirage Euromillions mardi 4 octobre 2011'>Mardi 04/10/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>100 000 000 EUR
@@ -1053,34 +689,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-septembre-2011/' title='Resultat tirage Euromillions vendredi 30 septembre 2011'>Vendredi 30/09/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>3
         </strong>
@@ -1093,34 +715,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-27-septembre-2011/' title='Resultat tirage Euromillions mardi 27 septembre 2011'>Mardi 27/09/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>35 496 319 EUR
@@ -1131,34 +739,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-septembre-2011/' title='Resultat tirage Euromillions vendredi 23 septembre 2011'>Vendredi 23/09/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>27 447 714 EUR
@@ -1169,34 +763,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-20-septembre-2011/' title='Resultat tirage Euromillions mardi 20 septembre 2011'>Mardi 20/09/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1207,34 +787,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-septembre-2011/' title='Resultat tirage Euromillions vendredi 16 septembre 2011'>Vendredi 16/09/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1247,34 +813,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-13-septembre-2011/' title='Resultat tirage Euromillions mardi 13 septembre 2011'>Mardi 13/09/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1287,34 +839,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-septembre-2011/' title='Resultat tirage Euromillions vendredi 9 septembre 2011'>Vendredi 09/09/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>147 365 854 EUR
@@ -1325,34 +863,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-6-septembre-2011/' title='Resultat tirage Euromillions mardi 6 septembre 2011'>Mardi 06/09/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>127 472 057 EUR
@@ -1363,34 +887,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-septembre-2011/' title='Resultat tirage Euromillions vendredi 2 septembre 2011'>Vendredi 02/09/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>115 692 111 EUR
@@ -1407,34 +917,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-aout-2011/' title='Resultat tirage Euromillions mardi 30 aout 2011'>Mardi 30/08/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>98 519 380 EUR
@@ -1445,34 +941,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-aout-2011/' title='Resultat tirage Euromillions vendredi 26 aout 2011'>Vendredi 26/08/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>89 057 638 EUR
@@ -1483,34 +965,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-23-aout-2011/' title='Resultat tirage Euromillions mardi 23 aout 2011'>Mardi 23/08/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>74 844 027 EUR
@@ -1521,34 +989,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-aout-2011/' title='Resultat tirage Euromillions vendredi 19 aout 2011'>Vendredi 19/08/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>66 489 770 EUR
@@ -1559,34 +1013,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-16-aout-2011/' title='Resultat tirage Euromillions mardi 16 aout 2011'>Mardi 16/08/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>53 726 356 EUR
@@ -1597,34 +1037,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-aout-2011/' title='Resultat tirage Euromillions vendredi 12 aout 2011'>Vendredi 12/08/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>46 432 977 EUR
@@ -1635,34 +1061,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-9-aout-2011/' title='Resultat tirage Euromillions mardi 9 aout 2011'>Mardi 09/08/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>34 158 168 EUR
@@ -1673,34 +1085,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-aout-2011/' title='Resultat tirage Euromillions vendredi 5 aout 2011'>Vendredi 05/08/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>26 847 222 EUR
@@ -1711,34 +1109,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-2-aout-2011/' title='Resultat tirage Euromillions mardi 2 aout 2011'>Mardi 02/08/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1755,34 +1139,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-juillet-2011/' title='Resultat tirage Euromillions vendredi 29 juillet 2011'>Vendredi 29/07/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1795,34 +1165,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-26-juillet-2011/' title='Resultat tirage Euromillions mardi 26 juillet 2011'>Mardi 26/07/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1833,34 +1189,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-juillet-2011/' title='Resultat tirage Euromillions vendredi 22 juillet 2011'>Vendredi 22/07/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -1873,34 +1215,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-19-juillet-2011/' title='Resultat tirage Euromillions mardi 19 juillet 2011'>Mardi 19/07/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1913,34 +1241,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-juillet-2011/' title='Resultat tirage Euromillions vendredi 15 juillet 2011'>Vendredi 15/07/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1951,34 +1265,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-12-juillet-2011/' title='Resultat tirage Euromillions mardi 12 juillet 2011'>Mardi 12/07/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1991,34 +1291,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-juillet-2011/' title='Resultat tirage Euromillions vendredi 8 juillet 2011'>Vendredi 08/07/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>185 000 000 EUR
@@ -2029,34 +1315,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-5-juillet-2011/' title='Resultat tirage Euromillions mardi 5 juillet 2011'>Mardi 05/07/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>176 715 803 EUR
@@ -2067,34 +1339,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-juillet-2011/' title='Resultat tirage Euromillions vendredi 1er juillet 2011'>Vendredi 01/07/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>156 881 529 EUR
@@ -2111,34 +1369,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-juin-2011/' title='Resultat tirage Euromillions mardi 28 juin 2011'>Mardi 28/06/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>134 366 394 EUR
@@ -2149,34 +1393,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-juin-2011/' title='Resultat tirage Euromillions vendredi 24 juin 2011'>Vendredi 24/06/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>120 909 822 EUR
@@ -2187,34 +1417,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-21-juin-2011/' title='Resultat tirage Euromillions mardi 21 juin 2011'>Mardi 21/06/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>103 328 216 EUR
@@ -2225,34 +1441,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-juin-2011/' title='Resultat tirage Euromillions vendredi 17 juin 2011'>Vendredi 17/06/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>92 688 909 EUR
@@ -2263,34 +1465,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-juin-2011/' title='Resultat tirage Euromillions mardi 14 juin 2011'>Mardi 14/06/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>77 116 731 EUR
@@ -2301,34 +1489,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-juin-2011/' title='Resultat tirage Euromillions vendredi 10 juin 2011'>Vendredi 10/06/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>68 829 142 EUR
@@ -2339,34 +1513,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-juin-2011/' title='Resultat tirage Euromillions mardi 7 juin 2011'>Mardi 07/06/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>54 804 890 EUR
@@ -2377,34 +1537,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-juin-2011/' title='Resultat tirage Euromillions vendredi 3 juin 2011'>Vendredi 03/06/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>46 382 251 EUR
@@ -2421,34 +1567,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-mai-2011/' title='Resultat tirage Euromillions mardi 31 mai 2011'>Mardi 31/05/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>33 899 735 EUR
@@ -2459,34 +1591,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-mai-2011/' title='Resultat tirage Euromillions vendredi 27 mai 2011'>Vendredi 27/05/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>27 342 236 EUR
@@ -2497,34 +1615,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-mai-2011/' title='Resultat tirage Euromillions mardi 24 mai 2011'>Mardi 24/05/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2535,34 +1639,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-mai-2011/' title='Resultat tirage Euromillions vendredi 20 mai 2011'>Vendredi 20/05/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2575,34 +1665,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-mai-2011/' title='Resultat tirage Euromillions mardi 17 mai 2011'>Mardi 17/05/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2613,34 +1689,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-mai-2011/' title='Resultat tirage Euromillions vendredi 13 mai 2011'>Vendredi 13/05/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2653,34 +1715,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-mai-2011/' title='Resultat tirage Euromillions mardi 10 mai 2011'>Mardi 10/05/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>100 000 000 EUR
@@ -2691,34 +1739,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-mai-2011/' title='Resultat tirage Euromillions vendredi 6 mai 2011'>Vendredi 06/05/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2737,34 +1771,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-avril-2011/' title='Resultat tirage Euromillions vendredi 29 avril 2011'>Vendredi 29/04/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2775,34 +1795,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-avril-2011/' title='Resultat tirage Euromillions vendredi 22 avril 2011'>Vendredi 22/04/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2815,34 +1821,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-avril-2011/' title='Resultat tirage Euromillions vendredi 15 avril 2011'>Vendredi 15/04/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>29 316 256 EUR
@@ -2853,34 +1845,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-avril-2011/' title='Resultat tirage Euromillions vendredi 8 avril 2011'>Vendredi 08/04/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2891,34 +1869,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-avril-2011/' title='Resultat tirage Euromillions vendredi 1er avril 2011'>Vendredi 01/04/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2937,34 +1901,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-mars-2011/' title='Resultat tirage Euromillions vendredi 25 mars 2011'>Vendredi 25/03/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -2977,34 +1927,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-mars-2011/' title='Resultat tirage Euromillions vendredi 18 mars 2011'>Vendredi 18/03/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>107 470 965 EUR
@@ -3015,34 +1951,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-mars-2011/' title='Resultat tirage Euromillions vendredi 11 mars 2011'>Vendredi 11/03/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>82 769 625 EUR
@@ -3053,34 +1975,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-mars-2011/' title='Resultat tirage Euromillions vendredi 4 mars 2011'>Vendredi 04/03/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>61 901 148 EUR
@@ -3097,34 +2005,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-fevrier-2011/' title='Resultat tirage Euromillions vendredi 25 fevrier 2011'>Vendredi 25/02/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>44 068 144 EUR
@@ -3135,34 +2029,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-fevrier-2011/' title='Resultat tirage Euromillions vendredi 18 fevrier 2011'>Vendredi 18/02/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>28 569 174 EUR
@@ -3173,34 +2053,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-fevrier-2011/' title='Resultat tirage Euromillions vendredi 11 fevrier 2011'>Vendredi 11/02/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3211,34 +2077,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-fevrier-2011/' title='Resultat tirage Euromillions vendredi 4 fevrier 2011'>Vendredi 04/02/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>
         <strong>5
         </strong>
@@ -3257,34 +2109,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-janvier-2011/' title='Resultat tirage Euromillions vendredi 28 janvier 2011'>Vendredi 28/01/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3295,34 +2133,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-janvier-2011/' title='Resultat tirage Euromillions vendredi 21 janvier 2011'>Vendredi 21/01/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -3335,34 +2159,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-janvier-2011/' title='Resultat tirage Euromillions vendredi 14 janvier 2011'>Vendredi 14/01/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3373,34 +2183,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-janvier-2011/' title='Resultat tirage Euromillions vendredi 7 janvier 2011'>Vendredi 07/01/2011
         </a>
       </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>1
         </strong>

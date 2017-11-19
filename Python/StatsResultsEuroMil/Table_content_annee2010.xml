@@ -33,34 +33,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-decembre-2010/' title='Resultat tirage Euromillions vendredi 31 decembre 2010'>Vendredi 31/12/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -73,34 +59,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-decembre-2010/' title='Resultat tirage Euromillions vendredi 24 decembre 2010'>Vendredi 24/12/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -113,34 +85,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-decembre-2010/' title='Resultat tirage Euromillions vendredi 17 decembre 2010'>Vendredi 17/12/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -153,34 +111,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-decembre-2010/' title='Resultat tirage Euromillions vendredi 10 decembre 2010'>Vendredi 10/12/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>28 707 820 EUR
@@ -191,34 +135,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-decembre-2010/' title='Resultat tirage Euromillions vendredi 3 decembre 2010'>Vendredi 03/12/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -235,34 +165,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-novembre-2010/' title='Resultat tirage Euromillions vendredi 26 novembre 2010'>Vendredi 26/11/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -275,34 +191,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-novembre-2010/' title='Resultat tirage Euromillions vendredi 19 novembre 2010'>Vendredi 19/11/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>30 223 423 EUR
@@ -313,34 +215,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-novembre-2010/' title='Resultat tirage Euromillions vendredi 12 novembre 2010'>Vendredi 12/11/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>16 141 034 EUR
@@ -351,34 +239,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-novembre-2010/' title='Resultat tirage Euromillions vendredi 5 novembre 2010'>Vendredi 05/11/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -397,34 +271,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-octobre-2010/' title='Resultat tirage Euromillions vendredi 29 octobre 2010'>Vendredi 29/10/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -435,34 +295,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-octobre-2010/' title='Resultat tirage Euromillions vendredi 22 octobre 2010'>Vendredi 22/10/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -475,34 +321,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-octobre-2010/' title='Resultat tirage Euromillions vendredi 15 octobre 2010'>Vendredi 15/10/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -513,34 +345,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-octobre-2010/' title='Resultat tirage Euromillions vendredi 8 octobre 2010'>Vendredi 08/10/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -553,34 +371,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-octobre-2010/' title='Resultat tirage Euromillions vendredi 1er octobre 2010'>Vendredi 01/10/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>100 000 000 EUR
@@ -597,34 +401,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-septembre-2010/' title='Resultat tirage Euromillions vendredi 24 septembre 2010'>Vendredi 24/09/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -637,34 +427,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-septembre-2010/' title='Resultat tirage Euromillions vendredi 17 septembre 2010'>Vendredi 17/09/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -675,34 +451,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-septembre-2010/' title='Resultat tirage Euromillions vendredi 10 septembre 2010'>Vendredi 10/09/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -715,34 +477,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-septembre-2010/' title='Resultat tirage Euromillions vendredi 3 septembre 2010'>Vendredi 03/09/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -761,34 +509,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-aout-2010/' title='Resultat tirage Euromillions vendredi 27 aout 2010'>Vendredi 27/08/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -801,34 +535,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-aout-2010/' title='Resultat tirage Euromillions vendredi 20 aout 2010'>Vendredi 20/08/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -841,34 +561,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-aout-2010/' title='Resultat tirage Euromillions vendredi 13 aout 2010'>Vendredi 13/08/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>3
         </strong>
@@ -881,34 +587,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-aout-2010/' title='Resultat tirage Euromillions vendredi 6 aout 2010'>Vendredi 06/08/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -927,34 +619,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-juillet-2010/' title='Resultat tirage Euromillions vendredi 30 juillet 2010'>Vendredi 30/07/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -967,34 +645,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-juillet-2010/' title='Resultat tirage Euromillions vendredi 23 juillet 2010'>Vendredi 23/07/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1005,34 +669,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-juillet-2010/' title='Resultat tirage Euromillions vendredi 16 juillet 2010'>Vendredi 16/07/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1045,34 +695,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-juillet-2010/' title='Resultat tirage Euromillions vendredi 9 juillet 2010'>Vendredi 09/07/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>28 051 827 EUR
@@ -1083,34 +719,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-juillet-2010/' title='Resultat tirage Euromillions vendredi 2 juillet 2010'>Vendredi 02/07/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1127,34 +749,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-juin-2010/' title='Resultat tirage Euromillions vendredi 25 juin 2010'>Vendredi 25/06/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1167,34 +775,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-juin-2010/' title='Resultat tirage Euromillions vendredi 18 juin 2010'>Vendredi 18/06/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1205,34 +799,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-juin-2010/' title='Resultat tirage Euromillions vendredi 11 juin 2010'>Vendredi 11/06/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1245,34 +825,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-juin-2010/' title='Resultat tirage Euromillions vendredi 4 juin 2010'>Vendredi 04/06/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1291,34 +857,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-mai-2010/' title='Resultat tirage Euromillions vendredi 28 mai 2010'>Vendredi 28/05/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1331,34 +883,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-mai-2010/' title='Resultat tirage Euromillions vendredi 21 mai 2010'>Vendredi 21/05/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1371,34 +909,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-mai-2010/' title='Resultat tirage Euromillions vendredi 14 mai 2010'>Vendredi 14/05/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1411,34 +935,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-mai-2010/' title='Resultat tirage Euromillions vendredi 7 mai 2010'>Vendredi 07/05/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>78 821 704 EUR
@@ -1455,34 +965,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-avril-2010/' title='Resultat tirage Euromillions vendredi 30 avril 2010'>Vendredi 30/04/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>60 297 781 EUR
@@ -1493,34 +989,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-avril-2010/' title='Resultat tirage Euromillions vendredi 23 avril 2010'>Vendredi 23/04/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>43 702 394 EUR
@@ -1531,34 +1013,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-avril-2010/' title='Resultat tirage Euromillions vendredi 16 avril 2010'>Vendredi 16/04/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>28 888 274 EUR
@@ -1569,34 +1037,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-avril-2010/' title='Resultat tirage Euromillions vendredi 9 avril 2010'>Vendredi 09/04/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1607,34 +1061,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-avril-2010/' title='Resultat tirage Euromillions vendredi 2 avril 2010'>Vendredi 02/04/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1653,34 +1093,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-mars-2010/' title='Resultat tirage Euromillions vendredi 26 mars 2010'>Vendredi 26/03/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1693,34 +1119,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-mars-2010/' title='Resultat tirage Euromillions vendredi 19 mars 2010'>Vendredi 19/03/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>29 152 590 EUR
@@ -1731,34 +1143,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-mars-2010/' title='Resultat tirage Euromillions vendredi 12 mars 2010'>Vendredi 12/03/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1769,34 +1167,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-mars-2010/' title='Resultat tirage Euromillions vendredi 5 mars 2010'>Vendredi 05/03/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1815,34 +1199,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-fevrier-2010/' title='Resultat tirage Euromillions vendredi 26 fevrier 2010'>Vendredi 26/02/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>30 133 000 EUR
@@ -1853,34 +1223,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-fevrier-2010/' title='Resultat tirage Euromillions vendredi 19 fevrier 2010'>Vendredi 19/02/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1891,34 +1247,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-fevrier-2010/' title='Resultat tirage Euromillions vendredi 12 fevrier 2010'>Vendredi 12/02/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -1931,34 +1273,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-fevrier-2010/' title='Resultat tirage Euromillions vendredi 5 fevrier 2010'>Vendredi 05/02/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>100 000 000 EUR
@@ -1975,34 +1303,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-janvier-2010/' title='Resultat tirage Euromillions vendredi 29 janvier 2010'>Vendredi 29/01/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2015,34 +1329,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-janvier-2010/' title='Resultat tirage Euromillions vendredi 22 janvier 2010'>Vendredi 22/01/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2053,34 +1353,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-janvier-2010/' title='Resultat tirage Euromillions vendredi 15 janvier 2010'>Vendredi 15/01/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -2093,34 +1379,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-janvier-2010/' title='Resultat tirage Euromillions vendredi 8 janvier 2010'>Vendredi 08/01/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>42 944 229 EUR
@@ -2131,34 +1403,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-janvier-2010/' title='Resultat tirage Euromillions vendredi 1er janvier 2010'>Vendredi 01/01/2010
         </a>
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>28 412 329 EUR

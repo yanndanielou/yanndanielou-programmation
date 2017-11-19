@@ -84,28 +84,33 @@ def main(argv):
 		
 		logging.info("Table balise compliant with XML format:" + table_balise_content_as_xml)
 		
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml.replace('<tr><th>Date du tirage</th><th>N1</th><th>N2</th><th>N3</th><th>N4</th><th>N5</th><th>E1</th><th>E2</th></th><th>Gagnants</th><th>Jackpot</th></tr>', '')
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('<td><div class', '<boule class')
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('</div></td>', '</boule>')
+		
+		logging.info("Table balise compliant with XML format transformed with good fields:" + table_balise_content_as_xml_transformed_good_fields)
 		
 		logging.info("Indentation")
 		table_balise_content_as_idented_xml = ""
 		current_indentation = 0
 		
-		for i in range(0, len(table_balise_content_as_xml)):					
-			if table_balise_content_as_xml[i] == '<' and table_balise_content_as_xml[i+1] != '/':
+		for i in range(0, len(table_balise_content_as_xml_transformed_good_fields)):					
+			if table_balise_content_as_xml_transformed_good_fields[i] == '<' and table_balise_content_as_xml_transformed_good_fields[i+1] != '/':
 				current_indentation = current_indentation + 1
 				table_balise_content_as_idented_xml = table_balise_content_as_idented_xml + Constants.end_line_character_in_text_file
 				for it in range (0,current_indentation):
 					table_balise_content_as_idented_xml = table_balise_content_as_idented_xml + '  '
-				table_balise_content_as_idented_xml = table_balise_content_as_idented_xml + table_balise_content_as_xml[i]
+				table_balise_content_as_idented_xml = table_balise_content_as_idented_xml + table_balise_content_as_xml_transformed_good_fields[i]
 			
-			elif table_balise_content_as_xml[i] == '<' and i < len(table_balise_content_as_xml)-1 and table_balise_content_as_xml[i+1] == '/':
+			elif table_balise_content_as_xml_transformed_good_fields[i] == '<' and i < len(table_balise_content_as_xml_transformed_good_fields)-1 and table_balise_content_as_xml_transformed_good_fields[i+1] == '/':
 				table_balise_content_as_idented_xml = table_balise_content_as_idented_xml + Constants.end_line_character_in_text_file
 				for it in range (0,current_indentation):
 					table_balise_content_as_idented_xml = table_balise_content_as_idented_xml + '  '
-				table_balise_content_as_idented_xml = table_balise_content_as_idented_xml +  table_balise_content_as_xml[i]
+				table_balise_content_as_idented_xml = table_balise_content_as_idented_xml +  table_balise_content_as_xml_transformed_good_fields[i]
 				current_indentation = current_indentation - 1
 
 			else:
-				table_balise_content_as_idented_xml = table_balise_content_as_idented_xml + table_balise_content_as_xml[i]
+				table_balise_content_as_idented_xml = table_balise_content_as_idented_xml + table_balise_content_as_xml_transformed_good_fields[i]
 				
 		
 		logging.info("Table balise content as XML format with identation:" + table_balise_content_as_idented_xml)

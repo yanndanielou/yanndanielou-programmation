@@ -31,34 +31,20 @@
     <tr>
       <td>Vendredi 29/12/2006
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>66 983 488 EUR
@@ -67,34 +53,20 @@
     <tr>
       <td>Vendredi 22/12/2006
       </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>53 119 776 EUR
@@ -103,34 +75,20 @@
     <tr>
       <td>Vendredi 15/12/2006
       </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>39 640 847 EUR
@@ -139,34 +97,20 @@
     <tr>
       <td>Vendredi 08/12/2006
       </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>26 982 938 EUR
@@ -175,34 +119,20 @@
     <tr>
       <td>Vendredi 01/12/2006
       </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -217,34 +147,20 @@
     <tr>
       <td>Vendredi 24/11/2006
       </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -255,34 +171,20 @@
     <tr>
       <td>Vendredi 17/11/2006
       </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>20
         </strong>
@@ -293,34 +195,20 @@
     <tr>
       <td>Vendredi 10/11/2006
       </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>153 564 446 EUR
@@ -329,34 +217,20 @@
     <tr>
       <td>Vendredi 03/11/2006
       </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>131 523 150 EUR
@@ -371,34 +245,20 @@
     <tr>
       <td>Vendredi 27/10/2006
       </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>113 230 830 EUR
@@ -407,34 +267,20 @@
     <tr>
       <td>Vendredi 20/10/2006
       </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>96 837 646 EUR
@@ -443,34 +289,20 @@
     <tr>
       <td>Vendredi 13/10/2006
       </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>82 724 345 EUR
@@ -479,34 +311,20 @@
     <tr>
       <td>Vendredi 06/10/2006
       </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>69 208 821 EUR
@@ -521,34 +339,20 @@
     <tr>
       <td>Vendredi 29/09/2006
       </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>59 132 969 EUR
@@ -557,34 +361,20 @@
     <tr>
       <td>Vendredi 22/09/2006
       </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>47 213 250 EUR
@@ -593,34 +383,20 @@
     <tr>
       <td>Vendredi 15/09/2006
       </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>35 980 458 EUR
@@ -629,34 +405,20 @@
     <tr>
       <td>Vendredi 08/09/2006
       </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>25 256 582 EUR
@@ -665,34 +427,20 @@
     <tr>
       <td>Vendredi 01/09/2006
       </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -707,34 +455,20 @@
     <tr>
       <td>Vendredi 25/08/2006
       </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -745,34 +479,20 @@
     <tr>
       <td>Vendredi 18/08/2006
       </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>45 929 071 EUR
@@ -781,34 +501,20 @@
     <tr>
       <td>Vendredi 11/08/2006
       </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>35 197 614 EUR
@@ -817,34 +523,20 @@
     <tr>
       <td>Vendredi 04/08/2006
       </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>24 977 577 EUR
@@ -859,34 +551,20 @@
     <tr>
       <td>Vendredi 28/07/2006
       </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -895,34 +573,20 @@
     <tr>
       <td>Vendredi 21/07/2006
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -933,34 +597,20 @@
     <tr>
       <td>Vendredi 14/07/2006
       </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -969,34 +619,20 @@
     <tr>
       <td>Vendredi 07/07/2006
       </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -1013,34 +649,20 @@
     <tr>
       <td>Vendredi 30/06/2006
       </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>58 765 947 EUR
@@ -1049,34 +671,20 @@
     <tr>
       <td>Vendredi 23/06/2006
       </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>46 811 687 EUR
@@ -1085,34 +693,20 @@
     <tr>
       <td>Vendredi 16/06/2006
       </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>35 662 152 EUR
@@ -1121,34 +715,20 @@
     <tr>
       <td>Vendredi 09/06/2006
       </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>25 187 106 EUR
@@ -1157,34 +737,20 @@
     <tr>
       <td>Vendredi 02/06/2006
       </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1199,34 +765,20 @@
     <tr>
       <td>Vendredi 26/05/2006
       </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -1237,34 +789,20 @@
     <tr>
       <td>Vendredi 19/05/2006
       </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1275,34 +813,20 @@
     <tr>
       <td>Vendredi 12/05/2006
       </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -1313,34 +837,20 @@
     <tr>
       <td>Vendredi 05/05/2006
       </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1355,34 +865,20 @@
     <tr>
       <td>Vendredi 28/04/2006
       </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>4
         </strong>
@@ -1393,34 +889,20 @@
     <tr>
       <td>Vendredi 21/04/2006
       </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1429,34 +911,20 @@
     <tr>
       <td>Vendredi 14/04/2006
       </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1467,34 +935,20 @@
     <tr>
       <td>Vendredi 07/04/2006
       </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1509,34 +963,20 @@
     <tr>
       <td>Vendredi 31/03/2006
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1547,34 +987,20 @@
     <tr>
       <td>Vendredi 24/03/2006
       </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>65 117 842 EUR
@@ -1583,34 +1009,20 @@
     <tr>
       <td>Vendredi 17/03/2006
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>51 865 203 EUR
@@ -1619,34 +1031,20 @@
     <tr>
       <td>Vendredi 10/03/2006
       </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>39 080 314 EUR
@@ -1655,34 +1053,20 @@
     <tr>
       <td>Vendredi 03/03/2006
       </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>26 842 720 EUR
@@ -1697,34 +1081,20 @@
     <tr>
       <td>Vendredi 24/02/2006
       </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1733,34 +1103,20 @@
     <tr>
       <td>Vendredi 17/02/2006
       </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1771,34 +1127,20 @@
     <tr>
       <td>Vendredi 10/02/2006
       </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1807,34 +1149,20 @@
     <tr>
       <td>Vendredi 03/02/2006
       </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>
         <strong>3
         </strong>
@@ -1851,34 +1179,20 @@
     <tr>
       <td>Vendredi 27/01/2006
       </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>152 882 223 EUR
@@ -1887,34 +1201,20 @@
     <tr>
       <td>Vendredi 20/01/2006
       </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>0 EUR
@@ -1923,34 +1223,20 @@
     <tr>
       <td>Vendredi 13/01/2006
       </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>0 EUR
@@ -1959,34 +1245,20 @@
     <tr>
       <td>Vendredi 06/01/2006
       </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>0 EUR

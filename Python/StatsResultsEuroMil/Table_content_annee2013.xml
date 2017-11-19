@@ -33,34 +33,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-decembre-2013/' title='Resultat tirage EuroMillions mardi 31 decembre 2013'>Mardi 31/12/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>100 878 708 EUR
@@ -71,34 +57,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-decembre-2013/' title='Resultat tirage EuroMillions vendredi 27 decembre 2013'>Vendredi 27/12/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>86 334 915 EUR
@@ -109,34 +81,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-decembre-2013/' title='Resultat tirage EuroMillions mardi 24 decembre 2013'>Mardi 24/12/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>74 670 405 EUR
@@ -147,34 +105,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-decembre-2013/' title='Resultat tirage EuroMillions vendredi 20 decembre 2013'>Vendredi 20/12/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>64 321 006 EUR
@@ -185,34 +129,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-decembre-2013/' title='Resultat tirage EuroMillions mardi 17 decembre 2013'>Mardi 17/12/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>52 406 869 EUR
@@ -223,34 +153,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-decembre-2013/' title='Resultat tirage EuroMillions vendredi 13 decembre 2013'>Vendredi 13/12/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>44 668 268 EUR
@@ -261,34 +177,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-decembre-2013/' title='Resultat tirage EuroMillions mardi 10 decembre 2013'>Mardi 10/12/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>31 707 067 EUR
@@ -299,34 +201,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-decembre-2013/' title='Resultat tirage EuroMillions vendredi 6 decembre 2013'>Vendredi 06/12/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>24 886 473 EUR
@@ -337,34 +225,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-3-decembre-2013/' title='Resultat tirage EuroMillions mardi 3 decembre 2013'>Mardi 03/12/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -381,34 +255,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-novembre-2013/' title='Resultat tirage EuroMillions vendredi 29 novembre 2013'>Vendredi 29/11/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -421,34 +281,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-26-novembre-2013/' title='Resultat tirage EuroMillions mardi 26 novembre 2013'>Mardi 26/11/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -461,34 +307,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-novembre-2013/' title='Resultat tirage EuroMillions vendredi 22 novembre 2013'>Vendredi 22/11/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>25 321 675 EUR
@@ -499,34 +331,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-19-novembre-2013/' title='Resultat tirage EuroMillions mardi 19 novembre 2013'>Mardi 19/11/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -537,34 +355,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-novembre-2013/' title='Resultat tirage EuroMillions vendredi 15 novembre 2013'>Vendredi 15/11/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -577,34 +381,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-12-novembre-2013/' title='Resultat tirage EuroMillions mardi 12 novembre 2013'>Mardi 12/11/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -615,34 +405,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-novembre-2013/' title='Resultat tirage EuroMillions vendredi 8 novembre 2013'>Vendredi 08/11/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -655,34 +431,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-5-novembre-2013/' title='Resultat tirage EuroMillions mardi 5 novembre 2013'>Mardi 05/11/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -695,34 +457,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-novembre-2013/' title='Resultat tirage EuroMillions vendredi 1er novembre 2013'>Vendredi 01/11/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -739,34 +487,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-octobre-2013/' title='Resultat tirage EuroMillions mardi 29 octobre 2013'>Mardi 29/10/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -779,34 +513,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-octobre-2013/' title='Resultat tirage EuroMillions vendredi 25 octobre 2013'>Vendredi 25/10/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -819,34 +539,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-22-octobre-2013/' title='Resultat tirage EuroMillions mardi 22 octobre 2013'>Mardi 22/10/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>21 557 573 EUR
@@ -857,34 +563,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-octobre-2013/' title='Resultat tirage EuroMillions vendredi 18 octobre 2013'>Vendredi 18/10/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -895,34 +587,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-15-octobre-2013/' title='Resultat tirage EuroMillions mardi 15 octobre 2013'>Mardi 15/10/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -935,34 +613,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-octobre-2013/' title='Resultat tirage EuroMillions vendredi 11 octobre 2013'>Vendredi 11/10/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>43 300 447 EUR
@@ -973,34 +637,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-8-octobre-2013/' title='Resultat tirage EuroMillions mardi 8 octobre 2013'>Mardi 08/10/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>32 466 476 EUR
@@ -1011,34 +661,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-octobre-2013/' title='Resultat tirage EuroMillions vendredi 4 octobre 2013'>Vendredi 04/10/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>25 391 202 EUR
@@ -1049,34 +685,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-1er-octobre-2013/' title='Resultat tirage EuroMillions mardi 1er octobre 2013'>Mardi 01/10/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1093,34 +715,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-septembre-2013/' title='Resultat tirage EuroMillions vendredi 27 septembre 2013'>Vendredi 27/09/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1133,34 +741,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-septembre-2013/' title='Resultat tirage EuroMillions mardi 24 septembre 2013'>Mardi 24/09/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>53 875 031 EUR
@@ -1171,34 +765,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-septembre-2013/' title='Resultat tirage EuroMillions vendredi 20 septembre 2013'>Vendredi 20/09/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>46 107 180 EUR
@@ -1209,34 +789,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-septembre-2013/' title='Resultat tirage EuroMillions mardi 17 septembre 2013'>Mardi 17/09/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>34 994 367 EUR
@@ -1247,34 +813,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-septembre-2013/' title='Resultat tirage EuroMillions vendredi 13 septembre 2013'>Vendredi 13/09/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>27 722 709 EUR
@@ -1285,34 +837,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-septembre-2013/' title='Resultat tirage EuroMillions mardi 10 septembre 2013'>Mardi 10/09/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1323,34 +861,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-septembre-2013/' title='Resultat tirage Euromillions vendredi 6 septembre 2013'>Vendredi 06/09/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -1363,34 +887,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-3-septembre-2013/' title='Resultat tirage EuroMillions mardi 3 septembre 2013'>Mardi 03/09/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1407,34 +917,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-aout-2013/' title='Resultat tirage EuroMillions vendredi 30 aout 2013'>Vendredi 30/08/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -1447,34 +943,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-27-aout-2013/' title='Resultat tirage EuroMillions mardi 27 aout 2013'>Mardi 27/08/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1485,34 +967,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-aout-2013/' title='Resultat tirage EuroMillions vendredi 23 aout 2013'>Vendredi 23/08/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1525,34 +993,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-20-aout-2013/' title='Resultat tirage EuroMillions mardi 20 aout 2013'>Mardi 20/08/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>80 048 874 EUR
@@ -1563,34 +1017,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-aout-2013/' title='Resultat tirage EuroMillions vendredi 16 aout 2013'>Vendredi 16/08/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>70 976 896 EUR
@@ -1601,34 +1041,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-13-aout-2013/' title='Resultat tirage EuroMillions mardi 13 aout 2013'>Mardi 13/08/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>59 358 856 EUR
@@ -1639,34 +1065,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-aout-2013/' title='Resultat tirage EuroMillions vendredi 9 aout 2013'>Vendredi 09/08/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>51 235 800 EUR
@@ -1677,34 +1089,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-6-aout-2013/' title='Resultat tirage EuroMillions mardi 6 aout 2013'>Mardi 06/08/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>39 969 189 EUR
@@ -1715,34 +1113,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-aout-2013/' title='Resultat tirage EuroMillions vendredi 2 aout 2013'>Vendredi 02/08/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>32 550 628 EUR
@@ -1759,34 +1143,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-juillet-2013/' title='Resultat tirage EuroMillions mardi 30 juillet 2013'>Mardi 30/07/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>22 036 079 EUR
@@ -1797,34 +1167,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-juillet-2013/' title='Resultat tirage EuroMillions vendredi 26 juillet 2013'>Vendredi 26/07/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 141 986 EUR
@@ -1835,34 +1191,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-23-juillet-2013/' title='Resultat tirage EuroMillions mardi 23 juillet 2013'>Mardi 23/07/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1875,34 +1217,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-juillet-2013/' title='Resultat tirage EuroMillions vendredi 19 juillet 2013'>Vendredi 19/07/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1915,34 +1243,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-16-juillet-2013/' title='Resultat tirage EuroMillions mardi 16 juillet 2013'>Mardi 16/07/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1955,34 +1269,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-juillet-2013/' title='Resultat tirage EuroMillions vendredi 12 juillet 2013'>Vendredi 12/07/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1993,34 +1293,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-9-juillet-2013/' title='Resultat tirage EuroMillions mardi 9 juillet 2013'>Mardi 09/07/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2033,34 +1319,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-juillet-2013/' title='Resultat tirage Euromillions vendredi 5 juillet 2013'>Vendredi 05/07/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>26 012 633 EUR
@@ -2071,34 +1343,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-2-juillet-2013/' title='Resultat tirage Euromillions mardi 2 juillet 2013'>Mardi 02/07/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2115,34 +1373,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-juin-2013/' title='Resultat tirage Euromillions vendredi 28 juin 2013'>Vendredi 28/06/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2155,34 +1399,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-25-juin-2013/' title='Resultat tirage Euromillions mardi 25 juin 2013'>Mardi 25/06/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -2195,34 +1425,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-juin-2013/' title='Resultat tirage Euromillions vendredi 21 juin 2013'>Vendredi 21/06/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>168 458 397 EUR
@@ -2233,34 +1449,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-18-juin-2013/' title='Resultat tirage Euromillions mardi 18 juin 2013'>Mardi 18/06/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>146 642 974 EUR
@@ -2271,34 +1473,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-juin-2013/' title='Resultat tirage Euromillions vendredi 14 juin 2013'>Vendredi 14/06/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>131 383 087 EUR
@@ -2309,34 +1497,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-11-juin-2013/' title='Resultat tirage Euromillions mardi 11 juin 2013'>Mardi 11/06/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>112 888 839 EUR
@@ -2347,34 +1521,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-juin-2013/' title='Resultat tirage Euromillions vendredi 7 juin 2013'>Vendredi 07/06/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>100 000 000 EUR
@@ -2385,34 +1545,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-4-juin-2013/' title='Resultat tirage Euromillions mardi 4 juin 2013'>Mardi 04/06/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>22 292 668 EUR
@@ -2429,34 +1575,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-mai-2013/' title='Resultat tirage Euromillions vendredi 31 mai 2013'>Vendredi 31/05/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2467,34 +1599,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-mai-2013/' title='Resultat tirage Euromillions mardi 28 mai 2013'>Mardi 28/05/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2507,34 +1625,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-mai-2013/' title='Resultat tirage Euromillions vendredi 24 mai 2013'>Vendredi 24/05/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>85 427 113 EUR
@@ -2545,34 +1649,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-21-mai-2013/' title='Resultat tirage Euromillions mardi 21 mai 2013'>Mardi 21/05/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>71 706 904 EUR
@@ -2583,34 +1673,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-mai-2013/' title='Resultat tirage Euromillions vendredi 17 mai 2013'>Vendredi 17/05/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>63 210 305 EUR
@@ -2621,34 +1697,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-mai-2013/' title='Resultat tirage Euromillions mardi 14 mai 2013'>Mardi 14/05/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>51 014 670 EUR
@@ -2659,34 +1721,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-mai-2013/' title='Resultat tirage Euromillions vendredi 10 mai 2013'>Vendredi 10/05/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>43 122 368 EUR
@@ -2697,34 +1745,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-mai-2013/' title='Resultat tirage Euromillions mardi 7 mai 2013'>Mardi 07/05/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>32 317 752 EUR
@@ -2735,34 +1769,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-mai-2013/' title='Resultat tirage Euromillions vendredi 3 mai 2013'>Vendredi 03/05/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>25 320 531 EUR
@@ -2779,34 +1799,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-avril-2013/' title='Resultat tirage Euromillions mardi 30 avril 2013'>Mardi 30/04/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2817,34 +1823,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-avril-2013/' title='Resultat tirage Euromillions vendredi 26 avril 2013'>Vendredi 26/04/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2857,34 +1849,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-23-avril-2013/' title='Resultat tirage Euromillions mardi 23 avril 2013'>Mardi 23/04/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>21 743 067 EUR
@@ -2895,34 +1873,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-avril-2013/' title='Resultat tirage Euromillions vendredi 19 avril 2013'>Vendredi 19/04/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -2933,34 +1897,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-16-avril-2013/' title='Resultat tirage Euromillions mardi 16 avril 2013'>Mardi 16/04/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2973,34 +1923,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-avril-2013/' title='Resultat tirage Euromillions vendredi 12 avril 2013'>Vendredi 12/04/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -3013,34 +1949,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-9-avril-2013/' title='Resultat tirage Euromillions mardi 9 avril 2013'>Mardi 09/04/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3051,34 +1973,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-avril-2013/' title='Resultat tirage Euromillions vendredi 5 avril 2013'>Vendredi 05/04/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -3091,34 +1999,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-2-avril-2013/' title='Resultat tirage Euromillions mardi 2 avril 2013'>Mardi 02/04/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3135,34 +2029,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-mars-2013/' title='Resultat tirage Euromillions vendredi 29 mars 2013'>Vendredi 29/03/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -3175,34 +2055,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-26-mars-2013/' title='Resultat tirage Euromillions mardi 26 mars 2013'>Mardi 26/03/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>113 430 166 EUR
@@ -3213,34 +2079,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-mars-2013/' title='Resultat tirage Euromillions vendredi 22 mars 2013'>Vendredi 22/03/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>100 000 000 EUR
@@ -3251,34 +2103,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-19-mars-2013/' title='Resultat tirage Euromillions mardi 19 mars 2013'>Mardi 19/03/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>21 971 382 EUR
@@ -3289,34 +2127,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-mars-2013/' title='Resultat tirage Euromillions vendredi 15 mars 2013'>Vendredi 15/03/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3327,34 +2151,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-12-mars-2013/' title='Resultat tirage Euromillions mardi 12 mars 2013'>Mardi 12/03/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -3367,34 +2177,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-mars-2013/' title='Resultat tirage Euromillions vendredi 8 mars 2013'>Vendredi 08/03/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -3407,34 +2203,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-5-mars-2013/' title='Resultat tirage Euromillions mardi 5 mars 2013'>Mardi 05/03/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>40 083 119 EUR
@@ -3445,34 +2227,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-mars-2013/' title='Resultat tirage Euromillions vendredi 1er mars 2013'>Vendredi 01/03/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>32 728 379 EUR
@@ -3489,34 +2257,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-26-fevrier-2013/' title='Resultat tirage Euromillions mardi 26 fevrier 2013'>Mardi 26/02/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>21 860 645 EUR
@@ -3527,34 +2281,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-fevrier-2013/' title='Resultat tirage Euromillions vendredi 22 fevrier 2013'>Vendredi 22/02/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>11
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3565,34 +2305,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-19-fevrier-2013/' title='Resultat tirage Euromillions mardi 19 fevrier 2013'>Mardi 19/02/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -3605,34 +2331,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-fevrier-2013/' title='Resultat tirage Euromillions vendredi 15 fevrier 2013'>Vendredi 15/02/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>52 030 590 EUR
@@ -3643,34 +2355,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-12-fevrier-2013/' title='Resultat tirage Euromillions mardi 12 fevrier 2013'>Mardi 12/02/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>40 241 884 EUR
@@ -3681,34 +2379,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-fevrier-2013/' title='Resultat tirage Euromillions vendredi 8 fevrier 2013'>Vendredi 08/02/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>10
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>32 916 240 EUR
@@ -3719,34 +2403,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-5-fevrier-2013/' title='Resultat tirage Euromillions mardi 5 fevrier 2013'>Mardi 05/02/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>21 947 416 EUR
@@ -3757,34 +2427,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-fevrier-2013/' title='Resultat tirage Euromillions vendredi 1er fevrier 2013'>Vendredi 01/02/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3801,34 +2457,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-janvier-2013/' title='Resultat tirage Euromillions mardi 29 janvier 2013'>Mardi 29/01/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -3841,34 +2483,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-janvier-2013/' title='Resultat tirage Euromillions vendredi 25 janvier 2013'>Vendredi 25/01/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -3881,34 +2509,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-22-janvier-2013/' title='Resultat tirage Euromillions mardi 22 janvier 2013'>Mardi 22/01/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>32 974 711 EUR
@@ -3919,34 +2533,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-janvier-2013/' title='Resultat tirage Euromillions vendredi 18 janvier 2013'>Vendredi 18/01/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>25 798 102 EUR
@@ -3957,34 +2557,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-15-janvier-2013/' title='Resultat tirage Euromillions mardi 15 janvier 2013'>Mardi 15/01/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -3995,34 +2581,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-janvier-2013/' title='Resultat tirage Euromillions vendredi 11 janvier 2013'>Vendredi 11/01/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -4035,34 +2607,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-8-janvier-2013/' title='Resultat tirage Euromillions mardi 8 janvier 2013'>Mardi 08/01/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>22 485 855 EUR
@@ -4073,34 +2631,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-janvier-2013/' title='Resultat tirage Euromillions vendredi 4 janvier 2013'>Vendredi 04/01/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='star_small'>10
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -4111,34 +2655,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-1er-janvier-2013/' title='Resultat tirage Euromillions mardi 1er janvier 2013'>Mardi 01/01/2013
         </a>
       </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='star_small'>11
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>
         <strong>3
         </strong>

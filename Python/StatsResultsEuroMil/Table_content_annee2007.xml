@@ -33,34 +33,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-28-decembre/' title='Resultats du tirage Euromillions vendredi 28 decembre 2007'>Vendredi 28/12/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -71,34 +57,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-21-decembre/' title='Resultats du tirage Euromillions vendredi 21 decembre 2007'>Vendredi 21/12/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -111,34 +83,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-14-decembre/' title='Resultats du tirage Euromillions vendredi 14 decembre 2007'>Vendredi 14/12/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -149,34 +107,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-7-decembre/' title='Resultats du tirage Euromillions vendredi 7 decembre 2007'>Vendredi 07/12/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -195,34 +139,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-30-novembre/' title='Resultats du tirage Euromillions vendredi 30 novembre 2007'>Vendredi 30/11/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -233,34 +163,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-23-novembre/' title='Resultats du tirage Euromillions vendredi 23 novembre 2007'>Vendredi 23/11/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -273,34 +189,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-16-novembre/' title='Resultats du tirage Euromillions vendredi 16 novembre 2007'>Vendredi 16/11/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -311,34 +213,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-9-novembre/' title='Resultats tirage Euromillions du vendredi 9 Novembre 2007'>Vendredi 09/11/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -351,34 +239,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-2-novembre-2007/' title='Resultats tirage Euromillions vendredi 2 novembre 2007'>Vendredi 02/11/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -397,34 +271,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-26-octobre/' title='Resultats tirage Euromillions vendredi 26 octobre 2007'>Vendredi 26/10/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>27 610 682 EUR
@@ -435,34 +295,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-19-octobre/' title='Resultats tirage Euromillions vendredi 19 octobre 2007'>Vendredi 19/10/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -473,34 +319,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-12-octobre/' title='Resultats tirage Euromillions vendredi 12 octobre 2007'>Vendredi 12/10/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -513,34 +345,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-5-octobre/' title='Resultats tirage Euromillions vendredi 5 octobre 2007'>Vendredi 05/10/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>5
         </strong>
@@ -559,34 +377,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-28-septembre/' title='Resultats tirage Euromillions vendredi 28 septembre 2007'>Vendredi 28/09/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>14
         </strong>
@@ -599,34 +403,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-21-septembre/' title='Resultats tirage Euromillions vendredi 21 septembre 2007'>Vendredi 21/09/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -639,34 +429,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-14-septembre/' title='Resultats tirage Euromillions vendredi 14 septembre 2007'>Vendredi 14/09/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -677,34 +453,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-7-septembre/' title='Resultats tirage Euromillions vendredi 7 septembre 2007'>Vendredi 07/09/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -723,34 +485,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-31-aout-2007/' title='Resultats du tirage Euromillions vendredi 31 Aout 2007'>Vendredi 31/08/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -763,34 +511,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-24-aout-2007/' title='Resultats tirage Euromillions vendredi 24 Aout 2007'>Vendredi 24/08/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>26 677 818 EUR
@@ -801,34 +535,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-17-aout/' title='Resultats tirage Euromillions du vendredi 17 Aout 2007'>Vendredi 17/08/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -839,34 +559,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-de-ce-vendredi-10-aout/' title='Resultats du tirage Euromillions de ce vendredi 10 aout 2007'>Vendredi 10/08/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -879,34 +585,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/tirage-euromillions-du-vendredi-03-aout/' title='Resultat du tirage Euromillions du vendredi 3 aout 2007'>Vendredi 03/08/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>39 185 012 EUR
@@ -923,34 +615,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/tirage-euromillions-du-27-juillet-2007/' title='Resultat tirage Euromillions du vendredi 27 juillet 2007'>Vendredi 27/07/2007
         </a>
       </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>27 731 341 EUR
@@ -959,34 +637,20 @@
     <tr>
       <td>Vendredi 20/07/2007
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -995,34 +659,20 @@
     <tr>
       <td>Vendredi 13/07/2007
       </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1033,34 +683,20 @@
     <tr>
       <td>Vendredi 06/07/2007
       </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>39 898 280 EUR
@@ -1075,34 +711,20 @@
     <tr>
       <td>Vendredi 29/06/2007
       </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>26 816 658 EUR
@@ -1111,34 +733,20 @@
     <tr>
       <td>Vendredi 22/06/2007
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1147,34 +755,20 @@
     <tr>
       <td>Vendredi 15/06/2007
       </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1185,34 +779,20 @@
     <tr>
       <td>Vendredi 08/06/2007
       </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>1
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1221,34 +801,20 @@
     <tr>
       <td>Vendredi 01/06/2007
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1265,34 +831,20 @@
     <tr>
       <td>Vendredi 25/05/2007
       </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1303,34 +855,20 @@
     <tr>
       <td>Vendredi 18/05/2007
       </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1341,34 +879,20 @@
     <tr>
       <td>Vendredi 11/05/2007
       </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>3
         </strong>
@@ -1379,34 +903,20 @@
     <tr>
       <td>Vendredi 04/05/2007
       </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>39 605 256 EUR
@@ -1421,34 +931,20 @@
     <tr>
       <td>Vendredi 27/04/2007
       </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>26 851 565 EUR
@@ -1457,34 +953,20 @@
     <tr>
       <td>Vendredi 20/04/2007
       </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1493,34 +975,20 @@
     <tr>
       <td>Vendredi 13/04/2007
       </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1531,34 +999,20 @@
     <tr>
       <td>Vendredi 06/04/2007
       </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1575,34 +1029,20 @@
     <tr>
       <td>Vendredi 30/03/2007
       </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1611,34 +1051,20 @@
     <tr>
       <td>Vendredi 23/03/2007
       </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1649,34 +1075,20 @@
     <tr>
       <td>Vendredi 16/03/2007
       </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>27 699 321 EUR
@@ -1685,34 +1097,20 @@
     <tr>
       <td>Vendredi 09/03/2007
       </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1721,34 +1119,20 @@
     <tr>
       <td>Vendredi 02/03/2007
       </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -1765,34 +1149,20 @@
     <tr>
       <td>Vendredi 23/02/2007
       </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>28 224 030 EUR
@@ -1801,34 +1171,20 @@
     <tr>
       <td>Vendredi 16/02/2007
       </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1837,34 +1193,20 @@
     <tr>
       <td>Vendredi 09/02/2007
       </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1875,34 +1217,20 @@
     <tr>
       <td>Vendredi 02/02/2007
       </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1919,34 +1247,20 @@
     <tr>
       <td>Vendredi 26/01/2007
       </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1955,34 +1269,20 @@
     <tr>
       <td>Vendredi 19/01/2007
       </td>
-      <td>
-        <div class='game_point'>27
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>27
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1993,34 +1293,20 @@
     <tr>
       <td>Vendredi 12/01/2007
       </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2031,34 +1317,20 @@
     <tr>
       <td>Vendredi 05/01/2007
       </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>2
         </strong>

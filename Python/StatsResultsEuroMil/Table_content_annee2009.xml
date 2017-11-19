@@ -33,34 +33,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-decembre-2009/' title='Resultat tirage Euromillions vendredi 25 decembre 2009'>Vendredi 25/12/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -71,34 +57,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-decembre-2009/' title='Resultat tirage Euromillions vendredi 18 decembre 2009'>Vendredi 18/12/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -111,34 +83,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-decembre-2009/' title='Resultat tirage Euromillions vendredi 11 decembre 2009'>Vendredi 11/12/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>43 818 510 EUR
@@ -149,34 +107,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-decembre-2009/' title='Resultat tirage Euromillions vendredi 4 decembre 2009'>Vendredi 04/12/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>29 071 578 EUR
@@ -193,34 +137,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-novembre-2009/' title='Resultat tirage Euromillions vendredi 27 novembre 2009'>Vendredi 27/11/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -231,34 +161,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-novembre-2009/' title='Resultat tirage Euromillions vendredi 20 novembre 2009'>Vendredi 20/11/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -271,34 +187,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-novembre-2009/' title='Resultat tirage Euromillions vendredi 13 novembre 2009'>Vendredi 13/11/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -311,34 +213,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-novembre-2009/' title='Resultat tirage Euromillions vendredi 6 novembre 2009'>Vendredi 06/11/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -357,34 +245,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-octobre-2009/' title='Resultat tirage Euromillions vendredi 30 octobre 2009'>Vendredi 30/10/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>79 524 887 EUR
@@ -395,34 +269,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-octobre-2009/' title='Resultat tirage Euromillions vendredi 23 octobre 2009'>Vendredi 23/10/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>60 674 298 EUR
@@ -433,34 +293,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-octobre-2009/' title='Resultat tirage Euromillions vendredi 16 octobre 2009'>Vendredi 16/10/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>44 254 660 EUR
@@ -471,34 +317,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-octobre-2009/' title='Resultat tirage Euromillions vendredi 9 octobre 2009'>Vendredi 09/10/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>29 041 468 EUR
@@ -509,34 +341,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-octobre-2009/' title='Resultat tirage Euromillions vendredi 2 octobre 2009'>Vendredi 02/10/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -553,34 +371,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-septembre-2009/' title='Resultat tirage Euromillions vendredi 25 septembre 2009'>Vendredi 25/09/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -593,34 +397,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-septembre-2009/' title='Resultat tirage Euromillions vendredi 18 septembre 2009'>Vendredi 18/09/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -633,34 +423,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-septembre-2009/' title='Resultat tirage Euromillions vendredi 11 septembre 2009'>Vendredi 11/09/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>43 176 231 EUR
@@ -671,34 +447,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-septembre-2009/' title='Resultat tirage Euromillions vendredi 4 septembre 2009'>Vendredi 04/09/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>28 509 295 EUR
@@ -715,34 +477,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-aout-2009/' title='Resultat tirage Euromillions vendredi 28 aout 2009'>Vendredi 28/08/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -753,34 +501,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-aout-2009/' title='Resultat tirage Euromillions vendredi 21 aout 2009'>Vendredi 21/08/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -793,34 +527,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-aout-2009/' title='Resultat tirage Euromillions vendredi 14 aout 2009'>Vendredi 14/08/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>57 349 944 EUR
@@ -831,34 +551,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-aout-2009/' title='Resultat tirage Euromillions vendredi 7 aout 2009'>Vendredi 07/08/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>41 938 302 EUR
@@ -875,34 +581,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-juillet-2009/' title='Resultat tirage Euromillions vendredi 31 juillet 2009'>Vendredi 31/07/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>28 001 223 EUR
@@ -911,34 +603,20 @@
     <tr>
       <td>Vendredi 24/07/2009
       </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -947,34 +625,20 @@
     <tr>
       <td>Vendredi 17/07/2009
       </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -987,34 +651,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-juillet-2009/' title='Resultat tirage Euromillions vendredi 10 juillet 2009'>Vendredi 10/07/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>42 207 030 EUR
@@ -1025,34 +675,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-juillet-2009/' title='Resultat tirage Euromillions vendredi 3 juillet 2009'>Vendredi 03/07/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>28 040 956 EUR
@@ -1069,34 +705,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-juin-2009/' title='Resultat tirage Euromillions vendredi 26 juin 2009'>Vendredi 26/06/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>39
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='game_point'>39
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='star_small'>8
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1107,34 +729,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-juin-2009/' title='Resultat tirage Euromillions vendredi 19 juin 2009'>Vendredi 19/06/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='star_small'>7
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1145,34 +753,20 @@
     <tr>
       <td>Vendredi 12/06/2009
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>6
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>6
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -1185,34 +779,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-juin-2009/' title='Resultat tirage Euromillions vendredi 5 juin 2009'>Vendredi 05/06/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>11
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>11
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>42 859 330 EUR
@@ -1229,34 +809,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-mai-2009/' title='Resultat tirage Euromillions vendredi 29 mai 2009'>Vendredi 29/05/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>3
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>28 394 418 EUR
@@ -1267,34 +833,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-mai-2009/' title='Resultat tirage Euromillions vendredi 22 mai 2009'>Vendredi 22/05/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>43
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>43
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1305,34 +857,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-mai-2009/' title='Resultat tirage Euromillions vendredi 15 mai 2009'>Vendredi 15/05/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>8
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>18
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>8
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>18
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1345,34 +883,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-mai-2009/' title='Resultat tirage Euromillions vendredi 8 mai 2009'>Vendredi 08/05/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1385,34 +909,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-mai-2009/' title='Resultat tirage Euromillions vendredi 1er mai 2009'>Vendredi 01/05/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>98 731 551 EUR
@@ -1429,34 +939,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-avril-2009/' title='Resultat tirage Euromillions vendredi 24 avril 2009'>Vendredi 24/04/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>41
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>41
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>77 000 542 EUR
@@ -1467,34 +963,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-avril-2009/' title='Resultat tirage Euromillions vendredi 17 avril 2009'>Vendredi 17/04/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>21
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>47
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>21
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>47
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>58 530 802 EUR
@@ -1505,34 +987,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-avril-2009/' title='Resultat tirage Euromillions vendredi 10 avril 2009'>Vendredi 10/04/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>42 292 286 EUR
@@ -1543,34 +1011,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-avril-2009/' title='Resultat tirage Euromillions vendredi 3 avril 2009'>Vendredi 03/04/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>2
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>9
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>28 308 420 EUR
@@ -1587,34 +1041,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-27-mars/' title='Resultats tirage Euromillions vendredi 27 mars 2009'>Vendredi 27/03/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>38
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>7
-        </div>
-      </td>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>38
+      </boule>
+      <boule class='star_small'>6
+      </boule>
+      <boule class='star_small'>7
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1625,34 +1065,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-20-mars-2009/' title='Resultats tirage Euromillions vendredi 20 mars 2009'>Vendredi 20/03/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>31
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>23
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>16
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>31
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>23
+      </boule>
+      <boule class='game_point'>16
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -1665,34 +1091,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-13-mars-13032009/' title='Resultats tirage Euromillions vendredi 13 mars 2009'>Vendredi 13/03/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>26
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>24
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='game_point'>26
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>24
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>4
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>16 009 561 EUR
@@ -1703,34 +1115,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-6-mars/' title='Resultats tirage Euromillions vendredi 6 mars 2009'>Vendredi 06/03/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>25
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>19
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>25
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>19
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -1749,34 +1147,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-27-fevrier-27022009/' title='Resultats tirage Euromillions vendredi 27 fevrier 2009'>Vendredi 27/02/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>44
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>5
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>45
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>9
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>44
+      </boule>
+      <boule class='game_point'>5
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>45
+      </boule>
+      <boule class='star_small'>9
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>43 037 732 EUR
@@ -1787,34 +1171,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-20-fevrier-2009/' title='Resultats tirage Euromillions vendredi 20 fevrier 2009'>Vendredi 20/02/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>13
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>9
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>12
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>14
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>13
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>9
+      </boule>
+      <boule class='game_point'>12
+      </boule>
+      <boule class='game_point'>14
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>28 117 227 EUR
@@ -1825,34 +1195,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-13-fevrier-2009/' title='Resultats tirage Euromillions vendredi 13 fevrier 2009'>Vendredi 13/02/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>42
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>42
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>2
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1863,34 +1219,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-6-fevrier-2009/' title='Resultats tirage Euromillions vendredi 6 fevrier 2009'>Vendredi 06/02/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>20
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>10
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>20
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>10
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>5
+      </boule>
       <td align='center'>
         <strong>2
         </strong>
@@ -1909,34 +1251,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-30-janvier-2009/' title='Resultats tirage Euromillions vendredi 30 janvier 2009'>Vendredi 30/01/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>4
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>34
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>35
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>46
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>5
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>4
+      </boule>
+      <boule class='game_point'>34
+      </boule>
+      <boule class='game_point'>35
+      </boule>
+      <boule class='game_point'>46
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='star_small'>5
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -1949,34 +1277,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-23-janvier-2009/' title='Resultats tirage Euromillions vendredi 23 janvier 2009'>Vendredi 23/01/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>33
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>40
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>32
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>2
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>8
-        </div>
-      </td>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='game_point'>33
+      </boule>
+      <boule class='game_point'>40
+      </boule>
+      <boule class='game_point'>32
+      </boule>
+      <boule class='star_small'>2
+      </boule>
+      <boule class='star_small'>8
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>15 000 000 EUR
@@ -1985,34 +1299,20 @@
     <tr>
       <td>Vendredi 16/01/2009
       </td>
-      <td>
-        <div class='game_point'>50
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>17
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>3
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>49
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>3
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>50
+      </boule>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>17
+      </boule>
+      <boule class='game_point'>3
+      </boule>
+      <boule class='game_point'>49
+      </boule>
+      <boule class='star_small'>3
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2025,34 +1325,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-9-janvier-0901/' title='Resultats tirage Euromillions vendredi 9 janvier 2009'>Vendredi 09/01/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>22
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>7
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>15
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>28
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>4
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
+      <boule class='game_point'>22
+      </boule>
+      <boule class='game_point'>7
+      </boule>
+      <boule class='game_point'>15
+      </boule>
+      <boule class='game_point'>28
+      </boule>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='star_small'>4
+      </boule>
+      <boule class='star_small'>1
+      </boule>
       <td align='center'>
         <strong>1
         </strong>
@@ -2065,34 +1351,20 @@
         <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-2-janvier-02012009/' title='Resultats tirage Euromillions vendredi 2 janvier 2009'>Vendredi 02/01/2009
         </a>
       </td>
-      <td>
-        <div class='game_point'>48
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>30
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>29
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>37
-        </div>
-      </td>
-      <td>
-        <div class='game_point'>36
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>1
-        </div>
-      </td>
-      <td>
-        <div class='star_small'>6
-        </div>
-      </td>
+      <boule class='game_point'>48
+      </boule>
+      <boule class='game_point'>30
+      </boule>
+      <boule class='game_point'>29
+      </boule>
+      <boule class='game_point'>37
+      </boule>
+      <boule class='game_point'>36
+      </boule>
+      <boule class='star_small'>1
+      </boule>
+      <boule class='star_small'>6
+      </boule>
       <td align='center'>0
       </td>
       <td align='right'>40 425 333 EUR
