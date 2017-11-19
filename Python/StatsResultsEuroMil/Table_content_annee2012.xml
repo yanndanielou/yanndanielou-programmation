@@ -1,38 +1,14 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
     <tr>
-      <th>Date du tirage
-      </th>
-      <th>N1
-      </th>
-      <th>N2
-      </th>
-      <th>N3
-      </th>
-      <th>N4
-      </th>
-      <th>N5
-      </th>
-      <th>E1
-      </th>
-      <th>E2
-      </th>
-      <th>Gagnants
-      </th>
-      <th>Jackpot
-      </th>
-    </tr>
-    <tr>
       <td colspan="10">
         <strong>Decembre 2012
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-decembre-2012/' title='Resultat tirage Euromillions vendredi 28 decembre 2012'>Vendredi 28/12/2012
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-decembre-2012/' title='Resultat tirage Euromillions vendredi 28 decembre 2012'>Vendredi 28/12/2012
+      </a>">
       <boule class='game_point'>26
       </boule>
       <boule class='game_point'>49
@@ -47,16 +23,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 703 677 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-25-decembre-2012/' title='Resultat tirage Euromillions mardi 25 decembre 2012'>Mardi 25/12/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>26 703 677 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-25-decembre-2012/' title='Resultat tirage Euromillions mardi 25 decembre 2012'>Mardi 25/12/2012
+      </a>">
       <boule class='game_point'>14
       </boule>
       <boule class='game_point'>20
@@ -71,16 +45,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-decembre-2012/' title='Resultat tirage Euromillions vendredi 21 decembre 2012'>Vendredi 21/12/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-decembre-2012/' title='Resultat tirage Euromillions vendredi 21 decembre 2012'>Vendredi 21/12/2012
+      </a>">
       <boule class='game_point'>40
       </boule>
       <boule class='game_point'>5
@@ -95,18 +67,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>101 835 641 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-18-decembre-2012/' title='Resultat tirage Euromillions mardi 18 decembre 2012'>Mardi 18/12/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>101 835 641 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-18-decembre-2012/' title='Resultat tirage Euromillions mardi 18 decembre 2012'>Mardi 18/12/2012
+      </a>">
       <boule class='game_point'>35
       </boule>
       <boule class='game_point'>14
@@ -121,16 +89,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>86 060 443 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-decembre-2012/' title='Resultat tirage Euromillions vendredi 14 decembre 2012'>Vendredi 14/12/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>86 060 443 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-decembre-2012/' title='Resultat tirage Euromillions vendredi 14 decembre 2012'>Vendredi 14/12/2012
+      </a>">
       <boule class='game_point'>40
       </boule>
       <boule class='game_point'>29
@@ -145,16 +111,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>76 452 078 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-11-decembre-2012/' title='Resultat tirage Euromillions mardi 11 decembre 2012'>Mardi 11/12/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>76 452 078 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-11-decembre-2012/' title='Resultat tirage Euromillions mardi 11 decembre 2012'>Mardi 11/12/2012
+      </a>">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>4
@@ -169,16 +133,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>63 235 218 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-decembre-2012/' title='Resultat tirage Euromillions vendredi 7 decembre 2012'>Vendredi 07/12/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>63 235 218 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-decembre-2012/' title='Resultat tirage Euromillions vendredi 7 decembre 2012'>Vendredi 07/12/2012
+      </a>">
       <boule class='game_point'>10
       </boule>
       <boule class='game_point'>18
@@ -193,16 +155,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>54 583 279 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-4-decembre-2012/' title='Resultat tirage Euromillions mardi 4 decembre 2012'>Mardi 04/12/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>54 583 279 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-4-decembre-2012/' title='Resultat tirage Euromillions mardi 4 decembre 2012'>Mardi 04/12/2012
+      </a>">
       <boule class='game_point'>29
       </boule>
       <boule class='game_point'>5
@@ -217,22 +177,20 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>42 363 921 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>42 363 921 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Novembre 2012
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-novembre-2012/' title='Resultat tirage Euromillions vendredi 30 novembre 2012'>Vendredi 30/11/2012
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-novembre-2012/' title='Resultat tirage Euromillions vendredi 30 novembre 2012'>Vendredi 30/11/2012
+      </a>">
       <boule class='game_point'>18
       </boule>
       <boule class='game_point'>23
@@ -247,16 +205,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>34 324 723 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-27-novembre-2012/' title='Resultat tirage Euromillions mardi 27 novembre 2012'>Mardi 27/11/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>34 324 723 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-27-novembre-2012/' title='Resultat tirage Euromillions mardi 27 novembre 2012'>Mardi 27/11/2012
+      </a>">
       <boule class='game_point'>49
       </boule>
       <boule class='game_point'>44
@@ -271,16 +227,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>22 479 773 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-novembre-2012/' title='Resultat tirage Euromillions vendredi 23 novembre 2012'>Vendredi 23/11/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>22 479 773 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-novembre-2012/' title='Resultat tirage Euromillions vendredi 23 novembre 2012'>Vendredi 23/11/2012
+      </a>">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>20
@@ -295,16 +249,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-20-novembre-2012/' title='Resultat tirage Euromillions mardi 20 novembre 2012'>Mardi 20/11/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-20-novembre-2012/' title='Resultat tirage Euromillions mardi 20 novembre 2012'>Mardi 20/11/2012
+      </a>">
       <boule class='game_point'>42
       </boule>
       <boule class='game_point'>28
@@ -319,18 +271,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>22 756 968 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-novembre-2012/' title='Resultat tirage Euromillions vendredi 16 novembre 2012'>Vendredi 16/11/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>22 756 968 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-novembre-2012/' title='Resultat tirage Euromillions vendredi 16 novembre 2012'>Vendredi 16/11/2012
+      </a>">
       <boule class='game_point'>15
       </boule>
       <boule class='game_point'>19
@@ -345,16 +293,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-13-novembre-2012/' title='Resultat tirage Euromillions mardi 13 novembre 2012'>Mardi 13/11/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-13-novembre-2012/' title='Resultat tirage Euromillions mardi 13 novembre 2012'>Mardi 13/11/2012
+      </a>">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>16
@@ -369,18 +315,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>169 837 015 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-novembre-2012/' title='Resultat tirage Euromillions vendredi 9 novembre 2012'>Vendredi 09/11/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>169 837 015 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-novembre-2012/' title='Resultat tirage Euromillions vendredi 9 novembre 2012'>Vendredi 09/11/2012
+      </a>">
       <boule class='game_point'>47
       </boule>
       <boule class='game_point'>28
@@ -395,16 +337,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>152 867 729 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-6-novembre-2012/' title='Resultat tirage Euromillions mardi 6 novembre 2012'>Mardi 06/11/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>152 867 729 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-6-novembre-2012/' title='Resultat tirage Euromillions mardi 6 novembre 2012'>Mardi 06/11/2012
+      </a>">
       <boule class='game_point'>35
       </boule>
       <boule class='game_point'>25
@@ -419,16 +359,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>132 672 800 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-novembre-2012/' title='Resultat tirage Euromillions vendredi 2 novembre 2012'>Vendredi 02/11/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>132 672 800 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-novembre-2012/' title='Resultat tirage Euromillions vendredi 2 novembre 2012'>Vendredi 02/11/2012
+      </a>">
       <boule class='game_point'>6
       </boule>
       <boule class='game_point'>10
@@ -443,22 +381,20 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>119 125 945 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>119 125 945 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Octobre 2012
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-octobre-2012/' title='Resultat tirage Euromillions mardi 30 octobre 2012'>Mardi 30/10/2012
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-octobre-2012/' title='Resultat tirage Euromillions mardi 30 octobre 2012'>Mardi 30/10/2012
+      </a>">
       <boule class='game_point'>23
       </boule>
       <boule class='game_point'>44
@@ -473,16 +409,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>102 511 027 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-octobre-2012/' title='Resultat tirage Euromillions vendredi 26 octobre 2012'>Vendredi 26/10/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>102 511 027 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-octobre-2012/' title='Resultat tirage Euromillions vendredi 26 octobre 2012'>Vendredi 26/10/2012
+      </a>">
       <boule class='game_point'>9
       </boule>
       <boule class='game_point'>5
@@ -497,16 +431,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>91 421 975 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-23-octobre-2012/' title='Resultat tirage Euromillions mardi 23 octobre 2012'>Mardi 23/10/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>91 421 975 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-23-octobre-2012/' title='Resultat tirage Euromillions mardi 23 octobre 2012'>Mardi 23/10/2012
+      </a>">
       <boule class='game_point'>1
       </boule>
       <boule class='game_point'>35
@@ -521,16 +453,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>76 874 851 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-octobre-2012/' title='Resultat tirage Euromillions vendredi 19 octobre 2012'>Vendredi 19/10/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>76 874 851 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-octobre-2012/' title='Resultat tirage Euromillions vendredi 19 octobre 2012'>Vendredi 19/10/2012
+      </a>">
       <boule class='game_point'>16
       </boule>
       <boule class='game_point'>40
@@ -545,16 +475,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>67 874 748 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-16-octobre-2012/' title='Resultat tirage Euromillions mardi 16 octobre 2012'>Mardi 16/10/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>67 874 748 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-16-octobre-2012/' title='Resultat tirage Euromillions mardi 16 octobre 2012'>Mardi 16/10/2012
+      </a>">
       <boule class='game_point'>41
       </boule>
       <boule class='game_point'>10
@@ -569,16 +497,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>54 755 945 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-octobre-2012/' title='Resultat tirage Euromillions vendredi 12 octobre 2012'>Vendredi 12/10/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>54 755 945 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-octobre-2012/' title='Resultat tirage Euromillions vendredi 12 octobre 2012'>Vendredi 12/10/2012
+      </a>">
       <boule class='game_point'>35
       </boule>
       <boule class='game_point'>7
@@ -593,16 +519,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>46 640 893 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-9-octobre-2012/' title='Resultat tirage Euromillions mardi 9 octobre 2012'>Mardi 09/10/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>46 640 893 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-9-octobre-2012/' title='Resultat tirage Euromillions mardi 9 octobre 2012'>Mardi 09/10/2012
+      </a>">
       <boule class='game_point'>23
       </boule>
       <boule class='game_point'>8
@@ -617,16 +541,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>34 447 603 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-octobre-2012/' title='Resultat tirage Euromillions vendredi 5 octobre 2012'>Vendredi 05/10/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>34 447 603 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-octobre-2012/' title='Resultat tirage Euromillions vendredi 5 octobre 2012'>Vendredi 05/10/2012
+      </a>">
       <boule class='game_point'>19
       </boule>
       <boule class='game_point'>16
@@ -641,16 +563,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 871 790 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-2-octobre-2012/' title='Resultat tirage Euromillions mardi 2 octobre 2012'>Mardi 02/10/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>26 871 790 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-2-octobre-2012/' title='Resultat tirage Euromillions mardi 2 octobre 2012'>Mardi 02/10/2012
+      </a>">
       <boule class='game_point'>16
       </boule>
       <boule class='game_point'>42
@@ -665,22 +585,20 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Septembre 2012
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-septembre-2012/' title='Resultat tirage Euromillions vendredi 28 septembre 2012'>Vendredi 28/09/2012
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-septembre-2012/' title='Resultat tirage Euromillions vendredi 28 septembre 2012'>Vendredi 28/09/2012
+      </a>">
       <boule class='game_point'>20
       </boule>
       <boule class='game_point'>26
@@ -695,18 +613,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>100 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-25-septembre-2012/' title='Resultat tirage Euromillions mardi 25 septembre 2012'>Mardi 25/09/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>100 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-25-septembre-2012/' title='Resultat tirage Euromillions mardi 25 septembre 2012'>Mardi 25/09/2012
+      </a>">
       <boule class='game_point'>7
       </boule>
       <boule class='game_point'>25
@@ -721,16 +635,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>33 985 873 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-septembre-2012/' title='Resultat tirage Euromillions vendredi 21 septembre 2012'>Vendredi 21/09/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>33 985 873 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-septembre-2012/' title='Resultat tirage Euromillions vendredi 21 septembre 2012'>Vendredi 21/09/2012
+      </a>">
       <boule class='game_point'>41
       </boule>
       <boule class='game_point'>4
@@ -745,16 +657,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 523 681 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-18-septembre-2012/' title='Resultat tirage Euromillions mardi 18 septembre 2012'>Mardi 18/09/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>26 523 681 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-18-septembre-2012/' title='Resultat tirage Euromillions mardi 18 septembre 2012'>Mardi 18/09/2012
+      </a>">
       <boule class='game_point'>38
       </boule>
       <boule class='game_point'>7
@@ -769,16 +679,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-septembre-2012/' title='Resultat tirage Euromillions vendredi 14 septembre 2012'>Vendredi 14/09/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-septembre-2012/' title='Resultat tirage Euromillions vendredi 14 septembre 2012'>Vendredi 14/09/2012
+      </a>">
       <boule class='game_point'>27
       </boule>
       <boule class='game_point'>10
@@ -793,18 +701,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>26 580 854 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-11-septembre-2012/' title='Resultat tirage Euromillions mardi 11 septembre 2012'>Mardi 11/09/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>26 580 854 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-11-septembre-2012/' title='Resultat tirage Euromillions mardi 11 septembre 2012'>Mardi 11/09/2012
+      </a>">
       <boule class='game_point'>15
       </boule>
       <boule class='game_point'>6
@@ -819,16 +723,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-7-septembre-2012/' title='Resultat tirage Euromillions vendredi 7 septembre 2012'>Vendredi 07/09/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-7-septembre-2012/' title='Resultat tirage Euromillions vendredi 7 septembre 2012'>Vendredi 07/09/2012
+      </a>">
       <boule class='game_point'>15
       </boule>
       <boule class='game_point'>35
@@ -843,18 +745,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>47 319 633 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-4-septembre-2012/' title='Resultat tirage Euromillions mardi 4 septembre 2012'>Mardi 04/09/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>47 319 633 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-4-septembre-2012/' title='Resultat tirage Euromillions mardi 4 septembre 2012'>Mardi 04/09/2012
+      </a>">
       <boule class='game_point'>18
       </boule>
       <boule class='game_point'>39
@@ -869,22 +767,20 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>34 855 964 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>34 855 964 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Aout 2012
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-aout-2012/' title='Resultat tirage Euromillions vendredi 31 aout 2012'>Vendredi 31/08/2012
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-aout-2012/' title='Resultat tirage Euromillions vendredi 31 aout 2012'>Vendredi 31/08/2012
+      </a>">
       <boule class='game_point'>31
       </boule>
       <boule class='game_point'>28
@@ -899,16 +795,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 982 209 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-aout-2012/' title='Resultat tirage Euromillions mardi 28 aout 2012'>Mardi 28/08/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>26 982 209 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-aout-2012/' title='Resultat tirage Euromillions mardi 28 aout 2012'>Mardi 28/08/2012
+      </a>">
       <boule class='game_point'>1
       </boule>
       <boule class='game_point'>26
@@ -923,16 +817,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-aout-2012/' title='Resultat tirage Euromillions vendredi 24 aout 2012'>Vendredi 24/08/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-aout-2012/' title='Resultat tirage Euromillions vendredi 24 aout 2012'>Vendredi 24/08/2012
+      </a>">
       <boule class='game_point'>6
       </boule>
       <boule class='game_point'>5
@@ -947,18 +839,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>47 570 390 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-21-aout-2012/' title='Resultat tirage Euromillions mardi 21 aout 2012'>Mardi 21/08/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>47 570 390 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-21-aout-2012/' title='Resultat tirage Euromillions mardi 21 aout 2012'>Mardi 21/08/2012
+      </a>">
       <boule class='game_point'>17
       </boule>
       <boule class='game_point'>5
@@ -973,16 +861,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>34 941 089 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-aout-2012/' title='Resultat tirage Euromillions vendredi 17 aout 2012'>Vendredi 17/08/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>34 941 089 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-aout-2012/' title='Resultat tirage Euromillions vendredi 17 aout 2012'>Vendredi 17/08/2012
+      </a>">
       <boule class='game_point'>19
       </boule>
       <boule class='game_point'>25
@@ -997,16 +883,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 921 509 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-aout-2012/' title='Resultat tirage Euromillions mardi 14 aout 2012'>Mardi 14/08/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>26 921 509 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-aout-2012/' title='Resultat tirage Euromillions mardi 14 aout 2012'>Mardi 14/08/2012
+      </a>">
       <boule class='game_point'>45
       </boule>
       <boule class='game_point'>16
@@ -1021,16 +905,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-aout-2012/' title='Resultat tirage Euromillions vendredi 10 aout 2012'>Vendredi 10/08/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-aout-2012/' title='Resultat tirage Euromillions vendredi 10 aout 2012'>Vendredi 10/08/2012
+      </a>">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>21
@@ -1045,18 +927,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>190 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-aout-2012/' title='Resultat tirage Euromillions mardi 7 aout 2012'>Mardi 07/08/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>190 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-aout-2012/' title='Resultat tirage Euromillions mardi 7 aout 2012'>Mardi 07/08/2012
+      </a>">
       <boule class='game_point'>20
       </boule>
       <boule class='game_point'>50
@@ -1071,16 +949,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>190 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-aout-2012/' title='Resultat tirage Euromillions vendredi 3 aout 2012'>Vendredi 03/08/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>190 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-aout-2012/' title='Resultat tirage Euromillions vendredi 3 aout 2012'>Vendredi 03/08/2012
+      </a>">
       <boule class='game_point'>34
       </boule>
       <boule class='game_point'>35
@@ -1095,22 +971,20 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>180 011 715 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>180 011 715 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Juillet 2012
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-juillet-2012/' title='Resultat tirage Euromillions mardi 31 juillet 2012'>Mardi 31/07/2012
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-juillet-2012/' title='Resultat tirage Euromillions mardi 31 juillet 2012'>Mardi 31/07/2012
+      </a>">
       <boule class='game_point'>35
       </boule>
       <boule class='game_point'>39
@@ -1125,16 +999,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>156 962 440 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-juillet-2012/' title='Resultat tirage Euromillions vendredi 27 juillet 2012'>Vendredi 27/07/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>156 962 440 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-juillet-2012/' title='Resultat tirage Euromillions vendredi 27 juillet 2012'>Vendredi 27/07/2012
+      </a>">
       <boule class='game_point'>15
       </boule>
       <boule class='game_point'>48
@@ -1149,16 +1021,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>141 583 959 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-juillet-2012/' title='Resultat tirage Euromillions mardi 24 juillet 2012'>Mardi 24/07/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>141 583 959 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-juillet-2012/' title='Resultat tirage Euromillions mardi 24 juillet 2012'>Mardi 24/07/2012
+      </a>">
       <boule class='game_point'>18
       </boule>
       <boule class='game_point'>25
@@ -1173,16 +1043,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>112 218 632 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-juillet-2012/' title='Resultat tirage Euromillions vendredi 20 juillet 2012'>Vendredi 20/07/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>112 218 632 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-juillet-2012/' title='Resultat tirage Euromillions vendredi 20 juillet 2012'>Vendredi 20/07/2012
+      </a>">
       <boule class='game_point'>19
       </boule>
       <boule class='game_point'>23
@@ -1197,16 +1065,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>101 392 999 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-juillet-2012/' title='Resultat tirage Euromillions mardi 17 juillet 2012'>Mardi 17/07/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>101 392 999 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-juillet-2012/' title='Resultat tirage Euromillions mardi 17 juillet 2012'>Mardi 17/07/2012
+      </a>">
       <boule class='game_point'>24
       </boule>
       <boule class='game_point'>2
@@ -1221,16 +1087,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>85 954 935 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-juillet-2012/' title='Resultat tirage Euromillions vendredi 13 juillet 2012'>Vendredi 13/07/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>85 954 935 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-juillet-2012/' title='Resultat tirage Euromillions vendredi 13 juillet 2012'>Vendredi 13/07/2012
+      </a>">
       <boule class='game_point'>18
       </boule>
       <boule class='game_point'>46
@@ -1245,16 +1109,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>76 630 917 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-juillet-2012/' title='Resultat tirage Euromillions mardi 10 juillet 2012'>Mardi 10/07/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>76 630 917 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-juillet-2012/' title='Resultat tirage Euromillions mardi 10 juillet 2012'>Mardi 10/07/2012
+      </a>">
       <boule class='game_point'>37
       </boule>
       <boule class='game_point'>1
@@ -1269,16 +1131,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>61 268 725 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-juillet-2012/' title='Resultat tirage Euromillions vendredi 6 juillet 2012'>Vendredi 06/07/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>61 268 725 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-juillet-2012/' title='Resultat tirage Euromillions vendredi 6 juillet 2012'>Vendredi 06/07/2012
+      </a>">
       <boule class='game_point'>40
       </boule>
       <boule class='game_point'>42
@@ -1293,16 +1153,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>53 006 942 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-3-juillet-2012/' title='Resultat tirage Euromillions mardi 3 juillet 2012'>Mardi 03/07/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>53 006 942 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-3-juillet-2012/' title='Resultat tirage Euromillions mardi 3 juillet 2012'>Mardi 03/07/2012
+      </a>">
       <boule class='game_point'>22
       </boule>
       <boule class='game_point'>7
@@ -1317,22 +1175,20 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>40 811 640 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>40 811 640 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Juin 2012
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-du-vendredi-29-juin-2012/' title='Resultat tirage Euromillions du vendredi 29 juin 2012'>Vendredi 29/06/2012
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-du-vendredi-29-juin-2012/' title='Resultat tirage Euromillions du vendredi 29 juin 2012'>Vendredi 29/06/2012
+      </a>">
       <boule class='game_point'>14
       </boule>
       <boule class='game_point'>17
@@ -1347,16 +1203,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>33 263 796 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-26-juin-2012/' title='Resultat tirage Euromillions mardi 26 juin 2012'>Mardi 26/06/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>33 263 796 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-26-juin-2012/' title='Resultat tirage Euromillions mardi 26 juin 2012'>Mardi 26/06/2012
+      </a>">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>22
@@ -1371,16 +1225,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>21 896 089 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-juin-2012/' title='Resultat tirage Euromillions vendredi 22 juin 2012'>Vendredi 22/06/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>21 896 089 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-juin-2012/' title='Resultat tirage Euromillions vendredi 22 juin 2012'>Vendredi 22/06/2012
+      </a>">
       <boule class='game_point'>18
       </boule>
       <boule class='game_point'>14
@@ -1395,16 +1247,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-19-juin-2012/' title='Resultat tirage Euromillions mardi 19 juin 2012'>Mardi 19/06/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-19-juin-2012/' title='Resultat tirage Euromillions mardi 19 juin 2012'>Mardi 19/06/2012
+      </a>">
       <boule class='game_point'>17
       </boule>
       <boule class='game_point'>20
@@ -1419,18 +1269,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-juin-2012/' title='Resultat tirage Euromillions vendredi 15 juin 2012'>Vendredi 15/06/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-juin-2012/' title='Resultat tirage Euromillions vendredi 15 juin 2012'>Vendredi 15/06/2012
+      </a>">
       <boule class='game_point'>48
       </boule>
       <boule class='game_point'>38
@@ -1445,18 +1291,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>26 828 456 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-12-juin-2012/' title='Resultat tirage Euromillions mardi 12 juin 2012'>Mardi 12/06/2012
-        </a>
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>26 828 456 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-12-juin-2012/' title='Resultat tirage Euromillions mardi 12 juin 2012'>Mardi 12/06/2012
+      </a>">
       <boule class='game_point'>30
       </boule>
       <boule class='game_point'>26
@@ -1471,16 +1313,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-juin-2012/' title='Resultat tirage Euromillions vendredi 8 juin 2012'>Vendredi 08/06/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-juin-2012/' title='Resultat tirage Euromillions vendredi 8 juin 2012'>Vendredi 08/06/2012
+      </a>">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>22
@@ -1495,18 +1335,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>158 052 844 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-5-juin-2012/' title='Resultat tirage Euromillions mardi 5 juin 2012'>Mardi 05/06/2012
-        </a>
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>158 052 844 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-5-juin-2012/' title='Resultat tirage Euromillions mardi 5 juin 2012'>Mardi 05/06/2012
+      </a>">
       <boule class='game_point'>13
       </boule>
       <boule class='game_point'>49
@@ -1521,16 +1357,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>134 974 395 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-juin-2012/' title='Resultat tirage Euromillions vendredi 1er juin 2012'>Vendredi 01/06/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>134 974 395 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-juin-2012/' title='Resultat tirage Euromillions vendredi 1er juin 2012'>Vendredi 01/06/2012
+      </a>">
       <boule class='game_point'>26
       </boule>
       <boule class='game_point'>2
@@ -1545,22 +1379,20 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>120 024 029 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>120 024 029 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Mai 2012
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-mai-2012/' title='Resultat tirage Euromillions mardi 29 mai 2012'>Mardi 29/05/2012
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-mai-2012/' title='Resultat tirage Euromillions mardi 29 mai 2012'>Mardi 29/05/2012
+      </a>">
       <boule class='game_point'>28
       </boule>
       <boule class='game_point'>17
@@ -1575,16 +1407,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>101 071 615 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-mai-2012/' title='Resultat tirage Euromillions vendredi 25 mai 2012'>Vendredi 25/05/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>101 071 615 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-mai-2012/' title='Resultat tirage Euromillions vendredi 25 mai 2012'>Vendredi 25/05/2012
+      </a>">
       <boule class='game_point'>35
       </boule>
       <boule class='game_point'>12
@@ -1599,16 +1429,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>89 779 597 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-22-mai-2012/' title='Resultat tirage Euromillions mardi 22 mai 2012'>Mardi 22/05/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>89 779 597 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-22-mai-2012/' title='Resultat tirage Euromillions mardi 22 mai 2012'>Mardi 22/05/2012
+      </a>">
       <boule class='game_point'>31
       </boule>
       <boule class='game_point'>32
@@ -1623,16 +1451,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>74 848 794 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-mai-2012/' title='Resultat tirage Euromillions vendredi 18 mai 2012'>Vendredi 18/05/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>74 848 794 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-mai-2012/' title='Resultat tirage Euromillions vendredi 18 mai 2012'>Vendredi 18/05/2012
+      </a>">
       <boule class='game_point'>29
       </boule>
       <boule class='game_point'>50
@@ -1647,16 +1473,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>65 687 547 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-15-mai-2012/' title='Resultat tirage Euromillions mardi 15 mai 2012'>Mardi 15/05/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>65 687 547 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-15-mai-2012/' title='Resultat tirage Euromillions mardi 15 mai 2012'>Mardi 15/05/2012
+      </a>">
       <boule class='game_point'>13
       </boule>
       <boule class='game_point'>2
@@ -1671,16 +1495,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>51 753 790 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-mai-2012/' title='Resultat tirage Euromillions vendredi 11 mai 2012'>Vendredi 11/05/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>51 753 790 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-mai-2012/' title='Resultat tirage Euromillions vendredi 11 mai 2012'>Vendredi 11/05/2012
+      </a>">
       <boule class='game_point'>1
       </boule>
       <boule class='game_point'>17
@@ -1695,16 +1517,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>44 093 380 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-8-mai-2012/' title='Resultat tirage Euromillions mardi 8 mai 2012'>Mardi 08/05/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>44 093 380 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-8-mai-2012/' title='Resultat tirage Euromillions mardi 8 mai 2012'>Mardi 08/05/2012
+      </a>">
       <boule class='game_point'>3
       </boule>
       <boule class='game_point'>34
@@ -1719,16 +1539,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>32 541 206 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-mai-2012/' title='Resultat tirage Euromillions vendredi 4 mai 2012'>Vendredi 04/05/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>32 541 206 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-mai-2012/' title='Resultat tirage Euromillions vendredi 4 mai 2012'>Vendredi 04/05/2012
+      </a>">
       <boule class='game_point'>26
       </boule>
       <boule class='game_point'>41
@@ -1743,16 +1561,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>25 968 725 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-1er-mai-2012/' title='Resultat tirage Euromillions mardi 1er mai 2012'>Mardi 01/05/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>25 968 725 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-1er-mai-2012/' title='Resultat tirage Euromillions mardi 1er mai 2012'>Mardi 01/05/2012
+      </a>">
       <boule class='game_point'>4
       </boule>
       <boule class='game_point'>15
@@ -1767,22 +1583,20 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Avril 2012
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-avril-2012/' title='Resultat tirage Euromillions vendredi 27 avril 2012'>Vendredi 27/04/2012
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-avril-2012/' title='Resultat tirage Euromillions vendredi 27 avril 2012'>Vendredi 27/04/2012
+      </a>">
       <boule class='game_point'>36
       </boule>
       <boule class='game_point'>43
@@ -1797,18 +1611,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>44 407 281 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-avril-2012/' title='Resultat tirage Euromillions mardi 24 avril 2012'>Mardi 24/04/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>44 407 281 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-avril-2012/' title='Resultat tirage Euromillions mardi 24 avril 2012'>Mardi 24/04/2012
+      </a>">
       <boule class='game_point'>8
       </boule>
       <boule class='game_point'>24
@@ -1823,16 +1633,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>32 867 376 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-avril-2012/' title='Resultat tirage Euromillions vendredi 20 avril 2012'>Vendredi 20/04/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>32 867 376 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-avril-2012/' title='Resultat tirage Euromillions vendredi 20 avril 2012'>Vendredi 20/04/2012
+      </a>">
       <boule class='game_point'>32
       </boule>
       <boule class='game_point'>41
@@ -1847,16 +1655,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 031 384 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-avril-2012/' title='Resultat tirage Euromillions mardi 17 avril 2012'>Mardi 17/04/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>26 031 384 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-avril-2012/' title='Resultat tirage Euromillions mardi 17 avril 2012'>Mardi 17/04/2012
+      </a>">
       <boule class='game_point'>10
       </boule>
       <boule class='game_point'>28
@@ -1871,16 +1677,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-avril-2012/' title='Resultat tirage Euromillions vendredi 13 avril 2012'>Vendredi 13/04/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-avril-2012/' title='Resultat tirage Euromillions vendredi 13 avril 2012'>Vendredi 13/04/2012
+      </a>">
       <boule class='game_point'>8
       </boule>
       <boule class='game_point'>39
@@ -1895,18 +1699,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>53 763 217 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-avril-2012/' title='Resultat tirage Euromillions mardi 10 avril 2012'>Mardi 10/04/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>53 763 217 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-avril-2012/' title='Resultat tirage Euromillions mardi 10 avril 2012'>Mardi 10/04/2012
+      </a>">
       <boule class='game_point'>37
       </boule>
       <boule class='game_point'>27
@@ -1921,16 +1721,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>39 523 670 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-avril-2012/' title='Resultat tirage Euromillions vendredi 6 avril 2012'>Vendredi 06/04/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>39 523 670 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-avril-2012/' title='Resultat tirage Euromillions vendredi 6 avril 2012'>Vendredi 06/04/2012
+      </a>">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>35
@@ -1945,16 +1743,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>32 751 944 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-3-avril-2012/' title='Resultat tirage Euromillions mardi 3 avril 2012'>Mardi 03/04/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>32 751 944 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-3-avril-2012/' title='Resultat tirage Euromillions mardi 3 avril 2012'>Mardi 03/04/2012
+      </a>">
       <boule class='game_point'>1
       </boule>
       <boule class='game_point'>8
@@ -1969,22 +1765,20 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>21 716 352 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>21 716 352 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Mars 2012
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-mars-2012/' title='Resultat tirage Euromillions vendredi 30 mars 2012'>Vendredi 30/03/2012
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-mars-2012/' title='Resultat tirage Euromillions vendredi 30 mars 2012'>Vendredi 30/03/2012
+      </a>">
       <boule class='game_point'>46
       </boule>
       <boule class='game_point'>17
@@ -1999,16 +1793,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-27-mars-2012/' title='Resultat tirage Euromillions mardi 27 mars 2012'>Mardi 27/03/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-27-mars-2012/' title='Resultat tirage Euromillions mardi 27 mars 2012'>Mardi 27/03/2012
+      </a>">
       <boule class='game_point'>29
       </boule>
       <boule class='game_point'>36
@@ -2023,18 +1815,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-mars-2012/' title='Resultat tirage Euromillions vendredi 23 mars 2012'>Vendredi 23/03/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-mars-2012/' title='Resultat tirage Euromillions vendredi 23 mars 2012'>Vendredi 23/03/2012
+      </a>">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>15
@@ -2049,18 +1837,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>26 096 499 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-20-mars-2012/' title='Resultat tirage Euromillions mardi 20 mars 2012'>Mardi 20/03/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>26 096 499 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-20-mars-2012/' title='Resultat tirage Euromillions mardi 20 mars 2012'>Mardi 20/03/2012
+      </a>">
       <boule class='game_point'>28
       </boule>
       <boule class='game_point'>30
@@ -2075,16 +1859,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-mars-2012/' title='Resultat tirage Euromillions vendredi 16 mars 2012'>Vendredi 16/03/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-mars-2012/' title='Resultat tirage Euromillions vendredi 16 mars 2012'>Vendredi 16/03/2012
+      </a>">
       <boule class='game_point'>12
       </boule>
       <boule class='game_point'>4
@@ -2099,18 +1881,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>45 758 710 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-13-mars-2012/' title='Resultat tirage Euromillions mardi 13 mars 2012'>Mardi 13/03/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>45 758 710 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-13-mars-2012/' title='Resultat tirage Euromillions mardi 13 mars 2012'>Mardi 13/03/2012
+      </a>">
       <boule class='game_point'>47
       </boule>
       <boule class='game_point'>1
@@ -2125,16 +1903,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>33 798 147 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-mars-2012/' title='Resultat tirage Euromillions vendredi 9 mars 2012'>Vendredi 09/03/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>33 798 147 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-mars-2012/' title='Resultat tirage Euromillions vendredi 9 mars 2012'>Vendredi 09/03/2012
+      </a>">
       <boule class='game_point'>39
       </boule>
       <boule class='game_point'>36
@@ -2149,16 +1925,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 508 061 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-6-mars-2012/' title='Resultat tirage Euromillions mardi 6 mars 2012'>Mardi 06/03/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>26 508 061 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-6-mars-2012/' title='Resultat tirage Euromillions mardi 6 mars 2012'>Mardi 06/03/2012
+      </a>">
       <boule class='game_point'>23
       </boule>
       <boule class='game_point'>47
@@ -2173,16 +1947,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-mars-2012/' title='Resultat tirage Euromillions vendredi 2 mars 2012'>Vendredi 02/03/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-mars-2012/' title='Resultat tirage Euromillions vendredi 2 mars 2012'>Vendredi 02/03/2012
+      </a>">
       <boule class='game_point'>44
       </boule>
       <boule class='game_point'>5
@@ -2197,24 +1969,20 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>26 670 951 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>26 670 951 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Fevrier 2012
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-fevrier-2012/' title='Resultat tirage Euromillions mardi 28 fevrier 2012'>Mardi 28/02/2012
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-fevrier-2012/' title='Resultat tirage Euromillions mardi 28 fevrier 2012'>Mardi 28/02/2012
+      </a>">
       <boule class='game_point'>10
       </boule>
       <boule class='game_point'>48
@@ -2229,16 +1997,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-fevrier-2012/' title='Resultat tirage Euromillions vendredi 24 fevrier 2012'>Vendredi 24/02/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-fevrier-2012/' title='Resultat tirage Euromillions vendredi 24 fevrier 2012'>Vendredi 24/02/2012
+      </a>">
       <boule class='game_point'>34
       </boule>
       <boule class='game_point'>3
@@ -2253,18 +2019,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>54 897 476 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-21-fevrier-2012/' title='Resultat tirage Euromillions mardi 21 fevrier 2012'>Mardi 21/02/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>54 897 476 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-21-fevrier-2012/' title='Resultat tirage Euromillions mardi 21 fevrier 2012'>Mardi 21/02/2012
+      </a>">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>24
@@ -2279,16 +2041,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>41 851 240 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-fevrier-2012/' title='Resultat tirage Euromillions vendredi 17 fevrier 2012'>Vendredi 17/02/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>41 851 240 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-fevrier-2012/' title='Resultat tirage Euromillions vendredi 17 fevrier 2012'>Vendredi 17/02/2012
+      </a>">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>4
@@ -2303,16 +2063,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>34 279 343 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-fevrier-2012/' title='Resultat tirage Euromillions mardi 14 fevrier 2012'>Mardi 14/02/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>34 279 343 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-fevrier-2012/' title='Resultat tirage Euromillions mardi 14 fevrier 2012'>Mardi 14/02/2012
+      </a>">
       <boule class='game_point'>36
       </boule>
       <boule class='game_point'>14
@@ -2327,16 +2085,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>22 361 166 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-fevrier-2012/' title='Resultat tirage Euromillions vendredi 10 fevrier 2012'>Vendredi 10/02/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>22 361 166 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-fevrier-2012/' title='Resultat tirage Euromillions vendredi 10 fevrier 2012'>Vendredi 10/02/2012
+      </a>">
       <boule class='game_point'>3
       </boule>
       <boule class='game_point'>14
@@ -2351,16 +2107,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-fevrier-2012/' title='Resultat tirage Euromillions mardi 7 fevrier 2012'>Mardi 07/02/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-fevrier-2012/' title='Resultat tirage Euromillions mardi 7 fevrier 2012'>Mardi 07/02/2012
+      </a>">
       <boule class='game_point'>15
       </boule>
       <boule class='game_point'>3
@@ -2375,18 +2129,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>54 252 968 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-fevrier-2012/' title='Resultat tirage Euromillions vendredi 3 fevrier 2012'>Vendredi 03/02/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>54 252 968 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-fevrier-2012/' title='Resultat tirage Euromillions vendredi 3 fevrier 2012'>Vendredi 03/02/2012
+      </a>">
       <boule class='game_point'>16
       </boule>
       <boule class='game_point'>20
@@ -2401,22 +2151,20 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>46 106 653 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>46 106 653 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Janvier 2012
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-janvier-2012/' title='Resultat tirage Euromillions mardi 31 janvier 2012'>Mardi 31/01/2012
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-janvier-2012/' title='Resultat tirage Euromillions mardi 31 janvier 2012'>Mardi 31/01/2012
+      </a>">
       <boule class='game_point'>43
       </boule>
       <boule class='game_point'>34
@@ -2431,16 +2179,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>33 767 650 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-janvier-2012/' title='Resultat tirage Euromillions vendredi 27 janvier 2012'>Vendredi 27/01/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>33 767 650 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-janvier-2012/' title='Resultat tirage Euromillions vendredi 27 janvier 2012'>Vendredi 27/01/2012
+      </a>">
       <boule class='game_point'>10
       </boule>
       <boule class='game_point'>19
@@ -2455,16 +2201,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 630 721 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-janvier-2012/' title='Resultat tirage Euromillions mardi 24 janvier 2012'>Mardi 24/01/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>26 630 721 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-janvier-2012/' title='Resultat tirage Euromillions mardi 24 janvier 2012'>Mardi 24/01/2012
+      </a>">
       <boule class='game_point'>1
       </boule>
       <boule class='game_point'>20
@@ -2479,16 +2223,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-janvier-2012/' title='Resultat tirage Euromillions vendredi 20 janvier 2012'>Vendredi 20/01/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-janvier-2012/' title='Resultat tirage Euromillions vendredi 20 janvier 2012'>Vendredi 20/01/2012
+      </a>">
       <boule class='game_point'>10
       </boule>
       <boule class='game_point'>28
@@ -2503,18 +2245,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>48 895 464 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-janvier-2012/' title='Resultat tirage Euromillions mardi 17 janvier 2012'>Mardi 17/01/2012
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>48 895 464 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-janvier-2012/' title='Resultat tirage Euromillions mardi 17 janvier 2012'>Mardi 17/01/2012
+      </a>">
       <boule class='game_point'>12
       </boule>
       <boule class='game_point'>44
@@ -2529,16 +2267,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>36 496 417 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-janvier-2012/' title='Resultat tirage Euromillions vendredi 13 janvier 2012'>Vendredi 13/01/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>36 496 417 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-janvier-2012/' title='Resultat tirage Euromillions vendredi 13 janvier 2012'>Vendredi 13/01/2012
+      </a>">
       <boule class='game_point'>39
       </boule>
       <boule class='game_point'>13
@@ -2553,16 +2289,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>29 204 007 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-janvier-2012/' title='Resultat tirage Euromillions mardi 10 janvier 2012'>Mardi 10/01/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>29 204 007 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-janvier-2012/' title='Resultat tirage Euromillions mardi 10 janvier 2012'>Mardi 10/01/2012
+      </a>">
       <boule class='game_point'>9
       </boule>
       <boule class='game_point'>4
@@ -2577,16 +2311,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-janvier-2012/' title='Resultat tirage Euromillions vendredi 6 janvier 2012'>Vendredi 06/01/2012
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-janvier-2012/' title='Resultat tirage Euromillions vendredi 6 janvier 2012'>Vendredi 06/01/2012
+      </a>">
       <boule class='game_point'>1
       </boule>
       <boule class='game_point'>6
@@ -2601,18 +2333,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>73 113 566 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-janvier-2012/' title='Resultat tirage Euromillions mardi 3 janvier 2012'>Mardi 03/01/2012
-        </a>
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>73 113 566 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-janvier-2012/' title='Resultat tirage Euromillions mardi 3 janvier 2012'>Mardi 03/01/2012
+      </a>">
       <boule class='game_point'>42
       </boule>
       <boule class='game_point'>30
@@ -2627,9 +2355,9 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>59 857 419 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>59 857 419 EUR
+      </jackpot>
+    </tirage>
   </table>

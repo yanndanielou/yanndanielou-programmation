@@ -1,38 +1,14 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
     <tr>
-      <th>Date du tirage
-      </th>
-      <th>N1
-      </th>
-      <th>N2
-      </th>
-      <th>N3
-      </th>
-      <th>N4
-      </th>
-      <th>N5
-      </th>
-      <th>E1
-      </th>
-      <th>E2
-      </th>
-      <th>Gagnants
-      </th>
-      <th>Jackpot
-      </th>
-    </tr>
-    <tr>
       <td colspan="10">
         <strong>Decembre 2010
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-decembre-2010/' title='Resultat tirage Euromillions vendredi 31 decembre 2010'>Vendredi 31/12/2010
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-decembre-2010/' title='Resultat tirage Euromillions vendredi 31 decembre 2010'>Vendredi 31/12/2010
+      </a>">
       <boule class='game_point'>2
       </boule>
       <boule class='game_point'>24
@@ -47,18 +23,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 338 239 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-decembre-2010/' title='Resultat tirage Euromillions vendredi 24 decembre 2010'>Vendredi 24/12/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 338 239 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-decembre-2010/' title='Resultat tirage Euromillions vendredi 24 decembre 2010'>Vendredi 24/12/2010
+      </a>">
       <boule class='game_point'>46
       </boule>
       <boule class='game_point'>19
@@ -73,18 +45,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>19 106 756 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-decembre-2010/' title='Resultat tirage Euromillions vendredi 17 decembre 2010'>Vendredi 17/12/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>19 106 756 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-decembre-2010/' title='Resultat tirage Euromillions vendredi 17 decembre 2010'>Vendredi 17/12/2010
+      </a>">
       <boule class='game_point'>3
       </boule>
       <boule class='game_point'>35
@@ -99,18 +67,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>43 677 118 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-decembre-2010/' title='Resultat tirage Euromillions vendredi 10 decembre 2010'>Vendredi 10/12/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>43 677 118 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-decembre-2010/' title='Resultat tirage Euromillions vendredi 10 decembre 2010'>Vendredi 10/12/2010
+      </a>">
       <boule class='game_point'>46
       </boule>
       <boule class='game_point'>2
@@ -125,16 +89,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>28 707 820 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-decembre-2010/' title='Resultat tirage Euromillions vendredi 3 decembre 2010'>Vendredi 03/12/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>28 707 820 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-decembre-2010/' title='Resultat tirage Euromillions vendredi 3 decembre 2010'>Vendredi 03/12/2010
+      </a>">
       <boule class='game_point'>28
       </boule>
       <boule class='game_point'>32
@@ -149,22 +111,20 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Novembre 2010
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-novembre-2010/' title='Resultat tirage Euromillions vendredi 26 novembre 2010'>Vendredi 26/11/2010
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-novembre-2010/' title='Resultat tirage Euromillions vendredi 26 novembre 2010'>Vendredi 26/11/2010
+      </a>">
       <boule class='game_point'>9
       </boule>
       <boule class='game_point'>41
@@ -179,18 +139,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>45 322 973 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-novembre-2010/' title='Resultat tirage Euromillions vendredi 19 novembre 2010'>Vendredi 19/11/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>45 322 973 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-novembre-2010/' title='Resultat tirage Euromillions vendredi 19 novembre 2010'>Vendredi 19/11/2010
+      </a>">
       <boule class='game_point'>36
       </boule>
       <boule class='game_point'>12
@@ -205,16 +161,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>30 223 423 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-novembre-2010/' title='Resultat tirage Euromillions vendredi 12 novembre 2010'>Vendredi 12/11/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>30 223 423 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-novembre-2010/' title='Resultat tirage Euromillions vendredi 12 novembre 2010'>Vendredi 12/11/2010
+      </a>">
       <boule class='game_point'>23
       </boule>
       <boule class='game_point'>47
@@ -229,16 +183,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>16 141 034 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-novembre-2010/' title='Resultat tirage Euromillions vendredi 5 novembre 2010'>Vendredi 05/11/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>16 141 034 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-novembre-2010/' title='Resultat tirage Euromillions vendredi 5 novembre 2010'>Vendredi 05/11/2010
+      </a>">
       <boule class='game_point'>21
       </boule>
       <boule class='game_point'>23
@@ -253,24 +205,20 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>29 087 861 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>29 087 861 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Octobre 2010
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-octobre-2010/' title='Resultat tirage Euromillions vendredi 29 octobre 2010'>Vendredi 29/10/2010
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-octobre-2010/' title='Resultat tirage Euromillions vendredi 29 octobre 2010'>Vendredi 29/10/2010
+      </a>">
       <boule class='game_point'>32
       </boule>
       <boule class='game_point'>22
@@ -285,16 +233,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-octobre-2010/' title='Resultat tirage Euromillions vendredi 22 octobre 2010'>Vendredi 22/10/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-octobre-2010/' title='Resultat tirage Euromillions vendredi 22 octobre 2010'>Vendredi 22/10/2010
+      </a>">
       <boule class='game_point'>39
       </boule>
       <boule class='game_point'>5
@@ -309,18 +255,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>29 421 180 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-octobre-2010/' title='Resultat tirage Euromillions vendredi 15 octobre 2010'>Vendredi 15/10/2010
-        </a>
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>29 421 180 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-octobre-2010/' title='Resultat tirage Euromillions vendredi 15 octobre 2010'>Vendredi 15/10/2010
+      </a>">
       <boule class='game_point'>38
       </boule>
       <boule class='game_point'>31
@@ -335,16 +277,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-octobre-2010/' title='Resultat tirage Euromillions vendredi 8 octobre 2010'>Vendredi 08/10/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-octobre-2010/' title='Resultat tirage Euromillions vendredi 8 octobre 2010'>Vendredi 08/10/2010
+      </a>">
       <boule class='game_point'>46
       </boule>
       <boule class='game_point'>35
@@ -359,18 +299,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>129 818 431 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-octobre-2010/' title='Resultat tirage Euromillions vendredi 1er octobre 2010'>Vendredi 01/10/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>129 818 431 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-octobre-2010/' title='Resultat tirage Euromillions vendredi 1er octobre 2010'>Vendredi 01/10/2010
+      </a>">
       <boule class='game_point'>4
       </boule>
       <boule class='game_point'>27
@@ -385,22 +321,20 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>100 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>100 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Septembre 2010
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-septembre-2010/' title='Resultat tirage Euromillions vendredi 24 septembre 2010'>Vendredi 24/09/2010
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-septembre-2010/' title='Resultat tirage Euromillions vendredi 24 septembre 2010'>Vendredi 24/09/2010
+      </a>">
       <boule class='game_point'>1
       </boule>
       <boule class='game_point'>16
@@ -415,18 +349,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>28 674 645 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-septembre-2010/' title='Resultat tirage Euromillions vendredi 17 septembre 2010'>Vendredi 17/09/2010
-        </a>
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>28 674 645 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-septembre-2010/' title='Resultat tirage Euromillions vendredi 17 septembre 2010'>Vendredi 17/09/2010
+      </a>">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>27
@@ -441,16 +371,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-septembre-2010/' title='Resultat tirage Euromillions vendredi 10 septembre 2010'>Vendredi 10/09/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-septembre-2010/' title='Resultat tirage Euromillions vendredi 10 septembre 2010'>Vendredi 10/09/2010
+      </a>">
       <boule class='game_point'>35
       </boule>
       <boule class='game_point'>41
@@ -465,18 +393,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-septembre-2010/' title='Resultat tirage Euromillions vendredi 3 septembre 2010'>Vendredi 03/09/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-septembre-2010/' title='Resultat tirage Euromillions vendredi 3 septembre 2010'>Vendredi 03/09/2010
+      </a>">
       <boule class='game_point'>24
       </boule>
       <boule class='game_point'>49
@@ -491,24 +415,20 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Aout 2010
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-aout-2010/' title='Resultat tirage Euromillions vendredi 27 aout 2010'>Vendredi 27/08/2010
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-aout-2010/' title='Resultat tirage Euromillions vendredi 27 aout 2010'>Vendredi 27/08/2010
+      </a>">
       <boule class='game_point'>13
       </boule>
       <boule class='game_point'>6
@@ -523,18 +443,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-aout-2010/' title='Resultat tirage Euromillions vendredi 20 aout 2010'>Vendredi 20/08/2010
-        </a>
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-aout-2010/' title='Resultat tirage Euromillions vendredi 20 aout 2010'>Vendredi 20/08/2010
+      </a>">
       <boule class='game_point'>27
       </boule>
       <boule class='game_point'>31
@@ -549,18 +465,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-aout-2010/' title='Resultat tirage Euromillions vendredi 13 aout 2010'>Vendredi 13/08/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-aout-2010/' title='Resultat tirage Euromillions vendredi 13 aout 2010'>Vendredi 13/08/2010
+      </a>">
       <boule class='game_point'>15
       </boule>
       <boule class='game_point'>9
@@ -575,18 +487,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>3
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-aout-2010/' title='Resultat tirage Euromillions vendredi 6 aout 2010'>Vendredi 06/08/2010
-        </a>
-      </td>
+      <winners>3
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-aout-2010/' title='Resultat tirage Euromillions vendredi 6 aout 2010'>Vendredi 06/08/2010
+      </a>">
       <boule class='game_point'>42
       </boule>
       <boule class='game_point'>28
@@ -601,24 +509,20 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Juillet 2010
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-juillet-2010/' title='Resultat tirage Euromillions vendredi 30 juillet 2010'>Vendredi 30/07/2010
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-juillet-2010/' title='Resultat tirage Euromillions vendredi 30 juillet 2010'>Vendredi 30/07/2010
+      </a>">
       <boule class='game_point'>39
       </boule>
       <boule class='game_point'>11
@@ -633,18 +537,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>28 092 206 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-juillet-2010/' title='Resultat tirage Euromillions vendredi 23 juillet 2010'>Vendredi 23/07/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>28 092 206 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-juillet-2010/' title='Resultat tirage Euromillions vendredi 23 juillet 2010'>Vendredi 23/07/2010
+      </a>">
       <boule class='game_point'>4
       </boule>
       <boule class='game_point'>13
@@ -659,16 +559,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-juillet-2010/' title='Resultat tirage Euromillions vendredi 16 juillet 2010'>Vendredi 16/07/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-juillet-2010/' title='Resultat tirage Euromillions vendredi 16 juillet 2010'>Vendredi 16/07/2010
+      </a>">
       <boule class='game_point'>49
       </boule>
       <boule class='game_point'>46
@@ -683,18 +581,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>42 218 532 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-juillet-2010/' title='Resultat tirage Euromillions vendredi 9 juillet 2010'>Vendredi 09/07/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>42 218 532 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-juillet-2010/' title='Resultat tirage Euromillions vendredi 9 juillet 2010'>Vendredi 09/07/2010
+      </a>">
       <boule class='game_point'>37
       </boule>
       <boule class='game_point'>9
@@ -709,16 +603,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>28 051 827 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-juillet-2010/' title='Resultat tirage Euromillions vendredi 2 juillet 2010'>Vendredi 02/07/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>28 051 827 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-juillet-2010/' title='Resultat tirage Euromillions vendredi 2 juillet 2010'>Vendredi 02/07/2010
+      </a>">
       <boule class='game_point'>46
       </boule>
       <boule class='game_point'>41
@@ -733,22 +625,20 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Juin 2010
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-juin-2010/' title='Resultat tirage Euromillions vendredi 25 juin 2010'>Vendredi 25/06/2010
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-juin-2010/' title='Resultat tirage Euromillions vendredi 25 juin 2010'>Vendredi 25/06/2010
+      </a>">
       <boule class='game_point'>18
       </boule>
       <boule class='game_point'>1
@@ -763,18 +653,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>27 989 077 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-juin-2010/' title='Resultat tirage Euromillions vendredi 18 juin 2010'>Vendredi 18/06/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>27 989 077 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-juin-2010/' title='Resultat tirage Euromillions vendredi 18 juin 2010'>Vendredi 18/06/2010
+      </a>">
       <boule class='game_point'>2
       </boule>
       <boule class='game_point'>29
@@ -789,16 +675,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-juin-2010/' title='Resultat tirage Euromillions vendredi 11 juin 2010'>Vendredi 11/06/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-juin-2010/' title='Resultat tirage Euromillions vendredi 11 juin 2010'>Vendredi 11/06/2010
+      </a>">
       <boule class='game_point'>44
       </boule>
       <boule class='game_point'>2
@@ -813,18 +697,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-juin-2010/' title='Resultat tirage Euromillions vendredi 4 juin 2010'>Vendredi 04/06/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-juin-2010/' title='Resultat tirage Euromillions vendredi 4 juin 2010'>Vendredi 04/06/2010
+      </a>">
       <boule class='game_point'>34
       </boule>
       <boule class='game_point'>42
@@ -839,24 +719,20 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Mai 2010
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-mai-2010/' title='Resultat tirage Euromillions vendredi 28 mai 2010'>Vendredi 28/05/2010
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-mai-2010/' title='Resultat tirage Euromillions vendredi 28 mai 2010'>Vendredi 28/05/2010
+      </a>">
       <boule class='game_point'>9
       </boule>
       <boule class='game_point'>31
@@ -871,18 +747,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-mai-2010/' title='Resultat tirage Euromillions vendredi 21 mai 2010'>Vendredi 21/05/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-mai-2010/' title='Resultat tirage Euromillions vendredi 21 mai 2010'>Vendredi 21/05/2010
+      </a>">
       <boule class='game_point'>38
       </boule>
       <boule class='game_point'>19
@@ -897,18 +769,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-mai-2010/' title='Resultat tirage Euromillions vendredi 14 mai 2010'>Vendredi 14/05/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-mai-2010/' title='Resultat tirage Euromillions vendredi 14 mai 2010'>Vendredi 14/05/2010
+      </a>">
       <boule class='game_point'>17
       </boule>
       <boule class='game_point'>31
@@ -923,18 +791,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>100 037 101 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-mai-2010/' title='Resultat tirage Euromillions vendredi 7 mai 2010'>Vendredi 07/05/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>100 037 101 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-mai-2010/' title='Resultat tirage Euromillions vendredi 7 mai 2010'>Vendredi 07/05/2010
+      </a>">
       <boule class='game_point'>15
       </boule>
       <boule class='game_point'>21
@@ -949,22 +813,20 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>78 821 704 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>78 821 704 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Avril 2010
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-avril-2010/' title='Resultat tirage Euromillions vendredi 30 avril 2010'>Vendredi 30/04/2010
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-avril-2010/' title='Resultat tirage Euromillions vendredi 30 avril 2010'>Vendredi 30/04/2010
+      </a>">
       <boule class='game_point'>6
       </boule>
       <boule class='game_point'>36
@@ -979,16 +841,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>60 297 781 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-avril-2010/' title='Resultat tirage Euromillions vendredi 23 avril 2010'>Vendredi 23/04/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>60 297 781 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-avril-2010/' title='Resultat tirage Euromillions vendredi 23 avril 2010'>Vendredi 23/04/2010
+      </a>">
       <boule class='game_point'>46
       </boule>
       <boule class='game_point'>3
@@ -1003,16 +863,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>43 702 394 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-avril-2010/' title='Resultat tirage Euromillions vendredi 16 avril 2010'>Vendredi 16/04/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>43 702 394 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-avril-2010/' title='Resultat tirage Euromillions vendredi 16 avril 2010'>Vendredi 16/04/2010
+      </a>">
       <boule class='game_point'>17
       </boule>
       <boule class='game_point'>11
@@ -1027,16 +885,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>28 888 274 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-avril-2010/' title='Resultat tirage Euromillions vendredi 9 avril 2010'>Vendredi 09/04/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>28 888 274 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-avril-2010/' title='Resultat tirage Euromillions vendredi 9 avril 2010'>Vendredi 09/04/2010
+      </a>">
       <boule class='game_point'>44
       </boule>
       <boule class='game_point'>23
@@ -1051,16 +907,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-avril-2010/' title='Resultat tirage Euromillions vendredi 2 avril 2010'>Vendredi 02/04/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-avril-2010/' title='Resultat tirage Euromillions vendredi 2 avril 2010'>Vendredi 02/04/2010
+      </a>">
       <boule class='game_point'>26
       </boule>
       <boule class='game_point'>18
@@ -1075,24 +929,20 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Mars 2010
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-mars-2010/' title='Resultat tirage Euromillions vendredi 26 mars 2010'>Vendredi 26/03/2010
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-mars-2010/' title='Resultat tirage Euromillions vendredi 26 mars 2010'>Vendredi 26/03/2010
+      </a>">
       <boule class='game_point'>18
       </boule>
       <boule class='game_point'>37
@@ -1107,18 +957,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>44 378 829 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-mars-2010/' title='Resultat tirage Euromillions vendredi 19 mars 2010'>Vendredi 19/03/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>44 378 829 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-mars-2010/' title='Resultat tirage Euromillions vendredi 19 mars 2010'>Vendredi 19/03/2010
+      </a>">
       <boule class='game_point'>38
       </boule>
       <boule class='game_point'>28
@@ -1133,16 +979,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>29 152 590 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-mars-2010/' title='Resultat tirage Euromillions vendredi 12 mars 2010'>Vendredi 12/03/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>29 152 590 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-mars-2010/' title='Resultat tirage Euromillions vendredi 12 mars 2010'>Vendredi 12/03/2010
+      </a>">
       <boule class='game_point'>46
       </boule>
       <boule class='game_point'>1
@@ -1157,16 +1001,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-mars-2010/' title='Resultat tirage Euromillions vendredi 5 mars 2010'>Vendredi 05/03/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-mars-2010/' title='Resultat tirage Euromillions vendredi 5 mars 2010'>Vendredi 05/03/2010
+      </a>">
       <boule class='game_point'>19
       </boule>
       <boule class='game_point'>18
@@ -1181,24 +1023,20 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>46 258 004 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>46 258 004 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Fevrier 2010
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-fevrier-2010/' title='Resultat tirage Euromillions vendredi 26 fevrier 2010'>Vendredi 26/02/2010
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-fevrier-2010/' title='Resultat tirage Euromillions vendredi 26 fevrier 2010'>Vendredi 26/02/2010
+      </a>">
       <boule class='game_point'>42
       </boule>
       <boule class='game_point'>11
@@ -1213,16 +1051,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>30 133 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-fevrier-2010/' title='Resultat tirage Euromillions vendredi 19 fevrier 2010'>Vendredi 19/02/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>30 133 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-fevrier-2010/' title='Resultat tirage Euromillions vendredi 19 fevrier 2010'>Vendredi 19/02/2010
+      </a>">
       <boule class='game_point'>37
       </boule>
       <boule class='game_point'>12
@@ -1237,16 +1073,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-fevrier-2010/' title='Resultat tirage Euromillions vendredi 12 fevrier 2010'>Vendredi 12/02/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-fevrier-2010/' title='Resultat tirage Euromillions vendredi 12 fevrier 2010'>Vendredi 12/02/2010
+      </a>">
       <boule class='game_point'>5
       </boule>
       <boule class='game_point'>45
@@ -1261,18 +1095,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>129 618 405 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-fevrier-2010/' title='Resultat tirage Euromillions vendredi 5 fevrier 2010'>Vendredi 05/02/2010
-        </a>
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>129 618 405 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-fevrier-2010/' title='Resultat tirage Euromillions vendredi 5 fevrier 2010'>Vendredi 05/02/2010
+      </a>">
       <boule class='game_point'>46
       </boule>
       <boule class='game_point'>38
@@ -1287,22 +1117,20 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>100 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>100 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Janvier 2010
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-janvier-2010/' title='Resultat tirage Euromillions vendredi 29 janvier 2010'>Vendredi 29/01/2010
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-janvier-2010/' title='Resultat tirage Euromillions vendredi 29 janvier 2010'>Vendredi 29/01/2010
+      </a>">
       <boule class='game_point'>39
       </boule>
       <boule class='game_point'>43
@@ -1317,18 +1145,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>29 242 656 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-janvier-2010/' title='Resultat tirage Euromillions vendredi 22 janvier 2010'>Vendredi 22/01/2010
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>29 242 656 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-janvier-2010/' title='Resultat tirage Euromillions vendredi 22 janvier 2010'>Vendredi 22/01/2010
+      </a>">
       <boule class='game_point'>4
       </boule>
       <boule class='game_point'>44
@@ -1343,16 +1167,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-janvier-2010/' title='Resultat tirage Euromillions vendredi 15 janvier 2010'>Vendredi 15/01/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-janvier-2010/' title='Resultat tirage Euromillions vendredi 15 janvier 2010'>Vendredi 15/01/2010
+      </a>">
       <boule class='game_point'>49
       </boule>
       <boule class='game_point'>50
@@ -1367,18 +1189,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>59 407 369 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-janvier-2010/' title='Resultat tirage Euromillions vendredi 8 janvier 2010'>Vendredi 08/01/2010
-        </a>
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>59 407 369 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-janvier-2010/' title='Resultat tirage Euromillions vendredi 8 janvier 2010'>Vendredi 08/01/2010
+      </a>">
       <boule class='game_point'>44
       </boule>
       <boule class='game_point'>5
@@ -1393,16 +1211,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>42 944 229 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-janvier-2010/' title='Resultat tirage Euromillions vendredi 1er janvier 2010'>Vendredi 01/01/2010
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>42 944 229 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-janvier-2010/' title='Resultat tirage Euromillions vendredi 1er janvier 2010'>Vendredi 01/01/2010
+      </a>">
       <boule class='game_point'>22
       </boule>
       <boule class='game_point'>24
@@ -1417,9 +1233,9 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>28 412 329 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>28 412 329 EUR
+      </jackpot>
+    </tirage>
   </table>

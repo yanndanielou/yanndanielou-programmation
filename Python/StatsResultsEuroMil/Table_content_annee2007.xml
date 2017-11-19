@@ -1,38 +1,14 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
     <tr>
-      <th>Date du tirage
-      </th>
-      <th>N1
-      </th>
-      <th>N2
-      </th>
-      <th>N3
-      </th>
-      <th>N4
-      </th>
-      <th>N5
-      </th>
-      <th>E1
-      </th>
-      <th>E2
-      </th>
-      <th>Gagnants
-      </th>
-      <th>Jackpot
-      </th>
-    </tr>
-    <tr>
       <td colspan="10">
         <strong>Decembre 2007
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-28-decembre/' title='Resultats du tirage Euromillions vendredi 28 decembre 2007'>Vendredi 28/12/2007
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-28-decembre/' title='Resultats du tirage Euromillions vendredi 28 decembre 2007'>Vendredi 28/12/2007
+      </a>">
       <boule class='game_point'>45
       </boule>
       <boule class='game_point'>31
@@ -47,16 +23,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-21-decembre/' title='Resultats du tirage Euromillions vendredi 21 decembre 2007'>Vendredi 21/12/2007
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-21-decembre/' title='Resultats du tirage Euromillions vendredi 21 decembre 2007'>Vendredi 21/12/2007
+      </a>">
       <boule class='game_point'>37
       </boule>
       <boule class='game_point'>7
@@ -71,18 +45,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>27 716 872 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-14-decembre/' title='Resultats du tirage Euromillions vendredi 14 decembre 2007'>Vendredi 14/12/2007
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>27 716 872 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-14-decembre/' title='Resultats du tirage Euromillions vendredi 14 decembre 2007'>Vendredi 14/12/2007
+      </a>">
       <boule class='game_point'>8
       </boule>
       <boule class='game_point'>30
@@ -97,16 +67,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-7-decembre/' title='Resultats du tirage Euromillions vendredi 7 decembre 2007'>Vendredi 07/12/2007
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-7-decembre/' title='Resultats du tirage Euromillions vendredi 7 decembre 2007'>Vendredi 07/12/2007
+      </a>">
       <boule class='game_point'>48
       </boule>
       <boule class='game_point'>43
@@ -121,24 +89,20 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>27 552 424 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>27 552 424 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Novembre 2007
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-30-novembre/' title='Resultats du tirage Euromillions vendredi 30 novembre 2007'>Vendredi 30/11/2007
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-30-novembre/' title='Resultats du tirage Euromillions vendredi 30 novembre 2007'>Vendredi 30/11/2007
+      </a>">
       <boule class='game_point'>38
       </boule>
       <boule class='game_point'>20
@@ -153,16 +117,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-23-novembre/' title='Resultats du tirage Euromillions vendredi 23 novembre 2007'>Vendredi 23/11/2007
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-23-novembre/' title='Resultats du tirage Euromillions vendredi 23 novembre 2007'>Vendredi 23/11/2007
+      </a>">
       <boule class='game_point'>22
       </boule>
       <boule class='game_point'>2
@@ -177,18 +139,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>27 375 964 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-16-novembre/' title='Resultats du tirage Euromillions vendredi 16 novembre 2007'>Vendredi 16/11/2007
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>27 375 964 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-16-novembre/' title='Resultats du tirage Euromillions vendredi 16 novembre 2007'>Vendredi 16/11/2007
+      </a>">
       <boule class='game_point'>23
       </boule>
       <boule class='game_point'>18
@@ -203,16 +161,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-9-novembre/' title='Resultats tirage Euromillions du vendredi 9 Novembre 2007'>Vendredi 09/11/2007
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-9-novembre/' title='Resultats tirage Euromillions du vendredi 9 Novembre 2007'>Vendredi 09/11/2007
+      </a>">
       <boule class='game_point'>14
       </boule>
       <boule class='game_point'>25
@@ -227,18 +183,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-2-novembre-2007/' title='Resultats tirage Euromillions vendredi 2 novembre 2007'>Vendredi 02/11/2007
-        </a>
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-2-novembre-2007/' title='Resultats tirage Euromillions vendredi 2 novembre 2007'>Vendredi 02/11/2007
+      </a>">
       <boule class='game_point'>40
       </boule>
       <boule class='game_point'>16
@@ -253,24 +205,20 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>41 136 124 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>41 136 124 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Octobre 2007
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-26-octobre/' title='Resultats tirage Euromillions vendredi 26 octobre 2007'>Vendredi 26/10/2007
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-26-octobre/' title='Resultats tirage Euromillions vendredi 26 octobre 2007'>Vendredi 26/10/2007
+      </a>">
       <boule class='game_point'>20
       </boule>
       <boule class='game_point'>7
@@ -285,16 +233,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>27 610 682 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-19-octobre/' title='Resultats tirage Euromillions vendredi 19 octobre 2007'>Vendredi 19/10/2007
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>27 610 682 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-19-octobre/' title='Resultats tirage Euromillions vendredi 19 octobre 2007'>Vendredi 19/10/2007
+      </a>">
       <boule class='game_point'>7
       </boule>
       <boule class='game_point'>18
@@ -309,16 +255,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-12-octobre/' title='Resultats tirage Euromillions vendredi 12 octobre 2007'>Vendredi 12/10/2007
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-12-octobre/' title='Resultats tirage Euromillions vendredi 12 octobre 2007'>Vendredi 12/10/2007
+      </a>">
       <boule class='game_point'>36
       </boule>
       <boule class='game_point'>47
@@ -333,18 +277,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-5-octobre/' title='Resultats tirage Euromillions vendredi 5 octobre 2007'>Vendredi 05/10/2007
-        </a>
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-5-octobre/' title='Resultats tirage Euromillions vendredi 5 octobre 2007'>Vendredi 05/10/2007
+      </a>">
       <boule class='game_point'>20
       </boule>
       <boule class='game_point'>27
@@ -359,24 +299,20 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>5
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>5
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Septembre 2007
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-28-septembre/' title='Resultats tirage Euromillions vendredi 28 septembre 2007'>Vendredi 28/09/2007
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-28-septembre/' title='Resultats tirage Euromillions vendredi 28 septembre 2007'>Vendredi 28/09/2007
+      </a>">
       <boule class='game_point'>22
       </boule>
       <boule class='game_point'>34
@@ -391,18 +327,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>14
-        </strong>
-      </td>
-      <td align='right'>130 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-21-septembre/' title='Resultats tirage Euromillions vendredi 21 septembre 2007'>Vendredi 21/09/2007
-        </a>
-      </td>
+      <winners>14
+      </winners>
+      <jackpot>130 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-21-septembre/' title='Resultats tirage Euromillions vendredi 21 septembre 2007'>Vendredi 21/09/2007
+      </a>">
       <boule class='game_point'>35
       </boule>
       <boule class='game_point'>37
@@ -417,18 +349,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>27 247 062 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-14-septembre/' title='Resultats tirage Euromillions vendredi 14 septembre 2007'>Vendredi 14/09/2007
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>27 247 062 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-14-septembre/' title='Resultats tirage Euromillions vendredi 14 septembre 2007'>Vendredi 14/09/2007
+      </a>">
       <boule class='game_point'>33
       </boule>
       <boule class='game_point'>29
@@ -443,16 +371,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-7-septembre/' title='Resultats tirage Euromillions vendredi 7 septembre 2007'>Vendredi 07/09/2007
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-7-septembre/' title='Resultats tirage Euromillions vendredi 7 septembre 2007'>Vendredi 07/09/2007
+      </a>">
       <boule class='game_point'>42
       </boule>
       <boule class='game_point'>3
@@ -467,24 +393,20 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Aout 2007
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-31-aout-2007/' title='Resultats du tirage Euromillions vendredi 31 Aout 2007'>Vendredi 31/08/2007
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-31-aout-2007/' title='Resultats du tirage Euromillions vendredi 31 Aout 2007'>Vendredi 31/08/2007
+      </a>">
       <boule class='game_point'>22
       </boule>
       <boule class='game_point'>37
@@ -499,18 +421,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>39 496 528 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-24-aout-2007/' title='Resultats tirage Euromillions vendredi 24 Aout 2007'>Vendredi 24/08/2007
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>39 496 528 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-24-aout-2007/' title='Resultats tirage Euromillions vendredi 24 Aout 2007'>Vendredi 24/08/2007
+      </a>">
       <boule class='game_point'>16
       </boule>
       <boule class='game_point'>3
@@ -525,16 +443,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 677 818 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-17-aout/' title='Resultats tirage Euromillions du vendredi 17 Aout 2007'>Vendredi 17/08/2007
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>26 677 818 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-17-aout/' title='Resultats tirage Euromillions du vendredi 17 Aout 2007'>Vendredi 17/08/2007
+      </a>">
       <boule class='game_point'>2
       </boule>
       <boule class='game_point'>13
@@ -549,16 +465,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-de-ce-vendredi-10-aout/' title='Resultats du tirage Euromillions de ce vendredi 10 aout 2007'>Vendredi 10/08/2007
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-de-ce-vendredi-10-aout/' title='Resultats du tirage Euromillions de ce vendredi 10 aout 2007'>Vendredi 10/08/2007
+      </a>">
       <boule class='game_point'>40
       </boule>
       <boule class='game_point'>43
@@ -573,18 +487,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>52 630 236 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/tirage-euromillions-du-vendredi-03-aout/' title='Resultat du tirage Euromillions du vendredi 3 aout 2007'>Vendredi 03/08/2007
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>52 630 236 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/tirage-euromillions-du-vendredi-03-aout/' title='Resultat du tirage Euromillions du vendredi 3 aout 2007'>Vendredi 03/08/2007
+      </a>">
       <boule class='game_point'>41
       </boule>
       <boule class='game_point'>33
@@ -599,22 +509,20 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>39 185 012 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>39 185 012 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Juillet 2007
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/tirage-euromillions-du-27-juillet-2007/' title='Resultat tirage Euromillions du vendredi 27 juillet 2007'>Vendredi 27/07/2007
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/tirage-euromillions-du-27-juillet-2007/' title='Resultat tirage Euromillions du vendredi 27 juillet 2007'>Vendredi 27/07/2007
+      </a>">
       <boule class='game_point'>4
       </boule>
       <boule class='game_point'>29
@@ -629,14 +537,12 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>27 731 341 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 20/07/2007
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>27 731 341 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 20/07/2007">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>26
@@ -651,14 +557,12 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 13/07/2007
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 13/07/2007">
       <boule class='game_point'>13
       </boule>
       <boule class='game_point'>9
@@ -673,16 +577,12 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>56 945 074 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 06/07/2007
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>56 945 074 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 06/07/2007">
       <boule class='game_point'>39
       </boule>
       <boule class='game_point'>41
@@ -697,20 +597,18 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>39 898 280 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>39 898 280 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Juin 2007
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 29/06/2007
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 29/06/2007">
       <boule class='game_point'>28
       </boule>
       <boule class='game_point'>8
@@ -725,14 +623,12 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 816 658 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 22/06/2007
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>26 816 658 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 22/06/2007">
       <boule class='game_point'>22
       </boule>
       <boule class='game_point'>17
@@ -747,14 +643,12 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 15/06/2007
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 15/06/2007">
       <boule class='game_point'>5
       </boule>
       <boule class='game_point'>14
@@ -769,16 +663,12 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>26 938 896 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 08/06/2007
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>26 938 896 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 08/06/2007">
       <boule class='game_point'>15
       </boule>
       <boule class='game_point'>17
@@ -793,14 +683,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 01/06/2007
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 01/06/2007">
       <boule class='game_point'>22
       </boule>
       <boule class='game_point'>41
@@ -815,22 +703,18 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Mai 2007
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 25/05/2007
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 25/05/2007">
       <boule class='game_point'>49
       </boule>
       <boule class='game_point'>26
@@ -845,16 +729,12 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 18/05/2007
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 18/05/2007">
       <boule class='game_point'>49
       </boule>
       <boule class='game_point'>37
@@ -869,16 +749,12 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 11/05/2007
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 11/05/2007">
       <boule class='game_point'>12
       </boule>
       <boule class='game_point'>26
@@ -893,16 +769,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>3
-        </strong>
-      </td>
-      <td align='right'>53 347 664 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 04/05/2007
-      </td>
+      <winners>3
+      </winners>
+      <jackpot>53 347 664 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 04/05/2007">
       <boule class='game_point'>17
       </boule>
       <boule class='game_point'>41
@@ -917,20 +789,18 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>39 605 256 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>39 605 256 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Avril 2007
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 27/04/2007
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 27/04/2007">
       <boule class='game_point'>44
       </boule>
       <boule class='game_point'>18
@@ -945,14 +815,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 851 565 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 20/04/2007
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>26 851 565 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 20/04/2007">
       <boule class='game_point'>41
       </boule>
       <boule class='game_point'>26
@@ -967,14 +835,12 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 13/04/2007
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 13/04/2007">
       <boule class='game_point'>20
       </boule>
       <boule class='game_point'>41
@@ -989,16 +855,12 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 06/04/2007
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 06/04/2007">
       <boule class='game_point'>41
       </boule>
       <boule class='game_point'>48
@@ -1013,22 +875,18 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>26 945 909 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>26 945 909 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Mars 2007
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 30/03/2007
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 30/03/2007">
       <boule class='game_point'>19
       </boule>
       <boule class='game_point'>9
@@ -1043,14 +901,12 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 23/03/2007
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 23/03/2007">
       <boule class='game_point'>43
       </boule>
       <boule class='game_point'>17
@@ -1065,16 +921,12 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>41 023 864 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 16/03/2007
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>41 023 864 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 16/03/2007">
       <boule class='game_point'>45
       </boule>
       <boule class='game_point'>4
@@ -1089,14 +941,12 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>27 699 321 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 09/03/2007
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>27 699 321 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 09/03/2007">
       <boule class='game_point'>43
       </boule>
       <boule class='game_point'>25
@@ -1111,14 +961,12 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 02/03/2007
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 02/03/2007">
       <boule class='game_point'>3
       </boule>
       <boule class='game_point'>16
@@ -1133,22 +981,18 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>42 201 702 EUR
-      </td>
-    </tr>
+      <winners>2
+      </winners>
+      <jackpot>42 201 702 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Fevrier 2007
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 23/02/2007
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 23/02/2007">
       <boule class='game_point'>20
       </boule>
       <boule class='game_point'>2
@@ -1163,14 +1007,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>28 224 030 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 16/02/2007
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>28 224 030 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 16/02/2007">
       <boule class='game_point'>19
       </boule>
       <boule class='game_point'>39
@@ -1185,14 +1027,12 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 09/02/2007
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 09/02/2007">
       <boule class='game_point'>36
       </boule>
       <boule class='game_point'>16
@@ -1207,16 +1047,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>100 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 02/02/2007
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>100 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 02/02/2007">
       <boule class='game_point'>36
       </boule>
       <boule class='game_point'>14
@@ -1231,22 +1067,18 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>27 173 863 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>27 173 863 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Janvier 2007
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 26/01/2007
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 26/01/2007">
       <boule class='game_point'>38
       </boule>
       <boule class='game_point'>11
@@ -1261,14 +1093,12 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 19/01/2007
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 19/01/2007">
       <boule class='game_point'>27
       </boule>
       <boule class='game_point'>5
@@ -1283,16 +1113,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 12/01/2007
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 12/01/2007">
       <boule class='game_point'>14
       </boule>
       <boule class='game_point'>8
@@ -1307,16 +1133,12 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 05/01/2007
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 05/01/2007">
       <boule class='game_point'>17
       </boule>
       <boule class='game_point'>45
@@ -1331,11 +1153,9 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>78 312 155 EUR
-      </td>
-    </tr>
+      <winners>2
+      </winners>
+      <jackpot>78 312 155 EUR
+      </jackpot>
+    </tirage>
   </table>

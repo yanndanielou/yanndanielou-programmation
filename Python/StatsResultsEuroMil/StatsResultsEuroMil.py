@@ -84,9 +84,19 @@ def main(argv):
 		
 		logging.info("Table balise compliant with XML format:" + table_balise_content_as_xml)
 		
-		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml.replace('<tr><th>Date du tirage</th><th>N1</th><th>N2</th><th>N3</th><th>N4</th><th>N5</th><th>E1</th><th>E2</th></th><th>Gagnants</th><th>Jackpot</th></tr>', '')
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml.replace('<tr><th>Date du tirage</th><th>N1</th><th>N2</th><th>N3</th><th>N4</th><th>N5</th><th>E1</th><th>E2</th><th>Gagnants</th><th>Jackpot</th></tr>', '')
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('<td><div class', '<boule class')
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('</div></td>', '</boule>')
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("<td align='center'", "<winners")
+		#table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("<td align='center'", "<jackpot")
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("</td><td align='right'", "</winners><jackpot")
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("</td></tr>", "</jackpot></tr>")
+		
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('<tr><td>', '<tirage date="')
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("</td><boule", '"><boule')
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("<winners><strong>", "<winners>")
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("</strong></winners>", "</winners>")
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("</jackpot></tr>", "</jackpot></tirage>")
 		
 		logging.info("Table balise compliant with XML format transformed with good fields:" + table_balise_content_as_xml_transformed_good_fields)
 		

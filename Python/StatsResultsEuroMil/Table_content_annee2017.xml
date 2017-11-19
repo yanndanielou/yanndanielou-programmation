@@ -1,38 +1,14 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
     <tr>
-      <th>Date du tirage
-      </th>
-      <th>N1
-      </th>
-      <th>N2
-      </th>
-      <th>N3
-      </th>
-      <th>N4
-      </th>
-      <th>N5
-      </th>
-      <th>E1
-      </th>
-      <th>E2
-      </th>
-      <th>Gagnants
-      </th>
-      <th>Jackpot
-      </th>
-    </tr>
-    <tr>
       <td colspan="10">
         <strong>Novembre 2017
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-novembre-2017/' title='Resultat tirage EuroMillions vendredi 17 novembre 2017'>Vendredi 17/11/2017
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-novembre-2017/' title='Resultat tirage EuroMillions vendredi 17 novembre 2017'>Vendredi 17/11/2017
+      </a>">
       <boule class='game_point'>35
       </boule>
       <boule class='game_point'>36
@@ -47,16 +23,14 @@
       </boule>
       <boule class='star_small'>12
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>51 634 094 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-novembre-2017/' title='Resultat tirage EuroMillions mardi 14 novembre 2017'>Mardi 14/11/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>51 634 094 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-novembre-2017/' title='Resultat tirage EuroMillions mardi 14 novembre 2017'>Mardi 14/11/2017
+      </a>">
       <boule class='game_point'>16
       </boule>
       <boule class='game_point'>40
@@ -71,16 +45,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>38 477 171 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-novembre-2017/' title='Resultat tirage EuroMillions vendredi 10 novembre 2017'>Vendredi 10/11/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>38 477 171 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-novembre-2017/' title='Resultat tirage EuroMillions vendredi 10 novembre 2017'>Vendredi 10/11/2017
+      </a>">
       <boule class='game_point'>37
       </boule>
       <boule class='game_point'>36
@@ -95,16 +67,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>29 800 638 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-novembre-2017/' title='Resultat tirage EuroMillions mardi 7 novembre 2017'>Mardi 07/11/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>29 800 638 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-novembre-2017/' title='Resultat tirage EuroMillions mardi 7 novembre 2017'>Mardi 07/11/2017
+      </a>">
       <boule class='game_point'>37
       </boule>
       <boule class='game_point'>19
@@ -119,16 +89,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-novembre-2017/' title='Resultat tirage EuroMillions vendredi 3 novembre 2017'>Vendredi 03/11/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-novembre-2017/' title='Resultat tirage EuroMillions vendredi 3 novembre 2017'>Vendredi 03/11/2017
+      </a>">
       <boule class='game_point'>41
       </boule>
       <boule class='game_point'>5
@@ -143,22 +111,20 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>28 709 464 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>28 709 464 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Octobre 2017
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-octobre-2017/' title='Resultat tirage EuroMillions mardi 31 octobre 2017'>Mardi 31/10/2017
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-octobre-2017/' title='Resultat tirage EuroMillions mardi 31 octobre 2017'>Mardi 31/10/2017
+      </a>">
       <boule class='game_point'>46
       </boule>
       <boule class='game_point'>12
@@ -173,16 +139,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-octobre-2017/' title='Resultat tirage EuroMillions vendredi 27 octobre 2017'>Vendredi 27/10/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-octobre-2017/' title='Resultat tirage EuroMillions vendredi 27 octobre 2017'>Vendredi 27/10/2017
+      </a>">
       <boule class='game_point'>39
       </boule>
       <boule class='game_point'>23
@@ -197,18 +161,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-octobre-2017/' title='Resultat tirage EuroMillions mardi 24 octobre 2017'>Mardi 24/10/2017
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-octobre-2017/' title='Resultat tirage EuroMillions mardi 24 octobre 2017'>Mardi 24/10/2017
+      </a>">
       <boule class='game_point'>27
       </boule>
       <boule class='game_point'>9
@@ -223,18 +183,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>65 407 072 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-octobre-2017/' title='Resultat tirage EuroMillions vendredi 20 octobre 2017'>Vendredi 20/10/2017
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>65 407 072 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-octobre-2017/' title='Resultat tirage EuroMillions vendredi 20 octobre 2017'>Vendredi 20/10/2017
+      </a>">
       <boule class='game_point'>4
       </boule>
       <boule class='game_point'>27
@@ -249,16 +205,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>55 649 983 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-octobre-2017/' title='Resultat tirage EuroMillions mardi 17 octobre 2017'>Mardi 17/10/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>55 649 983 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-octobre-2017/' title='Resultat tirage EuroMillions mardi 17 octobre 2017'>Mardi 17/10/2017
+      </a>">
       <boule class='game_point'>19
       </boule>
       <boule class='game_point'>26
@@ -273,16 +227,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>42 395 360 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-octobre-2017/' title='Resultat tirage EuroMillions vendredi 13 octobre 2017'>Vendredi 13/10/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>42 395 360 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-octobre-2017/' title='Resultat tirage EuroMillions vendredi 13 octobre 2017'>Vendredi 13/10/2017
+      </a>">
       <boule class='game_point'>23
       </boule>
       <boule class='game_point'>37
@@ -297,16 +249,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>33 140 111 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-octobre-2017/' title='Resultat tirage EuroMillions mardi 10 octobre 2017'>Mardi 10/10/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>33 140 111 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-octobre-2017/' title='Resultat tirage EuroMillions mardi 10 octobre 2017'>Mardi 10/10/2017
+      </a>">
       <boule class='game_point'>36
       </boule>
       <boule class='game_point'>4
@@ -321,16 +271,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-octobre-2017/' title='Resultat tirage EuroMillions vendredi 6 octobre 2017'>Vendredi 06/10/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-octobre-2017/' title='Resultat tirage EuroMillions vendredi 6 octobre 2017'>Vendredi 06/10/2017
+      </a>">
       <boule class='game_point'>1
       </boule>
       <boule class='game_point'>9
@@ -345,18 +293,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>190 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-3-octobre-2017/' title='Resultat tirage EuroMillions mardi 3 octobre 2017'>Mardi 03/10/2017
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>190 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-3-octobre-2017/' title='Resultat tirage EuroMillions mardi 3 octobre 2017'>Mardi 03/10/2017
+      </a>">
       <boule class='game_point'>32
       </boule>
       <boule class='game_point'>6
@@ -371,22 +315,20 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>190 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>190 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Septembre 2017
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-septembre-2017/' title='Resultat tirage EuroMillions vendredi 29 septembre 2017'>Vendredi 29/09/2017
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-septembre-2017/' title='Resultat tirage EuroMillions vendredi 29 septembre 2017'>Vendredi 29/09/2017
+      </a>">
       <boule class='game_point'>18
       </boule>
       <boule class='game_point'>32
@@ -401,16 +343,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>178 941 892 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-26-septembre-2017/' title='Resultat tirage EuroMillions mardi 26 septembre 2017'>Mardi 26/09/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>178 941 892 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-26-septembre-2017/' title='Resultat tirage EuroMillions mardi 26 septembre 2017'>Mardi 26/09/2017
+      </a>">
       <boule class='game_point'>40
       </boule>
       <boule class='game_point'>29
@@ -425,16 +365,14 @@
       </boule>
       <boule class='star_small'>12
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>163 620 566 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-septembre-2017/' title='Resultat tirage EuroMillions vendredi 22 septembre 2017'>Vendredi 22/09/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>163 620 566 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-septembre-2017/' title='Resultat tirage EuroMillions vendredi 22 septembre 2017'>Vendredi 22/09/2017
+      </a>">
       <boule class='game_point'>6
       </boule>
       <boule class='game_point'>11
@@ -449,16 +387,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>152 701 511 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-19-septembre-2017/' title='Resultat tirage EuroMillions mardi 19 septembre 2017'>Mardi 19/09/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>152 701 511 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-19-septembre-2017/' title='Resultat tirage EuroMillions mardi 19 septembre 2017'>Mardi 19/09/2017
+      </a>">
       <boule class='game_point'>45
       </boule>
       <boule class='game_point'>21
@@ -473,16 +409,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>139 531 728 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-septembre-2017/' title='Resultat tirage EuroMillions vendredi 15 septembre 2017'>Vendredi 15/09/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>139 531 728 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-septembre-2017/' title='Resultat tirage EuroMillions vendredi 15 septembre 2017'>Vendredi 15/09/2017
+      </a>">
       <boule class='game_point'>44
       </boule>
       <boule class='game_point'>49
@@ -497,16 +431,14 @@
       </boule>
       <boule class='star_small'>12
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-12-septembre-2017/' title='Resultat tirage EuroMillions mardi 12 septembre 2017'>Mardi 12/09/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-12-septembre-2017/' title='Resultat tirage EuroMillions mardi 12 septembre 2017'>Mardi 12/09/2017
+      </a>">
       <boule class='game_point'>35
       </boule>
       <boule class='game_point'>17
@@ -521,16 +453,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-septembre-2017/' title='Resultat tirage EuroMillions vendredi 8 septembre 2017'>Vendredi 08/09/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-septembre-2017/' title='Resultat tirage EuroMillions vendredi 8 septembre 2017'>Vendredi 08/09/2017
+      </a>">
       <boule class='game_point'>9
       </boule>
       <boule class='game_point'>24
@@ -545,16 +475,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-5-septembre-2017/' title='Resultat tirage EuroMillions mardi 5 septembre 2017'>Mardi 05/09/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-5-septembre-2017/' title='Resultat tirage EuroMillions mardi 5 septembre 2017'>Mardi 05/09/2017
+      </a>">
       <boule class='game_point'>28
       </boule>
       <boule class='game_point'>18
@@ -569,16 +497,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-septembre-2017/' title='Resultat tirage EuroMillions vendredi 1er septembre 2017'>Vendredi 01/09/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-septembre-2017/' title='Resultat tirage EuroMillions vendredi 1er septembre 2017'>Vendredi 01/09/2017
+      </a>">
       <boule class='game_point'>3
       </boule>
       <boule class='game_point'>7
@@ -593,24 +519,20 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Aout 2017
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-aout-2017/' title='Resultat tirage EuroMillions mardi 29 aout 2017'>Mardi 29/08/2017
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-aout-2017/' title='Resultat tirage EuroMillions mardi 29 aout 2017'>Mardi 29/08/2017
+      </a>">
       <boule class='game_point'>4
       </boule>
       <boule class='game_point'>12
@@ -625,16 +547,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-aout-2017/' title='Resultat tirage EuroMillions vendredi 25 aout 2017'>Vendredi 25/08/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-aout-2017/' title='Resultat tirage EuroMillions vendredi 25 aout 2017'>Vendredi 25/08/2017
+      </a>">
       <boule class='game_point'>15
       </boule>
       <boule class='game_point'>7
@@ -649,16 +569,14 @@
       </boule>
       <boule class='star_small'>12
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-22-aout-2017/' title='Resultat tirage EuroMillions mardi 22 aout 2017'>Mardi 22/08/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-22-aout-2017/' title='Resultat tirage EuroMillions mardi 22 aout 2017'>Mardi 22/08/2017
+      </a>">
       <boule class='game_point'>10
       </boule>
       <boule class='game_point'>12
@@ -673,18 +591,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>44 105 265 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-aout-2017/' title='Resultat tirage EuroMillions vendredi 18 aout 2017'>Vendredi 18/08/2017
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>44 105 265 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-aout-2017/' title='Resultat tirage EuroMillions vendredi 18 aout 2017'>Vendredi 18/08/2017
+      </a>">
       <boule class='game_point'>39
       </boule>
       <boule class='game_point'>42
@@ -699,16 +613,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>35 595 611 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-15-aout-2017/' title='Resultat tirage EuroMillions mardi 15 aout 2017'>Mardi 15/08/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>35 595 611 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-15-aout-2017/' title='Resultat tirage EuroMillions mardi 15 aout 2017'>Mardi 15/08/2017
+      </a>">
       <boule class='game_point'>10
       </boule>
       <boule class='game_point'>14
@@ -723,16 +635,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>24 238 049 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-aout-2017/' title='Resultat tirage EuroMillions vendredi 11 aout 2017'>Vendredi 11/08/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>24 238 049 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-aout-2017/' title='Resultat tirage EuroMillions vendredi 11 aout 2017'>Vendredi 11/08/2017
+      </a>">
       <boule class='game_point'>18
       </boule>
       <boule class='game_point'>28
@@ -747,16 +657,14 @@
       </boule>
       <boule class='star_small'>12
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-8-aout-2017/' title='Resultat tirage EuroMillions mardi 8 aout 2017'>Mardi 08/08/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-8-aout-2017/' title='Resultat tirage EuroMillions mardi 8 aout 2017'>Mardi 08/08/2017
+      </a>">
       <boule class='game_point'>26
       </boule>
       <boule class='game_point'>15
@@ -771,18 +679,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>36 563 144 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-aout-2017/' title='Resultat tirage EuroMillions vendredi 4 aout 2017'>Vendredi 04/08/2017
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>36 563 144 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-aout-2017/' title='Resultat tirage EuroMillions vendredi 4 aout 2017'>Vendredi 04/08/2017
+      </a>">
       <boule class='game_point'>29
       </boule>
       <boule class='game_point'>30
@@ -797,16 +701,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>28 246 597 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-1er-aout-2017/' title='Resultat tirage EuroMillions mardi 1er aout 2017'>Mardi 01/08/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>28 246 597 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-1er-aout-2017/' title='Resultat tirage EuroMillions mardi 1er aout 2017'>Mardi 01/08/2017
+      </a>">
       <boule class='game_point'>29
       </boule>
       <boule class='game_point'>24
@@ -821,22 +723,20 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Juillet 2017
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-juillet-2017/' title='Resultat tirage EuroMillions vendredi 28 juillet 2017'>Vendredi 28/07/2017
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-juillet-2017/' title='Resultat tirage EuroMillions vendredi 28 juillet 2017'>Vendredi 28/07/2017
+      </a>">
       <boule class='game_point'>41
       </boule>
       <boule class='game_point'>9
@@ -851,16 +751,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>57 871 110 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-25-juillet-2017/' title='Resultat tirage EuroMillions mardi 25 juillet 2017'>Mardi 25/07/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>57 871 110 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-25-juillet-2017/' title='Resultat tirage EuroMillions mardi 25 juillet 2017'>Mardi 25/07/2017
+      </a>">
       <boule class='game_point'>14
       </boule>
       <boule class='game_point'>44
@@ -875,16 +773,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>45 205 505 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-juillet-2017/' title='Resultat tirage EuroMillions vendredi 21 juillet 2017'>Vendredi 21/07/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>45 205 505 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-juillet-2017/' title='Resultat tirage EuroMillions vendredi 21 juillet 2017'>Vendredi 21/07/2017
+      </a>">
       <boule class='game_point'>8
       </boule>
       <boule class='game_point'>1
@@ -899,16 +795,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>36 567 350 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-18-juillet-2017/' title='Resultat tirage EuroMillions mardi 18 juillet 2017'>Mardi 18/07/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>36 567 350 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-18-juillet-2017/' title='Resultat tirage EuroMillions mardi 18 juillet 2017'>Mardi 18/07/2017
+      </a>">
       <boule class='game_point'>41
       </boule>
       <boule class='game_point'>27
@@ -923,16 +817,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>25 104 936 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-juillet-2015/' title='Resultat tirage EuroMillions vendredi 14 juillet 2017'>Vendredi 14/07/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>25 104 936 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-juillet-2015/' title='Resultat tirage EuroMillions vendredi 14 juillet 2017'>Vendredi 14/07/2017
+      </a>">
       <boule class='game_point'>21
       </boule>
       <boule class='game_point'>14
@@ -947,16 +839,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-11-juillet-2017/' title='Resultat tirage EuroMillions mardi 11 juillet 2017'>Mardi 11/07/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-11-juillet-2017/' title='Resultat tirage EuroMillions mardi 11 juillet 2017'>Mardi 11/07/2017
+      </a>">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>26
@@ -971,18 +861,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-juillet-2017/' title='Resultat tirage EuroMillions vendredi 7 juillet 2017'>Vendredi 07/07/2017
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-juillet-2017/' title='Resultat tirage EuroMillions vendredi 7 juillet 2017'>Vendredi 07/07/2017
+      </a>">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>20
@@ -997,18 +883,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>28 975 630 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-4-juillet-2017/' title='Resultat tirage EuroMillions mardi 4 juillet 2017'>Mardi 04/07/2017
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>28 975 630 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-4-juillet-2017/' title='Resultat tirage EuroMillions mardi 4 juillet 2017'>Mardi 04/07/2017
+      </a>">
       <boule class='game_point'>22
       </boule>
       <boule class='game_point'>25
@@ -1023,22 +905,20 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Juin 2017
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-juin-2017/' title='Resultat tirage EuroMillions vendredi 30 juin 2017'>Vendredi 30/06/2017
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-juin-2017/' title='Resultat tirage EuroMillions vendredi 30 juin 2017'>Vendredi 30/06/2017
+      </a>">
       <boule class='game_point'>35
       </boule>
       <boule class='game_point'>50
@@ -1053,18 +933,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>100 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-27-juin-2017/' title='Resultat tirage EuroMillions mardi 27 juin 2017'>Mardi 27/06/2017
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>100 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-27-juin-2017/' title='Resultat tirage EuroMillions mardi 27 juin 2017'>Mardi 27/06/2017
+      </a>">
       <boule class='game_point'>45
       </boule>
       <boule class='game_point'>17
@@ -1079,16 +955,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>79 203 977 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-juin-2017/' title='Resultat tirage EuroMillions vendredi 23 juin 2017'>Vendredi 23/06/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>79 203 977 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-juin-2017/' title='Resultat tirage EuroMillions vendredi 23 juin 2017'>Vendredi 23/06/2017
+      </a>">
       <boule class='game_point'>4
       </boule>
       <boule class='game_point'>31
@@ -1103,16 +977,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>72 762 689 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-20-juin-2017/' title='Resultat tirage EuroMillions mardi 20 juin 2017'>Mardi 20/06/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>72 762 689 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-20-juin-2017/' title='Resultat tirage EuroMillions mardi 20 juin 2017'>Mardi 20/06/2017
+      </a>">
       <boule class='game_point'>44
       </boule>
       <boule class='game_point'>43
@@ -1127,16 +999,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>59 644 334 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-juin-2017/' title='Resultat tirage EuroMillions vendredi 16 juin 2017'>Vendredi 16/06/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>59 644 334 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-juin-2017/' title='Resultat tirage EuroMillions vendredi 16 juin 2017'>Vendredi 16/06/2017
+      </a>">
       <boule class='game_point'>38
       </boule>
       <boule class='game_point'>42
@@ -1151,16 +1021,14 @@
       </boule>
       <boule class='star_small'>12
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>50 405 630 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-13-juin-2017/' title='Resultat tirage EuroMillions mardi 13 juin 2017'>Mardi 13/06/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>50 405 630 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-13-juin-2017/' title='Resultat tirage EuroMillions mardi 13 juin 2017'>Mardi 13/06/2017
+      </a>">
       <boule class='game_point'>12
       </boule>
       <boule class='game_point'>3
@@ -1175,16 +1043,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>38 110 538 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-juin-2017/' title='Resultat tirage EuroMillions vendredi 9 juin 2017'>Vendredi 09/06/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>38 110 538 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-juin-2017/' title='Resultat tirage EuroMillions vendredi 9 juin 2017'>Vendredi 09/06/2017
+      </a>">
       <boule class='game_point'>9
       </boule>
       <boule class='game_point'>39
@@ -1199,16 +1065,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>29 190 553 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-6-juin-2017/' title='Resultat tirage EuroMillions mardi 6 juin 2017'>Mardi 06/06/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>29 190 553 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-6-juin-2017/' title='Resultat tirage EuroMillions mardi 6 juin 2017'>Mardi 06/06/2017
+      </a>">
       <boule class='game_point'>25
       </boule>
       <boule class='game_point'>40
@@ -1223,16 +1087,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-juin-2017/' title='Resultat tirage EuroMillions vendredi 2 juin 2017'>Vendredi 02/06/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-juin-2017/' title='Resultat tirage EuroMillions vendredi 2 juin 2017'>Vendredi 02/06/2017
+      </a>">
       <boule class='game_point'>8
       </boule>
       <boule class='game_point'>42
@@ -1247,24 +1109,20 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>153 873 716 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>153 873 716 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Mai 2017
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-mai-2017/' title='Resultat tirage EuroMillions mardi 30 mai 2017'>Mardi 30/05/2017
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-mai-2017/' title='Resultat tirage EuroMillions mardi 30 mai 2017'>Mardi 30/05/2017
+      </a>">
       <boule class='game_point'>27
       </boule>
       <boule class='game_point'>48
@@ -1279,16 +1137,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>139 962 742 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-mai-2017/' title='Resultat tirage EuroMillions vendredi 26 mai 2017'>Vendredi 26/05/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>139 962 742 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-mai-2017/' title='Resultat tirage EuroMillions vendredi 26 mai 2017'>Vendredi 26/05/2017
+      </a>">
       <boule class='game_point'>5
       </boule>
       <boule class='game_point'>7
@@ -1303,16 +1159,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>130 028 601 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-23-mai-2017/' title='Resultat tirage EuroMillions mardi 23 mai 2017'>Mardi 23/05/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>130 028 601 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-23-mai-2017/' title='Resultat tirage EuroMillions mardi 23 mai 2017'>Mardi 23/05/2017
+      </a>">
       <boule class='game_point'>15
       </boule>
       <boule class='game_point'>8
@@ -1327,16 +1181,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>118 337 309 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-mai-2017/' title='Resultat tirage EuroMillions vendredi 19 mai 2017'>Vendredi 19/05/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>118 337 309 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-mai-2017/' title='Resultat tirage EuroMillions vendredi 19 mai 2017'>Vendredi 19/05/2017
+      </a>">
       <boule class='game_point'>30
       </boule>
       <boule class='game_point'>12
@@ -1351,16 +1203,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>109 192 064 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-16-mai-2017/' title='Resultat tirage EuroMillions mardi 16 mai 2017'>Mardi 16/05/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>109 192 064 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-16-mai-2017/' title='Resultat tirage EuroMillions mardi 16 mai 2017'>Mardi 16/05/2017
+      </a>">
       <boule class='game_point'>20
       </boule>
       <boule class='game_point'>8
@@ -1375,16 +1225,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>98 136 932 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-mai-2017/' title='Resultat tirage EuroMillions vendredi 12 mai 2017'>Vendredi 12/05/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>98 136 932 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-mai-2017/' title='Resultat tirage EuroMillions vendredi 12 mai 2017'>Vendredi 12/05/2017
+      </a>">
       <boule class='game_point'>2
       </boule>
       <boule class='game_point'>20
@@ -1399,16 +1247,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>90 507 121 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-9-mai-2017/' title='Resultat tirage EuroMillions mardi 9 mai 2017'>Mardi 09/05/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>90 507 121 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-9-mai-2017/' title='Resultat tirage EuroMillions mardi 9 mai 2017'>Mardi 09/05/2017
+      </a>">
       <boule class='game_point'>26
       </boule>
       <boule class='game_point'>22
@@ -1423,16 +1269,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>81 075 588 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-mai-2017/' title='Resultat tirage EuroMillions vendredi 5 mai 2017'>Vendredi 05/05/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>81 075 588 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-mai-2017/' title='Resultat tirage EuroMillions vendredi 5 mai 2017'>Vendredi 05/05/2017
+      </a>">
       <boule class='game_point'>7
       </boule>
       <boule class='game_point'>43
@@ -1447,16 +1291,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>74 483 969 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-2-mai-2017/' title='Resultat tirage EuroMillions mardi 2 mai 2017'>Mardi 02/05/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>74 483 969 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-2-mai-2017/' title='Resultat tirage EuroMillions mardi 2 mai 2017'>Mardi 02/05/2017
+      </a>">
       <boule class='game_point'>27
       </boule>
       <boule class='game_point'>25
@@ -1471,22 +1313,20 @@
       </boule>
       <boule class='star_small'>12
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>66 014 926 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>66 014 926 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Avril 2017
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-avril-2017/' title='Resultat tirage EuroMillions vendredi 28 avril 2017'>Vendredi 28/04/2017
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-avril-2017/' title='Resultat tirage EuroMillions vendredi 28 avril 2017'>Vendredi 28/04/2017
+      </a>">
       <boule class='game_point'>14
       </boule>
       <boule class='game_point'>20
@@ -1501,16 +1341,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>57 367 996 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-25-avril-2017/' title='Resultat tirage EuroMillions mardi 25 avril 2017'>Mardi 25/04/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>57 367 996 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-25-avril-2017/' title='Resultat tirage EuroMillions mardi 25 avril 2017'>Mardi 25/04/2017
+      </a>">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>9
@@ -1525,16 +1363,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>44 628 597 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-avril-2017/' title='Resultat tirage EuroMillions vendredi 21 avril 2017'>Vendredi 21/04/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>44 628 597 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-avril-2017/' title='Resultat tirage EuroMillions vendredi 21 avril 2017'>Vendredi 21/04/2017
+      </a>">
       <boule class='game_point'>2
       </boule>
       <boule class='game_point'>13
@@ -1549,16 +1385,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>36 047 524 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-18-avril-2017/' title='Resultat tirage EuroMillions mardi 18 avril 2017'>Mardi 18/04/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>36 047 524 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-18-avril-2017/' title='Resultat tirage EuroMillions mardi 18 avril 2017'>Mardi 18/04/2017
+      </a>">
       <boule class='game_point'>22
       </boule>
       <boule class='game_point'>17
@@ -1573,16 +1407,14 @@
       </boule>
       <boule class='star_small'>12
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>24 655 351 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-avril-2017/' title='Resultat tirage EuroMillions vendredi 14 avril 2017'>Vendredi 14/04/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>24 655 351 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-avril-2017/' title='Resultat tirage EuroMillions vendredi 14 avril 2017'>Vendredi 14/04/2017
+      </a>">
       <boule class='game_point'>33
       </boule>
       <boule class='game_point'>20
@@ -1597,16 +1429,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-11-avril-2017/' title='Resultat tirage EuroMillions mardi 11 avril 2017'>Mardi 11/04/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-11-avril-2017/' title='Resultat tirage EuroMillions mardi 11 avril 2017'>Mardi 11/04/2017
+      </a>">
       <boule class='game_point'>5
       </boule>
       <boule class='game_point'>21
@@ -1621,18 +1451,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>83 397 527 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-avril-2017/' title='Resultat tirage EuroMillions vendredi 7 avril 2017'>Vendredi 07/04/2017
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>83 397 527 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-avril-2017/' title='Resultat tirage EuroMillions vendredi 7 avril 2017'>Vendredi 07/04/2017
+      </a>">
       <boule class='game_point'>2
       </boule>
       <boule class='game_point'>10
@@ -1647,16 +1473,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>76 652 440 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-4-avril-2017/' title='Resultat tirage EuroMillions mardi 4 avril 2017'>Mardi 04/04/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>76 652 440 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-4-avril-2017/' title='Resultat tirage EuroMillions mardi 4 avril 2017'>Mardi 04/04/2017
+      </a>">
       <boule class='game_point'>24
       </boule>
       <boule class='game_point'>33
@@ -1671,22 +1495,20 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>68 205 610 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>68 205 610 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Mars 2017
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-mars-2017/' title='Resultat tirage EuroMillions vendredi 31 mars 2017'>Vendredi 31/03/2017
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-mars-2017/' title='Resultat tirage EuroMillions vendredi 31 mars 2017'>Vendredi 31/03/2017
+      </a>">
       <boule class='game_point'>17
       </boule>
       <boule class='game_point'>24
@@ -1701,16 +1523,14 @@
       </boule>
       <boule class='star_small'>12
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>58 432 786 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-mars-2017/' title='Resultat tirage EuroMillions mardi 28 mars 2017'>Mardi 28/03/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>58 432 786 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-mars-2017/' title='Resultat tirage EuroMillions mardi 28 mars 2017'>Mardi 28/03/2017
+      </a>">
       <boule class='game_point'>9
       </boule>
       <boule class='game_point'>13
@@ -1725,16 +1545,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>45 620 296 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-mars-2017/' title='Resultat tirage EuroMillions vendredi 24 mars 2017'>Vendredi 24/03/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>45 620 296 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-mars-2017/' title='Resultat tirage EuroMillions vendredi 24 mars 2017'>Vendredi 24/03/2017
+      </a>">
       <boule class='game_point'>2
       </boule>
       <boule class='game_point'>21
@@ -1749,16 +1567,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>36 870 612 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-21-mars-2017/' title='Resultat tirage EuroMillions mardi 21 mars 2017'>Mardi 21/03/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>36 870 612 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-21-mars-2017/' title='Resultat tirage EuroMillions mardi 21 mars 2017'>Mardi 21/03/2017
+      </a>">
       <boule class='game_point'>47
       </boule>
       <boule class='game_point'>23
@@ -1773,16 +1589,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>25 165 272 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-mars-2017/' title='Resultat tirage EuroMillions vendredi 17 mars 2017'>Vendredi 17/03/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>25 165 272 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-mars-2017/' title='Resultat tirage EuroMillions vendredi 17 mars 2017'>Vendredi 17/03/2017
+      </a>">
       <boule class='game_point'>19
       </boule>
       <boule class='game_point'>29
@@ -1797,16 +1611,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-mars-2017/' title='Resultat tirage EuroMillions mardi 14 mars 2017'>Mardi 14/03/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-mars-2017/' title='Resultat tirage EuroMillions mardi 14 mars 2017'>Mardi 14/03/2017
+      </a>">
       <boule class='game_point'>21
       </boule>
       <boule class='game_point'>5
@@ -1821,18 +1633,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>80 571 199 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-mars-2017/' title='Resultat tirage EuroMillions vendredi 10 mars 2017'>Vendredi 10/03/2017
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>80 571 199 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-mars-2017/' title='Resultat tirage EuroMillions vendredi 10 mars 2017'>Vendredi 10/03/2017
+      </a>">
       <boule class='game_point'>38
       </boule>
       <boule class='game_point'>49
@@ -1847,16 +1655,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>73 878 559 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-mars-2017/' title='Resultat tirage EuroMillions mardi 7 mars 2017'>Mardi 07/03/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>73 878 559 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-mars-2017/' title='Resultat tirage EuroMillions mardi 7 mars 2017'>Mardi 07/03/2017
+      </a>">
       <boule class='game_point'>6
       </boule>
       <boule class='game_point'>37
@@ -1871,16 +1677,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>59 887 734 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-mars-2017/' title='Resultat tirage EuroMillions vendredi 3 mars 2017'>Vendredi 03/03/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>59 887 734 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-mars-2017/' title='Resultat tirage EuroMillions vendredi 3 mars 2017'>Vendredi 03/03/2017
+      </a>">
       <boule class='game_point'>47
       </boule>
       <boule class='game_point'>2
@@ -1895,22 +1699,20 @@
       </boule>
       <boule class='star_small'>12
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>50 129 163 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>50 129 163 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Fevrier 2017
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-fevrier-2017/' title='Resultat tirage EuroMillions mardi 28 fevrier 2017'>Mardi 28/02/2017
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-fevrier-2017/' title='Resultat tirage EuroMillions mardi 28 fevrier 2017'>Mardi 28/02/2017
+      </a>">
       <boule class='game_point'>35
       </boule>
       <boule class='game_point'>31
@@ -1925,16 +1727,14 @@
       </boule>
       <boule class='star_small'>12
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>37 350 466 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-fevrier-2017/' title='Resultat tirage EuroMillions vendredi 24 fevrier 2017'>Vendredi 24/02/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>37 350 466 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-fevrier-2017/' title='Resultat tirage EuroMillions vendredi 24 fevrier 2017'>Vendredi 24/02/2017
+      </a>">
       <boule class='game_point'>13
       </boule>
       <boule class='game_point'>2
@@ -1949,16 +1749,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>28 811 185 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-21-fevrier-2017/' title='Resultat tirage EuroMillions mardi 21 fevrier 2017'>Mardi 21/02/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>28 811 185 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-21-fevrier-2017/' title='Resultat tirage EuroMillions mardi 21 fevrier 2017'>Mardi 21/02/2017
+      </a>">
       <boule class='game_point'>19
       </boule>
       <boule class='game_point'>41
@@ -1973,16 +1771,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-fevrier-2017/' title='Resultat tirage EuroMillions vendredi 17 fevrier 2017'>Vendredi 17/02/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-fevrier-2017/' title='Resultat tirage EuroMillions vendredi 17 fevrier 2017'>Vendredi 17/02/2017
+      </a>">
       <boule class='game_point'>19
       </boule>
       <boule class='game_point'>25
@@ -1997,16 +1793,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-fevrier-2017/' title='Resultat tirage EuroMillions mardi 14 fevrier 2017'>Mardi 14/02/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-fevrier-2017/' title='Resultat tirage EuroMillions mardi 14 fevrier 2017'>Mardi 14/02/2017
+      </a>">
       <boule class='game_point'>44
       </boule>
       <boule class='game_point'>40
@@ -2021,18 +1815,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>47 141 418 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-fevrier-2017/' title='Resultat tirage EuroMillions vendredi 10 fevrier 2017'>Vendredi 10/02/2017
-        </a>
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>47 141 418 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-fevrier-2017/' title='Resultat tirage EuroMillions vendredi 10 fevrier 2017'>Vendredi 10/02/2017
+      </a>">
       <boule class='game_point'>43
       </boule>
       <boule class='game_point'>26
@@ -2047,16 +1837,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>37 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-fevrier-2017/' title='Resultat tirage EuroMillions mardi 7 fevrier 2017'>Mardi 07/02/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>37 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-fevrier-2017/' title='Resultat tirage EuroMillions mardi 7 fevrier 2017'>Mardi 07/02/2017
+      </a>">
       <boule class='game_point'>44
       </boule>
       <boule class='game_point'>38
@@ -2071,16 +1859,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>25 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-fevrier-2017/' title='Resultat tirage EuroMillions vendredi 3 fevrier 2017'>Vendredi 03/02/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>25 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-fevrier-2017/' title='Resultat tirage EuroMillions vendredi 3 fevrier 2017'>Vendredi 03/02/2017
+      </a>">
       <boule class='game_point'>3
       </boule>
       <boule class='game_point'>4
@@ -2095,22 +1881,20 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Janvier 2017
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-janvier-2017/' title='Resultat tirage EuroMillions mardi 31 janvier 2017'>Mardi 31/01/2017
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-31-janvier-2017/' title='Resultat tirage EuroMillions mardi 31 janvier 2017'>Mardi 31/01/2017
+      </a>">
       <boule class='game_point'>4
       </boule>
       <boule class='game_point'>17
@@ -2125,18 +1909,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>25 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-janvier-2017/' title='Resultat tirage EuroMillions vendredi 27 janvier 2017'>Vendredi 27/01/2017
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>25 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-janvier-2017/' title='Resultat tirage EuroMillions vendredi 27 janvier 2017'>Vendredi 27/01/2017
+      </a>">
       <boule class='game_point'>17
       </boule>
       <boule class='game_point'>20
@@ -2151,16 +1931,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>17 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-janvier-2017/' title='Resultat tirage EuroMillions mardi 24 janvier 2017'>Mardi 24/01/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-janvier-2017/' title='Resultat tirage EuroMillions mardi 24 janvier 2017'>Mardi 24/01/2017
+      </a>">
       <boule class='game_point'>5
       </boule>
       <boule class='game_point'>1
@@ -2175,18 +1953,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>88 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-janvier-2017/' title='Resultat tirage EuroMillions vendredi 20 janvier 2017'>Vendredi 20/01/2017
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>88 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-janvier-2017/' title='Resultat tirage EuroMillions vendredi 20 janvier 2017'>Vendredi 20/01/2017
+      </a>">
       <boule class='game_point'>17
       </boule>
       <boule class='game_point'>10
@@ -2201,16 +1975,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>80 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-janvier-2017/' title='Resultat tirage EuroMillions mardi 17 janvier 2017'>Mardi 17/01/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>80 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-janvier-2017/' title='Resultat tirage EuroMillions mardi 17 janvier 2017'>Mardi 17/01/2017
+      </a>">
       <boule class='game_point'>43
       </boule>
       <boule class='game_point'>4
@@ -2225,16 +1997,14 @@
       </boule>
       <boule class='star_small'>10
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>71 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-janvier-2017/' title='Resultat tirage EuroMillions vendredi 13 janvier 2017'>Vendredi 13/01/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>71 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-janvier-2017/' title='Resultat tirage EuroMillions vendredi 13 janvier 2017'>Vendredi 13/01/2017
+      </a>">
       <boule class='game_point'>3
       </boule>
       <boule class='game_point'>7
@@ -2249,16 +2019,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>61 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-janvier-2017/' title='Resultat tirage EuroMillions mardi 10 janvier 2017'>Mardi 10/01/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>61 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-janvier-2017/' title='Resultat tirage EuroMillions mardi 10 janvier 2017'>Mardi 10/01/2017
+      </a>">
       <boule class='game_point'>44
       </boule>
       <boule class='game_point'>29
@@ -2273,16 +2041,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>45 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-janvier-2017/' title='Resultat tirage EuroMillions vendredi 6 janvier 2017'>Vendredi 06/01/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>45 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-janvier-2017/' title='Resultat tirage EuroMillions vendredi 6 janvier 2017'>Vendredi 06/01/2017
+      </a>">
       <boule class='game_point'>10
       </boule>
       <boule class='game_point'>14
@@ -2297,16 +2063,14 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>37 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-3-janvier-2017/' title='Resultat tirage EuroMillions mardi 3 janvier 2017'>Mardi 03/01/2017
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>37 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-3-janvier-2017/' title='Resultat tirage EuroMillions mardi 3 janvier 2017'>Mardi 03/01/2017
+      </a>">
       <boule class='game_point'>34
       </boule>
       <boule class='game_point'>27
@@ -2321,9 +2085,9 @@
       </boule>
       <boule class='star_small'>11
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>25 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>25 000 000 EUR
+      </jackpot>
+    </tirage>
   </table>

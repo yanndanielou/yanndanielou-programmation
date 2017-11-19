@@ -1,38 +1,14 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
     <tr>
-      <th>Date du tirage
-      </th>
-      <th>N1
-      </th>
-      <th>N2
-      </th>
-      <th>N3
-      </th>
-      <th>N4
-      </th>
-      <th>N5
-      </th>
-      <th>E1
-      </th>
-      <th>E2
-      </th>
-      <th>Gagnants
-      </th>
-      <th>Jackpot
-      </th>
-    </tr>
-    <tr>
       <td colspan="10">
         <strong>Decembre 2008
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-26-decembre-2008/' title='Resultats tirage Euromillions vendredi 26 decembre 2008'>Vendredi 26/12/2008
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-26-decembre-2008/' title='Resultats tirage Euromillions vendredi 26 decembre 2008'>Vendredi 26/12/2008
+      </a>">
       <boule class='game_point'>44
       </boule>
       <boule class='game_point'>26
@@ -47,16 +23,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 758 047 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-19-decembre-2008/' title='Resultats tirage Euromillions vendredi 19 decembre 2008'>Vendredi 19/12/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>26 758 047 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-19-decembre-2008/' title='Resultats tirage Euromillions vendredi 19 decembre 2008'>Vendredi 19/12/2008
+      </a>">
       <boule class='game_point'>29
       </boule>
       <boule class='game_point'>50
@@ -71,16 +45,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-12-decembre-2008/' title='Resultats tirage Euromillions vendredi 12 decembre 2008'>Vendredi 12/12/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-12-decembre-2008/' title='Resultats tirage Euromillions vendredi 12 decembre 2008'>Vendredi 12/12/2008
+      </a>">
       <boule class='game_point'>2
       </boule>
       <boule class='game_point'>19
@@ -95,18 +67,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-5-decembre-2008/' title='Resultats tirage Euromillions vendredi 5 decembre 2008'>Vendredi 05/12/2008
-        </a>
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-5-decembre-2008/' title='Resultats tirage Euromillions vendredi 5 decembre 2008'>Vendredi 05/12/2008
+      </a>">
       <boule class='game_point'>35
       </boule>
       <boule class='game_point'>8
@@ -121,24 +89,20 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Novembre 2008
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-28-novembre-2008/' title='Resultats tirage Euromillions vendredi 28 novembre 2008'>Vendredi 28/11/2008
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-28-novembre-2008/' title='Resultats tirage Euromillions vendredi 28 novembre 2008'>Vendredi 28/11/2008
+      </a>">
       <boule class='game_point'>8
       </boule>
       <boule class='game_point'>25
@@ -153,18 +117,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>28 044 446 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-21-novembre/' title='Resultats tirage Euromillions vendredi 21 novembre 2008'>Vendredi 21/11/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>28 044 446 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-21-novembre/' title='Resultats tirage Euromillions vendredi 21 novembre 2008'>Vendredi 21/11/2008
+      </a>">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>49
@@ -179,16 +139,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-14-novembre-2008/' title='Resultats tirage Euromillions vendredi 14 novembre 2008'>Vendredi 14/11/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-14-novembre-2008/' title='Resultats tirage Euromillions vendredi 14 novembre 2008'>Vendredi 14/11/2008
+      </a>">
       <boule class='game_point'>14
       </boule>
       <boule class='game_point'>26
@@ -203,18 +161,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-7-novembre-2008/' title='Resultats tirage Euromillions vendredi 7 novembre 2008'>Vendredi 07/11/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-7-novembre-2008/' title='Resultats tirage Euromillions vendredi 7 novembre 2008'>Vendredi 07/11/2008
+      </a>">
       <boule class='game_point'>9
       </boule>
       <boule class='game_point'>1
@@ -229,24 +183,20 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Octobre 2008
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-31-octobre-2008/' title='Resultats tirage Euromillions vendredi 31 octobre 2008'>Vendredi 31/10/2008
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-31-octobre-2008/' title='Resultats tirage Euromillions vendredi 31 octobre 2008'>Vendredi 31/10/2008
+      </a>">
       <boule class='game_point'>34
       </boule>
       <boule class='game_point'>25
@@ -261,18 +211,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>42 831 306 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-24-octobre-2410/' title='Resultats du tirage Euromillions vendredi 24 octobre 2008'>Vendredi 24/10/2008
-        </a>
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>42 831 306 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-24-octobre-2410/' title='Resultats du tirage Euromillions vendredi 24 octobre 2008'>Vendredi 24/10/2008
+      </a>">
       <boule class='game_point'>45
       </boule>
       <boule class='game_point'>7
@@ -287,16 +233,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>28 282 482 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-17-octobre-2008/' title='Resultats du tirage Euromillions vendredi 17 octobre 2008'>Vendredi 17/10/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>28 282 482 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-17-octobre-2008/' title='Resultats du tirage Euromillions vendredi 17 octobre 2008'>Vendredi 17/10/2008
+      </a>">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>12
@@ -311,16 +255,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-10-octobre-10102008/' title='Resultats tirage Euromillions vendredi 10 octobre 2008'>Vendredi 10/10/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-10-octobre-10102008/' title='Resultats tirage Euromillions vendredi 10 octobre 2008'>Vendredi 10/10/2008
+      </a>">
       <boule class='game_point'>15
       </boule>
       <boule class='game_point'>31
@@ -335,18 +277,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>29 068 081 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-03-octobre-2008/' title='Resultats tirage Euromillions du vendredi 03 octobre 2008'>Vendredi 03/10/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>29 068 081 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-03-octobre-2008/' title='Resultats tirage Euromillions du vendredi 03 octobre 2008'>Vendredi 03/10/2008
+      </a>">
       <boule class='game_point'>4
       </boule>
       <boule class='game_point'>38
@@ -361,22 +299,20 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Septembre 2008
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-26-septembre-269/' title='Resultats tirage Euromillions du vendredi 26 septembre 2008'>Vendredi 26/09/2008
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-26-septembre-269/' title='Resultats tirage Euromillions du vendredi 26 septembre 2008'>Vendredi 26/09/2008
+      </a>">
       <boule class='game_point'>31
       </boule>
       <boule class='game_point'>29
@@ -391,18 +327,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>
-        <strong>15
-        </strong>
-      </td>
-      <td align='right'>130 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-du-vendredi-19-septembre-2008/' title='Resultats tirage Euromillions du vendredi 19 septembre 2008'>Vendredi 19/09/2008
-        </a>
-      </td>
+      <winners>15
+      </winners>
+      <jackpot>130 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-du-vendredi-19-septembre-2008/' title='Resultats tirage Euromillions du vendredi 19 septembre 2008'>Vendredi 19/09/2008
+      </a>">
       <boule class='game_point'>14
       </boule>
       <boule class='game_point'>16
@@ -417,16 +349,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-12-septembre-2008-1209/' title='Resultats tirage Euromillions du vendredi 12 septembre 2008'>Vendredi 12/09/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-12-septembre-2008-1209/' title='Resultats tirage Euromillions du vendredi 12 septembre 2008'>Vendredi 12/09/2008
+      </a>">
       <boule class='game_point'>23
       </boule>
       <boule class='game_point'>33
@@ -441,18 +371,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-5-septembre-2008/' title='Resultats tirage Euromillions vendredi 5 septembre 2008'>Vendredi 05/09/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-5-septembre-2008/' title='Resultats tirage Euromillions vendredi 5 septembre 2008'>Vendredi 05/09/2008
+      </a>">
       <boule class='game_point'>17
       </boule>
       <boule class='game_point'>12
@@ -467,24 +393,20 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>119 349 706 EUR
-      </td>
-    </tr>
+      <winners>2
+      </winners>
+      <jackpot>119 349 706 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Aout 2008
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-29-aout-2008/' title='Resultats du tirage Euromillions vendredi 29 aout 2008'>Vendredi 29/08/2008
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-29-aout-2008/' title='Resultats du tirage Euromillions vendredi 29 aout 2008'>Vendredi 29/08/2008
+      </a>">
       <boule class='game_point'>2
       </boule>
       <boule class='game_point'>20
@@ -499,16 +421,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>91 223 351 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-22-aout/' title='Resultats tirage Euromillions du vendredi 22 aout 2008'>Vendredi 22/08/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>91 223 351 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-22-aout/' title='Resultats tirage Euromillions du vendredi 22 aout 2008'>Vendredi 22/08/2008
+      </a>">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>27
@@ -523,16 +443,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>70 754 953 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-15-aout-2008/' title='Resultats du tirage Euromillions vendredi 15 aout 2008'>Vendredi 15/08/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>70 754 953 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-15-aout-2008/' title='Resultats du tirage Euromillions vendredi 15 aout 2008'>Vendredi 15/08/2008
+      </a>">
       <boule class='game_point'>18
       </boule>
       <boule class='game_point'>11
@@ -547,16 +465,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>54 127 607 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-8-aout-2008/' title='Resultats tirage Euromillions du vendredi 8 Aout 2008'>Vendredi 08/08/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>54 127 607 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-8-aout-2008/' title='Resultats tirage Euromillions du vendredi 8 Aout 2008'>Vendredi 08/08/2008
+      </a>">
       <boule class='game_point'>15
       </boule>
       <boule class='game_point'>5
@@ -571,16 +487,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>40 358 795 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-1er-aout-2008/' title='Resultats tirage Euromillions du vendredi 1er aout 2008'>Vendredi 01/08/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>40 358 795 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-1er-aout-2008/' title='Resultats tirage Euromillions du vendredi 1er aout 2008'>Vendredi 01/08/2008
+      </a>">
       <boule class='game_point'>25
       </boule>
       <boule class='game_point'>40
@@ -595,22 +509,20 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>27 010 082 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>27 010 082 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Juillet 2008
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-25-juillet-2008/' title='Resultats tirage Euromillions vendredi 25 juillet 2008'>Vendredi 25/07/2008
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-25-juillet-2008/' title='Resultats tirage Euromillions vendredi 25 juillet 2008'>Vendredi 25/07/2008
+      </a>">
       <boule class='game_point'>29
       </boule>
       <boule class='game_point'>7
@@ -625,16 +537,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-18-juillet-2008/' title='Resultats tirage Euromillions du vendredi 18 juillet 2008'>Vendredi 18/07/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-18-juillet-2008/' title='Resultats tirage Euromillions du vendredi 18 juillet 2008'>Vendredi 18/07/2008
+      </a>">
       <boule class='game_point'>16
       </boule>
       <boule class='game_point'>14
@@ -649,18 +559,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-11-juillet-2008/' title='Resultats tirage Euromillions vendredi 11 juillet 2008'>Vendredi 11/07/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-11-juillet-2008/' title='Resultats tirage Euromillions vendredi 11 juillet 2008'>Vendredi 11/07/2008
+      </a>">
       <boule class='game_point'>37
       </boule>
       <boule class='game_point'>19
@@ -675,18 +581,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-04-juillet-2008/' title='Resultats tirage Euromillions vendredi 4 juillet 2008'>Vendredi 04/07/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-04-juillet-2008/' title='Resultats tirage Euromillions vendredi 4 juillet 2008'>Vendredi 04/07/2008
+      </a>">
       <boule class='game_point'>19
       </boule>
       <boule class='game_point'>22
@@ -701,24 +603,20 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Juin 2008
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-27-juin-2008/' title='Resultats tirage Euromillions vendredi 27 juin 2008'>Vendredi 27/06/2008
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-27-juin-2008/' title='Resultats tirage Euromillions vendredi 27 juin 2008'>Vendredi 27/06/2008
+      </a>">
       <boule class='game_point'>20
       </boule>
       <boule class='game_point'>44
@@ -733,18 +631,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>58 278 337 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-20-juin-2008/' title='Resultats tirage Euromillions du vendredi 20 juin 2008'>Vendredi 20/06/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>58 278 337 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-20-juin-2008/' title='Resultats tirage Euromillions du vendredi 20 juin 2008'>Vendredi 20/06/2008
+      </a>">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>8
@@ -759,16 +653,14 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>43 334 864 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-de-leuromillions-du-vendredi-13-juin-2008/' title='Resultats du tirage de l&#039;Euromillions du vendredi 13 juin 2008'>Vendredi 13/06/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>43 334 864 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-de-leuromillions-du-vendredi-13-juin-2008/' title='Resultats du tirage de l&#039;Euromillions du vendredi 13 juin 2008'>Vendredi 13/06/2008
+      </a>">
       <boule class='game_point'>16
       </boule>
       <boule class='game_point'>37
@@ -783,16 +675,14 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>29 947 069 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-6-juin-2008/' title='Resultats tirage Euromillions du vendredi 6 juin 2008'>Vendredi 06/06/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>29 947 069 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-6-juin-2008/' title='Resultats tirage Euromillions du vendredi 6 juin 2008'>Vendredi 06/06/2008
+      </a>">
       <boule class='game_point'>21
       </boule>
       <boule class='game_point'>40
@@ -807,22 +697,20 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Mai 2008
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-30-mai-2008/' title='Resultats tirage Euromillions du vendredi 30 mai 2008'>Vendredi 30/05/2008
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-30-mai-2008/' title='Resultats tirage Euromillions du vendredi 30 mai 2008'>Vendredi 30/05/2008
+      </a>">
       <boule class='game_point'>14
       </boule>
       <boule class='game_point'>20
@@ -837,18 +725,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-23-mai-2008/' title='Resultats tirage Euromillions du vendredi 23 mai 2008'>Vendredi 23/05/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-23-mai-2008/' title='Resultats tirage Euromillions du vendredi 23 mai 2008'>Vendredi 23/05/2008
+      </a>">
       <boule class='game_point'>5
       </boule>
       <boule class='game_point'>38
@@ -863,18 +747,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>
-        <strong>4
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-16-mai-2008/' title='Resultats tirage Euromillions du vendredi 16 mai 2008'>Vendredi 16/05/2008
-        </a>
-      </td>
+      <winners>4
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-16-mai-2008/' title='Resultats tirage Euromillions du vendredi 16 mai 2008'>Vendredi 16/05/2008
+      </a>">
       <boule class='game_point'>6
       </boule>
       <boule class='game_point'>38
@@ -889,18 +769,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>55 609 411 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-9-mai-2008/' title='Resultats tirage Euromillions du vendredi 9 mai 2008'>Vendredi 09/05/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>55 609 411 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-9-mai-2008/' title='Resultats tirage Euromillions du vendredi 9 mai 2008'>Vendredi 09/05/2008
+      </a>">
       <boule class='game_point'>8
       </boule>
       <boule class='game_point'>9
@@ -915,16 +791,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>40 624 869 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-2-mai-2008/' title='Resultats tirage Euromillions du vendredi 2 mai 2008'>Vendredi 02/05/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>40 624 869 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-2-mai-2008/' title='Resultats tirage Euromillions du vendredi 2 mai 2008'>Vendredi 02/05/2008
+      </a>">
       <boule class='game_point'>26
       </boule>
       <boule class='game_point'>48
@@ -939,22 +813,20 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>27 290 983 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>27 290 983 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Avril 2008
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-25-avril-2008/' title='Resultats tirage Euromillions vendredi 25 avril 2008'>Vendredi 25/04/2008
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-25-avril-2008/' title='Resultats tirage Euromillions vendredi 25 avril 2008'>Vendredi 25/04/2008
+      </a>">
       <boule class='game_point'>4
       </boule>
       <boule class='game_point'>30
@@ -969,16 +841,14 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-18-avril/' title='Resultats du tirage Euromillions vendredi 18 avril 2008'>Vendredi 18/04/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-18-avril/' title='Resultats du tirage Euromillions vendredi 18 avril 2008'>Vendredi 18/04/2008
+      </a>">
       <boule class='game_point'>27
       </boule>
       <boule class='game_point'>6
@@ -993,18 +863,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>58 367 681 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-11-avril-2008/' title='Resultats du tirage Euromillions vendredi 11 avril 2008'>Vendredi 11/04/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>58 367 681 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-11-avril-2008/' title='Resultats du tirage Euromillions vendredi 11 avril 2008'>Vendredi 11/04/2008
+      </a>">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>30
@@ -1019,16 +885,14 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>42 346 692 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-4-avril-2008/' title='Resultats du tirage Euromillions vendredi 4 avril 2008'>Vendredi 04/04/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>42 346 692 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-4-avril-2008/' title='Resultats du tirage Euromillions vendredi 4 avril 2008'>Vendredi 04/04/2008
+      </a>">
       <boule class='game_point'>18
       </boule>
       <boule class='game_point'>37
@@ -1043,22 +907,20 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>28 004 694 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>28 004 694 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Mars 2008
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-28-mars-2008/' title='Resultats du tirage Euromillions vendredi 28 mars 2008'>Vendredi 28/03/2008
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-28-mars-2008/' title='Resultats du tirage Euromillions vendredi 28 mars 2008'>Vendredi 28/03/2008
+      </a>">
       <boule class='game_point'>39
       </boule>
       <boule class='game_point'>9
@@ -1073,16 +935,14 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-21-mars-2008/' title='Resultats du tirage Euromillions vendredi 21 mars 2008'>Vendredi 21/03/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-21-mars-2008/' title='Resultats du tirage Euromillions vendredi 21 mars 2008'>Vendredi 21/03/2008
+      </a>">
       <boule class='game_point'>10
       </boule>
       <boule class='game_point'>2
@@ -1097,18 +957,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-14-mars-2008/' title='Resultats du tirage Euromillions vendredi 14 mars 2008'>Vendredi 14/03/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-14-mars-2008/' title='Resultats du tirage Euromillions vendredi 14 mars 2008'>Vendredi 14/03/2008
+      </a>">
       <boule class='game_point'>13
       </boule>
       <boule class='game_point'>48
@@ -1123,18 +979,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>28 239 959 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-7-mars-2008/' title='Resultats du tirage Euromillions vendredi 7 mars 2008'>Vendredi 07/03/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>28 239 959 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-7-mars-2008/' title='Resultats du tirage Euromillions vendredi 7 mars 2008'>Vendredi 07/03/2008
+      </a>">
       <boule class='game_point'>14
       </boule>
       <boule class='game_point'>17
@@ -1149,22 +1001,20 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Fevrier 2008
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-29-fevrier-2008/' title='Resultats du tirage Euromillions vendredi 29 fevrier 2008'>Vendredi 29/02/2008
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-du-tirage-euromillions-vendredi-29-fevrier-2008/' title='Resultats du tirage Euromillions vendredi 29 fevrier 2008'>Vendredi 29/02/2008
+      </a>">
       <boule class='game_point'>37
       </boule>
       <boule class='game_point'>47
@@ -1179,18 +1029,14 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-22-fevrier-2008/' title='Resultats tirage Euromillions du vendredi 22 fevrier 2008'>Vendredi 22/02/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-22-fevrier-2008/' title='Resultats tirage Euromillions du vendredi 22 fevrier 2008'>Vendredi 22/02/2008
+      </a>">
       <boule class='game_point'>46
       </boule>
       <boule class='game_point'>50
@@ -1205,18 +1051,14 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>28 912 566 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-15-fevrier-2008/' title='Resultats tirage Euromillions du vendredi 15 fevrier 2008'>Vendredi 15/02/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>28 912 566 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-15-fevrier-2008/' title='Resultats tirage Euromillions du vendredi 15 fevrier 2008'>Vendredi 15/02/2008
+      </a>">
       <boule class='game_point'>27
       </boule>
       <boule class='game_point'>45
@@ -1231,16 +1073,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-8-fevrier/' title='Resultats tirage Euromillions vendredi 8 fevrier 2008'>Vendredi 08/02/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-8-fevrier/' title='Resultats tirage Euromillions vendredi 8 fevrier 2008'>Vendredi 08/02/2008
+      </a>">
       <boule class='game_point'>17
       </boule>
       <boule class='game_point'>38
@@ -1255,18 +1095,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>
-        <strong>16
-        </strong>
-      </td>
-      <td align='right'>130 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-1er-fevrier/' title='Resultats tirage Euromillions vendredi 1er fevrier 2008'>Vendredi 01/02/2008
-        </a>
-      </td>
+      <winners>16
+      </winners>
+      <jackpot>130 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-1er-fevrier/' title='Resultats tirage Euromillions vendredi 1er fevrier 2008'>Vendredi 01/02/2008
+      </a>">
       <boule class='game_point'>30
       </boule>
       <boule class='game_point'>49
@@ -1281,22 +1117,20 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Janvier 2008
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-25-janvier/' title='Resultats tirage Euromillions du vendredi 25 janvier 2008'>Vendredi 25/01/2008
-        </a>
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-25-janvier/' title='Resultats tirage Euromillions du vendredi 25 janvier 2008'>Vendredi 25/01/2008
+      </a>">
       <boule class='game_point'>2
       </boule>
       <boule class='game_point'>19
@@ -1311,18 +1145,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>76 611 580 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-18-janvier/' title='Resultats tirage Euromillions vendredi 18 janvier 2008'>Vendredi 18/01/2008
-        </a>
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>76 611 580 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-vendredi-18-janvier/' title='Resultats tirage Euromillions vendredi 18 janvier 2008'>Vendredi 18/01/2008
+      </a>">
       <boule class='game_point'>46
       </boule>
       <boule class='game_point'>40
@@ -1337,16 +1167,14 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>57 437 748 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-11-janvier/' title='Resultats tirage Euromillions du vendredi 11 janvier 2008'>Vendredi 11/01/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>57 437 748 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-11-janvier/' title='Resultats tirage Euromillions du vendredi 11 janvier 2008'>Vendredi 11/01/2008
+      </a>">
       <boule class='game_point'>24
       </boule>
       <boule class='game_point'>36
@@ -1361,16 +1189,14 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>40 754 255 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-4-janvier-2008/' title='Resultats tirage Euromillions vendredi 4 janvier 2008'>Vendredi 04/01/2008
-        </a>
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>40 754 255 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="
+      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-4-janvier-2008/' title='Resultats tirage Euromillions vendredi 4 janvier 2008'>Vendredi 04/01/2008
+      </a>">
       <boule class='game_point'>41
       </boule>
       <boule class='game_point'>24
@@ -1385,9 +1211,9 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 917 710 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>26 917 710 EUR
+      </jackpot>
+    </tirage>
   </table>

@@ -1,36 +1,12 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
     <tr>
-      <th>Date du tirage
-      </th>
-      <th>N1
-      </th>
-      <th>N2
-      </th>
-      <th>N3
-      </th>
-      <th>N4
-      </th>
-      <th>N5
-      </th>
-      <th>E1
-      </th>
-      <th>E2
-      </th>
-      <th>Gagnants
-      </th>
-      <th>Jackpot
-      </th>
-    </tr>
-    <tr>
       <td colspan="10">
         <strong>Decembre 2005
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 30/12/2005
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 30/12/2005">
       <boule class='game_point'>19
       </boule>
       <boule class='game_point'>45
@@ -45,14 +21,12 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 23/12/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 23/12/2005">
       <boule class='game_point'>31
       </boule>
       <boule class='game_point'>42
@@ -67,14 +41,12 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 16/12/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 16/12/2005">
       <boule class='game_point'>2
       </boule>
       <boule class='game_point'>18
@@ -89,14 +61,12 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 09/12/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 09/12/2005">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>42
@@ -111,14 +81,12 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 02/12/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 02/12/2005">
       <boule class='game_point'>1
       </boule>
       <boule class='game_point'>30
@@ -133,20 +101,18 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Novembre 2005
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 25/11/2005
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 25/11/2005">
       <boule class='game_point'>27
       </boule>
       <boule class='game_point'>39
@@ -161,14 +127,12 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 18/11/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 18/11/2005">
       <boule class='game_point'>34
       </boule>
       <boule class='game_point'>17
@@ -183,14 +147,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 11/11/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 11/11/2005">
       <boule class='game_point'>41
       </boule>
       <boule class='game_point'>16
@@ -205,16 +167,12 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>45 117 030 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 04/11/2005
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>45 117 030 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 04/11/2005">
       <boule class='game_point'>38
       </boule>
       <boule class='game_point'>42
@@ -229,20 +187,18 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Octobre 2005
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 28/10/2005
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 28/10/2005">
       <boule class='game_point'>14
       </boule>
       <boule class='game_point'>50
@@ -257,14 +213,12 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 21/10/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 21/10/2005">
       <boule class='game_point'>19
       </boule>
       <boule class='game_point'>14
@@ -279,14 +233,12 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 14/10/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 14/10/2005">
       <boule class='game_point'>10
       </boule>
       <boule class='game_point'>19
@@ -301,16 +253,12 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 07/10/2005
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 07/10/2005">
       <boule class='game_point'>26
       </boule>
       <boule class='game_point'>44
@@ -325,22 +273,18 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>2
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Septembre 2005
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 30/09/2005
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 30/09/2005">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>50
@@ -355,16 +299,12 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>4
-        </strong>
-      </td>
-      <td align='right'>25 066 380 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 23/09/2005
-      </td>
+      <winners>4
+      </winners>
+      <jackpot>25 066 380 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 23/09/2005">
       <boule class='game_point'>1
       </boule>
       <boule class='game_point'>31
@@ -379,14 +319,12 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 16/09/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 16/09/2005">
       <boule class='game_point'>19
       </boule>
       <boule class='game_point'>38
@@ -401,16 +339,12 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>75 888 514 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 09/09/2005
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>75 888 514 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 09/09/2005">
       <boule class='game_point'>31
       </boule>
       <boule class='game_point'>12
@@ -425,14 +359,12 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 02/09/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 02/09/2005">
       <boule class='game_point'>43
       </boule>
       <boule class='game_point'>3
@@ -447,20 +379,18 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Aout 2005
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 26/08/2005
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 26/08/2005">
       <boule class='game_point'>29
       </boule>
       <boule class='game_point'>35
@@ -475,14 +405,12 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 19/08/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 19/08/2005">
       <boule class='game_point'>41
       </boule>
       <boule class='game_point'>29
@@ -497,14 +425,12 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 12/08/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 12/08/2005">
       <boule class='game_point'>37
       </boule>
       <boule class='game_point'>23
@@ -519,14 +445,12 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 05/08/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 05/08/2005">
       <boule class='game_point'>21
       </boule>
       <boule class='game_point'>11
@@ -541,20 +465,18 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Juillet 2005
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 29/07/2005
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 29/07/2005">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>3
@@ -569,16 +491,12 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>115 436 126 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 22/07/2005
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>115 436 126 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 22/07/2005">
       <boule class='game_point'>49
       </boule>
       <boule class='game_point'>14
@@ -593,14 +511,12 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 15/07/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 15/07/2005">
       <boule class='game_point'>42
       </boule>
       <boule class='game_point'>23
@@ -615,14 +531,12 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 08/07/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 08/07/2005">
       <boule class='game_point'>42
       </boule>
       <boule class='game_point'>46
@@ -637,14 +551,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 01/07/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 01/07/2005">
       <boule class='game_point'>23
       </boule>
       <boule class='game_point'>28
@@ -659,20 +571,18 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Juin 2005
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 24/06/2005
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 24/06/2005">
       <boule class='game_point'>6
       </boule>
       <boule class='game_point'>15
@@ -687,14 +597,12 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 17/06/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 17/06/2005">
       <boule class='game_point'>8
       </boule>
       <boule class='game_point'>4
@@ -709,14 +617,12 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 10/06/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 10/06/2005">
       <boule class='game_point'>37
       </boule>
       <boule class='game_point'>32
@@ -731,14 +637,12 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 03/06/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 03/06/2005">
       <boule class='game_point'>8
       </boule>
       <boule class='game_point'>11
@@ -753,20 +657,18 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Mai 2005
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 27/05/2005
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 27/05/2005">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>48
@@ -781,14 +683,12 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 20/05/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 20/05/2005">
       <boule class='game_point'>28
       </boule>
       <boule class='game_point'>6
@@ -803,16 +703,12 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>43 020 745 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 13/05/2005
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>43 020 745 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 13/05/2005">
       <boule class='game_point'>12
       </boule>
       <boule class='game_point'>40
@@ -827,14 +723,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 06/05/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 06/05/2005">
       <boule class='game_point'>44
       </boule>
       <boule class='game_point'>21
@@ -849,20 +743,18 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Avril 2005
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 29/04/2005
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 29/04/2005">
       <boule class='game_point'>42
       </boule>
       <boule class='game_point'>35
@@ -877,14 +769,12 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 22/04/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 22/04/2005">
       <boule class='game_point'>13
       </boule>
       <boule class='game_point'>10
@@ -899,16 +789,12 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>23 749 558 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 15/04/2005
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>23 749 558 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 15/04/2005">
       <boule class='game_point'>6
       </boule>
       <boule class='game_point'>31
@@ -923,14 +809,12 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 08/04/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 08/04/2005">
       <boule class='game_point'>31
       </boule>
       <boule class='game_point'>50
@@ -945,16 +829,12 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>64 040 749 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 01/04/2005
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>64 040 749 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 01/04/2005">
       <boule class='game_point'>26
       </boule>
       <boule class='game_point'>44
@@ -969,20 +849,18 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Mars 2005
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 25/03/2005
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 25/03/2005">
       <boule class='game_point'>29
       </boule>
       <boule class='game_point'>33
@@ -997,14 +875,12 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 18/03/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 18/03/2005">
       <boule class='game_point'>48
       </boule>
       <boule class='game_point'>39
@@ -1019,14 +895,12 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 11/03/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 11/03/2005">
       <boule class='game_point'>40
       </boule>
       <boule class='game_point'>12
@@ -1041,14 +915,12 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 04/03/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 04/03/2005">
       <boule class='game_point'>12
       </boule>
       <boule class='game_point'>32
@@ -1063,20 +935,18 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Fevrier 2005
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 25/02/2005
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 25/02/2005">
       <boule class='game_point'>43
       </boule>
       <boule class='game_point'>3
@@ -1091,14 +961,12 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 18/02/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 18/02/2005">
       <boule class='game_point'>32
       </boule>
       <boule class='game_point'>46
@@ -1113,16 +981,12 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>10 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 11/02/2005
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>10 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 11/02/2005">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>13
@@ -1137,16 +1001,12 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>34 776 948 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 04/02/2005
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>34 776 948 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 04/02/2005">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>1
@@ -1161,20 +1021,18 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Janvier 2005
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 28/01/2005
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 28/01/2005">
       <boule class='game_point'>26
       </boule>
       <boule class='game_point'>21
@@ -1189,14 +1047,12 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 21/01/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 21/01/2005">
       <boule class='game_point'>12
       </boule>
       <boule class='game_point'>14
@@ -1211,14 +1067,12 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 14/01/2005
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 14/01/2005">
       <boule class='game_point'>11
       </boule>
       <boule class='game_point'>14
@@ -1233,16 +1087,12 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>26 007 362 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 07/01/2005
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>26 007 362 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 07/01/2005">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>27
@@ -1257,9 +1107,9 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
   </table>

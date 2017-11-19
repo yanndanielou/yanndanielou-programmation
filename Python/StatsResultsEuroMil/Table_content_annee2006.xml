@@ -1,36 +1,12 @@
 
   <table class="blue_table" width="100%" id="tiragesAnnee">
     <tr>
-      <th>Date du tirage
-      </th>
-      <th>N1
-      </th>
-      <th>N2
-      </th>
-      <th>N3
-      </th>
-      <th>N4
-      </th>
-      <th>N5
-      </th>
-      <th>E1
-      </th>
-      <th>E2
-      </th>
-      <th>Gagnants
-      </th>
-      <th>Jackpot
-      </th>
-    </tr>
-    <tr>
       <td colspan="10">
         <strong>Decembre 2006
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 29/12/2006
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 29/12/2006">
       <boule class='game_point'>14
       </boule>
       <boule class='game_point'>9
@@ -45,14 +21,12 @@
       </boule>
       <boule class='star_small'>4
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>66 983 488 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 22/12/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>66 983 488 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 22/12/2006">
       <boule class='game_point'>20
       </boule>
       <boule class='game_point'>11
@@ -67,14 +41,12 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>53 119 776 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 15/12/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>53 119 776 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 15/12/2006">
       <boule class='game_point'>35
       </boule>
       <boule class='game_point'>37
@@ -89,14 +61,12 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>39 640 847 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 08/12/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>39 640 847 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 08/12/2006">
       <boule class='game_point'>47
       </boule>
       <boule class='game_point'>36
@@ -111,14 +81,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 982 938 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 01/12/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>26 982 938 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 01/12/2006">
       <boule class='game_point'>16
       </boule>
       <boule class='game_point'>37
@@ -133,20 +101,18 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Novembre 2006
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 24/11/2006
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 24/11/2006">
       <boule class='game_point'>8
       </boule>
       <boule class='game_point'>5
@@ -161,16 +127,12 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 17/11/2006
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 17/11/2006">
       <boule class='game_point'>36
       </boule>
       <boule class='game_point'>12
@@ -185,16 +147,12 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>20
-        </strong>
-      </td>
-      <td align='right'>183 109 057 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 10/11/2006
-      </td>
+      <winners>20
+      </winners>
+      <jackpot>183 109 057 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 10/11/2006">
       <boule class='game_point'>36
       </boule>
       <boule class='game_point'>30
@@ -209,14 +167,12 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>153 564 446 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 03/11/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>153 564 446 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 03/11/2006">
       <boule class='game_point'>13
       </boule>
       <boule class='game_point'>11
@@ -231,20 +187,18 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>131 523 150 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>131 523 150 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Octobre 2006
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 27/10/2006
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 27/10/2006">
       <boule class='game_point'>3
       </boule>
       <boule class='game_point'>50
@@ -259,14 +213,12 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>113 230 830 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 20/10/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>113 230 830 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 20/10/2006">
       <boule class='game_point'>10
       </boule>
       <boule class='game_point'>34
@@ -281,14 +233,12 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>96 837 646 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 13/10/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>96 837 646 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 13/10/2006">
       <boule class='game_point'>2
       </boule>
       <boule class='game_point'>32
@@ -303,14 +253,12 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>82 724 345 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 06/10/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>82 724 345 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 06/10/2006">
       <boule class='game_point'>5
       </boule>
       <boule class='game_point'>35
@@ -325,20 +273,18 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>69 208 821 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>69 208 821 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Septembre 2006
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 29/09/2006
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 29/09/2006">
       <boule class='game_point'>1
       </boule>
       <boule class='game_point'>3
@@ -353,14 +299,12 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>59 132 969 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 22/09/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>59 132 969 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 22/09/2006">
       <boule class='game_point'>30
       </boule>
       <boule class='game_point'>45
@@ -375,14 +319,12 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>47 213 250 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 15/09/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>47 213 250 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 15/09/2006">
       <boule class='game_point'>10
       </boule>
       <boule class='game_point'>49
@@ -397,14 +339,12 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>35 980 458 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 08/09/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>35 980 458 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 08/09/2006">
       <boule class='game_point'>12
       </boule>
       <boule class='game_point'>10
@@ -419,14 +359,12 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>25 256 582 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 01/09/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>25 256 582 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 01/09/2006">
       <boule class='game_point'>25
       </boule>
       <boule class='game_point'>50
@@ -441,20 +379,18 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Aout 2006
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 25/08/2006
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 25/08/2006">
       <boule class='game_point'>47
       </boule>
       <boule class='game_point'>10
@@ -469,16 +405,12 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>57 414 511 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 18/08/2006
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>57 414 511 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 18/08/2006">
       <boule class='game_point'>37
       </boule>
       <boule class='game_point'>40
@@ -493,14 +425,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>45 929 071 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 11/08/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>45 929 071 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 11/08/2006">
       <boule class='game_point'>47
       </boule>
       <boule class='game_point'>31
@@ -515,14 +445,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>35 197 614 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 04/08/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>35 197 614 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 04/08/2006">
       <boule class='game_point'>26
       </boule>
       <boule class='game_point'>15
@@ -537,20 +465,18 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>24 977 577 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>24 977 577 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Juillet 2006
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 28/07/2006
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 28/07/2006">
       <boule class='game_point'>3
       </boule>
       <boule class='game_point'>43
@@ -565,14 +491,12 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 21/07/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 21/07/2006">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>4
@@ -587,16 +511,12 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>25 042 525 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 14/07/2006
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>25 042 525 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 14/07/2006">
       <boule class='game_point'>1
       </boule>
       <boule class='game_point'>31
@@ -611,14 +531,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 07/07/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 07/07/2006">
       <boule class='game_point'>35
       </boule>
       <boule class='game_point'>9
@@ -633,22 +551,18 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>68 408 266 EUR
-      </td>
-    </tr>
+      <winners>2
+      </winners>
+      <jackpot>68 408 266 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Juin 2006
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 30/06/2006
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 30/06/2006">
       <boule class='game_point'>16
       </boule>
       <boule class='game_point'>6
@@ -663,14 +577,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>58 765 947 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 23/06/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>58 765 947 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 23/06/2006">
       <boule class='game_point'>44
       </boule>
       <boule class='game_point'>30
@@ -685,14 +597,12 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>46 811 687 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 16/06/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>46 811 687 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 16/06/2006">
       <boule class='game_point'>26
       </boule>
       <boule class='game_point'>36
@@ -707,14 +617,12 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>35 662 152 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 09/06/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>35 662 152 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 09/06/2006">
       <boule class='game_point'>3
       </boule>
       <boule class='game_point'>34
@@ -729,14 +637,12 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>25 187 106 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 02/06/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>25 187 106 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 02/06/2006">
       <boule class='game_point'>41
       </boule>
       <boule class='game_point'>7
@@ -751,20 +657,18 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Mai 2006
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 26/05/2006
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 26/05/2006">
       <boule class='game_point'>21
       </boule>
       <boule class='game_point'>41
@@ -779,16 +683,12 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 19/05/2006
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 19/05/2006">
       <boule class='game_point'>49
       </boule>
       <boule class='game_point'>34
@@ -803,16 +703,12 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 12/05/2006
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 12/05/2006">
       <boule class='game_point'>23
       </boule>
       <boule class='game_point'>5
@@ -827,16 +723,12 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>2
-        </strong>
-      </td>
-      <td align='right'>25 640 375 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 05/05/2006
-      </td>
+      <winners>2
+      </winners>
+      <jackpot>25 640 375 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 05/05/2006">
       <boule class='game_point'>8
       </boule>
       <boule class='game_point'>50
@@ -851,20 +743,18 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Avril 2006
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 28/04/2006
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 28/04/2006">
       <boule class='game_point'>17
       </boule>
       <boule class='game_point'>5
@@ -879,16 +769,12 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>
-        <strong>4
-        </strong>
-      </td>
-      <td align='right'>25 811 931 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 21/04/2006
-      </td>
+      <winners>4
+      </winners>
+      <jackpot>25 811 931 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 21/04/2006">
       <boule class='game_point'>46
       </boule>
       <boule class='game_point'>1
@@ -903,14 +789,12 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 14/04/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 14/04/2006">
       <boule class='game_point'>34
       </boule>
       <boule class='game_point'>35
@@ -925,16 +809,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>25 915 863 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 07/04/2006
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>25 915 863 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 07/04/2006">
       <boule class='game_point'>13
       </boule>
       <boule class='game_point'>12
@@ -949,20 +829,18 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Mars 2006
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 31/03/2006
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 31/03/2006">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>3
@@ -977,16 +855,12 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>75 753 123 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 24/03/2006
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>75 753 123 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 24/03/2006">
       <boule class='game_point'>17
       </boule>
       <boule class='game_point'>47
@@ -1001,14 +875,12 @@
       </boule>
       <boule class='star_small'>9
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>65 117 842 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 17/03/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>65 117 842 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 17/03/2006">
       <boule class='game_point'>50
       </boule>
       <boule class='game_point'>44
@@ -1023,14 +895,12 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>51 865 203 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 10/03/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>51 865 203 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 10/03/2006">
       <boule class='game_point'>1
       </boule>
       <boule class='game_point'>33
@@ -1045,14 +915,12 @@
       </boule>
       <boule class='star_small'>8
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>39 080 314 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 03/03/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>39 080 314 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 03/03/2006">
       <boule class='game_point'>5
       </boule>
       <boule class='game_point'>44
@@ -1067,20 +935,18 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>26 842 720 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>26 842 720 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Fevrier 2006
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 24/02/2006
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 24/02/2006">
       <boule class='game_point'>18
       </boule>
       <boule class='game_point'>19
@@ -1095,14 +961,12 @@
       </boule>
       <boule class='star_small'>3
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 17/02/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 17/02/2006">
       <boule class='game_point'>4
       </boule>
       <boule class='game_point'>23
@@ -1117,16 +981,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>
-        <strong>1
-        </strong>
-      </td>
-      <td align='right'>27 813 382 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 10/02/2006
-      </td>
+      <winners>1
+      </winners>
+      <jackpot>27 813 382 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 10/02/2006">
       <boule class='game_point'>5
       </boule>
       <boule class='game_point'>38
@@ -1141,14 +1001,12 @@
       </boule>
       <boule class='star_small'>7
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>15 000 000 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 03/02/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>15 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 03/02/2006">
       <boule class='game_point'>30
       </boule>
       <boule class='game_point'>39
@@ -1163,22 +1021,18 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>
-        <strong>3
-        </strong>
-      </td>
-      <td align='right'>183 573 077 EUR
-      </td>
-    </tr>
+      <winners>3
+      </winners>
+      <jackpot>183 573 077 EUR
+      </jackpot>
+    </tirage>
     <tr>
       <td colspan="10">
         <strong>Janvier 2006
         </strong>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 27/01/2006
-      </td>
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 27/01/2006">
       <boule class='game_point'>9
       </boule>
       <boule class='game_point'>21
@@ -1193,14 +1047,12 @@
       </boule>
       <boule class='star_small'>1
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>152 882 223 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 20/01/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>152 882 223 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 20/01/2006">
       <boule class='game_point'>15
       </boule>
       <boule class='game_point'>12
@@ -1215,14 +1067,12 @@
       </boule>
       <boule class='star_small'>2
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 13/01/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 13/01/2006">
       <boule class='game_point'>12
       </boule>
       <boule class='game_point'>19
@@ -1237,14 +1087,12 @@
       </boule>
       <boule class='star_small'>6
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
-    <tr>
-      <td>Vendredi 06/01/2006
-      </td>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 06/01/2006">
       <boule class='game_point'>6
       </boule>
       <boule class='game_point'>26
@@ -1259,9 +1107,9 @@
       </boule>
       <boule class='star_small'>5
       </boule>
-      <td align='center'>0
-      </td>
-      <td align='right'>0 EUR
-      </td>
-    </tr>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
   </table>
