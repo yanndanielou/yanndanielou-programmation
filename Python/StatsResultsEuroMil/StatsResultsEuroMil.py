@@ -6,6 +6,8 @@ import logging
 
 import urllib.request
 
+import Tirage
+from Tirage import *
 import param
 import Constants
 
@@ -15,6 +17,7 @@ import sys
 import re
 
 import getopt
+
 
 import xml.etree.ElementTree as ET
 #from lxml import etree
@@ -164,11 +167,24 @@ def main(argv):
 		root_table = tree.getroot()
 	
 		for tirage_xml in root_table.findall('tirage'):
-			print ("Tag:" + str(tirage_xml.tag))
 			date_as_text = tirage_xml.get('date')
 			winners = tirage_xml.find('winners').text
 			jackpot = tirage_xml.find('jackpot').text
-			print("Tirage:" + date_as_text + ", jackpot:" + jackpot)
+			
+			boules_xml = tirage_xml.findall('boule')			
+			boule1 = boules_xml[0].text
+			boule2 = boules_xml[1].text
+			boule3 = boules_xml[2].text
+			boule4 = boules_xml[3].text
+			boule5 = boules_xml[4].text
+			star1 = boules_xml[5].text
+			star2 = boules_xml[6].text
+						
+	
+			tirage = Tirage(date_as_text, boule1, boule2, boule3, boule4, boule5, star1, star2, winners, jackpot)
+				
+				
+			print("Tirage " + str(tirage.rank) + ":" + tirage.date_as_text + ", jackpot:" + tirage.jackpot)
 
 		
 		
