@@ -2,198 +2,180 @@
   <table class="blue_table" width="100%" id="tiragesAnnee">
     <mois>Decembre 2014
     </mois>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-decembre-2014/' title='Resultat tirage EuroMillions mardi 30 decembre 2014'>Mardi 30/12/2014
-      </a>">
-      <boule class='game_point'>6
+    <tirage date="Mardi 30/12/2014">
+      <boule class="game_point">6
       </boule>
-      <boule class='game_point'>18
+      <boule class="game_point">18
       </boule>
-      <boule class='game_point'>39
+      <boule class="game_point">39
       </boule>
-      <boule class='game_point'>50
+      <boule class="game_point">50
       </boule>
-      <boule class='game_point'>44
+      <boule class="game_point">44
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
       <winners>1
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-decembre-2014/' title='Resultat tirage EuroMillions vendredi 26 decembre 2014'>Vendredi 26/12/2014
-      </a>">
-      <boule class='game_point'>26
+    <tirage date="Vendredi 26/12/2014">
+      <boule class="game_point">26
       </boule>
-      <boule class='game_point'>45
+      <boule class="game_point">45
       </boule>
-      <boule class='game_point'>27
+      <boule class="game_point">27
       </boule>
-      <boule class='game_point'>49
+      <boule class="game_point">49
       </boule>
-      <boule class='game_point'>17
+      <boule class="game_point">17
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
       <winners>1
       </winners>
       <jackpot>25 234 535 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-23-decembre-2014/' title='Resultat tirage EuroMillions mardi 23 decembre 2014'>Mardi 23/12/2014
-      </a>">
-      <boule class='game_point'>49
+    <tirage date="Mardi 23/12/2014">
+      <boule class="game_point">49
       </boule>
-      <boule class='game_point'>25
+      <boule class="game_point">25
       </boule>
-      <boule class='game_point'>9
+      <boule class="game_point">9
       </boule>
-      <boule class='game_point'>19
+      <boule class="game_point">19
       </boule>
-      <boule class='game_point'>8
+      <boule class="game_point">8
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-decembre-2014/' title='Resultat tirage EuroMillions vendredi 19 decembre 2014'>Vendredi 19/12/2014
-      </a>">
-      <boule class='game_point'>39
+    <tirage date="Vendredi 19/12/2014">
+      <boule class="game_point">39
       </boule>
-      <boule class='game_point'>44
+      <boule class="game_point">44
       </boule>
-      <boule class='game_point'>23
+      <boule class="game_point">23
       </boule>
-      <boule class='game_point'>29
+      <boule class="game_point">29
       </boule>
-      <boule class='game_point'>31
+      <boule class="game_point">31
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
       <winners>1
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-16-decembre-2014/' title='Resultat tirage EuroMillions mardi 16 decembre 2014'>Mardi 16/12/2014
-      </a>">
-      <boule class='game_point'>13
+    <tirage date="Mardi 16/12/2014">
+      <boule class="game_point">13
       </boule>
-      <boule class='game_point'>7
+      <boule class="game_point">7
       </boule>
-      <boule class='game_point'>3
+      <boule class="game_point">3
       </boule>
-      <boule class='game_point'>25
+      <boule class="game_point">25
       </boule>
-      <boule class='game_point'>12
+      <boule class="game_point">12
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
       <winners>1
       </winners>
       <jackpot>39 580 687 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-decembre-2014/' title='Resultat tirage EuroMillions vendredi 12 decembre 2014'>Vendredi 12/12/2014
-      </a>">
-      <boule class='game_point'>28
+    <tirage date="Vendredi 12/12/2014">
+      <boule class="game_point">28
       </boule>
-      <boule class='game_point'>2
+      <boule class="game_point">2
       </boule>
-      <boule class='game_point'>15
+      <boule class="game_point">15
       </boule>
-      <boule class='game_point'>31
+      <boule class="game_point">31
       </boule>
-      <boule class='game_point'>37
+      <boule class="game_point">37
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
-      <boule class='star_small'>6
+      <boule class="star_small">6
       </boule>
       <winners>0
       </winners>
       <jackpot>32 170 285 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-9-decembre-2014/' title='Resultat tirage EuroMillions mardi 9 decembre 2014'>Mardi 09/12/2014
-      </a>">
-      <boule class='game_point'>31
+    <tirage date="Mardi 09/12/2014">
+      <boule class="game_point">31
       </boule>
-      <boule class='game_point'>1
+      <boule class="game_point">1
       </boule>
-      <boule class='game_point'>3
+      <boule class="game_point">3
       </boule>
-      <boule class='game_point'>42
+      <boule class="game_point">42
       </boule>
-      <boule class='game_point'>46
+      <boule class="game_point">46
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
       <winners>0
       </winners>
       <jackpot>21 823 076 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-decembre-2014/' title='Resultat tirage EuroMillions vendredi 5 decembre 2014'>Vendredi 05/12/2014
-      </a>">
-      <boule class='game_point'>5
+    <tirage date="Vendredi 05/12/2014">
+      <boule class="game_point">5
       </boule>
-      <boule class='game_point'>8
+      <boule class="game_point">8
       </boule>
-      <boule class='game_point'>48
+      <boule class="game_point">48
       </boule>
-      <boule class='game_point'>47
+      <boule class="game_point">47
       </boule>
-      <boule class='game_point'>37
+      <boule class="game_point">37
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-2-decembre-2014/' title='Resultat tirage EuroMillions mardi 2 decembre 2014'>Mardi 02/12/2014
-      </a>">
-      <boule class='game_point'>15
+    <tirage date="Mardi 02/12/2014">
+      <boule class="game_point">15
       </boule>
-      <boule class='game_point'>25
+      <boule class="game_point">25
       </boule>
-      <boule class='game_point'>3
+      <boule class="game_point">3
       </boule>
-      <boule class='game_point'>49
+      <boule class="game_point">49
       </boule>
-      <boule class='game_point'>44
+      <boule class="game_point">44
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
       <winners>1
       </winners>
@@ -202,176 +184,160 @@
     </tirage>
     <mois>Novembre 2014
     </mois>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-novembre-2014/' title='Resultat tirage EuroMillions vendredi 28 novembre 2014'>Vendredi 28/11/2014
-      </a>">
-      <boule class='game_point'>10
+    <tirage date="Vendredi 28/11/2014">
+      <boule class="game_point">10
       </boule>
-      <boule class='game_point'>23
+      <boule class="game_point">23
       </boule>
-      <boule class='game_point'>6
+      <boule class="game_point">6
       </boule>
-      <boule class='game_point'>41
+      <boule class="game_point">41
       </boule>
-      <boule class='game_point'>15
+      <boule class="game_point">15
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
       <winners>0
       </winners>
       <jackpot>64 238 836 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-25-novembre-2014/' title='Resultat tirage EuroMillions mardi 25 novembre 2014'>Mardi 25/11/2014
-      </a>">
-      <boule class='game_point'>32
+    <tirage date="Mardi 25/11/2014">
+      <boule class="game_point">32
       </boule>
-      <boule class='game_point'>7
+      <boule class="game_point">7
       </boule>
-      <boule class='game_point'>36
+      <boule class="game_point">36
       </boule>
-      <boule class='game_point'>3
+      <boule class="game_point">3
       </boule>
-      <boule class='game_point'>25
+      <boule class="game_point">25
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
-      <boule class='star_small'>6
+      <boule class="star_small">6
       </boule>
       <winners>0
       </winners>
       <jackpot>51 208 489 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-novembre-2014/' title='Resultat tirage EuroMillions vendredi 21 novembre 2014'>Vendredi 21/11/2014
-      </a>">
-      <boule class='game_point'>28
+    <tirage date="Vendredi 21/11/2014">
+      <boule class="game_point">28
       </boule>
-      <boule class='game_point'>32
+      <boule class="game_point">32
       </boule>
-      <boule class='game_point'>7
+      <boule class="game_point">7
       </boule>
-      <boule class='game_point'>37
+      <boule class="game_point">37
       </boule>
-      <boule class='game_point'>4
+      <boule class="game_point">4
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
       <winners>0
       </winners>
       <jackpot>43 061 336 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-18-novembre-2014/' title='Resultat tirage EuroMillions mardi 18 novembre 2014'>Mardi 18/11/2014
-      </a>">
-      <boule class='game_point'>3
+    <tirage date="Mardi 18/11/2014">
+      <boule class="game_point">3
       </boule>
-      <boule class='game_point'>2
+      <boule class="game_point">2
       </boule>
-      <boule class='game_point'>36
+      <boule class="game_point">36
       </boule>
-      <boule class='game_point'>38
+      <boule class="game_point">38
       </boule>
-      <boule class='game_point'>17
+      <boule class="game_point">17
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
       <winners>0
       </winners>
       <jackpot>32 415 734 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-novembre-2014/' title='Resultat tirage EuroMillions vendredi 14 novembre 2014'>Vendredi 14/11/2014
-      </a>">
-      <boule class='game_point'>36
+    <tirage date="Vendredi 14/11/2014">
+      <boule class="game_point">36
       </boule>
-      <boule class='game_point'>32
+      <boule class="game_point">32
       </boule>
-      <boule class='game_point'>38
+      <boule class="game_point">38
       </boule>
-      <boule class='game_point'>48
+      <boule class="game_point">48
       </boule>
-      <boule class='game_point'>17
+      <boule class="game_point">17
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
       <winners>0
       </winners>
       <jackpot>25 319 129 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-11-novembre-2014/' title='Resultat tirage EuroMillions mardi 11 novembre 2014'>Mardi 11/11/2014
-      </a>">
-      <boule class='game_point'>46
+    <tirage date="Mardi 11/11/2014">
+      <boule class="game_point">46
       </boule>
-      <boule class='game_point'>14
+      <boule class="game_point">14
       </boule>
-      <boule class='game_point'>36
+      <boule class="game_point">36
       </boule>
-      <boule class='game_point'>2
+      <boule class="game_point">2
       </boule>
-      <boule class='game_point'>21
+      <boule class="game_point">21
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-novembre-2014/' title='Resultat tirage EuroMillions vendredi 7 novembre 2014'>Vendredi 07/11/2014
-      </a>">
-      <boule class='game_point'>32
+    <tirage date="Vendredi 07/11/2014">
+      <boule class="game_point">32
       </boule>
-      <boule class='game_point'>13
+      <boule class="game_point">13
       </boule>
-      <boule class='game_point'>38
+      <boule class="game_point">38
       </boule>
-      <boule class='game_point'>46
+      <boule class="game_point">46
       </boule>
-      <boule class='game_point'>25
+      <boule class="game_point">25
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
       <winners>2
       </winners>
       <jackpot>33 012 470 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-4-novembre-2014/' title='Resultat tirage EuroMillions mardi 4 novembre 2014'>Mardi 04/11/2014
-      </a>">
-      <boule class='game_point'>1
+    <tirage date="Mardi 04/11/2014">
+      <boule class="game_point">1
       </boule>
-      <boule class='game_point'>13
+      <boule class="game_point">13
       </boule>
-      <boule class='game_point'>6
+      <boule class="game_point">6
       </boule>
-      <boule class='game_point'>26
+      <boule class="game_point">26
       </boule>
-      <boule class='game_point'>17
+      <boule class="game_point">17
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
       <winners>0
       </winners>
@@ -380,198 +346,180 @@
     </tirage>
     <mois>Octobre 2014
     </mois>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-octobre-2014/' title='Resultat tirage EuroMillions vendredi 31 octobre 2014'>Vendredi 31/10/2014
-      </a>">
-      <boule class='game_point'>10
+    <tirage date="Vendredi 31/10/2014">
+      <boule class="game_point">10
       </boule>
-      <boule class='game_point'>41
+      <boule class="game_point">41
       </boule>
-      <boule class='game_point'>13
+      <boule class="game_point">13
       </boule>
-      <boule class='game_point'>20
+      <boule class="game_point">20
       </boule>
-      <boule class='game_point'>33
+      <boule class="game_point">33
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-octobre-2014/' title='Resultat tirage EuroMillions mardi 28 octobre 2014'>Mardi 28/10/2014
-      </a>">
-      <boule class='game_point'>45
+    <tirage date="Mardi 28/10/2014">
+      <boule class="game_point">45
       </boule>
-      <boule class='game_point'>17
+      <boule class="game_point">17
       </boule>
-      <boule class='game_point'>40
+      <boule class="game_point">40
       </boule>
-      <boule class='game_point'>10
+      <boule class="game_point">10
       </boule>
-      <boule class='game_point'>15
+      <boule class="game_point">15
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
       <winners>1
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-octobre-2014/' title='Resultat tirage EuroMillions vendredi 24 octobre 2014'>Vendredi 24/10/2014
-      </a>">
-      <boule class='game_point'>42
+    <tirage date="Vendredi 24/10/2014">
+      <boule class="game_point">42
       </boule>
-      <boule class='game_point'>20
+      <boule class="game_point">20
       </boule>
-      <boule class='game_point'>3
+      <boule class="game_point">3
       </boule>
-      <boule class='game_point'>30
+      <boule class="game_point">30
       </boule>
-      <boule class='game_point'>9
+      <boule class="game_point">9
       </boule>
-      <boule class='star_small'>6
+      <boule class="star_small">6
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
       <winners>1
       </winners>
       <jackpot>190 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-21-octobre-2014/' title='Resultat tirage EuroMillions mardi 21 octobre 2014'>Mardi 21/10/2014
-      </a>">
-      <boule class='game_point'>40
+    <tirage date="Mardi 21/10/2014">
+      <boule class="game_point">40
       </boule>
-      <boule class='game_point'>33
+      <boule class="game_point">33
       </boule>
-      <boule class='game_point'>27
+      <boule class="game_point">27
       </boule>
-      <boule class='game_point'>20
+      <boule class="game_point">20
       </boule>
-      <boule class='game_point'>21
+      <boule class="game_point">21
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
       <winners>0
       </winners>
       <jackpot>181 778 812 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-octobre-2014/' title='Resultat tirage EuroMillions vendredi 17 octobre 2014'>Vendredi 17/10/2014
-      </a>">
-      <boule class='game_point'>49
+    <tirage date="Vendredi 17/10/2014">
+      <boule class="game_point">49
       </boule>
-      <boule class='game_point'>13
+      <boule class="game_point">13
       </boule>
-      <boule class='game_point'>48
+      <boule class="game_point">48
       </boule>
-      <boule class='game_point'>1
+      <boule class="game_point">1
       </boule>
-      <boule class='game_point'>40
+      <boule class="game_point">40
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
       <winners>0
       </winners>
       <jackpot>164 013 958 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-octobre-2014/' title='Resultat tirage EuroMillions mardi 14 octobre 2014'>Mardi 14/10/2014
-      </a>">
-      <boule class='game_point'>15
+    <tirage date="Mardi 14/10/2014">
+      <boule class="game_point">15
       </boule>
-      <boule class='game_point'>23
+      <boule class="game_point">23
       </boule>
-      <boule class='game_point'>32
+      <boule class="game_point">32
       </boule>
-      <boule class='game_point'>4
+      <boule class="game_point">4
       </boule>
-      <boule class='game_point'>5
+      <boule class="game_point">5
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
       <winners>0
       </winners>
       <jackpot>143 635 162 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-octobre-2014/' title='Resultat tirage EuroMillions vendredi 10 octobre 2014'>Vendredi 10/10/2014
-      </a>">
-      <boule class='game_point'>29
+    <tirage date="Vendredi 10/10/2014">
+      <boule class="game_point">29
       </boule>
-      <boule class='game_point'>42
+      <boule class="game_point">42
       </boule>
-      <boule class='game_point'>47
+      <boule class="game_point">47
       </boule>
-      <boule class='game_point'>45
+      <boule class="game_point">45
       </boule>
-      <boule class='game_point'>6
+      <boule class="game_point">6
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
       <winners>0
       </winners>
       <jackpot>129 467 190 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-octobre-2014/' title='Resultat tirage EuroMillions mardi 7 octobre 2014'>Mardi 07/10/2014
-      </a>">
-      <boule class='game_point'>38
+    <tirage date="Mardi 07/10/2014">
+      <boule class="game_point">38
       </boule>
-      <boule class='game_point'>30
+      <boule class="game_point">30
       </boule>
-      <boule class='game_point'>21
+      <boule class="game_point">21
       </boule>
-      <boule class='game_point'>9
+      <boule class="game_point">9
       </boule>
-      <boule class='game_point'>28
+      <boule class="game_point">28
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
       <winners>0
       </winners>
       <jackpot>112 118 982 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-octobre-2014/' title='Resultat tirage EuroMillions vendredi 3 octobre 2014'>Vendredi 03/10/2014
-      </a>">
-      <boule class='game_point'>13
+    <tirage date="Vendredi 03/10/2014">
+      <boule class="game_point">13
       </boule>
-      <boule class='game_point'>23
+      <boule class="game_point">23
       </boule>
-      <boule class='game_point'>50
+      <boule class="game_point">50
       </boule>
-      <boule class='game_point'>48
+      <boule class="game_point">48
       </boule>
-      <boule class='game_point'>4
+      <boule class="game_point">4
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
       <winners>0
       </winners>
@@ -580,198 +528,180 @@
     </tirage>
     <mois>Septembre 2014
     </mois>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-30-septembre-2014/' title='Resultat tirage EuroMillions mardi 30 septembre 2014'>Mardi 30/09/2014
-      </a>">
-      <boule class='game_point'>33
+    <tirage date="Mardi 30/09/2014">
+      <boule class="game_point">33
       </boule>
-      <boule class='game_point'>13
+      <boule class="game_point">13
       </boule>
-      <boule class='game_point'>15
+      <boule class="game_point">15
       </boule>
-      <boule class='game_point'>3
+      <boule class="game_point">3
       </boule>
-      <boule class='game_point'>42
+      <boule class="game_point">42
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
       <winners>1
       </winners>
       <jackpot>32 929 188 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-26-septembre-2014/' title='Resultat tirage EuroMillions vendredi 26 septembre 2014'>Vendredi 26/09/2014
-      </a>">
-      <boule class='game_point'>46
+    <tirage date="Vendredi 26/09/2014">
+      <boule class="game_point">46
       </boule>
-      <boule class='game_point'>35
+      <boule class="game_point">35
       </boule>
-      <boule class='game_point'>47
+      <boule class="game_point">47
       </boule>
-      <boule class='game_point'>13
+      <boule class="game_point">13
       </boule>
-      <boule class='game_point'>27
+      <boule class="game_point">27
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
       <winners>0
       </winners>
       <jackpot>25 767 850 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-23-septembre-2014/' title='Resultat tirage EuroMillions mardi 23 septembre 2014'>Mardi 23/09/2014
-      </a>">
-      <boule class='game_point'>13
+    <tirage date="Mardi 23/09/2014">
+      <boule class="game_point">13
       </boule>
-      <boule class='game_point'>35
+      <boule class="game_point">35
       </boule>
-      <boule class='game_point'>14
+      <boule class="game_point">14
       </boule>
-      <boule class='game_point'>29
+      <boule class="game_point">29
       </boule>
-      <boule class='game_point'>12
+      <boule class="game_point">12
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-19-septembre-2014/' title='Resultat tirage EuroMillions vendredi 19 septembre 2014'>Vendredi 19/09/2014
-      </a>">
-      <boule class='game_point'>6
+    <tirage date="Vendredi 19/09/2014">
+      <boule class="game_point">6
       </boule>
-      <boule class='game_point'>34
+      <boule class="game_point">34
       </boule>
-      <boule class='game_point'>8
+      <boule class="game_point">8
       </boule>
-      <boule class='game_point'>38
+      <boule class="game_point">38
       </boule>
-      <boule class='game_point'>48
+      <boule class="game_point">48
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
       <winners>1
       </winners>
       <jackpot>86 732 923 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-16-septembre-2014/' title='Resultat tirage EuroMillions mardi 16 septembre 2014'>Mardi 16/09/2014
-      </a>">
-      <boule class='game_point'>4
+    <tirage date="Mardi 16/09/2014">
+      <boule class="game_point">4
       </boule>
-      <boule class='game_point'>30
+      <boule class="game_point">30
       </boule>
-      <boule class='game_point'>35
+      <boule class="game_point">35
       </boule>
-      <boule class='game_point'>50
+      <boule class="game_point">50
       </boule>
-      <boule class='game_point'>29
+      <boule class="game_point">29
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
       <winners>0
       </winners>
       <jackpot>74 610 475 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-12-septembre-2014/' title='Resultat tirage EuroMillions vendredi 12 septembre 2014'>Vendredi 12/09/2014
-      </a>">
-      <boule class='game_point'>31
+    <tirage date="Vendredi 12/09/2014">
+      <boule class="game_point">31
       </boule>
-      <boule class='game_point'>9
+      <boule class="game_point">9
       </boule>
-      <boule class='game_point'>33
+      <boule class="game_point">33
       </boule>
-      <boule class='game_point'>26
+      <boule class="game_point">26
       </boule>
-      <boule class='game_point'>13
+      <boule class="game_point">13
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
       <winners>0
       </winners>
       <jackpot>66 213 888 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-9-septembre-2014/' title='Resultat tirage EuroMillions mardi 9 septembre 2014'>Mardi 09/09/2014
-      </a>">
-      <boule class='game_point'>15
+    <tirage date="Mardi 09/09/2014">
+      <boule class="game_point">15
       </boule>
-      <boule class='game_point'>35
+      <boule class="game_point">35
       </boule>
-      <boule class='game_point'>19
+      <boule class="game_point">19
       </boule>
-      <boule class='game_point'>8
+      <boule class="game_point">8
       </boule>
-      <boule class='game_point'>24
+      <boule class="game_point">24
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
       <winners>0
       </winners>
       <jackpot>55 073 280 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-5-septembre-2014/' title='Resultat tirage EuroMillions vendredi 5 septembre 2014'>Vendredi 05/09/2014
-      </a>">
-      <boule class='game_point'>18
+    <tirage date="Vendredi 05/09/2014">
+      <boule class="game_point">18
       </boule>
-      <boule class='game_point'>50
+      <boule class="game_point">50
       </boule>
-      <boule class='game_point'>23
+      <boule class="game_point">23
       </boule>
-      <boule class='game_point'>46
+      <boule class="game_point">46
       </boule>
-      <boule class='game_point'>1
+      <boule class="game_point">1
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
       <winners>0
       </winners>
       <jackpot>47 592 168 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-2-septembre-2014/' title='Resultat tirage EuroMillions mardi 2 septembre 2014'>Mardi 02/09/2014
-      </a>">
-      <boule class='game_point'>39
+    <tirage date="Mardi 02/09/2014">
+      <boule class="game_point">39
       </boule>
-      <boule class='game_point'>45
+      <boule class="game_point">45
       </boule>
-      <boule class='game_point'>25
+      <boule class="game_point">25
       </boule>
-      <boule class='game_point'>31
+      <boule class="game_point">31
       </boule>
-      <boule class='game_point'>5
+      <boule class="game_point">5
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
       <winners>0
       </winners>
@@ -780,198 +710,180 @@
     </tirage>
     <mois>Aout 2014
     </mois>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-29-aout-2014/' title='Resultat tirage EuroMillions vendredi 29 aout 2014'>Vendredi 29/08/2014
-      </a>">
-      <boule class='game_point'>32
+    <tirage date="Vendredi 29/08/2014">
+      <boule class="game_point">32
       </boule>
-      <boule class='game_point'>38
+      <boule class="game_point">38
       </boule>
-      <boule class='game_point'>26
+      <boule class="game_point">26
       </boule>
-      <boule class='game_point'>9
+      <boule class="game_point">9
       </boule>
-      <boule class='game_point'>2
+      <boule class="game_point">2
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
-      <boule class='star_small'>6
+      <boule class="star_small">6
       </boule>
       <winners>0
       </winners>
       <jackpot>30 847 109 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-26-aout-2014/' title='Resultat tirage EuroMillions mardi 26 aout 2014'>Mardi 26/08/2014
-      </a>">
-      <boule class='game_point'>36
+    <tirage date="Mardi 26/08/2014">
+      <boule class="game_point">36
       </boule>
-      <boule class='game_point'>48
+      <boule class="game_point">48
       </boule>
-      <boule class='game_point'>45
+      <boule class="game_point">45
       </boule>
-      <boule class='game_point'>10
+      <boule class="game_point">10
       </boule>
-      <boule class='game_point'>22
+      <boule class="game_point">22
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
       <winners>0
       </winners>
       <jackpot>21 332 468 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-22-aout-2014/' title='Resultat tirage EuroMillions vendredi 22 aout 2014'>Vendredi 22/08/2014
-      </a>">
-      <boule class='game_point'>29
+    <tirage date="Vendredi 22/08/2014">
+      <boule class="game_point">29
       </boule>
-      <boule class='game_point'>17
+      <boule class="game_point">17
       </boule>
-      <boule class='game_point'>49
+      <boule class="game_point">49
       </boule>
-      <boule class='game_point'>35
+      <boule class="game_point">35
       </boule>
-      <boule class='game_point'>4
+      <boule class="game_point">4
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-19-aout-2014/' title='Resultat tirage EuroMillions mardi 19 aout 2014'>Mardi 19/08/2014
-      </a>">
-      <boule class='game_point'>11
+    <tirage date="Mardi 19/08/2014">
+      <boule class="game_point">11
       </boule>
-      <boule class='game_point'>34
+      <boule class="game_point">34
       </boule>
-      <boule class='game_point'>47
+      <boule class="game_point">47
       </boule>
-      <boule class='game_point'>4
+      <boule class="game_point">4
       </boule>
-      <boule class='game_point'>7
+      <boule class="game_point">7
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
       <winners>1
       </winners>
       <jackpot>54 304 297 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-15-aout-2014/' title='Resultat tirage EuroMillions vendredi 15 aout 2014'>Vendredi 15/08/2014
-      </a>">
-      <boule class='game_point'>4
+    <tirage date="Vendredi 15/08/2014">
+      <boule class="game_point">4
       </boule>
-      <boule class='game_point'>21
+      <boule class="game_point">21
       </boule>
-      <boule class='game_point'>30
+      <boule class="game_point">30
       </boule>
-      <boule class='game_point'>5
+      <boule class="game_point">5
       </boule>
-      <boule class='game_point'>23
+      <boule class="game_point">23
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
       <winners>0
       </winners>
       <jackpot>46 954 024 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-12-aout-2014/' title='Resultat tirage EuroMillions mardi 12 aout 2014'>Mardi 12/08/2014
-      </a>">
-      <boule class='game_point'>22
+    <tirage date="Mardi 12/08/2014">
+      <boule class="game_point">22
       </boule>
-      <boule class='game_point'>19
+      <boule class="game_point">19
       </boule>
-      <boule class='game_point'>7
+      <boule class="game_point">7
       </boule>
-      <boule class='game_point'>16
+      <boule class="game_point">16
       </boule>
-      <boule class='game_point'>33
+      <boule class="game_point">33
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
       <winners>0
       </winners>
       <jackpot>37 783 516 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-8-aout-2014/' title='Resultat tirage EuroMillions vendredi 8 aout 2014'>Vendredi 08/08/2014
-      </a>">
-      <boule class='game_point'>29
+    <tirage date="Vendredi 08/08/2014">
+      <boule class="game_point">29
       </boule>
-      <boule class='game_point'>21
+      <boule class="game_point">21
       </boule>
-      <boule class='game_point'>35
+      <boule class="game_point">35
       </boule>
-      <boule class='game_point'>46
+      <boule class="game_point">46
       </boule>
-      <boule class='game_point'>43
+      <boule class="game_point">43
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
       <winners>0
       </winners>
       <jackpot>30 941 693 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-5-aout-2014/' title='Resultat tirage EuroMillions mardi 5 aout 2014'>Mardi 05/08/2014
-      </a>">
-      <boule class='game_point'>5
+    <tirage date="Mardi 05/08/2014">
+      <boule class="game_point">5
       </boule>
-      <boule class='game_point'>21
+      <boule class="game_point">21
       </boule>
-      <boule class='game_point'>42
+      <boule class="game_point">42
       </boule>
-      <boule class='game_point'>7
+      <boule class="game_point">7
       </boule>
-      <boule class='game_point'>19
+      <boule class="game_point">19
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
       <winners>0
       </winners>
       <jackpot>21 466 842 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-1er-aout-2014/' title='Resultat tirage EuroMillions vendredi 1er aout 2014'>Vendredi 01/08/2014
-      </a>">
-      <boule class='game_point'>50
+    <tirage date="Vendredi 01/08/2014">
+      <boule class="game_point">50
       </boule>
-      <boule class='game_point'>44
+      <boule class="game_point">44
       </boule>
-      <boule class='game_point'>46
+      <boule class="game_point">46
       </boule>
-      <boule class='game_point'>48
+      <boule class="game_point">48
       </boule>
-      <boule class='game_point'>24
+      <boule class="game_point">24
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
       <winners>0
       </winners>
@@ -980,198 +892,180 @@
     </tirage>
     <mois>Juillet 2014
     </mois>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-juillet-2014/' title='Resultat tirage EuroMillions mardi 29 juillet 2014'>Mardi 29/07/2014
-      </a>">
-      <boule class='game_point'>40
+    <tirage date="Mardi 29/07/2014">
+      <boule class="game_point">40
       </boule>
-      <boule class='game_point'>23
+      <boule class="game_point">23
       </boule>
-      <boule class='game_point'>35
+      <boule class="game_point">35
       </boule>
-      <boule class='game_point'>10
+      <boule class="game_point">10
       </boule>
-      <boule class='game_point'>43
+      <boule class="game_point">43
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
       <winners>1
       </winners>
       <jackpot>37 632 166 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-juillet-2014/' title='Resultat tirage EuroMillions vendredi 25 juillet 2014'>Vendredi 25/07/2014
-      </a>">
-      <boule class='game_point'>10
+    <tirage date="Vendredi 25/07/2014">
+      <boule class="game_point">10
       </boule>
-      <boule class='game_point'>24
+      <boule class="game_point">24
       </boule>
-      <boule class='game_point'>9
+      <boule class="game_point">9
       </boule>
-      <boule class='game_point'>12
+      <boule class="game_point">12
       </boule>
-      <boule class='game_point'>43
+      <boule class="game_point">43
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
       <winners>0
       </winners>
       <jackpot>30 819 744 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-22-juillet-2014/' title='Resultat tirage EuroMillions mardi 22 juillet 2014'>Mardi 22/07/2014
-      </a>">
-      <boule class='game_point'>1
+    <tirage date="Mardi 22/07/2014">
+      <boule class="game_point">1
       </boule>
-      <boule class='game_point'>43
+      <boule class="game_point">43
       </boule>
-      <boule class='game_point'>50
+      <boule class="game_point">50
       </boule>
-      <boule class='game_point'>45
+      <boule class="game_point">45
       </boule>
-      <boule class='game_point'>24
+      <boule class="game_point">24
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
       <winners>0
       </winners>
       <jackpot>21 405 298 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-juillet-2014/' title='Resultat tirage EuroMillions vendredi 18 juillet 2014'>Vendredi 18/07/2014
-      </a>">
-      <boule class='game_point'>1
+    <tirage date="Vendredi 18/07/2014">
+      <boule class="game_point">1
       </boule>
-      <boule class='game_point'>41
+      <boule class="game_point">41
       </boule>
-      <boule class='game_point'>43
+      <boule class="game_point">43
       </boule>
-      <boule class='game_point'>11
+      <boule class="game_point">11
       </boule>
-      <boule class='game_point'>29
+      <boule class="game_point">29
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-15-juillet-2014/' title='Resultat tirage EuroMillions mardi 15 juillet 2014'>Mardi 15/07/2014
-      </a>">
-      <boule class='game_point'>18
+    <tirage date="Mardi 15/07/2014">
+      <boule class="game_point">18
       </boule>
-      <boule class='game_point'>27
+      <boule class="game_point">27
       </boule>
-      <boule class='game_point'>15
+      <boule class="game_point">15
       </boule>
-      <boule class='game_point'>34
+      <boule class="game_point">34
       </boule>
-      <boule class='game_point'>20
+      <boule class="game_point">20
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
       <winners>1
       </winners>
       <jackpot>67 902 166 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-juillet-2014/' title='Resultat tirage EuroMillions vendredi 11 juillet 2014'>Vendredi 11/07/2014
-      </a>">
-      <boule class='game_point'>38
+    <tirage date="Vendredi 11/07/2014">
+      <boule class="game_point">38
       </boule>
-      <boule class='game_point'>35
+      <boule class="game_point">35
       </boule>
-      <boule class='game_point'>5
+      <boule class="game_point">5
       </boule>
-      <boule class='game_point'>49
+      <boule class="game_point">49
       </boule>
-      <boule class='game_point'>22
+      <boule class="game_point">22
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
       <winners>0
       </winners>
       <jackpot>60 081 769 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-8-juillet-2014/' title='Resultat tirage EuroMillions mardi 8 juillet 2014'>Mardi 08/07/2014
-      </a>">
-      <boule class='game_point'>24
+    <tirage date="Mardi 08/07/2014">
+      <boule class="game_point">24
       </boule>
-      <boule class='game_point'>18
+      <boule class="game_point">18
       </boule>
-      <boule class='game_point'>22
+      <boule class="game_point">22
       </boule>
-      <boule class='game_point'>8
+      <boule class="game_point">8
       </boule>
-      <boule class='game_point'>27
+      <boule class="game_point">27
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
       <winners>0
       </winners>
       <jackpot>49 306 200 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-juillet-2014/' title='Resultat tirage EuroMillions vendredi 4 juillet 2014'>Vendredi 04/07/2014
-      </a>">
-      <boule class='game_point'>47
+    <tirage date="Vendredi 04/07/2014">
+      <boule class="game_point">47
       </boule>
-      <boule class='game_point'>18
+      <boule class="game_point">18
       </boule>
-      <boule class='game_point'>43
+      <boule class="game_point">43
       </boule>
-      <boule class='game_point'>39
+      <boule class="game_point">39
       </boule>
-      <boule class='game_point'>4
+      <boule class="game_point">4
       </boule>
-      <boule class='star_small'>6
+      <boule class="star_small">6
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
       <winners>0
       </winners>
       <jackpot>42 031 147 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-1er-juillet-2014/' title='Resultat tirage EuroMillions mardi 1er juillet 2014'>Mardi 01/07/2014
-      </a>">
-      <boule class='game_point'>39
+    <tirage date="Mardi 01/07/2014">
+      <boule class="game_point">39
       </boule>
-      <boule class='game_point'>25
+      <boule class="game_point">25
       </boule>
-      <boule class='game_point'>18
+      <boule class="game_point">18
       </boule>
-      <boule class='game_point'>22
+      <boule class="game_point">22
       </boule>
-      <boule class='game_point'>27
+      <boule class="game_point">27
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
       <winners>0
       </winners>
@@ -1180,176 +1074,160 @@
     </tirage>
     <mois>Juin 2014
     </mois>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-27-juin-2014/' title='Resultat tirage EuroMillions vendredi 27 juin 2014'>Vendredi 27/06/2014
-      </a>">
-      <boule class='game_point'>39
+    <tirage date="Vendredi 27/06/2014">
+      <boule class="game_point">39
       </boule>
-      <boule class='game_point'>34
+      <boule class="game_point">34
       </boule>
-      <boule class='game_point'>45
+      <boule class="game_point">45
       </boule>
-      <boule class='game_point'>33
+      <boule class="game_point">33
       </boule>
-      <boule class='game_point'>31
+      <boule class="game_point">31
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
       <winners>0
       </winners>
       <jackpot>24 831 312 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-24-juin-2014/' title='Resultat tirage EuroMillions mardi 24 juin 2014'>Mardi 24/06/2014
-      </a>">
-      <boule class='game_point'>20
+    <tirage date="Mardi 24/06/2014">
+      <boule class="game_point">20
       </boule>
-      <boule class='game_point'>1
+      <boule class="game_point">1
       </boule>
-      <boule class='game_point'>7
+      <boule class="game_point">7
       </boule>
-      <boule class='game_point'>21
+      <boule class="game_point">21
       </boule>
-      <boule class='game_point'>48
+      <boule class="game_point">48
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-20-juin-2014/' title='Resultat tirage EuroMillions vendredi 20 juin 2014'>Vendredi 20/06/2014
-      </a>">
-      <boule class='game_point'>5
+    <tirage date="Vendredi 20/06/2014">
+      <boule class="game_point">5
       </boule>
-      <boule class='game_point'>38
+      <boule class="game_point">38
       </boule>
-      <boule class='game_point'>49
+      <boule class="game_point">49
       </boule>
-      <boule class='game_point'>15
+      <boule class="game_point">15
       </boule>
-      <boule class='game_point'>25
+      <boule class="game_point">25
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
       <winners>1
       </winners>
       <jackpot>24 974 879 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-17-juin-2014/' title='Resultat tirage EuroMillions mardi 17 juin 2014'>Mardi 17/06/2014
-      </a>">
-      <boule class='game_point'>48
+    <tirage date="Mardi 17/06/2014">
+      <boule class="game_point">48
       </boule>
-      <boule class='game_point'>13
+      <boule class="game_point">13
       </boule>
-      <boule class='game_point'>37
+      <boule class="game_point">37
       </boule>
-      <boule class='game_point'>40
+      <boule class="game_point">40
       </boule>
-      <boule class='game_point'>11
+      <boule class="game_point">11
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-13-juin-2014/' title='Resultat tirage EuroMillions vendredi 13 juin 2014'>Vendredi 13/06/2014
-      </a>">
-      <boule class='game_point'>16
+    <tirage date="Vendredi 13/06/2014">
+      <boule class="game_point">16
       </boule>
-      <boule class='game_point'>22
+      <boule class="game_point">22
       </boule>
-      <boule class='game_point'>28
+      <boule class="game_point">28
       </boule>
-      <boule class='game_point'>46
+      <boule class="game_point">46
       </boule>
-      <boule class='game_point'>18
+      <boule class="game_point">18
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
       <winners>1
       </winners>
       <jackpot>137 313 501 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-10-juin-2014/' title='Resultat tirage EuroMillions mardi 10 juin 2014'>Mardi 10/06/2014
-      </a>">
-      <boule class='game_point'>12
+    <tirage date="Mardi 10/06/2014">
+      <boule class="game_point">12
       </boule>
-      <boule class='game_point'>18
+      <boule class="game_point">18
       </boule>
-      <boule class='game_point'>21
+      <boule class="game_point">21
       </boule>
-      <boule class='game_point'>33
+      <boule class="game_point">33
       </boule>
-      <boule class='game_point'>32
+      <boule class="game_point">32
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
       <winners>0
       </winners>
       <jackpot>118 626 756 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-6-juin-2014/' title='Resultat tirage EuroMillions vendredi 6 juin 2014'>Vendredi 06/06/2014
-      </a>">
-      <boule class='game_point'>34
+    <tirage date="Vendredi 06/06/2014">
+      <boule class="game_point">34
       </boule>
-      <boule class='game_point'>40
+      <boule class="game_point">40
       </boule>
-      <boule class='game_point'>25
+      <boule class="game_point">25
       </boule>
-      <boule class='game_point'>7
+      <boule class="game_point">7
       </boule>
-      <boule class='game_point'>49
+      <boule class="game_point">49
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
       <winners>0
       </winners>
       <jackpot>106 876 333 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-3-juin-2014/' title='Resultat tirage EuroMillions mardi 3 juin 2014'>Mardi 03/06/2014
-      </a>">
-      <boule class='game_point'>2
+    <tirage date="Mardi 03/06/2014">
+      <boule class="game_point">2
       </boule>
-      <boule class='game_point'>39
+      <boule class="game_point">39
       </boule>
-      <boule class='game_point'>32
+      <boule class="game_point">32
       </boule>
-      <boule class='game_point'>15
+      <boule class="game_point">15
       </boule>
-      <boule class='game_point'>44
+      <boule class="game_point">44
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
       <winners>0
       </winners>
@@ -1358,198 +1236,180 @@
     </tirage>
     <mois>Mai 2014
     </mois>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-30-mai-2014/' title='Resultat tirage EuroMillions vendredi 30 mai 2014'>Vendredi 30/05/2014
-      </a>">
-      <boule class='game_point'>27
+    <tirage date="Vendredi 30/05/2014">
+      <boule class="game_point">27
       </boule>
-      <boule class='game_point'>41
+      <boule class="game_point">41
       </boule>
-      <boule class='game_point'>24
+      <boule class="game_point">24
       </boule>
-      <boule class='game_point'>45
+      <boule class="game_point">45
       </boule>
-      <boule class='game_point'>5
+      <boule class="game_point">5
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
-      <boule class='star_small'>6
+      <boule class="star_small">6
       </boule>
       <winners>0
       </winners>
       <jackpot>78 898 283 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-27-mai-2014/' title='Resultat tirage EuroMillions mardi 27 mai 2014'>Mardi 27/05/2014
-      </a>">
-      <boule class='game_point'>16
+    <tirage date="Mardi 27/05/2014">
+      <boule class="game_point">16
       </boule>
-      <boule class='game_point'>13
+      <boule class="game_point">13
       </boule>
-      <boule class='game_point'>26
+      <boule class="game_point">26
       </boule>
-      <boule class='game_point'>25
+      <boule class="game_point">25
       </boule>
-      <boule class='game_point'>7
+      <boule class="game_point">7
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
-      <boule class='star_small'>6
+      <boule class="star_small">6
       </boule>
       <winners>0
       </winners>
       <jackpot>67 034 874 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-23-mai-2014/' title='Resultat tirage EuroMillions vendredi 23 mai 2014'>Vendredi 23/05/2014
-      </a>">
-      <boule class='game_point'>31
+    <tirage date="Vendredi 23/05/2014">
+      <boule class="game_point">31
       </boule>
-      <boule class='game_point'>3
+      <boule class="game_point">3
       </boule>
-      <boule class='game_point'>47
+      <boule class="game_point">47
       </boule>
-      <boule class='game_point'>8
+      <boule class="game_point">8
       </boule>
-      <boule class='game_point'>34
+      <boule class="game_point">34
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
       <winners>0
       </winners>
       <jackpot>59 346 874 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-20-mai-2014/' title='Resultat tirage EuroMillions mardi 20 mai 2014'>Mardi 20/05/2014
-      </a>">
-      <boule class='game_point'>38
+    <tirage date="Mardi 20/05/2014">
+      <boule class="game_point">38
       </boule>
-      <boule class='game_point'>5
+      <boule class="game_point">5
       </boule>
-      <boule class='game_point'>36
+      <boule class="game_point">36
       </boule>
-      <boule class='game_point'>33
+      <boule class="game_point">33
       </boule>
-      <boule class='game_point'>47
+      <boule class="game_point">47
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
       <winners>0
       </winners>
       <jackpot>48 745 949 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-16-mai-2014/' title='Resultat tirage EuroMillions vendredi 16 mai 2014'>Vendredi 16/05/2014
-      </a>">
-      <boule class='game_point'>26
+    <tirage date="Vendredi 16/05/2014">
+      <boule class="game_point">26
       </boule>
-      <boule class='game_point'>23
+      <boule class="game_point">23
       </boule>
-      <boule class='game_point'>37
+      <boule class="game_point">37
       </boule>
-      <boule class='game_point'>29
+      <boule class="game_point">29
       </boule>
-      <boule class='game_point'>40
+      <boule class="game_point">40
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
       <winners>0
       </winners>
       <jackpot>41 696 345 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-13-mai-2014/' title='Resultat tirage EuroMillions mardi 13 mai 2014'>Mardi 13/05/2014
-      </a>">
-      <boule class='game_point'>47
+    <tirage date="Mardi 13/05/2014">
+      <boule class="game_point">47
       </boule>
-      <boule class='game_point'>34
+      <boule class="game_point">34
       </boule>
-      <boule class='game_point'>13
+      <boule class="game_point">13
       </boule>
-      <boule class='game_point'>30
+      <boule class="game_point">30
       </boule>
-      <boule class='game_point'>4
+      <boule class="game_point">4
       </boule>
-      <boule class='star_small'>6
+      <boule class="star_small">6
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
       <winners>0
       </winners>
       <jackpot>31 594 762 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-9-mai-2014/' title='Resultat tirage EuroMillions vendredi 9 mai 2014'>Vendredi 09/05/2014
-      </a>">
-      <boule class='game_point'>45
+    <tirage date="Vendredi 09/05/2014">
+      <boule class="game_point">45
       </boule>
-      <boule class='game_point'>28
+      <boule class="game_point">28
       </boule>
-      <boule class='game_point'>3
+      <boule class="game_point">3
       </boule>
-      <boule class='game_point'>26
+      <boule class="game_point">26
       </boule>
-      <boule class='game_point'>21
+      <boule class="game_point">21
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
       <winners>0
       </winners>
       <jackpot>24 736 691 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-6-mai-2014/' title='Resultat tirage EuroMillions mardi 6 mai 2014'>Mardi 06/05/2014
-      </a>">
-      <boule class='game_point'>37
+    <tirage date="Mardi 06/05/2014">
+      <boule class="game_point">37
       </boule>
-      <boule class='game_point'>5
+      <boule class="game_point">5
       </boule>
-      <boule class='game_point'>19
+      <boule class="game_point">19
       </boule>
-      <boule class='game_point'>31
+      <boule class="game_point">31
       </boule>
-      <boule class='game_point'>24
+      <boule class="game_point">24
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-2-mai-2014/' title='Resultat tirage EuroMillions vendredi 2 mai 2014'>Vendredi 02/05/2014
-      </a>">
-      <boule class='game_point'>30
+    <tirage date="Vendredi 02/05/2014">
+      <boule class="game_point">30
       </boule>
-      <boule class='game_point'>42
+      <boule class="game_point">42
       </boule>
-      <boule class='game_point'>4
+      <boule class="game_point">4
       </boule>
-      <boule class='game_point'>31
+      <boule class="game_point">31
       </boule>
-      <boule class='game_point'>38
+      <boule class="game_point">38
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
       <winners>1
       </winners>
@@ -1558,198 +1418,180 @@
     </tirage>
     <mois>Avril 2014
     </mois>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-29-avril-2014/' title='Resultat tirage EuroMillions mardi 29 avril 2014'>Mardi 29/04/2014
-      </a>">
-      <boule class='game_point'>35
+    <tirage date="Mardi 29/04/2014">
+      <boule class="game_point">35
       </boule>
-      <boule class='game_point'>26
+      <boule class="game_point">26
       </boule>
-      <boule class='game_point'>18
+      <boule class="game_point">18
       </boule>
-      <boule class='game_point'>23
+      <boule class="game_point">23
       </boule>
-      <boule class='game_point'>44
+      <boule class="game_point">44
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
       <winners>0
       </winners>
       <jackpot>76 616 042 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-25-avril-2014/' title='Resultat tirage EuroMillions vendredi 25 avril 2014'>Vendredi 25/04/2014
-      </a>">
-      <boule class='game_point'>13
+    <tirage date="Vendredi 25/04/2014">
+      <boule class="game_point">13
       </boule>
-      <boule class='game_point'>49
+      <boule class="game_point">49
       </boule>
-      <boule class='game_point'>44
+      <boule class="game_point">44
       </boule>
-      <boule class='game_point'>21
+      <boule class="game_point">21
       </boule>
-      <boule class='game_point'>24
+      <boule class="game_point">24
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
       <winners>0
       </winners>
       <jackpot>67 951 355 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-22-avril-2014/' title='Resultat tirage EuroMillions mardi 22 avril 2014'>Mardi 22/04/2014
-      </a>">
-      <boule class='game_point'>20
+    <tirage date="Mardi 22/04/2014">
+      <boule class="game_point">20
       </boule>
-      <boule class='game_point'>46
+      <boule class="game_point">46
       </boule>
-      <boule class='game_point'>15
+      <boule class="game_point">15
       </boule>
-      <boule class='game_point'>24
+      <boule class="game_point">24
       </boule>
-      <boule class='game_point'>13
+      <boule class="game_point">13
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
       <winners>0
       </winners>
       <jackpot>56 813 879 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-18-avril-2014/' title='Resultat tirage EuroMillions vendredi 18 avril 2014'>Vendredi 18/04/2014
-      </a>">
-      <boule class='game_point'>21
+    <tirage date="Vendredi 18/04/2014">
+      <boule class="game_point">21
       </boule>
-      <boule class='game_point'>47
+      <boule class="game_point">47
       </boule>
-      <boule class='game_point'>31
+      <boule class="game_point">31
       </boule>
-      <boule class='game_point'>39
+      <boule class="game_point">39
       </boule>
-      <boule class='game_point'>24
+      <boule class="game_point">24
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
       <winners>0
       </winners>
       <jackpot>49 741 996 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-15-avril-2014/' title='Resultat tirage EuroMillions mardi 15 avril 2014'>Mardi 15/04/2014
-      </a>">
-      <boule class='game_point'>14
+    <tirage date="Mardi 15/04/2014">
+      <boule class="game_point">14
       </boule>
-      <boule class='game_point'>50
+      <boule class="game_point">50
       </boule>
-      <boule class='game_point'>47
+      <boule class="game_point">47
       </boule>
-      <boule class='game_point'>26
+      <boule class="game_point">26
       </boule>
-      <boule class='game_point'>3
+      <boule class="game_point">3
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
       <winners>0
       </winners>
       <jackpot>39 469 425 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-11-avril-2014/' title='Resultat tirage EuroMillions vendredi 11 avril 2014'>Vendredi 11/04/2014
-      </a>">
-      <boule class='game_point'>8
+    <tirage date="Vendredi 11/04/2014">
+      <boule class="game_point">8
       </boule>
-      <boule class='game_point'>33
+      <boule class="game_point">33
       </boule>
-      <boule class='game_point'>30
+      <boule class="game_point">30
       </boule>
-      <boule class='game_point'>12
+      <boule class="game_point">12
       </boule>
-      <boule class='game_point'>19
+      <boule class="game_point">19
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
       <winners>0
       </winners>
       <jackpot>32 404 758 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-8-avril-2014/' title='Resultat tirage EuroMillions mardi 8 avril 2014'>Mardi 08/04/2014
-      </a>">
-      <boule class='game_point'>42
+    <tirage date="Mardi 08/04/2014">
+      <boule class="game_point">42
       </boule>
-      <boule class='game_point'>11
+      <boule class="game_point">11
       </boule>
-      <boule class='game_point'>29
+      <boule class="game_point">29
       </boule>
-      <boule class='game_point'>18
+      <boule class="game_point">18
       </boule>
-      <boule class='game_point'>49
+      <boule class="game_point">49
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
       <winners>0
       </winners>
       <jackpot>21 651 231 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-4-avril-2014/' title='Resultat tirage EuroMillions vendredi 4 avril 2014'>Vendredi 04/04/2014
-      </a>">
-      <boule class='game_point'>50
+    <tirage date="Vendredi 04/04/2014">
+      <boule class="game_point">50
       </boule>
-      <boule class='game_point'>45
+      <boule class="game_point">45
       </boule>
-      <boule class='game_point'>28
+      <boule class="game_point">28
       </boule>
-      <boule class='game_point'>6
+      <boule class="game_point">6
       </boule>
-      <boule class='game_point'>10
+      <boule class="game_point">10
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-1-avril-2014/' title='Resultat tirage EuroMillions mardi 1 avril 2014'>Mardi 01/04/2014
-      </a>">
-      <boule class='game_point'>44
+    <tirage date="Mardi 01/04/2014">
+      <boule class="game_point">44
       </boule>
-      <boule class='game_point'>38
+      <boule class="game_point">38
       </boule>
-      <boule class='game_point'>18
+      <boule class="game_point">18
       </boule>
-      <boule class='game_point'>16
+      <boule class="game_point">16
       </boule>
-      <boule class='game_point'>26
+      <boule class="game_point">26
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
       <winners>1
       </winners>
@@ -1758,176 +1600,160 @@
     </tirage>
     <mois>Mars 2014
     </mois>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-mars-2014/' title='Resultat tirage EuroMillions vendredi 28 mars 2014'>Vendredi 28/03/2014
-      </a>">
-      <boule class='game_point'>3
+    <tirage date="Vendredi 28/03/2014">
+      <boule class="game_point">3
       </boule>
-      <boule class='game_point'>43
+      <boule class="game_point">43
       </boule>
-      <boule class='game_point'>19
+      <boule class="game_point">19
       </boule>
-      <boule class='game_point'>28
+      <boule class="game_point">28
       </boule>
-      <boule class='game_point'>4
+      <boule class="game_point">4
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
       <winners>1
       </winners>
       <jackpot>25 329 483 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-25-mars-2014/' title='Resultat tirage EuroMillions mardi 25 mars 2014'>Mardi 25/03/2014
-      </a>">
-      <boule class='game_point'>28
+    <tirage date="Mardi 25/03/2014">
+      <boule class="game_point">28
       </boule>
-      <boule class='game_point'>50
+      <boule class="game_point">50
       </boule>
-      <boule class='game_point'>26
+      <boule class="game_point">26
       </boule>
-      <boule class='game_point'>7
+      <boule class="game_point">7
       </boule>
-      <boule class='game_point'>20
+      <boule class="game_point">20
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-mars-2014/' title='Resultat tirage EuroMillions vendredi 21 mars 2014'>Vendredi 21/03/2014
-      </a>">
-      <boule class='game_point'>37
+    <tirage date="Vendredi 21/03/2014">
+      <boule class="game_point">37
       </boule>
-      <boule class='game_point'>7
+      <boule class="game_point">7
       </boule>
-      <boule class='game_point'>39
+      <boule class="game_point">39
       </boule>
-      <boule class='game_point'>30
+      <boule class="game_point">30
       </boule>
-      <boule class='game_point'>42
+      <boule class="game_point">42
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
       <winners>1
       </winners>
       <jackpot>25 493 153 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-18-mars-2014/' title='Resultat tirage EuroMillions mardi 18 mars 2014'>Mardi 18/03/2014
-      </a>">
-      <boule class='game_point'>27
+    <tirage date="Mardi 18/03/2014">
+      <boule class="game_point">27
       </boule>
-      <boule class='game_point'>36
+      <boule class="game_point">36
       </boule>
-      <boule class='game_point'>34
+      <boule class="game_point">34
       </boule>
-      <boule class='game_point'>8
+      <boule class="game_point">8
       </boule>
-      <boule class='game_point'>39
+      <boule class="game_point">39
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-mars-2014/' title='Resultat tirage EuroMillions vendredi 14 mars 2014'>Vendredi 14/03/2014
-      </a>">
-      <boule class='game_point'>30
+    <tirage date="Vendredi 14/03/2014">
+      <boule class="game_point">30
       </boule>
-      <boule class='game_point'>24
+      <boule class="game_point">24
       </boule>
-      <boule class='game_point'>6
+      <boule class="game_point">6
       </boule>
-      <boule class='game_point'>27
+      <boule class="game_point">27
       </boule>
-      <boule class='game_point'>25
+      <boule class="game_point">25
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
       <winners>1
       </winners>
       <jackpot>129 384 564 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-11-mars-2014/' title='Resultat tirage EuroMillions mardi 11 mars 2014'>Mardi 11/03/2014
-      </a>">
-      <boule class='game_point'>1
+    <tirage date="Mardi 11/03/2014">
+      <boule class="game_point">1
       </boule>
-      <boule class='game_point'>4
+      <boule class="game_point">4
       </boule>
-      <boule class='game_point'>44
+      <boule class="game_point">44
       </boule>
-      <boule class='game_point'>33
+      <boule class="game_point">33
       </boule>
-      <boule class='game_point'>23
+      <boule class="game_point">23
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
       <winners>0
       </winners>
       <jackpot>112 224 513 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-mars-2014/' title='Resultat tirage EuroMillions vendredi 7 mars 2014'>Vendredi 07/03/2014
-      </a>">
-      <boule class='game_point'>38
+    <tirage date="Vendredi 07/03/2014">
+      <boule class="game_point">38
       </boule>
-      <boule class='game_point'>10
+      <boule class="game_point">10
       </boule>
-      <boule class='game_point'>40
+      <boule class="game_point">40
       </boule>
-      <boule class='game_point'>5
+      <boule class="game_point">5
       </boule>
-      <boule class='game_point'>41
+      <boule class="game_point">41
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
       <winners>0
       </winners>
       <jackpot>100 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-4-mars-2014/' title='Resultat tirage EuroMillions mardi 4 mars 2014'>Mardi 04/03/2014
-      </a>">
-      <boule class='game_point'>3
+    <tirage date="Mardi 04/03/2014">
+      <boule class="game_point">3
       </boule>
-      <boule class='game_point'>22
+      <boule class="game_point">22
       </boule>
-      <boule class='game_point'>5
+      <boule class="game_point">5
       </boule>
-      <boule class='game_point'>27
+      <boule class="game_point">27
       </boule>
-      <boule class='game_point'>44
+      <boule class="game_point">44
       </boule>
-      <boule class='star_small'>6
+      <boule class="star_small">6
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
       <winners>0
       </winners>
@@ -1936,176 +1762,160 @@
     </tirage>
     <mois>Fevrier 2014
     </mois>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-28-fevrier-2014/' title='Resultat tirage EuroMillions vendredi 28 fevrier 2014'>Vendredi 28/02/2014
-      </a>">
-      <boule class='game_point'>38
+    <tirage date="Vendredi 28/02/2014">
+      <boule class="game_point">38
       </boule>
-      <boule class='game_point'>44
+      <boule class="game_point">44
       </boule>
-      <boule class='game_point'>32
+      <boule class="game_point">32
       </boule>
-      <boule class='game_point'>12
+      <boule class="game_point">12
       </boule>
-      <boule class='game_point'>43
+      <boule class="game_point">43
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
       <winners>1
       </winners>
       <jackpot>42 517 715 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-25-fevrier-2014/' title='Resultat tirage EuroMillions mardi 25 fevrier 2014'>Mardi 25/02/2014
-      </a>">
-      <boule class='game_point'>42
+    <tirage date="Mardi 25/02/2014">
+      <boule class="game_point">42
       </boule>
-      <boule class='game_point'>21
+      <boule class="game_point">21
       </boule>
-      <boule class='game_point'>25
+      <boule class="game_point">25
       </boule>
-      <boule class='game_point'>28
+      <boule class="game_point">28
       </boule>
-      <boule class='game_point'>35
+      <boule class="game_point">35
       </boule>
-      <boule class='star_small'>6
+      <boule class="star_small">6
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
       <winners>0
       </winners>
       <jackpot>31 885 464 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-21-fevrier-2014/' title='Resultat tirage EuroMillions vendredi 21 fevrier 2014'>Vendredi 21/02/2014
-      </a>">
-      <boule class='game_point'>28
+    <tirage date="Vendredi 21/02/2014">
+      <boule class="game_point">28
       </boule>
-      <boule class='game_point'>13
+      <boule class="game_point">13
       </boule>
-      <boule class='game_point'>17
+      <boule class="game_point">17
       </boule>
-      <boule class='game_point'>30
+      <boule class="game_point">30
       </boule>
-      <boule class='game_point'>32
+      <boule class="game_point">32
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
       <winners>0
       </winners>
       <jackpot>24 964 477 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-18-fevrier-2014/' title='Resultat tirage EuroMillions mardi 18 fevrier 2014'>Mardi 18/02/2014
-      </a>">
-      <boule class='game_point'>36
+    <tirage date="Mardi 18/02/2014">
+      <boule class="game_point">36
       </boule>
-      <boule class='game_point'>37
+      <boule class="game_point">37
       </boule>
-      <boule class='game_point'>26
+      <boule class="game_point">26
       </boule>
-      <boule class='game_point'>23
+      <boule class="game_point">23
       </boule>
-      <boule class='game_point'>49
+      <boule class="game_point">49
       </boule>
-      <boule class='star_small'>6
+      <boule class="star_small">6
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-14-fevrier-2014/' title='Resultat tirage EuroMillions vendredi 14 fevrier 2014'>Vendredi 14/02/2014
-      </a>">
-      <boule class='game_point'>19
+    <tirage date="Vendredi 14/02/2014">
+      <boule class="game_point">19
       </boule>
-      <boule class='game_point'>39
+      <boule class="game_point">39
       </boule>
-      <boule class='game_point'>4
+      <boule class="game_point">4
       </boule>
-      <boule class='game_point'>2
+      <boule class="game_point">2
       </boule>
-      <boule class='game_point'>6
+      <boule class="game_point">6
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
-      <boule class='star_small'>7
+      <boule class="star_small">7
       </boule>
       <winners>1
       </winners>
       <jackpot>25 543 227 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-11-fevrier-2014/' title='Resultat tirage EuroMillions mardi 11 fevrier 2014'>Mardi 11/02/2014
-      </a>">
-      <boule class='game_point'>47
+    <tirage date="Mardi 11/02/2014">
+      <boule class="game_point">47
       </boule>
-      <boule class='game_point'>25
+      <boule class="game_point">25
       </boule>
-      <boule class='game_point'>8
+      <boule class="game_point">8
       </boule>
-      <boule class='game_point'>17
+      <boule class="game_point">17
       </boule>
-      <boule class='game_point'>41
+      <boule class="game_point">41
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-7-fevrier-2014/' title='Resultat tirage EuroMillions vendredi 7 fevrier 2014'>Vendredi 07/02/2014
-      </a>">
-      <boule class='game_point'>17
+    <tirage date="Vendredi 07/02/2014">
+      <boule class="game_point">17
       </boule>
-      <boule class='game_point'>19
+      <boule class="game_point">19
       </boule>
-      <boule class='game_point'>47
+      <boule class="game_point">47
       </boule>
-      <boule class='game_point'>3
+      <boule class="game_point">3
       </boule>
-      <boule class='game_point'>46
+      <boule class="game_point">46
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
       <winners>1
       </winners>
       <jackpot>25 315 477 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-4-fevrier-2014/' title='Resultat tirage EuroMillions mardi 4 fevrier 2014'>Mardi 04/02/2014
-      </a>">
-      <boule class='game_point'>37
+    <tirage date="Mardi 04/02/2014">
+      <boule class="game_point">37
       </boule>
-      <boule class='game_point'>1
+      <boule class="game_point">1
       </boule>
-      <boule class='game_point'>33
+      <boule class="game_point">33
       </boule>
-      <boule class='game_point'>21
+      <boule class="game_point">21
       </boule>
-      <boule class='game_point'>38
+      <boule class="game_point">38
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
       <winners>0
       </winners>
@@ -2114,198 +1924,180 @@
     </tirage>
     <mois>Janvier 2014
     </mois>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-31-janvier-2014/' title='Resultat tirage EuroMillions vendredi 31 janvier 2014'>Vendredi 31/01/2014
-      </a>">
-      <boule class='game_point'>10
+    <tirage date="Vendredi 31/01/2014">
+      <boule class="game_point">10
       </boule>
-      <boule class='game_point'>15
+      <boule class="game_point">15
       </boule>
-      <boule class='game_point'>31
+      <boule class="game_point">31
       </boule>
-      <boule class='game_point'>8
+      <boule class="game_point">8
       </boule>
-      <boule class='game_point'>16
+      <boule class="game_point">16
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
       <winners>1
       </winners>
       <jackpot>72 149 579 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-28-janvier-2014/' title='Resultat tirage EuroMillions mardi 28 janvier 2014'>Mardi 28/01/2014
-      </a>">
-      <boule class='game_point'>18
+    <tirage date="Mardi 28/01/2014">
+      <boule class="game_point">18
       </boule>
-      <boule class='game_point'>23
+      <boule class="game_point">23
       </boule>
-      <boule class='game_point'>48
+      <boule class="game_point">48
       </boule>
-      <boule class='game_point'>20
+      <boule class="game_point">20
       </boule>
-      <boule class='game_point'>42
+      <boule class="game_point">42
       </boule>
-      <boule class='star_small'>2
+      <boule class="star_small">2
       </boule>
-      <boule class='star_small'>9
+      <boule class="star_small">9
       </boule>
       <winners>0
       </winners>
       <jackpot>59 913 845 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-24-janvier-2014/' title='Resultat tirage EuroMillions vendredi 24 janvier 2014'>Vendredi 24/01/2014
-      </a>">
-      <boule class='game_point'>19
+    <tirage date="Vendredi 24/01/2014">
+      <boule class="game_point">19
       </boule>
-      <boule class='game_point'>41
+      <boule class="game_point">41
       </boule>
-      <boule class='game_point'>35
+      <boule class="game_point">35
       </boule>
-      <boule class='game_point'>34
+      <boule class="game_point">34
       </boule>
-      <boule class='game_point'>5
+      <boule class="game_point">5
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
       <winners>0
       </winners>
       <jackpot>51 853 731 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-21-janvier-2014/' title='Resultat tirage EuroMillions mardi 21 janvier 2014'>Mardi 21/01/2014
-      </a>">
-      <boule class='game_point'>4
+    <tirage date="Mardi 21/01/2014">
+      <boule class="game_point">4
       </boule>
-      <boule class='game_point'>42
+      <boule class="game_point">42
       </boule>
-      <boule class='game_point'>35
+      <boule class="game_point">35
       </boule>
-      <boule class='game_point'>48
+      <boule class="game_point">48
       </boule>
-      <boule class='game_point'>12
+      <boule class="game_point">12
       </boule>
-      <boule class='star_small'>5
+      <boule class="star_small">5
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
       <winners>0
       </winners>
       <jackpot>40 648 762 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-17-janvier-2014/' title='Resultat tirage EuroMillions vendredi 17 janvier 2014'>Vendredi 17/01/2014
-      </a>">
-      <boule class='game_point'>26
+    <tirage date="Vendredi 17/01/2014">
+      <boule class="game_point">26
       </boule>
-      <boule class='game_point'>19
+      <boule class="game_point">19
       </boule>
-      <boule class='game_point'>33
+      <boule class="game_point">33
       </boule>
-      <boule class='game_point'>42
+      <boule class="game_point">42
       </boule>
-      <boule class='game_point'>32
+      <boule class="game_point">32
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
-      <boule class='star_small'>4
+      <boule class="star_small">4
       </boule>
       <winners>0
       </winners>
       <jackpot>33 069 927 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-14-janvier-2014/' title='Resultat tirage EuroMillions mardi 14 janvier 2014'>Mardi 14/01/2014
-      </a>">
-      <boule class='game_point'>25
+    <tirage date="Mardi 14/01/2014">
+      <boule class="game_point">25
       </boule>
-      <boule class='game_point'>18
+      <boule class="game_point">18
       </boule>
-      <boule class='game_point'>20
+      <boule class="game_point">20
       </boule>
-      <boule class='game_point'>26
+      <boule class="game_point">26
       </boule>
-      <boule class='game_point'>37
+      <boule class="game_point">37
       </boule>
-      <boule class='star_small'>11
+      <boule class="star_small">11
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
       <winners>0
       </winners>
       <jackpot>22 323 820 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-10-janvier-2014/' title='Resultat tirage EuroMillions vendredi 10 janvier 2014'>Vendredi 10/01/2014
-      </a>">
-      <boule class='game_point'>1
+    <tirage date="Vendredi 10/01/2014">
+      <boule class="game_point">1
       </boule>
-      <boule class='game_point'>27
+      <boule class="game_point">27
       </boule>
-      <boule class='game_point'>2
+      <boule class="game_point">2
       </boule>
-      <boule class='game_point'>11
+      <boule class="game_point">11
       </boule>
-      <boule class='game_point'>29
+      <boule class="game_point">29
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
-      <boule class='star_small'>1
+      <boule class="star_small">1
       </boule>
       <winners>0
       </winners>
       <jackpot>15 000 000 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-mardi-7-janvier-2014/' title='Resultat tirage EuroMillions mardi 7 janvier 2014'>Mardi 07/01/2014
-      </a>">
-      <boule class='game_point'>2
+    <tirage date="Mardi 07/01/2014">
+      <boule class="game_point">2
       </boule>
-      <boule class='game_point'>45
+      <boule class="game_point">45
       </boule>
-      <boule class='game_point'>20
+      <boule class="game_point">20
       </boule>
-      <boule class='game_point'>27
+      <boule class="game_point">27
       </boule>
-      <boule class='game_point'>33
+      <boule class="game_point">33
       </boule>
-      <boule class='star_small'>6
+      <boule class="star_small">6
       </boule>
-      <boule class='star_small'>10
+      <boule class="star_small">10
       </boule>
       <winners>2
       </winners>
       <jackpot>130 277 772 EUR
       </jackpot>
     </tirage>
-    <tirage date="
-      <a href='http://www.tirage-euromillions.net/euromillions/tirage/resultat-tirage-euromillions-vendredi-3-janvier-2014/' title='Resultat tirage EuroMillions vendredi 3 janvier 2014'>Vendredi 03/01/2014
-      </a>">
-      <boule class='game_point'>3
+    <tirage date="Vendredi 03/01/2014">
+      <boule class="game_point">3
       </boule>
-      <boule class='game_point'>44
+      <boule class="game_point">44
       </boule>
-      <boule class='game_point'>27
+      <boule class="game_point">27
       </boule>
-      <boule class='game_point'>38
+      <boule class="game_point">38
       </boule>
-      <boule class='game_point'>31
+      <boule class="game_point">31
       </boule>
-      <boule class='star_small'>3
+      <boule class="star_small">3
       </boule>
-      <boule class='star_small'>8
+      <boule class="star_small">8
       </boule>
       <winners>0
       </winners>

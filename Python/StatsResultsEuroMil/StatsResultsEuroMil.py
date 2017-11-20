@@ -69,19 +69,38 @@ def main(argv):
 						after_table_content = True
 		
 
-						
-
 		logging.info("Table balise content:" + table_balise_content)
+		
+		
+		# remove <a href="http://www.tirage-euromillions.net/euromillions/tirage/resultats-tirage-euromillions-du-vendredi-17-aout/" title="Resultats tirage Euromillions du ...">
+		inside_href_title = False
+		table_balise_content_without_href_title = ""
+		for i in range(0, len(table_balise_content)):
+			if inside_href_title == False and i < len(table_balise_content) - 6: 
+				if table_balise_content[i] == '<' and table_balise_content[i+1] == 'a' and table_balise_content[i+2] == ' ' and table_balise_content[i+3] == 'h' and table_balise_content[i+4] == 'r' and table_balise_content[i+5] == 'e' and table_balise_content[i+6] == 'f':
+					inside_href_title = True
+						
+			elif inside_href_title == True: 
+				if table_balise_content[i-1] == '>':
+					inside_href_title = False
+		
+			if inside_href_title == False:
+				table_balise_content_without_href_title = table_balise_content_without_href_title + table_balise_content[i]
+			
+					
+		logging.info("Table balise content without_href_title:" + table_balise_content_without_href_title)
+					
 					
 		# Pre treatment on xml file because not valid XML
 		# - <td colspan=10> sans guillement autour du 10
 		# - Suppression accents		
-		table_balise_content_as_xml = table_balise_content.replace('colspan=10', 'colspan="10"')
+		table_balise_content_as_xml = table_balise_content_without_href_title.replace('colspan=10', 'colspan="10"')
 		table_balise_content_as_xml = table_balise_content_as_xml.replace('é', 'e')
 		table_balise_content_as_xml = table_balise_content_as_xml.replace('û', 'u')
 		table_balise_content_as_xml = table_balise_content_as_xml.replace('</th></th>', '</th>')
 		table_balise_content_as_xml = table_balise_content_as_xml.replace('&nbsp;', '')
 		table_balise_content_as_xml = table_balise_content_as_xml.replace("'",'"')
+		table_balise_content_as_xml = table_balise_content_as_xml.replace("</a>","")
 		
 		logging.info("Table balise compliant with XML format:" + table_balise_content_as_xml)
 		
@@ -99,6 +118,10 @@ def main(argv):
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("</jackpot></tr>", "</jackpot></tirage>")
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('<tr><td colspan="10"><strong>', "<mois>")
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("</strong></jackpot></tirage>", "</mois>")
+		
+		
+#		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace(str(annee) + '"><boule class="game_point"', '"><boule1')
+#		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace(str(annee) + '</boule><winners>', '</star2><winners>')
 		
 		logging.info("Table balise compliant with XML format transformed with good fields:" + table_balise_content_as_xml_transformed_good_fields)
 		
