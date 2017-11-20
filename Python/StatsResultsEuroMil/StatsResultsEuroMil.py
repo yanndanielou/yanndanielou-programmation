@@ -89,10 +89,9 @@ def main(argv):
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('<td><div class', '<boule class')
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('</div></td>', '</boule>')
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('<td align="center"', "<winners")
-		#table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("<td align='center'", "<jackpot")
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('</td><td align="right"', "</winners><jackpot")
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("</td></tr>", "</jackpot></tr>")
-		
+
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('<tr><td>', '<tirage date="')
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("</td><boule", '"><boule')
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("<winners><strong>", "<winners>")
@@ -141,8 +140,13 @@ def main(argv):
 		tree = ET.parse(output_file_table_content_name)
 		root_table = tree.getroot()
 	
-		for child in root_table:
-			print ("Tag:" + str(child.tag))
+		for tirage_xml in root_table.findall('tirage'):
+			print ("Tag:" + str(tirage_xml.tag))
+			date_as_text = tirage_xml.get('date')
+			winners = tirage_xml.find('winners').text
+			jackpot = tirage_xml.find('jackpot').text
+			print("Tirage:" + date_as_text + ", jackpot:" + jackpot)
+
 		
 		
 				
