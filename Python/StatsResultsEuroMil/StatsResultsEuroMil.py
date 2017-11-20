@@ -81,15 +81,16 @@ def main(argv):
 		table_balise_content_as_xml = table_balise_content_as_xml.replace('û', 'u')
 		table_balise_content_as_xml = table_balise_content_as_xml.replace('</th></th>', '</th>')
 		table_balise_content_as_xml = table_balise_content_as_xml.replace('&nbsp;', '')
+		table_balise_content_as_xml = table_balise_content_as_xml.replace("'",'"')
 		
 		logging.info("Table balise compliant with XML format:" + table_balise_content_as_xml)
 		
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml.replace('<tr><th>Date du tirage</th><th>N1</th><th>N2</th><th>N3</th><th>N4</th><th>N5</th><th>E1</th><th>E2</th><th>Gagnants</th><th>Jackpot</th></tr>', '')
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('<td><div class', '<boule class')
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('</div></td>', '</boule>')
-		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("<td align='center'", "<winners")
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('<td align="center"', "<winners")
 		#table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("<td align='center'", "<jackpot")
-		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("</td><td align='right'", "</winners><jackpot")
+		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('</td><td align="right"', "</winners><jackpot")
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace("</td></tr>", "</jackpot></tr>")
 		
 		table_balise_content_as_xml_transformed_good_fields = table_balise_content_as_xml_transformed_good_fields.replace('<tr><td>', '<tirage date="')
@@ -137,9 +138,13 @@ def main(argv):
 		output_file_table_content.close()
 		
 		
-		#tree = ET.parse(output_file_table_content_name)
-
-				
+		tree = ET.parse(output_file_table_content_name)
+		root_table = tree.getroot()
+	
+		for child in root_table:
+			print ("Tag:" + str(child.tag))
+		
+		
 				
 		# open input file
 		# logging.info('Opening input file:' + input_file_name_with_results_as_xml)
