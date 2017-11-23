@@ -39,7 +39,7 @@ class Tirage:
 		self.winners = winners
 		self.jackpot = jackpot
 		
-		self.rank = len(Tirage.tirages)
+		self.insertion_rank = len(Tirage.tirages)
 		
 		Tirage.tirages.append(self)
 		
