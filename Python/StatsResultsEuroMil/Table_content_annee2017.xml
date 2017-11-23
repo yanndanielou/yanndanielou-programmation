@@ -2,6 +2,26 @@
   <table class="blue_table" width="100%" id="tiragesAnnee">
     <mois>Novembre 2017
     </mois>
+    <tirage date="Mardi 21/11/2017">
+      <boule class="game_point">31
+      </boule>
+      <boule class="game_point">28
+      </boule>
+      <boule class="game_point">10
+      </boule>
+      <boule class="game_point">2
+      </boule>
+      <boule class="game_point">14
+      </boule>
+      <boule class="star_small">7
+      </boule>
+      <boule class="star_small">5
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>61 046 362 EUR
+      </jackpot>
+    </tirage>
     <tirage date="Vendredi 17/11/2017">
       <boule class="game_point">35
       </boule>
