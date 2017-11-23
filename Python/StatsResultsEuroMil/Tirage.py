@@ -25,7 +25,7 @@ class Tirage:
 			self.month = int(match_date.group("month"))
 			self.year = int(match_date.group("year"))
 			
-			#self._date = datetime.date(self.year, self.month, self.day_of_month)
+			self.date_as_date = date(self.year, self.month, self.day_of_month)
 		
 		
 		self.boule1 = boule1
