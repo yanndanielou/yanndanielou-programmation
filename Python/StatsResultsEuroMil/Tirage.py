@@ -26,6 +26,7 @@ class Tirage:
 			self.year = int(match_date.group("year"))
 			
 			self.date_as_date = date(self.year, self.month, self.day_of_month)
+			self.number_of_days_since_first_january_2000 = (self.date_as_date-date(2000, 1, 1)).days
 		
 		
 		self.boule1 = boule1
