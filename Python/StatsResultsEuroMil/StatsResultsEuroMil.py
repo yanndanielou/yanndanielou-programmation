@@ -18,6 +18,8 @@ import re
 
 import getopt
 
+import csv
+
 
 import xml.etree.ElementTree as ET
 #from lxml import etree
@@ -75,13 +77,18 @@ def main(argv):
 	
 			tirage = Tirage(date_as_text, boule1, boule2, boule3, boule4, boule5, star1, star2, winners, jackpot)				
 				
-			print("Tirage " + str(tirage.rank) + ":" + tirage.date_as_text + ", boules:" + str(tirage.boules) + ", stars:" + str(tirage.stars) + ", jackpot:" + tirage.jackpot)
+			print("Tirage " + str(tirage.insertion_rank) + ":" + tirage.date_as_text + ", boules:" + str(tirage.boules) + ", stars:" + str(tirage.stars) + ", jackpot:" + tirage.jackpot)
 		
 		output_file_content_as_list = list()
 		output_file_content_as_list.append("Tirages:" + Constants.end_line_character_in_text_file)
 		
 		for tirage in Tirage.tirages:
-			output_file_content_as_list.append("Tirage " + str(tirage.rank) + ":" + tirage.date_as_text + ", boules:" + str(tirage.boules) + ", stars:" + str(tirage.stars) + ", jackpot:" + tirage.jackpot + Constants.end_line_character_in_text_file)
+			output_file_content_as_list.append("Tirage " + str(tirage.insertion_rank) + ":" + tirage.date_as_text + ", boules:" + str(tirage.boules) + ", stars:" + str(tirage.stars) + ", jackpot:" + tirage.jackpot + Constants.end_line_character_in_text_file)
+		
+		output_file_content_as_list.append("sorted:")
+		
+		for tirage in Tirage.tirages_sorted_by_date():
+			output_file_content_as_list.append("Tirage " + str(tirage.insertion_rank) + ":" + tirage.date_as_text + ", boules:" + str(tirage.boules) + ", stars:" + str(tirage.stars) + ", jackpot:" + tirage.jackpot + Constants.end_line_character_in_text_file)
 
 		
 		output_file_content =  "".join(output_file_content_as_list)
