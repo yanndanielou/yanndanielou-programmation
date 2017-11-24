@@ -77,33 +77,35 @@ def main(argv):
 	
 			tirage = Tirage(date_as_text, boule1, boule2, boule3, boule4, boule5, star1, star2, winners, jackpot)				
 				
-			print("Tirage " + str(tirage.insertion_rank) + ":" + tirage.date_as_text + ", boules:" + str(tirage.boules) + ", stars:" + str(tirage.stars) + ", jackpot:" + tirage.jackpot)
+			logging.info("Tirage " + str(tirage.insertion_rank) + ":" + tirage.date_as_text + ", boules:" + str(tirage.boules) + ", stars:" + str(tirage.stars) + ", jackpot:" + tirage.jackpot)
 		
-		output_file_content_as_list = list()
-		output_file_content_as_list.append("Tirages:" + Constants.end_line_character_in_text_file)
+		output_file_name = "output_analyzis.csv"
+		output_file = open(output_file_name, "w",newline='')
 		
-		for tirage in Tirage.tirages:
-			output_file_content_as_list.append("Tirage " + str(tirage.insertion_rank) + ":" + tirage.date_as_text + ", boules:" + str(tirage.boules) + ", stars:" + str(tirage.stars) + ", jackpot:" + tirage.jackpot + Constants.end_line_character_in_text_file)
+		output_file_fieldnames = ['date', 'win']
+		for i in range(1,5+1):
+			output_file_fieldnames.append("boule" + str(i))
+		for i in range(1,2+1):
+			output_file_fieldnames.append("star" + str(i))
 		
-		output_file_content_as_list.append("sorted:")
+		output_file_writer = csv.DictWriter(output_file, fieldnames=output_file_fieldnames)
+		
+		output_file_writer.writeheader()
 		
 		for tirage in Tirage.tirages_sorted_by_date():
-			output_file_content_as_list.append("Tirage " + str(tirage.insertion_rank) + ":" + tirage.date_as_text + ", boules:" + str(tirage.boules) + ", stars:" + str(tirage.stars) + ", jackpot:" + tirage.jackpot + Constants.end_line_character_in_text_file)
-
+			dictionnaire = {}
+			dictionnaire["date"] = tirage.date_as_text
+			
+			for i in range(1,5+1):
+				dictionnaire["boule" + str(i)] = tirage.boules[i-1]
+				
+			for i in range(1,2+1):
+				dictionnaire["star" + str(i)] = tirage.stars[i-1]
+			
+			output_file_writer.writerow(dictionnaire)
 		
-		output_file_content =  "".join(output_file_content_as_list)
-
-		output_file_name = "output_analyzis.csv"
-				
-		logging.info('Create output file:' + output_file_name)
-		output_sps_file = open(output_file_name, "w")
-		logging.info('Fill output file:' + output_file_name)
-		output_sps_file.write(output_file_content)
-		logging.info('Close output file:' + output_file_name)
-		output_sps_file.close()
-				
-
-	
+		output_file.close()
+			
 	
 if __name__ == "__main__":
    main(sys.argv[1:])
