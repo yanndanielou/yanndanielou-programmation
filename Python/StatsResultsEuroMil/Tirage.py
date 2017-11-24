@@ -2,11 +2,18 @@
 import re
 import getopt
 
+import operator
+from operator import attrgetter
+
 from datetime import date, time, datetime
 
 class Tirage:
 	"""Classe définissant un tirage"""
 	tirages = list()
+	
+	@staticmethod
+	def tirages_sorted_by_date():
+		return sorted(Tirage.tirages, key=attrgetter("date_as_date"))
 	
 	def __init__(self, date_as_text, boule1, boule2, boule3, boule4, boule5, star1, star2, winners, jackpot):
 		"""Constructeur de notre classe"""
@@ -26,7 +33,7 @@ class Tirage:
 			self.year = int(match_date.group("year"))
 			
 			self.date_as_date = date(self.year, self.month, self.day_of_month)
-			self.number_of_days_since_first_january_2000 = (self.date_as_date-date(2000, 1, 1)).days
+			#self.number_of_days_since_first_january_2000 = (self.date_as_date-date(2000, 1, 1)).days
 		
 		
 		self.boule1 = boule1
