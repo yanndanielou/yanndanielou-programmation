@@ -36,6 +36,19 @@ class Tirage:
 		self.boule5 = boule5
 		self.star1 = star1
 		self.star2 = star2
+		
+		self.boules = list()
+		self.stars = list()
+		
+		self.boules.append(boule1)
+		self.boules.append(boule2)
+		self.boules.append(boule3)
+		self.boules.append(boule4)
+		self.boules.append(boule5)
+		
+		self.stars.append(star1)
+		self.stars.append(star2)
+		
 		self.winners = winners
 		self.jackpot = jackpot
 		
