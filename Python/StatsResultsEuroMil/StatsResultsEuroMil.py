@@ -29,7 +29,7 @@ def bouleMaxValue():
 	return 50
 	
 def starMaxValue():
-	return 9
+	return 12
 	
 def numberOfStars():
 	return 2
@@ -134,12 +134,12 @@ def main(argv):
 			dictionnaire["no_tirage"] = tirages_sorted_by_date.index(tirage)+1
 			
 			for i in range(1,numberOfBoules()+1):
-				dictionnaire["boule" + str(i)] = tirage.boules[i-1]
-				
+				dictionnaire["boule" + str(i)] = tirage.boules[i-1]				
 				counter_by_boule[tirage.boules[i-1]] = counter_by_boule[tirage.boules[i-1]] + 1
 				
 			for i in range(1,numberOfStars()+1):
 				dictionnaire["star" + str(i)] = tirage.stars[i-1]
+				counter_by_star[tirage.stars[i-1]] = counter_by_star[tirage.stars[i-1]] + 1
 				
 			for i in range(1,bouleMaxValue()+1):
 				dictionnaire["counter_boule_" + str(i)] = counter_by_boule[i]
