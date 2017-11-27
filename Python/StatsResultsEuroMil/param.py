@@ -7,3 +7,15 @@ import logging
 
 logger_level = logging.INFO
 
+# constants
+def bouleMaxValue():
+	return 50
+	
+def starMaxValue():
+	return 12
+	
+def numberOfStars():
+	return 2
+	
+def numberOfBoules():
+	return 5

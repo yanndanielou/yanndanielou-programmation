@@ -9,6 +9,7 @@ import urllib.request
 import Tirage
 from Tirage import *
 import param
+from param import *
 import Constants
 
 import os
@@ -24,19 +25,7 @@ import csv
 import xml.etree.ElementTree as ET
 #from lxml import etree
 
-# constants
-def bouleMaxValue():
-	return 50
-	
-def starMaxValue():
-	return 12
-	
-def numberOfStars():
-	return 2
-	
-def numberOfBoules():
-	return 5
-	
+
 def configureLogger():
 	logger_directory = "logs"
 	
