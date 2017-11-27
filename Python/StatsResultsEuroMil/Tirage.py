@@ -28,8 +28,12 @@ class Tirage:
 			print("No match for line " + date_as_text + " with pattern " + pattern_date_as_text_as_string)
 		else:
 			self.weekday = match_date.group("weekday")
-			self.day_of_month = int(match_date.group("day_of_month"))
+			self.day_of_month = int(match_date.group("day_of_month"))			
+			self.day_of_month_two_digits = match_date.group("day_of_month")
+			
 			self.month = int(match_date.group("month"))
+			self.month_two_digits = match_date.group("month")
+			
 			self.year = int(match_date.group("year"))
 			
 			self.date_as_date = date(self.year, self.month, self.day_of_month)
