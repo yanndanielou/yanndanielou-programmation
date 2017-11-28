@@ -15,7 +15,7 @@ class Tirage:
 	def tirages_sorted_by_date():
 		return sorted(Tirage.tirages, key=attrgetter("date_as_date"))
 	
-	def __init__(self, date_as_text, boule1, boule2, boule3, boule4, boule5, star1, star2, winners, jackpot):
+	def __init__(self, date_as_text, boules, stars, winners, jackpot):
 		"""Constructeur de notre classe"""
 		
 		#Mardi 21/11/2017		
@@ -39,26 +39,13 @@ class Tirage:
 			self.date_as_date = date(self.year, self.month, self.day_of_month)
 			#self.number_of_days_since_first_january_2000 = (self.date_as_date-date(2000, 1, 1)).days
 		
-		
-		self.boule1 = boule1
-		self.boule2 = boule2
-		self.boule3 = boule3
-		self.boule4 = boule4
-		self.boule5 = boule5
-		self.star1 = star1
-		self.star2 = star2
-		
 		self.boules = list()
 		self.stars = list()
 		
-		self.boules.append(boule1)
-		self.boules.append(boule2)
-		self.boules.append(boule3)
-		self.boules.append(boule4)
-		self.boules.append(boule5)
+		self.boules = boules
 		
-		self.stars.append(star1)
-		self.stars.append(star2)
+		
+		self.stars = stars
 		
 		self.winners = winners
 		self.jackpot = jackpot
