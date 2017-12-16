@@ -67,18 +67,19 @@ def main(argv):
 			winners = tirage_xml.find('winners').text
 			jackpot = tirage_xml.find('jackpot').text
 			
-			boules_xml = tirage_xml.findall('boule')			
-			boule1 = int(boules_xml[0].text)
-			boule2 = int(boules_xml[1].text)
-			boule3 = int(boules_xml[2].text)
-			boule4 = int(boules_xml[3].text)
-			boule5 = int(boules_xml[4].text)
-			star1 = int(boules_xml[5].text)
-			star2 = int(boules_xml[6].text)
-	
-			tirage = Tirage(date_as_text, boule1, boule2, boule3, boule4, boule5, star1, star2, winners, jackpot)				
+			boules_xml = tirage_xml.findall('boule')	
+
+			boules = list()
+			stars = list()
 				
-		
+			for i in range (0, numberOfBoules()):
+				boules.append(int(boules_xml[i].text))
+				
+			for i in range (numberOfBoules(), numberOfBoules() + numberOfStars()):
+				stars.append(int(boules_xml[i].text))
+	
+			tirage = Tirage(date_as_text, boules, stars, winners, jackpot)				
+				
 		output_file_name = "output_analyzis.csv"
 		output_file = open(output_file_name, "w",newline='')
 		
