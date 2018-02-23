@@ -1,0 +1,327 @@
+
+  <table class="blue_table" width="100%" id="tiragesAnnee">
+    <mois>Fevrier 2018
+    </mois>
+    <tirage date="Vendredi 23/02/2018">
+      <boule class="game_point">
+      </boule>
+      <boule class="game_point">
+      </boule>
+      <boule class="game_point">
+      </boule>
+      <boule class="game_point">
+      </boule>
+      <boule class="game_point">
+      </boule>
+      <boule class="star_small">
+      </boule>
+      <boule class="star_small">
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Mardi 20/02/2018">
+      <boule class="game_point">6
+      </boule>
+      <boule class="game_point">14
+      </boule>
+      <boule class="game_point">19
+      </boule>
+      <boule class="game_point">25
+      </boule>
+      <boule class="game_point">29
+      </boule>
+      <boule class="star_small">5
+      </boule>
+      <boule class="star_small">11
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>161 121 640 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 16/02/2018">
+      <boule class="game_point">10
+      </boule>
+      <boule class="game_point">12
+      </boule>
+      <boule class="game_point">23
+      </boule>
+      <boule class="game_point">32
+      </boule>
+      <boule class="game_point">50
+      </boule>
+      <boule class="star_small">4
+      </boule>
+      <boule class="star_small">10
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>150 559 073 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Mardi 13/02/2018">
+      <boule class="game_point">10
+      </boule>
+      <boule class="game_point">13
+      </boule>
+      <boule class="game_point">17
+      </boule>
+      <boule class="game_point">21
+      </boule>
+      <boule class="game_point">44
+      </boule>
+      <boule class="star_small">1
+      </boule>
+      <boule class="star_small">10
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>138 421 493 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 09/02/2018">
+      <boule class="game_point">22
+      </boule>
+      <boule class="game_point">31
+      </boule>
+      <boule class="game_point">36
+      </boule>
+      <boule class="game_point">38
+      </boule>
+      <boule class="game_point">44
+      </boule>
+      <boule class="star_small">1
+      </boule>
+      <boule class="star_small">11
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>129 291 731 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Mardi 06/02/2018">
+      <boule class="game_point">8
+      </boule>
+      <boule class="game_point">17
+      </boule>
+      <boule class="game_point">28
+      </boule>
+      <boule class="game_point">34
+      </boule>
+      <boule class="game_point">38
+      </boule>
+      <boule class="star_small">6
+      </boule>
+      <boule class="star_small">12
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>117 593 590 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 02/02/2018">
+      <boule class="game_point">14
+      </boule>
+      <boule class="game_point">34
+      </boule>
+      <boule class="game_point">36
+      </boule>
+      <boule class="game_point">39
+      </boule>
+      <boule class="game_point">48
+      </boule>
+      <boule class="star_small">2
+      </boule>
+      <boule class="star_small">3
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>108 738 581 EUR
+      </jackpot>
+    </tirage>
+    <mois>Janvier 2018
+    </mois>
+    <tirage date="Mardi 30/01/2018">
+      <boule class="game_point">11
+      </boule>
+      <boule class="game_point">15
+      </boule>
+      <boule class="game_point">21
+      </boule>
+      <boule class="game_point">27
+      </boule>
+      <boule class="game_point">35
+      </boule>
+      <boule class="star_small">4
+      </boule>
+      <boule class="star_small">5
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 26/01/2018">
+      <boule class="game_point">6
+      </boule>
+      <boule class="game_point">15
+      </boule>
+      <boule class="game_point">24
+      </boule>
+      <boule class="game_point">28
+      </boule>
+      <boule class="game_point">48
+      </boule>
+      <boule class="star_small">4
+      </boule>
+      <boule class="star_small">9
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Mardi 23/01/2018">
+      <boule class="game_point">5
+      </boule>
+      <boule class="game_point">8
+      </boule>
+      <boule class="game_point">9
+      </boule>
+      <boule class="game_point">23
+      </boule>
+      <boule class="game_point">24
+      </boule>
+      <boule class="star_small">7
+      </boule>
+      <boule class="star_small">8
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 19/01/2018">
+      <boule class="game_point">3
+      </boule>
+      <boule class="game_point">8
+      </boule>
+      <boule class="game_point">17
+      </boule>
+      <boule class="game_point">44
+      </boule>
+      <boule class="game_point">50
+      </boule>
+      <boule class="star_small">2
+      </boule>
+      <boule class="star_small">7
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Mardi 16/01/2018">
+      <boule class="game_point">20
+      </boule>
+      <boule class="game_point">23
+      </boule>
+      <boule class="game_point">31
+      </boule>
+      <boule class="game_point">34
+      </boule>
+      <boule class="game_point">46
+      </boule>
+      <boule class="star_small">3
+      </boule>
+      <boule class="star_small">12
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>0 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 12/01/2018">
+      <boule class="game_point">13
+      </boule>
+      <boule class="game_point">21
+      </boule>
+      <boule class="game_point">23
+      </boule>
+      <boule class="game_point">30
+      </boule>
+      <boule class="game_point">45
+      </boule>
+      <boule class="star_small">4
+      </boule>
+      <boule class="star_small">6
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>51 154 443 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Mardi 09/01/2018">
+      <boule class="game_point">6
+      </boule>
+      <boule class="game_point">12
+      </boule>
+      <boule class="game_point">15
+      </boule>
+      <boule class="game_point">38
+      </boule>
+      <boule class="game_point">49
+      </boule>
+      <boule class="star_small">2
+      </boule>
+      <boule class="star_small">9
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>37 933 940 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 05/01/2018">
+      <boule class="game_point">2
+      </boule>
+      <boule class="game_point">5
+      </boule>
+      <boule class="game_point">20
+      </boule>
+      <boule class="game_point">38
+      </boule>
+      <boule class="game_point">41
+      </boule>
+      <boule class="star_small">4
+      </boule>
+      <boule class="star_small">8
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>28 911 186 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Mardi 02/01/2018">
+      <boule class="game_point">10
+      </boule>
+      <boule class="game_point">20
+      </boule>
+      <boule class="game_point">21
+      </boule>
+      <boule class="game_point">28
+      </boule>
+      <boule class="game_point">48
+      </boule>
+      <boule class="star_small">1
+      </boule>
+      <boule class="star_small">8
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+  </table>

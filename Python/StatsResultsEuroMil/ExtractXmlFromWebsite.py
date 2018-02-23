@@ -51,7 +51,7 @@ def main(argv):
 	
 	logging.info('Start application')
 		
-	for annee in range(2004, 2017+1):
+	for annee in range(2004, 2018+1):
 
 		website_content = urllib.request.urlopen("http://www.tirage-euromillions.net/euromillions/annees/annee-" + str(annee) + "/").read().decode("utf-8")
 				
