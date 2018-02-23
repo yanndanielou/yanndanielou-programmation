@@ -2,6 +2,86 @@
   <table class="blue_table" width="100%" id="tiragesAnnee">
     <mois>Decembre 2017
     </mois>
+    <tirage date="Vendredi 29/12/2017">
+      <boule class="game_point">4
+      </boule>
+      <boule class="game_point">8
+      </boule>
+      <boule class="game_point">22
+      </boule>
+      <boule class="game_point">23
+      </boule>
+      <boule class="game_point">48
+      </boule>
+      <boule class="star_small">1
+      </boule>
+      <boule class="star_small">12
+      </boule>
+      <winners>1
+      </winners>
+      <jackpot>38 906 715 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Mardi 26/12/2017">
+      <boule class="game_point">4
+      </boule>
+      <boule class="game_point">17
+      </boule>
+      <boule class="game_point">30
+      </boule>
+      <boule class="game_point">43
+      </boule>
+      <boule class="game_point">44
+      </boule>
+      <boule class="star_small">2
+      </boule>
+      <boule class="star_small">10
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>24 717 288 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Vendredi 22/12/2017">
+      <boule class="game_point">5
+      </boule>
+      <boule class="game_point">24
+      </boule>
+      <boule class="game_point">30
+      </boule>
+      <boule class="game_point">31
+      </boule>
+      <boule class="game_point">43
+      </boule>
+      <boule class="star_small">3
+      </boule>
+      <boule class="star_small">6
+      </boule>
+      <winners>0
+      </winners>
+      <jackpot>17 000 000 EUR
+      </jackpot>
+    </tirage>
+    <tirage date="Mardi 19/12/2017">
+      <boule class="game_point">8
+      </boule>
+      <boule class="game_point">15
+      </boule>
+      <boule class="game_point">30
+      </boule>
+      <boule class="game_point">38
+      </boule>
+      <boule class="game_point">46
+      </boule>
+      <boule class="star_small">4
+      </boule>
+      <boule class="star_small">7
+      </boule>
+      <winners>1
+      </winners>
+      <jackpot>135 346 147 EUR
+      </jackpot>
+    </tirage>
     <tirage date="Vendredi 15/12/2017">
       <boule class="game_point">25
       </boule>

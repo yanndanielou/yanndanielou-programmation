@@ -26,3 +26,5 @@ Python/ModifyCoordinatesInIlv/PathLineTracking_updated.ilv
 *.pyc
 Python/StatsResultsEuroMil/StatsResultsEuroMil - Copy.py
 Python/StatsResultsEuroMil/start.bat
+Python/StatsResultsEuroMil/output_analyzis.csv
+Python/StatsResultsEuroMil/output_analyzis1.csv
