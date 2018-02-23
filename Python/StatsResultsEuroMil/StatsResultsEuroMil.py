@@ -54,7 +54,7 @@ def main(argv):
 	
 	logging.info('Start application')
 		
-	for annee in range(2004, 2017+1):
+	for annee in range(2004, 2018+1):
 
 		output_file_table_content_name = "Table_content_annee" + str(annee) + ".xml"		
 		
@@ -97,6 +97,8 @@ def main(argv):
 		for i in range(1,starMaxValue()+1):
 			output_file_fieldnames.append("counter_star_" + str(i))
 			output_file_fieldnames.append("ratio_star_" + str(i))
+			output_file_fieldnames.append("presence_in_tirage_count_star_" + str(i))
+			output_file_fieldnames.append("ratio_per_presence_in_tirage_star_" + str(i))
 			
 		output_file_writer = csv.DictWriter(output_file, fieldnames=output_file_fieldnames, delimiter='|')
 		
@@ -117,11 +119,14 @@ def main(argv):
 			logging.info("Tirage " + str(tirage.insertion_rank) + ":" + tirage.date_as_text + ", boules:" + str(tirage.boules) + ", stars:" + str(tirage.stars) + ", jackpot:" + tirage.jackpot)
 		
 			dictionnaire = {}
+			
+			no_tirage = tirages_sorted_by_date.index(tirage)+1
+			
 			#%Y-%m-%d 
 			dictionnaire["date_tir"] = str(tirage.year) + "-" + str(tirage.month_two_digits) + "-" + str(tirage.day_of_month_two_digits)
 			dictionnaire["boules"] = tirage.boules
 			dictionnaire["stars"] = tirage.stars
-			dictionnaire["no_tirage"] = tirages_sorted_by_date.index(tirage)+1
+			dictionnaire["no_tirage"] = no_tirage
 			
 			for i in range(1,numberOfBoules()+1):
 				dictionnaire["boule" + str(i)] = tirage.boules[i-1]				
@@ -133,12 +138,22 @@ def main(argv):
 				
 			for i in range(1,bouleMaxValue()+1):
 				dictionnaire["counter_boule_" + str(i)] = counter_by_boule[i]
-				dictionnaire["ratio_boule_" + str(i)] = format(counter_by_boule[i] / (tirages_sorted_by_date.index(tirage)+1)*100, '.3f')
+				dictionnaire["ratio_boule_" + str(i)] = format(counter_by_boule[i] / (no_tirage)*100, '.3f')
 				
 			for i in range(1,starMaxValue()+1):
 				dictionnaire["counter_star_" + str(i)] = counter_by_star[i]
-				dictionnaire["ratio_star_" + str(i)] = format(counter_by_star[i] / (tirages_sorted_by_date.index(tirage)+1)*100, '.3f')
-			
+				dictionnaire["ratio_star_" + str(i)] = format(counter_by_star[i] / (no_tirage)*100, '.3f')
+				stars_introduction_tirage_number = param.star_introduction_tirage_number()
+				star_introduction_tirage_number = stars_introduction_tirage_number[i-1]
+				
+				if no_tirage >= star_introduction_tirage_number:
+					presence_in_tirage_count_star = no_tirage - star_introduction_tirage_number	+ 1			
+					dictionnaire["presence_in_tirage_count_star_" + str(i)] = presence_in_tirage_count_star
+					dictionnaire["ratio_per_presence_in_tirage_star_" + str(i)] = format(counter_by_star[i] / (presence_in_tirage_count_star)*100, '.3f')
+				else:
+					dictionnaire["presence_in_tirage_count_star_" + str(i)] = 0
+					dictionnaire["ratio_per_presence_in_tirage_star_" + str(i)] = 0
+					
 			output_file_writer.writerow(dictionnaire)
 		
 		output_file.close()
