@@ -1,3 +1,4 @@
+*.classs
 *.fdt
 *.frq
 *.gen
@@ -15,18 +16,4 @@ Java/eclipse-workspace/.metadata/.plugins/org.eclipse.core.resources/.history/c7
 *.fdx
 *.js
 *.json
-Java/sousTitres/out.srt
-Python/ModifyCoordinatesInIlv/Example_ilv.ilv
-Python/ModifyCoordinatesInIlv/AAA.ilv
-Python/ModifyCoordinatesInIlv/AAA_out.ilv
-Python/ModifyCoordinatesInIlv/PathLineTracking.ilv
-Python/ModifyCoordinatesInIlv/Test.bat
-Python/ModifyCoordinatesInIlv/PathLineTracking_updated.ilv
-Python/ModifyCoordinatesInIlv/PathLineTracking_updated.ilv
 *.pyc
-Python/StatsResultsEuroMil/StatsResultsEuroMil - Copy.py
-Python/StatsResultsEuroMil/start.bat
-Python/StatsResultsEuroMil/output_analyzis.csv
-Python/StatsResultsEuroMil/output_analyzis1.csv
-Python/StatsResultsEuroMil/output_analyzis - Copy (2).csv
-Python/StatsResultsEuroMil/output_analyzis - Copy.csv
