@@ -13,8 +13,7 @@ class Film:
 	
 	@staticmethod
 	def films_sorted_by_title():
-		return Film.films
-		#return sorted(Film.films, key=attrgetter("title"))
+		return sorted(Film.films, key=attrgetter("title"))
 	
 	def __init__(self, title, title2, lien, poids, seed_ok_up, down):
 		"""Constructeur de notre classe"""

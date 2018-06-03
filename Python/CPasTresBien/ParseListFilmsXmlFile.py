@@ -63,12 +63,12 @@ def main(argv):
 		logging.info('page')
 		for tirage_xml in pages.findall('Film'):
 			logging.info('Film')
-			lien = tirage_xml.get('lien')
-			title2 = tirage_xml.get('title2')
-			title = tirage_xml.find('title')
-			poids = tirage_xml.find('poids').text.replace('\n', '')
-			seed_ok_up = tirage_xml.find('seed_ok_up').text.replace('\n', '')
-			down = tirage_xml.find('down').text.replace('\n', '')
+			lien = tirage_xml.get('lien').strip()
+			title2 = tirage_xml.get('title2').strip()
+			title = tirage_xml.get('title').strip()
+			poids = tirage_xml.find('poids').text.replace('\n', '').strip()
+			seed_ok_up = tirage_xml.find('seed_ok_up').text.replace('\n', '').strip()
+			down = tirage_xml.find('down').text.replace('\n', '').strip()
 
 			film = Film(title, title2, lien, poids, seed_ok_up, down)				
 			
