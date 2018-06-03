@@ -20,16 +20,28 @@ class Film:
 				
 		self.title_in_windows_format = title.replace("(","")
 		self.title_in_windows_format = self.title_in_windows_format.replace(")","")
+		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xb1","n")
+		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xa7","c")
+		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xb6","o")
+		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xb2","o")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xb4","o")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xa2","a")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xaf","i")
+		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xae","i")
+		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc5\\x92","oe")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xbb","u")
+		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xbc","u") #û
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\'"," ")
 		self.title_in_windows_format = self.title_in_windows_format.replace("'"," ")
 		self.title_in_windows_format = self.title_in_windows_format.replace("?","")
 		self.title_in_windows_format = self.title_in_windows_format.replace("/","")
+		self.title_in_windows_format = self.title_in_windows_format.replace("\\xe2\\x80\\x99"," ")
+		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xaa","e")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xa8","e")
+		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xab","e")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xa0","a")
+		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xaa","e") #ê
+		self.title_in_windows_format = self.title_in_windows_format.replace("\xc3\\xaa","e")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xa9","e")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xa9","e")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\x8a","E")
@@ -43,6 +55,7 @@ class Film:
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc2","A")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3","e")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\exa8","e")
+		self.title_in_windows_format = self.title_in_windows_format.replace("\\xb3","p")
 
 
 
