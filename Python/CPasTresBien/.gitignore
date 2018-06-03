@@ -1,2 +1,8 @@
 List_films*.temp.xml
 *.torrent
+*.xml
+*.csv
+torrents
+torrents_
+torrents\
+torrents_\
