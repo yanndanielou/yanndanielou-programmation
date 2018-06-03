@@ -18,7 +18,7 @@ class Film:
 	def __init__(self, title, title2, lien, poids, seed_ok_up, down):
 		"""Constructeur de notre classe"""
 				
-		self.title_in_windows_format = title.replace("\\","").replace("(","").replace(")","").replace("'","").replace("?","").replace("/","")
+		self.title_in_windows_format = title.replace("(","").replace(")","").replace("'"," ").replace("?","").replace("/","").replace("\\xc3","e").replace("\\exa8","e").replace("\\","")
 		self.title = title
 		self.title2 = title2
 		self.lien = lien
