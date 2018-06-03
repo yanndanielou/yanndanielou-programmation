@@ -21,7 +21,7 @@ class Film:
 		self.title = title
 		self.title2 = title2
 		self.lien = lien
-		self.full_link = "http://www.cpasbiens.cc/"+ film.lien
+		self.full_link = "http://www.cpasbiens.cc/"+ lien
 		self.poids = poids
 		self.seed_ok_up = seed_ok_up
 		self.down = down
