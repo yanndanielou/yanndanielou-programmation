@@ -92,7 +92,7 @@ def main(argv):
 		dictionnaire["title"] = film.title
 		dictionnaire["title2"] = film.title2
 		dictionnaire["lien"] = film.lien
-		dictionnaire["full_link"] = "http://www.cpasbiens.cc/"+ film.lien
+		dictionnaire["full_link"] = film.full_link
 		dictionnaire["poids"] = film.poids
 		dictionnaire["seed_ok_up"] = film.seed_ok_up
 		dictionnaire["down"] = film.down
