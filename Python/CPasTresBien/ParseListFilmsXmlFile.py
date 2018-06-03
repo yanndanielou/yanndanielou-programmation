@@ -61,14 +61,14 @@ def main(argv):
 	
 	for pages in root_table.findall('Page'):
 		logging.info('page')
-		for tirage_xml in pages.findall('Film'):
+		for film_xml in pages.findall('Film'):
 			logging.info('Film')
-			lien = tirage_xml.get('lien').strip()
-			title2 = tirage_xml.get('title2').strip()
-			title = tirage_xml.get('title').strip()
-			poids = tirage_xml.find('poids').text.replace('\n', '').strip()
-			seed_ok_up = tirage_xml.find('seed_ok_up').text.replace('\n', '').strip()
-			down = tirage_xml.find('down').text.replace('\n', '').strip()
+			lien = film_xml.get('lien').strip()
+			title2 = film_xml.get('title2').strip()
+			title = film_xml.get('title').strip()
+			poids = film_xml.find('poids').text.replace('\n', '').strip()
+			seed_ok_up = film_xml.find('seed_ok_up').text.replace('\n', '').strip()
+			down = film_xml.find('down').text.replace('\n', '').strip()
 
 			film = Film(title, title2, lien, poids, seed_ok_up, down)				
 			
