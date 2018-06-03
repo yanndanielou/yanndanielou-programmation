@@ -75,7 +75,7 @@ def main(argv):
 	output_csv_file_name = "films.csv"
 	output_csv_file = open(output_csv_file_name, "w",newline='')
 	
-	output_file_fieldnames = ['title', 'title2', 'lien', 'full_link', 'poids', 'seed_ok_up', 'down']
+	output_file_fieldnames = ['Torrent file', 'title', 'title2', 'lien', 'full_link', 'poids', 'seed_ok_up', 'down']
 
 		
 	output_file_writer = csv.DictWriter(output_csv_file, fieldnames=output_file_fieldnames, delimiter=';')
@@ -89,6 +89,7 @@ def main(argv):
 		dictionnaire = {}
 		
 		# 
+		dictionnaire["Torrent file"] = film.title_in_windows_format
 		dictionnaire["title"] = film.title
 		dictionnaire["title2"] = film.title2
 		dictionnaire["lien"] = film.lien
