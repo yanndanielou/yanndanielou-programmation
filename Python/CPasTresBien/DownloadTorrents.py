@@ -57,6 +57,15 @@ def main(argv):
 	logging.info('Start application')
 	
 	List_films_xml_file_name = "List_films_as_xml.xml"		
+
+	torrents_directory = 'torrents'
+
+	try:
+		# Create target Directory
+		os.mkdir(torrents_directory)
+		logging.info("Directory " + torrents_directory +  " Created ") 
+	except FileExistsError:
+		logging.info("Directory " + torrents_directory +  " already exists, no need to create")
 	
 	tree = ET.parse(List_films_xml_file_name)
 	root_table = tree.getroot()
@@ -106,7 +115,8 @@ def main(argv):
 			full_torrent_link = "http://www.cpasbiens.cc" + torrent_link_group
 			logging.info('Torrent full link: '+ full_torrent_link)
 			
-			urlretrieve(full_torrent_link, 'torrents\\' + film.title_in_windows_format + '.torrent')
+			urlretrieve(full_torrent_link, torrents_directory + '\\' + film.title_in_windows_format + '.torrent')
+			logging.info('Dowload finished')
 			
 		else:
 			logging.info("No match, pattern:" + torrent_link_group_pattern_as_string + " with text" + website_content_with_pre_treatment)
