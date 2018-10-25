@@ -56,7 +56,7 @@ def main(argv):
 	
 	logging.info('Start application')
 	
-	List_films_xml_file_name = "List_films.xml"		
+	List_films_xml_file_name = "List_films_as_xml.xml"		
 	
 	tree = ET.parse(List_films_xml_file_name)
 	root_table = tree.getroot()

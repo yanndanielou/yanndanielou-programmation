@@ -165,7 +165,7 @@ def main(argv):
 		temp_file.close()	
 
 
-	output_file_name = "List_films.xml"
+	output_file_name = "List_films_as_xml.xml"
 	logging.info('Create output file:' + output_file_name)
 	output_file = open(output_file_name, "w")
 	logging.info('Fill output file:' + output_file_name)
