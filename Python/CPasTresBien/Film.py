@@ -40,6 +40,7 @@ class Film:
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xa8","e")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xab","e")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xa0","a")
+		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\x8e","I") #Î
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xaa","e") #ê
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xb8","o") # ø
 		self.title_in_windows_format = self.title_in_windows_format.replace("\xc3\\xaa","e")
