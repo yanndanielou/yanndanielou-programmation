@@ -72,7 +72,7 @@ def main(argv):
 
 			film = Film(title, title2, lien, poids, seed_ok_up, down)				
 			
-	output_csv_file_name = "films.csv"
+	output_csv_file_name = "films_as_csv.csv"
 	output_csv_file = open(output_csv_file_name, "w",newline='')
 	
 	output_file_fieldnames = ['Torrent file', 'title', 'title2', 'lien', 'full_link', 'poids', 'seed_ok_up', 'down']

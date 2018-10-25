@@ -88,6 +88,10 @@ def main(argv):
 						after_table_content = True
 
 		logging.info("Table balise content:" + table_balise_content)
+		
+		if not table_balise_content:
+			logging.info("Page:" + site_address + " is empty. Stop parsing website since there is no more movie")
+			break
 
 		
 		# Pre treatment on xml file because not valid XML
