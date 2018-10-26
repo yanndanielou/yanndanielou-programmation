@@ -131,6 +131,9 @@ def main(argv):
 		else:
 			logging.info("No match, pattern:" + torrent_link_group_pattern_as_string + " with text" + website_content_with_pre_treatment)
 
+			
+	logging.info("All torrents downloaded. Time spend int url open:" + str(time_elapsed_cumulated_in_url_open) + ", time spent on torrent download:" + str(time_elapsed_cumulated_in_torrents_download))
+	time_elapsed_cumulated_in_url_open
 	
 	
 if __name__ == "__main__":
