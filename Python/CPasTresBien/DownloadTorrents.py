@@ -22,7 +22,7 @@ import sys
 import re
 
 import getopt
-
+import time
 
 import xml.etree.ElementTree as ET
 #from lxml import etree
@@ -71,9 +71,8 @@ def main(argv):
 	root_table = tree.getroot()
 	
 	for pages in root_table.findall('Page'):
-		logging.info('page')
+		logging.debug('page')
 		for film_xml in pages.findall('Film'):
-			logging.info('Film')
 			lien = film_xml.get('lien').strip()
 			title2 = film_xml.get('title2').strip()
 			title = film_xml.get('title').strip()
@@ -81,6 +80,7 @@ def main(argv):
 			seed_ok_up = film_xml.find('seed_ok_up').text.replace('\n', '').strip()
 			down = film_xml.find('down').text.replace('\n', '').strip()
 
+			logging.info('Create film: ' + title)
 			film = Film(title, title2, lien, poids, seed_ok_up, down)
 			
 			
@@ -90,11 +90,18 @@ def main(argv):
 				
 	films_sorted_by_title = Film.films_sorted_by_title()	
 	
+	time_elapsed_cumulated_in_torrents_download = 0
+	
+	time_elapsed_cumulated_in_url_open = 0
+	
 	for film in films_sorted_by_title:
 			
 		logging.info('Open: '+ film.full_link)
+		time_before_url_open = time.time()
 		req = Request(film.full_link, headers={'User-Agent': 'Mozilla/5.0'})
 		website_content = urlopen(req).read()
+		time_elapsed_url_open_for_this_torrent = time.time() - time_before_url_open
+		time_elapsed_cumulated_in_url_open = time_elapsed_cumulated_in_url_open + time_elapsed_url_open_for_this_torrent
 		website_content_text = str(website_content)
 			
 		logging.info("Webpage content " + str(len(website_content_text)) )
@@ -115,8 +122,11 @@ def main(argv):
 			full_torrent_link = "http://www.cpasbiens.cc" + torrent_link_group
 			logging.info('Torrent full link: '+ full_torrent_link)
 			
+			time_before_torrent_download = time.time()
 			urlretrieve(full_torrent_link, torrents_directory + '\\' + film.title_in_windows_format + '.torrent')
-			logging.info('Dowload finished')
+			time_elapsed_for_this_torrent = time.time() - time_before_torrent_download
+			time_elapsed_cumulated_in_torrents_download = time_elapsed_cumulated_in_torrents_download + time_elapsed_for_this_torrent
+			logging.info('Dowload finished in ' + str(time_elapsed_for_this_torrent) + ' , cumulated time:' + str(time_elapsed_cumulated_in_torrents_download))
 			
 		else:
 			logging.info("No match, pattern:" + torrent_link_group_pattern_as_string + " with text" + website_content_with_pre_treatment)
