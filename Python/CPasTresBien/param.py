@@ -14,3 +14,5 @@ site_address_prefix = 'https://www.cpasbiens.co/torrents_films.html,page-'
 
 # for cpasbiens.cc: 50
 page_range = 1
+
+sleep_in_second_between_two_requests_to_avoid_ban_from_website = 10

@@ -15,6 +15,8 @@ import sys
 
 import re
 
+import time
+
 import getopt
 
 
@@ -59,14 +61,18 @@ def main(argv):
 		req = Request(site_address, headers={'User-Agent': 'Mozilla/5.0'})
 		
 		timeout_in_s = 60
+
+		website_content_text = ""
+		
 		try:
 			url_open = urlopen(req, data=None, timeout = timeout_in_s)
+			website_content = url_open.read()
+			website_content_text = str(website_content)
 		except urllib.error.URLError as e:
 			print(e.reason)
 		except socket.timeout as e:
 			logging.info('Socket timeout')
 		
-		website_content_text = str(website_content)
 			
 		logging.info("Webpage content " + str(len(website_content_text)) )
 		logging.info(website_content_text)
@@ -171,6 +177,12 @@ def main(argv):
 		temp_file.write(temp_file_content)
 		logging.info('Close tmp file:' + temp_file_name)
 		temp_file.close()	
+		
+		sleep_in_second_between_two_requests_to_avoid_ban_from_website = param.sleep_in_second_between_two_requests_to_avoid_ban_from_website
+		if sleep_in_second_between_two_requests_to_avoid_ban_from_website > 0 :
+			logging.info("Going to sleep during:" + str(sleep_in_second_between_two_requests_to_avoid_ban_from_website) + " seconds")
+			time.sleep(sleep_in_second_between_two_requests_to_avoid_ban_from_website)
+			logging.debug("End of sleep")
 
 
 	output_file_name = "List_films_as_xml.xml"
