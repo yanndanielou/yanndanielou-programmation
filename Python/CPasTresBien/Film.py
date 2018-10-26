@@ -20,6 +20,7 @@ class Film:
 				
 		self.title_in_windows_format = title.replace("(","")
 		self.title_in_windows_format = self.title_in_windows_format.replace(")","")
+		self.title_in_windows_format = self.title_in_windows_format.replace(":","_")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xb1","n")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xa7","c")
 		self.title_in_windows_format = self.title_in_windows_format.replace("\\xc3\\xb6","o")
