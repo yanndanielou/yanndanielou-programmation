@@ -52,12 +52,20 @@ def main(argv):
 	
 	output_file_by_period_content_as_list = list()
 
-	for filmRange in range(1, 12701, 50):
+	for filmRange in range(1, 50000, param.page_range):
 
-		site_address = 'http://www.cpasbiens.cc/torrents/films/' + str(filmRange)
+		site_address = param.site_address_prefix + str(filmRange)
 		logging.info('Open: '+ site_address)
 		req = Request(site_address, headers={'User-Agent': 'Mozilla/5.0'})
-		website_content = urlopen(req).read()
+		
+		timeout_in_s = 60
+		try:
+			url_open = urlopen(req, data=None, timeout = timeout_in_s)
+		except urllib.error.URLError as e:
+			print(e.reason)
+		except socket.timeout as e:
+			logging.info('Socket timeout')
+		
 		website_content_text = str(website_content)
 			
 		logging.info("Webpage content " + str(len(website_content_text)) )
