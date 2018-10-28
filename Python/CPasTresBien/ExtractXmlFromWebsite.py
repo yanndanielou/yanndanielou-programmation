@@ -60,7 +60,7 @@ def main(argv):
 		logging.info('Open: '+ site_address)
 		req = Request(site_address, headers={'User-Agent': 'Mozilla/5.0'})
 		
-		timeout_in_s = 60
+		timeout_in_s = 500
 
 		website_content_text = ""
 		
@@ -69,7 +69,7 @@ def main(argv):
 			website_content = url_open.read()
 			website_content_text = str(website_content)
 		except urllib.error.URLError as e:
-			print(e.reason)
+			logging.info('URLError:' + e.reason)
 		except socket.timeout as e:
 			logging.info('Socket timeout')
 		
