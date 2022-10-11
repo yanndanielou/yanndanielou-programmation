@@ -12,6 +12,12 @@ import requests
 import sys
 import joblib
 
+
+#For logs
+import LoggerConfig
+import logging
+import time
+
 # Cette classe définie un graphe de topologie ferroviaire. La classe GrapheSingleton permet d'obtenir l'instance d'un singleton réutilisable.
 class GrapheSingleton:
     __instance = None
@@ -412,11 +418,13 @@ class Graphe:
         return simpleRunSimulation
 
     def ProduireSimplesRuns(self, _url, _stepInSecond, _dwellTimeInSecond, _nomFichier, _PasSauvegarde, _coeffOnRunTime, _ignoredMER):
+        start_time_ProduireSimplesRuns = time.time()
         i = 0
         j = 0
         simulationResults = SimulationResultsSingleton()
         nbSimu = len(self.missionsElementaires.values())
         for mE in self.missionsElementaires.values():
+            start_time_mission_elementaire = time.time()
             j = j + 1
             for nature in mE.missionElementaireRegulation.naturesTrains:
                 #nature = self.natures[natureitem]
@@ -424,17 +432,31 @@ class Graphe:
                     if(modele.aSimuler):
                         if((mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM") and simulationResults.FindSimpleRunSimulation(mE.missionElementaireRegulation, modele) != None):
                             i = i + 1
-                            print(str(i) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
+                            LoggerConfig.printAndLogInfo(str(i) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
                         elif(mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM"):
                             #Envoi de la requête
                             i = i + 1
-                            print(str(i) + " : " + str(datetime.now()) + " : Simulation ["+mE.nom+","+modele.nom+"] " + str(round(j*100/nbSimu,2)) + "%")
+                            LoggerConfig.printAndLogInfo(str(i) + " : " + str(datetime.now()) + " : Simulation ["+mE.nom+","+modele.nom+"] " + str(round(j*100/nbSimu,2)) + "%")
                             self.SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, _ignoredMER)
                             if(not (i % _PasSauvegarde)):
                                 simulationResults.Save(_nomFichier)
-                                print("Sauvegarde !")
+                                LoggerConfig.printAndLogInfo("Sauvegarde !")
+                
+                elapsed_time_mission_elementaire = time.time() - start_time_mission_elementaire 
+                if elapsed_time_mission_elementaire > 5:
+                    LoggerConfig.printAndLogError("SMT3 has probably looped. ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
+                elif elapsed_time_mission_elementaire > 3:
+                    LoggerConfig.printAndLogWarning("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
+                elif elapsed_time_mission_elementaire >= 1:
+                   LoggerConfig.printAndLogInfo("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
+                else:
+                    logging.debug("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
+
+        
         simulationResults.Save(_nomFichier)
-        print("Sauvegarde !")
+        LoggerConfig.printAndLogInfo("Sauvegarde !")
+        elapsed_time_ProduireSimplesRuns = time.time() - start_time_ProduireSimplesRuns  
+        LoggerConfig.printAndLogInfo("ProduireSimplesRuns ended. Elapsed: " + format(elapsed_time_ProduireSimplesRuns, '.2f') + " s")
 
     def SimulerIntervalTheorique(self, _url, _stepInSecond, _dwellTimeInSecond, _coeffOnIntervals, mE1, mE2, modtrain1, modtrain2, _Delta_Espacement, intervalTrainAheadSupp):
         print(str(datetime.now()) + " Simulation ["+mE1.nom+","+modtrain1.nom+"],["+mE2.nom+","+modtrain2.nom+"]")
