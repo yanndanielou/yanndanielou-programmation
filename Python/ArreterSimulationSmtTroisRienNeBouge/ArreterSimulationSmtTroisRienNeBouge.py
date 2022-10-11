@@ -11,14 +11,19 @@ import random
 import time
 
 def window_SMT3_blocked_detected(window_SMT3_blocked):
-
+    LoggerConfig.printAndLogInfo("Show popup")
     window_SMT3_blocked.show()
     time.sleep(1)
+    LoggerConfig.printAndLogInfo("Activate popup")
     window_SMT3_blocked.activate()
+    time.sleep(1)
+    #LoggerConfig.printAndLogInfo("Give focus to 'Continue' button")
     pyautogui.hotkey('tab') 
     time.sleep(1)
+    #LoggerConfig.printAndLogInfo("Give focus to 'Arreter tout' button")
     pyautogui.hotkey('tab')
     time.sleep(5) 
+    LoggerConfig.printAndLogInfo("Press enter to close window")
     pyautogui.hotkey('enter') 
                 
 def main(argv):
