@@ -22,7 +22,7 @@ def window_SMT3_blocked_detected(window_SMT3_blocked):
     time.sleep(0.5)
     #LoggerConfig.printAndLogInfo("Give focus to 'Arreter tout' button")
     pyautogui.hotkey('tab')
-    time.sleep(0.5) 
+    time.sleep(5) 
     LoggerConfig.printAndLogInfo("Press enter to close window")
     pyautogui.hotkey('enter') 
 
