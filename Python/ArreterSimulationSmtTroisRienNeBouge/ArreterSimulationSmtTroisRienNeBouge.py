@@ -13,24 +13,24 @@ import time
 def window_SMT3_blocked_detected(window_SMT3_blocked):
     LoggerConfig.printAndLogInfo("Show popup")
     window_SMT3_blocked.show()
-    time.sleep(1)
+    time.sleep(0.5)
     LoggerConfig.printAndLogInfo("Activate popup")
     window_SMT3_blocked.activate()
-    time.sleep(1)
+    time.sleep(0.5)
     #LoggerConfig.printAndLogInfo("Give focus to 'Continue' button")
     pyautogui.hotkey('tab') 
-    time.sleep(1)
+    time.sleep(0.5)
     #LoggerConfig.printAndLogInfo("Give focus to 'Arreter tout' button")
     pyautogui.hotkey('tab')
-    time.sleep(5) 
+    time.sleep(0.5) 
     LoggerConfig.printAndLogInfo("Press enter to close window")
     pyautogui.hotkey('enter') 
 
 def infinite_loop_detect_SMT3_blocked_popup():
     title_fenetre_blocante_smt3 = "Rien ne bouge.."
-    list_of_windows_SMT3_blocked=pyautogui.getWindowsWithTitle(title_fenetre_blocante_smt3)
 
-    while True:
+    while True:    
+        list_of_windows_SMT3_blocked=pyautogui.getWindowsWithTitle(title_fenetre_blocante_smt3)
         logging.debug("There are " + str(len(list_of_windows_SMT3_blocked)) + " windows with title " + title_fenetre_blocante_smt3)
         if len(list_of_windows_SMT3_blocked) > 0:
             LoggerConfig.printAndLogInfo("There are " + str(len(list_of_windows_SMT3_blocked)) + " windows with title " + title_fenetre_blocante_smt3)
@@ -39,7 +39,7 @@ def infinite_loop_detect_SMT3_blocked_popup():
 
         logging.debug("Begin to wait")
         
-        time.sleep(30)
+        time.sleep(10)
 
 def main(argv):
     
