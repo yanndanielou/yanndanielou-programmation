@@ -1,7 +1,11 @@
 ﻿#For logs
-import logging
-import time
 import param
+#For logs
+import LoggerConfig
+import logging
+import sys
+import random
+
 
 import os
 import sys
@@ -13,34 +17,6 @@ from GenerateMEDataModel import Graphe
 from GenerateMEDataModel import PT2ADir
 from GenerateMEDataModel import remove_proxies
 
-def printOnly(toPrint):
-    log_timestamp = time.asctime( time.localtime(time.time()))
-    print(log_timestamp + '\t' + toPrint)
-
-def printAndLog(toPrintAndLog):
-    printOnly(toPrintAndLog)
-    logging.info(toPrintAndLog)
-
-def configureLogger():
-    logger_directory = "logs"
-    
-    if not os.path.exists(logger_directory):
-        os.makedirs(logger_directory)
-    
-    logger_level = param.logger_level
-    
-    print("Logger level:" +str(logger_level))
-    
-    logging.basicConfig(level=logger_level,
-                        format='%(asctime)s %(levelname)-8s %(message)s',
-                        datefmt='%a, %d %b %Y %H:%M:%S',
-                        filename=logger_directory+'\SMT_trois.log',
-                        filemode='w')
-    #logging.debug
-    #logging.info
-    #logging.warning
-    #logging.error
-    #logging.critical
     
 
 def testAdonfImport():
@@ -67,40 +43,41 @@ def testAdonfImport():
 
     __graphe = GrapheSingleton.Load(GrapheSingleton,"D:\\SMT3_generation\\SMT3\\Graphe-NG_ReadyForSimu.gme")
 
-    printAndLog("Nombre de missions élémentaires de régulation : " + str(len(__graphe.missionsElementairesRegulation)))
-    printAndLog("Nombre de missions élémentaires : " + str(len(__graphe.missionsElementaires)))
+    LoggerConfig.printAndLogInfo("Nombre de missions élémentaires de régulation : " + str(len(__graphe.missionsElementairesRegulation)))
+    LoggerConfig.printAndLogInfo("Nombre de missions élémentaires : " + str(len(__graphe.missionsElementaires)))
 
-    printAndLog("Load empty Simulation.sme") 
+    LoggerConfig.printAndLogInfo("Load empty Simulation.sme") 
     simuResults = SimulationResultsSingleton.Load(SimulationResultsSingleton, "D:\\SMT3_generation\\SMT3\\Simulation_empty.sme")
 
 
 #      simuResults = SimulationResultsSingleton.Load(SimulationResultsSingleton, "D:\\SMT3_generation\\SMT3\\Simulation.sme")
 
     ignoredMER = ['TRAMTRAIN_P27_1TER_INOUT|NOISY_K_P27_1RN_INOUT']
-    printAndLog("ignoredMER : " + str(ignoredMER)) 
+    LoggerConfig.printAndLogInfo("ignoredMER : " + str(ignoredMER)) 
 
-    printAndLog("ProduireSimplesRuns") 
+    LoggerConfig.printAndLogInfo("ProduireSimplesRuns") 
     pas_sauvegarde = 10
     __graphe.ProduireSimplesRuns("http://127.0.0.1:8080", 0.4, 30.0, "D:\\SMT3_generation\\SMT3\\Simulation_output.sme",pas_sauvegarde,1.1,ignoredMER)
   
-    printAndLog("ExporterSimplesRunsSimulations") 
+    LoggerConfig.printAndLogInfo("ExporterSimplesRunsSimulations") 
     simuResults.ExporterSimplesRunsSimulations("D:\\SMT3_generation\\SMT3\\SimplesRunsSimulationsResults.csv")
  
     #__graphe.EstimerNombreDeSimulation()
 
-    printAndLog("Liste des points de contrôle")
+    LoggerConfig.printAndLogInfo("Liste des points de contrôle")
     for i in sorted (__graphe.pointsDeControle.keys()) :
-        printAndLog(i)
+        LoggerConfig.printAndLogInfo(i)
 
-    printAndLog("Liste des transitions")
+    LoggerConfig.printAndLogInfo("Liste des transitions")
     for i in __graphe.transitions.values():
         i.print()
 
 def main():
-    configureLogger()
-    printAndLog('Start application')
+    log_file_name = 'GenerateME-LoadGraphe-SimuSMT' + "." +  str(random.randrange(100)) + ".log"
+    LoggerConfig.configureLogger(log_file_name)    
+    LoggerConfig.printAndLogInfo('Start application')
     testAdonfImport()
-    printAndLog('End application')
+    LoggerConfig.printAndLogInfo('End application')
 
 if __name__ == '__main__':
     main()
