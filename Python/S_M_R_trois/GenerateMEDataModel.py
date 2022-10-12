@@ -17,6 +17,7 @@ import joblib
 import LoggerConfig
 import logging
 import time
+from datetime import timedelta
 
 # Cette classe définie un graphe de topologie ferroviaire. La classe GrapheSingleton permet d'obtenir l'instance d'un singleton réutilisable.
 class GrapheSingleton:
@@ -437,26 +438,32 @@ class Graphe:
                             #Envoi de la requête
                             i = i + 1
                             LoggerConfig.printAndLogInfo(str(i) + " : " + str(datetime.now()) + " : Simulation ["+mE.nom+","+modele.nom+"] " + str(round(j*100/nbSimu,2)) + "%")
+                            start_time_SimulerSimpleRunSimulation = time.time()
                             self.SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, _ignoredMER)
+                            elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
+
+                            
+                            if elapsed_time_SimulerSimpleRunSimulation > 4:
+                                LoggerConfig.printAndLogWarning("SMT3 has probably loopedProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
+                            
                             if(not (i % _PasSauvegarde)):
                                 simulationResults.Save(_nomFichier)
                                 LoggerConfig.printAndLogInfo("Sauvegarde !")
                 
-                elapsed_time_mission_elementaire = time.time() - start_time_mission_elementaire 
-                if elapsed_time_mission_elementaire > 5:
-                    LoggerConfig.printAndLogError("SMT3 has probably looped. ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
-                elif elapsed_time_mission_elementaire > 3:
-                    LoggerConfig.printAndLogWarning("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
-                elif elapsed_time_mission_elementaire >= 1:
-                   LoggerConfig.printAndLogInfo("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
-                else:
-                    logging.debug("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
-
+            #elapsed_time_mission_elementaire = time.time() - start_time_mission_elementaire 
+            #if elapsed_time_mission_elementaire > 5:
+            #    LoggerConfig.printAndLogError("SMT3 has probably loopedProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
+            #elif elapsed_time_mission_elementaire > 3:
+            #    LoggerConfig.printAndLogWarning("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
+            #elif elapsed_time_mission_elementaire >= 1:
+            #   LoggerConfig.printAndLogInfo("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
+            #else:
+            #    logging.debug("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
         
         simulationResults.Save(_nomFichier)
         LoggerConfig.printAndLogInfo("Sauvegarde !")
         elapsed_time_ProduireSimplesRuns = time.time() - start_time_ProduireSimplesRuns  
-        LoggerConfig.printAndLogInfo("ProduireSimplesRuns ended. Elapsed: " + format(elapsed_time_ProduireSimplesRuns, '.2f') + " s")
+        LoggerConfig.printAndLogInfo("ProduireSimplesRuns ended. Elapsed: " + format(elapsed_time_ProduireSimplesRuns, '.2f') + " s" + " " + str(timedelta(seconds=elapsed_time_ProduireSimplesRuns)))
 
     def SimulerIntervalTheorique(self, _url, _stepInSecond, _dwellTimeInSecond, _coeffOnIntervals, mE1, mE2, modtrain1, modtrain2, _Delta_Espacement, intervalTrainAheadSupp):
         print(str(datetime.now()) + " Simulation ["+mE1.nom+","+modtrain1.nom+"],["+mE2.nom+","+modtrain2.nom+"]")
