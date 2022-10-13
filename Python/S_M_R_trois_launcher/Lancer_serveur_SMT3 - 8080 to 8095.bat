@@ -10,6 +10,7 @@ ECHO %DATE% %TIME% Launch SMT3 on port %PORT%
 start Lancer_serveur_SMT3_port_argument.bat %PORT%
 timeout /t 2
 
+IF %PORT%==%LAST_PORT% GOTO :LAST_SMT3_LAUNCHED
 
 :DEMARRER_PROCHAIN_SMT3
 ECHO %DATE% %TIME%  DEMARRER_PROCHAIN_SMT3
