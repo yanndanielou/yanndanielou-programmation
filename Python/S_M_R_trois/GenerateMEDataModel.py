@@ -444,7 +444,7 @@ class Graphe:
 
                             
                             if elapsed_time_SimulerSimpleRunSimulation > 4:
-                                LoggerConfig.printAndLogWarning("SMT3 has probably loopedProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
+                                LoggerConfig.printAndLogWarning("SMT3 has probably loopedProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
                             
                             if(not (i % _PasSauvegarde)):
                                 simulationResults.Save(_nomFichier)
