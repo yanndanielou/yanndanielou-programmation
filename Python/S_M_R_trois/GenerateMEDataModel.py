@@ -418,38 +418,44 @@ class Graphe:
 
         return simpleRunSimulation
 
-    def ProduireSimplesRuns(self, _url, _stepInSecond, _dwellTimeInSecond, _nomFichier, _PasSauvegarde, _coeffOnRunTime, _ignoredMER):
+    def ProduireSimplesRuns(self, _url, _stepInSecond, _dwellTimeInSecond, _nomFichier, _PasSauvegarde, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter):
         start_time_ProduireSimplesRuns = time.time()
         i = 0
-        j = 0
+        numero_mission_elementaire_courante = 0
         simulationResults = SimulationResultsSingleton()
         nbSimu = len(self.missionsElementaires.values())
+
+      
+
         for mE in self.missionsElementaires.values():
             start_time_mission_elementaire = time.time()
-            j = j + 1
-            for nature in mE.missionElementaireRegulation.naturesTrains:
-                #nature = self.natures[natureitem]
-                for modele in nature.modeles:
-                    if(modele.aSimuler):
-                        if((mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM") and simulationResults.FindSimpleRunSimulation(mE.missionElementaireRegulation, modele) != None):
-                            i = i + 1
-                            LoggerConfig.printAndLogInfo(str(i) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
-                        elif(mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM"):
-                            #Envoi de la requête
-                            i = i + 1
-                            LoggerConfig.printAndLogInfo(str(i) + " : " + str(datetime.now()) + " : Simulation ["+mE.nom+","+modele.nom+"] " + str(round(j*100/nbSimu,2)) + "%")
-                            start_time_SimulerSimpleRunSimulation = time.time()
-                            self.SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, _ignoredMER)
-                            elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
+            numero_mission_elementaire_courante = numero_mission_elementaire_courante + 1
+            is_current_mission_elementaire_to_be_computed = numero_mission_elementaire_courante >= numero_premiere_mission_elementaire_a_traiter and numero_mission_elementaire_courante <= numero_derniere_mission_elementaire_a_traiter
+            if  is_current_mission_elementaire_to_be_computed:
+                for nature in mE.missionElementaireRegulation.naturesTrains:
+                    #nature = self.natures[natureitem]
+                    for modele in nature.modeles:
+                        if(modele.aSimuler):
+                            if((mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM") and simulationResults.FindSimpleRunSimulation(mE.missionElementaireRegulation, modele) != None):
+                                i = i + 1
+                                LoggerConfig.printAndLogInfo(str(i) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
+                            elif(mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM"):
+                                #Envoi de la requête
+                                i = i + 1
+                                LoggerConfig.printAndLogInfo(str(i) + " : " + str(datetime.now()) + " : Simulation ["+mE.nom+","+modele.nom+"] " + str(round(numero_mission_elementaire_courante*100/nbSimu,2)) + "%")
+                                start_time_SimulerSimpleRunSimulation = time.time()
+                                self.SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, _ignoredMER)
+                                elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
 
-                            
-                            if elapsed_time_SimulerSimpleRunSimulation > 4:
-                                LoggerConfig.printAndLogWarning("SMT3 has probably loopedProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
-                            
-                            if(not (i % _PasSauvegarde)):
-                                simulationResults.Save(_nomFichier)
-                                LoggerConfig.printAndLogInfo("Sauvegarde !")
-                
+                                
+                                if elapsed_time_SimulerSimpleRunSimulation > 4:
+                                    LoggerConfig.printAndLogWarning("SMT3 has probably loopedProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
+                                
+                                if(not (i % _PasSauvegarde)):
+                                    simulationResults.Save(_nomFichier)
+                                    LoggerConfig.printAndLogInfo("Sauvegarde !")
+            else:
+                logging.info(str(numero_mission_elementaire_courante) + " eme mission elementaire a ignorer: " + " : Simulation ["+mE.nom+","+modele.nom+"] " + str(round(numero_mission_elementaire_courante*100/nbSimu,2)) + "%")
             #elapsed_time_mission_elementaire = time.time() - start_time_mission_elementaire 
             #if elapsed_time_mission_elementaire > 5:
             #    LoggerConfig.printAndLogError("SMT3 has probably loopedProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
