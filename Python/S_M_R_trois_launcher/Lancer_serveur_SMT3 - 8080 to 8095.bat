@@ -1,0 +1,27 @@
+
+SET FIRST_PORT=8080
+SET LAST_PORT=8095
+
+SET PORT=%FIRST_PORT%
+
+:LOOP_DEMARRER_SMT3
+
+ECHO %DATE% %TIME% Launch SMT3 on port %PORT%
+start Lancer_serveur_SMT3_port_argument.bat %PORT%
+timeout /t 2
+
+
+:DEMARRER_PROCHAIN_SMT3
+ECHO %DATE% %TIME%  DEMARRER_PROCHAIN_SMT3
+
+set /A PORT=PORT+1
+ECHO %DATE% %TIME%  PORT is %PORT%
+GOTO :LOOP_DEMARRER_SMT3
+
+:LAST_SMT3_LAUNCHED
+
+ECHO %DATE% %TIME%  All SMT3 servers launched, will exit
+
+timeout /t 100
+
+exit
