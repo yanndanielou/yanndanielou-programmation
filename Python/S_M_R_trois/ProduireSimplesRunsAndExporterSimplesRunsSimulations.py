@@ -61,6 +61,11 @@ def ProduireSimplesRunsAndExporterSimplesRunsSimulations(smt3_port, numero_premi
 
 def main(argv):
     
+    log_file_name = 'ProduireSimplesRunsAndExporterSimplesRunsSimulations-' +  str(random.randrange(100000)) + ".log"
+    LoggerConfig.configureLogger(log_file_name)    
+    LoggerConfig.printAndLogInfo('Start application. Log file name: ' + log_file_name)
+
+
     list_arguments_names = ["numero_premiere_mission_elementaire_a_traiter=","numero_derniere_mission_elementaire_a_traiter=","port_smt3="]
     
     numero_premiere_mission_elementaire_a_traiter = None
@@ -86,14 +91,16 @@ def main(argv):
             LoggerConfig.printAndLogCriticalAndKill (" Option:" + opt + " unknown with value:" + opt + ". Allowed arguments:" + str(list_arguments_names) + ". Application stopped")
 
     ProduireSimplesRunsAndExporterSimplesRunsSimulations(port_smt3,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter)
- 
+
+    LoggerConfig.printAndLogInfo('End application')
+
     
 def launch(smt3_port, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter):
 
     
     log_file_name = 'GenerateME-LoadGraphe-SimuSMT-' + str(smt3_port) + '' + "." +  str(random.randrange(100)) + ".log"
     LoggerConfig.configureLogger(log_file_name)    
-    LoggerConfig.printAndLogInfo('Start application')
+    LoggerConfig.printAndLogInfo('Start application. Log file name: ' + log_file_name)
     ProduireSimplesRunsAndExporterSimplesRunsSimulations(smt3_port,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter)
     LoggerConfig.printAndLogInfo('End application')
     
