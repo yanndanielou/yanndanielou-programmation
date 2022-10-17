@@ -7,7 +7,7 @@
 
 @netstat -o -n -a | findstr %PORT_SMT3%
 
-if %ERRORLEVEL% equ 0 goto :PORT_FOUND
+@if %ERRORLEVEL% equ 0 goto :PORT_FOUND
 
 @echo port %PORT_SMT3% is currently not used
 
@@ -15,11 +15,13 @@ if %ERRORLEVEL% equ 0 goto :PORT_FOUND
 
 :PORT_FOUND
 
-@echo Error!! port %PORT_SMT3% is currently already used
-@echo Application will end now
+@echo %DATE% %TIME% !!Error!! port %PORT_SMT3% is currently already used
+@echo %DATE% %TIME% Application will end now
 @pause
 
 :END_PORT_DETECTION
+
+SET CURRENT_DIRECTORY=%CD%
 
 
 @SET SEVEN_z_folder=C:\Program Files\7-Zip
@@ -30,6 +32,7 @@ if %ERRORLEVEL% equ 0 goto :PORT_FOUND
 @IF EXIST %SMT3_Package_folder% @echo Remove existing directory  %SMT3_Package_folder% & @RD /S /Q %SMT3_Package_folder%
 @IF EXIST %SMT3_Package_folder% @echo could not use %SMT3_Package_folder% because already exists & pause & exit
 
+@echo %DATE% %TIME% Extracting SMT3 package to %SMT3_Package_folder%
 @call "%SEVEN_z_full_exe_path%" x SMT3_Package.7z -o%SMT3_Package_folder%
 
 @REM @netstat /o /a | find /i "listening" | find ":%PORT_SMT3%" >nul 2>nul && (
@@ -38,10 +41,23 @@ if %ERRORLEVEL% equ 0 goto :PORT_FOUND
 @REM   @echo %PORT_SMT3% is Not open
 @REM )
 
-SET CURRENT_DIRECTORY=%CD%
+
+REM Ecraser temp pour que chaque lancement ait son propre environnement
+SET TMP=%CD%\%SMT3_Package_folder%\SMT3_Package\TMP
+SET TEMP=%CD%\%SMT3_Package_folder%\SMT3_Package\TEMP
+
+MD %TMP%
+MD %TEMP%
+
 @cd "%SMT3_Package_folder%\SMT3_Package\Exe" 
 Smt3_ATSPlus_D5_2_11.exe "%CURRENT_DIRECTORY%\%SMT3_Package_folder%\SMT3_Package\Fichiers .m extraits" -spdef smt_server.base_uri.port=%PORT_SMT3% -Dlog4j.configurationFile=./log4j2-smtserver2.xml -Dvicos.cbtc.logger.folder.path=./logs/ > logs/app_%PORT_SMT3%.log
 
+@echo %DATE% %TIME% SMT3 has exited
+@Title SMT3 on port %PORT_SMT3% ended at %DATE% %TIME% 
+
+timeout /t 99999
+
+@echo %DATE% %TIME% Remove SMT3 package %SMT3_Package_folder%
 @RD /S /Q %SMT3_Package_folder%
 
 pause
