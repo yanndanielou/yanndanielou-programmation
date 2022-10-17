@@ -50,7 +50,8 @@ MD %TMP%
 MD %TEMP%
 
 @cd "%SMT3_Package_folder%\SMT3_Package\Exe" 
-Smt3_ATSPlus_D5_2_11.exe "%CURRENT_DIRECTORY%\%SMT3_Package_folder%\SMT3_Package\Fichiers .m extraits" -spdef smt_server.base_uri.port=%PORT_SMT3% -Dlog4j.configurationFile=./log4j2-smtserver2.xml -Dvicos.cbtc.logger.folder.path=./logs/ > logs/app_%PORT_SMT3%.log
+copy Smt3_ATSPlus_D5_2_11.exe Smt3_ATSPlus_D5_2_11_%PORT_SMT3%.exe
+Smt3_ATSPlus_D5_2_11_%PORT_SMT3%.exe "%CURRENT_DIRECTORY%\%SMT3_Package_folder%\SMT3_Package\Fichiers .m extraits" -spdef smt_server.base_uri.port=%PORT_SMT3% -Dlog4j.configurationFile=./log4j2-smtserver2.xml -Dvicos.cbtc.logger.folder.path=./logs/ > logs/app_%PORT_SMT3%.log
 
 @echo %DATE% %TIME% SMT3 has exited
 @Title SMT3 on port %PORT_SMT3% ended at %DATE% %TIME% 
