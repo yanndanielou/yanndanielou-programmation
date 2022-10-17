@@ -73,9 +73,9 @@ def testAdonfImport():
         i.print()
 
 def main():
-    log_file_name = 'GenerateME-LoadGraphe-SimuSMT' + "." +  str(random.randrange(100)) + ".log"
+    log_file_name = 'GenerateME-LoadGraphe-SimuSMT' + "." +  str(random.randrange(10000)) + ".log"
     LoggerConfig.configureLogger(log_file_name)    
-    LoggerConfig.printAndLogInfo('Start application')
+    LoggerConfig.printAndLogInfo('Start application. Log file name: ' + log_file_name)
     testAdonfImport()
     LoggerConfig.printAndLogInfo('End application')
 
