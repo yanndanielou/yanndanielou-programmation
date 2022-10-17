@@ -455,7 +455,7 @@ class Graphe:
                                     simulationResults.Save(_nomFichier)
                                     LoggerConfig.printAndLogInfo("Sauvegarde !")
             else:
-                logging.info(str(numero_mission_elementaire_courante) + " eme mission elementaire a ignorer: " + " : Simulation ["+mE.nom+","+modele.nom+"] " + str(round(numero_mission_elementaire_courante*100/nbSimu,2)) + "%")
+                logging.info(str(numero_mission_elementaire_courante) + " eme mission elementaire a ignorer: " + str(round(numero_mission_elementaire_courante*100/nbSimu,2)) + "%")
             #elapsed_time_mission_elementaire = time.time() - start_time_mission_elementaire 
             #if elapsed_time_mission_elementaire > 5:
             #    LoggerConfig.printAndLogError("SMT3 has probably loopedProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
