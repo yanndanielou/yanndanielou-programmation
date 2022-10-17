@@ -6,7 +6,7 @@ import logging
 import sys
 import random
 
-import _thread
+import getopt
 
 
 import os
@@ -58,12 +58,44 @@ def ProduireSimplesRunsAndExporterSimplesRunsSimulations(smt3_port, numero_premi
     for i in __graphe.transitions.values():
         i.print()
 
+
+def main(argv):
+    
+    list_arguments_names = ["numero_premiere_mission_elementaire_a_traiter=","numero_derniere_mission_elementaire_a_traiter=","port_smt3="]
+    
+    numero_premiere_mission_elementaire_a_traiter = None
+    numero_derniere_mission_elementaire_a_traiter = None
+    port_smt3 = None
+
+    try:
+        opts, args = getopt.getopt(argv,"hi:o:", list_arguments_names)
+    except getopt.GetoptError as err:
+        errorMessage = "Unsupported arguments list." + str(err) + " Allowed arguments:" + str(list_arguments_names) + ". Application stopped"
+        LoggerConfig.printAndLogCriticalAndKill(errorMessage)
+    for opt, arg in opts:
+        if opt in ("-h", "--help"):
+            LoggerConfig.printAndLogInfo("Allowed arguments:" + str(list_arguments_names) + ". Application stopped")
+            sys.exit()
+        elif opt == "--numero_premiere_mission_elementaire_a_traiter":
+            numero_premiere_mission_elementaire_a_traiter = int(arg)
+        elif opt == "--numero_derniere_mission_elementaire_a_traiter":
+            numero_derniere_mission_elementaire_a_traiter= int(arg)
+        elif opt == "--port_smt3":
+            port_smt3 = arg
+        else:
+            LoggerConfig.printAndLogCriticalAndKill (" Option:" + opt + " unknown with value:" + opt + ". Allowed arguments:" + str(list_arguments_names) + ". Application stopped")
+
+    ProduireSimplesRunsAndExporterSimplesRunsSimulations(port_smt3,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter)
+ 
+    
 def launch(smt3_port, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter):
+
+    
     log_file_name = 'GenerateME-LoadGraphe-SimuSMT-' + str(smt3_port) + '' + "." +  str(random.randrange(100)) + ".log"
     LoggerConfig.configureLogger(log_file_name)    
     LoggerConfig.printAndLogInfo('Start application')
     ProduireSimplesRunsAndExporterSimplesRunsSimulations(smt3_port,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter)
     LoggerConfig.printAndLogInfo('End application')
-
-if __name__ == '__main__':
-    launch(8080, 1, 10000)
+    
+if __name__ == "__main__":
+    main(sys.argv[1:])
