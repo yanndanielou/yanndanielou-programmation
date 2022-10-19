@@ -4,6 +4,8 @@ SET LAST_PORT=8095
 
 SET PORT=%FIRST_PORT%
 
+CALL Kill_all_excel.bat
+
 :LOOP_DEMARRER_SMT3
 
 ECHO %DATE% %TIME% Launch SMT3 on port %PORT%
