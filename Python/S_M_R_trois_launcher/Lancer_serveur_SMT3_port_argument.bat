@@ -1,3 +1,5 @@
+@CALL Parameters.bat
+
 @SET PORT_SMT3=%1
 @ECHO PORT_SMT3 %PORT_SMT3%
 
@@ -35,30 +37,24 @@ SET CURRENT_DIRECTORY=%CD%
 @echo %DATE% %TIME% Extracting SMT3 package to %SMT3_Package_folder%
 @call "%SEVEN_z_full_exe_path%" x SMT3_Package.7z -o%SMT3_Package_folder%
 
-@REM @netstat /o /a | find /i "listening" | find ":%PORT_SMT3%" >nul 2>nul && (
-@REM    @echo Port %PORT_SMT3% is open
-@REM ) || (
-@REM   @echo %PORT_SMT3% is Not open
-@REM )
-
 
 REM Ecraser temp pour que chaque lancement ait son propre environnement
-SET TMP=%CD%\%SMT3_Package_folder%\SMT3_Package\TMP
-SET TEMP=%CD%\%SMT3_Package_folder%\SMT3_Package\TEMP
+@SET TMP=%CD%\%SMT3_Package_folder%\SMT3_Package\TMP
+@SET TEMP=%CD%\%SMT3_Package_folder%\SMT3_Package\TEMP
 
-MD %TMP%
-MD %TEMP%
+@MD %TMP%
+@MD %TEMP%
 
 @cd "%SMT3_Package_folder%\SMT3_Package\Exe" 
-copy Smt3_ATSPlus_D5_2_11.exe Smt3_ATSPlus_D5_2_11_%PORT_SMT3%.exe
-Smt3_ATSPlus_D5_2_11_%PORT_SMT3%.exe "%CURRENT_DIRECTORY%\%SMT3_Package_folder%\SMT3_Package\Fichiers .m extraits" -spdef smt_server.base_uri.port=%PORT_SMT3% -Dlog4j.configurationFile=./log4j2-smtserver2.xml -Dvicos.cbtc.logger.folder.path=./logs/ > logs/app_%PORT_SMT3%.log
+copy %SMT3_EWE_NAME_WITHOUT_EXTENSION%.exe %SMT3_EWE_NAME_WITHOUT_EXTENSION%_%PORT_SMT3%.exe
+%SMT3_EWE_NAME_WITHOUT_EXTENSION%_%PORT_SMT3%.exe "%CURRENT_DIRECTORY%\%SMT3_Package_folder%\SMT3_Package\Fichiers .m extraits" -spdef smt_server.base_uri.port=%PORT_SMT3% -Dlog4j.configurationFile=./log4j2-smtserver2.xml -Dvicos.cbtc.logger.folder.path=./logs/ > logs/app_%PORT_SMT3%.log
 
 @echo %DATE% %TIME% SMT3 has exited
 @Title SMT3 on port %PORT_SMT3% ended at %DATE% %TIME% 
 
-timeout /t 99999
+timeout /t 999
 
 @echo %DATE% %TIME% Remove SMT3 package %SMT3_Package_folder%
 @RD /S /Q %SMT3_Package_folder%
 
-pause
+timeout /t 99999
