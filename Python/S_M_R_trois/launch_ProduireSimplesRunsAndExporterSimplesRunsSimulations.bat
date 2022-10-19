@@ -25,7 +25,7 @@
 @IF %NUMERO_SMT3_COURANT%==%NUMBER_OF_SMT3_USED% ECHO Lors de la derniere simulation il faut s assurer que toutes les misssions elementaires soient calculees on debride donc NUMERO_DERNIERE_MISSION_ELEMENTAIRE_SMT3_COURANT & SET NUMERO_DERNIERE_MISSION_ELEMENTAIRE_SMT3_COURANT=9999999
 
 @ECHO %DATE% %TIME% %python_command_to_launch_simulation%
-@SET python_command_to_launch_simulation=start C:\Users\Yann\AppData\Local\Programs\Python\Python39\python.exe ProduireSimplesRunsAndExporterSimplesRunsSimulations.py --numero_premiere_mission_elementaire_a_traiter=%NUMERO_PREMIERE_MISSION_ELEMENTAIRE_SMT3_COURANT% --numero_derniere_mission_elementaire_a_traiter=%NUMERO_DERNIERE_MISSION_ELEMENTAIRE_SMT3_COURANT% --port_smt3=%PORT_SMT3% >> ProduireSimplesRunsAndExporterSimplesRunsSimulations_%NUMERO_PREMIERE_MISSION_ELEMENTAIRE_SMT3_COURANT%_%NUMERO_DERNIERE_MISSION_ELEMENTAIRE_SMT3_COURANT%_%PORT_SMT3%.log
+@SET python_command_to_launch_simulation=start /min C:\Users\Yann\AppData\Local\Programs\Python\Python39\python.exe ProduireSimplesRunsAndExporterSimplesRunsSimulations.py --numero_premiere_mission_elementaire_a_traiter=%NUMERO_PREMIERE_MISSION_ELEMENTAIRE_SMT3_COURANT% --numero_derniere_mission_elementaire_a_traiter=%NUMERO_DERNIERE_MISSION_ELEMENTAIRE_SMT3_COURANT% --port_smt3=%PORT_SMT3% >> ProduireSimplesRunsAndExporterSimplesRunsSimulations_%NUMERO_PREMIERE_MISSION_ELEMENTAIRE_SMT3_COURANT%_%NUMERO_DERNIERE_MISSION_ELEMENTAIRE_SMT3_COURANT%_%PORT_SMT3%.log
 %python_command_to_launch_simulation%
 @timeout /t 2
 
