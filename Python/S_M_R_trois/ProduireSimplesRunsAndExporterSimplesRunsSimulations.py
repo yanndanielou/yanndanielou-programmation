@@ -19,6 +19,8 @@ from GenerateMEDataModel import Graphe
 from GenerateMEDataModel import PT2ADir
 from GenerateMEDataModel import remove_proxies
 
+from os import system
+
     
 
 def ProduireSimplesRunsAndExporterSimplesRunsSimulations(smt3_port, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter):
@@ -90,6 +92,7 @@ def main(argv):
         else:
             LoggerConfig.printAndLogCriticalAndKill (" Option:" + opt + " unknown with value:" + opt + ". Allowed arguments:" + str(list_arguments_names) + ". Application stopped")
 
+    system("title " + " ProduireSimplesRunsAndExporterSimplesRunsSimulations " + str(numero_premiere_mission_elementaire_a_traiter) + " "  + str(numero_derniere_mission_elementaire_a_traiter) + " "  + str(port_smt3) + " " )
     ProduireSimplesRunsAndExporterSimplesRunsSimulations(port_smt3,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter)
 
     LoggerConfig.printAndLogInfo('End application')
