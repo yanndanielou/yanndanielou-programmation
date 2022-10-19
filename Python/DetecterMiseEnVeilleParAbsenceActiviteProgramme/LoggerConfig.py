@@ -5,7 +5,7 @@ import sys
 
 import time
 
-logger_level = logging.DEBUG
+logger_level = logging.INFO
     
 def printAndLogCriticalAndKill(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
