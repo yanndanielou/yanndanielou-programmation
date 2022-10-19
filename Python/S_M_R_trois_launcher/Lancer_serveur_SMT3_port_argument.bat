@@ -31,8 +31,17 @@ SET CURRENT_DIRECTORY=%CD%
 
 @SET SMT3_Package_folder=Output\SMT3_Package_%PORT_SMT3%
 
+@echo Remove existing directory  %SMT3_Package_folder% & @RD /S /Q %SMT3_Package_folder%
 @IF EXIST %SMT3_Package_folder% @echo Remove existing directory  %SMT3_Package_folder% & @RD /S /Q %SMT3_Package_folder%
-@IF EXIST %SMT3_Package_folder% @echo could not use %SMT3_Package_folder% because already exists & pause & exit
+
+REM Check if running Excel has prevented directory removal
+@IF NOT EXIST %SMT3_Package_folder%\SMT3_Package\TMP\Diagnostics\EXCEL GOTO :EXCEL_IS_NOT_PREVENTING_FOLDER_DELETION
+
+:EXCEL_IS_PREVENTING_FOLDER_DELETION
+echo  %SMT3_Package_folder%\SMT3_Package\TMP\Diagnostics\EXCEL still exists (blocked by Excel)
+
+:EXCEL_IS_NOT_PREVENTING_FOLDER_DELETION
+@IF EXIST %SMT3_Package_folder% @Title Fail to prepare directory used by SMT3 on port %PORT_SMT3% (%DATE% %TIME%) & @echo could not use %SMT3_Package_folder% because already exists & pause & exit
 
 @echo %DATE% %TIME% Extracting SMT3 package to %SMT3_Package_folder%
 @call "%SEVEN_z_full_exe_path%" x SMT3_Package.7z -o%SMT3_Package_folder%
