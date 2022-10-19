@@ -5,7 +5,7 @@
 
 @IF NOT DEFINED PORT_SMT3 ECHO Argument invalide & pause & exit
 
-@Title SMT3 on port %PORT_SMT3% started at %DATE% %TIME% 
+@Title Will start SMT3 on port %PORT_SMT3% (%DATE% %TIME%) 
 
 @netstat -o -n -a | findstr %PORT_SMT3%
 
@@ -44,6 +44,8 @@ REM Ecraser temp pour que chaque lancement ait son propre environnement
 
 @MD %TMP%
 @MD %TEMP%
+
+@Title SMT3 on port %PORT_SMT3% started at %DATE% %TIME% 
 
 @cd "%SMT3_Package_folder%\SMT3_Package\Exe" 
 copy %SMT3_EWE_NAME_WITHOUT_EXTENSION%.exe %SMT3_EWE_NAME_WITHOUT_EXTENSION%_%PORT_SMT3%.exe
