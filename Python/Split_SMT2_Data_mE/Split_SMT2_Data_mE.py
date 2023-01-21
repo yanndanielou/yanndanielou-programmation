@@ -54,23 +54,28 @@ def split_SMT2_Data_mE():
     input_SMT2_Data_mE_file.close()
 
     # initialize output files
-    output_SMT2_Data_mE_part1_initialisation_structures_file_name = "SMT2_Data_mE_part1_initialisation_structures.m"
+    output_SMT2_Data_mE_part1_initialisation_structures_function_name = "SMT2_Data_mE_part_1_initialisation_structures" 
+    output_SMT2_Data_mE_part1_initialisation_structures_file_name = output_SMT2_Data_mE_part1_initialisation_structures_function_name + ".m"
     output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines = list()
-    output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append("*Generated")
+    #output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append("*Generated")
     output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append("%***************************************************************")
-    output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append("function SMT2_Data_mE_part1_initialisation_structures")
+    output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append("function " + output_SMT2_Data_mE_part1_initialisation_structures_function_name)
     output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append("%***************************************************************")
+    output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append('   disp(string(datetime) + " ' + output_SMT2_Data_mE_part1_initialisation_structures_function_name + ' debut");')
 
     #Double list. one list per file, and for each of those files a list of lines
     output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file = list()
-    output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_name_prefix = "SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_"
+    output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix = "SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_" 
+    #output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_name_prefix = "SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_"
 
-    output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_file_name = "SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL.m"
+    output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name = "SMT2_Data_mE_part_100_fill_SMT_mE_feu_BAL" 
+    output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_file_name = output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name + ".m"
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines = list()
-    output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append("function SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL")
+    output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append("function " + output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name)
+    output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append('   disp(string(datetime) + " ' + output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name + ' debut");')
 
    
-    before_parsing_function_recup_mE = True
+    #before_parsing_function_recup_mE = True
     current_step = part_0_before_function_recup_mE
     total_number_of_fill_SMT_mE_aig_lines = 0
 
@@ -90,7 +95,7 @@ def split_SMT2_Data_mE():
             LoggerConfig.printAndLogInfo("Processing line number:" + str(line_number))
 
         if "function recup_mE" in line:
-            before_parsing_function_recup_mE = False
+            #before_parsing_function_recup_mE = False
             current_step = part_1_initialisation_structures
       
         elif "SMT_mE_aig(" in line:
@@ -108,7 +113,7 @@ def split_SMT2_Data_mE():
         if current_step == part_0_before_function_recup_mE:
             logging.info("Ignore line " + line)
 
-        if current_step == part_1_initialisation_structures:
+        if current_step == part_1_initialisation_structures and previous_step == part_1_initialisation_structures:
             output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append(line)
 
         if current_step == part_2_to_99_fill_SMT_mE_aig:
@@ -117,8 +122,9 @@ def split_SMT2_Data_mE():
             if (total_number_of_fill_SMT_mE_aig_lines % Constants.max_number_of_SMT_mE_aig_lines_per_output_files) == 1:
                 LoggerConfig.printAndLogInfo(str(total_number_of_fill_SMT_mE_aig_lines) + " fill SMT_mE_aig lines, create a new file")
                 output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file.append(list())
-                output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file[len(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file)-1].append("function SMT2_Data_mE_part_" + str(len(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file)))
-
+                output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file[len(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file)-1].append("function " + output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix + str(len(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file)-1))
+                output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file[len(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file)-1].append('   disp(string(datetime) + " ' + output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix + '  ' + str(len(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file)-1) + ' debut");')
+                    
             
             output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file[len(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file)-1].append(line)
 
@@ -134,6 +140,7 @@ def split_SMT2_Data_mE():
    
     LoggerConfig.printAndLogInfo("Create output file part 1")
     output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append("")
+    output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append('   disp(string(datetime) + " ' + output_SMT2_Data_mE_part1_initialisation_structures_function_name + ' fin");')
     output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append("return")
     output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append("")
     create_and_fill_output_file(output_directory_name, output_SMT2_Data_mE_part1_initialisation_structures_file_name, output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines)
@@ -144,12 +151,16 @@ def split_SMT2_Data_mE():
         fill_SMT_mE_aig_file_number = output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file.index(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines)
         
         output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines.append("")
+        output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines.append('   disp(string(datetime) + " " + "fill_SMT_mE_aig ' + str(fill_SMT_mE_aig_file_number) + ' fin");')
         output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines.append("return")
+
         output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines.append("")
-        create_and_fill_output_file(output_directory_name, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_name_prefix + str(fill_SMT_mE_aig_file_number) + ".m", output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines)
+        create_and_fill_output_file(output_directory_name, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix + "_" + str(fill_SMT_mE_aig_file_number) + ".m", output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines)
 
 
     LoggerConfig.printAndLogInfo("Create output file part 100")
+    output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append("")
+    output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append('   disp(string(datetime) + " " + "SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL fin");')
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append("")
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append("return")
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append("")
