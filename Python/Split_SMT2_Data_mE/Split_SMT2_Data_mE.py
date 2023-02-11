@@ -18,9 +18,36 @@ part_1_initialisation_structures = "part_1_initialisation_structures"
 part_2_to_99_fill_SMT_mE_aig = "part_2_to_99_fill_SMT_mE_aig"
 part_100_fill_SMT_mE_feu_BAL = "part_100_fill_SMT_mE_feu_BAL"
 
+#chemin_fichier_SMT2_Data_mE_part_001_initialisation_structures = fullfile(SMT_Repertoire_outil,nom_projet,'SMT2_Data_mE_part_001_initialisation_structures.m);
+#affectation_variables_globales(chemin_fichier_SMT2_Data_mE_part_001_initialisation_structures);    
+def fill_affectation_variables_globales(output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, SMT2_Data_mE_xfunction_name):
+    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append("chemin_fichier_" + SMT2_Data_mE_xfunction_name + " = fullfile(SMT_Repertoire_outil,nom_projet,'" + SMT2_Data_mE_xfunction_name + ".m');")
+    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append("affectation_variables_globales(chemin_fichier_" + SMT2_Data_mE_xfunction_name + ");")
+
+#disp(string(datetime) + " SMT2_Data_mE");
+#SMT2_Data_mE;
+def fill_call_file_with_disp(output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, SMT2_Data_mE_xfunction_name):
+    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append('disp(string(datetime) + " ' + SMT2_Data_mE_xfunction_name + '");')
+    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append(SMT2_Data_mE_xfunction_name + ";")
+
+		
+def fill_matlab_code_file_containings_code_to_copy_paste(output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, output_SMT2_Data_mE_part1_initialisation_structures_function_name, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file, output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name, prefix, suffix):
+
+    #call m files
+    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append(prefix + output_SMT2_Data_mE_part1_initialisation_structures_function_name + suffix)
+    
+    for output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines in output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file:
+        fill_SMT_mE_aig_file_number = output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file.index(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines)
+        
+        output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append(prefix + output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix + str(fill_SMT_mE_aig_file_number) + suffix)
+
+    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append(prefix + output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name + suffix)
+     
+    output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines.append("")
+    output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines.append("")
 
 def create_and_fill_output_file(output_directory, file_name, file_content_as_list_of_lines):
-    logging.info('Create output file:' + file_name)
+    LoggerConfig.printAndLogInfo('Create output file:' + file_name)
     output_file = open(output_directory + "\\" + file_name, "w")
     logging.info('Fill output file:' + file_name)
 
@@ -74,6 +101,9 @@ def split_SMT2_Data_mE():
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append("function " + output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name)
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append('   disp(string(datetime) + " ' + output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name + ' debut");')
 
+    output_matlab_file_containing_code_to_call_functions_file_name = "output_matlab_file_containing_code_to_call_functions" + ".txt"
+    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines = list()
+  
    
     #before_parsing_function_recup_mE = True
     current_step = part_0_before_function_recup_mE
@@ -166,6 +196,36 @@ def split_SMT2_Data_mE():
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append("")
     create_and_fill_output_file(output_directory_name, output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_file_name, output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines)
 
+    LoggerConfig.printAndLogInfo("Create output matlab file to call functions")
+    
+    
+    fill_matlab_code_file_containings_code_to_copy_paste(output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, output_SMT2_Data_mE_part1_initialisation_structures_function_name, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file, output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name, "", "")
+    fill_matlab_code_file_containings_code_to_copy_paste(output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, output_SMT2_Data_mE_part1_initialisation_structures_function_name, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file, output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name, "clear ", ".m;")
+     
+    output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines.append("")
+    output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines.append("")
+    fill_affectation_variables_globales(output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, output_SMT2_Data_mE_part1_initialisation_structures_function_name)
+    for output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines in output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file:
+        fill_SMT_mE_aig_file_number = output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file.index(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines)
+        SMT2_Data_mE_part_2_to_99_function_name = output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix + str(fill_SMT_mE_aig_file_number)        
+        fill_affectation_variables_globales(output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, SMT2_Data_mE_part_2_to_99_function_name)
+    fill_affectation_variables_globales(output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name)
+
+    output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines.append("")
+    output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines.append("")
+    fill_call_file_with_disp(output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, output_SMT2_Data_mE_part1_initialisation_structures_function_name)
+    for output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines in output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file:
+        fill_SMT_mE_aig_file_number = output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file.index(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines)
+        SMT2_Data_mE_part_2_to_99_function_name = output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix + str(fill_SMT_mE_aig_file_number)        
+        fill_call_file_with_disp(output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, SMT2_Data_mE_part_2_to_99_function_name)
+    fill_call_file_with_disp(output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name)
+
+
+
+    create_and_fill_output_file(output_directory_name, output_matlab_file_containing_code_to_call_functions_file_name, output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines)
+
+
+    
 
 def main():
     log_file_name = 'Split_SMT2_Data_mE' + "." +  str(random.randrange(10000)) + ".log"
