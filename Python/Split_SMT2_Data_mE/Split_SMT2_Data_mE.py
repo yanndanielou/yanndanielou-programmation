@@ -54,7 +54,7 @@ def split_SMT2_Data_mE():
     input_SMT2_Data_mE_file.close()
 
     # initialize output files
-    output_SMT2_Data_mE_part1_initialisation_structures_function_name = "SMT2_Data_mE_part_1_initialisation_structures" 
+    output_SMT2_Data_mE_part1_initialisation_structures_function_name = "SMT2_Data_mE_part_001_initialisation_structures" 
     output_SMT2_Data_mE_part1_initialisation_structures_file_name = output_SMT2_Data_mE_part1_initialisation_structures_function_name + ".m"
     output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines = list()
     #output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append("*Generated")
@@ -65,7 +65,7 @@ def split_SMT2_Data_mE():
 
     #Double list. one list per file, and for each of those files a list of lines
     output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file = list()
-    output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix = "SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_" 
+    output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix = "SMT2_Data_mE_part_002_to_99_fill_SMT_mE_aig_file_" 
     #output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_name_prefix = "SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_"
 
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name = "SMT2_Data_mE_part_100_fill_SMT_mE_feu_BAL" 
