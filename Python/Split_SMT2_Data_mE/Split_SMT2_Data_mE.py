@@ -103,6 +103,9 @@ def split_SMT2_Data_mE():
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines = list()
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append("function " + output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name)
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append('   disp(string(datetime) + " ' + output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name + ' debut");')
+    output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append('')
+    output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append('global SMT_mE_feu_BAL')
+    output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append('')
 
     output_matlab_file_containing_code_to_call_functions_file_name = "output_matlab_file_containing_code_to_call_functions" + ".txt"
     output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines = list()
