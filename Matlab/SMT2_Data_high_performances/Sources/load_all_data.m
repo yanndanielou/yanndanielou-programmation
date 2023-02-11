@@ -1,4 +1,4 @@
-function load_all_data
+function load_all_data(varargin)
 
 disp(string(datetime) + " load_all_data begin");
 
@@ -23,3 +23,6 @@ affectation_variables_globales_to_test_load_data("D:\Pour_Yann_Melnotte\SMT3_Pac
 
 
 disp(string(datetime) + " load_all_data end");
+
+return
+end
