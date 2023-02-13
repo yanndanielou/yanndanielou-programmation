@@ -9,9 +9,10 @@ list_var_global{:,1} = [];
 ligne_list_var_global = 1;
 tline = fgetl(fid);
 while ischar(tline)
-    tline = fgetl(fid);
+	%disp("Execute line:" + tline)
     evalc(tline);
+    tline = fgetl(fid);
 end
 
-enddisp(string(datetime) + " execution_fichier_m_ligne_par_ligne of file " + nom_fichier + " end."  + " Time elapsed in fonction:" + string(datetime - execution_fichier_m_ligne_par_ligne_begin_time));
+disp(string(datetime) + " execution_fichier_m_ligne_par_ligne of file " + nom_fichier + " end."  + " Time elapsed in fonction:" + string(datetime - execution_fichier_m_ligne_par_ligne_begin_time));
 end
