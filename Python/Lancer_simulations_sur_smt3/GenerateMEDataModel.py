@@ -392,6 +392,8 @@ class Graphe:
         #ET.dump(travelTimesRequestTree)
         simpleRunSimulation = simulationResults.AjouterSimpleRunSimulation(mE.missionElementaireRegulation, modele, 'Normale')
         result = ""
+        travelTimesRequestTree_as_str = ET.tostring(travelTimesRequestTree, encoding='utf8', method='xml')
+        LoggerConfig.printAndLogInfo("travelTimesRequestTree:" + str(travelTimesRequestTree_as_str))
         if(error == ""):
             result = launchRequest(_url,travelTimesRequestTree)
             #ET.dump(result)
@@ -512,7 +514,7 @@ class Graphe:
 
                                 
                                 if elapsed_time_SimulerSimpleRunSimulation > 4:
-                                    LoggerConfig.printAndLogWarning("SMT3 has probably loopedProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
+                                    LoggerConfig.printAndLogWarning("SMT3 was slow for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
                                 
                                 if(not (i % _PasSauvegarde)):
                                     simulationResults.Save(_nomFichier)
@@ -597,6 +599,8 @@ class Graphe:
 
         #print("Request : ")
         ET.dump(travelTimesRequestTree)
+        travelTimesRequestTree_as_str = ET.tostring(travelTimesRequestTree, encoding='utf8', method='xml')
+        LoggerConfig.printAndLogInfo("travelTimesRequestTree:" + str(travelTimesRequestTree_as_str))
         result = launchRequest(_url,travelTimesRequestTree)
         headwaySimulation = IntervalResults()
         #print("")
@@ -7488,5 +7492,8 @@ def launchRequest(url, xml):
     if debug():
         print(parseString(r.text).toprettyxml())
     print()
+    
+    LoggerConfig.printAndLogInfo("Result:" + r.text)
+    #LoggerConfig.printAndLogInfo("Result:" + r)
     # récupération du résultat en xml
     return(ET.fromstring(r.text))
