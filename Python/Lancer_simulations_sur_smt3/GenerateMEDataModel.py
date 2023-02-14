@@ -14,7 +14,7 @@ import joblib
 
 
 #For logs
-from LoggerConfig import execution_time
+#from LoggerConfig import execution_time
 import LoggerConfig
 import logging
 import time
@@ -25,6 +25,7 @@ class GrapheSingleton:
     __instance = None
     #@execution_time 
     def __new__(cls):
+        logging.info("Start calling __new__")
         if GrapheSingleton.__instance is None:
             GrapheSingleton.__instance = object.__new__(cls)
             GrapheSingleton.__instance.graphe = Graphe()
@@ -32,6 +33,7 @@ class GrapheSingleton:
 
     #@execution_time 
     def Load(cls, _nomFichier):
+        logging.info("Start calling Load")
         if GrapheSingleton.__instance is None:
             GrapheSingleton.__instance = object.__new__(cls)
         f = open(_nomFichier, "rb")
@@ -40,6 +42,7 @@ class GrapheSingleton:
         return GrapheSingleton.__instance.graphe
 
     # def Load(cls, _nomFichier):
+    #    logging.info("Start calling Load")
     #     if GrapheSingleton.__instance is None:
     #         GrapheSingleton.__instance = object.__new__(cls)
     #     # f = open(_nomFichier, "rb")
@@ -51,6 +54,7 @@ class GrapheSingleton:
 class Graphe:
     #@execution_time
     def __init__(self):
+        logging.info("Start calling __init__")
         self.lignes = {}
         self.stations = {}
         self.voies = {}
@@ -77,6 +81,7 @@ class Graphe:
         self.couplesMeSePerturbantCalculees = []
 
     # def Save(self, _nomFichier):
+        logging.info("Start calling Save")
     #     # f = pickle.Pickler(open(_nomFichier,"wb"))
     #     # f.fast = True
     #     # f.dump(self, protocol=pickle.HIGHEST_PROTOCOL)
@@ -87,6 +92,7 @@ class Graphe:
 
     #@execution_time 
     def Save(self, _nomFichier):
+        logging.info("Start calling Save")
         sys.setrecursionlimit(3000)
         f = pickle.Pickler(open(_nomFichier,"wb"))
         f.dump(self)
@@ -95,60 +101,71 @@ class Graphe:
 
     #@execution_time
     def AjouterLigne(self, _nom, _numero, _referentiel, _segmentReference, _orientationGauche, _orientationDroite):
+        logging.info("Start calling AjouterLigne")
         LoggerConfig.printAndLogInfo("fonction AjouterLigne")
         self.lignes[_nom] = Ligne(_nom, _numero, _referentiel, _segmentReference, _orientationGauche, _orientationDroite)
 
     #@execution_time 
     def AjouterStation(self, _nom):
+        logging.info("Start calling AjouterStation")
         LoggerConfig.printAndLogInfo("fonction AjouterStation")
         self.stations[_nom] = Station(_nom)
         return self.stations[_nom]
 
     #@execution_time 
     def AjouterPtA(self, _nom, _segment, _abs, _sens):
+        logging.info("Start calling AjouterPtA")
         LoggerConfig.printAndLogInfo("fonction AjouterPtA")
         self.PtAs[_nom] = PtA(_nom, _segment, _sens, _abs)
 
     #@execution_time 
     def AjouterSegment(self, _nom, _troncon, _voie, _longueur, _origine, _fin, _segment1VoisinAmont, _segment2VoisinAmont, _segment1VoisinAval, _segment2VoisinAval):
+        logging.info("Start calling AjouterSegment")
         LoggerConfig.printAndLogInfo("fonction AjouterSegment")
         self.segments[_nom] = Segment(_nom, _troncon, _voie, _longueur, _origine, _fin, _segment1VoisinAmont, _segment2VoisinAmont, _segment1VoisinAval, _segment2VoisinAval)
 
     #@execution_time 
     def AjouterVoie(self, _nom, _type, _sensNominal, _voieContinuitePK, _segContinuitePK, _sensIncrementationPK, _PKDebut, _PKFin):
+        logging.info("Start calling AjouterVoie")
         LoggerConfig.printAndLogInfo("fonction AjouterVoie")
         self.voies[_nom] = Voie(_nom, _type, _sensNominal, _voieContinuitePK, _segContinuitePK, _sensIncrementationPK, _PKDebut, _PKFin)
 
     #@execution_time    
     def AjouterTroncon(self, _nom, _ligne):
+        logging.info("Start calling AjouterTroncon")
         LoggerConfig.printAndLogInfo("fonction AjouterTroncon")
         self.troncons[_nom] = Troncon(_nom, _ligne)
         return self.troncons[_nom]
 
     #@execution_time 
     def AjouterSignal(self, _nom, _type, _sousType, _segment, _abs, _sens):
+        logging.info("Start calling AjouterSignal")
         LoggerConfig.printAndLogInfo("fonction AjouterSignal")
         self.signals[_nom] = Signal(_nom, _type, _sousType, _segment, _abs, _sens)
 
     #@execution_time 
     def AjouterAiguille(self, _nom, _posDirecte, _segPointe, _segTalonGauche, _segTalonDroite, _voie, _pk):
+        logging.info("Start calling AjouterAiguille")
         LoggerConfig.printAndLogInfo("fonction AjouterAiguille")
         self.aiguilles[_nom] = Aiguille(_nom, _posDirecte, _segPointe, _segTalonGauche, _segTalonDroite, _voie, _pk)
 
     #@execution_time 
     def AjouterCDV(self, _nom):
+        logging.info("Start calling AjouterCDV")
         LoggerConfig.printAndLogInfo("fonction AjouterCDV")
         self.CDVs[_nom] = CDV(_nom)
         return self.CDVs[_nom]
 
     #@execution_time 
     def AjouterTVD(self, _nom, _type, _objet):
+        logging.info("Start calling AjouterTVD")
         LoggerConfig.printAndLogInfo("fonction AjouterTVD")
         self.TVDs[_nom] = TVD(_nom, _type, _objet)
         return self.TVDs[_nom]
 
     #@execution_time 
     def AjouterJointCDV(self, _cdv1, _cdv2, _segment, _abs):
+        logging.info("Start calling AjouterJointCDV")
         LoggerConfig.printAndLogInfo("fonction AjouterJointCDV")
         if(_cdv1.nom <= _cdv2.nom):
             nomJointCdv = _cdv1.nom + "#" + _cdv2.nom
@@ -161,6 +178,7 @@ class Graphe:
 
     #@execution_time 
     def RechercherJointCDV(self, _cdv1Nom, _cdv2Nom):
+        logging.info("Start calling RechercherJointCDV")
 
         if(_cdv1Nom <= _cdv2Nom):
             nomJointCdv = _cdv1Nom + "#" + _cdv2Nom
@@ -205,12 +223,14 @@ class Graphe:
 
     #@execution_time 
     def AjouterExtremiteCDVLimiteDomaine(self, _cdv, _segment, _abs):
+        logging.info("Start calling AjouterExtremiteCDVLimiteDomaine")
         self.ExtremitesCDVsLimiteDomaine[_cdv.nom] = ExtremiteCDVLimiteDomaine(_cdv, _segment, _abs)
         return self.ExtremitesCDVsLimiteDomaine[_cdv.nom]
 
 
     #@execution_time 
     def RechercherItinerairesDepuisOrigine(self, _signal):
+        logging.info("Start calling RechercherItinerairesDepuisOrigine")
         itineraires = []
         for p in self.postes.values():
             for i in p.itineraires:
@@ -221,6 +241,7 @@ class Graphe:
 
     #@execution_time
     def RechercherCheckpoint(self, _nom):
+        logging.info("Start calling RechercherCheckpoint")
         for pc in self.pointsDeControle.values():
             if(pc.nomCheckPoint == _nom):
                 return pc
@@ -228,6 +249,7 @@ class Graphe:
 
     #@execution_time 
     def RechercherItineraire(self, _nom):
+        logging.info("Start calling RechercherItineraire")
         for p in self.postes.values():
             for i in p.itineraires:
                 #print(i.nom + " / " + _nom)
@@ -237,6 +259,7 @@ class Graphe:
 
     #@execution_time 
     def EstimerNbChangementVoieME(self):
+        logging.info("Start calling EstimerNbChangementVoieME")
         for meR in self.missionsElementairesRegulation.values():
             lastVoieParcourue = None
             for segP in meR.segmentsParcourus:
@@ -246,6 +269,7 @@ class Graphe:
 
     #@execution_time 
     def ProduireCouplesMESePerturbant(self):
+        logging.info("Start calling ProduireCouplesMESePerturbant")
         self.couplesMeSePerturbant = []
         for mE2 in self.missionsElementaires.values():
             for mE1 in self.missionsElementaires.values():
@@ -322,6 +346,7 @@ class Graphe:
 
     #@execution_time 
     def SimulerSimpleRunSimulation(self, _url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, _ignoredMER = None):
+        logging.info("Start calling SimulerSimpleRunSimulation")
         error = ""
         simulationResults = SimulationResultsSingleton()
 
@@ -456,6 +481,7 @@ class Graphe:
 
     #@execution_time 
     def ProduireSimplesRuns(self, _url, _stepInSecond, _dwellTimeInSecond, _nomFichier, _PasSauvegarde, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter):
+        logging.info("Start calling ProduireSimplesRuns")
         start_time_ProduireSimplesRuns = time.time()
         i = 0
         numero_mission_elementaire_courante = 0
@@ -510,6 +536,7 @@ class Graphe:
 
     #@execution_time 
     def SimulerIntervalTheorique(self, _url, _stepInSecond, _dwellTimeInSecond, _coeffOnIntervals, mE1, mE2, modtrain1, modtrain2, _Delta_Espacement, intervalTrainAheadSupp):
+        logging.info("Start calling SimulerIntervalTheorique")
         print(str(datetime.now()) + " Simulation ["+mE1.nom+","+modtrain1.nom+"],["+mE2.nom+","+modtrain2.nom+"]")
         travelTimesRequestTree = ET.Element('travelTimesRequest')
         computationStepInSecondTree = ET.SubElement(travelTimesRequestTree, 'computationStepInSecond')
@@ -663,6 +690,7 @@ class Graphe:
 
     #@execution_time 
     def DefinirIntervalMax(self, mE1, mE2, modtrain1, modtrain2):
+        logging.info("Start calling DefinirIntervalMax")
         headwaySimulation = IntervalResults()
         headwaySimulation.tempsIntervallePerturbeME = "MAX_INTERVAL"
         headwaySimulation.tempsIntervalleNonPerturbeME = "MAX_INTERVAL"
@@ -675,6 +703,7 @@ class Graphe:
 
     #@execution_time 
     def ProduireIntervalsTheoriques(self, _url, _stepInSecond, _dwellTimeInSecond, _nomFichier, _PasSauvegarde, _coeffOnIntervals, _coeffOnRunTime, _Delta_Espacement):
+        logging.info("Start calling ProduireIntervalsTheoriques")
         simulationResults = SimulationResultsSingleton()
         i = 1
         lastSave = 0
@@ -784,6 +813,7 @@ class Graphe:
 
     #@execution_time 
     def ExporterCouplesMeSePerturbantCalcules(self, _nomFichier):
+        logging.info("Start calling ExporterCouplesMeSePerturbantCalcules")
         Dict = {'mE1': [], 'mE2': [], 'Raison': []}
         for couple in self.couplesMeSePerturbantCalculees:
             Dict['mE1'].append(couple[0].nom)
@@ -795,6 +825,7 @@ class Graphe:
 
     #@execution_time 
     def IsMissionsElementairesSePerturbentParSig(self, mE1, mE2):
+        logging.info("Start calling IsMissionsElementairesSePerturbentParSig")
         tvdEspacementCommun = False
         for sigMe1 in mE1.signaux:
             if(sigMe1['CommandeSignalAAjouter'] == True):
@@ -834,6 +865,7 @@ class Graphe:
 
     #@execution_time 
     def ScoreMissionsElementairesSePerturbent(self, mE1, mE2):
+        logging.info("Start calling ScoreMissionsElementairesSePerturbent")
         #print(mE1.nom + " vs " + mE2.nom)
         tvdEspacementCommun = 0
         for sigMe1 in mE1.signaux:
@@ -889,6 +921,7 @@ class Graphe:
 
     #@execution_time 
     def IsMissionsElementairesSePerturbentParPointsOptimisation(self, mE1, mE2):
+        logging.info("Start calling IsMissionsElementairesSePerturbentParPointsOptimisation")
         poDestinationTransitionCommun = False
         for transition1 in mE1.missionElementaireRegulation.transitions:
             for transition2 in mE2.missionElementaireRegulation.transitions:
@@ -906,6 +939,7 @@ class Graphe:
 
     #@execution_time 
     def IsMissionsElementairesSePerturbentParTransitions(self, mE1, mE2):
+        logging.info("Start calling IsMissionsElementairesSePerturbentParTransitions")
         poDestinationTransitionCommun = False
         for transition in mE1.missionElementaireRegulation.transitions:
             if(transition in mE2.missionElementaireRegulation.transitions):
@@ -921,6 +955,7 @@ class Graphe:
 
     #@execution_time 
     def ProduireConfigurationSimulationsPerturbees(self):
+        logging.info("Start calling ProduireConfigurationSimulationsPerturbees")
         simuAFaire = 0
         simuACopier = 0
         mEconfigureesDone = 0
@@ -994,6 +1029,7 @@ class Graphe:
 
     #@execution_time 
     def EstimerNombreDeSimulation__disabledYDA(self):
+        logging.info("Start calling EstimerNombreDeSimulation__disabledYDA")
         nbModelTrain = 2+8
         nbSimulationSimpleRun = 0
         nbSimulationInterval = 0
@@ -1177,6 +1213,7 @@ class Graphe:
     #Cette méthode permet de trouver les CDV à l'intérieur d'un interval sur l'ensemble d'un parcours de segments
     #@execution_time 
     def CDVDansInterval(self, ParcoursSegments, OrigineSegment, OrigineAbs, DestinationSegment, DestinationAbs):
+        logging.info("Start calling CDVDansInterval")
         CDVList = []
         premierSegTrouve = False
         dernierSegTrouve = False
@@ -1341,6 +1378,7 @@ class Graphe:
     #Permet d'afficher un graphe
     #@execution_time 
     def print(self, _chainePrefixe = ""):
+        logging.info("Start calling print")
         print("Graphe :")
         for __o in self.lignes.values():
             __o.print(_chainePrefixe+"+")
@@ -1375,6 +1413,7 @@ class Graphe:
     #Permet de rechercher une aiguille avec ses trois segments de définition
     #@execution_time 
     def RechercherAiguilleAvecSegments__YDA(self, _segment1, _segment2, _segment3):
+        logging.info("Start calling RechercherAiguilleAvecSegments__YDA")
         for aiguille in self.aiguilles.values():
             if(aiguille.segTalonDroite is _segment1 and aiguille.segTalonGauche is _segment2 and aiguille.segPointe is _segment3):
                 return aiguille
@@ -1394,6 +1433,7 @@ class Graphe:
     #Cette méthode permet de rechercher un quai sur l'ensemble du domaine
     #@execution_time 
     def RechercherQuai(self, _nomQuai):
+        logging.info("Start calling RechercherQuai")
         for station in self.stations.values():
             if(_nomQuai in station.quais):
                 return station.quais[_nomQuai]
@@ -1405,6 +1445,7 @@ class Graphe:
     #le nom des deux CDV, et NomCdv1 précède NomCdv2 dans l'alphabet.
     #@execution_time 
     def GenererJointsCDVs(self):
+        logging.info("Start calling GenererJointsCDVs")
         #On recherche deux CDV qui auraient la même position sur segment dans une de ses extrémités
         for i in self.CDVs.values():
             for j in i.segsExtremites:
@@ -1456,6 +1497,7 @@ class Graphe:
     #Cette méthode permet de construire le référentiel des positions de CDVs avec toutes les segments
     #@execution_time 
     def ConstruireReferentielPositionsCDV(self):
+        logging.info("Start calling ConstruireReferentielPositionsCDV")
         for cdv in self.CDVs.values():
             print("CDV : " + cdv.nom)
             branchesOuvertes = []
@@ -1603,6 +1645,7 @@ class Graphe:
     #Cette méthode permet de rechercher un CDV en fonction d'une position sur un segment
     #@execution_time 
     def RechercherCDVAvecSegmentAbs(self, _segment, _abs, _aig = None):
+        logging.info("Start calling RechercherCDVAvecSegmentAbs")
         for cdv in self.CDVs.values():
             for segment in cdv.segments.values():
                 if(segment['segment'] == _segment):
@@ -1633,6 +1676,7 @@ class Graphe:
     #Cette méthode permet de retourner tous les CDV d'un segment
     #@execution_time 
     def RechercherCDVsAvecSegment(self, _segment):
+        logging.info("Start calling RechercherCDVsAvecSegment")
         cdvs = []
         for cdv in self.CDVs.values():
             for segment in cdv.segments.values():
@@ -1643,6 +1687,7 @@ class Graphe:
     #Cette méthode recherche un TVD correspondant à un CDV
     #@execution_time 
     def RechercherTVDAvecCDV(self, _cdv):
+        logging.info("Start calling RechercherTVDAvecCDV")
         for tvd in self.TVDs.values():
             if(tvd.objet == _cdv):
                 return tvd
@@ -1650,6 +1695,7 @@ class Graphe:
 
     #@execution_time 
     def GenererSignauxTraversesTransitions(self):
+        logging.info("Start calling GenererSignauxTraversesTransitions")
         for tra in self.transitions.values():
             transitionOriginelle = True
             for tra1 in tra.pointOptimisationOrigine.transitionsVersCePoint:
@@ -1699,6 +1745,7 @@ class Graphe:
     #Cette méthode permet de générer les itinéraires à commander des missions élémentaires de régulation
     #@execution_time 
     def GenererItinerairesACommander(self):
+        logging.info("Start calling GenererItinerairesACommander")
         for me in self.missionsElementairesRegulation.values():
             premierSignalRencontre = None
             positionSegment = 0
@@ -1823,6 +1870,7 @@ class Graphe:
     #Permet de générer les points de contrôle
     #@execution_time 
     def GenererPointsDeControle(self):
+        logging.info("Start calling GenererPointsDeControle")
 
         pointDeControle = None
         #Points de controle de type suivi : joint de CdV ou extremite CDV en limite de domaine
@@ -1884,6 +1932,7 @@ class Graphe:
 
     #@execution_time 
     def ImporterMissionsElementairesDeRegulation(self, __fichierString):
+        logging.info("Start calling ImporterMissionsElementairesDeRegulation")
         pc = panda.read_csv(__fichierString, sep=';')
 
         lastMER = None
@@ -1932,6 +1981,7 @@ class Graphe:
 
     #@execution_time 
     def ImporterTransitions(self, __fichierString):
+        logging.info("Start calling ImporterTransitions")
         pc = panda.read_csv(__fichierString, sep=';')
 
         lastTransition = None
@@ -1992,6 +2042,7 @@ class Graphe:
 
     #@execution_time 
     def ImporterTrains(self, __fichierString):
+        logging.info("Start calling ImporterTrains")
         self.natures = {}
         pc = panda.read_csv(__fichierString, sep=';')
         lastNature = None
@@ -2013,6 +2064,7 @@ class Graphe:
 
     #@execution_time 
     def RechercherModeleTrain(self, nomModele):
+        logging.info("Start calling RechercherModeleTrain")
         for nature in self.natures.values():
             for modele in nature.modeles:
                 #print(modele.nom)
@@ -2022,6 +2074,7 @@ class Graphe:
 
     #@execution_time 
     def ImporterCombiTypesEspacement(self, __fichierString):
+        logging.info("Start calling ImporterCombiTypesEspacement")
         pc = panda.read_csv(__fichierString, sep=';')
         lastCombi = None
         for i in pc.index:
@@ -2044,6 +2097,7 @@ class Graphe:
     #Le format lu est une format csv de type Nom;Segment;abs;CDV_1;CDV_2;DetecteurPassage;NomQuai;DirectionSortieQuai;NatureTrain;nomPointOptimisation;isJCDV;isECDVLD;isDetecteurPassage;isExtremiteQuai;isPAFQuai;isPTES;isPTA;isPointSortieQuai;isPointOptimisation
     #@execution_time 
     def ImporterPointsDeControleCSV(self, __fichierString):
+        logging.info("Start calling ImporterPointsDeControleCSV")
         pc = panda.read_csv(__fichierString, sep=';')
         for i in pc.index:
             print("point de controle " + pc['Nom'][i])
@@ -2105,6 +2159,7 @@ class Graphe:
 
     #@execution_time 
     def ExporterItinerairesInGrapheTransition(self, _nomFichier):
+        logging.info("Start calling ExporterItinerairesInGrapheTransition")
         Dict = {'Itineraire': [], 'NoeudType': [], 'NoeudID': [], 'NonAmbiguousPreviousNoeudType': [], 'NonAmbiguousPreviousNoeudID': []}
 
         for p in self.postes.values():
@@ -2139,6 +2194,7 @@ class Graphe:
 
     #@execution_time 
     def ExporterROAdj(self, __fichierString):
+        logging.info("Start calling ExporterROAdj")
         ROAdj = []
         ROAdjDict = {'Nom': [], 'ROOrigine': [], 'RODestination': [],'Direction': []}
 
@@ -2179,6 +2235,7 @@ class Graphe:
     #le format généré du fichier est un csv de type ....ADU
     #@execution_time 
     def ExporterTransitions(self, __fichierString):
+        logging.info("Start calling ExporterTransitions")
         transitionsDict = {'Nom': [], 'Mode': [], 'PointOptimisationOrigine': [],'PointOptimisationDestination': [],'Longueur': [],'Segments': [],'SensParcours': [], 'Checkpoints': [], 'NaturesTrains':[], 'Lignes':[],
         'ControlPoints': [], 'signauxTraverses': []}
         for t in self.transitions.values():
@@ -2271,6 +2328,7 @@ class Graphe:
 
     #@execution_time 
     def ExporterItinerairesPourDCSYS(self, fichierString):
+        logging.info("Start calling ExporterItinerairesPourDCSYS")
         itinerairesDict = {'Nom': [], 'NomGraphe':[], 'NomPCC':[], 'LibellePCC':[], 'Type':[], 'SignalOrigine':[], 'OrigineManoeuvre':[], 'CDVOrigine':[], 'NomDeLOrigine':[],
         'SignalDeSortie':[],'NomDeLaDestination':[],'CDVDestination1':[],'CDVDestination2':[],'CDVDestination3':[],'CDVDestination4':[],'CDVDestination5':[],'CDVDestination6':[],'CDVDestination7':[]
         ,'CDVDestination8':[],'CDVDestination9':[],'CDVDestination10':[],'CDVDestEchap':[],'CDVTransit1':[],'CDVTransit2':[],'CDVTransit3':[],'CDVTransit4':[],'CDVTransit5':[],'CDVTransit6':[],
@@ -2453,6 +2511,7 @@ class Graphe:
 
     #@execution_time 
     def ExporterMissionsElementairesRegulation(self, __fichierString):
+        logging.info("Start calling ExporterMissionsElementairesRegulation")
         missionsElementairesDict = {'Nom': [], 'Mode': [], 'PointOptimisationOrigine': [],'PointOptimisationDestination': [],'Transitions': [],'Segments': [],'SensParcours': [],'ItinerairesACommander': [], 'SensMissionElementaire': [], 'ModeControleVitesse': [], 'NaturesTrains':[], 'Lignes':[], 'NbChangementVoie':[]}
         for me in self.missionsElementairesRegulation.values():
             missionsElementairesDict['Nom'].append(me.nom)
@@ -2536,6 +2595,7 @@ class Graphe:
     #Cette méthode permet d'exporter les missions élémentaires pour SMT3 au format csv
     #@execution_time 
     def ExporterMissionsElementaires(self, __fichierString):
+        logging.info("Start calling ExporterMissionsElementaires")
         missionsElementairesDict = {'Nom': [],'Origine': [],'Destination': [],'Segments': [],'SensParcours': [], 'Dpap-paf': [], 'ContrainteDepartQuai':[], 'DistAntAiguilleRencontree': [],
         'RefAiguilleRencontree': [], 'PosAiguilleRencontree':[], 'CibleSecuAiguilleRencontree':[],'CibleFoncAiguilleRencontree':[],'RefAiguilleAssociee':[],'PosAiguilleAssociee':[],
         'TVDCondCommutation':[],'CDVCondCommutation':[],'TVDCondPropCible':[],'CDVCondPropCible':[],'TVDCondDispoTransit':[],'TVDSensCondDispoTransit':[],'CVCondDispoTransit':[],'CVSensCondDispoTransit':[],
@@ -2656,6 +2716,7 @@ class Graphe:
     #Le format généré est une format csv de type Nom;Segment;abs;CDV_1;CDV_2;DetecteurPassage;NomQuai;DirectionSortieQuai;NatureTrain;nomPointOptimisation;isJCDV;isECDVLD;isDetecteurPassage;isExtremiteQuai;isPAFQuai;isPTES;isPTA;isPointSortieQuai;isPointOptimisation
     #@execution_time 
     def ExporterPointsDeControleCSV(self, __fichierString):
+        logging.info("Start calling ExporterPointsDeControleCSV")
         pointsControlesArray = []
         for p in self.pointsDeControle.values():
             pointDeControleArray = []
@@ -2751,6 +2812,7 @@ class Graphe:
     #Cette méthode permet de rechercher un croisement bon à partir d'une aiguille
     #@execution_time 
     def RechercherCBAvecAiguille(self, _aiguille):
+        logging.info("Start calling RechercherCBAvecAiguille")
         for cb in self.CBs.values():
             if cb.aiguille == _aiguille:
                 return cb
@@ -2759,6 +2821,7 @@ class Graphe:
     #Cette méthode permet d'importer la pièce IHM+ 3.2 bis
     #@execution_time 
     def ImporterIHMP3_2bis(self, __fichierString):
+        logging.info("Start calling ImporterIHMP3_2bis")
         __fichierExcel = open(__fichierString, "rb")
         __colsNames = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
         #Initialisation IHM+ 3.2 bis
@@ -2796,6 +2859,7 @@ class Graphe:
     #Cette méthode permet de construire le graphe à partir de données récupérées d'Adonf
     #@execution_time 
     def ImporterDonneesDepuisAdonf(self, __fichierString):
+        logging.info("Start calling ImporterDonneesDepuisAdonf")
         __fichierExcel = open(__fichierString, "rb")
         __colsNames = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
             'AA','AB','AC','AD','AE','AF','AG','AH','AI','AJ','AK','AL','AM','AN','AO','AP','AQ','AR','AS','AT','AU','AV','AW','AX','AY','AZ',
@@ -2996,6 +3060,7 @@ class Graphe:
     #Cette méthode permet d'importer un masque de saisie PT5
     #@execution_time 
     def ImporterMasquePT5(self, masquePT5File, feuilNom):
+        logging.info("Start calling ImporterMasquePT5")
         fichierExcel = open(masquePT5File, "rb")
         colsNames = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 
@@ -3038,6 +3103,7 @@ class Graphe:
     #Cette méthode permet d'importer un ensemble de pièces PT2A depuis un repertoire contenants des repertoires des postes
     #@execution_time 
     def ImporterPT2A(self, _PT2ADir):
+        logging.info("Start calling ImporterPT2A")
         __opt2adir = PT2ADir(_PT2ADir)
         __opt2adir.Ouvrir()
         self.postes = __opt2adir.listePostes
@@ -3068,6 +3134,7 @@ class Graphe:
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         print("Normalisation du graphe")
         for __o in self.lignes.values():
             __o.NormaliserAdonf()
@@ -3097,11 +3164,13 @@ class Graphe:
 
     #@execution_time 
     def DefinirLongueurTransitions(self):
+        logging.info("Start calling DefinirLongueurTransitions")
         for t in self.transitions.values():
             t.definirLongueur()
 
     #@execution_time 
     def VerifierTransitions(self):
+        logging.info("Start calling VerifierTransitions")
         problem = False
         for i in self.pointsDeControle.values():
             if(i.isPointOptimisation):
@@ -3132,6 +3201,7 @@ class Graphe:
 
     #@execution_time 
     def VerifierMissionsElementaires(self):
+        logging.info("Start calling VerifierMissionsElementaires")
         problem = False
         for i in self.pointsDeControle.values():
             if(i.isPointOptimisation):
@@ -3170,6 +3240,7 @@ class Graphe:
     #Cette méthode permet de construire les transitions, à partir des points de contrôle ayant la particularité "point d'optimisation". Une transition correspond à deux points optimisations adjacents dont le chemin entre les deux est empruntable par des itinéraires possibles
     #@execution_time 
     def ConstruireTransitions(self):
+        logging.info("Start calling ConstruireTransitions")
         self.transitions = {}
         listePointsOptimisation = {}
         for i in self.pointsDeControle.values():
@@ -3414,6 +3485,7 @@ class Graphe:
     #Cette méthode permet de construire les missions élémentaires de régulation par mixage
     #@execution_time 
     def ConstruireMissionsElementairesDeRegulationParMixage__disabledYDA(self, pointsOptimisationsCBTC, gareTerminus):
+        logging.info("Start calling ConstruireMissionsElementairesDeRegulationParMixage__disabledYDA")
         self.missionElementaireRegulation = {}
         #Les missions élémentaires de régulation sont construire en esseyant d'aller d'un quai d'une gare ou d'un PTA ou d'un PTES au quai d'une autre gare ou un autre PTA ou un autre PTES.
         combinaisonsOrigineDestination = {}
@@ -3577,6 +3649,7 @@ class Graphe:
     #Cette méthode permet de construire les missions élémentaires de régulation
     #@execution_time 
     def ConstruireMissionsElementairesDeRegulationParImportation__disabledYDA(self, pointsOptimisationsCBTC, fileToImport, _gareTerminus, _lignesSansArret):
+        logging.info("Start calling ConstruireMissionsElementairesDeRegulationParImportation__disabledYDA")
         self.missionElementaireRegulation = {}
         #Les missions élémentaires de régulation sont construire en esseyant d'aller d'un quai d'une gare ou d'un PTA ou d'un PTES au quai d'une autre gare ou un autre PTA ou un autre PTES.
         combinaisonsOrigineDestination = {}
@@ -3744,6 +3817,7 @@ class Graphe:
     #Cette méthode permet de générer les missions élémentaires (SMT3) à partir des missions élémentaires de régulation
     #@execution_time 
     def GenererMissionsElementaires___YDA(self, seuilMauvaisGlissement, dVisi, dBonGlissement, vBonGlissement, dMauvaisGlissement, vMauvaisGlissement, vA, dA, vMav, T_S, dRep, dLibMG, dLibBG, gareTerminus):
+        logging.info("Start calling GenererMissionsElementaires___YDA")
         self.missionsElementaires = {}
         for meR in self.missionsElementairesRegulation.values():
             #ADU : on supprime les missions élémentaires qui ne sont pas d'origine et destination un PTA ou PAF
@@ -3791,17 +3865,20 @@ class Graphe:
 
     #@execution_time 
     def AjouterMissionElementaire(self, _nom, _missionElementaireRegulation, _modeControleVitesse, _compositionTrain):
+        logging.info("Start calling AjouterMissionElementaire")
         self.missionsElementaires[_nom] = MissionElementaire(_nom, _missionElementaireRegulation, _modeControleVitesse, _compositionTrain)
         return self.missionsElementaires[_nom]
 
     #Cette méthode permet d'ajouter une mission élémentaire de régulation
     #@execution_time 
     def AjouterMissionElementaireRegulationSimple(self, _nom, _poA, _poB, _modeControleVitesse, _sens):
+        logging.info("Start calling AjouterMissionElementaireRegulationSimple")
         self.missionsElementairesRegulation[_nom] = MissionElementaireRegulation(_nom, _poA, _poB, [], _modeControleVitesse, _sens, [], [])
         return self.missionsElementairesRegulation[_nom]
 
     #@execution_time 
     def AjouterMissionElementaireRegulation(self, _poA, _poB, _transitions, _modeControleVitesse, _sens, _naturesTrains, _lignes):
+        logging.info("Start calling AjouterMissionElementaireRegulation")
         nbPresent = 0
         seulPresent = None
         nomAAjouter = None
@@ -3830,6 +3907,7 @@ class Graphe:
     #Cette méthode permet de rechercher un point d'optimisation
     #@execution_time 
     def RechercherPointOptimisation(self, _nomPointOptimisation):
+        logging.info("Start calling RechercherPointOptimisation")
         for i in self.pointsDeControle.values():
             if i.isPointOptimisation == True and i.nomPointOptimisation == _nomPointOptimisation:
                 return i
@@ -3838,6 +3916,7 @@ class Graphe:
     #Cette méthode permet de rechercher une transition entre deux points d'optimisation, passant par une liste de segments. Tous les segments de la transition doivent être précisés
     #@execution_time 
     def RechercherTransitionEntreAEtBAvecSegments(self, _poA, _poB, _segments):
+        logging.info("Start calling RechercherTransitionEntreAEtBAvecSegments")
         #print("Segments initiaux pour transition entre : " + _poA.nomPointOptimisation + " et " + _poB.nomPointOptimisation)
         #for s in _segments:
             #print(s.nom)
@@ -3857,6 +3936,7 @@ class Graphe:
 
     #@execution_time 
     def AjouterTransitionSimple(self, _nom, _poA, _poB, _mode, _longueur):
+        logging.info("Start calling AjouterTransitionSimple")
         self.transitions[_nom] = Transition(_nom, _poA, _poB, [], _mode, [], [])
         self.transitions[_nom].longueur = _longueur
 
@@ -3865,6 +3945,7 @@ class Graphe:
     #Cette méthode permet d'ajouter une transition (son nom est généré automatiquement à partir du nom des po)
     #@execution_time 
     def AjouterTransition(self, _poA, _poB, _segments, _mode, _checkpoints, _controlpoints):
+        logging.info("Start calling AjouterTransition")
         nbPresent = 0
         seulPresent = None
         nomAAjouter = None
@@ -3897,12 +3978,14 @@ class Graphe:
     #Cette méthode permet d'ajouter un croisement bon à une aiguille
     #@execution_time 
     def AjouterCB(self, _nom, _aiguille):
+        logging.info("Start calling AjouterCB")
         self.CBs[_nom] = CroisementBon(_nom, _aiguille)
         return self.CBs[_nom]
 
     #Cette méthode permet de connaître les itinéraires empruntant un segment
     #@execution_time 
     def RechercheItinerairesEmpruntantSegment(self, _segment):
+        logging.info("Start calling RechercheItinerairesEmpruntantSegment")
         listeItineraires = []
         for p in self.postes.values():
             for i in p.itineraires:
@@ -3915,6 +3998,7 @@ class Graphe:
     #Cette méthode permet d'importer les pédales de DA
     #@execution_time 
     def ImporterPedales(self, masquePedaleFile, feuilNom, feuilNom2):
+        logging.info("Start calling ImporterPedales")
         fichierExcel = open(masquePedaleFile, "rb")
         colsNames = ['A','B','C','D','E','F']
 
@@ -3935,14 +4019,17 @@ class Graphe:
 
     #@execution_time 
     def DefinirDistanceSansArret(self, _tempoAQuai, _tempoTechnique, _vLigne):
+        logging.info("Start calling DefinirDistanceSansArret")
         return (_tempoAQuai + _tempoTechnique) * _vLigne
 
     #@execution_time 
     def DefinirTempsSansArret(self, _distance, _vLigne):
+        logging.info("Start calling DefinirTempsSansArret")
         return _distance / _vLigne
 
     #@execution_time 
     def DefinirDistanceAvecArret(self, _tempoAQuai, _tempoTechnique, _vLigne, _gFS):
+        logging.info("Start calling DefinirDistanceAvecArret")
         dFreinage = (_vLigne*_vLigne)/(2.*_gFS)
         tFreinage = math.sqrt((2.*dFreinage)/_gFS)
         D_return = 0.
@@ -3956,6 +4043,7 @@ class Graphe:
 
     #@execution_time 
     def DefinirTempsAvecArret(self, _distance, _vLigne, _gFS):
+        logging.info("Start calling DefinirTempsAvecArret")
         dFreinage = (_vLigne*_vLigne)/(2.*_gFS)
         tFreinage = math.sqrt((2.*dFreinage)/_gFS)
         D_return = 0.
@@ -3967,6 +4055,7 @@ class Graphe:
 
     #@execution_time 
     def ProduireZonesApproches(self, _nomFichier):
+        logging.info("Start calling ProduireZonesApproches")
         zonesApprochesDict = {'Gare': [], 'Quai': [], 'Branche': [],'Sens': [],'zAPSansArret': [],'zAPAvecArret_50.0': [],'zAPAvecArret_55.0': [],'zAPAvecArret_60.0': [],'zAPAvecArret_65.0': [],'zAPAvecArret_70.0': [],'zAPAvecArret_75.0': [],'zAPAvecArret_80.0': [],'zAPAvecArret_85.0': [],'zAQuai_50.0': [],'zAQuai_55.0': [],'zAQuai_60.0': [],'zAQuai_65.0': [],'zAQuai_70.0': [],'zAQuai_75.0': [],'zAQuai_80.0': [],'zAQuai_85.0': []}
         pafConcat = []
         for station in self.stations.values():
@@ -4254,6 +4343,7 @@ class Graphe:
 
     #@execution_time 
     def RechercherJCDVouPedaleSurBranche(self, _branche):
+        logging.info("Start calling RechercherJCDVouPedaleSurBranche")
         Capteurs = []
         for jcdv in self.JointsCDVs.values():
             if(jcdv.segment in _branche['Segments']):
@@ -4298,6 +4388,7 @@ class Graphe:
 
     #@execution_time 
     def CalculerDistanceEntrePointEtPAFQuai(self, _segments, _pointSegment, _pointAbs, _paf, _sens):
+        logging.info("Start calling CalculerDistanceEntrePointEtPAFQuai")
         started = False
         distance = 0.
         finished = False
@@ -4327,6 +4418,7 @@ class Graphe:
 
     #@execution_time 
     def ListeBranchesDansInterval(self, _debutInterval, _finInterval, _quai, _sens):
+        logging.info("Start calling ListeBranchesDansInterval")
         #Recherche des intervals sur toutes les missions élémentaires se rendant sur point arrêt
         listeBranches = {}
         #print("Analyse branches : " + _quai.nom + " " + str(_debutInterval) + " " + str(_finInterval) + " " + _sens)
@@ -4435,6 +4527,7 @@ class Graphe:
 class NatureTrain:
     #@execution_time 
     def __init__(self, _nom, _pardefaut, _composition):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.pardefaut = _pardefaut
         self.modeles = []
@@ -4443,11 +4536,13 @@ class NatureTrain:
 
     #@execution_time 
     def AjouterModele(self, _modele):
+        logging.info("Start calling AjouterModele")
         self.modeles.append(_modele)
 
 class ModeleTrain:
     #@execution_time 
     def __init__(self, _nom, _modeconduite, _nature):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.nature = _nature
         self.modeconduite = _modeconduite
@@ -4456,6 +4551,7 @@ class ModeleTrain:
 class Pedale:
     #@execution_time 
     def __init__(self, _nomAtos, _nomSiemens, _segment, _abs, _signal, _direction = None):
+        logging.info("Start calling __init__")
         graphe = GrapheSingleton()
         self.nomAtos = _nomAtos
         self.nomSiemens = _nomSiemens
@@ -4475,6 +4571,7 @@ class Pedale:
 class ZLPV:
     #@execution_time 
     def __init__(self, _nom, _vitesse, _segmentDebut, _absDebut, _segmentFin, _absFin):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.vitesse = _vitesse
         self.segmentDebut = _segmentDebut
@@ -4484,6 +4581,7 @@ class ZLPV:
 
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         graphe = GrapheSingleton()
         self.segmentDebut = graphe.segments[self.segmentDebut]
         self.segmentFin = graphe.segments[self.segmentFin]
@@ -4491,6 +4589,7 @@ class ZLPV:
 class MissionElementaire:
     #@execution_time 
     def __init__(self, _nom, _missionElementaireRegulation, _modeControleVitesse, _compositionTrain):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.missionElementaireRegulation = _missionElementaireRegulation
         self.modeControleVitesse = _modeControleVitesse
@@ -4508,6 +4607,7 @@ class MissionElementaire:
 
     #@execution_time 
     def FindBestContreSensPerturbanteME(self, composition, nature):
+        logging.info("Start calling FindBestContreSensPerturbanteME")
         graphe = GrapheSingleton()
         maxSimilarityCount = 0
         maxSimilarityME = None
@@ -4527,6 +4627,7 @@ class MissionElementaire:
 
     #@execution_time 
     def FindWorstElementaryTripWithNature(self, natureTrain, _poOrigine = None):
+        logging.info("Start calling FindWorstElementaryTripWithNature")
         graphe = GrapheSingleton()
 
         poOrigine = self.missionElementaireRegulation.poOrigine
@@ -4555,6 +4656,7 @@ class MissionElementaire:
 
     #@execution_time 
     def FindNextElementaryTrip(self, _exceptEnd = None, _minimizeMePerturbationScore = None):
+        logging.info("Start calling FindNextElementaryTrip")
         graphe = GrapheSingleton()
         poDestination = self.missionElementaireRegulation.poDestination
         if(poDestination.isPTES):
@@ -4621,6 +4723,7 @@ class MissionElementaire:
 
     #@execution_time 
     def GenererOrigineDestination(self, gareTerminus):
+        logging.info("Start calling GenererOrigineDestination")
         graphe = GrapheSingleton()
         segmentsParcourus = self.missionElementaireRegulation.segmentsParcourus
         #Pour l'origine
@@ -4751,6 +4854,7 @@ class MissionElementaire:
 
     #@execution_time 
     def GenererSegmentsParcourus(self):
+        logging.info("Start calling GenererSegmentsParcourus")
         #Si l'origine est un paf et n'est pas sur le premier segment de la mission élémentaire de régulation, on ajoute le segment de l'origine dans le même sens de parcours
         if(self.missionElementaireRegulation.poOrigine.isPAFQuai == True and self.origine.segment != self.missionElementaireRegulation.segmentsParcourus[0].segment):
             segmentParcouru = ParcoursSegment(self.origine.segment, self.missionElementaireRegulation.segmentsParcourus[0].sens)
@@ -4791,6 +4895,7 @@ class MissionElementaire:
 
     #@execution_time 
     def GenererAiguilles(self, dVisi):
+        logging.info("Start calling GenererAiguilles")
         graphe = GrapheSingleton()
         i = 0
         for itineraire in self.missionElementaireRegulation.itinerairesAcommander:
@@ -4899,6 +5004,7 @@ class MissionElementaire:
 
     #@execution_time 
     def GenererTVDsdeQuaiouPTA(self):
+        logging.info("Start calling GenererTVDsdeQuaiouPTA")
         graphe = GrapheSingleton()
         for tra in self.missionElementaireRegulation.transitions:
             if(tra.pointOptimisationDestination.isPTA):
@@ -4912,6 +5018,7 @@ class MissionElementaire:
     #Cette méthode permet de générer les conditions de commande des itinéraires et la gestion des transits sur la mission élémentaire
     #@execution_time 
     def GenererTransits(self, gareTerminus):
+        logging.info("Start calling GenererTransits")
         graphe = GrapheSingleton()
         segOrigine = None
         absOrigine = None
@@ -5021,6 +5128,7 @@ class MissionElementaire:
     #ADU : non ajusté en fonction de l'approche du train et du type de paf
     #@execution_time 
     def GenererDPafPap(self):
+        logging.info("Start calling GenererDPafPap")
         graphe = GrapheSingleton()
         sens = self.missionElementaireRegulation.sens
         segmentFin = self.destination.segment
@@ -5065,6 +5173,7 @@ class MissionElementaire:
 
     #@execution_time 
     def GenererCommandesSignaux(self, _dVisi, _dBonGlissement, _vBonGlissement, _dMauvaisGlissement, _vMauvaisGlissement, _vA, _dA, _vMav, _T_S, _dRep, _DLibMG, _DLibBG):
+        logging.info("Start calling GenererCommandesSignaux")
         graphe = GrapheSingleton()
         debut = False
         fin = False
@@ -5212,6 +5321,7 @@ class MissionElementaire:
 class MissionElementaireRegulation:
     #@execution_time 
     def __init__(self, _nom, _poOrigine, _poDestination, _transitions, _modeControleVitesse, _sens, _naturesTrains, _lignes):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.poOrigine = _poOrigine
         self.poDestination = _poDestination
@@ -5229,6 +5339,7 @@ class MissionElementaireRegulation:
 
     #@execution_time 
     def GenererSegmentsParcourus(self):
+        logging.info("Start calling GenererSegmentsParcourus")
         for transition in self.transitions:
             for segment in transition.segmentsParcourus:
                 if(len(self.segmentsParcourus) <= 0 or segment != self.segmentsParcourus[-1]):
@@ -5252,6 +5363,7 @@ class MissionElementaireRegulation:
 class Transition:
     #@execution_time 
     def __init__(self, _nom, _poOrigine, _poDestination, _segmentsParcourus, _mode, _checkpoints, _controlpoints):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.pointOptimisationOrigine = _poOrigine
         self.pointOptimisationDestination = _poDestination
@@ -5267,6 +5379,7 @@ class Transition:
 
     #@execution_time 
     def definirLongueur(self):
+        logging.info("Start calling definirLongueur")
         if(len(self.segmentsParcourus) == 1):
             self.longueur = abs(self.pointOptimisationOrigine.abs - self.pointOptimisationDestination.abs)
         else:
@@ -5286,6 +5399,7 @@ class Transition:
 
     #@execution_time 
     def print(self):
+        logging.info("Start calling print")
         print("Transition : " + self.nom + " de " + self.pointOptimisationOrigine.nom + " à " + self.pointOptimisationDestination.nom)
         stringSegments = ""
         for s in self.segmentsParcourus:
@@ -5295,6 +5409,7 @@ class Transition:
 class JointCDV:
     #@execution_time 
     def __init__(self, _cdv1, _cdv2, _segment, _abs):
+        logging.info("Start calling __init__")
         self.cdv1 = _cdv1
         self.cdv2 = _cdv2
         self.segment = _segment
@@ -5304,6 +5419,7 @@ class JointCDV:
 class ExtremiteCDVLimiteDomaine:
     #@execution_time 
     def __init__(self, _cdv, _segment, _abs):
+        logging.info("Start calling __init__")
         self.cdv = _cdv
         self.segment = _segment
         self.abs = _abs
@@ -5311,6 +5427,7 @@ class ExtremiteCDVLimiteDomaine:
 class PointDeControle:
     #@execution_time 
     def __init__(self, _nom, _abs, _segment):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.segment = _segment
         self.abs = _abs
@@ -5355,6 +5472,7 @@ class PointDeControle:
 
     #@execution_time 
     def DefinirVLigne(self):
+        logging.info("Start calling DefinirVLigne")
         graphe = GrapheSingleton()
         vLigneFound = False
         for zlpv in graphe.zlpvs.values():
@@ -5375,59 +5493,70 @@ class PointDeControle:
 
     #@execution_time 
     def AjouterParticulariteJCDV(self, _jointCDV):
+        logging.info("Start calling AjouterParticulariteJCDV")
         self.isJCDV = True
         self.jointCDV = _jointCDV
 
     #@execution_time 
     def AjouterParticularitePedale(self, _pedale):
+        logging.info("Start calling AjouterParticularitePedale")
         self.isDetecteurPassage = True
         self.pedale = _pedale
 
     #@execution_time 
     def AjouterParticulariteECDVLD(self, _ECDVLD):
+        logging.info("Start calling AjouterParticulariteECDVLD")
         self.isECDVLD = True
         self.extremiteCDVLimiteDomaine = _ECDVLD
 
     #@execution_time 
     def AjouterParticulariteExtremiteQuai(self, _quai, _sens):
+        logging.info("Start calling AjouterParticulariteExtremiteQuai")
         self.isExtremiteQuai = True
         self.quai = _quai
         self.sens = _sens
 
     #@execution_time 
     def AjouterParticularitePAFQuai(self, _quai):
+        logging.info("Start calling AjouterParticularitePAFQuai")
         self.isPAFQuai = True
         self.quai = _quai
 
     #@execution_time 
     def AjouterParticularitePointOptimisation(self, _nom):
+        logging.info("Start calling AjouterParticularitePointOptimisation")
         self.isPointOptimisation = True
         self.nomPointOptimisation = _nom
 
     #@execution_time 
     def AjouterParticularitePTA(self):
+        logging.info("Start calling AjouterParticularitePTA")
         self.isPTA = True
 
     #@execution_time 
     def AjouterParticularitePTES(self, _type):
+        logging.info("Start calling AjouterParticularitePTES")
         self.isPTES = True
         self.PTESType = _type
 
 class CroisementBon:
     #@execution_time 
     def __init__(self, _nom, _aiguille):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.aiguille = _aiguille
         self.cbSegments = {}
 
     #@execution_time 
     def AjouterCB(self, _segmentNom, _segment, _abs):
+        logging.info("Start calling AjouterCB")
         self.cbSegments[_segmentNom] = {}
         self.cbSegments[_segmentNom]['Segment'] = _segment
         self.cbSegments[_segmentNom]['abs'] = _abs
 
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         print("Normalisation cb : " + self.nom)
         #Recuperation du graphe (singleton)
         __graphe = GrapheSingleton()
@@ -5438,6 +5567,7 @@ class CroisementBon:
 class Ligne:
     #@execution_time 
     def __init__(self, _nom, _numero, _referentiel, _segmentReference, _orientationGauche, _orientationDroite):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.numero = _numero
         self.referentiel = _referentiel
@@ -5447,6 +5577,7 @@ class Ligne:
 
     #@execution_time 
     def print(self, _chainePrefixe = ""):
+        logging.info("Start calling print")
         print(_chainePrefixe+"Ligne : " + self.nom)
         print(_chainePrefixe+"-numero : " + str(self.numero))
         print(_chainePrefixe+"-referentiel : " + self.referentiel)
@@ -5457,6 +5588,7 @@ class Ligne:
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         print("Normalisation ligne : " + self.nom)
         #Recuperation du graphe (singleton)
         __graphe = GrapheSingleton()
@@ -5465,16 +5597,19 @@ class Ligne:
 class Station:
     #@execution_time 
     def __init__(self, _nom):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.quais = {}
 
     #@execution_time 
     def AjouterQuai(self, _nom, _nomDCSYS, _extremite1Seg, _extremite2Seg, _extremite1Abs, _extremite2Abs, _extremite1Sens, _extremite2Sens):
+        logging.info("Start calling AjouterQuai")
         self.quais[_nom] = Quai(_nom, _nomDCSYS, _extremite1Seg, _extremite2Seg, _extremite1Abs, _extremite2Abs, _extremite1Sens, _extremite2Sens, self)
         return self.quais[_nom]
 
     #@execution_time 
     def print(self, _chainePrefixe = ""):
+        logging.info("Start calling print")
         print(_chainePrefixe+"Station : " + self.nom)
         for __o in self.quais.values():
             __o.print(_chainePrefixe+"+")
@@ -5482,6 +5617,7 @@ class Station:
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         print("Normalisation station : " + self.nom)
         for __o in self.quais.values():
             __o.NormaliserAdonf()
@@ -5489,6 +5625,7 @@ class Station:
 class Quai:
     #@execution_time 
     def __init__(self, _nom, _nomDCSYS, _extremite1Seg, _extremite2Seg, _extremite1Abs, _extremite2Abs, _extremite1Sens, _extremite2Sens, _station):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.nomDCSYS = _nomDCSYS
         self.extremite1Seg = _extremite1Seg
@@ -5502,10 +5639,12 @@ class Quai:
 
     #@execution_time 
     def AjouterPAF(self, _numero, _segment, _abs, _sens, _sensApproche, _typePAF):
+        logging.info("Start calling AjouterPAF")
         self.pafs[_numero] = PAFQuai(_numero, _segment, _abs, _sens, _sensApproche, _typePAF)
 
     #@execution_time 
     def print(self, _chainePrefixe = ""):
+        logging.info("Start calling print")
         print(_chainePrefixe+"Quai : " + self.nom)
         print(_chainePrefixe+"-extremite1Seg : " + self.extremite1Seg.nom)
         print(_chainePrefixe+"-extremite1Abs : " + str(self.extremite1Abs))
@@ -5519,6 +5658,7 @@ class Quai:
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         print("Normalisation quai : " + self.nom)
         #Recuperation du graphe (singleton)
         __graphe = GrapheSingleton()
@@ -5529,6 +5669,7 @@ class Quai:
 
     #@execution_time 
     def FournirPAFsSens(self, sens):
+        logging.info("Start calling FournirPAFsSens")
         pafs = []
         for paf in self.pafs.values():
             if(paf.sensApproche != "DOUBLE_SENS"):
@@ -5545,6 +5686,7 @@ class Quai:
 
     #@execution_time 
     def FournirPAFsSensApproche(self, sens):
+        logging.info("Start calling FournirPAFsSensApproche")
         pafs = []
         for paf in self.pafs.values():
             if(paf.sensApproche == sens or paf.sensApproche == "DOUBLE_SENS"):
@@ -5555,6 +5697,7 @@ class Quai:
 class PointArret:
     #@execution_time 
     def __init__(self, _segment, _abs, _sens):
+        logging.info("Start calling __init__")
         self.segment = _segment
         self.abs = _abs
         self.sens = _sens
@@ -5562,6 +5705,7 @@ class PointArret:
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         #Recuperation du graphe (singleton)
         __graphe = GrapheSingleton()
         #print(self.segment + " - " + str(self.abs))
@@ -5570,6 +5714,7 @@ class PointArret:
 class PAFQuai(PointArret):
     #@execution_time 
     def __init__(self, _numero, _segment, _abs, _sens, _sensApproche, _typePAF):
+        logging.info("Start calling __init__")
         PointArret.__init__(self, _segment, _abs, _sens)
         self.numero = _numero
         self.composition = ""
@@ -5579,6 +5724,7 @@ class PAFQuai(PointArret):
 
     #@execution_time 
     def print(self, _chainePrefixe = ""):
+        logging.info("Start calling print")
         print(_chainePrefixe+"PAF : " + str(self.numero))
         print(_chainePrefixe+"-segment : " + self.segment.nom)
         print(_chainePrefixe+"-abs : " + str(self.abs))
@@ -5586,11 +5732,13 @@ class PAFQuai(PointArret):
 
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         print("Normalisation PAF Quai : " + str(self.numero))
         PointArret.NormaliserAdonf(self)
 
     #@execution_time 
     def DefinirVLigne(self):
+        logging.info("Start calling DefinirVLigne")
         graphe = GrapheSingleton()
         vLigneFound = False
         for zlpv in graphe.zlpvs.values():
@@ -5612,11 +5760,13 @@ class PAFQuai(PointArret):
 class PtA(PointArret):
     #@execution_time 
     def __init__(self, _nom, _segment, _abs, _sens):
+        logging.info("Start calling __init__")
         PointArret.__init__(self, _segment, _abs, _sens)
         self.nom = _nom
 
     #@execution_time 
     def print(self, _chainePrefixe = ""):
+        logging.info("Start calling print")
         print(_chainePrefixe+"PtA : " + self.nom)
         print(_chainePrefixe+"-segment : " + self.segment.nom)
         print(_chainePrefixe+"-abs : " + str(self.abs))
@@ -5624,12 +5774,14 @@ class PtA(PointArret):
 
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         print("Normalisation PtA : " + self.nom)
         PointArret.NormaliserAdonf(self)
 
 class Segment:
     #@execution_time 
     def __init__(self, _nom, _troncon, _voie, _longueur, _origine, _fin, _segment1VoisinAmont, _segment2VoisinAmont, _segment1VoisinAval, _segment2VoisinAval):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.troncon = _troncon
         self.voie = _voie
@@ -5646,6 +5798,7 @@ class Segment:
 
     #@execution_time 
     def print(self, _chainePrefixe = ""):
+        logging.info("Start calling print")
         print(_chainePrefixe+"Segment : " + self.nom)
         print(_chainePrefixe+"-troncon : " + self.troncon.nom)
         print(_chainePrefixe+"-voie : " + self.voie.nom)
@@ -5664,6 +5817,7 @@ class Segment:
     #Cette méthode permet de rechercher tous les points de contrôle sur le segment, les points de contrôle sont triés par leur abs selon sensTri
     #@execution_time 
     def RechercherPointsControlesSurSegment(self, _sensTri):
+        logging.info("Start calling RechercherPointsControlesSurSegment")
         graphe = GrapheSingleton()
         pointsDeControle = []
         for i in graphe.pointsDeControle.values():
@@ -5679,6 +5833,7 @@ class Segment:
 
     #@execution_time 
     def RechercherSignauxSurSegment(self):
+        logging.info("Start calling RechercherSignauxSurSegment")
         __graphe = GrapheSingleton()
         signauxSurSegment = []
         for signal in __graphe.signals.values():
@@ -5690,6 +5845,7 @@ class Segment:
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         print("Normalisation segment : " + self.nom)
         #Recuperation du graphe (singleton)
         __graphe = GrapheSingleton()
@@ -5719,6 +5875,7 @@ class Segment:
 class Voie:
     #@execution_time 
     def __init__(self, _nom, _type, _sensNominal, _voieContinuitePK, _segContinuitePK, _sensIncrementationPK, _PKDebut, _PKFin):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.type = _type
         self.sensNominal = _sensNominal
@@ -5732,6 +5889,7 @@ class Voie:
 
     #@execution_time 
     def print(self, _chainePrefixe = ""):
+        logging.info("Start calling print")
         print(_chainePrefixe+"Voie : " + self.nom)
         print(_chainePrefixe+"-type : " + self.type)
         print(_chainePrefixe+"-sensNominal : " + str(self.sensNominal))
@@ -5746,6 +5904,7 @@ class Voie:
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         print("Normalisation voie : " + self.nom)
         #Recuperation du graphe (singleton)
         __graphe = GrapheSingleton()
@@ -5762,12 +5921,14 @@ class Voie:
 class Troncon:
     #@execution_time 
     def __init__(self, _nom, _ligne):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.ligne = _ligne
         self.extremitesSurVoies = []
 
     #@execution_time 
     def AjouterExtremiteSurVoie(self, _voie, _PKDebut, _PKFin):
+        logging.info("Start calling AjouterExtremiteSurVoie")
         __extvoie = {}
         __extvoie['voie'] = _voie
         __extvoie['PKDebut'] = _PKDebut
@@ -5776,6 +5937,7 @@ class Troncon:
 
     #@execution_time 
     def print(self, _chainePrefixe = ""):
+        logging.info("Start calling print")
         print(_chainePrefixe+"Troncon : " + self.nom)
         print(_chainePrefixe+"-ligne : " + self.ligne.nom)
         for __o in self.extremitesSurVoies:
@@ -5787,6 +5949,7 @@ class Troncon:
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         print("Normalisation troncon : " + self.nom)
         #Recuperation du graphe (singleton)
         __graphe = GrapheSingleton()
@@ -5797,6 +5960,7 @@ class Troncon:
 class Signal:
     #@execution_time 
     def __init__(self, _nom, _type, _sousType, _segment, _abs, _sens):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.type = _type
         self.sousType = _sousType
@@ -5815,6 +5979,7 @@ class Signal:
 
     #@execution_time 
     def print(self, _chainePrefixe = ""):
+        logging.info("Start calling print")
         print(_chainePrefixe+"Signal : " + self.nom)
         print(_chainePrefixe+"-type : " + self.type)
         print(_chainePrefixe+"-sousType : " + str(self.sousType))
@@ -5825,6 +5990,7 @@ class Signal:
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         print("Normalisation signal : " + self.nom)
         #Recuperation du graphe (singleton)
         __graphe = GrapheSingleton()
@@ -5833,6 +5999,7 @@ class Signal:
     #Permet de générer la caractéristique bon glissement ou mauvais glissement d'un signal
     #@execution_time 
     def GenererCaracteristiqueGlissementSignal(self, seuilMauvaisGlissement):
+        logging.info("Start calling GenererCaracteristiqueGlissementSignal")
         graphe = GrapheSingleton()
         distanceAParcourirJusquAiguille = 0.0
 
@@ -5912,6 +6079,7 @@ class Signal:
 class Aiguille:
     #@execution_time 
     def __init__(self, _nom, _posDirecte, _segPointe, _segTalonGauche, _segTalonDroite, _voie, _pk):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.posDirecte = _posDirecte
         self.segPointe = _segPointe
@@ -5922,13 +6090,16 @@ class Aiguille:
 
     #@execution_time 
     def DefinirTVD():
+        logging.info("Start calling DefinirTVD")
         ADU
     #@execution_time 
     def DefinirCDV():
+        logging.info("Start calling DefinirCDV")
         ADU
 
     #@execution_time 
     def print(self, _chainePrefixe = ""):
+        logging.info("Start calling print")
         print(_chainePrefixe+"Aiguille : " + self.nom)
         print(_chainePrefixe+"-posDirecte : " + self.posDirecte)
         print(_chainePrefixe+"-segPointe : " + self.segPointe.nom)
@@ -5940,6 +6111,7 @@ class Aiguille:
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         print("Normalisation aiguille : " + self.nom)
         #Recuperation du graphe (singleton)
         __graphe = GrapheSingleton()
@@ -5950,12 +6122,14 @@ class Aiguille:
 class CDV:
     #@execution_time 
     def __init__(self, _nom):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.segsExtremites = []
         self.segments = {}
 
     #@execution_time 
     def AjouterSegmentAExtremite(self, _segment, _abs):
+        logging.info("Start calling AjouterSegmentAExtremite")
         __segment = {}
         __segment['segment'] = _segment
         __segment['abs'] = _abs
@@ -5963,6 +6137,7 @@ class CDV:
 
     #@execution_time 
     def print(self, _chainePrefixe = ""):
+        logging.info("Start calling print")
         print(_chainePrefixe+"CDV : " + self.nom)
         for __o in self.segsExtremites:
             print(_chainePrefixe+"+Segment A Extremite : ")
@@ -5972,6 +6147,7 @@ class CDV:
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         print("Normalisation CDV : " + self.nom)
         #Recuperation du graphe (singleton)
         __graphe = GrapheSingleton()
@@ -5981,6 +6157,7 @@ class CDV:
 class TVD:
     #@execution_time 
     def __init__(self, _nom, _type, _objet):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.type = _type
         self.objet = _objet
@@ -5988,6 +6165,7 @@ class TVD:
 
     #@execution_time 
     def AjouterSegmentAExtremite(self, _segment, _abs):
+        logging.info("Start calling AjouterSegmentAExtremite")
         __segment = {}
         __segment['segment'] = _segment
         __segment['abs'] = _abs
@@ -5995,6 +6173,7 @@ class TVD:
 
     #@execution_time 
     def print(self, _chainePrefixe = ""):
+        logging.info("Start calling print")
         print(_chainePrefixe+"TVD : " + self.nom)
         print(_chainePrefixe+"-type : " + self.type)
         print(_chainePrefixe+"-objet : " + self.objet)
@@ -6006,6 +6185,7 @@ class TVD:
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
     def NormaliserAdonf(self):
+        logging.info("Start calling NormaliserAdonf")
         print("Normalisation TVD : " + self.nom)
         #Recuperation du graphe (singleton)
         __graphe = GrapheSingleton()
@@ -6019,6 +6199,7 @@ class TVD:
 class PT2ADir:
     #@execution_time 
     def __init__(self, _nomDir):
+        logging.info("Start calling __init__")
         self.listePostes = {}
         self.nomDir = _nomDir
         self.signauxIntrouvables = {}
@@ -6028,11 +6209,13 @@ class PT2ADir:
 
     #@execution_time 
     def AjouterPoste(self, _nomPoste):
+        logging.info("Start calling AjouterPoste")
         self.listePostes[_nomPoste] = Poste(self, _nomPoste)
         return self.listePostes[_nomPoste]
 
     #@execution_time 
     def Ouvrir(self):
+        logging.info("Start calling Ouvrir")
         __patternNomPoste = re.compile("^([0-9]+)$")
         __listDirPostes = os.listdir(self.nomDir)
         for __f in __listDirPostes:
@@ -6049,6 +6232,7 @@ class PT2ADir:
 class PT2BDoc:
     #@execution_time 
     def __init__(self, _Poste, _PosteDir, _nomFichier, _PT2ADir):
+        logging.info("Start calling __init__")
         self.Poste = _Poste
         self.PosteDir = _PosteDir
         self.nomFichier = _nomFichier
@@ -6058,6 +6242,7 @@ class PT2BDoc:
 class PT2ADoc:
     #@execution_time 
     def __init__(self, _Poste, _PosteDir, _nomFichier, _PT2ADir):
+        logging.info("Start calling __init__")
         self.Poste = _Poste
         self.PosteDir = _PosteDir
         self.nomFichier = _nomFichier
@@ -6065,6 +6250,7 @@ class PT2ADoc:
 
     #@execution_time 
     def Ouvrir(self):
+        logging.info("Start calling Ouvrir")
         print("Poste : " + self.Poste.nom + " Fichier : " + self.nomFichier)
 
         __colsNames = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
@@ -6248,6 +6434,7 @@ class PT2ADoc:
 class Poste:
     #@execution_time 
     def __init__(self, _PT2ADir, _nom):
+        logging.info("Start calling __init__")
         self.PT2ADir = _PT2ADir
         self.nom = _nom
         self.PT2ADoc = []
@@ -6255,6 +6442,7 @@ class Poste:
 
     #@execution_time 
     def OuvrirPT2A(self):
+        logging.info("Start calling OuvrirPT2A")
         __patternPT2AIti = re.compile("^2A(1|2)-([0-9]+).(?:xlsx?|csv)$")
         __PosteDir = self.PT2ADir.nomDir + self.nom + "\\"
         __listDirPoste = os.listdir(__PosteDir)
@@ -6268,6 +6456,7 @@ class Poste:
 
     #@execution_time 
     def OuvrirPT2B(self):
+        logging.info("Start calling OuvrirPT2B")
         __patternPT2BAu = re.compile("^2B([0-9]+).xls$")
         __PosteDir = self.PT2ADir.nomDir + self.nom + "\\"
         __listDirPoste = os.listdir(__PosteDir)
@@ -6279,11 +6468,13 @@ class Poste:
 
     #@execution_time 
     def AjouterItineraire(self, _itineraire):
+        logging.info("Start calling AjouterItineraire")
         self.itineraires.append(_itineraire)
 
 class Autorisation:
     #@execution_time 
     def __init__(self, _mvtType, _mvtPointA, _mvtPointB, _PT2BDoc):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.mvtType = _mvtType
         self.mvtPointA = _mvtPointA
@@ -6299,15 +6490,18 @@ class Autorisation:
 
     #@execution_time 
     def AjouterAiguilleParcourue(self, _aiguille):
+        logging.info("Start calling AjouterAiguilleParcourue")
         self.aiguillesParcourues.append(_aiguille)
 
     #@execution_time 
     def AjouterAiguilleEnProtection(self, _aiguille):
+        logging.info("Start calling AjouterAiguilleEnProtection")
         self.aiguillesEnProtection.append(_aiguille)
 
     #Recherche la position d'une aiguille parcourue
     #@execution_time 
     def PositionAiguilleParcourue(self, _aiguille):
+        logging.info("Start calling PositionAiguilleParcourue")
         for i in self.aiguillesParcourues:
             if(i.aiguille is _aiguille):
                 return i.position
@@ -6317,6 +6511,7 @@ class Autorisation:
     #A COMPLETER
     #@execution_time 
     def GenererSegmentsParcourus(self):
+        logging.info("Start calling GenererSegmentsParcourus")
         SegmentSuivant = self.origine.segment
         SensParcoursSegment = self.origine.sens
         SegmentParcouru = ParcoursSegment(SegmentSuivant, SensParcoursSegment)
@@ -6487,6 +6682,7 @@ class Autorisation:
 class Itineraire:
     #@execution_time 
     def __init__(self, _nom, _origine, _destination, _jalons, _PT2ADoc):
+        logging.info("Start calling __init__")
         self.nom = _nom
         self.origine = _origine
         self.destination = _destination
@@ -6503,19 +6699,23 @@ class Itineraire:
 
     #@execution_time 
     def AjouterAiguilleParcourue(self, _aiguille):
+        logging.info("Start calling AjouterAiguilleParcourue")
         self.aiguillesParcourues.append(_aiguille)
 
     #@execution_time 
     def AjouterAiguilleEnProtection(self, _aiguille):
+        logging.info("Start calling AjouterAiguilleEnProtection")
         self.aiguillesEnProtection.append(_aiguille)
 
     #@execution_time 
     def AjouterZoneEspacementAutomatique(self, _tvd):
+        logging.info("Start calling AjouterZoneEspacementAutomatique")
         self.zonesEspacementAutomatique.append(_tvd)
 
     #Recherche la position d'une aiguille parcourue
     #@execution_time 
     def PositionAiguilleParcourue(self, _aiguille):
+        logging.info("Start calling PositionAiguilleParcourue")
         for i in self.aiguillesParcourues:
             if(i.aiguille is _aiguille):
                 return i.position
@@ -6524,6 +6724,7 @@ class Itineraire:
     #Cette méthode permet de générer l'ensemble des segments parcourus sur l'itinéraire
     #@execution_time 
     def GenererSegmentsParcourus(self):
+        logging.info("Start calling GenererSegmentsParcourus")
         SegmentSuivant = self.origine.segment
         SensParcoursSegment = self.origine.sens
         SegmentParcouru = ParcoursSegment(SegmentSuivant, SensParcoursSegment)
@@ -6689,6 +6890,7 @@ class Itineraire:
 
     #@execution_time 
     def InsererInNoeudsGrapheTransitionsParcourus(self, node, sens):
+        logging.info("Start calling InsererInNoeudsGrapheTransitionsParcourus")
         insere = False
         i = 0
         lastOfSegment = None
@@ -6717,6 +6919,7 @@ class Itineraire:
 
     #@execution_time 
     def InsererNonAmbiguousInNoeudsGrapheTransitionsParcourus(self, node, sens):
+        logging.info("Start calling InsererNonAmbiguousInNoeudsGrapheTransitionsParcourus")
         insere = False
         i = 0
         lastOfSegment = None
@@ -6741,6 +6944,7 @@ class Itineraire:
 
     #@execution_time 
     def GenererNoeudsGrapheTransitionsParcourus(self):
+        logging.info("Start calling GenererNoeudsGrapheTransitionsParcourus")
         graphe = GrapheSingleton()
         sens = self.origine.sens
 
@@ -6853,11 +7057,13 @@ class Itineraire:
 class PositionAiguille:
     #@execution_time 
     def __init__(self, _aiguille, _position):
+        logging.info("Start calling __init__")
         self.aiguille = _aiguille
         self.position = _position
 
     #@execution_time 
     def __eq__(self, other):
+        logging.info("Start calling __eq__")
         if self.aiguille == other.aiguille and self.position == other.position:
             return True
         else:
@@ -6866,11 +7072,13 @@ class PositionAiguille:
 class ParcoursSegment:
     #@execution_time 
     def __init__(self, _segment, _sens):
+        logging.info("Start calling __init__")
         self.segment = _segment
         self.sens = _sens
 
     #@execution_time 
     def __eq__(self, other):
+        logging.info("Start calling __eq__")
         if self.segment == other.segment and self.sens == other.sens:
             return True
         else:
@@ -6880,6 +7088,7 @@ class SimulationResultsSingleton:
     __instance = None
     #@execution_time 
     def __new__(cls):
+        logging.info("Start calling __new__")
         if SimulationResultsSingleton.__instance is None:
             SimulationResultsSingleton.__instance = object.__new__(cls)
             SimulationResultsSingleton.__instance.simulationResults = SimulationResults()
@@ -6887,6 +7096,7 @@ class SimulationResultsSingleton:
 
     #@execution_time 
     def Load(cls, _nomFichier):
+        logging.info("Start calling Load")
         if SimulationResultsSingleton.__instance is None:
             SimulationResultsSingleton.__instance = object.__new__(cls)
         # f = open(_nomFichier, "rb")
@@ -6902,22 +7112,26 @@ class SimulationResultsSingleton:
 class SimulationResults:
     #@execution_time 
     def __init__(self):
+        logging.info("Start calling __init__")
         self.simplesRunsSimulations = []
         self.configurationSimulationsPerturbees = {}
 
     #@execution_time 
     def AjouterSimpleRunSimulation(self, _mE, _modele, _speedRegulation):
+        logging.info("Start calling AjouterSimpleRunSimulation")
         simpleRunSimulation = SimpleRunSimulation(_mE, _modele, _speedRegulation)
         self.simplesRunsSimulations.append(simpleRunSimulation)
         return simpleRunSimulation
 
     #@execution_time 
     def AjouterConfigurationSimulationPerturbee(self, _key, _mE1, _modele1, _speedRegulation1, _mE2, _modele2, _speedRegulation2, _copyof):
+        logging.info("Start calling AjouterConfigurationSimulationPerturbee")
         config = ConfigurationSimulationPerturbee(_key, _mE1, _modele1, _speedRegulation1, _mE2, _modele2, _speedRegulation2, _copyof)
         self.configurationSimulationsPerturbees[_key] = config
         return config
 
     # def Save(self, _nomFichier):
+        logging.info("Start calling Save")
     #     # f = pickle.Pickler(open(_nomFichier,"wb"))
     #     # f.fast = True
     #     # f.dump(self, protocol=pickle.HIGHEST_PROTOCOL)
@@ -6926,12 +7140,14 @@ class SimulationResults:
 
     #@execution_time 
     def Save(self, _nomFichier):
+        logging.info("Start calling Save")
         sys.setrecursionlimit(3000)
         f = pickle.Pickler(open(_nomFichier,"wb"))
         f.dump(self)
 
     #@execution_time 
     def FindSimpleRunSimulation(self, mE, modeleTrain):
+        logging.info("Start calling FindSimpleRunSimulation")
         for simu in self.simplesRunsSimulations:
             if(simu.mE == mE.nom and simu.modele == modeleTrain.nom):
                 #print(simu.mE + "==" + mE.nom + "   " + simu.modele + "==" + modeleTrain.nom)
@@ -6942,6 +7158,7 @@ class SimulationResults:
 
     #@execution_time 
     def ExporterSimulationIntervalleEspacement(self, _nomFichier, NbObjectPerFile):
+        logging.info("Start calling ExporterSimulationIntervalleEspacement")
         i = 0
         j = 1
         graphe = GrapheSingleton()
@@ -7028,6 +7245,7 @@ class SimulationResults:
 
     #@execution_time 
     def ExporterSimplesRunsSimulations(self, _nomFichier):
+        logging.info("Start calling ExporterSimplesRunsSimulations")
         graphe = GrapheSingleton()
         Dict = {'mE': [], 'NatureTrain': [], 'ModeConduite': [], 'TempsParcoursME': [], 'SpeedRegulation': [], 'Error': [], 'Transitions': [], 'TransitionsTimesInSeconds': [], 'ControlPoints': [], 'ControlPoints_CumulatedTravelTimeInSeconds': [], 'ControlPoints_SpeedInMeterPerSeconds': []}
         for simu in self.simplesRunsSimulations:
@@ -7077,6 +7295,7 @@ class SimulationResults:
 class ConfigurationSimulationPerturbee__YDA:
     #@execution_time 
     def __init__(self, _key, _mE1, _modele1, _speedRegulation1, _mE2, _modele2, _speedRegulation2, _copyof):
+        logging.info("Start calling __init__")
         self.key = _key
         self.mE1 = _mE1.nom
         self.modele1 = _modele1.nom
@@ -7091,6 +7310,7 @@ class ConfigurationSimulationPerturbee__YDA:
 class IntervalResults:
     #@execution_time 
     def __init__(self):
+        logging.info("Start calling __init__")
         self.tempsIntervalleNonPerturbeME = 0.0
         self.tempsEspacementNonPerturbeME = 0.0
         self.tempsIntervallePerturbeME = 0.0
@@ -7101,6 +7321,7 @@ class IntervalResults:
 
     #@execution_time 
     def DefinirTempsIntervalleNonPerturbeME(self, _headway, _tempsStationnement, _Delta_Espacement):
+        logging.info("Start calling DefinirTempsIntervalleNonPerturbeME")
         self.tempsIntervalleNonPerturbeME = _headway
         self.tempsEspacementNonPerturbeME = self.tempsIntervalleNonPerturbeME - _tempsStationnement
         self.tempsIntervallePerturbeME = self.tempsIntervalleNonPerturbeME - _Delta_Espacement
@@ -7108,6 +7329,7 @@ class IntervalResults:
 
     #@execution_time 
     def AjouterIntervalEspacementPointDeControle(self, _pointDeControle, _headway, _tempsStationnement, _Delta_Espacement):
+        logging.info("Start calling AjouterIntervalEspacementPointDeControle")
         pointdeControle = IntervalEspacementPointDeControle(_pointDeControle, _headway, _tempsStationnement, _Delta_Espacement)
         espacementPerturbe = pointdeControle.espacementPerturbe
         espacementNonPerturbe = pointdeControle.espacementNonPerturbe
@@ -7121,6 +7343,7 @@ class IntervalResults:
 
     #@execution_time 
     def AjouterIntervalEspacementTransition(self, _transition, _headway, _tempsStationnement, _Delta_Espacement):
+        logging.info("Start calling AjouterIntervalEspacementTransition")
         transition = IntervalEspacementTransition(_transition, _headway, _tempsStationnement, _Delta_Espacement)
         espacementPerturbe = transition.espacementPerturbe
         espacementNonPerturbe = transition.espacementNonPerturbe
@@ -7135,6 +7358,7 @@ class IntervalResults:
 class IntervalEspacementTransition:
     #@execution_time 
     def __init__(self, _transition, _headway = None, _tempsStationnement = None, _Delta_Espacement = None):
+        logging.info("Start calling __init__")
         self.transition = _transition.nom
         if(_headway != None and _tempsStationnement != None and _Delta_Espacement != None):
             if(_headway <= 0.0):
@@ -7157,6 +7381,7 @@ class IntervalEspacementTransition:
 class IntervalEspacementPointDeControle:
     #@execution_time 
     def __init__(self, _pointDeControle, _headway, _tempsStationnement, _Delta_Espacement):
+        logging.info("Start calling __init__")
         self.pointDeControle = _pointDeControle.nom
         if(_headway <= 0.0):
             self.intervalleNonPerturbe = 0.0
@@ -7172,6 +7397,7 @@ class IntervalEspacementPointDeControle:
 class SimpleRunSimulation:
     #@execution_time 
     def __init__(self, _mE, _modele, _speedRegulation):
+        logging.info("Start calling __init__")
         self.mE = _mE.nom
         self.modele = _modele.nom
         self.tempsParcoursME = 0.0
@@ -7183,23 +7409,27 @@ class SimpleRunSimulation:
 
     #@execution_time 
     def AjouterTempsTransition(self, _transition, _temps):
+        logging.info("Start calling AjouterTempsTransition")
         tempsTransition = TempsTransition(_transition, _temps)
         self.transitions.append(tempsTransition)
 
     #@execution_time 
     def AjouterTempsVitessePointDeControle(self, _pointDeControle, _temps, _vitesse):
+        logging.info("Start calling AjouterTempsVitessePointDeControle")
         tempsVitessePointDeControle = TempsVitessePointDeControle(_pointDeControle, _temps, _vitesse)
         self.pointsDeControle.append(tempsVitessePointDeControle)
 
 class TempsTransition:
     #@execution_time 
     def __init__(self, _transition, _temps):
+        logging.info("Start calling __init__")
         self.transition = _transition.nom
         self.temps = _temps
 
 class TempsVitessePointDeControle:
     #@execution_time 
     def __init__(self, _pointDeControle, _temps, _vitesse):
+        logging.info("Start calling __init__")
         self.pointDeControle = _pointDeControle.nom
         self.temps = _temps
         self.vitesse = _vitesse
@@ -7207,6 +7437,7 @@ class TempsVitessePointDeControle:
 
 #Cette fonction permet de transformer une coordonnée (voie, pk) en coordonnée (segment, abs)
 def CoordVoiePKToSegAbs(_voie, _pk):
+    logging.info("Start calling CoordVoiePKToSegAbs")
     #Recuperation du graphe (singleton)
     __graphe = GrapheSingleton()
     __segmentTrouve = None
@@ -7232,6 +7463,7 @@ def CoordVoiePKToSegAbs(_voie, _pk):
         return __tableTrouve
 
 def remove_proxies():
+    logging.info("Start calling remove_proxies")
     # CCO specific
     if 'http_proxy' in os.environ:
         del os.environ['http_proxy']
@@ -7242,6 +7474,7 @@ def debug():
     return 'debug' in sys.argv
 
 def launchRequest(url, xml):
+    logging.info("Start calling launchRequest")
     global debug
     headers = {'Content-Type': 'application/xml'}
     try:
