@@ -411,7 +411,7 @@ class Graphe:
             #print(xml)
             quit()
         r.raise_for_status()
-        print('HTTP status:', r.status_code)
+        logging.info("HTTP status:" +  str(r.status_code))
         
         element = ET.XML(r.text)
         ET.indent(element)
