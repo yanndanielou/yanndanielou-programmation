@@ -468,7 +468,7 @@ class Graphe:
 
                                 self.SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, output_file, _ignoredMER)
                                 elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
-                                LoggerConfig.printAndLogInfo("Simulation " + str(numero_modele) + " [" + mE.nom + "," + modele.nom + "]" + ". computed in: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
+                                LoggerConfig.printAndLogInfo("Simulation " + str(nombre_simulations_smt3_effectuees) + " [" + mE.nom + "," + modele.nom + "]" + ". computed in: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
                                 
                                 
                                 if elapsed_time_SimulerSimpleRunSimulation > 4:
