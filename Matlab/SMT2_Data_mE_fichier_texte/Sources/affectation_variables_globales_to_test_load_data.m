@@ -105,10 +105,7 @@ for aa = 1 : size(nom_var_global,1)
     end
     declaration_var_global = ['global ' nom_var_global{aa,1}];
     
-    %disp("declaration_var_global:" + declaration_var_global)
     evalc(declaration_var_global);
-    
-    %disp("valeur_var_global:" + valeur_var_global)
     evalc(valeur_var_global);
     
     if strcmp(nom_var_global{aa,1},'SMT_param')
@@ -121,15 +118,11 @@ for aa = 1 : size(nom_var_global,1)
         for nb_index_remplissage_param = 1 : size(index_remplissage_param,2)
             try
                 if ~isequal(nb_index_remplissage_param,1)
-					%disp(chaine_a_traiter(index_remplissage_param(1,nb_index_remplissage_param):index_remplissage_param(1,nb_index_remplissage_param)...
-                    %    + index_fin_instruction_param(1,nb_index_remplissage_param)...
-                    %    -index_fin_instruction_param(1,nb_index_remplissage_param-1)));
                     evalc(chaine_a_traiter(index_remplissage_param(1,nb_index_remplissage_param):index_remplissage_param(1,nb_index_remplissage_param)...
                         + index_fin_instruction_param(1,nb_index_remplissage_param)...
                         -index_fin_instruction_param(1,nb_index_remplissage_param-1)));
                 else
-                    %disp(chaine_a_traiter(index_remplissage_param(1,nb_index_remplissage_param):index_remplissage_param(1,nb_index_remplissage_param)+index_fin_instruction_param(1,nb_index_remplissage_param)));
-					evalc(chaine_a_traiter(index_remplissage_param(1,nb_index_remplissage_param):index_remplissage_param(1,nb_index_remplissage_param)+index_fin_instruction_param(1,nb_index_remplissage_param)));
+                    evalc(chaine_a_traiter(index_remplissage_param(1,nb_index_remplissage_param):index_remplissage_param(1,nb_index_remplissage_param)+index_fin_instruction_param(1,nb_index_remplissage_param)));
                 end
             catch %#ok<*CTCH>
             end
