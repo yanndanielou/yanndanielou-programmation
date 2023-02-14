@@ -49,7 +49,7 @@ def Lancer_simulations_sur_smt3(smt3_port, numero_premiere_mission_elementaire_a
 
     LoggerConfig.printAndLogInfo("ProduireSimplesRuns") 
     pas_sauvegarde = 4
-    __graphe.ProduireSimplesRuns("http://127.0.0.1:" + str(smt3_port), 0.4, 30.0, "output\\Simulation_output-" + str(smt3_port) + now_as_string_for_file_suffix + ".sme",pas_sauvegarde,1.1,ignoredMER,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter)
+    __graphe.ProduireSimplesRuns("http://127.0.0.1:" + str(smt3_port), 0.4, 30.0, "output\\Simulation_output-" + str(smt3_port) + now_as_string_for_file_suffix + ".sme",pas_sauvegarde,1.1,ignoredMER,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix)
   
     LoggerConfig.printAndLogInfo("ExporterSimplesRunsSimulations") 
     simuResults.ExporterSimplesRunsSimulations("output\\SimplesRunsSimulationsResults-" + str(smt3_port) + now_as_string_for_file_suffix + ".csv")
