@@ -48,21 +48,11 @@ def Lancer_simulations_sur_smt3(smt3_port, numero_premiere_mission_elementaire_a
     LoggerConfig.printAndLogInfo("ignoredMER : " + str(ignoredMER)) 
 
     LoggerConfig.printAndLogInfo("ProduireSimplesRuns") 
-    pas_sauvegarde = 4
-    __graphe.ProduireSimplesRuns("http://127.0.0.1:" + str(smt3_port), 0.4, 30.0, "output\\Simulation_output-" + str(smt3_port) + now_as_string_for_file_suffix + ".sme",pas_sauvegarde,1.1,ignoredMER,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix)
+    pas_sauvegarde = 10
+    __graphe.ProduireSimplesRuns("http://127.0.0.1:" + str(smt3_port), 0.4, 30.0,pas_sauvegarde,1.1,ignoredMER,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix)
   
-    LoggerConfig.printAndLogInfo("ExporterSimplesRunsSimulations") 
-    simuResults.ExporterSimplesRunsSimulations("output\\SimplesRunsSimulationsResults-" + str(smt3_port) + now_as_string_for_file_suffix + ".csv")
- 
-    #__graphe.EstimerNombreDeSimulation()
+    LoggerConfig.printAndLogInfo("End of application") 
 
-    LoggerConfig.printAndLogInfo("Liste des points de contrôle")
-    for i in sorted (__graphe.pointsDeControle.keys()) :
-        LoggerConfig.printAndLogInfo(i)
-
-    LoggerConfig.printAndLogInfo("Liste des transitions")
-    for i in __graphe.transitions.values():
-        i.print()
 
 
 def main(argv):
