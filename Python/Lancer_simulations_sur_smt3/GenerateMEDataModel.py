@@ -23,9 +23,9 @@ from datetime import timedelta
 # Cette classe définie un graphe de topologie ferroviaire. La classe GrapheSingleton permet d'obtenir l'instance d'un singleton réutilisable.
 class GrapheSingleton:
     __instance = None
-    #@execution_time 
+    #Used for sure
     def __new__(cls):
-        logging.info("Start calling __new__ GrapheSingleton")
+        #logging.info("Start calling __new__ GrapheSingleton")
         if GrapheSingleton.__instance is None:
             GrapheSingleton.__instance = object.__new__(cls)
             GrapheSingleton.__instance.graphe = Graphe()
@@ -344,9 +344,9 @@ class Graphe:
                     if(coupleSePerturbe not in self.couplesMeSePerturbant):
                         self.couplesMeSePerturbant.append(coupleSePerturbe)
 
-    #@execution_time 
+    #used for sure 
     def SimulerSimpleRunSimulation(self, _url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, output_file, _ignoredMER = None):
-        logging.info("Start calling SimulerSimpleRunSimulation")
+        #logging.info("Start calling SimulerSimpleRunSimulation")
         error = ""
         simulationResults = SimulationResultsSingleton()
 
@@ -2976,9 +2976,9 @@ class MissionElementaire:
             worstMe = self.worstMe
         return worstMe
 
-    #@execution_time 
+    #used for sure YDA
     def FindNextElementaryTrip(self, _exceptEnd = None, _minimizeMePerturbationScore = None):
-        logging.info("Start calling FindNextElementaryTrip")
+        #logging.info("Start calling FindNextElementaryTrip")
         graphe = GrapheSingleton()
         poDestination = self.missionElementaireRegulation.poDestination
         if(poDestination.isPTES):
@@ -5408,9 +5408,9 @@ class ParcoursSegment:
 
 class SimulationResultsSingleton:
     __instance = None
-    #@execution_time 
+    #used for sure
     def __new__(cls):
-        logging.info("Start calling __new__ SimulationResultsSingleton")
+        #logging.info("Start calling __new__ SimulationResultsSingleton")
         if SimulationResultsSingleton.__instance is None:
             SimulationResultsSingleton.__instance = object.__new__(cls)
             SimulationResultsSingleton.__instance.simulationResults = SimulationResults()
@@ -5438,9 +5438,9 @@ class SimulationResults:
         self.simplesRunsSimulations = []
         self.configurationSimulationsPerturbees = {}
 
-    #@execution_time 
+    #used for sure 
     def AjouterSimpleRunSimulation(self, _mE, _modele, _speedRegulation):
-        logging.info("Start calling AjouterSimpleRunSimulation")
+        #logging.info("Start calling AjouterSimpleRunSimulation")
         simpleRunSimulation = SimpleRunSimulation(_mE, _modele, _speedRegulation)
         self.simplesRunsSimulations.append(simpleRunSimulation)
         return simpleRunSimulation
@@ -5717,9 +5717,9 @@ class IntervalEspacementPointDeControle:
             self.espacementPerturbe = self.espacementNonPerturbe - _Delta_Espacement
 
 class SimpleRunSimulation:
-    #@execution_time 
+    #used for sure
     def __init__(self, _mE, _modele, _speedRegulation):
-        logging.info("Start calling __init__ SimpleRunSimulation")
+        #logging.info("Start calling __init__ SimpleRunSimulation")
         self.mE = _mE.nom
         self.modele = _modele.nom
         self.tempsParcoursME = 0.0
