@@ -438,19 +438,20 @@ class Graphe:
 
 
         for mE in self.missionsElementaires.values():
-            start_time_mission_elementaire = time.time()
             numero_mission_elementaire_courante = numero_mission_elementaire_courante + 1
+            LoggerConfig.printAndLogInfo(str(numero_mission_elementaire_courante) + " eme ME " + mE.nom + " sur " + str(nbMissionsElementaires) + " . Avancement:" + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
+            start_time_mission_elementaire = time.time()
             is_current_mission_elementaire_to_be_computed = numero_mission_elementaire_courante >= numero_premiere_mission_elementaire_a_traiter and numero_mission_elementaire_courante <= numero_derniere_mission_elementaire_a_traiter
             if  is_current_mission_elementaire_to_be_computed:
                 numero_nature = 0
                 for nature in mE.missionElementaireRegulation.naturesTrains:
                     numero_nature = numero_nature + 1
                     numero_modele = 0
-                    LoggerConfig.printAndLogInfo("Nature:" + str(nature))
+                    #LoggerConfig.printAndLogInfo(mE.nom = " nature:" + str(nature))
                     #nature = self.natures[natureitem]
                     for modele in nature.modeles:
                         
-                        LoggerConfig.printAndLogInfo("modele:" + str(modele))
+                        logging.info(mE.nom + " nature " + str(nature) + " modele:" + str(modele))
                         numero_modele = numero_modele + 1
                         if(modele.aSimuler):
                             if((mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM") and simulationResults.FindSimpleRunSimulation(mE.missionElementaireRegulation, modele) != None):
@@ -462,7 +463,7 @@ class Graphe:
                                 output_file.write("\n")
                                 start_time_SimulerSimpleRunSimulation = time.time()
                                 nombre_simulations_smt3_effectuees = nombre_simulations_smt3_effectuees + 1
-                                LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] " + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
+                                LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] ")
                                 output_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] " +  " : Simulation ["+mE.nom+","+modele.nom+"] ")
 
                                 self.SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, output_file, _ignoredMER)
@@ -5775,11 +5776,11 @@ def launchRequest__disabled_YDA(url, xml):
     try:
         r = requests.post(url + '/SMT3-REST-Server/computeTravelTimes', data=ET.tostring(xml), headers=headers)
     except:
-        print('Erreur de requête au serveur')
+        LoggerConfig.printAndLogError('Erreur de requête au serveur')
         #print(xml)
         quit()
     r.raise_for_status()
-    print('HTTP status:', r.status_code)
+    logging.debug('HTTP status:', r.status_code)
     if debug():
         print(parseString(r.text).toprettyxml())
     print()
