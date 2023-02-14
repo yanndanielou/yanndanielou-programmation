@@ -427,11 +427,10 @@ class Graphe:
     def ProduireSimplesRuns(self, _url, _stepInSecond, _dwellTimeInSecond, _PasSauvegarde, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix):
         logging.info("Start calling ProduireSimplesRuns")
         start_time_ProduireSimplesRuns = time.time()
-        numero_modele = 0
         numero_mission_elementaire_courante = 0
         nombre_simulations_smt3_effectuees = 0
         simulationResults = SimulationResultsSingleton()
-        nbSimu = len(self.missionsElementaires.values())
+        nbMissionsElementaires = len(self.missionsElementaires.values())
         
         output_file_name = "output\\ProduireSimplesRuns_xml_inputs_and_output-" + now_as_string_for_file_suffix + ".txt"
         output_file = open(output_file_name, "w")
@@ -443,23 +442,28 @@ class Graphe:
             numero_mission_elementaire_courante = numero_mission_elementaire_courante + 1
             is_current_mission_elementaire_to_be_computed = numero_mission_elementaire_courante >= numero_premiere_mission_elementaire_a_traiter and numero_mission_elementaire_courante <= numero_derniere_mission_elementaire_a_traiter
             if  is_current_mission_elementaire_to_be_computed:
+                numero_nature = 0
                 for nature in mE.missionElementaireRegulation.naturesTrains:
+                    numero_nature = numero_nature + 1
+                    numero_modele = 0
+                    LoggerConfig.printAndLogInfo("Nature:" + str(nature))
                     #nature = self.natures[natureitem]
                     for modele in nature.modeles:
+                        
+                        LoggerConfig.printAndLogInfo("modele:" + str(modele))
+                        numero_modele = numero_modele + 1
                         if(modele.aSimuler):
                             if((mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM") and simulationResults.FindSimpleRunSimulation(mE.missionElementaireRegulation, modele) != None):
-                                numero_modele = numero_modele + 1
                                 output_file.write(str(numero_mission_elementaire_courante) + " eme mission elementaire " + str(numero_modele) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
                                 output_file.write("\n")
                                 LoggerConfig.printAndLogInfo(str(numero_mission_elementaire_courante) + " eme mission elementaire " + str(numero_modele) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
                             elif(mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM"):
                                 #Envoi de la requête
-                                numero_modele = numero_modele + 1
                                 output_file.write("\n")
                                 start_time_SimulerSimpleRunSimulation = time.time()
                                 nombre_simulations_smt3_effectuees = nombre_simulations_smt3_effectuees + 1
-                                LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme modele "+ str(numero_modele) + " : ["+modele.nom+"] " + " : Simulation ["+mE.nom+","+modele.nom+"] " + str(round(numero_mission_elementaire_courante*100/nbSimu,2)) + "%")
-                                output_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme modele "+ str(numero_modele) + " : ["+modele.nom+"] " +  " : Simulation ["+mE.nom+","+modele.nom+"] ")
+                                LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] " + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
+                                output_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] " +  " : Simulation ["+mE.nom+","+modele.nom+"] ")
 
                                 self.SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, output_file, _ignoredMER)
                                 elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
@@ -475,7 +479,7 @@ class Graphe:
                                     # typically the above line would do. however this is used to ensure that the file is written
                                     os.fsync(output_file.fileno())
             else:
-                logging.info(str(numero_mission_elementaire_courante) + " eme mission elementaire a ignorer: " + str(round(numero_mission_elementaire_courante*100/nbSimu,2)) + "%")
+                logging.info(str(numero_mission_elementaire_courante) + " eme mission elementaire a ignorer: " + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
 
 
         logging.info('Close output file:' + output_file_name)
@@ -2837,7 +2841,7 @@ class Graphe:
 
 class NatureTrain:
     #@execution_time 
-    def __init____disabled_YDA(self, _nom, _pardefaut, _composition):
+    def __init__(self, _nom, _pardefaut, _composition):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.pardefaut = _pardefaut
@@ -2850,15 +2854,21 @@ class NatureTrain:
         logging.info("Start calling AjouterModele")
         self.modeles.append(_modele)
 
+    def __str__(self):
+        return f'nom: {self.nom} pardefaut: {self.pardefaut}  composition: {self.composition} '
+
 class ModeleTrain:
     #@execution_time 
-    def __init____disabled_YDA(self, _nom, _modeconduite, _nature):
+    def __init__(self, _nom, _modeconduite, _nature):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.nature = _nature
         self.modeconduite = _modeconduite
         self.aSimuler = False
 
+    def __str__(self):
+        return f'nom: {self.nom} nature: [{self.nature}] modeconduite: {self.modeconduite}  aSimuler: {self.aSimuler}'
+        
 class Pedale:
     #@execution_time 
     def __init____disabled_YDA(self, _nomAtos, _nomSiemens, _segment, _abs, _signal, _direction = None):
