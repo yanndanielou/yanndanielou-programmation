@@ -6964,19 +6964,6 @@ class TempsVitessePointDeControle:
         self.temps = _temps
         self.vitesse = _vitesse
 
-#Cette fonction permet de transformer une coordonnée (segment, abs) en coordonnée (voie, pk)
-def CoordSegAbsToVoiePK(_segment, _abs):
-    #Si la valeur de _abs est plus grande que la longueur du segment ou inférieur à 0, on retourne None
-    if _abs < 0 or _abs > _segment.longueur:
-        return None
-    else:
-        __tableTrouve = {}
-        __tableTrouve['voie'] = _segment.voie
-        if _segment.origine < _segment.fin:
-            __tableTrouve['pk'] = _segment.origine + _abs
-        else:
-            __tableTrouve['pk'] = _segment.origine - _abs
-        return __tableTrouve
 
 #Cette fonction permet de transformer une coordonnée (voie, pk) en coordonnée (segment, abs)
 def CoordVoiePKToSegAbs(_voie, _pk):
