@@ -8,6 +8,8 @@ import random
 
 import getopt
 
+import datetime
+
 
 import os
 import sys
@@ -27,14 +29,18 @@ def Lancer_simulations_sur_smt3(smt3_port, numero_premiere_mission_elementaire_a
 
     remove_proxies()
 
-    __graphe = GrapheSingleton.Load(GrapheSingleton,"D:\\SMT3_generation\\SMT3\\Graphe-NG_ReadyForSimu.gme")
+    __graphe = GrapheSingleton.Load(GrapheSingleton,"inputs\\Graphe-NG_ReadyForSimu.gme")
 
     LoggerConfig.printAndLogInfo("Nombre de missions élémentaires de régulation : " + str(len(__graphe.missionsElementairesRegulation)))
     LoggerConfig.printAndLogInfo("Nombre de missions élémentaires : " + str(len(__graphe.missionsElementaires)))
 
     LoggerConfig.printAndLogInfo("Load empty Simulation.sme") 
-    simuResults = SimulationResultsSingleton.Load(SimulationResultsSingleton, "Simulation_empty.sme")
+    simuResults = SimulationResultsSingleton.Load(SimulationResultsSingleton, "inputs\\Simulation_empty.sme")
 
+
+
+    now_as_datetime = datetime.datetime.now()
+    now_as_string_for_file_suffix = now_as_datetime.strftime("%Y_%m_%d %H_%M_%S %f")
 
 #      simuResults = SimulationResultsSingleton.Load(SimulationResultsSingleton, "D:\\SMT3_generation\\SMT3\\Simulation.sme")
 
@@ -42,11 +48,11 @@ def Lancer_simulations_sur_smt3(smt3_port, numero_premiere_mission_elementaire_a
     LoggerConfig.printAndLogInfo("ignoredMER : " + str(ignoredMER)) 
 
     LoggerConfig.printAndLogInfo("ProduireSimplesRuns") 
-    pas_sauvegarde = 10
-    __graphe.ProduireSimplesRuns("http://127.0.0.1:" + str(smt3_port), 0.4, 30.0, "D:\\SMT3_generation\\SMT3\\Simulation_output-" + str(smt3_port) + ".sme",pas_sauvegarde,1.1,ignoredMER,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter)
+    pas_sauvegarde = 4
+    __graphe.ProduireSimplesRuns("http://127.0.0.1:" + str(smt3_port), 0.4, 30.0, "output\\Simulation_output-" + str(smt3_port) + now_as_string_for_file_suffix + ".sme",pas_sauvegarde,1.1,ignoredMER,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter)
   
     LoggerConfig.printAndLogInfo("ExporterSimplesRunsSimulations") 
-    simuResults.ExporterSimplesRunsSimulations("D:\\SMT3_generation\\SMT3\\SimplesRunsSimulationsResults-" + str(smt3_port) + ".csv")
+    simuResults.ExporterSimplesRunsSimulations("output\\SimplesRunsSimulationsResults-" + str(smt3_port) + now_as_string_for_file_suffix + ".csv")
  
     #__graphe.EstimerNombreDeSimulation()
 
@@ -99,7 +105,7 @@ def main(argv):
 def launch(smt3_port, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter):
 
     
-    log_file_name = 'GenerateME-LoadGraphe-SimuSMT-' + str(smt3_port) + '' + "." +  str(random.randrange(100)) + ".log"
+    log_file_name = 'Lancer_simulations_sur_smt3-' + str(smt3_port) + '' + "." +  str(random.randrange(100)) + ".log"
     LoggerConfig.configureLogger(log_file_name)    
     LoggerConfig.printAndLogInfo('Start application. Log file name: ' + log_file_name)
     Lancer_simulations_sur_smt3(smt3_port,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter)
