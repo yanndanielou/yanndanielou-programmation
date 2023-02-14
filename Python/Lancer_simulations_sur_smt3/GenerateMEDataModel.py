@@ -399,6 +399,7 @@ class Graphe:
         
         output_file.write("Send to SMT3 \n")
         output_file.write(ET.tostring(element, encoding='unicode'))
+        output_file.write("\n")
 
         #LoggerConfig.printAndLogInfo("travelTimesRequestTree:" + str(travelTimesRequestTree_as_str))
 
@@ -419,6 +420,8 @@ class Graphe:
         
         output_file.write("Received from SMT3 \n")
         output_file.write(ET.tostring(element, encoding='unicode'))
+        output_file.write("\n")
+
 
 
     #@execution_time 
@@ -446,10 +449,14 @@ class Graphe:
                         if(modele.aSimuler):
                             if((mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM") and simulationResults.FindSimpleRunSimulation(mE.missionElementaireRegulation, modele) != None):
                                 i = i + 1
+                                output_file.write(str(i) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
+                                output_file.write("\n")
                                 LoggerConfig.printAndLogInfo(str(i) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
                             elif(mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM"):
                                 #Envoi de la requête
                                 i = i + 1
+                                output_file.write("Simulation ["+mE.nom+","+modele.nom+"] ")
+                                output_file.write("\n")
                                 LoggerConfig.printAndLogInfo(str(i) + " : " + str(datetime.now()) + " : Simulation ["+mE.nom+","+modele.nom+"] " + str(round(numero_mission_elementaire_courante*100/nbSimu,2)) + "%")
                                 start_time_SimulerSimpleRunSimulation = time.time()
                                 self.SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, output_file, _ignoredMER)
