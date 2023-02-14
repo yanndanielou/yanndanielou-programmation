@@ -345,7 +345,7 @@ class Graphe:
                         self.couplesMeSePerturbant.append(coupleSePerturbe)
 
     #@execution_time 
-    def SimulerSimpleRunSimulation(self, _url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, _ignoredMER = None):
+    def SimulerSimpleRunSimulation(self, _url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, output_file, _ignoredMER = None):
         logging.info("Start calling SimulerSimpleRunSimulation")
         error = ""
         simulationResults = SimulationResultsSingleton()
@@ -393,104 +393,47 @@ class Graphe:
         simpleRunSimulation = simulationResults.AjouterSimpleRunSimulation(mE.missionElementaireRegulation, modele, 'Normale')
         result = ""
         travelTimesRequestTree_as_str = ET.tostring(travelTimesRequestTree, encoding='utf8', method='xml')
-        LoggerConfig.printAndLogInfo("travelTimesRequestTree:" + str(travelTimesRequestTree_as_str))
-        if(error == ""):
-            result = launchRequest(_url,travelTimesRequestTree)
-            #ET.dump(result)
-            #Lecture de la réponse
-            #travelTimes = result.find('simpleRunProfileResult')
-            error = result.find('errorMessage')
-        if(error != None and result != ""):
-            error = result.find('errorMessage').text
-        elif(error == None and result != ""):
-            travelTimes = result.find('travelTimes')
-            error = ""
-            if(travelTimes == None):
-                error = "Error in results"
-            else:
-                simpleRunSimulation.tempsParcoursME = round(float(travelTimes.find('totalTravelTimeInSecond').text) * _coeffOnRunTime, 1)
-                simpleRunSimulation.deltaTimeOrigine = 0.0
-                if(travelTimes.find('travelTimesAndSpeedAtControlPoints') == None):
-                    error = "Error in results"
-                else:
-                    traNum = 0
-                    finME = False
-                    lastTransitionFound = False
-                    previousTempsAtCP = 0.0
-                    nextPO = mE.missionElementaireRegulation.transitions[0].pointOptimisationDestination
-                    lastAddedCP = None
-                    debutPointControle = True
-                    if(mE.missionElementaireRegulation.poOrigine.isPTES):
-                        debutPointControle = False
-                    for CP in travelTimes.find('travelTimesAndSpeedAtControlPoints').iter('travelTimeAndSpeedAtControlPoint'):
-                        cpName = CP.find('controlPointIdentifier').text
-                        pointDeControle = None
-                        if cpName in self.pointsDeControle:
-                            pointDeControle = self.pointsDeControle[cpName]
-                        else:
-                            pointDeControle = self.RechercherPointOptimisation(cpName)
-                        if(pointDeControle != None and finME == False):
-                            tempsAtCP = round(float(CP.find('travelTimeInSecond').text) * _coeffOnRunTime, 1)
-                            vitesseAtCP = round(float(CP.find('speedInMeterPerSecond').text) / _coeffOnRunTime, 1)
-                            if(mE.missionElementaireRegulation.poOrigine.isPTES and pointDeControle == mE.missionElementaireRegulation.poOrigine):
-                                simpleRunSimulation.deltaTimeOrigine = tempsAtCP
-                                previousTempsAtCP = tempsAtCP
-                                debutPointControle = True
-                            elif(debutPointControle and (mE.missionElementaireRegulation.poDestination.isPTES or pointDeControle != mE.missionElementaireRegulation.poDestination)):
-                                simpleRunSimulation.AjouterTempsVitessePointDeControle(pointDeControle, tempsAtCP-simpleRunSimulation.deltaTimeOrigine, vitesseAtCP)
-                                lastAddedCP = pointDeControle
-                                print("Ajout CP : " + pointDeControle.nom + " " + str(tempsAtCP-simpleRunSimulation.deltaTimeOrigine) +"s " + str(vitesseAtCP) + "m/s")
-                            if(pointDeControle == nextPO):
-                                if(mE.missionElementaireRegulation.poDestination.isPTES or traNum < len(mE.missionElementaireRegulation.transitions) - 1):
-                                    tempsTransition = round(tempsAtCP - previousTempsAtCP, 1)
-                                    simpleRunSimulation.AjouterTempsTransition(mE.missionElementaireRegulation.transitions[traNum],tempsTransition)
-                                    if(traNum == len(mE.missionElementaireRegulation.transitions) - 1):
-                                        lastTransitionFound = True
-                                    print("Ajout Transition : " + mE.missionElementaireRegulation.transitions[traNum].nom + " " + str(tempsTransition)+"s")
-                                    traNum = traNum + 1
-                                    previousTempsAtCP = tempsAtCP
-                                if(traNum < len(mE.missionElementaireRegulation.transitions)):
-                                    nextPO = mE.missionElementaireRegulation.transitions[traNum].pointOptimisationDestination
-                                else:
-                                    nextPO = None
-                            if(pointDeControle == mE.missionElementaireRegulation.poDestination):
-                                finME = True
-                                if(mE.missionElementaireRegulation.poDestination.isPTES):
-                                    simpleRunSimulation.tempsParcoursME = tempsAtCP
+        element = ET.XML(travelTimesRequestTree_as_str)
+        ET.indent(element)
+        LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
+        
+        output_file.write("Send to SMT3 \n")
+        output_file.write(ET.tostring(element, encoding='unicode'))
 
-                    tempsTransition = round(simpleRunSimulation.tempsParcoursME - previousTempsAtCP, 1)
-                    traNum = len(mE.missionElementaireRegulation.transitions) - 1
-                    if(lastTransitionFound == False):
-                        print("Ajout Transition : " + mE.missionElementaireRegulation.transitions[traNum].nom + " " + str(tempsTransition)+"s")
-                        simpleRunSimulation.AjouterTempsTransition(mE.missionElementaireRegulation.transitions[traNum],tempsTransition)
-                        if(lastAddedCP != mE.missionElementaireRegulation.poDestination):
-                            simpleRunSimulation.AjouterTempsVitessePointDeControle(mE.missionElementaireRegulation.poDestination, simpleRunSimulation.tempsParcoursME-simpleRunSimulation.deltaTimeOrigine, 0.0)
-                            print("Ajout CP : " + mE.missionElementaireRegulation.poDestination.nom + " " + str(simpleRunSimulation.tempsParcoursME-simpleRunSimulation.deltaTimeOrigine) +"s " + str(0.0) + "m/s")
-                simpleRunSimulation.tempsParcoursME = simpleRunSimulation.tempsParcoursME - simpleRunSimulation.deltaTimeOrigine
+        #LoggerConfig.printAndLogInfo("travelTimesRequestTree:" + str(travelTimesRequestTree_as_str))
 
-        if(len(mE.missionElementaireRegulation.transitions) > len(simpleRunSimulation.transitions)):
-            error = "Error : Probleme lors de la reconstruction des transitions"
-        simpleRunSimulation.error = error
-        print("Temps Parcours ME : " + str(simpleRunSimulation.tempsParcoursME) +"s")
-        if(simpleRunSimulation.deltaTimeOrigine > 0.0):
-            print("deltatime : " + str(simpleRunSimulation.deltaTimeOrigine))
-            #os.system("pause")
-        if(error != ""):
-            print("Error : " + error)
-            os.system("pause")
+        headers = {'Content-Type': 'application/xml'}
+        full_url = _url + '/SMT3-REST-Server/computeTravelTimes'
+        try:
+            r = requests.post(full_url, data=ET.tostring(travelTimesRequestTree), headers=headers)
+        except:
+            print('Erreur de requête au serveur')
+            #print(xml)
+            quit()
+        r.raise_for_status()
+        print('HTTP status:', r.status_code)
+        
+        element = ET.XML(r.text)
+        ET.indent(element)
+        LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
+        
+        output_file.write("Received from SMT3 \n")
+        output_file.write(ET.tostring(element, encoding='unicode'))
 
-        return simpleRunSimulation
 
     #@execution_time 
-    def ProduireSimplesRuns(self, _url, _stepInSecond, _dwellTimeInSecond, _nomFichier, _PasSauvegarde, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter):
+    def ProduireSimplesRuns(self, _url, _stepInSecond, _dwellTimeInSecond, _nomFichier, _PasSauvegarde, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix):
         logging.info("Start calling ProduireSimplesRuns")
         start_time_ProduireSimplesRuns = time.time()
         i = 0
         numero_mission_elementaire_courante = 0
         simulationResults = SimulationResultsSingleton()
         nbSimu = len(self.missionsElementaires.values())
+        
+        output_file_name = "output\\ProduireSimplesRuns_xml_inputs_and_output-" + now_as_string_for_file_suffix + ".txt"
+        output_file = open(output_file_name, "w")
+        logging.info('Create output file:' + output_file_name)
 
-      
 
         for mE in self.missionsElementaires.values():
             start_time_mission_elementaire = time.time()
@@ -509,7 +452,7 @@ class Graphe:
                                 i = i + 1
                                 LoggerConfig.printAndLogInfo(str(i) + " : " + str(datetime.now()) + " : Simulation ["+mE.nom+","+modele.nom+"] " + str(round(numero_mission_elementaire_courante*100/nbSimu,2)) + "%")
                                 start_time_SimulerSimpleRunSimulation = time.time()
-                                self.SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, _ignoredMER)
+                                self.SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, output_file, _ignoredMER)
                                 elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
 
                                 
@@ -517,25 +460,16 @@ class Graphe:
                                     LoggerConfig.printAndLogWarning("SMT3 was slow for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
                                 
                                 if(not (i % _PasSauvegarde)):
-                                    simulationResults.Save(_nomFichier)
-                                    LoggerConfig.printAndLogInfo("Sauvegarde !")
+                                    output_file.flush()
+                                    # typically the above line would do. however this is used to ensure that the file is written
+                                    os.fsync(output_file.fileno())
             else:
                 logging.info(str(numero_mission_elementaire_courante) + " eme mission elementaire a ignorer: " + str(round(numero_mission_elementaire_courante*100/nbSimu,2)) + "%")
-            #elapsed_time_mission_elementaire = time.time() - start_time_mission_elementaire 
-            #if elapsed_time_mission_elementaire > 5:
-            #    LoggerConfig.printAndLogError("SMT3 has probably loopedProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
-            #elif elapsed_time_mission_elementaire > 3:
-            #    LoggerConfig.printAndLogWarning("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
-            #elif elapsed_time_mission_elementaire >= 1:
-            #   LoggerConfig.printAndLogInfo("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
-            #else:
-            #    logging.debug("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
-        
-        simulationResults.Save(_nomFichier)
-        LoggerConfig.printAndLogInfo("Sauvegarde !")
-        elapsed_time_ProduireSimplesRuns = time.time() - start_time_ProduireSimplesRuns  
-        LoggerConfig.printAndLogInfo("ProduireSimplesRuns ended. Elapsed: " + format(elapsed_time_ProduireSimplesRuns, '.2f') + " s" + " " + str(timedelta(seconds=elapsed_time_ProduireSimplesRuns)))
 
+
+        logging.info('Close output file:' + output_file_name)
+        output_file.close()
+        
     #@execution_time 
     def DefinirIntervalMax(self, mE1, mE2, modtrain1, modtrain2):
         logging.info("Start calling DefinirIntervalMax")
