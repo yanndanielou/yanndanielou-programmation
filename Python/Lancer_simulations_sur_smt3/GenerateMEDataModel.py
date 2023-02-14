@@ -25,7 +25,7 @@ class GrapheSingleton:
     __instance = None
     #@execution_time 
     def __new__(cls):
-        logging.info("Start calling __new__")
+        logging.info("Start calling __new__ GrapheSingleton")
         if GrapheSingleton.__instance is None:
             GrapheSingleton.__instance = object.__new__(cls)
             GrapheSingleton.__instance.graphe = Graphe()
@@ -54,7 +54,7 @@ class GrapheSingleton:
 class Graphe:
     #@execution_time
     def __init__(self):
-        logging.info("Start calling __init__")
+        logging.info("Start calling __init__ Graphe")
         self.lignes = {}
         self.stations = {}
         self.voies = {}
@@ -395,13 +395,12 @@ class Graphe:
         travelTimesRequestTree_as_str = ET.tostring(travelTimesRequestTree, encoding='utf8', method='xml')
         element = ET.XML(travelTimesRequestTree_as_str)
         ET.indent(element)
-        LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
+        #LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
         
         output_file.write("Send to SMT3 \n")
         output_file.write(ET.tostring(element, encoding='unicode'))
         output_file.write("\n")
 
-        #LoggerConfig.printAndLogInfo("travelTimesRequestTree:" + str(travelTimesRequestTree_as_str))
 
         headers = {'Content-Type': 'application/xml'}
         full_url = _url + '/SMT3-REST-Server/computeTravelTimes'
@@ -416,7 +415,7 @@ class Graphe:
         
         element = ET.XML(r.text)
         ET.indent(element)
-        LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
+        #LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
         
         output_file.write("Received from SMT3 \n")
         output_file.write(ET.tostring(element, encoding='unicode'))
@@ -425,11 +424,12 @@ class Graphe:
 
 
     #@execution_time 
-    def ProduireSimplesRuns(self, _url, _stepInSecond, _dwellTimeInSecond, _nomFichier, _PasSauvegarde, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix):
+    def ProduireSimplesRuns(self, _url, _stepInSecond, _dwellTimeInSecond, _PasSauvegarde, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix):
         logging.info("Start calling ProduireSimplesRuns")
         start_time_ProduireSimplesRuns = time.time()
-        i = 0
+        numero_modele = 0
         numero_mission_elementaire_courante = 0
+        nombre_simulations_smt3_effectuees = 0
         simulationResults = SimulationResultsSingleton()
         nbSimu = len(self.missionsElementaires.values())
         
@@ -448,25 +448,29 @@ class Graphe:
                     for modele in nature.modeles:
                         if(modele.aSimuler):
                             if((mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM") and simulationResults.FindSimpleRunSimulation(mE.missionElementaireRegulation, modele) != None):
-                                i = i + 1
-                                output_file.write(str(i) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
+                                numero_modele = numero_modele + 1
+                                output_file.write(str(numero_mission_elementaire_courante) + " eme mission elementaire " + str(numero_modele) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
                                 output_file.write("\n")
-                                LoggerConfig.printAndLogInfo(str(i) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
+                                LoggerConfig.printAndLogInfo(str(numero_mission_elementaire_courante) + " eme mission elementaire " + str(numero_modele) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
                             elif(mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM"):
                                 #Envoi de la requête
-                                i = i + 1
-                                output_file.write("Simulation ["+mE.nom+","+modele.nom+"] ")
+                                numero_modele = numero_modele + 1
                                 output_file.write("\n")
-                                LoggerConfig.printAndLogInfo(str(i) + " : " + str(datetime.now()) + " : Simulation ["+mE.nom+","+modele.nom+"] " + str(round(numero_mission_elementaire_courante*100/nbSimu,2)) + "%")
                                 start_time_SimulerSimpleRunSimulation = time.time()
+                                nombre_simulations_smt3_effectuees = nombre_simulations_smt3_effectuees + 1
+                                LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme modele "+ str(numero_modele) + " : ["+modele.nom+"] " + " : Simulation ["+mE.nom+","+modele.nom+"] " + str(round(numero_mission_elementaire_courante*100/nbSimu,2)) + "%")
+                                output_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme modele "+ str(numero_modele) + " : ["+modele.nom+"] " +  " : Simulation ["+mE.nom+","+modele.nom+"] ")
+
                                 self.SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, output_file, _ignoredMER)
                                 elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
-
+                                LoggerConfig.printAndLogInfo("Simulation " + str(numero_modele) + " [" + mE.nom + "," + modele.nom + "]" + ". computed in: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
+                                
                                 
                                 if elapsed_time_SimulerSimpleRunSimulation > 4:
-                                    LoggerConfig.printAndLogWarning("SMT3 was slow for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
+                                    LoggerConfig.printAndLogWarning("SMT3 was slow for mission elementaire " + str(numero_modele) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
                                 
-                                if(not (i % _PasSauvegarde)):
+                                if(not (nombre_simulations_smt3_effectuees % _PasSauvegarde)):
+                                    LoggerConfig.printAndLogInfo("Save output file with partial results")
                                     output_file.flush()
                                     # typically the above line would do. however this is used to ensure that the file is written
                                     os.fsync(output_file.fileno())
@@ -5379,7 +5383,7 @@ class PositionAiguille:
 class ParcoursSegment:
     #@execution_time 
     def __init__(self, _segment, _sens):
-        logging.info("Start calling __init__")
+        logging.info("Start calling __init__ ParcoursSegment")
         self.segment = _segment
         self.sens = _sens
 
@@ -5395,7 +5399,7 @@ class SimulationResultsSingleton:
     __instance = None
     #@execution_time 
     def __new__(cls):
-        logging.info("Start calling __new__")
+        logging.info("Start calling __new__ SimulationResultsSingleton")
         if SimulationResultsSingleton.__instance is None:
             SimulationResultsSingleton.__instance = object.__new__(cls)
             SimulationResultsSingleton.__instance.simulationResults = SimulationResults()
@@ -5419,7 +5423,7 @@ class SimulationResultsSingleton:
 class SimulationResults:
     #@execution_time 
     def __init__(self):
-        logging.info("Start calling __init__")
+        logging.info("Start calling __init__ SimulationResults")
         self.simplesRunsSimulations = []
         self.configurationSimulationsPerturbees = {}
 
@@ -5704,7 +5708,7 @@ class IntervalEspacementPointDeControle:
 class SimpleRunSimulation:
     #@execution_time 
     def __init__(self, _mE, _modele, _speedRegulation):
-        logging.info("Start calling __init__")
+        logging.info("Start calling __init__ SimpleRunSimulation")
         self.mE = _mE.nom
         self.modele = _modele.nom
         self.tempsParcoursME = 0.0
