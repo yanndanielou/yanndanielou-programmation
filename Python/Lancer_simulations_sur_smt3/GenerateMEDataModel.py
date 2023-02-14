@@ -41,7 +41,7 @@ class GrapheSingleton:
         f.close()
         return GrapheSingleton.__instance.graphe
 
-    # def Load(cls, _nomFichier):
+    # def Load__disabled_YDA(cls, _nomFichier):
     #    logging.info("Start calling Load")
     #     if GrapheSingleton.__instance is None:
     #         GrapheSingleton.__instance = object.__new__(cls)
@@ -80,7 +80,7 @@ class Graphe:
         self.couplesMeSePerturbant = []
         self.couplesMeSePerturbantCalculees = []
 
-    # def Save(self, _nomFichier):
+    # def Save__disabled_YDA(self, _nomFichier):
         logging.info("Start calling Save")
     #     # f = pickle.Pickler(open(_nomFichier,"wb"))
     #     # f.fast = True
@@ -91,7 +91,7 @@ class Graphe:
         #f.close()
 
     #@execution_time 
-    def Save(self, _nomFichier):
+    def Save__disabled_YDA(self, _nomFichier):
         logging.info("Start calling Save")
         sys.setrecursionlimit(3000)
         f = pickle.Pickler(open(_nomFichier,"wb"))
@@ -100,71 +100,71 @@ class Graphe:
         #joblib.dump(self, _nomFichier)
 
     #@execution_time
-    def AjouterLigne(self, _nom, _numero, _referentiel, _segmentReference, _orientationGauche, _orientationDroite):
+    def AjouterLigne__disabled_YDA(self, _nom, _numero, _referentiel, _segmentReference, _orientationGauche, _orientationDroite):
         logging.info("Start calling AjouterLigne")
         LoggerConfig.printAndLogInfo("fonction AjouterLigne")
         self.lignes[_nom] = Ligne(_nom, _numero, _referentiel, _segmentReference, _orientationGauche, _orientationDroite)
 
     #@execution_time 
-    def AjouterStation(self, _nom):
+    def AjouterStation__disabled_YDA(self, _nom):
         logging.info("Start calling AjouterStation")
         LoggerConfig.printAndLogInfo("fonction AjouterStation")
         self.stations[_nom] = Station(_nom)
         return self.stations[_nom]
 
     #@execution_time 
-    def AjouterPtA(self, _nom, _segment, _abs, _sens):
+    def AjouterPtA__disabled_YDA(self, _nom, _segment, _abs, _sens):
         logging.info("Start calling AjouterPtA")
         LoggerConfig.printAndLogInfo("fonction AjouterPtA")
         self.PtAs[_nom] = PtA(_nom, _segment, _sens, _abs)
 
     #@execution_time 
-    def AjouterSegment(self, _nom, _troncon, _voie, _longueur, _origine, _fin, _segment1VoisinAmont, _segment2VoisinAmont, _segment1VoisinAval, _segment2VoisinAval):
+    def AjouterSegment__disabled_YDA(self, _nom, _troncon, _voie, _longueur, _origine, _fin, _segment1VoisinAmont, _segment2VoisinAmont, _segment1VoisinAval, _segment2VoisinAval):
         logging.info("Start calling AjouterSegment")
         LoggerConfig.printAndLogInfo("fonction AjouterSegment")
         self.segments[_nom] = Segment(_nom, _troncon, _voie, _longueur, _origine, _fin, _segment1VoisinAmont, _segment2VoisinAmont, _segment1VoisinAval, _segment2VoisinAval)
 
     #@execution_time 
-    def AjouterVoie(self, _nom, _type, _sensNominal, _voieContinuitePK, _segContinuitePK, _sensIncrementationPK, _PKDebut, _PKFin):
+    def AjouterVoie__disabled_YDA(self, _nom, _type, _sensNominal, _voieContinuitePK, _segContinuitePK, _sensIncrementationPK, _PKDebut, _PKFin):
         logging.info("Start calling AjouterVoie")
         LoggerConfig.printAndLogInfo("fonction AjouterVoie")
         self.voies[_nom] = Voie(_nom, _type, _sensNominal, _voieContinuitePK, _segContinuitePK, _sensIncrementationPK, _PKDebut, _PKFin)
 
     #@execution_time    
-    def AjouterTroncon(self, _nom, _ligne):
+    def AjouterTroncon__disabled_YDA(self, _nom, _ligne):
         logging.info("Start calling AjouterTroncon")
         LoggerConfig.printAndLogInfo("fonction AjouterTroncon")
         self.troncons[_nom] = Troncon(_nom, _ligne)
         return self.troncons[_nom]
 
     #@execution_time 
-    def AjouterSignal(self, _nom, _type, _sousType, _segment, _abs, _sens):
+    def AjouterSignal__disabled_YDA(self, _nom, _type, _sousType, _segment, _abs, _sens):
         logging.info("Start calling AjouterSignal")
         LoggerConfig.printAndLogInfo("fonction AjouterSignal")
         self.signals[_nom] = Signal(_nom, _type, _sousType, _segment, _abs, _sens)
 
     #@execution_time 
-    def AjouterAiguille(self, _nom, _posDirecte, _segPointe, _segTalonGauche, _segTalonDroite, _voie, _pk):
+    def AjouterAiguille__disabled_YDA(self, _nom, _posDirecte, _segPointe, _segTalonGauche, _segTalonDroite, _voie, _pk):
         logging.info("Start calling AjouterAiguille")
         LoggerConfig.printAndLogInfo("fonction AjouterAiguille")
         self.aiguilles[_nom] = Aiguille(_nom, _posDirecte, _segPointe, _segTalonGauche, _segTalonDroite, _voie, _pk)
 
     #@execution_time 
-    def AjouterCDV(self, _nom):
+    def AjouterCDV__disabled_YDA(self, _nom):
         logging.info("Start calling AjouterCDV")
         LoggerConfig.printAndLogInfo("fonction AjouterCDV")
         self.CDVs[_nom] = CDV(_nom)
         return self.CDVs[_nom]
 
     #@execution_time 
-    def AjouterTVD(self, _nom, _type, _objet):
+    def AjouterTVD__disabled_YDA(self, _nom, _type, _objet):
         logging.info("Start calling AjouterTVD")
         LoggerConfig.printAndLogInfo("fonction AjouterTVD")
         self.TVDs[_nom] = TVD(_nom, _type, _objet)
         return self.TVDs[_nom]
 
     #@execution_time 
-    def AjouterJointCDV(self, _cdv1, _cdv2, _segment, _abs):
+    def AjouterJointCDV__disabled_YDA(self, _cdv1, _cdv2, _segment, _abs):
         logging.info("Start calling AjouterJointCDV")
         LoggerConfig.printAndLogInfo("fonction AjouterJointCDV")
         if(_cdv1.nom <= _cdv2.nom):
@@ -177,7 +177,7 @@ class Graphe:
             return self.JointsCDVs[nomJointCdv]
 
     #@execution_time 
-    def RechercherJointCDV(self, _cdv1Nom, _cdv2Nom):
+    def RechercherJointCDV__disabled_YDA(self, _cdv1Nom, _cdv2Nom):
         logging.info("Start calling RechercherJointCDV")
 
         if(_cdv1Nom <= _cdv2Nom):
@@ -222,14 +222,14 @@ class Graphe:
                             return self.JointsCDVs[nomJointCdv]
 
     #@execution_time 
-    def AjouterExtremiteCDVLimiteDomaine(self, _cdv, _segment, _abs):
+    def AjouterExtremiteCDVLimiteDomaine__disabled_YDA(self, _cdv, _segment, _abs):
         logging.info("Start calling AjouterExtremiteCDVLimiteDomaine")
         self.ExtremitesCDVsLimiteDomaine[_cdv.nom] = ExtremiteCDVLimiteDomaine(_cdv, _segment, _abs)
         return self.ExtremitesCDVsLimiteDomaine[_cdv.nom]
 
 
     #@execution_time 
-    def RechercherItinerairesDepuisOrigine(self, _signal):
+    def RechercherItinerairesDepuisOrigine__disabled_YDA(self, _signal):
         logging.info("Start calling RechercherItinerairesDepuisOrigine")
         itineraires = []
         for p in self.postes.values():
@@ -240,7 +240,7 @@ class Graphe:
         return itineraires
 
     #@execution_time
-    def RechercherCheckpoint(self, _nom):
+    def RechercherCheckpoint__disabled_YDA(self, _nom):
         logging.info("Start calling RechercherCheckpoint")
         for pc in self.pointsDeControle.values():
             if(pc.nomCheckPoint == _nom):
@@ -248,7 +248,7 @@ class Graphe:
         return None
 
     #@execution_time 
-    def RechercherItineraire(self, _nom):
+    def RechercherItineraire__disabled_YDA(self, _nom):
         logging.info("Start calling RechercherItineraire")
         for p in self.postes.values():
             for i in p.itineraires:
@@ -258,7 +258,7 @@ class Graphe:
         return None
 
     #@execution_time 
-    def EstimerNbChangementVoieME(self):
+    def EstimerNbChangementVoieME__disabled_YDA(self):
         logging.info("Start calling EstimerNbChangementVoieME")
         for meR in self.missionsElementairesRegulation.values():
             lastVoieParcourue = None
@@ -268,7 +268,7 @@ class Graphe:
                     meR.nbChangementVoie = meR.nbChangementVoie + 1
 
     #@execution_time 
-    def ProduireCouplesMESePerturbant(self):
+    def ProduireCouplesMESePerturbant__disabled_YDA(self):
         logging.info("Start calling ProduireCouplesMESePerturbant")
         self.couplesMeSePerturbant = []
         for mE2 in self.missionsElementaires.values():
@@ -471,7 +471,7 @@ class Graphe:
         output_file.close()
         
     #@execution_time 
-    def DefinirIntervalMax(self, mE1, mE2, modtrain1, modtrain2):
+    def DefinirIntervalMax__disabled_YDA(self, mE1, mE2, modtrain1, modtrain2):
         logging.info("Start calling DefinirIntervalMax")
         headwaySimulation = IntervalResults()
         headwaySimulation.tempsIntervallePerturbeME = "MAX_INTERVAL"
@@ -484,7 +484,7 @@ class Graphe:
         return headwaySimulation
 
     #@execution_time 
-    def ExporterCouplesMeSePerturbantCalcules(self, _nomFichier):
+    def ExporterCouplesMeSePerturbantCalcules__disabled_YDA(self, _nomFichier):
         logging.info("Start calling ExporterCouplesMeSePerturbantCalcules")
         Dict = {'mE1': [], 'mE2': [], 'Raison': []}
         for couple in self.couplesMeSePerturbantCalculees:
@@ -496,7 +496,7 @@ class Graphe:
         df.to_csv(_nomFichier, sep=';')
 
     #@execution_time 
-    def IsMissionsElementairesSePerturbentParSig(self, mE1, mE2):
+    def IsMissionsElementairesSePerturbentParSig__disabled_YDA(self, mE1, mE2):
         logging.info("Start calling IsMissionsElementairesSePerturbentParSig")
         tvdEspacementCommun = False
         for sigMe1 in mE1.signaux:
@@ -536,7 +536,7 @@ class Graphe:
         return mEsePerturbent
 
     #@execution_time 
-    def ScoreMissionsElementairesSePerturbent(self, mE1, mE2):
+    def ScoreMissionsElementairesSePerturbent__disabled_YDA(self, mE1, mE2):
         logging.info("Start calling ScoreMissionsElementairesSePerturbent")
         #print(mE1.nom + " vs " + mE2.nom)
         tvdEspacementCommun = 0
@@ -592,7 +592,7 @@ class Graphe:
         return tvdEspacementCommun + aiguilleCommune + poCommun * 10 + arretSurParcours * 30 + sortieDeDomaineSurParcours * 5
 
     #@execution_time 
-    def IsMissionsElementairesSePerturbentParPointsOptimisation(self, mE1, mE2):
+    def IsMissionsElementairesSePerturbentParPointsOptimisation__disabled_YDA(self, mE1, mE2):
         logging.info("Start calling IsMissionsElementairesSePerturbentParPointsOptimisation")
         poDestinationTransitionCommun = False
         for transition1 in mE1.missionElementaireRegulation.transitions:
@@ -610,7 +610,7 @@ class Graphe:
         return mEsePerturbent
 
     #@execution_time 
-    def IsMissionsElementairesSePerturbentParTransitions(self, mE1, mE2):
+    def IsMissionsElementairesSePerturbentParTransitions__disabled_YDA(self, mE1, mE2):
         logging.info("Start calling IsMissionsElementairesSePerturbentParTransitions")
         poDestinationTransitionCommun = False
         for transition in mE1.missionElementaireRegulation.transitions:
@@ -626,7 +626,7 @@ class Graphe:
         return mEsePerturbent
 
     #@execution_time 
-    def ProduireConfigurationSimulationsPerturbees(self):
+    def ProduireConfigurationSimulationsPerturbees__disabled_YDA(self):
         logging.info("Start calling ProduireConfigurationSimulationsPerturbees")
         simuAFaire = 0
         simuACopier = 0
@@ -700,7 +700,7 @@ class Graphe:
         print("Simu à copier : " + str(simuACopier))
 
     #@execution_time 
-    def EstimerNombreDeSimulation__disabledYDA(self):
+    def EstimerNombreDeSimulation__disabledYDA__disabled_YDA(self):
         logging.info("Start calling EstimerNombreDeSimulation__disabledYDA")
         nbModelTrain = 2+8
         nbSimulationSimpleRun = 0
@@ -884,7 +884,7 @@ class Graphe:
         print(str(nbSimulationParNbChgVoie))
     #Cette méthode permet de trouver les CDV à l'intérieur d'un interval sur l'ensemble d'un parcours de segments
     #@execution_time 
-    def CDVDansInterval(self, ParcoursSegments, OrigineSegment, OrigineAbs, DestinationSegment, DestinationAbs):
+    def CDVDansInterval__disabled_YDA(self, ParcoursSegments, OrigineSegment, OrigineAbs, DestinationSegment, DestinationAbs):
         logging.info("Start calling CDVDansInterval")
         CDVList = []
         premierSegTrouve = False
@@ -1049,7 +1049,7 @@ class Graphe:
 
     #Permet d'afficher un graphe
     #@execution_time 
-    def print(self, _chainePrefixe = ""):
+    def print__disabled_YDA(self, _chainePrefixe = ""):
         logging.info("Start calling print")
         print("Graphe :")
         for __o in self.lignes.values():
@@ -1084,7 +1084,7 @@ class Graphe:
 
     #Permet de rechercher une aiguille avec ses trois segments de définition
     #@execution_time 
-    def RechercherAiguilleAvecSegments__YDA(self, _segment1, _segment2, _segment3):
+    def RechercherAiguilleAvecSegments__YDA__disabled_YDA(self, _segment1, _segment2, _segment3):
         logging.info("Start calling RechercherAiguilleAvecSegments__YDA")
         for aiguille in self.aiguilles.values():
             if(aiguille.segTalonDroite is _segment1 and aiguille.segTalonGauche is _segment2 and aiguille.segPointe is _segment3):
@@ -1104,7 +1104,7 @@ class Graphe:
 
     #Cette méthode permet de rechercher un quai sur l'ensemble du domaine
     #@execution_time 
-    def RechercherQuai(self, _nomQuai):
+    def RechercherQuai__disabled_YDA(self, _nomQuai):
         logging.info("Start calling RechercherQuai")
         for station in self.stations.values():
             if(_nomQuai in station.quais):
@@ -1116,7 +1116,7 @@ class Graphe:
     #les joints de CdV sont enregistrées dans self.JointsCDVs{} selon un clé prenant la forme d'une chaîne de caractère NomCdv1_NomCdv2 avec NomCdv1 et NomCdv2
     #le nom des deux CDV, et NomCdv1 précède NomCdv2 dans l'alphabet.
     #@execution_time 
-    def GenererJointsCDVs(self):
+    def GenererJointsCDVs__disabled_YDA(self):
         logging.info("Start calling GenererJointsCDVs")
         #On recherche deux CDV qui auraient la même position sur segment dans une de ses extrémités
         for i in self.CDVs.values():
@@ -1168,7 +1168,7 @@ class Graphe:
 
     #Cette méthode permet de construire le référentiel des positions de CDVs avec toutes les segments
     #@execution_time 
-    def ConstruireReferentielPositionsCDV(self):
+    def ConstruireReferentielPositionsCDV__disabled_YDA(self):
         logging.info("Start calling ConstruireReferentielPositionsCDV")
         for cdv in self.CDVs.values():
             print("CDV : " + cdv.nom)
@@ -1316,7 +1316,7 @@ class Graphe:
 
     #Cette méthode permet de rechercher un CDV en fonction d'une position sur un segment
     #@execution_time 
-    def RechercherCDVAvecSegmentAbs(self, _segment, _abs, _aig = None):
+    def RechercherCDVAvecSegmentAbs__disabled_YDA(self, _segment, _abs, _aig = None):
         logging.info("Start calling RechercherCDVAvecSegmentAbs")
         for cdv in self.CDVs.values():
             for segment in cdv.segments.values():
@@ -1347,7 +1347,7 @@ class Graphe:
 
     #Cette méthode permet de retourner tous les CDV d'un segment
     #@execution_time 
-    def RechercherCDVsAvecSegment(self, _segment):
+    def RechercherCDVsAvecSegment__disabled_YDA(self, _segment):
         logging.info("Start calling RechercherCDVsAvecSegment")
         cdvs = []
         for cdv in self.CDVs.values():
@@ -1358,7 +1358,7 @@ class Graphe:
 
     #Cette méthode recherche un TVD correspondant à un CDV
     #@execution_time 
-    def RechercherTVDAvecCDV(self, _cdv):
+    def RechercherTVDAvecCDV__disabled_YDA(self, _cdv):
         logging.info("Start calling RechercherTVDAvecCDV")
         for tvd in self.TVDs.values():
             if(tvd.objet == _cdv):
@@ -1366,7 +1366,7 @@ class Graphe:
         return None
 
     #@execution_time 
-    def GenererSignauxTraversesTransitions(self):
+    def GenererSignauxTraversesTransitions__disabled_YDA(self):
         logging.info("Start calling GenererSignauxTraversesTransitions")
         for tra in self.transitions.values():
             transitionOriginelle = True
@@ -1416,7 +1416,7 @@ class Graphe:
 
     #Cette méthode permet de générer les itinéraires à commander des missions élémentaires de régulation
     #@execution_time 
-    def GenererItinerairesACommander(self):
+    def GenererItinerairesACommander__disabled_YDA(self):
         logging.info("Start calling GenererItinerairesACommander")
         for me in self.missionsElementairesRegulation.values():
             premierSignalRencontre = None
@@ -1541,7 +1541,7 @@ class Graphe:
 
     #Permet de générer les points de contrôle
     #@execution_time 
-    def GenererPointsDeControle(self):
+    def GenererPointsDeControle__disabled_YDA(self):
         logging.info("Start calling GenererPointsDeControle")
 
         pointDeControle = None
@@ -1603,7 +1603,7 @@ class Graphe:
                 #ADU : nécessite d'importer les modèles de train
 
     #@execution_time 
-    def ImporterMissionsElementairesDeRegulation(self, __fichierString):
+    def ImporterMissionsElementairesDeRegulation__disabled_YDA(self, __fichierString):
         logging.info("Start calling ImporterMissionsElementairesDeRegulation")
         pc = panda.read_csv(__fichierString, sep=';')
 
@@ -1652,7 +1652,7 @@ class Graphe:
                         os.system("pause")
 
     #@execution_time 
-    def ImporterTransitions(self, __fichierString):
+    def ImporterTransitions__disabled_YDA(self, __fichierString):
         logging.info("Start calling ImporterTransitions")
         pc = panda.read_csv(__fichierString, sep=';')
 
@@ -1713,7 +1713,7 @@ class Graphe:
                         transition.lignes.append(ligne)
 
     #@execution_time 
-    def ImporterTrains(self, __fichierString):
+    def ImporterTrains__disabled_YDA(self, __fichierString):
         logging.info("Start calling ImporterTrains")
         self.natures = {}
         pc = panda.read_csv(__fichierString, sep=';')
@@ -1735,7 +1735,7 @@ class Graphe:
                 newModele.aSimuler = True
 
     #@execution_time 
-    def RechercherModeleTrain(self, nomModele):
+    def RechercherModeleTrain__disabled_YDA(self, nomModele):
         logging.info("Start calling RechercherModeleTrain")
         for nature in self.natures.values():
             for modele in nature.modeles:
@@ -1745,7 +1745,7 @@ class Graphe:
         return None
 
     #@execution_time 
-    def ImporterCombiTypesEspacement(self, __fichierString):
+    def ImporterCombiTypesEspacement__disabled_YDA(self, __fichierString):
         logging.info("Start calling ImporterCombiTypesEspacement")
         pc = panda.read_csv(__fichierString, sep=';')
         lastCombi = None
@@ -1768,7 +1768,7 @@ class Graphe:
     #Cette méthode permet d'importer un fichier de points de controle
     #Le format lu est une format csv de type Nom;Segment;abs;CDV_1;CDV_2;DetecteurPassage;NomQuai;DirectionSortieQuai;NatureTrain;nomPointOptimisation;isJCDV;isECDVLD;isDetecteurPassage;isExtremiteQuai;isPAFQuai;isPTES;isPTA;isPointSortieQuai;isPointOptimisation
     #@execution_time 
-    def ImporterPointsDeControleCSV(self, __fichierString):
+    def ImporterPointsDeControleCSV__disabled_YDA(self, __fichierString):
         logging.info("Start calling ImporterPointsDeControleCSV")
         pc = panda.read_csv(__fichierString, sep=';')
         for i in pc.index:
@@ -1830,7 +1830,7 @@ class Graphe:
             self.pointsDeControle[pointDeControle.nom] = pointDeControle
 
     #@execution_time 
-    def ExporterItinerairesInGrapheTransition(self, _nomFichier):
+    def ExporterItinerairesInGrapheTransition__disabled_YDA(self, _nomFichier):
         logging.info("Start calling ExporterItinerairesInGrapheTransition")
         Dict = {'Itineraire': [], 'NoeudType': [], 'NoeudID': [], 'NonAmbiguousPreviousNoeudType': [], 'NonAmbiguousPreviousNoeudID': []}
 
@@ -1865,7 +1865,7 @@ class Graphe:
         df.to_csv(_nomFichier, sep=';')
 
     #@execution_time 
-    def ExporterROAdj(self, __fichierString):
+    def ExporterROAdj__disabled_YDA(self, __fichierString):
         logging.info("Start calling ExporterROAdj")
         ROAdj = []
         ROAdjDict = {'Nom': [], 'ROOrigine': [], 'RODestination': [],'Direction': []}
@@ -1903,909 +1903,21 @@ class Graphe:
         df = panda.DataFrame(ROAdjDict)
         df.to_csv(__fichierString, sep=';')
 
-    #Cette méthode permet d'exporter les transitions dans un Fichier
-    #le format généré du fichier est un csv de type ....ADU
-    #@execution_time 
-    def ExporterTransitions(self, __fichierString):
-        logging.info("Start calling ExporterTransitions")
-        transitionsDict = {'Nom': [], 'Mode': [], 'PointOptimisationOrigine': [],'PointOptimisationDestination': [],'Longueur': [],'Segments': [],'SensParcours': [], 'Checkpoints': [], 'NaturesTrains':[], 'Lignes':[],
-        'ControlPoints': [], 'signauxTraverses': []}
-        for t in self.transitions.values():
-            transitionsDict['Nom'].append(t.nom)
-            transitionsDict['Mode'].append(t.mode)
-            transitionsDict['Longueur'].append(t.longueur)
-            transitionsDict['PointOptimisationOrigine'].append(t.pointOptimisationOrigine.nomPointOptimisation)
-            transitionsDict['PointOptimisationDestination'].append(t.pointOptimisationDestination.nomPointOptimisation)
-
-            for s in t.segmentsParcourus:
-                transitionsDict['Segments'].append(s.segment.nom)
-                transitionsDict['SensParcours'].append(s.sens)
-
-            for cp in t.checkpoints:
-                transitionsDict['Checkpoints'].append(cp.nomCheckPoint)
-
-            for nature in t.naturesTrains:
-                transitionsDict['NaturesTrains'].append(nature.nom)
-
-            for ligne in t.lignes:
-                transitionsDict['Lignes'].append(ligne)
-
-            for pointDeControle in t.controlpoints:
-                transitionsDict['ControlPoints'].append(pointDeControle.nom)
-
-            for signal in t.signauxTraverses:
-                transitionsDict['signauxTraverses'].append(signal.nom)
-
-            #estimation du nombre de ligne
-            nbLigneItemList = []
-            nbLigneItemList.append(1)
-            nbLigneItemList.append(len(t.segmentsParcourus))
-            nbLigneItemList.append(len(t.checkpoints))
-            nbLigneItemList.append(len(t.naturesTrains))
-            nbLigneItemList.append(len(t.lignes))
-            nbLigneItemList.append(len(t.controlpoints))
-            nbLigneItemList.append(len(t.signauxTraverses))
-            nbLigneItem = max(nbLigneItemList)
-
-            #génération des lignes suppplémentaire
-            i = 0
-            while(i < (nbLigneItem - 1)):
-                i = i + 1
-                transitionsDict['Nom'].append("")
-                transitionsDict['Mode'].append("")
-                transitionsDict['Longueur'].append("")
-                transitionsDict['PointOptimisationOrigine'].append("")
-                transitionsDict['PointOptimisationDestination'].append("")
-            i = 0
-            while(i < (nbLigneItem - len(t.segmentsParcourus))):
-                i = i + 1
-                transitionsDict['Segments'].append("")
-                transitionsDict['SensParcours'].append("")
-            i = 0
-            while(i < (nbLigneItem - len(t.checkpoints))):
-                i = i + 1
-                transitionsDict['Checkpoints'].append("")
-            i = 0
-            while(i < (nbLigneItem - len(t.controlpoints))):
-                i = i + 1
-                transitionsDict['ControlPoints'].append("")
-            i = 0
-            while(i < (nbLigneItem - len(t.naturesTrains))):
-                i = i + 1
-                transitionsDict['NaturesTrains'].append("")
-            i = 0
-            while(i < (nbLigneItem - len(t.lignes))):
-                i = i + 1
-                transitionsDict['Lignes'].append("")
-            i = 0
-            while(i < (nbLigneItem - len(t.signauxTraverses))):
-                i = i + 1
-                transitionsDict['signauxTraverses'].append("")
-            #saut de ligne
-            transitionsDict['Nom'].append("")
-            transitionsDict['Mode'].append("")
-            transitionsDict['Longueur'].append("")
-            transitionsDict['PointOptimisationOrigine'].append("")
-            transitionsDict['PointOptimisationDestination'].append("")
-            transitionsDict['Segments'].append("")
-            transitionsDict['SensParcours'].append("")
-            transitionsDict['Checkpoints'].append("")
-            transitionsDict['NaturesTrains'].append("")
-            transitionsDict['Lignes'].append("")
-            transitionsDict['ControlPoints'].append("")
-            transitionsDict['signauxTraverses'].append("")
-
-        df = panda.DataFrame(transitionsDict)
-        df.to_csv(__fichierString, sep=';')
-
-    #@execution_time 
-    def ExporterItinerairesPourDCSYS(self, fichierString):
-        logging.info("Start calling ExporterItinerairesPourDCSYS")
-        itinerairesDict = {'Nom': [], 'NomGraphe':[], 'NomPCC':[], 'LibellePCC':[], 'Type':[], 'SignalOrigine':[], 'OrigineManoeuvre':[], 'CDVOrigine':[], 'NomDeLOrigine':[],
-        'SignalDeSortie':[],'NomDeLaDestination':[],'CDVDestination1':[],'CDVDestination2':[],'CDVDestination3':[],'CDVDestination4':[],'CDVDestination5':[],'CDVDestination6':[],'CDVDestination7':[]
-        ,'CDVDestination8':[],'CDVDestination9':[],'CDVDestination10':[],'CDVDestEchap':[],'CDVTransit1':[],'CDVTransit2':[],'CDVTransit3':[],'CDVTransit4':[],'CDVTransit5':[],'CDVTransit6':[],
-        'CDVTransit7':[],'CDVTransit8':[],'CDVTransit9':[],'CDVTransit10':[],'CDVTransit11':[],'CDVTransit12':[],'CDVTransit13':[],'CDVTransit14':[],'CDVTransit15':[],'CDVTransit16':[],'CDVTransit17':[]
-        ,'CDVTransit18':[],'CDVTransit19':[],'CDVTransit20':[],'CDVTransit21':[],'CDVTransit22':[],'CDVTransit23':[],'CDVTransit24':[],'CDVTransit25':[],'CDVTransit26':[],'CDVTransit27':[],
-        'CDVTransit28':[],'CDVTransit29':[],'CDVTransit30':[],'Aiguille1':[],'Position1':[],'Aiguille2':[],'Position2':[],'Aiguille3':[],'Position3':[],'Aiguille4':[],'Position4':[],
-        'Aiguille5':[],'Position5':[],'Aiguille6':[],'Position6':[],'Aiguille7':[],'Position7':[],'Aiguille8':[],'Position8':[],'Aiguille9':[],'Position9':[],'Aiguille10':[],'Position10':[],
-        'Aiguille11':[],'Position11':[],'Aiguille12':[],'Position12':[],'Aiguille13':[],'Position13':[],'Aiguille14':[],'Position14':[],'Aiguille15':[],'Position15':[],'ZSM_SIG':[],
-        'DP_AL_ManEntree':[],'DP_AL_ManSortie1':[],'DP_AL_ManSortie2':[],'CC1':[],'CCPos1':[],'CC2':[],'CCPos2':[],'Terminus':[],'Configuration':[],'DP_AL_ManSortie2':[],'T_sans_mvt_convergent':[],
-        'Carac1':[],'Carac2':[],'Carac3':[],'Carac4':[],'Carac5':[],'Carac6':[],'Carac7':[],'Carac8':[],'Carac9':[],'Carac10':[],'AiguilleProt1':[],'PositionProt1':[],'AiguilleProt2':[],
-        'PositionProt2':[],'AiguilleProt3':[],'PositionProt3':[],'AiguilleProt4':[],'PositionProt4':[],'AiguilleProt5':[],'PositionProt5':[],'AiguilleProt6':[],'PositionProt6':[],'AiguilleProt7':[],
-        'PositionProt7':[],'AiguilleProt8':[],'PositionProt8':[],'AiguilleVerr1':[],'PositionVerr1':[],'AiguilleVerr2':[],'PositionVerr2':[],'AiguilleVerr3':[],'PositionVerr3':[],'AiguilleVerr4':[],
-        'PositionVerr4':[],'AiguilleVerr5':[],'PositionVerr5':[],'AiguilleVerr6':[],'PositionVerr6':[],'AiguilleVerr7':[],'PositionVerr7':[],'AiguilleVerr8':[],'PositionVerr8':[],'AiguilleInco1':[],
-        'PositionInco1':[],'AiguilleInco2':[],'PositionInco2':[],'AiguilleInco3':[],'PositionInco3':[],'AiguilleInco4':[],'PositionInco4':[],'AiguilleInco5':[],'PositionInco5':[],'AiguilleInco6':[],
-        'PositionInco6':[],'AiguilleInco7':[],'PositionInco7':[],'AiguilleInco8':[],'PositionInco8':[],'Objet1':[],'Objet2':[],'Objet3':[],'Objet4':[],'Objet5':[],'Overlap':[],'ElemBAI':[],
-        'SICAS':[],'NumSICAS':[],'DirLigne':[],'DirSicas':[],'Commentaire':[]}
-
-        patternNomItineraire = re.compile("^([0-9]+)-([0-9]+)(\/([a-zA-Z0-9]+))*$")
-
-        for p in self.postes.values():
-            for i in p.itineraires:
-                itineraireNomInfos = patternNomItineraire.match(i.nom)
-                if(itineraireNomInfos != None):
-                    commentaire = ""
-                    jalonString = ""
-                    if(itineraireNomInfos.group(3) != None):
-                        jalonString = "_" + itineraireNomInfos.group(4)
-                    itinerairesDict['Nom'].append("ITI_" + str(itineraireNomInfos.group(1)) + str(itineraireNomInfos.group(2)) + jalonString)
-                    itinerairesDict['NomPCC'].append(i.nom)
-                    itinerairesDict['Type'].append("ATS_UNIQUEMENT")
-                    itinerairesDict['SignalOrigine'].append(i.origine.nom)
-                    itinerairesDict['NomDeLOrigine'].append("RI_IN_" + str(itineraireNomInfos.group(1)))
-                    itinerairesDict['SignalDeSortie'].append(i.destination.nom)
-                    itinerairesDict['NomDeLaDestination'].append("RI_IN_" + str(itineraireNomInfos.group(2)))
-                    if(i.mode == "Automatique"):
-                        itinerairesDict['Carac1'].append("ROUTE_ARS")
-                    elif(i.mode == "AMECA"):
-                        itinerairesDict['Carac1'].append("AMECA")
-                    else:
-                        itinerairesDict['Carac1'].append("MANUEL")
-                    itinerairesDict['DirLigne'].append(i.origine.sens)
-
-                    cpt = 1
-                    for aigP in i.aiguillesParcouruesOrdonne:
-                        if(i.PositionAiguilleParcourue(aigP) == "Gauche"):
-                            itinerairesDict['Aiguille'+str(cpt)].append(aigP.nom)
-                            itinerairesDict['Position'+str(cpt)].append("GAUCHE")
-                            cpt = cpt + 1
-                        elif(i.PositionAiguilleParcourue(aigP) == "Droite"):
-                            itinerairesDict['Aiguille'+str(cpt)].append(aigP.nom)
-                            itinerairesDict['Position'+str(cpt)].append("DROITE")
-                            cpt = cpt + 1
-                        else:
-                            print(aigP.nom + " : Position non prise en charge : " + str(i.PositionAiguilleParcourue(aigP)))
-                            os.system("pause")
-
-                    cpt = 1
-                    for aigP in i.aiguillesEnProtection:
-                        if(aigP.position == "Gauche"):
-                            itinerairesDict['AiguilleProt'+str(cpt)].append(aigP.aiguille.nom)
-                            itinerairesDict['PositionProt'+str(cpt)].append("GAUCHE")
-                            cpt = cpt + 1
-                        elif(aigP.position == "Droite"):
-                            itinerairesDict['AiguilleProt'+str(cpt)].append(aigP.aiguille.nom)
-                            itinerairesDict['PositionProt'+str(cpt)].append("DROITE")
-                            cpt = cpt + 1
-                        else:
-                            print(aigP.aiguille.nom + " : Position non prise en charge : " + str(aigP.position))
-                            os.system("pause")
-
-                    print("Recherche des CDV pour itineraire " + i.nom)
-                    print("Aiguille de l'itinéraire : ")
-                    for a in i.aiguillesParcouruesOrdonne:
-                        print(a.nom)
-                    cdvOrigine = self.RechercherCDVAvecSegmentAbs(i.origine.segment, i.origine.abs)
-
-                    if(i.origine.sens != i.destination.sens):
-                        commentaire = commentaire + "Signal destination dans le sens inverse a l'origine. "
-
-                    if(cdvOrigine is not None):
-                        itinerairesDict['CDVOrigine'].append(cdvOrigine.nom)
-                        print("CDV Origine : " + cdvOrigine.nom)
-                    else:
-                        commentaire = commentaire + "Signal origine sur aucun CDV. "
-
-                    if(len(i.aiguillesParcouruesOrdonne) > 0):
-                        absSegPosAiguille = CoordVoiePKToSegAbs(i.aiguillesParcouruesOrdonne[-1].voie, i.aiguillesParcouruesOrdonne[-1].pk)
-                        #absSegPosAiguilleNew = absSegPosAiguille
-                        cptseg = 0
-                        trouve = False
-                        for seg in i.segmentsParcourus:
-                            if(trouve == False):
-                                if(seg.segment == i.aiguillesParcouruesOrdonne[-1].segTalonDroite or seg.segment == i.aiguillesParcouruesOrdonne[-1].segTalonGauche and i.aiguillesParcouruesOrdonne[-1].segPointe == i.segmentsParcourus[cptseg+1].segment):
-                                    trouve = True
-                                elif(i.segmentsParcourus[cptseg+1].segment == i.aiguillesParcouruesOrdonne[-1].segTalonDroite or i.segmentsParcourus[cptseg+1].segment == i.aiguillesParcouruesOrdonne[-1].segTalonGauche and i.aiguillesParcouruesOrdonne[-1].segPointe == seg.segment):
-                                    trouve = True
-                                else:
-                                    cptseg = cptseg + 1
-
-                        absSegPosAiguilleNew = {}
-                        if(i.origine.sens == "CROISSANT"):
-                            absSegPosAiguilleNew['segment'] = i.segmentsParcourus[cptseg].segment
-                            absSegPosAiguilleNew['abs'] = i.segmentsParcourus[cptseg].segment.longueur
-                        else:
-                            absSegPosAiguilleNew['segment'] = i.segmentsParcourus[cptseg].segment
-                            absSegPosAiguilleNew['abs'] = 0.0
-
-                        commentaire = commentaire + "Derniere aiguille parcourue : " + i.aiguillesParcouruesOrdonne[-1].nom + ". "
-                        print("Recherche de CDV de Transit :")
-                        cdvsTransit = self.CDVDansInterval(i.segmentsParcourus, i.origine.segment, i.origine.abs, absSegPosAiguilleNew['segment'], round(absSegPosAiguilleNew['abs'], 2))
-                        cdvDerAiguille = self.RechercherCDVAvecSegmentAbs(absSegPosAiguilleNew['segment'], absSegPosAiguilleNew['abs'])
-                        if(cdvDerAiguille is not None and cdvDerAiguille not in cdvsTransit):
-                            cdvsTransit.append(cdvDerAiguille)
-                        cpt = 1
-                        for cdv in cdvsTransit:
-                            itinerairesDict['CDVTransit'+str(cpt)].append(cdv.nom)
-                            print("Transit " + cdv.nom)
-                            cpt = cpt + 1
-
-                        absSegPosAiguilleNew = {}
-                        if(i.origine.sens == "CROISSANT"):
-                            absSegPosAiguilleNew['segment'] = i.segmentsParcourus[cptseg+1].segment
-                            absSegPosAiguilleNew['abs'] = 0.0
-                        else:
-                            absSegPosAiguilleNew['segment'] = i.segmentsParcourus[cptseg+1].segment
-                            absSegPosAiguilleNew['abs'] = i.segmentsParcourus[cptseg+1].segment.longueur
-                        print("Recherche de CDV de Destination :")
-                        cdvsDestinations = self.CDVDansInterval(i.segmentsParcourus, absSegPosAiguilleNew['segment'], round(absSegPosAiguilleNew['abs'], 2), i.destination.segment, i.destination.abs)
-
-                        cdvDestination = self.RechercherCDVAvecSegmentAbs(i.destination.segment, i.destination.abs)
-
-                        if(cdvDestination is None):
-                            commentaire = commentaire + "Signal destination sur aucun CDV. "
-                        elif(cdvDestination == cdvDerAiguille):
-                            commentaire = commentaire + "Derniere aiguille sur meme CDV que signal de sortie. "
-                        elif(cdvDestination not in cdvsDestinations):
-                            cdvsDestinations.append(cdvDestination)
-                        elif(len(cdvsDestinations) == 0):
-                            os.system("pause")
-
-                        if(len(cdvsDestinations) == 0):
-                            commentaire = commentaire + "Pas de CDV destination. "
-
-                        cpt = 1
-                        for cdv in cdvsDestinations:
-                            itinerairesDict['CDVDestination'+str(cpt)].append(cdv.nom)
-                            print("Destination " + cdv.nom)
-                            cpt = cpt + 1
-                    else:
-                        print("Pas d'aiguille parcourue")
-                        commentaire = commentaire + "Aucune aiguille parcourue sur l'itineraire : Les CDV de transit sont la zone d'espacement automatique. "
-                        cdvInIti = self.CDVDansInterval(i.segmentsParcourus, i.origine.segment, i.origine.abs, i.destination.segment,  i.destination.abs)
-
-                        cptTra = 1
-                        cptDest = 1
-                        for cdv in cdvInIti:
-                            tvd = self.RechercherTVDAvecCDV(cdv)
-                            if(tvd in i.zonesEspacementAutomatique):
-                                itinerairesDict['CDVTransit'+str(cptTra)].append(cdv.nom)
-                                cptTra = cptTra + 1
-                            else:
-                                itinerairesDict['CDVDestination'+str(cptDest)].append(cdv.nom)
-                                cptDest = cptDest + 1
-                        #os.system("pause")
-
-                    itinerairesDict['Commentaire'].append(commentaire)
-
-                    max = 0
-                    for key, value in itinerairesDict.items():
-                        if(max < len(value)):
-                            max = len(value)
-                    for key, value in itinerairesDict.items():
-                        while(len(value) < max):
-                            value.append("")
-                    for value in itinerairesDict.values():
-                        value.append("")
-
-        df = panda.DataFrame(itinerairesDict)
-        df.to_csv(fichierString, sep=';')
-
-    #@execution_time 
-    def ExporterMissionsElementairesRegulation(self, __fichierString):
-        logging.info("Start calling ExporterMissionsElementairesRegulation")
-        missionsElementairesDict = {'Nom': [], 'Mode': [], 'PointOptimisationOrigine': [],'PointOptimisationDestination': [],'Transitions': [],'Segments': [],'SensParcours': [],'ItinerairesACommander': [], 'SensMissionElementaire': [], 'ModeControleVitesse': [], 'NaturesTrains':[], 'Lignes':[], 'NbChangementVoie':[]}
-        for me in self.missionsElementairesRegulation.values():
-            missionsElementairesDict['Nom'].append(me.nom)
-            missionsElementairesDict['Mode'].append(me.mode)
-            missionsElementairesDict['PointOptimisationOrigine'].append(me.poOrigine.nomPointOptimisation)
-            missionsElementairesDict['PointOptimisationDestination'].append(me.poDestination.nomPointOptimisation)
-            missionsElementairesDict['SensMissionElementaire'].append(me.sens)
-            missionsElementairesDict['ModeControleVitesse'].append(me.modeControleVitesse)
-            missionsElementairesDict['NbChangementVoie'].append(me.nbChangementVoie)
-            for t in me.transitions:
-                missionsElementairesDict['Transitions'].append(t.nom)
-            for s in me.segmentsParcourus:
-                missionsElementairesDict['Segments'].append(s.segment.nom)
-                missionsElementairesDict['SensParcours'].append(s.sens)
-            for i in me.itinerairesAcommander:
-                missionsElementairesDict['ItinerairesACommander'].append(i.nom)
-            for nature in me.naturesTrains:
-                missionsElementairesDict['NaturesTrains'].append(nature.nom)
-            for ligne in me.lignes:
-                missionsElementairesDict['Lignes'].append(ligne)
-            #estimation du nombre de ligne
-            nbLigneItemList = []
-            nbLigneItemList.append(1)
-            nbLigneItemList.append(len(me.segmentsParcourus))
-            nbLigneItemList.append(len(me.transitions))
-            nbLigneItemList.append(len(me.itinerairesAcommander))
-            nbLigneItemList.append(len(me.naturesTrains))
-            nbLigneItemList.append(len(me.lignes))
-            nbLigneItem = max(nbLigneItemList)
-
-            #génération des lignes suppplémentaire
-            i = 0
-            while(i < (nbLigneItem - 1)):
-                i = i + 1
-                missionsElementairesDict['Nom'].append("")
-                missionsElementairesDict['Mode'].append("")
-                missionsElementairesDict['PointOptimisationOrigine'].append("")
-                missionsElementairesDict['PointOptimisationDestination'].append("")
-                missionsElementairesDict['SensMissionElementaire'].append("")
-                missionsElementairesDict['ModeControleVitesse'].append("")
-                missionsElementairesDict['NbChangementVoie'].append("")
-            i = 0
-            while(i < (nbLigneItem - len(me.segmentsParcourus))):
-                i = i + 1
-                missionsElementairesDict['Segments'].append("")
-                missionsElementairesDict['SensParcours'].append("")
-            i = 0
-            while(i < (nbLigneItem - len(me.itinerairesAcommander))):
-                i = i + 1
-                missionsElementairesDict['ItinerairesACommander'].append("")
-            i = 0
-            while(i < (nbLigneItem - len(me.transitions))):
-                i = i + 1
-                missionsElementairesDict['Transitions'].append("")
-            i = 0
-            while(i < (nbLigneItem - len(me.naturesTrains))):
-                i = i + 1
-                missionsElementairesDict['NaturesTrains'].append("")
-            i = 0
-            while(i < (nbLigneItem - len(me.lignes))):
-                i = i + 1
-                missionsElementairesDict['Lignes'].append("")
-            #saut de ligne
-            missionsElementairesDict['Nom'].append("")
-            missionsElementairesDict['Mode'].append("")
-            missionsElementairesDict['PointOptimisationOrigine'].append("")
-            missionsElementairesDict['PointOptimisationDestination'].append("")
-            missionsElementairesDict['Segments'].append("")
-            missionsElementairesDict['SensParcours'].append("")
-            missionsElementairesDict['ItinerairesACommander'].append("")
-            missionsElementairesDict['Transitions'].append("")
-            missionsElementairesDict['SensMissionElementaire'].append("")
-            missionsElementairesDict['ModeControleVitesse'].append("")
-            missionsElementairesDict['NaturesTrains'].append("")
-            missionsElementairesDict['Lignes'].append("")
-            missionsElementairesDict['NbChangementVoie'].append("")
-
-        df = panda.DataFrame(missionsElementairesDict)
-        df.to_csv(__fichierString, sep=';')
-
-    #Cette méthode permet d'exporter les missions élémentaires pour SMT3 au format csv
-    #@execution_time 
-    def ExporterMissionsElementaires(self, __fichierString):
-        logging.info("Start calling ExporterMissionsElementaires")
-        missionsElementairesDict = {'Nom': [],'Origine': [],'Destination': [],'Segments': [],'SensParcours': [], 'Dpap-paf': [], 'ContrainteDepartQuai':[], 'DistAntAiguilleRencontree': [],
-        'RefAiguilleRencontree': [], 'PosAiguilleRencontree':[], 'CibleSecuAiguilleRencontree':[],'CibleFoncAiguilleRencontree':[],'RefAiguilleAssociee':[],'PosAiguilleAssociee':[],
-        'TVDCondCommutation':[],'CDVCondCommutation':[],'TVDCondPropCible':[],'CDVCondPropCible':[],'TVDCondDispoTransit':[],'TVDSensCondDispoTransit':[],'CVCondDispoTransit':[],'CVSensCondDispoTransit':[],
-        'TVDReservTransit':[],'TVDSensReservTransit':[],'CVReservTransit':[],'CVSensReservTransit':[],
-        'CdeSigSignal':[],'CdeSigCibleSecu':[],'CdeSigCibleFonc':[],'VApp_BG':[],'DApp_BG':[],'VApp_MG':[],'DApp_MG':[],'V_A':[],'D_A':[], 'V_mav':[], 'Drep': [], 'DLib': [], 'T_S': [], 'CondSignalVert_TVDLibres': []}
-        for me in self.missionsElementaires.values():
-            missionsElementairesDict['Nom'].append(me.nom)
-            missionsElementairesDict['Origine'].append(me.origineNom)
-            missionsElementairesDict['Destination'].append(me.destinationNom)
-            missionsElementairesDict['Dpap-paf'].append(me.DPafPap)
-            if(me.contrainteDepartQuai):
-                missionsElementairesDict['ContrainteDepartQuai'].append("Oui")
-            else:
-                missionsElementairesDict['ContrainteDepartQuai'].append("Non")
-
-            for s in me.segmentsParcourus:
-                missionsElementairesDict['Segments'].append(s.segment.nom)
-                if(s.sens == "CROISSANT"):
-                    missionsElementairesDict['SensParcours'].append("+")
-                else:
-                    missionsElementairesDict['SensParcours'].append("-")
-
-            for i in me.itineraires:
-                print("itinéraire " + i['Itineraire'].nom)
-                if(isinstance(i['AiguilleRencontree'], PositionAiguille)):
-                    missionsElementairesDict['DistAntAiguilleRencontree'].append("")
-                    missionsElementairesDict['RefAiguilleRencontree'].append(i['AiguilleRencontree'].aiguille.nom)
-                    missionsElementairesDict['PosAiguilleRencontree'].append(i['AiguilleRencontree'].position)
-                    missionsElementairesDict['CibleFoncAiguilleRencontree'].append(i['distanceCibleFonc'])
-                    missionsElementairesDict['CibleSecuAiguilleRencontree'].append(i['distanceCibleSecu'])
-                # else:
-                #     missionsElementairesDict['DistAntAiguilleRencontree'].append("")
-                #     missionsElementairesDict['RefAiguilleRencontree'].append("")
-                #     missionsElementairesDict['PosAiguilleRencontree'].append("")
-                #     missionsElementairesDict['CibleFoncAiguilleRencontree'].append("")
-                #     missionsElementairesDict['CibleSecuAiguilleRencontree'].append("")
-
-                    for a in i['AiguillesAssociees']:
-                        missionsElementairesDict['RefAiguilleAssociee'].append(a.aiguille.nom)
-                        missionsElementairesDict['PosAiguilleAssociee'].append(a.position)
-
-                    for tvd in i['TVDCondCommutation']:
-                        missionsElementairesDict['TVDCondCommutation'].append(tvd.nom)
-                        missionsElementairesDict['CDVCondCommutation'].append("")
-
-                    # for tvd in i['TVDCondPropCible']:
-                    #     missionsElementairesDict['TVDCondPropCible'].append(tvd.nom)
-                    #     missionsElementairesDict['CDVCondPropCible'].append("")
-
-                    if 'condsDispoTransits' in i:
-                        for tvd in i['condsDispoTransits']:
-                            missionsElementairesDict['TVDCondDispoTransit'].append(tvd['TVD'].nom)
-                            missionsElementairesDict['TVDSensCondDispoTransit'].append(tvd['Sens'])
-                            missionsElementairesDict['CVCondDispoTransit'].append("")
-                            missionsElementairesDict['CVSensCondDispoTransit'].append("")
-                    if 'reservsTransits' in i:
-                        for tvd in i['reservsTransits']:
-                            missionsElementairesDict['TVDReservTransit'].append(tvd['TVD'].nom)
-                            missionsElementairesDict['TVDSensReservTransit'].append(tvd['Sens'])
-                            missionsElementairesDict['CVReservTransit'].append("")
-                            missionsElementairesDict['CVSensReservTransit'].append("")
-
-                    max = 0
-                    for key, value in missionsElementairesDict.items():
-                        if(max < len(value) and key != "Segments" and key != "SensParcours" and key != "CdeSigSignal" and key != "CdeSigCibleSecu" and key != "CdeSigCibleFonc" and key != "VApp_BG" and key != "DApp_BG" and key != "VApp_MG" and key != "DApp_MG" and key != "V_A" and key != "D_A" and key != "V_mav" and key != "Drep" and key != "DLib" and key != "T_S" and key != 'CondSignalVert_TVDLibres'):
-                            max = len(value)
-                    for key, value in missionsElementairesDict.items():
-                        if(key != "CdeSigSignal" and key != "CdeSigCibleSecu" and key != "CdeSigCibleFonc" and key != "VApp_BG" and key != "DApp_BG" and key != "VApp_MG" and key != "DApp_MG" and key != "V_A" and key != "D_A" and key != "V_mav" and key != "Drep" and key != "DLib" and key != "T_S" and key != 'CondSignalVert_TVDLibres'):
-                            while(len(value) < max):
-                                value.append("")
-
-            for s in me.signaux:
-                if(s['CommandeSignalAAjouter'] == True):
-                    missionsElementairesDict['CdeSigSignal'].append(s['Signal'].nom)
-                    missionsElementairesDict['CdeSigCibleSecu'].append(str(s['CibleSecu']))
-                    missionsElementairesDict['CdeSigCibleFonc'].append(str(s['CibleFonc']))
-                    missionsElementairesDict['V_mav'].append(str(s['V_mav']))
-                    missionsElementairesDict['Drep'].append(str(s['Drep']))
-                    missionsElementairesDict['DLib'].append(str(s['DLib']))
-                    missionsElementairesDict['T_S'].append(str(s['T_S']))
-                    missionsElementairesDict['VApp_BG'].append(str(s['Vapp_BG']))
-                    missionsElementairesDict['DApp_BG'].append(str(s['Dapp_BG']))
-                    missionsElementairesDict['VApp_MG'].append(str(s['Vapp_MG']))
-                    missionsElementairesDict['DApp_MG'].append(str(s['Dapp_MG']))
-                    missionsElementairesDict['V_A'].append(str(s['V_A']))
-                    missionsElementairesDict['D_A'].append(str(s['D_A']))
-
-                    for tvd in s['CondSignalVert_TVDLibres']:
-                        missionsElementairesDict['CondSignalVert_TVDLibres'].append(tvd.nom)
-                max = 0
-                for key, value in missionsElementairesDict.items():
-                    if(max < len(value) and (key == "CdeSigSignal" or key == "CdeSigCibleSecu" or key == "CdeSigCibleFonc" or key == "VApp_BG" or key == "DApp_BG" or key == "VApp_MG" or key == "DApp_MG" or key == "V_A" or key == "D_A" or key == "V_mav" or key == "Drep" or key == "DLib" or key == "T_S" or key == 'CondSignalVert_TVDLibres')):
-                        max = len(value)
-                for key, value in missionsElementairesDict.items():
-                    if(key == "CdeSigSignal" or key == "CdeSigCibleSecu" or key == "CdeSigCibleFonc" or key == "VApp_BG" or key == "DApp_BG" or key == "VApp_MG" or key == "DApp_MG" or key == "V_A" or key == "D_A" or key == "V_mav" or key == "Drep" or key == "DLib" or key == "T_S" or key == 'CondSignalVert_TVDLibres'):
-                        while(len(value) < max):
-                            value.append("")
-
-            max = 0
-            for value in missionsElementairesDict.values():
-                if(max < len(value)):
-                    max = len(value)
-            for value in missionsElementairesDict.values():
-                while(len(value) < max):
-                    value.append("")
-
-            #saut de ligne
-            for value in missionsElementairesDict.values():
-                value.append("")
-
-        for key, value in missionsElementairesDict.items():
-            print("key : " + key + " len : " + str(len(value)))
-
-        df = panda.DataFrame(missionsElementairesDict)
-        df.to_csv(__fichierString, sep=';')
-
-    #Cette méthode permet de génerer un fichier de points de contrôle
-    #Le format généré est une format csv de type Nom;Segment;abs;CDV_1;CDV_2;DetecteurPassage;NomQuai;DirectionSortieQuai;NatureTrain;nomPointOptimisation;isJCDV;isECDVLD;isDetecteurPassage;isExtremiteQuai;isPAFQuai;isPTES;isPTA;isPointSortieQuai;isPointOptimisation
-    #@execution_time 
-    def ExporterPointsDeControleCSV(self, __fichierString):
-        logging.info("Start calling ExporterPointsDeControleCSV")
-        pointsControlesArray = []
-        for p in self.pointsDeControle.values():
-            pointDeControleArray = []
-            pointDeControleArray.append(p.nom)
-            pointDeControleArray.append(p.segment.nom)
-            pointDeControleArray.append(str(p.abs))
-            if(p.jointCDV is not None):
-                pointDeControleArray.append(p.jointCDV.cdv1.nom)
-                pointDeControleArray.append(p.jointCDV.cdv2.nom)
-            elif(p.extremiteCDVLimiteDomaine is not None):
-                pointDeControleArray.append(p.extremiteCDVLimiteDomaine.cdv.nom)
-                pointDeControleArray.append("")
-            else:
-                pointDeControleArray.append("")
-                pointDeControleArray.append("")
-
-            #ADU : Suivant append pour detecteur de passage, à completer
-            if(p.pedale is None):
-                pointDeControleArray.append("")
-            else:
-                pointDeControleArray.append(p.pedale.nomSiemens)
-
-            if(p.quai is not None):
-                pointDeControleArray.append(p.quai.nom)
-            else:
-                pointDeControleArray.append("")
-
-            if(p.sens is not None):
-                pointDeControleArray.append(p.sens)
-            else:
-                pointDeControleArray.append("")
-
-            #ADU : Suivant append pour nature de train, à compléter
-            pointDeControleArray.append("")
-
-            if(p.nomPointOptimisation is not None):
-                pointDeControleArray.append(p.nomPointOptimisation)
-            else:
-                pointDeControleArray.append("")
-
-            if(p.isJCDV is True):
-                pointDeControleArray.append("1")
-            else:
-                pointDeControleArray.append("0")
-
-            if(p.isECDVLD is True):
-                pointDeControleArray.append("1")
-            else:
-                pointDeControleArray.append("0")
-
-            if(p.isDetecteurPassage is True):
-                pointDeControleArray.append("1")
-            else:
-                pointDeControleArray.append("0")
-
-            if(p.isExtremiteQuai is True):
-                pointDeControleArray.append("1")
-            else:
-                pointDeControleArray.append("0")
-
-            if(p.isPAFQuai is True):
-                pointDeControleArray.append("1")
-            else:
-                pointDeControleArray.append("0")
-
-            if(p.isPTES is True):
-                pointDeControleArray.append("1")
-            else:
-                pointDeControleArray.append("0")
-
-
-            if(p.isPTA is True):
-                pointDeControleArray.append("1")
-            else:
-                pointDeControleArray.append("0")
-
-
-            if(p.isPointSortieQuai is True):
-                pointDeControleArray.append("1")
-            else:
-                pointDeControleArray.append("0")
-
-            if(p.isPointOptimisation is True):
-                pointDeControleArray.append("1")
-            else:
-                pointDeControleArray.append("0")
-
-            pointsControlesArray.append(pointDeControleArray)
-
-        df = panda.DataFrame(np.array(pointsControlesArray), columns=['Nom','Segment','abs','CDV_1','CDV_2','DetecteurPassage','NomQuai','DirectionSortieQuai','NatureTrain','nomPointOptimisation','isJCDV','isECDVLD','isDetecteurPassage','isExtremiteQuai','isPAFQuai','isPTES','isPTA','isPointSortieQuai','isPointOptimisation'])
-        df.to_csv(__fichierString, sep=';')
-
+    
     #Cette méthode permet de rechercher un croisement bon à partir d'une aiguille
     #@execution_time 
-    def RechercherCBAvecAiguille(self, _aiguille):
+    def RechercherCBAvecAiguille__disabled_YDA(self, _aiguille):
         logging.info("Start calling RechercherCBAvecAiguille")
         for cb in self.CBs.values():
             if cb.aiguille == _aiguille:
                 return cb
         return None
 
-    #Cette méthode permet d'importer la pièce IHM+ 3.2 bis
-    #@execution_time 
-    def ImporterIHMP3_2bis(self, __fichierString):
-        logging.info("Start calling ImporterIHMP3_2bis")
-        __fichierExcel = open(__fichierString, "rb")
-        __colsNames = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-        #Initialisation IHM+ 3.2 bis
-        print("Ouverture IHM+ 3.2 bis")
-        __feuil = panda.read_excel(__fichierExcel, sheet_name=None, skiprows=[0,1], usecols='A:L', names=__colsNames[:__colsNames.index('L')+1])
-        __patternItineraire = re.compile("^([0-9]+)-([0-9]+)( par ([a-zA-Z0-9]+))*$")
-
-        for __i in __feuil.keys():
-            print("feuille " + str(__i))
-            for __j in __feuil[__i].index:
-                print("itinéraire : " + str(__feuil[__i]['C'][__j]))
-                print("mode : " + str(__feuil[__i]['H'][__j]))
-
-                __itineraireInfos = __patternItineraire.match(str(__feuil[__i]['C'][__j]))
-                if(__itineraireInfos != None):
-                    print('pattern ok')
-                    __itineraireNom = __itineraireInfos.group(1) + "-" + __itineraireInfos.group(2)
-                    if(__itineraireInfos.group(3) != None):
-                        __itineraireNom = __itineraireNom + "/" + __itineraireInfos.group(4)
-                    __itineraire = self.RechercherItineraire(__itineraireNom)
-                    if(__itineraire is not None):
-                        __mode = str(__feuil[__i]['H'][__j])
-                        if(__mode == "Automatique"):
-                            __itineraire.mode = "Automatique"
-                        elif(__mode == "Automatique restreint"):
-                            __itineraire.mode = "Manuel"
-                        # elif(__mode == "AMECA"):
-                        #     __itineraire.mode = "AMECA"
-                        else:
-                            __itineraire.mode = "Manuel"
-
-                print("")
-        __fichierExcel.close()
-
-    #Cette méthode permet de construire le graphe à partir de données récupérées d'Adonf
-    #@execution_time 
-    def ImporterDonneesDepuisAdonf(self, __fichierString):
-        logging.info("Start calling ImporterDonneesDepuisAdonf")
-        __fichierExcel = open(__fichierString, "rb")
-        __colsNames = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-            'AA','AB','AC','AD','AE','AF','AG','AH','AI','AJ','AK','AL','AM','AN','AO','AP','AQ','AR','AS','AT','AU','AV','AW','AX','AY','AZ',
-            'BA','BB','BC','BD','BE','BF','BG','BH','BI','BJ','BK','BL','BM','BN','BO','BP','BQ','BR','BS','BT','BU','BV','BW','BX','BY','BZ',
-            'CA','CB','CC','CD','CE','CF','CG','CH','CI','CJ','CK','CL','CM','CN','CO','CP','CQ','CR','CS','CT','CU','CV','CW','CX','CY','CZ',
-            'DA','DB','DC','DD','DE','DF','DG','DH','DI','DJ','DK','DL','DM','DN','DO','DP','DQ','DR','DS','DT','DU','DV','DW','DX','DY','DZ',
-            'EA','EB','EC','ED','EE','EF','EG','EH','EI','EJ','EK','EL','EM','EN','EO','EP','EQ','ER','ES','ET','EU','EV','EW','EX','EY','EZ',
-            'FA','FB','FC','FD','FE','FF','FG','FH','FI','FJ','FK','FL','FM','FN','FO','FP','FQ','FR','FS','FT','FU','FV','FW','FX','FY','FZ',
-            'GA','GB','GC','GD','GE','GF','GG','GH','GI','GJ','GK','GL','GM','GN','GO','GP','GQ','GR','GS','GT','GU','GV','GW','GX','GY','GZ',
-            'HA','HB','HC','HD','HE','HF','HG','HH','HI','HJ','HK','HL','HM','HN','HO','HP','HQ','HR','HS','HT','HU','HV','HW','HX','HY','HZ']
-
-        #Initialisation des différentes feuilles Adonf
-        print("Ouverture feuilles Adonf")
-        print("Ouverture feuille segment : 1 / 13 (" + str(round(1.*100/13.,2)) + "%)")
-        __feuilSegments = panda.read_excel(__fichierExcel, sheet_name="Seg", skiprows=[0,1], usecols='A:X', names=__colsNames[:__colsNames.index('X')+1])
-        print("Ouverture feuille voie : 2 / 13 (" + str(round(2.*100/13.,2)) + "%)")
-        __feuilVoies = panda.read_excel(__fichierExcel, sheet_name="Voie", skiprows=[0,1], usecols='A:Q', names=__colsNames[:__colsNames.index('Q')+1])
-        print("Ouverture feuille troncon : 3 / 13 (" + str(round(3.*100/13.,2)) + "%)")
-        __feuilTroncons = panda.read_excel(__fichierExcel, sheet_name="Troncon", skiprows=[0,1], usecols='A:EH', names=__colsNames[:__colsNames.index('EH')+1])
-        print("Ouverture feuille signal : 4 / 13 (" + str(round(4.*100/13.,2)) + "%)")
-        __feuilSignals = panda.read_excel(__fichierExcel, sheet_name="Sig", skiprows=[0,1], usecols='A:BH', names=__colsNames[:__colsNames.index('BH')+1])
-        print("Ouverture feuille aiguilles : 5 / 13 (" + str(round(5.*100/13.,2)) + "%)")
-        __feuilAiguilles = panda.read_excel(__fichierExcel, sheet_name="Aig", skiprows=[0,1], usecols='A:AO', names=__colsNames[:__colsNames.index('AO')+1])
-        print("Ouverture feuille CDV : 6 / 13 (" + str(round(6.*100/13.,2)) + "%)")
-        __feuilCDVs = panda.read_excel(__fichierExcel, sheet_name="CDV", skiprows=[0,1], usecols='A:CR', names=__colsNames[:__colsNames.index('CR')+1])
-        print("Ouverture feuille TVD : 7 / 13 (" + str(round(7.*100/13.,2)) + "%)")
-        __feuilTVDs = panda.read_excel(__fichierExcel, sheet_name="TVD", skiprows=[0,1], usecols='A:BW', names=__colsNames[:__colsNames.index('BW')+1])
-        print("Ouverture feuille Quai : 8 / 13 (" + str(round(8.*100/13.,2)) + "%)")
-        __feuilQuais = panda.read_excel(__fichierExcel, sheet_name="Quai", skiprows=[0,1], usecols='A:FB', names=__colsNames[:__colsNames.index('FB')+1])
-        print("Ouverture feuille Ligne : 9 / 13 (" + str(round(9.*100/13.,2)) + "%)")
-        __feuilLignes = panda.read_excel(__fichierExcel, sheet_name="Ligne", skiprows=[0,1], usecols='A:O', names=__colsNames[:__colsNames.index('O')+1])
-        print("Ouverture feuille PtA : 10 / 13 (" + str(round(10.*100/13.,2)) + "%)")
-        __feuilPtAs = panda.read_excel(__fichierExcel, sheet_name="PtA", skiprows=[0,1], usecols='A:V', names=__colsNames[:__colsNames.index('V')+1])
-        print("Ouverture feuille CB : 11 / 13 (" + str(round(11.*100/13.,2)) + "%)")
-        __feuilCBs = panda.read_excel(__fichierExcel, sheet_name="CB", skiprows=[0,1], usecols='A:W', names=__colsNames[:__colsNames.index('W')+1])
-        print("Ouverture feuille Param : 12 / 13 (" + str(round(12.*100/13.,2)) + "%)")
-        # __feuilParams = panda.read_excel(__fichierExcel, sheet_name="Param", skiprows=[0,1], usecols='A:M', names=__colsNames[:__colsNames.index('M')+1])
-        print("Ouverture feuille ZLPV : 13 / 13 (" + str(round(13.*100/13.,2)) + "%)")
-        __feuilZLPV = panda.read_excel(__fichierExcel, sheet_name="ZLPV", skiprows=[0,1], usecols='A:K', names=__colsNames[:__colsNames.index('K')+1])
-
-        #lecture des segments et ajout des quais et stations
-        print("Lecture des quais, PAF et stations")
-        for __i in __feuilQuais.index:
-            print('Quai ' + str(__i+1) + " / " + str(len(__feuilQuais)+ 1) + " (" + str(round((__i+1)*100./(len(__feuilQuais)+1),2)) + "%)")
-            if isinstance(__feuilQuais['C'][__i], str) and __feuilQuais['C'][__i] != "":
-                if(__feuilQuais['J'][__i] in self.stations):
-                    __station = self.stations[__feuilQuais['J'][__i]]
-                else:
-                    __station = self.AjouterStation(__feuilQuais['J'][__i])
-                #print("Ajout quai : " + str(__feuilQuais['A'][__i]))
-                __quaiAjoute = __station.AjouterQuai(__feuilQuais['C'][__i], __feuilQuais['A'][__i], __feuilQuais['Q'][__i], __feuilQuais['W'][__i], __feuilQuais['R'][__i], __feuilQuais['X'][__i], __feuilQuais['T'][__i], __feuilQuais['Z'][__i])
-
-                __j = __colsNames.index('AP') #on commence l'itération sur les PAF de la colonne AM jusqu'à la colonne EG
-                __k = 1
-                while __j < __colsNames.index('FB'):
-                    #print("Ajout paf quai : " + str(__feuilQuais[__colsNames[__j]][__i]) + " " + str(__feuilQuais[__colsNames[__j+1]][__i]) + " " + str(__feuilQuais[__colsNames[__j+2]][__i]))
-                    #os.system("PAUSE")
-                    if isinstance(__feuilQuais[__colsNames[__j]][__i], str) and __feuilQuais[__colsNames[__j]][__i]!= "":
-                        __quaiAjoute.AjouterPAF(__k, __feuilQuais[__colsNames[__j]][__i], __feuilQuais[__colsNames[__j+1]][__i], __feuilQuais[__colsNames[__j+2]][__i], __feuilQuais[__colsNames[__j+3]][__i], __feuilQuais[__colsNames[__j+4]][__i])
-                    __j=__j+13
-                    __k=__k+1
-
-        #lecture des segments et ajout des PtA
-        print("Lecture des PtA")
-        for __i in __feuilPtAs.index:
-            print('PtA ' + str(__i+1) + " / " + str(len(__feuilPtAs)+ 1) + " (" + str(round((__i+1)*100./(len(__feuilPtAs)+1),2)) + "%)")
-            if isinstance(__feuilPtAs['A'][__i], str) and __feuilPtAs['A'][__i] != "":
-                self.AjouterPtA(__feuilPtAs['A'][__i], __feuilPtAs['F'][__i], __feuilPtAs['H'][__i],  __feuilPtAs['G'][__i])
-
-        #lecture des segments et ajout des segments
-        print("Lecture des segments")
-        for __i in __feuilSegments.index:
-            print('Segment ' + str(__i+1) + " / " + str(len(__feuilSegments)+ 1) + " (" + str(round((__i+1)*100./(len(__feuilSegments)+1),2)) + "%)")
-            if isinstance(__feuilSegments['A'][__i], str) and __feuilSegments['A'][__i] != "":
-                self.AjouterSegment(__feuilSegments['A'][__i], __feuilSegments['B'][__i], __feuilSegments['D'][__i], __feuilSegments['G'][__i], __feuilSegments['E'][__i], __feuilSegments['F'][__i], __feuilSegments['H'][__i], __feuilSegments['I'][__i], __feuilSegments['J'][__i], __feuilSegments['K'][__i])
-
-        #lecture des voies
-        print("")
-        print("Lecture des voies")
-        for __i in __feuilVoies.index:
-            print('Voie ' + str(__i+1) + " / " + str(len(__feuilVoies) + 1) + " (" + str(round((__i+1)*100./(len(__feuilVoies)+1),2)) + "%)")
-            if isinstance(__feuilVoies['A'][__i], str) and __feuilVoies['A'][__i] != "":
-                self.AjouterVoie(__feuilVoies['A'][__i], __feuilVoies['J'][__i], __feuilVoies['K'][__i], __feuilVoies['L'][__i], __feuilVoies['M'][__i], __feuilVoies['N'][__i], __feuilVoies['O'][__i], __feuilVoies['P'][__i])
-
-        #Lecture des tronçons
-        print("")
-        print("Lecture des troncons")
-        for __i in __feuilTroncons.index:
-            print('Troncon ' + str(__i+1) + " / " + str(len(__feuilTroncons) + 1) + " (" + str(round((__i+1)*100./(len(__feuilTroncons)+1),2)) + "%)")
-            if isinstance(__feuilTroncons['A'][__i], str) and __feuilTroncons['A'][__i] != "":
-                __tronconAjoute = self.AjouterTroncon(__feuilTroncons['A'][__i], __feuilTroncons['B'][__i])
-                __j = __colsNames.index('S') #on commence l'itération sur les extrémités de tronçons de la colonne S, correspondant à l'index 18 de __colsNames, jusqu'à la colonne EH
-                while __j < __colsNames.index('EH'):
-                    if isinstance(__feuilTroncons[__colsNames[__j]][__i], str) and __feuilTroncons[__colsNames[__j]][__i]!= "":
-                        __tronconAjoute.AjouterExtremiteSurVoie(__feuilTroncons[__colsNames[__j]][__i], __feuilTroncons[__colsNames[__j+1]][__i], __feuilTroncons[__colsNames[__j+2]][__i])
-                    __j = __j + 3
-
-        #Lecture des signaux
-        print("")
-        print("Lecture des signaux")
-        for __i in __feuilSignals.index:
-            print('Signal ' + str(__i+1) + " / " + str(len(__feuilSignals) + 1) + " (" + str(round((__i+1)*100./(len(__feuilSignals)+1),2)) + "%)")
-            if isinstance(__feuilSignals['A'][__i], str) and __feuilSignals['A'][__i] != "":
-                self.AjouterSignal(__feuilSignals['A'][__i], __feuilSignals['F'][__i], __feuilSignals['G'][__i], __feuilSignals['H'][__i], __feuilSignals['I'][__i], __feuilSignals['J'][__i])
-
-        #lecture des aiguilles
-        print("")
-        print("Lecture des aiguilles")
-        for __i in __feuilAiguilles.index:
-            print('Aiguille ' + str(__i+1) + " / " + str(len(__feuilAiguilles) + 1) + " (" + str(round((__i+1)*100./(len(__feuilAiguilles)+1),2)) + "%)")
-            if isinstance(__feuilAiguilles['A'][__i], str) and __feuilAiguilles['A'][__i] != "":
-                self.AjouterAiguille(__feuilAiguilles['A'][__i], __feuilAiguilles['H'][__i], __feuilAiguilles['E'][__i], __feuilAiguilles['G'][__i], __feuilAiguilles['F'][__i], __feuilAiguilles['J'][__i], __feuilAiguilles['K'][__i])
-
-        #lecture des CDVs
-        print("")
-        print("Lecture des CDV")
-        for __i in __feuilCDVs.index:
-            print('CDV ' + str(__i+1) + " / " + str(len(__feuilCDVs) + 1) + " (" + str(round((__i+1)*100./(len(__feuilCDVs)+1),2)) + "%)")
-            if isinstance(__feuilCDVs['A'][__i], str) and __feuilCDVs['A'][__i] != "":
-                __CDVAjoute = self.AjouterCDV(__feuilCDVs['A'][__i])
-                if isinstance(__feuilCDVs['C'][__i], str) and __feuilCDVs['C'][__i] != "":
-                    __CDVAjoute.nomGroupe = __feuilCDVs['C'][__i]
-                __j = __colsNames.index('H') #on commence l'itération sur les extrémités de CDV sur segment de la colonne H, correspondant à l'index 7 de __colsNames, on va jusqu'à la colonne AA, index 26
-                while __j < __colsNames.index('AA'):
-                    if isinstance(__feuilCDVs[__colsNames[__j]][__i], str) and __feuilCDVs[__colsNames[__j]][__i]!="":
-                        __CDVAjoute.AjouterSegmentAExtremite(__feuilCDVs[__colsNames[__j]][__i], __feuilCDVs[__colsNames[__j+1]][__i])
-                    __j = __j + 2
-
-        #lecture des TVDs
-        print("")
-        print("Lecture des TVD")
-        for __i in __feuilTVDs.index:
-            print('TVD ' + str(__i+1) + " / " + str(len(__feuilTVDs) + 1) + " (" + str(round((__i+1)*100./(len(__feuilTVDs)+1),2)) + "%)")
-            if isinstance(__feuilTVDs['A'][__i], str) and __feuilTVDs['A'][__i] != "":
-                __TVDAjoute = self.AjouterTVD(__feuilTVDs['A'][__i], __feuilTVDs['E'][__i], __feuilTVDs['F'][__i])
-                __j = __colsNames.index('AD') #on commence l'itération sur les extrémités de TVD sur segment de la colonne AD, correspondant à l'index 20 de __colsNames, on va jusqu'à la colonne AN, index 39
-                while __j < __colsNames.index('AX'):
-                    if isinstance(__feuilTVDs[__colsNames[__j]][__i], str) and __feuilTVDs[__colsNames[__j]][__i]!="":
-                        __TVDAjoute.AjouterSegmentAExtremite(__feuilTVDs[__colsNames[__j]][__i], __feuilTVDs[__colsNames[__j+1]][__i])
-                    __j = __j + 2
-
-        #lecture des TVDs
-        print("")
-        print("Lecture des Lignes")
-        for __i in __feuilLignes.index:
-            print('Ligne ' + str(__i+1) + " / " + str(len(__feuilLignes) + 1) + " (" + str(round((__i+1)*100./(len(__feuilLignes)+1),2)) + "%)")
-            if isinstance(__feuilLignes['A'][__i], str) and __feuilLignes['A'][__i] != "":
-                self.AjouterLigne(__feuilLignes['A'][__i], __feuilLignes['C'][__i], __feuilLignes['D'][__i], __feuilLignes['E'][__i], __feuilLignes['F'][__i], __feuilLignes['G'][__i])
-
-        #lecture des TVDs
-        print("")
-        print("Lecture des CB")
-        for __i in __feuilCBs.index:
-            print('CB ' + str(__i+1) + " / " + str(len(__feuilCBs) + 1) + " (" + str(round((__i+1)*100./(len(__feuilCBs)+1),2)) + "%)")
-            if isinstance(__feuilCBs['A'][__i], str) and __feuilCBs['A'][__i] != "":
-                __CBAjoute = self.AjouterCB(__feuilCBs['A'][__i], __feuilCBs['C'][__i])
-                __j = __colsNames.index('D')
-                while __j < __colsNames.index('W'):
-                    if isinstance(__feuilCBs[__colsNames[__j]][__i], str) and __feuilCBs[__colsNames[__j]][__i]!="":
-                        __CBAjoute.AjouterCB(__feuilCBs[__colsNames[__j]][__i], __feuilCBs[__colsNames[__j]][__i], __feuilCBs[__colsNames[__j+1]][__i])
-                    __j = __j + 2
-
-        #lecture des Params
-        print("")
-        print("Lecture des Params")
-        # for __i in __feuilParams.index:
-        #     if isinstance(__feuilParams['A'][__i], str) and __feuilParams['A'][__i] != "":
-        #         self.voies[__feuilParams['A'][__i]].NiveauPlan = __feuilParams['B'][__i]
-        #         self.voies[__feuilParams['A'][__i]].VoiesPrincipales = __feuilParams['C'][__i]
-        #
-        #     if isinstance(__feuilParams['H'][__i], str) and __feuilParams['H'][__i] != "":
-        #         if(__feuilParams['H'][__i] == "Le segment" and __feuilParams['J'][__i] == "est coudé(e)"):
-        #             self.segments[__feuilParams['I'][__i]].StructSegmentEstCoude = True
-        #         if(__feuilParams['H'][__i] == "La fin de" and __feuilParams['J'][__i] == "est coudé(e)"):
-        #             self.segments[__feuilParams['I'][__i]].StructFin = "EstCoude"
-        #         if(__feuilParams['H'][__i] == "La fin de" and __feuilParams['J'][__i] == "est au niveau"):
-        #             self.segments[__feuilParams['I'][__i]].StructFin = __feuilParams['L'][__i]
-        #         if(__feuilParams['H'][__i] == "Le début de" and __feuilParams['J'][__i] == "est coudé(e)"):
-        #             self.segments[__feuilParams['I'][__i]].StructDebut = "EstCoude"
-        #         if(__feuilParams['H'][__i] == "La début de" and __feuilParams['J'][__i] == "est au niveau"):
-        #             self.segments[__feuilParams['I'][__i]].StructDebut = __feuilParams['L'][__i]
-
-        #lecture des Params ZLPV
-        print("")
-        print("Lecture des ZLPV")
-        for __i in __feuilZLPV.index:
-            if isinstance(__feuilZLPV['A'][__i], str) and __feuilZLPV['A'][__i] != "":
-                self.zlpvs[__feuilZLPV['A'][__i]] = ZLPV(__feuilZLPV['A'][__i], __feuilZLPV['B'][__i]/3.6, __feuilZLPV['D'][__i], __feuilZLPV['E'][__i], __feuilZLPV['H'][__i], __feuilZLPV['I'][__i])
-
-        __fichierExcel.close()
-
-        print("Normalisation des données ADONF")
-        self.NormaliserAdonf()
-        print("Normalisation des données ADONF OK")
-        print("Génération des JCDV")
-        self.GenererJointsCDVs()
-
-    #Cette méthode permet d'importer un masque de saisie PT5
-    #@execution_time 
-    def ImporterMasquePT5(self, masquePT5File, feuilNom):
-        logging.info("Start calling ImporterMasquePT5")
-        fichierExcel = open(masquePT5File, "rb")
-        colsNames = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-
-        #Initialisation de l'ouverture de la feuille PT5
-        print("Ouverture feuille PT5")
-        feuil = panda.read_excel(fichierExcel, sheet_name=feuilNom, skiprows=[0,1], usecols='A:N', names=colsNames[:colsNames.index('N')+1])
-
-        for i in feuil.index:
-            if(isinstance(feuil['A'][i], str) and feuil['A'][i] != ""):
-                if(feuil['A'][i] not in self.signals):
-                    print("Signal " + feuil['A'][i] + " pas dans DC_SYS")
-                else:
-                    if(isinstance(feuil['B'][i], str) and feuil['B'][i] == "Oui"):
-                        self.signals[feuil['A'][i]].isCarre = True
-                    if(isinstance(feuil['C'][i], str) and feuil['C'][i] == "Oui"):
-                        self.signals[feuil['A'][i]].isSemaphoreFixe = True
-                    if(isinstance(feuil['D'][i], str) and feuil['D'][i] == "Oui"):
-                        self.signals[feuil['A'][i]].isSemaphoreCli = True
-                    if(isinstance(feuil['E'][i], str) and feuil['E'][i] == "Oui"):
-                        self.signals[feuil['A'][i]].isCarreViolet = True
-                    if(isinstance(feuil['H'][i], str) and feuil['H'][i] != ""):
-                        if(feuil['H'][i] not in self.signals):
-                            print("Signal d'avertissement A " + feuil['H'][i] + " pas dans DC_SYS")
-                        else:
-                            self.signals[feuil['H'][i]].isAvertissement = True
-                            self.signals[feuil['A'][i]].signauxAnnonceAvertissement.append(self.signals[feuil['H'][i]])
-                    if(isinstance(feuil['G'][i], str) and feuil['G'][i] != ""):
-                        if(feuil['G'][i] not in self.signals):
-                            print("Signal d'avertissement (S) " + feuil['G'][i] + " pas dans DC_SYS")
-                        else:
-                                self.signals[feuil['A'][i]].signauxAnnonceSemaphoreCli.append(self.signals[feuil['G'][i]])
-                    if(isinstance(feuil['F'][i], str) and feuil['F'][i] != ""):
-                        if(feuil['F'][i] not in self.signals):
-                            print("Signal d'avertissement S " + feuil['F'][i] + " pas dans DC_SYS")
-                        else:
-                                self.signals[feuil['A'][i]].signauxAnnonceSemaphore.append(self.signals[feuil['F'][i]])
-
-        fichierExcel.close()
-
-    #Cette méthode permet d'importer un ensemble de pièces PT2A depuis un repertoire contenants des repertoires des postes
-    #@execution_time 
-    def ImporterPT2A(self, _PT2ADir):
-        logging.info("Start calling ImporterPT2A")
-        __opt2adir = PT2ADir(_PT2ADir)
-        __opt2adir.Ouvrir()
-        self.postes = __opt2adir.listePostes
-
-        print("Signaux introuvables : ")
-        for __i in __opt2adir.signauxIntrouvables.values():
-            print(__i)
-        print("Aiguilles introuvables : ")
-        for __i in __opt2adir.aiguillesIntrouvables.values():
-            print(__i)
-        print("Zones introuvables : ")
-        for __i in __opt2adir.zonesIntrouvables.values():
-            print(__i)
-        print("Objet ne rentrant pas dans les patterns : ")
-        for __i in __opt2adir.patternProblems:
-            print(__i)
-        os.system("PAUSE")
-
-        print("Itinéraires OK :")
-        for __i in self.postes.values():
-            for __j in __i.itineraires:
-                print(__j.nom + " PT : " + __j.PT2ADoc.nomFichier)
-                #__j.GenererSegmentsParcourus()
-                print("+Segments Parcourus : ")
-                for __k in __j.segmentsParcourus:
-                    print("++" + __k.segment.nom + " - " + __k.sens)
-
+    
+    #
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         print("Normalisation du graphe")
         for __o in self.lignes.values():
@@ -2834,493 +1946,9 @@ class Graphe:
             __o.NormaliserAdonf()
         self.ConstruireReferentielPositionsCDV()
 
-    #@execution_time 
-    def DefinirLongueurTransitions(self):
-        logging.info("Start calling DefinirLongueurTransitions")
-        for t in self.transitions.values():
-            t.definirLongueur()
-
-    #@execution_time 
-    def VerifierTransitions(self):
-        logging.info("Start calling VerifierTransitions")
-        problem = False
-        for i in self.pointsDeControle.values():
-            if(i.isPointOptimisation):
-                if(i.isPTES and i.PTESType == "IN"):
-                    if(len(i.transitionsDepuisCePoint) <= 0):
-                        print(i.nomPointOptimisation + " est PTES IN, mais n'est pas origine de transitions")
-                        problem = True
-                    if(len(i.transitionsVersCePoint) > 0):
-                        print(i.nomPointOptimisation + " est PTES IN, mais est destination de transitions")
-                        problem = True
-                elif(i.isPTES and i.PTESType == "OUT"):
-                    if(len(i.transitionsDepuisCePoint) > 0):
-                        print(i.nomPointOptimisation + " est PTES OUT, mais est origine de transitions")
-                        problem = True
-                    if(len(i.transitionsVersCePoint) <= 0):
-                        print(i.nomPointOptimisation + " est PTES OUT, mais n'est pas destination de transitions")
-                        problem = True
-                else:
-                    if(len(i.transitionsDepuisCePoint) <= 0):
-                        print(i.nomPointOptimisation + " n'est pas origine de transitions")
-                        problem = True
-                    if(len(i.transitionsVersCePoint) <= 0):
-                        print(i.nomPointOptimisation + " n'est pas destination de transitions")
-                        problem = True
-        if(not problem):
-            print("Aucun problème dans la génération des transitions")
-        os.system("PAUSE")
-
-    #@execution_time 
-    def VerifierMissionsElementaires(self):
-        logging.info("Start calling VerifierMissionsElementaires")
-        problem = False
-        for i in self.pointsDeControle.values():
-            if(i.isPointOptimisation):
-                meDepuisCePoint = 0
-                meVersCePoint = 0
-                for me in self.missionsElementairesRegulation.values():
-                    if(me.poOrigine == i):
-                        meDepuisCePoint = meDepuisCePoint + 1
-                    if(me.poDestination == i):
-                        meVersCePoint = meVersCePoint + 1
-                if(i.isPTES and i.PTESType == "IN"):
-                    if(meDepuisCePoint <= 0):
-                        print(i.nomPointOptimisation + " est PTES IN, mais n'est pas origine de mE")
-                        problem = True
-                    if(meVersCePoint > 0):
-                        print(i.nomPointOptimisation + " est PTES IN, mais est destination de mE")
-                        problem = True
-                elif(i.isPTES and i.PTESType == "OUT"):
-                    if(meDepuisCePoint > 0):
-                        print(i.nomPointOptimisation + " est PTES OUT, mais est origine de mE")
-                        problem = True
-                    if(meVersCePoint <= 0):
-                        print(i.nomPointOptimisation + " est PTES OUT, mais n'est pas destination de mE")
-                        problem = True
-                elif(i.isPAFQuai or i.isPTA):
-                    if(meDepuisCePoint <= 0):
-                        print(i.nomPointOptimisation + " n'est pas origine de mE")
-                        problem = True
-                    if(meVersCePoint <= 0):
-                        print(i.nomPointOptimisation + " n'est pas destination de mE")
-                        problem = True
-        if(not problem):
-            print("Aucun problème dans la génération des mE")
-        os.system("PAUSE")
-
-    #Cette méthode permet de construire les transitions, à partir des points de contrôle ayant la particularité "point d'optimisation". Une transition correspond à deux points optimisations adjacents dont le chemin entre les deux est empruntable par des itinéraires possibles
-    #@execution_time 
-    def ConstruireTransitions(self):
-        logging.info("Start calling ConstruireTransitions")
-        self.transitions = {}
-        listePointsOptimisation = {}
-        for i in self.pointsDeControle.values():
-            if(isinstance(i.nomPointOptimisation, str)):
-                print("PO : " + i.nomPointOptimisation)
-            if(i.isPointOptimisation):
-                listePointsOptimisation[i.nomPointOptimisation] = i
-
-        #On recherche tous les itinéraires empruntants chaque segment où se situe les points d'optimisations
-        for po in listePointsOptimisation.values():
-            print("Construction des transitions pour le point d'optimisation " + po.nomPointOptimisation)
-            listeItineraires = self.RechercheItinerairesEmpruntantSegment(po.segment)
-            segmentsComp = []
-            listeItinerairesComp = []
-            listeOriginesDebut = []
-            PONotFound = True
-            for i in listeItineraires:
-                if(i.origine not in listeOriginesDebut):
-                    listeOriginesDebut.append(i.origine)
-                for s in i.segmentsParcourus:
-                    if s.segment == po.segment:
-                        PONotFound = False
-
-            if(po.isPAFQuai and PONotFound):
-                for pafquai in po.quai.pafs.values():
-                    if(pafquai.segment not in segmentsComp and pafquai.segment != po.segment):
-                        listeItinerairesComp = self.RechercheItinerairesEmpruntantSegment(pafquai.segment)
-                        segmentsComp.append(pafquai.segment)
-                        for iti in listeItinerairesComp:
-                            if(iti not in listeItineraires):
-                                listeItineraires.append(iti)
-            if(len(listeItineraires) < 1):
-                print("Aucun itinéraire trouvé passant par le PO " + po.nomPointOptimisation)
-                os.system("pause")
-
-            for i in listeItineraires:
-                print("Parcours itinéraire first " + i.nom)
-                segmentsParcoursPremierItineraire = []
-                itinerairesParcoursPremierItineraire = []
-                checkPointsParcoursPremierItineraire = []
-                controlPointsParcoursPremierItineraire = []
-                debut = False
-                fin = False
-                itinerairesParcoursPremierItineraire.append(i)
-                modeInitial = "Optimisable"
-                if(i.mode != "Automatique"):
-                    modeInitial = "Non optimisable"
-                    print("Iti non auto")
-                for s in i.segmentsParcourus:
-                    print("seg : " + s.segment.nom)
-                    #On recherche le segment où se situe le point d'optimisation
-                    if s.segment == po.segment:
-                        debut = True
-                    elif s.segment in segmentsComp and PONotFound:
-                        debut = True
-                    #Lorsque le premier segment est trouvé, et tant qu'on a pas trouvé le prochain point d'optimisation
-                    if debut == True and fin == False:
-                        if(po.sensPriviligie != "BOTH" and s.sens != po.sensPriviligie):
-                            modeInitial = "Non optimisable"
-                            print("Non sens SensPriviligie en entrée")
-                        print("debut ok")
-                        segmentsParcoursPremierItineraire.append(s)
-                        #On recherche tous les points de contrôle sur le segment
-                        pointsControleSurSegment = s.segment.RechercherPointsControlesSurSegment(s.sens)
-                        #Pour les points sur le même segment que le segment initial où l'on trouve le po initial
-                        for next_pc in pointsControleSurSegment:
-                            if(next_pc.isPointOptimisation):
-                                print("nom PO : " + next_pc.nomPointOptimisation)
-                            if(fin == False and next_pc.isCheckPoint and ((next_pc.segment != po.segment and next_pc.segment not in segmentsComp) or (next_pc.abs > po.abs and s.sens == "CROISSANT") or (next_pc.abs < po.abs and s.sens == "DECROISSANT"))):
-                                checkPointsParcoursPremierItineraire.append(next_pc)
-                            if(fin == False and ((next_pc.segment != po.segment and next_pc.segment not in segmentsComp) or (next_pc.abs >= po.abs and s.sens == "CROISSANT") or (next_pc.abs <= po.abs and s.sens == "DECROISSANT"))):
-                                controlPointsParcoursPremierItineraire.append(next_pc)
-                            #Si le points de contrôle est un point d'optimisation et qu'il est après le point d'optimisation initial
-                            if(fin == False and next_pc.isPointOptimisation and ((next_pc.segment != po.segment and next_pc.segment not in segmentsComp) or (next_pc.abs > po.abs and s.sens == "CROISSANT") or (next_pc.abs < po.abs and s.sens == "DECROISSANT"))):
-                                if(next_pc.sensPriviligie != "BOTH" and s.sens != next_pc.sensPriviligie):
-                                    modeInitial = "Non optimisable"
-                                    print("Non sens SensPriviligie en sortie")
-                                fin = True
-                                trExistante = self.RechercherTransitionEntreAEtBAvecSegments(po, next_pc, segmentsParcoursPremierItineraire)
-                                for checkpoint in checkPointsParcoursPremierItineraire:
-                                    print("CP : " + checkpoint.nomCheckPoint)
-                                    if(len(checkpoint.transitionsNonOptimisablesForces) > 0):
-                                        for transition in checkpoint.transitionsNonOptimisablesForces:
-                                            stringPC = transition.split("|")
-                                            if(stringPC[0] == po.nomPointOptimisation and stringPC[1] == next_pc.nomPointOptimisation):
-                                                modeInitial = "Non optimisable"
-                                                print("Passant par checkPoint transitionsNonOptimisablesForces " + checkpoint.nomCheckPoint)
-                                if(trExistante == None):
-                                    #Fixer le mode automatique de la transition
-                                    # mode = "Non optimisable"
-                                    # if(i.mode == "Automatique" and (po.sensPriviligie == "BOTH" or s.sens == po.sensPriviligie)):
-                                    #     mode = "Optimisable"
-                                    if((po.isPTES == False or po.PTESType == "IN" or po.PTESType == "INOUT") and (next_pc.isPTES == False or next_pc.PTESType == "OUT" or next_pc.PTESType == "INOUT")):
-                                        self.AjouterTransition(po, next_pc, segmentsParcoursPremierItineraire, modeInitial, checkPointsParcoursPremierItineraire, controlPointsParcoursPremierItineraire)
-                                        # if(po.nomPointOptimisation == "MAGENTA_SUD_EST" and next_pc.nomPointOptimisation == "MAGENTA_V51"):
-                                        #     print("ME A ANALYSER")
-                                        #     os.system("PAUSE")
-
-                                else:
-                                    if(trExistante.mode == "Non optimisable" and modeInitial == "Optimisable"):
-                                        trExistante.mode = "Optimisable"
-
-                                # if(po.nomPointOptimisation == "POSTE22_Z_OUEST"):
-                                #     os.system("pause")
-                #Si le point d'optimisation ne se trouve pas sur l'itinéraire, on le recherche sur les itinéraires suivants, dont l'origine est la destination du premier itinéraire, puis on parcours les itinéraires jusqu'à trouver les po de toutes les branches ouvertes
-                if(debut == True and fin == False):
-                    origineItinerairesAAnalyser = []
-                    nouveauOrigineItinerairesAAnalyser = {}
-                    nouveauOrigineItinerairesAAnalyser['Itineraires'] = itinerairesParcoursPremierItineraire
-                    nouveauOrigineItinerairesAAnalyser['Segments'] = segmentsParcoursPremierItineraire
-                    nouveauOrigineItinerairesAAnalyser['ProchainOrigineAAnalyser'] = i.destination
-                    nouveauOrigineItinerairesAAnalyser['Checkpoints'] = checkPointsParcoursPremierItineraire
-                    nouveauOrigineItinerairesAAnalyser['ControlPoints'] = controlPointsParcoursPremierItineraire
-                    #Fixer le mode automatique de la transition
-                    nouveauOrigineItinerairesAAnalyser['Mode'] = modeInitial
-                    # for iti in nouveauOrigineItinerairesAAnalyser['Itineraires']:
-                    #     if(iti.mode == "Automatique"):
-                    #         nouveauOrigineItinerairesAAnalyser['Mode'] = "Optimisable"
-
-                    origineItinerairesAAnalyser.append(nouveauOrigineItinerairesAAnalyser.copy())
-                    while(len(origineItinerairesAAnalyser) > 0):
-                        # print("Nombre origine à analyser : " + str(len(origineItinerairesAAnalyser)))
-                        # for ori in origineItinerairesAAnalyser:
-                        #     print("Origines 1 à analyser : " + ori['ProchainOrigineAAnalyser'].nom)
-
-                        signal = origineItinerairesAAnalyser[0]['ProchainOrigineAAnalyser']
-                        itinerairesDejaParcourus = origineItinerairesAAnalyser[0]['Itineraires']
-                        segmentsDejaParcourus = origineItinerairesAAnalyser[0]['Segments']
-                        checkPointsDejaParcourus = origineItinerairesAAnalyser[0]['Checkpoints']
-                        controlPointsDejaParcourus = origineItinerairesAAnalyser[0]['ControlPoints']
-                        mode = origineItinerairesAAnalyser[0]['Mode']
-                        del origineItinerairesAAnalyser[0]
-
-                        # print("Nombre origine à analyser : " + str(len(origineItinerairesAAnalyser)))
-                        # for ori in origineItinerairesAAnalyser:
-                        #     print("Origines 2 à analyser : " + ori['ProchainOrigineAAnalyser'].nom)
-
-                        print('Prochaine origine à analyser : ' + signal.nom)
-                        listeItinerairesApresItiInitial = self.RechercherItinerairesDepuisOrigine(signal)
-
-
-                        for next_iti in listeItinerairesApresItiInitial:
-                            print("Itinéraire next : " + next_iti.nom)
-                            #On ne traite pas des itinéraires de sens inverses à l'itinéraire en cours (cas du tiroir), ni d'un itinéraire déjà traité
-                            #if(next_iti not in itinerairesDejaParcourus and next_iti.destination.sens == signal.sens and itinerairesParcoursPremierItineraire[0].origine.sens == next_iti.destination.sens):
-                            if(next_iti not in itinerairesDejaParcourus):
-                                segmentsParcoursItineraireEnCours = []
-                                checkpointsParcoursItineraireEnCours = []
-                                controlPointsParcoursItineraireEnCours = []
-                                itinerairesParcoursItineraireEnCours = []
-                                itinerairesParcoursItineraireEnCours.append(next_iti)
-                                finIntermediaire = False
-                                if(next_iti.mode != "Automatique"):
-                                    mode = "Non optimisable"
-                                    print("Iti non auto")
-                                for s in next_iti.segmentsParcourus:
-                                    print("seg : " + s.segment.nom)
-                                    #si un po n'a pas déjà été trouvé et que le segment n'a pas déjà été analysé.
-                                    if(finIntermediaire == False and s not in segmentsDejaParcourus):
-                                        if(po.sensPriviligie != "BOTH" and s.sens != po.sensPriviligie):
-                                            mode = "Non optimisable"
-                                            print("Non sens SensPriviligie en entrée")
-                                        segmentsParcoursItineraireEnCours.append(s)
-                                        #On recherche tous les points de contrôle sur le segment
-                                        pointsControleSurSegment = s.segment.RechercherPointsControlesSurSegment(s.sens)
-                                        #Pour les points sur le même segment que le segment
-                                        for next_pc in pointsControleSurSegment:
-                                            if(next_pc != po and (next_pc.PTESType == "INOUT" or next_pc.PTESType == "OUT" or (next_iti.destination.sens == signal.sens and itinerairesParcoursPremierItineraire[0].origine.sens == next_iti.destination.sens))):
-                                                if(next_pc.isPointOptimisation):
-                                                    print("nom PO : " + next_pc.nomPointOptimisation)
-                                                if(next_pc.isCheckPoint and finIntermediaire == False):
-                                                    checkpointsParcoursItineraireEnCours.append(next_pc)
-                                                if(finIntermediaire == False):
-                                                    controlPointsParcoursItineraireEnCours.append(next_pc)
-                                                if(next_pc.isPointOptimisation and finIntermediaire == False):
-                                                    finIntermediaire = True
-                                                    if(next_pc.sensPriviligie != "BOTH" and s.sens != next_pc.sensPriviligie):
-                                                        mode = "Non optimisable"
-                                                        print("Non sens SensPriviligie en sortie")
-                                                    if(self.RechercherTransitionEntreAEtBAvecSegments(po, next_pc, segmentsDejaParcourus + segmentsParcoursItineraireEnCours) == None):
-                                                        if((po.isPTES == False or po.PTESType == "IN" or po.PTESType == "INOUT") and (next_pc.isPTES == False or next_pc.PTESType == "OUT" or next_pc.PTESType == "INOUT")):
-                                                            for checkpoint in checkPointsDejaParcourus + checkpointsParcoursItineraireEnCours:
-                                                                print("CP : " + checkpoint.nomCheckPoint)
-                                                                if(len(checkpoint.transitionsNonOptimisablesForces) > 0):
-                                                                    for transition in checkpoint.transitionsNonOptimisablesForces:
-                                                                        stringPC = transition.split("|")
-                                                                        if(stringPC[0] == po.nomPointOptimisation and stringPC[1] == next_pc.nomPointOptimisation):
-                                                                            mode = "Non optimisable"
-                                                                            print("Passant par checkPoint transitionsNonOptimisablesForces "  + checkpoint.nomCheckPoint)
-                                                            self.AjouterTransition(po, next_pc, segmentsDejaParcourus + segmentsParcoursItineraireEnCours, mode, checkPointsDejaParcourus + checkpointsParcoursItineraireEnCours, controlPointsDejaParcourus + controlPointsParcoursItineraireEnCours)
-                                                                # if(po.nomPointOptimisation == "MAGENTA_SUD_EST" and next_pc.nomPointOptimisation == "MAGENTA_V51"):
-                                                                #     print("ME A ANALYSER")
-                                                                #     os.system("PAUSE")
-
-                                                # if(po.nomPointOptimisation == "POSTE22_Z_OUEST"):
-                                                #     os.system("pause")
-
-                                            else:
-                                                finIntermediaire = True
-                                #if(finIntermediaire == False):
-
-                                if(finIntermediaire == False and next_iti.destination.sens == signal.sens and itinerairesParcoursPremierItineraire[0].origine.sens == next_iti.destination.sens):
-                                    # print("Nombre origine à analyser : " + str(len(origineItinerairesAAnalyser)))
-                                    # for ori in origineItinerairesAAnalyser:
-                                    #     print("Origines A à analyser : " + ori['ProchainOrigineAAnalyser'].nom)
-
-                                    nouveauOrigineItinerairesAAnalyser['Itineraires'] = itinerairesDejaParcourus + itinerairesParcoursItineraireEnCours
-                                    nouveauOrigineItinerairesAAnalyser['Segments'] = segmentsDejaParcourus + segmentsParcoursItineraireEnCours
-                                    nouveauOrigineItinerairesAAnalyser['ProchainOrigineAAnalyser'] = next_iti.destination
-                                    nouveauOrigineItinerairesAAnalyser['Checkpoints'] = checkPointsDejaParcourus + checkpointsParcoursItineraireEnCours
-                                    nouveauOrigineItinerairesAAnalyser['ControlPoints'] = controlPointsDejaParcourus + controlPointsParcoursItineraireEnCours
-                                    nouveauOrigineItinerairesAAnalyser['Mode'] = mode
-                                    print("Ajout origine " + next_iti.destination.nom)
-                                    origineItinerairesAAnalyser.append(nouveauOrigineItinerairesAAnalyser.copy())
-
-                                    # print("Nombre origine à analyser : " + str(len(origineItinerairesAAnalyser)))
-                                    # for ori in origineItinerairesAAnalyser:
-                                    #     print("Origines B à analyser : " + ori['ProchainOrigineAAnalyser'].nom)
-
-        #Génération des associations Points d'optimisation -> transition
-        for transition in self.transitions.values():
-            # if(transition.pointOptimisationOrigine.nomPointOptimisation == "PARIS_EST_P24_2BIS_INOUT"):
-            #     print("transition etoile : " + transition.nom)
-            #     os.system("pause")
-
-            transition.pointOptimisationOrigine.transitionsDepuisCePoint.append(transition)
-            transition.pointOptimisationDestination.transitionsVersCePoint.append(transition)
-
-            for natureOrigine in transition.pointOptimisationOrigine.naturesTrains:
-                if(natureOrigine in transition.pointOptimisationDestination.naturesTrains):
-                    if(natureOrigine not in transition.naturesTrains):
-                        transition.naturesTrains.append(natureOrigine)
-
-            for ligne in transition.pointOptimisationOrigine.lignes:
-                if(ligne in transition.pointOptimisationDestination.lignes):
-                    if(ligne not in transition.lignes):
-                        transition.lignes.append(ligne)
-            #Nature de train par défaut
-            # if(self.natureParDefaut not in transition.naturesTrains):
-            #     transition.naturesTrains.append(self.natureParDefaut)
-    #os.system("pause")
-    #Cette méthode permet de construire les missions élémentaires de régulation par mixage
-    #@execution_time 
-    def ConstruireMissionsElementairesDeRegulationParMixage__disabledYDA(self, pointsOptimisationsCBTC, gareTerminus):
-        logging.info("Start calling ConstruireMissionsElementairesDeRegulationParMixage__disabledYDA")
-        self.missionElementaireRegulation = {}
-        #Les missions élémentaires de régulation sont construire en esseyant d'aller d'un quai d'une gare ou d'un PTA ou d'un PTES au quai d'une autre gare ou un autre PTA ou un autre PTES.
-        combinaisonsOrigineDestination = {}
-
-        #Construction des combinaison station / station
-        for stationA in self.stations.values():
-            for stationB in self.stations.values():
-                if(stationA != stationB):
-                    for quaiStationA in stationA.quais.values():
-                        for quaiStationB in stationB.quais.values():
-                            pointOptimisationStationA = self.RechercherPointOptimisation(quaiStationA.nom)
-                            pointOptimisationStationB = self.RechercherPointOptimisation(quaiStationB.nom)
-                            if(pointOptimisationStationA != None and pointOptimisationStationB != None):
-                                combinaisonOrigineDestination = {}
-                                combinaisonOrigineDestination['Origine'] = pointOptimisationStationA
-                                combinaisonOrigineDestination['Destination'] = pointOptimisationStationB
-                                key = combinaisonOrigineDestination['Origine'].nomPointOptimisation + "#" + combinaisonOrigineDestination['Destination'].nomPointOptimisation
-                                #print(key)
-                                combinaisonsOrigineDestination[key] = combinaisonOrigineDestination
-
-        #Construction des combinaisons PTA/PTES / Stations et Stations / PTA/PTES
-        pointsOptimisationPTAPTES = []
-        for pointOptimisation in self.pointsDeControle.values():
-            if pointOptimisation.isPointOptimisation == True and (pointOptimisation.isPTA == True or pointOptimisation.isPTES == True):
-                pointsOptimisationPTAPTES.append(pointOptimisation)
-        for station in self.stations.values():
-            for quai in station.quais.values():
-                pointOptimisationQuai = self.RechercherPointOptimisation(quai.nom)
-                if(pointOptimisationQuai != None):
-                    for pointOptimisationPTAPTES in pointsOptimisationPTAPTES:
-                        #combinaison quai -> PTA/PTES
-                        combinaisonOrigineDestination = {}
-                        combinaisonOrigineDestination['Origine'] = pointOptimisationQuai
-                        combinaisonOrigineDestination['Destination'] = pointOptimisationPTAPTES
-                        key = combinaisonOrigineDestination['Origine'].nomPointOptimisation + "#" + combinaisonOrigineDestination['Destination'].nomPointOptimisation
-                        #print(key)
-                        combinaisonsOrigineDestination[key] = combinaisonOrigineDestination
-                        #combinaison PTA/PTES -> Quai
-                        combinaisonOrigineDestination = {}
-                        combinaisonOrigineDestination['Origine'] = pointOptimisationPTAPTES
-                        combinaisonOrigineDestination['Destination'] = pointOptimisationQuai
-                        key = combinaisonOrigineDestination['Origine'].nomPointOptimisation + "#" + combinaisonOrigineDestination['Destination'].nomPointOptimisation
-                        #print(key)
-                        combinaisonsOrigineDestination[key] = combinaisonOrigineDestination
-
-        #Construction combinaisons PTA/PTES -> PTA/PTES
-        for pointOptimisationPTAPTES_A in pointsOptimisationPTAPTES:
-            for pointOptimisationPTAPTES_B in pointsOptimisationPTAPTES:
-                if(pointOptimisationPTAPTES_A != pointOptimisationPTAPTES_B):
-                    combinaisonOrigineDestination = {}
-                    combinaisonOrigineDestination['Origine'] = pointOptimisationPTAPTES_A
-                    combinaisonOrigineDestination['Destination'] = pointOptimisationPTAPTES_B
-                    key = combinaisonOrigineDestination['Origine'].nomPointOptimisation + "#" + combinaisonOrigineDestination['Destination'].nomPointOptimisation
-                    #print(key)
-                    combinaisonsOrigineDestination[key] = combinaisonOrigineDestination
-
-        #Démarrage de la construction du parcours de graphe depuis toutes les origines possibles
-        alreadyDone = []
-        for pointOptimisation in self.pointsDeControle.values():
-            if pointOptimisation.isPointOptimisation == True and (pointOptimisation.isPAFQuai == True or pointOptimisation.isPTES == True or pointOptimisation.isPTA == True):
-                branchesOuvertes = []
-                brancheOuverte = {}
-                #Initialisation de la première branche
-                brancheOuverte['PointsOptimisationDejaParcourus'] = {}
-                brancheOuverte['PointsOptimisationDejaParcourus'][pointOptimisation.nomPointOptimisation] = pointOptimisation
-                brancheOuverte['Transitions'] = []
-                brancheOuverte['ProchainPointOptimisation'] = pointOptimisation
-                branchesOuvertes.append(brancheOuverte)
-                while(len(branchesOuvertes) > 0):
-                    #On enregistre la branche parcourue, et on la met dans les branches fermées
-                    brancheOuverte = branchesOuvertes[0]
-
-                    prochainPointOptimisation = brancheOuverte['ProchainPointOptimisation']
-
-                    derniereTransitionParcourue = None
-                    if(len(brancheOuverte['Transitions']) > 0):
-                        derniereTransitionParcourue = brancheOuverte['Transitions'][-1]
-
-                    for transition in prochainPointOptimisation.transitionsDepuisCePoint:
-                        if(transition.pointOptimisationDestination.nomPointOptimisation not in brancheOuverte['PointsOptimisationDejaParcourus']):
-                            #Si c'est la première transition de la branche, ou que le dernier segment de la dernière transition est orienté de la même façon que le premier segment de la transition, et qu'il s'agit des mêmes segments
-                            if(derniereTransitionParcourue is None or (derniereTransitionParcourue.segmentsParcourus[-1] == transition.segmentsParcourus[0])):
-                                #print("Depuis PO " + pointOptimisation.nomPointOptimisation + " Parcours transition " + transition.nom)
-
-                                nouvelleBrancheOuverte = {}
-                                nouvelleBrancheOuverte['PointsOptimisationDejaParcourus'] = brancheOuverte['PointsOptimisationDejaParcourus'].copy()
-                                nouvelleBrancheOuverte['PointsOptimisationDejaParcourus'][transition.pointOptimisationDestination.nomPointOptimisation] = transition.pointOptimisationDestination
-
-                                #print("point d'opimisation déjà parcourus :")
-                                #for i in nouvelleBrancheOuverte['PointsOptimisationDejaParcourus'].values():
-                                    #print(i.nomPointOptimisation)
-
-                                nouvelleBrancheOuverte['Transitions'] = brancheOuverte['Transitions'].copy()
-                                nouvelleBrancheOuverte['Transitions'].append(transition)
-
-                                #print("transitions déjà parcourues :")
-                                #for i in nouvelleBrancheOuverte['Transitions']:
-                                    #print(i.nom)
-
-                                nouvelleBrancheOuverte['ProchainPointOptimisation'] = transition.pointOptimisationDestination
-
-                                #print("prochain point d'optimisation : " + transition.pointOptimisationDestination.nomPointOptimisation)
-
-                                #Ajout de la mission élémentaire entre le point d'optimisation d'origine et le point destination de la transition de la branche ouverte, si la combinaison origine-destination correspondante existe
-                                key = pointOptimisation.nomPointOptimisation + "#" + transition.pointOptimisationDestination.nomPointOptimisation
-                                #print("LA cle " + key)
-
-                                #Vérification des conditions de sens pour l'origine et la destination
-                                condPafQuaiSensOrigine = True
-                                if(pointOptimisation.isPAFQuai == True):
-                                    quai = self.RechercherQuai(pointOptimisation.nomPointOptimisation)
-                                    pafsDuSens = quai.FournirPAFsSens(nouvelleBrancheOuverte['Transitions'][0].segmentsParcourus[0].sens)
-                                    if(len(pafsDuSens) < 1):
-                                        condPafQuaiSensOrigine = False
-                                condPafQuaiSensDestination = True
-                                if(transition.pointOptimisationDestination.isPAFQuai == True):
-                                    quai = self.RechercherQuai(transition.pointOptimisationDestination.nomPointOptimisation)
-                                    pafsDuSens = []
-                                    if(quai.station.nom in gareTerminus):
-                                        pafsDuSens = quai.FournirPAFsSens("CROISSANT") + quai.FournirPAFsSens("DECROISSANT")
-                                    else:
-                                        pafsDuSens = quai.FournirPAFsSens(nouvelleBrancheOuverte['Transitions'][-1].segmentsParcourus[-1].sens)
-                                    if(len(pafsDuSens) < 1):
-                                        condPafQuaiSensDestination = False
-                                if((transition.pointOptimisationDestination.isPTA or transition.pointOptimisationDestination.isPTES or transition.pointOptimisationDestination.isPAFQuai) and key in combinaisonsOrigineDestination and condPafQuaiSensOrigine == True and condPafQuaiSensDestination == True):
-                                    #print(pointOptimisation.nomPointOptimisation + "#" + transition.pointOptimisationDestination.nomPointOptimisation)
-                                    ModeControleVitesse = ""
-                                    Sens = ""
-                                    if(pointOptimisation.nomPointOptimisation in pointsOptimisationsCBTC and transition.pointOptimisationDestination.nomPointOptimisation in pointsOptimisationsCBTC):
-                                        ModeControleVitesse = "KVB+CBTC"
-                                    else:
-                                        ModeControleVitesse = "KVB"
-                                    if(nouvelleBrancheOuverte['Transitions'][0].segmentsParcourus[0].sens == "CROISSANT"):
-                                        Sens = "G -> D"
-                                    else:
-                                        Sens = "D -> G"
-
-                                    initNatureTrain = 0
-                                    NaturesTrains = []
-                                    for t in nouvelleBrancheOuverte['Transitions']:
-                                        if(initNatureTrain == 0):
-                                            initNatureTrain = 1
-                                            NaturesTrains = t.naturesTrains.copy()
-                                        else:
-                                            newNaturesTrains = []
-                                            for nature in t.naturesTrains:
-                                                if(nature in NaturesTrains):
-                                                    newNaturesTrains.append(nature)
-                                            NaturesTrains = newNaturesTrains
-                                    lignesSansArret = []
-                                    self.AjouterMissionElementaireRegulation(pointOptimisation, transition.pointOptimisationDestination, nouvelleBrancheOuverte['Transitions'], ModeControleVitesse, Sens, NaturesTrains, lignesSansArret)
-                                    if(key not in alreadyDone):
-                                        alreadyDone.append(key)
-                                        print(key)
-                                else:
-                                    branchesOuvertes.append(nouvelleBrancheOuverte)
-                                #os.system("pause")
-
-                    del branchesOuvertes[0]
-
     #Cette méthode permet de construire les missions élémentaires de régulation
     #@execution_time 
-    def ConstruireMissionsElementairesDeRegulationParImportation__disabledYDA(self, pointsOptimisationsCBTC, fileToImport, _gareTerminus, _lignesSansArret):
+    def ConstruireMissionsElementairesDeRegulationParImportation__disabledYDA__disabled_YDA(self, pointsOptimisationsCBTC, fileToImport, _gareTerminus, _lignesSansArret):
         logging.info("Start calling ConstruireMissionsElementairesDeRegulationParImportation__disabledYDA")
         self.missionElementaireRegulation = {}
         #Les missions élémentaires de régulation sont construire en esseyant d'aller d'un quai d'une gare ou d'un PTA ou d'un PTES au quai d'une autre gare ou un autre PTA ou un autre PTES.
@@ -3488,7 +2116,7 @@ class Graphe:
 
     #Cette méthode permet de générer les missions élémentaires (SMT3) à partir des missions élémentaires de régulation
     #@execution_time 
-    def GenererMissionsElementaires___YDA(self, seuilMauvaisGlissement, dVisi, dBonGlissement, vBonGlissement, dMauvaisGlissement, vMauvaisGlissement, vA, dA, vMav, T_S, dRep, dLibMG, dLibBG, gareTerminus):
+    def GenererMissionsElementaires___YDA__disabled_YDA(self, seuilMauvaisGlissement, dVisi, dBonGlissement, vBonGlissement, dMauvaisGlissement, vMauvaisGlissement, vA, dA, vMav, T_S, dRep, dLibMG, dLibBG, gareTerminus):
         logging.info("Start calling GenererMissionsElementaires___YDA")
         self.missionsElementaires = {}
         for meR in self.missionsElementairesRegulation.values():
@@ -3536,20 +2164,20 @@ class Graphe:
         #         pc.DefinirVLigne()
 
     #@execution_time 
-    def AjouterMissionElementaire(self, _nom, _missionElementaireRegulation, _modeControleVitesse, _compositionTrain):
+    def AjouterMissionElementaire__disabled_YDA(self, _nom, _missionElementaireRegulation, _modeControleVitesse, _compositionTrain):
         logging.info("Start calling AjouterMissionElementaire")
         self.missionsElementaires[_nom] = MissionElementaire(_nom, _missionElementaireRegulation, _modeControleVitesse, _compositionTrain)
         return self.missionsElementaires[_nom]
 
     #Cette méthode permet d'ajouter une mission élémentaire de régulation
     #@execution_time 
-    def AjouterMissionElementaireRegulationSimple(self, _nom, _poA, _poB, _modeControleVitesse, _sens):
+    def AjouterMissionElementaireRegulationSimple__disabled_YDA(self, _nom, _poA, _poB, _modeControleVitesse, _sens):
         logging.info("Start calling AjouterMissionElementaireRegulationSimple")
         self.missionsElementairesRegulation[_nom] = MissionElementaireRegulation(_nom, _poA, _poB, [], _modeControleVitesse, _sens, [], [])
         return self.missionsElementairesRegulation[_nom]
 
     #@execution_time 
-    def AjouterMissionElementaireRegulation(self, _poA, _poB, _transitions, _modeControleVitesse, _sens, _naturesTrains, _lignes):
+    def AjouterMissionElementaireRegulation__disabled_YDA(self, _poA, _poB, _transitions, _modeControleVitesse, _sens, _naturesTrains, _lignes):
         logging.info("Start calling AjouterMissionElementaireRegulation")
         nbPresent = 0
         seulPresent = None
@@ -3578,7 +2206,7 @@ class Graphe:
         return self.missionsElementairesRegulation[nomAAjouter]
     #Cette méthode permet de rechercher un point d'optimisation
     #@execution_time 
-    def RechercherPointOptimisation(self, _nomPointOptimisation):
+    def RechercherPointOptimisation__disabled_YDA(self, _nomPointOptimisation):
         logging.info("Start calling RechercherPointOptimisation")
         for i in self.pointsDeControle.values():
             if i.isPointOptimisation == True and i.nomPointOptimisation == _nomPointOptimisation:
@@ -3587,7 +2215,7 @@ class Graphe:
 
     #Cette méthode permet de rechercher une transition entre deux points d'optimisation, passant par une liste de segments. Tous les segments de la transition doivent être précisés
     #@execution_time 
-    def RechercherTransitionEntreAEtBAvecSegments(self, _poA, _poB, _segments):
+    def RechercherTransitionEntreAEtBAvecSegments__disabled_YDA(self, _poA, _poB, _segments):
         logging.info("Start calling RechercherTransitionEntreAEtBAvecSegments")
         #print("Segments initiaux pour transition entre : " + _poA.nomPointOptimisation + " et " + _poB.nomPointOptimisation)
         #for s in _segments:
@@ -3607,7 +2235,7 @@ class Graphe:
         return None
 
     #@execution_time 
-    def AjouterTransitionSimple(self, _nom, _poA, _poB, _mode, _longueur):
+    def AjouterTransitionSimple__disabled_YDA(self, _nom, _poA, _poB, _mode, _longueur):
         logging.info("Start calling AjouterTransitionSimple")
         self.transitions[_nom] = Transition(_nom, _poA, _poB, [], _mode, [], [])
         self.transitions[_nom].longueur = _longueur
@@ -3616,7 +2244,7 @@ class Graphe:
 
     #Cette méthode permet d'ajouter une transition (son nom est généré automatiquement à partir du nom des po)
     #@execution_time 
-    def AjouterTransition(self, _poA, _poB, _segments, _mode, _checkpoints, _controlpoints):
+    def AjouterTransition__disabled_YDA(self, _poA, _poB, _segments, _mode, _checkpoints, _controlpoints):
         logging.info("Start calling AjouterTransition")
         nbPresent = 0
         seulPresent = None
@@ -3649,14 +2277,14 @@ class Graphe:
 
     #Cette méthode permet d'ajouter un croisement bon à une aiguille
     #@execution_time 
-    def AjouterCB(self, _nom, _aiguille):
+    def AjouterCB__disabled_YDA(self, _nom, _aiguille):
         logging.info("Start calling AjouterCB")
         self.CBs[_nom] = CroisementBon(_nom, _aiguille)
         return self.CBs[_nom]
 
     #Cette méthode permet de connaître les itinéraires empruntant un segment
     #@execution_time 
-    def RechercheItinerairesEmpruntantSegment(self, _segment):
+    def RechercheItinerairesEmpruntantSegment__disabled_YDA(self, _segment):
         logging.info("Start calling RechercheItinerairesEmpruntantSegment")
         listeItineraires = []
         for p in self.postes.values():
@@ -3669,7 +2297,7 @@ class Graphe:
 
     #Cette méthode permet d'importer les pédales de DA
     #@execution_time 
-    def ImporterPedales(self, masquePedaleFile, feuilNom, feuilNom2):
+    def ImporterPedales__disabled_YDA(self, masquePedaleFile, feuilNom, feuilNom2):
         logging.info("Start calling ImporterPedales")
         fichierExcel = open(masquePedaleFile, "rb")
         colsNames = ['A','B','C','D','E','F']
@@ -3690,17 +2318,17 @@ class Graphe:
         fichierExcel.close()
 
     #@execution_time 
-    def DefinirDistanceSansArret(self, _tempoAQuai, _tempoTechnique, _vLigne):
+    def DefinirDistanceSansArret__disabled_YDA(self, _tempoAQuai, _tempoTechnique, _vLigne):
         logging.info("Start calling DefinirDistanceSansArret")
         return (_tempoAQuai + _tempoTechnique) * _vLigne
 
     #@execution_time 
-    def DefinirTempsSansArret(self, _distance, _vLigne):
+    def DefinirTempsSansArret__disabled_YDA(self, _distance, _vLigne):
         logging.info("Start calling DefinirTempsSansArret")
         return _distance / _vLigne
 
     #@execution_time 
-    def DefinirDistanceAvecArret(self, _tempoAQuai, _tempoTechnique, _vLigne, _gFS):
+    def DefinirDistanceAvecArret__disabled_YDA(self, _tempoAQuai, _tempoTechnique, _vLigne, _gFS):
         logging.info("Start calling DefinirDistanceAvecArret")
         dFreinage = (_vLigne*_vLigne)/(2.*_gFS)
         tFreinage = math.sqrt((2.*dFreinage)/_gFS)
@@ -3714,7 +2342,7 @@ class Graphe:
         return D_return
 
     #@execution_time 
-    def DefinirTempsAvecArret(self, _distance, _vLigne, _gFS):
+    def DefinirTempsAvecArret__disabled_YDA(self, _distance, _vLigne, _gFS):
         logging.info("Start calling DefinirTempsAvecArret")
         dFreinage = (_vLigne*_vLigne)/(2.*_gFS)
         tFreinage = math.sqrt((2.*dFreinage)/_gFS)
@@ -3726,7 +2354,7 @@ class Graphe:
         return D_return
 
     #@execution_time 
-    def ProduireZonesApproches(self, _nomFichier):
+    def ProduireZonesApproches__disabled_YDA(self, _nomFichier):
         logging.info("Start calling ProduireZonesApproches")
         zonesApprochesDict = {'Gare': [], 'Quai': [], 'Branche': [],'Sens': [],'zAPSansArret': [],'zAPAvecArret_50.0': [],'zAPAvecArret_55.0': [],'zAPAvecArret_60.0': [],'zAPAvecArret_65.0': [],'zAPAvecArret_70.0': [],'zAPAvecArret_75.0': [],'zAPAvecArret_80.0': [],'zAPAvecArret_85.0': [],'zAQuai_50.0': [],'zAQuai_55.0': [],'zAQuai_60.0': [],'zAQuai_65.0': [],'zAQuai_70.0': [],'zAQuai_75.0': [],'zAQuai_80.0': [],'zAQuai_85.0': []}
         pafConcat = []
@@ -4014,7 +2642,7 @@ class Graphe:
         df.to_csv(_nomFichier, sep=';')
 
     #@execution_time 
-    def RechercherJCDVouPedaleSurBranche(self, _branche):
+    def RechercherJCDVouPedaleSurBranche__disabled_YDA(self, _branche):
         logging.info("Start calling RechercherJCDVouPedaleSurBranche")
         Capteurs = []
         for jcdv in self.JointsCDVs.values():
@@ -4059,7 +2687,7 @@ class Graphe:
         return Capteurs
 
     #@execution_time 
-    def CalculerDistanceEntrePointEtPAFQuai(self, _segments, _pointSegment, _pointAbs, _paf, _sens):
+    def CalculerDistanceEntrePointEtPAFQuai__disabled_YDA(self, _segments, _pointSegment, _pointAbs, _paf, _sens):
         logging.info("Start calling CalculerDistanceEntrePointEtPAFQuai")
         started = False
         distance = 0.
@@ -4089,7 +2717,7 @@ class Graphe:
 
 
     #@execution_time 
-    def ListeBranchesDansInterval(self, _debutInterval, _finInterval, _quai, _sens):
+    def ListeBranchesDansInterval__disabled_YDA(self, _debutInterval, _finInterval, _quai, _sens):
         logging.info("Start calling ListeBranchesDansInterval")
         #Recherche des intervals sur toutes les missions élémentaires se rendant sur point arrêt
         listeBranches = {}
@@ -4198,7 +2826,7 @@ class Graphe:
 
 class NatureTrain:
     #@execution_time 
-    def __init__(self, _nom, _pardefaut, _composition):
+    def __init____disabled_YDA(self, _nom, _pardefaut, _composition):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.pardefaut = _pardefaut
@@ -4207,13 +2835,13 @@ class NatureTrain:
         self.lignes = []
 
     #@execution_time 
-    def AjouterModele(self, _modele):
+    def AjouterModele__disabled_YDA(self, _modele):
         logging.info("Start calling AjouterModele")
         self.modeles.append(_modele)
 
 class ModeleTrain:
     #@execution_time 
-    def __init__(self, _nom, _modeconduite, _nature):
+    def __init____disabled_YDA(self, _nom, _modeconduite, _nature):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.nature = _nature
@@ -4222,7 +2850,7 @@ class ModeleTrain:
 
 class Pedale:
     #@execution_time 
-    def __init__(self, _nomAtos, _nomSiemens, _segment, _abs, _signal, _direction = None):
+    def __init____disabled_YDA(self, _nomAtos, _nomSiemens, _segment, _abs, _signal, _direction = None):
         logging.info("Start calling __init__")
         graphe = GrapheSingleton()
         self.nomAtos = _nomAtos
@@ -4242,7 +2870,7 @@ class Pedale:
 
 class ZLPV:
     #@execution_time 
-    def __init__(self, _nom, _vitesse, _segmentDebut, _absDebut, _segmentFin, _absFin):
+    def __init____disabled_YDA(self, _nom, _vitesse, _segmentDebut, _absDebut, _segmentFin, _absFin):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.vitesse = _vitesse
@@ -4252,7 +2880,7 @@ class ZLPV:
         self.absFin = _absFin
 
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         graphe = GrapheSingleton()
         self.segmentDebut = graphe.segments[self.segmentDebut]
@@ -4260,7 +2888,7 @@ class ZLPV:
 
 class MissionElementaire:
     #@execution_time 
-    def __init__(self, _nom, _missionElementaireRegulation, _modeControleVitesse, _compositionTrain):
+    def __init____disabled_YDA(self, _nom, _missionElementaireRegulation, _modeControleVitesse, _compositionTrain):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.missionElementaireRegulation = _missionElementaireRegulation
@@ -4278,7 +2906,7 @@ class MissionElementaire:
         self.tvdsDeQuaiouPTA = []
 
     #@execution_time 
-    def FindBestContreSensPerturbanteME(self, composition, nature):
+    def FindBestContreSensPerturbanteME__disabled_YDA(self, composition, nature):
         logging.info("Start calling FindBestContreSensPerturbanteME")
         graphe = GrapheSingleton()
         maxSimilarityCount = 0
@@ -4298,7 +2926,7 @@ class MissionElementaire:
         return maxSimilarityME
 
     #@execution_time 
-    def FindWorstElementaryTripWithNature(self, natureTrain, _poOrigine = None):
+    def FindWorstElementaryTripWithNature__disabled_YDA(self, natureTrain, _poOrigine = None):
         logging.info("Start calling FindWorstElementaryTripWithNature")
         graphe = GrapheSingleton()
 
@@ -4394,7 +3022,7 @@ class MissionElementaire:
                 return me
 
     #@execution_time 
-    def GenererOrigineDestination(self, gareTerminus):
+    def GenererOrigineDestination__disabled_YDA(self, gareTerminus):
         logging.info("Start calling GenererOrigineDestination")
         graphe = GrapheSingleton()
         segmentsParcourus = self.missionElementaireRegulation.segmentsParcourus
@@ -4525,7 +3153,7 @@ class MissionElementaire:
             os.system("pause")
 
     #@execution_time 
-    def GenererSegmentsParcourus(self):
+    def GenererSegmentsParcourus__disabled_YDA(self):
         logging.info("Start calling GenererSegmentsParcourus")
         #Si l'origine est un paf et n'est pas sur le premier segment de la mission élémentaire de régulation, on ajoute le segment de l'origine dans le même sens de parcours
         if(self.missionElementaireRegulation.poOrigine.isPAFQuai == True and self.origine.segment != self.missionElementaireRegulation.segmentsParcourus[0].segment):
@@ -4566,7 +3194,7 @@ class MissionElementaire:
                     self.segmentsParcourus.append(segmentParcouru)
 
     #@execution_time 
-    def GenererAiguilles(self, dVisi):
+    def GenererAiguilles__disabled_YDA(self, dVisi):
         logging.info("Start calling GenererAiguilles")
         graphe = GrapheSingleton()
         i = 0
@@ -4675,7 +3303,7 @@ class MissionElementaire:
             self.itineraires.append(itiItem)
 
     #@execution_time 
-    def GenererTVDsdeQuaiouPTA(self):
+    def GenererTVDsdeQuaiouPTA__disabled_YDA(self):
         logging.info("Start calling GenererTVDsdeQuaiouPTA")
         graphe = GrapheSingleton()
         for tra in self.missionElementaireRegulation.transitions:
@@ -4689,7 +3317,7 @@ class MissionElementaire:
 
     #Cette méthode permet de générer les conditions de commande des itinéraires et la gestion des transits sur la mission élémentaire
     #@execution_time 
-    def GenererTransits(self, gareTerminus):
+    def GenererTransits__disabled_YDA(self, gareTerminus):
         logging.info("Start calling GenererTransits")
         graphe = GrapheSingleton()
         segOrigine = None
@@ -4799,7 +3427,7 @@ class MissionElementaire:
     #Cette méthode permet de générer la distance PAF PAP
     #ADU : non ajusté en fonction de l'approche du train et du type de paf
     #@execution_time 
-    def GenererDPafPap(self):
+    def GenererDPafPap__disabled_YDA(self):
         logging.info("Start calling GenererDPafPap")
         graphe = GrapheSingleton()
         sens = self.missionElementaireRegulation.sens
@@ -4844,7 +3472,7 @@ class MissionElementaire:
         self.DPafPap = abs(absFin - pap['abs'])
 
     #@execution_time 
-    def GenererCommandesSignaux(self, _dVisi, _dBonGlissement, _vBonGlissement, _dMauvaisGlissement, _vMauvaisGlissement, _vA, _dA, _vMav, _T_S, _dRep, _DLibMG, _DLibBG):
+    def GenererCommandesSignaux__disabled_YDA(self, _dVisi, _dBonGlissement, _vBonGlissement, _dMauvaisGlissement, _vMauvaisGlissement, _vA, _dA, _vMav, _T_S, _dRep, _DLibMG, _DLibBG):
         logging.info("Start calling GenererCommandesSignaux")
         graphe = GrapheSingleton()
         debut = False
@@ -4992,7 +3620,7 @@ class MissionElementaire:
 
 class MissionElementaireRegulation:
     #@execution_time 
-    def __init__(self, _nom, _poOrigine, _poDestination, _transitions, _modeControleVitesse, _sens, _naturesTrains, _lignes):
+    def __init____disabled_YDA(self, _nom, _poOrigine, _poDestination, _transitions, _modeControleVitesse, _sens, _naturesTrains, _lignes):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.poOrigine = _poOrigine
@@ -5010,7 +3638,7 @@ class MissionElementaireRegulation:
         #self.GenererSegmentsParcourus()
 
     #@execution_time 
-    def GenererSegmentsParcourus(self):
+    def GenererSegmentsParcourus__disabled_YDA(self):
         logging.info("Start calling GenererSegmentsParcourus")
         for transition in self.transitions:
             for segment in transition.segmentsParcourus:
@@ -5034,7 +3662,7 @@ class MissionElementaireRegulation:
                         self.segmentsParcourus.append(segment)
 class Transition:
     #@execution_time 
-    def __init__(self, _nom, _poOrigine, _poDestination, _segmentsParcourus, _mode, _checkpoints, _controlpoints):
+    def __init____disabled_YDA(self, _nom, _poOrigine, _poDestination, _segmentsParcourus, _mode, _checkpoints, _controlpoints):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.pointOptimisationOrigine = _poOrigine
@@ -5050,7 +3678,7 @@ class Transition:
         self.signauxTraverses = []
 
     #@execution_time 
-    def definirLongueur(self):
+    def definirLongueur__disabled_YDA(self):
         logging.info("Start calling definirLongueur")
         if(len(self.segmentsParcourus) == 1):
             self.longueur = abs(self.pointOptimisationOrigine.abs - self.pointOptimisationDestination.abs)
@@ -5070,7 +3698,7 @@ class Transition:
                     self.longueur = self.longueur + s.segment.longueur
 
     #@execution_time 
-    def print(self):
+    def print__disabled_YDA(self):
         logging.info("Start calling print")
         print("Transition : " + self.nom + " de " + self.pointOptimisationOrigine.nom + " à " + self.pointOptimisationDestination.nom)
         stringSegments = ""
@@ -5080,7 +3708,7 @@ class Transition:
 
 class JointCDV:
     #@execution_time 
-    def __init__(self, _cdv1, _cdv2, _segment, _abs):
+    def __init____disabled_YDA(self, _cdv1, _cdv2, _segment, _abs):
         logging.info("Start calling __init__")
         self.cdv1 = _cdv1
         self.cdv2 = _cdv2
@@ -5090,7 +3718,7 @@ class JointCDV:
 
 class ExtremiteCDVLimiteDomaine:
     #@execution_time 
-    def __init__(self, _cdv, _segment, _abs):
+    def __init____disabled_YDA(self, _cdv, _segment, _abs):
         logging.info("Start calling __init__")
         self.cdv = _cdv
         self.segment = _segment
@@ -5098,7 +3726,7 @@ class ExtremiteCDVLimiteDomaine:
 
 class PointDeControle:
     #@execution_time 
-    def __init__(self, _nom, _abs, _segment):
+    def __init____disabled_YDA(self, _nom, _abs, _segment):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.segment = _segment
@@ -5143,7 +3771,7 @@ class PointDeControle:
 
 
     #@execution_time 
-    def DefinirVLigne(self):
+    def DefinirVLigne__disabled_YDA(self):
         logging.info("Start calling DefinirVLigne")
         graphe = GrapheSingleton()
         vLigneFound = False
@@ -5164,70 +3792,70 @@ class PointDeControle:
             segmentEnCours = segmentEnCours.segment1VoisinAmont
 
     #@execution_time 
-    def AjouterParticulariteJCDV(self, _jointCDV):
+    def AjouterParticulariteJCDV__disabled_YDA(self, _jointCDV):
         logging.info("Start calling AjouterParticulariteJCDV")
         self.isJCDV = True
         self.jointCDV = _jointCDV
 
     #@execution_time 
-    def AjouterParticularitePedale(self, _pedale):
+    def AjouterParticularitePedale__disabled_YDA(self, _pedale):
         logging.info("Start calling AjouterParticularitePedale")
         self.isDetecteurPassage = True
         self.pedale = _pedale
 
     #@execution_time 
-    def AjouterParticulariteECDVLD(self, _ECDVLD):
+    def AjouterParticulariteECDVLD__disabled_YDA(self, _ECDVLD):
         logging.info("Start calling AjouterParticulariteECDVLD")
         self.isECDVLD = True
         self.extremiteCDVLimiteDomaine = _ECDVLD
 
     #@execution_time 
-    def AjouterParticulariteExtremiteQuai(self, _quai, _sens):
+    def AjouterParticulariteExtremiteQuai__disabled_YDA(self, _quai, _sens):
         logging.info("Start calling AjouterParticulariteExtremiteQuai")
         self.isExtremiteQuai = True
         self.quai = _quai
         self.sens = _sens
 
     #@execution_time 
-    def AjouterParticularitePAFQuai(self, _quai):
+    def AjouterParticularitePAFQuai__disabled_YDA(self, _quai):
         logging.info("Start calling AjouterParticularitePAFQuai")
         self.isPAFQuai = True
         self.quai = _quai
 
     #@execution_time 
-    def AjouterParticularitePointOptimisation(self, _nom):
+    def AjouterParticularitePointOptimisation__disabled_YDA(self, _nom):
         logging.info("Start calling AjouterParticularitePointOptimisation")
         self.isPointOptimisation = True
         self.nomPointOptimisation = _nom
 
     #@execution_time 
-    def AjouterParticularitePTA(self):
+    def AjouterParticularitePTA__disabled_YDA(self):
         logging.info("Start calling AjouterParticularitePTA")
         self.isPTA = True
 
     #@execution_time 
-    def AjouterParticularitePTES(self, _type):
+    def AjouterParticularitePTES__disabled_YDA(self, _type):
         logging.info("Start calling AjouterParticularitePTES")
         self.isPTES = True
         self.PTESType = _type
 
 class CroisementBon:
     #@execution_time 
-    def __init__(self, _nom, _aiguille):
+    def __init____disabled_YDA(self, _nom, _aiguille):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.aiguille = _aiguille
         self.cbSegments = {}
 
     #@execution_time 
-    def AjouterCB(self, _segmentNom, _segment, _abs):
+    def AjouterCB__disabled_YDA(self, _segmentNom, _segment, _abs):
         logging.info("Start calling AjouterCB")
         self.cbSegments[_segmentNom] = {}
         self.cbSegments[_segmentNom]['Segment'] = _segment
         self.cbSegments[_segmentNom]['abs'] = _abs
 
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         print("Normalisation cb : " + self.nom)
         #Recuperation du graphe (singleton)
@@ -5238,7 +3866,7 @@ class CroisementBon:
 
 class Ligne:
     #@execution_time 
-    def __init__(self, _nom, _numero, _referentiel, _segmentReference, _orientationGauche, _orientationDroite):
+    def __init____disabled_YDA(self, _nom, _numero, _referentiel, _segmentReference, _orientationGauche, _orientationDroite):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.numero = _numero
@@ -5248,7 +3876,7 @@ class Ligne:
         self.orientationDroite = _orientationDroite
 
     #@execution_time 
-    def print(self, _chainePrefixe = ""):
+    def print__disabled_YDA(self, _chainePrefixe = ""):
         logging.info("Start calling print")
         print(_chainePrefixe+"Ligne : " + self.nom)
         print(_chainePrefixe+"-numero : " + str(self.numero))
@@ -5259,7 +3887,7 @@ class Ligne:
 
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         print("Normalisation ligne : " + self.nom)
         #Recuperation du graphe (singleton)
@@ -5268,19 +3896,19 @@ class Ligne:
 
 class Station:
     #@execution_time 
-    def __init__(self, _nom):
+    def __init____disabled_YDA(self, _nom):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.quais = {}
 
     #@execution_time 
-    def AjouterQuai(self, _nom, _nomDCSYS, _extremite1Seg, _extremite2Seg, _extremite1Abs, _extremite2Abs, _extremite1Sens, _extremite2Sens):
+    def AjouterQuai__disabled_YDA(self, _nom, _nomDCSYS, _extremite1Seg, _extremite2Seg, _extremite1Abs, _extremite2Abs, _extremite1Sens, _extremite2Sens):
         logging.info("Start calling AjouterQuai")
         self.quais[_nom] = Quai(_nom, _nomDCSYS, _extremite1Seg, _extremite2Seg, _extremite1Abs, _extremite2Abs, _extremite1Sens, _extremite2Sens, self)
         return self.quais[_nom]
 
     #@execution_time 
-    def print(self, _chainePrefixe = ""):
+    def print__disabled_YDA(self, _chainePrefixe = ""):
         logging.info("Start calling print")
         print(_chainePrefixe+"Station : " + self.nom)
         for __o in self.quais.values():
@@ -5288,7 +3916,7 @@ class Station:
 
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         print("Normalisation station : " + self.nom)
         for __o in self.quais.values():
@@ -5296,7 +3924,7 @@ class Station:
 
 class Quai:
     #@execution_time 
-    def __init__(self, _nom, _nomDCSYS, _extremite1Seg, _extremite2Seg, _extremite1Abs, _extremite2Abs, _extremite1Sens, _extremite2Sens, _station):
+    def __init____disabled_YDA(self, _nom, _nomDCSYS, _extremite1Seg, _extremite2Seg, _extremite1Abs, _extremite2Abs, _extremite1Sens, _extremite2Sens, _station):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.nomDCSYS = _nomDCSYS
@@ -5310,12 +3938,12 @@ class Quai:
         self.station = _station
 
     #@execution_time 
-    def AjouterPAF(self, _numero, _segment, _abs, _sens, _sensApproche, _typePAF):
+    def AjouterPAF__disabled_YDA(self, _numero, _segment, _abs, _sens, _sensApproche, _typePAF):
         logging.info("Start calling AjouterPAF")
         self.pafs[_numero] = PAFQuai(_numero, _segment, _abs, _sens, _sensApproche, _typePAF)
 
     #@execution_time 
-    def print(self, _chainePrefixe = ""):
+    def print__disabled_YDA(self, _chainePrefixe = ""):
         logging.info("Start calling print")
         print(_chainePrefixe+"Quai : " + self.nom)
         print(_chainePrefixe+"-extremite1Seg : " + self.extremite1Seg.nom)
@@ -5329,7 +3957,7 @@ class Quai:
 
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         print("Normalisation quai : " + self.nom)
         #Recuperation du graphe (singleton)
@@ -5340,7 +3968,7 @@ class Quai:
             __o.NormaliserAdonf()
 
     #@execution_time 
-    def FournirPAFsSens(self, sens):
+    def FournirPAFsSens__disabled_YDA(self, sens):
         logging.info("Start calling FournirPAFsSens")
         pafs = []
         for paf in self.pafs.values():
@@ -5357,7 +3985,7 @@ class Quai:
         return pafs
 
     #@execution_time 
-    def FournirPAFsSensApproche(self, sens):
+    def FournirPAFsSensApproche__disabled_YDA(self, sens):
         logging.info("Start calling FournirPAFsSensApproche")
         pafs = []
         for paf in self.pafs.values():
@@ -5368,7 +3996,7 @@ class Quai:
 
 class PointArret:
     #@execution_time 
-    def __init__(self, _segment, _abs, _sens):
+    def __init____disabled_YDA(self, _segment, _abs, _sens):
         logging.info("Start calling __init__")
         self.segment = _segment
         self.abs = _abs
@@ -5376,7 +4004,7 @@ class PointArret:
 
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         #Recuperation du graphe (singleton)
         __graphe = GrapheSingleton()
@@ -5385,7 +4013,7 @@ class PointArret:
 
 class PAFQuai(PointArret):
     #@execution_time 
-    def __init__(self, _numero, _segment, _abs, _sens, _sensApproche, _typePAF):
+    def __init____disabled_YDA(self, _numero, _segment, _abs, _sens, _sensApproche, _typePAF):
         logging.info("Start calling __init__")
         PointArret.__init__(self, _segment, _abs, _sens)
         self.numero = _numero
@@ -5395,7 +4023,7 @@ class PAFQuai(PointArret):
         self.typePAF = _typePAF
 
     #@execution_time 
-    def print(self, _chainePrefixe = ""):
+    def print__disabled_YDA(self, _chainePrefixe = ""):
         logging.info("Start calling print")
         print(_chainePrefixe+"PAF : " + str(self.numero))
         print(_chainePrefixe+"-segment : " + self.segment.nom)
@@ -5403,13 +4031,13 @@ class PAFQuai(PointArret):
         print(_chainePrefixe+"-sens : " + self.sens)
 
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         print("Normalisation PAF Quai : " + str(self.numero))
         PointArret.NormaliserAdonf(self)
 
     #@execution_time 
-    def DefinirVLigne(self):
+    def DefinirVLigne__disabled_YDA(self):
         logging.info("Start calling DefinirVLigne")
         graphe = GrapheSingleton()
         vLigneFound = False
@@ -5431,13 +4059,13 @@ class PAFQuai(PointArret):
 
 class PtA(PointArret):
     #@execution_time 
-    def __init__(self, _nom, _segment, _abs, _sens):
+    def __init____disabled_YDA(self, _nom, _segment, _abs, _sens):
         logging.info("Start calling __init__")
         PointArret.__init__(self, _segment, _abs, _sens)
         self.nom = _nom
 
     #@execution_time 
-    def print(self, _chainePrefixe = ""):
+    def print__disabled_YDA(self, _chainePrefixe = ""):
         logging.info("Start calling print")
         print(_chainePrefixe+"PtA : " + self.nom)
         print(_chainePrefixe+"-segment : " + self.segment.nom)
@@ -5445,14 +4073,14 @@ class PtA(PointArret):
         print(_chainePrefixe+"-sens : " + str(self.sens))
 
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         print("Normalisation PtA : " + self.nom)
         PointArret.NormaliserAdonf(self)
 
 class Segment:
     #@execution_time 
-    def __init__(self, _nom, _troncon, _voie, _longueur, _origine, _fin, _segment1VoisinAmont, _segment2VoisinAmont, _segment1VoisinAval, _segment2VoisinAval):
+    def __init____disabled_YDA(self, _nom, _troncon, _voie, _longueur, _origine, _fin, _segment1VoisinAmont, _segment2VoisinAmont, _segment1VoisinAval, _segment2VoisinAval):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.troncon = _troncon
@@ -5469,7 +4097,7 @@ class Segment:
         self.StructFin = ""
 
     #@execution_time 
-    def print(self, _chainePrefixe = ""):
+    def print__disabled_YDA(self, _chainePrefixe = ""):
         logging.info("Start calling print")
         print(_chainePrefixe+"Segment : " + self.nom)
         print(_chainePrefixe+"-troncon : " + self.troncon.nom)
@@ -5488,7 +4116,7 @@ class Segment:
 
     #Cette méthode permet de rechercher tous les points de contrôle sur le segment, les points de contrôle sont triés par leur abs selon sensTri
     #@execution_time 
-    def RechercherPointsControlesSurSegment(self, _sensTri):
+    def RechercherPointsControlesSurSegment__disabled_YDA(self, _sensTri):
         logging.info("Start calling RechercherPointsControlesSurSegment")
         graphe = GrapheSingleton()
         pointsDeControle = []
@@ -5504,7 +4132,7 @@ class Segment:
         return pointsDeControle
 
     #@execution_time 
-    def RechercherSignauxSurSegment(self):
+    def RechercherSignauxSurSegment__disabled_YDA(self):
         logging.info("Start calling RechercherSignauxSurSegment")
         __graphe = GrapheSingleton()
         signauxSurSegment = []
@@ -5516,7 +4144,7 @@ class Segment:
 
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         print("Normalisation segment : " + self.nom)
         #Recuperation du graphe (singleton)
@@ -5546,7 +4174,7 @@ class Segment:
 
 class Voie:
     #@execution_time 
-    def __init__(self, _nom, _type, _sensNominal, _voieContinuitePK, _segContinuitePK, _sensIncrementationPK, _PKDebut, _PKFin):
+    def __init____disabled_YDA(self, _nom, _type, _sensNominal, _voieContinuitePK, _segContinuitePK, _sensIncrementationPK, _PKDebut, _PKFin):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.type = _type
@@ -5560,7 +4188,7 @@ class Voie:
         self.VoiesPrincipales = 'P'
 
     #@execution_time 
-    def print(self, _chainePrefixe = ""):
+    def print__disabled_YDA(self, _chainePrefixe = ""):
         logging.info("Start calling print")
         print(_chainePrefixe+"Voie : " + self.nom)
         print(_chainePrefixe+"-type : " + self.type)
@@ -5575,7 +4203,7 @@ class Voie:
 
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         print("Normalisation voie : " + self.nom)
         #Recuperation du graphe (singleton)
@@ -5592,14 +4220,14 @@ class Voie:
 
 class Troncon:
     #@execution_time 
-    def __init__(self, _nom, _ligne):
+    def __init____disabled_YDA(self, _nom, _ligne):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.ligne = _ligne
         self.extremitesSurVoies = []
 
     #@execution_time 
-    def AjouterExtremiteSurVoie(self, _voie, _PKDebut, _PKFin):
+    def AjouterExtremiteSurVoie__disabled_YDA(self, _voie, _PKDebut, _PKFin):
         logging.info("Start calling AjouterExtremiteSurVoie")
         __extvoie = {}
         __extvoie['voie'] = _voie
@@ -5608,7 +4236,7 @@ class Troncon:
         self.extremitesSurVoies.append(__extvoie)
 
     #@execution_time 
-    def print(self, _chainePrefixe = ""):
+    def print__disabled_YDA(self, _chainePrefixe = ""):
         logging.info("Start calling print")
         print(_chainePrefixe+"Troncon : " + self.nom)
         print(_chainePrefixe+"-ligne : " + self.ligne.nom)
@@ -5620,7 +4248,7 @@ class Troncon:
 
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         print("Normalisation troncon : " + self.nom)
         #Recuperation du graphe (singleton)
@@ -5631,7 +4259,7 @@ class Troncon:
 
 class Signal:
     #@execution_time 
-    def __init__(self, _nom, _type, _sousType, _segment, _abs, _sens):
+    def __init____disabled_YDA(self, _nom, _type, _sousType, _segment, _abs, _sens):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.type = _type
@@ -5650,7 +4278,7 @@ class Signal:
         self.signauxAnnonceSemaphore = []
 
     #@execution_time 
-    def print(self, _chainePrefixe = ""):
+    def print__disabled_YDA(self, _chainePrefixe = ""):
         logging.info("Start calling print")
         print(_chainePrefixe+"Signal : " + self.nom)
         print(_chainePrefixe+"-type : " + self.type)
@@ -5661,7 +4289,7 @@ class Signal:
 
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         print("Normalisation signal : " + self.nom)
         #Recuperation du graphe (singleton)
@@ -5670,7 +4298,7 @@ class Signal:
 
     #Permet de générer la caractéristique bon glissement ou mauvais glissement d'un signal
     #@execution_time 
-    def GenererCaracteristiqueGlissementSignal(self, seuilMauvaisGlissement):
+    def GenererCaracteristiqueGlissementSignal__disabled_YDA(self, seuilMauvaisGlissement):
         logging.info("Start calling GenererCaracteristiqueGlissementSignal")
         graphe = GrapheSingleton()
         distanceAParcourirJusquAiguille = 0.0
@@ -5750,7 +4378,7 @@ class Signal:
 
 class Aiguille:
     #@execution_time 
-    def __init__(self, _nom, _posDirecte, _segPointe, _segTalonGauche, _segTalonDroite, _voie, _pk):
+    def __init____disabled_YDA(self, _nom, _posDirecte, _segPointe, _segTalonGauche, _segTalonDroite, _voie, _pk):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.posDirecte = _posDirecte
@@ -5761,16 +4389,16 @@ class Aiguille:
         self.pk = _pk
 
     #@execution_time 
-    def DefinirTVD():
+    def DefinirTVD__disabled_YDA():
         logging.info("Start calling DefinirTVD")
         ADU
     #@execution_time 
-    def DefinirCDV():
+    def DefinirCDV__disabled_YDA():
         logging.info("Start calling DefinirCDV")
         ADU
 
     #@execution_time 
-    def print(self, _chainePrefixe = ""):
+    def print__disabled_YDA(self, _chainePrefixe = ""):
         logging.info("Start calling print")
         print(_chainePrefixe+"Aiguille : " + self.nom)
         print(_chainePrefixe+"-posDirecte : " + self.posDirecte)
@@ -5782,7 +4410,7 @@ class Aiguille:
 
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         print("Normalisation aiguille : " + self.nom)
         #Recuperation du graphe (singleton)
@@ -5793,14 +4421,14 @@ class Aiguille:
         self.voie = __graphe.voies[self.voie]
 class CDV:
     #@execution_time 
-    def __init__(self, _nom):
+    def __init____disabled_YDA(self, _nom):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.segsExtremites = []
         self.segments = {}
 
     #@execution_time 
-    def AjouterSegmentAExtremite(self, _segment, _abs):
+    def AjouterSegmentAExtremite__disabled_YDA(self, _segment, _abs):
         logging.info("Start calling AjouterSegmentAExtremite")
         __segment = {}
         __segment['segment'] = _segment
@@ -5808,7 +4436,7 @@ class CDV:
         self.segsExtremites.append(__segment)
 
     #@execution_time 
-    def print(self, _chainePrefixe = ""):
+    def print__disabled_YDA(self, _chainePrefixe = ""):
         logging.info("Start calling print")
         print(_chainePrefixe+"CDV : " + self.nom)
         for __o in self.segsExtremites:
@@ -5818,7 +4446,7 @@ class CDV:
 
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         print("Normalisation CDV : " + self.nom)
         #Recuperation du graphe (singleton)
@@ -5828,7 +4456,7 @@ class CDV:
 
 class TVD:
     #@execution_time 
-    def __init__(self, _nom, _type, _objet):
+    def __init____disabled_YDA(self, _nom, _type, _objet):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.type = _type
@@ -5836,7 +4464,7 @@ class TVD:
         self.segsExtremites = []
 
     #@execution_time 
-    def AjouterSegmentAExtremite(self, _segment, _abs):
+    def AjouterSegmentAExtremite__disabled_YDA(self, _segment, _abs):
         logging.info("Start calling AjouterSegmentAExtremite")
         __segment = {}
         __segment['segment'] = _segment
@@ -5844,7 +4472,7 @@ class TVD:
         self.segsExtremites.append(__segment)
 
     #@execution_time 
-    def print(self, _chainePrefixe = ""):
+    def print__disabled_YDA(self, _chainePrefixe = ""):
         logging.info("Start calling print")
         print(_chainePrefixe+"TVD : " + self.nom)
         print(_chainePrefixe+"-type : " + self.type)
@@ -5856,7 +4484,7 @@ class TVD:
 
     #Cette méthode permet de transformer les structures string d'ADONF en associations du graphe
     #@execution_time 
-    def NormaliserAdonf(self):
+    def NormaliserAdonf__disabled_YDA(self):
         logging.info("Start calling NormaliserAdonf")
         print("Normalisation TVD : " + self.nom)
         #Recuperation du graphe (singleton)
@@ -5870,7 +4498,7 @@ class TVD:
 #Cette classe représente un ensemble de documents de pièces techniques PT2A, regroupés en repertoires de postes d'enclenchement.
 class PT2ADir:
     #@execution_time 
-    def __init__(self, _nomDir):
+    def __init____disabled_YDA(self, _nomDir):
         logging.info("Start calling __init__")
         self.listePostes = {}
         self.nomDir = _nomDir
@@ -5880,13 +4508,13 @@ class PT2ADir:
         self.patternProblems = []
 
     #@execution_time 
-    def AjouterPoste(self, _nomPoste):
+    def AjouterPoste__disabled_YDA(self, _nomPoste):
         logging.info("Start calling AjouterPoste")
         self.listePostes[_nomPoste] = Poste(self, _nomPoste)
         return self.listePostes[_nomPoste]
 
     #@execution_time 
-    def Ouvrir(self):
+    def Ouvrir__disabled_YDA(self):
         logging.info("Start calling Ouvrir")
         __patternNomPoste = re.compile("^([0-9]+)$")
         __listDirPostes = os.listdir(self.nomDir)
@@ -5903,7 +4531,7 @@ class PT2ADir:
 #A COMPLETER
 class PT2BDoc:
     #@execution_time 
-    def __init__(self, _Poste, _PosteDir, _nomFichier, _PT2ADir):
+    def __init____disabled_YDA(self, _Poste, _PosteDir, _nomFichier, _PT2ADir):
         logging.info("Start calling __init__")
         self.Poste = _Poste
         self.PosteDir = _PosteDir
@@ -5913,7 +4541,7 @@ class PT2BDoc:
 #Cette classe représente un document technique PT2A
 class PT2ADoc:
     #@execution_time 
-    def __init__(self, _Poste, _PosteDir, _nomFichier, _PT2ADir):
+    def __init____disabled_YDA(self, _Poste, _PosteDir, _nomFichier, _PT2ADir):
         logging.info("Start calling __init__")
         self.Poste = _Poste
         self.PosteDir = _PosteDir
@@ -5921,7 +4549,7 @@ class PT2ADoc:
         self.PT2ADir = _PT2ADir
 
     #@execution_time 
-    def Ouvrir(self):
+    def Ouvrir__disabled_YDA(self):
         logging.info("Start calling Ouvrir")
         print("Poste : " + self.Poste.nom + " Fichier : " + self.nomFichier)
 
@@ -6105,7 +4733,7 @@ class PT2ADoc:
 #Cette classe représente un poste d'enclenchement
 class Poste:
     #@execution_time 
-    def __init__(self, _PT2ADir, _nom):
+    def __init____disabled_YDA(self, _PT2ADir, _nom):
         logging.info("Start calling __init__")
         self.PT2ADir = _PT2ADir
         self.nom = _nom
@@ -6113,7 +4741,7 @@ class Poste:
         self.itineraires = []
 
     #@execution_time 
-    def OuvrirPT2A(self):
+    def OuvrirPT2A__disabled_YDA(self):
         logging.info("Start calling OuvrirPT2A")
         __patternPT2AIti = re.compile("^2A(1|2)-([0-9]+).(?:xlsx?|csv)$")
         __PosteDir = self.PT2ADir.nomDir + self.nom + "\\"
@@ -6127,7 +4755,7 @@ class Poste:
                 __PieceAjoutee.Ouvrir()
 
     #@execution_time 
-    def OuvrirPT2B(self):
+    def OuvrirPT2B__disabled_YDA(self):
         logging.info("Start calling OuvrirPT2B")
         __patternPT2BAu = re.compile("^2B([0-9]+).xls$")
         __PosteDir = self.PT2ADir.nomDir + self.nom + "\\"
@@ -6139,13 +4767,13 @@ class Poste:
                 __PieceAjoutee.Ouvrir()
 
     #@execution_time 
-    def AjouterItineraire(self, _itineraire):
+    def AjouterItineraire__disabled_YDA(self, _itineraire):
         logging.info("Start calling AjouterItineraire")
         self.itineraires.append(_itineraire)
 
 class Autorisation:
     #@execution_time 
-    def __init__(self, _mvtType, _mvtPointA, _mvtPointB, _PT2BDoc):
+    def __init____disabled_YDA(self, _mvtType, _mvtPointA, _mvtPointB, _PT2BDoc):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.mvtType = _mvtType
@@ -6161,18 +4789,18 @@ class Autorisation:
         self.aiguillesParcouruesOrdonneDecroissant = []
 
     #@execution_time 
-    def AjouterAiguilleParcourue(self, _aiguille):
+    def AjouterAiguilleParcourue__disabled_YDA(self, _aiguille):
         logging.info("Start calling AjouterAiguilleParcourue")
         self.aiguillesParcourues.append(_aiguille)
 
     #@execution_time 
-    def AjouterAiguilleEnProtection(self, _aiguille):
+    def AjouterAiguilleEnProtection__disabled_YDA(self, _aiguille):
         logging.info("Start calling AjouterAiguilleEnProtection")
         self.aiguillesEnProtection.append(_aiguille)
 
     #Recherche la position d'une aiguille parcourue
     #@execution_time 
-    def PositionAiguilleParcourue(self, _aiguille):
+    def PositionAiguilleParcourue__disabled_YDA(self, _aiguille):
         logging.info("Start calling PositionAiguilleParcourue")
         for i in self.aiguillesParcourues:
             if(i.aiguille is _aiguille):
@@ -6182,7 +4810,7 @@ class Autorisation:
     #Cette méthode permet de générer l'ensemble des segments parcourus sur l'itinéraire
     #A COMPLETER
     #@execution_time 
-    def GenererSegmentsParcourus(self):
+    def GenererSegmentsParcourus__disabled_YDA(self):
         logging.info("Start calling GenererSegmentsParcourus")
         SegmentSuivant = self.origine.segment
         SensParcoursSegment = self.origine.sens
@@ -6353,7 +4981,7 @@ class Autorisation:
 #Cette classe représente un itinéraire
 class Itineraire:
     #@execution_time 
-    def __init__(self, _nom, _origine, _destination, _jalons, _PT2ADoc):
+    def __init____disabled_YDA(self, _nom, _origine, _destination, _jalons, _PT2ADoc):
         logging.info("Start calling __init__")
         self.nom = _nom
         self.origine = _origine
@@ -6370,23 +4998,23 @@ class Itineraire:
         self.nonAmbiguousGrapheTransitionsParcourus = []
 
     #@execution_time 
-    def AjouterAiguilleParcourue(self, _aiguille):
+    def AjouterAiguilleParcourue__disabled_YDA(self, _aiguille):
         logging.info("Start calling AjouterAiguilleParcourue")
         self.aiguillesParcourues.append(_aiguille)
 
     #@execution_time 
-    def AjouterAiguilleEnProtection(self, _aiguille):
+    def AjouterAiguilleEnProtection__disabled_YDA(self, _aiguille):
         logging.info("Start calling AjouterAiguilleEnProtection")
         self.aiguillesEnProtection.append(_aiguille)
 
     #@execution_time 
-    def AjouterZoneEspacementAutomatique(self, _tvd):
+    def AjouterZoneEspacementAutomatique__disabled_YDA(self, _tvd):
         logging.info("Start calling AjouterZoneEspacementAutomatique")
         self.zonesEspacementAutomatique.append(_tvd)
 
     #Recherche la position d'une aiguille parcourue
     #@execution_time 
-    def PositionAiguilleParcourue(self, _aiguille):
+    def PositionAiguilleParcourue__disabled_YDA(self, _aiguille):
         logging.info("Start calling PositionAiguilleParcourue")
         for i in self.aiguillesParcourues:
             if(i.aiguille is _aiguille):
@@ -6395,7 +5023,7 @@ class Itineraire:
 
     #Cette méthode permet de générer l'ensemble des segments parcourus sur l'itinéraire
     #@execution_time 
-    def GenererSegmentsParcourus(self):
+    def GenererSegmentsParcourus__disabled_YDA(self):
         logging.info("Start calling GenererSegmentsParcourus")
         SegmentSuivant = self.origine.segment
         SensParcoursSegment = self.origine.sens
@@ -6561,7 +5189,7 @@ class Itineraire:
         return error
 
     #@execution_time 
-    def InsererInNoeudsGrapheTransitionsParcourus(self, node, sens):
+    def InsererInNoeudsGrapheTransitionsParcourus__disabled_YDA(self, node, sens):
         logging.info("Start calling InsererInNoeudsGrapheTransitionsParcourus")
         insere = False
         i = 0
@@ -6590,7 +5218,7 @@ class Itineraire:
                 print("insere")
 
     #@execution_time 
-    def InsererNonAmbiguousInNoeudsGrapheTransitionsParcourus(self, node, sens):
+    def InsererNonAmbiguousInNoeudsGrapheTransitionsParcourus__disabled_YDA(self, node, sens):
         logging.info("Start calling InsererNonAmbiguousInNoeudsGrapheTransitionsParcourus")
         insere = False
         i = 0
@@ -6615,7 +5243,7 @@ class Itineraire:
                 self.nonAmbiguousGrapheTransitionsParcourus.insert(0,node)
 
     #@execution_time 
-    def GenererNoeudsGrapheTransitionsParcourus(self):
+    def GenererNoeudsGrapheTransitionsParcourus__disabled_YDA(self):
         logging.info("Start calling GenererNoeudsGrapheTransitionsParcourus")
         graphe = GrapheSingleton()
         sens = self.origine.sens
@@ -6728,13 +5356,13 @@ class Itineraire:
 
 class PositionAiguille:
     #@execution_time 
-    def __init__(self, _aiguille, _position):
+    def __init____disabled_YDA(self, _aiguille, _position):
         logging.info("Start calling __init__")
         self.aiguille = _aiguille
         self.position = _position
 
     #@execution_time 
-    def __eq__(self, other):
+    def __eq____disabled_YDA(self, other):
         logging.info("Start calling __eq__")
         if self.aiguille == other.aiguille and self.position == other.position:
             return True
@@ -6743,13 +5371,13 @@ class PositionAiguille:
 
 class ParcoursSegment:
     #@execution_time 
-    def __init__(self, _segment, _sens):
+    def __init____disabled_YDA(self, _segment, _sens):
         logging.info("Start calling __init__")
         self.segment = _segment
         self.sens = _sens
 
     #@execution_time 
-    def __eq__(self, other):
+    def __eq____disabled_YDA(self, other):
         logging.info("Start calling __eq__")
         if self.segment == other.segment and self.sens == other.sens:
             return True
@@ -6796,13 +5424,13 @@ class SimulationResults:
         return simpleRunSimulation
 
     #@execution_time 
-    def AjouterConfigurationSimulationPerturbee(self, _key, _mE1, _modele1, _speedRegulation1, _mE2, _modele2, _speedRegulation2, _copyof):
+    def AjouterConfigurationSimulationPerturbee__disabled_YDA(self, _key, _mE1, _modele1, _speedRegulation1, _mE2, _modele2, _speedRegulation2, _copyof):
         logging.info("Start calling AjouterConfigurationSimulationPerturbee")
         config = ConfigurationSimulationPerturbee(_key, _mE1, _modele1, _speedRegulation1, _mE2, _modele2, _speedRegulation2, _copyof)
         self.configurationSimulationsPerturbees[_key] = config
         return config
 
-    # def Save(self, _nomFichier):
+    # def Save__disabled_YDA(self, _nomFichier):
         logging.info("Start calling Save")
     #     # f = pickle.Pickler(open(_nomFichier,"wb"))
     #     # f.fast = True
@@ -6811,7 +5439,7 @@ class SimulationResults:
     #     joblib.dump(self, _nomFichier, 0)
 
     #@execution_time 
-    def Save(self, _nomFichier):
+    def Save__disabled_YDA(self, _nomFichier):
         logging.info("Start calling Save")
         sys.setrecursionlimit(3000)
         f = pickle.Pickler(open(_nomFichier,"wb"))
@@ -6829,7 +5457,7 @@ class SimulationResults:
         return None
 
     #@execution_time 
-    def ExporterSimulationIntervalleEspacement(self, _nomFichier, NbObjectPerFile):
+    def ExporterSimulationIntervalleEspacement__disabled_YDA(self, _nomFichier, NbObjectPerFile):
         logging.info("Start calling ExporterSimulationIntervalleEspacement")
         i = 0
         j = 1
@@ -6916,7 +5544,7 @@ class SimulationResults:
         df.to_csv(_nomFichier + str(j) + ".csv", sep=';')
 
     #@execution_time 
-    def ExporterSimplesRunsSimulations(self, _nomFichier):
+    def ExporterSimplesRunsSimulations__disabled_YDA(self, _nomFichier):
         logging.info("Start calling ExporterSimplesRunsSimulations")
         graphe = GrapheSingleton()
         Dict = {'mE': [], 'NatureTrain': [], 'ModeConduite': [], 'TempsParcoursME': [], 'SpeedRegulation': [], 'Error': [], 'Transitions': [], 'TransitionsTimesInSeconds': [], 'ControlPoints': [], 'ControlPoints_CumulatedTravelTimeInSeconds': [], 'ControlPoints_SpeedInMeterPerSeconds': []}
@@ -6966,7 +5594,7 @@ class SimulationResults:
 
 class ConfigurationSimulationPerturbee__YDA:
     #@execution_time 
-    def __init__(self, _key, _mE1, _modele1, _speedRegulation1, _mE2, _modele2, _speedRegulation2, _copyof):
+    def __init____disabled_YDA(self, _key, _mE1, _modele1, _speedRegulation1, _mE2, _modele2, _speedRegulation2, _copyof):
         logging.info("Start calling __init__")
         self.key = _key
         self.mE1 = _mE1.nom
@@ -6981,7 +5609,7 @@ class ConfigurationSimulationPerturbee__YDA:
 
 class IntervalResults:
     #@execution_time 
-    def __init__(self):
+    def __init____disabled_YDA(self):
         logging.info("Start calling __init__")
         self.tempsIntervalleNonPerturbeME = 0.0
         self.tempsEspacementNonPerturbeME = 0.0
@@ -6992,7 +5620,7 @@ class IntervalResults:
         self.pointsDeControle = []
 
     #@execution_time 
-    def DefinirTempsIntervalleNonPerturbeME(self, _headway, _tempsStationnement, _Delta_Espacement):
+    def DefinirTempsIntervalleNonPerturbeME__disabled_YDA(self, _headway, _tempsStationnement, _Delta_Espacement):
         logging.info("Start calling DefinirTempsIntervalleNonPerturbeME")
         self.tempsIntervalleNonPerturbeME = _headway
         self.tempsEspacementNonPerturbeME = self.tempsIntervalleNonPerturbeME - _tempsStationnement
@@ -7000,7 +5628,7 @@ class IntervalResults:
         self.tempsEspacementPerturbeME = self.tempsEspacementNonPerturbeME - _Delta_Espacement
 
     #@execution_time 
-    def AjouterIntervalEspacementPointDeControle(self, _pointDeControle, _headway, _tempsStationnement, _Delta_Espacement):
+    def AjouterIntervalEspacementPointDeControle__disabled_YDA(self, _pointDeControle, _headway, _tempsStationnement, _Delta_Espacement):
         logging.info("Start calling AjouterIntervalEspacementPointDeControle")
         pointdeControle = IntervalEspacementPointDeControle(_pointDeControle, _headway, _tempsStationnement, _Delta_Espacement)
         espacementPerturbe = pointdeControle.espacementPerturbe
@@ -7014,7 +5642,7 @@ class IntervalResults:
         return pointdeControle
 
     #@execution_time 
-    def AjouterIntervalEspacementTransition(self, _transition, _headway, _tempsStationnement, _Delta_Espacement):
+    def AjouterIntervalEspacementTransition__disabled_YDA(self, _transition, _headway, _tempsStationnement, _Delta_Espacement):
         logging.info("Start calling AjouterIntervalEspacementTransition")
         transition = IntervalEspacementTransition(_transition, _headway, _tempsStationnement, _Delta_Espacement)
         espacementPerturbe = transition.espacementPerturbe
@@ -7029,7 +5657,7 @@ class IntervalResults:
 
 class IntervalEspacementTransition:
     #@execution_time 
-    def __init__(self, _transition, _headway = None, _tempsStationnement = None, _Delta_Espacement = None):
+    def __init____disabled_YDA(self, _transition, _headway = None, _tempsStationnement = None, _Delta_Espacement = None):
         logging.info("Start calling __init__")
         self.transition = _transition.nom
         if(_headway != None and _tempsStationnement != None and _Delta_Espacement != None):
@@ -7052,7 +5680,7 @@ class IntervalEspacementTransition:
 
 class IntervalEspacementPointDeControle:
     #@execution_time 
-    def __init__(self, _pointDeControle, _headway, _tempsStationnement, _Delta_Espacement):
+    def __init____disabled_YDA(self, _pointDeControle, _headway, _tempsStationnement, _Delta_Espacement):
         logging.info("Start calling __init__")
         self.pointDeControle = _pointDeControle.nom
         if(_headway <= 0.0):
@@ -7080,27 +5708,27 @@ class SimpleRunSimulation:
         self.deltaTimeOrigine = 0.0
 
     #@execution_time 
-    def AjouterTempsTransition(self, _transition, _temps):
+    def AjouterTempsTransition__disabled_YDA(self, _transition, _temps):
         logging.info("Start calling AjouterTempsTransition")
         tempsTransition = TempsTransition(_transition, _temps)
         self.transitions.append(tempsTransition)
 
     #@execution_time 
-    def AjouterTempsVitessePointDeControle(self, _pointDeControle, _temps, _vitesse):
+    def AjouterTempsVitessePointDeControle__disabled_YDA(self, _pointDeControle, _temps, _vitesse):
         logging.info("Start calling AjouterTempsVitessePointDeControle")
         tempsVitessePointDeControle = TempsVitessePointDeControle(_pointDeControle, _temps, _vitesse)
         self.pointsDeControle.append(tempsVitessePointDeControle)
 
 class TempsTransition:
     #@execution_time 
-    def __init__(self, _transition, _temps):
+    def __init____disabled_YDA(self, _transition, _temps):
         logging.info("Start calling __init__")
         self.transition = _transition.nom
         self.temps = _temps
 
 class TempsVitessePointDeControle:
     #@execution_time 
-    def __init__(self, _pointDeControle, _temps, _vitesse):
+    def __init____disabled_YDA(self, _pointDeControle, _temps, _vitesse):
         logging.info("Start calling __init__")
         self.pointDeControle = _pointDeControle.nom
         self.temps = _temps
@@ -7108,7 +5736,7 @@ class TempsVitessePointDeControle:
 
 
 #Cette fonction permet de transformer une coordonnée (voie, pk) en coordonnée (segment, abs)
-def CoordVoiePKToSegAbs(_voie, _pk):
+def CoordVoiePKToSegAbs__disabled_YDA(_voie, _pk):
     logging.info("Start calling CoordVoiePKToSegAbs")
     #Recuperation du graphe (singleton)
     __graphe = GrapheSingleton()
@@ -7145,7 +5773,7 @@ def remove_proxies():
 def debug():
     return 'debug' in sys.argv
 
-def launchRequest(url, xml):
+def launchRequest__disabled_YDA(url, xml):
     logging.info("Start calling launchRequest")
     global debug
     headers = {'Content-Type': 'application/xml'}
