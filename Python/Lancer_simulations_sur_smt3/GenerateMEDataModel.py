@@ -5362,7 +5362,7 @@ class PositionAiguille:
         self.position = _position
 
     #@execution_time 
-    def __eq____disabled_YDA(self, other):
+    def __eq__(self, other):
         logging.info("Start calling __eq__")
         if self.aiguille == other.aiguille and self.position == other.position:
             return True
@@ -5371,13 +5371,13 @@ class PositionAiguille:
 
 class ParcoursSegment:
     #@execution_time 
-    def __init____disabled_YDA(self, _segment, _sens):
+    def __init__(self, _segment, _sens):
         logging.info("Start calling __init__")
         self.segment = _segment
         self.sens = _sens
 
     #@execution_time 
-    def __eq____disabled_YDA(self, other):
+    def __eq__(self, other):
         logging.info("Start calling __eq__")
         if self.segment == other.segment and self.sens == other.sens:
             return True
@@ -5707,32 +5707,6 @@ class SimpleRunSimulation:
         self.pointsDeControle = []
         self.deltaTimeOrigine = 0.0
 
-    #@execution_time 
-    def AjouterTempsTransition__disabled_YDA(self, _transition, _temps):
-        logging.info("Start calling AjouterTempsTransition")
-        tempsTransition = TempsTransition(_transition, _temps)
-        self.transitions.append(tempsTransition)
-
-    #@execution_time 
-    def AjouterTempsVitessePointDeControle__disabled_YDA(self, _pointDeControle, _temps, _vitesse):
-        logging.info("Start calling AjouterTempsVitessePointDeControle")
-        tempsVitessePointDeControle = TempsVitessePointDeControle(_pointDeControle, _temps, _vitesse)
-        self.pointsDeControle.append(tempsVitessePointDeControle)
-
-class TempsTransition:
-    #@execution_time 
-    def __init____disabled_YDA(self, _transition, _temps):
-        logging.info("Start calling __init__")
-        self.transition = _transition.nom
-        self.temps = _temps
-
-class TempsVitessePointDeControle:
-    #@execution_time 
-    def __init____disabled_YDA(self, _pointDeControle, _temps, _vitesse):
-        logging.info("Start calling __init__")
-        self.pointDeControle = _pointDeControle.nom
-        self.temps = _temps
-        self.vitesse = _vitesse
 
 
 #Cette fonction permet de transformer une coordonnée (voie, pk) en coordonnée (segment, abs)
