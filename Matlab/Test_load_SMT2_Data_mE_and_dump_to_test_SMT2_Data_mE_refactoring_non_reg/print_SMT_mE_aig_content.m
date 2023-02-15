@@ -1,4 +1,4 @@
-function print_SMT_mE_aig_content(SMT_mE_aig, nom_fichier)
+function print_SMT_mE_aig_content(SMT_mE_aig)
 
 disp(string(datetime) + " print_SMT_mE_aig_content " + " begin");
 
