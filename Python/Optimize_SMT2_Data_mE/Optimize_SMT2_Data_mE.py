@@ -87,6 +87,16 @@ class print_argument_if_function_returns_true(object):
         return ret        
         
 
+
+class Parsing_sMT2_Data_mE_struct_file_step:
+
+    step_reading_first_file_lines_to_keep_unchanged = "step_reading_first_file_lines_to_keep_unchanged" 
+    step_reading_struct_construction_lines = "step_reading_struct_construction_lines"
+    step_filling_struct_cell_by_cell = "step_filling_struct_cell_by_cell"
+    step_has_parsed_last_return_of_file_and_waiting_end_of_file = "step_parsing_last_return_of_file"
+    #step_waiting_end_of_file = "step_waiting_end_of_file" 
+
+
 class Parsing_sMT2_Data_mE_file_step:
 
     step_reading_first_file_lines_to_keep_unchanged = "step_reading_first_file_lines_to_keep_unchanged" 
@@ -205,6 +215,24 @@ def open_text_file_and_return_lines(input_file_name):
 
     return input_file_lines
  
+
+@print_argument_if_function_returns_true
+def is_matlab_new_structure_field_line(line):
+    ret = "',{" in line
+    
+    #if ret:
+    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+        
+    return ret
+    
+@print_argument_if_function_returns_true
+def is_matlab_last_structure_field_line(line):
+    ret = "}" in line
+    
+    #if ret:
+    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+        
+    return ret
 
 @print_argument_if_function_returns_true
 def is_matlab_new_structure_creation_line(line):
