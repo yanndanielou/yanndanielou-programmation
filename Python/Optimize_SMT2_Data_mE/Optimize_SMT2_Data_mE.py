@@ -139,8 +139,8 @@ class Parsing_sMT2_Data_mE_file_step:
 
 class MatlabStruct:
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self):
+        self.name = None
         self.fields = list()
       
 class MatlabFieldOfStructure:
@@ -148,6 +148,10 @@ class MatlabFieldOfStructure:
     def __init__(self, name):
         self.name = name
         self.values = list()
+
+def get_structure_name_from_struct_creation_line(struct_creation_line):
+    structure_name = struct_creation_line.split("=")[0].strip()
+    return structure_name
 
 class SMT2_Data_mE_Content:
 
@@ -162,6 +166,20 @@ class SMT2_Data_mE_Content:
         printAndLogInfo("Nombre de structures à créer:" + str(len(self.structures_constructions_lines)))
         printAndLogInfo("Nombre d'affectation de champs:" + str(len(self.filling_one_structure_specific_field_lines)))
         
+    def parse_structures(self):
+        structure_number = 0
+
+        for structure_constructions_lines in self.structures_constructions_lines:
+            matlab_structure = MatlabStruct()
+            structure_number += 1
+            
+            structure_construction_line_number = 0
+
+            for structure_construction_line in structure_constructions_lines:
+              structure_construction_line_number += 1
+              if structure_construction_line_number == 1:
+                matlab_structure.name = get_structure_name_from_struct_creation_line(structure_construction_line)             
+                printAndLogInfo("Structure name:" + matlab_structure.name)
 
 def open_text_file_and_return_lines(input_file_name):  
     logging.info('Check existence of input file:' + input_file_name)
@@ -266,7 +284,7 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
     sMT2_Data_mE_line_number = 0
 
     for sMT2_Data_mE_file_line in sMT2_Data_mE_file_lines:
-        sMT2_Data_mE_line_number = sMT2_Data_mE_line_number + 1
+        sMT2_Data_mE_line_number += 1
 
         #printAndLogInfo("Current line:" + str(sMT2_Data_mE_line_number))
         #printAndLogInfo("line:" + str(sMT2_Data_mE_line_number) + " is_matlab_comment_line:" + str(is_matlab_comment_line(sMT2_Data_mE_file_line)))
@@ -305,6 +323,7 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
                 if current_structure_construction_lines == None:
                     printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + sMT2_Data_mE_file_line + ": will crash")
 
+                else:
                     current_structure_construction_lines.append(sMT2_Data_mE_file_line)
 
                 if is_matlab_structure_last_creation_line(sMT2_Data_mE_file_line):
@@ -381,12 +400,11 @@ def create_and_fill_output_file(output_directory, input_file_name, file_content_
     output_file.close()
 
 
-
 def Optimize_SMT2_Data_mE():
     sMT2_Data_mE_Content = SMT2_Data_mE_Content()
 
     load_SMT2_Data_mE(input_SMT2_Data_mE_file_name, sMT2_Data_mE_Content)
-
+    sMT2_Data_mE_Content.parse_structures()
 
 
 def unused():
