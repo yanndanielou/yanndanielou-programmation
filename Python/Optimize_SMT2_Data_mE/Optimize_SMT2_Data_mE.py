@@ -61,7 +61,29 @@ def configureLogger(log_file_name):
     #logging.warning
     #logging.error
     #logging.critical
+
+
+class print_argument_if_function_returns_true(object):
+
+    def __init__(self, f):
+        self.f = f
+
+    def __call__(self, *args):
+        logging.info("Entering " +  self.f.__name__)
+        logging.debug("Arguments passed to " + self.f.__name__ + ":" + str(locals()))
+        start_time = time.time()
         
+        #Call method
+        ret = self.f(*args)
+     
+        if ret:
+            arguments = args
+            function_argument = args[0]
+            function_name = self.f.__name__
+            printAndLogInfo(self.f.__name__ + " returns true for :" + function_argument)
+        
+            #printAndLogInfo(self.f.__name__ + " returns true for :" + str(locals().get("line")))
+        return ret        
         
 class MatlabStruct:
 
@@ -103,18 +125,62 @@ def open_text_file_and_return_lines(input_file_name):
 
     return input_file_lines
  
-def is_matlab_empty_line(line):
-    return len(line.strip()) == 0
+
+@print_argument_if_function_returns_true
+def is_matlab_new_structure_creation_line(line):
+    ret = "struct(" in line and "=" in line and matlab_line_continuation_operator in line
     
+    #if ret:
+    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+        
+    return ret
+
+
+@print_argument_if_function_returns_true
+def is_matlab_structure_last_creation_line(line):
+    ret = ");" in line.strip()
+    
+    #if ret:
+    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+        
+    return ret
+
+
+@print_argument_if_function_returns_true
+def is_matlab_filling_one_structure_specific_field_line(line):
+    ret = "=" in line and ";" in line
+
+    #if ret:
+    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+        
+    return ret
+
+
+@print_argument_if_function_returns_true
+def is_matlab_empty_line(line):
+    ret = len(line.strip()) == 0
+
+    #if ret:
+    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+
+    return ret
+    
+@print_argument_if_function_returns_true
 def is_matlab_comment_line(line):
+    ret = None
     line_stripped = line.strip()
 
     line_stripped_is_empty = len(line_stripped) == 0
     if line_stripped_is_empty:
-        return False
+        ret = False
+    else:
+        ret = line_stripped[0] == '%'
 
-    return line_stripped[0] == '%'
-
+    #if ret:
+    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+    
+    return ret 
+    
 def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
     sMT2_Data_mE_file_lines = open_text_file_and_return_lines(sMT2_Data_mE_file_name)
     sMT2_Data_mE_Content = SMT2_Data_mE_Content()
@@ -134,6 +200,12 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
     for sMT2_Data_mE_file_line in sMT2_Data_mE_file_lines:
         sMT2_Data_mE_line_number = sMT2_Data_mE_line_number + 1
 
+        printAndLogInfo("Current line:" + str(sMT2_Data_mE_line_number))
+        #printAndLogInfo("line:" + str(sMT2_Data_mE_line_number) + " is_matlab_comment_line:" + str(is_matlab_comment_line(sMT2_Data_mE_file_line)))
+        #printAndLogInfo("line:" + str(sMT2_Data_mE_line_number) + " is_matlab_filling_one_structure_specific_field_line:" + str(is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line)))
+        #printAndLogInfo("line:" + str(sMT2_Data_mE_line_number) + " is_matlab_empty_line:" + str(is_matlab_empty_line(sMT2_Data_mE_file_line)))
+        #printAndLogInfo("line:" + str(sMT2_Data_mE_line_number) + " is_matlab_new_structure_creation_line:" + str(is_matlab_new_structure_creation_line(sMT2_Data_mE_file_line)))
+        #printAndLogInfo("line:" + str(sMT2_Data_mE_line_number) + " is_matlab_structure_last_creation_line:" + str(is_matlab_structure_last_creation_line(sMT2_Data_mE_file_line)))
 
         if is_matlab_comment_line(sMT2_Data_mE_file_line):
             logging.debug("Line:" + str(sMT2_Data_mE_line_number) + "(" + sMT2_Data_mE_file_line + ")" + " ignored because is matlab comment")
@@ -143,28 +215,27 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
             logging.debug("Line:" + str(sMT2_Data_mE_line_number) + "(" + sMT2_Data_mE_file_line + ")" + " ignored because is empty")
             continue
 
-
         if is_reading_first_file_lines_to_keep_unchanged:
-            if "struct" in sMT2_Data_mE_file_line:
+            if is_matlab_new_structure_creation_line(sMT2_Data_mE_file_line):
                 is_reading_first_file_lines_to_keep_unchanged = False
                 is_reading_struct_construction_lines = True
                 printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": no more reading first lines")
             else:
                 sMT2_Data_mE_Content.first_file_lines_to_keep_unchanged.append(sMT2_Data_mE_file_line)
 
-        if is_reading_struct_construction_lines:
-            if current_structure_construction_lines == None:
+        if is_reading_struct_construction_lines and not is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line):
+            if current_structure_construction_lines == None and is_matlab_new_structure_creation_line(sMT2_Data_mE_file_line) :
                 printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": new structure detected")
                 current_structure_construction_lines = list()
 
             current_structure_construction_lines.append(sMT2_Data_mE_file_line)
 
-            if not matlab_line_continuation_operator in sMT2_Data_mE_file_line:
+            if is_matlab_structure_last_creation_line(sMT2_Data_mE_file_line):
                 structures_constructions_lines.append(current_structure_construction_lines)
                 printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": end of current structure")
                 current_structure_construction_lines = None
 
-            if "=" in sMT2_Data_mE_file_line and ";" in sMT2_Data_mE_file_line:
+            if is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line) :
                 
                 if is_reading_struct_construction_lines:
                     is_reading_struct_construction_lines = False
