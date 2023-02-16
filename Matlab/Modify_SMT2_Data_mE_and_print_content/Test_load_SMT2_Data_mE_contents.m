@@ -9,10 +9,10 @@ disp("Load initial structure");
 
 affectation_variables_globales("input_files\\SMT2_Data_mE.txt");
 
-
-disp("Print initial structure:");
-print_structure_content(SMT_mE_aig,"SMT_mE_aig");
-print_structure_content(SMT_mE_feu_BAL,"SMT_mE_feu_BAL");
+%Do not Print initial structure
+%disp("Print initial structure:");
+%print_structure_content(SMT_mE_aig,"SMT_mE_aig");
+%print_structure_content(SMT_mE_feu_BAL,"SMT_mE_feu_BAL");
 
 nom_fichier_a_executer_dans_execution_fichier_m_ligne_par_ligne = "input_files\fichier_a_executer_dans_execution_fichier_m_ligne_par_ligne.m";
 if isfile(nom_fichier_a_executer_dans_execution_fichier_m_ligne_par_ligne)
