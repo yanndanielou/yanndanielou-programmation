@@ -1,30 +1,19 @@
-﻿
+﻿# -*-coding:Utf-8 -*
+
 #For logs
-import LoggerConfig
-import logging
-import sys
 import random
-
-import Constants
-
-import os
-import sys
-
-import datetime
-
-# -*-coding:Utf-8 -*
 import logging
 import os
 import sys
 
+#Dates
+import datetime
 import time
 
-import logging
-logger_level = logging.INFO
-
+#Constants:
 end_line_character_in_text_file = "\n"
-
-
+input_SMT2_Data_mE_file_name = "SMT2_Data_mE.m"
+logger_level = logging.INFO
 
 def printAndLogCriticalAndKill(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
@@ -70,12 +59,51 @@ def configureLogger(log_file_name):
     #logging.critical
         
         
+class MatlabStruct:
 
-part_0_before_function_recup_mE = "part_0_before_function_recup_mE"
-part_1_initialisation_structures = "part_1_initialisation_structures"
-part_2_to_99_fill_SMT_mE_aig = "part_2_to_99_fill_SMT_mE_aig"
-part_100_fill_SMT_mE_feu_BAL = "part_100_fill_SMT_mE_feu_BAL"
+    def __init__(self, name):
+        self.name = name
+        self.fields = list()
+      
+class MatlabFieldOfStructure:
 
+    def __init__(self, name):
+        self.name = name
+        self.values = list()
+
+class SMT2_Data_mE_Content:
+
+
+    def __init__(self):
+        self.global_definition_lines = list()
+
+def open_text_file_and_return_lines(input_file_name):  
+    logging.info('Check existence of input file:' + input_file_name)
+
+    if not os.path.exists(input_file_name):
+        logging.critical("Input file:" + input_file_name + " does not exist. Application stopped")
+        sys.exit()
+
+    printAndLogInfo('Opening input file:' + input_file_name)    
+    input_file = open(input_file_name, "r")
+    
+    printAndLogInfo('Read input file:' + input_file_name)
+    input_file_read = input_file.read()
+    
+    printAndLogInfo('Close input file:' + input_SMT2_Data_mE_file_name)
+    input_file.close()
+
+    input_file_lines = input_file_read.split(end_line_character_in_text_file)
+    printAndLogInfo(input_file_name + " has " + str(len(input_file_lines)) + " lines")
+ 
+        
+def load_SMT2_Data_mE(SMT2_Data_mE_file_name):
+    SMT2_Data_mE_file_lines = open_text_file_and_return_lines(SMT2_Data_mE_file_name)
+ 
+
+
+        
+        
 #chemin_fichier_SMT2_Data_mE_part_001_initialisation_structures = fullfile(SMT_Repertoire_outil,nom_projet,'SMT2_Data_mE_part_001_initialisation_structures.m);
 #affectation_variables_globales(chemin_fichier_SMT2_Data_mE_part_001_initialisation_structures);    
 def fill_affectation_variables_globales(output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, SMT2_Data_mE_xfunction_name):
@@ -107,21 +135,22 @@ def fill_matlab_code_file_containings_code_to_copy_paste(output_SMT2_Data_mE_par
     output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append("")
     output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append("")
 
-def create_and_fill_output_file(output_directory, file_name, file_content_as_list_of_lines):
-    LoggerConfig.printAndLogInfo('Create output file:' + file_name)
-    output_file = open(output_directory + "\\" + file_name, "w")
-    logging.info('Fill output file:' + file_name)
+def create_and_fill_output_file(output_directory, input_file_name, file_content_as_list_of_lines):
+    printAndLogInfo('Create output file:' + input_file_name)
+    output_file = open(output_directory + "\\" + input_file_name, "w")
+    logging.info('Fill output file:' + input_file_name)
 
     logging.info('Converting output content to string')
-    output_file_content = Constants.end_line_character_in_text_file.join(file_content_as_list_of_lines)
+    output_file_content = end_line_character_in_text_file.join(file_content_as_list_of_lines)
 
     output_file.write(output_file_content)
-    logging.info('Close output file:' + file_name)
+    logging.info('Close output file:' + input_file_name)
     output_file.close()
 
-def split_SMT2_Data_mE():
+def Optimize_SMT2_Data_mE():
+    load_SMT2_Data_mE(input_SMT2_Data_mE_file_name)
 
-    input_SMT2_Data_mE_file_name = "SMT2_Data_mE.m"
+def unused():
     # open input ilv file
     logging.info('Opening input file:' + input_SMT2_Data_mE_file_name)
 
@@ -175,8 +204,8 @@ def split_SMT2_Data_mE():
 
     line_number = 0
 
-    input_SMT2_Data_mE_file_content_as_lines = input_SMT2_Data_mE_file_content.split(Constants.end_line_character_in_text_file)
-    LoggerConfig.printAndLogInfo(input_SMT2_Data_mE_file_name + " has " + str(len(input_SMT2_Data_mE_file_content_as_lines)) + " lines")
+    input_SMT2_Data_mE_file_content_as_lines = input_SMT2_Data_mE_file_content.split(end_line_character_in_text_file)
+    printAndLogInfo(input_SMT2_Data_mE_file_name + " has " + str(len(input_SMT2_Data_mE_file_content_as_lines)) + " lines")
 
 
     for line in input_SMT2_Data_mE_file_content_as_lines:
@@ -186,7 +215,7 @@ def split_SMT2_Data_mE():
 
         
         if (line_number % 1000_000) == 0:
-            LoggerConfig.printAndLogInfo("Processing line number:" + str(line_number))
+            printAndLogInfo("Processing line number:" + str(line_number))
 
         if "function recup_mE" in line:
             #before_parsing_function_recup_mE = False
@@ -202,7 +231,7 @@ def split_SMT2_Data_mE():
                 
             
         if current_step != previous_step:
-            LoggerConfig.printAndLogInfo("Current step is now:" + current_step)
+            printAndLogInfo("Current step is now:" + current_step)
 
         if current_step == part_0_before_function_recup_mE:
             logging.info("Ignore line " + line)
@@ -213,8 +242,8 @@ def split_SMT2_Data_mE():
         if current_step == part_2_to_99_fill_SMT_mE_aig:
             new_output_file_part_2_to_99_fill_SMT_mE_aig_to_create = False
             total_number_of_fill_SMT_mE_aig_lines = total_number_of_fill_SMT_mE_aig_lines + 1
-            if (total_number_of_fill_SMT_mE_aig_lines % Constants.max_number_of_SMT_mE_aig_lines_per_output_files) == 1:
-                LoggerConfig.printAndLogInfo(str(total_number_of_fill_SMT_mE_aig_lines) + " fill SMT_mE_aig lines, create a new file")
+            if (total_number_of_fill_SMT_mE_aig_lines % max_number_of_SMT_mE_aig_lines_per_output_files) == 1:
+                printAndLogInfo(str(total_number_of_fill_SMT_mE_aig_lines) + " fill SMT_mE_aig lines, create a new file")
                 output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file.append(list())
                 file_part_number = len(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file)-1
                 file_part_number_with_offset = file_part_number + 2
@@ -231,14 +260,14 @@ def split_SMT2_Data_mE():
         if current_step == part_100_fill_SMT_mE_feu_BAL:
             output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append(line)
 
-    LoggerConfig.printAndLogInfo("End of parsing input file")
+    printAndLogInfo("End of parsing input file")
 
     output_directory_name = "output_" + datetime.datetime.now().strftime("%Y-%m-%d_%Hh%Mmn%Ss")
-    LoggerConfig.printAndLogInfo("Create output directory " + output_directory_name)
+    printAndLogInfo("Create output directory " + output_directory_name)
     os.mkdir(output_directory_name)
 
    
-    LoggerConfig.printAndLogInfo("Compute output file part 1")
+    printAndLogInfo("Compute output file part 1")
     output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append("")
     output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append('   disp(string(datetime) + " ' + output_SMT2_Data_mE_part1_initialisation_structures_function_name + ' fin");')
     output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines.append("return")
@@ -246,7 +275,7 @@ def split_SMT2_Data_mE():
     create_and_fill_output_file(output_directory_name, output_SMT2_Data_mE_part1_initialisation_structures_file_name, output_SMT2_Data_mE_part1_initialisation_structures_content_as_list_of_lines)
 
 
-    LoggerConfig.printAndLogInfo("Compute output files part 2 to 99")
+    printAndLogInfo("Compute output files part 2 to 99")
     for output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines in output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file:
         
         fill_SMT_mE_aig_file_number = output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file.index(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines)
@@ -261,7 +290,7 @@ def split_SMT2_Data_mE():
         create_and_fill_output_file(output_directory_name, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix + file_part_number_3_digits + ".m", output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines)
 
 
-    LoggerConfig.printAndLogInfo("Compute output file part 100")
+    printAndLogInfo("Compute output file part 100")
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append("")
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append('   disp(string(datetime) + " " + "SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL fin");')
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append("")
@@ -269,7 +298,7 @@ def split_SMT2_Data_mE():
     output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines.append("")
     create_and_fill_output_file(output_directory_name, output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_file_name, output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_content_as_list_of_lines)
 
-    LoggerConfig.printAndLogInfo("Compute output matlab file to call functions")
+    printAndLogInfo("Compute output matlab file to call functions")
     
     fill_matlab_code_file_containings_code_to_copy_paste(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix,output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, output_SMT2_Data_mE_part1_initialisation_structures_function_name, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file, output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name, "", "")
     fill_matlab_code_file_containings_code_to_copy_paste(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix,output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, output_SMT2_Data_mE_part1_initialisation_structures_function_name, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file, output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name, "clear ", ".m;")
@@ -309,11 +338,11 @@ def split_SMT2_Data_mE():
     
 
 def main():
-    log_file_name = 'Split_SMT2_Data_mE' + "." +  str(random.randrange(10000)) + ".log"
-    LoggerConfig.configureLogger(log_file_name)    
-    LoggerConfig.printAndLogInfo('Start application. Log file name: ' + log_file_name)
-    split_SMT2_Data_mE()
-    LoggerConfig.printAndLogInfo('End application')
+    log_file_name = 'Optimize_SMT2_Data_mE' + "." +  str(random.randrange(10000)) + ".log"
+    configureLogger(log_file_name)    
+    printAndLogInfo('Start application. Log file name: ' + log_file_name)
+    Optimize_SMT2_Data_mE()
+    printAndLogInfo('End application')
 
 if __name__ == '__main__':
     main()
