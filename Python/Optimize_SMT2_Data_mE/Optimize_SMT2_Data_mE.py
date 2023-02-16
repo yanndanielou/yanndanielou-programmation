@@ -75,6 +75,7 @@ class SMT2_Data_mE_Content:
 
 
     def __init__(self):
+        self.first_file_lines_to_keep_unchanged = list()
         self.global_definition_lines = list()
 
 def open_text_file_and_return_lines(input_file_name):  
@@ -98,8 +99,10 @@ def open_text_file_and_return_lines(input_file_name):
  
         
 def load_SMT2_Data_mE(SMT2_Data_mE_file_name):
-    SMT2_Data_mE_file_lines = open_text_file_and_return_lines(SMT2_Data_mE_file_name)
+    sMT2_Data_mE_file_lines = open_text_file_and_return_lines(SMT2_Data_mE_file_name)
+    sMT2_Data_mE_Content = SMT2_Data_mE_Content()
  
+    for SMT2_Data_mE_file_line in SMT2_Data_mE_file_lines:
 
 
         
