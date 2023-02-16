@@ -161,7 +161,7 @@ class MatlabStruct:
 class MatlabFieldOfStructure:
 
     def __init__(self):
-        self.name = name
+        self.name = None
         self.values = list()
         self.original_definition_in_one_line = None
 
@@ -182,6 +182,7 @@ class SMT2_Data_mE_Content:
         self.global_definition_lines = list()
         self.structures_constructions_lines = list()
         self.filling_one_structure_specific_field_lines = list()
+        self.structures = list()
 
     def print_stats(self):
         printAndLogInfo("Nombre de structures à créer:" + str(len(self.structures_constructions_lines)))
@@ -192,6 +193,7 @@ class SMT2_Data_mE_Content:
 
         for structure_constructions_lines in self.structures_constructions_lines:
             current_matlab_structure = MatlabStruct()
+            self.structures.append(current_matlab_structure)
             structure_number += 1
             
 
@@ -205,9 +207,10 @@ class SMT2_Data_mE_Content:
                     current_matlab_structure.name = get_structure_name_from_struct_creation_line(structure_construction_line)             
                     printAndLogInfo("Structure name:" + current_matlab_structure.name)
 
-                    structure_construction_first_line_split_with_separator = structure_construction_line.split(matlab_field_separator)
                     #current_matlab_structure.fields_definition_in_one_line = structure_construction_first_line_split_with_separator[1].strip().replace(matlab_line_continuation_operator,"")
-                
+
+
+
                 elif is_matlab_new_structure_field_line(structure_construction_line):
                     if current_matlab_structure_field != None:
                         printAndLogCriticalAndKill(current_matlab_structure.name + " :new structure field not expected in line:" + structure_construction_line + " , current field was " + current_matlab_structure_field)
@@ -217,18 +220,24 @@ class SMT2_Data_mE_Content:
                     current_matlab_structure_field.name = get_structure_field_name_from_field_creation_line(structure_construction_line)             
                     printAndLogInfo("Structure :" + current_matlab_structure.name + " parsing field:" + current_matlab_structure_field.name)
 
+
+                    structure_construction_first_line_split_with_separator = structure_construction_line.split(matlab_field_separator)
+                    current_matlab_structure_field.original_definition_in_one_line = structure_construction_first_line_split_with_separator[1].strip().replace(matlab_line_continuation_operator,"")
+
+
                 elif is_matlab_last_structure_field_line(structure_construction_line):
                     if current_matlab_structure_field == None:
                         printAndLogCriticalAndKill(current_matlab_structure.name + " :end of structure field not expected in line:" + str(structure_construction_line_number))
 
-                    printAndLogInfo("Field content:" + current_matlab_structure.fields_definition_in_one_line)
+                    printAndLogInfo("Structure :" + current_matlab_structure.name + " field " + current_matlab_structure_field.name )
+                    #printAndLogInfo("Structure :" + current_matlab_structure.name + " field content:" + current_matlab_structure_field.original_definition_in_one_line)
                     current_matlab_structure_field = None
 
                 elif is_matlab_structure_last_creation_line(structure_construction_line):
                     current_matlab_structure = None
 
                 else:
-                    current_matlab_structure_field.original_definition_in_one_line = current_matlab_structure_field.original_definition_in_one_line + structure_construction_line.strip().replace(matlab_line_continuation_operator,"")
+                    current_matlab_structure_field.original_definition_in_one_line += structure_construction_line.strip().replace(matlab_line_continuation_operator,"")
             
             #printAndLogInfo("Field content:" + current_matlab_structure.fields_definition_in_one_line)
 
