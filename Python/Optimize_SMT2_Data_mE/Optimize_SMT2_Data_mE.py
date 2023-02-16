@@ -19,6 +19,9 @@ logger_level = logging.DEBUG
 #Constants
 matlab_line_continuation_operator = "..."
 matlab_return_operator = "return"
+matlab_field_separator = ","
+matlab_structure_fields_table_begin = "{"
+matlab_structure_fields_table_end = "}"
 
 def printAndLogCriticalAndKill(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
@@ -152,16 +155,24 @@ class MatlabStruct:
     def __init__(self):
         self.name = None
         self.fields = list()
+        self.fields_definition_lines = list()
+        self.fields_definition_in_one_line = None
       
 class MatlabFieldOfStructure:
 
-    def __init__(self, name):
+    def __init__(self):
         self.name = name
         self.values = list()
+        self.original_definition_in_one_line = None
+
 
 def get_structure_name_from_struct_creation_line(struct_creation_line):
     structure_name = struct_creation_line.split("=")[0].strip()
     return structure_name
+
+def get_structure_field_name_from_field_creation_line(struct_field_creation_line):
+    structure_field_name = struct_field_creation_line.split(matlab_field_separator)[0].strip()
+    return structure_field_name
 
 class SMT2_Data_mE_Content:
 
@@ -175,21 +186,54 @@ class SMT2_Data_mE_Content:
     def print_stats(self):
         printAndLogInfo("Nombre de structures à créer:" + str(len(self.structures_constructions_lines)))
         printAndLogInfo("Nombre d'affectation de champs:" + str(len(self.filling_one_structure_specific_field_lines)))
-        
+
     def parse_structures(self):
         structure_number = 0
 
         for structure_constructions_lines in self.structures_constructions_lines:
-            matlab_structure = MatlabStruct()
+            current_matlab_structure = MatlabStruct()
             structure_number += 1
             
+
+            current_matlab_structure_field = None
+
             structure_construction_line_number = 0
 
             for structure_construction_line in structure_constructions_lines:
-              structure_construction_line_number += 1
-              if structure_construction_line_number == 1:
-                matlab_structure.name = get_structure_name_from_struct_creation_line(structure_construction_line)             
-                printAndLogInfo("Structure name:" + matlab_structure.name)
+                structure_construction_line_number += 1
+                if structure_construction_line_number == 1:
+                    current_matlab_structure.name = get_structure_name_from_struct_creation_line(structure_construction_line)             
+                    printAndLogInfo("Structure name:" + current_matlab_structure.name)
+
+                    structure_construction_first_line_split_with_separator = structure_construction_line.split(matlab_field_separator)
+                    #current_matlab_structure.fields_definition_in_one_line = structure_construction_first_line_split_with_separator[1].strip().replace(matlab_line_continuation_operator,"")
+                
+                elif is_matlab_new_structure_field_line(structure_construction_line):
+                    if current_matlab_structure_field != None:
+                        printAndLogCriticalAndKill(current_matlab_structure.name + " :new structure field not expected in line:" + structure_construction_line + " , current field was " + current_matlab_structure_field)
+                    
+                    current_matlab_structure_field = MatlabFieldOfStructure()
+                    current_matlab_structure.fields.append(current_matlab_structure_field)
+                    current_matlab_structure_field.name = get_structure_field_name_from_field_creation_line(structure_construction_line)             
+                    printAndLogInfo("Structure :" + current_matlab_structure.name + " parsing field:" + current_matlab_structure_field.name)
+
+                elif is_matlab_last_structure_field_line(structure_construction_line):
+                    if current_matlab_structure_field == None:
+                        printAndLogCriticalAndKill(current_matlab_structure.name + " :end of structure field not expected in line:" + str(structure_construction_line_number))
+
+                    printAndLogInfo("Field content:" + current_matlab_structure.fields_definition_in_one_line)
+                    current_matlab_structure_field = None
+
+                elif is_matlab_structure_last_creation_line(structure_construction_line):
+                    current_matlab_structure = None
+
+                else:
+                    current_matlab_structure_field.original_definition_in_one_line = current_matlab_structure_field.original_definition_in_one_line + structure_construction_line.strip().replace(matlab_line_continuation_operator,"")
+            
+            #printAndLogInfo("Field content:" + current_matlab_structure.fields_definition_in_one_line)
+
+            
+                
 
 def open_text_file_and_return_lines(input_file_name):  
     logging.info('Check existence of input file:' + input_file_name)
@@ -218,7 +262,7 @@ def open_text_file_and_return_lines(input_file_name):
 
 @print_argument_if_function_returns_true
 def is_matlab_new_structure_field_line(line):
-    ret = "',{" in line
+    ret = "',"+matlab_structure_fields_table_begin in line
     
     #if ret:
     #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
@@ -227,7 +271,7 @@ def is_matlab_new_structure_field_line(line):
     
 @print_argument_if_function_returns_true
 def is_matlab_last_structure_field_line(line):
-    ret = "}" in line
+    ret = matlab_structure_fields_table_end in line
     
     #if ret:
     #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
