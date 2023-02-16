@@ -155,6 +155,13 @@ class SMT2_Data_mE_Content:
     def __init__(self):
         self.first_file_lines_to_keep_unchanged = list()
         self.global_definition_lines = list()
+        self.structures_constructions_lines = list()
+        self.filling_one_structure_specific_field_lines = list()
+
+    def print_stats(self):
+        printAndLogInfo("Nombre de structures à créer:" + str(len(self.structures_constructions_lines)))
+        printAndLogInfo("Nombre d'affectation de champs:" + str(len(self.filling_one_structure_specific_field_lines)))
+        
 
 def open_text_file_and_return_lines(input_file_name):  
     logging.info('Check existence of input file:' + input_file_name)
@@ -248,26 +255,13 @@ def get_variable_name(obj, namespace):
     variable_name = [name for name in namespace if namespace[name] is obj]
     return variable_name
 
-def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
+def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
     sMT2_Data_mE_file_lines = open_text_file_and_return_lines(sMT2_Data_mE_file_name)
-    sMT2_Data_mE_Content = SMT2_Data_mE_Content()
-
-    
-    TO_BE_DELETED___is_reading_first_file_lines_to_keep_unchanged = True 
-    TO_BE_DELETED___is_reading_struct_construction_lines = False
-    TO_BE_DELETED___is_reading_struct_construction_lines = False
-    TO_BE_DELETED___is_filling_struct_cell_by_cell = False
-    TO_BE_DELETED___is_parsing_last_return_of_file = False
-    TO_BE_DELETED___is_waiting_end_of_file = False
-
 
     parsing_sMT2_Data_mE_file_current_step = Parsing_sMT2_Data_mE_file_step()
 
-    structures_constructions_lines = list()
     current_structure_construction_lines = None
-    filling_one_structure_specific_field_lines = list()
 
-    
 
     sMT2_Data_mE_line_number = 0
 
@@ -291,8 +285,6 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
 
         if parsing_sMT2_Data_mE_file_current_step.is_step_reading_first_file_lines_to_keep_unchanged():
             if is_matlab_new_structure_creation_line(sMT2_Data_mE_file_line):
-                TO_BE_DELETED___is_reading_first_file_lines_to_keep_unchanged = False
-                TO_BE_DELETED___is_reading_struct_construction_lines = True
                 parsing_sMT2_Data_mE_file_current_step.switch_to_step_reading_struct_construction_lines()
 
                 printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": no more reading first lines")
@@ -316,15 +308,13 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
                     current_structure_construction_lines.append(sMT2_Data_mE_file_line)
 
                 if is_matlab_structure_last_creation_line(sMT2_Data_mE_file_line):
-                    structures_constructions_lines.append(current_structure_construction_lines)
+                    sMT2_Data_mE_Content.structures_constructions_lines.append(current_structure_construction_lines)
                     printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": end of current structure")
                     current_structure_construction_lines = None
 
                 if is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line) :
                     
                     if parsing_sMT2_Data_mE_file_current_step.is_step_reading_struct_construction_lines():
-                        TO_BE_DELETED___is_reading_struct_construction_lines = False
-                        TO_BE_DELETED___is_filling_struct_cell_by_cell = True
                         parsing_sMT2_Data_mE_file_current_step.switch_to_step_filling_struct_cell_by_cell()
                         
 
@@ -332,20 +322,18 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
 
         if parsing_sMT2_Data_mE_file_current_step.is_step_filling_struct_cell_by_cell():
             if is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line):
-                filling_one_structure_specific_field_lines.append(sMT2_Data_mE_file_line)
+                sMT2_Data_mE_Content.filling_one_structure_specific_field_lines.append(sMT2_Data_mE_file_line)
             elif is_matlab_return_function_line(sMT2_Data_mE_file_line):
-                TO_BE_DELETED___is_filling_struct_cell_by_cell = False
-                TO_BE_DELETED___is_parsing_last_return_of_file = True
-                parsing_sMT2_Data_mE_file_current_step.is_step_has_parsed_last_return_of_file_and_waiting_end_of_file()
+                parsing_sMT2_Data_mE_file_current_step.switch_to_step_has_parsed_last_return_of_file_and_waiting_end_of_file()
                 printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + " is last return of file")
         
         if parsing_sMT2_Data_mE_file_current_step.is_step_has_parsed_last_return_of_file_and_waiting_end_of_file():
                 printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + " is not considered because waiting end of file")
 
         
-    printAndLogInfo("Nombre de structures à créer:" + str(len(structures_constructions_lines)))
-    printAndLogInfo("Nombre d'affectation de champs:" + str(len(filling_one_structure_specific_field_lines)))
-        
+    sMT2_Data_mE_Content.print_stats()
+    
+
         
 
         
@@ -392,8 +380,14 @@ def create_and_fill_output_file(output_directory, input_file_name, file_content_
     logging.info('Close output file:' + input_file_name)
     output_file.close()
 
+
+
 def Optimize_SMT2_Data_mE():
-    load_SMT2_Data_mE(input_SMT2_Data_mE_file_name)
+    sMT2_Data_mE_Content = SMT2_Data_mE_Content()
+
+    load_SMT2_Data_mE(input_SMT2_Data_mE_file_name, sMT2_Data_mE_Content)
+
+
 
 def unused():
     # open input ilv file
