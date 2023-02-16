@@ -7,7 +7,7 @@ global SMT_mE SMT_mE_seg SMT_mE_aig SMT_mE_feu SMT_mE_feu_BAL SMT_nb_mE
 
 disp("Load initial structure");
 
-affectation_variables_globales("input_files\SMT2_Data_mE.m");
+affectation_variables_globales("input_files\\SMT2_Data_mE.txt");
 
 
 disp("Print initial structure:");
