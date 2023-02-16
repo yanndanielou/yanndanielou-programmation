@@ -18,6 +18,7 @@ logger_level = logging.DEBUG
 
 #Constants
 matlab_line_continuation_operator = "..."
+matlab_return_operator = "return"
 
 def printAndLogCriticalAndKill(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
@@ -149,7 +150,7 @@ def is_matlab_structure_last_creation_line(line):
     return ret
 
 
-@print_argument_if_function_returns_true
+#@print_argument_if_function_returns_true
 def is_matlab_filling_one_structure_specific_field_line(line):
     ret = "=" in line and ";" in line
 
@@ -158,8 +159,16 @@ def is_matlab_filling_one_structure_specific_field_line(line):
         
     return ret
 
-
 @print_argument_if_function_returns_true
+def is_matlab_return_function_line(line):
+    ret = matlab_return_operator == line.strip()
+    
+    #if ret:
+    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+        
+    return ret
+
+#@print_argument_if_function_returns_true
 def is_matlab_empty_line(line):
     ret = len(line.strip()) == 0
 
@@ -168,7 +177,7 @@ def is_matlab_empty_line(line):
 
     return ret
     
-@print_argument_if_function_returns_true
+#@print_argument_if_function_returns_true
 def is_matlab_comment_line(line):
     ret = None
     line_stripped = line.strip()
@@ -183,7 +192,11 @@ def is_matlab_comment_line(line):
     #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
     
     return ret 
-    
+
+def get_variable_name(obj, namespace):
+    variable_name = [name for name in namespace if namespace[name] is obj]
+    return variable_name
+
 def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
     sMT2_Data_mE_file_lines = open_text_file_and_return_lines(sMT2_Data_mE_file_name)
     sMT2_Data_mE_Content = SMT2_Data_mE_Content()
@@ -191,12 +204,25 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
     
     is_reading_first_file_lines_to_keep_unchanged = True 
     is_reading_struct_construction_lines = False
+    is_reading_struct_construction_lines = False
+    is_filling_struct_cell_by_cell = False
+    is_parsing_last_return_of_file = False
+    is_waiting_end_of_file = False
+
+    step_reading_first_file_lines_to_keep_unchanged = "step_reading_first_file_lines_to_keep_unchanged" 
+    step_reading_struct_construction_lines = "step_reading_struct_construction_lines"
+    step_reading_struct_construction_lines = "step_reading_struct_construction_lines"
+    step_filling_struct_cell_by_cell = "step_filling_struct_cell_by_cell"
+    step_parsing_last_return_of_file = "step_parsing_last_return_of_file"
+    step_waiting_end_of_file = "step_waiting_end_of_file"    
+
+    current_step = step_reading_first_file_lines_to_keep_unchanged
 
     structures_constructions_lines = list()
     current_structure_construction_lines = None
-    is_reading_struct_construction_lines = False
+    filling_one_structure_specific_field_lines = list()
 
-    is_filling_struct_cell_by_cell = False
+    
 
     sMT2_Data_mE_line_number = 0
 
@@ -246,11 +272,25 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
                 if is_reading_struct_construction_lines:
                     is_reading_struct_construction_lines = False
                     is_filling_struct_cell_by_cell = True
+                    
 
                     printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": start filling structure line by line")
 
+        if is_filling_struct_cell_by_cell:
+            if is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line):
+                filling_one_structure_specific_field_lines.append(sMT2_Data_mE_file_line)
+            elif is_matlab_return_function_line(sMT2_Data_mE_file_line):
+                is_filling_struct_cell_by_cell = False
+                is_parsing_last_return_of_file = True
+                printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + " is last return of file")
+        
+        if is_waiting_end_of_file:
+                printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + " is not considered because waiting end of file")
 
+        
     printAndLogInfo("Nombre de structures à créer:" + str(len(structures_constructions_lines)))
+    printAndLogInfo("Nombre d'affectation de champs:" + str(len(filling_one_structure_specific_field_lines)))
+        
         
 
         
