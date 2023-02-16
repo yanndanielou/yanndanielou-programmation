@@ -111,6 +111,9 @@ def open_text_file_and_return_lines(input_file_name):
         logging.critical("Input file:" + input_file_name + " does not exist. Application stopped")
         sys.exit()
 
+    printAndLogInfo('Full path:' + os.path.abspath(input_file_name))
+
+
     printAndLogInfo('Opening input file:' + input_file_name)    
     input_file = open(input_file_name, "r")
     
@@ -200,7 +203,7 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
     for sMT2_Data_mE_file_line in sMT2_Data_mE_file_lines:
         sMT2_Data_mE_line_number = sMT2_Data_mE_line_number + 1
 
-        printAndLogInfo("Current line:" + str(sMT2_Data_mE_line_number))
+        #printAndLogInfo("Current line:" + str(sMT2_Data_mE_line_number))
         #printAndLogInfo("line:" + str(sMT2_Data_mE_line_number) + " is_matlab_comment_line:" + str(is_matlab_comment_line(sMT2_Data_mE_file_line)))
         #printAndLogInfo("line:" + str(sMT2_Data_mE_line_number) + " is_matlab_filling_one_structure_specific_field_line:" + str(is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line)))
         #printAndLogInfo("line:" + str(sMT2_Data_mE_line_number) + " is_matlab_empty_line:" + str(is_matlab_empty_line(sMT2_Data_mE_file_line)))
@@ -228,7 +231,10 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
                 printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": new structure detected")
                 current_structure_construction_lines = list()
 
-            current_structure_construction_lines.append(sMT2_Data_mE_file_line)
+            if current_structure_construction_lines == None:
+                printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + sMT2_Data_mE_file_line + ": will crash")
+
+                current_structure_construction_lines.append(sMT2_Data_mE_file_line)
 
             if is_matlab_structure_last_creation_line(sMT2_Data_mE_file_line):
                 structures_constructions_lines.append(current_structure_construction_lines)
