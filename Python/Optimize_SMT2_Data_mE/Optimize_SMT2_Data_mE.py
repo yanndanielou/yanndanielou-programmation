@@ -10,10 +10,14 @@ import sys
 import datetime
 import time
 
-#Constants:
+#param
 end_line_character_in_text_file = "\n"
 input_SMT2_Data_mE_file_name = "SMT2_Data_mE.m"
-logger_level = logging.INFO
+logger_level = logging.DEBUG
+
+
+#Constants
+matlab_line_continuation_operator = "..."
 
 def printAndLogCriticalAndKill(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
@@ -96,16 +100,82 @@ def open_text_file_and_return_lines(input_file_name):
 
     input_file_lines = input_file_read.split(end_line_character_in_text_file)
     printAndLogInfo(input_file_name + " has " + str(len(input_file_lines)) + " lines")
+
+    return input_file_lines
  
-        
-def load_SMT2_Data_mE(SMT2_Data_mE_file_name):
-    sMT2_Data_mE_file_lines = open_text_file_and_return_lines(SMT2_Data_mE_file_name)
+def is_matlab_empty_line(line):
+    return len(line.strip()) == 0
+    
+def is_matlab_comment_line(line):
+    line_stripped = line.strip()
+
+    line_stripped_is_empty = len(line_stripped) == 0
+    if line_stripped_is_empty:
+        return False
+
+    return line_stripped[0] == '%'
+
+def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
+    sMT2_Data_mE_file_lines = open_text_file_and_return_lines(sMT2_Data_mE_file_name)
     sMT2_Data_mE_Content = SMT2_Data_mE_Content()
- 
-    for SMT2_Data_mE_file_line in SMT2_Data_mE_file_lines:
+
+    
+    is_reading_first_file_lines_to_keep_unchanged = True 
+    is_reading_struct_construction_lines = False
+
+    structures_constructions_lines = list()
+    current_structure_construction_lines = None
+    is_reading_struct_construction_lines = False
+
+    is_filling_struct_cell_by_cell = False
+
+    sMT2_Data_mE_line_number = 0
+
+    for sMT2_Data_mE_file_line in sMT2_Data_mE_file_lines:
+        sMT2_Data_mE_line_number = sMT2_Data_mE_line_number + 1
 
 
+        if is_matlab_comment_line(sMT2_Data_mE_file_line):
+            logging.debug("Line:" + str(sMT2_Data_mE_line_number) + "(" + sMT2_Data_mE_file_line + ")" + " ignored because is matlab comment")
+            continue
         
+        if is_matlab_empty_line(sMT2_Data_mE_file_line):
+            logging.debug("Line:" + str(sMT2_Data_mE_line_number) + "(" + sMT2_Data_mE_file_line + ")" + " ignored because is empty")
+            continue
+
+
+        if is_reading_first_file_lines_to_keep_unchanged:
+            if "struct" in sMT2_Data_mE_file_line:
+                is_reading_first_file_lines_to_keep_unchanged = False
+                is_reading_struct_construction_lines = True
+                printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": no more reading first lines")
+            else:
+                sMT2_Data_mE_Content.first_file_lines_to_keep_unchanged.append(sMT2_Data_mE_file_line)
+
+        if is_reading_struct_construction_lines:
+            if current_structure_construction_lines == None:
+                printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": new structure detected")
+                current_structure_construction_lines = list()
+
+            current_structure_construction_lines.append(sMT2_Data_mE_file_line)
+
+            if not matlab_line_continuation_operator in sMT2_Data_mE_file_line:
+                structures_constructions_lines.append(current_structure_construction_lines)
+                printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": end of current structure")
+                current_structure_construction_lines = None
+
+            if "=" in sMT2_Data_mE_file_line and ";" in sMT2_Data_mE_file_line:
+                
+                if is_reading_struct_construction_lines:
+                    is_reading_struct_construction_lines = False
+                    is_filling_struct_cell_by_cell = True
+
+                    printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": start filling structure line by line")
+
+
+    printAndLogInfo("Nombre de structures à créer:" + str(len(structures_constructions_lines)))
+        
+
         
 #chemin_fichier_SMT2_Data_mE_part_001_initialisation_structures = fullfile(SMT_Repertoire_outil,nom_projet,'SMT2_Data_mE_part_001_initialisation_structures.m);
 #affectation_variables_globales(chemin_fichier_SMT2_Data_mE_part_001_initialisation_structures);    
