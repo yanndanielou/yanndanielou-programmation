@@ -86,6 +86,57 @@ class print_argument_if_function_returns_true(object):
             #printAndLogInfo(self.f.__name__ + " returns true for :" + str(locals().get("line")))
         return ret        
         
+
+class Parsing_sMT2_Data_mE_file_step:
+
+    step_reading_first_file_lines_to_keep_unchanged = "step_reading_first_file_lines_to_keep_unchanged" 
+    step_reading_struct_construction_lines = "step_reading_struct_construction_lines"
+    step_filling_struct_cell_by_cell = "step_filling_struct_cell_by_cell"
+    step_has_parsed_last_return_of_file_and_waiting_end_of_file = "step_parsing_last_return_of_file"
+    #step_waiting_end_of_file = "step_waiting_end_of_file"    
+
+
+    def __init__(self):
+        self.step = self.step_reading_first_file_lines_to_keep_unchanged
+
+        
+
+    def switch_to_step(self, new_step):
+        if self.step != new_step:
+           printAndLogInfo("Switch from state " +  self.step + " to state " + new_step)
+           self.step = new_step
+        else:
+            printAndLogInfo("Trying to switch to state " + new_step + " wich is already the current step")
+
+    def switch_to_step_reading_struct_construction_lines(self):
+        self.switch_to_step(self.step_reading_struct_construction_lines)
+        
+    def switch_to_step_filling_struct_cell_by_cell(self):
+        self.switch_to_step(self.step_filling_struct_cell_by_cell)
+        
+    def switch_to_step_has_parsed_last_return_of_file_and_waiting_end_of_file(self):
+        self.switch_to_step(self.step_has_parsed_last_return_of_file_and_waiting_end_of_file)
+        
+    #def switch_to_step_waiting_end_of_file(self):
+    #    self.switch_to_step(self.step_waiting_end_of_file)
+        
+
+
+    def is_step_reading_first_file_lines_to_keep_unchanged(self):
+        return self.step == self.step_reading_first_file_lines_to_keep_unchanged
+
+    def is_step_reading_struct_construction_lines(self):
+        return self.step == self.step_reading_struct_construction_lines
+        
+    def is_step_filling_struct_cell_by_cell(self):
+        return self.step == self.step_filling_struct_cell_by_cell
+        
+    def is_step_has_parsed_last_return_of_file_and_waiting_end_of_file(self):
+        return self.step == self.step_has_parsed_last_return_of_file_and_waiting_end_of_file
+        
+    #def is_step_waiting_end_of_file(self):
+    #    return self.step == self.step_waiting_end_of_file
+
 class MatlabStruct:
 
     def __init__(self, name):
@@ -202,21 +253,15 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
     sMT2_Data_mE_Content = SMT2_Data_mE_Content()
 
     
-    is_reading_first_file_lines_to_keep_unchanged = True 
-    is_reading_struct_construction_lines = False
-    is_reading_struct_construction_lines = False
-    is_filling_struct_cell_by_cell = False
-    is_parsing_last_return_of_file = False
-    is_waiting_end_of_file = False
+    TO_BE_DELETED___is_reading_first_file_lines_to_keep_unchanged = True 
+    TO_BE_DELETED___is_reading_struct_construction_lines = False
+    TO_BE_DELETED___is_reading_struct_construction_lines = False
+    TO_BE_DELETED___is_filling_struct_cell_by_cell = False
+    TO_BE_DELETED___is_parsing_last_return_of_file = False
+    TO_BE_DELETED___is_waiting_end_of_file = False
 
-    step_reading_first_file_lines_to_keep_unchanged = "step_reading_first_file_lines_to_keep_unchanged" 
-    step_reading_struct_construction_lines = "step_reading_struct_construction_lines"
-    step_reading_struct_construction_lines = "step_reading_struct_construction_lines"
-    step_filling_struct_cell_by_cell = "step_filling_struct_cell_by_cell"
-    step_parsing_last_return_of_file = "step_parsing_last_return_of_file"
-    step_waiting_end_of_file = "step_waiting_end_of_file"    
 
-    current_step = step_reading_first_file_lines_to_keep_unchanged
+    parsing_sMT2_Data_mE_file_current_step = Parsing_sMT2_Data_mE_file_step()
 
     structures_constructions_lines = list()
     current_structure_construction_lines = None
@@ -244,47 +289,57 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name):
             logging.debug("Line:" + str(sMT2_Data_mE_line_number) + "(" + sMT2_Data_mE_file_line + ")" + " ignored because is empty")
             continue
 
-        if is_reading_first_file_lines_to_keep_unchanged:
+        if parsing_sMT2_Data_mE_file_current_step.is_step_reading_first_file_lines_to_keep_unchanged():
             if is_matlab_new_structure_creation_line(sMT2_Data_mE_file_line):
-                is_reading_first_file_lines_to_keep_unchanged = False
-                is_reading_struct_construction_lines = True
+                TO_BE_DELETED___is_reading_first_file_lines_to_keep_unchanged = False
+                TO_BE_DELETED___is_reading_struct_construction_lines = True
+                parsing_sMT2_Data_mE_file_current_step.switch_to_step_reading_struct_construction_lines()
+
                 printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": no more reading first lines")
             else:
                 sMT2_Data_mE_Content.first_file_lines_to_keep_unchanged.append(sMT2_Data_mE_file_line)
 
-        if is_reading_struct_construction_lines and not is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line):
-            if current_structure_construction_lines == None and is_matlab_new_structure_creation_line(sMT2_Data_mE_file_line) :
-                printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": new structure detected")
-                current_structure_construction_lines = list()
+        if parsing_sMT2_Data_mE_file_current_step.is_step_reading_struct_construction_lines() :
+ 
+            if is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line):
+                parsing_sMT2_Data_mE_file_current_step.switch_to_step_filling_struct_cell_by_cell()
 
-            if current_structure_construction_lines == None:
-                printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + sMT2_Data_mE_file_line + ": will crash")
+            else:
 
-                current_structure_construction_lines.append(sMT2_Data_mE_file_line)
+                if current_structure_construction_lines == None and is_matlab_new_structure_creation_line(sMT2_Data_mE_file_line) :
+                    printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": new structure detected")
+                    current_structure_construction_lines = list()
 
-            if is_matlab_structure_last_creation_line(sMT2_Data_mE_file_line):
-                structures_constructions_lines.append(current_structure_construction_lines)
-                printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": end of current structure")
-                current_structure_construction_lines = None
+                if current_structure_construction_lines == None:
+                    printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + sMT2_Data_mE_file_line + ": will crash")
 
-            if is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line) :
-                
-                if is_reading_struct_construction_lines:
-                    is_reading_struct_construction_lines = False
-                    is_filling_struct_cell_by_cell = True
+                    current_structure_construction_lines.append(sMT2_Data_mE_file_line)
+
+                if is_matlab_structure_last_creation_line(sMT2_Data_mE_file_line):
+                    structures_constructions_lines.append(current_structure_construction_lines)
+                    printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": end of current structure")
+                    current_structure_construction_lines = None
+
+                if is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line) :
                     
+                    if parsing_sMT2_Data_mE_file_current_step.is_step_reading_struct_construction_lines():
+                        TO_BE_DELETED___is_reading_struct_construction_lines = False
+                        TO_BE_DELETED___is_filling_struct_cell_by_cell = True
+                        parsing_sMT2_Data_mE_file_current_step.switch_to_step_filling_struct_cell_by_cell()
+                        
 
-                    printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": start filling structure line by line")
+                        printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": start filling structure line by line")
 
-        if is_filling_struct_cell_by_cell:
+        if parsing_sMT2_Data_mE_file_current_step.is_step_filling_struct_cell_by_cell():
             if is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line):
                 filling_one_structure_specific_field_lines.append(sMT2_Data_mE_file_line)
             elif is_matlab_return_function_line(sMT2_Data_mE_file_line):
-                is_filling_struct_cell_by_cell = False
-                is_parsing_last_return_of_file = True
+                TO_BE_DELETED___is_filling_struct_cell_by_cell = False
+                TO_BE_DELETED___is_parsing_last_return_of_file = True
+                parsing_sMT2_Data_mE_file_current_step.is_step_has_parsed_last_return_of_file_and_waiting_end_of_file()
                 printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + " is last return of file")
         
-        if is_waiting_end_of_file:
+        if parsing_sMT2_Data_mE_file_current_step.is_step_has_parsed_last_return_of_file_and_waiting_end_of_file():
                 printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + " is not considered because waiting end of file")
 
         
