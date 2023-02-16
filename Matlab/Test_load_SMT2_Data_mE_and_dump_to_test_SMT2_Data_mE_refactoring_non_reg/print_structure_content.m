@@ -2,9 +2,9 @@ function print_structure_content(structure_to_print, structure_name)
 
 disp(string(datetime) + " print_structure_content " + structure_name + " begin");
 
-disp(string(datetime) + " structure " + structure_name + " fields:");
+disp("print_structure_content : structure " + structure_name + " fields:");
 
-disp(string(datetime) + " structure " + structure_name + " size:" + length(structure_to_print));
+disp("print_structure_content : structure " + structure_name + " size:" + length(structure_to_print));
 disp(structure_to_print);
 
 
