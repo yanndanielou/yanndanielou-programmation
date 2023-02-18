@@ -94,14 +94,24 @@ class print_argument_if_function_returns_true(object):
         
 
 
-class Parsing_sMT2_Data_mE_struct_file_step:
+""" class Parsing_sMT2_Data_mE_struct_file_step:
 
-    step_reading_first_file_lines_to_keep_unchanged = "step_reading_first_file_lines_to_keep_unchanged" 
+    step_not_started_yet = "step_not_started_yet" 
+
+    step_reading_field_name = "step_reading_field_name" 
     step_reading_struct_construction_lines = "step_reading_struct_construction_lines"
     step_filling_struct_cell_by_cell = "step_filling_struct_cell_by_cell"
     step_has_parsed_last_return_of_file_and_waiting_end_of_file = "step_parsing_last_return_of_file"
-    #step_waiting_end_of_file = "step_waiting_end_of_file" 
+    #step_waiting_end_of_file = "step_waiting_end_of_file"    
 
+    
+    def __init__(self):
+        self.step = None
+
+
+    def __init__(self):
+        self.step = self.step_reading_first_file_lines_to_keep_unchanged
+ """
 
 class Parsing_sMT2_Data_mE_file_step:
 
@@ -153,6 +163,11 @@ class Parsing_sMT2_Data_mE_file_step:
     #def is_step_waiting_end_of_file(self):
     #    return self.step == self.step_waiting_end_of_file
 
+def decode_main_matlab_structure(matlabStruct, remaining_line_to_decode):
+    a = 1
+
+
+
 class MatlabStruct:
 
     def __init__(self, name):
@@ -162,6 +177,7 @@ class MatlabStruct:
         self.structure_full_definition_with_name_in_one_line = None
         self.structure_full_definition_without_name_in_one_line = None
         self.structure_inside_content_definition_in_one_line = None
+        self.parent = None
 
     def add_full_definition_line(self, line):
         self.full_definition_lines.append(line)
@@ -189,13 +205,62 @@ class MatlabStruct:
                 self.structure_full_definition_without_name_in_one_line += ");"
 
 
+    def decode_fields(self):
+
+        #parsing_sMT2_Data_mE_struct_file_step = Parsing_sMT2_Data_mE_struct_file_step()
+        remaining_characters_of_main_struct_definition_to_parse = self.structure_full_definition_without_name_in_one_line
+        current_struct_field = None
+        while(len(remaining_characters_of_main_struct_definition_to_parse) > 0):
+            current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
+            remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+
+            if current_parsed_character =="'":
+                if current_struct_field == None:
+                    current_struct_field = MatlabFieldOfStructure()
+                    current_struct_field.parent = self
+                    self.fields.append(current_struct_field)
+                    #parsing_sMT2_Data_mE_struct_file_step.step = parsing_sMT2_Data_mE_struct_file_step.step_reading_field_name
+                elif current_struct_field.is_name_complete == False:
+                    current_struct_field.is_name_complete = True
+                    printAndLogInfo("Structure: " + self.name  + " name decoded for field: " + current_struct_field.name)
+                    if remaining_characters_of_main_struct_definition_to_parse.startswith(",{"):
+                        remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len(",{"):]
+                        return current_struct_field.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
+            elif current_struct_field.is_name_complete == False:
+                current_struct_field.name += current_parsed_character
+            
+                    
       
 class MatlabFieldOfStructure:
 
     def __init__(self):
         self.name = None
+        self.is_name_complete = False
         self.values = list()
         self.original_definition_in_one_line = None
+        self.parent = None
+
+    def build_yourself_with_remaining_characters_of_main_struct_definition(self, remaining_characters_of_main_struct_definition_to_parse):
+        while(len(remaining_characters_of_main_struct_definition_to_parse) > 0):
+            current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
+            remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+
+            #if current_parsed_character =="'":
+
+
+class MatlabArrayOfFieldOfStructure:
+
+    def __init__(self):
+        self.parent = None
+        self.is_empty = None
+        self.text_content = None
+        self.elements = None
+
+    def build_yourself_with_remaining_characters_of_main_struct_definition(self, remaining_characters_of_main_struct_definition_to_parse):
+        while(len(remaining_characters_of_main_struct_definition_to_parse) > 0):
+            current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
+            remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+
 
 
 def get_structure_name_from_struct_creation_line(struct_creation_line):
@@ -237,6 +302,7 @@ class SMT2_Data_mE_Content:
 
             current_matlab_structure = MatlabStruct(current_matlab_structure_name)
             self.structures.append(current_matlab_structure)
+            current_matlab_structure.parent = self
 
             printAndLogInfo("Structure name:" + current_matlab_structure.name)
 
@@ -245,11 +311,18 @@ class SMT2_Data_mE_Content:
 
         for matlab_structure in self.structures:
             matlab_structure.fill_structure_full_definition_in_one_line()
-            logging.info("matlab_structure full definition witout name in one line:" + matlab_structure.structure_full_definition_without_name_in_one_line)
-            logging.info("matlab_structure full definition with name in one line:" + matlab_structure.structure_full_definition_with_name_in_one_line)
+            logging.info("matlab_structure " + matlab_structure.name + " full definition witout name in one line:" + matlab_structure.structure_full_definition_without_name_in_one_line)
+            logging.info("matlab_structure " + matlab_structure.name + " full definition with name in one line:" + matlab_structure.structure_full_definition_with_name_in_one_line)
 
-            logging.info("matlab_structure inside content one line:" + matlab_structure.structure_inside_content_definition_in_one_line)
+            logging.info("matlab_structure " + matlab_structure.name + " inside content one line:" + matlab_structure.structure_inside_content_definition_in_one_line)
 
+
+    def decode_main_structure_objects(self):
+
+        for matlab_structure in self.structures:
+            matlab_structure.decode_fields()
+  
+    """    
     def parse_structures__not_working_for_struct_in_struct(self):
         structure_number = 0
 
@@ -306,7 +379,7 @@ class SMT2_Data_mE_Content:
             
             #printAndLogInfo("Field content:" + current_matlab_structure.structure_full_definition_in_one_line)
 
-            
+        """      
                 
 
 def open_text_file_and_return_lines(input_file_name):  
@@ -555,6 +628,7 @@ def Optimize_SMT2_Data_mE():
 
     load_SMT2_Data_mE(input_SMT2_Data_mE_file_name, sMT2_Data_mE_Content)
     sMT2_Data_mE_Content.create_structure_objects()
+    sMT2_Data_mE_Content.decode_main_structure_objects()
     #sMT2_Data_mE_Content.parse_structures__not_working_for_struct_in_struct()
 
 
