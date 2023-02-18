@@ -230,7 +230,7 @@ class SMT2_Data_mE_Content:
                         printAndLogCriticalAndKill(current_matlab_structure.name + " :end of structure field not expected in line:" + str(structure_construction_line_number))
 
                     printAndLogInfo("Structure :" + current_matlab_structure.name + " field " + current_matlab_structure_field.name )
-                    #printAndLogInfo("Structure :" + current_matlab_structure.name + " field content:" + current_matlab_structure_field.original_definition_in_one_line)
+                    logging.info("Structure :" + current_matlab_structure.name + " field content:" + current_matlab_structure_field.original_definition_in_one_line)
                     current_matlab_structure_field = None
 
                 elif is_matlab_structure_last_creation_line(structure_construction_line):
@@ -676,7 +676,8 @@ def unused():
     
 
 def main():
-    log_file_name = 'Optimize_SMT2_Data_mE' + "." +  str(random.randrange(10000)) + ".log"
+    log_file_name = 'Optimize_SMT2_Data_mE' + ".log"
+    #log_file_name = 'Optimize_SMT2_Data_mE' + "." +  str(random.randrange(10000)) + ".log"
     configureLogger(log_file_name)    
     printAndLogInfo('Start application. Log file name: ' + log_file_name)
     Optimize_SMT2_Data_mE()
