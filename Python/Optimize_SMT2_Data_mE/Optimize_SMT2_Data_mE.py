@@ -73,9 +73,9 @@ class print_argument_if_function_returns_true(object):
         self.f = f
 
     def __call__(self, *args):
-        logging.info("Entering " +  self.f.__name__)
-        logging.debug("Arguments passed to " + self.f.__name__ + ":" + str(locals()))
-        start_time = time.time()
+        #logging.info("Entering " +  self.f.__name__)
+        #logging.debug("Arguments passed to " + self.f.__name__ + ":" + str(locals()))
+        #start_time = time.time()
         
         #Call method
         ret = self.f(*args)
@@ -187,6 +187,12 @@ class SMT2_Data_mE_Content:
     def print_stats(self):
         printAndLogInfo("Nombre de structures à créer:" + str(len(self.structures_constructions_lines)))
         printAndLogInfo("Nombre d'affectation de champs:" + str(len(self.filling_one_structure_specific_field_lines)))
+
+    def print_structures(self):
+        for structure_constructions_lines in self.structures_constructions_lines:
+            logging.debug("print new structure")
+            for structure_constructions_line in structure_constructions_lines:
+                logging.debug(structure_constructions_line)
 
     def parse_structures(self):
         structure_number = 0
@@ -432,6 +438,7 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
 
         
     sMT2_Data_mE_Content.print_stats()
+    sMT2_Data_mE_Content.print_structures()
     
 
         
