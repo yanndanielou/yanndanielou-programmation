@@ -176,28 +176,33 @@ def get_structure_field_name_from_field_creation_line(struct_field_creation_line
 
 class SMT2_Data_mE_Content:
 
-
     def __init__(self):
         self.first_file_lines_to_keep_unchanged = list()
         self.global_definition_lines = list()
-        self.structures_constructions_lines = list()
+        self.all_structures_constructions_lines = list()
+        self.structures_constructions_lines_as_list_by_structure = list()
         self.filling_one_structure_specific_field_lines = list()
         self.structures = list()
 
     def print_stats(self):
-        printAndLogInfo("Nombre de structures à créer:" + str(len(self.structures_constructions_lines)))
+        printAndLogInfo("Nombre de structures à créer:" + str(len(self.structures_constructions_lines_as_list_by_structure)))
         printAndLogInfo("Nombre d'affectation de champs:" + str(len(self.filling_one_structure_specific_field_lines)))
 
     def print_structures(self):
-        for structure_constructions_lines in self.structures_constructions_lines:
+        for structure_constructions_lines in self.structures_constructions_lines_as_list_by_structure:
             logging.debug("print new structure")
             for structure_constructions_line in structure_constructions_lines:
                 logging.debug(structure_constructions_line)
 
+        
+        logging.debug("print all structures lines")
+        for all_structures_constructions_line in self.all_structures_constructions_lines:
+            logging.debug(all_structures_constructions_line)
+
     def parse_structures(self):
         structure_number = 0
 
-        for structure_constructions_lines in self.structures_constructions_lines:
+        for structure_constructions_lines in self.structures_constructions_lines_as_list_by_structure:
             current_matlab_structure = MatlabStruct()
             self.structures.append(current_matlab_structure)
             structure_number += 1
@@ -402,7 +407,7 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
                 parsing_sMT2_Data_mE_file_current_step.switch_to_step_filling_struct_cell_by_cell()
 
             else:
-
+                sMT2_Data_mE_Content.all_structures_constructions_lines.append(sMT2_Data_mE_file_line)
                 if current_structure_construction_lines == None and is_matlab_new_structure_creation_line(sMT2_Data_mE_file_line) :
                     printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": new structure detected")
                     current_structure_construction_lines = list()
@@ -414,7 +419,7 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
                     current_structure_construction_lines.append(sMT2_Data_mE_file_line)
 
                 if is_matlab_structure_last_creation_line(sMT2_Data_mE_file_line):
-                    sMT2_Data_mE_Content.structures_constructions_lines.append(current_structure_construction_lines)
+                    sMT2_Data_mE_Content.structures_constructions_lines_as_list_by_structure.append(current_structure_construction_lines)
                     printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": end of current structure")
                     current_structure_construction_lines = None
 
