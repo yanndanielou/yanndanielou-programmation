@@ -168,7 +168,8 @@ def decode_main_matlab_structure(matlabStruct, remaining_line_to_decode):
 
 
 
-class MatlabStruct:
+
+class MatlabMainLevel0Struct:
 
     def __init__(self, name):
         self.name = name
@@ -223,9 +224,9 @@ class MatlabStruct:
                 elif current_struct_field.is_name_complete == False:
                     current_struct_field.is_name_complete = True
                     printAndLogInfo("Structure: " + self.name  + " name decoded for field: " + current_struct_field.name)
-                    if remaining_characters_of_main_struct_definition_to_parse.startswith(",{"):
-                        remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len(",{"):]
-                        return current_struct_field.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
+                    if remaining_characters_of_main_struct_definition_to_parse.startswith(","):
+                        remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len(","):]
+                        remaining_characters_of_main_struct_definition_to_parse = current_struct_field.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
             elif current_struct_field.is_name_complete == False:
                 current_struct_field.name += current_parsed_character
             
@@ -241,11 +242,33 @@ class MatlabFieldOfStructure:
         self.parent = None
 
     def build_yourself_with_remaining_characters_of_main_struct_definition(self, remaining_characters_of_main_struct_definition_to_parse):
+        if remaining_characters_of_main_struct_definition_to_parse[0] == "{":
+            #
+            matlabArrayOfFieldOfStructure = MatlabArrayOfFieldOfStructure()
+            matlabArrayOfFieldOfStructure.parent = self
+            remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+            remaining_characters_of_main_struct_definition_to_parse = matlabArrayOfFieldOfStructure.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
+        elif remaining_characters_of_main_struct_definition_to_parse.startswith("struct"):
+            matlabstructureOfFieldOfStructure = MatlabStructureOfFieldOfStructure()
+            matlabstructureOfFieldOfStructure.parent = self
+            remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len("struct"):]
+            remaining_characters_of_main_struct_definition_to_parse = matlabstructureOfFieldOfStructure.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
+
+
+class MatlabStructureOfFieldOfStructure:
+
+    def __init__(self):
+        self.parent = None
+        self.is_empty = None
+        self.text_content = None
+        self.elements = None
+
+    def build_yourself_with_remaining_characters_of_main_struct_definition(self, remaining_characters_of_main_struct_definition_to_parse):
         while(len(remaining_characters_of_main_struct_definition_to_parse) > 0):
             current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
             remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
 
-            #if current_parsed_character =="'":
+
 
 
 class MatlabArrayOfFieldOfStructure:
@@ -300,7 +323,7 @@ class SMT2_Data_mE_Content:
         for structure_constructions_lines in self.structures_constructions_lines_as_list_by_structure:
             current_matlab_structure_name = get_structure_name_from_struct_creation_line(structure_constructions_lines[0])             
 
-            current_matlab_structure = MatlabStruct(current_matlab_structure_name)
+            current_matlab_structure = MatlabMainLevel0Struct(current_matlab_structure_name)
             self.structures.append(current_matlab_structure)
             current_matlab_structure.parent = self
 
