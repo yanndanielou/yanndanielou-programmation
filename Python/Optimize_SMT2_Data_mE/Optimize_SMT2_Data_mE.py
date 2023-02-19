@@ -23,6 +23,7 @@ matlab_field_separator = ","
 matlab_end_instruction_separator = ";"
 matlab_structure_fields_table_begin = "{"
 matlab_structure_fields_table_end = "}"
+matlab_structure_field_end = "}"
 matlab_structure_operator = "struct"
 matlab_structure_begin = matlab_structure_operator + "("
 
@@ -215,7 +216,7 @@ class MatlabMainLevel0Struct:
             current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
             remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
 
-            if current_parsed_character =="'":
+            if current_parsed_character == "'":
                 if current_struct_field == None:
                     current_struct_field = MatlabFieldOfStructure()
                     current_struct_field.parent = self
@@ -242,20 +243,35 @@ class MatlabFieldOfStructure:
         self.parent = None
 
     def build_yourself_with_remaining_characters_of_main_struct_definition(self, remaining_characters_of_main_struct_definition_to_parse):
-        if remaining_characters_of_main_struct_definition_to_parse[0] == "{":
-            #
-            matlabArrayOfFieldOfStructure = MatlabArrayOfFieldOfStructure()
-            matlabArrayOfFieldOfStructure.parent = self
-            self.elements.append(matlabArrayOfFieldOfStructure)
-            remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
-            remaining_characters_of_main_struct_definition_to_parse = matlabArrayOfFieldOfStructure.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
-        elif remaining_characters_of_main_struct_definition_to_parse.startswith("struct"):
-            matlabstructureOfFieldOfStructure = MatlabStructureOfFieldOfStructure()
-            matlabstructureOfFieldOfStructure.parent = self
-            self.elements.append(matlabstructureOfFieldOfStructure)
-            remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len("struct"):]
-            remaining_characters_of_main_struct_definition_to_parse = matlabstructureOfFieldOfStructure.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
 
+        while(len(remaining_characters_of_main_struct_definition_to_parse) > 0):
+
+            if remaining_characters_of_main_struct_definition_to_parse[0] == "{":
+                #
+                matlabArrayOfFieldOfStructure = MatlabArrayOfFieldOfStructure()
+                matlabArrayOfFieldOfStructure.parent = self
+                self.elements.append(matlabArrayOfFieldOfStructure)
+                remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+                remaining_characters_of_main_struct_definition_to_parse = matlabArrayOfFieldOfStructure.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
+            elif remaining_characters_of_main_struct_definition_to_parse.startswith("struct"):
+                matlabstructureOfFieldOfStructure = MatlabStructureOfFieldOfStructure()
+                matlabstructureOfFieldOfStructure.parent = self
+                self.elements.append(matlabstructureOfFieldOfStructure)
+                remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len("struct"):]
+                remaining_characters_of_main_struct_definition_to_parse = matlabstructureOfFieldOfStructure.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
+            elif remaining_characters_of_main_struct_definition_to_parse.startswith(matlab_structure_field_end):
+                logging.info("Structure:" + self.parent.name + " field " + self.name + + " ignored character ")
+
+                matlabstructureOfFieldOfStructure = MatlabStructureOfFieldOfStructure()
+                matlabstructureOfFieldOfStructure.parent = self
+            else:
+                current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
+                remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+                logging.info("Structure:" + self.parent.name + " field " + self.name + + " ignored character ")
+
+
+
+        return remaining_characters_of_main_struct_definition_to_parse
 
 class MatlabStructureOfFieldOfStructure:
 
@@ -286,7 +302,7 @@ class MatlabArrayOfFieldOfStructure:
             current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
             remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
 
-
+        return remaining_characters_of_main_struct_definition_to_parse
 
 def get_structure_name_from_struct_creation_line(struct_creation_line):
     structure_name = struct_creation_line.split("=")[0].strip()
@@ -601,40 +617,7 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
     sMT2_Data_mE_Content.print_structures()
     
 
-        
-
-        
-#chemin_fichier_SMT2_Data_mE_part_001_initialisation_structures = fullfile(SMT_Repertoire_outil,nom_projet,'SMT2_Data_mE_part_001_initialisation_structures.m);
-#affectation_variables_globales(chemin_fichier_SMT2_Data_mE_part_001_initialisation_structures);    
-def fill_affectation_variables_globales(output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, SMT2_Data_mE_xfunction_name):
-    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append("chemin_fichier_" + SMT2_Data_mE_xfunction_name + " = fullfile(SMT_Repertoire_outil,nom_projet,'" + SMT2_Data_mE_xfunction_name + ".m');")
-    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append("affectation_variables_globales(chemin_fichier_" + SMT2_Data_mE_xfunction_name + ");")
-
-#disp(string(datetime) + " SMT2_Data_mE");
-#SMT2_Data_mE;
-def fill_call_file_with_disp(output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, SMT2_Data_mE_xfunction_name):
-    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append('disp(string(datetime) + " ' + SMT2_Data_mE_xfunction_name + '");')
-    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append(SMT2_Data_mE_xfunction_name + ";")
-
-		
-def fill_matlab_code_file_containings_code_to_copy_paste(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix, output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines, output_SMT2_Data_mE_part1_initialisation_structures_function_name, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig, output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file, output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name, prefix, suffix):
-
-    #call m files
-    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append(prefix + output_SMT2_Data_mE_part1_initialisation_structures_function_name + suffix)
     
-    for output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines in output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file:
-        fill_SMT_mE_aig_file_number = output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_files_contents_as_list_of_lines_per_file.index(output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_file_contents_as_list_of_lines)
-        
-        file_part_number_with_offset = fill_SMT_mE_aig_file_number + 2
-        file_part_number_with_offset_3_digits= f"{file_part_number_with_offset:03}"
-        
-        output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append(prefix + output_SMT2_Data_mE_part_2_to_99_fill_SMT_mE_aig_functions_prefix + file_part_number_with_offset_3_digits + suffix)
-
-    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append(prefix + output_SMT2_Data_mE_part100_fill_SMT_mE_feu_BAL_function_name + suffix)
-     
-    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append("")
-    output_matlab_file_containing_code_to_call_functions_file_content_as_list_of_lines.append("")
-
 def create_and_fill_output_file(output_directory, input_file_name, file_content_as_list_of_lines):
     printAndLogInfo('Create output file:' + input_file_name)
     output_file = open(output_directory + "\\" + input_file_name, "w")
