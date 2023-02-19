@@ -237,7 +237,7 @@ class MatlabFieldOfStructure:
     def __init__(self):
         self.name = None
         self.is_name_complete = False
-        self.values = list()
+        self.elements = list()
         self.original_definition_in_one_line = None
         self.parent = None
 
@@ -246,11 +246,13 @@ class MatlabFieldOfStructure:
             #
             matlabArrayOfFieldOfStructure = MatlabArrayOfFieldOfStructure()
             matlabArrayOfFieldOfStructure.parent = self
+            self.elements.append(matlabArrayOfFieldOfStructure)
             remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
             remaining_characters_of_main_struct_definition_to_parse = matlabArrayOfFieldOfStructure.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
         elif remaining_characters_of_main_struct_definition_to_parse.startswith("struct"):
             matlabstructureOfFieldOfStructure = MatlabStructureOfFieldOfStructure()
             matlabstructureOfFieldOfStructure.parent = self
+            self.elements.append(matlabstructureOfFieldOfStructure)
             remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len("struct"):]
             remaining_characters_of_main_struct_definition_to_parse = matlabstructureOfFieldOfStructure.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
 
