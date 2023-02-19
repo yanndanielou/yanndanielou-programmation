@@ -210,7 +210,7 @@ class MatlabMainLevel0Struct:
     def decode_fields(self):
 
         #parsing_sMT2_Data_mE_struct_file_step = Parsing_sMT2_Data_mE_struct_file_step()
-        remaining_characters_of_main_struct_definition_to_parse = self.structure_full_definition_without_name_in_one_line
+        remaining_characters_of_main_struct_definition_to_parse = self.structure_inside_content_definition_in_one_line
         current_struct_field = None
         while(len(remaining_characters_of_main_struct_definition_to_parse) > 0):
             current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
@@ -221,6 +221,7 @@ class MatlabMainLevel0Struct:
                     current_struct_field = MatlabFieldOfStructure()
                     current_struct_field.parent = self
                     self.fields.append(current_struct_field)
+                    printAndLogInfo("Structure: " + self.name  + " new field found")
                     #parsing_sMT2_Data_mE_struct_file_step.step = parsing_sMT2_Data_mE_struct_file_step.step_reading_field_name
                 elif current_struct_field.is_name_complete == False:
                     current_struct_field.is_name_complete = True
@@ -236,7 +237,7 @@ class MatlabMainLevel0Struct:
 class MatlabFieldOfStructure:
 
     def __init__(self):
-        self.name = None
+        self.name = ""
         self.is_name_complete = False
         self.elements = list()
         self.original_definition_in_one_line = None
@@ -280,11 +281,17 @@ class MatlabStructureOfFieldOfStructure:
         self.is_empty = None
         self.text_content = None
         self.elements = None
+        
 
     def build_yourself_with_remaining_characters_of_main_struct_definition(self, remaining_characters_of_main_struct_definition_to_parse):
         while(len(remaining_characters_of_main_struct_definition_to_parse) > 0):
             current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
             remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+            #if current_parsed_character == "'":
+            #    #Either beginning or end
+            #elif current_parsed_character == "[":
+
+
 
 
 
@@ -296,11 +303,16 @@ class MatlabArrayOfFieldOfStructure:
         self.is_empty = None
         self.text_content = None
         self.elements = None
+        self.full_content_as_string = ""
 
     def build_yourself_with_remaining_characters_of_main_struct_definition(self, remaining_characters_of_main_struct_definition_to_parse):
-        while(len(remaining_characters_of_main_struct_definition_to_parse) > 0):
-            current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
-            remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+        self.full_content_as_string.split("}")[0]
+        remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len(self.full_content_as_string):]
+        printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " array field full content:" + self.full_content_as_string)
+
+        #while(len(remaining_characters_of_main_struct_definition_to_parse) > 0 and remaining_characters_of_main_struct_definition_to_parse[0] != "}"):
+        #    current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
+            
 
         return remaining_characters_of_main_struct_definition_to_parse
 
