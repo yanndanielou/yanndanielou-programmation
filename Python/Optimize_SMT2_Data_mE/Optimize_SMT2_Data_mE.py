@@ -14,6 +14,9 @@ import inspect
 import datetime
 import time
 
+#Reges
+import re
+
 #param
 end_line_character_in_text_file = "\n"
 input_SMT2_Data_mE_file_name = "SMT2_Data_mE.m"
@@ -287,8 +290,7 @@ class MatlabFieldOfStructure:
                     return remaining_characters_of_main_struct_definition_to_parse
 
             elif remaining_characters_of_main_struct_definition_to_parse.startswith("struct"):
-                matlabstructureOfFieldOfStructure = MatlabStructureOfFieldOfStructure()
-                matlabstructureOfFieldOfStructure.parent = self
+                matlabstructureOfFieldOfStructure = MatlabStructureOfFieldOfStructure(self)
                 self.elements.append(matlabstructureOfFieldOfStructure)
                 remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len("struct"):]
                 remaining_characters_of_main_struct_definition_to_parse = matlabstructureOfFieldOfStructure.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
@@ -304,7 +306,7 @@ class MatlabFieldOfStructure:
             else:
                 current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
                 remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
-                logging.info("Structure:" + self.parent.name + " field " + self.name + " ignored character ")
+                logging.info("Structure:" + self.parent.name + " field " + self.name + " ignored character " + current_parsed_character)
 
 
 
@@ -312,8 +314,9 @@ class MatlabFieldOfStructure:
 
 class MatlabStructureOfFieldOfStructure:
 
-    def __init__(self):
-        self.parent = None
+    def __init__(self, parent):
+        self.parent = parent
+        self.name = "Sub structure of field " + parent.name
         self.is_empty = None
         self.full_content_as_string = None
         self.fields = list()
@@ -370,10 +373,11 @@ class MatlabArrayOfFieldOfStructure:
         self.full_content_as_string = remaining_characters_of_main_struct_definition_to_parse.split("}")[0]
         remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len(self.full_content_as_string):]
 
-        for element_as_full_text in self.full_content_as_string.split(matlab_field_separator):
-            field = MatlabFieldOfArrayOfFieldOfStructure(self, element_as_full_text)
+        remaining_array_content_as_string_to_parse = self.full_content_as_string
+        while len(remaining_array_content_as_string_to_parse) > 0:
+            field = MatlabFieldOfArrayOfFieldOfStructure(self)
             self.elements.append(field)
-  
+            remaining_array_content_as_string_to_parse = field.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_array_content_as_string_to_parse)
 
         #Remove end of array character    
         current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
@@ -398,12 +402,81 @@ class MatlabArrayOfFieldOfStructure:
         return remaining_characters_of_main_struct_definition_to_parse
 
 
+class MatlabFieldOfArrayOfFieldOfStructureType:
+    type_undefined = "type_undefined" 
+    type_table = "type_table" 
+    type_integer = "type_integer"
+    type_string = "type_string"
+
+    def __init__(self, parent):
+        self.type = MatlabFieldOfArrayOfFieldOfStructureType.type_undefined
+    
+
 class MatlabFieldOfArrayOfFieldOfStructure:
 
-    def __init__(self, parent, full_text_content):
+    def __init__(self, parent):
         self.parent = parent
-        self.full_text_content = full_text_content
-        self.is_empty = full_text_content == matlab_empty_array_field
+        self.full_content_as_string = None
+        self.is_empty = None
+        self.type =  MatlabFieldOfArrayOfFieldOfStructureType()
+        self.value_as_table = None
+        self.value_as_float = None
+        
+    def build_yourself_with_remaining_characters_of_main_struct_definition(self, remaining_characters_of_main_struct_definition_to_parse):
+        self.full_content_as_string = ""
+
+        first_character = remaining_characters_of_main_struct_definition_to_parse[0]
+
+        if first_character == "[":
+            self.type.type = MatlabFieldOfArrayOfFieldOfStructureType.type_table
+            remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+        elif first_character == "'":
+            self.type.type = MatlabFieldOfArrayOfFieldOfStructureType.type_string
+            remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+        elif re.compile("[A-Za-z0-9]+").fullmatch(first_character) or first_character == "-":
+            self.type.type = MatlabFieldOfArrayOfFieldOfStructureType.type_integer
+        else:
+            printAndLogCriticalAndKill("Cannot find type for element starting with " + remaining_characters_of_main_struct_definition_to_parse)
+
+        while len(remaining_characters_of_main_struct_definition_to_parse) > 0:
+            first_character = remaining_characters_of_main_struct_definition_to_parse[0]
+
+            if self.type.type == MatlabFieldOfArrayOfFieldOfStructureType.type_table:
+                remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+
+                if first_character == "]":
+                    logging.debug("Has built " + self.type.type + " with content as string:" + self.value_as_table)
+
+                    self.value_as_table = list()
+
+                    if len(self.value_as_table) > 0:
+                        for item_of_table_as_string in self.value_as_table.split(matlab_field_separator):
+                            self.value_as_table.append(item_of_table_as_string)
+
+                    return remaining_characters_of_main_struct_definition_to_parse
+                else:
+                    self.full_content_as_string += first_character
+      
+            elif self.type.type == MatlabFieldOfArrayOfFieldOfStructureType.type_string:
+
+                remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+
+                if first_character == "'":
+                    logging.debug("Has built " + self.type.type + " with content as string:" + self.value_as_table)
+                    return remaining_characters_of_main_struct_definition_to_parse
+                else:
+                    self.full_content_as_string += first_character
+            
+            elif self.type.type == MatlabFieldOfArrayOfFieldOfStructureType.type_integer:
+                if first_character == matlab_field_separator or first_character == matlab_structure_fields_table_end:
+                    logging.debug("Has built " + self.type.type + " with content as string:" + self.value_as_table)
+                    self.value_as_float = float(self.full_content_as_string)
+                    return remaining_characters_of_main_struct_definition_to_parse
+                else:
+                    self.full_content_as_string += first_character
+            
+
+        return remaining_characters_of_main_struct_definition_to_parse
 
 
 
