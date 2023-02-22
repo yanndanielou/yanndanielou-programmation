@@ -313,7 +313,7 @@ class MatlabStructureOfFieldOfStructure:
         self.parent = None
         self.is_empty = None
         self.full_text_content = None
-        self.elements = None
+        self.elements = list()
         
 
     def build_yourself_with_remaining_characters_of_main_struct_definition(self, remaining_characters_of_main_struct_definition_to_parse):
