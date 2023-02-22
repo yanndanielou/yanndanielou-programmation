@@ -418,7 +418,7 @@ class MatlabFieldOfArrayOfFieldOfStructure:
         self.parent = parent
         self.full_content_as_string = None
         self.is_empty = None
-        self.type =  MatlabFieldOfArrayOfFieldOfStructureType()
+        self.type =  MatlabFieldOfArrayOfFieldOfStructureType(self)
         self.value_as_table = None
         self.value_as_float = None
         
