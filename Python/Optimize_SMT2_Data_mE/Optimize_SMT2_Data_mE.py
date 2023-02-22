@@ -402,8 +402,8 @@ class MatlabArrayOfFieldOfStructure:
 
 
         printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " array has " + str(len(self.elements)) + " elements")
-        printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " number of empty fields " + str(sum(elements.is_empty for elements in self.elements)) + " elements")
-        printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " number of not empty fields " + str(sum(not elements.is_empty for elements in self.elements)) + " elements")
+        #printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " number of empty fields " + str(sum(elements.is_empty for elements in self.elements)) + " elements")
+        #printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " number of not empty fields " + str(sum(not elements.is_empty for elements in self.elements)) + " elements")
         logging.debug("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " full text content:" + self.full_content_as_string)
         return remaining_characters_of_main_struct_definition_to_parse
 
@@ -451,7 +451,6 @@ class MatlabFieldOfArrayOfFieldOfStructure:
                 remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
 
                 if first_character == "]":
-                    logging.debug("Has built " + self.type.type + " with content as string:" + self.value_as_table)
 
                     self.value_as_table = list()
 
@@ -459,9 +458,13 @@ class MatlabFieldOfArrayOfFieldOfStructure:
                         for item_of_table_as_string in self.value_as_table.split(matlab_field_separator):
                             self.value_as_table.append(item_of_table_as_string)
 
+                    logging.debug("Has built " + self.type.type + " with content as string:" + str(self.value_as_table))
+
+                    remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
                     return remaining_characters_of_main_struct_definition_to_parse
                 else:
                     self.full_content_as_string += first_character
+                    remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
       
             elif self.type.type == MatlabFieldOfArrayOfFieldOfStructureType.type_string:
 
@@ -475,11 +478,12 @@ class MatlabFieldOfArrayOfFieldOfStructure:
             
             elif self.type.type == MatlabFieldOfArrayOfFieldOfStructureType.type_float:
                 if first_character == matlab_field_separator or first_character == matlab_structure_fields_table_end:
-                    logging.debug("Has built " + self.type.type + " with content as string:" + self.value_as_float)
                     self.value_as_float = float(self.full_content_as_string)
+                    logging.debug("Has built " + self.type.type + " with content as string:" + str(self.value_as_float))
                     return remaining_characters_of_main_struct_definition_to_parse
                 else:
                     self.full_content_as_string += first_character
+                    remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
             
 
         return remaining_characters_of_main_struct_definition_to_parse
