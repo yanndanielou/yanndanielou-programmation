@@ -207,7 +207,7 @@ def decode_matlab_structure(matlabStruct, remaining_line_to_decode):
                 printAndLogInfo("Structure: " + matlabStruct.name  + " name decoded for field: " + current_struct_field.name)
                 if remaining_line_to_decode.startswith(","):
                     remaining_line_to_decode = remaining_line_to_decode[len(","):]
-                    remaining_line_to_decode = current_struct_field.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
+                    remaining_line_to_decode = current_struct_field.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_line_to_decode)
                     current_struct_field = None
         elif current_struct_field.is_name_complete == False:
             current_struct_field.name += current_parsed_character
