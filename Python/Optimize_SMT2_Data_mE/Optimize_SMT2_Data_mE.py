@@ -30,6 +30,7 @@ matlab_structure_fields_table_end = "}"
 matlab_structure_field_end = "}"
 matlab_structure_operator = "struct"
 matlab_structure_begin = matlab_structure_operator + "("
+matlab_empty_array_field = "[]"
 
 def printAndLogCriticalAndKill(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
@@ -288,11 +289,15 @@ class MatlabFieldOfStructure:
                 self.elements.append(matlabstructureOfFieldOfStructure)
                 remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len("struct"):]
                 remaining_characters_of_main_struct_definition_to_parse = matlabstructureOfFieldOfStructure.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
-            elif remaining_characters_of_main_struct_definition_to_parse.startswith(matlab_structure_field_end):
-                logging.info("Structure:" + self.parent.name + " field " + self.name + " ignored character ")
 
-                matlabstructureOfFieldOfStructure = MatlabStructureOfFieldOfStructure()
-                matlabstructureOfFieldOfStructure.parent = self
+                logging.info("After building for structure:" + self.parent.name + " the field " + self.name + ", there are:" + str(len(remaining_characters_of_main_struct_definition_to_parse)) + " characters left to parse")
+
+
+            elif remaining_characters_of_main_struct_definition_to_parse.startswith(matlab_structure_field_end):
+                printAndLogCriticalAndKill("Structure:" + self.parent.name + " field " + self.name + " unsupported step " + remaining_characters_of_main_struct_definition_to_parse)
+
+                #matlabstructureOfFieldOfStructure = MatlabStructureOfFieldOfStructure()
+                #matlabstructureOfFieldOfStructure.parent = self
             else:
                 current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
                 remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
@@ -307,17 +312,29 @@ class MatlabStructureOfFieldOfStructure:
     def __init__(self):
         self.parent = None
         self.is_empty = None
-        self.text_content = None
+        self.full_text_content = None
         self.elements = None
         
 
     def build_yourself_with_remaining_characters_of_main_struct_definition(self, remaining_characters_of_main_struct_definition_to_parse):
-        while(len(remaining_characters_of_main_struct_definition_to_parse) > 0):
-            current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
-            remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
-            #if current_parsed_character == "'":
-            #    #Either beginning or end
-            #elif current_parsed_character == "[":
+
+
+        #Remove last "("
+        current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]       
+        if current_parsed_character != "(":
+            printAndLogCriticalAndKill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end + ". Remaining to parse: " + remaining_characters_of_main_struct_definition_to_parse)
+        remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+
+        self.full_content_as_string = remaining_characters_of_main_struct_definition_to_parse.split(")")[0]
+
+        #Remove last ")"
+        current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]       
+        if current_parsed_character != ")":
+            printAndLogCriticalAndKill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end + ". Remaining to parse: " + remaining_characters_of_main_struct_definition_to_parse)
+        remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+  
+        
+        return remaining_characters_of_main_struct_definition_to_parse
 
 
 
@@ -337,39 +354,41 @@ class MatlabArrayOfFieldOfStructure:
         self.full_content_as_string = remaining_characters_of_main_struct_definition_to_parse.split("}")[0]
         remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len(self.full_content_as_string):]
 
-        for element in self.full_content_as_string.split(matlab_field_separator):
-            field = MatlabFieldOfArrayOfFieldOfStructure()
-            field.parent = self
-            field.full_text_content = element
+        for element_as_full_text in self.full_content_as_string.split(matlab_field_separator):
+            field = MatlabFieldOfArrayOfFieldOfStructure(self, element_as_full_text)
             self.elements.append(field)
   
 
         #Remove end of array character    
         current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
         if current_parsed_character != matlab_structure_fields_table_end:
-            printAndLogCriticalAndKill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end)
+            printAndLogCriticalAndKill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end + ". Remaining to parse: " + remaining_characters_of_main_struct_definition_to_parse)
         
         remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
 
         #Remove end of array character
-        if len(remaining_characters_of_main_struct_definition_to_parse) > 0     
-        current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
+        if len(remaining_characters_of_main_struct_definition_to_parse) > 0:   
+            current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
             if current_parsed_character != matlab_field_separator:
-                printAndLogCriticalAndKill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end)
+                printAndLogCriticalAndKill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end + ". Remaining to parse: " + remaining_characters_of_main_struct_definition_to_parse)
 
             remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
 
 
         printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " array has " + str(len(self.elements)) + " elements")
+        printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " number of empty fields " + str(sum(elements.is_empty for elements in self.elements)) + " elements")
+        printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " number of not empty fields " + str(sum(not elements.is_empty for elements in self.elements)) + " elements")
+        printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " full text content:" + self.full_content_as_string)
         return remaining_characters_of_main_struct_definition_to_parse
 
 
 class MatlabFieldOfArrayOfFieldOfStructure:
 
-    def __init__(self):
-        self.parent = None
-        self.is_empty = None
-        self.full_text_content = None
+    def __init__(self, parent, full_text_content):
+        self.parent = parent
+        self.full_text_content = full_text_content
+        self.is_empty = full_text_content == matlab_empty_array_field
+
 
 
 
