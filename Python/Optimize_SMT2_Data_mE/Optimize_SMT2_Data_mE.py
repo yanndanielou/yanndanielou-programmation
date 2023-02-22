@@ -268,7 +268,7 @@ class MatlabFieldOfStructure:
             else:
                 current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
                 remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
-                logging.info("Structure:" + self.parent.name + " field " + self.name + + " ignored character ")
+                logging.info("Structure:" + self.parent.name + " field " + self.name + " ignored character ")
 
 
 
