@@ -462,7 +462,7 @@ class MatlabFieldOfArrayOfFieldOfStructure:
                 remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
 
                 if first_character == "'":
-                    logging.debug("Has built " + self.type.type + " with content as string:" + self.value_as_table)
+                    logging.debug("Has built " + self.type.type + " with content as string:" + self.full_content_as_string)
                     return remaining_characters_of_main_struct_definition_to_parse
                 else:
                     self.full_content_as_string += first_character
