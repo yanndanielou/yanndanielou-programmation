@@ -405,7 +405,7 @@ class MatlabArrayOfFieldOfStructure:
 class MatlabFieldOfArrayOfFieldOfStructureType:
     type_undefined = "type_undefined" 
     type_table = "type_table" 
-    type_integer = "type_integer"
+    type_float = "type_float"
     type_string = "type_string"
 
     def __init__(self, parent):
@@ -434,7 +434,7 @@ class MatlabFieldOfArrayOfFieldOfStructure:
             self.type.type = MatlabFieldOfArrayOfFieldOfStructureType.type_string
             remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
         elif re.compile("[A-Za-z0-9]+").fullmatch(first_character) or first_character == "-":
-            self.type.type = MatlabFieldOfArrayOfFieldOfStructureType.type_integer
+            self.type.type = MatlabFieldOfArrayOfFieldOfStructureType.type_float
         else:
             printAndLogCriticalAndKill("Cannot find type for element starting with " + remaining_characters_of_main_struct_definition_to_parse)
 
@@ -467,9 +467,9 @@ class MatlabFieldOfArrayOfFieldOfStructure:
                 else:
                     self.full_content_as_string += first_character
             
-            elif self.type.type == MatlabFieldOfArrayOfFieldOfStructureType.type_integer:
+            elif self.type.type == MatlabFieldOfArrayOfFieldOfStructureType.type_float:
                 if first_character == matlab_field_separator or first_character == matlab_structure_fields_table_end:
-                    logging.debug("Has built " + self.type.type + " with content as string:" + self.value_as_table)
+                    logging.debug("Has built " + self.type.type + " with content as string:" + self.value_as_float)
                     self.value_as_float = float(self.full_content_as_string)
                     return remaining_characters_of_main_struct_definition_to_parse
                 else:
