@@ -380,7 +380,7 @@ class MatlabArrayOfFieldOfStructure:
             remaining_array_content_as_string_to_parse = field.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_array_content_as_string_to_parse)
             if len(remaining_array_content_as_string_to_parse) > 0:
                 if remaining_array_content_as_string_to_parse[0] == matlab_field_separator:
-                    remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+                    remaining_array_content_as_string_to_parse = remaining_array_content_as_string_to_parse[1:]
                 else:
                     printAndLogCriticalAndKill("Was not expected " + remaining_array_content_as_string_to_parse[0] + " remaining characters to parse:" + remaining_characters_of_main_struct_definition_to_parse)
 
