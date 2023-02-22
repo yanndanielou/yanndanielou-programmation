@@ -316,7 +316,7 @@ class MatlabStructureOfFieldOfStructure:
         self.parent = None
         self.is_empty = None
         self.full_content_as_string = None
-        self.elements = list()
+        self.fields = list()
         
     def decode_fields_of_structure(self):
         remaining_line_to_decode = decode_matlab_structure(self, self.full_content_as_string)
@@ -346,7 +346,7 @@ class MatlabStructureOfFieldOfStructure:
         remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
   
         
-        printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " structure has " + str(len(self.elements)) + " elements")
+        printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " structure has " + str(len(self.fields)) + " elements")
         logging.debug("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " structure full text content:" + self.full_content_as_string)
 
 
