@@ -111,7 +111,7 @@ class print_argument_if_function_returns_true(object):
             arguments = args
             function_argument = args[0]
             function_name = self.f.__name__
-            printAndLogInfo(self.f.__name__ + " returns true for :" + function_argument)
+            logging.info(self.f.__name__ + " returns true for :" + function_argument)
         
             #printAndLogInfo(self.f.__name__ + " returns true for :" + str(locals().get("line")))
         return ret        
@@ -188,7 +188,31 @@ class Parsing_sMT2_Data_mE_file_step:
     #    return self.step == self.step_waiting_end_of_file
 
 def decode_matlab_structure(matlabStruct, remaining_line_to_decode):
-    a = 1
+    current_struct_field = None
+
+    while(len(remaining_line_to_decode) > 0):
+        current_parsed_character = remaining_line_to_decode[0]
+        remaining_line_to_decode = remaining_line_to_decode[1:]
+
+
+        if current_parsed_character == "'":
+            if current_struct_field == None:
+                current_struct_field = MatlabFieldOfStructure()
+                current_struct_field.parent = matlabStruct
+                matlabStruct.fields.append(current_struct_field)
+                printAndLogInfo("Structure: " + matlabStruct.name  + " new field found")
+                #parsing_sMT2_Data_mE_struct_file_step.step = parsing_sMT2_Data_mE_struct_file_step.step_reading_field_name
+            elif current_struct_field.is_name_complete == False:
+                current_struct_field.is_name_complete = True
+                printAndLogInfo("Structure: " + matlabStruct.name  + " name decoded for field: " + current_struct_field.name)
+                if remaining_line_to_decode.startswith(","):
+                    remaining_line_to_decode = remaining_line_to_decode[len(","):]
+                    remaining_line_to_decode = current_struct_field.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
+                    current_struct_field = None
+        elif current_struct_field.is_name_complete == False:
+            current_struct_field.name += current_parsed_character
+  
+    return remaining_line_to_decode
 
 
 
@@ -233,28 +257,8 @@ class MatlabMainLevel0Struct:
 
         #parsing_sMT2_Data_mE_struct_file_step = Parsing_sMT2_Data_mE_struct_file_step()
         remaining_characters_of_main_struct_definition_to_parse = self.structure_inside_content_definition_in_one_line
-        current_struct_field = None
-        while(len(remaining_characters_of_main_struct_definition_to_parse) > 0):
-            current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
-            remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
-
-            if current_parsed_character == "'":
-                if current_struct_field == None:
-                    current_struct_field = MatlabFieldOfStructure()
-                    current_struct_field.parent = self
-                    self.fields.append(current_struct_field)
-                    printAndLogInfo("Structure: " + self.name  + " new field found")
-                    #parsing_sMT2_Data_mE_struct_file_step.step = parsing_sMT2_Data_mE_struct_file_step.step_reading_field_name
-                elif current_struct_field.is_name_complete == False:
-                    current_struct_field.is_name_complete = True
-                    printAndLogInfo("Structure: " + self.name  + " name decoded for field: " + current_struct_field.name)
-                    if remaining_characters_of_main_struct_definition_to_parse.startswith(","):
-                        remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len(","):]
-                        remaining_characters_of_main_struct_definition_to_parse = current_struct_field.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
-                        current_struct_field = None
-            elif current_struct_field.is_name_complete == False:
-                current_struct_field.name += current_parsed_character
-            
+ 
+        decode_matlab_structure(self, remaining_characters_of_main_struct_definition_to_parse)          
                     
       
 class MatlabFieldOfStructure:
@@ -315,7 +319,11 @@ class MatlabStructureOfFieldOfStructure:
         self.elements = list()
         
     def decode_fields_of_structure(self):
-        
+        remaining_line_to_decode = decode_matlab_structure(self, self.full_text_content)
+        if len(remaining_line_to_decode) > 0:
+            printAndLogCriticalAndKill("After decoding sub structure, " + str(len(remaining_line_to_decode)) + " not parsed characters:" + remaining_line_to_decode)
+
+
 
     def build_yourself_with_remaining_characters_of_main_struct_definition(self, remaining_characters_of_main_struct_definition_to_parse):
 
