@@ -261,7 +261,7 @@ class MatlabFieldOfStructure:
                 remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len("struct"):]
                 remaining_characters_of_main_struct_definition_to_parse = matlabstructureOfFieldOfStructure.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
             elif remaining_characters_of_main_struct_definition_to_parse.startswith(matlab_structure_field_end):
-                logging.info("Structure:" + self.parent.name + " field " + self.name + + " ignored character ")
+                logging.info("Structure:" + self.parent.name + " field " + self.name + " ignored character ")
 
                 matlabstructureOfFieldOfStructure = MatlabStructureOfFieldOfStructure()
                 matlabstructureOfFieldOfStructure.parent = self
