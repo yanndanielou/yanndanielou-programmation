@@ -326,6 +326,7 @@ class MatlabStructureOfFieldOfStructure:
         remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
 
         self.full_content_as_string = remaining_characters_of_main_struct_definition_to_parse.split(")")[0]
+        remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len(self.full_content_as_string):]
 
         #Remove last ")"
         current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]       
@@ -334,6 +335,10 @@ class MatlabStructureOfFieldOfStructure:
         remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
   
         
+        printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " structure has " + str(len(self.elements)) + " elements")
+        logging.debug("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " structure full text content:" + self.full_content_as_string)
+
+
         return remaining_characters_of_main_struct_definition_to_parse
 
 
@@ -378,7 +383,7 @@ class MatlabArrayOfFieldOfStructure:
         printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " array has " + str(len(self.elements)) + " elements")
         printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " number of empty fields " + str(sum(elements.is_empty for elements in self.elements)) + " elements")
         printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " number of not empty fields " + str(sum(not elements.is_empty for elements in self.elements)) + " elements")
-        printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " full text content:" + self.full_content_as_string)
+        logging.debug("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " full text content:" + self.full_content_as_string)
         return remaining_characters_of_main_struct_definition_to_parse
 
 
