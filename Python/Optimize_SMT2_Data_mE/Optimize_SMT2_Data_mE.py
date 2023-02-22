@@ -315,11 +315,11 @@ class MatlabStructureOfFieldOfStructure:
     def __init__(self):
         self.parent = None
         self.is_empty = None
-        self.full_text_content = None
+        self.full_content_as_string = None
         self.elements = list()
         
     def decode_fields_of_structure(self):
-        remaining_line_to_decode = decode_matlab_structure(self, self.full_text_content)
+        remaining_line_to_decode = decode_matlab_structure(self, self.full_content_as_string)
         if len(remaining_line_to_decode) > 0:
             printAndLogCriticalAndKill("After decoding sub structure, " + str(len(remaining_line_to_decode)) + " not parsed characters:" + remaining_line_to_decode)
 
