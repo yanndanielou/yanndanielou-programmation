@@ -6,6 +6,10 @@ import logging
 import os
 import sys
 
+# To get line number for logs
+from inspect import currentframe, getframeinfo
+import inspect
+
 #Dates
 import datetime
 import time
@@ -29,26 +33,44 @@ matlab_structure_begin = matlab_structure_operator + "("
 
 def printAndLogCriticalAndKill(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
-    print(log_timestamp + '\t' + toPrintAndLog)
-    logging.critical(toPrintAndLog)
+    
+    previous_stack = inspect.stack(1)[1]
+    line_number = previous_stack.lineno
+
+    print(log_timestamp + '\t' + "line#" + str(line_number) + '\t' +toPrintAndLog)
+    logging.critical("line#" + str(line_number) + '\t' +toPrintAndLog)
     sys.exit()
 
 def printAndLogInfo(toPrintAndLog):
+    
     log_timestamp = time.asctime( time.localtime(time.time()))
-    print(log_timestamp + '\t' + toPrintAndLog)
-    logging.info(toPrintAndLog)
+
+    previous_stack = inspect.stack(1)[1]
+    line_number = previous_stack.lineno
+
+    print(log_timestamp + '\t' + "line#" + str(line_number) + '\t' + str() + toPrintAndLog)
+    logging.info("line#" + str(line_number) + '\t' +toPrintAndLog)
     
     
 def printAndLogWarning(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
-    print(log_timestamp + '\t' + toPrintAndLog)
-    logging.warning(toPrintAndLog)
+
+    previous_stack = inspect.stack(1)[1]
+    line_number = previous_stack.lineno
+
+    print(log_timestamp + '\t' + "line#" + str(line_number) + '\t' +toPrintAndLog)
+    logging.warning("line#" + str(line_number) + '\t' +toPrintAndLog)
     
 def printAndLogError(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
+    
+    previous_stack = inspect.stack(1)[1]
+    line_number = previous_stack.lineno
+
     print(log_timestamp + '\t' + "!!ERROR!!")
+    print(log_timestamp + '\t' "line#" + str(line_number))
     print(log_timestamp + '\t' + toPrintAndLog)
-    logging.error(toPrintAndLog)
+    logging.error("line#" + str(line_number) + '\t' +toPrintAndLog)
 
     
 def configureLogger(log_file_name):
@@ -229,6 +251,7 @@ class MatlabMainLevel0Struct:
                     if remaining_characters_of_main_struct_definition_to_parse.startswith(","):
                         remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len(","):]
                         remaining_characters_of_main_struct_definition_to_parse = current_struct_field.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
+                        current_struct_field = None
             elif current_struct_field.is_name_complete == False:
                 current_struct_field.name += current_parsed_character
             
@@ -254,6 +277,11 @@ class MatlabFieldOfStructure:
                 self.elements.append(matlabArrayOfFieldOfStructure)
                 remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
                 remaining_characters_of_main_struct_definition_to_parse = matlabArrayOfFieldOfStructure.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_characters_of_main_struct_definition_to_parse)
+                logging.info("After building for structure:" + self.parent.name + " the field " + self.name + ", there are:" + str(len(remaining_characters_of_main_struct_definition_to_parse)) + " characters left to parse")
+
+                if len(remaining_characters_of_main_struct_definition_to_parse) > 0 and remaining_characters_of_main_struct_definition_to_parse[0] == "'":
+                    return remaining_characters_of_main_struct_definition_to_parse
+
             elif remaining_characters_of_main_struct_definition_to_parse.startswith("struct"):
                 matlabstructureOfFieldOfStructure = MatlabStructureOfFieldOfStructure()
                 matlabstructureOfFieldOfStructure.parent = self
@@ -302,19 +330,48 @@ class MatlabArrayOfFieldOfStructure:
         self.parent = None
         self.is_empty = None
         self.text_content = None
-        self.elements = None
+        self.elements = list()
         self.full_content_as_string = ""
 
     def build_yourself_with_remaining_characters_of_main_struct_definition(self, remaining_characters_of_main_struct_definition_to_parse):
-        self.full_content_as_string.split("}")[0]
+        self.full_content_as_string = remaining_characters_of_main_struct_definition_to_parse.split("}")[0]
         remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len(self.full_content_as_string):]
-        printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " array field full content:" + self.full_content_as_string)
 
-        #while(len(remaining_characters_of_main_struct_definition_to_parse) > 0 and remaining_characters_of_main_struct_definition_to_parse[0] != "}"):
-        #    current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
-            
+        for element in self.full_content_as_string.split(matlab_field_separator):
+            field = MatlabFieldOfArrayOfFieldOfStructure()
+            field.parent = self
+            field.full_text_content = element
+            self.elements.append(field)
+  
 
+        #Remove end of array character    
+        current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
+        if current_parsed_character != matlab_structure_fields_table_end:
+            printAndLogCriticalAndKill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end)
+        
+        remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+
+        #Remove end of array character
+        if len(remaining_characters_of_main_struct_definition_to_parse) > 0     
+        current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
+            if current_parsed_character != matlab_field_separator:
+                printAndLogCriticalAndKill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end)
+
+            remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
+
+
+        printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " array has " + str(len(self.elements)) + " elements")
         return remaining_characters_of_main_struct_definition_to_parse
+
+
+class MatlabFieldOfArrayOfFieldOfStructure:
+
+    def __init__(self):
+        self.parent = None
+        self.is_empty = None
+        self.full_text_content = None
+
+
 
 def get_structure_name_from_struct_creation_line(struct_creation_line):
     structure_name = struct_creation_line.split("=")[0].strip()
