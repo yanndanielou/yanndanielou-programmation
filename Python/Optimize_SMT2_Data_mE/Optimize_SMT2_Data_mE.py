@@ -187,9 +187,8 @@ class Parsing_sMT2_Data_mE_file_step:
     #def is_step_waiting_end_of_file(self):
     #    return self.step == self.step_waiting_end_of_file
 
-def decode_main_matlab_structure(matlabStruct, remaining_line_to_decode):
+def decode_matlab_structure(matlabStruct, remaining_line_to_decode):
     a = 1
-
 
 
 
@@ -315,6 +314,8 @@ class MatlabStructureOfFieldOfStructure:
         self.full_text_content = None
         self.elements = list()
         
+    def decode_fields_of_structure(self):
+        
 
     def build_yourself_with_remaining_characters_of_main_struct_definition(self, remaining_characters_of_main_struct_definition_to_parse):
 
@@ -326,6 +327,9 @@ class MatlabStructureOfFieldOfStructure:
 
         self.full_content_as_string = remaining_characters_of_main_struct_definition_to_parse.split(")")[0]
         remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[len(self.full_content_as_string):]
+
+        #Decode structure content
+        self.decode_fields_of_structure()
 
         #Remove last ")"
         current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]       
