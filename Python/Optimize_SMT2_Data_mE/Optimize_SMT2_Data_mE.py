@@ -20,7 +20,7 @@ import re
 #param
 end_line_character_in_text_file = "\n"
 input_SMT2_Data_mE_file_name = "SMT2_Data_mE.m"
-logger_level = logging.INFO
+logger_level = logging.DEBUG
 
 
 #Constants
