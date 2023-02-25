@@ -2,6 +2,7 @@ function load_all_data(varargin)
 
 disp(string(datetime) + " load_all_data begin");
 
+%run("D:\Pour_Yann_Melnotte\SMT3_Package\Fichiers .m extraits\SMT2_Data_mE_part_002.m");
 %affectation_variables_globales_to_test_load_data("D:\Pour_Yann_Melnotte\SMT3_Package\Fichiers .m extraits\SMT2_Data_projet.m");
 %affectation_variables_globales_to_test_load_data("D:\Pour_Yann_Melnotte\SMT3_Package\Fichiers .m extraits\SMT2_Data_Seg_Aig.m");
 %affectation_variables_globales_to_test_load_data("D:\Pour_Yann_Melnotte\SMT3_Package\Fichiers .m extraits\SMT2_Data_Cv_Lvisi.m");
