@@ -37,12 +37,21 @@ else
 end
 
 disp("Print final structure after changes:");
+
 print_structure_content(SMT_mE,"SMT_mE");
 print_structure_content(SMT_mE_seg,"SMT_mE_seg");
+
 print_structure_content(SMT_mE_aig,"SMT_mE_aig");
+disp("Specific for SMT_mE_aig: print value of aig_asso field which is a structure itself:");
+for structure_it = 1 : length(SMT_mE_aig)
+	disp("SMT_mE_aig" + " at " +  structure_it + " aig_asso:");
+    print_structure_content(SMT_mE_aig(structure_it).aig_asso, "SMT_mE_aig " + structure_it + " aig_asso");
+end
+
 print_structure_content(SMT_mE_feu,"SMT_mE_feu");
 print_structure_content(SMT_mE_feu_BAL,"SMT_mE_feu_BAL");
 print_structure_content(SMT_nb_mE,"SMT_nb_mE");
+
 
 
 
