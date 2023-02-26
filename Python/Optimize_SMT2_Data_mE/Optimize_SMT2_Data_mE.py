@@ -20,7 +20,7 @@ import re
 #param
 end_line_character_in_text_file = "\n"
 input_SMT2_Data_mE_file_name = "SMT2_Data_mE.m"
-logger_level = logging.DEBUG
+logger_level = logging.INFO
 
 
 #Constants
@@ -119,6 +119,23 @@ class print_argument_if_function_returns_true(object):
             #printAndLogInfo(self.f.__name__ + " returns true for :" + str(locals().get("line")))
         return ret        
 
+class execution_time(object):
+
+    def __init__(self, f):
+        self.f = f
+
+    def __call__(self, *args):
+        logging.info("Entering " +  self.f.__name__)
+        logging.debug("Arguments passed to " + self.f.__name__ + ":" + str(locals()))
+        start_time = time.time()
+        
+        #Call method
+        ret = self.f(*args)
+    
+        elapsed_time = time.time() - start_time    
+        logging.info("Exited " +  self.f.__name__ + ". Elapsed:" + format(elapsed_time, '.2f') + " s")
+        return ret
+
 class Parsing_sMT2_Data_mE_file_step:
 
     step_reading_first_file_lines_to_keep_unchanged = "step_reading_first_file_lines_to_keep_unchanged" 
@@ -197,6 +214,27 @@ def decode_matlab_structure(matlabStruct, remaining_line_to_decode):
     return remaining_line_to_decode
 
 
+class StructureModificationInstruction:
+
+    def __init__(self, full_content_as_string):
+        self.full_content_as_string = full_content_as_string
+        self.full_content_as_string_without_semi_column = full_content_as_string[:1]
+
+
+        # Examples:
+        #   SMT_mE_aig(7).cdv_reserv_transit_sens(1,1) = 1;
+        #   SMT_mE_aig(1).cdv_commut(1,1) = 171;
+        
+        structure_modification_instruction_line_regex_as_string = "(?P<structure_name>[0-9A-Za-z]*)[(](<structure_index>\\d+)[)][.]([0-9A-Za-z]*)[(](<field_index_1>\\d+)[,](<field_index_2>\\d+)[)]\s[=]\s(<new_value>\\d+)[;]"
+        structure_modification_instruction_line_regex_compiled = re.compile(structure_modification_instruction_line_regex_as_string)
+        match_result = structure_modification_instruction_line_regex_compiled.match(full_content_as_string)
+        #self.value_as_string = full_content_as_string.split("=")[1].strip()
+        #self.structure_name = full_content_as_string.split("(")[0].strip()
+        if match_result == None:
+            printAndLogCriticalAndKill("Could not parse : " + full_content_as_string)
+
+        self.value_as_int = match_result.group("new_value")
+        self.structure_name = match_result.group("structure_name")
 
 class MatlabMainLevel0Struct:
 
@@ -505,7 +543,10 @@ class SMT2_Data_mE_Content:
         #for all_structures_constructions_line in self.all_structures_constructions_lines:
         #    logging.debug(all_structures_constructions_line)
 
+    #@execution_time
     def create_structure_objects(self):
+        printAndLogInfo("Create structure objects")
+
         for structure_constructions_lines in self.structures_constructions_lines_as_list_by_structure:
             current_matlab_structure_name = get_structure_name_from_struct_creation_line(structure_constructions_lines[0])             
 
@@ -525,12 +566,18 @@ class SMT2_Data_mE_Content:
 
             logging.info("matlab_structure " + matlab_structure.name + " inside content one line:" + matlab_structure.structure_inside_content_definition_in_one_line)
 
-
+    #@execution_time
     def decode_main_structure_objects(self):
+        printAndLogInfo("Decode structure objects")
 
         for matlab_structure in self.structures:
             matlab_structure.decode_fields()
   
+    #@execution_time
+    def create_structure_modification_instruction_objects(self):
+        printAndLogInfo("Create structure modification instructions")
+        for filling_one_structure_specific_field_line in self.filling_one_structure_specific_field_lines:
+            structureModificationInstruction = StructureModificationInstruction(filling_one_structure_specific_field_line)
 
 def open_text_file_and_return_lines(input_file_name):  
     logging.info('Check existence of input file:' + input_file_name)
@@ -747,7 +794,7 @@ def Optimize_SMT2_Data_mE():
     sMT2_Data_mE_Content.create_structure_objects()
     sMT2_Data_mE_Content.decode_main_structure_objects()
 
-    sMT2_Data_mE_Content.create_structure_modification_objects()
+    sMT2_Data_mE_Content.create_structure_modification_instruction_objects()
     #sMT2_Data_mE_Content.parse_structures__not_working_for_struct_in_struct()
 
 
