@@ -228,7 +228,7 @@ class StructureModificationInstruction:
         #Rubular
         #([0-9A-Za-z]*)[(](\d+)[)][.]([0-9A-Za-z_\"]*)[(](\d+)[,](\d+)[)]\s[=]\s(\d+)[;]
 
-        structure_modification_instruction_line_regex_as_string = "(?P<structure_name>[0-9A-Za-z_]*)[(](?P<structure_index>\\d+)[)][.](?P<field_name>[0-9A-Za-z_]*)[(](?P<field_index_1>\\d+)[,](?P<field_index_2>\\d+)[)]\s[=]\s(?P<new_value>\\d+)[;]"
+        structure_modification_instruction_line_regex_as_string = "(?P<structure_name>[0-9A-Za-z_]*)[(](?P<structure_index>\\d+)[)][.](?P<field_name>[0-9A-Za-z_]*)[(](?P<field_index_1>\\d+)[,](?P<field_index_2>\\d+)[)]\s[=]\s(?P<new_value>-?\\d+)[;]"
         structure_modification_instruction_line_regex_compiled = re.compile(structure_modification_instruction_line_regex_as_string)
         match_result = structure_modification_instruction_line_regex_compiled.match(full_content_as_string)
         #self.value_as_string = full_content_as_string.split("=")[1].strip()
