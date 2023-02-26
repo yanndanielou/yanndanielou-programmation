@@ -7,7 +7,7 @@ global SMT_mE SMT_mE_seg SMT_mE_aig SMT_mE_feu SMT_mE_feu_BAL SMT_nb_mE
 
 disp("Load initial structure");
 
-nom_fichier_SMT2_Data_mE_initial = "input_files\\SMT2_Data_mE.txt"
+nom_fichier_SMT2_Data_mE_initial = "input_files\\SMT2_Data_mE.txt";
 if isfile(nom_fichier_SMT2_Data_mE_initial)
 	disp(string(datetime) + " " + "optionnal nom_fichier_SMT2_Data_mE_initial file " + nom_fichier_SMT2_Data_mE_initial + " exists: will be parsed by affectation_variables_globales function." + " (Time since application startup:" + (string(datetime - application_launch_time)) + ")");
 	affectation_variables_globales(nom_fichier_SMT2_Data_mE_initial);
