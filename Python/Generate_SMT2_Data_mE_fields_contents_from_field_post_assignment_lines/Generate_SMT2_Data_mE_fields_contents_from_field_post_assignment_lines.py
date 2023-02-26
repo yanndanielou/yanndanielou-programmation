@@ -154,7 +154,7 @@ class FieldOfStructureWithModificationInstruction:
         main_structure_index_starting_at_0 = tableFieldInMainStructureModificationInstruction.main_structure_index - 1
         arrayItemOfFieldOfStructureWithModificationInstruction = None
         
-        if main_structure_index_starting_at_0 > len(self.array_items):
+        if tableFieldInMainStructureModificationInstruction.main_structure_index > len(self.array_items):
             arrayItemOfFieldOfStructureWithModificationInstruction = ArrayItemOfFieldOfStructureWithModificationInstruction(self)
             self.array_items.append(arrayItemOfFieldOfStructureWithModificationInstruction)
         else:
