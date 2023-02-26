@@ -429,6 +429,8 @@ class MatlabFieldOfArrayOfFieldOfStructure:
         self.value_as_float = None
         
     def build_yourself_with_remaining_characters_of_main_struct_definition(self, remaining_characters_of_main_struct_definition_to_parse):
+        
+        original_remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse
         self.full_content_as_string = ""
 
         first_character = remaining_characters_of_main_struct_definition_to_parse[0]
@@ -442,7 +444,9 @@ class MatlabFieldOfArrayOfFieldOfStructure:
         elif re.compile("[A-Za-z0-9]+").fullmatch(first_character) or first_character == "-":
             self.type.type = MatlabFieldOfArrayOfFieldOfStructureType.type_float
         else:
-            printAndLogCriticalAndKill("Cannot find type for element starting with " + remaining_characters_of_main_struct_definition_to_parse)
+            printAndLogCriticalAndKill("Cannot find type for element starting with " + original_remaining_characters_of_main_struct_definition_to_parse)
+
+        logging.debug("Build " + self.__class__.__name__ + " with type :" + self.type.type + " from string " +  original_remaining_characters_of_main_struct_definition_to_parse[0:20])
 
         while len(remaining_characters_of_main_struct_definition_to_parse) > 0:
             first_character = remaining_characters_of_main_struct_definition_to_parse[0]
@@ -454,11 +458,11 @@ class MatlabFieldOfArrayOfFieldOfStructure:
 
                     self.value_as_table = list()
 
-                    if len(self.value_as_table) > 0:
-                        for item_of_table_as_string in self.value_as_table.split(matlab_field_separator):
+                    if len(self.full_content_as_string) > 0:
+                        for item_of_table_as_string in self.full_content_as_string.split(matlab_field_separator):
                             self.value_as_table.append(item_of_table_as_string)
 
-                    logging.debug("Has built " + self.type.type + " with content as string:" + str(self.value_as_table))
+                    logging.debug("Has built " + self.type.type + " with content as string:"  + self.full_content_as_string + " and content as table:" + str(self.value_as_table))
 
                     remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
                     return remaining_characters_of_main_struct_definition_to_parse
