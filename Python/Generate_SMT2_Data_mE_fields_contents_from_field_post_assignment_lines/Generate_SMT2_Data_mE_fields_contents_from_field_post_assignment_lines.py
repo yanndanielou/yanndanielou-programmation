@@ -284,7 +284,8 @@ class SMT2_Data_mE_Content:
 
             if structureWithModificationInstruction is None:
                 structureWithModificationInstruction = StructureWithModificationInstruction(tableFieldInMainStructureModificationInstruction.main_structure_name)  
-            
+                self.structuresWithModificationInstructions.append(structureWithModificationInstruction)
+
             #check if there is already a known field
             fieldOfStructureWithModificationInstruction = None
             for fieldWithModificationInstructionIt in structureWithModificationInstruction.fields:
@@ -293,9 +294,7 @@ class SMT2_Data_mE_Content:
 
             if fieldOfStructureWithModificationInstruction is None:
                 fieldOfStructureWithModificationInstruction = FieldOfStructureWithModificationInstruction(tableFieldInMainStructureModificationInstruction.field_name)  
-            
-
-            structureWithModificationInstruction.fields.append(fieldOfStructureWithModificationInstruction)
+                structureWithModificationInstruction.fields.append(fieldOfStructureWithModificationInstruction)
 
   
 
