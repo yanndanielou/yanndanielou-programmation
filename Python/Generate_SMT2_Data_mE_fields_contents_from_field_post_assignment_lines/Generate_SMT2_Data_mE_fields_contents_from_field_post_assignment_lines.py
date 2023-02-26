@@ -113,31 +113,16 @@ class execution_time(object):
         logging.info("Exited " +  self.f.__name__ + ". Elapsed:" + format(elapsed_time, '.2f') + " s")
         return ret
 
-class StructureFieldInMainStructureModificationInstruction:
-    
-    def __init__(self, full_content_as_string, match_result):
-        self.full_content_as_string = full_content_as_string
-
-        self.structure_name = match_result.group("main_structure_name")
-        self.structure_index = match_result.group("main_structure_index")
-        self.second_level_structure_name = match_result.group("second_level_structure_name")
-        self.second_level_structure_index = match_result.group("second_level_structure_index")
-        self.field_index = match_result.group("field_index")
-        self.new_value = match_result.group("new_value")
-
-
-
-
 class TableFieldInMainStructureModificationInstruction:
 
     def __init__(self, full_content_as_string, match_result):
         self.full_content_as_string = full_content_as_string
 
         self.main_structure_name = match_result.group("main_structure_name")
-        self.main_structure_index = match_result.group("main_structure_index")
+        self.main_structure_index = int(match_result.group("main_structure_index"))
         self.field_name = match_result.group("field_name")
-        self.field_index_1 = match_result.group("field_index_1")
-        self.field_index_2 = match_result.group("field_index_2")
+        self.field_index_1 = int(match_result.group("field_index_1"))
+        self.field_index_2 = int(match_result.group("field_index_2"))
         self.new_value = match_result.group("new_value")
 
 class ArrayItemOfFieldOfStructureWithModificationInstruction:
@@ -146,20 +131,15 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
         self.last_index_computed = None
         self.assingment_instructions = list()
         self.parent = parent
-        printAndLogInfo("Create " + self.__class__.__name__ + " created with name:" + self.name)
 
-    def add_assignment_instructions(self, tableFieldInMainStructureModificationInstruction):
-        self.assingment_instructions.append(tableFieldInMainStructureModificationInstruction)
-
-    def get_table_dimension(self, tableFieldInMainStructureModificationInstruction):
+    def get_table_dimension(self):
         max_dimension = 0
 
         for assingment_instruction in self.assingment_instructions:
             if assingment_instruction.field_index_1 > max_dimension:
                 max_dimension = assingment_instruction.field_index_1
-            
-            #logging.debug("Field " + self.name + " of structure " + self.parent.name + " has dimension:" + str(max_dimension))
-
+        
+        return max_dimension
 
 class FieldOfStructureWithModificationInstruction:
     def __init__(self, name, parent):
@@ -171,17 +151,16 @@ class FieldOfStructureWithModificationInstruction:
         printAndLogInfo("Create " + self.__class__.__name__ + " created with name:" + self.name)
 
     def add_assignment_instructions(self, tableFieldInMainStructureModificationInstruction):
-        main_structure_index_starting_at_0 = tableFieldInMainStructureModificationInstruction.main_structure_index
+        main_structure_index_starting_at_0 = tableFieldInMainStructureModificationInstruction.main_structure_index - 1
         arrayItemOfFieldOfStructureWithModificationInstruction = None
         
         if main_structure_index_starting_at_0 > len(self.array_items):
             arrayItemOfFieldOfStructureWithModificationInstruction = ArrayItemOfFieldOfStructureWithModificationInstruction(self)
             self.array_items.append(arrayItemOfFieldOfStructureWithModificationInstruction)
-
         else:
             arrayItemOfFieldOfStructureWithModificationInstruction = self.array_items[main_structure_index_starting_at_0]
 
-        arrayItemOfFieldOfStructureWithModificationInstruction.append(tableFieldInMainStructureModificationInstruction)
+        arrayItemOfFieldOfStructureWithModificationInstruction.assingment_instructions.append(tableFieldInMainStructureModificationInstruction)
     
 
 class StructureWithModificationInstruction:
@@ -218,7 +197,7 @@ class SMT2_Data_mE_Content:
                 fieldOfStructureWithModificationInstruction = FieldOfStructureWithModificationInstruction(tableFieldInMainStructureModificationInstruction.field_name, structureWithModificationInstruction)  
                 structureWithModificationInstruction.fields.append(fieldOfStructureWithModificationInstruction)
 
-            structureWithModificationInstruction.treat(tableFieldInMainStructureModificationInstruction)
+            fieldOfStructureWithModificationInstruction.add_assignment_instructions(tableFieldInMainStructureModificationInstruction)
 
 
 
