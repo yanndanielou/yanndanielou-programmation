@@ -118,27 +118,6 @@ class print_argument_if_function_returns_true(object):
         
             #printAndLogInfo(self.f.__name__ + " returns true for :" + str(locals().get("line")))
         return ret        
-        
-
-
-""" class Parsing_sMT2_Data_mE_struct_file_step:
-
-    step_not_started_yet = "step_not_started_yet" 
-
-    step_reading_field_name = "step_reading_field_name" 
-    step_reading_struct_construction_lines = "step_reading_struct_construction_lines"
-    step_filling_struct_cell_by_cell = "step_filling_struct_cell_by_cell"
-    step_has_parsed_last_return_of_file_and_waiting_end_of_file = "step_parsing_last_return_of_file"
-    #step_waiting_end_of_file = "step_waiting_end_of_file"    
-
-    
-    def __init__(self):
-        self.step = None
-
-
-    def __init__(self):
-        self.step = self.step_reading_first_file_lines_to_keep_unchanged
- """
 
 class Parsing_sMT2_Data_mE_file_step:
 
@@ -767,6 +746,8 @@ def Optimize_SMT2_Data_mE():
     load_SMT2_Data_mE(input_SMT2_Data_mE_file_name, sMT2_Data_mE_Content)
     sMT2_Data_mE_Content.create_structure_objects()
     sMT2_Data_mE_Content.decode_main_structure_objects()
+
+    sMT2_Data_mE_Content.create_structure_modification_objects()
     #sMT2_Data_mE_Content.parse_structures__not_working_for_struct_in_struct()
 
 
