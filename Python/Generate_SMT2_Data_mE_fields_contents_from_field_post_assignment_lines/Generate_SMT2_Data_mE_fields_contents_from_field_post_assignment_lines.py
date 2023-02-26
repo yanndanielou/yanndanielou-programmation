@@ -141,6 +141,11 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
         
         return max_dimension
 
+
+    def compute_fields(self):
+        max_dimension = self.get_table_dimension()
+
+
 class FieldOfStructureWithModificationInstruction:
     def __init__(self, name, parent):
         self.fields = list()
@@ -199,8 +204,10 @@ class SMT2_Data_mE_Content:
 
             fieldOfStructureWithModificationInstruction.add_assignment_instructions(tableFieldInMainStructureModificationInstruction)
 
-
-
+    def fill_structure_fields_objects(self):
+        for structureWithModificationInstruction in self.structuresWithModificationInstructions:
+            for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
+                fieldWithModificationInstruction.
 
 
 def open_text_file_and_return_lines(input_file_name):  
@@ -274,6 +281,7 @@ def Generate_SMT2_Data_mE_fields_contents_from_field_post_assignment_lines():
 
 
     sMT2_Data_mE_Content.create_structure_fields_objects()
+    sMT2_Data_mE_Content.fill_structure_fields_objects()
 
 
 
