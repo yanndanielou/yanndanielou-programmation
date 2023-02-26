@@ -214,30 +214,29 @@ def decode_matlab_structure(matlabStruct, remaining_line_to_decode):
     return remaining_line_to_decode
 
 
-class StructureModificationInstruction:
-
-    def __init__(self, full_content_as_string):
+class StructureFieldInMainStructureModificationInstruction:
+    
+    def __init__(self, full_content_as_string, match_result):
         self.full_content_as_string = full_content_as_string
-        self.full_content_as_string_without_semi_column = full_content_as_string[:1]
+
+        self.structure_name = match_result.group("main_structure_name")
+        self.structure_index = match_result.group("main_structure_index")
+        self.second_level_structure_name = match_result.group("second_level_structure_name")
+        self.second_level_structure_index = match_result.group("second_level_structure_index")
+        self.field_index = match_result.group("field_index")
+        self.new_value = match_result.group("new_value")
 
 
-        # Examples:
-        #   SMT_mE_aig(7).cdv_reserv_transit_sens(1,1) = 1;
-        #   SMT_mE_aig(1).cdv_commut(1,1) = 171;
-        
-        #Rubular
-        #([0-9A-Za-z]*)[(](\d+)[)][.]([0-9A-Za-z_\"]*)[(](\d+)[,](\d+)[)]\s[=]\s(\d+)[;]
 
-        structure_modification_instruction_line_regex_as_string = "(?P<structure_name>[0-9A-Za-z_]*)[(](?P<structure_index>\\d+)[)][.](?P<field_name>[0-9A-Za-z_]*)[(](?P<field_index_1>\\d+)[,](?P<field_index_2>\\d+)[)]\s[=]\s(?P<new_value>-?\\d+)[;]"
-        structure_modification_instruction_line_regex_compiled = re.compile(structure_modification_instruction_line_regex_as_string)
-        match_result = structure_modification_instruction_line_regex_compiled.match(full_content_as_string)
-        #self.value_as_string = full_content_as_string.split("=")[1].strip()
-        #self.structure_name = full_content_as_string.split("(")[0].strip()
-        if match_result == None:
-            printAndLogCriticalAndKill("Could not parse : " + full_content_as_string)
+class TableFieldInMainStructureModificationInstruction:
 
-        self.structure_name = match_result.group("structure_name")
-        self.structure_index = match_result.group("structure_index")
+    def __init__(self, full_content_as_string, match_result):
+        self.full_content_as_string = full_content_as_string
+
+
+
+        self.structure_name = match_result.group("main_structure_name")
+        self.structure_index = match_result.group("main_structure_index")
         self.field_index_1 = match_result.group("field_index_1")
         self.field_index_2 = match_result.group("field_index_2")
         self.new_value = match_result.group("new_value")
@@ -584,7 +583,41 @@ class SMT2_Data_mE_Content:
     def create_structure_modification_instruction_objects(self):
         printAndLogInfo("Create structure modification instructions")
         for filling_one_structure_specific_field_line in self.filling_one_structure_specific_field_lines:
-            structureModificationInstruction = StructureModificationInstruction(filling_one_structure_specific_field_line)
+
+            # Examples:
+            #SMT_mE_aig(7).cdv_reserv_transit_sens(1,1) = 1;
+            #SMT_mE_aig(1).cdv_commut(1,1) = 171;
+            
+            table_field_of_main_structure_modification_instruction_line_regex_as_string = "(?P<main_structure_name>[0-9A-Za-z_]*)[(](?P<main_structure_index>\\d+)[)][.](?P<field_name>[0-9A-Za-z_]*)[(](?P<field_index_1>\\d+)[,](?P<field_index_2>\\d+)[)]\s[=]\s(?P<new_value>-?\\d+)[;]"
+            table_field_of_main_structure_modification_instruction_line_regex_compiled = re.compile(table_field_of_main_structure_modification_instruction_line_regex_as_string)
+            match_table_field_of_main_structure_modification_instruction = table_field_of_main_structure_modification_instruction_line_regex_compiled.match(filling_one_structure_specific_field_line)
+
+
+            structureModificationInstruction = None
+
+            if match_table_field_of_main_structure_modification_instruction is not None:
+                structureModificationInstruction = TableFieldInMainStructureModificationInstruction(match_table_field_of_main_structure_modification_instruction)
+
+
+            else:
+                
+                #Examples:
+                #SMT_mE_aig(5).aig_asso(3).no(1) = 142;
+                
+                structure_field_of_main_structure_modification_instruction_line_regex_as_string = "(?P<main_structure_name>[0-9A-Za-z_]*)[(](?P<main_structure_index>\\d+)[)][.](?P<second_level_structure_name>[0-9A-Za-z_]*)[(](?P<second_level_structure_index>\\d+)[)][.](?P<field_name>[0-9A-Za-z_]*)[(](?P<field_index>\\d+)[)]\s[=]\s(?P<new_value>-?\\d+)[;]"
+                structure_field_of_main_structure_modification_instruction_line_regex_compiled = re.compile(structure_field_of_main_structure_modification_instruction_line_regex_as_string)
+                match_structure_field_of_main_structure_modification_instruction = structure_field_of_main_structure_modification_instruction_line_regex_compiled.match(filling_one_structure_specific_field_line)
+                
+                if match_structure_field_of_main_structure_modification_instruction is not None:
+                    structureModificationInstruction = StructureFieldInMainStructureModificationInstruction(match_structure_field_of_main_structure_modification_instruction)
+
+                else:
+                    printAndLogCriticalAndKill("Could not parse : " + filling_one_structure_specific_field_line)
+
+
+
+
+
 
 def open_text_file_and_return_lines(input_file_name):  
     logging.info('Check existence of input file:' + input_file_name)
