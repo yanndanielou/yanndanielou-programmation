@@ -382,7 +382,7 @@ class MatlabArrayOfFieldOfStructure:
                 if remaining_array_content_as_string_to_parse[0] == matlab_field_separator:
                     remaining_array_content_as_string_to_parse = remaining_array_content_as_string_to_parse[1:]
                 else:
-                    printAndLogCriticalAndKill("Was not expected " + remaining_array_content_as_string_to_parse[0] + " remaining characters to parse:" + remaining_characters_of_main_struct_definition_to_parse)
+                    printAndLogCriticalAndKill("Was not expected " + remaining_array_content_as_string_to_parse[0] + " remaining characters to parse:" + remaining_characters_of_main_struct_definition_to_parse[0:100])
 
 
         #Remove end of array character    
@@ -446,7 +446,7 @@ class MatlabFieldOfArrayOfFieldOfStructure:
         else:
             printAndLogCriticalAndKill("Cannot find type for element starting with " + original_remaining_characters_of_main_struct_definition_to_parse)
 
-        logging.debug("Build " + self.__class__.__name__ + " with type :" + self.type.type + " from string " +  original_remaining_characters_of_main_struct_definition_to_parse[0:20])
+        logging.debug("Build " + self.__class__.__name__ + " with type :" + self.type.type + " from string " +  original_remaining_characters_of_main_struct_definition_to_parse[0:200])
 
         while len(remaining_characters_of_main_struct_definition_to_parse) > 0:
             first_character = remaining_characters_of_main_struct_definition_to_parse[0]
@@ -464,11 +464,9 @@ class MatlabFieldOfArrayOfFieldOfStructure:
 
                     logging.debug("Has built " + self.type.type + " with content as string:"  + self.full_content_as_string + " and content as table:" + str(self.value_as_table))
 
-                    remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
                     return remaining_characters_of_main_struct_definition_to_parse
                 else:
                     self.full_content_as_string += first_character
-                    remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
       
             elif self.type.type == MatlabFieldOfArrayOfFieldOfStructureType.type_string:
 
