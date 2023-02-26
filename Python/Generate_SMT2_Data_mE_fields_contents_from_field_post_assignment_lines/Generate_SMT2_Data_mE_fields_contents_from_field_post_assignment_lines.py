@@ -96,29 +96,6 @@ def configureLogger(log_file_name):
     #logging.error
     #logging.critical
 
-
-class print_argument_if_function_returns_true(object):
-
-    def __init__(self, f):
-        self.f = f
-
-    def __call__(self, *args):
-        #logging.info("Entering " +  self.f.__name__)
-        #logging.debug("Arguments passed to " + self.f.__name__ + ":" + str(locals()))
-        #start_time = time.time()
-        
-        #Call method
-        ret = self.f(*args)
-     
-        if ret:
-            arguments = args
-            function_argument = args[0]
-            function_name = self.f.__name__
-            logging.info(self.f.__name__ + " returns true for :" + function_argument)
-        
-            #printAndLogInfo(self.f.__name__ + " returns true for :" + str(locals().get("line")))
-        return ret        
-
 class execution_time(object):
 
     def __init__(self, f):
@@ -162,14 +139,6 @@ class TableFieldInMainStructureModificationInstruction:
         self.field_index_1 = match_result.group("field_index_1")
         self.field_index_2 = match_result.group("field_index_2")
         self.new_value = match_result.group("new_value")
-
-def get_structure_name_from_struct_creation_line(struct_creation_line):
-    structure_name = struct_creation_line.split("=")[0].strip()
-    return structure_name
-
-def get_structure_field_name_from_field_creation_line(struct_field_creation_line):
-    structure_field_name = struct_field_creation_line.split(matlab_field_separator)[0].strip()
-    return structure_field_name
 
 class FieldOfStructureWithModificationInstruction:
     def __init__(self, name):
@@ -249,7 +218,6 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
 
     table_field_of_main_structure_modification_instruction_line_regex_as_string = "(?P<main_structure_name>[0-9A-Za-z_]*)[(](?P<main_structure_index>\\d+)[)][.](?P<field_name>[0-9A-Za-z_]*)[(](?P<field_index_1>\\d+)[,](?P<field_index_2>\\d+)[)]\s[=]\s(?P<new_value>-?\\d+)[;]"
     table_field_of_main_structure_modification_instruction_line_regex_compiled = re.compile(table_field_of_main_structure_modification_instruction_line_regex_as_string)
-
         
     structure_field_of_main_structure_modification_instruction_line_regex_as_string = "(?P<main_structure_name>[0-9A-Za-z_]*)[(](?P<main_structure_index>\\d+)[)][.](?P<second_level_structure_name>[0-9A-Za-z_]*)[(](?P<second_level_structure_index>\\d+)[)][.](?P<field_name>[0-9A-Za-z_]*)[(](?P<field_index>\\d+)[)]\s[=]\s(?P<new_value>-?\\d+)[;]"
     structure_field_of_main_structure_modification_instruction_line_regex_compiled = re.compile(structure_field_of_main_structure_modification_instruction_line_regex_as_string)
