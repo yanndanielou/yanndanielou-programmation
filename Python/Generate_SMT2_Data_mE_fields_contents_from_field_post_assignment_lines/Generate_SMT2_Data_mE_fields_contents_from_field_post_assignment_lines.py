@@ -140,13 +140,49 @@ class TableFieldInMainStructureModificationInstruction:
         self.field_index_2 = match_result.group("field_index_2")
         self.new_value = match_result.group("new_value")
 
+class ArrayItemOfFieldOfStructureWithModificationInstruction:
+    def __init__(self, parent):
+        self.fields = list()
+        self.last_index_computed = None
+        self.assingment_instructions = list()
+        self.parent = parent
+        printAndLogInfo("Create " + self.__class__.__name__ + " created with name:" + self.name)
+
+    def add_assignment_instructions(self, tableFieldInMainStructureModificationInstruction):
+        self.assingment_instructions.append(tableFieldInMainStructureModificationInstruction)
+
+    def get_table_dimension(self, tableFieldInMainStructureModificationInstruction):
+        max_dimension = 0
+
+        for assingment_instruction in self.assingment_instructions:
+            if assingment_instruction.field_index_1 > max_dimension:
+                max_dimension = assingment_instruction.field_index_1
+            
+            #logging.debug("Field " + self.name + " of structure " + self.parent.name + " has dimension:" + str(max_dimension))
+
+
 class FieldOfStructureWithModificationInstruction:
-    def __init__(self, name):
+    def __init__(self, name, parent):
         self.fields = list()
         self.name = name
         self.last_index_computed = None
+        self.array_items = list()
+        self.parent = parent
         printAndLogInfo("Create " + self.__class__.__name__ + " created with name:" + self.name)
 
+    def add_assignment_instructions(self, tableFieldInMainStructureModificationInstruction):
+        main_structure_index_starting_at_0 = tableFieldInMainStructureModificationInstruction.main_structure_index
+        arrayItemOfFieldOfStructureWithModificationInstruction = None
+        
+        if main_structure_index_starting_at_0 > len(self.array_items):
+            arrayItemOfFieldOfStructureWithModificationInstruction = ArrayItemOfFieldOfStructureWithModificationInstruction(self)
+            self.array_items.append(arrayItemOfFieldOfStructureWithModificationInstruction)
+
+        else:
+            arrayItemOfFieldOfStructureWithModificationInstruction = self.array_items[main_structure_index_starting_at_0]
+
+        arrayItemOfFieldOfStructureWithModificationInstruction.append(tableFieldInMainStructureModificationInstruction)
+    
 
 class StructureWithModificationInstruction:
     def __init__(self, name):
@@ -179,10 +215,10 @@ class SMT2_Data_mE_Content:
                     fieldOfStructureWithModificationInstruction = fieldWithModificationInstructionIt
 
             if fieldOfStructureWithModificationInstruction is None:
-                fieldOfStructureWithModificationInstruction = FieldOfStructureWithModificationInstruction(tableFieldInMainStructureModificationInstruction.field_name)  
+                fieldOfStructureWithModificationInstruction = FieldOfStructureWithModificationInstruction(tableFieldInMainStructureModificationInstruction.field_name, structureWithModificationInstruction)  
                 structureWithModificationInstruction.fields.append(fieldOfStructureWithModificationInstruction)
 
-  
+            structureWithModificationInstruction.treat(tableFieldInMainStructureModificationInstruction)
 
 
 
