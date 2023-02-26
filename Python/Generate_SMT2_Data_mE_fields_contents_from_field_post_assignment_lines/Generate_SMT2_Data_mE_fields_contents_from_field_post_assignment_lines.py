@@ -263,9 +263,6 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
         match_table_field_of_main_structure_modification_instruction = table_field_of_main_structure_modification_instruction_line_regex_compiled.match(sMT2_Data_mE_file_line_stripped)
         match_structure_field_of_main_structure_modification_instruction = structure_field_of_main_structure_modification_instruction_line_regex_compiled.match(sMT2_Data_mE_file_line_stripped)
 
-        if sMT2_Data_mE_line_number > 99999:
-            pause = 1
-
         if match_table_field_of_main_structure_modification_instruction is not None:
             structureModificationInstruction = TableFieldInMainStructureModificationInstruction(sMT2_Data_mE_file_line_stripped, match_table_field_of_main_structure_modification_instruction)
             sMT2_Data_mE_Content.tableFieldInMainStructureModificationInstructions.append(structureModificationInstruction)
