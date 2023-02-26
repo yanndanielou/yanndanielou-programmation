@@ -596,7 +596,7 @@ class SMT2_Data_mE_Content:
             structureModificationInstruction = None
 
             if match_table_field_of_main_structure_modification_instruction is not None:
-                structureModificationInstruction = TableFieldInMainStructureModificationInstruction(match_table_field_of_main_structure_modification_instruction)
+                structureModificationInstruction = TableFieldInMainStructureModificationInstruction(filling_one_structure_specific_field_line, match_table_field_of_main_structure_modification_instruction)
 
 
             else:
@@ -609,7 +609,7 @@ class SMT2_Data_mE_Content:
                 match_structure_field_of_main_structure_modification_instruction = structure_field_of_main_structure_modification_instruction_line_regex_compiled.match(filling_one_structure_specific_field_line)
                 
                 if match_structure_field_of_main_structure_modification_instruction is not None:
-                    structureModificationInstruction = StructureFieldInMainStructureModificationInstruction(match_structure_field_of_main_structure_modification_instruction)
+                    structureModificationInstruction = StructureFieldInMainStructureModificationInstruction(filling_one_structure_specific_field_line, match_structure_field_of_main_structure_modification_instruction)
 
                 else:
                     printAndLogCriticalAndKill("Could not parse : " + filling_one_structure_specific_field_line)
@@ -739,18 +739,10 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
 
     current_structure_construction_lines = None
 
-
     sMT2_Data_mE_line_number = 0
 
     for sMT2_Data_mE_file_line in sMT2_Data_mE_file_lines:
         sMT2_Data_mE_line_number += 1
-
-        #printAndLogInfo("Current line:" + str(sMT2_Data_mE_line_number))
-        #printAndLogInfo("line:" + str(sMT2_Data_mE_line_number) + " is_matlab_comment_line:" + str(is_matlab_comment_line(sMT2_Data_mE_file_line)))
-        #printAndLogInfo("line:" + str(sMT2_Data_mE_line_number) + " is_matlab_filling_one_structure_specific_field_line:" + str(is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line)))
-        #printAndLogInfo("line:" + str(sMT2_Data_mE_line_number) + " is_matlab_empty_line:" + str(is_matlab_empty_line(sMT2_Data_mE_file_line)))
-        #printAndLogInfo("line:" + str(sMT2_Data_mE_line_number) + " is_matlab_new_structure_creation_line:" + str(is_matlab_new_structure_creation_line(sMT2_Data_mE_file_line)))
-        #printAndLogInfo("line:" + str(sMT2_Data_mE_line_number) + " is_matlab_structure_last_creation_line:" + str(is_matlab_structure_last_creation_line(sMT2_Data_mE_file_line)))
 
         if is_matlab_comment_line(sMT2_Data_mE_file_line):
             logging.debug("Line:" + str(sMT2_Data_mE_line_number) + "(" + sMT2_Data_mE_file_line + ")" + " ignored because is matlab comment")
@@ -774,7 +766,6 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
                 parsing_sMT2_Data_mE_file_current_step.switch_to_step_filling_struct_cell_by_cell()
 
             else:
-                #sMT2_Data_mE_Content.all_structures_constructions_lines.append(sMT2_Data_mE_file_line)
                 if current_structure_construction_lines == None and is_matlab_new_structure_creation_line(sMT2_Data_mE_file_line) :
                     printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": new structure detected")
                     current_structure_construction_lines = list()
@@ -794,8 +785,6 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
                     
                     if parsing_sMT2_Data_mE_file_current_step.is_step_reading_struct_construction_lines():
                         parsing_sMT2_Data_mE_file_current_step.switch_to_step_filling_struct_cell_by_cell()
-                        
-
                         printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": start filling structure line by line")
 
         if parsing_sMT2_Data_mE_file_current_step.is_step_filling_struct_cell_by_cell():
@@ -808,9 +797,6 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
         if parsing_sMT2_Data_mE_file_current_step.is_step_has_parsed_last_return_of_file_and_waiting_end_of_file():
                 printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + " is not considered because waiting end of file")
 
-        
-    sMT2_Data_mE_Content.print_stats()
-    sMT2_Data_mE_Content.print_structures()
     
 
     
@@ -831,6 +817,9 @@ def Optimize_SMT2_Data_mE():
     sMT2_Data_mE_Content = SMT2_Data_mE_Content()
 
     load_SMT2_Data_mE(input_SMT2_Data_mE_file_name, sMT2_Data_mE_Content)
+
+    sMT2_Data_mE_Content.print_stats()
+    sMT2_Data_mE_Content.print_structures()
     sMT2_Data_mE_Content.create_structure_objects()
     sMT2_Data_mE_Content.decode_main_structure_objects()
 
