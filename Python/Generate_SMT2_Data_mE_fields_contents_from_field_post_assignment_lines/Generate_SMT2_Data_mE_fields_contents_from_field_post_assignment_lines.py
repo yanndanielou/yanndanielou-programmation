@@ -144,6 +144,8 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
 
     def compute_fields(self):
         max_dimension = self.get_table_dimension()
+        
+        
 
 
 class FieldOfStructureWithModificationInstruction:
