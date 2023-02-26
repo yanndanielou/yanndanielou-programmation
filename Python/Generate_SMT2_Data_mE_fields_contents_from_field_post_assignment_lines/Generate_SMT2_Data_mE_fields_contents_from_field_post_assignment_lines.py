@@ -279,7 +279,7 @@ class SMT2_Data_mE_Content:
             structureWithModificationInstruction = None
             #check if there is already a known structure
             for structureWithModificationInstructionIt in self.structuresWithModificationInstructions:
-                if structureWithModificationInstructionIt.name == tableFieldInMainStructureModificationInstruction.name:
+                if structureWithModificationInstructionIt.name == tableFieldInMainStructureModificationInstruction.main_structure_name:
                     structureWithModificationInstruction = structureWithModificationInstructionIt
 
             if structureWithModificationInstruction is None:
@@ -289,7 +289,7 @@ class SMT2_Data_mE_Content:
             #check if there is already a known field
             fieldOfStructureWithModificationInstruction = None
             for fieldWithModificationInstructionIt in structureWithModificationInstruction.fields:
-                if fieldWithModificationInstructionIt.name == tableFieldInMainStructureModificationInstruction.name:
+                if fieldWithModificationInstructionIt.name == tableFieldInMainStructureModificationInstruction.field_name:
                     fieldOfStructureWithModificationInstruction = fieldWithModificationInstructionIt
 
             if fieldOfStructureWithModificationInstruction is None:
