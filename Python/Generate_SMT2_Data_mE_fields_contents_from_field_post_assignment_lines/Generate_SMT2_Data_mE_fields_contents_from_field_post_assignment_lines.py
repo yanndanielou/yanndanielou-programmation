@@ -130,6 +130,7 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
         self.fields = list()
         self.last_index_computed = None
         self.assingment_instructions = list()
+        self.max_dimension = None
         self.parent = parent
 
     def get_table_dimension(self):
@@ -153,6 +154,8 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
             current_fields.append(list())
             current_fields = current_fields[0]
 
+        self.max_dimension = max_dimension
+        
         """ 
         if max_dimension == 1:
             self.fields = list()
@@ -207,11 +210,22 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
         
         for assingment_instruction in self.assingment_instructions:
             field_index_1 = assingment_instruction.field_index_1
+            field_index_2 = assingment_instruction.field_index_2
             current_fields = self.fields
 
             for i in range(1, field_index_1):
                 current_fields = current_fields[0]
             
+            #if field_index_2 -1 > len(current_fields):
+            #    current_fields.append(list)
+
+            if field_index_1 > 1 and field_index_2 == 1:
+                current_fields.append(list)
+                current_fields = current_fields[len(current_fields) - 1]
+
+
+            #field = self.fields[field_index_1 - 1 ]
+                
             current_fields.append(assingment_instruction.new_value)
          
             
