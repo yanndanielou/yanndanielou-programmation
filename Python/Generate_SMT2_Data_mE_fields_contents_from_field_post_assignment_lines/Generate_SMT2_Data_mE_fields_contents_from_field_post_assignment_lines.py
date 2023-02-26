@@ -136,84 +136,6 @@ class execution_time(object):
         logging.info("Exited " +  self.f.__name__ + ". Elapsed:" + format(elapsed_time, '.2f') + " s")
         return ret
 
-class Parsing_sMT2_Data_mE_file_step:
-
-    step_reading_first_file_lines_to_keep_unchanged = "step_reading_first_file_lines_to_keep_unchanged" 
-    step_reading_struct_construction_lines = "step_reading_struct_construction_lines"
-    step_filling_struct_cell_by_cell = "step_filling_struct_cell_by_cell"
-    step_has_parsed_last_return_of_file_and_waiting_end_of_file = "step_parsing_last_return_of_file"
-    #step_waiting_end_of_file = "step_waiting_end_of_file"    
-
-
-    def __init__(self):
-        self.step = self.step_reading_first_file_lines_to_keep_unchanged
-
-        
-
-    def switch_to_step(self, new_step):
-        if self.step != new_step:
-           printAndLogInfo("Switch from state " +  self.step + " to state " + new_step)
-           self.step = new_step
-        else:
-            printAndLogInfo("Trying to switch to state " + new_step + " wich is already the current step")
-
-    def switch_to_step_reading_struct_construction_lines(self):
-        self.switch_to_step(self.step_reading_struct_construction_lines)
-        
-    def switch_to_step_filling_struct_cell_by_cell(self):
-        self.switch_to_step(self.step_filling_struct_cell_by_cell)
-        
-    def switch_to_step_has_parsed_last_return_of_file_and_waiting_end_of_file(self):
-        self.switch_to_step(self.step_has_parsed_last_return_of_file_and_waiting_end_of_file)
-        
-    #def switch_to_step_waiting_end_of_file(self):
-    #    self.switch_to_step(self.step_waiting_end_of_file)
-        
-
-
-    def is_step_reading_first_file_lines_to_keep_unchanged(self):
-        return self.step == self.step_reading_first_file_lines_to_keep_unchanged
-
-    def is_step_reading_struct_construction_lines(self):
-        return self.step == self.step_reading_struct_construction_lines
-        
-    def is_step_filling_struct_cell_by_cell(self):
-        return self.step == self.step_filling_struct_cell_by_cell
-        
-    def is_step_has_parsed_last_return_of_file_and_waiting_end_of_file(self):
-        return self.step == self.step_has_parsed_last_return_of_file_and_waiting_end_of_file
-        
-    #def is_step_waiting_end_of_file(self):
-    #    return self.step == self.step_waiting_end_of_file
-
-def decode_matlab_structure(matlabStruct, remaining_line_to_decode):
-    current_struct_field = None
-
-    while(len(remaining_line_to_decode) > 0):
-        current_parsed_character = remaining_line_to_decode[0]
-        remaining_line_to_decode = remaining_line_to_decode[1:]
-
-
-        if current_parsed_character == "'":
-            if current_struct_field == None:
-                current_struct_field = MatlabFieldOfStructure()
-                current_struct_field.parent = matlabStruct
-                matlabStruct.fields.append(current_struct_field)
-                printAndLogInfo("Structure: " + matlabStruct.name  + " new field found")
-                #parsing_sMT2_Data_mE_struct_file_step.step = parsing_sMT2_Data_mE_struct_file_step.step_reading_field_name
-            elif current_struct_field.is_name_complete == False:
-                current_struct_field.is_name_complete = True
-                printAndLogInfo("Structure: " + matlabStruct.name  + " name decoded for field: " + current_struct_field.name)
-                if remaining_line_to_decode.startswith(","):
-                    remaining_line_to_decode = remaining_line_to_decode[len(","):]
-                    remaining_line_to_decode = current_struct_field.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_line_to_decode)
-                    current_struct_field = None
-        elif current_struct_field.is_name_complete == False:
-            current_struct_field.name += current_parsed_character
-  
-    return remaining_line_to_decode
-
-
 class StructureFieldInMainStructureModificationInstruction:
     
     def __init__(self, full_content_as_string, match_result):
@@ -268,11 +190,6 @@ class SMT2_Data_mE_Content:
     def __init__(self):
         self.tableFieldInMainStructureModificationInstructions = list()
         self.structuresWithModificationInstructions = list()
-
-
-    def print_stats(self):
-        printAndLogInfo("Nombre de structures à créer:" + str(len(self.structures_constructions_lines_as_list_by_structure)))
-        printAndLogInfo("Nombre d'affectation de champs:" + str(len(self.filling_one_structure_specific_field_lines)))
 
     def create_structure_fields_objects(self):
         for tableFieldInMainStructureModificationInstruction in self.tableFieldInMainStructureModificationInstructions:
