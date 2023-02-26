@@ -1,6 +1,6 @@
 function print_structure_content(structure_to_print, structure_name)
 
-disp(string(datetime) + " print_structure_content " + structure_name + " begin");
+disp(" print_structure_content " + structure_name + " begin");
 
 disp("print_structure_content : structure " + structure_name + " fields:");
 
@@ -15,5 +15,5 @@ for structure_it = 1 : length(structure_to_print)
 
 end
 
-disp(string(datetime) + " print_structure_content " + structure_name + " end")
+disp(" print_structure_content " + structure_name + " end")
 end
