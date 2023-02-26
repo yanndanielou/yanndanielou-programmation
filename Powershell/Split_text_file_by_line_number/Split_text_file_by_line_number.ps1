@@ -1,0 +1,1 @@
+$i=0; Get-Content .....log -ReadCount 100 | %{$i++; $_ | Out-File out_$i.txt}
