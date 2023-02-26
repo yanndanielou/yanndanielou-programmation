@@ -234,10 +234,9 @@ class TableFieldInMainStructureModificationInstruction:
     def __init__(self, full_content_as_string, match_result):
         self.full_content_as_string = full_content_as_string
 
-
-
-        self.structure_name = match_result.group("main_structure_name")
-        self.structure_index = match_result.group("main_structure_index")
+        self.main_structure_name = match_result.group("main_structure_name")
+        self.main_structure_index = match_result.group("main_structure_index")
+        self.field_name = match_result.group("field_name")
         self.field_index_1 = match_result.group("field_index_1")
         self.field_index_2 = match_result.group("field_index_2")
         self.new_value = match_result.group("new_value")
@@ -283,25 +282,21 @@ class SMT2_Data_mE_Content:
                 if structureWithModificationInstructionIt.name == tableFieldInMainStructureModificationInstruction.name:
                     structureWithModificationInstruction = structureWithModificationInstructionIt
 
-            if structureWithModificationInstructionIt is None:
-                structureWithModificationInstruction = StructureWithModificationInstruction()  
+            if structureWithModificationInstruction is None:
+                structureWithModificationInstruction = StructureWithModificationInstruction(tableFieldInMainStructureModificationInstruction.main_structure_name)  
             
             #check if there is already a known field
+            fieldOfStructureWithModificationInstruction = None
             for fieldWithModificationInstructionIt in structureWithModificationInstruction.fields:
                 if fieldWithModificationInstructionIt.name == tableFieldInMainStructureModificationInstruction.name:
-                    structureWithModificationInstruction = fieldWithModificationInstructionIt
+                    fieldOfStructureWithModificationInstruction = fieldWithModificationInstructionIt
 
-            if structureWithModificationInstructionIt is None:
-                structureWithModificationInstruction = FieldOfStructureWithModificationInstruction()  
+            if fieldOfStructureWithModificationInstruction is None:
+                fieldOfStructureWithModificationInstruction = FieldOfStructureWithModificationInstruction(tableFieldInMainStructureModificationInstruction.field_name)  
             
 
-            structureWithModificationInstruction.fields.append()
-            #self.main_structure_name
-            #self.main_structure_index
-            #self.field_name
-            #self.field_index_1
-            #self.field_index_2
-            #self.new_value
+            structureWithModificationInstruction.fields.append(fieldOfStructureWithModificationInstruction)
+
   
 
 
@@ -434,13 +429,17 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
     sMT2_Data_mE_line_number = 0
 
     for sMT2_Data_mE_file_line in sMT2_Data_mE_file_lines:
+        sMT2_Data_mE_file_line_stripped = sMT2_Data_mE_file_line.strip()
         sMT2_Data_mE_line_number += 1
 
-        match_table_field_of_main_structure_modification_instruction = table_field_of_main_structure_modification_instruction_line_regex_compiled.match(sMT2_Data_mE_file_line)
-        match_structure_field_of_main_structure_modification_instruction = structure_field_of_main_structure_modification_instruction_line_regex_compiled.match(sMT2_Data_mE_file_line)
+        match_table_field_of_main_structure_modification_instruction = table_field_of_main_structure_modification_instruction_line_regex_compiled.match(sMT2_Data_mE_file_line_stripped)
+        match_structure_field_of_main_structure_modification_instruction = structure_field_of_main_structure_modification_instruction_line_regex_compiled.match(sMT2_Data_mE_file_line_stripped)
+
+        if sMT2_Data_mE_line_number > 99999:
+            pause = 1
 
         if match_table_field_of_main_structure_modification_instruction is not None:
-            structureModificationInstruction = TableFieldInMainStructureModificationInstruction(sMT2_Data_mE_file_line, match_table_field_of_main_structure_modification_instruction)
+            structureModificationInstruction = TableFieldInMainStructureModificationInstruction(sMT2_Data_mE_file_line_stripped, match_table_field_of_main_structure_modification_instruction)
             sMT2_Data_mE_Content.tableFieldInMainStructureModificationInstructions.append(structureModificationInstruction)
 
 
