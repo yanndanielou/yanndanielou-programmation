@@ -760,7 +760,7 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
 
         if parsing_sMT2_Data_mE_file_current_step.is_step_filling_struct_cell_by_cell():
             if is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line):
-                sMT2_Data_mE_Content.filling_one_structure_specific_field_lines.append(sMT2_Data_mE_file_line)
+                sMT2_Data_mE_Content.filling_one_structure_specific_field_lines.append(sMT2_Data_mE_file_line.strip())
             elif is_matlab_return_function_line(sMT2_Data_mE_file_line):
                 parsing_sMT2_Data_mE_file_current_step.switch_to_step_has_parsed_last_return_of_file_and_waiting_end_of_file()
                 printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + " is last return of file")
