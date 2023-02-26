@@ -141,16 +141,85 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
         
         return max_dimension
 
+    def create_tables_for_empty_fields_depending_on_dimension(self):
+
+        max_dimension = self.get_table_dimension()
+
+        self.fields = list()
+        current_fields = self.fields
+
+        for i in range(1, max_dimension):
+            #for dimension_to_create in max_dimension:
+            current_fields.append(list())
+            current_fields = current_fields[0]
+
+        """ 
+        if max_dimension == 1:
+            self.fields = list()
+
+        elif max_dimension == 2:
+            self.fields = list()
+            self.fields.append(list())
+
+        elif max_dimension == 3:
+            self.fields = list()
+            self.fields.append(list())
+            self.fields[0].append(list())
+
+        elif max_dimension == 4:
+            self.fields = list()
+            self.fields.append(list())
+            self.fields[0].append(list())
+            self.fields[0][0].append(list())
+
+        elif max_dimension == 5:
+            self.fields = list()
+            self.fields.append(list())
+            self.fields[0].append(list())
+            self.fields[0][0].append(list())
+            self.fields[0][0][0].append(list())
+
+        elif max_dimension == 6:
+            self.fields = list()
+            self.fields.append(list())
+            self.fields[0].append(list())
+            self.fields[0][0].append(list())
+            self.fields[0][0][0].append(list())
+            self.fields[0][0][0][0].append(list())
+
+        elif max_dimension == 7:
+            self.fields = list()
+            self.fields.append(list())
+            self.fields[0].append(list())
+            self.fields[0][0].append(list())
+            self.fields[0][0][0].append(list())
+            self.fields[0][0][0][0].append(list())
+            self.fields[0][0][0][0][0].append(list())
+
+        else:
+            logging.info("Unsupported dimension:" + str(max_dimension) + " for field:" + self.parent.name + " and structure " + self.parent.parent.name)
+        """
+
 
     def compute_fields(self):
+
         max_dimension = self.get_table_dimension()
         
+        for assingment_instruction in self.assingment_instructions:
+            field_index_1 = assingment_instruction.field_index_1
+            current_fields = self.fields
+
+            for i in range(1, field_index_1):
+                current_fields = current_fields[0]
+            
+            current_fields.append(assingment_instruction.new_value)
+         
+                
         
 
 
 class FieldOfStructureWithModificationInstruction:
     def __init__(self, name, parent):
-        self.fields = list()
         self.name = name
         self.last_index_computed = None
         self.array_items = list()
@@ -209,8 +278,14 @@ class SMT2_Data_mE_Content:
     def fill_structure_fields_objects(self):
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
-                fieldWithModificationInstruction.
+                for array_item in fieldWithModificationInstruction.array_items:
+                    array_item.create_tables_for_empty_fields_depending_on_dimension()
 
+                
+        for structureWithModificationInstruction in self.structuresWithModificationInstructions:
+            for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
+                for array_item in fieldWithModificationInstruction.array_items:
+                    array_item.compute_fields()
 
 def open_text_file_and_return_lines(input_file_name):  
     logging.info('Check existence of input file:' + input_file_name)
