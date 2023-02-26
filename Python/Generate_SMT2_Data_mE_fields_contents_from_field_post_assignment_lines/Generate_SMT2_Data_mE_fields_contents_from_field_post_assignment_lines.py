@@ -214,9 +214,7 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
             
             current_fields.append(assingment_instruction.new_value)
          
-                
-        
-
+            
 
 class FieldOfStructureWithModificationInstruction:
     def __init__(self, name, parent):
@@ -238,6 +236,10 @@ class FieldOfStructureWithModificationInstruction:
 
         arrayItemOfFieldOfStructureWithModificationInstruction.assingment_instructions.append(tableFieldInMainStructureModificationInstruction)
     
+
+    def print_field(self):
+        printAndLogInfo("Print content of field " + self.name + " for structure:" + self.parent.name)
+        printAndLogInfo(str(self.array_items))
 
 class StructureWithModificationInstruction:
     def __init__(self, name):
@@ -286,6 +288,11 @@ class SMT2_Data_mE_Content:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items:
                     array_item.compute_fields()
+
+        for structureWithModificationInstruction in self.structuresWithModificationInstructions:
+            for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
+                fieldWithModificationInstruction.print_field()
+                
 
 def open_text_file_and_return_lines(input_file_name):  
     logging.info('Check existence of input file:' + input_file_name)
