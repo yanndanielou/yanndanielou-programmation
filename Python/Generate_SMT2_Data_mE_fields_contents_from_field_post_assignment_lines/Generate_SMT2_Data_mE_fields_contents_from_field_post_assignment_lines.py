@@ -254,10 +254,22 @@ class FieldOfStructureWithModificationInstruction:
 
     def print_field(self):
         content_as_string = ""
+
+        array_item_number = 0
         for array_item in self.array_items:
+            array_item_number += 1
             array_item_as_string = str(array_item.fields)
+            
+            field_number = 0
             for field in array_item.fields:
+                field_number += 1
+
                 content_as_string += str(field)
+
+                if field_number < len (array_item.fields):
+                    content_as_string += " "
+                    
+            if array_item_number < len (self.array_items):
                 content_as_string += ","
 
         printAndLogInfo("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string)
@@ -272,6 +284,7 @@ class SMT2_Data_mE_Content:
 
     def __init__(self):
         self.tableFieldInMainStructureModificationInstructions = list()
+        self.structureFieldInMainStructureModificationInstructionLines = list()
         self.structuresWithModificationInstructions = list()
 
     def create_structure_fields_objects(self):
@@ -367,6 +380,8 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
             structureModificationInstruction = TableFieldInMainStructureModificationInstruction(sMT2_Data_mE_file_line_stripped, match_table_field_of_main_structure_modification_instruction)
             sMT2_Data_mE_Content.tableFieldInMainStructureModificationInstructions.append(structureModificationInstruction)
 
+        elif match_structure_field_of_main_structure_modification_instruction is not None:
+            sMT2_Data_mE_Content.structureFieldInMainStructureModificationInstructionLines.append(sMT2_Data_mE_file_line)
 
     
 
