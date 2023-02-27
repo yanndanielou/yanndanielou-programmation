@@ -211,7 +211,6 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
     def compute_fields(self):
 
         max_dimension = self.get_table_dimension()
-
         
         for assingment_instruction in self.assingment_instructions:
             field_index_1 = assingment_instruction.field_index_1
@@ -252,7 +251,7 @@ class FieldOfStructureWithModificationInstruction:
         arrayItemOfFieldOfStructureWithModificationInstruction.assingment_instructions.append(tableFieldInMainStructureModificationInstruction)
     
 
-    def print_field(self):
+    def save_field(self, file_content_as_list_of_lines):
         content_as_string = ""
 
         array_item_number = 0
@@ -271,6 +270,10 @@ class FieldOfStructureWithModificationInstruction:
                     
             if array_item_number < len (self.array_items):
                 content_as_string += ","
+
+        file_content_as_list_of_lines.append("content of field " + self.name + " for structure:" + self.parent.name)
+        file_content_as_list_of_lines.append(content_as_string)
+        file_content_as_list_of_lines.append("")
 
         printAndLogInfo("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string)
 
@@ -312,12 +315,16 @@ class SMT2_Data_mE_Content:
             fieldOfStructureWithModificationInstruction.add_assignment_instructions(tableFieldInMainStructureModificationInstruction)
 
     def fill_structure_fields_objects(self):
+        logging.info("fill_structure_fields_objects")
+
+        logging.info("create_tables_for_empty_fields_depending_on_dimension")
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items:
                     array_item.create_tables_for_empty_fields_depending_on_dimension()
 
-                
+
+        logging.info("compute_fields")                
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items:
@@ -328,9 +335,16 @@ class SMT2_Data_mE_Content:
         #         for array_item in fieldWithModificationInstruction.array_items:
         #             array_item.fill_fields_until_size(7042)
 
+    def save_results(self, file_content_as_list_of_lines):
+        logging.info("save_results")
+
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
-                fieldWithModificationInstruction.print_field()
+                fieldWithModificationInstruction.save_field(file_content_as_list_of_lines)
+
+        file_content_as_list_of_lines.append("")
+        file_content_as_list_of_lines.append("structureFieldInMainStructureModificationInstructionLines:")
+        file_content_as_list_of_lines += self.structureFieldInMainStructureModificationInstructionLines
 
 
 def open_text_file_and_return_lines(input_file_name):  
@@ -387,6 +401,11 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
 
     
 def create_and_fill_output_file(output_directory, input_file_name, file_content_as_list_of_lines):
+
+    if not os.path.exists(output_directory):
+        printAndLogInfo('Create output directory:' + output_directory)
+        os.makedirs(output_directory)
+
     printAndLogInfo('Create output file:' + input_file_name)
     output_file = open(output_directory + "\\" + input_file_name, "w")
     logging.info('Fill output file:' + input_file_name)
@@ -407,7 +426,10 @@ def Generate_SMT2_Data_mE_fields_contents_from_field_post_assignment_lines():
 
     sMT2_Data_mE_Content.create_structure_fields_objects()
     sMT2_Data_mE_Content.fill_structure_fields_objects()
-
+    
+    file_content_as_list_of_lines = list()
+    sMT2_Data_mE_Content.save_results(file_content_as_list_of_lines)
+    create_and_fill_output_file("output", "Generate_SMT2_Data_mE_fields_contents_from_field_post_assignment_lines.txt", file_content_as_list_of_lines)
 
 
 def main():
