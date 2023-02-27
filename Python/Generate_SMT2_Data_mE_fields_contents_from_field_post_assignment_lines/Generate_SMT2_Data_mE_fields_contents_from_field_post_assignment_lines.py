@@ -123,7 +123,7 @@ class TableFieldInMainStructureModificationInstruction:
         self.field_name = match_result.group("field_name")
         self.field_index_1 = int(match_result.group("field_index_1"))
         self.field_index_2 = int(match_result.group("field_index_2"))
-        self.new_value = match_result.group("new_value")
+        self.new_value = int(match_result.group("new_value"))
 
 class ArrayItemOfFieldOfStructureWithModificationInstruction:
     def __init__(self, parent):
@@ -146,13 +146,11 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
 
         max_dimension = self.get_table_dimension()
 
-        self.fields = list()
-        current_fields = self.fields
+        #self.fields = list()
+        #current_fields = self.fields
 
-        for i in range(1, max_dimension):
-            #for dimension_to_create in max_dimension:
-            current_fields.append(list())
-            current_fields = current_fields[0]
+        for i in range(0, max_dimension):
+            self.fields.append(list())
 
         self.max_dimension = max_dimension
         
@@ -204,31 +202,34 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
         """
 
 
+    def fill_fields_until_size(self, new_size):
+
+        while len(self.fields) < new_size - 1:
+            self.fields.append(list())
+
+
     def compute_fields(self):
 
         max_dimension = self.get_table_dimension()
+
         
         for assingment_instruction in self.assingment_instructions:
             field_index_1 = assingment_instruction.field_index_1
             field_index_2 = assingment_instruction.field_index_2
-            current_fields = self.fields
-
-            for i in range(1, field_index_1):
-                current_fields = current_fields[0]
             
-            #if field_index_2 -1 > len(current_fields):
-            #    current_fields.append(list)
+            #table =  self.fields if max_dimension == 1  else self.fields[field_index_1-1]
+            table =  self.fields[field_index_1-1]
 
-            if field_index_1 > 1 and field_index_2 == 1:
-                current_fields.append(list)
-                current_fields = current_fields[len(current_fields) - 1]
+            while len(table) < field_index_2 - 1:
+                table.append(list())
 
+            if len(table) != field_index_2 - 1:
+                printAndLogCriticalAndKill("Error when assigning " + assingment_instruction.full_content_as_string + " in " + str(table))
 
-            #field = self.fields[field_index_1 - 1 ]
+            table.append(assingment_instruction.new_value)
+
+            
                 
-            current_fields.append(assingment_instruction.new_value)
-         
-            
 
 class FieldOfStructureWithModificationInstruction:
     def __init__(self, name, parent):
@@ -255,7 +256,9 @@ class FieldOfStructureWithModificationInstruction:
         content_as_string = ""
         for array_item in self.array_items:
             array_item_as_string = str(array_item.fields)
-            content_as_string += array_item_as_string
+            for field in array_item.fields:
+                content_as_string += str(field)
+                content_as_string += ","
 
         printAndLogInfo("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string)
 
@@ -306,6 +309,11 @@ class SMT2_Data_mE_Content:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items:
                     array_item.compute_fields()
+                    
+        # for structureWithModificationInstruction in self.structuresWithModificationInstructions:
+        #     for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
+        #         for array_item in fieldWithModificationInstruction.array_items:
+        #             array_item.fill_fields_until_size(7042)
 
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
