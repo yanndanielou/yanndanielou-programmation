@@ -4,23 +4,65 @@ disp(string(datetime) + " Test_Fill_table_during_creation begin");
 
 
   SMT_mE_aig = struct( ...
-					  'no',{[41],[41],[41],[41],[41,42,158]},...
-					  'first_table_created_empty',{[],[],[],[],[]},...
-					  'first_table_created_full',{[011, 012],[],[],[],[]}...
+					  'no',{[10010],[10020],[10031,10032,10033]},...
+					  'first_table_created_empty',{[],[],[]},...
+					  'first_table_created_full',{[10011, 10012],[],[]}...
 					  );
 
 
-SMT_mE_aig(1).first_table_created_empty(1,1) = 111;
-SMT_mE_aig(1).first_table_created_empty(1,2) = 112;
+SMT_mE_aig(1).first_table_created_empty(1) = 1001;
+SMT_mE_aig(2).first_table_created_empty(1,2) = 10012;
 
-SMT_mE_aig(3).first_table_created_empty(2,1) = 021;
-SMT_mE_aig(3).first_table_created_empty(2,2) = 022;
+SMT_mE_aig(3).first_table_created_empty(2,1) = 10021;
+SMT_mE_aig(3).first_table_created_empty(2,2) = 10022;
 
 
-print_structure_content(SMT_mE_aig, "SMT_mE_aig")
+outside_struct_table_created_empty = [];
+outside_struct_table_created_full = [10011, 10012];
+
+
+outside_struct_table_created_empty(1,1) = 10011;
+outside_struct_table_created_empty(1,2) = 10012;
+
+print_table_content(outside_struct_table_created_empty, "outside_struct_table_created_empty")
+print_table_content(outside_struct_table_created_full, "outside_struct_table_created_full")
+
+for structure_it = 1 : length(SMT_mE_aig)
+    %print_table_content(SMT_mE_aig(structure_it).no, "SMT_mE_aig" + " at " +  structure_it + " field no")
+
+    %disp("SMT_mE_aig" + " at " +  structure_it + " first_table_created_empty:");
+	%for field_it = 1 : length(SMT_mE_aig(structure_it).no)
+	%	disp("SMT_mE_aig" + " at " +  structure_it + " field no at " + field_it + " = "  + SMT_mE_aig(structure_it).no(field_it));
+	%end
+end
+
+
+for structure_it = 1 : length(SMT_mE_aig)
+	%print_table_content(SMT_mE_aig(structure_it).first_table_created_empty, "SMT_mE_aig" + " at " +  structure_it + " field first_table_created_empty")
+	%disp("SMT_mE_aig" + " at " +  structure_it + " first_table_created_empty:");
+	%for field_it = 1 : length(SMT_mE_aig(structure_it).first_table_created_empty)
+	%	disp("SMT_mE_aig" + " at " +  structure_it + " field first_table_created_empty at " + field_it + " = "  + SMT_mE_aig(structure_it).first_table_created_empty(field_it));
+	%end
+end
+
+
+for structure_it = 1 : length(SMT_mE_aig)
+	%print_table_content(SMT_mE_aig(structure_it).first_table_created_full, "SMT_mE_aig" + " at " +  structure_it + " field first_table_created_full")
+
+    %disp("SMT_mE_aig" + " at " +  structure_it + " first_table_created_empty:");
+	%for field_it = 1 : length(SMT_mE_aig(structure_it).first_table_created_full)
+	%	disp("SMT_mE_aig" + " at " +  structure_it + " field first_table_created_full at " + field_it + " = "  + SMT_mE_aig(structure_it).first_table_created_full(field_it));
+	%end
+end
+
+%print_structure_content(SMT_mE_aig, "SMT_mE_aig");
 
 
 disp(string(datetime) + " Test_Fill_table_during_creation end");
+disp(" ");
+disp(" ");
+disp(" ");
+disp(" ");
 
 return
 end
