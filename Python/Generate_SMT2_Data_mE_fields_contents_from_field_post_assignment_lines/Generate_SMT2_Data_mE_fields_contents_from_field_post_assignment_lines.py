@@ -256,6 +256,9 @@ class FieldOfStructureWithModificationInstruction:
 
         array_item_number = 0
         for array_item in self.array_items:
+            if array_item.max_dimension > 1:
+                content_as_string += "["
+
             array_item_number += 1
             array_item_as_string = str(array_item.fields)
             
@@ -267,6 +270,10 @@ class FieldOfStructureWithModificationInstruction:
 
                 if field_number < len (array_item.fields):
                     content_as_string += " "
+
+                    
+            if array_item.max_dimension > 1:
+                content_as_string += "]"
                     
             if array_item_number < len (self.array_items):
                 content_as_string += ","
