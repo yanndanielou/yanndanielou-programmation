@@ -85,7 +85,6 @@ for aa = 1 : size(nom_var_global,1)
                     nb = nb + 1;
                 end
             end
-            disp(string(datetime) + " affectation_variables_globales. Iterating nom_var_global " + nom_var_global{aa,1} + " number:" + aa + " Step 1. Time elapsed in fonction:" + string(datetime - affectation_variables_globales_begin_time));
             flag_index_nom_multiple = 1;
         end
     end
@@ -126,7 +125,7 @@ for aa = 1 : size(nom_var_global,1)
     end
     if ~isempty(index_remplissage_param)
         index_fin_instruction_param = strfind(chaine_a_traiter(1,index_remplissage_param(1,1):end),';');
-        disp(string(datetime) + " affectation_variables_globales. Iterating nom_var_global " + nom_var_global{aa,1} + " number:" + aa + ". Nombre d instructions Matlab a evaluer:" + size(index_remplissage_param,2) + ". Time elapsed in fonction:" + string(datetime - affectation_variables_globales_begin_time));
+        disp(string(datetime) + " affectation_variables_globales for " + nom_var_global{aa,1} + ". Nombre d instructions Matlab a evaluer:" + size(index_remplissage_param,2) + ". Time elapsed in fonction:" + string(datetime - affectation_variables_globales_begin_time));
         for nb_index_remplissage_param = 1 : size(index_remplissage_param,2)
             if ~isequal(nb_index_remplissage_param,1)
                 index_dans_chaine_a_traiter = index_remplissage_param(1,nb_index_remplissage_param):index_remplissage_param(1,nb_index_remplissage_param) + index_fin_instruction_param(1,nb_index_remplissage_param)-index_fin_instruction_param(1,nb_index_remplissage_param-1);
@@ -140,20 +139,21 @@ for aa = 1 : size(nom_var_global,1)
             catch ME
                 exception_identifier = ME.identifier;
                 nombre_exception_raised = nombre_exception_raised + 1;
-                nombre_maximum_d_exceptions_a_loguer = 100;
+                nombre_maximum_d_exceptions_a_loguer = 10;
                 if nombre_exception_raised <= nombre_maximum_d_exceptions_a_loguer
                     disp(string(datetime) + " affectation_variables_globales. Exception " + exception_identifier + " raised when executing evalc for:" + chaine_a_evaluer);
                     if nombre_exception_raised == nombre_maximum_d_exceptions_a_loguer                        
                         disp(string(datetime) + " affectation_variables_globales. Future exceptions raised will not be logged in order to avoid flooding (only the first " + nombre_maximum_d_exceptions_a_loguer + " were printed)");
                     end
-                elseif mod(nombre_exception_raised, 10000) == 0 
-                    %Just to track progress
-                    disp(string(datetime) + " affectation_variables_globales. " + nombre_exception_raised +  " nth exception raised");
                 end
+            end
+            %just to track progress
+            if mod(nb_index_remplissage_param, 10000) == 0 
+                disp(string(datetime) + " affectation_variables_globales. nom_var_global " + nom_var_global{aa,1} + ". Nombre d instructions Matlab a evaluées avec succès:" + nombre_evaluations_matlab_reussies + ". Nombre d instructions Matlab échouées (exception levée): " + nombre_exception_raised + ". Time elapsed in fonction:" + string(datetime - affectation_variables_globales_begin_time));
             end
         end
     end
-    disp(string(datetime) + " affectation_variables_globales. Iterating nom_var_global " + nom_var_global{aa,1} + " number:" + aa + " End. Nombre evaluations reussies: " + nombre_evaluations_matlab_reussies +  ", nombre exceptions levees:"  + nombre_exception_raised + ". Time elapsed in fonction:" + string(datetime - affectation_variables_globales_begin_time));
+    disp(string(datetime) + " affectation_variables_globales for " + nom_var_global{aa,1} + " End. Nombre evaluations reussies: " + nombre_evaluations_matlab_reussies +  ", nombre exceptions levees:"  + nombre_exception_raised + ". Time elapsed in fonction:" + string(datetime - affectation_variables_globales_begin_time));
 
 end
 disp(string(datetime) + " affectation_variables_globales of file " + nom_fichier + " end."  + " Time elapsed in fonction:" + string(datetime - affectation_variables_globales_begin_time));
