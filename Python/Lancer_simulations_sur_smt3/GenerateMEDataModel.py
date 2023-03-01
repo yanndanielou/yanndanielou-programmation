@@ -4923,7 +4923,7 @@ class PositionAiguille:
 class ParcoursSegment:
     #@execution_time 
     def __init__(self, _segment, _sens):
-        logging.info("Start calling __init__ ParcoursSegment")
+        logging.debug("Start calling __init__ ParcoursSegment")
         self.segment = _segment
         self.sens = _sens
 
