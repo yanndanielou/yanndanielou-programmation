@@ -4914,7 +4914,7 @@ class PositionAiguille:
 
     #@execution_time 
     def __eq__(self, other):
-        logging.info("Start calling __eq__")
+        logging.debug("Start calling __eq__")
         if self.aiguille == other.aiguille and self.position == other.position:
             return True
         else:
@@ -4929,7 +4929,7 @@ class ParcoursSegment:
 
     #@execution_time 
     def __eq__(self, other):
-        logging.info("Start calling __eq__")
+        logging.debug("Start calling __eq__")
         if self.segment == other.segment and self.sens == other.sens:
             return True
         else:
