@@ -6,7 +6,7 @@ disp(string(datetime) + " Test_Fill_table_during_creation begin");
   SMT_mE_aig = struct( ...
 					  'no',{[10010],[10020],[10031,10032,10033]},...
 					  'first_table_created_empty',{[],[],[]},...
-					  'first_table_created_full',{[10011, 10012],[],[]}...
+					  'first_table_created_full',{[1001,10012],[],{[],[10021, 10022]}}...
 					  );
 
 
@@ -17,12 +17,19 @@ SMT_mE_aig(3).first_table_created_empty(2,1) = 10021;
 SMT_mE_aig(3).first_table_created_empty(2,2) = 10022;
 
 
+
+
+
 outside_struct_table_created_empty = [];
-outside_struct_table_created_full = [10011, 10012];
+outside_struct_table_created_full = [[10011, 10012];[10021, 10022]];
 
 
 outside_struct_table_created_empty(1,1) = 10011;
 outside_struct_table_created_empty(1,2) = 10012;
+
+
+outside_struct_table_created_empty(2,1) = 10021;
+outside_struct_table_created_empty(2,2) = 10022;
 
 print_table_content(outside_struct_table_created_empty, "outside_struct_table_created_empty")
 print_table_content(outside_struct_table_created_full, "outside_struct_table_created_full")
