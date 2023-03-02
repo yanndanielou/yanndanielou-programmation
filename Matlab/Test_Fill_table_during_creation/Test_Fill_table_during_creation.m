@@ -166,13 +166,48 @@ disp(" ");
 
 
 line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_empty(1):" + SMT_mE_aig(5).first_table_created_empty(1));
-line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_full(1):" + SMT_mE_aig(5).first_table_created_full(1));
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_full(1):" + SMT_mE_aig(5).first_table_created_full(1));
 disp(" ");
+
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_empty(1,1):" + SMT_mE_aig(5).first_table_created_empty(1,1));
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_full(1,1):" + SMT_mE_aig(5).first_table_created_full(1,1));
+disp(" ");
+
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_empty(1,2):" + SMT_mE_aig(5).first_table_created_empty(1,2));
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_full(1,2):" + SMT_mE_aig(5).first_table_created_full(1,2));
+disp(" ");
+
+
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_empty(2):" + SMT_mE_aig(5).first_table_created_empty(2));
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_full(1):" + SMT_mE_aig(5).first_table_created_full(1));
+disp(" ");
+
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_empty(2,1):" + SMT_mE_aig(5).first_table_created_empty(2,1));
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_full(1,1):" + SMT_mE_aig(5).first_table_created_full(1,1));
+disp(" ");
+
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_empty(2,2):" + SMT_mE_aig(5).first_table_created_empty(2,2));
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_full(1,2):" + SMT_mE_aig(5).first_table_created_full(1,2));
+disp(" ");
+
+
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_empty(3):" + SMT_mE_aig(5).first_table_created_empty(3));
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_full(1):" + SMT_mE_aig(5).first_table_created_full(1));
+disp(" ");
+
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_empty(3,1):" + SMT_mE_aig(5).first_table_created_empty(3,1));
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_full(1,1):" + SMT_mE_aig(5).first_table_created_full(1,1));
+disp(" ");
+
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_empty(3,2):" + SMT_mE_aig(5).first_table_created_empty(3,2));
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(5).first_table_created_full(1,2):" + SMT_mE_aig(5).first_table_created_full(1,2));
+disp(" ");
+
 disp(" ");
 
 
 line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(6).first_table_created_empty):" + length(SMT_mE_aig(6).first_table_created_empty));
-line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(6).first_table_created_full):" + length(SMT_mE_aig(6).first_table_created_full));
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(6).first_table_created_full):" + length(SMT_mE_aig(6).first_table_created_full));
 disp(" ");
 
 % 
