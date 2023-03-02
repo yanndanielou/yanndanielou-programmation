@@ -3,13 +3,13 @@ function Test_Fill_table_during_creation(varargin)
 %clears all the text from the Command Window, resulting in a clear screen
 clc
 
-disp(string(datetime) + " Test_Fill_table_during_creation begin");
+line_num=dbstack;disp("line:" + line_num(end).line + " " + string(datetime) + " Test_Fill_table_during_creation begin");
 
 
   SMT_mE_aig = struct( ...
-					  'no',{[10010],[10020],[10031,10032,10033]},...
-					  'first_table_created_empty',{[],[],[]},...
-					  'first_table_created_full',{[[1001]],[[0,0];[0,0]],[[0,0];[30021, 30022]]}...
+					  'no',{[10010],[10020],[10031,10032,10033],[],[]},...
+					  'first_table_created_empty',{[],[],[30021;30022],[],[]},...
+					  'first_table_created_full',{[[1001]],[[10012,0];[0,0]],[[0,0];[30021, 30022]],[],[]}...
 					  );
 
 
@@ -20,36 +20,54 @@ SMT_mE_aig(2).first_table_created_empty(1,2) = 10012;
 SMT_mE_aig(3).first_table_created_empty(2,1) = 30021;
 SMT_mE_aig(3).first_table_created_empty(2,2) = 30022;
 
-disp("length(SMT_mE_aig(1).first_table_created_empty)" + length(SMT_mE_aig(1).first_table_created_empty));
-disp("length(SMT_mE_aig(1).first_table_created_full)" + length(SMT_mE_aig(1).first_table_created_full));
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(1).first_table_created_empty):" + length(SMT_mE_aig(1).first_table_created_empty));
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(1).first_table_created_full):" + length(SMT_mE_aig(1).first_table_created_full));
+disp(" ");
 
 
-disp("SMT_mE_aig(1).first_table_created_empty(1,1):" + SMT_mE_aig(1).first_table_created_empty(1,1));
-disp("SMT_mE_aig(1).first_table_created_full(1,1):" + SMT_mE_aig(1).first_table_created_full(1,1));
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(1).first_table_created_empty(1,1):" + SMT_mE_aig(1).first_table_created_empty(1,1));
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(1).first_table_created_full(1,1):" + SMT_mE_aig(1).first_table_created_full(1,1));
+disp(" ");
+disp(" ");
+
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(2).first_table_created_empty):" + length(SMT_mE_aig(2).first_table_created_empty));
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(2).first_table_created_full):" + length(SMT_mE_aig(2).first_table_created_full));
+disp(" ");
+
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(2).first_table_created_empty:" + SMT_mE_aig(2).first_table_created_empty);
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(2).first_table_created_full:" + SMT_mE_aig(2).first_table_created_full);
+disp(" ");
+
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(2).first_table_created_empty(1):" + SMT_mE_aig(2).first_table_created_empty(1));
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(2).first_table_created_full(1):" + SMT_mE_aig(2).first_table_created_full(1));
+disp(" ");
+
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(2).first_table_created_empty(2):" + SMT_mE_aig(2).first_table_created_empty(2));
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(2).first_table_created_full(2):" + SMT_mE_aig(2).first_table_created_full(2));
+disp(" ");
 
 
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(3).first_table_created_empty):" + length(SMT_mE_aig(3).first_table_created_empty));
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(3).first_table_created_full):" + length(SMT_mE_aig(3).first_table_created_full));
+disp(" ");
 
-disp("length(SMT_mE_aig(2).first_table_created_empty)" + length(SMT_mE_aig(2).first_table_created_empty));
-disp("length(SMT_mE_aig(2).first_table_created_full)" + length(SMT_mE_aig(2).first_table_created_full));
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(3).first_table_created_empty(2,1):" + SMT_mE_aig(3).first_table_created_empty(2,1));
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(3).first_table_created_full(2,1):" + SMT_mE_aig(3).first_table_created_full(2,1));
+disp(" ");
 
-disp("SMT_mE_aig(2).first_table_created_empty:" + SMT_mE_aig(1).first_table_created_empty);
-disp("SMT_mE_aig(2).first_table_created_full:" + SMT_mE_aig(1).first_table_created_full);
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(3).first_table_created_empty(2,2):" + SMT_mE_aig(3).first_table_created_empty(2,2));
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(3).first_table_created_full(2,2):" + SMT_mE_aig(3).first_table_created_full(2,2));
+disp(" ");
+disp(" ");
 
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(4).first_table_created_empty):" + length(SMT_mE_aig(4).first_table_created_empty));
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(4).first_table_created_full):" + length(SMT_mE_aig(4).first_table_created_full));
+disp(" ");
+disp(" ");
 
-
-disp("length(SMT_mE_aig(3).first_table_created_empty)" + length(SMT_mE_aig(3).first_table_created_empty));
-disp("length(SMT_mE_aig(3).first_table_created_full)" + length(SMT_mE_aig(3).first_table_created_full));
-
-
-disp("SMT_mE_aig(3).first_table_created_empty(2,1):" + SMT_mE_aig(3).first_table_created_empty(2,1));
-disp("SMT_mE_aig(3).first_table_created_full(2,1):" + SMT_mE_aig(3).first_table_created_full(2,1));
-
-disp("SMT_mE_aig(3).first_table_created_empty(2,2):" + SMT_mE_aig(3).first_table_created_empty(2,2));
-disp("SMT_mE_aig(3).first_table_created_full(2,2):" + SMT_mE_aig(3).first_table_created_full(2,2));
-
-
-
-
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(5).first_table_created_empty):" + length(SMT_mE_aig(5).first_table_created_empty));
+line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(5).first_table_created_full):" + length(SMT_mE_aig(5).first_table_created_full));
+disp(" ");
 
 
 % 
@@ -70,27 +88,27 @@ disp("SMT_mE_aig(3).first_table_created_full(2,2):" + SMT_mE_aig(3).first_table_
 for structure_it = 1 : length(SMT_mE_aig)
     %print_table_content(SMT_mE_aig(structure_it).no, "SMT_mE_aig" + " at " +  structure_it + " field no")
 
-    %disp("SMT_mE_aig" + " at " +  structure_it + " first_table_created_empty:");
+    %line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig" + " at " +  structure_it + " first_table_created_empty:");
 	%for field_it = 1 : length(SMT_mE_aig(structure_it).no)
-	%	disp("SMT_mE_aig" + " at " +  structure_it + " field no at " + field_it + " = "  + SMT_mE_aig(structure_it).no(field_it));
+	%	line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig" + " at " +  structure_it + " field no at " + field_it + " = "  + SMT_mE_aig(structure_it).no(field_it));
 	%end
 end
 
 
 for structure_it = 1 : length(SMT_mE_aig)
 	print_table_content(SMT_mE_aig(structure_it).first_table_created_empty, "SMT_mE_aig" + " at " +  structure_it + " field first_table_created_empty")
-    disp("SMT_mE_aig" + " at " +  structure_it + " first_table_created_empty:");
+    line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig" + " at " +  structure_it + " first_table_created_empty:");
 
-    %disp("SMT_mE_aig(" + structure_it + ").no");
-    %disp(SMT_mE_aig(structure_it).no);   
+    %line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(" + structure_it + ").no");
+    %line_num=dbstack;disp("line:" + line_num(end).line + " " + SMT_mE_aig(structure_it).no);   
 	%for field_it = 1 : length(SMT_mE_aig(structure_it).no)
-	%	disp("SMT_mE_aig" + " at " +  structure_it + " field no at " + field_it + " = "  + SMT_mE_aig(structure_it).no(field_it));
+	%	line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig" + " at " +  structure_it + " field no at " + field_it + " = "  + SMT_mE_aig(structure_it).no(field_it));
     %end
     
-    disp("SMT_mE_aig(" + structure_it + ").first_table_created_empty");
-    disp(SMT_mE_aig(structure_it).first_table_created_empty);   
+    line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(" + structure_it + ").first_table_created_empty");
+    line_num=dbstack;disp("line:" + line_num(end).line + " " + SMT_mE_aig(structure_it).first_table_created_empty);   
     for field_it = 1 : length(SMT_mE_aig(structure_it).first_table_created_empty)
-		disp("SMT_mE_aig" + " at " +  structure_it + " field first_table_created_empty at " + field_it + " = "  + SMT_mE_aig(structure_it).first_table_created_empty(field_it));
+		line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig" + " at " +  structure_it + " field first_table_created_empty at " + field_it + " = "  + SMT_mE_aig(structure_it).first_table_created_empty(field_it));
     end
     
     first_table_created_full_length = length(SMT_mE_aig(structure_it).first_table_created_full);
@@ -100,10 +118,10 @@ for structure_it = 1 : length(SMT_mE_aig)
         warning("SMT_mE_aig at " + structure_it + " table first_table_created_full has size:" + first_table_created_full_length +  " and first_table_created_empty has size:" + first_table_created_empty_length)
     end
     
-    disp("SMT_mE_aig(" + structure_it + ").first_table_created_full");
-    disp(SMT_mE_aig(structure_it).first_table_created_full); 
+    line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig(" + structure_it + ").first_table_created_full");
+    line_num=dbstack;disp("line:" + line_num(end).line + " " + SMT_mE_aig(structure_it).first_table_created_full); 
     for field_it = 1 : length(SMT_mE_aig(structure_it).first_table_created_full)
-		disp("SMT_mE_aig" + " at " +  structure_it + " field first_table_created_full at " + field_it + " = "  + SMT_mE_aig(structure_it).first_table_created_full(field_it));
+		line_num=dbstack;disp("line:" + line_num(end).line + " " + "SMT_mE_aig" + " at " +  structure_it + " field first_table_created_full at " + field_it + " = "  + SMT_mE_aig(structure_it).first_table_created_full(field_it));
     end
 end
 
@@ -112,7 +130,7 @@ end
 %print_structure_content(SMT_mE_aig, "SMT_mE_aig");
 
 
-disp(string(datetime) + " Test_Fill_table_during_creation end");
+line_num=dbstack;disp("line:" + line_num(end).line + " " + string(datetime) + " Test_Fill_table_during_creation end");
 
 return
 end
