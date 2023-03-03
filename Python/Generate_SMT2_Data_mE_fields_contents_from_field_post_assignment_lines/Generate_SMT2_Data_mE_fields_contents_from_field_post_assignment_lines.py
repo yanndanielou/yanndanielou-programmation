@@ -294,10 +294,18 @@ class FieldOfStructureWithModificationInstruction:
                 if level_1_field_content_number < len(array_item_of_structure_indice.level1FieldContents):
                     current_item_content_as_string += ";"
 
-            if structure_indice_number <  len(self.array_items_by_structure_indice):
+            if structure_indice_number <  len(self.array_items_by_structure_indice) :
                 file_content_as_list_of_lines_in_multiple_lines.append(current_item_content_as_string + ",...")
                 
                 content_as_string_in_one_line += ","
+            else:
+                file_content_as_list_of_lines_in_multiple_lines.append(current_item_content_as_string+ "...")
+                file_content_as_list_of_lines_in_multiple_lines.append(current_item_content_as_string+ "}...")
+                
+                content_as_string_in_one_line += "}"
+
+
+                last_line=1
             
             content_as_string_in_one_line += current_item_content_as_string
 
@@ -427,13 +435,13 @@ class SMT2_Data_mE_Content:
             file_content_as_list_of_lines.append("Structure:" + structureWithModificationInstruction.name)
 
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
-                file_content_as_list_of_lines.append("Structure:" + structureWithModificationInstruction.name + " field:" + fieldWithModificationInstruction.name) 
+                file_content_as_list_of_lines.append("Structure:" + structureWithModificationInstruction.name + " field:" + fieldWithModificationInstruction.name + " in multiple lines") 
                 #fieldWithModificationInstruction.save_field_old(file_content_as_list_of_lines)
                 fieldWithModificationInstruction.save_field(file_content_as_list_of_lines, False)
 
                 
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
-                file_content_as_list_of_lines.append("Structure:" + structureWithModificationInstruction.name + " field:" + fieldWithModificationInstruction.name) 
+                file_content_as_list_of_lines.append("Structure:" + structureWithModificationInstruction.name + " field:" + fieldWithModificationInstruction.name + " in one line") 
                 #fieldWithModificationInstruction.save_field_old(file_content_as_list_of_lines)
                 fieldWithModificationInstruction.save_field(file_content_as_list_of_lines, True)
 
