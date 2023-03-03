@@ -130,29 +130,20 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
         self.fields = list()
         self.last_index_computed = None
         self.assingment_instructions = list()
-        self.max_dimension = None
+        self.max_dimension1 = None
+        self.max_dimension2 = None
         self.parent = parent
 
-    def get_table_dimension(self):
-        max_dimension = 0
 
-        for assingment_instruction in self.assingment_instructions:
-            if assingment_instruction.field_index_1 > max_dimension:
-                max_dimension = assingment_instruction.field_index_1
-        
-        return max_dimension
 
     def create_tables_for_empty_fields_depending_on_dimension(self):
-
-        max_dimension = self.get_table_dimension()
 
         #self.fields = list()
         #current_fields = self.fields
 
-        for i in range(0, max_dimension):
+        for i in range(0, self.max_dimension1):
             self.fields.append(list())
 
-        self.max_dimension = max_dimension
         
         """ 
         if max_dimension == 1:
@@ -205,18 +196,25 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
     def fill_fields_until_size(self, new_size):
 
         while len(self.fields) < new_size - 1:
-            self.fields.append(list())
+            self.fields.append(list())    
 
+    def compute_max_dimensions(self):
+
+        self.max_dimension1 = 0
+        self.max_dimension2 = 0
+
+        for assingment_instruction in self.assingment_instructions:
+            if assingment_instruction.field_index_1 > self.max_dimension1:
+                self.max_dimension1 = assingment_instruction.field_index_1
+            if assingment_instruction.field_index_2 > self.max_dimension2:
+                self.max_dimension2 = assingment_instruction.field_index_2
 
     def compute_fields(self):
 
-        max_dimension = self.get_table_dimension()
-        
         for assingment_instruction in self.assingment_instructions:
             field_index_1 = assingment_instruction.field_index_1
             field_index_2 = assingment_instruction.field_index_2
             
-            #table =  self.fields if max_dimension == 1  else self.fields[field_index_1-1]
             table =  self.fields[field_index_1-1]
 
             while len(table) < field_index_2 - 1:
@@ -256,7 +254,7 @@ class FieldOfStructureWithModificationInstruction:
 
         array_item_number = 0
         for array_item in self.array_items:
-            if array_item.max_dimension > 1:
+            if array_item.max_dimension1 > 1:
                 content_as_string += "["
 
             array_item_number += 1
@@ -272,7 +270,7 @@ class FieldOfStructureWithModificationInstruction:
                     content_as_string += " "
 
                     
-            if array_item.max_dimension > 1:
+            if array_item.max_dimension1 > 1:
                 content_as_string += "]"
                     
             if array_item_number < len (self.array_items):
@@ -282,7 +280,8 @@ class FieldOfStructureWithModificationInstruction:
         file_content_as_list_of_lines.append(content_as_string)
         file_content_as_list_of_lines.append("")
 
-        printAndLogInfo("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string)
+        printAndLogInfo("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string[:60] + ", ...,  etc.")
+        logging.debug("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string)
 
 class StructureWithModificationInstruction:
     def __init__(self, name):
@@ -322,16 +321,21 @@ class SMT2_Data_mE_Content:
             fieldOfStructureWithModificationInstruction.add_assignment_instructions(tableFieldInMainStructureModificationInstruction)
 
     def fill_structure_fields_objects(self):
-        logging.info("fill_structure_fields_objects")
+        printAndLogInfo("fill_structure_fields_objects")
+        
+        printAndLogInfo("compute_max_dimensions")                
+        for structureWithModificationInstruction in self.structuresWithModificationInstructions:
+            for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
+                for array_item in fieldWithModificationInstruction.array_items:
+                    array_item.compute_max_dimensions()
 
-        logging.info("create_tables_for_empty_fields_depending_on_dimension")
+        printAndLogInfo("create_tables_for_empty_fields_depending_on_dimension")
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items:
                     array_item.create_tables_for_empty_fields_depending_on_dimension()
 
-
-        logging.info("compute_fields")                
+        printAndLogInfo("compute_fields")                
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items:
@@ -343,7 +347,7 @@ class SMT2_Data_mE_Content:
         #             array_item.fill_fields_until_size(7042)
 
     def save_results(self, file_content_as_list_of_lines):
-        logging.info("save_results")
+        printAndLogInfo("save_results")
 
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
