@@ -1,18 +1,21 @@
 function SMT2_Data_mE_instrument_affectation_variables_globales(varargin)
 
-if ~isdeployed
-    diary SMT2_Data_mE_instrument_affectation_variables_globales.log 
-else
-    diary off    
-end
+
+%clears all the text from the Command Window, resulting in a clear screen
+clc
+
+global SMT_mE_aig
+
 
 disp(string(datetime) + " SMT2_Data_mE_instrument_affectation_variables_globales begin");
 
-affectation_variables_globales("Input\\SMT2_Data_mE_2022_10_light.m");
+affectation_variables_globales("Input\\Only_the_lines_of_One_Structure_filled_at_creation.m");
+
+
+print_structure_content(SMT_mE_aig, "SMT_mE_aig")
 
 disp(string(datetime) + " SMT2_Data_mE_instrument_affectation_variables_globales end");
 
-diary off
 
 return
 end
