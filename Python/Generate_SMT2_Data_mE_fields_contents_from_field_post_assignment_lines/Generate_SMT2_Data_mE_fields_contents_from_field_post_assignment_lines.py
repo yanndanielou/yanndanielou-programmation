@@ -250,7 +250,6 @@ class FieldOfStructureWithModificationInstruction:
     
 
     def save_field(self, file_content_as_list_of_lines, in_one_line):
-        file_content_as_list_of_lines_in_one_line = list()
         file_content_as_list_of_lines_in_multiple_lines = list()
 
         file_content_as_list_of_lines_in_multiple_lines.append(",{...")
@@ -296,16 +295,15 @@ class FieldOfStructureWithModificationInstruction:
                     current_item_content_as_string += ";"
 
             if structure_indice_number <  len(self.array_items_by_structure_indice):
-                file_content_as_list_of_lines_in_multiple_lines.append(",...")
-                file_content_as_list_of_lines_in_multiple_lines.append(current_item_content_as_string)
-
+                file_content_as_list_of_lines_in_multiple_lines.append(current_item_content_as_string + ",...")
+                
                 content_as_string_in_one_line += ","
-                content_as_string_in_one_line += current_item_content_as_string
+            
+            content_as_string_in_one_line += current_item_content_as_string
 
-        file_content_as_list_of_lines_in_one_line = content_as_string_in_one_line
 
         if in_one_line:
-            file_content_as_list_of_lines.append(file_content_as_list_of_lines_in_one_line)
+            file_content_as_list_of_lines.append(content_as_string_in_one_line)
         else:
             file_content_as_list_of_lines += file_content_as_list_of_lines_in_multiple_lines
 
