@@ -251,71 +251,51 @@ class FieldOfStructureWithModificationInstruction:
 
     def save_field(self, file_content_as_list_of_lines):
         file_content_as_list_of_lines.append(",{...")
-        content_as_string = ""
 
         structure_indice_number = 0
         for array_item_of_structure_indice in self.array_items_by_structure_indice:
             structure_indice_number += 1
-            
-            if structure_indice_number > 1:
+
+            content_as_string = ""
+            level_1_field_content_number = 0
+            for level_1_field_content in array_item_of_structure_indice.level1FieldContents:
+                level_1_field_content_number += 1
+                
+                if len(level_1_field_content.level2FieldContents) > 1:
+                    content_as_string += "["
+                
+                level_2_field_content_number = 0
+                for level_2_field_content in level_1_field_content.level2FieldContents:
+                    level_2_field_content_number += 1
+
+                    #content_as_string += "["
+
+                    assingment_instruction_number = 0
+                    for assingment_instruction in level_2_field_content.assingment_instructions:
+                        assingment_instruction_number += 1
+                        content_as_string += "["
+                        content_as_string +=  str(assingment_instruction.new_value)
+                        content_as_string += "]"
+
+                    #content_as_string += "]"
+
+                    if level_2_field_content_number < len(level_1_field_content.assingment_instructions):
+                        content_as_string += ","
+
+                
+                if len(level_1_field_content.level2FieldContents) > 1:
+                    content_as_string += "]"
+
+                if level_1_field_content_number < len(array_item_of_structure_indice.level1FieldContents):
+                    content_as_string += ";"
+
+            if structure_indice_number <  len(self.array_items_by_structure_indice):
                 content_as_string += "..."
                 file_content_as_list_of_lines.append(content_as_string)
-                content_as_string = ""
 
-            if array_item_of_structure_indice.max_dimension1 > 1 or array_item_of_structure_indice.max_dimension2 > 1:
-                content_as_string += "["
+        end_of_save_field = 1
 
 
-            array_item_as_string = str(array_item_of_structure_indice.fields)
-            
-            field_of_array_number = 0
-            for field_of_array in array_item_of_structure_indice.fields:
-                field_of_array_number += 1
-
-                content_as_string += "["
-                
-                previous_instruction_dimension1 = 0
-                previous_instruction_dimension2 = 0
-
-                assignment_instruction_number = 0
-                for assignment_instruction in field_of_array.assingment_instructions:
-                    assignment_instruction_number += 1
-                    if previous_instruction_dimension1 == assignment_instruction.field_index_1 - 1:
-                        content_as_string += ","
-
-                    elif previous_instruction_dimension1 == assignment_instruction.field_index_1:
-                        content_as_string += ","
-                        content_as_string += "["
-                        content_as_string += assignment_instruction.new_value
-                        content_as_string += "]"
-                    else:
-                        printAndLogCriticalAndKill("Could not treat " + str(assignment_instruction))
-
-                    
-
-                    previous_instruction_dimension1 = assignment_instruction.field_index_1
-                    previous_instruction_dimension2 = assignment_instruction.field_index_2
-
-                content_as_string += str(field_of_array)
-
-                if field_of_array_number < len (array_item_of_structure_indice.fields):
-                    content_as_string += " "
-
-                    
-            if array_item_of_structure_indice.max_dimension1 > 1 or array_item_of_structure_indice.max_dimension2 > 1:
-                content_as_string += "]"
-                    
-            if structure_indice_number < len (self.array_items_by_structure_indice):
-                content_as_string += ","
-
-        file_content_as_list_of_lines.append("}...")
-
-        file_content_as_list_of_lines.append("content of field " + self.name + " for structure:" + self.parent.name)
-        file_content_as_list_of_lines.append(content_as_string)
-        file_content_as_list_of_lines.append("")
-
-        printAndLogInfo("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string[:60] + ", ...,  etc.")
-        logging.debug("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string)
 
     def save_field_old(self, file_content_as_list_of_lines):
         content_as_string = ""
@@ -434,7 +414,8 @@ class SMT2_Data_mE_Content:
 
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 file_content_as_list_of_lines.append("Structure:" + structureWithModificationInstruction.name + " field:" + fieldWithModificationInstruction.name) 
-                fieldWithModificationInstruction.save_field_old(file_content_as_list_of_lines)
+                #fieldWithModificationInstruction.save_field_old(file_content_as_list_of_lines)
+                fieldWithModificationInstruction.save_field(file_content_as_list_of_lines)
 
         file_content_as_list_of_lines.append("")
         file_content_as_list_of_lines.append("structureFieldInMainStructureModificationInstructionLines:")
