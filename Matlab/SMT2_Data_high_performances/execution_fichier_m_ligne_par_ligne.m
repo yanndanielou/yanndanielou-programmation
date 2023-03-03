@@ -1,5 +1,4 @@
-
-
+function execution_fichier_m_ligne_par_ligne(nom_fichier)
 
 disp(string(datetime) + " execution_fichier_m_ligne_par_ligne of file " + nom_fichier + " begin");
 execution_fichier_m_ligne_par_ligne_begin_time = datetime;
