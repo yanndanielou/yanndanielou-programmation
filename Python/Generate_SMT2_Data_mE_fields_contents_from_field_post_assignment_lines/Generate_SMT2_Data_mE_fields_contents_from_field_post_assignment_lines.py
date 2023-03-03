@@ -125,7 +125,33 @@ class TableFieldInMainStructureModificationInstruction:
         self.field_index_2 = int(match_result.group("field_index_2"))
         self.new_value = int(match_result.group("new_value"))
 
-class ArrayItemOfFieldOfStructureWithModificationInstruction:
+
+class Level2FieldContent:
+    def __init__(self, parent):
+        self.parent = parent
+        self.assingment_instructions = list()
+
+class Level1FieldContent:
+    def __init__(self, parent):
+        self.parent = parent
+        self.assingment_instructions = list()
+        self.level2FieldContents = list()
+
+    def compute_level_2_fields(self):
+
+        for assingment_instruction in self.assingment_instructions:
+            field_index_2 = assingment_instruction.field_index_2
+            
+            level2FieldContent = None
+            while len(self.level2FieldContents) < field_index_2:
+                 level2FieldContent = Level2FieldContent(self)
+                 self.level2FieldContents.append(level2FieldContent)
+            else:
+                level2FieldContent = self.level2FieldContents[field_index_2-1]
+
+            level2FieldContent.assingment_instructions.append(assingment_instruction)
+
+class StructureSpecifcIndex:
     def __init__(self, parent):
         self.fields = list()
         self.last_index_computed = None
@@ -133,6 +159,7 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
         self.max_dimension1 = None
         self.max_dimension2 = None
         self.parent = parent
+        self.level1FieldContents = list()
 
 
 
@@ -143,6 +170,8 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
 
         for i in range(0, self.max_dimension1):
             self.fields.append(list())
+            for j in range(1, self.max_dimension2):
+                self.fields[len(self.fields)-1].append(list())
 
     def fill_fields_until_size(self, new_size):
 
@@ -160,7 +189,26 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
             if assingment_instruction.field_index_2 > self.max_dimension2:
                 self.max_dimension2 = assingment_instruction.field_index_2
 
-    def compute_fields(self):
+    def compute_level_1_fields(self):
+        for assingment_instruction in self.assingment_instructions:
+            field_index_1 = assingment_instruction.field_index_1
+            field_index_2 = assingment_instruction.field_index_2
+            
+            level1FieldContent = None
+            while len(self.level1FieldContents) < field_index_1:
+                 level1FieldContent = Level1FieldContent(self)
+                 self.level1FieldContents.append(level1FieldContent)
+            else:
+                level1FieldContent = self.level1FieldContents[field_index_1-1]
+
+            level1FieldContent.assingment_instructions.append(assingment_instruction)
+    
+    def compute_level_2_fields(self):
+
+        for level1FieldContent in self.level1FieldContents:
+            level1FieldContent.compute_level_2_fields()
+
+    def compute_fields_old(self):
 
         for assingment_instruction in self.assingment_instructions:
             field_index_1 = assingment_instruction.field_index_1
@@ -171,19 +219,20 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
             while len(table) < field_index_2 - 1:
                 table.append(list())
 
-            if len(table) != field_index_2 - 1:
-                printAndLogCriticalAndKill("Error when assigning " + assingment_instruction.full_content_as_string + " in " + str(table))
+            #if len(table) != field_index_2 - 1:
+            #    printAndLogCriticalAndKill("Error when assigning " + assingment_instruction.full_content_as_string + " in " + str(table))
 
             table.append(assingment_instruction.new_value)
 
-            
-                
+        end_of_function=1
+#class FieldOfStructureWithModificationInstruction:
+
 
 class FieldOfStructureWithModificationInstruction:
     def __init__(self, name, parent):
         self.name = name
         self.last_index_computed = None
-        self.array_items = list()
+        self.array_items_by_structure_indice = list()
         self.parent = parent
         printAndLogInfo("Create " + self.__class__.__name__ + " created with name:" + self.name)
 
@@ -191,20 +240,88 @@ class FieldOfStructureWithModificationInstruction:
         main_structure_index_starting_at_0 = tableFieldInMainStructureModificationInstruction.main_structure_index - 1
         arrayItemOfFieldOfStructureWithModificationInstruction = None
         
-        if tableFieldInMainStructureModificationInstruction.main_structure_index > len(self.array_items):
-            arrayItemOfFieldOfStructureWithModificationInstruction = ArrayItemOfFieldOfStructureWithModificationInstruction(self)
-            self.array_items.append(arrayItemOfFieldOfStructureWithModificationInstruction)
+        if tableFieldInMainStructureModificationInstruction.main_structure_index > len(self.array_items_by_structure_indice):
+            arrayItemOfFieldOfStructureWithModificationInstruction = StructureSpecifcIndex(self)
+            self.array_items_by_structure_indice.append(arrayItemOfFieldOfStructureWithModificationInstruction)
         else:
-            arrayItemOfFieldOfStructureWithModificationInstruction = self.array_items[main_structure_index_starting_at_0]
+            arrayItemOfFieldOfStructureWithModificationInstruction = self.array_items_by_structure_indice[main_structure_index_starting_at_0]
 
         arrayItemOfFieldOfStructureWithModificationInstruction.assingment_instructions.append(tableFieldInMainStructureModificationInstruction)
     
 
     def save_field(self, file_content_as_list_of_lines):
+        file_content_as_list_of_lines.append(",{...")
+        content_as_string = ""
+
+        structure_indice_number = 0
+        for array_item_of_structure_indice in self.array_items_by_structure_indice:
+            structure_indice_number += 1
+            
+            if structure_indice_number > 1:
+                content_as_string += "..."
+                file_content_as_list_of_lines.append(content_as_string)
+                content_as_string = ""
+
+            if array_item_of_structure_indice.max_dimension1 > 1 or array_item_of_structure_indice.max_dimension2 > 1:
+                content_as_string += "["
+
+
+            array_item_as_string = str(array_item_of_structure_indice.fields)
+            
+            field_of_array_number = 0
+            for field_of_array in array_item_of_structure_indice.fields:
+                field_of_array_number += 1
+
+                content_as_string += "["
+                
+                previous_instruction_dimension1 = 0
+                previous_instruction_dimension2 = 0
+
+                assignment_instruction_number = 0
+                for assignment_instruction in field_of_array.assingment_instructions:
+                    assignment_instruction_number += 1
+                    if previous_instruction_dimension1 == assignment_instruction.field_index_1 - 1:
+                        content_as_string += ","
+
+                    elif previous_instruction_dimension1 == assignment_instruction.field_index_1:
+                        content_as_string += ","
+                        content_as_string += "["
+                        content_as_string += assignment_instruction.new_value
+                        content_as_string += "]"
+                    else:
+                        printAndLogCriticalAndKill("Could not treat " + str(assignment_instruction))
+
+                    
+
+                    previous_instruction_dimension1 = assignment_instruction.field_index_1
+                    previous_instruction_dimension2 = assignment_instruction.field_index_2
+
+                content_as_string += str(field_of_array)
+
+                if field_of_array_number < len (array_item_of_structure_indice.fields):
+                    content_as_string += " "
+
+                    
+            if array_item_of_structure_indice.max_dimension1 > 1 or array_item_of_structure_indice.max_dimension2 > 1:
+                content_as_string += "]"
+                    
+            if structure_indice_number < len (self.array_items_by_structure_indice):
+                content_as_string += ","
+
+        file_content_as_list_of_lines.append("}...")
+
+        file_content_as_list_of_lines.append("content of field " + self.name + " for structure:" + self.parent.name)
+        file_content_as_list_of_lines.append(content_as_string)
+        file_content_as_list_of_lines.append("")
+
+        printAndLogInfo("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string[:60] + ", ...,  etc.")
+        logging.debug("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string)
+
+    def save_field_old(self, file_content_as_list_of_lines):
         content_as_string = ""
 
         array_item_number = 0
-        for array_item in self.array_items:
+        for array_item in self.array_items_by_structure_indice:
             if array_item.max_dimension1 > 1:
                 content_as_string += "["
 
@@ -224,7 +341,7 @@ class FieldOfStructureWithModificationInstruction:
             if array_item.max_dimension1 > 1:
                 content_as_string += "]"
                     
-            if array_item_number < len (self.array_items):
+            if array_item_number < len (self.array_items_by_structure_indice):
                 content_as_string += ","
 
         file_content_as_list_of_lines.append("content of field " + self.name + " for structure:" + self.parent.name)
@@ -277,32 +394,47 @@ class SMT2_Data_mE_Content:
         printAndLogInfo("compute_max_dimensions")                
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
-                for array_item in fieldWithModificationInstruction.array_items:
+                for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
                     array_item.compute_max_dimensions()
 
         printAndLogInfo("create_tables_for_empty_fields_depending_on_dimension")
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
-                for array_item in fieldWithModificationInstruction.array_items:
+                for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
                     array_item.create_tables_for_empty_fields_depending_on_dimension()
 
-        printAndLogInfo("compute_fields")                
+        printAndLogInfo("compute_fields_old")                
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
-                for array_item in fieldWithModificationInstruction.array_items:
-                    array_item.compute_fields()
+                for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
+                    array_item.compute_fields_old()
+
+        printAndLogInfo("compute_level_1_fields")                
+        for structureWithModificationInstruction in self.structuresWithModificationInstructions:
+            for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
+                for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
+                    array_item.compute_level_1_fields()
+
+        printAndLogInfo("compute_level_2_fields")                
+        for structureWithModificationInstruction in self.structuresWithModificationInstructions:
+            for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
+                for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
+                    array_item.compute_level_2_fields()
                     
         # for structureWithModificationInstruction in self.structuresWithModificationInstructions:
         #     for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
-        #         for array_item in fieldWithModificationInstruction.array_items:
+        #         for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
         #             array_item.fill_fields_until_size(7042)
 
     def save_results(self, file_content_as_list_of_lines):
         printAndLogInfo("save_results")
 
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
+            file_content_as_list_of_lines.append("Structure:" + structureWithModificationInstruction.name)
+
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
-                fieldWithModificationInstruction.save_field(file_content_as_list_of_lines)
+                file_content_as_list_of_lines.append("Structure:" + structureWithModificationInstruction.name + " field:" + fieldWithModificationInstruction.name) 
+                fieldWithModificationInstruction.save_field_old(file_content_as_list_of_lines)
 
         file_content_as_list_of_lines.append("")
         file_content_as_list_of_lines.append("structureFieldInMainStructureModificationInstructionLines:")
