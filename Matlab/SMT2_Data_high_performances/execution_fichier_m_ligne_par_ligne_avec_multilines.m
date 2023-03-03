@@ -14,22 +14,28 @@ current_multiline_instruction = '';
 line_number=0;
 while ischar(tline)
     line_number = line_number +1;
+    
+    %just to track progress
+    if mod(line_number, 10000) == 0
+        disp("execution_fichier_m_ligne_par_ligne_avec_multilines, processing line:" + line_number);
+    end
+    
 	line_strimmed = strtrim(tline);
 	is_instruction_ending_in_next_line = endsWith(line_strimmed,"...");
 	
 	
 	if is_instruction_ending_in_next_line
         % remove the "..."
-        line_strimmed_without_continuation_char_as_str = line_strimmed(1:end-3)
-        line_strimmed_without_continuation_char_as_table = convertStringsToChars(line_strimmed_without_continuation_char_as_str)
+        line_strimmed_without_continuation_char_as_str = line_strimmed(1:end-3);
+        line_strimmed_without_continuation_char_as_table = convertStringsToChars(line_strimmed_without_continuation_char_as_str);
 		current_multiline_instruction = strcat(current_multiline_instruction, line_strimmed_without_continuation_char_as_table);		
 	else
 		if length(current_multiline_instruction) > 0
             
-            line_strimmed_without_continuation_char_as_table = convertStringsToChars(line_strimmed)
+            line_strimmed_without_continuation_char_as_table = convertStringsToChars(line_strimmed);
             current_multiline_instruction = strcat(current_multiline_instruction, line_strimmed_without_continuation_char_as_table);	
             
-            disp(current_multiline_instruction)
+            %disp(current_multiline_instruction);
 			evalc(current_multiline_instruction);
 			current_multiline_instruction = '';
 		else
