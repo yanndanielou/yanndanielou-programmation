@@ -19,7 +19,7 @@ line_num=dbstack;disp("line:" + line_num(end).line + " " + string(datetime) + " 
                                                   [1001],...
                                                   [[0],[10012]],...
                                                   [[0],[0];[30021],[30022]],...
-                                                  [[0],[0],[0];[0],[0],[0];[0],[0],[0];[40021],[0],[0]],...
+                                                  [[0];[0];[0];[40021]],...
                                                   [[[50011], [50012],[0]];[[0],[0],[0]];[[0],[0],[50033]]],...
                                                   []....
                                                   }...
@@ -49,6 +49,64 @@ line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(1)
 line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(1).first_table_created_full):" + length(SMT_mE_aig(1).first_table_created_full));
 disp(" ");
 
+
+
+ for structure_it = 1 : length(SMT_mE_aig)
+    line_num=dbstack;disp("line:" + line_num(end).line + " " + " Check structure indice:" + structure_it);
+    
+    
+    are_equal = size(SMT_mE_aig(structure_it).first_table_created_empty) == size(SMT_mE_aig(structure_it).first_table_created_full);
+    line_num=dbstack;disp("line:" + line_num(end).line + " " +  " size(SMT_mE_aig(" + structure_it + ") are_equal:" + are_equal);
+    
+    line_num=dbstack;disp("line:" + line_num(end).line + " " +  " size(SMT_mE_aig(" + structure_it + ").first_table_created_empty):");
+    disp(size(SMT_mE_aig(structure_it).first_table_created_empty));
+    line_num=dbstack;disp("line:" + line_num(end).line + " " + " size(SMT_mE_aig(" + structure_it + ").first_table_created_full):");
+    disp(size(SMT_mE_aig(structure_it).first_table_created_full));
+    
+       
+    size_SMT_mE_aig_structure_it_first_table_created_empty = size(SMT_mE_aig(structure_it).first_table_created_empty);
+    length_size_SMT_mE_aig_structure_it_first_table_created_empty = length(size_SMT_mE_aig_structure_it_first_table_created_empty);
+    for first_dimension_it = 1 : size_SMT_mE_aig_structure_it_first_table_created_empty(1)
+        line_num=dbstack;disp("line:" + line_num(end).line + " SMT_mE_aig(" + structure_it + ") first_dimension_it: " + first_dimension_it);
+        
+            
+        are_equal = SMT_mE_aig(structure_it).first_table_created_empty(first_dimension_it) == SMT_mE_aig(structure_it).first_table_created_full(first_dimension_it);
+        line_num=dbstack;disp("line:" + line_num(end).line + " " +  " size(SMT_mE_aig(" + structure_it + ") are_equal:" + are_equal);
+    
+        
+        line_num=dbstack;disp("line:" + line_num(end).line + " " + " SMT_mE_aig(" + structure_it + ").first_table_created_empty(" + first_dimension_it + "))");
+        disp(SMT_mE_aig(structure_it).first_table_created_empty(first_dimension_it));
+        line_num=dbstack;disp("line:" + line_num(end).line + " " + " SMT_mE_aig(" + structure_it + ").first_table_created_full(" + first_dimension_it + "))");
+        disp(SMT_mE_aig(structure_it).first_table_created_full(first_dimension_it));
+        
+        for second_dimension_it = 1 : size_SMT_mE_aig_structure_it_first_table_created_empty(2)
+            line_num=dbstack;disp("line:" + line_num(end).line + " SMT_mE_aig(" + structure_it + ") first_dimension_it: " + first_dimension_it  +  " second dimension:" + second_dimension_it);
+            
+            line_num=dbstack;disp("line:" + line_num(end).line + " " + " SMT_mE_aig(" + structure_it + ").first_table_created_empty(" + first_dimension_it + ", " + second_dimension_it + "))");
+            disp(SMT_mE_aig(structure_it).first_table_created_empty(first_dimension_it, second_dimension_it));
+            line_num=dbstack;disp("line:" + line_num(end).line + " " + " SMT_mE_aig(" + structure_it + ").first_table_created_full(" + first_dimension_it + ", " + second_dimension_it + "))");
+            disp(SMT_mE_aig(structure_it).first_table_created_full(first_dimension_it, second_dimension_it));
+        end
+        
+        %        line_num=dbstack;disp("line:" + line_num(end).line + " " + " size(SMT_mE_aig(" + structure_it + ").first_table_created_empty(" + first_table_created_empty_dimension + ")))");
+%        disp(size(SMT_mE_aig(structure_it).first_table_created_empty(first_table_created_empty_dimension)));
+%        
+%        line_num=dbstack;disp("line:" + line_num(end).line + " " + " size(SMT_mE_aig(" + structure_it + ").first_table_created_full(" + first_table_created_empty_dimension + ")))");
+%        disp(size(SMT_mE_aig(structure_it).first_table_created_full(first_table_created_empty_dimension)));
+   end
+%     
+%    
+   disp(" ");
+%    
+end
+
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + size(SMT_mE_aig(1).first_table_created_e mpty));
+
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + size(SMT_mE_aig(1).first_table_created_empty(1)));
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + size(SMT_mE_aig(2).first_table_created_empty(1)));
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + size(SMT_mE_aig(3).first_table_created_empty(1)));
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + size(SMT_mE_aig(4).first_table_created_empty(1)));
+%line_num=dbstack;disp("line:" + line_num(end).line + " " + size(SMT_mE_aig(5).first_table_created_empty(1)));
 
 line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(1).first_table_created_empty(1)):" + length(SMT_mE_aig(1).first_table_created_empty(1)));
 line_num=dbstack;disp("line:" + line_num(end).line + " " + "length(SMT_mE_aig(1).first_table_created_full(1)):" + length(SMT_mE_aig(1).first_table_created_full(1)));
