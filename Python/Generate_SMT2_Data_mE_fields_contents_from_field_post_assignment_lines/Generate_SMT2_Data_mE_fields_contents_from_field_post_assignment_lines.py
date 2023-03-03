@@ -144,55 +144,6 @@ class ArrayItemOfFieldOfStructureWithModificationInstruction:
         for i in range(0, self.max_dimension1):
             self.fields.append(list())
 
-        
-        """ 
-        if max_dimension == 1:
-            self.fields = list()
-
-        elif max_dimension == 2:
-            self.fields = list()
-            self.fields.append(list())
-
-        elif max_dimension == 3:
-            self.fields = list()
-            self.fields.append(list())
-            self.fields[0].append(list())
-
-        elif max_dimension == 4:
-            self.fields = list()
-            self.fields.append(list())
-            self.fields[0].append(list())
-            self.fields[0][0].append(list())
-
-        elif max_dimension == 5:
-            self.fields = list()
-            self.fields.append(list())
-            self.fields[0].append(list())
-            self.fields[0][0].append(list())
-            self.fields[0][0][0].append(list())
-
-        elif max_dimension == 6:
-            self.fields = list()
-            self.fields.append(list())
-            self.fields[0].append(list())
-            self.fields[0][0].append(list())
-            self.fields[0][0][0].append(list())
-            self.fields[0][0][0][0].append(list())
-
-        elif max_dimension == 7:
-            self.fields = list()
-            self.fields.append(list())
-            self.fields[0].append(list())
-            self.fields[0][0].append(list())
-            self.fields[0][0][0].append(list())
-            self.fields[0][0][0][0].append(list())
-            self.fields[0][0][0][0][0].append(list())
-
-        else:
-            logging.info("Unsupported dimension:" + str(max_dimension) + " for field:" + self.parent.name + " and structure " + self.parent.parent.name)
-        """
-
-
     def fill_fields_until_size(self, new_size):
 
         while len(self.fields) < new_size - 1:
