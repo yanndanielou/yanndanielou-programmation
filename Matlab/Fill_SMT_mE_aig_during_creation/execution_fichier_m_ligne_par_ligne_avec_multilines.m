@@ -42,11 +42,11 @@ while ischar(tline)
             
             disp(string(datetime) + " execution_fichier_m_ligne_par_ligne_avec_multilines, executing multi line with size:" + strlength(current_multiline_instruction_table));
             
-            %disp(current_multiline_instruction);
+            disp(current_multiline_instruction_str);
 			evalc(current_multiline_instruction_table);
 			current_multiline_instruction_str = "";
         else
-            %disp(line_strimmed);
+            disp(line_strimmed);
 			eval(tline);
 		end	
     end
