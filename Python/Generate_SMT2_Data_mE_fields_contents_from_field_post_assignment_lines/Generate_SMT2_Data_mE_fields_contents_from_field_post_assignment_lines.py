@@ -173,10 +173,11 @@ class StructureSpecifcIndex:
             for j in range(1, self.max_dimension2):
                 self.fields[len(self.fields)-1].append(list())
 
-    def fill_fields_until_size(self, new_size):
+    """  def fill_fields_until_size(self, new_size):
 
         while len(self.fields) < new_size - 1:
-            self.fields.append(list())    
+            self.fields.append(list())
+    """
 
     def compute_max_dimensions(self):
 
@@ -278,9 +279,9 @@ class FieldOfStructureWithModificationInstruction:
                     assingment_instruction_number = 0
                     for assingment_instruction in level_2_field_content.assingment_instructions:
                         assingment_instruction_number += 1
-                        current_item_content_as_string += "["
+                        #current_item_content_as_string += "["
                         current_item_content_as_string +=  str(assingment_instruction.new_value)
-                        current_item_content_as_string += "]"
+                        #current_item_content_as_string += "]"
 
                     #content_as_string += "]"
 
