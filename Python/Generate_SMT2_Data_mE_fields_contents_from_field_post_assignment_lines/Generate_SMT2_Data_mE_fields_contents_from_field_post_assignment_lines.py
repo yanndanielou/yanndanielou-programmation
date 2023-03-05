@@ -300,7 +300,7 @@ class FieldOfStructureWithModificationInstruction:
                 content_as_string_in_one_line += ","
             else:
                 file_content_as_list_of_lines_in_multiple_lines.append(current_item_content_as_string+ "...")
-                file_content_as_list_of_lines_in_multiple_lines.append(current_item_content_as_string+ "}...")
+                file_content_as_list_of_lines_in_multiple_lines.append("}...")
                 
                 content_as_string_in_one_line += "}"
 
