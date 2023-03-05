@@ -115,7 +115,17 @@ class execution_time(object):
 
 class TableFieldInMainStructureModificationInstruction:
 
-    def __init__(self, full_content_as_string, match_result):
+    def __init__(self):
+        self.full_content_as_string = None
+
+        self.main_structure_name = None
+        self.main_structure_index = None
+        self.field_name = None
+        self.field_index_1 = None
+        self.field_index_2 = None
+        self.new_value = None
+
+    def build_from_string_and_regex(self, full_content_as_string, match_result):
         self.full_content_as_string = full_content_as_string
 
         self.main_structure_name = match_result.group("main_structure_name")
@@ -125,6 +135,16 @@ class TableFieldInMainStructureModificationInstruction:
         self.field_index_2 = int(match_result.group("field_index_2"))
         self.new_value = int(match_result.group("new_value"))
 
+
+    def build_from_fields_values(self, full_content_as_string, main_structure_name, main_structure_index, field_name, field_index_1, field_index_2, new_value):
+        self.full_content_as_string = full_content_as_string
+
+        self.main_structure_name = main_structure_name
+        self.main_structure_index = main_structure_index
+        self.field_name = field_name
+        self.field_index_1 = field_index_1
+        self.field_index_2 = field_index_2
+        self.new_value = new_value
 
 class Level2FieldContent:
     def __init__(self, parent):
@@ -160,9 +180,10 @@ class StructureSpecifcIndex:
         self.max_dimension2 = None
         self.parent = parent
         self.level1FieldContents = list()
+        self.max_index_of_level_2_field_from_all_level_one_fields = None
 
 
-
+    """
     def create_tables_for_empty_fields_depending_on_dimension(self):
 
         #self.fields = list()
@@ -173,11 +194,40 @@ class StructureSpecifcIndex:
             for j in range(1, self.max_dimension2):
                 self.fields[len(self.fields)-1].append(list())
 
-    """  def fill_fields_until_size(self, new_size):
+      def fill_fields_until_size(self, new_size):
 
         while len(self.fields) < new_size - 1:
             self.fields.append(list())
     """
+
+    def compute_max_dimension_of_level_2_fields(self):
+        self.max_index_of_level_2_field_from_all_level_one_fields = 0
+        
+        for level1FieldContent in self.level1FieldContents:
+            for level2FieldContent in level1FieldContent.level2FieldContents:
+                for assingment_instruction in level2FieldContent.assingment_instructions:
+                    if assingment_instruction.field_index_2 > self.max_index_of_level_2_field_from_all_level_one_fields:
+                        self.max_index_of_level_2_field_from_all_level_one_fields = assingment_instruction.field_index_2
+
+    def align_all_level_1_field_to_same_dimension_based_on_max_level_2_field(self):
+        level1FieldContent_number = 0
+        for level1FieldContent in self.level1FieldContents:
+            level1FieldContent_number += 1
+            while len(level1FieldContent.level2FieldContents) < self.max_index_of_level_2_field_from_all_level_one_fields:
+                full_content_as_string = "created by align_all_level_1_field_to_same_dimension_based_on_max_level_2_field"
+                main_structure_name = self.parent.parent.name
+                main_structure_index = None
+                field_name = self.parent.name
+                field_index_1 = level1FieldContent_number
+                field_index_2 = len(level1FieldContent.level2FieldContents)
+                new_value  = 0
+
+                level2FieldContent = Level2FieldContent(level1FieldContent)
+                assingment_instruction = TableFieldInMainStructureModificationInstruction()
+                assingment_instruction.build_from_fields_values(full_content_as_string, main_structure_name, main_structure_index, field_name, field_index_1, field_index_2, new_value)
+                level2FieldContent.assingment_instructions.append(assingment_instruction)
+                level1FieldContent.level2FieldContents.append(level2FieldContent)
+
 
     def compute_max_dimensions(self):
 
@@ -209,6 +259,7 @@ class StructureSpecifcIndex:
         for level1FieldContent in self.level1FieldContents:
             level1FieldContent.compute_level_2_fields()
 
+    """
     def compute_fields_old(self):
 
         for assingment_instruction in self.assingment_instructions:
@@ -227,7 +278,7 @@ class StructureSpecifcIndex:
 
         end_of_function=1
 #class FieldOfStructureWithModificationInstruction:
-
+    """
 
 class FieldOfStructureWithModificationInstruction:
     def __init__(self, name, parent):
@@ -263,6 +314,11 @@ class FieldOfStructureWithModificationInstruction:
             structure_indice_number += 1
 
             current_item_content_as_string = ""
+
+            if array_item_of_structure_indice.max_index_of_level_2_field_from_all_level_one_fields > 1:
+                current_item_content_as_string += "["
+
+
             level_1_field_content_number = 0
             for level_1_field_content in array_item_of_structure_indice.level1FieldContents:
                 level_1_field_content_number += 1
@@ -282,10 +338,13 @@ class FieldOfStructureWithModificationInstruction:
                         #current_item_content_as_string += "["
                         current_item_content_as_string +=  str(assingment_instruction.new_value)
                         #current_item_content_as_string += "]"
+                        
+                        if assingment_instruction_number > 1:
+                            printAndLogCriticalAndKill("assingment_instruction_number" + str(assingment_instruction_number))
 
                     #content_as_string += "]"
 
-                    if level_2_field_content_number < len(level_1_field_content.assingment_instructions):
+                    if level_2_field_content_number < len(level_1_field_content.level2FieldContents):
                         current_item_content_as_string += ","
 
                 
@@ -294,6 +353,10 @@ class FieldOfStructureWithModificationInstruction:
 
                 if level_1_field_content_number < len(array_item_of_structure_indice.level1FieldContents):
                     current_item_content_as_string += ";"
+
+
+            if array_item_of_structure_indice.max_index_of_level_2_field_from_all_level_one_fields > 1:
+                current_item_content_as_string += "]"
 
             if structure_indice_number <  len(self.array_items_by_structure_indice) :
                 file_content_as_list_of_lines_in_multiple_lines.append(current_item_content_as_string + ",...")
@@ -319,7 +382,7 @@ class FieldOfStructureWithModificationInstruction:
         end_of_save_field = 1
 
 
-
+    """
     def save_field_old(self, file_content_as_list_of_lines):
         content_as_string = ""
 
@@ -353,6 +416,9 @@ class FieldOfStructureWithModificationInstruction:
 
         printAndLogInfo("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string[:60] + ", ...,  etc.")
         logging.debug("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string)
+
+        
+    """
 
 class StructureWithModificationInstruction:
     def __init__(self, name):
@@ -400,18 +466,19 @@ class SMT2_Data_mE_Content:
                 for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
                     array_item.compute_max_dimensions()
 
-        printAndLogInfo("create_tables_for_empty_fields_depending_on_dimension")
+        """         printAndLogInfo("create_tables_for_empty_fields_depending_on_dimension")
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
-                    array_item.create_tables_for_empty_fields_depending_on_dimension()
+                    array_item.create_tables_for_empty_fields_depending_on_dimension() 
+        
 
         printAndLogInfo("compute_fields_old")                
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
                     array_item.compute_fields_old()
-
+        """
         printAndLogInfo("compute_level_1_fields")                
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
@@ -423,6 +490,18 @@ class SMT2_Data_mE_Content:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
                     array_item.compute_level_2_fields()
+
+        printAndLogInfo("compute_max_dimension_of_level_2_fields")                
+        for structureWithModificationInstruction in self.structuresWithModificationInstructions:
+            for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
+                for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
+                    array_item.compute_max_dimension_of_level_2_fields()
+
+        printAndLogInfo("align_all_level_1_field_to_same_dimension_based_on_max_level_2_field")                
+        for structureWithModificationInstruction in self.structuresWithModificationInstructions:
+            for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
+                for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
+                    array_item.align_all_level_1_field_to_same_dimension_based_on_max_level_2_field()
                     
         # for structureWithModificationInstruction in self.structuresWithModificationInstructions:
         #     for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
@@ -495,7 +574,8 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
         match_structure_field_of_main_structure_modification_instruction = structure_field_of_main_structure_modification_instruction_line_regex_compiled.match(sMT2_Data_mE_file_line_stripped)
 
         if match_table_field_of_main_structure_modification_instruction is not None:
-            structureModificationInstruction = TableFieldInMainStructureModificationInstruction(sMT2_Data_mE_file_line_stripped, match_table_field_of_main_structure_modification_instruction)
+            structureModificationInstruction = TableFieldInMainStructureModificationInstruction()
+            structureModificationInstruction.build_from_string_and_regex(sMT2_Data_mE_file_line_stripped, match_table_field_of_main_structure_modification_instruction)
             sMT2_Data_mE_Content.tableFieldInMainStructureModificationInstructions.append(structureModificationInstruction)
 
         elif match_structure_field_of_main_structure_modification_instruction is not None:
