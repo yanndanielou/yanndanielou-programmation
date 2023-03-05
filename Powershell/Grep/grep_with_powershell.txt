@@ -1,0 +1,1 @@
+Get-Content .\SMT2_Data_mE_original.m |Select-String "cdv_commut" > cdv_commut.txt
