@@ -62,11 +62,7 @@ public class SinkSubmarinesMainView extends JFrame {
 		pane.setLayout(null);
 		Insets insets = pane.getInsets();
 
-		JPanel topPanel = new JPanel();
-		topPanel.setSize(window_width, 100);
-		pane.add(topPanel);
-		topPanel.setBackground(Color.BLACK);
-		topPanel.setBounds(0, 0, topPanel.getSize().width, topPanel.getSize().height);
+		TopPanel topPanel = new TopPanel(pane, window_width);
 
 		JPanel skyPanel = new JPanel();
 		skyPanel.setSize(window_width, 200);
