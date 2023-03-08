@@ -27,7 +27,7 @@ public class TimeManager extends TimerTask {
 	}
 
 	private void tick_100ms() {
-		System.out.println("tick_100ms:" + new Date());
+	//	System.out.println("tick_100ms:" + new Date());
 
 	}
 
