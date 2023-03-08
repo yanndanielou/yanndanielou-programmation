@@ -1,4 +1,0 @@
-		@Test
-			public void Ten_containsDitig_1() {
-				assertThat(TEN.containsDigit(1), is(true));
-			}
