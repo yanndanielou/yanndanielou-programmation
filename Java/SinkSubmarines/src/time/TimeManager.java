@@ -4,9 +4,17 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.*;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class TimeManager extends TimerTask {
+	private static final Logger LOGGER = LogManager.getLogger(TimeManager.class);
 
 	private Timer timer;
 	private int number_of_10ms_tick = 0;
@@ -27,12 +35,13 @@ public class TimeManager extends TimerTask {
 	}
 
 	private void tick_100ms() {
-	//	System.out.println("tick_100ms:" + new Date());
-
+		// System.out.println("tick_100ms:" + new Date());
+		LOGGER.debug("tick_second");
 	}
 
 	private void tick_second() {
-		System.out.println("tick_second:" + new Date());
+		// System.out.println("tick_second:" + new Date());
+		LOGGER.info("tick_second");
 
 	}
 
