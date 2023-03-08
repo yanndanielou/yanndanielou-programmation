@@ -41,7 +41,7 @@ public class TimeManager extends TimerTask {
 
 	private void tick_second() {
 		// System.out.println("tick_second:" + new Date());
-		LOGGER.info("tick_second");
+		LOGGER.trace("tick_second");
 
 	}
 
