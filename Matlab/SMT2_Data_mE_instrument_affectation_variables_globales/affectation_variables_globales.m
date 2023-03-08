@@ -65,7 +65,7 @@ for aa = 1 : size(nom_var_global,1)
 	%Just to track progress and performances
 	disp(string(datetime) + " affectation_variables_globales. Iterating nom_var_global " + nom_var_global{aa,1} + " number:" + aa + ". Time elapsed in fonction:" + string(datetime - affectation_variables_globales_begin_time));
 	nombre_exception_raised = 0;
-    nombre_evaluations_matlab_reussies = 0;
+    nombre_evaluations_matlab_effectuees = 0;
 
     flag_index_nom_multiple = 0;
     index_nom_var = strfind(chaine_a_traiter,[nom_var_global{aa,1} ' =']);
@@ -114,9 +114,9 @@ for aa = 1 : size(nom_var_global,1)
     declaration_var_global = ['global ' nom_var_global{aa,1}];
     
     evalc(declaration_var_global);
-    nombre_evaluations_matlab_reussies = nombre_evaluations_matlab_reussies + 1;
+    nombre_evaluations_matlab_effectuees = nombre_evaluations_matlab_effectuees + 1;
     evalc(valeur_var_global);
-    nombre_evaluations_matlab_reussies = nombre_evaluations_matlab_reussies + 1;
+    nombre_evaluations_matlab_effectuees = nombre_evaluations_matlab_effectuees + 1;
     
     if strcmp(nom_var_global{aa,1},'SMT_param')
         index_remplissage_param = strfind(chaine_a_traiter(1,max(index_fin_instruction):end),[nom_var_global{aa,1} '(']);
@@ -135,7 +135,7 @@ for aa = 1 : size(nom_var_global,1)
             chaine_a_evaluer = chaine_a_traiter(index_dans_chaine_a_traiter);
             try
                 evalc(chaine_a_evaluer);
-                nombre_evaluations_matlab_reussies = nombre_evaluations_matlab_reussies + 1;
+                nombre_evaluations_matlab_effectuees = nombre_evaluations_matlab_effectuees + 1;
             catch ME
                 exception_identifier = ME.identifier;
                 nombre_exception_raised = nombre_exception_raised + 1;
@@ -149,11 +149,11 @@ for aa = 1 : size(nom_var_global,1)
             end
             %just to track progress
             if mod(nb_index_remplissage_param, 10000) == 0 
-                disp(string(datetime) + " affectation_variables_globales. nom_var_global " + nom_var_global{aa,1} + ". Nombre d instructions Matlab a evaluées avec succès:" + nombre_evaluations_matlab_reussies + ". Nombre d instructions Matlab échouées (exception levée): " + nombre_exception_raised + ". Time elapsed in fonction:" + string(datetime - affectation_variables_globales_begin_time));
+                disp(string(datetime) + " affectation_variables_globales. nom_var_global " + nom_var_global{aa,1} + ". Nombre d instructions Matlab a evaluées :" + nombre_evaluations_matlab_effectuees + ". Nombre d exception levées: " + nombre_exception_raised + ". Time elapsed in fonction:" + string(datetime - affectation_variables_globales_begin_time));
             end
         end
     end
-    disp(string(datetime) + " affectation_variables_globales for " + nom_var_global{aa,1} + " End. Nombre evaluations reussies: " + nombre_evaluations_matlab_reussies +  ", nombre exceptions levees:"  + nombre_exception_raised + ". Time elapsed in fonction:" + string(datetime - affectation_variables_globales_begin_time));
+    disp(string(datetime) + " affectation_variables_globales for " + nom_var_global{aa,1} + " End. Nombre d instructions Matlab a evaluées: " + nombre_evaluations_matlab_effectuees +  ", nombre exceptions levees:"  + nombre_exception_raised + ". Time elapsed in fonction:" + string(datetime - affectation_variables_globales_begin_time));
 
 end
 disp(string(datetime) + " affectation_variables_globales of file " + nom_fichier + " end."  + " Time elapsed in fonction:" + string(datetime - affectation_variables_globales_begin_time));
