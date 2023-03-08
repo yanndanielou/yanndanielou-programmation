@@ -48,6 +48,9 @@ while ischar(tline)
         else
             disp(line_strimmed);
 			eval(tline);
+			
+            %disp(tline);
+			%evalc(tline);
 		end	
     end
     
