@@ -1,20 +1,21 @@
 package main;
 
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import hmi.SinkSubmarinesMainView;
-import log.Log4JConfig;
 import time.TimeManager;
 
 public class SinkSubmarinesMain {
 
-	public static void main(String[] args) {
+	private static final Logger LOGGER = LogManager.getLogger(SinkSubmarinesMain.class);
 
-		Log4JConfig config = new Log4JConfig();
+	public static void main(String[] args) {
+		LOGGER.info("Application start info");
+		LOGGER.warn("Application start warn");
+		LOGGER.error("Application start error");
+
+		// Log4JConfig config = new Log4JConfig();
 		TimeManager timeManager = new TimeManager();
 		SinkSubmarinesMainView sinkSubmarinesMainView = new SinkSubmarinesMainView("GridLayoutDemo");
 		// Schedule a job for the event dispatch thread:
