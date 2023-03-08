@@ -1,10 +1,12 @@
 package hmi;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.UIManager;
@@ -26,21 +29,9 @@ public class SinkSubmarinesMainView extends JFrame {
 
 	private static final Logger LOGGER = LogManager.getLogger(SinkSubmarinesMainView.class);
 
-	static final String gapList[] = { "0", "10", "15", "20" };
-	final static int maxGap = 20;
-	JComboBox horGapComboBox;
-	JComboBox verGapComboBox;
-	JButton applyButton = new JButton("Apply gaps");
-	GridLayout experimentLayout = new GridLayout(10, 10);
-
 	public SinkSubmarinesMainView(String name) {
 		super(name);
 		setResizable(false);
-	}
-
-	public void initGaps() {
-		horGapComboBox = new JComboBox(gapList);
-		verGapComboBox = new JComboBox(gapList);
 	}
 
 	/**
@@ -65,72 +56,72 @@ public class SinkSubmarinesMainView extends JFrame {
 		/* Turn off metal's use of bold fonts */
 		UIManager.put("swing.boldMetal", Boolean.FALSE);
 
+		final int window_width = 800;
 		// Create and set up the window.
+		Container pane = this.getContentPane();
+		pane.setLayout(null);
+		Insets insets = pane.getInsets();
+
+		JPanel topPanel = new JPanel();
+		topPanel.setSize(window_width, 100);
+		pane.add(topPanel);
+		topPanel.setBackground(Color.BLACK);
+		topPanel.setBounds(0, 0, topPanel.getSize().width, topPanel.getSize().height);
+
+		JPanel skyPanel = new JPanel();
+		skyPanel.setSize(window_width, 200);
+		pane.add(skyPanel);
+		skyPanel.setBackground(Color.CYAN);
+		skyPanel.setBounds(0, 100, skyPanel.getSize().width, skyPanel.getSize().height);
+
+		JPanel allieBoatPanel = new JPanel();
+		allieBoatPanel.setSize(window_width, 50);
+		pane.add(allieBoatPanel);
+		allieBoatPanel.setBackground(Color.PINK);
+		skyPanel.setBounds(0, 300, allieBoatPanel.getSize().width, allieBoatPanel.getSize().height);
+
+		JPanel waterPanel = new JPanel();
+		waterPanel.setSize(window_width, 500);
+		pane.add(waterPanel);
+		waterPanel.setBackground(Color.BLUE);
+		skyPanel.setBounds(0, 800, waterPanel.getSize().width, waterPanel.getSize().height);
+
+		this.setSize(window_width, 1300);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// Set up the content pane.
-		this.addComponentsToPane(this.getContentPane());
+
+		/*
+		 * pane. Dimension size = b1.getPreferredSize(); b1.setBounds(25 + insets.left,
+		 * 5 + insets.top, size.width, size.height); size = b2.getPreferredSize();
+		 * b2.setBounds(55 + insets.left, 40 + insets.top, size.width, size.height);
+		 * size = b3.getPreferredSize(); b3.setBounds(150 + insets.left, 15 +
+		 * insets.top, size.width + 50, size.height + 20);
+		 */
+
+		JButton button = new JButton("Button 1 (PAGE_START)");
+
+		pane.add(button, BorderLayout.PAGE_START);
+
+//Make the center component big, since that's the
+//typical usage of BorderLayout.
+		button = new JButton("Button 2 (CENTER)");
+		button.setPreferredSize(new Dimension(200, 100));
+		pane.add(button, BorderLayout.CENTER);
+
+		button = new JButton("Button 3 (LINE_START)");
+		pane.add(button, BorderLayout.LINE_START);
+
+		button = new JButton("Long-Named Button 4 (PAGE_END)");
+		pane.add(button, BorderLayout.PAGE_END);
+
+		button = new JButton("5 (LINE_END)");
+		pane.add(button, BorderLayout.LINE_END);
+
 		// Display the window.
-		this.pack();
+
 		this.setVisible(true);
 		this.setResizable(true);
-	}
 
-	public void addComponentsToPane(final Container pane) {
-		initGaps();
-		final JPanel compsToExperiment = new JPanel();
-		compsToExperiment.setLayout(experimentLayout);
-		JPanel controls = new JPanel();
-		controls.setLayout(new GridLayout(2, 3));
-
-		// Set up components preferred size
-		JButton b = new JButton("Just fake button");
-		Dimension buttonSize = b.getPreferredSize();
-		compsToExperiment.setPreferredSize(new Dimension((int) (buttonSize.getWidth() * 2.5) + maxGap,
-				(int) (buttonSize.getHeight() * 3.5) + maxGap * 2));
-
-		// Add buttons to experiment with Grid Layout
-		for (int i = 0; i < 1; i++) {
-			JButton button = new JButton("B " + i);
-			compsToExperiment.add(button);
-			try {
-				Image img = ImageIO.read(getClass().getResource("installer_background.jpg"));
-
-				if (img == null) {
-					System.out.println("Image is null");
-				} else {
-					button.setIcon(new ImageIcon(img));
-				}
-			} catch (Exception ex) {
-				System.out.println(ex);
-			}
-		}
-		// Add controls to set up horizontal and vertical gaps
-		controls.add(new Label("Horizontal gap:"));
-		controls.add(new Label("Vertical gap:"));
-		controls.add(new Label(" "));
-		controls.add(horGapComboBox);
-		controls.add(verGapComboBox);
-		controls.add(applyButton);
-
-		// Process the Apply gaps button press
-		applyButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Get the horizontal gap value
-				String horGap = (String) horGapComboBox.getSelectedItem();
-				// Get the vertical gap value
-				String verGap = (String) verGapComboBox.getSelectedItem();
-				// Set up the horizontal gap value
-				experimentLayout.setHgap(Integer.parseInt(horGap));
-				// Set up the vertical gap value
-				experimentLayout.setVgap(Integer.parseInt(verGap));
-				// Set up the layout of the buttons
-				experimentLayout.layoutContainer(compsToExperiment);
-			}
-		});
-		pane.add(compsToExperiment, BorderLayout.NORTH);
-		pane.add(new JSeparator(), BorderLayout.CENTER);
-		pane.add(controls, BorderLayout.SOUTH);
 	}
 
 }
