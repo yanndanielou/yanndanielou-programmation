@@ -1,14 +1,31 @@
 package hmi;
 
-
-
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SinkSubmarinesMainView extends JFrame {
+
+	private static final Logger LOGGER = LogManager.getLogger(SinkSubmarinesMainView.class);
+
 	static final String gapList[] = { "0", "10", "15", "20" };
 	final static int maxGap = 20;
 	JComboBox horGapComboBox;
@@ -25,14 +42,13 @@ public class SinkSubmarinesMainView extends JFrame {
 		horGapComboBox = new JComboBox(gapList);
 		verGapComboBox = new JComboBox(gapList);
 	}
-	
 
 	/**
 	 * Create the GUI and show it. For thread safety, this method is invoked from
 	 * the event dispatch thread.
 	 */
 	public void createAndShowGUI() {
-		
+
 		/* Use an appropriate Look and Feel */
 		try {
 			// UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -48,9 +64,9 @@ public class SinkSubmarinesMainView extends JFrame {
 		}
 		/* Turn off metal's use of bold fonts */
 		UIManager.put("swing.boldMetal", Boolean.FALSE);
-		
+
 		// Create and set up the window.
-		
+
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Set up the content pane.
 		this.addComponentsToPane(this.getContentPane());
@@ -78,9 +94,7 @@ public class SinkSubmarinesMainView extends JFrame {
 			JButton button = new JButton("B " + i);
 			compsToExperiment.add(button);
 			try {
-				Image img = ImageIO.read(
-						getClass().getResource("installer_background.jpg"));
-			    
+				Image img = ImageIO.read(getClass().getResource("installer_background.jpg"));
 
 				if (img == null) {
 					System.out.println("Image is null");
@@ -118,7 +132,5 @@ public class SinkSubmarinesMainView extends JFrame {
 		pane.add(new JSeparator(), BorderLayout.CENTER);
 		pane.add(controls, BorderLayout.SOUTH);
 	}
-
-
 
 }
