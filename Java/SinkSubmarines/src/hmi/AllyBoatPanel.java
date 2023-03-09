@@ -36,18 +36,9 @@ public class AllyBoatPanel extends AbstractPanel {
 		}
 
 		boat_image_as_label = new JLabel(new ImageIcon(boat_buffered_image));
-		boat_image_as_label.setLocation(50, 50);
+		//boat_image_as_label.setLocation(50, 50);
 
 		add(boat_image_as_label);
-
-		/*
-		 * for(int i = 0; i< 10000;i++) {
-		 * boat_image_as_label.setLocation(boat_image_as_label.getX() + i,
-		 * boat_image_as_label.getY()); try { Thread.sleep(1); } catch
-		 * (InterruptedException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); } }
-		 */
-
 	}
 
 }
