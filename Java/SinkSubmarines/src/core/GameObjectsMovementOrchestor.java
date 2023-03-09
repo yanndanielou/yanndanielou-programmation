@@ -12,7 +12,7 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 	private ArrayList<GameObject> game_objects = new ArrayList<>();
 
 	private GameObjectsMovementOrchestor() {
-		// TODO Auto-generated constructor stub
+		TimeManager.getInstance().add_listener(this);
 	}
 
 	public static GameObjectsMovementOrchestor getInstance() {

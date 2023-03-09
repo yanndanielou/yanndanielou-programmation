@@ -1,0 +1,6 @@
+generate_list_of_lib_files.bat
+gson-2.10.1.jar
+list_of_lib_files.txt
+log4j-api-2.20.0.jar
+log4j-core-2.20.0.jar
+__list_of_lib_files.txt
