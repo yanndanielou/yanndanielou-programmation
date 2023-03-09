@@ -62,7 +62,19 @@ public class SinkSubmarinesMainView extends JFrame {
 		pane.setLayout(null);
 		Insets insets = pane.getInsets();
 
-		TopPanel topPanel = new TopPanel(pane, window_width);
+
+		TopPanel topPanel = new TopPanel(pane, window_width, null);
+
+		SkyPanel skyPanel = new SkyPanel(pane, window_width, topPanel);
+
+		AllyBoatPanel allyBoatPanel = new AllyBoatPanel(pane, window_width, skyPanel);
+		
+		/*
+		JPanel topPanel = new JPanel();
+		topPanel.setSize(window_width, 100);
+		pane.add(topPanel);
+		topPanel.setBackground(Color.BLACK);
+		topPanel.setBounds(0, 0, topPanel.getSize().width, topPanel.getSize().height);
 
 		JPanel skyPanel = new JPanel();
 		skyPanel.setSize(window_width, 200);
@@ -81,8 +93,8 @@ public class SinkSubmarinesMainView extends JFrame {
 		pane.add(waterPanel);
 		waterPanel.setBackground(Color.BLUE);
 		skyPanel.setBounds(0, 800, waterPanel.getSize().width, waterPanel.getSize().height);
-
-		this.setSize(window_width, 1300);
+*/
+		this.setSize(window_width, 1000);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
