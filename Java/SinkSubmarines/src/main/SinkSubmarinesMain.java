@@ -12,8 +12,6 @@ public class SinkSubmarinesMain {
 
 	public static void main(String[] args) {
 		LOGGER.info("Application start info");
-		LOGGER.warn("Application start warn");
-		LOGGER.error("Application start error");
 
 		// Log4JConfig config = new Log4JConfig();
 		TimeManager timeManager = new TimeManager();
