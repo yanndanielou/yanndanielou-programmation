@@ -2,9 +2,8 @@ package builders;
 
 public class AllyBoatGameBoardAreaDataModel {
 
-	String comment;
-	String width;
-	String height;
+	int width;
+	int height;
 
 	public AllyBoatGameBoardAreaDataModel() {
 	}
