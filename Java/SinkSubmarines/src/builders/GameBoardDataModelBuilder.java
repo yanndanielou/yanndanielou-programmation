@@ -9,19 +9,18 @@ import com.google.gson.Gson;
 public class GameBoardDataModelBuilder {
 	private Gson gson = new Gson();
 
+	private GameBoardDataModel game_board_data_model;
+
 	public GameBoardDataModelBuilder() {
-		String jsonString;
 		BufferedReader br = null;
 
 		try {
-
 			br = new BufferedReader(new FileReader("data/GameBoardDataModel.json"));
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		GameBoardDataModel game_board_data_model = gson.fromJson(br, GameBoardDataModel.class);
-		int pause = 1;
+		game_board_data_model = gson.fromJson(br, GameBoardDataModel.class);
 	}
 
 }

@@ -17,7 +17,7 @@ public class SinkSubmarinesMain {
 
 		// Log4JConfig config = new Log4JConfig();
 		TimeManager timeManager = TimeManager.getInstance();
-		SinkSubmarinesMainView sinkSubmarinesMainView = new SinkSubmarinesMainView("GridLayoutDemo");
+		SinkSubmarinesMainView sinkSubmarinesMainView = new SinkSubmarinesMainView();
 		
 		GameBoardDataModelBuilder gameBoardDataModelBuilder = new GameBoardDataModelBuilder();
 		// Schedule a job for the event dispatch thread:

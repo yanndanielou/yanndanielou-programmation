@@ -2,7 +2,7 @@ package builders;
 
 public class GameBoardAreaDataModel {
 
-	int width;
+	int height;
 	ColorDefinition background_color;
 	String background_image;
 

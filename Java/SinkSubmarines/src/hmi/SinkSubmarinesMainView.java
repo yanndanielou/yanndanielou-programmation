@@ -4,9 +4,19 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.KeyStroke;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -24,9 +34,86 @@ public class SinkSubmarinesMainView extends JFrame {
 	private AllyBoatPanel allyBoatPanel = null;
 	private UnderWaterPanel underWaterPanel = null;
 
-	public SinkSubmarinesMainView(String name) {
-		super(name);
+	public SinkSubmarinesMainView() {
+		super("Title of application");
 		setResizable(false);
+	}
+
+	private void createMenu() {
+		// Where the GUI is created:
+		JMenuBar menuBar;
+		JMenu menu, submenu;
+		JMenuItem menuItem;
+		JRadioButtonMenuItem rbMenuItem;
+		JCheckBoxMenuItem cbMenuItem;
+
+		// Create the menu bar.
+		menuBar = new JMenuBar();
+
+		// Build the first menu.
+		menu = new JMenu("A Menu");
+		menu.setMnemonic(KeyEvent.VK_A);
+		menu.getAccessibleContext().setAccessibleDescription("The only menu in this program that has menu items");
+		menuBar.add(menu);
+
+		// a group of JMenuItems
+		menuItem = new JMenuItem("A text-only menu item", KeyEvent.VK_T);
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		menu.add(menuItem);
+
+		menuItem = new JMenuItem("Both text and icon", new ImageIcon("images/middle.gif"));
+		menuItem.setMnemonic(KeyEvent.VK_B);
+		menu.add(menuItem);
+
+		menuItem = new JMenuItem(new ImageIcon("images/middle.gif"));
+		menuItem.setMnemonic(KeyEvent.VK_D);
+		menu.add(menuItem);
+
+		// a group of radio button menu items
+		menu.addSeparator();
+		ButtonGroup group = new ButtonGroup();
+		rbMenuItem = new JRadioButtonMenuItem("A radio button menu item");
+		rbMenuItem.setSelected(true);
+		rbMenuItem.setMnemonic(KeyEvent.VK_R);
+		group.add(rbMenuItem);
+		menu.add(rbMenuItem);
+
+		rbMenuItem = new JRadioButtonMenuItem("Another one");
+		rbMenuItem.setMnemonic(KeyEvent.VK_O);
+		group.add(rbMenuItem);
+		menu.add(rbMenuItem);
+
+		// a group of check box menu items
+		menu.addSeparator();
+		cbMenuItem = new JCheckBoxMenuItem("A check box menu item");
+		cbMenuItem.setMnemonic(KeyEvent.VK_C);
+		menu.add(cbMenuItem);
+
+		cbMenuItem = new JCheckBoxMenuItem("Another one");
+		cbMenuItem.setMnemonic(KeyEvent.VK_H);
+		menu.add(cbMenuItem);
+
+		// a submenu
+		menu.addSeparator();
+		submenu = new JMenu("A submenu");
+		submenu.setMnemonic(KeyEvent.VK_S);
+
+		menuItem = new JMenuItem("An item in the submenu");
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, ActionEvent.ALT_MASK));
+		submenu.add(menuItem);
+
+		menuItem = new JMenuItem("Another item");
+		submenu.add(menuItem);
+		menu.add(submenu);
+
+		// Build second menu in the menu bar.
+		menu = new JMenu("Another Menu");
+		menu.setMnemonic(KeyEvent.VK_N);
+		menu.getAccessibleContext().setAccessibleDescription("This menu does nothing");
+		menuBar.add(menu);
+
+		this.setJMenuBar(menuBar);
 	}
 
 	/**
@@ -65,61 +152,16 @@ public class SinkSubmarinesMainView extends JFrame {
 
 		underWaterPanel = new UnderWaterPanel(pane, window_width, allyBoatPanel);
 
-		/*
-		 * JPanel topPanel = new JPanel(); topPanel.setSize(window_width, 100);
-		 * pane.add(topPanel); topPanel.setBackground(Color.BLACK);
-		 * topPanel.setBounds(0, 0, topPanel.getSize().width,
-		 * topPanel.getSize().height);
-		 * 
-		 * JPanel skyPanel = new JPanel(); skyPanel.setSize(window_width, 200);
-		 * pane.add(skyPanel); skyPanel.setBackground(Color.CYAN); skyPanel.setBounds(0,
-		 * 100, skyPanel.getSize().width, skyPanel.getSize().height);
-		 * 
-		 * JPanel allieBoatPanel = new JPanel(); allieBoatPanel.setSize(window_width,
-		 * 50); pane.add(allieBoatPanel); allieBoatPanel.setBackground(Color.PINK);
-		 * skyPanel.setBounds(0, 300, allieBoatPanel.getSize().width,
-		 * allieBoatPanel.getSize().height);
-		 * 
-		 * JPanel waterPanel = new JPanel(); waterPanel.setSize(window_width, 500);
-		 * pane.add(waterPanel); waterPanel.setBackground(Color.BLUE);
-		 * skyPanel.setBounds(0, 800, waterPanel.getSize().width,
-		 * waterPanel.getSize().height);
-		 */
 		this.setSize(window_width, 1000);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		/*
-		 * pane. Dimension size = b1.getPreferredSize(); b1.setBounds(25 + insets.left,
-		 * 5 + insets.top, size.width, size.height); size = b2.getPreferredSize();
-		 * b2.setBounds(55 + insets.left, 40 + insets.top, size.width, size.height);
-		 * size = b3.getPreferredSize(); b3.setBounds(150 + insets.left, 15 +
-		 * insets.top, size.width + 50, size.height + 20);
-		 */
-
-		JButton button = new JButton("Button 1 (PAGE_START)");
-
-		pane.add(button, BorderLayout.PAGE_START);
-
-//Make the center component big, since that's the
-//typical usage of BorderLayout.
-		button = new JButton("Button 2 (CENTER)");
-		button.setPreferredSize(new Dimension(200, 100));
-		pane.add(button, BorderLayout.CENTER);
-
-		button = new JButton("Button 3 (LINE_START)");
-		pane.add(button, BorderLayout.LINE_START);
-
-		button = new JButton("Long-Named Button 4 (PAGE_END)");
-		pane.add(button, BorderLayout.PAGE_END);
-
-		button = new JButton("5 (LINE_END)");
-		pane.add(button, BorderLayout.LINE_END);
+		createMenu();
 
 		// Display the window.
 
 		this.setVisible(true);
-		this.setResizable(true);
+		this.setResizable(false);
 
 	}
 
