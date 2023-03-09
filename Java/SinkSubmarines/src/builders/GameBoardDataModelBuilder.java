@@ -15,13 +15,13 @@ public class GameBoardDataModelBuilder {
 
 		try {
 
-			br = new BufferedReader(new FileReader("GameBoardDataModel.json"));
+			br = new BufferedReader(new FileReader("data/GameBoardDataModel.json"));
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		GameBoardDataModel game_board_data_model = gson.fromJson(br, GameBoardDataModel.class);
-
+		int pause = 1;
 	}
 
 }
