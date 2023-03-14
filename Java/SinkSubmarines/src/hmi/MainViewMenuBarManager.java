@@ -16,6 +16,8 @@ import javax.swing.KeyStroke;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import core.GameManager;
+
 public class MainViewMenuBarManager implements ActionListener {
 	private static final Logger LOGGER = LogManager.getLogger(SinkSubmarinesMainView.class);
 
@@ -35,6 +37,27 @@ public class MainViewMenuBarManager implements ActionListener {
 
 		// Create the menu bar.
 		menuBar = new JMenuBar();
+		
+
+		// Build the first menu.
+		menu = new JMenu("Game");
+		menu.setMnemonic(KeyEvent.VK_G);
+		menu.getAccessibleContext().setAccessibleDescription("The only menu in this program that has menu items");
+		menuBar.add(menu);
+		menu.addActionListener(this);
+
+		menuItem = new JMenuItem("New Game", KeyEvent.VK_T);
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F2, 0));
+		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GameManager.getInstance().new_game();
+				LOGGER.info("actionPerformed" + e);
+			}
+		});
+		menu.add(menuItem);
+
+
 
 		// Build the first menu.
 		menu = new JMenu("A Menu");
@@ -47,7 +70,11 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuItem = new JMenuItem("A text-only menu item", KeyEvent.VK_T);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
-		menuItem.addActionListener(this);
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LOGGER.info("actionPerformed" + e);
+			}
+		});
 		menu.add(menuItem);
 
 		menuItem = new JMenuItem("Both text and icon", new ImageIcon("images/middle.gif"));

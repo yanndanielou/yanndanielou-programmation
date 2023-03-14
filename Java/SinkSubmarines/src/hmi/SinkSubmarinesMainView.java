@@ -23,6 +23,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import builders.GameBoardDataModel;
+
 public class SinkSubmarinesMainView extends JFrame {
 
 	private static final long serialVersionUID = 1443136088686746460L;
@@ -41,7 +43,22 @@ public class SinkSubmarinesMainView extends JFrame {
 		mainViewMenuBarManager = new MainViewMenuBarManager(this);
 	}
 
-	
+	public void initialize_from_game_board_data_model(GameBoardDataModel gameBoardDataModel) {
+		// Create and set up the window.
+		Container pane = this.getContentPane();
+		pane.setLayout(null);
+		Insets insets = pane.getInsets();
+
+		topPanel = new TopPanel(pane, gameBoardDataModel.getWidth(), null);
+
+		skyPanel = new SkyPanel(pane, gameBoardDataModel.getWidth(), topPanel);
+
+		allyBoatPanel = new AllyBoatPanel(pane, gameBoardDataModel.getWidth(), skyPanel);
+
+		underWaterPanel = new UnderWaterPanel(pane, gameBoardDataModel.getWidth(), allyBoatPanel);
+
+		this.setSize(gameBoardDataModel.getWidth(), 1000);
+	}
 
 	/**
 	 * Create the GUI and show it. For thread safety, this method is invoked from
@@ -65,23 +82,9 @@ public class SinkSubmarinesMainView extends JFrame {
 		/* Turn off metal's use of bold fonts */
 		UIManager.put("swing.boldMetal", Boolean.FALSE);
 
-		final int window_width = 800;
-		// Create and set up the window.
-		Container pane = this.getContentPane();
-		pane.setLayout(null);
-		Insets insets = pane.getInsets();
-
-		topPanel = new TopPanel(pane, window_width, null);
-
-		skyPanel = new SkyPanel(pane, window_width, topPanel);
-
-		allyBoatPanel = new AllyBoatPanel(pane, window_width, skyPanel);
-
-		underWaterPanel = new UnderWaterPanel(pane, window_width, allyBoatPanel);
-
-		this.setSize(window_width, 1000);
-
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		this.setSize(200, 200);
 
 		mainViewMenuBarManager.createMenu();
 

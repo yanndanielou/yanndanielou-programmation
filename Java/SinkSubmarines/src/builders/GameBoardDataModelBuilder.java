@@ -11,6 +11,10 @@ public class GameBoardDataModelBuilder {
 
 	private GameBoardDataModel game_board_data_model;
 
+	public GameBoardDataModel getGame_board_data_model() {
+		return game_board_data_model;
+	}
+
 	public GameBoardDataModelBuilder() {
 		BufferedReader br = null;
 

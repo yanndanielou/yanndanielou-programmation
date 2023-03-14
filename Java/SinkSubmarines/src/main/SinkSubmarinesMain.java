@@ -1,10 +1,10 @@
 package main;
 
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import builders.GameBoardDataModelBuilder;
+import core.GameManager;
 import hmi.SinkSubmarinesMainView;
 import time.TimeManager;
 
@@ -15,11 +15,9 @@ public class SinkSubmarinesMain {
 	public static void main(String[] args) {
 		LOGGER.info("Application start info");
 
-		// Log4JConfig config = new Log4JConfig();
-		TimeManager timeManager = TimeManager.getInstance();
 		SinkSubmarinesMainView sinkSubmarinesMainView = new SinkSubmarinesMainView();
-		
-		GameBoardDataModelBuilder gameBoardDataModelBuilder = new GameBoardDataModelBuilder();
+		GameManager.getInstance().setSinkSubmarinesMainView(sinkSubmarinesMainView);
+
 		// Schedule a job for the event dispatch thread:
 		// creating and showing this application's GUI.
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
