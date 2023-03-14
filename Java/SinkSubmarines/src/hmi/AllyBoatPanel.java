@@ -11,6 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import builders.GameBoardDataModel;
+
 public class AllyBoatPanel extends AbstractPanel {
 
 	private static final long serialVersionUID = 6917913385357901059L;
@@ -22,7 +24,7 @@ public class AllyBoatPanel extends AbstractPanel {
 	private final String boat_image_path = "Images/AllyBoat.png";
 	private JLabel boat_image_as_label = null;
 
-	public AllyBoatPanel(Container parentContainer, int window_width, JPanel pannel_above) {
+	public AllyBoatPanel(Container parentContainer, int window_width, GameBoardDataModel gameBoardDataModel, JPanel pannel_above) {
 
 		super(parentContainer, window_width, 30, Color.GREEN, pannel_above);
 
@@ -39,6 +41,8 @@ public class AllyBoatPanel extends AbstractPanel {
 		//boat_image_as_label.setLocation(50, 50);
 
 		add(boat_image_as_label);
+		//boat_image_as_label.setLocation(20, 20);
+
 	}
 
 }

@@ -49,13 +49,13 @@ public class SinkSubmarinesMainView extends JFrame {
 		pane.setLayout(null);
 		Insets insets = pane.getInsets();
 
-		topPanel = new TopPanel(pane, gameBoardDataModel.getWidth(), null);
+		topPanel = new TopPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, null);
 
-		skyPanel = new SkyPanel(pane, gameBoardDataModel.getWidth(), topPanel);
+		skyPanel = new SkyPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, topPanel);
 
-		allyBoatPanel = new AllyBoatPanel(pane, gameBoardDataModel.getWidth(), skyPanel);
+		allyBoatPanel = new AllyBoatPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, skyPanel);
 
-		underWaterPanel = new UnderWaterPanel(pane, gameBoardDataModel.getWidth(), allyBoatPanel);
+		underWaterPanel = new UnderWaterPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, allyBoatPanel);
 
 		this.setSize(gameBoardDataModel.getWidth(), 1000);
 	}

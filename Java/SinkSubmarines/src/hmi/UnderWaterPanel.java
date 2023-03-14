@@ -11,6 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import builders.GameBoardDataModel;
+
 public class UnderWaterPanel extends AbstractPanel {
 
 	private static final long serialVersionUID = 6917913385357901059L;
@@ -22,7 +24,7 @@ public class UnderWaterPanel extends AbstractPanel {
 	private final String simple_submarine_image_path = "Images/simple_submarine.png";
 	private JLabel simple_submarine_image_as_label = null;
 
-	public UnderWaterPanel(Container parentContainer, int window_width, JPanel pannel_above) {
+	public UnderWaterPanel(Container parentContainer, int window_width, GameBoardDataModel gameBoardDataModel, JPanel pannel_above) {
 
 		super(parentContainer, window_width, 400, Color.BLUE, pannel_above);
 

@@ -15,11 +15,12 @@ public class GameBoardDataModelBuilder {
 		return game_board_data_model;
 	}
 
-	public GameBoardDataModelBuilder() {
+	public GameBoardDataModelBuilder(String game_board_data_model_json_file) {
 		BufferedReader br = null;
 
 		try {
-			br = new BufferedReader(new FileReader("data/GameBoardDataModel.json"));
+			
+			br = new BufferedReader(new FileReader(game_board_data_model_json_file));
 
 		} catch (IOException e) {
 			e.printStackTrace();

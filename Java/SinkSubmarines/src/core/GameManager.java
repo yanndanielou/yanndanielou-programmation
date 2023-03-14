@@ -29,8 +29,8 @@ public class GameManager implements TimeManagerListener {
 		return instance;
 	}
 
-	public void new_game() {
-		gameBoardDataModelBuilder = new GameBoardDataModelBuilder();
+	public void new_game(String game_board_data_model_json_file) {
+		gameBoardDataModelBuilder = new GameBoardDataModelBuilder(game_board_data_model_json_file);
 		TimeManager.getInstance().start();
 		sinkSubmarinesMainView.initialize_from_game_board_data_model(gameBoardDataModelBuilder.getGame_board_data_model());
 	}
