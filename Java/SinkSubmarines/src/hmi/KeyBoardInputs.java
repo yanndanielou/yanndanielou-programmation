@@ -19,16 +19,19 @@ public class KeyBoardInputs implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		LOGGER.info("keyTyped:" + e);
+		LOGGER.info(KeyEvent.getKeyText(e.getKeyCode()));
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		LOGGER.info("keyPressed:" + e);
+		LOGGER.info(KeyEvent.getKeyText(e.getKeyCode()));
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		LOGGER.info("keyReleased:" + e);
+		LOGGER.info(KeyEvent.getKeyText(e.getKeyCode()));
 	}
 
 }
