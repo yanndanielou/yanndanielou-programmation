@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -58,6 +59,10 @@ public class SinkSubmarinesMainView extends JFrame {
 		underWaterPanel = new UnderWaterPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, allyBoatPanel);
 
 		this.setSize(gameBoardDataModel.getWidth(), 1000);
+		
+		
+		this.addKeyListener(new KeyBoardInputs(this));
+
 	}
 
 	/**
@@ -83,7 +88,7 @@ public class SinkSubmarinesMainView extends JFrame {
 		UIManager.put("swing.boldMetal", Boolean.FALSE);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		this.setSize(200, 200);
 
 		mainViewMenuBarManager.createMenu();

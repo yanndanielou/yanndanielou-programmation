@@ -59,6 +59,6 @@ public class AllyBoatPanel extends AbstractPanel {
 
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		// g.drawImage(boat_buffered_image, 0, 0, null);
+		g.drawImage(boat_buffered_image, 0, 0, null);
 	}
 }
