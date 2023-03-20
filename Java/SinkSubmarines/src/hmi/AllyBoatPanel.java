@@ -2,6 +2,7 @@ package hmi;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +25,8 @@ public class AllyBoatPanel extends AbstractPanel {
 	private final String boat_image_path = "Images/AllyBoat.png";
 	private JLabel boat_image_as_label = null;
 
-	public AllyBoatPanel(Container parentContainer, int window_width, GameBoardDataModel gameBoardDataModel, JPanel pannel_above) {
+	public AllyBoatPanel(Container parentContainer, int window_width, GameBoardDataModel gameBoardDataModel,
+			JPanel pannel_above) {
 
 		super(parentContainer, window_width, 30, Color.GREEN, pannel_above);
 
@@ -37,12 +39,26 @@ public class AllyBoatPanel extends AbstractPanel {
 			e1.printStackTrace();
 		}
 
-		boat_image_as_label = new JLabel(new ImageIcon(boat_buffered_image));
-		//boat_image_as_label.setLocation(50, 50);
+		/*
+		boat_image_as_label = new JLabel("boat");
+		add(boat_image_as_label);
+		 */
+		
+		/*
+		ImageIcon image_icon = new ImageIcon(boat_buffered_image);
+
+		boat_image_as_label = new JLabel(image_icon);
+		boat_image_as_label.setSize(5, 5);
+		boat_image_as_label.setLocation(50, 50);
 
 		add(boat_image_as_label);
-		//boat_image_as_label.setLocation(20, 20);
+		boat_image_as_label.setLocation(20, 20);
+		*/
 
 	}
 
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		// g.drawImage(boat_buffered_image, 0, 0, null);
+	}
 }
