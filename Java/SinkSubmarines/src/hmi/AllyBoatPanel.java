@@ -13,8 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import builders.GameBoardDataModel;
+import moving_objects.AllyBoat;
+import moving_objects.AllyBoatListener;
 
-public class AllyBoatPanel extends AbstractPanel {
+public class AllyBoatPanel extends AbstractPanel implements AllyBoatListener {
 
 	private static final long serialVersionUID = 6917913385357901059L;
 
@@ -24,6 +26,16 @@ public class AllyBoatPanel extends AbstractPanel {
 	private File boat_image_file = null;
 	private final String boat_image_path = "Images/AllyBoat.png";
 	private JLabel boat_image_as_label = null;
+
+	private AllyBoat ally_boat = null;
+
+	public AllyBoat getAlly_boat() {
+		return ally_boat;
+	}
+
+	public void setAlly_boat(AllyBoat ally_boat) {
+		this.ally_boat = ally_boat;
+	}
 
 	public AllyBoatPanel(Container parentContainer, int window_width, GameBoardDataModel gameBoardDataModel,
 			JPanel pannel_above) {

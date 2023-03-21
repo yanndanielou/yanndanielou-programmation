@@ -2,6 +2,8 @@ package game;
 
 import java.util.ArrayList;
 
+import builders.GameBoardDataModel;
+import builders.GameBoardDataModelBuilder;
 import game_board.GameBoard;
 import moving_objects.AllyBoat;
 
@@ -11,9 +13,10 @@ public class Game {
 	private GameBoard gameboard = null;
 	private AllyBoat ally_boat = null;
 	
-	public Game() {
-		gameboard = new GameBoard(600, 600);
+	public Game(GameBoardDataModel gameBoardDataModel) {
+		gameboard = new GameBoard(gameBoardDataModel);
 		ally_boat = new AllyBoat();
+		//ally_boat.setSurrounding_rectangle_absolute_on_complete_board(
 	}
 
 }

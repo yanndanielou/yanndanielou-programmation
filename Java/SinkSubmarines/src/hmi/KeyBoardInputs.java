@@ -9,7 +9,6 @@ import org.apache.logging.log4j.Logger;
 public class KeyBoardInputs implements KeyListener {
 	private static final Logger LOGGER = LogManager.getLogger(KeyBoardInputs.class);
 
-
 	private SinkSubmarinesMainView sinkSubmarinesMainView = null;
 
 	public KeyBoardInputs(SinkSubmarinesMainView sinkSubmarinesMainView) {

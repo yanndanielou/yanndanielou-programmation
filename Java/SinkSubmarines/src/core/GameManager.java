@@ -3,6 +3,7 @@ package core;
 import java.util.ArrayList;
 
 import builders.GameBoardDataModelBuilder;
+import game.Game;
 import hmi.SinkSubmarinesMainView;
 import moving_objects.GameObject;
 import time.TimeManager;
@@ -17,6 +18,7 @@ public class GameManager implements TimeManagerListener {
 
 	private GameBoardDataModelBuilder gameBoardDataModelBuilder = null;
 	private SinkSubmarinesMainView sinkSubmarinesMainView = null;
+	private Game game = null;
 
 	private GameManager() {
 		TimeManager.getInstance().add_listener(this);
@@ -32,7 +34,9 @@ public class GameManager implements TimeManagerListener {
 	public void new_game(String game_board_data_model_json_file) {
 		gameBoardDataModelBuilder = new GameBoardDataModelBuilder(game_board_data_model_json_file);
 		TimeManager.getInstance().start();
-		sinkSubmarinesMainView.initialize_from_game_board_data_model(gameBoardDataModelBuilder.getGame_board_data_model());
+		sinkSubmarinesMainView
+				.initialize_from_game_board_data_model(gameBoardDataModelBuilder.getGame_board_data_model());
+		game = new Game(gameBoardDataModelBuilder.getGame_board_data_model());
 	}
 
 	@Override
