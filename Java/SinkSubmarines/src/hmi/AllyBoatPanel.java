@@ -28,7 +28,7 @@ public class AllyBoatPanel extends AbstractPanel {
 	public AllyBoatPanel(Container parentContainer, int window_width, GameBoardDataModel gameBoardDataModel,
 			JPanel pannel_above) {
 
-		super(parentContainer, window_width, 30, Color.GREEN, pannel_above);
+		super(parentContainer, gameBoardDataModel, gameBoardDataModel.getAlly_boat_game_board_area_data_model(), pannel_above);
 
 		boat_image_file = new File(boat_image_path);
 
