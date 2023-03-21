@@ -24,9 +24,11 @@ public class UnderWaterPanel extends AbstractPanel {
 	private final String simple_submarine_image_path = "Images/simple_submarine.png";
 	private JLabel simple_submarine_image_as_label = null;
 
-	public UnderWaterPanel(Container parentContainer, int window_width, GameBoardDataModel gameBoardDataModel, JPanel pannel_above) {
+	public UnderWaterPanel(Container parentContainer, int window_width, GameBoardDataModel gameBoardDataModel,
+			JPanel pannel_above) {
 
-		super(parentContainer, window_width, 400, Color.BLUE, pannel_above);
+		super(parentContainer, gameBoardDataModel, gameBoardDataModel.getUnder_water_game_board_area_data_model(),
+				pannel_above);
 
 
 	}

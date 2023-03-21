@@ -28,7 +28,8 @@ public class AllyBoatPanel extends AbstractPanel {
 	public AllyBoatPanel(Container parentContainer, int window_width, GameBoardDataModel gameBoardDataModel,
 			JPanel pannel_above) {
 
-		super(parentContainer, gameBoardDataModel, gameBoardDataModel.getAlly_boat_game_board_area_data_model(), pannel_above);
+		super(parentContainer, gameBoardDataModel, gameBoardDataModel.getAlly_boat_game_board_area_data_model(),
+				pannel_above);
 
 		boat_image_file = new File(boat_image_path);
 
@@ -40,20 +41,17 @@ public class AllyBoatPanel extends AbstractPanel {
 		}
 
 		/*
-		boat_image_as_label = new JLabel("boat");
-		add(boat_image_as_label);
+		 * boat_image_as_label = new JLabel("boat"); add(boat_image_as_label);
 		 */
-		
+
 		/*
-		ImageIcon image_icon = new ImageIcon(boat_buffered_image);
-
-		boat_image_as_label = new JLabel(image_icon);
-		boat_image_as_label.setSize(5, 5);
-		boat_image_as_label.setLocation(50, 50);
-
-		add(boat_image_as_label);
-		boat_image_as_label.setLocation(20, 20);
-		*/
+		 * ImageIcon image_icon = new ImageIcon(boat_buffered_image);
+		 * 
+		 * boat_image_as_label = new JLabel(image_icon); boat_image_as_label.setSize(5,
+		 * 5); boat_image_as_label.setLocation(50, 50);
+		 * 
+		 * add(boat_image_as_label); boat_image_as_label.setLocation(20, 20);
+		 */
 
 	}
 

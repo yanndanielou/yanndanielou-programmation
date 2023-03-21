@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import builders.GameBoardAreaDataModel;
@@ -15,11 +17,11 @@ import builders.GameBoardDataModel;
 public abstract class AbstractPanel extends JPanel {
 
 	protected Color background_color = null;
-	
+
 	protected BufferedImage background_buffered_image = null;
 	protected File background_image_file = null;
 	protected String background_image_path = null;
-	
+
 	/**
 	 * 
 	 */
@@ -52,6 +54,9 @@ public abstract class AbstractPanel extends JPanel {
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
+			ImageIcon image_icon = new ImageIcon(background_buffered_image);
+			JLabel background_image_as_label = new JLabel(image_icon);
+			this.add(background_image_as_label);
 		}
 
 		int pannel_above_Y = pannel_above != null ? (int) pannel_above.getBounds().getY() : 0;
