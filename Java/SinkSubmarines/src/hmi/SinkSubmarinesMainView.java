@@ -100,4 +100,24 @@ public class SinkSubmarinesMainView extends JFrame {
 
 	}
 
+	public TopPanel getTopPanel() {
+		return topPanel;
+	}
+
+	public SkyPanel getSkyPanel() {
+		return skyPanel;
+	}
+
+	public AllyBoatPanel getAllyBoatPanel() {
+		return allyBoatPanel;
+	}
+
+	public UnderWaterPanel getUnderWaterPanel() {
+		return underWaterPanel;
+	}
+
+	public MainViewMenuBarManager getMainViewMenuBarManager() {
+		return mainViewMenuBarManager;
+	}
+
 }

@@ -35,6 +35,7 @@ public class AllyBoatPanel extends AbstractPanel implements AllyBoatListener {
 
 	public void setAlly_boat(AllyBoat ally_boat) {
 		this.ally_boat = ally_boat;
+		ally_boat.add_movement_listener(this);
 	}
 
 	public AllyBoatPanel(Container parentContainer, int window_width, GameBoardDataModel gameBoardDataModel,
@@ -69,6 +70,15 @@ public class AllyBoatPanel extends AbstractPanel implements AllyBoatListener {
 
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(boat_buffered_image, 0, 0, null);
+		if (ally_boat != null) {
+			int boat_x = (int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getX();
+			g.drawImage(boat_buffered_image, boat_x, 0, null);
+
+		}
+	}
+
+	@Override
+	public void on_ally_boat_moved() {
+		this.repaint();
 	}
 }

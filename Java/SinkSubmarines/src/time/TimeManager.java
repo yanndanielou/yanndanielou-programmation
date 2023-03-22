@@ -51,6 +51,12 @@ public class TimeManager extends TimerTask {
 		if (number_of_10ms_tick % 10 == 0) {
 			tick_100ms();
 		}
+		if (number_of_10ms_tick % 2 == 0) {
+			tick_20ms();
+		}
+		if (number_of_10ms_tick % 5 == 0) {
+			tick_50ms();
+		}
 		if (number_of_10ms_tick % 100 == 0) {
 			tick_second();
 		}
@@ -58,6 +64,21 @@ public class TimeManager extends TimerTask {
 		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
 			time_manager_listener.on_10ms_tick();
 		}
+	}
+
+	private void tick_50ms() {
+		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
+			time_manager_listener.on_50ms_tick();
+		}
+
+		
+	}
+
+	private void tick_20ms() {
+		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
+			time_manager_listener.on_20ms_tick();
+		}
+
 	}
 
 	private void tick_100ms() {

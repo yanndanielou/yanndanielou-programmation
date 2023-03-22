@@ -11,9 +11,6 @@ import time.TimeManager;
 import time.TimeManagerListener;
 
 public class GameManager implements TimeManagerListener {
-	public void setSinkSubmarinesMainView(SinkSubmarinesMainView sinkSubmarinesMainView) {
-		this.sinkSubmarinesMainView = sinkSubmarinesMainView;
-	}
 
 	private static GameManager instance;
 
@@ -39,7 +36,11 @@ public class GameManager implements TimeManagerListener {
 		TimeManager.getInstance().start();
 		sinkSubmarinesMainView
 				.initialize_from_game_board_data_model(gameBoardDataModelBuilder.getGame_board_data_model());
-		game = new Game(gameBoardDataModelBuilder.getGame_board_data_model(), genericObjectsDataModelBuilder.getGeneric_objects_data_model());
+		game = new Game(gameBoardDataModelBuilder.getGame_board_data_model(),
+				genericObjectsDataModelBuilder.getGeneric_objects_data_model());
+		sinkSubmarinesMainView.getAllyBoatPanel().setAlly_boat(game.getAlly_boat());
+		GameObjectsMovementOrchestor.getInstance();
+
 	}
 
 	@Override
@@ -55,4 +56,35 @@ public class GameManager implements TimeManagerListener {
 	public void on_second_tick() {
 	}
 
+	public GenericObjectsDataModelBuilder getGenericObjectsDataModelBuilder() {
+		return genericObjectsDataModelBuilder;
+	}
+
+	public GameBoardDataModelBuilder getGameBoardDataModelBuilder() {
+		return gameBoardDataModelBuilder;
+	}
+
+	public SinkSubmarinesMainView getSinkSubmarinesMainView() {
+		return sinkSubmarinesMainView;
+	}
+
+	public Game getGame() {
+		return game;
+	}
+
+	public void setSinkSubmarinesMainView(SinkSubmarinesMainView sinkSubmarinesMainView) {
+		this.sinkSubmarinesMainView = sinkSubmarinesMainView;
+	}
+
+	@Override
+	public void on_50ms_tick() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_20ms_tick() {
+		// TODO Auto-generated method stub
+		
+	}
 }

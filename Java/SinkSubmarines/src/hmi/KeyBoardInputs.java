@@ -6,6 +6,9 @@ import java.awt.event.KeyListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import core.GameManager;
+import moving_objects.AllyBoat;
+
 public class KeyBoardInputs implements KeyListener {
 	private static final Logger LOGGER = LogManager.getLogger(KeyBoardInputs.class);
 
@@ -19,12 +22,20 @@ public class KeyBoardInputs implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		LOGGER.info("keyTyped:" + e);
 		LOGGER.info(KeyEvent.getKeyText(e.getKeyCode()));
+
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		LOGGER.info("keyPressed:" + e);
 		LOGGER.info(KeyEvent.getKeyText(e.getKeyCode()));
+
+		AllyBoat ally_boat = GameManager.getInstance().getGame().getAlly_boat();
+		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			ally_boat.setX_speed(ally_boat.getX_speed()-1);
+		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			ally_boat.setX_speed(ally_boat.getX_speed()+1);
+		}
 	}
 
 	@Override
