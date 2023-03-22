@@ -2,7 +2,7 @@ package core;
 
 import java.util.ArrayList;
 
-import builders.GameBoardDataModelBuilder;
+import builders.gameboard.GameBoardDataModelBuilder;
 import game.Game;
 import hmi.SinkSubmarinesMainView;
 import moving_objects.GameObject;

@@ -1,4 +1,4 @@
-package builders;
+package builders.gameboard;
 
 import java.awt.Color;
 

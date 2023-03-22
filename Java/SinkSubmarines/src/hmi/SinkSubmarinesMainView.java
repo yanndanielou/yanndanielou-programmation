@@ -24,7 +24,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import builders.GameBoardDataModel;
+import builders.gameboard.GameBoardDataModel;
 
 public class SinkSubmarinesMainView extends JFrame {
 

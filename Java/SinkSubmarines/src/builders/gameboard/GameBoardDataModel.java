@@ -1,4 +1,4 @@
-package builders;
+package builders.gameboard;
 
 public class GameBoardDataModel {
 

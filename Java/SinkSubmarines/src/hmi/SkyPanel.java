@@ -5,7 +5,7 @@ import java.awt.Container;
 
 import javax.swing.JPanel;
 
-import builders.GameBoardDataModel;
+import builders.gameboard.GameBoardDataModel;
 
 public class SkyPanel extends AbstractPanel {
 

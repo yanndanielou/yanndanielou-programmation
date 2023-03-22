@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import builders.GameBoardDataModel;
+import builders.gameboard.GameBoardDataModel;
 import moving_objects.AllyBoat;
 import moving_objects.AllyBoatListener;
 

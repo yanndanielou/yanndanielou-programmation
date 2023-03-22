@@ -1,7 +1,7 @@
 package game_board;
 
-import builders.GameBoardDataModel;
-import builders.GameBoardDataModelBuilder;
+import builders.gameboard.GameBoardDataModel;
+import builders.gameboard.GameBoardDataModelBuilder;
 
 public class GameBoard {
 

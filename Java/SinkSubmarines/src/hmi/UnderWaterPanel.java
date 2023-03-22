@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import builders.GameBoardDataModel;
+import builders.gameboard.GameBoardDataModel;
 
 public class UnderWaterPanel extends AbstractPanel {
 

@@ -2,8 +2,8 @@ package game;
 
 import java.util.ArrayList;
 
-import builders.GameBoardDataModel;
-import builders.GameBoardDataModelBuilder;
+import builders.gameboard.GameBoardDataModel;
+import builders.gameboard.GameBoardDataModelBuilder;
 import game_board.GameBoard;
 import moving_objects.AllyBoat;
 

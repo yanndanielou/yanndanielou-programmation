@@ -3,7 +3,7 @@ package main;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import builders.GameBoardDataModelBuilder;
+import builders.gameboard.GameBoardDataModelBuilder;
 import core.GameManager;
 import hmi.SinkSubmarinesMainView;
 import time.TimeManager;

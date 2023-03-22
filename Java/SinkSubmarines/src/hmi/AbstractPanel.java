@@ -11,8 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import builders.GameBoardAreaDataModel;
-import builders.GameBoardDataModel;
+import builders.gameboard.GameBoardAreaDataModel;
+import builders.gameboard.GameBoardDataModel;
 
 public abstract class AbstractPanel extends JPanel {
 

@@ -1,4 +1,4 @@
-package builders;
+package builders.genericobjects;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,7 +6,9 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 
-public class GameBoardDataModelBuilder {
+import builders.gameboard.GameBoardDataModel;
+
+public class GenericObjectsDataModelBuilder {
 	private Gson gson = new Gson();
 
 	private GameBoardDataModel game_board_data_model;
@@ -15,7 +17,7 @@ public class GameBoardDataModelBuilder {
 		return game_board_data_model;
 	}
 
-	public GameBoardDataModelBuilder(String game_board_data_model_json_file) {
+	public GenericObjectsDataModelBuilder(String game_board_data_model_json_file) {
 		BufferedReader br = null;
 
 		try {
