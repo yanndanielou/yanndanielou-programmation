@@ -1,0 +1,14 @@
+{
+   "ally_boat": {
+		 "height": 30,
+		 "width":100,
+		 "right_direction_image_path":"Images/AllyBoat.png",
+		 "left_direction_image_path":"Images/AllyBoat.png"
+    },
+   "simple_submarine": {
+		 "height": 21,
+		 "width":60,
+		 "right_direction_image_path":"Images/simple_submarine.png",
+		 "left_direction_image_path":"Images/simple_submarine.png"	 
+    }
+}
