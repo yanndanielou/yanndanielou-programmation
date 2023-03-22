@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import builders.gameboard.GameBoardDataModel;
 import builders.gameboard.GameBoardDataModelBuilder;
+import builders.genericobjects.GenericObjectsDataModel;
 import game_board.GameBoard;
 import moving_objects.AllyBoat;
 
@@ -13,10 +14,9 @@ public class Game {
 	private GameBoard gameboard = null;
 	private AllyBoat ally_boat = null;
 	
-	public Game(GameBoardDataModel gameBoardDataModel) {
+	public Game(GameBoardDataModel gameBoardDataModel, GenericObjectsDataModel genericObjectsDataModel) {
 		gameboard = new GameBoard(gameBoardDataModel);
 		ally_boat = new AllyBoat();
-		//ally_boat.setSurrounding_rectangle_absolute_on_complete_board(
 	}
 
 }

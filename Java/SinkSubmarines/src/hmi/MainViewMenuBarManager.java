@@ -51,7 +51,7 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GameManager.getInstance().new_game("data/GameBoardDataModel.json");
+				GameManager.getInstance().new_game("data/GameBoardDataModel.json", "data/GenericObjects.json");
 				LOGGER.info("actionPerformed" + e);
 			}
 		});
