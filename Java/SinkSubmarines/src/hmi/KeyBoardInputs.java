@@ -32,9 +32,9 @@ public class KeyBoardInputs implements KeyListener {
 
 		AllyBoat ally_boat = GameManager.getInstance().getGame().getAlly_boat();
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			ally_boat.setX_speed(ally_boat.getX_speed()-1);
+			ally_boat.increase_left_speed();
 		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			ally_boat.setX_speed(ally_boat.getX_speed()+1);
+			ally_boat.increase_right_speed();
 		}
 	}
 

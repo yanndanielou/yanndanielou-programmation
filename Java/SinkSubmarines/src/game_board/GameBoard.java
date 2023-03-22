@@ -18,4 +18,16 @@ public class GameBoard {
 				+ gameBoardDataModel.getUnder_water_game_board_area_data_model().getHeight();
 	}
 
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public AllyBoatBoardArea getAllyBoatBoardArea() {
+		return allyBoatBoardArea;
+	}
+
 }
