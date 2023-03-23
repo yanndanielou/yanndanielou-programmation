@@ -12,8 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import builders.gameboard.GameBoardDataModel;
+import moving_objects.GameObjectListerner;
 
-public class UnderWaterPanel extends AbstractPanel {
+public class UnderWaterPanel extends AbstractPanel implements GameObjectListerner {
 
 	private static final long serialVersionUID = 6917913385357901059L;
 
@@ -31,6 +32,12 @@ public class UnderWaterPanel extends AbstractPanel {
 				pannel_above);
 
 
+	}
+
+	@Override
+	public void on_ally_boat_moved() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

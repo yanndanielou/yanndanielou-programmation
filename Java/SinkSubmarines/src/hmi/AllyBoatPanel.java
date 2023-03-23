@@ -14,9 +14,9 @@ import javax.swing.JPanel;
 
 import builders.gameboard.GameBoardDataModel;
 import moving_objects.AllyBoat;
-import moving_objects.AllyBoatListener;
+import moving_objects.GameObjectListerner;
 
-public class AllyBoatPanel extends AbstractPanel implements AllyBoatListener {
+public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner {
 
 	private static final long serialVersionUID = 6917913385357901059L;
 

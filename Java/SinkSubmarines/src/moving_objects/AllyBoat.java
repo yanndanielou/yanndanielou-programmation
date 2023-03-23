@@ -13,7 +13,7 @@ import hmi.SinkSubmarinesMainView;
 public class AllyBoat extends Belligerent {
 	private static final Logger LOGGER = LogManager.getLogger(AllyBoat.class);
 
-	private ArrayList<AllyBoatListener> movement_listeners = new ArrayList<AllyBoatListener>();
+	private ArrayList<GameObjectListerner> movement_listeners = new ArrayList<GameObjectListerner>();
 
 	public AllyBoat(GenericObjectDataModel genericObjectDataModel, GameBoardDataModel gameBoardDataModel) {
 		super(new Rectangle(gameBoardDataModel.getWidth() / 2 - genericObjectDataModel.getWidth() / 2, 0,
@@ -22,12 +22,12 @@ public class AllyBoat extends Belligerent {
 
 	@Override
 	public void notify_movement() {
-		for (AllyBoatListener allyBoatListener : movement_listeners) {
+		for (GameObjectListerner allyBoatListener : movement_listeners) {
 			allyBoatListener.on_ally_boat_moved();
 		}
 	}
 
-	public void add_movement_listener(AllyBoatListener allyBoatListener) {
+	public void add_movement_listener(GameObjectListerner allyBoatListener) {
 		movement_listeners.add(allyBoatListener);
 	}
 

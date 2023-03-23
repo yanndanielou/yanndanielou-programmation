@@ -11,7 +11,7 @@ public class ScenarioLevelDataModelBuilder {
 
 	private ScenarioLevelDataModel scenario_level_data_model;
 
-	public ScenarioLevelDataModel getGeneric_objects_data_model() {
+	public ScenarioLevelDataModel getScenario_level_data_model() {
 		return scenario_level_data_model;
 	}
 

@@ -9,4 +9,8 @@ public class ScenarioLevelDataModel {
 	public ScenarioLevelDataModel() {
 	}
 
+	public ArrayList<ScenarioLevelEnnemyCreationDataModel> getSimple_submarines() {
+		return simple_submarines;
+	}
+
 }

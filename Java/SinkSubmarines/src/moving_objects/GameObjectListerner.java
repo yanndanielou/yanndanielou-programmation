@@ -1,6 +1,6 @@
 package moving_objects;
 
-public interface AllyBoatListener {
+public interface GameObjectListerner {
 
 	void on_ally_boat_moved();
 
