@@ -38,51 +38,20 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 	private boolean proceed_ally_boat_movement() {
 
 		AllyBoat ally_boat = GameManager.getInstance().getGame().getAlly_boat();
-		if (ally_boat.getX_speed() < 0) {
-			int new_x = Math.max(0, (int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getX()
-					- ally_boat.getX_speed());
-			if (new_x == 0) {
-				ally_boat.setX_speed(0);
-				ally_boat.getSurrounding_rectangle_absolute_on_complete_board()
-						.translate((int) -ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getX(), 0);
-			} else {
-				ally_boat.getSurrounding_rectangle_absolute_on_complete_board().translate((int) ally_boat.getX_speed(),
-						0);
-			}
-		} else if (ally_boat.getX_speed() > 0) {
-			if (ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getMaxX()
-					+ ally_boat.getX_speed() > GameManager.getInstance().getGame().getGameboard().getWidth()) {
-				ally_boat.setX_speed(0);
-				ally_boat.getSurrounding_rectangle_absolute_on_complete_board()
-						.setLocation(
-								(int) (GameManager.getInstance().getGame().getGameboard().getWidth()
-										- ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getWidth()),
-								0);
-			} else {
-				ally_boat.getSurrounding_rectangle_absolute_on_complete_board().translate((int) ally_boat.getX_speed(),
-						0);
-			}
-		}
-		
-		ally_boat.notify_movement();
 
 		return true;
 	}
 
 	@Override
 	public void on_50ms_tick() {
-		proceed_ally_boat_movement();
+		// proceed_ally_boat_movement();
 
-		/*
-		 * for (GameObject gameObject :
-		 * GameManager.getInstance().getGame().getGame_objects()) { if
-		 * (gameObject.getX_speed() != 0 || gameObject.getY_speed() != 0) {
-		 * gameObject.getSurrounding_rectangle_absolute_on_complete_board().translate(
-		 * gameObject.getX_speed(), gameObject.getY_speed());
-		 * gameObject.notify_movement(); //
-		 * gameObject.getUpper_left_absolute_position_on_complete_board().translate(
-		 * gameObject.getX_speed(),gameObject.getY_speed()); } }
-		 */
+		for (GameObject gameObject : GameManager.getInstance().getGame().getGame_objects()) {
+			if (gameObject.getX_speed() != 0 || gameObject.getY_speed() != 0) {
+				gameObject.proceed_movement();
+			}
+		}
+
 	}
 
 	@Override

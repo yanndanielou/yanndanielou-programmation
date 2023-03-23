@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import hmi.SinkSubmarinesMainView;
 
@@ -14,8 +15,9 @@ public class AllyBoat extends Belligerent {
 
 	private ArrayList<AllyBoatListener> movement_listeners = new ArrayList<AllyBoatListener>();
 
-	public AllyBoat(GenericObjectDataModel genericObjectDataModel) {
-		super(new Rectangle(0, 0, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()));
+	public AllyBoat(GenericObjectDataModel genericObjectDataModel, GameBoardDataModel gameBoardDataModel) {
+		super(new Rectangle(gameBoardDataModel.getWidth() / 2 - genericObjectDataModel.getWidth() / 2, 0,
+				genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()));
 	}
 
 	@Override
@@ -41,6 +43,16 @@ public class AllyBoat extends Belligerent {
 			x_speed++;
 			LOGGER.info("Ally boat, increase right speed to:" + x_speed);
 		}
+	}
+
+	@Override
+	protected void right_border_of_game_board_reached() {
+		setX_speed(0);
+	}
+
+	@Override
+	protected void left_border_of_game_board_reached() {
+		setX_speed(0);
 	}
 
 }

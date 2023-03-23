@@ -4,7 +4,14 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import core.GameManager;
+import main.SinkSubmarinesMain;
+
 public abstract class GameObject {
+	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);
 
 	private Point upper_left_absolute_position_on_complete_board;
 	private Rectangle surrounding_rectangle_absolute_on_complete_board;
@@ -48,6 +55,47 @@ public abstract class GameObject {
 	public void setY_speed(int y_speed) {
 		this.y_speed = y_speed;
 	}
+
+	public boolean proceed_movement() {
+		boolean has_moved = false;
+
+		if (getX_speed() < 0) {
+			if (getSurrounding_rectangle_absolute_on_complete_board().getX() < getX_speed()) {
+				setX_speed((int) getSurrounding_rectangle_absolute_on_complete_board().getX());
+
+				getSurrounding_rectangle_absolute_on_complete_board()
+						.translate((int) -getSurrounding_rectangle_absolute_on_complete_board().getX(), 0);
+				left_border_of_game_board_reached();
+				has_moved = true;
+			} else {
+				getSurrounding_rectangle_absolute_on_complete_board().translate((int) getX_speed(), 0);
+				has_moved = true;
+			}
+		} else if (getX_speed() > 0) {
+			if (getSurrounding_rectangle_absolute_on_complete_board().getMaxX() + getX_speed() > GameManager
+					.getInstance().getGame().getGameboard().getWidth()) {
+
+				getSurrounding_rectangle_absolute_on_complete_board()
+						.setLocation((int) (GameManager.getInstance().getGame().getGameboard().getWidth()
+								- getSurrounding_rectangle_absolute_on_complete_board().getWidth()), 0);
+
+				right_border_of_game_board_reached();
+				has_moved = true;
+			} else {
+				getSurrounding_rectangle_absolute_on_complete_board().translate((int) getX_speed(), 0);
+				has_moved = true;
+			}
+		}
+
+		if (has_moved) {
+			notify_movement();
+		}
+		return has_moved;
+	}
+
+	protected abstract void right_border_of_game_board_reached();
+
+	protected abstract void left_border_of_game_board_reached();
 
 	public abstract void notify_movement();
 

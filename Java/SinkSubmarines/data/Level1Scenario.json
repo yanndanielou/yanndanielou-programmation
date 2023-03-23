@@ -1,19 +1,22 @@
 {
-   "width": 600,
-   "sky_game_board_area_data_model": {
-		 "height": 77,
-		 "background_image_path":"Images/sky_background.png"
+  "simple_submarines": [
+    {
+      "X": -100,
+      "altitude": -200,
+      "speed": 2,
+      "creation_delay_in_seconds": 5
     },
-   "ally_boat_game_board_area_data_model": {
-		 "height": 30,
-		 "background_color_definition":{
-			"red": 0,
-			"green": 198,
-			"blue": 255			
-		 }		 
+    {
+      "X": 500,
+      "altitude": -300,
+      "speed": -3,
+      "creation_delay_in_seconds": 10
     },
-   "under_water_game_board_area_data_model": {
-		 "height": 400,
-		 "background_image_path":"Images/under_water_background.png" 
+    {
+      "X": -50,
+      "altitude": -350,
+      "speed": 4,
+      "creation_delay_in_seconds": 15
     }
+  ]
 }

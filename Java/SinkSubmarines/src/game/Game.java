@@ -18,7 +18,7 @@ public class Game {
 
 	public Game(GameBoardDataModel gameBoardDataModel, GenericObjectsDataModel genericObjectsDataModel) {
 		gameboard = new GameBoard(gameBoardDataModel);
-		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model());
+		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model(), gameBoardDataModel);
 		game_objects.add(ally_boat);
 	}
 
