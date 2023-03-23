@@ -1,26 +1,12 @@
 package builders.scenariolevel;
 
+import java.util.ArrayList;
+
 public class ScenarioLevelDataModel {
 
-	int height;
-	int width;
-	String right_direction_image_path;
-	String left_direction_image_path;
+	private ArrayList<ScenarioLevelEnnemyCreationDataModel> simple_submarines;
 
-	public int getHeight() {
-		return height;
-	}
-
-	public int getWidth() {
-		return width;
-	}
-
-	public String getRight_direction_image_path() {
-		return right_direction_image_path;
-	}
-
-	public String getLeft_direction_image_path() {
-		return left_direction_image_path;
+	public ScenarioLevelDataModel() {
 	}
 
 }

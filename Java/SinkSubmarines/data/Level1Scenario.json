@@ -1,19 +1,19 @@
 {
   "simple_submarines": [
     {
-      "X": -100,
+      "x": -100,
       "altitude": -200,
       "speed": 2,
       "creation_delay_in_seconds": 5
     },
     {
-      "X": 500,
+      "x": 500,
       "altitude": -300,
       "speed": -3,
       "creation_delay_in_seconds": 10
     },
     {
-      "X": -50,
+      "x": -50,
       "altitude": -350,
       "speed": 4,
       "creation_delay_in_seconds": 15
