@@ -8,7 +8,7 @@
    "simple_submarine_data_model": {
 		 "height": 21,
 		 "width":60,
-		 "right_direction_image_path":"Images/simple_submarine.png",
-		 "left_direction_image_path":"Images/simple_submarine.png"	 
+		 "right_direction_image_path":"Images/simple_submarine_right.png",
+		 "left_direction_image_path":"Images/simple_submarine_left.png"	 
     }
 }

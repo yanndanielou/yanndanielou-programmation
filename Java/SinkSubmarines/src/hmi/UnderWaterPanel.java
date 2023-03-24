@@ -3,6 +3,7 @@ package hmi;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -23,10 +24,15 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 
 	private Container parentContainer = null;
 
-	private BufferedImage simple_submarine_buffered_image = null;
-	private File simple_submarine_image_file = null;
-	private final String simple_submarine_image_path = "Images/simple_submarine.png";
-	private JLabel simple_submarine_image_as_label = null;
+	private BufferedImage simple_submarine_direction_left_buffered_image = null;	
+	private File simple_submarine_direction_left_image_file = null;
+	private final String simple_submarine_direction_left_image_path = "Images/simple_submarine_left.png";
+
+	private BufferedImage simple_submarine_direction_right_buffered_image = null;	
+	private File simple_submarine_direction_right_image_file = null;
+	private final String simple_submarine_direction_right_image_path = "Images/simple_submarine_right.png";
+	
+	//private JLabel simple_submarine_image_as_label = null;
 
 	public UnderWaterPanel(Container parentContainer, int window_width, GameBoardDataModel gameBoardDataModel,
 			JPanel pannel_above) {
@@ -34,10 +40,12 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 		super(parentContainer, gameBoardDataModel, gameBoardDataModel.getUnder_water_game_board_area_data_model(),
 				pannel_above);
 
-		simple_submarine_image_file = new File(simple_submarine_image_path);
+		simple_submarine_direction_left_image_file = new File(simple_submarine_direction_left_image_path);
+		simple_submarine_direction_right_image_file = new File(simple_submarine_direction_right_image_path);
 
 		try {
-			simple_submarine_buffered_image = ImageIO.read(simple_submarine_image_file);
+			simple_submarine_direction_left_buffered_image = ImageIO.read(simple_submarine_direction_left_image_file);
+			simple_submarine_direction_right_buffered_image = ImageIO.read(simple_submarine_direction_right_image_file);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -50,7 +58,10 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 		for (SimpleSubMarine simple_submarine : GameManager.getInstance().getGame().getSimple_submarines()) {
 			int boat_x = (int) simple_submarine.getSurrounding_rectangle_absolute_on_complete_board().getX();
 			int boat_y = (int) simple_submarine.getSurrounding_rectangle_absolute_on_complete_board().getY();
-			g.drawImage(simple_submarine_buffered_image, boat_x, boat_y,
+			
+			Image submarine_image = simple_submarine.getX_speed() > 0 ? simple_submarine_direction_right_buffered_image : simple_submarine_direction_left_buffered_image;
+			
+			g.drawImage(submarine_image, boat_x, boat_y,
 					(int) simple_submarine.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
 					(int) simple_submarine.getSurrounding_rectangle_absolute_on_complete_board().getHeight(), null);
 		}

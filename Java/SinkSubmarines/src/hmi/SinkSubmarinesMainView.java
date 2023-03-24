@@ -40,7 +40,7 @@ public class SinkSubmarinesMainView extends JFrame {
 	private MainViewMenuBarManager mainViewMenuBarManager;
 
 	public SinkSubmarinesMainView() {
-		super("Title of application");
+		super("Sink submarines");
 		setResizable(false);
 		mainViewMenuBarManager = new MainViewMenuBarManager(this);
 	}
