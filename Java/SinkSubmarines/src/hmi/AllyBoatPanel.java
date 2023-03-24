@@ -81,4 +81,8 @@ public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner 
 	public void on_ally_boat_moved() {
 		this.repaint();
 	}
+
+	@Override
+	public void on_simple_submarine_moved() {
+	}
 }

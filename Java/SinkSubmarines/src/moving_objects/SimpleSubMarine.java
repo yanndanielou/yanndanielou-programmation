@@ -19,11 +19,14 @@ public class SimpleSubMarine extends Belligerent {
 		super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
 				scenarioLevelEnnemyCreationDataModel.getAltitude(), simple_submarine_data_model.getWidth(),
 				simple_submarine_data_model.getHeight()));
+		setX_speed(scenarioLevelEnnemyCreationDataModel.getSpeed());
 	}
 
 	@Override
 	public void notify_movement() {
-
+		for (GameObjectListerner allyBoatListener : movement_listeners) {
+			allyBoatListener.on_simple_submarine_moved();
+		}
 	}
 
 	@Override

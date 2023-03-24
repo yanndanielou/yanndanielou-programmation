@@ -2,6 +2,9 @@ package core;
 
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import builders.gameboard.GameBoardDataModel;
 import builders.gameboard.GameBoardDataModelBuilder;
 import builders.genericobjects.GenericObjectsDataModel;
@@ -17,6 +20,8 @@ import time.TimeManagerListener;
 public class GameManager implements TimeManagerListener {
 
 	private static GameManager instance;
+	private static final Logger LOGGER = LogManager.getLogger(GameManager.class);
+
 
 	private GenericObjectsDataModelBuilder genericObjectsDataModelBuilder = null;
 	private GameBoardDataModelBuilder gameBoardDataModelBuilder = null;
@@ -91,8 +96,11 @@ public class GameManager implements TimeManagerListener {
 		SimpleSubMarine submarine = new SimpleSubMarine(scenarioLevelEnnemyCreationDataModel,
 				genericObjectsDataModel.getSimple_submarine_data_model(), gameBoardDataModel);
 		
+		game.addSimpleSubMarine(submarine);
 		submarine.add_movement_listener(sinkSubmarinesMainView.getUnderWaterPanel());
+		
 	
+		LOGGER.info("Simple submarine created!" + scenarioLevelEnnemyCreationDataModel + genericObjectsDataModel.getSimple_submarine_data_model());
 		
 		return submarine;
 	}

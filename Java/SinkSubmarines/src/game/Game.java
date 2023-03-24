@@ -44,6 +44,15 @@ public class Game {
 		return game_objects;
 	}
 
+	public ArrayList<SimpleSubMarine> getSimple_submarines() {
+		return simple_submarines;
+	}
+
+	public void addSimpleSubMarine(SimpleSubMarine submarine) {
+		simple_submarines.add(submarine);	
+		game_objects.add(submarine);
+	}
+
 	/*
 	public SimpleSubMarine create_simple_submarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel) {
 		SimpleSubMarine submarine = new SimpleSubMarine(scenarioLevelEnnemyCreationDataModel,

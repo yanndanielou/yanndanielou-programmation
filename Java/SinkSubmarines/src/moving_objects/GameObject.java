@@ -18,7 +18,7 @@ public abstract class GameObject {
 	protected int x_speed = 0;
 	private int y_speed = 0;
 
-	private ArrayList<GameObjectListerner> movement_listeners = new ArrayList<GameObjectListerner>();
+	protected ArrayList<GameObjectListerner> movement_listeners = new ArrayList<GameObjectListerner>();
 
 	public GameObject(Rectangle surrounding_rectangle_absolute_on_complete_board) {
 		this.surrounding_rectangle_absolute_on_complete_board = surrounding_rectangle_absolute_on_complete_board;

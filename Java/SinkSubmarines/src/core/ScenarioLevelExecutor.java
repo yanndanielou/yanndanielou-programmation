@@ -2,6 +2,9 @@ package core;
 
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import builders.gameboard.GameBoardDataModelBuilder;
 import builders.genericobjects.GenericObjectsDataModelBuilder;
 import builders.scenariolevel.ScenarioLevelDataModel;
@@ -16,11 +19,12 @@ import time.TimeManagerListener;
 public class ScenarioLevelExecutor implements TimeManagerListener {
 
 	private static ScenarioLevelExecutor instance;
+	private static final Logger LOGGER = LogManager.getLogger(ScenarioLevelExecutor.class);
 
 	private ScenarioLevelDataModel scenarioLevelDataModel = null;
 	private Game game = null;
 	private int current_step_in_seconds = 0;
-	private ArrayList<ScenarioLevelEnnemyCreationDataModel> simple_submarines_remaining_to_create;
+	private ArrayList<ScenarioLevelEnnemyCreationDataModel> simple_submarines_remaining_to_create = new ArrayList<ScenarioLevelEnnemyCreationDataModel>();
 
 	private ScenarioLevelExecutor() {
 		TimeManager.getInstance().add_listener(this);
@@ -56,14 +60,16 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 	@Override
 	public void on_second_tick() {
 		current_step_in_seconds++;
+		ArrayList<ScenarioLevelEnnemyCreationDataModel> scenarioLevelEnnemyCreationDataModel_to_remove = new ArrayList<ScenarioLevelEnnemyCreationDataModel>();
 
 		for (ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel : simple_submarines_remaining_to_create) {
 			if (scenarioLevelEnnemyCreationDataModel.getCreation_delay_in_seconds() == current_step_in_seconds) {
 				GameManager.getInstance().create_simple_submarine(scenarioLevelEnnemyCreationDataModel);
-				simple_submarines_remaining_to_create.remove(scenarioLevelEnnemyCreationDataModel);
-				
+				scenarioLevelEnnemyCreationDataModel_to_remove.add(scenarioLevelEnnemyCreationDataModel);
 			}
 		}
+
+		simple_submarines_remaining_to_create.removeAll(scenarioLevelEnnemyCreationDataModel_to_remove);
 	}
 
 	@Override
