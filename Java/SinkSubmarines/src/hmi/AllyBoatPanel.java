@@ -13,8 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import builders.gameboard.GameBoardDataModel;
-import moving_objects.AllyBoat;
 import moving_objects.GameObjectListerner;
+import moving_objects.boats.AllyBoat;
 
 public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner {
 

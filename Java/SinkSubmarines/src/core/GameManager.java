@@ -13,7 +13,7 @@ import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import game.Game;
 import hmi.SinkSubmarinesMainView;
 import moving_objects.GameObject;
-import moving_objects.SimpleSubMarine;
+import moving_objects.boats.SimpleSubMarine;
 import time.TimeManager;
 import time.TimeManagerListener;
 

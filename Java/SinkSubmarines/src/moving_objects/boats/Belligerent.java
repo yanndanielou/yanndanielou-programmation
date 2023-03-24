@@ -1,6 +1,8 @@
-package moving_objects;
+package moving_objects.boats;
 
 import java.awt.Rectangle;
+
+import moving_objects.GameObject;
 
 public abstract class Belligerent extends GameObject {
 

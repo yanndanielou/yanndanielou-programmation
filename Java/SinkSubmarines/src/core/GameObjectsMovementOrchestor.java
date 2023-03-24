@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import moving_objects.AllyBoat;
 import moving_objects.GameObject;
+import moving_objects.boats.AllyBoat;
 import time.TimeManager;
 import time.TimeManagerListener;
 

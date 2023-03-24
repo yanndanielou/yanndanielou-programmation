@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import builders.gameboard.GameBoardDataModel;
 import core.GameManager;
 import moving_objects.GameObjectListerner;
-import moving_objects.SimpleSubMarine;
+import moving_objects.boats.SimpleSubMarine;
 
 public class UnderWaterPanel extends AbstractPanel implements GameObjectListerner {
 

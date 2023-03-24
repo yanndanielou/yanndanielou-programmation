@@ -1,4 +1,4 @@
-package moving_objects;
+package moving_objects.boats;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import hmi.SinkSubmarinesMainView;
+import moving_objects.GameObjectListerner;
 
 public class SimpleSubMarine extends Belligerent {
 	private static final Logger LOGGER = LogManager.getLogger(SimpleSubMarine.class);

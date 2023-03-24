@@ -7,7 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import core.GameManager;
-import moving_objects.AllyBoat;
+import moving_objects.boats.AllyBoat;
 
 public class KeyBoardInputs implements KeyListener {
 	private static final Logger LOGGER = LogManager.getLogger(KeyBoardInputs.class);

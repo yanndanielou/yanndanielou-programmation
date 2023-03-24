@@ -1,4 +1,4 @@
-package moving_objects;
+package moving_objects.boats;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import hmi.SinkSubmarinesMainView;
+import moving_objects.GameObjectListerner;
 
 public class AllyBoat extends Belligerent {
 	private static final Logger LOGGER = LogManager.getLogger(AllyBoat.class);

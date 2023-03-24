@@ -7,9 +7,9 @@ import builders.gameboard.GameBoardDataModelBuilder;
 import builders.genericobjects.GenericObjectsDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import game_board.GameBoard;
-import moving_objects.AllyBoat;
 import moving_objects.GameObject;
-import moving_objects.SimpleSubMarine;
+import moving_objects.boats.AllyBoat;
+import moving_objects.boats.SimpleSubMarine;
 
 public class Game {
 
