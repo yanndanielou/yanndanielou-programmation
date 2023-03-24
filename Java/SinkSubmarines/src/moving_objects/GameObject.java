@@ -66,6 +66,7 @@ public abstract class GameObject {
 		double object_x = surrounding_rectangle_absolute_on_complete_board.getX();
 		double object_right = surrounding_rectangle_absolute_on_complete_board.getMaxX();
 		double object_width = surrounding_rectangle_absolute_on_complete_board.getWidth();
+		int game_board_width = GameManager.getInstance().getGame().getGameboard().getWidth();
 
 		if (getX_speed() < 0) {
 			if (object_x < getX_speed()) {
@@ -77,10 +78,10 @@ public abstract class GameObject {
 				has_moved = true;
 			}
 		} else if (getX_speed() > 0) {
-			if (object_right + getX_speed() > GameManager.getInstance().getGame().getGameboard().getWidth()) {
+			if (object_right + getX_speed() > game_board_width) {
 
 				surrounding_rectangle_absolute_on_complete_board.setLocation(
-						(int) (GameManager.getInstance().getGame().getGameboard().getWidth() - object_width),(int) surrounding_rectangle_absolute_on_complete_board.getY());
+						(int) (game_board_width - object_width),(int) surrounding_rectangle_absolute_on_complete_board.getY());
 
 				right_border_of_game_board_reached();
 				has_moved = true;
