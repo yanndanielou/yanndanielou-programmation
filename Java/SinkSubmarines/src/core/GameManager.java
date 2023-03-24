@@ -14,6 +14,7 @@ import game.Game;
 import hmi.SinkSubmarinesMainView;
 import moving_objects.GameObject;
 import moving_objects.boats.SimpleSubMarine;
+import moving_objects.weapon.SimpleAllyBomb;
 import time.TimeManager;
 import time.TimeManagerListener;
 
@@ -22,7 +23,6 @@ public class GameManager implements TimeManagerListener {
 	private static GameManager instance;
 	private static final Logger LOGGER = LogManager.getLogger(GameManager.class);
 
-
 	private GenericObjectsDataModelBuilder genericObjectsDataModelBuilder = null;
 	private GameBoardDataModelBuilder gameBoardDataModelBuilder = null;
 	private SinkSubmarinesMainView sinkSubmarinesMainView = null;
@@ -30,7 +30,7 @@ public class GameManager implements TimeManagerListener {
 
 	private GenericObjectsDataModel genericObjectsDataModel = null;
 	private GameBoardDataModel gameBoardDataModel = null;
-	
+
 	private GameManager() {
 		TimeManager.getInstance().add_listener(this);
 	}
@@ -95,13 +95,13 @@ public class GameManager implements TimeManagerListener {
 			ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel) {
 		SimpleSubMarine submarine = new SimpleSubMarine(scenarioLevelEnnemyCreationDataModel,
 				genericObjectsDataModel.getSimple_submarine_data_model(), gameBoardDataModel);
-		
+
 		game.addSimpleSubMarine(submarine);
 		submarine.add_movement_listener(sinkSubmarinesMainView.getUnderWaterPanel());
-		
-	
-		LOGGER.info("Simple submarine created!" + scenarioLevelEnnemyCreationDataModel + genericObjectsDataModel.getSimple_submarine_data_model());
-		
+
+		LOGGER.info("Simple submarine created!" + scenarioLevelEnnemyCreationDataModel
+				+ genericObjectsDataModel.getSimple_submarine_data_model());
+
 		return submarine;
 	}
 
@@ -115,5 +115,22 @@ public class GameManager implements TimeManagerListener {
 	public void on_20ms_tick() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void dropSimpleAllyBoatAtLeftOfAllyBoat() {
+		SimpleAllyBomb simpleAllyBomb = new SimpleAllyBomb(genericObjectsDataModel.getAlly_simple_bomb_data_model(),
+				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getX(),
+				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY());
+		game.addSimpleAllyBomb(simpleAllyBomb);
+		simpleAllyBomb.add_movement_listener(sinkSubmarinesMainView.getAllyBoatPanel());
+		simpleAllyBomb.add_movement_listener(sinkSubmarinesMainView.getUnderWaterPanel());
+
+	}
+
+	public void dropSimpleAllyBoatAtRightOfAllyBoat() {
+		SimpleAllyBomb simpleAllyBomb = new SimpleAllyBomb(genericObjectsDataModel.getAlly_simple_bomb_data_model(),
+				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getMaxX(),
+				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY());
+		game.addSimpleAllyBomb(simpleAllyBomb);
 	}
 }

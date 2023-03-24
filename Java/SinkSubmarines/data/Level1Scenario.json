@@ -1,4 +1,5 @@
 {
+  "max_number_of_ally_bombs" : 10,
   "simple_submarines": [
     {
       "x": 20,

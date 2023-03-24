@@ -3,12 +3,40 @@ package moving_objects.weapon;
 import java.awt.Rectangle;
 
 import builders.genericobjects.GenericObjectDataModel;
+import builders.genericobjects.GenericObjectsDataModel;
 import moving_objects.GameObject;
 
-public abstract class SimpleAllyBomb extends GameObject {
+public class SimpleAllyBomb extends Weapon {
 
-	public SimpleAllyBomb(GenericObjectDataModel genericObjectDataModel) {
-		super(new Rectangle(0, 0, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()));
+	public SimpleAllyBomb(GenericObjectDataModel genericObjectDataModel, int x, int y) {
+		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()));
+		setY_speed(1);
+	}
+
+	@Override
+	protected void right_border_of_game_board_reached() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void left_border_of_game_board_reached() {
+	}
+
+	@Override
+	public void notify_movement() {
+	}
+
+	@Override
+	protected void ocean_bed_reached() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void water_surface_reached() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -6,6 +6,7 @@ public class GenericObjectDataModel {
 	int width;
 	String right_direction_image_path;
 	String left_direction_image_path;
+	String image_path;
 
 	public int getHeight() {
 		return height;
@@ -21,6 +22,10 @@ public class GenericObjectDataModel {
 
 	public String getLeft_direction_image_path() {
 		return left_direction_image_path;
+	}
+
+	public String getImage_path() {
+		return image_path;
 	}
 
 }

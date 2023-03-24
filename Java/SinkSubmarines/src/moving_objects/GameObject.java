@@ -60,7 +60,7 @@ public abstract class GameObject {
 		this.y_speed = y_speed;
 	}
 
-	public boolean proceed_movement() {
+	public boolean proceed_horizontal_movement() {
 		boolean has_moved = false;
 
 		double object_x = surrounding_rectangle_absolute_on_complete_board.getX();
@@ -70,7 +70,8 @@ public abstract class GameObject {
 
 		if (getX_speed() < 0) {
 			if (object_x < getX_speed()) {
-				surrounding_rectangle_absolute_on_complete_board.setLocation(0, (int) surrounding_rectangle_absolute_on_complete_board.getY());
+				surrounding_rectangle_absolute_on_complete_board.setLocation(0,
+						(int) surrounding_rectangle_absolute_on_complete_board.getY());
 				left_border_of_game_board_reached();
 				has_moved = true;
 			} else {
@@ -80,8 +81,8 @@ public abstract class GameObject {
 		} else if (getX_speed() > 0) {
 			if (object_right + getX_speed() > game_board_width) {
 
-				surrounding_rectangle_absolute_on_complete_board.setLocation(
-						(int) (game_board_width - object_width),(int) surrounding_rectangle_absolute_on_complete_board.getY());
+				surrounding_rectangle_absolute_on_complete_board.setLocation((int) (game_board_width - object_width),
+						(int) surrounding_rectangle_absolute_on_complete_board.getY());
 
 				right_border_of_game_board_reached();
 				has_moved = true;
@@ -90,6 +91,43 @@ public abstract class GameObject {
 				has_moved = true;
 			}
 		}
+		return has_moved;
+	}
+
+	public boolean proceed_vertical_movement() {
+		boolean has_moved = false;
+
+		int game_board_height = GameManager.getInstance().getGame().getGameboard().getHeight();
+
+		if (getY_speed() < 0) {
+
+			surrounding_rectangle_absolute_on_complete_board.translate(0, getY_speed());
+			has_moved = true;
+			if (surrounding_rectangle_absolute_on_complete_board.getY() <= 0) {
+				water_surface_reached();
+			}
+
+		} else if (getY_speed() > 0) {
+
+			surrounding_rectangle_absolute_on_complete_board.translate(0, getY_speed());
+
+			if (surrounding_rectangle_absolute_on_complete_board.getMaxY() >= game_board_height) {
+				ocean_bed_reached();
+			}
+
+			has_moved = true;
+		}
+		return has_moved;
+	}
+
+	protected abstract void ocean_bed_reached();
+
+	protected abstract void water_surface_reached();
+
+	public boolean proceed_movement() {
+		boolean has_moved = false;
+
+		has_moved = proceed_horizontal_movement() || proceed_vertical_movement();
 
 		if (has_moved) {
 			notify_movement();

@@ -10,6 +10,7 @@ import game_board.GameBoard;
 import moving_objects.GameObject;
 import moving_objects.boats.AllyBoat;
 import moving_objects.boats.SimpleSubMarine;
+import moving_objects.weapon.SimpleAllyBomb;
 
 public class Game {
 
@@ -18,6 +19,7 @@ public class Game {
 	private AllyBoat ally_boat = null;
 	private ArrayList<GameObject> game_objects = new ArrayList<>();
 	private ArrayList<SimpleSubMarine> simple_submarines = new ArrayList<>();
+	private ArrayList<SimpleAllyBomb> simple_ally_bombs = new ArrayList<>();
 
 
 	public Game(GameBoardDataModel gameBoardDataModel, GenericObjectsDataModel genericObjectsDataModel) {
@@ -51,6 +53,15 @@ public class Game {
 	public void addSimpleSubMarine(SimpleSubMarine submarine) {
 		simple_submarines.add(submarine);	
 		game_objects.add(submarine);
+	}
+	
+	public void addSimpleAllyBomb(SimpleAllyBomb simpleAllyBomb) {
+		simple_ally_bombs.add(simpleAllyBomb);
+		game_objects.add(simpleAllyBomb);
+	}
+
+	public ArrayList<SimpleAllyBomb> getSimple_ally_bombs() {
+		return simple_ally_bombs;
 	}
 
 	/*

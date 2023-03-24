@@ -7,8 +7,8 @@ import moving_objects.GameObject;
 
 public abstract class Weapon extends GameObject {
 
-	public Weapon(GenericObjectDataModel genericObjectDataModel) {
-		super(new Rectangle(0, 0, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()));
+	public Weapon(Rectangle surrounding_rectangle_absolute_on_complete_board) {
+		super(surrounding_rectangle_absolute_on_complete_board);
 	}
 
 }
