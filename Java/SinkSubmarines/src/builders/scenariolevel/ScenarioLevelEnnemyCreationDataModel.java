@@ -15,6 +15,10 @@ public class ScenarioLevelEnnemyCreationDataModel {
 		return altitude;
 	}
 
+	public int getDepth() {
+		return altitude * -1;
+	}
+
 	public int getSpeed() {
 		return speed;
 	}

@@ -21,7 +21,7 @@
 		 }	
     },
    "ocean_bed_game_board_area_data_model": {
-		 "height": 100,
+		 "height": 200,
 		 "background_image_path":"Images/ocean_bed_background.png" 
     }
 }

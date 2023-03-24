@@ -47,6 +47,7 @@ public abstract class GameObject {
 	}
 
 	public void setX_speed(int x_speed) {
+		LOGGER.info(this + " set x speed:" + x_speed);
 		this.x_speed = x_speed;
 	}
 
@@ -55,36 +56,36 @@ public abstract class GameObject {
 	}
 
 	public void setY_speed(int y_speed) {
+		LOGGER.info(this + " set y speed:" + y_speed);
 		this.y_speed = y_speed;
 	}
 
 	public boolean proceed_movement() {
 		boolean has_moved = false;
 
-		if (getX_speed() < 0) {
-			if (getSurrounding_rectangle_absolute_on_complete_board().getX() < getX_speed()) {
-				setX_speed((int) getSurrounding_rectangle_absolute_on_complete_board().getX());
+		double object_x = surrounding_rectangle_absolute_on_complete_board.getX();
+		double object_right = surrounding_rectangle_absolute_on_complete_board.getMaxX();
+		double object_width = surrounding_rectangle_absolute_on_complete_board.getWidth();
 
-				getSurrounding_rectangle_absolute_on_complete_board()
-						.translate((int) -getSurrounding_rectangle_absolute_on_complete_board().getX(), 0);
+		if (getX_speed() < 0) {
+			if (object_x < getX_speed()) {
+				surrounding_rectangle_absolute_on_complete_board.setLocation(0, (int) surrounding_rectangle_absolute_on_complete_board.getY());
 				left_border_of_game_board_reached();
 				has_moved = true;
 			} else {
-				getSurrounding_rectangle_absolute_on_complete_board().translate((int) getX_speed(), 0);
+				surrounding_rectangle_absolute_on_complete_board.translate((int) getX_speed(), 0);
 				has_moved = true;
 			}
 		} else if (getX_speed() > 0) {
-			if (getSurrounding_rectangle_absolute_on_complete_board().getMaxX() + getX_speed() > GameManager
-					.getInstance().getGame().getGameboard().getWidth()) {
+			if (object_right + getX_speed() > GameManager.getInstance().getGame().getGameboard().getWidth()) {
 
-				getSurrounding_rectangle_absolute_on_complete_board()
-						.setLocation((int) (GameManager.getInstance().getGame().getGameboard().getWidth()
-								- getSurrounding_rectangle_absolute_on_complete_board().getWidth()), 0);
+				surrounding_rectangle_absolute_on_complete_board.setLocation(
+						(int) (GameManager.getInstance().getGame().getGameboard().getWidth() - object_width),(int) surrounding_rectangle_absolute_on_complete_board.getY());
 
 				right_border_of_game_board_reached();
 				has_moved = true;
 			} else {
-				getSurrounding_rectangle_absolute_on_complete_board().translate((int) getX_speed(), 0);
+				surrounding_rectangle_absolute_on_complete_board.translate((int) getX_speed(), 0);
 				has_moved = true;
 			}
 		}
