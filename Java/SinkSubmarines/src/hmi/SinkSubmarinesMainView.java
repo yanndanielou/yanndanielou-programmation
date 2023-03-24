@@ -36,6 +36,7 @@ public class SinkSubmarinesMainView extends JFrame {
 	private SkyPanel skyPanel = null;
 	private AllyBoatPanel allyBoatPanel = null;
 	private UnderWaterPanel underWaterPanel = null;
+	private OceanBedPanel oceanBedPanel = null;
 	private MainViewMenuBarManager mainViewMenuBarManager;
 
 	public SinkSubmarinesMainView() {
@@ -58,8 +59,10 @@ public class SinkSubmarinesMainView extends JFrame {
 
 		underWaterPanel = new UnderWaterPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, allyBoatPanel);
 
+		oceanBedPanel = new OceanBedPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, underWaterPanel);
+
 		this.setSize(gameBoardDataModel.getWidth(),
-				topPanel.getHeight() + skyPanel.getHeight() + allyBoatPanel.getHeight() + underWaterPanel.getHeight());
+				topPanel.getHeight() + skyPanel.getHeight() + allyBoatPanel.getHeight() + underWaterPanel.getHeight() + oceanBedPanel.getHeight());
 
 		this.addKeyListener(new KeyBoardInputs(this));
 

@@ -34,7 +34,6 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 		super(parentContainer, gameBoardDataModel, gameBoardDataModel.getUnder_water_game_board_area_data_model(),
 				pannel_above);
 
-		
 		simple_submarine_image_file = new File(simple_submarine_image_path);
 
 		try {
@@ -47,9 +46,13 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+
 		for (SimpleSubMarine simple_submarine : GameManager.getInstance().getGame().getSimple_submarines()) {
 			int boat_x = (int) simple_submarine.getSurrounding_rectangle_absolute_on_complete_board().getX();
-			g.drawImage(simple_submarine_buffered_image, boat_x, 0, null);
+			int boat_y = (int) simple_submarine.getSurrounding_rectangle_absolute_on_complete_board().getY();
+			g.drawImage(simple_submarine_buffered_image, boat_x, boat_y,
+					(int) simple_submarine.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
+					(int) simple_submarine.getSurrounding_rectangle_absolute_on_complete_board().getHeight(), null);
 		}
 	}
 

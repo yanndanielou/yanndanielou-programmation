@@ -14,6 +14,14 @@
     },
    "under_water_game_board_area_data_model": {
 		 "height": 400,
-		 "background_image_path":"Images/under_water_background.png" 
+		 "background_color_definition":{
+			"red": 0,
+			"green": 0,
+			"blue": 255			
+		 }	
+    },
+   "ocean_bed_game_board_area_data_model": {
+		 "height": 100,
+		 "background_image_path":"Images/ocean_bed_background.png" 
     }
 }

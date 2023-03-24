@@ -2,6 +2,20 @@ package builders.gameboard;
 
 public class GameBoardDataModel {
 
+	int width;
+
+	private GameBoardAreaDataModel sky_game_board_area_data_model;
+	private GameBoardAreaDataModel ally_boat_game_board_area_data_model;
+	private GameBoardAreaDataModel under_water_game_board_area_data_model;
+	private GameBoardAreaDataModel ocean_bed_game_board_area_data_model;
+
+	public GameBoardDataModel() {
+	}
+
+	public GameBoardAreaDataModel getOcean_bed_game_board_area_data_model() {
+		return ocean_bed_game_board_area_data_model;
+	}
+
 	public int getWidth() {
 		return width;
 	}
@@ -16,15 +30,6 @@ public class GameBoardDataModel {
 
 	public GameBoardAreaDataModel getUnder_water_game_board_area_data_model() {
 		return under_water_game_board_area_data_model;
-	}
-
-	int width;
-
-	private GameBoardAreaDataModel sky_game_board_area_data_model;
-	private GameBoardAreaDataModel ally_boat_game_board_area_data_model;
-	private GameBoardAreaDataModel under_water_game_board_area_data_model;
-
-	public GameBoardDataModel() {
 	}
 
 }
