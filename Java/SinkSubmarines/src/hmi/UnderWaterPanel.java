@@ -35,7 +35,7 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 
 	private BufferedImage simple_ally_bomb_buffered_image = null;
 	private File simple_ally_bomb_image_file = null;
-	private final String simple_ally_bomb_image_path = "Images/ally_simple_bomb.png";
+	private final String simple_ally_bomb_image_path = "Images/ally_simple_bomb_in_water.png";
 
 	// private JLabel simple_submarine_image_as_label = null;
 

@@ -1,5 +1,9 @@
 package core;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
@@ -10,6 +14,7 @@ import builders.gameboard.GameBoardDataModelBuilder;
 import builders.genericobjects.GenericObjectsDataModel;
 import builders.genericobjects.GenericObjectsDataModelBuilder;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
+import constants.Constants;
 import game.Game;
 import hmi.SinkSubmarinesMainView;
 import moving_objects.GameObject;
@@ -30,6 +35,8 @@ public class GameManager implements TimeManagerListener {
 
 	private GenericObjectsDataModel genericObjectsDataModel = null;
 	private GameBoardDataModel gameBoardDataModel = null;
+
+	private Instant lastAllyBombDroppedTime = null;
 
 	private GameManager() {
 		TimeManager.getInstance().add_listener(this);
@@ -117,20 +124,61 @@ public class GameManager implements TimeManagerListener {
 
 	}
 
+	private boolean is_ally_bomb_drop_autorized() {
+		boolean ally_bomb_drop_is_autorized = false;
+
+		boolean minimum_delay_between_two_ally_bombs_dropped_fulfilled = false;
+		boolean is_under_maximum_number_of_ally_bombs_fulfilled = false;
+
+		// Period period_since_last_bomb_dropped =
+		// Period.between(lastAllyBombDroppedTime, LocalDate.now());
+		// period_since_last_bomb_dropped.
+
+		if (lastAllyBombDroppedTime != null) {
+			Instant right_now = ZonedDateTime.now().toInstant();
+			long milliseconds_since_last_ally_bomb_dropped = lastAllyBombDroppedTime.toEpochMilli()
+					- right_now.toEpochMilli();
+
+			if (milliseconds_since_last_ally_bomb_dropped > Constants.MINIMUM_DELAY_BETWEEN_TWO_ALLY_BOMB_DROPPED_IN_MILLISECONDS) {
+				ally_bomb_drop_is_autorized = true;
+			}
+		} else {
+			ally_bomb_drop_is_autorized = true;
+		}
+
+		is_under_maximum_number_of_ally_bombs_fulfilled = ScenarioLevelExecutor.getInstance()
+				.getScenarioLevelDataModel().getMax_number_of_ally_bombs() > game.getSimple_ally_bombs().size();
+
+		ally_bomb_drop_is_autorized = minimum_delay_between_two_ally_bombs_dropped_fulfilled
+				&& is_under_maximum_number_of_ally_bombs_fulfilled;
+
+		if (ally_bomb_drop_is_autorized) {
+			lastAllyBombDroppedTime = ZonedDateTime.now().toInstant();
+		}
+
+		return ally_bomb_drop_is_autorized;
+	}
+
 	public void dropSimpleAllyBoatAtLeftOfAllyBoat() {
-		SimpleAllyBomb simpleAllyBomb = new SimpleAllyBomb(genericObjectsDataModel.getAlly_simple_bomb_data_model(),
-				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getX(),
-				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY());
-		game.addSimpleAllyBomb(simpleAllyBomb);
-		simpleAllyBomb.add_movement_listener(sinkSubmarinesMainView.getAllyBoatPanel());
-		simpleAllyBomb.add_movement_listener(sinkSubmarinesMainView.getUnderWaterPanel());
+
+		if (is_ally_bomb_drop_autorized()) {
+			SimpleAllyBomb simpleAllyBomb = new SimpleAllyBomb(genericObjectsDataModel.getAlly_simple_bomb_data_model(),
+					(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getX(),
+					(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY());
+			game.addSimpleAllyBomb(simpleAllyBomb);
+			simpleAllyBomb.add_movement_listener(sinkSubmarinesMainView.getAllyBoatPanel());
+			simpleAllyBomb.add_movement_listener(sinkSubmarinesMainView.getUnderWaterPanel());
+		}
 
 	}
 
 	public void dropSimpleAllyBoatAtRightOfAllyBoat() {
-		SimpleAllyBomb simpleAllyBomb = new SimpleAllyBomb(genericObjectsDataModel.getAlly_simple_bomb_data_model(),
-				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getMaxX(),
-				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY());
-		game.addSimpleAllyBomb(simpleAllyBomb);
+
+		if (is_ally_bomb_drop_autorized()) {
+			SimpleAllyBomb simpleAllyBomb = new SimpleAllyBomb(genericObjectsDataModel.getAlly_simple_bomb_data_model(),
+					(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getMaxX(),
+					(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY());
+			game.addSimpleAllyBomb(simpleAllyBomb);
+		}
 	}
 }

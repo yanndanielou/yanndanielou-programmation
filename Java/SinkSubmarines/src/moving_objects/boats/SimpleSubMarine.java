@@ -1,6 +1,7 @@
 package moving_objects.boats;
 
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
@@ -50,6 +51,12 @@ public class SimpleSubMarine extends Belligerent {
 	protected void water_surface_reached() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public BufferedImage get_buffered_image_graphical_representation() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

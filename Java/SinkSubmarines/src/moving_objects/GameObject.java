@@ -2,6 +2,7 @@ package moving_objects;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
@@ -59,6 +60,8 @@ public abstract class GameObject {
 		LOGGER.info(this + " set y speed:" + y_speed);
 		this.y_speed = y_speed;
 	}
+	
+	public abstract BufferedImage get_buffered_image_graphical_representation(); 
 
 	public boolean proceed_horizontal_movement() {
 		boolean has_moved = false;

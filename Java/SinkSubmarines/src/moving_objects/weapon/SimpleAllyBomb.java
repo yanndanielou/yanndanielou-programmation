@@ -1,6 +1,7 @@
 package moving_objects.weapon;
 
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 import builders.genericobjects.GenericObjectDataModel;
 import builders.genericobjects.GenericObjectsDataModel;
@@ -37,6 +38,12 @@ public class SimpleAllyBomb extends Weapon {
 	protected void water_surface_reached() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public BufferedImage get_buffered_image_graphical_representation() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

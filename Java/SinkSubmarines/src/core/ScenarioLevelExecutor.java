@@ -41,7 +41,7 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 		ScenarioLevelDataModelBuilder scenarioLevelDataModelBuilder = new ScenarioLevelDataModelBuilder(
 				scenario_data_model_json_file);
 		scenarioLevelDataModel = scenarioLevelDataModelBuilder.getScenario_level_data_model();
-		simple_submarines_remaining_to_create.addAll(scenarioLevelDataModel.getSimple_submarines());
+		simple_submarines_remaining_to_create.addAll(getScenarioLevelDataModel().getSimple_submarines());
 	}
 
 	public Game getGame() {
@@ -86,5 +86,9 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 
 	public void setGame(Game game) {
 		this.game = game;
+	}
+
+	public ScenarioLevelDataModel getScenarioLevelDataModel() {
+		return scenarioLevelDataModel;
 	}
 }
