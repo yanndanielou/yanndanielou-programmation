@@ -1,12 +1,14 @@
 package core;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import moving_objects.GameObject;
-import moving_objects.boats.AllyBoat;
+import moving_objects.boats.SimpleSubMarine;
+import moving_objects.weapon.SimpleAllyBomb;
 import time.TimeManager;
 import time.TimeManagerListener;
 
@@ -37,23 +39,63 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 
 	@Override
 	public void on_second_tick() {
+		proceed_destruction_timer_decrementation();
+		proceed_destroyed_objects_cleaning();
 	}
 
-	private boolean proceed_ally_boat_movement() {
-
-		AllyBoat ally_boat = GameManager.getInstance().getGame().getAlly_boat();
-
-		return true;
+	private void proceed_destruction_timer_decrementation() {
+		for (GameObject gameObject : GameManager.getInstance().getGame().getGame_objects()) {
+			if (gameObject.is_being_destroyed()) {
+				gameObject.decrement_destruction_timer();
+			}
+		}
 	}
 
 	private int proceed_all_objects_movements() {
 		int number_of_objects_moved = 0;
 		for (GameObject gameObject : GameManager.getInstance().getGame().getGame_objects()) {
-			if (gameObject.getX_speed() != 0 || gameObject.getY_speed() != 0) {
-				gameObject.proceed_movement();
+			if (!gameObject.is_being_destroyed()) {
+				if (gameObject.getX_speed() != 0 || gameObject.getY_speed() != 0) {
+					gameObject.proceed_movement();
+					check_if_collision();
+				}
 			}
 		}
 		return number_of_objects_moved;
+	}
+
+	private void proceed_destroyed_objects_cleaning() {
+
+		GameManager.getInstance().getGame().getSimple_submarines()
+				.removeAll(GameManager.getInstance().getGame().getSimple_submarines().stream()
+						.filter(item -> item.is_completely_destroyed()).collect(Collectors.toList()));
+
+		GameManager.getInstance().getGame().getSimple_ally_bombs()
+				.removeAll(GameManager.getInstance().getGame().getSimple_ally_bombs().stream()
+						.filter(item -> item.is_completely_destroyed()).collect(Collectors.toList()));
+	}
+
+	private boolean check_if_collision() {
+		boolean collision_detected = false;
+
+		for (SimpleAllyBomb simpleAllyBomb : GameManager.getInstance().getGame().getSimple_ally_bombs()) {
+			if (!simpleAllyBomb.is_being_destroyed()) {
+
+				for (SimpleSubMarine simpleSubMarine : GameManager.getInstance().getGame().getSimple_submarines()) {
+					if (!simpleSubMarine.is_being_destroyed()) {
+						if (simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board()
+								.intersects(simpleSubMarine.getSurrounding_rectangle_absolute_on_complete_board())) {
+							LOGGER.info("Collision detected between simple ally bomb " + simpleAllyBomb
+									+ " and submarine:" + simpleSubMarine);
+							simpleAllyBomb.impact_now();
+							simpleSubMarine.impact_now();
+						}
+					}
+				}
+			}
+		}
+
+		return collision_detected;
 	}
 
 	@Override

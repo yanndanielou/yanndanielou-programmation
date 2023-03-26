@@ -1,15 +1,12 @@
 package moving_objects.boats;
 
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectDataModel;
-import hmi.SinkSubmarinesMainView;
 import moving_objects.GameObjectListerner;
 
 public class AllyBoat extends Belligerent {
@@ -65,6 +62,11 @@ public class AllyBoat extends Belligerent {
 	protected void water_surface_reached() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void impact_now() {
+		this.current_destruction_timer_in_seconds = 10;
 	}
 
 }

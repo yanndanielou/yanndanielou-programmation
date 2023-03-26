@@ -1,10 +1,7 @@
 package core;
 
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.Period;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,7 +14,6 @@ import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import constants.Constants;
 import game.Game;
 import hmi.SinkSubmarinesMainView;
-import moving_objects.GameObject;
 import moving_objects.boats.SimpleSubMarine;
 import moving_objects.weapon.SimpleAllyBomb;
 import time.TimeManager;
@@ -129,10 +125,6 @@ public class GameManager implements TimeManagerListener {
 
 		boolean minimum_delay_between_two_ally_bombs_dropped_fulfilled = false;
 		boolean is_under_maximum_number_of_ally_bombs_fulfilled = false;
-
-		// Period period_since_last_bomb_dropped =
-		// Period.between(lastAllyBombDroppedTime, LocalDate.now());
-		// period_since_last_bomb_dropped.
 
 		if (lastAllyBombDroppedTime != null) {
 			Instant right_now = ZonedDateTime.now().toInstant();

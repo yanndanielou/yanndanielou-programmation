@@ -5,14 +5,10 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import builders.gameboard.GameBoardDataModelBuilder;
-import builders.genericobjects.GenericObjectsDataModelBuilder;
 import builders.scenariolevel.ScenarioLevelDataModel;
 import builders.scenariolevel.ScenarioLevelDataModelBuilder;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import game.Game;
-import hmi.SinkSubmarinesMainView;
-import moving_objects.GameObject;
 import time.TimeManager;
 import time.TimeManagerListener;
 
@@ -27,7 +23,7 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 	private ArrayList<ScenarioLevelEnnemyCreationDataModel> simple_submarines_remaining_to_create = new ArrayList<ScenarioLevelEnnemyCreationDataModel>();
 
 	private ScenarioLevelExecutor() {
-		//TimeManager.getInstance().add_listener(this);
+		TimeManager.getInstance().add_listener(this);
 	}
 
 	public static ScenarioLevelExecutor getInstance() {

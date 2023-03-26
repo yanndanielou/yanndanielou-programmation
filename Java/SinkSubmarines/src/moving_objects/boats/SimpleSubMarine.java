@@ -1,8 +1,6 @@
 package moving_objects.boats;
 
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,7 +8,6 @@ import org.apache.logging.log4j.Logger;
 import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
-import hmi.SinkSubmarinesMainView;
 import moving_objects.GameObjectListerner;
 
 public class SimpleSubMarine extends Belligerent {
@@ -52,4 +49,10 @@ public class SimpleSubMarine extends Belligerent {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public void impact_now() {
+		this.current_destruction_timer_in_seconds = 5;
+	}
+
 }

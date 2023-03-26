@@ -1,11 +1,8 @@
 package moving_objects.weapon;
 
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
 
 import builders.genericobjects.GenericObjectDataModel;
-import builders.genericobjects.GenericObjectsDataModel;
-import moving_objects.GameObject;
 import moving_objects.GameObjectListerner;
 
 public class SimpleAllyBomb extends Weapon {
@@ -34,14 +31,18 @@ public class SimpleAllyBomb extends Weapon {
 
 	@Override
 	protected void ocean_bed_reached() {
-		// TODO Auto-generated method stub
-
+		this.current_destruction_timer_in_seconds = 2;
 	}
 
 	@Override
 	protected void water_surface_reached() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void impact_now() {
+		this.current_destruction_timer_in_seconds = 2;
 	}
 
 }

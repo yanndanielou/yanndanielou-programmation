@@ -2,7 +2,6 @@ package moving_objects.weapon;
 
 import java.awt.Rectangle;
 
-import builders.genericobjects.GenericObjectDataModel;
 import moving_objects.GameObject;
 
 public abstract class Weapon extends GameObject {

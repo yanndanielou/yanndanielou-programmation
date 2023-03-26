@@ -2,14 +2,12 @@ package moving_objects;
 
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import core.GameManager;
-import main.SinkSubmarinesMain;
 
 public abstract class GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);
@@ -19,7 +17,15 @@ public abstract class GameObject {
 	protected int x_speed = 0;
 	private int y_speed = 0;
 
+	protected Integer current_destruction_timer_in_seconds = null;
+
 	protected ArrayList<GameObjectListerner> movement_listeners = new ArrayList<GameObjectListerner>();
+
+	public boolean is_being_destroyed() {
+		return current_destruction_timer_in_seconds != null;
+	}
+
+	public abstract void impact_now();
 
 	public GameObject(Rectangle surrounding_rectangle_absolute_on_complete_board) {
 		this.surrounding_rectangle_absolute_on_complete_board = surrounding_rectangle_absolute_on_complete_board;
@@ -48,7 +54,7 @@ public abstract class GameObject {
 	}
 
 	public void setX_speed(int x_speed) {
-		LOGGER.info(this + " set x speed:" + x_speed);
+		LOGGER.debug(this + " set x speed:" + x_speed);
 		this.x_speed = x_speed;
 	}
 
@@ -145,5 +151,16 @@ public abstract class GameObject {
 	protected abstract void left_border_of_game_board_reached();
 
 	public abstract void notify_movement();
+
+	public boolean is_completely_destroyed() {
+		return is_being_destroyed() && current_destruction_timer_in_seconds == 0;
+	}
+
+	public void decrement_destruction_timer() {
+		if (current_destruction_timer_in_seconds != null) {
+			current_destruction_timer_in_seconds--;
+		}
+
+	}
 
 }

@@ -1,23 +1,9 @@
 package hmi;
 
-import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.KeyStroke;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -49,7 +35,6 @@ public class SinkSubmarinesMainView extends JFrame {
 		// Create and set up the window.
 		Container pane = this.getContentPane();
 		pane.setLayout(null);
-		Insets insets = pane.getInsets();
 
 		topPanel = new TopPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, null);
 
@@ -61,8 +46,8 @@ public class SinkSubmarinesMainView extends JFrame {
 
 		oceanBedPanel = new OceanBedPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, underWaterPanel);
 
-		this.setSize(gameBoardDataModel.getWidth()+20,
-				topPanel.getHeight() + skyPanel.getHeight() + allyBoatPanel.getHeight() + underWaterPanel.getHeight() + oceanBedPanel.getHeight());
+		this.setSize(gameBoardDataModel.getWidth() + 20, topPanel.getHeight() + skyPanel.getHeight()
+				+ allyBoatPanel.getHeight() + underWaterPanel.getHeight() + oceanBedPanel.getHeight());
 
 		this.addKeyListener(new KeyBoardInputs(this));
 
