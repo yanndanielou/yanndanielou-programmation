@@ -1,7 +1,6 @@
 package hmi;
 
 import java.awt.Container;
-import java.awt.Insets;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
