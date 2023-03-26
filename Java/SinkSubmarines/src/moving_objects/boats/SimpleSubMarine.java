@@ -44,19 +44,12 @@ public class SimpleSubMarine extends Belligerent {
 	@Override
 	protected void ocean_bed_reached() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	protected void water_surface_reached() {
 		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public BufferedImage get_buffered_image_graphical_representation() {
-		// TODO Auto-generated method stub
-		return null;
 	}
-
 }

@@ -60,8 +60,6 @@ public abstract class GameObject {
 		LOGGER.info(this + " set y speed:" + y_speed);
 		this.y_speed = y_speed;
 	}
-	
-	public abstract BufferedImage get_buffered_image_graphical_representation(); 
 
 	public boolean proceed_horizontal_movement() {
 		boolean has_moved = false;

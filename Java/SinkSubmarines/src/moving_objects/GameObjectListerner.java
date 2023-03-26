@@ -6,4 +6,6 @@ public interface GameObjectListerner {
 
 	void on_simple_submarine_moved();
 
+	void on_simple_ally_bomb_moved();
+
 }

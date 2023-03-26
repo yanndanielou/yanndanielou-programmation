@@ -136,18 +136,27 @@ public class GameManager implements TimeManagerListener {
 
 		if (lastAllyBombDroppedTime != null) {
 			Instant right_now = ZonedDateTime.now().toInstant();
-			long milliseconds_since_last_ally_bomb_dropped = lastAllyBombDroppedTime.toEpochMilli()
-					- right_now.toEpochMilli();
+			long milliseconds_since_last_ally_bomb_dropped = right_now.toEpochMilli()
+					- lastAllyBombDroppedTime.toEpochMilli();
 
 			if (milliseconds_since_last_ally_bomb_dropped > Constants.MINIMUM_DELAY_BETWEEN_TWO_ALLY_BOMB_DROPPED_IN_MILLISECONDS) {
-				ally_bomb_drop_is_autorized = true;
+				minimum_delay_between_two_ally_bombs_dropped_fulfilled = true;
+			} else {
+				LOGGER.warn("Cannot drop bomb because last one was " + milliseconds_since_last_ally_bomb_dropped
+						+ " milliseconds ago");
 			}
 		} else {
-			ally_bomb_drop_is_autorized = true;
+			minimum_delay_between_two_ally_bombs_dropped_fulfilled = true;
 		}
 
 		is_under_maximum_number_of_ally_bombs_fulfilled = ScenarioLevelExecutor.getInstance()
 				.getScenarioLevelDataModel().getMax_number_of_ally_bombs() > game.getSimple_ally_bombs().size();
+
+		if (!is_under_maximum_number_of_ally_bombs_fulfilled) {
+			LOGGER.warn("Cannot drop bomb because limit of bombs " + game.getSimple_ally_bombs().size()
+					+ " already dropped");
+
+		}
 
 		ally_bomb_drop_is_autorized = minimum_delay_between_two_ally_bombs_dropped_fulfilled
 				&& is_under_maximum_number_of_ally_bombs_fulfilled;
@@ -159,26 +168,29 @@ public class GameManager implements TimeManagerListener {
 		return ally_bomb_drop_is_autorized;
 	}
 
-	public void dropSimpleAllyBoatAtLeftOfAllyBoat() {
-
+	public void dropSimpleAllyBoatAtLeftOfAllyBoat(int drop_x, int drop_y) {
 		if (is_ally_bomb_drop_autorized()) {
 			SimpleAllyBomb simpleAllyBomb = new SimpleAllyBomb(genericObjectsDataModel.getAlly_simple_bomb_data_model(),
-					(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getX(),
-					(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY());
+					drop_x, drop_y);
 			game.addSimpleAllyBomb(simpleAllyBomb);
+			LOGGER.info("Drop simple ally bomb at " + drop_x + " and " + drop_y);
 			simpleAllyBomb.add_movement_listener(sinkSubmarinesMainView.getAllyBoatPanel());
 			simpleAllyBomb.add_movement_listener(sinkSubmarinesMainView.getUnderWaterPanel());
 		}
+	}
+
+	public void dropSimpleAllyBoatAtLeftOfAllyBoat() {
+
+		dropSimpleAllyBoatAtLeftOfAllyBoat(
+				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getX() - 5,
+				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY() - 20);
 
 	}
 
 	public void dropSimpleAllyBoatAtRightOfAllyBoat() {
 
-		if (is_ally_bomb_drop_autorized()) {
-			SimpleAllyBomb simpleAllyBomb = new SimpleAllyBomb(genericObjectsDataModel.getAlly_simple_bomb_data_model(),
-					(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getMaxX(),
-					(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY());
-			game.addSimpleAllyBomb(simpleAllyBomb);
-		}
+		dropSimpleAllyBoatAtLeftOfAllyBoat(
+				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getMaxX() + 5,
+				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY() - 20);
 	}
 }

@@ -27,7 +27,7 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 	private ArrayList<ScenarioLevelEnnemyCreationDataModel> simple_submarines_remaining_to_create = new ArrayList<ScenarioLevelEnnemyCreationDataModel>();
 
 	private ScenarioLevelExecutor() {
-		TimeManager.getInstance().add_listener(this);
+		//TimeManager.getInstance().add_listener(this);
 	}
 
 	public static ScenarioLevelExecutor getInstance() {

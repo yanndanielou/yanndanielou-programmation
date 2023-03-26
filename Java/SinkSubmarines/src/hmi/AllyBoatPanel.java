@@ -13,19 +13,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import builders.gameboard.GameBoardDataModel;
+import core.GameManager;
 import moving_objects.GameObjectListerner;
 import moving_objects.boats.AllyBoat;
+import moving_objects.boats.GameObjectGraphicalRepresentationManager;
+import moving_objects.weapon.SimpleAllyBomb;
 
 public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner {
 
 	private static final long serialVersionUID = 6917913385357901059L;
 
 	private Container parentContainer = null;
-
-	private BufferedImage boat_buffered_image = null;
-	private File boat_image_file = null;
-	private final String boat_image_path = "Images/AllyBoat.png";
-	private JLabel boat_image_as_label = null;
 
 	private AllyBoat ally_boat = null;
 
@@ -43,15 +41,6 @@ public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner 
 
 		super(parentContainer, gameBoardDataModel, gameBoardDataModel.getAlly_boat_game_board_area_data_model(),
 				pannel_above);
-
-		boat_image_file = new File(boat_image_path);
-
-		try {
-			boat_buffered_image = ImageIO.read(boat_image_file);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 
 		/*
 		 * boat_image_as_label = new JLabel("boat"); add(boat_image_as_label);
@@ -72,8 +61,22 @@ public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner 
 		super.paintComponent(g);
 		if (ally_boat != null) {
 			int boat_x = (int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getX();
-			g.drawImage(boat_buffered_image, boat_x, 0, null);
+			g.drawImage(GameObjectGraphicalRepresentationManager.getInstance().getAllyBoatImage(ally_boat), boat_x, 0,
+					null);
 
+		}
+		for (SimpleAllyBomb simpleAllyBomb : GameManager.getInstance().getGame().getSimple_ally_bombs()) {
+			int bomb_x = (int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getX();
+			int bomb_y = (int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getY();
+
+			if (simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getY() < 0) {
+
+				g.drawImage(
+						GameObjectGraphicalRepresentationManager.getInstance().getSimpleAllyBombImage(simpleAllyBomb),
+						bomb_x, bomb_y,
+						(int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
+						(int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getHeight(), null);
+			}
 		}
 	}
 
@@ -84,5 +87,10 @@ public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner 
 
 	@Override
 	public void on_simple_submarine_moved() {
+	}
+
+	@Override
+	public void on_simple_ally_bomb_moved() {
+		this.repaint();
 	}
 }
