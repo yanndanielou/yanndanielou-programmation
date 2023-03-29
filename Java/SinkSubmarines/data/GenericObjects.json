@@ -11,6 +11,10 @@
 		 "right_direction_image_path":"Images/simple_submarine_right.png",
 		 "left_direction_image_path":"Images/simple_submarine_left.png"	 
     },
+   "yellow_submarine_data_model": {
+		 "height": 20,
+		 "width":61
+    },
    "ally_simple_bomb_data_model": {
 		 "height": 11,
 		 "width":7,
