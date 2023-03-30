@@ -6,7 +6,8 @@
       "altitude": -10,
       "speed": 2,
       "creation_delay_in_seconds": 1,
-      "maximum_fire_frequency_in_milliseconds": 2000
+      "maximum_fire_frequency_in_milliseconds": 2000,
+	  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE"
     },
     {
       "x": 200,

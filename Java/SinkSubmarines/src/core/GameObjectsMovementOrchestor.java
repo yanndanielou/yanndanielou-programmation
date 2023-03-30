@@ -9,7 +9,6 @@ import org.apache.logging.log4j.Logger;
 import game.Game;
 import moving_objects.GameObject;
 import moving_objects.boats.Belligerent;
-import moving_objects.boats.SimpleSubMarine;
 import moving_objects.weapon.SimpleAllyBomb;
 import time.TimeManager;
 import time.TimeManagerListener;
