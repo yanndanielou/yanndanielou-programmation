@@ -34,6 +34,8 @@ public class GameManager implements TimeManagerListener {
 	private GameBoardDataModel gameBoardDataModel = null;
 
 	private Instant lastAllyBombDroppedTime = null;
+	
+	int remainingLives;
 
 	private GameManager() {
 		TimeManager.getInstance().add_listener(this);

@@ -1,0 +1,11 @@
+{
+  "number_of_lives" : 3,
+  "levels_scenarios_data_models": [
+    {
+      "level_scenario_data_model": "LevelScenario_Easy_001.json"
+    },
+    {
+      "level_scenario_data_model": "LevelScenario_Easy_002.json"
+    }
+  ]
+}
