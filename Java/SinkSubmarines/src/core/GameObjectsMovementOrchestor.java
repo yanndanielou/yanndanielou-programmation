@@ -1,6 +1,7 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
@@ -66,13 +67,15 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 	}
 
 	private void proceed_destroyed_objects_cleaning_by_type(ArrayList<? extends GameObject> objects_to_clean) {
+		List<? extends GameObject> objects_completely_destroyed_to_clean = objects_to_clean.stream()
+				.filter(item -> item.is_completely_destroyed()).collect(Collectors.toList());
 
-		for(GameObject gameObject : objects_to_clean) {
-			gameObject.notify_destruction();
+		for(GameObject object_completely_destroyed_to_clean : objects_completely_destroyed_to_clean) {
+			object_completely_destroyed_to_clean.notify_destruction();
 		}
 		
 		objects_to_clean.removeAll(
-				objects_to_clean.stream().filter(item -> item.is_completely_destroyed()).collect(Collectors.toList()));
+				objects_completely_destroyed_to_clean);
 
 	}
 

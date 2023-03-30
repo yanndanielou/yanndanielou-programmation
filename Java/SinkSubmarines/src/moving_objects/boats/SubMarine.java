@@ -11,10 +11,9 @@ import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import builders.scenariolevel.SubmarineFireStrategyType;
 import core.GameManager;
-import moving_objects.GameObject;
+import game_board.GameBoard;
 import moving_objects.GameObjectListerner;
 import moving_objects.weapon.Weapon;
-import moving_objects.weapon.WeaponListener;
 import time.TimeManager;
 import time.TimeManagerListener;
 
@@ -73,6 +72,16 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 
 	}
 
+	private boolean check_if_in_geographical_position_is_inside_board() {
+		boolean geographical_position_is_inside_board = false;
+
+		GameBoard gameboard = GameManager.getInstance().getGame().getGameboard();
+		geographical_position_is_inside_board = surrounding_rectangle_absolute_on_complete_board.getX() >= 0
+				&& surrounding_rectangle_absolute_on_complete_board.getMaxX() <= gameboard.getWidth();
+
+		return geographical_position_is_inside_board;
+	}
+
 	private boolean check_if_in_geographical_position_of_fire_according_to_strategy() {
 		boolean is_in_geographical_position_of_fire_according_to_strategy = false;
 
@@ -84,7 +93,7 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 		double distance_between_right_ally_boat_and_left_of_submarine = surrounding_rectangle_absolute_on_complete_board
 				.getX() - ally_boat_right_end_x;
 		boolean right_of_submarine_is_at_least_right_of_left_of_ally_boat = distance_between_left_ally_boat_and_right_of_submarine >= 0;
-		boolean left_of_submarine_is_at_least_left_of_right_of_ally_boat = distance_between_right_ally_boat_and_left_of_submarine >= 0;
+		boolean left_of_submarine_is_at_least_left_of_right_of_ally_boat = distance_between_right_ally_boat_and_left_of_submarine <= 0;
 		switch (fireStrategyType) {
 		case FIRE_AS_SOON_AS_POSSIBLE:
 			is_in_geographical_position_of_fire_according_to_strategy = true;
@@ -118,7 +127,9 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 
 		if (is_minimal_time_since_last_fire_fulfilled()) {
 			if (!has_reached_maximum_number_of_living_bombs()) {
-				must_fire = check_if_in_geographical_position_of_fire_according_to_strategy();
+				if (check_if_in_geographical_position_is_inside_board()) {
+					must_fire = check_if_in_geographical_position_of_fire_according_to_strategy();
+				}
 			}
 		}
 

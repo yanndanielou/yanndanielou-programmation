@@ -72,6 +72,7 @@ public class SimpleSubMarine extends SubMarine {
 						+ surrounding_rectangle_absolute_on_complete_board.getMaxX()) / 2,
 				(int) (surrounding_rectangle_absolute_on_complete_board.getY() - 1), ammunition_y_speed);
 		living_bombs.add(bomb_fired);
+		bomb_fired.add_movement_listener(this);
 
 	}
 
