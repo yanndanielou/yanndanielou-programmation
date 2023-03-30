@@ -32,8 +32,6 @@ public class GameManager implements TimeManagerListener {
 	private GenericObjectsDataModel genericObjectsDataModel = null;
 	private GameBoardDataModel gameBoardDataModel = null;
 
-	private Instant lastAllyBombDroppedTime = null;
-
 	private GameManager() {
 		TimeManager.getInstance().add_listener(this);
 	}
@@ -63,7 +61,8 @@ public class GameManager implements TimeManagerListener {
 		sinkSubmarinesMainView.getAllyBoatPanel().setAlly_boat(game.getAlly_boat());
 		GameObjectsMovementOrchestor.getInstance();
 		ScenarioLevelExecutor.getInstance().setGame(game);
-		ScenarioLevelExecutor.getInstance().load_and_start_scenario(game_data_model.getLevels_scenarios_data_models_json_files().get(0).getLevel_scenario_data_model_json_file());
+		ScenarioLevelExecutor.getInstance().load_and_start_scenario(game_data_model
+				.getLevels_scenarios_data_models_json_files().get(0).getLevel_scenario_data_model_json_file());
 	}
 
 	@Override
@@ -134,39 +133,22 @@ public class GameManager implements TimeManagerListener {
 	private boolean is_ally_bomb_drop_autorized() {
 		boolean ally_bomb_drop_is_autorized = false;
 
-		boolean minimum_delay_between_two_ally_bombs_dropped_fulfilled = false;
-		boolean is_under_maximum_number_of_ally_bombs_fulfilled = false;
-
-		if (lastAllyBombDroppedTime != null) {
-			Instant right_now = ZonedDateTime.now().toInstant();
-			long milliseconds_since_last_ally_bomb_dropped = right_now.toEpochMilli()
-					- lastAllyBombDroppedTime.toEpochMilli();
-
-			if (milliseconds_since_last_ally_bomb_dropped > GameManager.getInstance().getGame().getAlly_boat()
-					.getMaximum_fire_frequency_in_milliseconds()) {
-				minimum_delay_between_two_ally_bombs_dropped_fulfilled = true;
-			} else {
-				LOGGER.warn("Cannot drop bomb because last one was " + milliseconds_since_last_ally_bomb_dropped
-						+ " milliseconds ago");
-			}
-		} else {
-			minimum_delay_between_two_ally_bombs_dropped_fulfilled = true;
-		}
-
-		is_under_maximum_number_of_ally_bombs_fulfilled = ScenarioLevelExecutor.getInstance()
+		boolean minimum_delay_between_two_ally_bombs_dropped_fulfilled = game.getAlly_boat()
+				.is_minimal_time_since_last_fire_fulfilled();
+		
+		boolean is_under_maximum_number_of_ally_bombs_fulfilled = ScenarioLevelExecutor.getInstance()
 				.getScenarioLevelDataModel().getMax_number_of_ally_bombs() > game.getSimple_ally_bombs().size();
 
 		if (!is_under_maximum_number_of_ally_bombs_fulfilled) {
 			LOGGER.warn("Cannot drop bomb because limit of bombs " + game.getSimple_ally_bombs().size()
 					+ " already dropped");
-
 		}
 
 		ally_bomb_drop_is_autorized = minimum_delay_between_two_ally_bombs_dropped_fulfilled
 				&& is_under_maximum_number_of_ally_bombs_fulfilled;
 
 		if (ally_bomb_drop_is_autorized) {
-			lastAllyBombDroppedTime = ZonedDateTime.now().toInstant();
+			game.getAlly_boat().on_fire();
 		}
 
 		return ally_bomb_drop_is_autorized;

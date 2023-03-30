@@ -69,5 +69,4 @@ public class AllyBoat extends Belligerent {
 	public void impact_now() {
 		this.current_destruction_timer_in_seconds = 10;
 	}
-
 }
