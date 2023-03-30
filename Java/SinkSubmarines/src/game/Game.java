@@ -21,11 +21,15 @@ public class Game {
 	private ArrayList<YellowSubMarine> yellow_submarines = new ArrayList<>();
 	private ArrayList<SimpleAllyBomb> simple_ally_bombs = new ArrayList<>();
 
-	public Game(GameBoardDataModel gameBoardDataModel, GenericObjectsDataModel genericObjectsDataModel) {
+	int remaining_lives;
+
+	public Game(GameBoardDataModel gameBoardDataModel, GenericObjectsDataModel genericObjectsDataModel,
+			int number_of_lives) {
 		// this.genericObjectsDataModel = genericObjectsDataModel;
 		// this.gameBoardDataModel = gameBoardDataModel;
 		gameboard = new GameBoard(gameBoardDataModel);
 		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model(), gameBoardDataModel);
+		this.remaining_lives = number_of_lives;
 	}
 
 	public ArrayList<Level> getLevels() {

@@ -6,12 +6,13 @@ import java.time.ZonedDateTime;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import builders.game.GameDataModel;
+import builders.game.GameDataModelBuilder;
 import builders.gameboard.GameBoardDataModel;
 import builders.gameboard.GameBoardDataModelBuilder;
 import builders.genericobjects.GenericObjectsDataModel;
 import builders.genericobjects.GenericObjectsDataModelBuilder;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
-import constants.Constants;
 import game.Game;
 import hmi.SinkSubmarinesMainView;
 import moving_objects.boats.SimpleSubMarine;
@@ -25,8 +26,6 @@ public class GameManager implements TimeManagerListener {
 	private static GameManager instance;
 	private static final Logger LOGGER = LogManager.getLogger(GameManager.class);
 
-	private GenericObjectsDataModelBuilder genericObjectsDataModelBuilder = null;
-	private GameBoardDataModelBuilder gameBoardDataModelBuilder = null;
 	private SinkSubmarinesMainView sinkSubmarinesMainView = null;
 	private Game game = null;
 
@@ -34,8 +33,6 @@ public class GameManager implements TimeManagerListener {
 	private GameBoardDataModel gameBoardDataModel = null;
 
 	private Instant lastAllyBombDroppedTime = null;
-	
-	int remainingLives;
 
 	private GameManager() {
 		TimeManager.getInstance().add_listener(this);
@@ -48,20 +45,25 @@ public class GameManager implements TimeManagerListener {
 		return instance;
 	}
 
-	public void new_game(String game_board_data_model_json_file, String generic_objects_data_model_json_file) {
-		gameBoardDataModelBuilder = new GameBoardDataModelBuilder(game_board_data_model_json_file);
+	public void new_game(String game_data_model_json_file) {
+		GameDataModelBuilder gameDataModelBuilder = new GameDataModelBuilder(game_data_model_json_file);
+		GameDataModel game_data_model = gameDataModelBuilder.getGame_data_model();
+
+		GameBoardDataModelBuilder gameBoardDataModelBuilder = new GameBoardDataModelBuilder(
+				game_data_model.getGame_board_data_model_json_file());
 		gameBoardDataModel = gameBoardDataModelBuilder.getGame_board_data_model();
-		genericObjectsDataModelBuilder = new GenericObjectsDataModelBuilder(generic_objects_data_model_json_file);
+		GenericObjectsDataModelBuilder genericObjectsDataModelBuilder = new GenericObjectsDataModelBuilder(
+				game_data_model.getGeneric_objects_data_model_json_file());
 		genericObjectsDataModel = genericObjectsDataModelBuilder.getGeneric_objects_data_model();
 		TimeManager.getInstance().start();
 		sinkSubmarinesMainView
 				.initialize_from_game_board_data_model(gameBoardDataModelBuilder.getGame_board_data_model());
 		game = new Game(gameBoardDataModelBuilder.getGame_board_data_model(),
-				genericObjectsDataModelBuilder.getGeneric_objects_data_model());
+				genericObjectsDataModelBuilder.getGeneric_objects_data_model(), game_data_model.getNumber_of_lives());
 		sinkSubmarinesMainView.getAllyBoatPanel().setAlly_boat(game.getAlly_boat());
 		GameObjectsMovementOrchestor.getInstance();
 		ScenarioLevelExecutor.getInstance().setGame(game);
-		ScenarioLevelExecutor.getInstance().load_and_start_scenario("data/Level1Scenario.json");
+		ScenarioLevelExecutor.getInstance().load_and_start_scenario(game_data_model.getLevels_scenarios_data_models_json_files().get(0).getLevel_scenario_data_model_json_file());
 	}
 
 	@Override
@@ -75,14 +77,6 @@ public class GameManager implements TimeManagerListener {
 
 	@Override
 	public void on_second_tick() {
-	}
-
-	public GenericObjectsDataModelBuilder getGenericObjectsDataModelBuilder() {
-		return genericObjectsDataModelBuilder;
-	}
-
-	public GameBoardDataModelBuilder getGameBoardDataModelBuilder() {
-		return gameBoardDataModelBuilder;
 	}
 
 	public SinkSubmarinesMainView getSinkSubmarinesMainView() {
@@ -148,7 +142,8 @@ public class GameManager implements TimeManagerListener {
 			long milliseconds_since_last_ally_bomb_dropped = right_now.toEpochMilli()
 					- lastAllyBombDroppedTime.toEpochMilli();
 
-			if (milliseconds_since_last_ally_bomb_dropped > GameManager.getInstance().getGame().getAlly_boat().getMaximum_fire_frequency_in_milliseconds()) {
+			if (milliseconds_since_last_ally_bomb_dropped > GameManager.getInstance().getGame().getAlly_boat()
+					.getMaximum_fire_frequency_in_milliseconds()) {
 				minimum_delay_between_two_ally_bombs_dropped_fulfilled = true;
 			} else {
 				LOGGER.warn("Cannot drop bomb because last one was " + milliseconds_since_last_ally_bomb_dropped

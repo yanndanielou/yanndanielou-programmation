@@ -1,11 +1,13 @@
 {
   "number_of_lives" : 3,
-  "levels_scenarios_data_models": [
+  "game_board_data_model_json_file" : "data/GameBoardDataModel.json",
+  "generic_objects_data_model_json_file" : "data/GenericObjects.json",
+  "levels_scenarios_data_models_json_files": [
     {
-      "level_scenario_data_model": "LevelScenario_Easy_001.json"
+      "level_scenario_data_model_json_file": "data/LevelScenario_Easy_001.json"
     },
     {
-      "level_scenario_data_model": "LevelScenario_Easy_002.json"
+      "level_scenario_data_model_json_file": "data/LevelScenario_Easy_002.json"
     }
   ]
 }
