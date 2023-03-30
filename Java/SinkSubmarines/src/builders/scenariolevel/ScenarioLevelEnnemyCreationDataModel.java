@@ -6,6 +6,7 @@ public class ScenarioLevelEnnemyCreationDataModel {
 	int altitude;
 	int speed;
 	int creation_delay_in_seconds;
+	int maximum_fire_frequency_in_seconds;
 
 	public int getX() {
 		return x;
@@ -25,6 +26,10 @@ public class ScenarioLevelEnnemyCreationDataModel {
 
 	public int getCreation_delay_in_seconds() {
 		return creation_delay_in_seconds;
+	}
+
+	public int getMaximum_fire_frequency_in_seconds() {
+		return maximum_fire_frequency_in_seconds;
 	}
 
 }

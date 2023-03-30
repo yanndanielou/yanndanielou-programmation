@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectDataModel;
+import constants.Constants;
 import moving_objects.GameObjectListerner;
 
 public class AllyBoat extends Belligerent {
@@ -14,7 +15,7 @@ public class AllyBoat extends Belligerent {
 
 	public AllyBoat(GenericObjectDataModel genericObjectDataModel, GameBoardDataModel gameBoardDataModel) {
 		super(new Rectangle(gameBoardDataModel.getWidth() / 2 - genericObjectDataModel.getWidth() / 2, 0,
-				genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()));
+				genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), Constants.MINIMUM_DELAY_BETWEEN_TWO_ALLY_BOMB_DROPPED_IN_MILLISECONDS);
 	}
 
 	@Override

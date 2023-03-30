@@ -146,7 +146,7 @@ public class GameManager implements TimeManagerListener {
 			long milliseconds_since_last_ally_bomb_dropped = right_now.toEpochMilli()
 					- lastAllyBombDroppedTime.toEpochMilli();
 
-			if (milliseconds_since_last_ally_bomb_dropped > Constants.MINIMUM_DELAY_BETWEEN_TWO_ALLY_BOMB_DROPPED_IN_MILLISECONDS) {
+			if (milliseconds_since_last_ally_bomb_dropped > GameManager.getInstance().getGame().getAlly_boat().getMaximum_fire_frequency_in_milliseconds()) {
 				minimum_delay_between_two_ally_bombs_dropped_fulfilled = true;
 			} else {
 				LOGGER.warn("Cannot drop bomb because last one was " + milliseconds_since_last_ally_bomb_dropped

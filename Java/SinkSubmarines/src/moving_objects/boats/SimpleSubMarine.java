@@ -15,9 +15,12 @@ public class SimpleSubMarine extends Belligerent {
 
 	public SimpleSubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
 			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel) {
+		
 		super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
 				scenarioLevelEnnemyCreationDataModel.getDepth(), simple_submarine_data_model.getWidth(),
-				simple_submarine_data_model.getHeight()));
+				simple_submarine_data_model.getHeight()), 
+				scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds());
+		
 		setX_speed(scenarioLevelEnnemyCreationDataModel.getSpeed());
 	}
 
