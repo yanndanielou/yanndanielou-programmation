@@ -8,4 +8,7 @@ public interface GameObjectListerner {
 
 	void on_simple_ally_bomb_moved();
 
+	void on_destruction(GameObject gameObject);
+
+
 }

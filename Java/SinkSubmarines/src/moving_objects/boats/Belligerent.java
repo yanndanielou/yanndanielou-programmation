@@ -3,12 +3,14 @@ package moving_objects.boats;
 import java.awt.Rectangle;
 import java.time.Instant;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import core.GameManager;
 import moving_objects.GameObject;
+import moving_objects.weapon.Weapon;
 
 public abstract class Belligerent extends GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(Belligerent.class);
@@ -21,6 +23,8 @@ public abstract class Belligerent extends GameObject {
 
 	private int max_number_of_living_bombs;
 
+	protected ArrayList<Weapon> living_bombs = new ArrayList<Weapon>();
+
 	public Belligerent(Rectangle surrounding_rectangle_absolute_on_complete_board,
 			int maximum_fire_frequency_in_seconds, int ammunition_y_speed) {
 		super(surrounding_rectangle_absolute_on_complete_board);
@@ -31,6 +35,10 @@ public abstract class Belligerent extends GameObject {
 	public int getMaximum_fire_frequency_in_milliseconds() {
 		return maximum_fire_frequency_in_milliseconds;
 
+	}
+
+	public boolean has_reached_maximum_number_of_living_bombs() {
+		return living_bombs.size() == max_number_of_living_bombs;
 	}
 
 	public boolean is_minimal_time_since_last_fire_fulfilled() {

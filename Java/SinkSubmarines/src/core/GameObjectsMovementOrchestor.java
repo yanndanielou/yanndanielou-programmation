@@ -67,6 +67,10 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 
 	private void proceed_destroyed_objects_cleaning_by_type(ArrayList<? extends GameObject> objects_to_clean) {
 
+		for(GameObject gameObject : objects_to_clean) {
+			gameObject.notify_destruction();
+		}
+		
 		objects_to_clean.removeAll(
 				objects_to_clean.stream().filter(item -> item.is_completely_destroyed()).collect(Collectors.toList()));
 

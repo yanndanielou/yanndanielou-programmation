@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import builders.scenariolevel.ScenarioLevelWaveDataModel;
 import builders.scenariolevel.ScenarioLevelDataModel;
 import builders.scenariolevel.ScenarioLevelDataModelBuilder;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
@@ -18,6 +19,7 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 	private static final Logger LOGGER = LogManager.getLogger(ScenarioLevelExecutor.class);
 
 	private ScenarioLevelDataModel scenarioLevelDataModel = null;
+	private ScenarioLevelWaveDataModel scenarioLevelWaveDataModel = null;
 	private Game game = null;
 	private int current_step_in_seconds = 0;
 	private ArrayList<ScenarioLevelEnnemyCreationDataModel> simple_submarines_remaining_to_create = new ArrayList<ScenarioLevelEnnemyCreationDataModel>();
@@ -38,9 +40,11 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 		ScenarioLevelDataModelBuilder scenarioLevelDataModelBuilder = new ScenarioLevelDataModelBuilder(
 				scenario_data_model_json_file);
 		scenarioLevelDataModel = scenarioLevelDataModelBuilder.getScenario_level_data_model();
-		simple_submarines_remaining_to_create.addAll(scenarioLevelDataModel.getSimple_submarines());
-		yellow_submarines_remaining_to_create.addAll(scenarioLevelDataModel.getYellow_submarines());
-		GameManager.getInstance().getGame().getAlly_boat().setMax_number_of_living_bombs(scenarioLevelDataModel.getMax_number_of_ally_bombs());
+		scenarioLevelWaveDataModel = scenarioLevelDataModel.getWaves().get(0);
+		simple_submarines_remaining_to_create.addAll(scenarioLevelWaveDataModel.getSimple_submarines());
+		yellow_submarines_remaining_to_create.addAll(scenarioLevelWaveDataModel.getYellow_submarines());
+		GameManager.getInstance().getGame().getAlly_boat()
+				.setMax_number_of_living_bombs(scenarioLevelDataModel.getMax_number_of_ally_bombs());
 	}
 
 	public Game getGame() {
@@ -81,6 +85,7 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 
 		yellow_submarines_remaining_to_create.removeAll(yellow_submarines_remaining_to_create_to_remove);
 	}
+
 	@Override
 	public void on_second_tick() {
 		current_step_in_seconds++;
@@ -103,9 +108,5 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 
 	public void setGame(Game game) {
 		this.game = game;
-	}
-
-	public ScenarioLevelDataModel getScenarioLevelDataModel() {
-		return scenarioLevelDataModel;
 	}
 }

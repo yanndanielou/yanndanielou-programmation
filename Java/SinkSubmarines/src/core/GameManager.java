@@ -129,8 +129,8 @@ public class GameManager implements TimeManagerListener {
 		boolean minimum_delay_between_two_ally_bombs_dropped_fulfilled = game.getAlly_boat()
 				.is_minimal_time_since_last_fire_fulfilled();
 
-		boolean is_under_maximum_number_of_ally_bombs_fulfilled = ScenarioLevelExecutor.getInstance()
-				.getScenarioLevelDataModel().getMax_number_of_ally_bombs() > game.getSimple_ally_bombs().size();
+		boolean is_under_maximum_number_of_ally_bombs_fulfilled = game.getAlly_boat()
+				.getMax_number_of_living_bombs() > game.getSimple_ally_bombs().size();
 
 		if (!is_under_maximum_number_of_ally_bombs_fulfilled) {
 			LOGGER.warn("Cannot drop bomb because limit of bombs " + game.getSimple_ally_bombs().size()
@@ -173,22 +173,23 @@ public class GameManager implements TimeManagerListener {
 				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY() - 20);
 	}
 
-	public void fire_simple_submarine_bomb(int x, int y, int ammunition_y_speed) {
+	public SimpleSubmarineBomb fire_simple_submarine_bomb(int x, int y, int ammunition_y_speed) {
 		SimpleSubmarineBomb sumbmarineBomb = new SimpleSubmarineBomb(
 				genericObjectsDataModel.getSimple_submarine_bomb_data_model(), x, y, ammunition_y_speed);
 		game.addSimpleSubmarineBomb(sumbmarineBomb);
 		LOGGER.info("Fire simple submarine bomb at " + x + " and " + y);
 		sumbmarineBomb.add_movement_listener(sinkSubmarinesMainView.getAllyBoatPanel());
 		sumbmarineBomb.add_movement_listener(sinkSubmarinesMainView.getUnderWaterPanel());
+		return sumbmarineBomb;
 	}
 
-	public void fire_floating_submarine_bomb(int x, int y, int ammunition_y_speed) {
+	public FloatingSubmarineBomb fire_floating_submarine_bomb(int x, int y, int ammunition_y_speed) {
 		FloatingSubmarineBomb sumbmarineBomb = new FloatingSubmarineBomb(
 				genericObjectsDataModel.getFloating_submarine_bomb_data_model(), x, y, ammunition_y_speed);
 		game.addFloatingSubmarineBomb(sumbmarineBomb);
 		LOGGER.info("Fire floating submarine bomb at " + x + " and " + y);
 		sumbmarineBomb.add_movement_listener(sinkSubmarinesMainView.getAllyBoatPanel());
 		sumbmarineBomb.add_movement_listener(sinkSubmarinesMainView.getUnderWaterPanel());
-
+		return sumbmarineBomb;
 	}
 }

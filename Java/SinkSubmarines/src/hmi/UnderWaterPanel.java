@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import builders.gameboard.GameBoardDataModel;
 import core.GameManager;
+import moving_objects.GameObject;
 import moving_objects.GameObjectListerner;
 import moving_objects.boats.GameObjectGraphicalRepresentationManager;
 import moving_objects.boats.SimpleSubMarine;
@@ -125,6 +126,12 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 	public void on_simple_ally_bomb_moved() {
 		this.repaint();
 
+	}
+
+	@Override
+	public void on_destruction(GameObject gameObject) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

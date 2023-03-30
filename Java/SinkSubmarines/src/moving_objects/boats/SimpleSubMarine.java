@@ -10,6 +10,7 @@ import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import core.GameManager;
 import moving_objects.GameObjectListerner;
+import moving_objects.weapon.SimpleSubmarineBomb;
 
 public class SimpleSubMarine extends SubMarine {
 	private static final Logger LOGGER = LogManager.getLogger(SimpleSubMarine.class);
@@ -65,11 +66,13 @@ public class SimpleSubMarine extends SubMarine {
 
 	@Override
 	public void fire() {
-		GameManager.getInstance().fire_simple_submarine_bomb(
+		SimpleSubmarineBomb bomb_fired = GameManager.getInstance().fire_simple_submarine_bomb(
 				(int) (surrounding_rectangle_absolute_on_complete_board.getX()
 						+ surrounding_rectangle_absolute_on_complete_board.getMaxX()) / 2,
 				(int) (surrounding_rectangle_absolute_on_complete_board.getY() - 1),
 				ammunition_y_speed);
+		living_bombs.add(bomb_fired);
+		
 	}
 
 }

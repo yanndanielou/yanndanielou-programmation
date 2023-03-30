@@ -4,13 +4,15 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.google.gson.Gson;
 
 public class ScenarioLevelDataModelBuilder {
-	
-	//private static final Logger LOGGER = LogManager.getLogger(ScenarioLevelDataModelBuilder.class);
 
-	
+	private static final Logger LOGGER = LogManager.getLogger(ScenarioLevelDataModelBuilder.class);
+
 	private Gson gson = new Gson();
 
 	private ScenarioLevelDataModel scenario_level_data_model;
@@ -29,6 +31,6 @@ public class ScenarioLevelDataModelBuilder {
 			e.printStackTrace();
 		}
 		scenario_level_data_model = gson.fromJson(br, ScenarioLevelDataModel.class);
+		LOGGER.info("Has read scenario_level_data_model:" + scenario_level_data_model);
 	}
-
 }
