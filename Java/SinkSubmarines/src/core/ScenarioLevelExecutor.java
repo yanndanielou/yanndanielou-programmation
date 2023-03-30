@@ -38,8 +38,9 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 		ScenarioLevelDataModelBuilder scenarioLevelDataModelBuilder = new ScenarioLevelDataModelBuilder(
 				scenario_data_model_json_file);
 		scenarioLevelDataModel = scenarioLevelDataModelBuilder.getScenario_level_data_model();
-		simple_submarines_remaining_to_create.addAll(getScenarioLevelDataModel().getSimple_submarines());
-		yellow_submarines_remaining_to_create.addAll(getScenarioLevelDataModel().getYellow_submarines());
+		simple_submarines_remaining_to_create.addAll(scenarioLevelDataModel.getSimple_submarines());
+		yellow_submarines_remaining_to_create.addAll(scenarioLevelDataModel.getYellow_submarines());
+		GameManager.getInstance().getGame().getAlly_boat().setMax_number_of_living_bombs(scenarioLevelDataModel.getMax_number_of_ally_bombs());
 	}
 
 	public Game getGame() {

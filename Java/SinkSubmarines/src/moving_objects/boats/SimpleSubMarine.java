@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
+import core.GameManager;
 import moving_objects.GameObjectListerner;
 
 public class SimpleSubMarine extends SubMarine {
@@ -15,13 +16,17 @@ public class SimpleSubMarine extends SubMarine {
 
 	public SimpleSubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
 			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel) {
+
 		
+		super(scenarioLevelEnnemyCreationDataModel, simple_submarine_data_model, gameBoardDataModel);
+		/*
 		super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
 				scenarioLevelEnnemyCreationDataModel.getDepth(), simple_submarine_data_model.getWidth(),
-				simple_submarine_data_model.getHeight()), 
-				scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds());
-		
-		setX_speed(scenarioLevelEnnemyCreationDataModel.getSpeed());
+				simple_submarine_data_model.getHeight()),
+				scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds(),
+				scenarioLevelEnnemyCreationDataModel.getFire_strategy_type(),
+				scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed());
+				*/
 	}
 
 	@Override
@@ -58,5 +63,12 @@ public class SimpleSubMarine extends SubMarine {
 		this.current_destruction_timer_in_seconds = 5;
 	}
 
+	@Override
+	public void fire() {
+		GameManager.getInstance().fire_simple_submarine_bomb(
+				(int) (surrounding_rectangle_absolute_on_complete_board.getX()
+						+ surrounding_rectangle_absolute_on_complete_board.getMaxX() / 2),
+				(int) (surrounding_rectangle_absolute_on_complete_board.getY() - 1));
+	}
 
 }

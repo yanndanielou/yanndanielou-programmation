@@ -113,8 +113,6 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 
 	@Override
 	public void on_20ms_tick() {
-		// TODO Auto-generated method stub
-
 	}
 
 }

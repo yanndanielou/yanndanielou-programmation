@@ -7,7 +7,9 @@
       "speed": 2,
       "creation_delay_in_seconds": 1,
       "maximum_fire_frequency_in_milliseconds": 2000,
-	  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE"
+	  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE",
+	  "ammunition_y_speed": -1,
+	  "maximum_number_of_alive_ammunitions_allowed":10
     },
     {
       "x": 200,
@@ -15,7 +17,9 @@
       "speed": 2,
       "creation_delay_in_seconds": 1,
       "maximum_fire_frequency_in_milliseconds": 2000,
-	  "fire_strategy_type":"FIRE_WITH_RANDOM_INTERVAL"
+	  "fire_strategy_type":"FIRE_WITH_RANDOM_INTERVAL",
+	  "ammunition_y_speed": -1,
+	  "maximum_number_of_alive_ammunitions_allowed":10
     },
     {
       "x": 100,
@@ -23,7 +27,9 @@
       "speed": 2,
       "creation_delay_in_seconds": 2,
       "maximum_fire_frequency_in_milliseconds": 2000,
-	  "fire_strategy_type":"FIRE_WHEN_ALLY_BOAT_IS_ABOVE"
+	  "fire_strategy_type":"FIRE_WHEN_ALLY_BOAT_IS_ABOVE",
+	  "ammunition_y_speed": -1,
+	  "maximum_number_of_alive_ammunitions_allowed":10
     },
 	{
       "x": -100,
@@ -31,7 +37,9 @@
       "speed": 2,
       "creation_delay_in_seconds": 5,
       "maximum_fire_frequency_in_milliseconds": 2000,
-	  "fire_strategy_type":"FIRE_WHEN_ALLY_BOAT_IS_ABOVE_OR_NEARLY_ABOVE"
+	  "fire_strategy_type":"FIRE_WHEN_ALLY_BOAT_IS_ABOVE_OR_NEARLY_ABOVE",
+	  "ammunition_y_speed": -1,
+	  "maximum_number_of_alive_ammunitions_allowed":10
     },
     {
       "x": 50,
@@ -39,7 +47,9 @@
       "speed": -3,
       "creation_delay_in_seconds": 10,
       "maximum_fire_frequency_in_milliseconds": 2000,
-	  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE"
+	  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE",
+	  "ammunition_y_speed": -1,
+	  "maximum_number_of_alive_ammunitions_allowed":10
     },
     {
       "x": -50,
@@ -47,7 +57,9 @@
       "speed": 4,
       "creation_delay_in_seconds": 15,
       "maximum_fire_frequency_in_milliseconds": 2000,
-	  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE"
+	  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE",
+	  "ammunition_y_speed": -1,
+	  "maximum_number_of_alive_ammunitions_allowed":10
     }
   ],
   "yellow_submarines": [
@@ -57,7 +69,9 @@
       "speed": 2,
       "creation_delay_in_seconds": 10,
       "maximum_fire_frequency_in_milliseconds": 2000,
-	  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE"
+	  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE",
+	  "ammunition_y_speed": -1,
+	  "maximum_number_of_alive_ammunitions_allowed":10
     },
     {
       "x": -50,
@@ -65,7 +79,9 @@
       "speed": 2,
       "creation_delay_in_seconds": 20,
       "maximum_fire_frequency_in_milliseconds": 2000,
-	  "fire_strategy_type":"FIRE_WHEN_ALLY_BOAT_IS_ABOVE_OR_NEARLY_ABOVE"
+	  "fire_strategy_type":"FIRE_WHEN_ALLY_BOAT_IS_ABOVE_OR_NEARLY_ABOVE",
+	  "ammunition_y_speed": -1,
+	  "maximum_number_of_alive_ammunitions_allowed":10
     }
   ]
 }

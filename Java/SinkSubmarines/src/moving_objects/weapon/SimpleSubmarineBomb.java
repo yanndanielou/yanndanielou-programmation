@@ -2,20 +2,17 @@ package moving_objects.weapon;
 
 import java.awt.Rectangle;
 
-import builders.genericobjects.AllySimpleBombDataModel;
+import builders.genericobjects.GenericObjectDataModel;
 import moving_objects.GameObjectListerner;
 
-public class SimpleAllyBomb extends Weapon {
+public class SimpleSubmarineBomb extends Weapon {
 
-	public SimpleAllyBomb(AllySimpleBombDataModel genericObjectDataModel, int x, int y) {
-		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()),
-				genericObjectDataModel.getY_speed());
+	public SimpleSubmarineBomb(GenericObjectDataModel genericObjectDataModel, int x, int y, int y_speed) {
+		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), y_speed);
 	}
 
 	@Override
 	protected void right_border_of_game_board_reached() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -31,13 +28,13 @@ public class SimpleAllyBomb extends Weapon {
 
 	@Override
 	protected void ocean_bed_reached() {
-		this.current_destruction_timer_in_seconds = 2;
+
 	}
 
 	@Override
 	protected void water_surface_reached() {
-		// TODO Auto-generated method stub
-
+		this.current_destruction_timer_in_seconds = 1;
+		stop_movement();
 	}
 
 	@Override

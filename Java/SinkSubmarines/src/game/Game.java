@@ -28,7 +28,7 @@ public class Game {
 		// this.genericObjectsDataModel = genericObjectsDataModel;
 		// this.gameBoardDataModel = gameBoardDataModel;
 		gameboard = new GameBoard(gameBoardDataModel);
-		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model(), gameBoardDataModel);
+		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model(), gameBoardDataModel, genericObjectsDataModel.getAlly_simple_bomb_data_model());
 		this.remaining_lives = number_of_lives;
 	}
 

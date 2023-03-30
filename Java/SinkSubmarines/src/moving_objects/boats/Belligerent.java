@@ -17,10 +17,15 @@ public abstract class Belligerent extends GameObject {
 
 	protected Instant lastAllyBombDroppedTime = null;
 
+	protected int ammunition_y_speed;
+
+	private int max_number_of_living_bombs;
+
 	public Belligerent(Rectangle surrounding_rectangle_absolute_on_complete_board,
-			int maximum_fire_frequency_in_seconds) {
+			int maximum_fire_frequency_in_seconds, int ammunition_y_speed) {
 		super(surrounding_rectangle_absolute_on_complete_board);
 		this.maximum_fire_frequency_in_milliseconds = maximum_fire_frequency_in_seconds;
+		this.ammunition_y_speed = ammunition_y_speed;
 	}
 
 	public int getMaximum_fire_frequency_in_milliseconds() {
@@ -56,6 +61,14 @@ public abstract class Belligerent extends GameObject {
 
 	public void on_fire() {
 		lastAllyBombDroppedTime = ZonedDateTime.now().toInstant();
+	}
+
+	public int getMax_number_of_living_bombs() {
+		return max_number_of_living_bombs;
+	}
+
+	public void setMax_number_of_living_bombs(int max_number_of_living_bombs) {
+		this.max_number_of_living_bombs = max_number_of_living_bombs;
 	}
 
 }

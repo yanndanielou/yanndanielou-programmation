@@ -13,9 +13,9 @@ public abstract class GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);
 
 	private Point upper_left_absolute_position_on_complete_board;
-	private Rectangle surrounding_rectangle_absolute_on_complete_board;
+	protected Rectangle surrounding_rectangle_absolute_on_complete_board;
 	protected int x_speed = 0;
-	private int y_speed = 0;
+	protected int y_speed = 0;
 
 	protected Integer current_destruction_timer_in_seconds = null;
 
@@ -161,6 +161,11 @@ public abstract class GameObject {
 			current_destruction_timer_in_seconds--;
 		}
 
+	}
+	
+	public void stop_movement() {
+		x_speed = 0;
+		y_speed = 0;
 	}
 
 }

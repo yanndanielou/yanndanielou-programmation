@@ -17,12 +17,25 @@ public class YellowSubMarine extends SubMarine {
 	public YellowSubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
 			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel) {
 
+		
+		super(scenarioLevelEnnemyCreationDataModel, simple_submarine_data_model, gameBoardDataModel);
+		/*
 		super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
 				scenarioLevelEnnemyCreationDataModel.getDepth(), simple_submarine_data_model.getWidth(),
 				simple_submarine_data_model.getHeight()),
-				scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds());
-
-		setX_speed(scenarioLevelEnnemyCreationDataModel.getSpeed());
+				scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds(),
+				scenarioLevelEnnemyCreationDataModel.getFire_strategy_type(),
+				scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed());
+				*/
+		/*
+		super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
+				scenarioLevelEnnemyCreationDataModel.getDepth(), simple_submarine_data_model.getWidth(),
+				simple_submarine_data_model.getHeight()),
+				scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds(),
+				scenarioLevelEnnemyCreationDataModel.getFire_strategy_type(),
+				scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed());
+				
+				*/
 
 		TimeManager.getInstance().add_listener(this);
 	}
@@ -59,6 +72,12 @@ public class YellowSubMarine extends SubMarine {
 	@Override
 	public void impact_now() {
 		this.current_destruction_timer_in_seconds = 5;
+	}
+
+	@Override
+	public void fire() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

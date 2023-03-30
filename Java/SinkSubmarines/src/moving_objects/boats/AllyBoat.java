@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import builders.gameboard.GameBoardDataModel;
+import builders.genericobjects.AllySimpleBombDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import constants.Constants;
 import moving_objects.GameObjectListerner;
@@ -13,9 +14,12 @@ import moving_objects.GameObjectListerner;
 public class AllyBoat extends Belligerent {
 	private static final Logger LOGGER = LogManager.getLogger(AllyBoat.class);
 
-	public AllyBoat(GenericObjectDataModel genericObjectDataModel, GameBoardDataModel gameBoardDataModel) {
+	public AllyBoat(GenericObjectDataModel genericObjectDataModel, GameBoardDataModel gameBoardDataModel,
+			AllySimpleBombDataModel allySimpleBombDataModel) {
 		super(new Rectangle(gameBoardDataModel.getWidth() / 2 - genericObjectDataModel.getWidth() / 2, 0,
-				genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), Constants.MINIMUM_DELAY_BETWEEN_TWO_ALLY_BOMB_DROPPED_IN_MILLISECONDS);
+				genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()),
+				Constants.MINIMUM_DELAY_BETWEEN_TWO_ALLY_BOMB_DROPPED_IN_MILLISECONDS,
+				allySimpleBombDataModel.getY_speed());
 	}
 
 	@Override
@@ -45,12 +49,12 @@ public class AllyBoat extends Belligerent {
 
 	@Override
 	protected void right_border_of_game_board_reached() {
-		setX_speed(0);
+		stop_movement();
 	}
 
 	@Override
 	protected void left_border_of_game_board_reached() {
-		setX_speed(0);
+		stop_movement();
 	}
 
 	@Override
@@ -69,4 +73,5 @@ public class AllyBoat extends Belligerent {
 	public void impact_now() {
 		this.current_destruction_timer_in_seconds = 10;
 	}
+
 }

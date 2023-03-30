@@ -1,8 +1,5 @@
 package core;
 
-import java.time.Instant;
-import java.time.ZonedDateTime;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -124,18 +121,12 @@ public class GameManager implements TimeManagerListener {
 
 	}
 
-	@Override
-	public void on_20ms_tick() {
-		// TODO Auto-generated method stub
-
-	}
-
 	private boolean is_ally_bomb_drop_autorized() {
 		boolean ally_bomb_drop_is_autorized = false;
 
 		boolean minimum_delay_between_two_ally_bombs_dropped_fulfilled = game.getAlly_boat()
 				.is_minimal_time_since_last_fire_fulfilled();
-		
+
 		boolean is_under_maximum_number_of_ally_bombs_fulfilled = ScenarioLevelExecutor.getInstance()
 				.getScenarioLevelDataModel().getMax_number_of_ally_bombs() > game.getSimple_ally_bombs().size();
 
@@ -178,5 +169,10 @@ public class GameManager implements TimeManagerListener {
 		dropSimpleAllyBoatAtLeftOfAllyBoat(
 				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getMaxX() + 5,
 				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY() - 20);
+	}
+
+	public void fire_simple_submarine_bomb(int x, int y) {
+		// TODO Auto-generated method stub
+
 	}
 }

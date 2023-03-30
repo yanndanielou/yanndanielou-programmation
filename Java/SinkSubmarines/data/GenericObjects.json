@@ -18,7 +18,8 @@
    "ally_simple_bomb_data_model": {
 		 "height": 11,
 		 "width":7,
-		 "image_path":"Images/ally_simple_bomb.png"
+		 "image_path":"Images/ally_simple_bomb.png",
+		 "y_speed": 1
     },
    "simple_submarine_bomb_data_model": {
 		 "height": 5,
