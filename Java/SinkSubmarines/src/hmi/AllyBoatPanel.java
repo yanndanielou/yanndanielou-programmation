@@ -10,7 +10,6 @@ import org.apache.logging.log4j.Logger;
 
 import builders.gameboard.GameBoardDataModel;
 import core.GameManager;
-import moving_objects.GameObject;
 import moving_objects.GameObjectListerner;
 import moving_objects.boats.AllyBoat;
 import moving_objects.boats.GameObjectGraphicalRepresentationManager;

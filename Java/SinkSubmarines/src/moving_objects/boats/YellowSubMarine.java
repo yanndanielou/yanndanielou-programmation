@@ -10,7 +10,6 @@ import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import moving_objects.GameObjectListerner;
 import time.TimeManager;
-import time.TimeManagerListener;
 
 public class YellowSubMarine extends SubMarine {
 	private static final Logger LOGGER = LogManager.getLogger(YellowSubMarine.class);
