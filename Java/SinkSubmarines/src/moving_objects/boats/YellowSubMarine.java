@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
+import core.GameManager;
 import moving_objects.GameObjectListerner;
 import time.TimeManager;
 
@@ -17,27 +18,27 @@ public class YellowSubMarine extends SubMarine {
 	public YellowSubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
 			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel) {
 
-		
 		super(scenarioLevelEnnemyCreationDataModel, simple_submarine_data_model, gameBoardDataModel);
 		/*
-		super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
-				scenarioLevelEnnemyCreationDataModel.getDepth(), simple_submarine_data_model.getWidth(),
-				simple_submarine_data_model.getHeight()),
-				scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds(),
-				scenarioLevelEnnemyCreationDataModel.getFire_strategy_type(),
-				scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed());
-				*/
+		 * super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
+		 * scenarioLevelEnnemyCreationDataModel.getDepth(),
+		 * simple_submarine_data_model.getWidth(),
+		 * simple_submarine_data_model.getHeight()),
+		 * scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds(),
+		 * scenarioLevelEnnemyCreationDataModel.getFire_strategy_type(),
+		 * scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed());
+		 */
 		/*
-		super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
-				scenarioLevelEnnemyCreationDataModel.getDepth(), simple_submarine_data_model.getWidth(),
-				simple_submarine_data_model.getHeight()),
-				scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds(),
-				scenarioLevelEnnemyCreationDataModel.getFire_strategy_type(),
-				scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed());
-				
-				*/
+		 * super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
+		 * scenarioLevelEnnemyCreationDataModel.getDepth(),
+		 * simple_submarine_data_model.getWidth(),
+		 * simple_submarine_data_model.getHeight()),
+		 * scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds(),
+		 * scenarioLevelEnnemyCreationDataModel.getFire_strategy_type(),
+		 * scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed());
+		 * 
+		 */
 
-		TimeManager.getInstance().add_listener(this);
 	}
 
 	@Override
@@ -76,8 +77,11 @@ public class YellowSubMarine extends SubMarine {
 
 	@Override
 	public void fire() {
-		// TODO Auto-generated method stub
-		
+		GameManager.getInstance().fire_floating_submarine_bomb(
+				(int) (surrounding_rectangle_absolute_on_complete_board.getX()
+						+ surrounding_rectangle_absolute_on_complete_board.getMaxX()) / 2,
+				(int) (surrounding_rectangle_absolute_on_complete_board.getY() - 1),
+				ammunition_y_speed);
 	}
 
 }

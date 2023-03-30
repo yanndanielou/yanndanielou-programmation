@@ -6,7 +6,7 @@ public class ScenarioLevelEnnemyCreationDataModel {
 	int altitude;
 	int speed;
 	int creation_delay_in_seconds;
-	int maximum_fire_frequency_in_seconds;
+	int maximum_fire_frequency_in_milliseconds;
 	SubmarineFireStrategyType fire_strategy_type;
 	int ammunition_y_speed;
 	int maximum_number_of_alive_ammunitions_allowed;
@@ -31,8 +31,8 @@ public class ScenarioLevelEnnemyCreationDataModel {
 		return creation_delay_in_seconds;
 	}
 
-	public int getMaximum_fire_frequency_in_seconds() {
-		return maximum_fire_frequency_in_seconds;
+	public int getMaximum_fire_frequency_in_milliseconds() {
+		return maximum_fire_frequency_in_milliseconds;
 	}
 
 	public SubmarineFireStrategyType getFire_strategy_type() {

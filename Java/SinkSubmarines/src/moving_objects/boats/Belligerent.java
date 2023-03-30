@@ -41,11 +41,10 @@ public abstract class Belligerent extends GameObject {
 			long milliseconds_since_last_ally_bomb_dropped = right_now.toEpochMilli()
 					- lastAllyBombDroppedTime.toEpochMilli();
 
-			if (milliseconds_since_last_ally_bomb_dropped > GameManager.getInstance().getGame().getAlly_boat()
-					.getMaximum_fire_frequency_in_milliseconds()) {
+			if (milliseconds_since_last_ally_bomb_dropped > maximum_fire_frequency_in_milliseconds) {
 				minimum_delay_between_two_ally_bombs_dropped_fulfilled = true;
 			} else {
-				LOGGER.warn("Cannot drop bomb because last one was " + milliseconds_since_last_ally_bomb_dropped
+				LOGGER.debug("Cannot drop bomb because last one was " + milliseconds_since_last_ally_bomb_dropped
 						+ " milliseconds ago");
 			}
 		} else {

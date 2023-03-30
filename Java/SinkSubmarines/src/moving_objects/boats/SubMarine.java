@@ -12,35 +12,38 @@ import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import builders.scenariolevel.SubmarineFireStrategyType;
 import core.GameManager;
 import moving_objects.GameObjectListerner;
+import time.TimeManager;
 import time.TimeManagerListener;
 
 public abstract class SubMarine extends Belligerent implements TimeManagerListener {
 	private static final Logger LOGGER = LogManager.getLogger(SubMarine.class);
 
 	protected SubmarineFireStrategyType fireStrategyType;
-/*
-	public SubMarine(Rectangle surrounding_rectangle_absolute_on_complete_board, int maximum_fire_frequency_in_seconds,
-			SubmarineFireStrategyType fireStrategyType, int ammunition_y_speed) {
-		super(surrounding_rectangle_absolute_on_complete_board, maximum_fire_frequency_in_seconds, ammunition_y_speed);
-		this.fireStrategyType = fireStrategyType;
-	}
-	*/
+	/*
+	 * public SubMarine(Rectangle surrounding_rectangle_absolute_on_complete_board,
+	 * int maximum_fire_frequency_in_seconds, SubmarineFireStrategyType
+	 * fireStrategyType, int ammunition_y_speed) {
+	 * super(surrounding_rectangle_absolute_on_complete_board,
+	 * maximum_fire_frequency_in_seconds, ammunition_y_speed); this.fireStrategyType
+	 * = fireStrategyType; }
+	 */
 
 	public SubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
 			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel) {
-	
-		
+
 		super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
 				scenarioLevelEnnemyCreationDataModel.getDepth(), simple_submarine_data_model.getWidth(),
 				simple_submarine_data_model.getHeight()),
-				scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds(),
+				scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_milliseconds(),
 				scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed());
-		
+
 		this.fireStrategyType = scenarioLevelEnnemyCreationDataModel.getFire_strategy_type();
-		
 
 		setX_speed(scenarioLevelEnnemyCreationDataModel.getSpeed());
-		setMax_number_of_living_bombs(scenarioLevelEnnemyCreationDataModel.getMaximum_number_of_alive_ammunitions_allowed());
+		setMax_number_of_living_bombs(
+				scenarioLevelEnnemyCreationDataModel.getMaximum_number_of_alive_ammunitions_allowed());
+
+		TimeManager.getInstance().add_listener(this);
 
 	}
 
@@ -124,11 +127,13 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 
 	@Override
 	public void on_50ms_tick() {
+
 		if (check_if_must_fire_and_fire_if_needed()) {
 			LOGGER.info(this + " must fire");
 			fire();
 			on_fire();
 		}
+
 	}
 
 	@Override

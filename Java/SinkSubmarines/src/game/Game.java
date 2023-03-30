@@ -10,7 +10,10 @@ import moving_objects.boats.AllyBoat;
 import moving_objects.boats.Belligerent;
 import moving_objects.boats.SimpleSubMarine;
 import moving_objects.boats.YellowSubMarine;
+import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
+import moving_objects.weapon.SimpleSubmarineBomb;
+import moving_objects.weapon.Weapon;
 
 public class Game {
 
@@ -20,6 +23,8 @@ public class Game {
 	private ArrayList<SimpleSubMarine> simple_submarines = new ArrayList<>();
 	private ArrayList<YellowSubMarine> yellow_submarines = new ArrayList<>();
 	private ArrayList<SimpleAllyBomb> simple_ally_bombs = new ArrayList<>();
+	private ArrayList<SimpleSubmarineBomb> simple_submarine_bombs = new ArrayList<>();
+	private ArrayList<FloatingSubmarineBomb> floating_submarine_bombs = new ArrayList<>();
 
 	int remaining_lives;
 
@@ -49,6 +54,8 @@ public class Game {
 		game_objects.add(ally_boat);
 		game_objects.addAll(simple_ally_bombs);
 		game_objects.addAll(get_all_submarines());
+		game_objects.addAll(simple_submarine_bombs);
+		game_objects.addAll(floating_submarine_bombs);
 		return game_objects;
 	}
 
@@ -81,6 +88,22 @@ public class Game {
 
 	public ArrayList<SimpleAllyBomb> getSimple_ally_bombs() {
 		return simple_ally_bombs;
+	}
+
+	public void addSimpleSubmarineBomb(SimpleSubmarineBomb sumbmarineBomb) {
+		simple_submarine_bombs.add(sumbmarineBomb);		
+	}
+
+	public ArrayList<SimpleSubmarineBomb> getSimple_submarine_bombs() {
+		return simple_submarine_bombs;
+	}
+
+	public void addFloatingSubmarineBomb(FloatingSubmarineBomb sumbmarineBomb) {
+		floating_submarine_bombs.add(sumbmarineBomb);		
+	}
+
+	public ArrayList<FloatingSubmarineBomb> getFloating_submarine_bombs() {
+		return floating_submarine_bombs;
 	}
 
 	/*

@@ -56,7 +56,7 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 		int number_of_objects_moved = 0;
 		for (GameObject gameObject : GameManager.getInstance().getGame().getGame_objects()) {
 			if (!gameObject.is_being_destroyed()) {
-				if (gameObject.getX_speed() != 0 || gameObject.getY_speed() != 0) {
+				if (gameObject.is_in_movement()) {
 					gameObject.proceed_movement();
 					check_if_collision();
 				}
@@ -78,6 +78,7 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 		proceed_destroyed_objects_cleaning_by_type(game.getSimple_submarines());		
 		proceed_destroyed_objects_cleaning_by_type(game.getYellow_submarines());
 		proceed_destroyed_objects_cleaning_by_type(game.getSimple_ally_bombs());
+		proceed_destroyed_objects_cleaning_by_type(game.getSimple_submarine_bombs());
 		
 	}
 

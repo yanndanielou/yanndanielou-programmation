@@ -67,8 +67,9 @@ public class SimpleSubMarine extends SubMarine {
 	public void fire() {
 		GameManager.getInstance().fire_simple_submarine_bomb(
 				(int) (surrounding_rectangle_absolute_on_complete_board.getX()
-						+ surrounding_rectangle_absolute_on_complete_board.getMaxX() / 2),
-				(int) (surrounding_rectangle_absolute_on_complete_board.getY() - 1));
+						+ surrounding_rectangle_absolute_on_complete_board.getMaxX()) / 2,
+				(int) (surrounding_rectangle_absolute_on_complete_board.getY() - 1),
+				ammunition_y_speed);
 	}
 
 }

@@ -53,6 +53,10 @@ public abstract class GameObject {
 		return x_speed;
 	}
 
+	public boolean is_in_movement() {
+		return x_speed != 0 || y_speed != 0;
+	}
+
 	public void setX_speed(int x_speed) {
 		LOGGER.debug(this + " set x speed:" + x_speed);
 		this.x_speed = x_speed;
@@ -162,7 +166,7 @@ public abstract class GameObject {
 		}
 
 	}
-	
+
 	public void stop_movement() {
 		x_speed = 0;
 		y_speed = 0;

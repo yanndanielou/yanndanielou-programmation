@@ -24,5 +24,9 @@
    "simple_submarine_bomb_data_model": {
 		 "height": 5,
 		 "width":5
+    },
+   "floating_submarine_bomb_data_model": {
+		 "height": 9,
+		 "width":8
     }
 }
