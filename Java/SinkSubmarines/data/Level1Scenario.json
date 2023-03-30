@@ -8,6 +8,12 @@
       "creation_delay_in_seconds": 1
     },
     {
+      "x": 200,
+      "altitude": -10,
+      "speed": 2,
+      "creation_delay_in_seconds": 1
+    },
+    {
       "x": 100,
       "altitude": -100,
       "speed": 2,
@@ -20,7 +26,7 @@
       "creation_delay_in_seconds": 5
     },
     {
-      "x": 500,
+      "x": 50,
       "altitude": -300,
       "speed": -3,
       "creation_delay_in_seconds": 10
@@ -30,6 +36,20 @@
       "altitude": -350,
       "speed": 4,
       "creation_delay_in_seconds": 15
+    }
+  ],
+  "yellow_submarines": [
+    {
+      "x": -50,
+      "altitude": -250,
+      "speed": 2,
+      "creation_delay_in_seconds": 10
+    },
+    {
+      "x": -50,
+      "altitude": -370,
+      "speed": 2,
+      "creation_delay_in_seconds": 20
     }
   ]
 }

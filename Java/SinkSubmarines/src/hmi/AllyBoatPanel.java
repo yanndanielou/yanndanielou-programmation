@@ -5,14 +5,19 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import builders.gameboard.GameBoardDataModel;
 import core.GameManager;
+import moving_objects.GameObject;
 import moving_objects.GameObjectListerner;
 import moving_objects.boats.AllyBoat;
 import moving_objects.boats.GameObjectGraphicalRepresentationManager;
 import moving_objects.weapon.SimpleAllyBomb;
 
 public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner {
+	private static final Logger LOGGER = LogManager.getLogger(AllyBoatPanel.class);
 
 	private static final long serialVersionUID = 6917913385357901059L;
 
@@ -61,14 +66,21 @@ public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner 
 		for (SimpleAllyBomb simpleAllyBomb : GameManager.getInstance().getGame().getSimple_ally_bombs()) {
 			int bomb_x = (int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getX();
 			int bomb_y = (int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getY();
+			int bomb_height = (int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getHeight();
 
 			if (simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getY() < 0) {
+				int this_pannel_height = this.getHeight();
+				int displayed_bomb_y = bomb_y + bomb_height;
+				LOGGER.info("Display simpleAllyBomb at x:" + bomb_x + " and y:" + bomb_y + " displayed at:"
+						+ displayed_bomb_y);
 
 				g.drawImage(
 						GameObjectGraphicalRepresentationManager.getInstance().getSimpleAllyBombImage(simpleAllyBomb),
-						bomb_x, bomb_y,
+						bomb_x, displayed_bomb_y,
 						(int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
 						(int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getHeight(), null);
+			} else {
+//				LOGGER.info("Do not display simpleAllyBomb at x:" + bomb_x + " and y:" + bomb_y);
 			}
 		}
 	}

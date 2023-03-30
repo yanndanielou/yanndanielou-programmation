@@ -5,14 +5,19 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import builders.gameboard.GameBoardDataModel;
 import core.GameManager;
 import moving_objects.GameObjectListerner;
 import moving_objects.boats.GameObjectGraphicalRepresentationManager;
 import moving_objects.boats.SimpleSubMarine;
+import moving_objects.boats.YellowSubMarine;
 import moving_objects.weapon.SimpleAllyBomb;
 
 public class UnderWaterPanel extends AbstractPanel implements GameObjectListerner {
+	private static final Logger LOGGER = LogManager.getLogger(UnderWaterPanel.class);
 
 	private static final long serialVersionUID = 6917913385357901059L;
 
@@ -40,17 +45,31 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 					(int) simple_submarine.getSurrounding_rectangle_absolute_on_complete_board().getHeight(), null);
 		}
 
+		for (YellowSubMarine yellow_submarine : GameManager.getInstance().getGame().getYellow_submarines()) {
+			int boat_x = (int) yellow_submarine.getSurrounding_rectangle_absolute_on_complete_board().getX();
+			int boat_y = (int) yellow_submarine.getSurrounding_rectangle_absolute_on_complete_board().getY();
+
+			g.drawImage(
+					GameObjectGraphicalRepresentationManager.getInstance().getYellowSubmarineImage(yellow_submarine),
+					boat_x, boat_y,
+					(int) yellow_submarine.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
+					(int) yellow_submarine.getSurrounding_rectangle_absolute_on_complete_board().getHeight(), null);
+		}
+
 		for (SimpleAllyBomb simpleAllyBomb : GameManager.getInstance().getGame().getSimple_ally_bombs()) {
 			int bomb_x = (int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getX();
 			int bomb_y = (int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getY();
 
-			if (simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getY() > 0) {
+			if (simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getY() >= 0) {
 
+//				LOGGER.info("Display simpleAllyBomb at x:" + bomb_x + " and y:" + bomb_y);
 				g.drawImage(
 						GameObjectGraphicalRepresentationManager.getInstance().getSimpleAllyBombImage(simpleAllyBomb),
 						bomb_x, bomb_y,
 						(int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
 						(int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getHeight(), null);
+			} else {
+	//			LOGGER.info("Do not display simpleAllyBomb at x:" + bomb_x + " and y:" + bomb_y);
 			}
 		}
 	}

@@ -15,6 +15,7 @@ import constants.Constants;
 import game.Game;
 import hmi.SinkSubmarinesMainView;
 import moving_objects.boats.SimpleSubMarine;
+import moving_objects.boats.YellowSubMarine;
 import moving_objects.weapon.SimpleAllyBomb;
 import time.TimeManager;
 import time.TimeManagerListener;
@@ -108,6 +109,20 @@ public class GameManager implements TimeManagerListener {
 		return submarine;
 	}
 
+	public YellowSubMarine create_yellow_submarine(
+			ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel) {
+		YellowSubMarine submarine = new YellowSubMarine(scenarioLevelEnnemyCreationDataModel,
+				genericObjectsDataModel.getYellow_submarine_data_model(), gameBoardDataModel);
+
+		game.addYellowSubMarine(submarine);
+		submarine.add_movement_listener(sinkSubmarinesMainView.getUnderWaterPanel());
+
+		LOGGER.info("Yellow submarine created!" + scenarioLevelEnnemyCreationDataModel
+				+ genericObjectsDataModel.getYellow_submarine_data_model());
+
+		return submarine;
+	}
+
 	@Override
 	public void on_50ms_tick() {
 		// TODO Auto-generated method stub
@@ -175,7 +190,7 @@ public class GameManager implements TimeManagerListener {
 
 		dropSimpleAllyBoatAtLeftOfAllyBoat(
 				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getX() - 5,
-				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY() - 20);
+				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY() - 10);
 
 	}
 

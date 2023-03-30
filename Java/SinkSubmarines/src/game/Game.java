@@ -7,7 +7,9 @@ import builders.genericobjects.GenericObjectsDataModel;
 import game_board.GameBoard;
 import moving_objects.GameObject;
 import moving_objects.boats.AllyBoat;
+import moving_objects.boats.Belligerent;
 import moving_objects.boats.SimpleSubMarine;
+import moving_objects.boats.YellowSubMarine;
 import moving_objects.weapon.SimpleAllyBomb;
 
 public class Game {
@@ -16,6 +18,7 @@ public class Game {
 	private GameBoard gameboard = null;
 	private AllyBoat ally_boat = null;
 	private ArrayList<SimpleSubMarine> simple_submarines = new ArrayList<>();
+	private ArrayList<YellowSubMarine> yellow_submarines = new ArrayList<>();
 	private ArrayList<SimpleAllyBomb> simple_ally_bombs = new ArrayList<>();
 
 	public Game(GameBoardDataModel gameBoardDataModel, GenericObjectsDataModel genericObjectsDataModel) {
@@ -41,16 +44,31 @@ public class Game {
 		ArrayList<GameObject> game_objects = new ArrayList<>();
 		game_objects.add(ally_boat);
 		game_objects.addAll(simple_ally_bombs);
-		game_objects.addAll(simple_submarines);
+		game_objects.addAll(get_all_submarines());
 		return game_objects;
+	}
+
+	public ArrayList<Belligerent> get_all_submarines() {
+		ArrayList<Belligerent> submarines = new ArrayList<>();
+		submarines.addAll(simple_submarines);
+		submarines.addAll(yellow_submarines);
+		return submarines;
 	}
 
 	public ArrayList<SimpleSubMarine> getSimple_submarines() {
 		return simple_submarines;
 	}
 
+	public ArrayList<YellowSubMarine> getYellow_submarines() {
+		return yellow_submarines;
+	}
+
 	public void addSimpleSubMarine(SimpleSubMarine submarine) {
 		simple_submarines.add(submarine);
+	}
+
+	public void addYellowSubMarine(YellowSubMarine submarine) {
+		yellow_submarines.add(submarine);
 	}
 
 	public void addSimpleAllyBomb(SimpleAllyBomb simpleAllyBomb) {
