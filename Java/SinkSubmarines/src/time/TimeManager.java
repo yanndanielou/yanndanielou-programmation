@@ -12,6 +12,7 @@ public class TimeManager extends TimerTask {
 
 	private static final Logger LOGGER = LogManager.getLogger(TimeManager.class);
 
+	private ArrayList<TimeManagerListener> new_listeners_waiting_current_tick_to_register = new ArrayList<>();
 	private ArrayList<TimeManagerListener> time_manager_listeners = new ArrayList<>();
 
 	private Timer timer;
@@ -21,7 +22,7 @@ public class TimeManager extends TimerTask {
 		// running timer task as daemon thread
 		timer = new Timer(true);
 		timer.scheduleAtFixedRate(this, 0, 10);
-		System.out.println("TimerTask started");
+		LOGGER.info("TimerTask started");
 	}
 
 	public static TimeManager getInstance() {
@@ -32,7 +33,8 @@ public class TimeManager extends TimerTask {
 	}
 
 	public void add_listener(TimeManagerListener listener) {
-		time_manager_listeners.add(listener);
+		LOGGER.info("add_listener:" + listener);
+		new_listeners_waiting_current_tick_to_register.add(listener);
 	}
 
 	@Override
@@ -58,6 +60,9 @@ public class TimeManager extends TimerTask {
 		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
 			time_manager_listener.on_10ms_tick();
 		}
+
+		time_manager_listeners.addAll(new_listeners_waiting_current_tick_to_register);
+		new_listeners_waiting_current_tick_to_register.clear();
 	}
 
 	private void tick_50ms() {
@@ -65,7 +70,6 @@ public class TimeManager extends TimerTask {
 			time_manager_listener.on_50ms_tick();
 		}
 
-		
 	}
 
 	private void tick_20ms() {
@@ -77,20 +81,22 @@ public class TimeManager extends TimerTask {
 
 	private void tick_100ms() {
 		// System.out.println("tick_100ms:" + new Date());
-		LOGGER.debug("tick_second");
+		LOGGER.debug("tick_100ms begin");
 
 		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
 			time_manager_listener.on_100ms_tick();
 		}
+		LOGGER.debug("tick_100ms end");
 	}
 
 	private void tick_second() {
 		// System.out.println("tick_second:" + new Date());
-		LOGGER.trace("tick_second");
+		LOGGER.trace("tick_second begin");
 
 		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
 			time_manager_listener.on_second_tick();
 		}
+		LOGGER.debug("tick_second end");
 	}
 
 	public void start() {

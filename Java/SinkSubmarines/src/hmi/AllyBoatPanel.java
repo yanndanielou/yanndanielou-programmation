@@ -71,8 +71,7 @@ public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner 
 			if (simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getY() < 0) {
 				int this_pannel_height = this.getHeight();
 				int displayed_bomb_y = this_pannel_height - bomb_height + bomb_y;
-				LOGGER.info("Display simpleAllyBomb at x:" + bomb_x + " and y:" + bomb_y + " displayed at:"
-						+ displayed_bomb_y);
+//				LOGGER.info("Display simpleAllyBomb at x:" + bomb_x + " and y:" + bomb_y + " displayed at:" + displayed_bomb_y);
 
 				g.drawImage(
 						GameObjectGraphicalRepresentationManager.getInstance().getSimpleAllyBombImage(simpleAllyBomb),

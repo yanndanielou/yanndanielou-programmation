@@ -4,12 +4,12 @@
     <Appenders>
             
         <Console name="stdout" target="SYSTEM_OUT">
-            <PatternLayout pattern="[%t] %-5p | %-60c | %m (%F:%L)%n" />
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5p | %-60c | %m (%F:%L)%n" />
         </Console>
         
         <RollingFile name="rollingFile"
                      filePattern="logs/logs-%d{yyyy-MM-dd}-%i.txt">
-            <PatternLayout pattern="[%t] %-5p | %-60c | %m (%F:%L)%n" />
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5p | %-60c | %m (%F:%L)%n" />
             <Policies>
                 <TimeBasedTriggeringPolicy />
                 <SizeBasedTriggeringPolicy size="10 MB"/>

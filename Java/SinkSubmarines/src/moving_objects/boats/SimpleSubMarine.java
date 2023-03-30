@@ -10,7 +10,7 @@ import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import moving_objects.GameObjectListerner;
 
-public class SimpleSubMarine extends Belligerent {
+public class SimpleSubMarine extends SubMarine {
 	private static final Logger LOGGER = LogManager.getLogger(SimpleSubMarine.class);
 
 	public SimpleSubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
@@ -57,5 +57,6 @@ public class SimpleSubMarine extends Belligerent {
 	public void impact_now() {
 		this.current_destruction_timer_in_seconds = 5;
 	}
+
 
 }
