@@ -156,11 +156,7 @@ public abstract class GameObject {
 
 	public abstract void notify_movement();
 
-	public void notify_destruction() {
-		for (GameObjectListerner objectListerner : movement_listeners) {
-			objectListerner.on_destruction(this);
-		}
-	}
+	public abstract void notify_destruction();
 
 	public boolean is_completely_destroyed() {
 		return is_being_destroyed() && current_destruction_timer_in_seconds == 0;

@@ -14,7 +14,9 @@ import moving_objects.GameObject;
 import moving_objects.GameObjectListerner;
 import moving_objects.boats.AllyBoat;
 import moving_objects.boats.GameObjectGraphicalRepresentationManager;
+import moving_objects.boats.SubMarine;
 import moving_objects.weapon.SimpleAllyBomb;
+import moving_objects.weapon.Weapon;
 
 public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner {
 	private static final Logger LOGGER = LogManager.getLogger(AllyBoatPanel.class);
@@ -99,8 +101,15 @@ public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner 
 	}
 
 	@Override
-	public void on_destruction(GameObject gameObject) {
+	public void on_submarine_destruction(SubMarine subMarine) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void on_weapon_destruction(Weapon weapon) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

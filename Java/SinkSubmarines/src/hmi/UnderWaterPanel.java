@@ -14,6 +14,7 @@ import moving_objects.GameObject;
 import moving_objects.GameObjectListerner;
 import moving_objects.boats.GameObjectGraphicalRepresentationManager;
 import moving_objects.boats.SimpleSubMarine;
+import moving_objects.boats.SubMarine;
 import moving_objects.boats.YellowSubMarine;
 import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
@@ -129,7 +130,13 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 	}
 
 	@Override
-	public void on_destruction(GameObject gameObject) {
+	public void on_submarine_destruction(SubMarine subMarine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_weapon_destruction(Weapon weapon) {
 		// TODO Auto-generated method stub
 		
 	}

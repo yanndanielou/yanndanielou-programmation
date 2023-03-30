@@ -190,11 +190,22 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	}
 
 	@Override
-	public void on_destruction(GameObject gameObject) {
-		boolean remove = living_bombs.remove(gameObject);
-		if (!remove) {
-			LOGGER.error("Could not remove living bomb" + gameObject + " to " + this);
+	public void notify_destruction() {
+		for (GameObjectListerner objectListerner : movement_listeners) {
+			objectListerner.on_submarine_destruction(this);
 		}
+	}
+
+	@Override
+	public void on_weapon_destruction(Weapon weapon) {
+		boolean remove = living_bombs.remove(weapon);
+		if (!remove) {
+			LOGGER.error("Could not remove living bomb" + weapon + " to " + this);
+		}
+	}
+
+	@Override
+	public void on_submarine_destruction(SubMarine subMarine) {
 	}
 
 	public abstract void fire();

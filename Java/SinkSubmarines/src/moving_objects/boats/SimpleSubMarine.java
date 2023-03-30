@@ -11,6 +11,7 @@ import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import core.GameManager;
 import moving_objects.GameObjectListerner;
 import moving_objects.weapon.SimpleSubmarineBomb;
+import moving_objects.weapon.Weapon;
 
 public class SimpleSubMarine extends SubMarine {
 	private static final Logger LOGGER = LogManager.getLogger(SimpleSubMarine.class);
@@ -18,16 +19,16 @@ public class SimpleSubMarine extends SubMarine {
 	public SimpleSubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
 			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel) {
 
-		
 		super(scenarioLevelEnnemyCreationDataModel, simple_submarine_data_model, gameBoardDataModel);
 		/*
-		super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
-				scenarioLevelEnnemyCreationDataModel.getDepth(), simple_submarine_data_model.getWidth(),
-				simple_submarine_data_model.getHeight()),
-				scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds(),
-				scenarioLevelEnnemyCreationDataModel.getFire_strategy_type(),
-				scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed());
-				*/
+		 * super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
+		 * scenarioLevelEnnemyCreationDataModel.getDepth(),
+		 * simple_submarine_data_model.getWidth(),
+		 * simple_submarine_data_model.getHeight()),
+		 * scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds(),
+		 * scenarioLevelEnnemyCreationDataModel.getFire_strategy_type(),
+		 * scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed());
+		 */
 	}
 
 	@Override
@@ -69,10 +70,9 @@ public class SimpleSubMarine extends SubMarine {
 		SimpleSubmarineBomb bomb_fired = GameManager.getInstance().fire_simple_submarine_bomb(
 				(int) (surrounding_rectangle_absolute_on_complete_board.getX()
 						+ surrounding_rectangle_absolute_on_complete_board.getMaxX()) / 2,
-				(int) (surrounding_rectangle_absolute_on_complete_board.getY() - 1),
-				ammunition_y_speed);
+				(int) (surrounding_rectangle_absolute_on_complete_board.getY() - 1), ammunition_y_speed);
 		living_bombs.add(bomb_fired);
-		
+
 	}
 
 }
