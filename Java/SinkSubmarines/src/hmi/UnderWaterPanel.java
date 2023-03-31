@@ -19,7 +19,8 @@ import moving_objects.weapon.SimpleSubmarineBomb;
 import moving_objects.weapon.Weapon;
 
 public class UnderWaterPanel extends AbstractPanel implements GameObjectListerner {
-	//private static final Logger LOGGER = LogManager.getLogger(UnderWaterPanel.class);
+	// private static final Logger LOGGER =
+	// LogManager.getLogger(UnderWaterPanel.class);
 
 	private static final long serialVersionUID = 6917913385357901059L;
 
@@ -36,7 +37,8 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		for (SimpleSubMarine simple_submarine : GameManager.getInstance().getGame().getSimple_submarines()) {
+		for (SimpleSubMarine simple_submarine : new ArrayList<SimpleSubMarine>(
+				GameManager.getInstance().getGame().getSimple_submarines())) {
 			int boat_x = (int) simple_submarine.getSurrounding_rectangle_absolute_on_complete_board().getX();
 			int boat_y = (int) simple_submarine.getSurrounding_rectangle_absolute_on_complete_board().getY();
 
@@ -47,7 +49,8 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 					(int) simple_submarine.getSurrounding_rectangle_absolute_on_complete_board().getHeight(), null);
 		}
 
-		for (YellowSubMarine yellow_submarine : GameManager.getInstance().getGame().getYellow_submarines()) {
+		for (YellowSubMarine yellow_submarine : new ArrayList<YellowSubMarine>(
+				GameManager.getInstance().getGame().getYellow_submarines())) {
 			int boat_x = (int) yellow_submarine.getSurrounding_rectangle_absolute_on_complete_board().getX();
 			int boat_y = (int) yellow_submarine.getSurrounding_rectangle_absolute_on_complete_board().getY();
 
@@ -58,7 +61,7 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 					(int) yellow_submarine.getSurrounding_rectangle_absolute_on_complete_board().getHeight(), null);
 		}
 
-		for (SimpleAllyBomb simpleAllyBomb : GameManager.getInstance().getGame().getSimple_ally_bombs()) {
+		for (SimpleAllyBomb simpleAllyBomb : new ArrayList<SimpleAllyBomb>(GameManager.getInstance().getGame().getSimple_ally_bombs())) {
 			int bomb_x = (int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getX();
 			int bomb_y = (int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getY();
 
@@ -76,7 +79,8 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 			}
 		}
 
-		for (SimpleSubmarineBomb submarine_bomb : new ArrayList<SimpleSubmarineBomb>(GameManager.getInstance().getGame().getSimple_submarine_bombs())) {
+		for (SimpleSubmarineBomb submarine_bomb : new ArrayList<SimpleSubmarineBomb>(
+				GameManager.getInstance().getGame().getSimple_submarine_bombs())) {
 			int bomb_x = (int) submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board().getX();
 			int bomb_y = (int) submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board().getY();
 
@@ -95,7 +99,7 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 			}
 		}
 
-		for (FloatingSubmarineBomb submarine_bomb : GameManager.getInstance().getGame().getFloating_submarine_bombs()) {
+		for (FloatingSubmarineBomb submarine_bomb : new ArrayList<FloatingSubmarineBomb>(GameManager.getInstance().getGame().getFloating_submarine_bombs())) {
 			int bomb_x = (int) submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board().getX();
 			int bomb_y = (int) submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board().getY();
 

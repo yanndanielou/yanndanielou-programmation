@@ -29,7 +29,7 @@
     },
    "ocean_bed_game_board_area_data_model": {
 		 "top_altitude": -400,
-		 "height": 200,
+		 "height": 100,
 		 "background_image_path":"Images/ocean_bed_background.png",
 		 "display_background_image_at_init":"False"
     }

@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import core.GameManager;
 import game.Game;
+import game_board.GameBoard;
 
 public abstract class GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);
@@ -119,8 +120,6 @@ public abstract class GameObject {
 	public boolean proceed_vertical_movement() {
 		boolean has_moved = false;
 
-		int game_board_height = GameManager.getInstance().getGame().getGameboard().getHeight();
-
 		if (getY_speed() < 0) {
 
 			surrounding_rectangle_absolute_on_complete_board.translate(0, getY_speed());
@@ -131,9 +130,11 @@ public abstract class GameObject {
 
 		} else if (getY_speed() > 0) {
 
+			GameBoard gameboard = game.getGameboard();
 			surrounding_rectangle_absolute_on_complete_board.translate(0, getY_speed());
 
-			if (surrounding_rectangle_absolute_on_complete_board.getMaxY() >= game_board_height) {
+			if (get_depth() >= gameboard.getGameBoardDataModel().getUnder_water_game_board_area_data_model().getHeight()
+					+ gameboard.getGameBoardDataModel().getOcean_bed_game_board_area_data_model().getHeight()) {
 				ocean_bed_reached();
 			}
 

@@ -76,7 +76,7 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	private boolean check_if_in_geographical_position_is_inside_board() {
 		boolean geographical_position_is_inside_board = false;
 
-		GameBoard gameboard = GameManager.getInstance().getGame().getGameboard();
+		GameBoard gameboard = game.getGameboard();
 		geographical_position_is_inside_board = surrounding_rectangle_absolute_on_complete_board.getX() >= 0
 				&& surrounding_rectangle_absolute_on_complete_board.getMaxX() <= gameboard.getWidth();
 
@@ -86,7 +86,7 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	private boolean check_if_in_geographical_position_of_fire_according_to_strategy() {
 		boolean is_in_geographical_position_of_fire_according_to_strategy = false;
 
-		AllyBoat ally_boat = GameManager.getInstance().getGame().getAlly_boat();
+		AllyBoat ally_boat = game.getAlly_boat();
 		double ally_boat_left_end_x = ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getX();
 		double distance_between_left_ally_boat_and_right_of_submarine = surrounding_rectangle_absolute_on_complete_board
 				.getMaxX() - ally_boat_left_end_x;
