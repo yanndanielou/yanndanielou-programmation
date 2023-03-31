@@ -1,15 +1,11 @@
 {
    "ally_boat_data_model": {
 		 "height": 30,
-		 "width":100,
-		 "right_direction_image_path":"Images/AllyBoat.png",
-		 "left_direction_image_path":"Images/AllyBoat.png"
+		 "width":100
     },
    "simple_submarine_data_model": {
 		 "height": 21,
-		 "width":60,
-		 "right_direction_image_path":"Images/simple_submarine_right.png",
-		 "left_direction_image_path":"Images/simple_submarine_left.png"	 
+		 "width":60
     },
    "yellow_submarine_data_model": {
 		 "height": 20,
@@ -18,7 +14,6 @@
    "ally_simple_bomb_data_model": {
 		 "height": 11,
 		 "width":7,
-		 "image_path":"Images/ally_simple_bomb.png",
 		 "y_speed": 1
     },
    "simple_submarine_bomb_data_model": {
