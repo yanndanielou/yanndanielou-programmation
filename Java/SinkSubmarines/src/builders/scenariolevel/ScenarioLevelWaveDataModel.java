@@ -6,6 +6,8 @@ public class ScenarioLevelWaveDataModel {
 
 	private ArrayList<ScenarioLevelEnnemyCreationDataModel> simple_submarines;
 	private ArrayList<ScenarioLevelEnnemyCreationDataModel> yellow_submarines;
+	private int wave_number;
+	private String wave_name;
 
 	public ScenarioLevelWaveDataModel() {
 	}
@@ -16,6 +18,14 @@ public class ScenarioLevelWaveDataModel {
 
 	public ArrayList<ScenarioLevelEnnemyCreationDataModel> getYellow_submarines() {
 		return yellow_submarines;
+	}
+
+	public int getWave_number() {
+		return wave_number;
+	}
+
+	public String getWave_name() {
+		return wave_name;
 	}
 
 }

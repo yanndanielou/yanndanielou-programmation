@@ -1,10 +1,15 @@
 {
    "width": 600,
+   "top_area_data_model": {
+		 "height": 100
+    },
    "sky_game_board_area_data_model": {
+		 "top_altitude": 107,
 		 "height": 77,
 		 "background_image_path":"Images/sky_background.png"
     },
    "ally_boat_game_board_area_data_model": {
+		 "top_altitude": 30,
 		 "height": 30,
 		 "background_color_definition":{
 			"red": 0,
@@ -13,6 +18,7 @@
 		 }		 
     },
    "under_water_game_board_area_data_model": {
+		 "top_altitude": 0,
 		 "height": 400,
 		 "background_color_definition":{
 			"red": 0,
@@ -21,6 +27,7 @@
 		 }	
     },
    "ocean_bed_game_board_area_data_model": {
+		 "top_altitude": -400,
 		 "height": 200,
 		 "background_image_path":"Images/ocean_bed_background.png" 
     }

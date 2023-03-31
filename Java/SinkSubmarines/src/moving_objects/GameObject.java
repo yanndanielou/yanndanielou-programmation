@@ -43,6 +43,14 @@ public abstract class GameObject {
 		this.upper_left_absolute_position_on_complete_board = upper_left_absolute_position_on_complete_board;
 	}
 
+	public int get_altitude() {
+		return get_depth() * -1;
+	}
+
+	public int get_depth() {
+		return (int) surrounding_rectangle_absolute_on_complete_board.getY();
+	}
+
 	public Rectangle getSurrounding_rectangle_absolute_on_complete_board() {
 		return surrounding_rectangle_absolute_on_complete_board;
 	}

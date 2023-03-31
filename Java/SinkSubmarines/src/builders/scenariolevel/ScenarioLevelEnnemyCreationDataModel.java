@@ -2,14 +2,14 @@ package builders.scenariolevel;
 
 public class ScenarioLevelEnnemyCreationDataModel {
 
-	int x;
-	int altitude;
-	int speed;
-	int creation_delay_in_seconds;
-	int maximum_fire_frequency_in_milliseconds;
-	SubmarineFireStrategyType fire_strategy_type;
-	int ammunition_y_speed;
-	int maximum_number_of_alive_ammunitions_allowed;
+	private int x;
+	private int altitude;
+	private int speed;
+	private int creation_delay_in_seconds;
+	private int maximum_fire_frequency_in_milliseconds;
+	private SubmarineFireStrategyType fire_strategy_type;
+	private int ammunition_y_speed;
+	private int maximum_number_of_alive_ammunitions_allowed;
 
 	public int getX() {
 		return x;

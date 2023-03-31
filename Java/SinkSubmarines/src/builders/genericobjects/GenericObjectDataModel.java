@@ -2,8 +2,8 @@ package builders.genericobjects;
 
 public class GenericObjectDataModel {
 
-	int height;
-	int width;
+	private int height;
+	private int width;
 
 	public int getHeight() {
 		return height;

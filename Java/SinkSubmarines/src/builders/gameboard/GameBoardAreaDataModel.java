@@ -4,6 +4,11 @@ import java.awt.Color;
 
 public class GameBoardAreaDataModel {
 
+	private int height;
+	private ColorDefinition background_color_definition;
+	private String background_image_path;
+	private int top_altitude;
+
 	public int getHeight() {
 		return height;
 	}
@@ -25,10 +30,6 @@ public class GameBoardAreaDataModel {
 		return background_image_path;
 	}
 
-	int height;
-	ColorDefinition background_color_definition;
-	String background_image_path;
-
 	class ColorDefinition {
 		int red;
 		int green;
@@ -36,6 +37,10 @@ public class GameBoardAreaDataModel {
 	}
 
 	public GameBoardAreaDataModel() {
+	}
+
+	public int getTop_altitude() {
+		return top_altitude;
 	}
 
 }

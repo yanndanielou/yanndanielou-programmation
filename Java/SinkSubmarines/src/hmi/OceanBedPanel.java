@@ -2,6 +2,7 @@ package hmi;
 
 import java.awt.Container;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -30,18 +31,21 @@ public class OceanBedPanel extends AbstractPanel implements GameObjectListerner 
 
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
-		for (SimpleAllyBomb simpleAllyBomb : GameManager.getInstance().getGame().getSimple_ally_bombs()) {
+		
+		g.drawImage(background_buffered_image, 0, 0, getWidth(), getHeight(), null);
+		
+		for (SimpleAllyBomb simpleAllyBomb : new ArrayList<SimpleAllyBomb>(GameManager.getInstance().getGame().getSimple_ally_bombs())) {
 			int bomb_x = (int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getX();
-			int bomb_y = (int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getY();
+			int simple_ally_bomb_altitude = simpleAllyBomb.get_altitude();
 
 			int this_y = getY();
-			if (simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getY() >= this_y) {
+			if (simple_ally_bomb_altitude <= gameBoardAreaDataModel.getTop_altitude()) {
 
 //				LOGGER.info("Display simpleAllyBomb at x:" + bomb_x + " and y:" + bomb_y);
+				int displayed_y = gameBoardAreaDataModel.getTop_altitude() - simple_ally_bomb_altitude;
 				g.drawImage(
 						GameObjectGraphicalRepresentationManager.getInstance().getSimpleAllyBombImage(simpleAllyBomb),
-						bomb_x, bomb_y,
+						bomb_x, displayed_y,
 						(int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
 						(int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getHeight(), null);
 			} else {

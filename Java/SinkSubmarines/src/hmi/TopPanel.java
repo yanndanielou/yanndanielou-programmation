@@ -17,7 +17,7 @@ public class TopPanel extends AbstractPanel {
 	public TopPanel(Container parentContainer, int window_width, GameBoardDataModel gameBoardDataModel,
 			JPanel pannel_above) {
 
-		super(parentContainer, window_width, 100, Color.LIGHT_GRAY, pannel_above);
+		super(parentContainer, gameBoardDataModel, gameBoardDataModel.getTop_area_data_model(), Color.LIGHT_GRAY, pannel_above);
 
 	}
 

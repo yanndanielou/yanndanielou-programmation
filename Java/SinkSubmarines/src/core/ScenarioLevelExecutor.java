@@ -13,7 +13,8 @@ import time.TimeManagerListener;
 public class ScenarioLevelExecutor implements TimeManagerListener {
 
 	private static ScenarioLevelExecutor instance;
-	//private static final Logger LOGGER = LogManager.getLogger(ScenarioLevelExecutor.class);
+	// private static final Logger LOGGER =
+	// LogManager.getLogger(ScenarioLevelExecutor.class);
 
 	private ScenarioLevelDataModel scenarioLevelDataModel = null;
 	private ScenarioLevelWaveDataModel scenarioLevelWaveDataModel = null;
@@ -57,7 +58,7 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 	public void on_100ms_tick() {
 	}
 
-	private void create_simple_submarines_if_needed(int current_step_in_seconds) {
+	private int create_simple_submarines_if_needed(int current_step_in_seconds) {
 		ArrayList<ScenarioLevelEnnemyCreationDataModel> simple_submarines_remaining_to_create_to_remove = new ArrayList<ScenarioLevelEnnemyCreationDataModel>();
 
 		for (ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel : simple_submarines_remaining_to_create) {
@@ -68,9 +69,10 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 		}
 
 		simple_submarines_remaining_to_create.removeAll(simple_submarines_remaining_to_create_to_remove);
+		return simple_submarines_remaining_to_create_to_remove.size();
 	}
 
-	private void create_yellow_submarines_if_needed(int current_step_in_seconds) {
+	private int create_yellow_submarines_if_needed(int current_step_in_seconds) {
 		ArrayList<ScenarioLevelEnnemyCreationDataModel> yellow_submarines_remaining_to_create_to_remove = new ArrayList<ScenarioLevelEnnemyCreationDataModel>();
 
 		for (ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel : yellow_submarines_remaining_to_create) {
@@ -81,14 +83,23 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 		}
 
 		yellow_submarines_remaining_to_create.removeAll(yellow_submarines_remaining_to_create_to_remove);
+		return yellow_submarines_remaining_to_create.size();
+	}
+
+	private int create_objects_if_needed(int current_step_in_seconds) {
+		int object_created = 0;
+		object_created += create_simple_submarines_if_needed(current_step_in_seconds);
+		object_created += create_yellow_submarines_if_needed(current_step_in_seconds);
+		return object_created;
 	}
 
 	@Override
 	public void on_second_tick() {
 		current_step_in_seconds++;
-		create_simple_submarines_if_needed(current_step_in_seconds);
-		create_yellow_submarines_if_needed(current_step_in_seconds);
-
+		create_objects_if_needed(current_step_in_seconds);
+		if(simple_submarines_remaining_to_create.isEmpty() && yellow_submarines_remaining_to_create.isEmpty()) {
+			
+		}
 	}
 
 	@Override

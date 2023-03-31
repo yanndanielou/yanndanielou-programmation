@@ -4,6 +4,7 @@
   "max_number_of_ally_bombs" : 10,
   "waves": [
 			{
+				"wave_number":1,
 				"wave_name":"First wave",
 				"simple_submarines": [
 					{

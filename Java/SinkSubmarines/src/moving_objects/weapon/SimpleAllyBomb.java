@@ -2,11 +2,15 @@ package moving_objects.weapon;
 
 import java.awt.Rectangle;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import builders.genericobjects.AllySimpleBombDataModel;
 import game.Game;
 import moving_objects.GameObjectListerner;
 
 public class SimpleAllyBomb extends Weapon {
+	private static final Logger LOGGER = LogManager.getLogger(SimpleAllyBomb.class);
 
 	public SimpleAllyBomb(AllySimpleBombDataModel genericObjectDataModel, int x, int y, Game game) {
 		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()),
@@ -32,6 +36,8 @@ public class SimpleAllyBomb extends Weapon {
 
 	@Override
 	protected void ocean_bed_reached() {
+		LOGGER.info("ocean_bed_reached, will delete" + this);
+
 		this.current_destruction_timer_in_seconds = 2;
 	}
 
@@ -43,6 +49,7 @@ public class SimpleAllyBomb extends Weapon {
 
 	@Override
 	public void impact_now() {
+		LOGGER.info("Impact now " + this);
 		this.current_destruction_timer_in_seconds = 2;
 	}
 

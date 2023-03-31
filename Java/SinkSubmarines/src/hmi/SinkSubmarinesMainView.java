@@ -42,8 +42,9 @@ public class SinkSubmarinesMainView extends JFrame {
 
 		oceanBedPanel = new OceanBedPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, underWaterPanel);
 
-		this.setSize(gameBoardDataModel.getWidth() + 20, topPanel.getHeight() + skyPanel.getHeight()
-				+ allyBoatPanel.getHeight() + underWaterPanel.getHeight() + getOceanBedPanel().getHeight());
+		int windows_total_height = topPanel.getHeight() + skyPanel.getHeight()
+				+ allyBoatPanel.getHeight() + underWaterPanel.getHeight() + oceanBedPanel.getHeight();
+		this.setSize(gameBoardDataModel.getWidth() + 20, windows_total_height);
 
 		this.addKeyListener(new KeyBoardInputs(this));
 
