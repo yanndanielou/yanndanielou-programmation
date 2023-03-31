@@ -123,15 +123,11 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	}
 
 	private boolean check_if_must_fire() {
-		boolean must_fire = false;
-
-		if (is_minimal_time_since_last_fire_fulfilled()) {
-			if (!has_reached_maximum_number_of_living_bombs()) {
-				if (check_if_in_geographical_position_is_inside_board()) {
-					must_fire = check_if_in_geographical_position_of_fire_according_to_strategy();
-				}
-			}
-		}
+		
+		boolean must_fire = !is_completely_destroyed() && !is_being_destroyed()
+				&& is_minimal_time_since_last_fire_fulfilled() && !has_reached_maximum_number_of_living_bombs()
+				&& check_if_in_geographical_position_is_inside_board()
+				&& check_if_in_geographical_position_of_fire_according_to_strategy();
 
 		return must_fire;
 	}
