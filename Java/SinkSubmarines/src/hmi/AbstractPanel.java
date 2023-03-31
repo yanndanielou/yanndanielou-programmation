@@ -38,6 +38,7 @@ public abstract class AbstractPanel extends JPanel {
 		this.gameBoardAreaDataModel = game_board_area_data_model;
 
 		set_bounds_according_to_panel_above_and_this(pannel_above);
+
 	}
 
 	public AbstractPanel(Container parentContainer, GameBoardDataModel gameBoardDataModel,
@@ -59,9 +60,11 @@ public abstract class AbstractPanel extends JPanel {
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			ImageIcon image_icon = new ImageIcon(background_buffered_image);
-			JLabel background_image_as_label = new JLabel(image_icon);
-			this.add(background_image_as_label);
+			if (game_board_area_data_model.isDisplay_background_image_at_init()) {
+				ImageIcon image_icon = new ImageIcon(background_buffered_image);
+				JLabel background_image_as_label = new JLabel(image_icon);
+				this.add(background_image_as_label);
+			}
 		}
 		set_bounds_according_to_panel_above_and_this(pannel_above);
 	}

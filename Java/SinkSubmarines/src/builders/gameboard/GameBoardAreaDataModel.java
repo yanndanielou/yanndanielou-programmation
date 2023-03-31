@@ -8,6 +8,7 @@ public class GameBoardAreaDataModel {
 	private ColorDefinition background_color_definition;
 	private String background_image_path;
 	private int top_altitude;
+	private Boolean display_background_image_at_init;
 
 	public int getHeight() {
 		return height;
@@ -41,6 +42,10 @@ public class GameBoardAreaDataModel {
 
 	public int getTop_altitude() {
 		return top_altitude;
+	}
+
+	public boolean isDisplay_background_image_at_init() {
+		return display_background_image_at_init;
 	}
 
 }

@@ -2,6 +2,7 @@ package hmi;
 
 import java.awt.Container;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -75,7 +76,7 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 			}
 		}
 
-		for (SimpleSubmarineBomb submarine_bomb : GameManager.getInstance().getGame().getSimple_submarine_bombs()) {
+		for (SimpleSubmarineBomb submarine_bomb : new ArrayList<SimpleSubmarineBomb>(GameManager.getInstance().getGame().getSimple_submarine_bombs())) {
 			int bomb_x = (int) submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board().getX();
 			int bomb_y = (int) submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board().getY();
 
