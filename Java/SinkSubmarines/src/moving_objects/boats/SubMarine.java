@@ -10,7 +10,6 @@ import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import builders.scenariolevel.SubmarineFireStrategyType;
-import core.GameManager;
 import game.Game;
 import game_board.GameBoard;
 import moving_objects.GameObjectListerner;
