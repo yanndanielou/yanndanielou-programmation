@@ -1,12 +1,15 @@
 {
+  "scenario_level_number":1,
+  "scenario_level_name":"First encounter",
   "max_number_of_ally_bombs" : 10,
   "waves": [
 			{
+				"wave_name":"First wave",
 				"simple_submarines": [
 					{
-					  "x": 20,
-					  "altitude": -10,
-					  "speed": 2,
+					  "x":600,
+					  "altitude": -300,
+					  "speed": -1,
 					  "creation_delay_in_seconds": 1,
 					  "maximum_fire_frequency_in_milliseconds": 2000,
 					  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE",
@@ -14,9 +17,9 @@
 					  "maximum_number_of_alive_ammunitions_allowed":3
 					},
 					{
-					  "x": 200,
-					  "altitude": -10,
-					  "speed": 2,
+					  "x": 600,
+					  "altitude": -200,
+					  "speed": -1,
 					  "creation_delay_in_seconds": 1,
 					  "maximum_fire_frequency_in_milliseconds": 2000,
 					  "fire_strategy_type":"FIRE_WITH_RANDOM_INTERVAL",
@@ -24,67 +27,17 @@
 					  "maximum_number_of_alive_ammunitions_allowed":3
 					},
 					{
-					  "x": 100,
-					  "altitude": -100,
-					  "speed": 2,
+					  "x": 600,
+					  "altitude": -250,
+					  "speed": -2,
 					  "creation_delay_in_seconds": 2,
 					  "maximum_fire_frequency_in_milliseconds": 2000,
 					  "fire_strategy_type":"FIRE_WHEN_ALLY_BOAT_IS_ABOVE",
 					  "ammunition_y_speed": -1,
 					  "maximum_number_of_alive_ammunitions_allowed":3
-					},
-					{
-					  "x": -100,
-					  "altitude": -200,
-					  "speed": 2,
-					  "creation_delay_in_seconds": 5,
-					  "maximum_fire_frequency_in_milliseconds": 2000,
-					  "fire_strategy_type":"FIRE_WHEN_ALLY_BOAT_IS_ABOVE_OR_NEARLY_ABOVE",
-					  "ammunition_y_speed": -1,
-					  "maximum_number_of_alive_ammunitions_allowed":3
-					},
-					{
-					  "x": 50,
-					  "altitude": -300,
-					  "speed": -3,
-					  "creation_delay_in_seconds": 10,
-					  "maximum_fire_frequency_in_milliseconds": 2000,
-					  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE",
-					  "ammunition_y_speed": -1,
-					  "maximum_number_of_alive_ammunitions_allowed":3
-					},
-					{
-					  "x": -50,
-					  "altitude": -350,
-					  "speed": 4,
-					  "creation_delay_in_seconds": 15,
-					  "maximum_fire_frequency_in_milliseconds": 2000,
-					  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE",
-					  "ammunition_y_speed": -1,
-					  "maximum_number_of_alive_ammunitions_allowed":3
 					}
 				],
 				"yellow_submarines": [
-					{
-					  "x": -50,
-					  "altitude": -250,
-					  "speed": 2,
-					  "creation_delay_in_seconds": 10,
-					  "maximum_fire_frequency_in_milliseconds": 2000,
-					  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE",
-					  "ammunition_y_speed": -1,
-					  "maximum_number_of_alive_ammunitions_allowed":3
-					},
-					{
-					  "x": -50,
-					  "altitude": -370,
-					  "speed": 2,
-					  "creation_delay_in_seconds": 20,
-					  "maximum_fire_frequency_in_milliseconds": 2000,
-					  "fire_strategy_type":"FIRE_WHEN_ALLY_BOAT_IS_ABOVE_OR_NEARLY_ABOVE",
-					  "ammunition_y_speed": -1,
-					  "maximum_number_of_alive_ammunitions_allowed":3
-					}
 				]
 			}
 		]
