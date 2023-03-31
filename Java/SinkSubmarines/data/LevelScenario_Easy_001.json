@@ -8,8 +8,18 @@
 				"wave_name":"First wave",
 				"simple_submarines": [
 					{
+					  "x":0,
+					  "altitude": -100,
+					  "speed": 1,
+					  "creation_delay_in_seconds": 1,
+					  "maximum_fire_frequency_in_milliseconds": 2000,
+					  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE",
+					  "ammunition_y_speed": -1,
+					  "maximum_number_of_alive_ammunitions_allowed":3
+					},
+					{
 					  "x":600,
-					  "altitude": -300,
+					  "altitude": -100,
 					  "speed": -1,
 					  "creation_delay_in_seconds": 1,
 					  "maximum_fire_frequency_in_milliseconds": 2000,
