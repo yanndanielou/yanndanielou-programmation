@@ -5,12 +5,8 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import builders.gameboard.GameBoardDataModel;
 import core.GameManager;
-import moving_objects.GameObject;
 import moving_objects.GameObjectListerner;
 import moving_objects.boats.AllyBoat;
 import moving_objects.boats.GameObjectGraphicalRepresentationManager;
@@ -19,11 +15,9 @@ import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.Weapon;
 
 public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner {
-	private static final Logger LOGGER = LogManager.getLogger(AllyBoatPanel.class);
+	//private static final Logger LOGGER = LogManager.getLogger(AllyBoatPanel.class);
 
 	private static final long serialVersionUID = 6917913385357901059L;
-
-	private Container parentContainer = null;
 
 	private AllyBoat ally_boat = null;
 
@@ -103,13 +97,13 @@ public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner 
 	@Override
 	public void on_submarine_destruction(SubMarine subMarine) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_weapon_destruction(Weapon weapon) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

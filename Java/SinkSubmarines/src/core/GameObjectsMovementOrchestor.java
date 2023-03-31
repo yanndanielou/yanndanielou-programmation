@@ -31,12 +31,10 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 
 	@Override
 	public void on_10ms_tick() {
-
 	}
 
 	@Override
 	public void on_100ms_tick() {
-
 	}
 
 	@Override

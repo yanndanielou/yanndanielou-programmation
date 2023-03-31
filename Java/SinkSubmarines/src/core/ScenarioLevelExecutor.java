@@ -2,13 +2,10 @@ package core;
 
 import java.util.ArrayList;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import builders.scenariolevel.ScenarioLevelWaveDataModel;
 import builders.scenariolevel.ScenarioLevelDataModel;
 import builders.scenariolevel.ScenarioLevelDataModelBuilder;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
+import builders.scenariolevel.ScenarioLevelWaveDataModel;
 import game.Game;
 import time.TimeManager;
 import time.TimeManagerListener;
@@ -16,7 +13,7 @@ import time.TimeManagerListener;
 public class ScenarioLevelExecutor implements TimeManagerListener {
 
 	private static ScenarioLevelExecutor instance;
-	private static final Logger LOGGER = LogManager.getLogger(ScenarioLevelExecutor.class);
+	//private static final Logger LOGGER = LogManager.getLogger(ScenarioLevelExecutor.class);
 
 	private ScenarioLevelDataModel scenarioLevelDataModel = null;
 	private ScenarioLevelWaveDataModel scenarioLevelWaveDataModel = null;

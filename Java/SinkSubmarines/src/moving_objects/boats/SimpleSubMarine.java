@@ -1,25 +1,20 @@
 package moving_objects.boats;
 
-import java.awt.Rectangle;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import core.GameManager;
+import game.Game;
 import moving_objects.GameObjectListerner;
 import moving_objects.weapon.SimpleSubmarineBomb;
-import moving_objects.weapon.Weapon;
 
 public class SimpleSubMarine extends SubMarine {
-	private static final Logger LOGGER = LogManager.getLogger(SimpleSubMarine.class);
+	//private static final Logger LOGGER = LogManager.getLogger(SimpleSubMarine.class);
 
 	public SimpleSubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
-			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel) {
+			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel, Game game) {
 
-		super(scenarioLevelEnnemyCreationDataModel, simple_submarine_data_model, gameBoardDataModel);
+		super(scenarioLevelEnnemyCreationDataModel, simple_submarine_data_model, gameBoardDataModel, game);
 		/*
 		 * super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
 		 * scenarioLevelEnnemyCreationDataModel.getDepth(),

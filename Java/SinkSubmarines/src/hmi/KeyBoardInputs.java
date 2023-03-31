@@ -12,10 +12,10 @@ import moving_objects.boats.AllyBoat;
 public class KeyBoardInputs implements KeyListener {
 	private static final Logger LOGGER = LogManager.getLogger(KeyBoardInputs.class);
 
-	private SinkSubmarinesMainView sinkSubmarinesMainView = null;
+	// private SinkSubmarinesMainView sinkSubmarinesMainView = null;
 
 	public KeyBoardInputs(SinkSubmarinesMainView sinkSubmarinesMainView) {
-		this.sinkSubmarinesMainView = sinkSubmarinesMainView;
+//		this.sinkSubmarinesMainView = sinkSubmarinesMainView;
 	}
 
 	@Override

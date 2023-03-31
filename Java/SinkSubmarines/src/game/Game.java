@@ -13,7 +13,6 @@ import moving_objects.boats.YellowSubMarine;
 import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
-import moving_objects.weapon.Weapon;
 
 public class Game {
 
@@ -33,7 +32,7 @@ public class Game {
 		// this.genericObjectsDataModel = genericObjectsDataModel;
 		// this.gameBoardDataModel = gameBoardDataModel;
 		gameboard = new GameBoard(gameBoardDataModel);
-		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model(), gameBoardDataModel, genericObjectsDataModel.getAlly_simple_bomb_data_model());
+		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model(), gameBoardDataModel, genericObjectsDataModel.getAlly_simple_bomb_data_model(), this);
 		this.remaining_lives = number_of_lives;
 	}
 

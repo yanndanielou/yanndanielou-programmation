@@ -3,13 +3,14 @@ package moving_objects.weapon;
 import java.awt.Rectangle;
 
 import builders.genericobjects.AllySimpleBombDataModel;
+import game.Game;
 import moving_objects.GameObjectListerner;
 
 public class SimpleAllyBomb extends Weapon {
 
-	public SimpleAllyBomb(AllySimpleBombDataModel genericObjectDataModel, int x, int y) {
+	public SimpleAllyBomb(AllySimpleBombDataModel genericObjectDataModel, int x, int y, Game game) {
 		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()),
-				genericObjectDataModel.getY_speed());
+				genericObjectDataModel.getY_speed(), game);
 	}
 
 	@Override

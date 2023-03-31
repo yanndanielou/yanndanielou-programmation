@@ -11,6 +11,7 @@ import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import builders.scenariolevel.SubmarineFireStrategyType;
 import core.GameManager;
+import game.Game;
 import game_board.GameBoard;
 import moving_objects.GameObjectListerner;
 import moving_objects.weapon.Weapon;
@@ -31,13 +32,13 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	 */
 
 	public SubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
-			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel) {
+			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel, Game game) {
 
 		super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
 				scenarioLevelEnnemyCreationDataModel.getDepth(), simple_submarine_data_model.getWidth(),
 				simple_submarine_data_model.getHeight()),
 				scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_milliseconds(),
-				scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed());
+				scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed(), game);
 
 		this.fireStrategyType = scenarioLevelEnnemyCreationDataModel.getFire_strategy_type();
 

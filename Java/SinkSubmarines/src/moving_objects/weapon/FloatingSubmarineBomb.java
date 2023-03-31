@@ -3,12 +3,13 @@ package moving_objects.weapon;
 import java.awt.Rectangle;
 
 import builders.genericobjects.GenericObjectDataModel;
+import game.Game;
 import moving_objects.GameObjectListerner;
 
 public class FloatingSubmarineBomb extends Weapon {
 
-	public FloatingSubmarineBomb(GenericObjectDataModel genericObjectDataModel, int x, int y, int y_speed) {
-		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), y_speed);
+	public FloatingSubmarineBomb(GenericObjectDataModel genericObjectDataModel, int x, int y, int y_speed, Game game) {
+		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), y_speed, game);
 	}
 
 	@Override

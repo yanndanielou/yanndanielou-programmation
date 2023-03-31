@@ -5,12 +5,8 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import builders.gameboard.GameBoardDataModel;
 import core.GameManager;
-import moving_objects.GameObject;
 import moving_objects.GameObjectListerner;
 import moving_objects.boats.GameObjectGraphicalRepresentationManager;
 import moving_objects.boats.SimpleSubMarine;
@@ -22,7 +18,7 @@ import moving_objects.weapon.SimpleSubmarineBomb;
 import moving_objects.weapon.Weapon;
 
 public class UnderWaterPanel extends AbstractPanel implements GameObjectListerner {
-	private static final Logger LOGGER = LogManager.getLogger(UnderWaterPanel.class);
+	//private static final Logger LOGGER = LogManager.getLogger(UnderWaterPanel.class);
 
 	private static final long serialVersionUID = 6917913385357901059L;
 
@@ -74,7 +70,8 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 						(int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
 						(int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getHeight(), null);
 			} else {
-	//			LOGGER.info("Do not display simpleAllyBomb at x:" + bomb_x + " and y:" + bomb_y);
+				// LOGGER.info("Do not display simpleAllyBomb at x:" + bomb_x + " and y:" +
+				// bomb_y);
 			}
 		}
 
@@ -86,12 +83,14 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 
 //				LOGGER.info("Display simpleAllyBomb at x:" + bomb_x + " and y:" + bomb_y);
 				g.drawImage(
-						GameObjectGraphicalRepresentationManager.getInstance().getSimpleSubmarineBombImage(submarine_bomb),
+						GameObjectGraphicalRepresentationManager.getInstance()
+								.getSimpleSubmarineBombImage(submarine_bomb),
 						bomb_x, bomb_y,
 						(int) submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
 						(int) submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board().getHeight(), null);
 			} else {
-	//			LOGGER.info("Do not display simpleAllyBomb at x:" + bomb_x + " and y:" + bomb_y);
+				// LOGGER.info("Do not display simpleAllyBomb at x:" + bomb_x + " and y:" +
+				// bomb_y);
 			}
 		}
 
@@ -103,19 +102,20 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 
 //				LOGGER.info("Display simpleAllyBomb at x:" + bomb_x + " and y:" + bomb_y);
 				g.drawImage(
-						GameObjectGraphicalRepresentationManager.getInstance().getFloatingSubmarineBombImage(submarine_bomb),
+						GameObjectGraphicalRepresentationManager.getInstance()
+								.getFloatingSubmarineBombImage(submarine_bomb),
 						bomb_x, bomb_y,
 						(int) submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
 						(int) submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board().getHeight(), null);
 			} else {
-	//			LOGGER.info("Do not display simpleAllyBomb at x:" + bomb_x + " and y:" + bomb_y);
+				// LOGGER.info("Do not display simpleAllyBomb at x:" + bomb_x + " and y:" +
+				// bomb_y);
 			}
 		}
 	}
 
 	@Override
 	public void on_ally_boat_moved() {
-		this.repaint();
 	}
 
 	@Override
@@ -131,14 +131,12 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 
 	@Override
 	public void on_submarine_destruction(SubMarine subMarine) {
-		// TODO Auto-generated method stub
-		
+		this.repaint();
 	}
 
 	@Override
 	public void on_weapon_destruction(Weapon weapon) {
-		// TODO Auto-generated method stub
-		
+		this.repaint();
 	}
 
 }

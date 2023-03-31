@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import core.GameManager;
+import game.Game;
 import moving_objects.GameObject;
 import moving_objects.weapon.Weapon;
 
@@ -26,8 +26,8 @@ public abstract class Belligerent extends GameObject {
 	protected ArrayList<Weapon> living_bombs = new ArrayList<Weapon>();
 
 	public Belligerent(Rectangle surrounding_rectangle_absolute_on_complete_board,
-			int maximum_fire_frequency_in_seconds, int ammunition_y_speed) {
-		super(surrounding_rectangle_absolute_on_complete_board);
+			int maximum_fire_frequency_in_seconds, int ammunition_y_speed, Game game) {
+		super(surrounding_rectangle_absolute_on_complete_board, game);
 		this.maximum_fire_frequency_in_milliseconds = maximum_fire_frequency_in_seconds;
 		this.ammunition_y_speed = ammunition_y_speed;
 	}

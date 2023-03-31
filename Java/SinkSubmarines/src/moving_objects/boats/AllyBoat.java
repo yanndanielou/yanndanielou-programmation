@@ -9,17 +9,18 @@ import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.AllySimpleBombDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import constants.Constants;
+import game.Game;
 import moving_objects.GameObjectListerner;
 
 public class AllyBoat extends Belligerent {
 	private static final Logger LOGGER = LogManager.getLogger(AllyBoat.class);
 
 	public AllyBoat(GenericObjectDataModel genericObjectDataModel, GameBoardDataModel gameBoardDataModel,
-			AllySimpleBombDataModel allySimpleBombDataModel) {
+			AllySimpleBombDataModel allySimpleBombDataModel, Game game) {
 		super(new Rectangle(gameBoardDataModel.getWidth() / 2 - genericObjectDataModel.getWidth() / 2, 0,
 				genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()),
 				Constants.MINIMUM_DELAY_BETWEEN_TWO_ALLY_BOMB_DROPPED_IN_MILLISECONDS,
-				allySimpleBombDataModel.getY_speed());
+				allySimpleBombDataModel.getY_speed(), game);
 	}
 
 	@Override

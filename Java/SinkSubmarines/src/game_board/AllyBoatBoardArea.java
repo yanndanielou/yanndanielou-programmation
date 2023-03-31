@@ -1,5 +1,6 @@
 package game_board;
 
+@Deprecated
 public class AllyBoatBoardArea extends GameBoardArea {
 
 

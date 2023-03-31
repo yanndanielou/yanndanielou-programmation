@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import core.GameManager;
+import game.Game;
 
 public abstract class GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);
@@ -16,20 +17,22 @@ public abstract class GameObject {
 	protected Rectangle surrounding_rectangle_absolute_on_complete_board;
 	protected int x_speed = 0;
 	protected int y_speed = 0;
+	protected Game game;
 
 	protected Integer current_destruction_timer_in_seconds = null;
 
 	protected ArrayList<GameObjectListerner> movement_listeners = new ArrayList<GameObjectListerner>();
+
+	public GameObject(Rectangle surrounding_rectangle_absolute_on_complete_board, Game game) {
+		this.surrounding_rectangle_absolute_on_complete_board = surrounding_rectangle_absolute_on_complete_board;
+		this.game = game;
+	}
 
 	public boolean is_being_destroyed() {
 		return current_destruction_timer_in_seconds != null;
 	}
 
 	public abstract void impact_now();
-
-	public GameObject(Rectangle surrounding_rectangle_absolute_on_complete_board) {
-		this.surrounding_rectangle_absolute_on_complete_board = surrounding_rectangle_absolute_on_complete_board;
-	}
 
 	public Point getUpper_left_absolute_position_on_complete_board() {
 		return upper_left_absolute_position_on_complete_board;

@@ -92,7 +92,7 @@ public class GameManager implements TimeManagerListener {
 	public SimpleSubMarine create_simple_submarine(
 			ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel) {
 		SimpleSubMarine submarine = new SimpleSubMarine(scenarioLevelEnnemyCreationDataModel,
-				genericObjectsDataModel.getSimple_submarine_data_model(), gameBoardDataModel);
+				genericObjectsDataModel.getSimple_submarine_data_model(), gameBoardDataModel, game);
 
 		game.addSimpleSubMarine(submarine);
 		submarine.add_movement_listener(sinkSubmarinesMainView.getUnderWaterPanel());
@@ -106,7 +106,7 @@ public class GameManager implements TimeManagerListener {
 	public YellowSubMarine create_yellow_submarine(
 			ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel) {
 		YellowSubMarine submarine = new YellowSubMarine(scenarioLevelEnnemyCreationDataModel,
-				genericObjectsDataModel.getYellow_submarine_data_model(), gameBoardDataModel);
+				genericObjectsDataModel.getYellow_submarine_data_model(), gameBoardDataModel, game);
 
 		game.addYellowSubMarine(submarine);
 		submarine.add_movement_listener(sinkSubmarinesMainView.getUnderWaterPanel());
@@ -150,11 +150,13 @@ public class GameManager implements TimeManagerListener {
 	public void dropSimpleAllyBoatAtLeftOfAllyBoat(int drop_x, int drop_y) {
 		if (is_ally_bomb_drop_autorized()) {
 			SimpleAllyBomb simpleAllyBomb = new SimpleAllyBomb(genericObjectsDataModel.getAlly_simple_bomb_data_model(),
-					drop_x, drop_y);
+					drop_x, drop_y, game);
 			game.addSimpleAllyBomb(simpleAllyBomb);
 			LOGGER.info("Drop simple ally bomb at " + drop_x + " and " + drop_y);
 			simpleAllyBomb.add_movement_listener(sinkSubmarinesMainView.getAllyBoatPanel());
 			simpleAllyBomb.add_movement_listener(sinkSubmarinesMainView.getUnderWaterPanel());
+			simpleAllyBomb.add_movement_listener(sinkSubmarinesMainView.getOceanBedPanel());
+
 		}
 	}
 
@@ -175,7 +177,7 @@ public class GameManager implements TimeManagerListener {
 
 	public SimpleSubmarineBomb fire_simple_submarine_bomb(int x, int y, int ammunition_y_speed) {
 		SimpleSubmarineBomb sumbmarineBomb = new SimpleSubmarineBomb(
-				genericObjectsDataModel.getSimple_submarine_bomb_data_model(), x, y, ammunition_y_speed);
+				genericObjectsDataModel.getSimple_submarine_bomb_data_model(), x, y, ammunition_y_speed, game);
 		game.addSimpleSubmarineBomb(sumbmarineBomb);
 		LOGGER.info("Fire simple submarine bomb at " + x + " and " + y);
 		sumbmarineBomb.add_movement_listener(sinkSubmarinesMainView.getAllyBoatPanel());
@@ -185,7 +187,7 @@ public class GameManager implements TimeManagerListener {
 
 	public FloatingSubmarineBomb fire_floating_submarine_bomb(int x, int y, int ammunition_y_speed) {
 		FloatingSubmarineBomb sumbmarineBomb = new FloatingSubmarineBomb(
-				genericObjectsDataModel.getFloating_submarine_bomb_data_model(), x, y, ammunition_y_speed);
+				genericObjectsDataModel.getFloating_submarine_bomb_data_model(), x, y, ammunition_y_speed, game);
 		game.addFloatingSubmarineBomb(sumbmarineBomb);
 		LOGGER.info("Fire floating submarine bomb at " + x + " and " + y);
 		sumbmarineBomb.add_movement_listener(sinkSubmarinesMainView.getAllyBoatPanel());

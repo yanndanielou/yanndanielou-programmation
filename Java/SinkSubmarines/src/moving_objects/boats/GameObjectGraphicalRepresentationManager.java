@@ -7,17 +7,13 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import core.GameObjectsMovementOrchestor;
 import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
 
 public class GameObjectGraphicalRepresentationManager {
 	private static GameObjectGraphicalRepresentationManager instance;
-	private static final Logger LOGGER = LogManager.getLogger(GameObjectsMovementOrchestor.class);
+	//private static final Logger LOGGER = LogManager.getLogger(GameObjectsMovementOrchestor.class);
 
 	private BufferedImage ally_boat_normal_buffered_image = null;
 	private final String ally_boat_normal_image_path = "Images/AllyBoat.png";

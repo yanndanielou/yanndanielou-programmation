@@ -2,13 +2,14 @@ package moving_objects.weapon;
 
 import java.awt.Rectangle;
 
+import game.Game;
 import moving_objects.GameObject;
 import moving_objects.GameObjectListerner;
 
 public abstract class Weapon extends GameObject {
 
-	public Weapon(Rectangle surrounding_rectangle_absolute_on_complete_board, int y_speed) {
-		super(surrounding_rectangle_absolute_on_complete_board);
+	public Weapon(Rectangle surrounding_rectangle_absolute_on_complete_board, int y_speed, Game game) {
+		super(surrounding_rectangle_absolute_on_complete_board, game);
 		this.y_speed = y_speed;
 	}
 

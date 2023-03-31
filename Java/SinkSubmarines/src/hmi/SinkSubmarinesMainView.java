@@ -6,16 +6,13 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import builders.gameboard.GameBoardDataModel;
 
 public class SinkSubmarinesMainView extends JFrame {
 
 	private static final long serialVersionUID = 1443136088686746460L;
 
-	private static final Logger LOGGER = LogManager.getLogger(SinkSubmarinesMainView.class);
+	//private static final Logger LOGGER = LogManager.getLogger(SinkSubmarinesMainView.class);
 
 	private TopPanel topPanel = null;
 	private SkyPanel skyPanel = null;
@@ -46,7 +43,7 @@ public class SinkSubmarinesMainView extends JFrame {
 		oceanBedPanel = new OceanBedPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, underWaterPanel);
 
 		this.setSize(gameBoardDataModel.getWidth() + 20, topPanel.getHeight() + skyPanel.getHeight()
-				+ allyBoatPanel.getHeight() + underWaterPanel.getHeight() + oceanBedPanel.getHeight());
+				+ allyBoatPanel.getHeight() + underWaterPanel.getHeight() + getOceanBedPanel().getHeight());
 
 		this.addKeyListener(new KeyBoardInputs(this));
 
@@ -105,6 +102,10 @@ public class SinkSubmarinesMainView extends JFrame {
 
 	public MainViewMenuBarManager getMainViewMenuBarManager() {
 		return mainViewMenuBarManager;
+	}
+
+	public OceanBedPanel getOceanBedPanel() {
+		return oceanBedPanel;
 	}
 
 }
