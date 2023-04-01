@@ -60,7 +60,7 @@ public class GameManager implements TimeManagerListener {
 		sinkSubmarinesMainView.getAllyBoatPanel().setAlly_boat(game.getAlly_boat());
 		GameObjectsMovementOrchestor.getInstance();
 		ScenarioLevelExecutor.getInstance().setGame(game);
-		ScenarioLevelExecutor.getInstance().load_and_start_scenario(game_data_model
+		ScenarioLevelExecutor.getInstance().load_and_start_scenario_from_json_file(game_data_model
 				.getLevels_scenarios_data_models_json_files().get(0).getLevel_scenario_data_model_json_file());
 	}
 

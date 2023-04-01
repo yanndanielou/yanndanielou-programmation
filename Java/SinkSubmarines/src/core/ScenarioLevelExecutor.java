@@ -2,6 +2,9 @@ package core;
 
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import builders.scenariolevel.ScenarioLevelDataModel;
 import builders.scenariolevel.ScenarioLevelDataModelBuilder;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
@@ -13,15 +16,16 @@ import time.TimeManagerListener;
 public class ScenarioLevelExecutor implements TimeManagerListener {
 
 	private static ScenarioLevelExecutor instance;
-	// private static final Logger LOGGER =
-	// LogManager.getLogger(ScenarioLevelExecutor.class);
+	private static final Logger LOGGER = LogManager.getLogger(ScenarioLevelExecutor.class);
 
-	private ScenarioLevelDataModel scenarioLevelDataModel = null;
-	private ScenarioLevelWaveDataModel scenarioLevelWaveDataModel = null;
+	private ScenarioLevelDataModel current_scenario_level_data_model = null;
+	private ScenarioLevelWaveDataModel current_scenario_Level_wave_data_model = null;
 	private Game game = null;
 	private int current_step_in_seconds = 0;
 	private ArrayList<ScenarioLevelEnnemyCreationDataModel> simple_submarines_remaining_to_create = new ArrayList<ScenarioLevelEnnemyCreationDataModel>();
 	private ArrayList<ScenarioLevelEnnemyCreationDataModel> yellow_submarines_remaining_to_create = new ArrayList<ScenarioLevelEnnemyCreationDataModel>();
+	private String[] scenarios_levels_json_files = { "LevelScenario_Easy_001.json", "LevelScenario_Easy_002.json",
+			"LevelScenario_Easy_003.json" };
 
 	private ScenarioLevelExecutor() {
 		TimeManager.getInstance().add_listener(this);
@@ -34,15 +38,10 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 		return instance;
 	}
 
-	public void load_and_start_scenario(String scenario_data_model_json_file) {
+	public void load_and_start_scenario_from_json_file(String scenario_data_model_json_file) {
 		ScenarioLevelDataModelBuilder scenarioLevelDataModelBuilder = new ScenarioLevelDataModelBuilder(
 				scenario_data_model_json_file);
-		scenarioLevelDataModel = scenarioLevelDataModelBuilder.getScenario_level_data_model();
-		scenarioLevelWaveDataModel = scenarioLevelDataModel.getWaves().get(0);
-		simple_submarines_remaining_to_create.addAll(scenarioLevelWaveDataModel.getSimple_submarines());
-		yellow_submarines_remaining_to_create.addAll(scenarioLevelWaveDataModel.getYellow_submarines());
-		GameManager.getInstance().getGame().getAlly_boat()
-				.setMax_number_of_living_bombs(scenarioLevelDataModel.getMax_number_of_ally_bombs());
+		loadScenario(scenarioLevelDataModelBuilder.getScenario_level_data_model());
 	}
 
 	public Game getGame() {
@@ -97,9 +96,39 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 	public void on_second_tick() {
 		current_step_in_seconds++;
 		create_objects_if_needed(current_step_in_seconds);
-		if(simple_submarines_remaining_to_create.isEmpty() && yellow_submarines_remaining_to_create.isEmpty()) {
-			
+		if (simple_submarines_remaining_to_create.isEmpty() && yellow_submarines_remaining_to_create.isEmpty()
+				&& game.get_all_submarines().isEmpty()) {
+			LOGGER.info("End of current wave " + current_scenario_Level_wave_data_model + " of scenario:"
+					+ current_scenario_level_data_model);
+
+			if (current_scenario_level_data_model.hasNextWaveAfter(current_scenario_Level_wave_data_model)) {
+				current_scenario_Level_wave_data_model = current_scenario_level_data_model
+						.getNextWaveAfter(current_scenario_Level_wave_data_model);
+				loadWave(current_scenario_Level_wave_data_model);
+			} else {
+				LOGGER.info("Load next scenario");
+
+			}
 		}
+	}
+
+	private void loadScenario(ScenarioLevelDataModel scenario_Level_data_model) {
+		LOGGER.info("Load scenario:" + scenario_Level_data_model.getScenario_level_name() + " number:"
+				+ scenario_Level_data_model.getScenario_level_number());
+		current_scenario_level_data_model = scenario_Level_data_model;
+		loadWave(scenario_Level_data_model.getWaves().get(0));
+		GameManager.getInstance().getGame().getAlly_boat()
+				.setMax_number_of_living_bombs(current_scenario_level_data_model.getMax_number_of_ally_bombs());
+		current_step_in_seconds = 0;
+	}
+
+	private void loadWave(ScenarioLevelWaveDataModel scenario_Level_wave_data_model) {
+		LOGGER.info("Load wave:" + scenario_Level_wave_data_model.getWave_name() + " number:"
+				+ scenario_Level_wave_data_model.getWave_number());
+		simple_submarines_remaining_to_create.addAll(scenario_Level_wave_data_model.getSimple_submarines());
+		yellow_submarines_remaining_to_create.addAll(scenario_Level_wave_data_model.getYellow_submarines());
+		this.current_scenario_Level_wave_data_model = scenario_Level_wave_data_model;
+		current_step_in_seconds = 0;
 	}
 
 	@Override
