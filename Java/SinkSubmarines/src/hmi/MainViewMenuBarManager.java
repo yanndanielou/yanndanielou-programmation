@@ -2,6 +2,7 @@ package hmi;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ButtonGroup;
@@ -46,7 +47,7 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuBar.add(menu);
 		menu.addActionListener(this);
 
-		menuItem = new JMenuItem("New Game", KeyEvent.VK_T);
+		menuItem = new JMenuItem("New Game", KeyEvent.VK_N);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F2, 0));
 		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		menuItem.addActionListener(new ActionListener() {
@@ -132,6 +133,26 @@ public class MainViewMenuBarManager implements ActionListener {
 
 		submenu.add(menuItem);
 		menu.add(submenu);
+
+		// Build second menu in the menu bar.
+		menu = new JMenu("Cheats");
+		menu.setMnemonic(KeyEvent.VK_C);
+		menu.getAccessibleContext().setAccessibleDescription("This menu does nothing");
+		menuBar.add(menu);
+		
+		menuItem = new JMenuItem("Cheat code", KeyEvent.VK_C);
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CheatCodeDialog cheatCodeDialog =  new CheatCodeDialog(parent_main_view);
+				cheatCodeDialog.pack();
+				cheatCodeDialog.setLocationRelativeTo(parent_main_view);
+				cheatCodeDialog.setVisible(true);
+				LOGGER.info("actionPerformed" + e);
+			}
+		});
+		menu.add(menuItem);
 
 		// Build second menu in the menu bar.
 		menu = new JMenu("Another Menu");
