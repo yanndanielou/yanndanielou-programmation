@@ -1,7 +1,12 @@
 package hmi;
 
 import java.awt.Container;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -49,6 +54,21 @@ public class SinkSubmarinesMainView extends JFrame {
 		this.addKeyListener(new KeyBoardInputs(this));
 
 	}
+	
+	private void setApplicationIcon() {
+		
+		BufferedImage application_buffered_image = null;
+		File application_image_file = null;
+		String application_image_path = "Images/game_icon.png";
+
+		application_image_file = new File(application_image_path);
+		try {
+			application_buffered_image = ImageIO.read(application_image_file);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		setIconImage(application_buffered_image);
+	}
 
 	/**
 	 * Create the GUI and show it. For thread safety, this method is invoked from
@@ -77,6 +97,8 @@ public class SinkSubmarinesMainView extends JFrame {
 		this.setSize(200, 200);
 
 		mainViewMenuBarManager.createMenu();
+		
+		setApplicationIcon();
 
 		// Display the window.
 
