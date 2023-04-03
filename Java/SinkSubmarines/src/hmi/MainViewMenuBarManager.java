@@ -76,6 +76,21 @@ public class MainViewMenuBarManager implements ActionListener {
 		});
 		menu.add(menuItem);
 
+		menuItem = new JMenuItem("Pause & Resume", KeyEvent.VK_P);
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, 0));
+		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				if (GameManager.hasGameInProgress()) {
+					GameManager.getInstance().pause_or_resume_current_game();
+				} else {
+					LOGGER.info("No game in progress, cannot pause or resume");
+				}
+			}
+		});
+		menu.add(menuItem);
+
 		// Build the first menu.
 		menu = new JMenu("A Menu");
 		menu.setMnemonic(KeyEvent.VK_A);

@@ -220,4 +220,25 @@ public class GameManager implements TimeManagerListener {
 
 		ScenarioLevelExecutor.getInstance().setGame(game);
 	}
+
+	public void pause_or_resume_current_game() {
+		LOGGER.info("Pause or resume game");
+
+		if (game.isPaused()) {
+			resume_current_game();
+		} else {
+			pause_current_game();
+		}
+	}
+
+	private void resume_current_game() {
+		LOGGER.info("Resume current game");
+		game.setPaused(false);
+	}
+
+	private void pause_current_game() {
+		LOGGER.info("Pause current game");
+		game.setPaused(true);
+		
+	}
 }

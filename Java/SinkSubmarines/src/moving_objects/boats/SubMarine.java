@@ -148,7 +148,7 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	public void on_50ms_tick() {
 
 		if (check_if_must_fire()) {
-			LOGGER.info(this + " must fire");
+			LOGGER.debug(this + " must fire");
 			fire();
 			on_fire();
 		}

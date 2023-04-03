@@ -26,6 +26,8 @@ public class Game {
 	private ArrayList<FloatingSubmarineBomb> floating_submarine_bombs = new ArrayList<>();
 
 	int remaining_lives;
+	
+	private boolean paused = false;
 
 	public Game(GameBoardDataModel gameBoardDataModel, GenericObjectsDataModel genericObjectsDataModel,
 			int number_of_lives) {
@@ -103,6 +105,14 @@ public class Game {
 
 	public ArrayList<FloatingSubmarineBomb> getFloating_submarine_bombs() {
 		return floating_submarine_bombs;
+	}
+
+	public boolean isPaused() {
+		return paused;
+	}
+
+	public void setPaused(boolean paused) {
+		this.paused = paused;
 	}
 
 	/*
