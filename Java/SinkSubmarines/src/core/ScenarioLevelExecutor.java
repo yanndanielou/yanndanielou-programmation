@@ -146,4 +146,8 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 	public void setGame(Game game) {
 		this.game = game;
 	}
+
+	@Override
+	public void on_pause() {
+	}
 }

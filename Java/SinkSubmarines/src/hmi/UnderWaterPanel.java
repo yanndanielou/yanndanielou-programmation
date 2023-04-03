@@ -1,10 +1,15 @@
 package hmi;
 
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import builders.gameboard.GameBoardDataModel;
 import core.GameManager;
@@ -17,14 +22,17 @@ import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
 import moving_objects.weapon.Weapon;
+import time.TimeManager;
+import time.TimeManagerListener;
 
-public class UnderWaterPanel extends AbstractPanel implements GameObjectListerner {
+public class UnderWaterPanel extends AbstractPanel implements GameObjectListerner, TimeManagerListener {
 	// private static final Logger LOGGER =
 	// LogManager.getLogger(UnderWaterPanel.class);
 
 	private static final long serialVersionUID = 6917913385357901059L;
 
 	// private JLabel simple_submarine_image_as_label = null;
+	private JLabel pause_label = null;
 
 	public UnderWaterPanel(Container parentContainer, int window_width, GameBoardDataModel gameBoardDataModel,
 			JPanel pannel_above) {
@@ -32,10 +40,34 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 		super(parentContainer, gameBoardDataModel, gameBoardDataModel.getUnder_water_game_board_area_data_model(),
 				pannel_above);
 
+		TimeManager.getInstance().add_listener(this);
+
 	}
 
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+
+		if (GameManager.hasGameInProgress() && GameManager.getInstance().getGame().isPaused()) {
+			pause_label = new JLabel("Paused");
+			Font pause_label_font = new Font(Font.SANS_SERIF, Font.BOLD | Font.ITALIC, 40);
+			pause_label.setFont(pause_label_font);
+			// pause_label.setBounds(getWidth() / 2, getHeight() / 2,
+			// pause_label.getWidth(), pause_label.getHeight());
+			// pause_label.setVerticalAlignment(SwingConstants.CENTER);
+			// pause_label.setHorizontalAlignment(SwingConstants.CENTER);
+			pause_label.setSize(new Dimension(150, 100));
+			pause_label.setLocation(getWidth() / 2 - pause_label.getWidth() / 2,
+					getHeight() / 2 - pause_label.getHeight() / 2);
+			pause_label.setForeground(Color.WHITE);
+
+			this.add(pause_label);
+
+		} else {
+			if (pause_label != null) {
+				this.remove(pause_label);
+				pause_label = null;
+			}
+		}
 
 		for (SimpleSubMarine simple_submarine : new ArrayList<SimpleSubMarine>(
 				GameManager.getInstance().getGame().getSimple_submarines())) {
@@ -61,7 +93,8 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 					(int) yellow_submarine.getSurrounding_rectangle_absolute_on_complete_board().getHeight(), null);
 		}
 
-		for (SimpleAllyBomb simpleAllyBomb : new ArrayList<SimpleAllyBomb>(GameManager.getInstance().getGame().getSimple_ally_bombs())) {
+		for (SimpleAllyBomb simpleAllyBomb : new ArrayList<SimpleAllyBomb>(
+				GameManager.getInstance().getGame().getSimple_ally_bombs())) {
 			int bomb_x = (int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getX();
 			int bomb_y = (int) simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().getY();
 
@@ -99,7 +132,8 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 			}
 		}
 
-		for (FloatingSubmarineBomb submarine_bomb : new ArrayList<FloatingSubmarineBomb>(GameManager.getInstance().getGame().getFloating_submarine_bombs())) {
+		for (FloatingSubmarineBomb submarine_bomb : new ArrayList<FloatingSubmarineBomb>(
+				GameManager.getInstance().getGame().getFloating_submarine_bombs())) {
 			int bomb_x = (int) submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board().getX();
 			int bomb_y = (int) submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board().getY();
 
@@ -116,7 +150,9 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 				// LOGGER.info("Do not display simpleAllyBomb at x:" + bomb_x + " and y:" +
 				// bomb_y);
 			}
+
 		}
+
 	}
 
 	@Override
@@ -141,6 +177,36 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 
 	@Override
 	public void on_weapon_destruction(Weapon weapon) {
+		this.repaint();
+	}
+
+	@Override
+	public void on_10ms_tick() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_50ms_tick() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_100ms_tick() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_second_tick() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_pause() {
+
 		this.repaint();
 	}
 

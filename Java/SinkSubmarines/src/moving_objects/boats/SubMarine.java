@@ -123,7 +123,7 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	}
 
 	private boolean check_if_must_fire() {
-		
+
 		boolean must_fire = !is_completely_destroyed() && !is_being_destroyed()
 				&& is_minimal_time_since_last_fire_fulfilled() && !has_reached_maximum_number_of_living_bombs()
 				&& check_if_in_geographical_position_is_inside_board()
@@ -213,6 +213,10 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 
 	@Override
 	public void on_submarine_destruction(SubMarine subMarine) {
+	}
+
+	@Override
+	public void on_pause() {
 	}
 
 	public abstract void fire();

@@ -61,46 +61,72 @@ public class TimeManager extends TimerTask {
 			tick_second();
 		}
 
-		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
-			time_manager_listener.on_10ms_tick();
-		}
+		notify_10ms_tick();
 
 		time_manager_listeners.addAll(new_listeners_waiting_current_tick_to_register);
 		new_listeners_waiting_current_tick_to_register.clear();
 	}
 
-	private void tick_50ms() {
+	private void notify_10ms_tick() {
 		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
-			time_manager_listener.on_50ms_tick();
+			time_manager_listener.on_10ms_tick();
 		}
-
 	}
 
 	private void tick_20ms() {
+		notify_20ms_tick();
+	}
+
+	private void notify_20ms_tick() {
 		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
 			time_manager_listener.on_20ms_tick();
 		}
+	}
 
+	private void tick_50ms() {
+		notify_50ms_tick();
+	}
+
+	private void notify_50ms_tick() {
+		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
+			time_manager_listener.on_50ms_tick();
+		}
 	}
 
 	private void tick_100ms() {
 		// System.out.println("tick_100ms:" + new Date());
 		LOGGER.debug("tick_100ms begin");
 
+		notify_100ms_tick();
+
+		LOGGER.debug("tick_100ms end");
+	}
+
+	private void notify_100ms_tick() {
 		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
 			time_manager_listener.on_100ms_tick();
 		}
-		LOGGER.debug("tick_100ms end");
 	}
 
 	private void tick_second() {
 		// System.out.println("tick_second:" + new Date());
 		LOGGER.trace("tick_second begin");
 
+		notify_second_tick();
+
+		LOGGER.debug("tick_second end");
+	}
+
+	private void notify_second_tick() {
 		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
 			time_manager_listener.on_second_tick();
 		}
-		LOGGER.debug("tick_second end");
+	}
+
+	private void notify_pause_or_stop() {
+		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
+			time_manager_listener.on_pause();
+		}
 	}
 
 	public void start() {
@@ -112,6 +138,9 @@ public class TimeManager extends TimerTask {
 
 	public void stop() {
 		previous_instance_before_pause = instance;
+		notify_pause_or_stop();
+		timer.cancel();
+		timer.purge();
 		instance = null;
 		System.out.println("TimerTask cancelled");
 	}

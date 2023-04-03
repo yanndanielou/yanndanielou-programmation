@@ -234,11 +234,17 @@ public class GameManager implements TimeManagerListener {
 	private void resume_current_game() {
 		LOGGER.info("Resume current game");
 		game.setPaused(false);
+		TimeManager.getInstance().start();
 	}
 
 	private void pause_current_game() {
 		LOGGER.info("Pause current game");
 		game.setPaused(true);
+		TimeManager.getInstance().stop();
 		
+	}
+
+	@Override
+	public void on_pause() {
 	}
 }

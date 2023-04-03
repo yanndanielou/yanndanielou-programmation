@@ -121,4 +121,9 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 	public void on_20ms_tick() {
 	}
 
+	@Override
+	public void on_pause() {
+	
+	}
+
 }
