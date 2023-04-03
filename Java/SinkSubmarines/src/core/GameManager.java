@@ -61,14 +61,14 @@ public class GameManager implements TimeManagerListener {
 		GenericObjectsDataModelBuilder genericObjectsDataModelBuilder = new GenericObjectsDataModelBuilder(
 				game_data_model.getGeneric_objects_data_model_json_file());
 		genericObjectsDataModel = genericObjectsDataModelBuilder.getGeneric_objects_data_model();
-		TimeManager.getInstance().start();
 		sinkSubmarinesMainView
 				.initialize_from_game_board_data_model(gameBoardDataModelBuilder.getGame_board_data_model());
-		game = new Game(gameBoardDataModelBuilder.getGame_board_data_model(),
-				genericObjectsDataModelBuilder.getGeneric_objects_data_model(), game_data_model.getNumber_of_lives());
+
+		set_game(new Game(gameBoardDataModelBuilder.getGame_board_data_model(),
+				genericObjectsDataModelBuilder.getGeneric_objects_data_model(), game_data_model.getNumber_of_lives()));
+
 		sinkSubmarinesMainView.getAllyBoatPanel().setAlly_boat(game.getAlly_boat());
 		GameObjectsMovementOrchestor.getInstance();
-		ScenarioLevelExecutor.getInstance().setGame(game);
 		ScenarioLevelExecutor.getInstance().load_and_start_scenario_from_json_file(game_data_model
 				.getLevels_scenarios_data_models_json_files().get(0).getLevel_scenario_data_model_json_file());
 	}
@@ -205,7 +205,19 @@ public class GameManager implements TimeManagerListener {
 	}
 
 	public void abort_current_game() {
-		// TODO Auto-generated method stub
-		
+		set_game(null);
+	}
+
+	public void set_game(Game game) {
+
+		if (game != null) {
+			TimeManager.getInstance().start();
+			this.game = game;
+		} else {
+			TimeManager.getInstance().stop();
+			this.game = null;
+		}
+
+		ScenarioLevelExecutor.getInstance().setGame(game);
 	}
 }

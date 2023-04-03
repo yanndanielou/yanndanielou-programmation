@@ -53,7 +53,7 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (GameManager.hasGameInProgress()) {
-					Object[] options = { "Yes", "No way!" };
+					Object[] options = { "Yes", "No" };
 
 					int n = JOptionPane.showOptionDialog(parent_main_view, "Abort current game?", "Game in progress!",
 							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);

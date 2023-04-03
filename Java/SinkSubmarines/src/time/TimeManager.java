@@ -8,7 +8,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class TimeManager extends TimerTask {
-	private static TimeManager instance;
+	private static TimeManager instance = null;
+	private static TimeManager previous_instance_before_pause = null;
 
 	private static final Logger LOGGER = LogManager.getLogger(TimeManager.class);
 
@@ -19,15 +20,18 @@ public class TimeManager extends TimerTask {
 	private int number_of_10ms_tick = 0;
 
 	private TimeManager() {
-		// running timer task as daemon thread
-		timer = new Timer(true);
-		timer.scheduleAtFixedRate(this, 0, 10);
-		LOGGER.info("TimerTask started");
+		LOGGER.info("TimerTask created");
+
 	}
 
 	public static TimeManager getInstance() {
 		if (instance == null) {
 			instance = new TimeManager();
+
+			if (previous_instance_before_pause != null) {
+				instance.new_listeners_waiting_current_tick_to_register = previous_instance_before_pause.time_manager_listeners;
+				previous_instance_before_pause = null;
+			}
 		}
 		return instance;
 	}
@@ -100,12 +104,15 @@ public class TimeManager extends TimerTask {
 	}
 
 	public void start() {
-
+		// running timer task as daemon thread
+		timer = new Timer(true);
+		timer.scheduleAtFixedRate(this, 0, 10);
+		LOGGER.info("TimerTask started");
 	}
 
 	public void stop() {
-
-		timer.cancel();
+		previous_instance_before_pause = instance;
+		instance = null;
 		System.out.println("TimerTask cancelled");
 	}
 }
