@@ -70,7 +70,8 @@ public class MainViewMenuBarManager implements ActionListener {
 					}
 				}
 
-				GameManager.getInstance().new_game("data/GameDataModel.json");
+				NewGameLevelAndScenarioLevelSelectionPopup newGameLevelAndScenarioLevelSelectionPopup = new NewGameLevelAndScenarioLevelSelectionPopup(parent_main_view);
+				newGameLevelAndScenarioLevelSelectionPopup.createAndShowGUI();
 				LOGGER.info("actionPerformed" + e);
 			}
 		});
