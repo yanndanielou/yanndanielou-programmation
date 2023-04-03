@@ -42,7 +42,16 @@ public class GameManager implements TimeManagerListener {
 		return instance;
 	}
 
+	public static boolean hasInstance() {
+		return instance != null;
+	}
+
+	public static boolean hasGameInProgress() {
+		return hasInstance() && getInstance().getGame() != null;
+	}
+
 	public void new_game(String game_data_model_json_file) {
+		LOGGER.info("New game!");
 		GameDataModelBuilder gameDataModelBuilder = new GameDataModelBuilder(game_data_model_json_file);
 		GameDataModel game_data_model = gameDataModelBuilder.getGame_data_model();
 
@@ -193,5 +202,10 @@ public class GameManager implements TimeManagerListener {
 		sumbmarineBomb.add_movement_listener(sinkSubmarinesMainView.getAllyBoatPanel());
 		sumbmarineBomb.add_movement_listener(sinkSubmarinesMainView.getUnderWaterPanel());
 		return sumbmarineBomb;
+	}
+
+	public void abort_current_game() {
+		// TODO Auto-generated method stub
+		
 	}
 }
