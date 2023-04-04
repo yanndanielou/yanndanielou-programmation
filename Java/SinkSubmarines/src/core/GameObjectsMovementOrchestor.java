@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import game.Game;
 import moving_objects.GameObject;
 import moving_objects.boats.Belligerent;
+import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
 import time.TimeManager;
 import time.TimeManagerListener;
@@ -68,23 +69,22 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 		List<? extends GameObject> objects_completely_destroyed_to_clean = objects_to_clean.stream()
 				.filter(item -> item.is_completely_destroyed()).collect(Collectors.toList());
 
-		for(GameObject object_completely_destroyed_to_clean : objects_completely_destroyed_to_clean) {
+		for (GameObject object_completely_destroyed_to_clean : objects_completely_destroyed_to_clean) {
 			object_completely_destroyed_to_clean.notify_destruction();
 		}
-		
-		objects_to_clean.removeAll(
-				objects_completely_destroyed_to_clean);
+
+		objects_to_clean.removeAll(objects_completely_destroyed_to_clean);
 
 	}
 
 	private void proceed_destroyed_objects_cleaning() {
 		Game game = GameManager.getInstance().getGame();
-		
-		proceed_destroyed_objects_cleaning_by_type(game.getSimple_submarines());		
+
+		proceed_destroyed_objects_cleaning_by_type(game.getSimple_submarines());
 		proceed_destroyed_objects_cleaning_by_type(game.getYellow_submarines());
 		proceed_destroyed_objects_cleaning_by_type(game.getSimple_ally_bombs());
 		proceed_destroyed_objects_cleaning_by_type(game.getSimple_submarine_bombs());
-		
+
 	}
 
 	private boolean check_if_collision() {
@@ -101,6 +101,18 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 									+ " and submarine:" + subMarine);
 							simpleAllyBomb.impact_now();
 							subMarine.impact_now();
+						}
+					}
+				}
+
+				for (FloatingSubmarineBomb floating_submarine_bomb : GameManager.getInstance().getGame().getFloating_submarine_bombs()) {
+					if (!floating_submarine_bomb.is_being_destroyed()) {
+						if (simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board()
+								.intersects(floating_submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board())) {
+							LOGGER.info("Collision detected between simple ally bomb " + simpleAllyBomb
+									+ " and floating submarine bomb:" + floating_submarine_bomb);
+							simpleAllyBomb.impact_now();
+							floating_submarine_bomb.impact_now();
 						}
 					}
 				}
@@ -123,7 +135,7 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 
 	@Override
 	public void on_pause() {
-	
+
 	}
 
 }
