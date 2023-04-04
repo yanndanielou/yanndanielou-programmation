@@ -53,7 +53,6 @@ public class OceanBedPanel extends AbstractPanel implements GameObjectListerner 
 				// bomb_y);
 			}
 		}
-
 	}
 
 	@Override
