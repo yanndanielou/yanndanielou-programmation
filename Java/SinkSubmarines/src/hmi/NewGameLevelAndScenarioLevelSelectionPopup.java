@@ -121,7 +121,7 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 				Math.max(baby_sailor_icon.getIconWidth(), medium_sailor_icon.getIconWidth()),
 				old_sailor_icon.getIconWidth());
 
-		int sailors_icons_y = get_y_for_next_item_above(select_play_skill_mode_label);
+		int highest_sailor_icon_y = get_y_for_next_item_above(select_play_skill_mode_label);
 
 		baby_sailor_image_label = new JLabel(baby_sailor_icon);
 		baby_sailor_image_label.addMouseListener(new MouseAdapter() {
@@ -131,7 +131,8 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 				on_difficulty_level_chosen();
 			}
 		});
-		baby_sailor_image_label.setLocation(getWidth() / 4 - baby_sailor_icon.getIconWidth() / 2, sailors_icons_y);
+		baby_sailor_image_label.setLocation(getWidth() / 4 - baby_sailor_icon.getIconWidth() / 2,
+				highest_sailor_icon_y + (highest_sailor_icon_y - baby_sailor_icon.getIconHeight()) / 2);
 		baby_sailor_image_label.setSize(baby_sailor_icon.getIconWidth(), baby_sailor_icon.getIconHeight());
 		add(baby_sailor_image_label);
 
@@ -144,7 +145,7 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 			}
 		});
 		medium_sailor_image_label.setLocation(2 * getWidth() / 4 - medium_sailor_icon.getIconWidth() / 2,
-				sailors_icons_y);
+				highest_sailor_icon_y + (highest_sailor_icon_y - medium_sailor_icon.getIconHeight()) / 2);
 		medium_sailor_image_label.setSize(medium_sailor_icon.getIconWidth(), medium_sailor_icon.getIconHeight());
 		add(medium_sailor_image_label);
 
@@ -156,7 +157,8 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 				on_difficulty_level_chosen();
 			}
 		});
-		old_sailor_image_label.setLocation(3 * getWidth() / 4 - old_sailor_icon.getIconWidth() / 2, sailors_icons_y);
+		old_sailor_image_label.setLocation(3 * getWidth() / 4 - old_sailor_icon.getIconWidth() / 2,
+				highest_sailor_icon_y);
 		old_sailor_image_label.setSize(old_sailor_icon.getIconWidth(), old_sailor_icon.getIconHeight());
 		add(old_sailor_image_label);
 
@@ -183,19 +185,6 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 		cancel_button.setSize(buttons_width, BASIC_COMPONENTS_HEIGHT);
 		cancel_button.setLocation(2 * getWidth() / 3 - cancel_button.getWidth() / 2, buttons_y);
 		add(cancel_button);
-
-		// add(bottom_with_buttons_panel);
-
-		/*
-		 * JPanel bottom_with_buttons_panel = new JPanel(); //
-		 * bottom_with_buttons_panel.setLayout(new FlowLayout());
-		 * bottom_with_buttons_panel.setSize(getWidth(), BASIC_COMPONENTS_HEIGHT); int
-		 * bottom_with_buttons_pannel_y =
-		 * get_y_for_next_item_above(sailors_icons_panel);
-		 * bottom_with_buttons_panel.setLocation(0, bottom_with_buttons_pannel_y);
-		 */
-
-		// initialize_buttons(sailors_icons_panel, baby_sailor_icon);
 
 		bottom_label = new JLabel();
 		bottom_label.setHorizontalAlignment(SwingConstants.CENTER);
