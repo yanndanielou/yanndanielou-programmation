@@ -1,6 +1,8 @@
 package hmi;
 
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.Icon;
@@ -16,11 +18,11 @@ import core.ScenarioLevelExecutor;
 import game.Game;
 import game.GameListener;
 
-public class TopPanel extends JPanel implements  GameListener {
+public class TopPanel extends JPanel implements GameListener {
 
-	private JLabel current_scenario_level = new JLabel();
-	private Icon character_sailor_icon;
-	private JLabel score;
+	private JLabel current_scenario_level_label;
+	private ImageIcon character_sailor_icon;
+	private JLabel score_label;
 
 	/**
 	 * 
@@ -36,9 +38,21 @@ public class TopPanel extends JPanel implements  GameListener {
 
 		setLayout(null);
 
-		current_scenario_level.setSize(100, (int) (getHeight() * 0.8));
-		current_scenario_level.setLocation(10, 10);
-		add(current_scenario_level);
+		current_scenario_level_label = new JLabel("LEVEL:");
+		current_scenario_level_label.setSize(100, (int) (getHeight() * 0.8));
+		current_scenario_level_label.setLocation(10, 10);
+		current_scenario_level_label.setForeground(Color.yellow);
+		current_scenario_level_label.setFont(new Font(Font.SERIF, Font.BOLD,  15));
+		add(current_scenario_level_label);
+
+		character_sailor_icon = new ImageIcon("Images/character_baby_sailor.png");
+		
+		score_label = new JLabel("SCORE");
+		score_label.setSize(150, (int) (getHeight() * 0.8));
+		score_label.setLocation(400, 10);
+		score_label.setForeground(Color.yellow);
+		score_label.setFont(new Font(Font.SERIF, Font.BOLD,  15));
+		add(score_label);
 
 		// setBounds(0, 0, this.getSize().width, this.getSize().height);
 
@@ -54,7 +68,8 @@ public class TopPanel extends JPanel implements  GameListener {
 					.getCurrent_scenario_level_data_model();
 
 			if (current_scenario_level_data_model != null) {
-				current_scenario_level.setText("LEVEL " + current_scenario_level_data_model.getScenario_level_number());
+				current_scenario_level_label
+						.setText("LEVEL " + current_scenario_level_data_model.getScenario_level_number());
 			}
 		}
 	}
@@ -62,13 +77,23 @@ public class TopPanel extends JPanel implements  GameListener {
 	@Override
 	public void on_game_paused(Game game) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_number_of_remaining_lives_changed(Game game) {
+		update_current_scenario_level(game);
+	}
+
+	private void update_current_scenario_level(Game game) {
+		ScenarioLevelExecutor scenario_level_executor = ScenarioLevelExecutor.getInstance();
+		current_scenario_level_label.setText("LEVEL:" + scenario_level_executor.getCurrent_scenario_level_data_model().getScenario_level_number());
+	}
+
+	@Override
+	public void on_game_resumed(Game game) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

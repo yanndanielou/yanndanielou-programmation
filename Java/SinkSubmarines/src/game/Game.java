@@ -121,8 +121,16 @@ public class Game {
 	public void setPaused(boolean paused) {
 		if (this.paused != paused) {
 			this.paused = paused;
-			notify_game_paused();
+			if (paused) {
+				notify_game_paused();
+			} else {
+				notify_game_resumed();
+			}
 		}
+	}
+
+	private void notify_game_resumed() {
+		game_listeners.forEach((game_listener) -> game_listener.on_game_resumed(this));
 	}
 
 	public int getRemaining_lives() {
