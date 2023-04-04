@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -39,6 +40,8 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 	private JLabel medium_sailor_image_label;
 	private JLabel old_sailor_image_label;
 
+	private JLabel bottom_label;
+
 	private SinkSubmarinesMainView sinkSubmarinesMainView;
 
 	private DifficultyLevel difficulty_level_chosen = null;
@@ -46,40 +49,6 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 	public NewGameLevelAndScenarioLevelSelectionPopup(SinkSubmarinesMainView sinkSubmarinesMainView) {
 		super("Sink submarines");
 		this.sinkSubmarinesMainView = sinkSubmarinesMainView;
-	}
-
-	class BabySailorImageMouseListener implements MouseListener {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			difficulty_level_chosen = DifficultyLevel.EASY;
-			on_difficulty_level_chosen(difficulty_level_chosen);
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-
-		}
-
 	}
 
 	/**
@@ -122,7 +91,13 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 
 		Icon baby_sailor_icon = new ImageIcon("Images/character_baby_sailor.png");
 		baby_sailor_image_label = new JLabel(baby_sailor_icon);
-		baby_sailor_image_label.addMouseListener(new BabySailorImageMouseListener());
+		baby_sailor_image_label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				difficulty_level_chosen = DifficultyLevel.EASY;
+				on_difficulty_level_chosen();
+			}
+		});
 		sailors_icons_panel.add(baby_sailor_image_label);
 
 		Icon medium_sailor_icon = new ImageIcon("Images/character_medium_sailor.png");
@@ -131,10 +106,8 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				difficulty_level_chosen = DifficultyLevel.MEDIUM;
-				on_difficulty_level_chosen(difficulty_level_chosen);
-
+				on_difficulty_level_chosen();
 			}
-
 		});
 		sailors_icons_panel.add(medium_sailor_image_label);
 
@@ -143,8 +116,8 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 		old_sailor_image_label.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				difficulty_level_chosen = DifficultyLevel.MEDIUM;
-				on_difficulty_level_chosen(difficulty_level_chosen);
+				difficulty_level_chosen = DifficultyLevel.HARD;
+				on_difficulty_level_chosen();
 			}
 		});
 		sailors_icons_panel.add(old_sailor_image_label);
@@ -154,6 +127,10 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 		JPanel bottom_with_buttons_panel = new JPanel();
 		bottom_with_buttons_panel.setLayout(new FlowLayout());
 		add(bottom_with_buttons_panel, BorderLayout.AFTER_LAST_LINE);
+
+		bottom_label = new JLabel("");
+		bottom_label.setHorizontalAlignment(SwingConstants.CENTER);
+		add(bottom_label, BorderLayout.PAGE_END);
 
 		ok_button = new JButton("OK");
 		ok_button.addActionListener(e -> {
@@ -174,12 +151,18 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 
 		update_ok_button_state();
 		update_sailors_images_apparence();
+		update_bottom_label_text();
+	}
+
+	private void on_difficulty_level_chosen() {
+		update_ok_button_state();
+		update_sailors_images_apparence();
+		update_bottom_label_text();
 
 	}
 
-	private void on_difficulty_level_chosen(DifficultyLevel difficulty_level_chosen) {
-		update_ok_button_state();
-		update_sailors_images_apparence();
+	private void update_bottom_label_text() {
+		bottom_label.setText("Difficulty chosen:" + difficulty_level_chosen);
 	}
 
 	private void update_sailors_images_apparence() {
