@@ -107,6 +107,19 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 		sailors_icons_panel.setLayout(new FlowLayout());
 
 		Icon baby_sailor_icon = new ImageIcon("Images/character_baby_sailor.png");
+		Icon medium_sailor_icon = new ImageIcon("Images/character_medium_sailor.png");
+		Icon old_sailor_icon = new ImageIcon("Images/character_old_sailor.png");
+
+		int max_sailor_icon_height = Math.max(
+				Math.max(baby_sailor_icon.getIconHeight(), medium_sailor_icon.getIconHeight()),
+				old_sailor_icon.getIconHeight());
+
+		int max_sailor_icon_width = Math.max(
+				Math.max(baby_sailor_icon.getIconWidth(), medium_sailor_icon.getIconWidth()),
+				old_sailor_icon.getIconWidth());
+
+		int sailors_icons_y = get_y_for_next_item_above(select_skill_mode_label);
+
 		baby_sailor_image_label = new JLabel(baby_sailor_icon);
 		baby_sailor_image_label.addMouseListener(new MouseAdapter() {
 			@Override
@@ -116,9 +129,10 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 				GameManager.getInstance().new_game(difficulty_level_chosen);
 			}
 		});
-		sailors_icons_panel.add(baby_sailor_image_label);
+		baby_sailor_image_label.setLocation(getWidth() / 4 - baby_sailor_icon.getIconWidth() / 2, sailors_icons_y);
+		baby_sailor_image_label.setSize(baby_sailor_icon.getIconWidth(), baby_sailor_icon.getIconHeight());
+		add(baby_sailor_image_label);
 
-		Icon medium_sailor_icon = new ImageIcon("Images/character_medium_sailor.png");
 		medium_sailor_image_label = new JLabel(medium_sailor_icon);
 		medium_sailor_image_label.addMouseListener(new MouseAdapter() {
 			@Override
@@ -127,9 +141,11 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 				on_difficulty_level_chosen();
 			}
 		});
-		sailors_icons_panel.add(medium_sailor_image_label);
+		medium_sailor_image_label.setLocation(2 * getWidth() / 4 - medium_sailor_icon.getIconWidth() / 2,
+				sailors_icons_y);
+		medium_sailor_image_label.setSize(medium_sailor_icon.getIconWidth(), medium_sailor_icon.getIconHeight());
+		add(medium_sailor_image_label);
 
-		Icon old_sailor_icon = new ImageIcon("Images/character_old_sailor.png");
 		old_sailor_image_label = new JLabel(old_sailor_icon);
 		old_sailor_image_label.addMouseListener(new MouseAdapter() {
 			@Override
@@ -138,11 +154,11 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 				on_difficulty_level_chosen();
 			}
 		});
-		sailors_icons_panel.add(old_sailor_image_label);
+		old_sailor_image_label.setLocation(3 * getWidth() / 4 - old_sailor_icon.getIconWidth() / 2, sailors_icons_y);
+		old_sailor_image_label.setSize(old_sailor_icon.getIconWidth(), old_sailor_icon.getIconHeight());
+		add(old_sailor_image_label);
 
-		sailors_icons_panel.setSize(getWidth(),
-				Math.max(Math.max(baby_sailor_icon.getIconHeight(), medium_sailor_icon.getIconHeight()),
-						old_sailor_icon.getIconHeight()));
+		sailors_icons_panel.setSize(getWidth(), max_sailor_icon_height);
 		int sailors_icons_pannel_y = get_y_for_next_item_above(select_skill_mode_label);
 		sailors_icons_panel.setLocation(0, 500);
 
@@ -217,7 +233,7 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 	}
 
 	private void update_bottom_label_text() {
-		//bottom_label.setText("Difficulty chosen:" + difficulty_level_chosen);
+		// bottom_label.setText("Difficulty chosen:" + difficulty_level_chosen);
 	}
 
 	private void update_sailors_images_apparence() {
