@@ -1,22 +1,19 @@
 package hmi;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.event.InputMethodEvent;
-import java.awt.event.InputMethodListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRootPane;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -26,7 +23,6 @@ import org.apache.logging.log4j.Logger;
 
 import core.GameManager;
 import game.DifficultyLevel;
-import main.SinkSubmarinesMain;
 
 public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 
@@ -40,15 +36,18 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 	private JLabel medium_sailor_image_label;
 	private JLabel old_sailor_image_label;
 
+	private JLabel select_start_level_label;
+	private JComboBox<Integer> select_start_level_combobox;
+	private JLabel select_skill_mode_label;
 	private JLabel bottom_label;
 
-	private SinkSubmarinesMainView sinkSubmarinesMainView;
+	private final int VERTICAL_SPACE_BETWEEN_OBJECTS = 10;
+	private final int BASIC_COMPONENTS_HEIGHT = 10;
 
 	private DifficultyLevel difficulty_level_chosen = null;
 
 	public NewGameLevelAndScenarioLevelSelectionPopup(SinkSubmarinesMainView sinkSubmarinesMainView) {
 		super("Sink submarines");
-		this.sinkSubmarinesMainView = sinkSubmarinesMainView;
 	}
 
 	/**
@@ -59,7 +58,8 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 
 		this.setTitle("New Game");
 
-		this.setSize(600, 400);
+		// this.setSize(290, 320);
+		this.setSize(800, 1000);
 
 		/* Use an appropriate Look and Feel */
 		try {
@@ -83,10 +83,27 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 		 */
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		setLayout(new BorderLayout());
+		select_start_level_label = new JLabel("Select start level");
+		select_start_level_label.setSize(getWidth(), 20);
+		select_start_level_label.setHorizontalAlignment(SwingConstants.CENTER);
+		select_start_level_label.setLocation(0, VERTICAL_SPACE_BETWEEN_OBJECTS / 2);
+		add(select_start_level_label);
+
+		Integer[] list_of_proposed_start_levels = new Integer[] { 1, 2, 3, 4 };
+		select_start_level_combobox = new JComboBox<>(list_of_proposed_start_levels);
+		select_start_level_combobox.setSize((int) (getWidth() * 0.8), 20);
+		select_start_level_combobox.setLocation(getWidth() / 2 - select_start_level_combobox.getWidth() / 2,
+				get_y_for_next_item_above(select_start_level_label));
+		add(select_start_level_combobox);
+
+		select_skill_mode_label = new JLabel("Select skill mode");
+		select_skill_mode_label.setSize(getWidth(), 20);
+		select_skill_mode_label.setHorizontalAlignment(SwingConstants.CENTER);
+		int select_kill_mode_label_y = get_y_for_next_item_above(select_start_level_combobox);
+		select_skill_mode_label.setLocation(0, select_kill_mode_label_y);
+		add(select_skill_mode_label);
 
 		JPanel sailors_icons_panel = new JPanel();
-		sailors_icons_panel.setSize(getWidth(), getHeight());
 		sailors_icons_panel.setLayout(new FlowLayout());
 
 		Icon baby_sailor_icon = new ImageIcon("Images/character_baby_sailor.png");
@@ -96,6 +113,7 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				difficulty_level_chosen = DifficultyLevel.EASY;
 				on_difficulty_level_chosen();
+				GameManager.getInstance().new_game(difficulty_level_chosen);
 			}
 		});
 		sailors_icons_panel.add(baby_sailor_image_label);
@@ -122,29 +140,24 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 		});
 		sailors_icons_panel.add(old_sailor_image_label);
 
-		add(sailors_icons_panel, BorderLayout.CENTER);
+		sailors_icons_panel.setSize(getWidth(),
+				Math.max(Math.max(baby_sailor_icon.getIconHeight(), medium_sailor_icon.getIconHeight()),
+						old_sailor_icon.getIconHeight()));
+		int sailors_icons_pannel_y = get_y_for_next_item_above(select_skill_mode_label);
+		sailors_icons_panel.setLocation(0, 500);
 
-		JPanel bottom_with_buttons_panel = new JPanel();
-		bottom_with_buttons_panel.setLayout(new FlowLayout());
-		add(bottom_with_buttons_panel, BorderLayout.AFTER_LAST_LINE);
+		add(sailors_icons_panel);
 
-		bottom_label = new JLabel("");
-		bottom_label.setHorizontalAlignment(SwingConstants.CENTER);
-		add(bottom_label, BorderLayout.PAGE_END);
+		/*
+		 * JPanel bottom_with_buttons_panel = new JPanel(); //
+		 * bottom_with_buttons_panel.setLayout(new FlowLayout());
+		 * bottom_with_buttons_panel.setSize(getWidth(), BASIC_COMPONENTS_HEIGHT); int
+		 * bottom_with_buttons_pannel_y =
+		 * get_y_for_next_item_above(sailors_icons_panel);
+		 * bottom_with_buttons_panel.setLocation(0, bottom_with_buttons_pannel_y);
+		 */
 
-		ok_button = new JButton("OK");
-		ok_button.addActionListener(e -> {
-			setVisible(false);
-			dispose();
-			GameManager.getInstance().new_game(difficulty_level_chosen);
-		});
-
-		bottom_with_buttons_panel.add(ok_button);
-
-		cancel_button = new JButton("Cancel");
-		bottom_with_buttons_panel.add(cancel_button);
-
-		// Display the window.
+		// initialize_buttons(sailors_icons_panel, baby_sailor_icon);
 
 		this.setVisible(true);
 		this.setResizable(false);
@@ -152,6 +165,48 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 		update_ok_button_state();
 		update_sailors_images_apparence();
 		update_bottom_label_text();
+	}
+
+	private void initialize_buttons(JPanel sailors_icons_panel, Icon baby_sailor_icon) {
+		int buttons_y = get_y_for_next_item_above(sailors_icons_panel);
+
+		ok_button = new JButton();
+		ok_button.addActionListener(e -> {
+			setVisible(false);
+			dispose();
+			GameManager.getInstance().new_game(difficulty_level_chosen);
+		});
+		// int ok_button_y = bottom_with_buttons_pannel_y;
+		ok_button.setLocation(0, buttons_y);
+		ok_button.setSize(30, 30);
+		ok_button.setVisible(true);
+		ok_button.setForeground(Color.black);
+		ok_button.setBackground(Color.blue);
+		add(ok_button);
+		/*
+		 * cancel_button = new JButton("Cancel"); cancel_button.addActionListener(e -> {
+		 * setVisible(false); dispose(); }); cancel_button.setSize(50, 10);
+		 * cancel_button.setLocation(getWidth() / 2, buttons_y); add(cancel_button);
+		 */
+
+		// add(bottom_with_buttons_panel);
+
+		bottom_label = new JLabel("");
+		bottom_label.setHorizontalAlignment(SwingConstants.CENTER);
+		int bottom_label_y = get_y_for_next_item_above(ok_button);
+		bottom_label.setLocation(0, buttons_y + 50);
+
+		// Display the window.
+
+		int height2 = baby_sailor_image_label.getHeight();
+		int iconHeight = baby_sailor_icon.getIconHeight();
+	}
+
+	private int get_y_for_next_item_above(JComponent component_above) {
+		int y_for_next_item_above = component_above.getY() + component_above.getHeight()
+				+ VERTICAL_SPACE_BETWEEN_OBJECTS;
+		LOGGER.info("Below " + component_above + ", next y:" + y_for_next_item_above);
+		return y_for_next_item_above;
 	}
 
 	private void on_difficulty_level_chosen() {
@@ -162,7 +217,7 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 	}
 
 	private void update_bottom_label_text() {
-		bottom_label.setText("Difficulty chosen:" + difficulty_level_chosen);
+		//bottom_label.setText("Difficulty chosen:" + difficulty_level_chosen);
 	}
 
 	private void update_sailors_images_apparence() {
@@ -175,7 +230,7 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 	}
 
 	private void update_ok_button_state() {
-		ok_button.setEnabled(difficulty_level_chosen != null);
+		// ok_button.setEnabled(difficulty_level_chosen != null);
 	}
 
 }
