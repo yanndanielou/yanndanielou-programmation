@@ -69,7 +69,7 @@ public abstract class AbstractPanel extends JPanel {
 		set_bounds_according_to_panel_above_and_this(pannel_above);
 	}
 
-	private void set_bounds_according_to_panel_above_and_this(JPanel pannel_above) {
+	protected void set_bounds_according_to_panel_above_and_this(JPanel pannel_above) {
 		int pannel_above_Y = pannel_above != null ? (int) pannel_above.getBounds().getY() : 0;
 		int pannel_above_height = pannel_above != null ? pannel_above.getHeight() : 0;
 		this.setBounds(0, pannel_above_Y + pannel_above_height, this.getSize().width, this.getSize().height);

@@ -98,11 +98,11 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 		if (simple_submarines_remaining_to_create.isEmpty() && yellow_submarines_remaining_to_create.isEmpty()
 				&& game.get_all_submarines().isEmpty()) {
 			LOGGER.info("End of current wave " + current_scenario_Level_wave_data_model + " of scenario:"
-					+ current_scenario_level_data_model);
+					+ getCurrent_scenario_level_data_model());
 
-			if (current_scenario_level_data_model != null
-					&& current_scenario_level_data_model.hasNextWaveAfter(current_scenario_Level_wave_data_model)) {
-				current_scenario_Level_wave_data_model = current_scenario_level_data_model
+			if (getCurrent_scenario_level_data_model() != null
+					&& getCurrent_scenario_level_data_model().hasNextWaveAfter(current_scenario_Level_wave_data_model)) {
+				current_scenario_Level_wave_data_model = getCurrent_scenario_level_data_model()
 						.getNextWaveAfter(current_scenario_Level_wave_data_model);
 				loadWave(current_scenario_Level_wave_data_model);
 			} else if (game.getFloating_submarine_bombs().isEmpty() && game.getSimple_submarine_bombs().isEmpty()) {
@@ -130,7 +130,7 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 		current_scenario_level_data_model = scenario_Level_data_model;
 		loadWave(scenario_Level_data_model.getWaves().get(0));
 		GameManager.getInstance().getGame().getAlly_boat()
-				.setMax_number_of_living_bombs(current_scenario_level_data_model.getMax_number_of_ally_bombs());
+				.setMax_number_of_living_bombs(getCurrent_scenario_level_data_model().getMax_number_of_ally_bombs());
 		current_step_in_seconds = 0;
 	}
 
@@ -161,5 +161,9 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 
 	@Override
 	public void on_pause() {
+	}
+
+	public ScenarioLevelDataModel getCurrent_scenario_level_data_model() {
+		return current_scenario_level_data_model;
 	}
 }

@@ -25,8 +25,10 @@ public class Game {
 	private ArrayList<SimpleSubmarineBomb> simple_submarine_bombs = new ArrayList<>();
 	private ArrayList<FloatingSubmarineBomb> floating_submarine_bombs = new ArrayList<>();
 
-	int remaining_lives;
-	
+	private ArrayList<GameListener> game_listeners = new ArrayList<>();
+
+	private int remaining_lives;
+
 	private boolean paused = false;
 
 	public Game(GameBoardDataModel gameBoardDataModel, GenericObjectsDataModel genericObjectsDataModel,
@@ -34,8 +36,13 @@ public class Game {
 		// this.genericObjectsDataModel = genericObjectsDataModel;
 		// this.gameBoardDataModel = gameBoardDataModel;
 		gameboard = new GameBoard(gameBoardDataModel);
-		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model(), gameBoardDataModel, genericObjectsDataModel.getAlly_simple_bomb_data_model(), this);
-		this.remaining_lives = number_of_lives;
+		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model(), gameBoardDataModel,
+				genericObjectsDataModel.getAlly_simple_bomb_data_model(), this);
+		this.setRemaining_lives(number_of_lives);
+	}
+
+	public void add_game_listener(GameListener listener) {
+		game_listeners.add(listener);
 	}
 
 	public ArrayList<Level> getLevels() {
@@ -92,7 +99,7 @@ public class Game {
 	}
 
 	public void addSimpleSubmarineBomb(SimpleSubmarineBomb sumbmarineBomb) {
-		simple_submarine_bombs.add(sumbmarineBomb);		
+		simple_submarine_bombs.add(sumbmarineBomb);
 	}
 
 	public ArrayList<SimpleSubmarineBomb> getSimple_submarine_bombs() {
@@ -100,7 +107,7 @@ public class Game {
 	}
 
 	public void addFloatingSubmarineBomb(FloatingSubmarineBomb sumbmarineBomb) {
-		floating_submarine_bombs.add(sumbmarineBomb);		
+		floating_submarine_bombs.add(sumbmarineBomb);
 	}
 
 	public ArrayList<FloatingSubmarineBomb> getFloating_submarine_bombs() {
@@ -112,7 +119,33 @@ public class Game {
 	}
 
 	public void setPaused(boolean paused) {
-		this.paused = paused;
+		if (this.paused != paused) {
+			this.paused = paused;
+			notify_game_paused();
+		}
+	}
+
+	public int getRemaining_lives() {
+		return remaining_lives;
+	}
+
+	public void setRemaining_lives(int remaining_lives) {
+		if (this.remaining_lives != remaining_lives) {
+			this.remaining_lives = remaining_lives;
+			notify_remaining_lives_changed();
+		}
+	}
+
+	private void notify_game_paused() {
+		for (GameListener gameListener : game_listeners) {
+			gameListener.on_game_paused(this);
+		}
+	}
+
+	private void notify_remaining_lives_changed() {
+		for (GameListener gameListener : game_listeners) {
+			gameListener.on_number_of_remaining_lives_changed(this);
+		}
 	}
 
 	/*
