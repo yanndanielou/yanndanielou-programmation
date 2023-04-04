@@ -113,14 +113,6 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 		Icon medium_sailor_icon = new ImageIcon("Images/character_medium_sailor.png");
 		Icon old_sailor_icon = new ImageIcon("Images/character_old_sailor.png");
 
-		int max_sailor_icon_height = Math.max(
-				Math.max(baby_sailor_icon.getIconHeight(), medium_sailor_icon.getIconHeight()),
-				old_sailor_icon.getIconHeight());
-
-		int max_sailor_icon_width = Math.max(
-				Math.max(baby_sailor_icon.getIconWidth(), medium_sailor_icon.getIconWidth()),
-				old_sailor_icon.getIconWidth());
-
 		int highest_sailor_icon_y = get_y_for_next_item_above(select_play_skill_mode_label);
 
 		baby_sailor_image_label = new JLabel(baby_sailor_icon);

@@ -40,6 +40,7 @@ import java.awt.event.*;
 
 /* 1.4 example used by DialogDemo.java. */
 class CheatCodeDialog extends JDialog implements ActionListener, PropertyChangeListener {
+	private static final long serialVersionUID = 5167619891828641223L;
 	private String typedText = null;
 	private JTextField textField;
 
@@ -93,7 +94,7 @@ class CheatCodeDialog extends JDialog implements ActionListener, PropertyChangeL
 				 * Instead of directly closing the window, we're going to change the
 				 * JOptionPane's value property.
 				 */
-				optionPane.setValue(new Integer(JOptionPane.CLOSED_OPTION));
+				optionPane.setValue(JOptionPane.CLOSED_OPTION);
 			}
 		});
 

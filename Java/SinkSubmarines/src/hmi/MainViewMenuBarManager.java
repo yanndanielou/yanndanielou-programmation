@@ -70,7 +70,8 @@ public class MainViewMenuBarManager implements ActionListener {
 					}
 				}
 
-				NewGameLevelAndScenarioLevelSelectionPopup newGameLevelAndScenarioLevelSelectionPopup = new NewGameLevelAndScenarioLevelSelectionPopup(parent_main_view);
+				NewGameLevelAndScenarioLevelSelectionPopup newGameLevelAndScenarioLevelSelectionPopup = new NewGameLevelAndScenarioLevelSelectionPopup(
+						parent_main_view);
 				newGameLevelAndScenarioLevelSelectionPopup.createAndShowGUI();
 				LOGGER.info("actionPerformed" + e);
 			}
@@ -88,6 +89,18 @@ public class MainViewMenuBarManager implements ActionListener {
 				} else {
 					LOGGER.info("No game in progress, cannot pause or resume");
 				}
+			}
+		});
+		menu.add(menuItem);
+
+		menuItem = new JMenuItem("Exit", KeyEvent.VK_P);
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.ALT_DOWN_MASK));
+		// menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really
+		// do anything");
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LOGGER.info("Kill application");
+				parent_main_view.dispose();
 			}
 		});
 		menu.add(menuItem);

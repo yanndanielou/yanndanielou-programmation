@@ -25,9 +25,7 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 	private int current_step_in_seconds = 0;
 	private ArrayList<ScenarioLevelEnnemyCreationDataModel> simple_submarines_remaining_to_create = new ArrayList<ScenarioLevelEnnemyCreationDataModel>();
 	private ArrayList<ScenarioLevelEnnemyCreationDataModel> yellow_submarines_remaining_to_create = new ArrayList<ScenarioLevelEnnemyCreationDataModel>();
-	private ArrayList<GameLevelScenariosDataModel> levels_scenarios_data_models_json_files;
-	private String[] scenarios_levels_json_files = { "LevelScenario_Easy_001.json", "LevelScenario_Easy_002.json",
-			"LevelScenario_Easy_003.json" };
+	private ArrayList<GameLevelScenariosDataModel> remaining_levels_scenarios_data_models_json_files;
 
 	private ScenarioLevelExecutor() {
 		TimeManager.getInstance().add_listener(this);
@@ -42,7 +40,7 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 
 	public void load_and_start_scenario_from_json_file(
 			ArrayList<GameLevelScenariosDataModel> levels_scenarios_data_models_json_files) {
-		this.levels_scenarios_data_models_json_files = levels_scenarios_data_models_json_files;
+		this.remaining_levels_scenarios_data_models_json_files = levels_scenarios_data_models_json_files;
 	}
 
 	public Game getGame() {
@@ -115,9 +113,9 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 	}
 
 	private void load_next_scenario() {
-		if (levels_scenarios_data_models_json_files != null && !levels_scenarios_data_models_json_files.isEmpty()) {
-			GameLevelScenariosDataModel gameLevelScenariosDataModel = levels_scenarios_data_models_json_files.get(0);
-			levels_scenarios_data_models_json_files.remove(gameLevelScenariosDataModel);
+		if (remaining_levels_scenarios_data_models_json_files != null && !remaining_levels_scenarios_data_models_json_files.isEmpty()) {
+			GameLevelScenariosDataModel gameLevelScenariosDataModel = remaining_levels_scenarios_data_models_json_files.get(0);
+			remaining_levels_scenarios_data_models_json_files.remove(gameLevelScenariosDataModel);
 			LOGGER.info(
 					"Load level scenario file:" + gameLevelScenariosDataModel.getLevel_scenario_data_model_json_file());
 			ScenarioLevelDataModelBuilder scenarioLevelDataModelBuilder = new ScenarioLevelDataModelBuilder(

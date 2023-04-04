@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import builders.gameboard.GameBoardDataModel;
 import core.GameManager;
