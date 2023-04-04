@@ -13,6 +13,7 @@ import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import game.DifficultyLevel;
 import game.Game;
 import hmi.SinkSubmarinesMainView;
+import moving_objects.boats.AllyBoat;
 import moving_objects.boats.SimpleSubMarine;
 import moving_objects.boats.YellowSubMarine;
 import moving_objects.weapon.FloatingSubmarineBomb;
@@ -73,7 +74,8 @@ public class GameManager implements TimeManagerListener {
 
 		sinkSubmarinesMainView.getAllyBoatPanel().setAlly_boat(game.getAlly_boat());
 		GameObjectsMovementOrchestor.getInstance();
-		ScenarioLevelExecutor.getInstance().load_and_start_scenario_from_json_file(game_data_model.getLevels_scenarios_data_models_json_files());
+		ScenarioLevelExecutor.getInstance()
+				.load_and_start_scenario_from_json_file(game_data_model.getLevels_scenarios_data_models_json_files());
 	}
 
 	@Override
@@ -173,18 +175,19 @@ public class GameManager implements TimeManagerListener {
 	}
 
 	public void dropSimpleAllyBoatAtLeftOfAllyBoat() {
-
-		dropSimpleAllyBoatAtLeftOfAllyBoat(
-				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getX() - 5,
-				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY() - 10);
-
+		AllyBoat ally_boat = game.getAlly_boat();
+		double dropped_bomb_x = Math.max(ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getX() - 10,
+				0);
+		dropSimpleAllyBoatAtLeftOfAllyBoat((int) dropped_bomb_x,
+				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() - 15);
 	}
 
 	public void dropSimpleAllyBoatAtRightOfAllyBoat() {
-
-		dropSimpleAllyBoatAtLeftOfAllyBoat(
-				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getMaxX() + 5,
-				(int) game.getAlly_boat().getSurrounding_rectangle_absolute_on_complete_board().getY() - 20);
+		AllyBoat ally_boat = game.getAlly_boat();
+		double dropped_bomb_x = Math.min(ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getMaxX() + 10,
+				game.getGameboard().getWidth());
+		dropSimpleAllyBoatAtLeftOfAllyBoat((int) dropped_bomb_x,
+				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() - 15);
 	}
 
 	public SimpleSubmarineBomb fire_simple_submarine_bomb(int x, int y, int ammunition_y_speed) {
