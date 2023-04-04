@@ -10,6 +10,7 @@ import builders.gameboard.GameBoardDataModelBuilder;
 import builders.genericobjects.GenericObjectsDataModel;
 import builders.genericobjects.GenericObjectsDataModelBuilder;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
+import game.DifficultyLevel;
 import game.Game;
 import hmi.SinkSubmarinesMainView;
 import moving_objects.boats.SimpleSubMarine;
@@ -50,9 +51,12 @@ public class GameManager implements TimeManagerListener {
 		return hasInstance() && getInstance().getGame() != null;
 	}
 
-	public void new_game(String game_data_model_json_file) {
-		LOGGER.info("New game!");
-		GameDataModelBuilder gameDataModelBuilder = new GameDataModelBuilder(game_data_model_json_file);
+	public void new_game(DifficultyLevel difficulty_level_chosen) {
+		LOGGER.info("New game with difficulty:" + difficulty_level_chosen);
+
+		String game_board_data_model_json_file = "GameDataModel_" + difficulty_level_chosen + ".json";
+
+		GameDataModelBuilder gameDataModelBuilder = new GameDataModelBuilder("data/" + game_board_data_model_json_file);
 		GameDataModel game_data_model = gameDataModelBuilder.getGame_data_model();
 
 		GameBoardDataModelBuilder gameBoardDataModelBuilder = new GameBoardDataModelBuilder(
@@ -241,7 +245,7 @@ public class GameManager implements TimeManagerListener {
 		LOGGER.info("Pause current game");
 		game.setPaused(true);
 		TimeManager.getInstance().stop();
-		
+
 	}
 
 	@Override
