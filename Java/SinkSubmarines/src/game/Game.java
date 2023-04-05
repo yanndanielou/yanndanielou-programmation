@@ -168,7 +168,7 @@ public class Game implements TimeManagerListener {
 
 	private void notify_remaining_lives_changed() {
 		for (GameListener gameListener : game_listeners) {
-			gameListener.on_number_of_remaining_lives_changed(this);
+			gameListener.on_number_of_remaining_lives_changed(this, remaining_lives);
 		}
 	}
 
@@ -241,7 +241,9 @@ public class Game implements TimeManagerListener {
 
 	public void set_next_ally_bomb_horizontal_speed(boolean value) {
 		if (value) {
-			next_ally_bomb_horizontal_speed_increase_direction = NextAllyBombHorizontalSpeedIncreaseDirection.INCREASE;
+			if (next_ally_bomb_horizontal_speed_increase_direction == null) {
+				next_ally_bomb_horizontal_speed_increase_direction = NextAllyBombHorizontalSpeedIncreaseDirection.INCREASE;
+			}
 		} else {
 			next_ally_bomb_horizontal_speed_increase_direction = null;
 			next_ally_bomb_horizontal_speed_relative_percentage = 0;

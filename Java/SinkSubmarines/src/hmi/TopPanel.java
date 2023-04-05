@@ -1,14 +1,13 @@
 package hmi;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.Image;
 import java.util.ArrayList;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -18,10 +17,7 @@ import builders.gameboard.GameBoardAreaDataModel;
 import builders.gameboard.GameBoardDataModel;
 import builders.scenariolevel.ScenarioLevelDataModel;
 import builders.scenariolevel.ScenarioLevelWaveDataModel;
-import constants.Constants;
 import core.GameManager;
-import core.ScenarioLevelExecutor;
-import game.DifficultyLevel;
 import game.Game;
 import game.GameListener;
 
@@ -30,7 +26,8 @@ public class TopPanel extends JPanel implements GameListener {
 	private JLabel current_scenario_level_label;
 
 	private ImageIcon character_sailor_icon;
-	private ArrayList<JLabel> character_sailor_icons_as_label = new ArrayList<>();
+	private ImageIcon character_sailor_icon_scalled;
+	private ArrayList<JLabel> character_sailor_icons_one_per_remaining_life_as_label = new ArrayList<>();
 
 	private JLabel next_ally_bomb_horizontal_speed_as_label;
 	private ImageIcon next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon;
@@ -41,6 +38,8 @@ public class TopPanel extends JPanel implements GameListener {
 
 	private JLabel remaining_ally_bombs_label;
 	private JLabel score_label;
+
+	private JLayeredPane layeredPane;
 
 	/**
 	 * 
@@ -56,7 +55,7 @@ public class TopPanel extends JPanel implements GameListener {
 
 		setLayout(null);
 
-		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane = new JLayeredPane();
 		add(layeredPane);
 		layeredPane.setSize(getWidth(), getHeight());
 
@@ -68,6 +67,9 @@ public class TopPanel extends JPanel implements GameListener {
 		layeredPane.add(current_scenario_level_label, 1);
 
 		character_sailor_icon = new ImageIcon("Images/character_baby_sailor.png");
+		Image img = character_sailor_icon.getImage();
+		Image character_sailor_icon_scalled_as_image = img.getScaledInstance(20, (int) (getHeight() * 0.8), Image.SCALE_SMOOTH);
+		character_sailor_icon_scalled = new ImageIcon(character_sailor_icon_scalled_as_image);
 
 		ImageIcon next_ally_bomb_horizontal_speed_no_force_icon = new ImageIcon(
 				"Images/next_ally_bomb_horizontal_speed_no_force_icon.png");
@@ -153,8 +155,32 @@ public class TopPanel extends JPanel implements GameListener {
 	}
 
 	@Override
-	public void on_number_of_remaining_lives_changed(Game game) {
-		update_current_scenario_level(game);
+	public void on_number_of_remaining_lives_changed(Game game, int remaining_lives) {
+		update_number_of_remaining_lives();
+	}
+
+	private void update_number_of_remaining_lives() {
+		if (GameManager.hasGameInProgress()) {
+			Game game = GameManager.getInstance().getGame();
+			int remaining_lives = game.getRemaining_lives();
+
+			Component object_at_left = current_scenario_level_label;
+
+			while (character_sailor_icons_one_per_remaining_life_as_label.size() < remaining_lives) {
+
+				if (!character_sailor_icons_one_per_remaining_life_as_label.isEmpty()) {
+					object_at_left = character_sailor_icons_one_per_remaining_life_as_label
+							.get(character_sailor_icons_one_per_remaining_life_as_label.size() - 1);
+				}
+				int right_of_object_at_left = (int) object_at_left.getBounds().getMaxX();
+				JLabel character_sailor_icon_for_one_life_as_label = new JLabel(character_sailor_icon_scalled);
+				character_sailor_icons_one_per_remaining_life_as_label.add(character_sailor_icon_for_one_life_as_label);
+				character_sailor_icon_for_one_life_as_label.setSize(30, (int) (getHeight() * 0.8));
+				character_sailor_icon_for_one_life_as_label.setLocation(right_of_object_at_left + 10,
+						getHeight() / 2 - character_sailor_icon_for_one_life_as_label.getHeight() / 2);
+				layeredPane.add(character_sailor_icon_for_one_life_as_label);
+			}
+		}
 	}
 
 	private void update_next_ally_bomb_horizontal_speed_label() {
@@ -193,7 +219,7 @@ public class TopPanel extends JPanel implements GameListener {
 	@Override
 	public void on_listen_to_game(Game game) {
 		update_current_scenario_level(game);
-
+		update_number_of_remaining_lives();
 	}
 
 	@Override

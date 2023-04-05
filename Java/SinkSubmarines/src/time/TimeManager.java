@@ -42,7 +42,7 @@ public class TimeManager extends TimerTask implements GameListener {
 	}
 
 	public void add_listener(TimeManagerListener listener) {
-		LOGGER.info("add_listener:" + listener);
+		//LOGGER.info("add_listener:" + listener);
 		new_listeners_waiting_current_tick_to_register.add(listener);
 	}
 
@@ -157,12 +157,6 @@ public class TimeManager extends TimerTask implements GameListener {
 	}
 
 	@Override
-	public void on_number_of_remaining_lives_changed(Game game) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void on_game_resumed(Game game) {
 		// TODO Auto-generated method stub
 
@@ -193,6 +187,12 @@ public class TimeManager extends TimerTask implements GameListener {
 
 	@Override
 	public void on_next_ally_bomb_horizontal_speed_changed(Game game, int next_ally_bomb_horizontal_speed) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_number_of_remaining_lives_changed(Game game, int remaining_lives) {
 		// TODO Auto-generated method stub
 
 	}
