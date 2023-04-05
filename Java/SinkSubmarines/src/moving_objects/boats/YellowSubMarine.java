@@ -68,7 +68,7 @@ public class YellowSubMarine extends SubMarine  {
 
 	@Override
 	public void impact_now() {
-		this.current_destruction_timer_in_seconds = 5;
+		this.current_destruction_timer_in_milliseconds = 5_000;
 	}
 
 	@Override

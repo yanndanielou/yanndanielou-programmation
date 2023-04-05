@@ -35,19 +35,28 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 	}
 
 	@Override
+	public void on_20ms_tick() {
+	}
+
+	@Override
+	public void on_50ms_tick() {
+		proceed_all_objects_movements();
+	}
+
+	@Override
 	public void on_100ms_tick() {
+		proceed_destruction_timer_decrementation(100);
+		proceed_destroyed_objects_cleaning();
 	}
 
 	@Override
 	public void on_second_tick() {
-		proceed_destruction_timer_decrementation();
-		proceed_destroyed_objects_cleaning();
 	}
 
-	private void proceed_destruction_timer_decrementation() {
+	private void proceed_destruction_timer_decrementation(int number_of_milliseconds) {
 		for (GameObject gameObject : GameManager.getInstance().getGame().getGame_objects()) {
 			if (gameObject.is_being_destroyed()) {
-				gameObject.decrement_destruction_timer();
+				gameObject.decrement_destruction_timer(number_of_milliseconds);
 			}
 		}
 	}
@@ -105,10 +114,11 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 					}
 				}
 
-				for (FloatingSubmarineBomb floating_submarine_bomb : GameManager.getInstance().getGame().getFloating_submarine_bombs()) {
+				for (FloatingSubmarineBomb floating_submarine_bomb : GameManager.getInstance().getGame()
+						.getFloating_submarine_bombs()) {
 					if (!floating_submarine_bomb.is_being_destroyed()) {
-						if (simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board()
-								.intersects(floating_submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board())) {
+						if (simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().intersects(
+								floating_submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board())) {
 							LOGGER.info("Collision detected between simple ally bomb " + simpleAllyBomb
 									+ " and floating submarine bomb:" + floating_submarine_bomb);
 							simpleAllyBomb.impact_now();
@@ -120,17 +130,6 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 		}
 
 		return collision_detected;
-	}
-
-	@Override
-	public void on_50ms_tick() {
-		// proceed_ally_boat_movement();
-		proceed_all_objects_movements();
-
-	}
-
-	@Override
-	public void on_20ms_tick() {
 	}
 
 	@Override

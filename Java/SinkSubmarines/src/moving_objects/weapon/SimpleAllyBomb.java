@@ -38,7 +38,7 @@ public class SimpleAllyBomb extends Weapon {
 	protected void ocean_bed_reached() {
 		LOGGER.info("ocean_bed_reached, will delete" + this);
 
-		this.current_destruction_timer_in_seconds = 2;
+		this.current_destruction_timer_in_milliseconds = 2_000;
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class SimpleAllyBomb extends Weapon {
 	@Override
 	public void impact_now() {
 		LOGGER.info("Impact now " + this);
-		this.current_destruction_timer_in_seconds = 2;
+		this.current_destruction_timer_in_milliseconds = 500;
 	}
 
 }

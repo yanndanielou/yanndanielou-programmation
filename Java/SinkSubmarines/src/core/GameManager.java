@@ -213,7 +213,10 @@ public class GameManager implements TimeManagerListener {
 	}
 
 	public void abort_current_game() {
-		set_game(null);
+		if (game != null) {
+			game.notify_game_cancelled();
+			set_game(null);
+		}
 	}
 
 	public void set_game(Game game) {

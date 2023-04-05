@@ -20,7 +20,7 @@ public abstract class GameObject {
 	protected int y_speed = 0;
 	protected Game game;
 
-	protected Integer current_destruction_timer_in_seconds = null;
+	protected Integer current_destruction_timer_in_milliseconds = null;
 
 	protected ArrayList<GameObjectListerner> movement_listeners = new ArrayList<GameObjectListerner>();
 
@@ -30,7 +30,7 @@ public abstract class GameObject {
 	}
 
 	public boolean is_being_destroyed() {
-		return current_destruction_timer_in_seconds != null;
+		return current_destruction_timer_in_milliseconds != null;
 	}
 
 	public abstract void impact_now();
@@ -171,12 +171,13 @@ public abstract class GameObject {
 	public abstract void notify_destruction();
 
 	public boolean is_completely_destroyed() {
-		return is_being_destroyed() && current_destruction_timer_in_seconds == 0;
+		return is_being_destroyed() && current_destruction_timer_in_milliseconds <= 0;
 	}
 
-	public void decrement_destruction_timer() {
-		if (current_destruction_timer_in_seconds != null) {
-			current_destruction_timer_in_seconds--;
+	public void decrement_destruction_timer(int number_of_milliseconds) {
+		if (current_destruction_timer_in_milliseconds != null) {
+			current_destruction_timer_in_milliseconds -= number_of_milliseconds;
+			current_destruction_timer_in_milliseconds = Math.max(0, current_destruction_timer_in_milliseconds);
 		}
 
 	}

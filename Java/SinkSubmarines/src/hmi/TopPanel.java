@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import builders.gameboard.GameBoardAreaDataModel;
 import builders.gameboard.GameBoardDataModel;
 import builders.scenariolevel.ScenarioLevelDataModel;
+import builders.scenariolevel.ScenarioLevelWaveDataModel;
 import core.GameManager;
 import core.ScenarioLevelExecutor;
 import game.Game;
@@ -42,16 +43,16 @@ public class TopPanel extends JPanel implements GameListener {
 		current_scenario_level_label.setSize(100, (int) (getHeight() * 0.8));
 		current_scenario_level_label.setLocation(10, 10);
 		current_scenario_level_label.setForeground(Color.yellow);
-		current_scenario_level_label.setFont(new Font(Font.SERIF, Font.BOLD,  15));
+		current_scenario_level_label.setFont(new Font(Font.SERIF, Font.BOLD, 15));
 		add(current_scenario_level_label);
 
 		character_sailor_icon = new ImageIcon("Images/character_baby_sailor.png");
-		
+
 		score_label = new JLabel("SCORE");
 		score_label.setSize(150, (int) (getHeight() * 0.8));
 		score_label.setLocation(400, 10);
 		score_label.setForeground(Color.yellow);
-		score_label.setFont(new Font(Font.SERIF, Font.BOLD,  15));
+		score_label.setFont(new Font(Font.SERIF, Font.BOLD, 15));
 		add(score_label);
 
 		// setBounds(0, 0, this.getSize().width, this.getSize().height);
@@ -62,10 +63,8 @@ public class TopPanel extends JPanel implements GameListener {
 		super.paintComponent(g);
 		if (GameManager.hasGameInProgress()) {
 			Game game = GameManager.getInstance().getGame();
-			ScenarioLevelExecutor scenarioLevelExecutor = ScenarioLevelExecutor.getInstance();
 
-			ScenarioLevelDataModel current_scenario_level_data_model = scenarioLevelExecutor
-					.getCurrent_scenario_level_data_model();
+			ScenarioLevelDataModel current_scenario_level_data_model = game.getCurrent_scenario_level_data_model();
 
 			if (current_scenario_level_data_model != null) {
 				current_scenario_level_label
@@ -86,12 +85,42 @@ public class TopPanel extends JPanel implements GameListener {
 	}
 
 	private void update_current_scenario_level(Game game) {
-		ScenarioLevelExecutor scenario_level_executor = ScenarioLevelExecutor.getInstance();
-		current_scenario_level_label.setText("LEVEL:" + scenario_level_executor.getCurrent_scenario_level_data_model().getScenario_level_number());
+		if (game == null || game.getCurrent_scenario_level_data_model() == null) {
+			current_scenario_level_label
+			.setText("LEVEL:");
+		} else {
+			ScenarioLevelDataModel current_scenario_level_data_model = game.getCurrent_scenario_level_data_model();
+
+			current_scenario_level_label
+					.setText("LEVEL:" + current_scenario_level_data_model.getScenario_level_number());
+		}
 	}
 
 	@Override
 	public void on_game_resumed(Game game) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_listen_to_game(Game game) {
+		update_current_scenario_level(game);
+
+	}
+
+	@Override
+	public void on_game_cancelled(Game game) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_new_scenario_level(Game game, ScenarioLevelDataModel scenario_level_data_model) {
+		update_current_scenario_level(game);
+	}
+
+	@Override
+	public void on_new_scenario_level_wave(Game game, ScenarioLevelWaveDataModel scenario_level_wave) {
 		// TODO Auto-generated method stub
 
 	}

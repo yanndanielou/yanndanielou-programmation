@@ -39,7 +39,7 @@ public class FloatingSubmarineBomb extends Weapon {
 
 	@Override
 	public void impact_now() {
-		this.current_destruction_timer_in_seconds = 1;
+		this.current_destruction_timer_in_milliseconds = 1_000;
 	}
 
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectsDataModel;
+import builders.scenariolevel.ScenarioLevelDataModel;
+import builders.scenariolevel.ScenarioLevelWaveDataModel;
 import game_board.GameBoard;
 import moving_objects.GameObject;
 import moving_objects.boats.AllyBoat;
@@ -25,6 +27,9 @@ public class Game {
 	private ArrayList<SimpleSubmarineBomb> simple_submarine_bombs = new ArrayList<>();
 	private ArrayList<FloatingSubmarineBomb> floating_submarine_bombs = new ArrayList<>();
 
+	private ScenarioLevelDataModel current_scenario_level_data_model = null;
+	private ScenarioLevelWaveDataModel current_scenario_Level_wave_data_model = null;
+
 	private ArrayList<GameListener> game_listeners = new ArrayList<>();
 
 	private int remaining_lives;
@@ -43,6 +48,7 @@ public class Game {
 
 	public void add_game_listener(GameListener listener) {
 		game_listeners.add(listener);
+		listener.on_listen_to_game(this);
 	}
 
 	public ArrayList<Level> getLevels() {
@@ -133,6 +139,10 @@ public class Game {
 		game_listeners.forEach((game_listener) -> game_listener.on_game_resumed(this));
 	}
 
+	public void notify_game_cancelled() {
+		game_listeners.forEach((game_listener) -> game_listener.on_game_cancelled(this));
+	}
+
 	public int getRemaining_lives() {
 		return remaining_lives;
 	}
@@ -154,6 +164,33 @@ public class Game {
 		for (GameListener gameListener : game_listeners) {
 			gameListener.on_number_of_remaining_lives_changed(this);
 		}
+	}
+
+	private void notify_new_scenario_level_loaded(Game game, ScenarioLevelDataModel scenario_level_data_model) {
+		game_listeners.forEach((game_listener) -> game_listener.on_new_scenario_level(this, scenario_level_data_model));
+		
+	}
+	private void notify_new_scenario_level_wave(Game game, ScenarioLevelWaveDataModel scenario_level_wave) {
+		game_listeners.forEach((game_listener) -> game_listener.on_new_scenario_level_wave(this, scenario_level_wave));
+		
+	}
+
+	public ScenarioLevelWaveDataModel getCurrent_scenario_Level_wave_data_model() {
+		return current_scenario_Level_wave_data_model;
+	}
+
+	public void setCurrent_scenario_Level_wave_data_model(ScenarioLevelWaveDataModel current_scenario_Level_wave_data_model) {
+		this.current_scenario_Level_wave_data_model = current_scenario_Level_wave_data_model;
+		notify_new_scenario_level_wave(this, current_scenario_Level_wave_data_model);
+	}
+
+	public ScenarioLevelDataModel getCurrent_scenario_level_data_model() {
+		return current_scenario_level_data_model;
+	}
+
+	public void setCurrent_scenario_level_data_model(ScenarioLevelDataModel current_scenario_level_data_model) {
+		this.current_scenario_level_data_model = current_scenario_level_data_model;
+		notify_new_scenario_level_loaded(this, current_scenario_level_data_model);
 	}
 
 	/*

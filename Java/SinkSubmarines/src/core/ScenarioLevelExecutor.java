@@ -19,8 +19,6 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 	private static ScenarioLevelExecutor instance;
 	private static final Logger LOGGER = LogManager.getLogger(ScenarioLevelExecutor.class);
 
-	private ScenarioLevelDataModel current_scenario_level_data_model = null;
-	private ScenarioLevelWaveDataModel current_scenario_Level_wave_data_model = null;
 	private Game game = null;
 	private int current_step_in_seconds = 0;
 	private ArrayList<ScenarioLevelEnnemyCreationDataModel> simple_submarines_remaining_to_create = new ArrayList<ScenarioLevelEnnemyCreationDataModel>();
@@ -97,14 +95,14 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 		create_objects_if_needed(current_step_in_seconds);
 		if (simple_submarines_remaining_to_create.isEmpty() && yellow_submarines_remaining_to_create.isEmpty()
 				&& game.get_all_submarines().isEmpty()) {
-			LOGGER.info("End of current wave " + current_scenario_Level_wave_data_model + " of scenario:"
-					+ getCurrent_scenario_level_data_model());
+			LOGGER.info("End of current wave " + game.getCurrent_scenario_Level_wave_data_model() + " of scenario:"
+					+ game.getCurrent_scenario_level_data_model());
 
-			if (getCurrent_scenario_level_data_model() != null
-					&& getCurrent_scenario_level_data_model().hasNextWaveAfter(current_scenario_Level_wave_data_model)) {
-				current_scenario_Level_wave_data_model = getCurrent_scenario_level_data_model()
-						.getNextWaveAfter(current_scenario_Level_wave_data_model);
-				loadWave(current_scenario_Level_wave_data_model);
+			if (game.getCurrent_scenario_level_data_model() != null && game.getCurrent_scenario_level_data_model()
+					.hasNextWaveAfter(game.getCurrent_scenario_Level_wave_data_model())) {
+				game.setCurrent_scenario_Level_wave_data_model(game.getCurrent_scenario_level_data_model()
+						.getNextWaveAfter(game.getCurrent_scenario_Level_wave_data_model()));
+				loadWave(game.getCurrent_scenario_Level_wave_data_model());
 			} else if (game.getFloating_submarine_bombs().isEmpty() && game.getSimple_submarine_bombs().isEmpty()) {
 				LOGGER.info("Load next scenario");
 				load_next_scenario();
@@ -113,8 +111,10 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 	}
 
 	private void load_next_scenario() {
-		if (remaining_levels_scenarios_data_models_json_files != null && !remaining_levels_scenarios_data_models_json_files.isEmpty()) {
-			GameLevelScenariosDataModel gameLevelScenariosDataModel = remaining_levels_scenarios_data_models_json_files.get(0);
+		if (remaining_levels_scenarios_data_models_json_files != null
+				&& !remaining_levels_scenarios_data_models_json_files.isEmpty()) {
+			GameLevelScenariosDataModel gameLevelScenariosDataModel = remaining_levels_scenarios_data_models_json_files
+					.get(0);
 			remaining_levels_scenarios_data_models_json_files.remove(gameLevelScenariosDataModel);
 			LOGGER.info(
 					"Load level scenario file:" + gameLevelScenariosDataModel.getLevel_scenario_data_model_json_file());
@@ -127,10 +127,10 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 	private void loadScenario(ScenarioLevelDataModel scenario_Level_data_model) {
 		LOGGER.info("Load scenario:" + scenario_Level_data_model.getScenario_level_name() + " number:"
 				+ scenario_Level_data_model.getScenario_level_number());
-		current_scenario_level_data_model = scenario_Level_data_model;
+		game.setCurrent_scenario_level_data_model(scenario_Level_data_model);
 		loadWave(scenario_Level_data_model.getWaves().get(0));
-		GameManager.getInstance().getGame().getAlly_boat()
-				.setMax_number_of_living_bombs(getCurrent_scenario_level_data_model().getMax_number_of_ally_bombs());
+		GameManager.getInstance().getGame().getAlly_boat().setMax_number_of_living_bombs(
+				game.getCurrent_scenario_level_data_model().getMax_number_of_ally_bombs());
 		current_step_in_seconds = 0;
 	}
 
@@ -139,7 +139,7 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 				+ scenario_Level_wave_data_model.getWave_number());
 		simple_submarines_remaining_to_create.addAll(scenario_Level_wave_data_model.getSimple_submarines());
 		yellow_submarines_remaining_to_create.addAll(scenario_Level_wave_data_model.getYellow_submarines());
-		this.current_scenario_Level_wave_data_model = scenario_Level_wave_data_model;
+		game.setCurrent_scenario_Level_wave_data_model(scenario_Level_wave_data_model);
 		current_step_in_seconds = 0;
 	}
 
@@ -161,9 +161,5 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 
 	@Override
 	public void on_pause() {
-	}
-
-	public ScenarioLevelDataModel getCurrent_scenario_level_data_model() {
-		return current_scenario_level_data_model;
 	}
 }

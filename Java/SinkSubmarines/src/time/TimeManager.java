@@ -7,7 +7,12 @@ import java.util.TimerTask;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class TimeManager extends TimerTask {
+import builders.scenariolevel.ScenarioLevelDataModel;
+import builders.scenariolevel.ScenarioLevelWaveDataModel;
+import game.Game;
+import game.GameListener;
+
+public class TimeManager extends TimerTask implements GameListener {
 	private static TimeManager instance = null;
 	private static TimeManager previous_instance_before_pause = null;
 
@@ -143,5 +148,47 @@ public class TimeManager extends TimerTask {
 		timer.purge();
 		instance = null;
 		System.out.println("TimerTask cancelled");
+	}
+
+	@Override
+	public void on_game_paused(Game game) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_number_of_remaining_lives_changed(Game game) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_game_resumed(Game game) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_listen_to_game(Game game) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_game_cancelled(Game game) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_new_scenario_level(Game game, ScenarioLevelDataModel scenario_level_data_model) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_new_scenario_level_wave(Game game, ScenarioLevelWaveDataModel scenario_level_wave) {
+		// TODO Auto-generated method stub
+		
 	}
 }

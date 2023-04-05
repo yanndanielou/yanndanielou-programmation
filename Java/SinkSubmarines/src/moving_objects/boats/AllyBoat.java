@@ -72,13 +72,13 @@ public class AllyBoat extends Belligerent {
 
 	@Override
 	public void impact_now() {
-		this.current_destruction_timer_in_seconds = 10;
+		this.current_destruction_timer_in_milliseconds = 10_000;
 	}
 
 	@Override
 	public void notify_destruction() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

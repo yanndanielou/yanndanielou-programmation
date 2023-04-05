@@ -34,13 +34,13 @@ public class SimpleSubmarineBomb extends Weapon {
 
 	@Override
 	protected void water_surface_reached() {
-		this.current_destruction_timer_in_seconds = 1;
+		this.current_destruction_timer_in_milliseconds = 100;
 		stop_movement();
 	}
 
 	@Override
 	public void impact_now() {
-		this.current_destruction_timer_in_seconds = 2;
+		this.current_destruction_timer_in_milliseconds = 2_000;
 	}
 
 }
