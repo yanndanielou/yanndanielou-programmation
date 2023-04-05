@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import core.GameManager;
+import game.Game;
 import moving_objects.boats.AllyBoat;
 
 public class KeyBoardInputs implements KeyListener {
@@ -27,9 +28,12 @@ public class KeyBoardInputs implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		LOGGER.info("keyPressed:" + KeyEvent.getKeyText(e.getKeyCode()) + " event:" + e);
 
-		AllyBoat ally_boat = GameManager.getInstance().getGame().getAlly_boat();
+		Game game = GameManager.getInstance().getGame();
+		AllyBoat ally_boat = game.getAlly_boat();
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			ally_boat.increase_left_speed();
+		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
+			game.set_next_ally_bomb_horizontal_speed_increase_in_progress(true);
 		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			ally_boat.increase_right_speed();
 		} else if (e.getKeyCode() == KeyEvent.VK_1) {
@@ -42,6 +46,14 @@ public class KeyBoardInputs implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		LOGGER.info("keyReleased:" + KeyEvent.getKeyText(e.getKeyCode()) + " event:" + e);
+
+		if (GameManager.hasGameInProgress()) {
+			Game game = GameManager.getInstance().getGame();
+
+			if (e.getKeyCode() == KeyEvent.VK_UP) {
+				game.set_next_ally_bomb_horizontal_speed_increase_in_progress(false);
+			}
+		}
 	}
 
 }

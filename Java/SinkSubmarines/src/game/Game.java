@@ -6,6 +6,7 @@ import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectsDataModel;
 import builders.scenariolevel.ScenarioLevelDataModel;
 import builders.scenariolevel.ScenarioLevelWaveDataModel;
+import constants.Constants;
 import game_board.GameBoard;
 import moving_objects.GameObject;
 import moving_objects.boats.AllyBoat;
@@ -15,8 +16,10 @@ import moving_objects.boats.YellowSubMarine;
 import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
+import time.TimeManager;
+import time.TimeManagerListener;
 
-public class Game {
+public class Game implements TimeManagerListener {
 
 	private ArrayList<Level> levels = new ArrayList<Level>(); // Create an ArrayList object
 	private GameBoard gameboard = null;
@@ -32,6 +35,9 @@ public class Game {
 
 	private ArrayList<GameListener> game_listeners = new ArrayList<>();
 
+	private int next_ally_bomb_horizontal_speed_relative_percentage = 0;
+	private boolean next_ally_bomb_horizontal_speed_increase_in_progress = false;
+
 	private int remaining_lives;
 
 	private boolean paused = false;
@@ -43,7 +49,8 @@ public class Game {
 		gameboard = new GameBoard(gameBoardDataModel);
 		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model(), gameBoardDataModel,
 				genericObjectsDataModel.getAlly_simple_bomb_data_model(), this);
-		this.setRemaining_lives(number_of_lives);
+		setRemaining_lives(number_of_lives);
+		TimeManager.getInstance().add_listener(this);
 	}
 
 	public void add_game_listener(GameListener listener) {
@@ -168,18 +175,25 @@ public class Game {
 
 	private void notify_new_scenario_level_loaded(Game game, ScenarioLevelDataModel scenario_level_data_model) {
 		game_listeners.forEach((game_listener) -> game_listener.on_new_scenario_level(this, scenario_level_data_model));
-		
+
 	}
+
 	private void notify_new_scenario_level_wave(Game game, ScenarioLevelWaveDataModel scenario_level_wave) {
 		game_listeners.forEach((game_listener) -> game_listener.on_new_scenario_level_wave(this, scenario_level_wave));
-		
+
+	}
+
+	private void notify_next_ally_bomb_horizontal_speed_changed() {
+		game_listeners.forEach((game_listener) -> game_listener.on_next_ally_bomb_horizontal_speed_changed(this,
+				next_ally_bomb_horizontal_speed_relative_percentage));
 	}
 
 	public ScenarioLevelWaveDataModel getCurrent_scenario_Level_wave_data_model() {
 		return current_scenario_Level_wave_data_model;
 	}
 
-	public void setCurrent_scenario_Level_wave_data_model(ScenarioLevelWaveDataModel current_scenario_Level_wave_data_model) {
+	public void setCurrent_scenario_Level_wave_data_model(
+			ScenarioLevelWaveDataModel current_scenario_Level_wave_data_model) {
 		this.current_scenario_Level_wave_data_model = current_scenario_Level_wave_data_model;
 		notify_new_scenario_level_wave(this, current_scenario_Level_wave_data_model);
 	}
@@ -193,12 +207,54 @@ public class Game {
 		notify_new_scenario_level_loaded(this, current_scenario_level_data_model);
 	}
 
-	/*
-	 * public SimpleSubMarine
-	 * create_simple_submarine(ScenarioLevelEnnemyCreationDataModel
-	 * scenarioLevelEnnemyCreationDataModel) { SimpleSubMarine submarine = new
-	 * SimpleSubMarine(scenarioLevelEnnemyCreationDataModel,
-	 * genericObjectsDataModel.getSimple_submarine_data_model(),
-	 * gameBoardDataModel); return submarine; }
-	 */
+	public int getNext_ally_bomb_horizontal_speed_relative_percentage() {
+		return next_ally_bomb_horizontal_speed_relative_percentage;
+	}
+
+	public boolean increase_next_ally_bomb_horizontal_speed_relative_percentage() {
+		if (next_ally_bomb_horizontal_speed_relative_percentage < 100) {
+			this.next_ally_bomb_horizontal_speed_relative_percentage++;
+			notify_next_ally_bomb_horizontal_speed_changed();
+			return true;
+		}
+		return false;
+	}
+
+	public boolean decrease_next_ally_bomb_horizontal_speed_relative_percentage() {
+		if (next_ally_bomb_horizontal_speed_relative_percentage > 0) {
+			this.next_ally_bomb_horizontal_speed_relative_percentage--;
+			notify_next_ally_bomb_horizontal_speed_changed();
+			return true;
+		}
+		return false;
+	}
+
+	public void set_next_ally_bomb_horizontal_speed_increase_in_progress(boolean value) {
+		next_ally_bomb_horizontal_speed_increase_in_progress = value;
+	}
+
+	@Override
+	public void on_10ms_tick() {
+		if (next_ally_bomb_horizontal_speed_increase_in_progress) {
+			increase_next_ally_bomb_horizontal_speed_relative_percentage();
+		} else if (next_ally_bomb_horizontal_speed_relative_percentage > 0) {
+			decrease_next_ally_bomb_horizontal_speed_relative_percentage();
+		}
+	}
+
+	@Override
+	public void on_50ms_tick() {
+	}
+
+	@Override
+	public void on_100ms_tick() {
+	}
+
+	@Override
+	public void on_second_tick() {
+	}
+
+	@Override
+	public void on_pause() {
+	}
 }

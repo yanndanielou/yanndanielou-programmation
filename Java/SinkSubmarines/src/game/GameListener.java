@@ -19,4 +19,6 @@ public interface GameListener {
 
 	public void on_new_scenario_level_wave(Game game, ScenarioLevelWaveDataModel scenario_level_wave);
 
+	public void on_next_ally_bomb_horizontal_speed_changed(Game game, int next_ally_bomb_horizontal_speed);
+
 }

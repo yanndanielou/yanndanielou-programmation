@@ -18,6 +18,7 @@ import builders.gameboard.GameBoardAreaDataModel;
 import builders.gameboard.GameBoardDataModel;
 import builders.scenariolevel.ScenarioLevelDataModel;
 import builders.scenariolevel.ScenarioLevelWaveDataModel;
+import constants.Constants;
 import core.GameManager;
 import core.ScenarioLevelExecutor;
 import game.DifficultyLevel;
@@ -32,6 +33,8 @@ public class TopPanel extends JPanel implements GameListener {
 	private ArrayList<JLabel> character_sailor_icons_as_label = new ArrayList<>();
 
 	private JLabel next_ally_bomb_horizontal_speed_as_label;
+	private ImageIcon next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon;
+	private JLabel next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label;
 
 	private ImageIcon remaining_ally_bombs_icon_as_icon;
 	private JLabel remaining_ally_bombs_icon_as_label;
@@ -80,15 +83,13 @@ public class TopPanel extends JPanel implements GameListener {
 		// getGraphics(), window_width, window_width)
 		layeredPane.add(next_ally_bomb_horizontal_speed_as_label, 1);
 
-		ImageIcon next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon = new ImageIcon(
+		next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon = new ImageIcon(
 				"Images/next_ally_bomb_horizontal_speed_full_force_only_red_content.png");
-		JLabel next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label = new JLabel(
+		next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label = new JLabel(
 				next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon);
-		next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label.setSize(
-				next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon.getIconWidth() - 15,
-				next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon.getIconHeight());
-		next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label
-				.setLocation(next_ally_bomb_horizontal_speed_as_label.getLocation());
+		next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label.setLocation(
+				next_ally_bomb_horizontal_speed_as_label.getX() + 1,
+				next_ally_bomb_horizontal_speed_as_label.getY() + 1);
 		// getWidth() / 2 -
 		// next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label.getWidth()
 		// / 2,
@@ -96,19 +97,23 @@ public class TopPanel extends JPanel implements GameListener {
 		// next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label.getHeight()
 		// / 2);
 		layeredPane.add(next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label, 2);
-//		
+
+		//
 
 		remaining_ally_bombs_icon_as_icon = new ImageIcon("Images/remaining_ally_bombs_icon.png");
 		remaining_ally_bombs_icon_as_label = new JLabel(remaining_ally_bombs_icon_as_icon);
 		remaining_ally_bombs_icon_as_label.setSize(50, remaining_ally_bombs_icon_as_icon.getIconHeight());
-		remaining_ally_bombs_icon_as_label.setLocation((int) (getWidth() * 0.6),
-				getHeight() / 2 - remaining_ally_bombs_icon_as_label.getHeight() / 2);
+		remaining_ally_bombs_icon_as_label
+				.setLocation(
+						next_ally_bomb_horizontal_speed_as_label.getX()
+								+ next_ally_bomb_horizontal_speed_as_label.getWidth() + 10,
+						getHeight() / 2 - remaining_ally_bombs_icon_as_label.getHeight() / 2);
 		layeredPane.add(remaining_ally_bombs_icon_as_label, 1);
 
 		remaining_ally_bombs_label = new JLabel("X");
 		remaining_ally_bombs_label.setSize(10, (int) (getHeight() * 0.8));
 		remaining_ally_bombs_label.setLocation(
-				remaining_ally_bombs_icon_as_label.getX() + remaining_ally_bombs_icon_as_label.getWidth() + 10,
+				remaining_ally_bombs_icon_as_label.getX() + remaining_ally_bombs_icon_as_label.getWidth() + 5,
 				getHeight() / 2 - remaining_ally_bombs_label.getHeight() / 2);
 		remaining_ally_bombs_label.setForeground(Color.yellow);
 		remaining_ally_bombs_label.setFont(new Font(Font.SERIF, Font.BOLD, 15));
@@ -122,6 +127,8 @@ public class TopPanel extends JPanel implements GameListener {
 		score_label.setFont(new Font(Font.SERIF, Font.BOLD, 15));
 		layeredPane.add(score_label, 1);
 		// setBounds(0, 0, this.getSize().width, this.getSize().height);
+
+		update_next_ally_bomb_horizontal_speed_label();
 
 	}
 
@@ -148,6 +155,22 @@ public class TopPanel extends JPanel implements GameListener {
 	@Override
 	public void on_number_of_remaining_lives_changed(Game game) {
 		update_current_scenario_level(game);
+	}
+
+	private void update_next_ally_bomb_horizontal_speed_label() {
+		if (GameManager.hasGameInProgress()) {
+			Game game = GameManager.getInstance().getGame();
+
+			int next_ally_bomb_horizontal_speed_relative_percentage = game
+					.getNext_ally_bomb_horizontal_speed_relative_percentage();
+
+			next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label.setSize(
+					next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon.getIconWidth()
+							* next_ally_bomb_horizontal_speed_relative_percentage / 100,
+					next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon.getIconHeight());
+
+		}
+
 	}
 
 	private void update_current_scenario_level(Game game) {
@@ -188,6 +211,11 @@ public class TopPanel extends JPanel implements GameListener {
 	public void on_new_scenario_level_wave(Game game, ScenarioLevelWaveDataModel scenario_level_wave) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void on_next_ally_bomb_horizontal_speed_changed(Game game, int next_ally_bomb_horizontal_speed) {
+		update_next_ally_bomb_horizontal_speed_label();
 	}
 
 }

@@ -10,6 +10,7 @@ import builders.gameboard.GameBoardDataModelBuilder;
 import builders.genericobjects.GenericObjectsDataModel;
 import builders.genericobjects.GenericObjectsDataModelBuilder;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
+import constants.Constants;
 import game.DifficultyLevel;
 import game.Game;
 import hmi.SinkSubmarinesMainView;
@@ -163,10 +164,10 @@ public class GameManager implements TimeManagerListener {
 		return ally_bomb_drop_is_autorized;
 	}
 
-	public void dropSimpleAllyBoatAtLeftOfAllyBoat(int drop_x, int drop_y) {
+	public void dropSimpleAllyBoatAtLeftOfAllyBoat(int drop_x, int drop_y, int x_speed) {
 		if (is_ally_bomb_drop_autorized()) {
 			SimpleAllyBomb simpleAllyBomb = new SimpleAllyBomb(genericObjectsDataModel.getAlly_simple_bomb_data_model(),
-					drop_x, drop_y, game);
+					drop_x, drop_y, x_speed, game);
 			game.addSimpleAllyBomb(simpleAllyBomb);
 			LOGGER.info("Drop simple ally bomb at " + drop_x + " and " + drop_y);
 			simpleAllyBomb.add_movement_listener(sinkSubmarinesMainView.getAllyBoatPanel());
@@ -181,7 +182,9 @@ public class GameManager implements TimeManagerListener {
 		double dropped_bomb_x = Math.max(ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getX() - 10,
 				0);
 		dropSimpleAllyBoatAtLeftOfAllyBoat((int) dropped_bomb_x,
-				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() - 15);
+				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() - 15,
+				Constants.MAXIMUM_HORIZONTAL_SPEED_FOR_NEXT_ALLY_BOMB
+						* game.getNext_ally_bomb_horizontal_speed_relative_percentage() / 100 * -1);
 	}
 
 	public void dropSimpleAllyBoatAtRightOfAllyBoat() {
@@ -189,14 +192,16 @@ public class GameManager implements TimeManagerListener {
 		double dropped_bomb_x = Math.min(ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getMaxX() + 10,
 				game.getGameboard().getWidth());
 		dropSimpleAllyBoatAtLeftOfAllyBoat((int) dropped_bomb_x,
-				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() - 15);
+				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() - 15,
+				Constants.MAXIMUM_HORIZONTAL_SPEED_FOR_NEXT_ALLY_BOMB
+				* game.getNext_ally_bomb_horizontal_speed_relative_percentage() / 100 * 1);
 	}
 
 	public SimpleSubmarineBomb fire_simple_submarine_bomb(int x, int y, int ammunition_y_speed) {
 		SimpleSubmarineBomb sumbmarineBomb = new SimpleSubmarineBomb(
 				genericObjectsDataModel.getSimple_submarine_bomb_data_model(), x, y, ammunition_y_speed, game);
 		game.addSimpleSubmarineBomb(sumbmarineBomb);
-		LOGGER.info("Fire simple submarine bomb at " + x + " and " + y);
+		LOGGER.debug("Fire simple submarine bomb at " + x + " and " + y);
 		sumbmarineBomb.add_movement_listener(sinkSubmarinesMainView.getAllyBoatPanel());
 		sumbmarineBomb.add_movement_listener(sinkSubmarinesMainView.getUnderWaterPanel());
 		return sumbmarineBomb;

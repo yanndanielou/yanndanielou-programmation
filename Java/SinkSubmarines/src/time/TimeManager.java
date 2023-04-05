@@ -153,42 +153,47 @@ public class TimeManager extends TimerTask implements GameListener {
 	@Override
 	public void on_game_paused(Game game) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_number_of_remaining_lives_changed(Game game) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_game_resumed(Game game) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_listen_to_game(Game game) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_game_cancelled(Game game) {
-		// TODO Auto-generated method stub
-		
+		time_manager_listeners.remove(game);
 	}
 
 	@Override
 	public void on_new_scenario_level(Game game, ScenarioLevelDataModel scenario_level_data_model) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_new_scenario_level_wave(Game game, ScenarioLevelWaveDataModel scenario_level_wave) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public void on_next_ally_bomb_horizontal_speed_changed(Game game, int next_ally_bomb_horizontal_speed) {
+		// TODO Auto-generated method stub
+
 	}
 }
