@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import builders.gameboard.GameBoardAreaDataModel;
@@ -52,12 +53,16 @@ public class TopPanel extends JPanel implements GameListener {
 
 		setLayout(null);
 
+		JLayeredPane layeredPane = new JLayeredPane();
+		add(layeredPane);
+		layeredPane.setSize(getWidth(), getHeight());
+
 		current_scenario_level_label = new JLabel("LEVEL:");
 		current_scenario_level_label.setSize(100, (int) (getHeight() * 0.8));
 		current_scenario_level_label.setLocation(10, getHeight() / 2 - current_scenario_level_label.getHeight() / 2);
 		current_scenario_level_label.setForeground(Color.yellow);
 		current_scenario_level_label.setFont(new Font(Font.SERIF, Font.BOLD, 15));
-		add(current_scenario_level_label);
+		layeredPane.add(current_scenario_level_label, 1);
 
 		character_sailor_icon = new ImageIcon("Images/character_baby_sailor.png");
 
@@ -69,17 +74,36 @@ public class TopPanel extends JPanel implements GameListener {
 		next_ally_bomb_horizontal_speed_as_label.setLocation(
 				getWidth() / 2 - next_ally_bomb_horizontal_speed_as_label.getWidth() / 2,
 				getHeight() / 2 - next_ally_bomb_horizontal_speed_as_label.getHeight() / 2);
-		next_ally_bomb_horizontal_speed_as_label.setBackground(Color.red);
-		next_ally_bomb_horizontal_speed_as_label.setForeground(Color.red);
-		//next_ally_bomb_horizontal_speed_no_force_icon.paintIcon(next_ally_bomb_horizontal_speed_as_label, getGraphics(), window_width, window_width)
-		add(next_ally_bomb_horizontal_speed_as_label);
+//		next_ally_bomb_horizontal_speed_as_label.setBackground(Color.red);
+//		next_ally_bomb_horizontal_speed_as_label.setForeground(Color.red);
+		// next_ally_bomb_horizontal_speed_no_force_icon.paintIcon(next_ally_bomb_horizontal_speed_as_label,
+		// getGraphics(), window_width, window_width)
+		layeredPane.add(next_ally_bomb_horizontal_speed_as_label, 1);
+
+		ImageIcon next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon = new ImageIcon(
+				"Images/next_ally_bomb_horizontal_speed_full_force_only_red_content.png");
+		JLabel next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label = new JLabel(
+				next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon);
+		next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label.setSize(
+				next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon.getIconWidth() - 15,
+				next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon.getIconHeight());
+		next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label
+				.setLocation(next_ally_bomb_horizontal_speed_as_label.getLocation());
+		// getWidth() / 2 -
+		// next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label.getWidth()
+		// / 2,
+		// getHeight() / 2 -
+		// next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label.getHeight()
+		// / 2);
+		layeredPane.add(next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label, 2);
+//		
 
 		remaining_ally_bombs_icon_as_icon = new ImageIcon("Images/remaining_ally_bombs_icon.png");
 		remaining_ally_bombs_icon_as_label = new JLabel(remaining_ally_bombs_icon_as_icon);
 		remaining_ally_bombs_icon_as_label.setSize(50, remaining_ally_bombs_icon_as_icon.getIconHeight());
 		remaining_ally_bombs_icon_as_label.setLocation((int) (getWidth() * 0.6),
 				getHeight() / 2 - remaining_ally_bombs_icon_as_label.getHeight() / 2);
-		add(remaining_ally_bombs_icon_as_label);
+		layeredPane.add(remaining_ally_bombs_icon_as_label, 1);
 
 		remaining_ally_bombs_label = new JLabel("X");
 		remaining_ally_bombs_label.setSize(10, (int) (getHeight() * 0.8));
@@ -88,7 +112,7 @@ public class TopPanel extends JPanel implements GameListener {
 				getHeight() / 2 - remaining_ally_bombs_label.getHeight() / 2);
 		remaining_ally_bombs_label.setForeground(Color.yellow);
 		remaining_ally_bombs_label.setFont(new Font(Font.SERIF, Font.BOLD, 15));
-		add(remaining_ally_bombs_label);
+		layeredPane.add(remaining_ally_bombs_label, 1);
 
 		score_label = new JLabel("SCORE");
 		score_label.setSize(150, (int) (getHeight() * 0.8));
@@ -96,7 +120,7 @@ public class TopPanel extends JPanel implements GameListener {
 				getHeight() / 2 - score_label.getHeight() / 2);
 		score_label.setForeground(Color.yellow);
 		score_label.setFont(new Font(Font.SERIF, Font.BOLD, 15));
-		add(score_label);
+		layeredPane.add(score_label, 1);
 		// setBounds(0, 0, this.getSize().width, this.getSize().height);
 
 	}
