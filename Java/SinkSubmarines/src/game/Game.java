@@ -6,7 +6,6 @@ import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectsDataModel;
 import builders.scenariolevel.ScenarioLevelDataModel;
 import builders.scenariolevel.ScenarioLevelWaveDataModel;
-import constants.Constants;
 import game_board.GameBoard;
 import moving_objects.GameObject;
 import moving_objects.boats.AllyBoat;
@@ -36,7 +35,7 @@ public class Game implements TimeManagerListener {
 	private ArrayList<GameListener> game_listeners = new ArrayList<>();
 
 	private int next_ally_bomb_horizontal_speed_relative_percentage = 0;
-	private boolean next_ally_bomb_horizontal_speed_increase_in_progress = false;
+	private NextAllyBombHorizontalSpeedIncreaseDirection next_ally_bomb_horizontal_speed_increase_direction;
 
 	private int remaining_lives;
 
@@ -211,35 +210,48 @@ public class Game implements TimeManagerListener {
 		return next_ally_bomb_horizontal_speed_relative_percentage;
 	}
 
-	public boolean increase_next_ally_bomb_horizontal_speed_relative_percentage() {
-		if (next_ally_bomb_horizontal_speed_relative_percentage < 100) {
-			this.next_ally_bomb_horizontal_speed_relative_percentage++;
+	public boolean compute_next_ally_bomb_horizontal_speed_relative_percentage() {
+		int previous_value_next_ally_bomb_horizontal_speed_relative_percentage = next_ally_bomb_horizontal_speed_relative_percentage;
+		if (next_ally_bomb_horizontal_speed_increase_direction != null) {
+			switch (next_ally_bomb_horizontal_speed_increase_direction) {
+			case DECREASE:
+				if (next_ally_bomb_horizontal_speed_relative_percentage > 0) {
+					next_ally_bomb_horizontal_speed_relative_percentage--;
+				} else {
+					next_ally_bomb_horizontal_speed_increase_direction = NextAllyBombHorizontalSpeedIncreaseDirection.INCREASE;
+				}
+				break;
+			case INCREASE:
+				if (next_ally_bomb_horizontal_speed_relative_percentage < 100) {
+					next_ally_bomb_horizontal_speed_relative_percentage++;
+				} else {
+					next_ally_bomb_horizontal_speed_increase_direction = NextAllyBombHorizontalSpeedIncreaseDirection.DECREASE;
+				}
+				break;
+			default:
+				break;
+			}
+		}
+		if (previous_value_next_ally_bomb_horizontal_speed_relative_percentage != next_ally_bomb_horizontal_speed_relative_percentage) {
 			notify_next_ally_bomb_horizontal_speed_changed();
 			return true;
 		}
 		return false;
 	}
 
-	public boolean decrease_next_ally_bomb_horizontal_speed_relative_percentage() {
-		if (next_ally_bomb_horizontal_speed_relative_percentage > 0) {
-			this.next_ally_bomb_horizontal_speed_relative_percentage--;
+	public void set_next_ally_bomb_horizontal_speed(boolean value) {
+		if (value) {
+			next_ally_bomb_horizontal_speed_increase_direction = NextAllyBombHorizontalSpeedIncreaseDirection.INCREASE;
+		} else {
+			next_ally_bomb_horizontal_speed_increase_direction = null;
+			next_ally_bomb_horizontal_speed_relative_percentage = 0;
 			notify_next_ally_bomb_horizontal_speed_changed();
-			return true;
 		}
-		return false;
-	}
-
-	public void set_next_ally_bomb_horizontal_speed_increase_in_progress(boolean value) {
-		next_ally_bomb_horizontal_speed_increase_in_progress = value;
 	}
 
 	@Override
 	public void on_10ms_tick() {
-		if (next_ally_bomb_horizontal_speed_increase_in_progress) {
-			increase_next_ally_bomb_horizontal_speed_relative_percentage();
-		} else if (next_ally_bomb_horizontal_speed_relative_percentage > 0) {
-			decrease_next_ally_bomb_horizontal_speed_relative_percentage();
-		}
+		compute_next_ally_bomb_horizontal_speed_relative_percentage();
 	}
 
 	@Override
@@ -256,5 +268,9 @@ public class Game implements TimeManagerListener {
 
 	@Override
 	public void on_pause() {
+	}
+
+	private enum NextAllyBombHorizontalSpeedIncreaseDirection {
+		DECREASE, INCREASE;
 	}
 }

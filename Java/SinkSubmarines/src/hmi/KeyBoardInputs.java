@@ -33,7 +33,7 @@ public class KeyBoardInputs implements KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			ally_boat.increase_left_speed();
 		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
-			game.set_next_ally_bomb_horizontal_speed_increase_in_progress(true);
+			game.set_next_ally_bomb_horizontal_speed(true);
 		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			ally_boat.increase_right_speed();
 		} else if (e.getKeyCode() == KeyEvent.VK_1) {
@@ -51,7 +51,7 @@ public class KeyBoardInputs implements KeyListener {
 			Game game = GameManager.getInstance().getGame();
 
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
-				game.set_next_ally_bomb_horizontal_speed_increase_in_progress(false);
+				game.set_next_ally_bomb_horizontal_speed(false);
 			}
 		}
 	}
