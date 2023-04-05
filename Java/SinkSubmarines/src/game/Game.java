@@ -15,6 +15,7 @@ import moving_objects.boats.YellowSubMarine;
 import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
+import moving_objects.weapon.Weapon;
 import time.TimeManager;
 import time.TimeManagerListener;
 
@@ -74,8 +75,7 @@ public class Game implements TimeManagerListener {
 		game_objects.add(ally_boat);
 		game_objects.addAll(simple_ally_bombs);
 		game_objects.addAll(get_all_submarines());
-		game_objects.addAll(simple_submarine_bombs);
-		game_objects.addAll(floating_submarine_bombs);
+		game_objects.addAll(get_all_submarines_bombs());
 		return game_objects;
 	}
 
@@ -84,6 +84,13 @@ public class Game implements TimeManagerListener {
 		submarines.addAll(simple_submarines);
 		submarines.addAll(yellow_submarines);
 		return submarines;
+	}
+
+	public ArrayList<Weapon> get_all_submarines_bombs() {
+		ArrayList<Weapon> submarines_bombs = new ArrayList<>();
+		submarines_bombs.addAll(simple_submarine_bombs);
+		submarines_bombs.addAll(floating_submarine_bombs);
+		return submarines_bombs;
 	}
 
 	public ArrayList<SimpleSubMarine> getSimple_submarines() {

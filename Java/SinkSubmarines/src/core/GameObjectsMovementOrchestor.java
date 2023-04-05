@@ -9,9 +9,11 @@ import org.apache.logging.log4j.Logger;
 
 import game.Game;
 import moving_objects.GameObject;
+import moving_objects.boats.AllyBoat;
 import moving_objects.boats.Belligerent;
 import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
+import moving_objects.weapon.Weapon;
 import time.TimeManager;
 import time.TimeManagerListener;
 
@@ -98,11 +100,26 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 
 	private boolean check_if_collision() {
 		boolean collision_detected = false;
+		Game game = GameManager.getInstance().getGame();
+		AllyBoat ally_boat = game.getAlly_boat();
 
-		for (SimpleAllyBomb simpleAllyBomb : GameManager.getInstance().getGame().getSimple_ally_bombs()) {
+		for (Weapon submarine_bomb : game.get_all_submarines_bombs()) {
+			if (!submarine_bomb.is_being_destroyed()) {
+				if (submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board()
+						.intersects(ally_boat.getSurrounding_rectangle_absolute_on_complete_board())) {
+					LOGGER.info("Collision detected between ally boat " + ally_boat + " and submarine bomb:"
+							+ submarine_bomb);
+					ally_boat.impact_now();
+					submarine_bomb.impact_now();
+				}
+			}
+
+		}
+
+		for (SimpleAllyBomb simpleAllyBomb : game.getSimple_ally_bombs()) {
 			if (!simpleAllyBomb.is_being_destroyed()) {
 
-				for (Belligerent subMarine : GameManager.getInstance().getGame().get_all_submarines()) {
+				for (Belligerent subMarine : game.get_all_submarines()) {
 					if (!subMarine.is_being_destroyed()) {
 						if (simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board()
 								.intersects(subMarine.getSurrounding_rectangle_absolute_on_complete_board())) {
@@ -114,8 +131,7 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 					}
 				}
 
-				for (FloatingSubmarineBomb floating_submarine_bomb : GameManager.getInstance().getGame()
-						.getFloating_submarine_bombs()) {
+				for (FloatingSubmarineBomb floating_submarine_bomb : game.getFloating_submarine_bombs()) {
 					if (!floating_submarine_bomb.is_being_destroyed()) {
 						if (simpleAllyBomb.getSurrounding_rectangle_absolute_on_complete_board().intersects(
 								floating_submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board())) {
