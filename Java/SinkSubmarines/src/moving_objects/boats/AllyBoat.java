@@ -26,7 +26,7 @@ public class AllyBoat extends Belligerent {
 	@Override
 	public void notify_movement() {
 		for (GameObjectListerner allyBoatListener : movement_listeners) {
-			allyBoatListener.on_ally_boat_moved();
+			allyBoatListener.on_ally_boat_moved(this);
 		}
 	}
 

@@ -48,7 +48,7 @@ public class SimpleAllyBomb extends Weapon {
 	@Override
 	public void notify_movement() {
 		for (GameObjectListerner objectlistener : movement_listeners) {
-			objectlistener.on_simple_ally_bomb_moved();
+			objectlistener.on_simple_ally_bomb_moved(this);
 		}
 	}
 

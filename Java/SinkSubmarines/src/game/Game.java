@@ -38,7 +38,8 @@ public class Game implements TimeManagerListener {
 	private int next_ally_bomb_horizontal_speed_relative_percentage = 0;
 	private NextAllyBombHorizontalSpeedIncreaseDirection next_ally_bomb_horizontal_speed_increase_direction;
 
-	private int remaining_lives;
+	private int number_of_remaining_lives;
+	private int score;
 
 	private boolean paused = false;
 
@@ -49,7 +50,7 @@ public class Game implements TimeManagerListener {
 		gameboard = new GameBoard(gameBoardDataModel);
 		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model(), gameBoardDataModel,
 				genericObjectsDataModel.getAlly_simple_bomb_data_model(), this);
-		setRemaining_lives(number_of_lives);
+		setNumber_remaining_lives(number_of_lives);
 		TimeManager.getInstance().add_listener(this);
 	}
 
@@ -156,14 +157,14 @@ public class Game implements TimeManagerListener {
 		game_listeners.forEach((game_listener) -> game_listener.on_game_cancelled(this));
 	}
 
-	public int getRemaining_lives() {
-		return remaining_lives;
+	public int getNumber_Remaining_lives() {
+		return number_of_remaining_lives;
 	}
 
-	public void setRemaining_lives(int remaining_lives) {
-		if (this.remaining_lives != remaining_lives) {
-			this.remaining_lives = remaining_lives;
-			notify_remaining_lives_changed();
+	public void setNumber_remaining_lives(int remaining_lives) {
+		if (this.number_of_remaining_lives != remaining_lives) {
+			this.number_of_remaining_lives = remaining_lives;
+			notify_number_remaining_lives_changed();
 		}
 	}
 
@@ -173,9 +174,9 @@ public class Game implements TimeManagerListener {
 		}
 	}
 
-	private void notify_remaining_lives_changed() {
+	private void notify_number_remaining_lives_changed() {
 		for (GameListener gameListener : game_listeners) {
-			gameListener.on_number_of_remaining_lives_changed(this, remaining_lives);
+			gameListener.on_number_of_remaining_lives_changed(this, number_of_remaining_lives);
 		}
 	}
 
@@ -277,6 +278,14 @@ public class Game implements TimeManagerListener {
 
 	@Override
 	public void on_pause() {
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 	private enum NextAllyBombHorizontalSpeedIncreaseDirection {

@@ -6,10 +6,13 @@ import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import core.GameManager;
 import game.Game;
 import moving_objects.GameObjectListerner;
+import moving_objects.weapon.FloatingSubmarineBomb;
+import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
 
 public class SimpleSubMarine extends SubMarine {
-	//private static final Logger LOGGER = LogManager.getLogger(SimpleSubMarine.class);
+	// private static final Logger LOGGER =
+	// LogManager.getLogger(SimpleSubMarine.class);
 
 	public SimpleSubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
 			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel, Game game) {
@@ -29,7 +32,7 @@ public class SimpleSubMarine extends SubMarine {
 	@Override
 	public void notify_movement() {
 		for (GameObjectListerner allyBoatListener : movement_listeners) {
-			allyBoatListener.on_simple_submarine_moved();
+			allyBoatListener.on_simple_submarine_moved(this);
 		}
 	}
 
@@ -70,5 +73,6 @@ public class SimpleSubMarine extends SubMarine {
 		bomb_fired.add_movement_listener(this);
 
 	}
+
 
 }

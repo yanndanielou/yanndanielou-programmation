@@ -9,9 +9,14 @@ import javax.swing.JPanel;
 import builders.gameboard.GameBoardDataModel;
 import core.GameManager;
 import moving_objects.GameObjectListerner;
+import moving_objects.boats.AllyBoat;
 import moving_objects.boats.GameObjectGraphicalRepresentationManager;
+import moving_objects.boats.SimpleSubMarine;
 import moving_objects.boats.SubMarine;
+import moving_objects.boats.YellowSubMarine;
+import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
+import moving_objects.weapon.SimpleSubmarineBomb;
 import moving_objects.weapon.Weapon;
 
 public class OceanBedPanel extends AbstractPanel implements GameObjectListerner {
@@ -56,15 +61,7 @@ public class OceanBedPanel extends AbstractPanel implements GameObjectListerner 
 	}
 
 	@Override
-	public void on_ally_boat_moved() {
-	}
-
-	@Override
-	public void on_simple_submarine_moved() {
-	}
-
-	@Override
-	public void on_simple_ally_bomb_moved() {
+	public void on_simple_ally_bomb_moved(SimpleAllyBomb simpleAllyBomb) {
 		this.repaint();
 	}
 
@@ -74,6 +71,42 @@ public class OceanBedPanel extends AbstractPanel implements GameObjectListerner 
 
 	@Override
 	public void on_weapon_destruction(Weapon weapon) {
+	}
+
+	@Override
+	public void on_ally_boat_moved(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_submarine_moved(SimpleSubMarine simpleSubMarine) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_yellow_submarine_moved(YellowSubMarine yellowSubMarine) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_submarine_bomb_moved(SimpleSubmarineBomb simpleSubmarineBomb) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_floating_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_yellow_submarine_destruction(SubMarine subMarine) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

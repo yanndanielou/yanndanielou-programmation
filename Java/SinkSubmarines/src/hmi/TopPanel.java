@@ -162,7 +162,7 @@ public class TopPanel extends JPanel implements GameListener {
 	private void update_number_of_remaining_lives() {
 		if (GameManager.hasGameInProgress()) {
 			Game game = GameManager.getInstance().getGame();
-			int remaining_lives = game.getRemaining_lives();
+			int remaining_lives = game.getNumber_Remaining_lives();
 
 			Component object_at_left = current_scenario_level_label;
 

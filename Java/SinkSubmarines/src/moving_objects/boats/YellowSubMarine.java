@@ -40,7 +40,7 @@ public class YellowSubMarine extends SubMarine  {
 	@Override
 	public void notify_movement() {
 		for (GameObjectListerner allyBoatListener : movement_listeners) {
-			allyBoatListener.on_simple_submarine_moved();
+			allyBoatListener.on_yellow_submarine_moved(this);
 		}
 	}
 
