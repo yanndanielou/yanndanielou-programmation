@@ -10,7 +10,7 @@ import builders.genericobjects.AllySimpleBombDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import constants.Constants;
 import game.Game;
-import moving_objects.GameObjectListerner;
+import moving_objects.listeners.GameObjectListerner;
 
 public class AllyBoat extends Belligerent {
 	private static final Logger LOGGER = LogManager.getLogger(AllyBoat.class);

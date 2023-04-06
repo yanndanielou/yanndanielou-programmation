@@ -12,7 +12,7 @@ import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import builders.scenariolevel.SubmarineFireStrategyType;
 import game.Game;
 import game_board.GameBoard;
-import moving_objects.GameObjectListerner;
+import moving_objects.listeners.GameObjectListerner;
 import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;

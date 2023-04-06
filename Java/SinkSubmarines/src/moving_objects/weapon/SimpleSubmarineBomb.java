@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 
 import builders.genericobjects.GenericObjectDataModel;
 import game.Game;
-import moving_objects.GameObjectListerner;
+import moving_objects.listeners.GameObjectListerner;
 
 public class SimpleSubmarineBomb extends Weapon {
 

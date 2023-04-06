@@ -5,7 +5,7 @@ import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import core.GameManager;
 import game.Game;
-import moving_objects.GameObjectListerner;
+import moving_objects.listeners.GameObjectListerner;
 import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;

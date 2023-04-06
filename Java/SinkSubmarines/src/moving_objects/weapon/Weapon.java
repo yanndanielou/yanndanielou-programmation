@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 
 import game.Game;
 import moving_objects.GameObject;
-import moving_objects.GameObjectListerner;
+import moving_objects.listeners.GameObjectListerner;
 
 public abstract class Weapon extends GameObject {
 

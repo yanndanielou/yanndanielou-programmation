@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import core.GameManager;
 import game.Game;
 import game_board.GameBoard;
+import moving_objects.listeners.GameObjectListerner;
 
 public abstract class GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);

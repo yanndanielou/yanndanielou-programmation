@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import builders.genericobjects.AllySimpleBombDataModel;
 import game.Game;
-import moving_objects.GameObjectListerner;
+import moving_objects.listeners.GameObjectListerner;
 
 public class SimpleAllyBomb extends Weapon {
 	private static final Logger LOGGER = LogManager.getLogger(SimpleAllyBomb.class);

@@ -7,12 +7,12 @@ import javax.swing.JPanel;
 
 import builders.gameboard.GameBoardDataModel;
 import core.GameManager;
-import moving_objects.GameObjectListerner;
 import moving_objects.boats.AllyBoat;
 import moving_objects.boats.GameObjectGraphicalRepresentationManager;
 import moving_objects.boats.SimpleSubMarine;
 import moving_objects.boats.SubMarine;
 import moving_objects.boats.YellowSubMarine;
+import moving_objects.listeners.GameObjectListerner;
 import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
