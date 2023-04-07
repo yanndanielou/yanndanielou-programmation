@@ -6,6 +6,7 @@ import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import core.GameManager;
 import game.Game;
 import moving_objects.listeners.GameObjectListerner;
+import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
 
 public class SimpleSubMarine extends SubMarine {
@@ -63,7 +64,7 @@ public class SimpleSubMarine extends SubMarine {
 
 	@Override
 	public void fire() {
-		SimpleSubmarineBomb bomb_fired = GameManager.getInstance().fire_simple_submarine_bomb(
+		SimpleSubmarineBomb bomb_fired = GameManager.getInstance().fire_simple_submarine_bomb(this,
 				(int) (surrounding_rectangle_absolute_on_complete_board.getX()
 						+ surrounding_rectangle_absolute_on_complete_board.getMaxX()) / 2,
 				(int) (surrounding_rectangle_absolute_on_complete_board.getY() - 1), ammunition_y_speed);
@@ -72,5 +73,10 @@ public class SimpleSubMarine extends SubMarine {
 
 	}
 
+	@Override
+	public void on_simple_ally_bomb_destruction(SimpleAllyBomb simpleAllyBomb) {
+		// TODO Auto-generated method stub
+
+	}
 
 }

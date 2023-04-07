@@ -7,9 +7,11 @@ import core.GameManager;
 import game.Game;
 import moving_objects.listeners.GameObjectListerner;
 import moving_objects.weapon.FloatingSubmarineBomb;
+import moving_objects.weapon.SimpleAllyBomb;
 
-public class YellowSubMarine extends SubMarine  {
-	//private static final Logger LOGGER = LogManager.getLogger(YellowSubMarine.class);
+public class YellowSubMarine extends SubMarine {
+	// private static final Logger LOGGER =
+	// LogManager.getLogger(YellowSubMarine.class);
 
 	public YellowSubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
 			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel, Game game) {
@@ -73,12 +75,18 @@ public class YellowSubMarine extends SubMarine  {
 
 	@Override
 	public void fire() {
-		FloatingSubmarineBomb bomb_fired = GameManager.getInstance().fire_floating_submarine_bomb(
+		FloatingSubmarineBomb bomb_fired = GameManager.getInstance().fire_floating_submarine_bomb(this,
 				(int) (surrounding_rectangle_absolute_on_complete_board.getX()
 						+ surrounding_rectangle_absolute_on_complete_board.getMaxX()) / 2,
 				(int) (surrounding_rectangle_absolute_on_complete_board.getY() - 1), ammunition_y_speed);
 		living_bombs.add(bomb_fired);
 		bomb_fired.add_movement_listener(this);
+
+	}
+
+	@Override
+	public void on_simple_ally_bomb_destruction(SimpleAllyBomb simpleAllyBomb) {
+		// TODO Auto-generated method stub
 
 	}
 

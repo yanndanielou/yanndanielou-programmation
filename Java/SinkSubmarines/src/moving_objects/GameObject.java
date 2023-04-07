@@ -131,7 +131,7 @@ public abstract class GameObject {
 
 		} else if (getY_speed() > 0) {
 
-			GameBoard gameboard = game.getGameboard();
+			GameBoard gameboard = getGame().getGameboard();
 			surrounding_rectangle_absolute_on_complete_board.translate(0, getY_speed());
 
 			if (get_depth() >= gameboard.getGameBoardDataModel().getUnder_water_game_board_area_data_model().getHeight()
@@ -183,9 +183,17 @@ public abstract class GameObject {
 
 	}
 
+	public void destroy() {
+		notify_destruction();
+	}
+
 	public void stop_movement() {
 		x_speed = 0;
 		y_speed = 0;
+	}
+
+	public Game getGame() {
+		return game;
 	}
 
 }

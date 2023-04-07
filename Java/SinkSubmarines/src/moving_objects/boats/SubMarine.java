@@ -71,7 +71,7 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	private boolean check_if_in_geographical_position_is_inside_board() {
 		boolean geographical_position_is_inside_board = false;
 
-		GameBoard gameboard = game.getGameboard();
+		GameBoard gameboard = getGame().getGameboard();
 		geographical_position_is_inside_board = surrounding_rectangle_absolute_on_complete_board.getX() >= 0
 				&& surrounding_rectangle_absolute_on_complete_board.getMaxX() <= gameboard.getWidth();
 
@@ -81,7 +81,7 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	private boolean check_if_in_geographical_position_of_fire_according_to_strategy() {
 		boolean is_in_geographical_position_of_fire_according_to_strategy = false;
 
-		AllyBoat ally_boat = game.getAlly_boat();
+		AllyBoat ally_boat = getGame().getAlly_boat();
 		double ally_boat_left_end_x = ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getX();
 		double distance_between_left_ally_boat_and_right_of_submarine = surrounding_rectangle_absolute_on_complete_board
 				.getMaxX() - ally_boat_left_end_x;
@@ -198,47 +198,53 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	}
 
 	public abstract void fire();
-	
 
 	@Override
 	public void on_ally_boat_moved(AllyBoat allyBoat) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_simple_submarine_moved(SimpleSubMarine simpleSubMarine) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_simple_ally_bomb_moved(SimpleAllyBomb simpleAllyBomb) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_yellow_submarine_moved(YellowSubMarine yellowSubMarine) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_simple_submarine_bomb_moved(SimpleSubmarineBomb simpleSubmarineBomb) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_floating_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_yellow_submarine_destruction(SubMarine subMarine) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
+	@Override
+	public void on_listen_to_simple_ally_bomb(SimpleAllyBomb simpleAllyBomb) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

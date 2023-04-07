@@ -37,8 +37,12 @@ public abstract class Belligerent extends GameObject {
 
 	}
 
+	public int get_remaining_number_of_living_bombs_allowed() {
+		return max_number_of_living_bombs - living_bombs.size();
+	}
+
 	public boolean has_reached_maximum_number_of_living_bombs() {
-		return living_bombs.size() == max_number_of_living_bombs;
+		return get_remaining_number_of_living_bombs_allowed() == 0;
 	}
 
 	public boolean is_minimal_time_since_last_fire_fulfilled() {
@@ -76,6 +80,19 @@ public abstract class Belligerent extends GameObject {
 
 	public void setMax_number_of_living_bombs(int max_number_of_living_bombs) {
 		this.max_number_of_living_bombs = max_number_of_living_bombs;
+	}
+
+	public void add_living_bomb(Weapon w) {
+		living_bombs.add(w);
+	}
+
+	public ArrayList<Weapon> getLiving_bombs() {
+		return living_bombs;
+	}
+
+	public boolean remove_living_bomb(Weapon weapon) {
+		boolean removed = living_bombs.remove(weapon);
+		return removed;
 	}
 
 }

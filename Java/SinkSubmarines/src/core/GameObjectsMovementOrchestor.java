@@ -81,7 +81,7 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 				.filter(item -> item.is_completely_destroyed()).collect(Collectors.toList());
 
 		for (GameObject object_completely_destroyed_to_clean : objects_completely_destroyed_to_clean) {
-			object_completely_destroyed_to_clean.notify_destruction();
+			object_completely_destroyed_to_clean.destroy();
 		}
 
 		objects_to_clean.removeAll(objects_completely_destroyed_to_clean);
@@ -118,7 +118,7 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 
 		}
 
-		for (SimpleAllyBomb simpleAllyBomb : game.getSimple_ally_bombs()) {
+		for (SimpleAllyBomb simpleAllyBomb : new ArrayList<SimpleAllyBomb>(game.getSimple_ally_bombs())) {
 			if (!simpleAllyBomb.is_being_destroyed()) {
 
 				for (Belligerent subMarine : game.get_all_submarines()) {

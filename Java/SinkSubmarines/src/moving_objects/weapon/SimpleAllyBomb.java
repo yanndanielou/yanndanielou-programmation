@@ -7,14 +7,16 @@ import org.apache.logging.log4j.Logger;
 
 import builders.genericobjects.AllySimpleBombDataModel;
 import game.Game;
+import moving_objects.boats.Belligerent;
 import moving_objects.listeners.GameObjectListerner;
 
 public class SimpleAllyBomb extends Weapon {
 	private static final Logger LOGGER = LogManager.getLogger(SimpleAllyBomb.class);
 
-	public SimpleAllyBomb(AllySimpleBombDataModel genericObjectDataModel, int x, int y, int x_speed, Game game) {
+	public SimpleAllyBomb(AllySimpleBombDataModel genericObjectDataModel, int x, int y, int x_speed, Game game,
+			Belligerent parent_belligerent) {
 		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()),
-				genericObjectDataModel.getY_speed(), game);
+				genericObjectDataModel.getY_speed(), game, parent_belligerent);
 		setX_speed(x_speed);
 	}
 
@@ -29,6 +31,12 @@ public class SimpleAllyBomb extends Weapon {
 	}
 
 	@Override
+	public void add_movement_listener(GameObjectListerner allyBoatListener) {
+		super.add_movement_listener(allyBoatListener);
+		allyBoatListener.on_listen_to_simple_ally_bomb(this);
+	}
+
+	@Override
 	public boolean proceed_horizontal_movement() {
 		boolean ret = super.proceed_horizontal_movement();
 		if (x_speed < 0) {
@@ -40,15 +48,17 @@ public class SimpleAllyBomb extends Weapon {
 	}
 
 	@Override
-	public boolean proceed_movement() {
-		boolean ret = super.proceed_movement();
-		return ret;
-	}
-
-	@Override
 	public void notify_movement() {
 		for (GameObjectListerner objectlistener : movement_listeners) {
 			objectlistener.on_simple_ally_bomb_moved(this);
+		}
+	}
+
+	@Override
+	public void notify_destruction() {
+		super.notify_destruction();
+		for (GameObjectListerner objectlistener : movement_listeners) {
+			objectlistener.on_simple_ally_bomb_destruction(this);
 		}
 	}
 

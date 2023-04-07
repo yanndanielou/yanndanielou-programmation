@@ -4,12 +4,15 @@ import java.awt.Rectangle;
 
 import builders.genericobjects.GenericObjectDataModel;
 import game.Game;
+import moving_objects.boats.Belligerent;
 import moving_objects.listeners.GameObjectListerner;
 
 public class SimpleSubmarineBomb extends Weapon {
 
-	public SimpleSubmarineBomb(GenericObjectDataModel genericObjectDataModel, int x, int y, int y_speed, Game game) {
-		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), y_speed, game);
+	public SimpleSubmarineBomb(GenericObjectDataModel genericObjectDataModel, int x, int y, int y_speed, Game game,
+			Belligerent parent_belligerent) {
+		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), y_speed, game,
+				parent_belligerent);
 	}
 
 	@Override

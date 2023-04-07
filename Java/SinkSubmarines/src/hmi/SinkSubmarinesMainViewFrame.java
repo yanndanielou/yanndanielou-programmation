@@ -142,6 +142,7 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 		simpleAllyBomb.add_movement_listener(allyBoatPanel);
 		simpleAllyBomb.add_movement_listener(underWaterPanel);
 		simpleAllyBomb.add_movement_listener(underWaterPanel);
+		simpleAllyBomb.add_movement_listener(topPanel);
 
 	}
 
@@ -149,6 +150,7 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 
 		sumbmarineBomb.add_movement_listener(allyBoatPanel);
 		sumbmarineBomb.add_movement_listener(underWaterPanel);
+		
 	}
 
 	public void register_to_game(Game game) {

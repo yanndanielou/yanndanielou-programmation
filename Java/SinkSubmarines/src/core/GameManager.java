@@ -16,6 +16,7 @@ import game.Game;
 import hmi.SinkSubmarinesMainViewFrame;
 import moving_objects.boats.AllyBoat;
 import moving_objects.boats.SimpleSubMarine;
+import moving_objects.boats.SubMarine;
 import moving_objects.boats.YellowSubMarine;
 import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
@@ -132,21 +133,20 @@ public class GameManager implements TimeManagerListener {
 
 	@Override
 	public void on_50ms_tick() {
-		// TODO Auto-generated method stub
-
 	}
 
 	private boolean is_ally_bomb_drop_autorized() {
 		boolean ally_bomb_drop_is_autorized = false;
 
-		boolean minimum_delay_between_two_ally_bombs_dropped_fulfilled = game.getAlly_boat()
+		AllyBoat ally_boat = game.getAlly_boat();
+		boolean minimum_delay_between_two_ally_bombs_dropped_fulfilled = ally_boat
 				.is_minimal_time_since_last_fire_fulfilled();
 
-		boolean is_under_maximum_number_of_ally_bombs_fulfilled = game.getAlly_boat()
-				.getMax_number_of_living_bombs() > game.getSimple_ally_bombs().size();
+		boolean is_under_maximum_number_of_ally_bombs_fulfilled = !ally_boat
+				.has_reached_maximum_number_of_living_bombs();
 
 		if (!is_under_maximum_number_of_ally_bombs_fulfilled) {
-			LOGGER.warn("Cannot drop bomb because limit of bombs " + game.getSimple_ally_bombs().size()
+			LOGGER.warn("Cannot drop bomb because limit of bombs " + ally_boat.getLiving_bombs().size()
 					+ " already dropped");
 		}
 
@@ -154,55 +154,62 @@ public class GameManager implements TimeManagerListener {
 				&& is_under_maximum_number_of_ally_bombs_fulfilled;
 
 		if (ally_bomb_drop_is_autorized) {
-			game.getAlly_boat().on_fire();
+			ally_boat.on_fire();
 		}
 
 		return ally_bomb_drop_is_autorized;
 	}
 
-	public void dropSimpleAllyBoatAtLeftOfAllyBoat(int drop_x, int drop_y, int x_speed) {
+	public void dropSimpleAllyBomb(int drop_x, int drop_y, int x_speed) {
 		if (is_ally_bomb_drop_autorized()) {
 			SimpleAllyBomb simpleAllyBomb = new SimpleAllyBomb(genericObjectsDataModel.getAlly_simple_bomb_data_model(),
-					drop_x, drop_y, x_speed, game);
+					drop_x, drop_y, x_speed, game, game.getAlly_boat());
 			game.addSimpleAllyBomb(simpleAllyBomb);
 			LOGGER.info("Drop simple ally bomb at " + drop_x + " and " + drop_y);
 			sinkSubmarinesMainView.register_to_simple_ally_bomb(simpleAllyBomb);
+			AllyBoat ally_boat = game.getAlly_boat();
+			ally_boat.add_living_bomb(simpleAllyBomb);
+			simpleAllyBomb.add_movement_listener(ally_boat);
 
 		}
 	}
 
-	public void dropSimpleAllyBoatAtLeftOfAllyBoat() {
+	public void dropSimpleAllyBombAtLeftOfAllyBoat() {
 		AllyBoat ally_boat = game.getAlly_boat();
 		double dropped_bomb_x = Math.max(ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getX() - 10,
 				0);
-		dropSimpleAllyBoatAtLeftOfAllyBoat((int) dropped_bomb_x,
-				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY(),
+		dropSimpleAllyBomb((int) dropped_bomb_x,
+				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() + 15,
 				Constants.MAXIMUM_HORIZONTAL_SPEED_FOR_NEXT_ALLY_BOMB
 						* game.getNext_ally_bomb_horizontal_speed_relative_percentage() / 100 * -1);
 	}
 
-	public void dropSimpleAllyBoatAtRightOfAllyBoat() {
+	public void dropSimpleAllyBombAtRightOfAllyBoat() {
 		AllyBoat ally_boat = game.getAlly_boat();
 		double dropped_bomb_x = Math.min(ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getMaxX() + 10,
 				game.getGameboard().getWidth());
-		dropSimpleAllyBoatAtLeftOfAllyBoat((int) dropped_bomb_x,
-				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY(),
+		dropSimpleAllyBomb((int) dropped_bomb_x,
+				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() + 15,
 				Constants.MAXIMUM_HORIZONTAL_SPEED_FOR_NEXT_ALLY_BOMB
 						* game.getNext_ally_bomb_horizontal_speed_relative_percentage() / 100 * 1);
 	}
 
-	public SimpleSubmarineBomb fire_simple_submarine_bomb(int x, int y, int ammunition_y_speed) {
+	public SimpleSubmarineBomb fire_simple_submarine_bomb(SubMarine simpleSubMarine, int x, int y,
+			int ammunition_y_speed) {
 		SimpleSubmarineBomb sumbmarineBomb = new SimpleSubmarineBomb(
-				genericObjectsDataModel.getSimple_submarine_bomb_data_model(), x, y, ammunition_y_speed, game);
+				genericObjectsDataModel.getSimple_submarine_bomb_data_model(), x, y, ammunition_y_speed, game,
+				simpleSubMarine);
 		game.addSimpleSubmarineBomb(sumbmarineBomb);
 		LOGGER.debug("Fire simple submarine bomb at " + x + " and " + y);
 		sinkSubmarinesMainView.register_to_simple_submarine_bomb(sumbmarineBomb);
 		return sumbmarineBomb;
 	}
 
-	public FloatingSubmarineBomb fire_floating_submarine_bomb(int x, int y, int ammunition_y_speed) {
+	public FloatingSubmarineBomb fire_floating_submarine_bomb(SubMarine subMarine, int x, int y,
+			int ammunition_y_speed) {
 		FloatingSubmarineBomb sumbmarineBomb = new FloatingSubmarineBomb(
-				genericObjectsDataModel.getFloating_submarine_bomb_data_model(), x, y, ammunition_y_speed, game);
+				genericObjectsDataModel.getFloating_submarine_bomb_data_model(), x, y, ammunition_y_speed, game,
+				subMarine);
 		game.addFloatingSubmarineBomb(sumbmarineBomb);
 		LOGGER.info("Fire floating submarine bomb at " + x + " and " + y);
 		sinkSubmarinesMainView.register_to_floating_submarine_bomb(sumbmarineBomb);

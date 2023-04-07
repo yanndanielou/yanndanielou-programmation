@@ -20,8 +20,17 @@ import builders.scenariolevel.ScenarioLevelWaveDataModel;
 import core.GameManager;
 import game.Game;
 import game.GameListener;
+import moving_objects.boats.AllyBoat;
+import moving_objects.boats.SimpleSubMarine;
+import moving_objects.boats.SubMarine;
+import moving_objects.boats.YellowSubMarine;
+import moving_objects.listeners.GameObjectListerner;
+import moving_objects.weapon.FloatingSubmarineBomb;
+import moving_objects.weapon.SimpleAllyBomb;
+import moving_objects.weapon.SimpleSubmarineBomb;
+import moving_objects.weapon.Weapon;
 
-public class TopPanel extends JPanel implements GameListener {
+public class TopPanel extends JPanel implements GameListener, GameObjectListerner {
 
 	private JLabel current_scenario_level_label;
 
@@ -35,8 +44,8 @@ public class TopPanel extends JPanel implements GameListener {
 
 	private ImageIcon remaining_ally_bombs_icon_as_icon;
 	private JLabel remaining_ally_bombs_icon_as_label;
-
 	private JLabel remaining_ally_bombs_label;
+
 	private JLabel score_label;
 
 	private JLayeredPane layeredPane;
@@ -68,7 +77,8 @@ public class TopPanel extends JPanel implements GameListener {
 
 		character_sailor_icon = new ImageIcon("Images/character_baby_sailor.png");
 		Image img = character_sailor_icon.getImage();
-		Image character_sailor_icon_scalled_as_image = img.getScaledInstance(20, (int) (getHeight() * 0.8), Image.SCALE_SMOOTH);
+		Image character_sailor_icon_scalled_as_image = img.getScaledInstance(20, (int) (getHeight() * 0.8),
+				Image.SCALE_SMOOTH);
 		character_sailor_icon_scalled = new ImageIcon(character_sailor_icon_scalled_as_image);
 
 		ImageIcon next_ally_bomb_horizontal_speed_no_force_icon = new ImageIcon(
@@ -113,7 +123,7 @@ public class TopPanel extends JPanel implements GameListener {
 		layeredPane.add(remaining_ally_bombs_icon_as_label, 1);
 
 		remaining_ally_bombs_label = new JLabel("X");
-		remaining_ally_bombs_label.setSize(10, (int) (getHeight() * 0.8));
+		remaining_ally_bombs_label.setSize(30, (int) (getHeight() * 0.8));
 		remaining_ally_bombs_label.setLocation(
 				remaining_ally_bombs_icon_as_label.getX() + remaining_ally_bombs_icon_as_label.getWidth() + 5,
 				getHeight() / 2 - remaining_ally_bombs_label.getHeight() / 2);
@@ -146,12 +156,6 @@ public class TopPanel extends JPanel implements GameListener {
 						.setText("LEVEL " + current_scenario_level_data_model.getScenario_level_number());
 			}
 		}
-	}
-
-	@Override
-	public void on_game_paused(Game game) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -210,27 +214,25 @@ public class TopPanel extends JPanel implements GameListener {
 		}
 	}
 
-	@Override
-	public void on_game_resumed(Game game) {
-		// TODO Auto-generated method stub
-
+	private void update_remaining_ally_bombs(Game game) {
+		int remaining_number_of_living_bombs_allowed_as_int = game.getAlly_boat()
+				.get_remaining_number_of_living_bombs_allowed();
+		String remaining_number_of_living_bombs_allowed_as_string = Integer
+				.toString(remaining_number_of_living_bombs_allowed_as_int);
+		remaining_ally_bombs_label.setText(remaining_number_of_living_bombs_allowed_as_string);
 	}
 
 	@Override
 	public void on_listen_to_game(Game game) {
 		update_current_scenario_level(game);
 		update_number_of_remaining_lives();
-	}
-
-	@Override
-	public void on_game_cancelled(Game game) {
-		// TODO Auto-generated method stub
-
+		update_remaining_ally_bombs(game);
 	}
 
 	@Override
 	public void on_new_scenario_level(Game game, ScenarioLevelDataModel scenario_level_data_model) {
 		update_current_scenario_level(game);
+		update_remaining_ally_bombs(game);
 	}
 
 	@Override
@@ -242,6 +244,77 @@ public class TopPanel extends JPanel implements GameListener {
 	@Override
 	public void on_next_ally_bomb_horizontal_speed_changed(Game game, int next_ally_bomb_horizontal_speed) {
 		update_next_ally_bomb_horizontal_speed_label();
+	}
+
+	@Override
+	public void on_ally_boat_moved(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_submarine_moved(SimpleSubMarine simpleSubMarine) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_submarine_destruction(SubMarine subMarine) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_ally_bomb_moved(SimpleAllyBomb simpleAllyBomb) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_weapon_destruction(Weapon weapon) {
+
+		update_remaining_ally_bombs(weapon.getGame());
+
+	}
+
+	@Override
+	public void on_simple_submarine_bomb_moved(SimpleSubmarineBomb simpleSubmarineBomb) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_floating_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_yellow_submarine_destruction(SubMarine subMarine) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_yellow_submarine_moved(YellowSubMarine yellowSubMarine) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_listen_to_simple_ally_bomb(SimpleAllyBomb simpleAllyBomb) {
+		update_remaining_ally_bombs(simpleAllyBomb.getGame());
+	}
+
+	@Override
+	public void on_score_changed(Game game, int score) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_ally_bomb_destruction(SimpleAllyBomb simpleAllyBomb) {
+		update_remaining_ally_bombs(simpleAllyBomb.getGame());
 	}
 
 }

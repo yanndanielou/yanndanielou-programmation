@@ -234,4 +234,16 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 		
 	}
 
+	@Override
+	public void on_listen_to_simple_ally_bomb(SimpleAllyBomb simpleAllyBomb) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_simple_ally_bomb_destruction(SimpleAllyBomb simpleAllyBomb) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

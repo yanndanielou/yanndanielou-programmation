@@ -127,10 +127,8 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 	private void loadScenario(ScenarioLevelDataModel scenario_Level_data_model) {
 		LOGGER.info("Load scenario:" + scenario_Level_data_model.getScenario_level_name() + " number:"
 				+ scenario_Level_data_model.getScenario_level_number());
-		game.setCurrent_scenario_level_data_model(scenario_Level_data_model);
 		loadWave(scenario_Level_data_model.getWaves().get(0));
-		GameManager.getInstance().getGame().getAlly_boat().setMax_number_of_living_bombs(
-				game.getCurrent_scenario_level_data_model().getMax_number_of_ally_bombs());
+		game.setCurrent_scenario_level_data_model(scenario_Level_data_model);
 		current_step_in_seconds = 0;
 	}
 

@@ -11,8 +11,12 @@ import builders.genericobjects.GenericObjectDataModel;
 import constants.Constants;
 import game.Game;
 import moving_objects.listeners.GameObjectListerner;
+import moving_objects.weapon.FloatingSubmarineBomb;
+import moving_objects.weapon.SimpleAllyBomb;
+import moving_objects.weapon.SimpleSubmarineBomb;
+import moving_objects.weapon.Weapon;
 
-public class AllyBoat extends Belligerent {
+public class AllyBoat extends Belligerent implements GameObjectListerner {
 	private static final Logger LOGGER = LogManager.getLogger(AllyBoat.class);
 
 	public AllyBoat(GenericObjectDataModel genericObjectDataModel, GameBoardDataModel gameBoardDataModel,
@@ -36,14 +40,14 @@ public class AllyBoat extends Belligerent {
 	}
 
 	public void increase_left_speed() {
-		if (x_speed > -3) {
+		if (x_speed > -Constants.MAXIMUM_ALLY_BOAT_HORIZONTAL_SPEED) {
 			x_speed--;
 			LOGGER.info("Ally boat, increase left speed to:" + x_speed);
 		}
 	}
 
 	public void increase_right_speed() {
-		if (x_speed < 3) {
+		if (x_speed < Constants.MAXIMUM_ALLY_BOAT_HORIZONTAL_SPEED) {
 			x_speed++;
 			LOGGER.info("Ally boat, increase right speed to:" + x_speed);
 		}
@@ -80,6 +84,71 @@ public class AllyBoat extends Belligerent {
 	public void notify_destruction() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void on_ally_boat_moved(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_submarine_moved(SimpleSubMarine simpleSubMarine) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_submarine_destruction(SubMarine subMarine) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_ally_bomb_moved(SimpleAllyBomb simpleAllyBomb) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_weapon_destruction(Weapon weapon) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_submarine_bomb_moved(SimpleSubmarineBomb simpleSubmarineBomb) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_floating_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_listen_to_simple_ally_bomb(SimpleAllyBomb simpleAllyBomb) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_yellow_submarine_destruction(SubMarine subMarine) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_yellow_submarine_moved(YellowSubMarine yellowSubMarine) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_ally_bomb_destruction(SimpleAllyBomb simpleAllyBomb) {
+		living_bombs.remove(simpleAllyBomb);
 	}
 
 }

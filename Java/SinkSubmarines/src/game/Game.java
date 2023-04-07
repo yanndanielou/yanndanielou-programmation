@@ -34,6 +34,7 @@ public class Game implements TimeManagerListener {
 	private ScenarioLevelWaveDataModel current_scenario_Level_wave_data_model = null;
 
 	private ArrayList<GameListener> game_listeners = new ArrayList<>();
+	private ArrayList<GameStatusListener> game_status_listeners = new ArrayList<>();
 
 	private int next_ally_bomb_horizontal_speed_relative_percentage = 0;
 	private NextAllyBombHorizontalSpeedIncreaseDirection next_ally_bomb_horizontal_speed_increase_direction;
@@ -45,8 +46,6 @@ public class Game implements TimeManagerListener {
 
 	public Game(GameBoardDataModel gameBoardDataModel, GenericObjectsDataModel genericObjectsDataModel,
 			int number_of_lives) {
-		// this.genericObjectsDataModel = genericObjectsDataModel;
-		// this.gameBoardDataModel = gameBoardDataModel;
 		gameboard = new GameBoard(gameBoardDataModel);
 		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model(), gameBoardDataModel,
 				genericObjectsDataModel.getAlly_simple_bomb_data_model(), this);
@@ -57,6 +56,11 @@ public class Game implements TimeManagerListener {
 	public void add_game_listener(GameListener listener) {
 		game_listeners.add(listener);
 		listener.on_listen_to_game(this);
+	}
+
+	public void add_game_status_listener(GameStatusListener listener) {
+		game_status_listeners.add(listener);
+		listener.on_listen_to_game_status(this);
 	}
 
 	public ArrayList<Level> getLevels() {
@@ -150,11 +154,11 @@ public class Game implements TimeManagerListener {
 	}
 
 	private void notify_game_resumed() {
-		game_listeners.forEach((game_listener) -> game_listener.on_game_resumed(this));
+		game_status_listeners.forEach((game_status_listener) -> game_status_listener.on_game_resumed(this));
 	}
 
 	public void notify_game_cancelled() {
-		game_listeners.forEach((game_listener) -> game_listener.on_game_cancelled(this));
+		game_status_listeners.forEach((game_status_listener) -> game_status_listener.on_game_cancelled(this));
 	}
 
 	public int getNumber_Remaining_lives() {
@@ -169,7 +173,7 @@ public class Game implements TimeManagerListener {
 	}
 
 	private void notify_game_paused() {
-		for (GameListener gameListener : game_listeners) {
+		for (GameStatusListener gameListener : game_status_listeners) {
 			gameListener.on_game_paused(this);
 		}
 	}
@@ -211,6 +215,8 @@ public class Game implements TimeManagerListener {
 
 	public void setCurrent_scenario_level_data_model(ScenarioLevelDataModel current_scenario_level_data_model) {
 		this.current_scenario_level_data_model = current_scenario_level_data_model;
+
+		ally_boat.setMax_number_of_living_bombs(current_scenario_level_data_model.getMax_number_of_ally_bombs());
 		notify_new_scenario_level_loaded(this, current_scenario_level_data_model);
 	}
 
@@ -286,6 +292,8 @@ public class Game implements TimeManagerListener {
 
 	public void setScore(int score) {
 		this.score = score;
+		notify_game_paused();
+		game_listeners.forEach((game_listener) -> game_listener.on_score_changed(this, score));
 	}
 
 	private enum NextAllyBombHorizontalSpeedIncreaseDirection {

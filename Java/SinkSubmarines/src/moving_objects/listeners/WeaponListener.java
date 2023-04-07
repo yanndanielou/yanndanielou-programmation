@@ -15,4 +15,7 @@ public interface WeaponListener {
 
 	void on_floating_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb);
 
+	void on_listen_to_simple_ally_bomb(SimpleAllyBomb simpleAllyBomb);
+
+	void on_simple_ally_bomb_destruction(SimpleAllyBomb simpleAllyBomb);
 }

@@ -19,7 +19,8 @@ import moving_objects.weapon.SimpleSubmarineBomb;
 import moving_objects.weapon.Weapon;
 
 public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner {
-	//private static final Logger LOGGER = LogManager.getLogger(AllyBoatPanel.class);
+	// private static final Logger LOGGER =
+	// LogManager.getLogger(AllyBoatPanel.class);
 
 	private static final long serialVersionUID = 6917913385357901059L;
 
@@ -113,23 +114,34 @@ public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner 
 	@Override
 	public void on_yellow_submarine_moved(YellowSubMarine yellowSubMarine) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_simple_submarine_bomb_moved(SimpleSubmarineBomb simpleSubmarineBomb) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_floating_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_yellow_submarine_destruction(SubMarine subMarine) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_listen_to_simple_ally_bomb(SimpleAllyBomb simpleAllyBomb) {
+		repaint();
+	}
+
+	@Override
+	public void on_simple_ally_bomb_destruction(SimpleAllyBomb simpleAllyBomb) {
 		// TODO Auto-generated method stub
 		
 	}
