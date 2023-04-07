@@ -47,7 +47,7 @@ public abstract class Belligerent extends GameObject {
 	}
 
 	public boolean has_reached_maximum_number_of_living_bombs() {
-		return get_remaining_number_of_living_bombs_allowed() == 0;
+		return get_remaining_number_of_living_bombs_allowed() <= 0;
 	}
 
 	public boolean is_minimal_time_since_last_fire_fulfilled() {

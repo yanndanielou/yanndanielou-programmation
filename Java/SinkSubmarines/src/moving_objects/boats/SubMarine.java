@@ -127,14 +127,10 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 
 	@Override
 	public void on_10ms_tick() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void on_20ms_tick() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
