@@ -21,12 +21,14 @@ public class KeyBoardInputs implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		LOGGER.info("keyTyped:" + KeyEvent.getKeyText(e.getKeyCode()) + " event:" + e);
+		// LOGGER.info("keyTyped:" + KeyEvent.getKeyText(e.getKeyCode()) + " event:" +
+		// e);
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		LOGGER.info("keyPressed:" + KeyEvent.getKeyText(e.getKeyCode()) + " event:" + e);
+		// LOGGER.info("keyPressed:" + KeyEvent.getKeyText(e.getKeyCode()) + " event:" +
+		// e);
 
 		Game game = GameManager.getInstance().getGame();
 		AllyBoat ally_boat = game.getAlly_boat();
@@ -45,7 +47,8 @@ public class KeyBoardInputs implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		LOGGER.info("keyReleased:" + KeyEvent.getKeyText(e.getKeyCode()) + " event:" + e);
+		// LOGGER.info("keyReleased:" + KeyEvent.getKeyText(e.getKeyCode()) + " event:"
+		// + e);
 
 		if (GameManager.hasGameInProgress()) {
 			Game game = GameManager.getInstance().getGame();

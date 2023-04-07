@@ -203,7 +203,17 @@ public class MainViewMenuBarManager implements ActionListener {
 
 		menuItem = new JMenuItem("Kill all submarines");
 		menuItem.setAccelerator(
-				KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_K, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CheatCodeManager.getInstance().kill_all_submarines();
+			}
+		});
+		menu.add(menuItem);
+
+		menuItem = new JMenuItem("One more live");
+		menuItem.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CheatCodeManager.getInstance().kill_all_submarines();
@@ -223,7 +233,7 @@ public class MainViewMenuBarManager implements ActionListener {
 
 		menuItem = new JMenuItem("Stop all submarines");
 		menuItem.setAccelerator(
-				KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CheatCodeManager.getInstance().stop_all_submarines();

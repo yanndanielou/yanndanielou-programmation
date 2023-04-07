@@ -106,8 +106,6 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 			} else if (game.getFloating_submarine_bombs().isEmpty() && game.getSimple_submarine_bombs().isEmpty()) {
 				LOGGER.info("Load next scenario");
 				load_next_scenario();
-			}else {
-				game.game_over();
 			}
 		}
 	}
@@ -123,6 +121,8 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 			ScenarioLevelDataModelBuilder scenarioLevelDataModelBuilder = new ScenarioLevelDataModelBuilder(
 					gameLevelScenariosDataModel.getLevel_scenario_data_model_json_file());
 			loadScenario(scenarioLevelDataModelBuilder.getScenario_level_data_model());
+		}else {
+			game.game_over();
 		}
 	}
 
