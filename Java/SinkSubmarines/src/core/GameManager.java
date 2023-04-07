@@ -168,7 +168,6 @@ public class GameManager implements TimeManagerListener {
 			LOGGER.info("Drop simple ally bomb at " + drop_x + " and " + drop_y);
 			sinkSubmarinesMainView.register_to_simple_ally_bomb(simpleAllyBomb);
 			AllyBoat ally_boat = game.getAlly_boat();
-			ally_boat.add_living_bomb(simpleAllyBomb);
 			simpleAllyBomb.add_movement_listener(ally_boat);
 
 		}
@@ -178,20 +177,22 @@ public class GameManager implements TimeManagerListener {
 		AllyBoat ally_boat = game.getAlly_boat();
 		double dropped_bomb_x = Math.max(ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getX() - 10,
 				0);
+		int x_speed = Constants.MAXIMUM_HORIZONTAL_SPEED_FOR_NEXT_ALLY_BOMB
+				* game.getNext_ally_bomb_horizontal_speed_relative_percentage() / 100 * -1
+				- 2 * Math.abs(ally_boat.getX_speed());
 		dropSimpleAllyBomb((int) dropped_bomb_x,
-				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() + 15,
-				Constants.MAXIMUM_HORIZONTAL_SPEED_FOR_NEXT_ALLY_BOMB
-						* game.getNext_ally_bomb_horizontal_speed_relative_percentage() / 100 * -1);
+				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() + 15, x_speed);
 	}
 
 	public void dropSimpleAllyBombAtRightOfAllyBoat() {
 		AllyBoat ally_boat = game.getAlly_boat();
 		double dropped_bomb_x = Math.min(ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getMaxX() + 10,
 				game.getGameboard().getWidth());
+		int x_speed = Constants.MAXIMUM_HORIZONTAL_SPEED_FOR_NEXT_ALLY_BOMB
+				* game.getNext_ally_bomb_horizontal_speed_relative_percentage() / 100 * 1
+				+ 2 * Math.abs(ally_boat.getX_speed());
 		dropSimpleAllyBomb((int) dropped_bomb_x,
-				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() + 15,
-				Constants.MAXIMUM_HORIZONTAL_SPEED_FOR_NEXT_ALLY_BOMB
-						* game.getNext_ally_bomb_horizontal_speed_relative_percentage() / 100 * 1);
+				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() + 15, x_speed);
 	}
 
 	public SimpleSubmarineBomb fire_simple_submarine_bomb(SubMarine simpleSubMarine, int x, int y,

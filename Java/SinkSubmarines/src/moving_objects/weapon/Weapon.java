@@ -16,6 +16,7 @@ public abstract class Weapon extends GameObject {
 		super(surrounding_rectangle_absolute_on_complete_board, game);
 		this.y_speed = y_speed;
 		this.parent_belligerent = parent_belligerent;
+		parent_belligerent.add_living_bomb(this);
 	}
 
 	public void destroy() {

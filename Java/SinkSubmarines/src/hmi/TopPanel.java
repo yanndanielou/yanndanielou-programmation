@@ -214,7 +214,7 @@ public class TopPanel extends JPanel implements GameListener, GameObjectListerne
 		}
 	}
 
-	private void update_remaining_ally_bombs(Game game) {
+	private void update_remaining_ally_bombs_label(Game game) {
 		int remaining_number_of_living_bombs_allowed_as_int = game.getAlly_boat()
 				.get_remaining_number_of_living_bombs_allowed();
 		String remaining_number_of_living_bombs_allowed_as_string = Integer
@@ -222,17 +222,22 @@ public class TopPanel extends JPanel implements GameListener, GameObjectListerne
 		remaining_ally_bombs_label.setText(remaining_number_of_living_bombs_allowed_as_string);
 	}
 
+	private void update_score_label(Game game) {
+		score_label.setText("SCORE:" + Integer.toString(game.getScore()));		
+	}
+
+
 	@Override
 	public void on_listen_to_game(Game game) {
 		update_current_scenario_level(game);
 		update_number_of_remaining_lives();
-		update_remaining_ally_bombs(game);
+		update_remaining_ally_bombs_label(game);
 	}
 
 	@Override
 	public void on_new_scenario_level(Game game, ScenarioLevelDataModel scenario_level_data_model) {
 		update_current_scenario_level(game);
-		update_remaining_ally_bombs(game);
+		update_remaining_ally_bombs_label(game);
 	}
 
 	@Override
@@ -273,7 +278,7 @@ public class TopPanel extends JPanel implements GameListener, GameObjectListerne
 	@Override
 	public void on_weapon_destruction(Weapon weapon) {
 
-		update_remaining_ally_bombs(weapon.getGame());
+		update_remaining_ally_bombs_label(weapon.getGame());
 
 	}
 
@@ -303,18 +308,18 @@ public class TopPanel extends JPanel implements GameListener, GameObjectListerne
 
 	@Override
 	public void on_listen_to_simple_ally_bomb(SimpleAllyBomb simpleAllyBomb) {
-		update_remaining_ally_bombs(simpleAllyBomb.getGame());
+		update_remaining_ally_bombs_label(simpleAllyBomb.getGame());
 	}
 
 	@Override
 	public void on_score_changed(Game game, int score) {
-		// TODO Auto-generated method stub
+		update_score_label(game);
 
 	}
 
 	@Override
 	public void on_simple_ally_bomb_destruction(SimpleAllyBomb simpleAllyBomb) {
-		update_remaining_ally_bombs(simpleAllyBomb.getGame());
+		update_remaining_ally_bombs_label(simpleAllyBomb.getGame());
 	}
 
 }

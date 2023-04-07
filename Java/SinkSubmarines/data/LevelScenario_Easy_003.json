@@ -14,7 +14,8 @@
 					  "maximum_fire_frequency_in_milliseconds": 2000,
 					  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE",
 					  "ammunition_y_speed": -1,
-					  "maximum_number_of_alive_ammunitions_allowed":3
+					  "maximum_number_of_alive_ammunitions_allowed":3,
+					  "score_prize_money_on_destruction":1
 					},
 					{
 					  "x": 200,
@@ -24,7 +25,8 @@
 					  "maximum_fire_frequency_in_milliseconds": 2000,
 					  "fire_strategy_type":"FIRE_WITH_RANDOM_INTERVAL",
 					  "ammunition_y_speed": -1,
-					  "maximum_number_of_alive_ammunitions_allowed":3
+					  "maximum_number_of_alive_ammunitions_allowed":3,
+					  "score_prize_money_on_destruction":1
 					},
 					{
 					  "x": 100,
@@ -34,7 +36,8 @@
 					  "maximum_fire_frequency_in_milliseconds": 2000,
 					  "fire_strategy_type":"FIRE_WHEN_ALLY_BOAT_IS_ABOVE",
 					  "ammunition_y_speed": -1,
-					  "maximum_number_of_alive_ammunitions_allowed":3
+					  "maximum_number_of_alive_ammunitions_allowed":3,
+					  "score_prize_money_on_destruction":1
 					},
 					{
 					  "x": -100,
@@ -44,7 +47,8 @@
 					  "maximum_fire_frequency_in_milliseconds": 2000,
 					  "fire_strategy_type":"FIRE_WHEN_ALLY_BOAT_IS_ABOVE_OR_NEARLY_ABOVE",
 					  "ammunition_y_speed": -1,
-					  "maximum_number_of_alive_ammunitions_allowed":3
+					  "maximum_number_of_alive_ammunitions_allowed":3,
+					  "score_prize_money_on_destruction":1
 					},
 					{
 					  "x": 50,
@@ -54,7 +58,8 @@
 					  "maximum_fire_frequency_in_milliseconds": 2000,
 					  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE",
 					  "ammunition_y_speed": -1,
-					  "maximum_number_of_alive_ammunitions_allowed":3
+					  "maximum_number_of_alive_ammunitions_allowed":3,
+					  "score_prize_money_on_destruction":1
 					},
 					{
 					  "x": -50,
@@ -64,7 +69,8 @@
 					  "maximum_fire_frequency_in_milliseconds": 2000,
 					  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE",
 					  "ammunition_y_speed": -1,
-					  "maximum_number_of_alive_ammunitions_allowed":3
+					  "maximum_number_of_alive_ammunitions_allowed":3,
+					  "score_prize_money_on_destruction":1
 					}
 				],
 				"yellow_submarines": [
@@ -76,7 +82,8 @@
 					  "maximum_fire_frequency_in_milliseconds": 2000,
 					  "fire_strategy_type":"FIRE_AS_SOON_AS_POSSIBLE",
 					  "ammunition_y_speed": -1,
-					  "maximum_number_of_alive_ammunitions_allowed":3
+					  "maximum_number_of_alive_ammunitions_allowed":3,
+					  "score_prize_money_on_destruction":4
 					},
 					{
 					  "x": -50,
@@ -86,7 +93,8 @@
 					  "maximum_fire_frequency_in_milliseconds": 2000,
 					  "fire_strategy_type":"FIRE_WHEN_ALLY_BOAT_IS_ABOVE_OR_NEARLY_ABOVE",
 					  "ammunition_y_speed": -1,
-					  "maximum_number_of_alive_ammunitions_allowed":3
+					  "maximum_number_of_alive_ammunitions_allowed":3,
+					  "score_prize_money_on_destruction":4
 					}
 				]
 			}

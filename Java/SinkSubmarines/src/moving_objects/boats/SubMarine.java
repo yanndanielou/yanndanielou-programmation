@@ -24,14 +24,8 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	private static final Logger LOGGER = LogManager.getLogger(SubMarine.class);
 
 	protected SubmarineFireStrategyType fireStrategyType;
-	/*
-	 * public SubMarine(Rectangle surrounding_rectangle_absolute_on_complete_board,
-	 * int maximum_fire_frequency_in_seconds, SubmarineFireStrategyType
-	 * fireStrategyType, int ammunition_y_speed) {
-	 * super(surrounding_rectangle_absolute_on_complete_board,
-	 * maximum_fire_frequency_in_seconds, ammunition_y_speed); this.fireStrategyType
-	 * = fireStrategyType; }
-	 */
+
+	protected int score_prize_money_on_destruction = 0;
 
 	public SubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
 			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel, Game game) {
@@ -43,6 +37,9 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 				scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed(), game);
 
 		this.fireStrategyType = scenarioLevelEnnemyCreationDataModel.getFire_strategy_type();
+
+		this.score_prize_money_on_destruction = scenarioLevelEnnemyCreationDataModel
+				.getScore_prize_money_on_destruction();
 
 		setX_speed(scenarioLevelEnnemyCreationDataModel.getSpeed());
 		setMax_number_of_living_bombs(
@@ -171,21 +168,13 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 
 	@Override
 	public void impact_now() {
-		this.current_destruction_timer_in_milliseconds = 5_000;
+		game.addScore(score_prize_money_on_destruction);
 	}
 
 	@Override
 	public void notify_destruction() {
 		for (GameObjectListerner objectListerner : movement_listeners) {
 			objectListerner.on_yellow_submarine_destruction(this);
-		}
-	}
-
-	@Override
-	public void on_weapon_destruction(Weapon weapon) {
-		boolean remove = living_bombs.remove(weapon);
-		if (!remove) {
-			LOGGER.error("Could not remove living bomb" + weapon + " to " + this);
 		}
 	}
 

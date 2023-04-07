@@ -8,6 +8,7 @@ import game.Game;
 import moving_objects.listeners.GameObjectListerner;
 import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
+import moving_objects.weapon.Weapon;
 
 public class YellowSubMarine extends SubMarine {
 	// private static final Logger LOGGER =
@@ -17,25 +18,6 @@ public class YellowSubMarine extends SubMarine {
 			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel, Game game) {
 
 		super(scenarioLevelEnnemyCreationDataModel, simple_submarine_data_model, gameBoardDataModel, game);
-		/*
-		 * super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
-		 * scenarioLevelEnnemyCreationDataModel.getDepth(),
-		 * simple_submarine_data_model.getWidth(),
-		 * simple_submarine_data_model.getHeight()),
-		 * scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds(),
-		 * scenarioLevelEnnemyCreationDataModel.getFire_strategy_type(),
-		 * scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed());
-		 */
-		/*
-		 * super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
-		 * scenarioLevelEnnemyCreationDataModel.getDepth(),
-		 * simple_submarine_data_model.getWidth(),
-		 * simple_submarine_data_model.getHeight()),
-		 * scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_seconds(),
-		 * scenarioLevelEnnemyCreationDataModel.getFire_strategy_type(),
-		 * scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed());
-		 * 
-		 */
 
 	}
 
@@ -70,6 +52,7 @@ public class YellowSubMarine extends SubMarine {
 
 	@Override
 	public void impact_now() {
+		super.impact_now();
 		this.current_destruction_timer_in_milliseconds = 5_000;
 	}
 
@@ -79,13 +62,17 @@ public class YellowSubMarine extends SubMarine {
 				(int) (surrounding_rectangle_absolute_on_complete_board.getX()
 						+ surrounding_rectangle_absolute_on_complete_board.getMaxX()) / 2,
 				(int) (surrounding_rectangle_absolute_on_complete_board.getY() - 1), ammunition_y_speed);
-		living_bombs.add(bomb_fired);
 		bomb_fired.add_movement_listener(this);
-
 	}
 
 	@Override
 	public void on_simple_ally_bomb_destruction(SimpleAllyBomb simpleAllyBomb) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_weapon_destruction(Weapon weapon) {
 		// TODO Auto-generated method stub
 
 	}

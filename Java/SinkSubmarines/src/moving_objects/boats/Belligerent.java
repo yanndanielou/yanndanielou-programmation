@@ -92,6 +92,9 @@ public abstract class Belligerent extends GameObject {
 
 	public boolean remove_living_bomb(Weapon weapon) {
 		boolean removed = living_bombs.remove(weapon);
+		if (!removed) {
+			LOGGER.info("Could not remove living bomb:" + removed);
+		}
 		return removed;
 	}
 

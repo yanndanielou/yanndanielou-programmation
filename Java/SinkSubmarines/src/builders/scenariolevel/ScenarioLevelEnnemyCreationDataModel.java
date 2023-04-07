@@ -10,6 +10,7 @@ public class ScenarioLevelEnnemyCreationDataModel {
 	private SubmarineFireStrategyType fire_strategy_type;
 	private int ammunition_y_speed;
 	private int maximum_number_of_alive_ammunitions_allowed;
+	private int score_prize_money_on_destruction;
 
 	public int getX() {
 		return x;
@@ -45,6 +46,10 @@ public class ScenarioLevelEnnemyCreationDataModel {
 
 	public int getMaximum_number_of_alive_ammunitions_allowed() {
 		return maximum_number_of_alive_ammunitions_allowed;
+	}
+
+	public int getScore_prize_money_on_destruction() {
+		return score_prize_money_on_destruction;
 	}
 
 }

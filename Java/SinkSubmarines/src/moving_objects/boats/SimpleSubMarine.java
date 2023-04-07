@@ -8,6 +8,7 @@ import game.Game;
 import moving_objects.listeners.GameObjectListerner;
 import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
+import moving_objects.weapon.Weapon;
 
 public class SimpleSubMarine extends SubMarine {
 	// private static final Logger LOGGER =
@@ -60,6 +61,7 @@ public class SimpleSubMarine extends SubMarine {
 	@Override
 	public void impact_now() {
 		this.current_destruction_timer_in_milliseconds = 5_000;
+		super.impact_now();
 	}
 
 	@Override
@@ -68,7 +70,6 @@ public class SimpleSubMarine extends SubMarine {
 				(int) (surrounding_rectangle_absolute_on_complete_board.getX()
 						+ surrounding_rectangle_absolute_on_complete_board.getMaxX()) / 2,
 				(int) (surrounding_rectangle_absolute_on_complete_board.getY() - 1), ammunition_y_speed);
-		living_bombs.add(bomb_fired);
 		bomb_fired.add_movement_listener(this);
 
 	}
@@ -77,6 +78,12 @@ public class SimpleSubMarine extends SubMarine {
 	public void on_simple_ally_bomb_destruction(SimpleAllyBomb simpleAllyBomb) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void on_weapon_destruction(Weapon weapon) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

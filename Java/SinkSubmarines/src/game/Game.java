@@ -284,6 +284,7 @@ public class Game implements TimeManagerListener {
 
 	@Override
 	public void on_pause() {
+		notify_game_paused();
 	}
 
 	public int getScore() {
@@ -292,11 +293,14 @@ public class Game implements TimeManagerListener {
 
 	public void setScore(int score) {
 		this.score = score;
-		notify_game_paused();
 		game_listeners.forEach((game_listener) -> game_listener.on_score_changed(this, score));
 	}
 
 	private enum NextAllyBombHorizontalSpeedIncreaseDirection {
 		DECREASE, INCREASE;
+	}
+
+	public void addScore(int score_addition) {
+		setScore(score + score_addition);
 	}
 }

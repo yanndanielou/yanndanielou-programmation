@@ -141,7 +141,7 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 
 		simpleAllyBomb.add_movement_listener(allyBoatPanel);
 		simpleAllyBomb.add_movement_listener(underWaterPanel);
-		simpleAllyBomb.add_movement_listener(underWaterPanel);
+		simpleAllyBomb.add_movement_listener(oceanBedPanel);
 		simpleAllyBomb.add_movement_listener(topPanel);
 
 	}
