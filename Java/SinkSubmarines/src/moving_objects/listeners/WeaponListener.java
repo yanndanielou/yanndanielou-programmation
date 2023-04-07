@@ -1,6 +1,5 @@
 package moving_objects.listeners;
 
-import moving_objects.boats.YellowSubMarine;
 import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;

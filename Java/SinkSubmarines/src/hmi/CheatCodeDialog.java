@@ -31,12 +31,20 @@
 
 package hmi;
 
-import javax.swing.JOptionPane;
+import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+//property change stuff
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import java.beans.*; //property change stuff
-import java.awt.*;
-import java.awt.event.*;
 
 /* 1.4 example used by DialogDemo.java. */
 class CheatCodeDialog extends JDialog implements ActionListener, PropertyChangeListener {

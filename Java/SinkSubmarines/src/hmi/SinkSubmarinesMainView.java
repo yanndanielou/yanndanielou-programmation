@@ -11,19 +11,13 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import builders.gameboard.GameBoardDataModel;
-import builders.scenariolevel.ScenarioLevelDataModel;
-import builders.scenariolevel.ScenarioLevelWaveDataModel;
 import game.Game;
-import game.GameListener;
 import moving_objects.boats.AllyBoat;
 import moving_objects.boats.SimpleSubMarine;
-import moving_objects.boats.SubMarine;
 import moving_objects.boats.YellowSubMarine;
-import moving_objects.listeners.GameObjectListerner;
 import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
-import moving_objects.weapon.Weapon;
 
 public class SinkSubmarinesMainView extends JFrame {
 
