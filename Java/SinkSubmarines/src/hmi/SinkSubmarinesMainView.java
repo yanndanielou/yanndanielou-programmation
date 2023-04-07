@@ -11,12 +11,26 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import builders.gameboard.GameBoardDataModel;
+import builders.scenariolevel.ScenarioLevelDataModel;
+import builders.scenariolevel.ScenarioLevelWaveDataModel;
+import game.Game;
+import game.GameListener;
+import moving_objects.boats.AllyBoat;
+import moving_objects.boats.SimpleSubMarine;
+import moving_objects.boats.SubMarine;
+import moving_objects.boats.YellowSubMarine;
+import moving_objects.listeners.GameObjectListerner;
+import moving_objects.weapon.FloatingSubmarineBomb;
+import moving_objects.weapon.SimpleAllyBomb;
+import moving_objects.weapon.SimpleSubmarineBomb;
+import moving_objects.weapon.Weapon;
 
 public class SinkSubmarinesMainView extends JFrame {
 
 	private static final long serialVersionUID = 1443136088686746460L;
 
-	//private static final Logger LOGGER = LogManager.getLogger(SinkSubmarinesMainView.class);
+	// private static final Logger LOGGER =
+	// LogManager.getLogger(SinkSubmarinesMainView.class);
 
 	private TopPanel topPanel = null;
 	private SkyPanel skyPanel = null;
@@ -46,16 +60,16 @@ public class SinkSubmarinesMainView extends JFrame {
 
 		oceanBedPanel = new OceanBedPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, underWaterPanel);
 
-		int windows_total_height = topPanel.getHeight() + skyPanel.getHeight()
-				+ allyBoatPanel.getHeight() + underWaterPanel.getHeight() + oceanBedPanel.getHeight();
-		this.setSize(gameBoardDataModel.getWidth() + 20, windows_total_height+20);
+		int windows_total_height = topPanel.getHeight() + skyPanel.getHeight() + allyBoatPanel.getHeight()
+				+ underWaterPanel.getHeight() + oceanBedPanel.getHeight();
+		this.setSize(gameBoardDataModel.getWidth() + 20, windows_total_height + 20);
 
 		this.addKeyListener(new KeyBoardInputs(this));
 
 	}
-	
+
 	private void setApplicationIcon() {
-		
+
 		BufferedImage application_buffered_image = null;
 		File application_image_file = null;
 		String application_image_path = "Images/game_icon.png";
@@ -96,7 +110,7 @@ public class SinkSubmarinesMainView extends JFrame {
 		this.setSize(800, 600);
 
 		mainViewMenuBarManager.createMenu();
-		
+
 		setApplicationIcon();
 
 		// Display the window.
@@ -106,28 +120,45 @@ public class SinkSubmarinesMainView extends JFrame {
 
 	}
 
-	public TopPanel getTopPanel() {
-		return topPanel;
-	}
-
-	public SkyPanel getSkyPanel() {
-		return skyPanel;
-	}
-
-	public AllyBoatPanel getAllyBoatPanel() {
-		return allyBoatPanel;
-	}
-
-	public UnderWaterPanel getUnderWaterPanel() {
-		return underWaterPanel;
-	}
-
 	public MainViewMenuBarManager getMainViewMenuBarManager() {
 		return mainViewMenuBarManager;
 	}
 
-	public OceanBedPanel getOceanBedPanel() {
-		return oceanBedPanel;
+	public void setAlly_boat(AllyBoat ally_boat) {
+		allyBoatPanel.setAlly_boat(ally_boat);
+	}
+
+	public void register_to_simple_submarine(SimpleSubMarine submarine) {
+		submarine.add_movement_listener(underWaterPanel);
+	}
+
+	public void register_to_yellow_submarine(YellowSubMarine submarine) {
+		submarine.add_movement_listener(underWaterPanel);
+	}
+
+	public void register_to_floating_submarine_bomb(FloatingSubmarineBomb sumbmarineBomb) {
+		sumbmarineBomb.add_movement_listener(allyBoatPanel);
+
+		sumbmarineBomb.add_movement_listener(underWaterPanel);
+
+	}
+
+	public void register_to_simple_ally_bomb(SimpleAllyBomb simpleAllyBomb) {
+
+		simpleAllyBomb.add_movement_listener(allyBoatPanel);
+		simpleAllyBomb.add_movement_listener(underWaterPanel);
+		simpleAllyBomb.add_movement_listener(underWaterPanel);
+
+	}
+
+	public void register_to_simple_submarine_bomb(SimpleSubmarineBomb sumbmarineBomb) {
+
+		sumbmarineBomb.add_movement_listener(allyBoatPanel);
+		sumbmarineBomb.add_movement_listener(underWaterPanel);
+	}
+
+	public void register_to_game(Game game) {
+		game.add_game_listener(topPanel);
 	}
 
 }
