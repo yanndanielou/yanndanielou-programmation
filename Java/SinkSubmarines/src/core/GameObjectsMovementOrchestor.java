@@ -107,8 +107,10 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 			if (!submarine_bomb.is_being_destroyed()) {
 				if (submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board()
 						.intersects(ally_boat.getSurrounding_rectangle_absolute_on_complete_board())) {
-					LOGGER.info("Collision detected between ally boat " + ally_boat + " and submarine bomb:"
-							+ submarine_bomb);
+					LOGGER.info("Collision detected between ally boat " + ally_boat + "("
+							+ ally_boat.getSurrounding_rectangle_absolute_on_complete_board() + ")"
+							+ " and submarine bomb:" + submarine_bomb + "("
+							+ submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board() + ")");
 					ally_boat.impact_now();
 					submarine_bomb.impact_now();
 				}

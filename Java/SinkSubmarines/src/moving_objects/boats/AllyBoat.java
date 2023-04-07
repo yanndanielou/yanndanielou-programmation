@@ -17,8 +17,9 @@ public class AllyBoat extends Belligerent {
 
 	public AllyBoat(GenericObjectDataModel genericObjectDataModel, GameBoardDataModel gameBoardDataModel,
 			AllySimpleBombDataModel allySimpleBombDataModel, Game game) {
-		super(new Rectangle(gameBoardDataModel.getWidth() / 2 - genericObjectDataModel.getWidth() / 2, 0,
-				genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()),
+		super(new Rectangle(gameBoardDataModel.getWidth() / 2 - genericObjectDataModel.getWidth() / 2,
+				-genericObjectDataModel.getHeight(), genericObjectDataModel.getWidth(),
+				genericObjectDataModel.getHeight()),
 				Constants.MINIMUM_DELAY_BETWEEN_TWO_ALLY_BOMB_DROPPED_IN_MILLISECONDS,
 				allySimpleBombDataModel.getY_speed(), game);
 	}
