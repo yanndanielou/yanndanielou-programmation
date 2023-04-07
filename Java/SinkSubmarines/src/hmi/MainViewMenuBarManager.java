@@ -216,7 +216,7 @@ public class MainViewMenuBarManager implements ActionListener {
 				KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CheatCodeManager.getInstance().kill_all_submarines();
+				CheatCodeManager.getInstance().one_more_life();
 			}
 		});
 		menu.add(menuItem);
@@ -247,6 +247,16 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CheatCodeManager.getInstance().more_ally_bombs();
+			}
+		});
+		menu.add(menuItem);
+
+		menuItem = new JMenuItem("Forbid enemies to fire");
+		menuItem.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_F, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CheatCodeManager.getInstance().forbid_enemies_to_fire();
 			}
 		});
 		menu.add(menuItem);

@@ -23,6 +23,8 @@ public abstract class Belligerent extends GameObject {
 
 	private int max_number_of_living_bombs;
 
+	protected boolean allowed_to_fire = true;
+
 	protected ArrayList<Weapon> living_bombs = new ArrayList<Weapon>();
 
 	public Belligerent(Rectangle surrounding_rectangle_absolute_on_complete_board,
@@ -34,7 +36,10 @@ public abstract class Belligerent extends GameObject {
 
 	public int getMaximum_fire_frequency_in_milliseconds() {
 		return maximum_fire_frequency_in_milliseconds;
+	}
 
+	public void forbid_to_fire() {
+		allowed_to_fire = false;
 	}
 
 	public int get_remaining_number_of_living_bombs_allowed() {

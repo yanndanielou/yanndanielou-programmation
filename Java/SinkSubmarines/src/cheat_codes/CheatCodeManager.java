@@ -32,19 +32,23 @@ public class CheatCodeManager {
 	}
 
 	public void kill_all_submarines() {
-		Game game = GameManager.getInstance().getGame();
-		ArrayList<Belligerent> all_submarines = game.get_all_submarines();
-		all_submarines.forEach((submarine) -> submarine.impact_now());
+		if (GameManager.hasGameInProgress()) {
+			Game game = GameManager.getInstance().getGame();
+			ArrayList<Belligerent> all_submarines = game.get_all_submarines();
+			all_submarines.forEach((submarine) -> submarine.impact_now());
+		}
 	}
 
 	public void stop_all_submarines() {
-		Game game = GameManager.getInstance().getGame();
-		ArrayList<Belligerent> all_submarines = game.get_all_submarines();
-		all_submarines.forEach((submarine) -> submarine.stop_movement());
+		if (GameManager.hasGameInProgress()) {
+			Game game = GameManager.getInstance().getGame();
+			ArrayList<Belligerent> all_submarines = game.get_all_submarines();
+			all_submarines.forEach((submarine) -> submarine.stop_movement());
+		}
 	}
 
 	public void kill_all_enemies_bombs() {
-		if (GameManager.hasInstance()) {
+		if (GameManager.hasGameInProgress()) {
 			Game game = GameManager.getInstance().getGame();
 			ArrayList<Weapon> all_submarines_bombs = game.get_all_submarines_bombs();
 			all_submarines_bombs.forEach((submarine) -> submarine.impact_now());
@@ -52,10 +56,25 @@ public class CheatCodeManager {
 	}
 
 	public void more_ally_bombs() {
-		if (GameManager.hasInstance()) {
+		if (GameManager.hasGameInProgress()) {
 			Game game = GameManager.getInstance().getGame();
 			AllyBoat ally_boat = game.getAlly_boat();
 			ally_boat.setMax_number_of_living_bombs(ally_boat.getMax_number_of_living_bombs() + 1);
+		}
+	}
+
+	public void one_more_life() {
+		if (GameManager.hasGameInProgress()) {
+			Game game = GameManager.getInstance().getGame();
+			game.setNumber_remaining_lives(game.getNumber_Remaining_lives() + 1);
+		}
+	}
+
+	public void forbid_enemies_to_fire() {
+		if (GameManager.hasGameInProgress()) {
+			Game game = GameManager.getInstance().getGame();
+			ArrayList<Belligerent> all_submarines = game.get_all_submarines();
+			all_submarines.forEach((submarine) -> submarine.forbid_to_fire());
 		}
 	}
 

@@ -180,7 +180,8 @@ public class TopPanel extends JPanel implements GameListener, GameObjectListerne
 				JLabel character_sailor_icon_for_one_life_as_label = new JLabel(character_sailor_icon_scalled);
 				character_sailor_icons_one_per_remaining_life_as_label.add(character_sailor_icon_for_one_life_as_label);
 				character_sailor_icon_for_one_life_as_label.setSize(30, (int) (getHeight() * 0.8));
-				character_sailor_icon_for_one_life_as_label.setLocation(right_of_object_at_left + 10,
+				int horizontal_space_between_icons = 2;
+				character_sailor_icon_for_one_life_as_label.setLocation(right_of_object_at_left + horizontal_space_between_icons,
 						getHeight() / 2 - character_sailor_icon_for_one_life_as_label.getHeight() / 2);
 				layeredPane.add(character_sailor_icon_for_one_life_as_label);
 			}
