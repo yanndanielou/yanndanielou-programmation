@@ -15,7 +15,7 @@ public class KeyBoardInputs implements KeyListener {
 
 	// private SinkSubmarinesMainView sinkSubmarinesMainView = null;
 
-	public KeyBoardInputs(SinkSubmarinesMainView sinkSubmarinesMainView) {
+	public KeyBoardInputs(SinkSubmarinesMainViewFrame sinkSubmarinesMainView) {
 //		this.sinkSubmarinesMainView = sinkSubmarinesMainView;
 	}
 

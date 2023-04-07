@@ -19,7 +19,7 @@ import moving_objects.weapon.FloatingSubmarineBomb;
 import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
 
-public class SinkSubmarinesMainView extends JFrame {
+public class SinkSubmarinesMainViewFrame extends JFrame {
 
 	private static final long serialVersionUID = 1443136088686746460L;
 
@@ -33,7 +33,7 @@ public class SinkSubmarinesMainView extends JFrame {
 	private OceanBedPanel oceanBedPanel = null;
 	private MainViewMenuBarManager mainViewMenuBarManager;
 
-	public SinkSubmarinesMainView() {
+	public SinkSubmarinesMainViewFrame() {
 		super("Sink submarines");
 		setResizable(false);
 		mainViewMenuBarManager = new MainViewMenuBarManager(this);

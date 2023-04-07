@@ -46,7 +46,7 @@ public class NewGameLevelAndScenarioLevelSelectionPopup extends JFrame {
 
 	private DifficultyLevel difficulty_level_chosen = null;
 
-	public NewGameLevelAndScenarioLevelSelectionPopup(SinkSubmarinesMainView sinkSubmarinesMainView) {
+	public NewGameLevelAndScenarioLevelSelectionPopup(SinkSubmarinesMainViewFrame sinkSubmarinesMainView) {
 		super("Sink submarines");
 	}
 

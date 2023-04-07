@@ -13,7 +13,7 @@ import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import constants.Constants;
 import game.DifficultyLevel;
 import game.Game;
-import hmi.SinkSubmarinesMainView;
+import hmi.SinkSubmarinesMainViewFrame;
 import moving_objects.boats.AllyBoat;
 import moving_objects.boats.SimpleSubMarine;
 import moving_objects.boats.YellowSubMarine;
@@ -28,7 +28,7 @@ public class GameManager implements TimeManagerListener {
 	private static GameManager instance;
 	private static final Logger LOGGER = LogManager.getLogger(GameManager.class);
 
-	private SinkSubmarinesMainView sinkSubmarinesMainView = null;
+	private SinkSubmarinesMainViewFrame sinkSubmarinesMainView = null;
 	private Game game = null;
 
 	private GenericObjectsDataModel genericObjectsDataModel = null;
@@ -98,7 +98,7 @@ public class GameManager implements TimeManagerListener {
 		return game;
 	}
 
-	public void setSinkSubmarinesMainView(SinkSubmarinesMainView sinkSubmarinesMainView) {
+	public void setSinkSubmarinesMainView(SinkSubmarinesMainViewFrame sinkSubmarinesMainView) {
 		this.sinkSubmarinesMainView = sinkSubmarinesMainView;
 	}
 

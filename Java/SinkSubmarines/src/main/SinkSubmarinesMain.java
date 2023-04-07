@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import core.GameManager;
-import hmi.SinkSubmarinesMainView;
+import hmi.SinkSubmarinesMainViewFrame;
 
 public class SinkSubmarinesMain {
 
@@ -13,7 +13,7 @@ public class SinkSubmarinesMain {
 	public static void main(String[] args) {
 		LOGGER.info("Application start info");
 
-		SinkSubmarinesMainView sinkSubmarinesMainView = new SinkSubmarinesMainView();
+		SinkSubmarinesMainViewFrame sinkSubmarinesMainView = new SinkSubmarinesMainViewFrame();
 		GameManager.getInstance().setSinkSubmarinesMainView(sinkSubmarinesMainView);
 
 		// Schedule a job for the event dispatch thread:

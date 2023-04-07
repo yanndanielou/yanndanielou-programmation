@@ -21,11 +21,11 @@ import org.apache.logging.log4j.Logger;
 import core.GameManager;
 
 public class MainViewMenuBarManager implements ActionListener {
-	private static final Logger LOGGER = LogManager.getLogger(SinkSubmarinesMainView.class);
+	private static final Logger LOGGER = LogManager.getLogger(SinkSubmarinesMainViewFrame.class);
 
-	SinkSubmarinesMainView parent_main_view = null;
+	SinkSubmarinesMainViewFrame parent_main_view = null;
 
-	public MainViewMenuBarManager(SinkSubmarinesMainView parent) {
+	public MainViewMenuBarManager(SinkSubmarinesMainViewFrame parent) {
 		parent_main_view = parent;
 	}
 

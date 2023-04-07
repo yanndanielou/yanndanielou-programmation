@@ -58,7 +58,7 @@ class CheatCodeDialog extends JDialog implements ActionListener, PropertyChangeL
 	private String btnString1 = "Enter";
 	private String btnString2 = "Cancel";
 
-	SinkSubmarinesMainView sinkSubmarinesMainView;
+	SinkSubmarinesMainViewFrame sinkSubmarinesMainView;
 
 	/**
 	 * Returns null if the typed string was invalid; otherwise, returns the string
