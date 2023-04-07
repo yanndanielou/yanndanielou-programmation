@@ -95,6 +95,7 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 		proceed_destroyed_objects_cleaning_by_type(game.getYellow_submarines());
 		proceed_destroyed_objects_cleaning_by_type(game.getSimple_ally_bombs());
 		proceed_destroyed_objects_cleaning_by_type(game.getSimple_submarine_bombs());
+		proceed_destroyed_objects_cleaning_by_type(game.getFloating_submarine_bombs());
 
 	}
 

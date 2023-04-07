@@ -95,17 +95,24 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 		create_objects_if_needed(current_step_in_seconds);
 		if (simple_submarines_remaining_to_create.isEmpty() && yellow_submarines_remaining_to_create.isEmpty()
 				&& game.get_all_submarines().isEmpty()) {
-			LOGGER.info("End of current wave " + game.getCurrent_scenario_Level_wave_data_model() + " of scenario:"
-					+ game.getCurrent_scenario_level_data_model());
 
-			if (game.getCurrent_scenario_level_data_model() != null && game.getCurrent_scenario_level_data_model()
-					.hasNextWaveAfter(game.getCurrent_scenario_Level_wave_data_model())) {
+			if (game.getCurrent_scenario_Level_wave_data_model() != null) {
+				LOGGER.info("End of current wave " + game.getCurrent_scenario_Level_wave_data_model() + " of scenario:"
+						+ game.getCurrent_scenario_level_data_model());
+			}
+
+			if (game.getCurrent_scenario_Level_wave_data_model() != null
+					&& game.getCurrent_scenario_level_data_model() != null
+					&& game.getCurrent_scenario_level_data_model()
+							.hasNextWaveAfter(game.getCurrent_scenario_Level_wave_data_model())) {
 				game.setCurrent_scenario_Level_wave_data_model(game.getCurrent_scenario_level_data_model()
 						.getNextWaveAfter(game.getCurrent_scenario_Level_wave_data_model()));
 				loadWave(game.getCurrent_scenario_Level_wave_data_model());
 			} else if (game.getFloating_submarine_bombs().isEmpty() && game.getSimple_submarine_bombs().isEmpty()) {
 				LOGGER.info("Load next scenario");
 				load_next_scenario();
+			} else {
+				game.setCurrent_scenario_Level_wave_data_model(null);
 			}
 		}
 	}
@@ -121,7 +128,7 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 			ScenarioLevelDataModelBuilder scenarioLevelDataModelBuilder = new ScenarioLevelDataModelBuilder(
 					gameLevelScenariosDataModel.getLevel_scenario_data_model_json_file());
 			loadScenario(scenarioLevelDataModelBuilder.getScenario_level_data_model());
-		}else {
+		} else {
 			game.game_over();
 		}
 	}
