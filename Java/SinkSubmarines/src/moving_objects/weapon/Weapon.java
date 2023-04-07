@@ -19,13 +19,13 @@ public abstract class Weapon extends GameObject {
 		parent_belligerent.add_living_bomb(this);
 	}
 
-	public void destroy() {
+	public void end_of_destroy_and_clean() {
 		parent_belligerent.remove_living_bomb(this);
-		super.destroy();
+		super.end_of_destroy_and_clean();
 	}
 
 	@Override
-	public void notify_destruction() {
+	public void notify_end_of_destruction_and_clean() {
 		for (GameObjectListerner objectListerner : movement_listeners) {
 			objectListerner.on_weapon_destruction(this);
 		}

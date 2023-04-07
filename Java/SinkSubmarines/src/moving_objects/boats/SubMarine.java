@@ -168,14 +168,14 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	}
 
 	@Override
-	public void notify_destruction() {
+	public void notify_end_of_destruction_and_clean() {
 		for (GameObjectListerner objectListerner : movement_listeners) {
-			objectListerner.on_yellow_submarine_destruction(this);
+			objectListerner.on_submarine_notify_end_of_destroy_and_clean(this);
 		}
 	}
 
 	@Override
-	public void on_submarine_destruction(SubMarine subMarine) {
+	public void on_submarine_notify_end_of_destroy_and_clean(SubMarine subMarine) {
 	}
 
 	@Override
@@ -220,11 +220,6 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 
 	}
 
-	@Override
-	public void on_yellow_submarine_destruction(SubMarine subMarine) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void on_listen_to_simple_ally_bomb(SimpleAllyBomb simpleAllyBomb) {

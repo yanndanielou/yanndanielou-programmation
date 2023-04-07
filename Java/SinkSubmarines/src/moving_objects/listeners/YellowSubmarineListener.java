@@ -5,7 +5,7 @@ import moving_objects.boats.SubMarine;
 import moving_objects.boats.YellowSubMarine;
 
 public interface YellowSubmarineListener {
-	void on_yellow_submarine_destruction(SubMarine subMarine);
+	void on_yellow_submarine_end_of_destroy_and_clean(SubMarine subMarine);
 
 	void on_simple_submarine_moved(SimpleSubMarine simpleSubMarine);
 

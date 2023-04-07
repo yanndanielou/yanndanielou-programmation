@@ -66,7 +66,7 @@ public class YellowSubMarine extends SubMarine {
 	}
 
 	@Override
-	public void on_simple_ally_bomb_destruction(SimpleAllyBomb simpleAllyBomb) {
+	public void on_simple_ally_bomb_end_of_destruction_and_clean(SimpleAllyBomb simpleAllyBomb) {
 		// TODO Auto-generated method stub
 
 	}
@@ -75,6 +75,18 @@ public class YellowSubMarine extends SubMarine {
 	public void on_weapon_destruction(Weapon weapon) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void on_yellow_submarine_end_of_destroy_and_clean(SubMarine subMarine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_simple_ally_bomb_begin_of_destruction(SimpleAllyBomb simpleAllyBomb) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

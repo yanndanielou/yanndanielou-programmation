@@ -81,7 +81,7 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 				.filter(item -> item.is_completely_destroyed()).collect(Collectors.toList());
 
 		for (GameObject object_completely_destroyed_to_clean : objects_completely_destroyed_to_clean) {
-			object_completely_destroyed_to_clean.destroy();
+			object_completely_destroyed_to_clean.end_of_destroy_and_clean();
 		}
 
 		objects_to_clean.removeAll(objects_completely_destroyed_to_clean);

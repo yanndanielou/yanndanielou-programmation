@@ -17,5 +17,8 @@ public interface WeaponListener {
 
 	void on_listen_to_simple_ally_bomb(SimpleAllyBomb simpleAllyBomb);
 
-	void on_simple_ally_bomb_destruction(SimpleAllyBomb simpleAllyBomb);
+	void on_simple_ally_bomb_end_of_destruction_and_clean(SimpleAllyBomb simpleAllyBomb);
+	
+	void on_simple_ally_bomb_begin_of_destruction(SimpleAllyBomb simpleAllyBomb);
+
 }

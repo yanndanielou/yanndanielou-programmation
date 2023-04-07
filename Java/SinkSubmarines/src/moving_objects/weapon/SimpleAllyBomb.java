@@ -55,10 +55,10 @@ public class SimpleAllyBomb extends Weapon {
 	}
 
 	@Override
-	public void notify_destruction() {
-		super.notify_destruction();
+	public void notify_end_of_destruction_and_clean() {
+		super.notify_end_of_destruction_and_clean();
 		for (GameObjectListerner objectlistener : movement_listeners) {
-			objectlistener.on_simple_ally_bomb_destruction(this);
+			objectlistener.on_simple_ally_bomb_end_of_destruction_and_clean(this);
 		}
 	}
 
@@ -79,6 +79,9 @@ public class SimpleAllyBomb extends Weapon {
 	public void impact_now() {
 		LOGGER.info("Impact now " + this);
 		this.current_destruction_timer_in_milliseconds = 500;
+		for (GameObjectListerner objectlistener : movement_listeners) {
+			objectlistener.on_simple_ally_bomb_begin_of_destruction(this);
+		}
 	}
 
 }

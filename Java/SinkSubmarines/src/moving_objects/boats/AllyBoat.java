@@ -81,7 +81,7 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	}
 
 	@Override
-	public void notify_destruction() {
+	public void notify_end_of_destruction_and_clean() {
 		// TODO Auto-generated method stub
 
 	}
@@ -99,7 +99,7 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	}
 
 	@Override
-	public void on_submarine_destruction(SubMarine subMarine) {
+	public void on_submarine_notify_end_of_destroy_and_clean(SubMarine subMarine) {
 		// TODO Auto-generated method stub
 
 	}
@@ -135,7 +135,7 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	}
 
 	@Override
-	public void on_yellow_submarine_destruction(SubMarine subMarine) {
+	public void on_yellow_submarine_end_of_destroy_and_clean(SubMarine subMarine) {
 		// TODO Auto-generated method stub
 
 	}
@@ -147,8 +147,14 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	}
 
 	@Override
-	public void on_simple_ally_bomb_destruction(SimpleAllyBomb simpleAllyBomb) {
+	public void on_simple_ally_bomb_end_of_destruction_and_clean(SimpleAllyBomb simpleAllyBomb) {
 		living_bombs.remove(simpleAllyBomb);
+	}
+
+	@Override
+	public void on_simple_ally_bomb_begin_of_destruction(SimpleAllyBomb simpleAllyBomb) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

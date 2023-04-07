@@ -169,7 +169,7 @@ public abstract class GameObject {
 
 	public abstract void notify_movement();
 
-	public abstract void notify_destruction();
+	public abstract void notify_end_of_destruction_and_clean();
 
 	public boolean is_completely_destroyed() {
 		return is_being_destroyed() && current_destruction_timer_in_milliseconds <= 0;
@@ -183,8 +183,8 @@ public abstract class GameObject {
 
 	}
 
-	public void destroy() {
-		notify_destruction();
+	public void end_of_destroy_and_clean() {
+		notify_end_of_destruction_and_clean();
 	}
 
 	public void stop_movement() {
