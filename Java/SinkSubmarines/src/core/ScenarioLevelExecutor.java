@@ -106,6 +106,8 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 			} else if (game.getFloating_submarine_bombs().isEmpty() && game.getSimple_submarine_bombs().isEmpty()) {
 				LOGGER.info("Load next scenario");
 				load_next_scenario();
+			}else {
+				game.game_over();
 			}
 		}
 	}

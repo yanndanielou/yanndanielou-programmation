@@ -13,4 +13,6 @@ public interface GameStatusListener {
 
 	public void on_game_cancelled(Game game);
 
+	public void on_game_over(Game game);
+
 }

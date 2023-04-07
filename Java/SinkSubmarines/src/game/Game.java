@@ -19,7 +19,11 @@ import moving_objects.weapon.Weapon;
 import time.TimeManager;
 import time.TimeManagerListener;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Game implements TimeManagerListener {
+	private static final Logger LOGGER = LogManager.getLogger(TimeManagerListener.class);
 
 	private ArrayList<Level> levels = new ArrayList<Level>(); // Create an ArrayList object
 	private GameBoard gameboard = null;
@@ -51,6 +55,8 @@ public class Game implements TimeManagerListener {
 				genericObjectsDataModel.getAlly_simple_bomb_data_model(), this);
 		setNumber_remaining_lives(number_of_lives);
 		TimeManager.getInstance().add_listener(this);
+
+		add_game_status_listener(TimeManager.getInstance());
 	}
 
 	public void add_game_listener(GameListener listener) {
@@ -302,5 +308,10 @@ public class Game implements TimeManagerListener {
 
 	public void addScore(int score_addition) {
 		setScore(score + score_addition);
+	}
+
+	public void game_over() {
+		LOGGER.info("Game is over!");
+		game_status_listeners.forEach((game_status_listener) -> game_status_listener.on_game_over(this));
 	}
 }

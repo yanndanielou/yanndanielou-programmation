@@ -46,6 +46,8 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import cheat_codes.CheatCodeManager;
+
 /* 1.4 example used by DialogDemo.java. */
 class CheatCodeDialog extends JDialog implements ActionListener, PropertyChangeListener {
 	private static final long serialVersionUID = 5167619891828641223L;
@@ -72,7 +74,7 @@ class CheatCodeDialog extends JDialog implements ActionListener, PropertyChangeL
 	public CheatCodeDialog(Frame aFrame) {
 		super(aFrame, true);
 
-	//	this.sinkSubmarinesMainView = sinkSubmarinesMainView;
+		// this.sinkSubmarinesMainView = sinkSubmarinesMainView;
 		magicWord = "GIESEL".toUpperCase();
 		setTitle("Cheat codes");
 
@@ -146,15 +148,18 @@ class CheatCodeDialog extends JDialog implements ActionListener, PropertyChangeL
 
 			if (btnString1.equals(value)) {
 				typedText = textField.getText();
-				String ucText = typedText.toUpperCase();
-				if (magicWord.equals(ucText)) {
-					// we're done; clear and dismiss the dialog
+
+				boolean cheat_code_is_valid = CheatCodeManager.getInstance().try_and_apply_text_cheat_code(typedText);
+				if(cheat_code_is_valid) {
 					clearAndHide();
 				} else {
 					// text was invalid
 					textField.selectAll();
-					JOptionPane.showMessageDialog(getParent(), "Sorry, \"" + typedText + "\" " + "isn't a valid response.\n"
-							+ "Please enter " + magicWord + ".", "Try again", JOptionPane.ERROR_MESSAGE);
+					JOptionPane
+							.showMessageDialog(
+									getParent(), "Sorry, \"" + typedText + "\" " + "isn't a valid response.\n"
+											+ "Please retry or quit " + ".",
+									"Try again", JOptionPane.ERROR_MESSAGE);
 					typedText = null;
 					textField.requestFocusInWindow();
 				}

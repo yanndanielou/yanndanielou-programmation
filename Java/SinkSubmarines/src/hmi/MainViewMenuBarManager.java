@@ -18,6 +18,7 @@ import javax.swing.KeyStroke;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import cheat_codes.CheatCodeManager;
 import core.GameManager;
 
 public class MainViewMenuBarManager implements ActionListener {
@@ -196,6 +197,46 @@ public class MainViewMenuBarManager implements ActionListener {
 				cheatCodeDialog.setLocationRelativeTo(parent_main_view);
 				cheatCodeDialog.setVisible(true);
 				LOGGER.info("actionPerformed" + e);
+			}
+		});
+		menu.add(menuItem);
+
+		menuItem = new JMenuItem("Kill all submarines");
+		menuItem.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CheatCodeManager.getInstance().kill_all_submarines();
+			}
+		});
+		menu.add(menuItem);
+
+		menuItem = new JMenuItem("Kill all enemies bombs");
+		menuItem.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_B, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CheatCodeManager.getInstance().kill_all_enemies_bombs();
+			}
+		});
+		menu.add(menuItem);
+
+		menuItem = new JMenuItem("Stop all submarines");
+		menuItem.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CheatCodeManager.getInstance().stop_all_submarines();
+			}
+		});
+		menu.add(menuItem);
+
+		menuItem = new JMenuItem("More ally bombs");
+		menuItem.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CheatCodeManager.getInstance().more_ally_bombs();
 			}
 		});
 		menu.add(menuItem);

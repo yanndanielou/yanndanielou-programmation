@@ -174,4 +174,9 @@ public class TimeManager extends TimerTask implements GameStatusListener {
 		time_manager_listeners.remove(game);
 	}
 
+	@Override
+	public void on_game_over(Game game) {
+		stop();		
+	}
+
 }
