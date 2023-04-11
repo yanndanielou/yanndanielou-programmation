@@ -74,6 +74,11 @@ public class GameManager implements TimeManagerListener {
 		set_game(new Game(gameBoardDataModelBuilder.getGame_board_data_model(),
 				genericObjectsDataModelBuilder.getGeneric_objects_data_model(), game_data_model.getNumber_of_lives()));
 
+		game.getGameboard().setHeight(sinkSubmarinesMainView.getGameBoardPanel().getHeight());
+		game.getGameboard().setWidth(sinkSubmarinesMainView.getGameBoardPanel().getWidth());
+		game.getGameboard().compute_game_areas_height(
+				sinkSubmarinesMainView.getGameBoardPanel().getComplete_game_board_as_buffered_image());
+
 		sinkSubmarinesMainView.register_to_game(game);
 
 		sinkSubmarinesMainView.setAlly_boat(game.getAlly_boat());
