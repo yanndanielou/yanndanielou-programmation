@@ -27,11 +27,14 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 	// LogManager.getLogger(SinkSubmarinesMainView.class);
 
 	private TopPanel topPanel = null;
-	private SkyPanel skyPanel = null;
-	private AllyBoatPanel allyBoatPanel = null;
-	private UnderWaterPanel underWaterPanel = null;
-	private OceanBedPanel oceanBedPanel = null;
+	/*
+	 * private SkyPanel skyPanel = null; private AllyBoatPanel allyBoatPanel = null;
+	 * private UnderWaterPanel underWaterPanel = null; private OceanBedPanel
+	 * oceanBedPanel = null;
+	 */
 	private MainViewMenuBarManager mainViewMenuBarManager;
+
+	private GameBoardPanel gameBoardPanel;
 
 	public SinkSubmarinesMainViewFrame() {
 		super("Sink submarines");
@@ -44,19 +47,27 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 		Container pane = this.getContentPane();
 		pane.setLayout(null);
 
-		topPanel = new TopPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, null);
+		gameBoardPanel = new GameBoardPanel(this, "Images/entire_gameboard.png");
+		add(gameBoardPanel);
 
-		skyPanel = new SkyPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, topPanel);
+		/*
+		 * topPanel = new TopPanel(pane, gameBoardDataModel.getWidth(),
+		 * gameBoardDataModel, null);
+		 * 
+		 * skyPanel = new SkyPanel(pane, gameBoardDataModel.getWidth(),
+		 * gameBoardDataModel, topPanel);
+		 * 
+		 * allyBoatPanel = new AllyBoatPanel(pane, gameBoardDataModel.getWidth(),
+		 * gameBoardDataModel, skyPanel);
+		 * 
+		 * underWaterPanel = new UnderWaterPanel(pane, gameBoardDataModel.getWidth(),
+		 * gameBoardDataModel, allyBoatPanel);
+		 * 
+		 * oceanBedPanel = new OceanBedPanel(pane, gameBoardDataModel.getWidth(),
+		 * gameBoardDataModel, underWaterPanel);
+		 */
 
-		allyBoatPanel = new AllyBoatPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, skyPanel);
-
-		underWaterPanel = new UnderWaterPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, allyBoatPanel);
-
-		oceanBedPanel = new OceanBedPanel(pane, gameBoardDataModel.getWidth(), gameBoardDataModel, underWaterPanel);
-
-		int windows_total_height = topPanel.getHeight() + skyPanel.getHeight() + allyBoatPanel.getHeight()
-				+ underWaterPanel.getHeight() + oceanBedPanel.getHeight();
-		this.setSize(gameBoardDataModel.getWidth() + 20, windows_total_height + 20);
+		this.setSize(gameBoardPanel.getWidth() + 20, gameBoardPanel.getHeight() + 20);
 
 		this.addKeyListener(new KeyBoardInputs(this));
 
@@ -119,42 +130,50 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 	}
 
 	public void setAlly_boat(AllyBoat ally_boat) {
-		allyBoatPanel.setAlly_boat(ally_boat);
+		// allyBoatPanel.setAlly_boat(ally_boat);
+
 	}
 
 	public void register_to_simple_submarine(SimpleSubMarine submarine) {
-		submarine.add_movement_listener(underWaterPanel);
+		// submarine.add_movement_listener(underWaterPanel);
+		submarine.add_movement_listener(gameBoardPanel);
 	}
 
 	public void register_to_yellow_submarine(YellowSubMarine submarine) {
-		submarine.add_movement_listener(underWaterPanel);
+		// submarine.add_movement_listener(underWaterPanel);
+		submarine.add_movement_listener(gameBoardPanel);
 	}
 
 	public void register_to_floating_submarine_bomb(FloatingSubmarineBomb sumbmarineBomb) {
-		sumbmarineBomb.add_movement_listener(allyBoatPanel);
-
-		sumbmarineBomb.add_movement_listener(underWaterPanel);
-
+		// sumbmarineBomb.add_movement_listener(allyBoatPanel);
+//		sumbmarineBomb.add_movement_listener(underWaterPanel);
+		sumbmarineBomb.add_movement_listener(gameBoardPanel);
 	}
 
 	public void register_to_simple_ally_bomb(SimpleAllyBomb simpleAllyBomb) {
 
-		simpleAllyBomb.add_movement_listener(allyBoatPanel);
-		simpleAllyBomb.add_movement_listener(underWaterPanel);
-		simpleAllyBomb.add_movement_listener(oceanBedPanel);
-		simpleAllyBomb.add_movement_listener(topPanel);
-
+		// simpleAllyBomb.add_movement_listener(allyBoatPanel);
+		// simpleAllyBomb.add_movement_listener(underWaterPanel);
+		// simpleAllyBomb.add_movement_listener(oceanBedPanel);
+		// simpleAllyBomb.add_movement_listener(topPanel);
+		simpleAllyBomb.add_movement_listener(gameBoardPanel);
 	}
 
 	public void register_to_simple_submarine_bomb(SimpleSubmarineBomb sumbmarineBomb) {
 
-		sumbmarineBomb.add_movement_listener(allyBoatPanel);
-		sumbmarineBomb.add_movement_listener(underWaterPanel);
-		
+		// sumbmarineBomb.add_movement_listener(allyBoatPanel);
+		// sumbmarineBomb.add_movement_listener(underWaterPanel);
+		sumbmarineBomb.add_movement_listener(gameBoardPanel);
+
 	}
 
 	public void register_to_game(Game game) {
-		game.add_game_listener(topPanel);
+		// game.add_game_listener(topPanel);
+		game.add_game_listener(gameBoardPanel);
+	}
+
+	public GameBoardPanel getGameBoardPanel() {
+		return gameBoardPanel;
 	}
 
 }
