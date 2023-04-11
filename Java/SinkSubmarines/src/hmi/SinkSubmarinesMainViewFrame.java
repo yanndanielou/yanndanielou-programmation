@@ -47,9 +47,10 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 		Container pane = this.getContentPane();
 		pane.setLayout(null);
 
-		gameBoardPanel= new GameBoardPanel(this, "Images/entire_gameboard.png");
-		//add(gameBoardPanel);
+		gameBoardPanel = new GameBoardPanel(this, "Images/entire_gameboard.png");
+		// add(gameBoardPanel);
 		setLayeredPane(gameBoardPanel);
+		gameBoardPanel.initialize_display();
 
 		/*
 		 * topPanel = new TopPanel(pane, gameBoardDataModel.getWidth(),
@@ -69,7 +70,7 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 		 */
 
 		this.setSize(gameBoardPanel.getWidth() + 20,
-				gameBoardPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight()+50);
+				gameBoardPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight() + 20);
 		// this.pack();
 
 		this.addKeyListener(new KeyBoardInputs(this));
