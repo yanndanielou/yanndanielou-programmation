@@ -47,8 +47,9 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 		Container pane = this.getContentPane();
 		pane.setLayout(null);
 
-		gameBoardPanel = new GameBoardPanel(this, "Images/entire_gameboard.png");
-		add(gameBoardPanel);
+		gameBoardPanel= new GameBoardPanel(this, "Images/entire_gameboard.png");
+		//add(gameBoardPanel);
+		setLayeredPane(gameBoardPanel);
 
 		/*
 		 * topPanel = new TopPanel(pane, gameBoardDataModel.getWidth(),
@@ -67,7 +68,9 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 		 * gameBoardDataModel, underWaterPanel);
 		 */
 
-		this.setSize(gameBoardPanel.getWidth() + 20, gameBoardPanel.getHeight() + 20);
+		this.setSize(gameBoardPanel.getWidth() + 20,
+				gameBoardPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight()+50);
+		// this.pack();
 
 		this.addKeyListener(new KeyBoardInputs(this));
 
@@ -88,12 +91,7 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 		setIconImage(application_buffered_image);
 	}
 
-	/**
-	 * Create the GUI and show it. For thread safety, this method is invoked from
-	 * the event dispatch thread.
-	 */
-	public void createAndShowGUI() {
-
+	private void set_look_and_field() {
 		/* Use an appropriate Look and Feel */
 		try {
 			// UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -107,16 +105,28 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 		} catch (ClassNotFoundException ex) {
 			ex.printStackTrace();
 		}
+
 		/* Turn off metal's use of bold fonts */
 		UIManager.put("swing.boldMetal", Boolean.FALSE);
 
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
 
-		this.setSize(800, 600);
+	/**
+	 * Create the GUI and show it. For thread safety, this method is invoked from
+	 * the event dispatch thread.
+	 */
+	public void createAndShowGUI() {
+
+		// set_look_and_field();
+
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		mainViewMenuBarManager.createMenu();
 
 		setApplicationIcon();
+
+		// this.setSize(800, 600);
+		this.pack();
 
 		// Display the window.
 
