@@ -24,7 +24,8 @@ import core.GameManager;
 public class MainViewMenuBarManager implements ActionListener {
 	private static final Logger LOGGER = LogManager.getLogger(SinkSubmarinesMainViewFrame.class);
 
-	SinkSubmarinesMainViewFrame parent_main_view = null;
+	private SinkSubmarinesMainViewFrame parent_main_view = null;
+	private JMenuBar menuBar;
 
 	public MainViewMenuBarManager(SinkSubmarinesMainViewFrame parent) {
 		parent_main_view = parent;
@@ -32,7 +33,7 @@ public class MainViewMenuBarManager implements ActionListener {
 
 	public void createMenu() {
 		// Where the GUI is created:
-		JMenuBar menuBar;
+
 		JMenu menu, submenu;
 		JMenuItem menuItem;
 		JRadioButtonMenuItem rbMenuItem;
@@ -45,7 +46,7 @@ public class MainViewMenuBarManager implements ActionListener {
 		menu = new JMenu("Game");
 		menu.setMnemonic(KeyEvent.VK_G);
 		menu.getAccessibleContext().setAccessibleDescription("The only menu in this program that has menu items");
-		menuBar.add(menu);
+		getMenuBar().add(menu);
 		menu.addActionListener(this);
 
 		menuItem = new JMenuItem("New Game", KeyEvent.VK_N);
@@ -110,7 +111,7 @@ public class MainViewMenuBarManager implements ActionListener {
 		menu = new JMenu("A Menu");
 		menu.setMnemonic(KeyEvent.VK_A);
 		menu.getAccessibleContext().setAccessibleDescription("The only menu in this program that has menu items");
-		menuBar.add(menu);
+		getMenuBar().add(menu);
 		menu.addActionListener(this);
 
 		// a group of JMenuItems
@@ -184,7 +185,7 @@ public class MainViewMenuBarManager implements ActionListener {
 		menu = new JMenu("Cheats");
 		menu.setMnemonic(KeyEvent.VK_C);
 		menu.getAccessibleContext().setAccessibleDescription("This menu does nothing");
-		menuBar.add(menu);
+		getMenuBar().add(menu);
 
 		menuItem = new JMenuItem("Cheat code", KeyEvent.VK_C);
 		menuItem.setAccelerator(
@@ -265,13 +266,17 @@ public class MainViewMenuBarManager implements ActionListener {
 		menu = new JMenu("Another Menu");
 		menu.setMnemonic(KeyEvent.VK_N);
 		menu.getAccessibleContext().setAccessibleDescription("This menu does nothing");
-		menuBar.add(menu);
+		getMenuBar().add(menu);
 
-		parent_main_view.setJMenuBar(menuBar);
+		parent_main_view.setJMenuBar(getMenuBar());
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		LOGGER.info("actionPerformed" + e);
+	}
+
+	public JMenuBar getMenuBar() {
+		return menuBar;
 	}
 }
