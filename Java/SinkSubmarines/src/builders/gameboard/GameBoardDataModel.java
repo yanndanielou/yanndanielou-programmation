@@ -1,5 +1,6 @@
 package builders.gameboard;
 
+@Deprecated
 public class GameBoardDataModel {
 
 	private int width;
@@ -19,6 +20,13 @@ public class GameBoardDataModel {
 
 	public int getWidth() {
 		return width;
+	}
+
+	@Deprecated
+	public int getHeight() {
+		return top_area_data_model.getHeight() + sky_game_board_area_data_model.getHeight()
+				+ ally_boat_game_board_area_data_model.getHeight() + under_water_game_board_area_data_model.getHeight()
+				+ ocean_bed_game_board_area_data_model.getHeight();
 	}
 
 	public GameBoardAreaDataModel getSky_game_board_area_data_model() {
