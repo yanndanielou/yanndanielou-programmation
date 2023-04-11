@@ -61,11 +61,16 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 	private BufferedImage complete_game_board_as_buffered_image;
 	private File complete_game_board_as_file;
 
-	private final int TOP_PANEL_ELEMENTS_Y = 30;
+	private final int TOP_PANEL_ELEMENTS_Y = 10;
 	private final int TOP_PANEL_ELEMENTS_HEIGHT = 50;
 
-	private enum LAYERS {
-		UNVISIBLE, BACKGROUND_IMAGE, ROCKS, BELLIGERENTS, BOMBS, LABELS, UNDER_LABELS;
+	@Deprecated
+	private enum LAYERS_ORDERED_FROM_BACK_TO_TOP {
+		UNVISIBLE, BACKGROUND_IMAGE, ROCKS, BELLIGERENTS, BOMBS, UNDER_LABELS, LABELS;
+	}
+
+	private enum LAYERS_ORDERED_FROM_TOP_TO_BACK {
+		LABELS, UNDER_LABELS, BOMBS, BELLIGERENTS, ROCKS, BACKGROUND_IMAGE, UNVISIBLE;
 	}
 
 	/**
@@ -83,21 +88,23 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 			e.printStackTrace();
 		}
 
+	}
+
+	public void initialize_display() {
+
 		setSize(complete_game_board_as_icon.getIconWidth(), complete_game_board_as_icon.getIconHeight());
 
 		setLayout(null);
 
-		setSize(getWidth(), getHeight());
-
-		display_gameboard_background_image("Images/entire_gameboard.png");
-/*
 		current_scenario_level_label = new JLabel("LEVEL:");
 		current_scenario_level_label.setSize(100, TOP_PANEL_ELEMENTS_HEIGHT);
 		current_scenario_level_label.setLocation(10,
 				TOP_PANEL_ELEMENTS_Y - current_scenario_level_label.getHeight() / 2);
 		current_scenario_level_label.setForeground(Color.yellow);
 		current_scenario_level_label.setFont(new Font(Font.SERIF, Font.BOLD, 15));
-		add(current_scenario_level_label, LAYERS.LABELS);
+		add(current_scenario_level_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.LABELS.ordinal());
+
+		display_gameboard_background_image("Images/entire_gameboard.png");
 
 		character_sailor_icon = new ImageIcon("Images/character_baby_sailor.png");
 		Image img = character_sailor_icon.getImage();
@@ -117,7 +124,7 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 //		next_ally_bomb_horizontal_speed_as_label.setForeground(Color.red);
 		// next_ally_bomb_horizontal_speed_no_force_icon.paintIcon(next_ally_bomb_horizontal_speed_as_label,
 		// getGraphics(), window_width, window_width)
-		add(next_ally_bomb_horizontal_speed_as_label, LAYERS.LABELS);
+		add(next_ally_bomb_horizontal_speed_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.LABELS.ordinal());
 
 		next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon = new ImageIcon(
 				"Images/next_ally_bomb_horizontal_speed_full_force_only_red_content.png");
@@ -127,7 +134,7 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 				next_ally_bomb_horizontal_speed_as_label.getX() + 1,
 				next_ally_bomb_horizontal_speed_as_label.getY() + 1);
 
-		add(next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label, LAYERS.UNDER_LABELS);
+		add(next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.UNDER_LABELS.ordinal());
 
 		//
 
@@ -139,7 +146,7 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 						next_ally_bomb_horizontal_speed_as_label.getX()
 								+ next_ally_bomb_horizontal_speed_as_label.getWidth() + 10,
 						TOP_PANEL_ELEMENTS_Y - remaining_ally_bombs_icon_as_label.getHeight() / 2);
-		add(remaining_ally_bombs_icon_as_label, 1);
+		add(remaining_ally_bombs_icon_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.LABELS.ordinal());
 
 		remaining_ally_bombs_label = new JLabel("X");
 		remaining_ally_bombs_label.setSize(30, TOP_PANEL_ELEMENTS_HEIGHT);
@@ -148,7 +155,7 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 				TOP_PANEL_ELEMENTS_Y - remaining_ally_bombs_label.getHeight() / 2);
 		remaining_ally_bombs_label.setForeground(Color.yellow);
 		remaining_ally_bombs_label.setFont(new Font(Font.SERIF, Font.BOLD, 15));
-		add(remaining_ally_bombs_label, LAYERS.LABELS);
+		add(remaining_ally_bombs_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.LABELS.ordinal());
 
 		score_label = new JLabel("SCORE");
 		score_label.setSize(150, TOP_PANEL_ELEMENTS_HEIGHT);
@@ -156,22 +163,23 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 				TOP_PANEL_ELEMENTS_Y - score_label.getHeight() / 2);
 		score_label.setForeground(Color.yellow);
 		score_label.setFont(new Font(Font.SERIF, Font.BOLD, 15));
-		add(score_label, LAYERS.LABELS);
+		add(score_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.LABELS.ordinal());
+
 		// setBounds(0, 0, this.getSize().width, this.getSize().height);
 
 		update_next_ally_bomb_horizontal_speed_label();
-		*/
 
 	}
 
 	private void display_gameboard_background_image(String background_image_path) {
 		gameboard_background_image_as_icon = new ImageIcon(background_image_path);
 
-		gameboard_background_image_as_label = new JLabel(remaining_ally_bombs_icon_as_icon);
-		gameboard_background_image_as_label.setSize(gameboard_background_image_as_icon.getIconWidth(),
-				gameboard_background_image_as_icon.getIconHeight());
+		gameboard_background_image_as_label = new JLabel(gameboard_background_image_as_icon);
+		gameboard_background_image_as_label.setSize((int) (gameboard_background_image_as_icon.getIconWidth()),
+				(int) (gameboard_background_image_as_icon.getIconHeight()));
 		gameboard_background_image_as_label.setLocation(0, 0);
-		add(gameboard_background_image_as_label, LAYERS.BACKGROUND_IMAGE);
+		add(gameboard_background_image_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.BACKGROUND_IMAGE.ordinal());
+		// add(gameboard_background_image_as_label);
 	}
 
 	@Override
