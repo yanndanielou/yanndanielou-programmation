@@ -17,6 +17,8 @@ public interface WeaponListener {
 
 	void on_weapon_end_of_destruction_and_clean(Weapon weapon);
 
+	void on_weapon_beginning_of_destruction(Weapon weapon);
+
 	void on_listen_to_simple_submarine_bomb(SimpleSubmarineBomb simpleSubmarineBomb);
 
 	void on_simple_submarine_bomb_moved(SimpleSubmarineBomb simpleSubmarineBomb);

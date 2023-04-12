@@ -26,8 +26,8 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 			GenericObjectDataModel simple_submarine_data_model, Game game) {
 
 		super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
-				scenarioLevelEnnemyCreationDataModel.getDepth(), simple_submarine_data_model.getWidth(),
-				simple_submarine_data_model.getHeight()),
+				scenarioLevelEnnemyCreationDataModel.getDepth() + game.getGameboard().get_water_level_y(),
+				simple_submarine_data_model.getWidth(), simple_submarine_data_model.getHeight()),
 				scenarioLevelEnnemyCreationDataModel.getMaximum_fire_frequency_in_milliseconds(),
 				scenarioLevelEnnemyCreationDataModel.getAmmunition_y_speed(), game);
 
@@ -118,8 +118,7 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 
 	private boolean check_if_must_fire() {
 
-		boolean must_fire = allowed_to_fire && !is_completely_destroyed() && !is_being_destroyed()
-				&& is_minimal_time_since_last_fire_fulfilled() && !has_reached_maximum_number_of_living_bombs()
+		boolean must_fire = is_allowed_to_fire()
 				&& check_if_in_geographical_position_is_inside_board()
 				&& check_if_in_geographical_position_of_fire_according_to_strategy();
 
@@ -166,6 +165,8 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	@Override
 	public void impact_now() {
 		game.addScore(score_prize_money_on_destruction);
+		movement_listeners
+				.forEach((movement_listener) -> movement_listener.on_submarine_beginning_of_destruction(this));
 	}
 
 	@Override

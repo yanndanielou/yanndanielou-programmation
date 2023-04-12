@@ -89,6 +89,7 @@ public class SimpleAllyBomb extends Weapon {
 		for (GameObjectListerner objectlistener : movement_listeners) {
 			objectlistener.on_simple_ally_bomb_beginning_of_destruction(this);
 		}
+		super.impact_now();
 	}
 
 	@Override

@@ -80,6 +80,7 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	@Override
 	public void impact_now() {
 		this.current_destruction_timer_in_milliseconds = 10_000;
+		movement_listeners.forEach((movement_listener) -> movement_listener.on_ally_boat_beginning_of_destruction(this));
 	}
 
 	@Override
@@ -214,6 +215,18 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 
 	@Override
 	protected void rocks_reached() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_submarine_beginning_of_destruction(SubMarine subMarine) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_weapon_beginning_of_destruction(Weapon weapon) {
 		// TODO Auto-generated method stub
 		
 	}

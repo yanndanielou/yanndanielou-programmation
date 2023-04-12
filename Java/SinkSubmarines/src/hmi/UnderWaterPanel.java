@@ -167,7 +167,7 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 
 	@Override
 	public void on_simple_ally_bomb_moved(SimpleAllyBomb simpleAllyBomb) {
-		this.repaint();
+	//	this.repaint();
 
 	}
 

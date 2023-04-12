@@ -51,6 +51,7 @@ public class SimpleSubmarineBomb extends Weapon {
 	@Override
 	public void impact_now() {
 		this.current_destruction_timer_in_milliseconds = 2_000;
+		super.impact_now();
 	}
 
 	@Override

@@ -136,22 +136,10 @@ public class GameManager implements TimeManagerListener {
 	}
 
 	private boolean is_ally_bomb_drop_autorized() {
-		boolean ally_bomb_drop_is_autorized = false;
 
 		AllyBoat ally_boat = game.getAlly_boat();
-		boolean minimum_delay_between_two_ally_bombs_dropped_fulfilled = ally_boat
-				.is_minimal_time_since_last_fire_fulfilled();
 
-		boolean is_under_maximum_number_of_ally_bombs_fulfilled = !ally_boat
-				.has_reached_maximum_number_of_living_bombs();
-
-		if (!is_under_maximum_number_of_ally_bombs_fulfilled) {
-			LOGGER.warn("Cannot drop bomb because limit of bombs " + ally_boat.getLiving_bombs().size()
-					+ " already dropped");
-		}
-
-		ally_bomb_drop_is_autorized = minimum_delay_between_two_ally_bombs_dropped_fulfilled
-				&& is_under_maximum_number_of_ally_bombs_fulfilled;
+		boolean ally_bomb_drop_is_autorized = ally_boat.is_allowed_to_fire();
 
 		if (ally_bomb_drop_is_autorized) {
 			ally_boat.on_fire();

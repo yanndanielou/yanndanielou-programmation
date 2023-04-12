@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -288,16 +289,19 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 	@Override
 	public void on_ally_boat_moved(AllyBoat allyBoat) {
 		move_jlabel_graphical_representation_according_to_game_object_location(allyBoat);
+		update_jlabel_graphical_representation_icon(allyBoat);
 	}
 
 	@Override
 	public void on_simple_submarine_moved(SimpleSubMarine simpleSubMarine) {
 		move_jlabel_graphical_representation_according_to_game_object_location(simpleSubMarine);
+		update_jlabel_graphical_representation_icon(simpleSubMarine);
 	}
 
 	@Override
 	public void on_simple_ally_bomb_moved(SimpleAllyBomb simpleAllyBomb) {
 		move_jlabel_graphical_representation_according_to_game_object_location(simpleAllyBomb);
+		update_jlabel_graphical_representation_icon(simpleAllyBomb);
 	}
 
 	@Override
@@ -309,21 +313,25 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 	@Override
 	public void on_simple_submarine_bomb_moved(SimpleSubmarineBomb simpleSubmarineBomb) {
 		move_jlabel_graphical_representation_according_to_game_object_location(simpleSubmarineBomb);
+		update_jlabel_graphical_representation_icon(simpleSubmarineBomb);
 	}
 
 	@Override
 	public void on_floating_submarine_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb) {
 		move_jlabel_graphical_representation_according_to_game_object_location(floatingSubmarineBomb);
+		update_jlabel_graphical_representation_icon(floatingSubmarineBomb);
 	}
 
 	@Override
 	public void on_yellow_submarine_end_of_destruction_and_clean(YellowSubMarine yellowSubMarine) {
 		remove_jlabel_graphical_representation_for_game_object(yellowSubMarine);
+		update_jlabel_graphical_representation_icon(yellowSubMarine);
 	}
 
 	@Override
 	public void on_yellow_submarine_moved(YellowSubMarine yellowSubMarine) {
 		move_jlabel_graphical_representation_according_to_game_object_location(yellowSubMarine);
+		update_jlabel_graphical_representation_icon(yellowSubMarine);
 	}
 
 	@Override
@@ -356,6 +364,7 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 
 	@Override
 	public void on_ally_boat_beginning_of_destruction(AllyBoat allyBoat) {
+		update_jlabel_graphical_representation_icon(allyBoat);
 	}
 
 	@Override
@@ -365,6 +374,7 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 
 	@Override
 	public void on_simple_ally_bomb_beginning_of_destruction(SimpleAllyBomb simpleAllyBomb) {
+		update_jlabel_graphical_representation_icon(simpleAllyBomb);
 	}
 
 	@Override
@@ -396,6 +406,26 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 		} else {
 			LOGGER.error("Graphical representation jlabel did not exists for:" + game_object);
 		}
+	}
+
+	private boolean update_jlabel_graphical_representation_icon(GameObject game_object) {
+
+		JLabel jLabel_graphical_representation = game_object_to_its_jlabel_graphical_representation_map
+				.get(game_object);
+		if (jLabel_graphical_representation != null) {
+
+			Icon previous_representation_icon = jLabel_graphical_representation.getIcon();
+			ImageIcon new_representation_icon = game_object.get_graphical_representation_as_icon();
+			if (previous_representation_icon != new_representation_icon) {
+				jLabel_graphical_representation.setIcon(new_representation_icon);
+				return true;
+			}
+
+		} else {
+			LOGGER.error("Graphical representation jlabel does not exists for:" + game_object);
+		}
+
+		return false;
 	}
 
 	private JLabel create_jlabel_graphical_representation_for_game_object(GameObject game_object,
@@ -435,8 +465,7 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 
 	@Override
 	public void on_simple_submarine_bomb_beginning_of_destruction(SimpleSubmarineBomb simpleSubmarineBomb) {
-		// TODO Auto-generated method stub
-
+		update_jlabel_graphical_representation_icon(simpleSubmarineBomb);
 	}
 
 	@Override
@@ -450,6 +479,16 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 	public void on_listen_to_floating_submarine_bomb(FloatingSubmarineBomb floatingSubmarineBomb) {
 		create_jlabel_graphical_representation_for_game_object(floatingSubmarineBomb,
 				LAYERS_ORDERED_FROM_TOP_TO_BACK.BOMBS);
+	}
+
+	@Override
+	public void on_submarine_beginning_of_destruction(SubMarine subMarine) {
+		update_jlabel_graphical_representation_icon(subMarine);
+	}
+
+	@Override
+	public void on_weapon_beginning_of_destruction(Weapon weapon) {
+		update_jlabel_graphical_representation_icon(weapon);
 	}
 
 }

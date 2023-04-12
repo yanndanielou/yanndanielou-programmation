@@ -23,7 +23,7 @@ public abstract class Belligerent extends GameObject {
 
 	private int max_number_of_living_bombs;
 
-	protected boolean allowed_to_fire = true;
+	protected boolean forbid_to_fire_by_cheatcode = false;
 
 	protected ArrayList<Weapon> living_bombs = new ArrayList<Weapon>();
 
@@ -38,8 +38,14 @@ public abstract class Belligerent extends GameObject {
 		return maximum_fire_frequency_in_milliseconds;
 	}
 
+	public boolean is_allowed_to_fire() {
+		boolean allowed_to_fire = !forbid_to_fire_by_cheatcode && !is_completely_destroyed() && !is_being_destroyed()
+				&& is_minimal_time_since_last_fire_fulfilled() && !has_reached_maximum_number_of_living_bombs();
+		return allowed_to_fire;
+	}
+
 	public void forbid_to_fire() {
-		allowed_to_fire = false;
+		forbid_to_fire_by_cheatcode = false;
 	}
 
 	public int get_remaining_number_of_living_bombs_allowed() {

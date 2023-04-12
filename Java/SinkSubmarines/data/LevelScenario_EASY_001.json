@@ -9,7 +9,7 @@
 				"simple_submarines": [
 					{
 					  "x":600,
-					  "altitude": -280,
+					  "altitude": -180,
 					  "speed": -1,
 					  "creation_delay_in_seconds": 1,
 					  "maximum_fire_frequency_in_milliseconds": 2000,
@@ -20,7 +20,7 @@
 					},
 					{
 					  "x": 600,
-					  "altitude": -200,
+					  "altitude": -100,
 					  "speed": -1,
 					  "creation_delay_in_seconds": 1,
 					  "maximum_fire_frequency_in_milliseconds": 2000,
@@ -31,7 +31,7 @@
 					},
 					{
 					  "x": 600,
-					  "altitude": -250,
+					  "altitude": -150,
 					  "speed": -2,
 					  "creation_delay_in_seconds": 2,
 					  "maximum_fire_frequency_in_milliseconds": 2000,
