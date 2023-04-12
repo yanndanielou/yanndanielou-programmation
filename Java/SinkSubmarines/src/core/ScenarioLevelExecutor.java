@@ -92,7 +92,7 @@ public class ScenarioLevelExecutor implements TimeManagerListener {
 	@Override
 	public void on_second_tick() {
 		current_step_in_seconds++;
-		create_objects_if_needed(current_step_in_seconds);
+		// create_objects_if_needed(current_step_in_seconds);
 		if (simple_submarines_remaining_to_create.isEmpty() && yellow_submarines_remaining_to_create.isEmpty()
 				&& game.get_all_submarines().isEmpty()) {
 

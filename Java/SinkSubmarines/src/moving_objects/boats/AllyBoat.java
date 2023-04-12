@@ -212,4 +212,10 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 		
 	}
 
+	@Override
+	protected void rocks_reached() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

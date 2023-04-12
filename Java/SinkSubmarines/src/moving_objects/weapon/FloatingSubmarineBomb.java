@@ -57,4 +57,10 @@ public class FloatingSubmarineBomb extends Weapon {
 		return getFloatingSubmarineBombImage(this);
 	}
 
+	@Override
+	protected void rocks_reached() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

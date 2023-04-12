@@ -271,12 +271,17 @@ public abstract class GameObject {
 		this.upper_left_absolute_position_on_complete_board = upper_left_absolute_position_on_complete_board;
 	}
 
-	public int get_altitude() {
-		return get_depth() * -1;
+	public int get_highest_point_altitude() {
+		return get_highest_point_depth() * -1;
 	}
 
-	public int get_depth() {
+	public int get_highest_point_depth() {
 		return (int) surrounding_rectangle_absolute_on_complete_board.getY() - game.getGameboard().get_water_level_y();
+	}
+
+	public int get_lowest_point_depth() {
+		return (int) surrounding_rectangle_absolute_on_complete_board.getMaxY()
+				- game.getGameboard().get_water_level_y();
 	}
 
 	public Rectangle getSurrounding_rectangle_absolute_on_complete_board() {
@@ -362,10 +367,14 @@ public abstract class GameObject {
 
 			// FIXME: this checks only if one of the two extremities reach the rock: but
 			// rocks can also be reached at middle of object
-			if (get_depth() >= gameboard
+			int lowest_point_depth = get_lowest_point_depth();
+			if (lowest_point_depth >= gameboard
 					.get_top_of_the_rock_depth((int) (surrounding_rectangle_absolute_on_complete_board.getX()))
-					|| get_depth() >= gameboard.get_top_of_the_rock_depth(
+					|| lowest_point_depth >= gameboard.get_top_of_the_rock_depth(
 							(int) (surrounding_rectangle_absolute_on_complete_board.getMaxX()))) {
+				rocks_reached();
+			}
+			if (lowest_point_depth >= gameboard.getOceanBedBelowRocksDepth()) {
 				ocean_bed_reached();
 			}
 
@@ -373,6 +382,8 @@ public abstract class GameObject {
 		}
 		return has_moved;
 	}
+
+	protected abstract void rocks_reached();
 
 	protected abstract void ocean_bed_reached();
 

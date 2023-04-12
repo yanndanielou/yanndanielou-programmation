@@ -69,4 +69,10 @@ public class YellowSubMarine extends SubMarine {
 		return getYellowSubmarineImage(this);
 	}
 
+	@Override
+	protected void rocks_reached() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

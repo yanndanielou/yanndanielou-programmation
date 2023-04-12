@@ -71,9 +71,15 @@ public class SimpleAllyBomb extends Weapon {
 	}
 
 	@Override
-	protected void water_surface_reached() {
-		// TODO Auto-generated method stub
+	protected void rocks_reached() {
 
+		LOGGER.info("rocks_reached, will delete" + this);
+
+		this.current_destruction_timer_in_milliseconds = 1_000;
+	}
+
+	@Override
+	protected void water_surface_reached() {
 	}
 
 	@Override

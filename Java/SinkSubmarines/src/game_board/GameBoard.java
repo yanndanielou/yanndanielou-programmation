@@ -33,6 +33,10 @@ public class GameBoard {
 		return height;
 	}
 
+	public int getOceanBedBelowRocksDepth() {
+		return height - get_water_level_y();
+	}
+
 	public int get_top_of_the_rock_depth(int x) {
 		Integer rocks_height = ocean_bed_rocks_height_per_abscissa.get(x);
 		if (rocks_height == null) {
@@ -74,8 +78,9 @@ public class GameBoard {
 					continue;
 				}
 				if (pixel_rgb == HMIConstants.WATER_COLOR.getRGB()) {
-					LOGGER.debug("At x:" + x + " , rocks height is " + y);
-					ocean_bed_rocks_height_per_abscissa.put(x, y);
+					int rock_height = height - y;
+					LOGGER.debug("At x:" + x + " , rocks height is " + rock_height);
+					ocean_bed_rocks_height_per_abscissa.put(x, rock_height);
 					beginning_of_rocks_found = true;
 				}
 			}
