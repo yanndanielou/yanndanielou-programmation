@@ -181,7 +181,7 @@ public class GameManager implements TimeManagerListener {
 				* game.getNext_ally_bomb_horizontal_speed_relative_percentage() / 100 * -1
 				- 2 * Math.abs(ally_boat.getX_speed());
 		dropSimpleAllyBomb((int) dropped_bomb_x,
-				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() + 15, x_speed);
+				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() + 5, x_speed);
 	}
 
 	public void dropSimpleAllyBombAtRightOfAllyBoat() {
@@ -192,7 +192,7 @@ public class GameManager implements TimeManagerListener {
 				* game.getNext_ally_bomb_horizontal_speed_relative_percentage() / 100 * 1
 				+ 2 * Math.abs(ally_boat.getX_speed());
 		dropSimpleAllyBomb((int) dropped_bomb_x,
-				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() + 15, x_speed);
+				(int) ally_boat.getSurrounding_rectangle_absolute_on_complete_board().getY() + 5, x_speed);
 	}
 
 	public SimpleSubmarineBomb fire_simple_submarine_bomb(SubMarine simpleSubMarine, int x, int y,

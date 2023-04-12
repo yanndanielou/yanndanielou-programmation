@@ -44,7 +44,7 @@ public class YellowSubMarine extends SubMarine {
 	}
 
 	@Override
-	protected void water_surface_reached() {
+	protected void top_of_object_reaches_surface() {
 		// TODO Auto-generated method stub
 
 	}

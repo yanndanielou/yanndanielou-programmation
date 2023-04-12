@@ -78,7 +78,7 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 		 */
 
 		this.setSize(gameBoardPanel.getWidth() + 20,
-				gameBoardPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight() + 50);
+				gameBoardPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight() + 40);
 		// this.pack();
 
 		this.addKeyListener(new KeyBoardInputs(this));

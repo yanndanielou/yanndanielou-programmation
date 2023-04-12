@@ -357,7 +357,7 @@ public abstract class GameObject {
 			surrounding_rectangle_absolute_on_complete_board.translate(0, getY_speed());
 			has_moved = true;
 			if (surrounding_rectangle_absolute_on_complete_board.getY() <= game.getGameboard().get_water_level_y()) {
-				water_surface_reached();
+				top_of_object_reaches_surface();
 			}
 
 		} else if (getY_speed() > 0) {
@@ -387,7 +387,7 @@ public abstract class GameObject {
 
 	protected abstract void ocean_bed_reached();
 
-	protected abstract void water_surface_reached();
+	protected abstract void top_of_object_reaches_surface();
 
 	public abstract BufferedImage get_graphical_representation_as_buffered_image();
 
@@ -437,9 +437,17 @@ public abstract class GameObject {
 		notify_end_of_destruction_and_clean();
 	}
 
-	public void stop_movement() {
+	public void stop_horizontal_movement() {
 		x_speed = 0;
+	}
+
+	public void stop_vertical_movement() {
 		y_speed = 0;
+	}
+
+	public void stop_movement() {
+		stop_horizontal_movement();
+		stop_vertical_movement();
 	}
 
 	public Game getGame() {

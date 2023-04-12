@@ -23,12 +23,12 @@ public class SimpleAllyBomb extends Weapon {
 
 	@Override
 	protected void right_border_of_game_board_reached() {
-		// TODO Auto-generated method stub
-
+		stop_horizontal_movement();
 	}
 
 	@Override
 	protected void left_border_of_game_board_reached() {
+		stop_horizontal_movement();
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class SimpleAllyBomb extends Weapon {
 	protected void ocean_bed_reached() {
 		LOGGER.info("ocean_bed_reached, will delete" + this);
 
-		this.current_destruction_timer_in_milliseconds = 2_000;
+		this.current_destruction_timer_in_milliseconds = 1_000;
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class SimpleAllyBomb extends Weapon {
 	}
 
 	@Override
-	protected void water_surface_reached() {
+	protected void top_of_object_reaches_surface() {
 	}
 
 	@Override

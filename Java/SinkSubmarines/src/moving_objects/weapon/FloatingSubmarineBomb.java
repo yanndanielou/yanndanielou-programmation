@@ -43,7 +43,7 @@ public class FloatingSubmarineBomb extends Weapon {
 	}
 
 	@Override
-	protected void water_surface_reached() {
+	protected void top_of_object_reaches_surface() {
 		stop_movement();
 	}
 
