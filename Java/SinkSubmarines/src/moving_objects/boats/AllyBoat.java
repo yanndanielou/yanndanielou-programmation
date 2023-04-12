@@ -125,7 +125,7 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	}
 
 	@Override
-	public void on_floating_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb) {
+	public void on_floating_submarine_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb) {
 		// TODO Auto-generated method stub
 
 	}
@@ -195,9 +195,21 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	}
 
 	@Override
-	public void on_simple_submarine_bomb_beginning_of_destructionF(SimpleSubmarineBomb simpleSubmarineBomb) {
+	public void on_simple_submarine_bomb_beginning_of_destruction(SimpleSubmarineBomb simpleSubmarineBomb) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void on_listen_to_simple_submarine_bomb(SimpleSubmarineBomb simpleSubmarineBomb) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_listen_to_floating_submarine_bomb(FloatingSubmarineBomb floatingSubmarineBomb) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

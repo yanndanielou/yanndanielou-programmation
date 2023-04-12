@@ -22,6 +22,8 @@ public class TimeManager extends TimerTask implements GameStatusListener {
 	private Timer timer;
 	private int number_of_10ms_tick = 0;
 
+	boolean a_tick_is_under_processing = false;
+
 	private TimeManager() {
 		LOGGER.info("TimerTask created");
 
@@ -46,7 +48,12 @@ public class TimeManager extends TimerTask implements GameStatusListener {
 
 	@Override
 	public void run() {
+		if(a_tick_is_under_processing){
+			LOGGER.fatal("A tick is already under processing, discard current tick");
+		}
+		a_tick_is_under_processing = true;
 		tick_10ms();
+		a_tick_is_under_processing = false;
 	}
 
 	private void tick_10ms() {
@@ -173,7 +180,7 @@ public class TimeManager extends TimerTask implements GameStatusListener {
 
 	@Override
 	public void on_game_over(Game game) {
-		stop();		
+		stop();
 	}
 
 }

@@ -34,7 +34,10 @@ public class GameBoard {
 	}
 
 	public int get_top_of_the_rock_depth(int x) {
-		int rocks_height = ocean_bed_rocks_height_per_abscissa.get(x);
+		Integer rocks_height = ocean_bed_rocks_height_per_abscissa.get(x);
+		if (rocks_height == null) {
+			LOGGER.error("Cannot compute top_of_the_rock_depth at x:" + x);
+		}
 		int top_of_the_rock_depth = getHeight() - get_water_level_y() - rocks_height;
 		return top_of_the_rock_depth;
 	}

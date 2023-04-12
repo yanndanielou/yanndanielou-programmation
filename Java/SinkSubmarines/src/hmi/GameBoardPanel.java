@@ -18,6 +18,9 @@ import javax.swing.JLayeredPane;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import builders.scenariolevel.ScenarioLevelDataModel;
 import builders.scenariolevel.ScenarioLevelWaveDataModel;
 import core.GameManager;
@@ -36,6 +39,7 @@ import moving_objects.weapon.Weapon;
 
 //FIXME: try JLayeredPane instead
 public class GameBoardPanel extends JLayeredPane implements GameListener, GameObjectListerner {
+	private static final Logger LOGGER = LogManager.getLogger(GameBoardPanel.class);
 
 	private JLabel current_scenario_level_label;
 
@@ -283,41 +287,50 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 
 	@Override
 	public void on_ally_boat_moved(AllyBoat allyBoat) {
-		ally_boat_as_label.setLocation(allyBoat.getSurrounding_rectangle_absolute_on_complete_board().getLocation());
+		move_jlabel_graphical_representation_according_to_game_object_location(allyBoat);
 	}
 
 	@Override
 	public void on_simple_submarine_moved(SimpleSubMarine simpleSubMarine) {
+		move_jlabel_graphical_representation_according_to_game_object_location(simpleSubMarine);
 	}
 
 	@Override
 	public void on_simple_ally_bomb_moved(SimpleAllyBomb simpleAllyBomb) {
+		move_jlabel_graphical_representation_according_to_game_object_location(simpleAllyBomb);
 	}
 
 	@Override
 	public void on_weapon_end_of_destruction_and_clean(Weapon weapon) {
 		update_remaining_ally_bombs_label(weapon.getGame());
+		remove_jlabel_graphical_representation_for_game_object(weapon);
 	}
 
 	@Override
 	public void on_simple_submarine_bomb_moved(SimpleSubmarineBomb simpleSubmarineBomb) {
+		move_jlabel_graphical_representation_according_to_game_object_location(simpleSubmarineBomb);
 	}
 
 	@Override
-	public void on_floating_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb) {
+	public void on_floating_submarine_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb) {
+		move_jlabel_graphical_representation_according_to_game_object_location(floatingSubmarineBomb);
 	}
 
 	@Override
 	public void on_yellow_submarine_end_of_destruction_and_clean(YellowSubMarine yellowSubMarine) {
+		remove_jlabel_graphical_representation_for_game_object(yellowSubMarine);
 	}
 
 	@Override
 	public void on_yellow_submarine_moved(YellowSubMarine yellowSubMarine) {
+		move_jlabel_graphical_representation_according_to_game_object_location(yellowSubMarine);
 	}
 
 	@Override
 	public void on_listen_to_simple_ally_bomb(SimpleAllyBomb simpleAllyBomb) {
 		update_remaining_ally_bombs_label(simpleAllyBomb.getGame());
+
+		create_jlabel_graphical_representation_for_game_object(simpleAllyBomb, LAYERS_ORDERED_FROM_TOP_TO_BACK.BOMBS);
 	}
 
 	@Override
@@ -329,6 +342,7 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 	@Override
 	public void on_simple_ally_bomb_end_of_destruction_and_clean(SimpleAllyBomb simpleAllyBomb) {
 		update_remaining_ally_bombs_label(simpleAllyBomb.getGame());
+		remove_jlabel_graphical_representation_for_game_object(simpleAllyBomb);
 	}
 
 	public BufferedImage getComplete_game_board_as_buffered_image() {
@@ -337,6 +351,7 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 
 	@Override
 	public void on_ally_boat_end_of_destruction_and_clean(AllyBoat allyBoat) {
+		remove_jlabel_graphical_representation_for_game_object(allyBoat);
 	}
 
 	@Override
@@ -345,6 +360,7 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 
 	@Override
 	public void on_submarine_end_of_destruction_and_clean(SubMarine subMarine) {
+		remove_jlabel_graphical_representation_for_game_object(subMarine);
 	}
 
 	@Override
@@ -353,34 +369,87 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 
 	@Override
 	public void on_listen_to_ally_boat(AllyBoat allyBoat) {
+		ally_boat_as_label = create_jlabel_graphical_representation_for_game_object(allyBoat,
+				LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS);
 
-		ImageIcon graphical_representation_as_icon = allyBoat.get_graphical_representation_as_icon();
+	}
 
-		ally_boat_as_label = new JLabel(graphical_representation_as_icon);
+	private void move_jlabel_graphical_representation_according_to_game_object_location(GameObject game_object) {
 
-		ally_boat_as_label.setSize(graphical_representation_as_icon.getIconWidth(),
-				graphical_representation_as_icon.getIconHeight());
+		JLabel jLabel_graphical_representation = game_object_to_its_jlabel_graphical_representation_map
+				.get(game_object);
+		if (jLabel_graphical_representation != null) {
+			jLabel_graphical_representation
+					.setLocation(game_object.getSurrounding_rectangle_absolute_on_complete_board().getLocation());
+		} else {
+			LOGGER.error("Could not find jlabel graphical representation for:" + game_object);
+		}
+	}
 
-		ally_boat_as_label.setLocation(allyBoat.getSurrounding_rectangle_absolute_on_complete_board().getLocation());
-		add(ally_boat_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS.ordinal());
+	private void remove_jlabel_graphical_representation_for_game_object(GameObject game_object) {
+		JLabel jLabel_graphical_representation = game_object_to_its_jlabel_graphical_representation_map
+				.get(game_object);
+		if (jLabel_graphical_representation != null) {
+			jLabel_graphical_representation.setVisible(false);
+			remove(jLabel_graphical_representation);
+			game_object_to_its_jlabel_graphical_representation_map.remove(game_object);
+		} else {
+			LOGGER.error("Graphical representation jlabel did not exists for:" + game_object);
+		}
+	}
+
+	private JLabel create_jlabel_graphical_representation_for_game_object(GameObject game_object,
+			LAYERS_ORDERED_FROM_TOP_TO_BACK layer) {
+
+		JLabel jLabel_graphical_representation = game_object_to_its_jlabel_graphical_representation_map
+				.get(game_object);
+		if (jLabel_graphical_representation == null) {
+
+			ImageIcon graphical_representation_as_icon = game_object.get_graphical_representation_as_icon();
+			jLabel_graphical_representation = new JLabel(graphical_representation_as_icon);
+
+			jLabel_graphical_representation.setSize(graphical_representation_as_icon.getIconWidth(),
+					graphical_representation_as_icon.getIconHeight());
+
+			jLabel_graphical_representation
+					.setLocation(game_object.getSurrounding_rectangle_absolute_on_complete_board().getLocation());
+			add(jLabel_graphical_representation, layer.ordinal());
+
+			game_object_to_its_jlabel_graphical_representation_map.put(game_object, jLabel_graphical_representation);
+		} else {
+			LOGGER.error("Graphical representation jlabel already exists for:" + game_object);
+		}
+
+		return jLabel_graphical_representation;
 	}
 
 	@Override
 	public void on_listen_to_submarine(SubMarine subMarine) {
-		// TODO Auto-generated method stub
-
+		create_jlabel_graphical_representation_for_game_object(subMarine, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS);
 	}
 
 	@Override
 	public void on_simple_submarine_bomb_end_of_destruction_and_clean(SimpleSubmarineBomb simpleSubmarineBomb) {
+		remove_jlabel_graphical_representation_for_game_object(simpleSubmarineBomb);
+	}
+
+	@Override
+	public void on_simple_submarine_bomb_beginning_of_destruction(SimpleSubmarineBomb simpleSubmarineBomb) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void on_simple_submarine_bomb_beginning_of_destructionF(SimpleSubmarineBomb simpleSubmarineBomb) {
-		// TODO Auto-generated method stub
+	public void on_listen_to_simple_submarine_bomb(SimpleSubmarineBomb simpleSubmarineBomb) {
+		create_jlabel_graphical_representation_for_game_object(simpleSubmarineBomb,
+				LAYERS_ORDERED_FROM_TOP_TO_BACK.BOMBS);
 
+	}
+
+	@Override
+	public void on_listen_to_floating_submarine_bomb(FloatingSubmarineBomb floatingSubmarineBomb) {
+		create_jlabel_graphical_representation_for_game_object(floatingSubmarineBomb,
+				LAYERS_ORDERED_FROM_TOP_TO_BACK.BOMBS);
 	}
 
 }

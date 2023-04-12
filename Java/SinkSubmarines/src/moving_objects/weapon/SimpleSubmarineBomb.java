@@ -25,6 +25,12 @@ public class SimpleSubmarineBomb extends Weapon {
 	}
 
 	@Override
+	public void add_movement_listener(GameObjectListerner game_object_listener) {
+		super.add_movement_listener(game_object_listener);
+		game_object_listener.on_listen_to_simple_submarine_bomb(this);
+	}
+
+	@Override
 	public void notify_movement() {
 		for (GameObjectListerner objectlistener : movement_listeners) {
 			objectlistener.on_simple_submarine_bomb_moved(this);

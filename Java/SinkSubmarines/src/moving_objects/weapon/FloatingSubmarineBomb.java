@@ -10,8 +10,10 @@ import moving_objects.listeners.GameObjectListerner;
 
 public class FloatingSubmarineBomb extends Weapon {
 
-	public FloatingSubmarineBomb(GenericObjectDataModel genericObjectDataModel, int x, int y, int y_speed, Game game, Belligerent parent_belligerent) {
-		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), y_speed, game, parent_belligerent);
+	public FloatingSubmarineBomb(GenericObjectDataModel genericObjectDataModel, int x, int y, int y_speed, Game game,
+			Belligerent parent_belligerent) {
+		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), y_speed, game,
+				parent_belligerent);
 	}
 
 	@Override
@@ -23,9 +25,15 @@ public class FloatingSubmarineBomb extends Weapon {
 	}
 
 	@Override
+	public void add_movement_listener(GameObjectListerner game_object_listener) {
+		super.add_movement_listener(game_object_listener);
+		game_object_listener.on_listen_to_floating_submarine_bomb(this);
+	}
+
+	@Override
 	public void notify_movement() {
 		for (GameObjectListerner objectlistener : movement_listeners) {
-			objectlistener.on_floating_bomb_moved(this);
+			objectlistener.on_floating_submarine_bomb_moved(this);
 		}
 	}
 

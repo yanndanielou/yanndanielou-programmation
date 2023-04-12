@@ -112,7 +112,9 @@ public class GameObjectsMovementOrchestor implements TimeManagerListener {
 							+ ally_boat.getSurrounding_rectangle_absolute_on_complete_board() + ")"
 							+ " and submarine bomb:" + submarine_bomb + "("
 							+ submarine_bomb.getSurrounding_rectangle_absolute_on_complete_board() + ")");
-					ally_boat.impact_now();
+					if (ally_boat.is_being_destroyed()) {
+						ally_boat.impact_now();
+					}
 					submarine_bomb.impact_now();
 				}
 			}

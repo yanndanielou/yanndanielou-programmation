@@ -45,6 +45,12 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	}
 
 	@Override
+	public void add_movement_listener(GameObjectListerner submarineListener) {
+		super.add_movement_listener(submarineListener);
+		submarineListener.on_listen_to_submarine(this);
+	}
+
+	@Override
 	protected void right_border_of_game_board_reached() {
 		setX_speed(getX_speed() * -1);
 	}

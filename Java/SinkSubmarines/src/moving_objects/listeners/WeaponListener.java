@@ -17,12 +17,16 @@ public interface WeaponListener {
 
 	void on_weapon_end_of_destruction_and_clean(Weapon weapon);
 
+	void on_listen_to_simple_submarine_bomb(SimpleSubmarineBomb simpleSubmarineBomb);
+
 	void on_simple_submarine_bomb_moved(SimpleSubmarineBomb simpleSubmarineBomb);
 
 	void on_simple_submarine_bomb_end_of_destruction_and_clean(SimpleSubmarineBomb simpleSubmarineBomb);
 
-	void on_simple_submarine_bomb_beginning_of_destructionF(SimpleSubmarineBomb simpleSubmarineBomb);
+	void on_simple_submarine_bomb_beginning_of_destruction(SimpleSubmarineBomb simpleSubmarineBomb);
 
-	void on_floating_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb);
+	void on_listen_to_floating_submarine_bomb(FloatingSubmarineBomb floatingSubmarineBomb);
+
+	void on_floating_submarine_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb);
 
 }

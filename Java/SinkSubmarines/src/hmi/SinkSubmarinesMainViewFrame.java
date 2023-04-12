@@ -1,6 +1,5 @@
 package hmi;
 
-import java.awt.Container;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
