@@ -46,7 +46,7 @@ public class MainViewMenuBarManager implements ActionListener {
 		menu = new JMenu("Game");
 		menu.setMnemonic(KeyEvent.VK_G);
 		menu.getAccessibleContext().setAccessibleDescription("The only menu in this program that has menu items");
-		getMenuBar().add(menu);
+		menuBar.add(menu);
 		menu.addActionListener(this);
 
 		menuItem = new JMenuItem("New Game", KeyEvent.VK_N);
@@ -268,7 +268,7 @@ public class MainViewMenuBarManager implements ActionListener {
 		menu.getAccessibleContext().setAccessibleDescription("This menu does nothing");
 		getMenuBar().add(menu);
 
-		parent_main_view.setJMenuBar(getMenuBar());
+		parent_main_view.setJMenuBar(menuBar);
 	}
 
 	@Override

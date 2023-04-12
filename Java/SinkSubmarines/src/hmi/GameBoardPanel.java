@@ -15,6 +15,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 
 import builders.scenariolevel.ScenarioLevelDataModel;
 import builders.scenariolevel.ScenarioLevelWaveDataModel;
@@ -32,6 +34,7 @@ import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
 import moving_objects.weapon.Weapon;
 
+//FIXME: try JLayeredPane instead
 public class GameBoardPanel extends JLayeredPane implements GameListener, GameObjectListerner {
 
 	private JLabel current_scenario_level_label;
@@ -59,6 +62,8 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 
 	private final int TOP_PANEL_ELEMENTS_Y = 10;
 	private final int TOP_PANEL_ELEMENTS_HEIGHT = 50;
+
+	private JLabel ally_boat_as_label;
 
 	private HashMap<GameObject, JLabel> game_object_to_its_jlabel_graphical_representation_map = new HashMap<>();
 	/*
@@ -93,6 +98,16 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 
 		setLayout(null);
 
+		// Create the menu bar.
+		JMenuBar menuBar = new JMenuBar();
+
+		// Build the first menu.
+		JMenu menu = new JMenu("Game");
+		menuBar.add(menu);
+
+		// FIXME: go up
+		display_gameboard_background_image("Images/entire_gameboard.png");
+
 		current_scenario_level_label = new JLabel("LEVEL:");
 		current_scenario_level_label.setSize(100, TOP_PANEL_ELEMENTS_HEIGHT);
 		current_scenario_level_label.setLocation(10,
@@ -100,8 +115,6 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 		current_scenario_level_label.setForeground(Color.yellow);
 		current_scenario_level_label.setFont(new Font(Font.SERIF, Font.BOLD, 15));
 		add(current_scenario_level_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.LABELS.ordinal());
-
-		display_gameboard_background_image("Images/entire_gameboard.png");
 
 		character_sailor_icon = new ImageIcon("Images/character_baby_sailor.png");
 		Image img = character_sailor_icon.getImage();
@@ -261,8 +274,6 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 
 	@Override
 	public void on_new_scenario_level_wave(Game game, ScenarioLevelWaveDataModel scenario_level_wave) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -272,50 +283,36 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 
 	@Override
 	public void on_ally_boat_moved(AllyBoat allyBoat) {
-		// TODO Auto-generated method stub
-
+		ally_boat_as_label.setLocation(allyBoat.getSurrounding_rectangle_absolute_on_complete_board().getLocation());
 	}
 
 	@Override
 	public void on_simple_submarine_moved(SimpleSubMarine simpleSubMarine) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void on_simple_ally_bomb_moved(SimpleAllyBomb simpleAllyBomb) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
-	public void on_weapon_destruction(Weapon weapon) {
-
+	public void on_weapon_end_of_destruction_and_clean(Weapon weapon) {
 		update_remaining_ally_bombs_label(weapon.getGame());
-
 	}
 
 	@Override
 	public void on_simple_submarine_bomb_moved(SimpleSubmarineBomb simpleSubmarineBomb) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void on_floating_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void on_yellow_submarine_end_of_destruction_and_clean(YellowSubMarine yellowSubMarine) {
-
 	}
 
 	@Override
 	public void on_yellow_submarine_moved(YellowSubMarine yellowSubMarine) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -340,24 +337,48 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 
 	@Override
 	public void on_ally_boat_end_of_destruction_and_clean(AllyBoat allyBoat) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
-	public void on_simple_ally_boat_beginning_of_destruction(AllyBoat allyBoat) {
-		// TODO Auto-generated method stub
-
+	public void on_ally_boat_beginning_of_destruction(AllyBoat allyBoat) {
 	}
 
 	@Override
 	public void on_submarine_end_of_destruction_and_clean(SubMarine subMarine) {
+	}
+
+	@Override
+	public void on_simple_ally_bomb_beginning_of_destruction(SimpleAllyBomb simpleAllyBomb) {
+	}
+
+	@Override
+	public void on_listen_to_ally_boat(AllyBoat allyBoat) {
+
+		ImageIcon graphical_representation_as_icon = allyBoat.get_graphical_representation_as_icon();
+
+		ally_boat_as_label = new JLabel(graphical_representation_as_icon);
+
+		ally_boat_as_label.setSize(graphical_representation_as_icon.getIconWidth(),
+				graphical_representation_as_icon.getIconHeight());
+
+		ally_boat_as_label.setLocation(allyBoat.getSurrounding_rectangle_absolute_on_complete_board().getLocation());
+		add(ally_boat_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS.ordinal());
+	}
+
+	@Override
+	public void on_listen_to_submarine(SubMarine subMarine) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void on_simple_ally_bomb_beginning_of_destruction(SimpleAllyBomb simpleAllyBomb) {
+	public void on_simple_submarine_bomb_end_of_destruction_and_clean(SimpleSubmarineBomb simpleSubmarineBomb) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_submarine_bomb_beginning_of_destructionF(SimpleSubmarineBomb simpleSubmarineBomb) {
 		// TODO Auto-generated method stub
 
 	}

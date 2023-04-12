@@ -47,8 +47,8 @@ public class Game implements TimeManagerListener {
 
 	private boolean paused = false;
 
-	public Game(GenericObjectsDataModel genericObjectsDataModel, int number_of_lives) {
-		gameboard = new GameBoard();
+	public Game(GenericObjectsDataModel genericObjectsDataModel, int number_of_lives, GameBoard gameBoard) {
+		this.gameboard = gameBoard;
 		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model(),
 				genericObjectsDataModel.getAlly_simple_bomb_data_model(), this);
 		setNumber_remaining_lives(number_of_lives);

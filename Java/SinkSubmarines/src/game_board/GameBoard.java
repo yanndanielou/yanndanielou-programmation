@@ -18,14 +18,11 @@ public class GameBoard {
 	HashMap<Integer, Integer> ocean_bed_rocks_height_per_abscissa = new HashMap<>();
 	Integer sky_height;
 
-	public GameBoard() {
-		/*
-		 * width = gameBoardDataModel.getWidth();
-		 * 
-		 * height = gameBoardDataModel.getSky_game_board_area_data_model().getHeight() +
-		 * gameBoardDataModel.getAlly_boat_game_board_area_data_model().getHeight() +
-		 * gameBoardDataModel.getUnder_water_game_board_area_data_model().getHeight();
-		 */
+	public GameBoard(int width, int height) {
+
+		this.width = width;
+		this.height = height;
+
 	}
 
 	public int getWidth() {

@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import game.Game;
 import moving_objects.boats.AllyBoat;
@@ -30,6 +31,8 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 	 */
 	private MainViewMenuBarManager mainViewMenuBarManager;
 
+	private JPanel panel_content = new JPanel();
+
 	private GameBoardPanel gameBoardPanel;
 
 	public SinkSubmarinesMainViewFrame() {
@@ -40,13 +43,23 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 
 	public void initialize_from_game_board_data_model() {
 		// Create and set up the window.
-		Container pane = this.getContentPane();
-		pane.setLayout(null);
 
 		gameBoardPanel = new GameBoardPanel(this, "Images/entire_gameboard.png");
-		// add(gameBoardPanel);
-		setLayeredPane(gameBoardPanel);
+
 		gameBoardPanel.initialize_display();
+		gameBoardPanel.setLocation(0, 0);
+		panel_content.setLayout(null);
+		panel_content.add(gameBoardPanel);
+
+		panel_content.setSize(gameBoardPanel.getSize());
+		panel_content.setLocation(0, 0);
+
+		this.setContentPane(panel_content);
+
+		// add(gameBoardPanel);
+		// setLayeredPane(gameBoardPanel);
+
+		// gameBoardPanel.setLayer(mainViewMenuBarManager.getMenuBar(), 100);
 
 		/*
 		 * topPanel = new TopPanel(pane, gameBoardDataModel.getWidth(),
@@ -66,7 +79,7 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 		 */
 
 		this.setSize(gameBoardPanel.getWidth() + 20,
-				gameBoardPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight() + 20);
+				gameBoardPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight() + 50);
 		// this.pack();
 
 		this.addKeyListener(new KeyBoardInputs(this));
@@ -134,6 +147,10 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 	public void setAlly_boat(AllyBoat ally_boat) {
 		// allyBoatPanel.setAlly_boat(ally_boat);
 
+	}
+
+	public void register_to_ally_boat(AllyBoat ally_boat) {
+		ally_boat.add_movement_listener(gameBoardPanel);
 	}
 
 	public void register_to_simple_submarine(SimpleSubMarine submarine) {

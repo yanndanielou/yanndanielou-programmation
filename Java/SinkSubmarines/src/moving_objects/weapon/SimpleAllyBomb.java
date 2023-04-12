@@ -1,6 +1,7 @@
 package moving_objects.weapon;
 
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -82,6 +83,11 @@ public class SimpleAllyBomb extends Weapon {
 		for (GameObjectListerner objectlistener : movement_listeners) {
 			objectlistener.on_simple_ally_bomb_beginning_of_destruction(this);
 		}
+	}
+
+	@Override
+	public BufferedImage get_graphical_representation_as_buffered_image() {
+		return getSimpleAllyBombImage(this);
 	}
 
 }

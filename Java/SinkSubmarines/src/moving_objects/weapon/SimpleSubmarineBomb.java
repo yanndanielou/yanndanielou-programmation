@@ -1,6 +1,7 @@
 package moving_objects.weapon;
 
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 import builders.genericobjects.GenericObjectDataModel;
 import game.Game;
@@ -44,6 +45,11 @@ public class SimpleSubmarineBomb extends Weapon {
 	@Override
 	public void impact_now() {
 		this.current_destruction_timer_in_milliseconds = 2_000;
+	}
+
+	@Override
+	public BufferedImage get_graphical_representation_as_buffered_image() {
+		return getSimpleSubmarineBombImage(this);
 	}
 
 }

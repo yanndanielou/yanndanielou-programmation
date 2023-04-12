@@ -11,6 +11,7 @@ import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import constants.Constants;
 import game.DifficultyLevel;
 import game.Game;
+import game_board.GameBoard;
 import hmi.SinkSubmarinesMainViewFrame;
 import moving_objects.boats.AllyBoat;
 import moving_objects.boats.SimpleSubMarine;
@@ -64,17 +65,18 @@ public class GameManager implements TimeManagerListener {
 		genericObjectsDataModel = genericObjectsDataModelBuilder.getGeneric_objects_data_model();
 		sinkSubmarinesMainView.initialize_from_game_board_data_model();
 
-		set_game(new Game(genericObjectsDataModelBuilder.getGeneric_objects_data_model(),
-				game_data_model.getNumber_of_lives()));
+		GameBoard gameBoard = new GameBoard(sinkSubmarinesMainView.getGameBoardPanel().getWidth(),
+				sinkSubmarinesMainView.getGameBoardPanel().getHeight());
 
-		game.getGameboard().setHeight(sinkSubmarinesMainView.getGameBoardPanel().getHeight());
-		game.getGameboard().setWidth(sinkSubmarinesMainView.getGameBoardPanel().getWidth());
-		game.getGameboard().compute_game_areas_height(
+		gameBoard.compute_game_areas_height(
 				sinkSubmarinesMainView.getGameBoardPanel().getComplete_game_board_as_buffered_image());
+
+		set_game(new Game(genericObjectsDataModelBuilder.getGeneric_objects_data_model(),
+				game_data_model.getNumber_of_lives(), gameBoard));
 
 		sinkSubmarinesMainView.register_to_game(game);
 
-		sinkSubmarinesMainView.setAlly_boat(game.getAlly_boat());
+		sinkSubmarinesMainView.register_to_ally_boat(game.getAlly_boat());
 		GameObjectsMovementOrchestor.getInstance();
 		ScenarioLevelExecutor.getInstance()
 				.load_and_start_scenario_from_json_file(game_data_model.getLevels_scenarios_data_models_json_files());

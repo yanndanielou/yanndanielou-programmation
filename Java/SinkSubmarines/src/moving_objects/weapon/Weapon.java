@@ -27,7 +27,7 @@ public abstract class Weapon extends GameObject {
 	@Override
 	public void notify_end_of_destruction_and_clean() {
 		for (GameObjectListerner objectListerner : movement_listeners) {
-			objectListerner.on_weapon_destruction(this);
+			objectListerner.on_weapon_end_of_destruction_and_clean(this);
 		}
 	}
 

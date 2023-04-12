@@ -1,6 +1,7 @@
 package moving_objects.boats;
 
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,11 +19,11 @@ import moving_objects.weapon.Weapon;
 public class AllyBoat extends Belligerent implements GameObjectListerner {
 	private static final Logger LOGGER = LogManager.getLogger(AllyBoat.class);
 
-	public AllyBoat(GenericObjectDataModel genericObjectDataModel,
-			AllySimpleBombDataModel allySimpleBombDataModel, Game game) {
+	public AllyBoat(GenericObjectDataModel genericObjectDataModel, AllySimpleBombDataModel allySimpleBombDataModel,
+			Game game) {
 		super(new Rectangle(game.getGameboard().getWidth() / 2 - genericObjectDataModel.getWidth() / 2,
-				-genericObjectDataModel.getHeight(), genericObjectDataModel.getWidth(),
-				genericObjectDataModel.getHeight()),
+				game.getGameboard().get_water_level_y() - genericObjectDataModel.getFixed_highest_point_altitude(),
+				genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()),
 				Constants.MINIMUM_DELAY_BETWEEN_TWO_ALLY_BOMB_DROPPED_IN_MILLISECONDS,
 				allySimpleBombDataModel.getY_speed(), game);
 	}
@@ -34,8 +35,10 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 		}
 	}
 
+	@Override
 	public void add_movement_listener(GameObjectListerner allyBoatListener) {
 		movement_listeners.add(allyBoatListener);
+		allyBoatListener.on_listen_to_ally_boat(this);
 	}
 
 	public void increase_left_speed() {
@@ -110,7 +113,7 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	}
 
 	@Override
-	public void on_weapon_destruction(Weapon weapon) {
+	public void on_weapon_end_of_destruction_and_clean(Weapon weapon) {
 		// TODO Auto-generated method stub
 
 	}
@@ -163,7 +166,36 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	}
 
 	@Override
-	public void on_simple_ally_boat_beginning_of_destruction(AllyBoat allyBoat) {
+	public void on_ally_boat_beginning_of_destruction(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public BufferedImage get_graphical_representation_as_buffered_image() {
+		return getAllyBoatImage(this);
+	}
+
+	@Override
+	public void on_listen_to_ally_boat(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_listen_to_submarine(SubMarine subMarine) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_submarine_bomb_end_of_destruction_and_clean(SimpleSubmarineBomb simpleSubmarineBomb) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_submarine_bomb_beginning_of_destructionF(SimpleSubmarineBomb simpleSubmarineBomb) {
 		// TODO Auto-generated method stub
 
 	}

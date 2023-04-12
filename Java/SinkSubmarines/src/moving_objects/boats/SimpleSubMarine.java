@@ -1,5 +1,7 @@
 package moving_objects.boats;
 
+import java.awt.image.BufferedImage;
+
 import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import core.GameManager;
@@ -69,9 +71,12 @@ public class SimpleSubMarine extends SubMarine {
 						+ surrounding_rectangle_absolute_on_complete_board.getMaxX()) / 2,
 				(int) (surrounding_rectangle_absolute_on_complete_board.getY() - 1), ammunition_y_speed);
 		// bomb_fired.add_movement_listener(this);
-		
-		
 
+	}
+
+	@Override
+	public BufferedImage get_graphical_representation_as_buffered_image() {
+		return getSimpleSubmarineImage(this);
 	}
 
 }

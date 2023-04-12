@@ -1,7 +1,8 @@
 {
    "ally_boat_data_model": {
 		 "height": 30,
-		 "width":100
+		 "width":100,
+		 "fixed_highest_point_altitude": 27
     },
    "simple_submarine_data_model": {
 		 "height": 21,
