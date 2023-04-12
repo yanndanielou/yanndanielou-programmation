@@ -17,7 +17,6 @@ public class GameBoard {
 
 	HashMap<Integer, Integer> ocean_bed_rocks_height_per_abscissa = new HashMap<>();
 	Integer sky_height;
-	Integer water_level_y;
 
 	public GameBoard() {
 		/*
@@ -37,10 +36,9 @@ public class GameBoard {
 		return height;
 	}
 
-
 	public int get_top_of_the_rock_depth(int x) {
 		int rocks_height = ocean_bed_rocks_height_per_abscissa.get(x);
-		int top_of_the_rock_depth = getHeight() - water_level_y - rocks_height;
+		int top_of_the_rock_depth = getHeight() - get_water_level_y() - rocks_height;
 		return top_of_the_rock_depth;
 	}
 
@@ -113,4 +111,9 @@ public class GameBoard {
 	public void setHeight(int height) {
 		this.height = height;
 	}
+
+	public int get_water_level_y() {
+		return sky_height;
+	}
+
 }
