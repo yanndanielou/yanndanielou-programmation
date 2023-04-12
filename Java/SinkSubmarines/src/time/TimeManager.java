@@ -7,10 +7,7 @@ import java.util.TimerTask;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import builders.scenariolevel.ScenarioLevelDataModel;
-import builders.scenariolevel.ScenarioLevelWaveDataModel;
 import game.Game;
-import game.GameListener;
 import game.GameStatusListener;
 
 public class TimeManager extends TimerTask implements GameStatusListener {

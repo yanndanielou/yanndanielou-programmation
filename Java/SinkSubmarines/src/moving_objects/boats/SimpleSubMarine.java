@@ -1,23 +1,20 @@
 package moving_objects.boats;
 
-import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import core.GameManager;
 import game.Game;
 import moving_objects.listeners.GameObjectListerner;
-import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
-import moving_objects.weapon.Weapon;
 
 public class SimpleSubMarine extends SubMarine {
 	// private static final Logger LOGGER =
 	// LogManager.getLogger(SimpleSubMarine.class);
 
 	public SimpleSubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
-			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel, Game game) {
+			GenericObjectDataModel simple_submarine_data_model, Game game) {
 
-		super(scenarioLevelEnnemyCreationDataModel, simple_submarine_data_model, gameBoardDataModel, game);
+		super(scenarioLevelEnnemyCreationDataModel, simple_submarine_data_model, game);
 		/*
 		 * super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
 		 * scenarioLevelEnnemyCreationDataModel.getDepth(),
@@ -66,36 +63,15 @@ public class SimpleSubMarine extends SubMarine {
 
 	@Override
 	public void fire() {
+		@SuppressWarnings("unused")
 		SimpleSubmarineBomb bomb_fired = GameManager.getInstance().fire_simple_submarine_bomb(this,
 				(int) (surrounding_rectangle_absolute_on_complete_board.getX()
 						+ surrounding_rectangle_absolute_on_complete_board.getMaxX()) / 2,
 				(int) (surrounding_rectangle_absolute_on_complete_board.getY() - 1), ammunition_y_speed);
-		bomb_fired.add_movement_listener(this);
-
-	}
-
-	@Override
-	public void on_simple_ally_bomb_end_of_destruction_and_clean(SimpleAllyBomb simpleAllyBomb) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void on_weapon_destruction(Weapon weapon) {
-		// TODO Auto-generated method stub
+		// bomb_fired.add_movement_listener(this);
 		
-	}
-
-	@Override
-	public void on_yellow_submarine_end_of_destroy_and_clean(SubMarine subMarine) {
-		// TODO Auto-generated method stub
 		
-	}
 
-	@Override
-	public void on_simple_ally_bomb_begin_of_destruction(SimpleAllyBomb simpleAllyBomb) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

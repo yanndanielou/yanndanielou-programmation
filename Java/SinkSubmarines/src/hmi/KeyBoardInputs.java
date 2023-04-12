@@ -11,6 +11,8 @@ import game.Game;
 import moving_objects.boats.AllyBoat;
 
 public class KeyBoardInputs implements KeyListener {
+
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(KeyBoardInputs.class);
 
 	// private SinkSubmarinesMainView sinkSubmarinesMainView = null;

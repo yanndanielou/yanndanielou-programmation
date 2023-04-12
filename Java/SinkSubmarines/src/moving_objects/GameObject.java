@@ -134,8 +134,11 @@ public abstract class GameObject {
 			GameBoard gameboard = getGame().getGameboard();
 			surrounding_rectangle_absolute_on_complete_board.translate(0, getY_speed());
 
-			if (get_depth() >= gameboard.getGameBoardDataModel().getUnder_water_game_board_area_data_model().getHeight()
-					+ gameboard.getGameBoardDataModel().getOcean_bed_game_board_area_data_model().getHeight()) {
+			//FIXME: this checks only if one of the two extremities reach the rock: but rocks can also be reached at middle of object
+			if (get_depth() >= gameboard
+					.get_top_of_the_rock_depth((int) (surrounding_rectangle_absolute_on_complete_board.getX()))
+					|| get_depth() >= gameboard.get_top_of_the_rock_depth(
+							(int) (surrounding_rectangle_absolute_on_complete_board.getMaxX()))) {
 				ocean_bed_reached();
 			}
 

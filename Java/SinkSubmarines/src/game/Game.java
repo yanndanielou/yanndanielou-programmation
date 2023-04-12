@@ -2,7 +2,9 @@ package game;
 
 import java.util.ArrayList;
 
-import builders.gameboard.GameBoardDataModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import builders.genericobjects.GenericObjectsDataModel;
 import builders.scenariolevel.ScenarioLevelDataModel;
 import builders.scenariolevel.ScenarioLevelWaveDataModel;
@@ -18,9 +20,6 @@ import moving_objects.weapon.SimpleSubmarineBomb;
 import moving_objects.weapon.Weapon;
 import time.TimeManager;
 import time.TimeManagerListener;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class Game implements TimeManagerListener {
 	private static final Logger LOGGER = LogManager.getLogger(TimeManagerListener.class);
@@ -48,10 +47,9 @@ public class Game implements TimeManagerListener {
 
 	private boolean paused = false;
 
-	public Game(GameBoardDataModel gameBoardDataModel, GenericObjectsDataModel genericObjectsDataModel,
-			int number_of_lives) {
-		gameboard = new GameBoard(gameBoardDataModel);
-		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model(), gameBoardDataModel,
+	public Game(GenericObjectsDataModel genericObjectsDataModel, int number_of_lives) {
+		gameboard = new GameBoard();
+		ally_boat = new AllyBoat(genericObjectsDataModel.getAlly_boat_data_model(),
 				genericObjectsDataModel.getAlly_simple_bomb_data_model(), this);
 		setNumber_remaining_lives(number_of_lives);
 		TimeManager.getInstance().add_listener(this);

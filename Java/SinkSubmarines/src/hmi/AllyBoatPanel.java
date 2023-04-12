@@ -18,6 +18,7 @@ import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
 import moving_objects.weapon.Weapon;
 
+@Deprecated
 public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner {
 	// private static final Logger LOGGER =
 	// LogManager.getLogger(AllyBoatPanel.class);
@@ -100,7 +101,7 @@ public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner 
 	}
 
 	@Override
-	public void on_submarine_notify_end_of_destroy_and_clean(SubMarine subMarine) {
+	public void on_submarine_end_of_destruction_and_clean(SubMarine subMarine) {
 		// TODO Auto-generated method stub
 
 	}
@@ -130,7 +131,7 @@ public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner 
 	}
 
 	@Override
-	public void on_yellow_submarine_end_of_destroy_and_clean(SubMarine subMarine) {
+	public void on_yellow_submarine_end_of_destruction_and_clean(YellowSubMarine yellowSubMarine) {
 		// TODO Auto-generated method stub
 
 	}
@@ -147,9 +148,21 @@ public class AllyBoatPanel extends AbstractPanel implements GameObjectListerner 
 	}
 
 	@Override
-	public void on_simple_ally_bomb_begin_of_destruction(SimpleAllyBomb simpleAllyBomb) {
+	public void on_simple_ally_bomb_beginning_of_destruction(SimpleAllyBomb simpleAllyBomb) {
 		repaint();
 
+	}
+
+	@Override
+	public void on_ally_boat_end_of_destruction_and_clean(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_simple_ally_boat_beginning_of_destruction(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

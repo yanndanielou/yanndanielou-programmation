@@ -6,9 +6,7 @@ import java.util.HashMap;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import builders.gameboard.GameBoardDataModel;
 import constants.HMIConstants;
-import core.GameManager;
 
 public class GameBoard {
 
@@ -19,10 +17,9 @@ public class GameBoard {
 
 	HashMap<Integer, Integer> ocean_bed_rocks_height_per_abscissa = new HashMap<>();
 	Integer sky_height;
+	Integer water_level_y;
 
-	private GameBoardDataModel gameBoardDataModel;
-
-	public GameBoard(GameBoardDataModel gameBoardDataModel) {
+	public GameBoard() {
 		/*
 		 * width = gameBoardDataModel.getWidth();
 		 * 
@@ -30,7 +27,6 @@ public class GameBoard {
 		 * gameBoardDataModel.getAlly_boat_game_board_area_data_model().getHeight() +
 		 * gameBoardDataModel.getUnder_water_game_board_area_data_model().getHeight();
 		 */
-		this.gameBoardDataModel = gameBoardDataModel;
 	}
 
 	public int getWidth() {
@@ -41,8 +37,11 @@ public class GameBoard {
 		return height;
 	}
 
-	public GameBoardDataModel getGameBoardDataModel() {
-		return gameBoardDataModel;
+
+	public int get_top_of_the_rock_depth(int x) {
+		int rocks_height = ocean_bed_rocks_height_per_abscissa.get(x);
+		int top_of_the_rock_depth = getHeight() - water_level_y - rocks_height;
+		return top_of_the_rock_depth;
 	}
 
 	public boolean compute_game_areas_height(BufferedImage bufferedImage) {

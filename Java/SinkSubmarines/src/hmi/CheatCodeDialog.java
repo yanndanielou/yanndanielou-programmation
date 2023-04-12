@@ -54,7 +54,6 @@ class CheatCodeDialog extends JDialog implements ActionListener, PropertyChangeL
 	private String typedText = null;
 	private JTextField textField;
 
-	private String magicWord;
 	private JOptionPane optionPane;
 
 	private String btnString1 = "Enter";
@@ -75,7 +74,6 @@ class CheatCodeDialog extends JDialog implements ActionListener, PropertyChangeL
 		super(aFrame, true);
 
 		// this.sinkSubmarinesMainView = sinkSubmarinesMainView;
-		magicWord = "GIESEL".toUpperCase();
 		setTitle("Cheat codes");
 
 		textField = new JTextField(10);
@@ -150,16 +148,14 @@ class CheatCodeDialog extends JDialog implements ActionListener, PropertyChangeL
 				typedText = textField.getText();
 
 				boolean cheat_code_is_valid = CheatCodeManager.getInstance().try_and_apply_text_cheat_code(typedText);
-				if(cheat_code_is_valid) {
+				if (cheat_code_is_valid) {
 					clearAndHide();
 				} else {
 					// text was invalid
 					textField.selectAll();
-					JOptionPane
-							.showMessageDialog(
-									getParent(), "Sorry, \"" + typedText + "\" " + "isn't a valid response.\n"
-											+ "Please retry or quit " + ".",
-									"Try again", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(getParent(), "Sorry, \"" + typedText + "\" "
+							+ "isn't a valid response.\n" + "Please retry or quit " + ".", "Try again",
+							JOptionPane.ERROR_MESSAGE);
 					typedText = null;
 					textField.requestFocusInWindow();
 				}

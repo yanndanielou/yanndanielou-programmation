@@ -1,8 +1,5 @@
 package game;
 
-import builders.scenariolevel.ScenarioLevelDataModel;
-import builders.scenariolevel.ScenarioLevelWaveDataModel;
-
 public interface GameStatusListener {
 
 	public void on_game_paused(Game game);

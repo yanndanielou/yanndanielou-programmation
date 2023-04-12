@@ -30,6 +30,7 @@ import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
 import moving_objects.weapon.Weapon;
 
+@Deprecated
 public class TopPanel extends JPanel implements GameListener, GameObjectListerner {
 
 	private JLabel current_scenario_level_label;
@@ -181,7 +182,8 @@ public class TopPanel extends JPanel implements GameListener, GameObjectListerne
 				character_sailor_icons_one_per_remaining_life_as_label.add(character_sailor_icon_for_one_life_as_label);
 				character_sailor_icon_for_one_life_as_label.setSize(30, (int) (getHeight() * 0.8));
 				int horizontal_space_between_icons = 2;
-				character_sailor_icon_for_one_life_as_label.setLocation(right_of_object_at_left + horizontal_space_between_icons,
+				character_sailor_icon_for_one_life_as_label.setLocation(
+						right_of_object_at_left + horizontal_space_between_icons,
 						getHeight() / 2 - character_sailor_icon_for_one_life_as_label.getHeight() / 2);
 				layeredPane.add(character_sailor_icon_for_one_life_as_label);
 			}
@@ -224,9 +226,8 @@ public class TopPanel extends JPanel implements GameListener, GameObjectListerne
 	}
 
 	private void update_score_label(Game game) {
-		score_label.setText("SCORE:" + Integer.toString(game.getScore()));		
+		score_label.setText("SCORE:" + Integer.toString(game.getScore()));
 	}
-
 
 	@Override
 	public void on_listen_to_game(Game game) {
@@ -265,7 +266,7 @@ public class TopPanel extends JPanel implements GameListener, GameObjectListerne
 	}
 
 	@Override
-	public void on_submarine_notify_end_of_destroy_and_clean(SubMarine subMarine) {
+	public void on_submarine_end_of_destruction_and_clean(SubMarine subMarine) {
 		// TODO Auto-generated method stub
 
 	}
@@ -296,7 +297,7 @@ public class TopPanel extends JPanel implements GameListener, GameObjectListerne
 	}
 
 	@Override
-	public void on_yellow_submarine_end_of_destroy_and_clean(SubMarine subMarine) {
+	public void on_yellow_submarine_end_of_destruction_and_clean(YellowSubMarine yellowSubMarine) {
 		// TODO Auto-generated method stub
 
 	}
@@ -324,9 +325,21 @@ public class TopPanel extends JPanel implements GameListener, GameObjectListerne
 	}
 
 	@Override
-	public void on_simple_ally_bomb_begin_of_destruction(SimpleAllyBomb simpleAllyBomb) {
+	public void on_simple_ally_bomb_beginning_of_destruction(SimpleAllyBomb simpleAllyBomb) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public void on_ally_boat_end_of_destruction_and_clean(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_ally_boat_beginning_of_destruction(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

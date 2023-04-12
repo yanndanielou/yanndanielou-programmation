@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 
+@Deprecated
 public class GameBoardDataModelBuilder {
 	private Gson gson = new Gson();
 

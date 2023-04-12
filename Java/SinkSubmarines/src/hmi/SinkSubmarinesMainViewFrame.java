@@ -7,10 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
-import builders.gameboard.GameBoardDataModel;
 import game.Game;
 import moving_objects.boats.AllyBoat;
 import moving_objects.boats.SimpleSubMarine;
@@ -26,7 +23,6 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 	// private static final Logger LOGGER =
 	// LogManager.getLogger(SinkSubmarinesMainView.class);
 
-	private TopPanel topPanel = null;
 	/*
 	 * private SkyPanel skyPanel = null; private AllyBoatPanel allyBoatPanel = null;
 	 * private UnderWaterPanel underWaterPanel = null; private OceanBedPanel
@@ -42,7 +38,7 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 		mainViewMenuBarManager = new MainViewMenuBarManager(this);
 	}
 
-	public void initialize_from_game_board_data_model(GameBoardDataModel gameBoardDataModel) {
+	public void initialize_from_game_board_data_model() {
 		// Create and set up the window.
 		Container pane = this.getContentPane();
 		pane.setLayout(null);
@@ -92,26 +88,21 @@ public class SinkSubmarinesMainViewFrame extends JFrame {
 		setIconImage(application_buffered_image);
 	}
 
-	private void set_look_and_field() {
-		/* Use an appropriate Look and Feel */
-		try {
-			// UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-		} catch (UnsupportedLookAndFeelException ex) {
-			ex.printStackTrace();
-		} catch (IllegalAccessException ex) {
-			ex.printStackTrace();
-		} catch (InstantiationException ex) {
-			ex.printStackTrace();
-		} catch (ClassNotFoundException ex) {
-			ex.printStackTrace();
-		}
-
-		/* Turn off metal's use of bold fonts */
-		UIManager.put("swing.boldMetal", Boolean.FALSE);
-
-	}
-
+	/*
+	 * private void set_look_and_field() { // Use an appropriate Look and Feel try {
+	 * //
+	 * UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
+	 * ); UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel"); }
+	 * catch (UnsupportedLookAndFeelException ex) { ex.printStackTrace(); } catch
+	 * (IllegalAccessException ex) { ex.printStackTrace(); } catch
+	 * (InstantiationException ex) { ex.printStackTrace(); } catch
+	 * (ClassNotFoundException ex) { ex.printStackTrace(); }
+	 * 
+	 * // Turn off metal's use of bold fonts UIManager.put("swing.boldMetal",
+	 * Boolean.FALSE);
+	 * 
+	 * }
+	 */
 	/**
 	 * Create the GUI and show it. For thread safety, this method is invoked from
 	 * the event dispatch thread.

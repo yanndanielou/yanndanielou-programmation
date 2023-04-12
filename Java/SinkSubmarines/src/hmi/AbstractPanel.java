@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import builders.gameboard.GameBoardAreaDataModel;
 import builders.gameboard.GameBoardDataModel;
 
+@Deprecated
 public abstract class AbstractPanel extends JPanel {
 
 	protected Color background_color = null;

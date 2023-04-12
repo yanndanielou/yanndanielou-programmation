@@ -5,7 +5,6 @@ import java.awt.Rectangle;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.AllySimpleBombDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import constants.Constants;
@@ -19,9 +18,9 @@ import moving_objects.weapon.Weapon;
 public class AllyBoat extends Belligerent implements GameObjectListerner {
 	private static final Logger LOGGER = LogManager.getLogger(AllyBoat.class);
 
-	public AllyBoat(GenericObjectDataModel genericObjectDataModel, GameBoardDataModel gameBoardDataModel,
+	public AllyBoat(GenericObjectDataModel genericObjectDataModel,
 			AllySimpleBombDataModel allySimpleBombDataModel, Game game) {
-		super(new Rectangle(gameBoardDataModel.getWidth() / 2 - genericObjectDataModel.getWidth() / 2,
+		super(new Rectangle(game.getGameboard().getWidth() / 2 - genericObjectDataModel.getWidth() / 2,
 				-genericObjectDataModel.getHeight(), genericObjectDataModel.getWidth(),
 				genericObjectDataModel.getHeight()),
 				Constants.MINIMUM_DELAY_BETWEEN_TWO_ALLY_BOMB_DROPPED_IN_MILLISECONDS,
@@ -99,7 +98,7 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	}
 
 	@Override
-	public void on_submarine_notify_end_of_destroy_and_clean(SubMarine subMarine) {
+	public void on_submarine_end_of_destruction_and_clean(SubMarine subMarine) {
 		// TODO Auto-generated method stub
 
 	}
@@ -135,7 +134,7 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	}
 
 	@Override
-	public void on_yellow_submarine_end_of_destroy_and_clean(SubMarine subMarine) {
+	public void on_yellow_submarine_end_of_destruction_and_clean(YellowSubMarine yellowSubMarine) {
 		// TODO Auto-generated method stub
 
 	}
@@ -152,9 +151,21 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	}
 
 	@Override
-	public void on_simple_ally_bomb_begin_of_destruction(SimpleAllyBomb simpleAllyBomb) {
+	public void on_simple_ally_bomb_beginning_of_destruction(SimpleAllyBomb simpleAllyBomb) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public void on_ally_boat_end_of_destruction_and_clean(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_ally_boat_beginning_of_destruction(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

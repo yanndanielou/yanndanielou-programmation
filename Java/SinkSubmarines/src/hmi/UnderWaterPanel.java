@@ -25,6 +25,7 @@ import moving_objects.weapon.Weapon;
 import time.TimeManager;
 import time.TimeManagerListener;
 
+@Deprecated
 public class UnderWaterPanel extends AbstractPanel implements GameObjectListerner, TimeManagerListener {
 	// private static final Logger LOGGER =
 	// LogManager.getLogger(UnderWaterPanel.class);
@@ -171,7 +172,7 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 	}
 
 	@Override
-	public void on_submarine_notify_end_of_destroy_and_clean(SubMarine subMarine) {
+	public void on_submarine_end_of_destruction_and_clean(SubMarine subMarine) {
 		this.repaint();
 	}
 
@@ -225,9 +226,8 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 	}
 
 	@Override
-	public void on_yellow_submarine_end_of_destroy_and_clean(SubMarine subMarine) {
+	public void on_yellow_submarine_end_of_destruction_and_clean(YellowSubMarine yellowSubMarine) {
 		repaint();
-
 	}
 
 	@Override
@@ -243,9 +243,21 @@ public class UnderWaterPanel extends AbstractPanel implements GameObjectListerne
 	}
 
 	@Override
-	public void on_simple_ally_bomb_begin_of_destruction(SimpleAllyBomb simpleAllyBomb) {
+	public void on_simple_ally_bomb_beginning_of_destruction(SimpleAllyBomb simpleAllyBomb) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public void on_ally_boat_end_of_destruction_and_clean(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_ally_boat_beginning_of_destruction(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

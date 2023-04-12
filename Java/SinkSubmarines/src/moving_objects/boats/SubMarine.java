@@ -6,21 +6,16 @@ import java.util.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import builders.gameboard.GameBoardDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import builders.scenariolevel.SubmarineFireStrategyType;
 import game.Game;
 import game_board.GameBoard;
 import moving_objects.listeners.GameObjectListerner;
-import moving_objects.weapon.FloatingSubmarineBomb;
-import moving_objects.weapon.SimpleAllyBomb;
-import moving_objects.weapon.SimpleSubmarineBomb;
-import moving_objects.weapon.Weapon;
 import time.TimeManager;
 import time.TimeManagerListener;
 
-public abstract class SubMarine extends Belligerent implements TimeManagerListener, GameObjectListerner {
+public abstract class SubMarine extends Belligerent implements TimeManagerListener {
 	private static final Logger LOGGER = LogManager.getLogger(SubMarine.class);
 
 	protected SubmarineFireStrategyType fireStrategyType;
@@ -28,7 +23,7 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	protected int score_prize_money_on_destruction = 0;
 
 	public SubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
-			GenericObjectDataModel simple_submarine_data_model, GameBoardDataModel gameBoardDataModel, Game game) {
+			GenericObjectDataModel simple_submarine_data_model, Game game) {
 
 		super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
 				scenarioLevelEnnemyCreationDataModel.getDepth(), simple_submarine_data_model.getWidth(),
@@ -170,12 +165,8 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	@Override
 	public void notify_end_of_destruction_and_clean() {
 		for (GameObjectListerner objectListerner : movement_listeners) {
-			objectListerner.on_submarine_notify_end_of_destroy_and_clean(this);
+			objectListerner.on_submarine_end_of_destruction_and_clean(this);
 		}
-	}
-
-	@Override
-	public void on_submarine_notify_end_of_destroy_and_clean(SubMarine subMarine) {
 	}
 
 	@Override
@@ -183,48 +174,5 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	}
 
 	public abstract void fire();
-
-	@Override
-	public void on_ally_boat_moved(AllyBoat allyBoat) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void on_simple_submarine_moved(SimpleSubMarine simpleSubMarine) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void on_simple_ally_bomb_moved(SimpleAllyBomb simpleAllyBomb) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void on_yellow_submarine_moved(YellowSubMarine yellowSubMarine) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void on_simple_submarine_bomb_moved(SimpleSubmarineBomb simpleSubmarineBomb) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void on_floating_bomb_moved(FloatingSubmarineBomb floatingSubmarineBomb) {
-		// TODO Auto-generated method stub
-
-	}
-
-
-	@Override
-	public void on_listen_to_simple_ally_bomb(SimpleAllyBomb simpleAllyBomb) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

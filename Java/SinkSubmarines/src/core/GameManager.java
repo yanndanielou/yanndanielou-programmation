@@ -5,8 +5,6 @@ import org.apache.logging.log4j.Logger;
 
 import builders.game.GameDataModel;
 import builders.game.GameDataModelBuilder;
-import builders.gameboard.GameBoardDataModel;
-import builders.gameboard.GameBoardDataModelBuilder;
 import builders.genericobjects.GenericObjectsDataModel;
 import builders.genericobjects.GenericObjectsDataModelBuilder;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
@@ -33,7 +31,6 @@ public class GameManager implements TimeManagerListener {
 	private Game game = null;
 
 	private GenericObjectsDataModel genericObjectsDataModel = null;
-	private GameBoardDataModel gameBoardDataModel = null;
 
 	private GameManager() {
 		TimeManager.getInstance().add_listener(this);
@@ -62,17 +59,13 @@ public class GameManager implements TimeManagerListener {
 		GameDataModelBuilder gameDataModelBuilder = new GameDataModelBuilder("data/" + game_board_data_model_json_file);
 		GameDataModel game_data_model = gameDataModelBuilder.getGame_data_model();
 
-		GameBoardDataModelBuilder gameBoardDataModelBuilder = new GameBoardDataModelBuilder(
-				game_data_model.getGame_board_data_model_json_file());
-		gameBoardDataModel = gameBoardDataModelBuilder.getGame_board_data_model();
 		GenericObjectsDataModelBuilder genericObjectsDataModelBuilder = new GenericObjectsDataModelBuilder(
 				game_data_model.getGeneric_objects_data_model_json_file());
 		genericObjectsDataModel = genericObjectsDataModelBuilder.getGeneric_objects_data_model();
-		sinkSubmarinesMainView
-				.initialize_from_game_board_data_model(gameBoardDataModelBuilder.getGame_board_data_model());
+		sinkSubmarinesMainView.initialize_from_game_board_data_model();
 
-		set_game(new Game(gameBoardDataModelBuilder.getGame_board_data_model(),
-				genericObjectsDataModelBuilder.getGeneric_objects_data_model(), game_data_model.getNumber_of_lives()));
+		set_game(new Game(genericObjectsDataModelBuilder.getGeneric_objects_data_model(),
+				game_data_model.getNumber_of_lives()));
 
 		game.getGameboard().setHeight(sinkSubmarinesMainView.getGameBoardPanel().getHeight());
 		game.getGameboard().setWidth(sinkSubmarinesMainView.getGameBoardPanel().getWidth());
@@ -111,7 +104,7 @@ public class GameManager implements TimeManagerListener {
 	public SimpleSubMarine create_simple_submarine(
 			ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel) {
 		SimpleSubMarine submarine = new SimpleSubMarine(scenarioLevelEnnemyCreationDataModel,
-				genericObjectsDataModel.getSimple_submarine_data_model(), gameBoardDataModel, game);
+				genericObjectsDataModel.getSimple_submarine_data_model(), game);
 
 		game.addSimpleSubMarine(submarine);
 		sinkSubmarinesMainView.register_to_simple_submarine(submarine);
@@ -125,7 +118,7 @@ public class GameManager implements TimeManagerListener {
 	public YellowSubMarine create_yellow_submarine(
 			ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel) {
 		YellowSubMarine submarine = new YellowSubMarine(scenarioLevelEnnemyCreationDataModel,
-				genericObjectsDataModel.getYellow_submarine_data_model(), gameBoardDataModel, game);
+				genericObjectsDataModel.getYellow_submarine_data_model(), game);
 
 		game.addYellowSubMarine(submarine);
 		sinkSubmarinesMainView.register_to_yellow_submarine(submarine);

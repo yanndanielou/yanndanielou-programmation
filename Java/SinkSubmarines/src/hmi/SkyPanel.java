@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 
 import builders.gameboard.GameBoardDataModel;
 
+@Deprecated
 public class SkyPanel extends AbstractPanel {
 
 	/**

@@ -2,30 +2,26 @@ package hmi;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Container;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 
-import builders.gameboard.GameBoardAreaDataModel;
-import builders.gameboard.GameBoardDataModel;
 import builders.scenariolevel.ScenarioLevelDataModel;
 import builders.scenariolevel.ScenarioLevelWaveDataModel;
-import constants.HMIConstants;
 import core.GameManager;
 import game.Game;
 import game.GameListener;
+import moving_objects.GameObject;
 import moving_objects.boats.AllyBoat;
 import moving_objects.boats.SimpleSubMarine;
 import moving_objects.boats.SubMarine;
@@ -64,10 +60,11 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 	private final int TOP_PANEL_ELEMENTS_Y = 10;
 	private final int TOP_PANEL_ELEMENTS_HEIGHT = 50;
 
-	@Deprecated
-	private enum LAYERS_ORDERED_FROM_BACK_TO_TOP {
-		UNVISIBLE, BACKGROUND_IMAGE, ROCKS, BELLIGERENTS, BOMBS, UNDER_LABELS, LABELS;
-	}
+	private HashMap<GameObject, JLabel> game_object_to_its_jlabel_graphical_representation_map = new HashMap<>();
+	/*
+	 * @Deprecated private enum LAYERS_ORDERED_FROM_BACK_TO_TOP { UNVISIBLE,
+	 * BACKGROUND_IMAGE, ROCKS, BELLIGERENTS, BOMBS, UNDER_LABELS, LABELS; }
+	 */
 
 	private enum LAYERS_ORDERED_FROM_TOP_TO_BACK {
 		LABELS, UNDER_LABELS, BOMBS, BELLIGERENTS, ROCKS, BACKGROUND_IMAGE, UNVISIBLE;
@@ -120,10 +117,6 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 		next_ally_bomb_horizontal_speed_as_label.setLocation(
 				getWidth() / 2 - next_ally_bomb_horizontal_speed_as_label.getWidth() / 2,
 				TOP_PANEL_ELEMENTS_Y - next_ally_bomb_horizontal_speed_as_label.getHeight() / 2);
-//		next_ally_bomb_horizontal_speed_as_label.setBackground(Color.red);
-//		next_ally_bomb_horizontal_speed_as_label.setForeground(Color.red);
-		// next_ally_bomb_horizontal_speed_no_force_icon.paintIcon(next_ally_bomb_horizontal_speed_as_label,
-		// getGraphics(), window_width, window_width)
 		add(next_ally_bomb_horizontal_speed_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.LABELS.ordinal());
 
 		next_ally_bomb_horizontal_speed_full_force_only_red_content_as_icon = new ImageIcon(
@@ -134,7 +127,8 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 				next_ally_bomb_horizontal_speed_as_label.getX() + 1,
 				next_ally_bomb_horizontal_speed_as_label.getY() + 1);
 
-		add(next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.UNDER_LABELS.ordinal());
+		add(next_ally_bomb_horizontal_speed_full_force_only_red_content_as_label,
+				LAYERS_ORDERED_FROM_TOP_TO_BACK.UNDER_LABELS.ordinal());
 
 		//
 
@@ -289,12 +283,6 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 	}
 
 	@Override
-	public void on_submarine_notify_end_of_destroy_and_clean(SubMarine subMarine) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void on_simple_ally_bomb_moved(SimpleAllyBomb simpleAllyBomb) {
 		// TODO Auto-generated method stub
 
@@ -320,8 +308,7 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 	}
 
 	@Override
-	public void on_yellow_submarine_end_of_destroy_and_clean(SubMarine subMarine) {
-		// TODO Auto-generated method stub
+	public void on_yellow_submarine_end_of_destruction_and_clean(YellowSubMarine yellowSubMarine) {
 
 	}
 
@@ -347,14 +334,32 @@ public class GameBoardPanel extends JLayeredPane implements GameListener, GameOb
 		update_remaining_ally_bombs_label(simpleAllyBomb.getGame());
 	}
 
+	public BufferedImage getComplete_game_board_as_buffered_image() {
+		return complete_game_board_as_buffered_image;
+	}
+
 	@Override
-	public void on_simple_ally_bomb_begin_of_destruction(SimpleAllyBomb simpleAllyBomb) {
+	public void on_ally_boat_end_of_destruction_and_clean(AllyBoat allyBoat) {
 		// TODO Auto-generated method stub
 
 	}
 
-	public BufferedImage getComplete_game_board_as_buffered_image() {
-		return complete_game_board_as_buffered_image;
+	@Override
+	public void on_simple_ally_boat_beginning_of_destruction(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_submarine_end_of_destruction_and_clean(SubMarine subMarine) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_ally_bomb_beginning_of_destruction(SimpleAllyBomb simpleAllyBomb) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

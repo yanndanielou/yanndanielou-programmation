@@ -80,7 +80,7 @@ public class SimpleAllyBomb extends Weapon {
 		LOGGER.info("Impact now " + this);
 		this.current_destruction_timer_in_milliseconds = 500;
 		for (GameObjectListerner objectlistener : movement_listeners) {
-			objectlistener.on_simple_ally_bomb_begin_of_destruction(this);
+			objectlistener.on_simple_ally_bomb_beginning_of_destruction(this);
 		}
 	}
 

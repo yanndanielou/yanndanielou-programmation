@@ -19,6 +19,7 @@ import moving_objects.weapon.SimpleAllyBomb;
 import moving_objects.weapon.SimpleSubmarineBomb;
 import moving_objects.weapon.Weapon;
 
+@Deprecated
 public class OceanBedPanel extends AbstractPanel implements GameObjectListerner {
 
 	/**
@@ -66,7 +67,7 @@ public class OceanBedPanel extends AbstractPanel implements GameObjectListerner 
 	}
 
 	@Override
-	public void on_submarine_notify_end_of_destroy_and_clean(SubMarine subMarine) {
+	public void on_submarine_end_of_destruction_and_clean(SubMarine subMarine) {
 	}
 
 	@Override
@@ -104,7 +105,7 @@ public class OceanBedPanel extends AbstractPanel implements GameObjectListerner 
 	}
 
 	@Override
-	public void on_yellow_submarine_end_of_destroy_and_clean(SubMarine subMarine) {
+	public void on_yellow_submarine_end_of_destruction_and_clean(YellowSubMarine yellowSubMarine) {
 		// TODO Auto-generated method stub
 
 	}
@@ -112,19 +113,31 @@ public class OceanBedPanel extends AbstractPanel implements GameObjectListerner 
 	@Override
 	public void on_listen_to_simple_ally_bomb(SimpleAllyBomb simpleAllyBomb) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_simple_ally_bomb_end_of_destruction_and_clean(SimpleAllyBomb simpleAllyBomb) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void on_simple_ally_bomb_begin_of_destruction(SimpleAllyBomb simpleAllyBomb) {
+	public void on_simple_ally_bomb_beginning_of_destruction(SimpleAllyBomb simpleAllyBomb) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public void on_ally_boat_end_of_destruction_and_clean(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_simple_ally_boat_beginning_of_destruction(AllyBoat allyBoat) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
