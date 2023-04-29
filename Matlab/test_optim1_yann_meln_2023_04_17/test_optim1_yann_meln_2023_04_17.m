@@ -1,4 +1,4 @@
-function 2023-04_test_optims_yann_meln_remplissage_structs(varargin)
+function test_optim1_yann_meln_2023_04_17(varargin)
 
 % Time kept to track performances and initialization time by step
 application_launch_time = datetime;
