@@ -8,10 +8,10 @@ global SMT_mE SMT_mE_seg SMT_mE_aig SMT_mE_feu SMT_mE_feu_BAL SMT_nb_mE
 disp(string(datetime) + " " + "Load initial structure");
 
 affectation_variables_globales("input\\SMT2_Data_mE.m");
-affectation_variables_globales("input\\SMT2_Data_mE_aig.m");
+execution_fichier_m_ligne_par_ligne("input\\SMT2_Data_mE_aig_for_compiled_binary_application.m");
 affectation_variables_globales("input\\SMT2_Data_mE_choix.m");
 affectation_variables_globales("input\\SMT2_Data_mE_feu.m");
-affectation_variables_globales("input\\SMT2_Data_mE_feu_BAL.m");
+execution_fichier_m_ligne_par_ligne("input\\SMT2_Data_mE_feu_BAL_for_compiled_binary_application.m");
 affectation_variables_globales("input\\SMT2_Data_mE_seg.m");
 
 
