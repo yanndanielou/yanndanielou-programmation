@@ -18,7 +18,7 @@ while ischar(tline)
 		disp(string(datetime) + " Execute line number:" + line_number + " of file:" + nom_fichier + ". Time elapsed in fonction:" + string(datetime - execution_fichier_m_ligne_par_ligne_begin_time));
 	end
 	
-	%disp("Execute line:" + tline)
+	disp(string(datetime) + " Execute line with size:" + length(tline) + " : " + tline)
     evalc(tline);
     tline = fgetl(fid);
 end
