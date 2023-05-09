@@ -73,7 +73,7 @@ public class GameManager {
 	}
 
 	public void abort_current_game() {
-		// TODO Auto-generated method stub
+		game.abort();
 
 	}
 
