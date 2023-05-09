@@ -3,8 +3,10 @@ package core;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import constants.Constants;
 import game.DifficultyLevel;
 import game.Game;
+import game_board.GameField;
 import hmi.TetrisMainViewFrame;
 import time.TimeManager;
 
@@ -14,6 +16,8 @@ public class GameManager {
 	private static final Logger LOGGER = LogManager.getLogger(GameManager.class);
 
 	private Game game = null;
+	private GameField gameField = null;
+	private TetrisMainViewFrame tetrisMainViewFrame;
 
 	private GameManager() {
 
@@ -36,7 +40,9 @@ public class GameManager {
 
 	public void new_game(DifficultyLevel difficulty_level_chosen) {
 		LOGGER.info("New game with difficulty:" + difficulty_level_chosen);
-
+		gameField = new GameField(Constants.GAMEFIELD_WIDTH, Constants.GAMEFIELD_HEIGHT);
+		game = new Game(gameField);
+		game.add_game_status_listener(tetrisMainViewFrame);
 	}
 
 	public Game getGame() {
@@ -68,12 +74,15 @@ public class GameManager {
 
 	public void abort_current_game() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	public void setTetrisMainViewFrameiew(TetrisMainViewFrame tetrisMainView) {
-		// TODO Auto-generated method stub
-		
+	public TetrisMainViewFrame getTetrisMainViewFrame() {
+		return tetrisMainViewFrame;
+	}
+
+	public void setTetrisMainViewFrame(TetrisMainViewFrame tetrisMainViewFrame) {
+		this.tetrisMainViewFrame = tetrisMainViewFrame;
 	}
 
 }

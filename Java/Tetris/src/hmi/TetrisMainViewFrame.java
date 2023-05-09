@@ -11,8 +11,10 @@ import javax.swing.JPanel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import game.Game;
+import game.GameStatusListener;
 
-public class TetrisMainViewFrame extends JFrame {
+public class TetrisMainViewFrame extends JFrame implements GameStatusListener {
 
 	private static final long serialVersionUID = 1443136088686746460L;
 
@@ -35,12 +37,11 @@ public class TetrisMainViewFrame extends JFrame {
 		mainViewMenuBarManager = new MainViewMenuBarManager(this);
 	}
 
-	public void initialize_from_game_board_data_model() {
+	public void initialize() {
 		// Create and set up the window.
 
 		gameFieldPanel = new GameFieldPanel(this);
 
-		gameFieldPanel.initialize_display();
 		gameFieldPanel.setLocation(0, 0);
 		panel_content.setLayout(null);
 		panel_content.add(gameFieldPanel);
@@ -50,11 +51,10 @@ public class TetrisMainViewFrame extends JFrame {
 
 		this.setContentPane(panel_content);
 
-		this.setSize(gameFieldPanel.getWidth() + 20,
-				gameFieldPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight() + 40);
+		// this.setSize(gameFieldPanel.getWidth() + 20,
+		// gameFieldPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight()
+		// + 40);
 		// this.pack();
-
-		this.addKeyListener(new KeyBoardInputs(this));
 
 	}
 
@@ -69,7 +69,7 @@ public class TetrisMainViewFrame extends JFrame {
 			application_buffered_image = ImageIO.read(application_image_file);
 			setIconImage(application_buffered_image);
 		} catch (IOException e1) {
-			LOGGER.info("Could not define application icon " + application_image_path);			
+			LOGGER.info("Could not define application icon " + application_image_path);
 		}
 	}
 
@@ -100,7 +100,11 @@ public class TetrisMainViewFrame extends JFrame {
 
 		mainViewMenuBarManager.createMenu();
 
+		initialize();
+
 		setApplicationIcon();
+
+		this.addKeyListener(new KeyBoardInputs(this));
 
 		this.pack();
 
@@ -112,6 +116,39 @@ public class TetrisMainViewFrame extends JFrame {
 
 	public MainViewMenuBarManager getMainViewMenuBarManager() {
 		return mainViewMenuBarManager;
+	}
+
+	@Override
+	public void on_game_paused(Game game) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_game_resumed(Game game) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_listen_to_game_status(Game game) {
+		gameFieldPanel.initialize_gamefield(game.getGameField());
+		panel_content.setSize((int) (gameFieldPanel.getWidth() * 2), (int) (gameFieldPanel.getHeight()*1.2));
+		gameFieldPanel.setLocation(panel_content.getWidth() / 2 - gameFieldPanel.getWidth() / 2, panel_content.getHeight() / 2 - gameFieldPanel.getHeight() / 2);
+		setSize(panel_content.getSize());
+		setVisible(true);
+	}
+
+	@Override
+	public void on_game_cancelled(Game game) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_game_over(Game game) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

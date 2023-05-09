@@ -7,7 +7,9 @@ public class HMIConstants {
 	private HMIConstants() {
 		// no way to instantiate this class
 	}
+	
+	public static final int ELEMENTARY_SQUARE_WIDTH = 30;
+	public static final int ELEMENTARY_SQUARE_HEIGHT = 30;
 
-	//0, 0, 255 in original game
-	public static final Color WATER_COLOR = Color.BLUE;
+
 }

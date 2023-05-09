@@ -70,7 +70,7 @@ public class MainViewMenuBarManager implements ActionListener {
 						return;
 					}
 				}
-
+				GameManager.getInstance().new_game(null);
 			}
 		});
 		menu.add(menuItem);

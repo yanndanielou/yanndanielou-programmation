@@ -13,7 +13,7 @@ public class Game {
 	private boolean paused = false;
 	private GameField gameField;
 
-	public Game(int number_of_lives, GameField gameField) {
+	public Game(GameField gameField) {
 		this.gameField = gameField;
 	}
 
@@ -31,6 +31,10 @@ public class Game {
 
 	public void setPaused(boolean paused) {
 		this.paused = paused;
+	}
+
+	public GameField getGameField() {
+		return gameField;
 	}
 
 }
