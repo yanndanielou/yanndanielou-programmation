@@ -32,7 +32,7 @@ public class TetrisMainViewFrame extends JFrame implements GameStatusListener {
 	private GameFieldPanel gameFieldPanel;
 
 	public TetrisMainViewFrame() {
-		super("Sink submarines");
+		super("Tetris");
 		setResizable(false);
 		mainViewMenuBarManager = new MainViewMenuBarManager(this);
 	}
