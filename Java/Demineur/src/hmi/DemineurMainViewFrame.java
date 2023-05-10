@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import constants.HMIConstants;
 import game.Game;
 import game.GameStatusListener;
 
@@ -30,6 +31,7 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 	private JPanel panel_content = new JPanel();
 
 	private GameFieldPanel gameFieldPanel;
+	private TopPanel topPanel;
 
 	public DemineurMainViewFrame() {
 		super("Demineur");
@@ -39,23 +41,22 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 
 	public void initialize() {
 		// Create and set up the window.
+		panel_content.setLayout(null);
+		panel_content.setLocation(0, 0);
+		
+		panel_content.setSize(200, 500);
+
+		topPanel = new TopPanel(this);
+		topPanel.setSize(panel_content.getWidth(), );
+		topPanel.setLocation(0, 0);
+		panel_content.add(topPanel);
 
 		gameFieldPanel = new GameFieldPanel(this);
-
-		gameFieldPanel.setLocation(0, 0);
-		panel_content.setLayout(null);
+		gameFieldPanel.setLocation(0, topPanel.getY() + topPanel.getHeight() + HMIConstants.EXTERNAL_FRAME_WIDTH);
 		panel_content.add(gameFieldPanel);
 
-		panel_content.setSize(gameFieldPanel.getSize());
-		panel_content.setLocation(0, 0);
 
 		this.setContentPane(panel_content);
-
-		// this.setSize(gameFieldPanel.getWidth() + 20,
-		// gameFieldPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight()
-		// + 40);
-		// this.pack();
-
 	}
 
 	private void setApplicationIcon() {
@@ -73,21 +74,6 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 		}
 	}
 
-	/*
-	 * private void set_look_and_field() { // Use an appropriate Look and Feel try {
-	 * //
-	 * UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
-	 * ); UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel"); }
-	 * catch (UnsupportedLookAndFeelException ex) { ex.printStackTrace(); } catch
-	 * (IllegalAccessException ex) { ex.printStackTrace(); } catch
-	 * (InstantiationException ex) { ex.printStackTrace(); } catch
-	 * (ClassNotFoundException ex) { ex.printStackTrace(); }
-	 * 
-	 * // Turn off metal's use of bold fonts UIManager.put("swing.boldMetal",
-	 * Boolean.FALSE);
-	 * 
-	 * }
-	 */
 	/**
 	 * Create the GUI and show it. For thread safety, this method is invoked from
 	 * the event dispatch thread.
@@ -121,9 +107,9 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 	@Override
 	public void on_listen_to_game_status(Game game) {
 		gameFieldPanel.initialize_gamefield(game.getGameField());
-		panel_content.setSize((int) (gameFieldPanel.getWidth() * 2), (int) (gameFieldPanel.getHeight() * 1.5));
-		gameFieldPanel.setLocation(panel_content.getWidth() / 2 - gameFieldPanel.getWidth() / 2,
-				panel_content.getHeight() / 2 - gameFieldPanel.getHeight() / 2);
+		panel_content.setSize(gameFieldPanel.getWidth() + 2 * HMIConstants.EXTERNAL_FRAME_WIDTH,
+				(int) (gameFieldPanel.getHeight() * 1.2));
+		gameFieldPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH, 2 * HMIConstants.EXTERNAL_FRAME_WIDTH);
 		setSize(panel_content.getSize());
 		setVisible(true);
 	}

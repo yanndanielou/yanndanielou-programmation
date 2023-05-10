@@ -8,8 +8,11 @@ public class HMIConstants {
 		// no way to instantiate this class
 	}
 	
-	public static final int ELEMENTARY_SQUARE_WIDTH = 30;
-	public static final int ELEMENTARY_SQUARE_HEIGHT = 30;
+	public static final int ELEMENTARY_SQUARE_WIDTH = 15;
+	public static final int ELEMENTARY_SQUARE_HEIGHT = 15;
+	
+	public static final int EXTERNAL_FRAME_WIDTH = 5;
+	public static final int TOP_PANEL_HEIGHT = 5;
 
 
 }

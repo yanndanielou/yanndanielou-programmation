@@ -6,7 +6,7 @@ public class Constants {
 		// no way to instantiate this class
 	}
 
-	public static final int GAMEFIELD_WIDTH = 10;
-	public static final int GAMEFIELD_HEIGHT = 20;
+	public static final int GAMEFIELD_WIDTH = 8;
+	public static final int GAMEFIELD_HEIGHT = 8;
 
 }

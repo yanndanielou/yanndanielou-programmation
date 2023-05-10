@@ -18,6 +18,9 @@ import game_board.GameField;
 //FIXME: try JLayeredPane instead
 public class GameFieldPanel extends JPanel implements GameStatusListener {
 
+	private static final Logger LOGGER = LogManager.getLogger(GameFieldPanel.class);
+	private static final long serialVersionUID = -1541008040602802454L;
+
 	JButton all_squares[][];
 
 	private GridLayout layout = null;
@@ -26,15 +29,16 @@ public class GameFieldPanel extends JPanel implements GameStatusListener {
 		// TODO Auto-generated constructor stub
 	}
 
-	private static final Logger LOGGER = LogManager.getLogger(GameFieldPanel.class);
 
 	public void initialize_display() {
 
 	}
 
 	public void initialize_gamefield(GameField gameField) {
-		layout = new GridLayout(gameField.getHeight(), gameField.getWidth(), 0, 0);
-		setLayout(layout);
+		// layout = new GridLayout(gameField.getHeight(), gameField.getWidth(), 0, 0);
+		// setLayout(layout);
+
+		setLayout(null);
 
 		removeAll();
 
@@ -53,6 +57,8 @@ public class GameFieldPanel extends JPanel implements GameStatusListener {
 				Border border = jButton.getBorder();
 				// jButton.setBorder(border);
 				jButton.setToolTipText("Line " + line + " column " + column);
+				jButton.setLocation(line * HMIConstants.ELEMENTARY_SQUARE_WIDTH,
+						column * HMIConstants.ELEMENTARY_SQUARE_HEIGHT);
 				add(jButton);
 			}
 		}
