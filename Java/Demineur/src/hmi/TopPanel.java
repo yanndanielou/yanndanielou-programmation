@@ -3,7 +3,9 @@ package hmi;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -39,9 +41,13 @@ public class TopPanel extends JPanel {
 		add(remaining_unflagged_mines_label);
 
 		smiley_button = new JButton();
-		smiley_button.setText("Button");
-		smiley_button.setVisible(true);
-		smiley_button.setSize(20, HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT);
+
+		Image img = new ImageIcon("Images/smiley_normal.PNG").getImage();
+		Image icon_scalled_as_image = img.getScaledInstance((int) (HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT * 0.9),
+				(int) (HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT * 0.9), Image.SCALE_SMOOTH);
+
+		smiley_button.setIcon(new ImageIcon(icon_scalled_as_image));
+		smiley_button.setSize(HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT, HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT);
 		smiley_button.setLocation(getWidth() / 2 - smiley_button.getWidth() / 2, HMIConstants.EXTERNAL_FRAME_WIDTH);
 		add(smiley_button);
 

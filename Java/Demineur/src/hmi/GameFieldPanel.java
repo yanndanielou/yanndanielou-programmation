@@ -3,6 +3,8 @@ package hmi;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -29,18 +31,12 @@ public class GameFieldPanel extends JPanel implements GameStatusListener {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	public void initialize_display() {
 
 	}
 
 	public void initialize_gamefield(GameField gameField) {
-		// layout = new GridLayout(gameField.getHeight(), gameField.getWidth(), 0, 0);
-		// setLayout(layout);
-
 		setLayout(null);
-
-		removeAll();
 
 		setSize(HMIConstants.ELEMENTARY_SQUARE_WIDTH * gameField.getWidth(),
 				HMIConstants.ELEMENTARY_SQUARE_HEIGHT * gameField.getHeight());
@@ -53,8 +49,9 @@ public class GameFieldPanel extends JPanel implements GameStatusListener {
 				all_squares[line][column] = jButton;
 				jButton.setSize(HMIConstants.ELEMENTARY_SQUARE_WIDTH, HMIConstants.ELEMENTARY_SQUARE_HEIGHT);
 				jButton.setBackground(Color.LIGHT_GRAY);
-				Border border = jButton.getBorder();
-				// jButton.setBorder(border);
+				jButton.setIcon(new ImageIcon("Images/square_initial_state.png"));
+				// jButton.setPressedIcon(new ImageIcon("Images/square_being_clicked.png"));
+				// jButton.setRolloverIcon(new ImageIcon("Images/square_being_clicked.png"));
 				jButton.setToolTipText("Line " + line + " column " + column);
 				jButton.setLocation(line * HMIConstants.ELEMENTARY_SQUARE_WIDTH,
 						column * HMIConstants.ELEMENTARY_SQUARE_HEIGHT);

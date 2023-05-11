@@ -63,7 +63,8 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 
 		pack();
 
-		this.setVisible(true);
+		setVisible(true);
+		setResizable(false);
 	}
 
 	public MainViewMenuBarManager getMainViewMenuBarManager() {
@@ -81,16 +82,19 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 
 		topPanel = new TopPanel(this, gameFieldPanel.getWidth(), HMIConstants.TOP_PANEL_HEIGHT);
 		add(topPanel);
-		topPanel.setLocation(0, HMIConstants.EXTERNAL_FRAME_WIDTH);
+		topPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH, HMIConstants.EXTERNAL_FRAME_WIDTH);
 		// panel_content.add(topPanel);
 
 		add(gameFieldPanel);
-		gameFieldPanel.setLocation(0, topPanel.getY() + topPanel.getHeight() + HMIConstants.EXTERNAL_FRAME_WIDTH);
+		gameFieldPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH,
+				topPanel.getY() + topPanel.getHeight() + HMIConstants.EXTERNAL_FRAME_WIDTH);
 
-		setMinimumSize(new Dimension(gameFieldPanel.getWidth(), gameFieldPanel.getY() + gameFieldPanel.getHeight()
-				+ mainViewMenuBarManager.getMenuBar().getHeight() + HMIConstants.EXTERNAL_FRAME_WIDTH + HMIConstants.NOT_UNDERSTOOD_MISSING_FRAME_HEIGHT));
+		setSize(new Dimension(
+				gameFieldPanel.getWidth() + 2 * HMIConstants.EXTERNAL_FRAME_WIDTH
+						+ HMIConstants.NOT_UNDERSTOOD_MISSING_FRAME_WIDTH,
+				gameFieldPanel.getY() + gameFieldPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight()
+						+ HMIConstants.EXTERNAL_FRAME_WIDTH + HMIConstants.NOT_UNDERSTOOD_MISSING_FRAME_HEIGHT));
 
-		pack();
 	}
 
 	@Override
