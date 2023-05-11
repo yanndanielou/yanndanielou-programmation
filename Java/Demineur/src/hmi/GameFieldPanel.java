@@ -47,13 +47,12 @@ public class GameFieldPanel extends JPanel implements GameStatusListener {
 
 		all_squares = new JButton[gameField.getHeight()][gameField.getWidth()];
 
-		for (int line = 0; line < all_squares.length; line++) {
-			for (int column = 0; column < all_squares[line].length; column++) {
+		for (int column = 0; column < all_squares.length; column++) {
+			for (int line = 0; line < all_squares[column].length; line++) {
 				JButton jButton = new JButton();
 				all_squares[line][column] = jButton;
 				jButton.setSize(HMIConstants.ELEMENTARY_SQUARE_WIDTH, HMIConstants.ELEMENTARY_SQUARE_HEIGHT);
-				jButton.setEnabled(false);
-				jButton.setBackground(Color.black);
+				jButton.setBackground(Color.LIGHT_GRAY);
 				Border border = jButton.getBorder();
 				// jButton.setBorder(border);
 				jButton.setToolTipText("Line " + line + " column " + column);

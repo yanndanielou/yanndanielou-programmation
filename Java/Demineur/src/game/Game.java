@@ -15,11 +15,14 @@ public class Game {
 	private ArrayList<GameListener> game_listeners = new ArrayList<>();
 	private ArrayList<GameStatusListener> game_status_listeners = new ArrayList<>();
 
+	private GameDifficultyChosen gameDifficultyChosen;
+
 	private boolean paused = false;
 	private GameField gameField;
 
-	public Game(GameField gameField) {
+	public Game(GameDifficultyChosen gameDifficultyChosen, GameField gameField) {
 		this.gameField = gameField;
+		this.gameDifficultyChosen = gameDifficultyChosen;
 	}
 
 	public void add_game_listener(GameListener listener) {

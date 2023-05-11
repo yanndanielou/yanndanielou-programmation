@@ -26,32 +26,32 @@ public class TopPanel extends JPanel {
 	private JLabel game_duration_label;
 	private JButton smiley_button;
 
-	public TopPanel(DemineurMainViewFrame demineurMainViewFrame) {
-		
+	public TopPanel(DemineurMainViewFrame demineurMainViewFrame, int width, int height) {
+
 		setLayout(null);
-		
+		setSize(width, height);
+
 		remaining_unflagged_mines_label = new JLabel();
-		remaining_unflagged_mines_label.setSize(100, 20);
-		remaining_unflagged_mines_label.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH, HMIConstants.EXTERNAL_FRAME_WIDTH);
+		remaining_unflagged_mines_label.setText("Remaining unfallged mines");
+		remaining_unflagged_mines_label.setSize(20, HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT);
+		remaining_unflagged_mines_label.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH,
+				HMIConstants.EXTERNAL_FRAME_WIDTH);
 		add(remaining_unflagged_mines_label);
-		
+
 		smiley_button = new JButton();
-		smiley_button.setSize(100, 20);
-		smiley_button.setLocation(getWidth()/2 - smiley_button.getWidth()/2, HMIConstants.EXTERNAL_FRAME_WIDTH);
+		smiley_button.setText("Button");
+		smiley_button.setVisible(true);
+		smiley_button.setSize(20, HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT);
+		smiley_button.setLocation(getWidth() / 2 - smiley_button.getWidth() / 2, HMIConstants.EXTERNAL_FRAME_WIDTH);
 		add(smiley_button);
 
-		
 		game_duration_label = new JLabel();
-		game_duration_label.setSize(100, 20);
-		game_duration_label.setLocation(getWidth() - game_duration_label.getWidth() - HMIConstants.EXTERNAL_FRAME_WIDTH, HMIConstants.EXTERNAL_FRAME_WIDTH);
+		game_duration_label.setText("Game Duration");
+		game_duration_label.setSize(20, HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT);
+		game_duration_label.setLocation(getWidth() - game_duration_label.getWidth() - HMIConstants.EXTERNAL_FRAME_WIDTH,
+				HMIConstants.EXTERNAL_FRAME_WIDTH);
 		add(game_duration_label);
 
-		Dimension preferredSize = getPreferredSize();
-		int pause = 1;
-	}
-
-	public void initialize_display() {
-		setLayout(null);
 	}
 
 }

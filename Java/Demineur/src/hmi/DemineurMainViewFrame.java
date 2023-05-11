@@ -1,5 +1,6 @@
 package hmi;
 
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -21,42 +22,14 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 
 	private static final Logger LOGGER = LogManager.getLogger(DemineurMainViewFrame.class);
 
-	/*
-	 * private SkyPanel skyPanel = null; private AllyBoatPanel allyBoatPanel = null;
-	 * private UnderWaterPanel underWaterPanel = null; private OceanBedPanel
-	 * oceanBedPanel = null;
-	 */
 	private MainViewMenuBarManager mainViewMenuBarManager;
-
-	private JPanel panel_content = new JPanel();
 
 	private GameFieldPanel gameFieldPanel;
 	private TopPanel topPanel;
 
 	public DemineurMainViewFrame() {
 		super("Demineur");
-		setResizable(false);
 		mainViewMenuBarManager = new MainViewMenuBarManager(this);
-	}
-
-	public void initialize() {
-		// Create and set up the window.
-		panel_content.setLayout(null);
-		panel_content.setLocation(0, 0);
-		
-		panel_content.setSize(200, 500);
-
-		topPanel = new TopPanel(this);
-		topPanel.setSize(panel_content.getWidth(), );
-		topPanel.setLocation(0, 0);
-		panel_content.add(topPanel);
-
-		gameFieldPanel = new GameFieldPanel(this);
-		gameFieldPanel.setLocation(0, topPanel.getY() + topPanel.getHeight() + HMIConstants.EXTERNAL_FRAME_WIDTH);
-		panel_content.add(gameFieldPanel);
-
-
-		this.setContentPane(panel_content);
 	}
 
 	private void setApplicationIcon() {
@@ -80,24 +53,17 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 	 */
 	public void createAndShowGUI() {
 
-		// set_look_and_field();
-
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		mainViewMenuBarManager.createMenu();
-
-		initialize();
 
 		setApplicationIcon();
 
 		this.addKeyListener(new KeyBoardInputs(this));
 
-		this.pack();
+		pack();
 
-		// Display the window.
 		this.setVisible(true);
-		this.setResizable(false);
-
 	}
 
 	public MainViewMenuBarManager getMainViewMenuBarManager() {
@@ -106,12 +72,25 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 
 	@Override
 	public void on_listen_to_game_status(Game game) {
+
+		setLayout(null);
+
+		// Built first to know dimensions
+		gameFieldPanel = new GameFieldPanel(this);
 		gameFieldPanel.initialize_gamefield(game.getGameField());
-		panel_content.setSize(gameFieldPanel.getWidth() + 2 * HMIConstants.EXTERNAL_FRAME_WIDTH,
-				(int) (gameFieldPanel.getHeight() * 1.2));
-		gameFieldPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH, 2 * HMIConstants.EXTERNAL_FRAME_WIDTH);
-		setSize(panel_content.getSize());
-		setVisible(true);
+
+		topPanel = new TopPanel(this, gameFieldPanel.getWidth(), HMIConstants.TOP_PANEL_HEIGHT);
+		add(topPanel);
+		topPanel.setLocation(0, HMIConstants.EXTERNAL_FRAME_WIDTH);
+		// panel_content.add(topPanel);
+
+		add(gameFieldPanel);
+		gameFieldPanel.setLocation(0, topPanel.getY() + topPanel.getHeight() + HMIConstants.EXTERNAL_FRAME_WIDTH);
+
+		setMinimumSize(new Dimension(gameFieldPanel.getWidth(), gameFieldPanel.getY() + gameFieldPanel.getHeight()
+				+ mainViewMenuBarManager.getMenuBar().getHeight() + HMIConstants.EXTERNAL_FRAME_WIDTH + HMIConstants.NOT_UNDERSTOOD_MISSING_FRAME_HEIGHT));
+
+		pack();
 	}
 
 	@Override

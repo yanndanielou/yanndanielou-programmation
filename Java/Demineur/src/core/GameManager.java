@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import constants.Constants;
 import game.Game;
+import game.GameDifficultyChosen;
 import game_board.GameField;
 import hmi.DemineurMainViewFrame;
 
@@ -36,10 +37,10 @@ public class GameManager {
 		return hasInstance() && getInstance().getGame() != null;
 	}
 
-	public void new_game() {
+	public void new_game(GameDifficultyChosen gameDifficultyChosen) {
 		LOGGER.info("New game with difficulty:");
 		gameField = new GameField(Constants.GAMEFIELD_WIDTH, Constants.GAMEFIELD_HEIGHT);
-		game = new Game(gameField);
+		game = new Game(gameDifficultyChosen, gameField);
 		game.add_game_status_listener(demineurMainViewFrame);
 	}
 
