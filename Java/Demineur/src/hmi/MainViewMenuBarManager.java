@@ -55,24 +55,19 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (GameManager.hasGameInProgress()) {
-					Object[] options = { "Yes", "No" };
-
-					int n = JOptionPane.showOptionDialog(parent_main_view, "Abort current game?", "Game in progress!",
-							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-					LOGGER.info("Abort current game popup answer: " + n);
-					if (n == JOptionPane.YES_OPTION) {
-						LOGGER.info("Abo.rt current game");
-						GameManager.getInstance().abort_current_game();
-					} else if (n == JOptionPane.NO_OPTION) {
-						LOGGER.info("Do not abort current game. Resume");
-						return;
-					} else {
-						LOGGER.info("Default answer (popup closed?)");
-						return;
-					}
-				}
-				GameManager.getInstance().new_game();
+				new NewGameWhileGameIsInProgressPopup(parent_main_view).display_option_pane();
+				/*
+				 * if (GameManager.hasGameInProgress()) { Object[] options = { "Yes", "No" };
+				 * 
+				 * int n = JOptionPane.showOptionDialog(parent_main_view, "Abort current game?",
+				 * "Game in progress!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
+				 * null, options, options[0]); LOGGER.info("Abort current game popup answer: " +
+				 * n); if (n == JOptionPane.YES_OPTION) { LOGGER.info("Abo.rt current game");
+				 * GameManager.getInstance().abort_current_game(); } else if (n ==
+				 * JOptionPane.NO_OPTION) { LOGGER.info("Do not abort current game. Resume");
+				 * return; } else { LOGGER.info("Default answer (popup closed?)"); return; } }
+				 * GameManager.getInstance().new_game();
+				 */
 			}
 		});
 		menu.add(menuItem);

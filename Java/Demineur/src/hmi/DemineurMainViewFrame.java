@@ -75,8 +75,7 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 
 	@Override
 	public void on_listen_to_game_status(Game game) {
-
-
+		
 		// Built first to know dimensions
 		gameFieldPanel = new GameFieldPanel(this);
 		gameFieldPanel.initialize_gamefield(game.getGameField());
@@ -84,7 +83,6 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 		topPanel = new TopPanel(this, gameFieldPanel.getWidth(), HMIConstants.TOP_PANEL_HEIGHT);
 		add(topPanel);
 		topPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH, HMIConstants.EXTERNAL_FRAME_WIDTH);
-		// panel_content.add(topPanel);
 
 		add(gameFieldPanel);
 		gameFieldPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH,
@@ -109,14 +107,10 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 
 	@Override
 	public void on_game_lost(Game game) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void on_game_won(Game game) {
-		// TODO Auto-generated method stub
-
 	}
 
 }
