@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,7 +35,7 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 
 		BufferedImage application_buffered_image = null;
 		File application_image_file = null;
-		String application_image_path = "Images/game_icon.png";
+		String application_image_path = "Images/Demineur_application_icon.png";
 
 		application_image_file = new File(application_image_path);
 		try {
@@ -65,6 +64,7 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 
 		setVisible(true);
 		setResizable(false);
+		
 	}
 
 	public MainViewMenuBarManager getMainViewMenuBarManager() {
