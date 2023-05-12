@@ -52,6 +52,8 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 	 */
 	public void createAndShowGUI() {
 
+		setLayout(null);
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		mainViewMenuBarManager.createMenu();
@@ -74,7 +76,6 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 	@Override
 	public void on_listen_to_game_status(Game game) {
 
-		setLayout(null);
 
 		// Built first to know dimensions
 		gameFieldPanel = new GameFieldPanel(this);
@@ -104,7 +105,6 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 		
 		gameFieldPanel.on_game_cancelled(game);
 		remove(gameFieldPanel);
-		
 	}
 
 	@Override
