@@ -149,7 +149,10 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 	private void redraw_square_status(Square square) {
 		JButton jButton = square_to_button_map.get(square);
 
-		if (square.isFlagged()) {
+		if (square.isDiscovered() && square.isFlagged() && !square.isContains_mine()) {
+			setJButtonIcon(jButton, square_flagged_by_mistake);
+			jButton.setEnabled(false);
+		} else if (square.isFlagged()) {
 			setJButtonIcon(jButton, square_flagged);
 			jButton.setEnabled(false);
 		} else if (square.isQuestion_marked()) {
@@ -161,9 +164,6 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 		} else if (!square.isDiscovered()) {
 			setJButtonIcon(jButton, square_initial_state_icon);
 			jButton.setEnabled(true);
-		} else if (square.isDiscovered() && square.isFlagged() && !square.isContains_mine()) {
-			setJButtonIcon(jButton, square_flagged_by_mistake);
-			jButton.setEnabled(false);
 		} else if (square.isDiscovered() && square.isContains_mine()) {
 			setJButtonIcon(jButton, mine_discovered);
 			jButton.setEnabled(false);
