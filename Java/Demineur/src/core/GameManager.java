@@ -2,13 +2,13 @@ package core;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import game.Game;
 import game.GameDifficulty;
-import game.GameDifficultyChosen;
 import game_board.GameField;
 import game_board.Square;
 import hmi.DemineurMainViewFrame;
@@ -84,6 +84,35 @@ public class GameManager {
 
 	public void setDemineurMainViewFrame(DemineurMainViewFrame demineurMainViewFrame) {
 		this.demineurMainViewFrame = demineurMainViewFrame;
+	}
+
+	public void open_square(Square square) {
+		if (square.isContains_mine()) {
+			square.setExploded(true);
+			lose_game();
+		} else {
+			square.setDiscovered(true);
+		}
+	}
+
+	public void toggle_right_click_square(Square square) {
+		if (square.isFlagged()) {
+			square.setFlagged(false);
+			square.setQuestion_marked(true);
+		} else if (square.isQuestion_marked()) {
+			square.setQuestion_marked(false);
+		} else {
+			square.setFlagged(true);
+		}
+	}
+
+	private void lose_game() {
+
+		for (Square undiscovered_square : game.getGameField().getAll_squares_as_ordered_list().stream()
+				.filter(item -> !item.isDiscovered()).collect(Collectors.toList())) {
+			undiscovered_square.setDiscovered(true);
+		}
+
 	}
 
 }

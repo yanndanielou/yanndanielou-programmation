@@ -29,7 +29,7 @@ public class GameField {
 
 		for (int column = 0; column < all_squares_as_2D_table.length; column++) {
 			for (int line = 0; line < all_squares_as_2D_table[column].length; line++) {
-				Square square = new Square();
+				Square square = new Square(line, column);
 				all_squares_as_2D_table[column][line] = square;
 				getAll_squares_as_ordered_list().add(square);
 			}

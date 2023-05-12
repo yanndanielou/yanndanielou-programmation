@@ -9,7 +9,6 @@ import builders.GameDifficultyDataModel;
 import builders.GameDifficultyModelBuilder;
 import constants.Constants;
 import game.GameDifficulty;
-import game.GameDifficultyChosen;
 
 public class UserChoicesManager {
 

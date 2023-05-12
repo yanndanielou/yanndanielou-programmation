@@ -11,7 +11,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import constants.HMIConstants;
-import core.GameManager;
 import game.Game;
 import game.GameStatusListener;
 

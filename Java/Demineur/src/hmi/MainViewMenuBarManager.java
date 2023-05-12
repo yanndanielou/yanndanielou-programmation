@@ -10,7 +10,6 @@ import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 
@@ -18,9 +17,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import builders.GameDifficultyDataModel;
-import core.GameManager;
 import core.UserChoicesManager;
-import game.GameDifficultyChosen;
 
 public class MainViewMenuBarManager implements ActionListener {
 	private static final Logger LOGGER = LogManager.getLogger(MainViewMenuBarManager.class);
