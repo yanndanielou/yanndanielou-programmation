@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import core.GameManager;
+import core.UserChoicesManager;
 import hmi.DemineurMainViewFrame;
 
 public class DemineurMain {
@@ -14,10 +15,12 @@ public class DemineurMain {
 
 	public static void main(String[] args) {
 		LOGGER.info("Application start info");
+		
+		UserChoicesManager.getInstance().initialise();
 
 		DemineurMainViewFrame demineurMainView = new DemineurMainViewFrame();
 		GameManager.getInstance().setDemineurMainViewFrame(demineurMainView);
-
+		
 		// Schedule a job for the event dispatch thread:
 		// creating and showing this application's GUI.
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {

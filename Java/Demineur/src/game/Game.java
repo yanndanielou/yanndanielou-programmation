@@ -15,14 +15,14 @@ public class Game {
 	private ArrayList<GameListener> game_listeners = new ArrayList<>();
 	private ArrayList<GameStatusListener> game_status_listeners = new ArrayList<>();
 
-	private GameDifficultyChosen gameDifficultyChosen;
+	private GameDifficulty gameDifficulty;
 
 	private boolean paused = false;
 	private GameField gameField;
 
-	public Game(GameDifficultyChosen gameDifficultyChosen, GameField gameField) {
+	public Game(GameDifficulty gameDifficultyChosen, GameField gameField) {
 		this.gameField = gameField;
-		this.gameDifficultyChosen = gameDifficultyChosen;
+		this.gameDifficulty = gameDifficultyChosen;
 	}
 
 	public void add_game_listener(GameListener listener) {
@@ -41,6 +41,10 @@ public class Game {
 
 	public void cancel() {
 		game_status_listeners.forEach((game_status_listener) -> game_status_listener.on_game_cancelled(this));
+	}
+
+	public GameDifficulty getDifficulty() {
+		return gameDifficulty;
 	}
 
 }

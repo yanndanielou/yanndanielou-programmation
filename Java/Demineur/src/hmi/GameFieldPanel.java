@@ -44,7 +44,7 @@ public class GameFieldPanel extends JPanel implements GameStatusListener {
 		for (int column = 0; column < all_squares.length; column++) {
 			for (int line = 0; line < all_squares[column].length; line++) {
 				JButton jButton = new JButton();
-				all_squares[line][column] = jButton;
+				all_squares[column][line] = jButton;
 				jButton.setSize(HMIConstants.ELEMENTARY_SQUARE_WIDTH, HMIConstants.ELEMENTARY_SQUARE_HEIGHT);
 				jButton.setBackground(Color.LIGHT_GRAY);
 				jButton.setIcon(new ImageIcon("Images/square_initial_state.png"));

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -16,7 +17,9 @@ import javax.swing.KeyStroke;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import builders.GameDifficultyDataModel;
 import core.GameManager;
+import core.UserChoicesManager;
 import game.GameDifficultyChosen;
 
 public class MainViewMenuBarManager implements ActionListener {
@@ -34,9 +37,8 @@ public class MainViewMenuBarManager implements ActionListener {
 
 		JMenu menu, submenu;
 		JMenuItem menuItem;
-		JRadioButtonMenuItem rbMenuItem;
-		JCheckBoxMenuItem cbMenuItem;
 		JRadioButtonMenuItem radioButtonMenuItem;
+		JCheckBoxMenuItem cbMenuItem;
 
 		// Create the menu bar.
 		menuBar = new JMenuBar();
@@ -70,10 +72,48 @@ public class MainViewMenuBarManager implements ActionListener {
 						return;
 					}
 				}
-				GameManager.getInstance().new_game(new GameDifficultyChosen());
+				GameManager.getInstance().new_game();
 			}
 		});
 		menu.add(menuItem);
+
+		// a group of radio button menu items
+		menu.addSeparator();
+
+		ButtonGroup group = new ButtonGroup();
+
+		UserChoicesManager user_choice_manager = UserChoicesManager.getInstance();
+		for (GameDifficultyDataModel gameDifficultyDataModel : user_choice_manager.getGame_difficulty_data_models()) {
+
+			radioButtonMenuItem = new JRadioButtonMenuItem(gameDifficultyDataModel.getName());
+			radioButtonMenuItem.setSelected(user_choice_manager.getGameDifficultyChosen() == gameDifficultyDataModel);
+			// rbMenuItem.setMnemonic(KeyEvent.VK_R);
+			radioButtonMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					user_choice_manager.selectGameDifficulty(gameDifficultyDataModel);
+					LOGGER.info("rbMenuItem.addActionListener");
+				}
+			});
+
+			group.add(radioButtonMenuItem);
+			menu.add(radioButtonMenuItem);
+		}
+
+		radioButtonMenuItem = new JRadioButtonMenuItem("Custom..");
+		radioButtonMenuItem.setSelected(
+				user_choice_manager.getGameDifficultyChosen() == user_choice_manager.getCustom_game_difficulty());
+		// rbMenuItem.setMnemonic(KeyEvent.VK_R);
+		radioButtonMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LOGGER.info("rbMenuItem.addActionListener");
+			}
+		});
+
+		group.add(radioButtonMenuItem);
+		menu.add(radioButtonMenuItem);
+
+		// a group of check box menu items
+		menu.addSeparator();
 
 		menuItem = new JMenuItem("Exit", KeyEvent.VK_P);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.ALT_DOWN_MASK));

@@ -1,0 +1,22 @@
+{
+ "game_difficulty_data_models": [
+			{
+				"name":"Beginner",
+				"width":8,
+				"height":8,
+				"mines":10
+			},
+			{
+				"name":"Intermediate",
+				"width":16,
+				"height":16,
+				"mines":40
+			},
+			{
+				"name":"Expert",
+				"width":16,
+				"height":30,
+				"mines":99
+			}
+		]
+}

@@ -11,8 +11,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import constants.HMIConstants;
+import game.Game;
+import game.GameStatusListener;
 
-public class TopPanel extends JPanel {
+public class TopPanel extends JPanel implements GameStatusListener {
 
 	private static final long serialVersionUID = -4722225029326344692L;
 	private static final Logger LOGGER = LogManager.getLogger(TopPanel.class);
@@ -51,6 +53,29 @@ public class TopPanel extends JPanel {
 				HMIConstants.EXTERNAL_FRAME_WIDTH);
 		add(game_duration_label);
 
+	}
+
+	@Override
+	public void on_listen_to_game_status(Game game) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_game_cancelled(Game game) {
+		removeAll();
+	}
+
+	@Override
+	public void on_game_lost(Game game) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_game_won(Game game) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

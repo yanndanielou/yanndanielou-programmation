@@ -9,4 +9,6 @@
 	<classpathentry kind="output" path="bin"/>
 	<classpathentry kind="lib" path="lib/log4j-api-2.20.0.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-core-2.20.0.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.10.1.jar"/>
+
 </classpath>

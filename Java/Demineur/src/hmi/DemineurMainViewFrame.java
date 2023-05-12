@@ -64,7 +64,7 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 
 		setVisible(true);
 		setResizable(false);
-		
+
 	}
 
 	public MainViewMenuBarManager getMainViewMenuBarManager() {
@@ -99,7 +99,12 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 
 	@Override
 	public void on_game_cancelled(Game game) {
+		topPanel.on_game_cancelled(game);
+		remove(topPanel);
+		
 		gameFieldPanel.on_game_cancelled(game);
+		remove(gameFieldPanel);
+		
 	}
 
 	@Override
