@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
@@ -24,6 +25,7 @@ import game.GameStatusListener;
 import game.SquareListener;
 import game_board.GameField;
 import game_board.Square;
+import game_board.SquaresColumn;
 
 public class GameFieldPanel extends JPanel implements GameStatusListener, SquareListener {
 
@@ -32,7 +34,7 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 
 	private HashMap<Square, JButton> square_to_button_map = new HashMap<>();
 
-	private JButton all_squares[][];
+//	private JButton all_squares[][];
 
 	private ImageIcon square_initial_state_icon = new ImageIcon("Images/square_initial_state.png");
 
@@ -77,24 +79,29 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 		setSize(HMIConstants.ELEMENTARY_SQUARE_WIDTH * gameField.getWidth(),
 				HMIConstants.ELEMENTARY_SQUARE_HEIGHT * gameField.getHeight());
 
-		all_squares = new JButton[gameField.getHeight()][gameField.getWidth()];
+		// all_squares = new JButton[gameField.getHeight()][gameField.getWidth()];
 
-		Square[][] all_squares_as_2D_table = gameField.getAll_squares_as_2D_table();
+		ArrayList<SquaresColumn> squaresColumns = gameField.getSquaresColumns();
 
-		for (int column = 0; column < all_squares_as_2D_table.length; column++) {
-			for (int line = 0; line < all_squares_as_2D_table[column].length; line++) {
+		for (SquaresColumn squaresColumn : squaresColumns) {
+
+			ArrayList<Square> squares = squaresColumn.getSquares();
+			for (Square square : squares) {
+
+				int line_number = squares.indexOf(square);
+				int column_number = squaresColumn.getIndex();
+
 				JButton jButton = new JButton();
-				all_squares[column][line] = jButton;
+				// all_squares[column][line] = jButton;
 
-				square_to_button_map.put(all_squares_as_2D_table[column][line], all_squares[column][line]);
+				square_to_button_map.put(square, jButton);
 
 				jButton.setSize(HMIConstants.ELEMENTARY_SQUARE_WIDTH, HMIConstants.ELEMENTARY_SQUARE_HEIGHT);
 
-				jButton.setToolTipText("Line " + line + " column " + column);
-				jButton.setLocation(line * HMIConstants.ELEMENTARY_SQUARE_WIDTH,
-						column * HMIConstants.ELEMENTARY_SQUARE_HEIGHT);
+				jButton.setToolTipText("Line " + line_number + " column " + column_number);
+				jButton.setLocation(line_number * HMIConstants.ELEMENTARY_SQUARE_WIDTH,
+						column_number * HMIConstants.ELEMENTARY_SQUARE_HEIGHT);
 
-				Square square = all_squares_as_2D_table[column][line];
 				square.addSquareListener(this);
 
 				redraw_square_status(square);
@@ -140,6 +147,7 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 					}
 				});
 			}
+
 		}
 
 	}
@@ -224,7 +232,7 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 	@Override
 	public void on_game_cancelled(Game game) {
 		removeAll();
-		all_squares = null;
+		// all_squares = null;
 	}
 
 	@Override

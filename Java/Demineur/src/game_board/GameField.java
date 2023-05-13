@@ -12,8 +12,10 @@ public class GameField {
 	private int width = 0;
 	private int height = 0;
 
+	private ArrayList<SquaresColumn> squares_columns = new ArrayList<>();
+	private ArrayList<SquaresRow> squares_rows = new ArrayList<>();
+
 	private ArrayList<Square> all_squares_as_ordered_list = new ArrayList<Square>();
-	private Square all_squares_as_2D_table[][];
 
 	public GameField(int width, int height) {
 
@@ -25,13 +27,19 @@ public class GameField {
 
 	private void create_initial_squares() {
 
-		all_squares_as_2D_table = new Square[height][width];
+		for (int column = 0; column < width; column++) {
+			SquaresColumn squaresColumn = new SquaresColumn(column);
+			squares_columns.add(squaresColumn);
+			for (int line = 0; line < height; line++) {
+				SquaresRow squaresRow = new SquaresRow(line);
+				squares_rows.add(squaresRow);
 
-		for (int column = 0; column < all_squares_as_2D_table.length; column++) {
-			for (int line = 0; line < all_squares_as_2D_table[column].length; line++) {
 				Square square = new Square(line, column);
-				all_squares_as_2D_table[column][line] = square;
-				getAll_squares_as_ordered_list().add(square);
+
+				squaresColumn.addSquare(square);
+				squaresRow.addSquare(square);
+
+				all_squares_as_ordered_list.add(square);
 			}
 		}
 	}
@@ -48,7 +56,11 @@ public class GameField {
 		return all_squares_as_ordered_list;
 	}
 
-	public Square[][] getAll_squares_as_2D_table() {
-		return all_squares_as_2D_table;
+	public ArrayList<SquaresColumn> getSquaresColumns() {
+		return squares_columns;
+	}
+
+	public ArrayList<SquaresRow> getSquaresRows() {
+		return squares_rows;
 	}
 }
