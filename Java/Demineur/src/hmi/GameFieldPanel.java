@@ -43,6 +43,7 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 	private ImageIcon mine_discovered;
 	private ImageIcon square_flagged;
 	private ImageIcon square_flagged_by_mistake;
+	private ImageIcon square_without_mine_and_neighbourg_mine_discovered_with_all_bordered_16_pixels;
 
 	private Color default_button_background_color = null;
 	private Color default_button_foreground_color = null;
@@ -60,6 +61,8 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 		mine_discovered = get_scalled_icon("Images/mine_discovered.png");
 		square_flagged = get_scalled_icon("Images/flag.PNG");
 		square_flagged_by_mistake = get_scalled_icon("Images/square_flagged_by_mistake.PNG");
+		square_without_mine_and_neighbourg_mine_discovered_with_all_bordered_16_pixels = get_scalled_icon(
+				"Images/square_without_mine_and_neighbourg_mine_discovered_with_all_bordered_16_pixels.PNG");
 
 	}
 
@@ -174,7 +177,10 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 		} else if (square.isDiscovered() && square.isContains_mine()) {
 			setJButtonIcon(jButton, mine_discovered);
 			jButton.setEnabled(false);
-		} else {// square.isDiscovered() && !square.isContains_mine()
+		} else if (square.getNumber_of_neighbour_mines() == 0) {
+			jButton.setEnabled(false);
+			setJButtonIcon(jButton, square_without_mine_and_neighbourg_mine_discovered_with_all_bordered_16_pixels);
+		} else {
 			jButton.setEnabled(false);
 			setJButtonText(jButton, "" + (square.getNumber_of_neighbour_mines()));
 		}
