@@ -47,6 +47,7 @@ public class GameManager {
 		game = new Game(gameDifficultyChosen, gameField);
 		game.add_game_status_listener(demineurMainViewFrame);
 		create_and_place_mines();
+		compute_number_of_neighbour_mines_per_square();
 	}
 
 	private void create_and_place_mines() {
@@ -66,7 +67,10 @@ public class GameManager {
 			} while (next_square_to_assign_mine.isContains_mine());
 			next_square_to_assign_mine.setContains_mine(true);
 		}
-
+	}
+	
+	private void compute_number_of_neighbour_mines_per_square() {
+		
 	}
 
 	public Game getGame() {
