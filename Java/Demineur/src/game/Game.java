@@ -10,14 +10,14 @@ import game_board.GameField;
 public class Game {
 	private static final Logger LOGGER = LogManager.getLogger(Game.class);
 
-	private int score;
-
 	private ArrayList<GameListener> game_listeners = new ArrayList<>();
 	private ArrayList<GameStatusListener> game_status_listeners = new ArrayList<>();
 
 	private GameDifficulty gameDifficulty;
 
+	@Deprecated
 	private boolean paused = false;
+
 	private GameField gameField;
 
 	private boolean lost = false;

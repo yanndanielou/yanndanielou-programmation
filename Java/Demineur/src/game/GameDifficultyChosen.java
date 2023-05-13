@@ -6,8 +6,6 @@ import org.apache.logging.log4j.Logger;
 public class GameDifficultyChosen extends GameDifficulty {
 	private static final Logger LOGGER = LogManager.getLogger(GameDifficultyChosen.class);
 
-	private DifficultyType difficultyType;
-
 	public GameDifficultyChosen() {
 
 	}

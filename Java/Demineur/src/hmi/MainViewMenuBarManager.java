@@ -6,7 +6,6 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -32,10 +31,11 @@ public class MainViewMenuBarManager implements ActionListener {
 	public void createMenu() {
 		// Where the GUI is created:
 
-		JMenu menu, submenu;
+		JMenu menu;
+		// JMenu submenu;
 		JMenuItem menuItem;
 		JRadioButtonMenuItem radioButtonMenuItem;
-		JCheckBoxMenuItem cbMenuItem;
+		// JCheckBoxMenuItem cbMenuItem;
 
 		// Create the menu bar.
 		menuBar = new JMenuBar();

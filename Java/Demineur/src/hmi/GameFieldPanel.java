@@ -2,7 +2,6 @@ package hmi;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.MouseEvent;
@@ -13,7 +12,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import javax.swing.plaf.ButtonUI;
 import javax.swing.plaf.metal.MetalButtonUI;
 
 import org.apache.logging.log4j.LogManager;
