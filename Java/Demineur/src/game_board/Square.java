@@ -63,32 +63,41 @@ public class Square {
 
 	public void setQuestion_marked(boolean question_marked) {
 		this.question_marked = question_marked;
-		LOGGER.info("Square :" + "["+ row +  "," + column + "]" + " question marked: " + question_marked);
+		LOGGER.info("Square :" + "[" + row + "," + column + "]" + " question marked: " + question_marked);
 		squareListeners.forEach((squareListener) -> squareListener.on_square_status_changed(this));
 	}
 
 	public void setDiscovered(boolean discovered) {
 		this.discovered = discovered;
-		LOGGER.info("Square :" + "["+ row +  "," + column + "]" + " discovered: " + discovered);
+		LOGGER.info("Square :" + "[" + row + "," + column + "]" + " discovered: " + discovered);
 		squareListeners.forEach((squareListener) -> squareListener.on_square_status_changed(this));
 	}
 
 	public void setFlagged(boolean flagged) {
 		this.flagged = flagged;
-		LOGGER.info("Square :" + "["+ row +  "," + column + "]" + " flagged: " + flagged);
+		LOGGER.info("Square :" + "[" + row + "," + column + "]" + " flagged: " + flagged);
 		squareListeners.forEach((squareListener) -> squareListener.on_square_status_changed(this));
 	}
 
 	public void setExploded(boolean exploded) {
 		this.exploded = exploded;
-		LOGGER.info("Square :" + "["+ row +  "," + column + "]" + " has exploded " + exploded);
+		LOGGER.info("Square :" + "[" + row + "," + column + "]" + " has exploded " + exploded);
 		squareListeners.forEach((squareListener) -> squareListener.on_square_status_changed(this));
 	}
 
 	public void setNumber_of_neighbor_mines(int number_of_neighbor_mines) {
 		this.number_of_neighbor_mines = number_of_neighbor_mines;
-		LOGGER.debug("Square :" + "["+ row +  "," + column + "]" + " has " + number_of_neighbor_mines + " neighbors mines");
+		LOGGER.debug(
+				"Square :" + "[" + row + "," + column + "]" + " has " + number_of_neighbor_mines + " neighbors mines");
 		squareListeners.forEach((squareListener) -> squareListener.on_square_status_changed(this));
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public int getColumn() {
+		return column;
 	}
 
 }

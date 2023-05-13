@@ -68,9 +68,22 @@ public class GameManager {
 			next_square_to_assign_mine.setContains_mine(true);
 		}
 	}
-	
+
 	private void compute_number_of_neighbour_mines_per_square() {
+		GameField gameField = game.getGameField();
 		
+		for (Square square : gameField.getAll_squares_as_ordered_list()) {
+			int number_of_neighbour_mines = 0;
+			
+			// left square
+			int square_row = square.getRow();
+			int square_column = square.getColumn();
+			if (square_column > 0) {
+				Square left_square = gameField.getSquare(square_row, square_column - 1);
+			}
+
+		}
+
 	}
 
 	public Game getGame() {
