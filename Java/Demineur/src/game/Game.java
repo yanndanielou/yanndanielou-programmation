@@ -20,6 +20,12 @@ public class Game {
 	private boolean paused = false;
 	private GameField gameField;
 
+	private boolean lost = false;
+	private boolean over = false;
+	private boolean won = false;
+
+	private boolean begun = false;
+
 	public Game(GameDifficulty gameDifficultyChosen, GameField gameField) {
 		this.gameField = gameField;
 		this.gameDifficulty = gameDifficultyChosen;
@@ -45,6 +51,37 @@ public class Game {
 
 	public GameDifficulty getDifficulty() {
 		return gameDifficulty;
+	}
+
+	public void setLost() {
+		lost = true;
+		over = true;
+	}
+
+	public void setWon() {
+		won = true;
+		over = true;
+	}
+
+	public boolean isLost() {
+		return lost;
+	}
+
+	public boolean isOver() {
+		return over;
+	}
+
+	public boolean isWon() {
+		return won;
+	}
+
+	public boolean isBegun() {
+		return begun;
+	}
+
+	public void setBegun() {
+		this.begun = true;
+		LOGGER.info("Game has begun. " + this);
 	}
 
 }

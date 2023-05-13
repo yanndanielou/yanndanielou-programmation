@@ -207,9 +207,9 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 			default_button_font = jButton.getFont();
 		}
 
-		jButton.setBackground(default_button_background_color);
-		jButton.setForeground(default_button_foreground_color);
-		jButton.setFont(default_button_font);
+		// jButton.setBackground(default_button_background_color);
+		// jButton.setForeground(default_button_foreground_color);
+		// jButton.setFont(default_button_font);
 
 		jButton.setText(null);
 		jButton.setIcon(imageIcon);

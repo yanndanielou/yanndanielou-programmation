@@ -4,7 +4,7 @@
     <Appenders>
             
         <Console name="stdout" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{ISO8601} [%t] %-5p | %-60c | %m (%F:%L)%n" />
+            <PatternLayout pattern="%d{ISO8601} [%t] %-5p | %-20c | %m (%F:%L)%n" />
         </Console>
         
         <RollingFile name="rollingFile"

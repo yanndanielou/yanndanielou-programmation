@@ -74,6 +74,7 @@ public class GameManager {
 	}
 
 	public void abort_current_game() {
+		LOGGER.info("Abort current game");
 		game.cancel();
 
 	}
@@ -87,6 +88,9 @@ public class GameManager {
 	}
 
 	public void open_square(Square square) {
+		if (!game.isBegun()) {
+			game.setBegun();
+		}
 		if (square.isContains_mine()) {
 			square.setExploded(true);
 			lose_game();
@@ -96,6 +100,10 @@ public class GameManager {
 	}
 
 	public void toggle_right_click_square(Square square) {
+		if (!game.isBegun()) {
+			game.setBegun();
+		}
+
 		if (square.isFlagged()) {
 			square.setFlagged(false);
 			square.setQuestion_marked(true);
@@ -111,6 +119,7 @@ public class GameManager {
 		for (Square undiscovered_square : game.getGameField().getAll_squares_as_ordered_list().stream()
 				.filter(item -> !item.isDiscovered()).collect(Collectors.toList())) {
 			undiscovered_square.setDiscovered(true);
+			game.setLost();
 		}
 
 	}
