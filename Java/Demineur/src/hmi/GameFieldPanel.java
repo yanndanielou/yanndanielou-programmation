@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -175,7 +176,7 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 			jButton.setEnabled(false);
 		} else {// square.isDiscovered() && !square.isContains_mine()
 			jButton.setEnabled(false);
-			setJButtonText(jButton, "" + (square.getNumber_of_neighbor_mines() + 1));
+			setJButtonText(jButton, "" + (square.getNumber_of_neighbor_mines()));
 		}
 
 		// jButton.setPressedIcon(new ImageIcon("Images/square_being_clicked.png"));

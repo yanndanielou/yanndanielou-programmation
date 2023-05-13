@@ -1,10 +1,12 @@
 package game_board;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import game.Game;
 import game.SquareListener;
 
 public class Square {
@@ -21,9 +23,14 @@ public class Square {
 	private int row;
 	private int column;
 
+	private Game game;
+
 	private ArrayList<SquareListener> squareListeners = new ArrayList<>();
 
-	public Square(int line, int column) {
+	private HashMap<NeighbourSquareDirection, Square> neighbour_per_direction = new HashMap<>();
+
+	public Square(Game game, int line, int column) {
+		this.game = game;
 		this.row = line;
 		this.column = column;
 	}
@@ -85,19 +92,26 @@ public class Square {
 		squareListeners.forEach((squareListener) -> squareListener.on_square_status_changed(this));
 	}
 
-	public void setNumber_of_neighbor_mines(int number_of_neighbor_mines) {
-		this.number_of_neighbor_mines = number_of_neighbor_mines;
-		LOGGER.debug(
-				"Square :" + "[" + row + "," + column + "]" + " has " + number_of_neighbor_mines + " neighbors mines");
-		squareListeners.forEach((squareListener) -> squareListener.on_square_status_changed(this));
-	}
-
 	public int getRow() {
 		return row;
 	}
 
 	public int getColumn() {
 		return column;
+	}
+
+	public void setNeighbour(NeighbourSquareDirection direction, Square neighbour) {
+		neighbour_per_direction.put(direction, neighbour);
+	}
+
+	public void compute_Number_of_neighbor_mines() {
+		neighbour_per_direction.values().forEach(square -> {
+			if (square != null && square.isContains_mine()) {
+				number_of_neighbor_mines++;
+			}
+		});
+		LOGGER.debug(
+				"Square :" + "[" + row + "," + column + "]" + " has " + number_of_neighbor_mines + " neighbors mines");
 	}
 
 }

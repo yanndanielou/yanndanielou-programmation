@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import game.Game;
 import game.GameDifficulty;
 import game_board.GameField;
+import game_board.NeighbourSquareDirection;
 import game_board.Square;
 import hmi.DemineurMainViewFrame;
 
@@ -47,7 +48,8 @@ public class GameManager {
 		game = new Game(gameDifficultyChosen, gameField);
 		game.add_game_status_listener(demineurMainViewFrame);
 		create_and_place_mines();
-		compute_number_of_neighbour_mines_per_square();
+		compute_neighbours_of_each_square();
+		compute_number_of_neighbour_mines_of_each_square();
 	}
 
 	private void create_and_place_mines() {
@@ -69,19 +71,23 @@ public class GameManager {
 		}
 	}
 
-	private void compute_number_of_neighbour_mines_per_square() {
+	private void compute_neighbours_of_each_square() {
 		GameField gameField = game.getGameField();
-		
-		for (Square square : gameField.getAll_squares_as_ordered_list()) {
-			int number_of_neighbour_mines = 0;
-			
-			// left square
-			int square_row = square.getRow();
-			int square_column = square.getColumn();
-			if (square_column > 0) {
-				Square left_square = gameField.getSquare(square_row, square_column - 1);
-			}
 
+		for (Square square : gameField.getAll_squares_as_ordered_list()) {
+
+			for (NeighbourSquareDirection direction : NeighbourSquareDirection.values()) {
+				Square neighbourSquare = gameField.getNeighbourSquare(square, direction);
+				square.setNeighbour(direction, neighbourSquare);
+			}
+		}
+	}
+
+	private void compute_number_of_neighbour_mines_of_each_square() {
+		GameField gameField = game.getGameField();
+
+		for (Square square : gameField.getAll_squares_as_ordered_list()) {
+			square.compute_Number_of_neighbor_mines();
 		}
 
 	}
@@ -94,10 +100,6 @@ public class GameManager {
 		LOGGER.info("Abort current game");
 		game.cancel();
 
-	}
-
-	public DemineurMainViewFrame getDemineurMainViewFrame() {
-		return demineurMainViewFrame;
 	}
 
 	public void setDemineurMainViewFrame(DemineurMainViewFrame demineurMainViewFrame) {

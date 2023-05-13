@@ -29,6 +29,7 @@ public class Game {
 	public Game(GameDifficulty gameDifficultyChosen, GameField gameField) {
 		this.gameField = gameField;
 		this.gameDifficulty = gameDifficultyChosen;
+		gameField.setGame(this);
 	}
 
 	public void add_game_listener(GameListener listener) {
