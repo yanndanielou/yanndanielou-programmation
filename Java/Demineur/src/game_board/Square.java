@@ -1,6 +1,7 @@
 package game_board;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 import org.apache.logging.log4j.LogManager;
@@ -56,7 +57,7 @@ public class Square {
 		return exploded;
 	}
 
-	public int getNumber_of_neighbor_mines() {
+	public int getNumber_of_neighbour_mines() {
 		return number_of_neighbor_mines;
 	}
 
@@ -114,4 +115,11 @@ public class Square {
 				"Square :" + "[" + row + "," + column + "]" + " has " + number_of_neighbor_mines + " neighbors mines");
 	}
 
+	public String getShort_description() {
+		return "Square :" + "[" + row + "," + column + "]";
+	}
+
+	public Collection<Square> getNeighbours() {
+		return neighbour_per_direction.values();
+	}
 }

@@ -176,7 +176,7 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 			jButton.setEnabled(false);
 		} else {// square.isDiscovered() && !square.isContains_mine()
 			jButton.setEnabled(false);
-			setJButtonText(jButton, "" + (square.getNumber_of_neighbor_mines()));
+			setJButtonText(jButton, "" + (square.getNumber_of_neighbour_mines()));
 		}
 
 		// jButton.setPressedIcon(new ImageIcon("Images/square_being_clicked.png"));

@@ -78,7 +78,9 @@ public class GameManager {
 
 			for (NeighbourSquareDirection direction : NeighbourSquareDirection.values()) {
 				Square neighbourSquare = gameField.getNeighbourSquare(square, direction);
-				square.setNeighbour(direction, neighbourSquare);
+				if (neighbourSquare != null) {
+					square.setNeighbour(direction, neighbourSquare);
+				}
 			}
 		}
 	}
@@ -107,6 +109,9 @@ public class GameManager {
 	}
 
 	public void open_square(Square square) {
+
+		LOGGER.info("Open square " + square.getShort_description());
+
 		if (!game.isBegun()) {
 			game.setBegun();
 		}
@@ -115,6 +120,15 @@ public class GameManager {
 			lose_game();
 		} else {
 			square.setDiscovered(true);
+			if (square.getNumber_of_neighbour_mines() == 0) {
+				square.getNeighbours().forEach(squareNeighbour -> {
+					if (!squareNeighbour.isDiscovered()) {
+						LOGGER.info("Also open " + squareNeighbour.getShort_description() + " because opened square "
+								+ square.getShort_description() + " is not surrounded by any mine");
+						open_square(squareNeighbour);
+					}
+				});
+			}
 		}
 	}
 
