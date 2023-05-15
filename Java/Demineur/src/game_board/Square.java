@@ -23,6 +23,8 @@ public class Square {
 	private boolean exploded = false;
 	private int number_of_neighbor_mines;
 
+	private boolean highlighted_because_click_in_progress_on_neighbour = false;
+
 	private int row;
 	private int column;
 
@@ -134,4 +136,26 @@ public class Square {
 	public Game getGame() {
 		return game;
 	}
+
+	public void highlight_unrevealed_neighbours_because_click_in_progress() {
+		neighbour_per_direction.values().stream().filter(neighbour_square -> !neighbour_square.isDiscovered())
+				.forEach(undiscovered_neighbour_square -> undiscovered_neighbour_square.setHighlighted_because_click_in_progress_on_neighbour(true));
+
+	}
+
+	public boolean isHighlighted_because_click_in_progress_on_neighbour() {
+		return highlighted_because_click_in_progress_on_neighbour;
+	}
+
+	public void setHighlighted_because_click_in_progress_on_neighbour(
+			boolean highlighted_because_click_in_progress_on_neighbour) {
+		if (this.highlighted_because_click_in_progress_on_neighbour != highlighted_because_click_in_progress_on_neighbour) {
+
+			this.highlighted_because_click_in_progress_on_neighbour = highlighted_because_click_in_progress_on_neighbour;
+			squareListeners.forEach((squareListener) -> squareListener.on_square_status_changed(this));
+			LOGGER.info(getShort_description() + " setHighlighted_because_click_in_progress_on_neighbour "
+					+ highlighted_because_click_in_progress_on_neighbour);
+		}
+	}
+
 }

@@ -44,6 +44,7 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 	private ImageIcon square_flagged;
 	private ImageIcon square_flagged_by_mistake;
 	private ImageIcon square_without_mine_and_neighbourg_mine_discovered_with_all_bordered_16_pixels;
+	private ImageIcon square_undiscovered_and_highlighted_because_click_in_progress_on_neighbour;
 
 	private Color default_button_background_color = null;
 	private Color default_button_foreground_color = null;
@@ -63,7 +64,8 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 		square_flagged_by_mistake = get_scalled_icon("Images/square_flagged_by_mistake.PNG");
 		square_without_mine_and_neighbourg_mine_discovered_with_all_bordered_16_pixels = get_scalled_icon(
 				"Images/square_without_mine_and_neighbourg_mine_discovered_with_all_bordered_16_pixels.PNG");
-
+		square_undiscovered_and_highlighted_because_click_in_progress_on_neighbour = get_scalled_icon(
+				"Images/square_undiscovered_and_highlighted_because_click_in_progress_on_neighbour.PNG");
 	}
 
 	private ImageIcon get_scalled_icon(String image_path) {
@@ -136,7 +138,10 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 		} else if (square.isExploded()) {
 			setJButtonIcon(jButton, square_mine_exploded_icon);
 			jButton.setEnabled(false);
-		} else if (!square.isDiscovered()) {
+		} else if (!square.isDiscovered() && square.isHighlighted_because_click_in_progress_on_neighbour()) {
+			setJButtonIcon(jButton, square_undiscovered_and_highlighted_because_click_in_progress_on_neighbour);
+			jButton.setEnabled(true);
+		} else if (!square.isDiscovered() && !square.isHighlighted_because_click_in_progress_on_neighbour()) {
 			setJButtonIcon(jButton, square_initial_state_icon);
 			jButton.setEnabled(true);
 		} else if (square.isDiscovered() && square.isContains_mine()) {

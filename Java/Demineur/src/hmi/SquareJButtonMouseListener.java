@@ -26,6 +26,9 @@ public class SquareJButtonMouseListener implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 1 && square.isDiscovered()) {
+			square.highlight_unrevealed_neighbours_because_click_in_progress();
+		}
 	}
 
 	@Override
@@ -54,4 +57,5 @@ public class SquareJButtonMouseListener implements MouseListener {
 		}
 
 	}
+
 }
