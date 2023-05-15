@@ -11,9 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.plaf.metal.MetalButtonUI;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import constants.HMIConstants;
 import core.GameManager;
 import game.Game;
@@ -25,12 +22,9 @@ import game_board.SquaresColumn;
 
 public class GameFieldPanel extends JPanel implements GameStatusListener, SquareListener {
 
-	private static final Logger LOGGER = LogManager.getLogger(GameFieldPanel.class);
 	private static final long serialVersionUID = -1541008040602802454L;
 
 	private HashMap<Square, JButton> square_to_button_map = new HashMap<>();
-
-//	private JButton all_squares[][];
 
 	private ImageIcon square_initial_state_icon = new ImageIcon("Images/square_initial_state.png");
 

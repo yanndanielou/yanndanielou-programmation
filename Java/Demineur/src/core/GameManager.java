@@ -3,7 +3,6 @@ package core;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,7 +12,6 @@ import game.GameDifficulty;
 import game_board.GameField;
 import game_board.NeighbourSquareDirection;
 import game_board.Square;
-import hmi.DemineurMainViewFrame;
 import hmi.DemineurMainViewGeneric;
 
 public class GameManager {

@@ -13,7 +13,6 @@ import org.apache.logging.log4j.Logger;
 
 import constants.HMIConstants;
 import game.Game;
-import game.GameStatusListener;
 
 public class DemineurMainViewFrame extends JFrame implements DemineurMainViewGeneric {
 

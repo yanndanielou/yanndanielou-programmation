@@ -4,8 +4,6 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-import constants.HMIConstants;
-
 public class HMIUtils {
 
 	private HMIUtils() {

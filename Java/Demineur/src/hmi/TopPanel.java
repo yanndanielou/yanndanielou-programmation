@@ -1,14 +1,9 @@
 package hmi;
 
-import java.awt.Image;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import constants.HMIConstants;
 import game.Game;
@@ -17,7 +12,6 @@ import game.GameStatusListener;
 public class TopPanel extends JPanel implements GameStatusListener {
 
 	private static final long serialVersionUID = -4722225029326344692L;
-	private static final Logger LOGGER = LogManager.getLogger(TopPanel.class);
 
 	private JLabel remaining_unflagged_mines_label;
 	private JLabel game_duration_label;
@@ -94,7 +88,6 @@ public class TopPanel extends JPanel implements GameStatusListener {
 	@Override
 	public void on_game_won(Game game) {
 		smiley_button.setIcon(smiley_game_won);
-
 	}
 
 }

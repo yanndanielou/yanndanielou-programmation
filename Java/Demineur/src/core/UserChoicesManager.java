@@ -2,9 +2,6 @@ package core;
 
 import java.util.ArrayList;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import builders.GameDifficultyDataModel;
 import builders.GameDifficultyModelBuilder;
 import constants.Constants;
@@ -13,7 +10,6 @@ import game.GameDifficulty;
 public class UserChoicesManager {
 
 	private static UserChoicesManager instance;
-	private static final Logger LOGGER = LogManager.getLogger(UserChoicesManager.class);
 
 	private ArrayList<GameDifficultyDataModel> game_difficulty_data_models;
 	private GameDifficulty custom_game_difficulty = null;

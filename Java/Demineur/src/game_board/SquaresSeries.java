@@ -2,12 +2,7 @@ package game_board;
 
 import java.util.ArrayList;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 public abstract class SquaresSeries {
-
-	private static final Logger LOGGER = LogManager.getLogger(SquaresSeries.class);
 
 	protected ArrayList<Square> squares = new ArrayList<Square>();
 

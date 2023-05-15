@@ -15,9 +15,6 @@ public class Game {
 
 	private GameDifficulty gameDifficulty;
 
-	@Deprecated
-	private boolean paused = false;
-
 	private GameField gameField;
 
 	private boolean lost = false;
