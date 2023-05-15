@@ -112,44 +112,9 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 				add(jButton);
 
 				jButton.addActionListener(e -> {
-					GameManager.getInstance().open_square(square);
+					GameManager.getInstance().open_square(square, true);
 				});
-				jButton.addMouseListener(new MouseListener() {
-
-					@Override
-					public void mouseReleased(MouseEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-
-					@Override
-					public void mousePressed(MouseEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-
-					@Override
-					public void mouseExited(MouseEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						// TODO Auto-generated method stub
-
-					}
-
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						if (SwingUtilities.isRightMouseButton(e)) {
-							if (!square.isDiscovered()) {
-								GameManager.getInstance().toggle_right_click_square(square);
-							}
-						}
-
-					}
-				});
+				jButton.addMouseListener(new SquareJButtonMouseListener(square));
 			}
 
 		}

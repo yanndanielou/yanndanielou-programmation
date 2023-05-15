@@ -88,9 +88,8 @@ public class GameManager {
 	private void compute_number_of_neighbour_mines_of_each_square() {
 		GameField gameField = game.getGameField();
 
-		for (Square square : gameField.getAll_squares_as_ordered_list()) {
-			square.compute_Number_of_neighbor_mines();
-		}
+		gameField.getAll_squares_as_ordered_list().stream()
+				.forEach(square -> square.compute_Number_of_neighbor_mines());
 
 	}
 
@@ -108,7 +107,7 @@ public class GameManager {
 		this.demineurMainViewFrame = demineurMainViewFrame;
 	}
 
-	public void open_square(Square square) {
+	public void open_square(Square square, boolean open_neighbours_if_this_square_has_no_neighbour_mines) {
 
 		LOGGER.info("Open square " + square.getShort_description());
 
@@ -120,12 +119,12 @@ public class GameManager {
 			lose_game();
 		} else {
 			square.setDiscovered(true);
-			if (square.getNumber_of_neighbour_mines() == 0) {
+			if (open_neighbours_if_this_square_has_no_neighbour_mines && square.getNumber_of_neighbour_mines() == 0) {
 				square.getNeighbours().forEach(squareNeighbour -> {
 					if (!squareNeighbour.isDiscovered()) {
 						LOGGER.info("Also open " + squareNeighbour.getShort_description() + " because opened square "
 								+ square.getShort_description() + " is not surrounded by any mine");
-						open_square(squareNeighbour);
+						open_square(squareNeighbour, open_neighbours_if_this_square_has_no_neighbour_mines);
 					}
 				});
 			}
@@ -152,9 +151,20 @@ public class GameManager {
 		for (Square undiscovered_square : game.getGameField().getAll_squares_as_ordered_list().stream()
 				.filter(item -> !item.isDiscovered()).collect(Collectors.toList())) {
 			undiscovered_square.setDiscovered(true);
-			game.setLost();
 		}
+		game.setLost();
 
+	}
+
+	public boolean reveal_neighbours_if_as_many_neighbor_flags_as_neighbour_mines(Square square) {
+		int number_of_neighbour_flags = square.getNumber_of_neighbour_flags();
+		int number_of_neighbour_mines = square.getNumber_of_neighbour_mines();
+		if (number_of_neighbour_flags == number_of_neighbour_mines) {
+			square.getNeighbours().stream().filter(neighbour_square -> !neighbour_square.isContains_mine())
+					.forEach(neighbour_not_mine_square -> open_square(neighbour_not_mine_square, false));
+			return true;
+		}
+		return false;
 	}
 
 }

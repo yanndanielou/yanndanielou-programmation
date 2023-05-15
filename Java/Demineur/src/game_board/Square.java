@@ -3,6 +3,8 @@ package game_board;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -59,6 +61,12 @@ public class Square {
 
 	public int getNumber_of_neighbour_mines() {
 		return number_of_neighbor_mines;
+	}
+
+	public int getNumber_of_neighbour_flags() {
+		List<Square> neighbour_flags = neighbour_per_direction.values().stream().filter(square -> square.isFlagged())
+				.collect(Collectors.toList());
+		return neighbour_flags.size();
 	}
 
 	public void setContains_mine(boolean contains_mine) {
@@ -121,5 +129,9 @@ public class Square {
 
 	public Collection<Square> getNeighbours() {
 		return neighbour_per_direction.values();
+	}
+
+	public Game getGame() {
+		return game;
 	}
 }
