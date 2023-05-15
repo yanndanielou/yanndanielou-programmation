@@ -19,7 +19,7 @@ public class DemineurMain {
 		UserChoicesManager.getInstance().initialise();
 
 		DemineurMainViewFrame demineurMainView = new DemineurMainViewFrame();
-		GameManager.getInstance().setDemineurMainViewFrame(demineurMainView);
+		GameManager.getInstance().setDemineurMainView(demineurMainView);
 		
 		// Schedule a job for the event dispatch thread:
 		// creating and showing this application's GUI.

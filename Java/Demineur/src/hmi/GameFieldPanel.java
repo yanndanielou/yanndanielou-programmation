@@ -2,18 +2,13 @@ package hmi;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.plaf.metal.MetalButtonUI;
 
 import org.apache.logging.log4j.LogManager;
@@ -50,7 +45,10 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 	private Color default_button_foreground_color = null;
 	private Font default_button_font = null;
 
+	private DemineurMainViewFrame demineurMainViewFrame;
+
 	public GameFieldPanel(DemineurMainViewFrame demineurMainViewFrame) {
+		this.demineurMainViewFrame = demineurMainViewFrame;
 		initialize_icons();
 	}
 
@@ -69,14 +67,8 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 	}
 
 	private ImageIcon get_scalled_icon(String image_path) {
-
-		Image img = new ImageIcon(image_path).getImage();
-		Image scalled_image = img.getScaledInstance((int) (HMIConstants.ELEMENTARY_SQUARE_HEIGHT * 0.9),
-				(int) (HMIConstants.ELEMENTARY_SQUARE_WIDTH * 0.9), Image.SCALE_SMOOTH);
-
-		ImageIcon imageIcon = new ImageIcon(scalled_image);
-		return imageIcon;
-
+		return HMIUtils.get_scalled_icon(image_path, (int) (HMIConstants.ELEMENTARY_SQUARE_HEIGHT * 0.9),
+				(int) (HMIConstants.ELEMENTARY_SQUARE_WIDTH * 0.9));
 	}
 
 	public void initialize_gamefield(GameField gameField) {
@@ -114,7 +106,7 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 				add(jButton);
 
 				jButton.addActionListener(e -> {
-					GameManager.getInstance().open_square(square, true);
+					GameManager.getInstance().open_square(square);
 				});
 				jButton.addMouseListener(new SquareJButtonMouseListener(square));
 			}
@@ -209,13 +201,11 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 	@Override
 	public void on_game_cancelled(Game game) {
 		removeAll();
-		// all_squares = null;
+		demineurMainViewFrame.removeGameFieldPanel();
 	}
 
 	@Override
 	public void on_game_lost(Game game) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override

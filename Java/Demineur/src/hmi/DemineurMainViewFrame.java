@@ -15,7 +15,7 @@ import constants.HMIConstants;
 import game.Game;
 import game.GameStatusListener;
 
-public class DemineurMainViewFrame extends JFrame implements GameStatusListener {
+public class DemineurMainViewFrame extends JFrame implements DemineurMainViewGeneric {
 
 	private static final long serialVersionUID = 1443136088686746460L;
 
@@ -53,7 +53,7 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 	public void createAndShowGUI() {
 
 		setLayout(null);
-		
+
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		mainViewMenuBarManager.createMenu();
@@ -73,9 +73,8 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 		return mainViewMenuBarManager;
 	}
 
-	@Override
-	public void on_listen_to_game_status(Game game) {
-		
+	private void new_game(Game game) {
+
 		// Built first to know dimensions
 		gameFieldPanel = new GameFieldPanel(this);
 		gameFieldPanel.initialize_gamefield(game.getGameField());
@@ -96,21 +95,20 @@ public class DemineurMainViewFrame extends JFrame implements GameStatusListener 
 
 	}
 
-	@Override
-	public void on_game_cancelled(Game game) {
-		topPanel.on_game_cancelled(game);
+	public void removeTopPanel() {
 		remove(topPanel);
-		
-		gameFieldPanel.on_game_cancelled(game);
+	}
+
+	public void removeGameFieldPanel() {
 		remove(gameFieldPanel);
 	}
 
 	@Override
-	public void on_game_lost(Game game) {
-	}
+	public void register_to_game(Game game) {
+		new_game(game);
+		game.add_game_status_listener(topPanel);
+		game.add_game_status_listener(gameFieldPanel);
 
-	@Override
-	public void on_game_won(Game game) {
 	}
 
 }

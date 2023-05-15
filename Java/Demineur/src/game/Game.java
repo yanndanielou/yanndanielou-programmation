@@ -55,13 +55,17 @@ public class Game {
 	}
 
 	public void setLost() {
+		LOGGER.info("Game is lost!");
 		lost = true;
 		over = true;
+		game_status_listeners.forEach((game_status_listener) -> game_status_listener.on_game_lost(this));
 	}
 
 	public void setWon() {
+		LOGGER.info("Game is won!");
 		won = true;
 		over = true;
+		game_status_listeners.forEach((game_status_listener) -> game_status_listener.on_game_won(this));
 	}
 
 	public boolean isLost() {

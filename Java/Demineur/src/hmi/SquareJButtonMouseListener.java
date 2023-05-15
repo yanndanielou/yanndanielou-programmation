@@ -1,7 +1,7 @@
 package hmi;
 
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.SwingUtilities;
 
@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 import core.GameManager;
 import game_board.Square;
 
-public class SquareJButtonMouseListener implements MouseListener {
+public class SquareJButtonMouseListener extends MouseAdapter {
 	private static final Logger LOGGER = LogManager.getLogger(GameFieldPanel.class);
 
 	private Square square;
@@ -22,6 +22,10 @@ public class SquareJButtonMouseListener implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		if (square.isHighlighting_neighbours_during_click_in_progress()) {
+			square.unhighlight_unrevealed_neighbours_after_click();
+		}
+
 	}
 
 	@Override
@@ -29,14 +33,6 @@ public class SquareJButtonMouseListener implements MouseListener {
 		if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 1 && square.isDiscovered()) {
 			square.highlight_unrevealed_neighbours_because_click_in_progress();
 		}
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package core;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,6 +14,7 @@ import game_board.GameField;
 import game_board.NeighbourSquareDirection;
 import game_board.Square;
 import hmi.DemineurMainViewFrame;
+import hmi.DemineurMainViewGeneric;
 
 public class GameManager {
 
@@ -20,7 +22,7 @@ public class GameManager {
 	private static final Logger LOGGER = LogManager.getLogger(GameManager.class);
 
 	private Game game = null;
-	private DemineurMainViewFrame demineurMainViewFrame;
+	private DemineurMainViewGeneric demineurMainView;
 
 	private GameManager() {
 
@@ -46,7 +48,7 @@ public class GameManager {
 		LOGGER.info("New game with difficulty:" + gameDifficultyChosen);
 		GameField gameField = new GameField(gameDifficultyChosen.getWidth(), gameDifficultyChosen.getHeight());
 		game = new Game(gameDifficultyChosen, gameField);
-		game.add_game_status_listener(demineurMainViewFrame);
+		demineurMainView.register_to_game(game);
 		create_and_place_mines();
 		compute_neighbours_of_each_square();
 		compute_number_of_neighbour_mines_of_each_square();
@@ -103,11 +105,11 @@ public class GameManager {
 
 	}
 
-	public void setDemineurMainViewFrame(DemineurMainViewFrame demineurMainViewFrame) {
-		this.demineurMainViewFrame = demineurMainViewFrame;
+	public void setDemineurMainView(DemineurMainViewGeneric demineurMainView) {
+		this.demineurMainView = demineurMainView;
 	}
 
-	public void open_square(Square square, boolean open_neighbours_if_this_square_has_no_neighbour_mines) {
+	public void open_square(Square square) {
 
 		LOGGER.info("Open square " + square.getShort_description());
 
@@ -119,14 +121,24 @@ public class GameManager {
 			lose_game();
 		} else {
 			square.setDiscovered(true);
-			if (open_neighbours_if_this_square_has_no_neighbour_mines && square.getNumber_of_neighbour_mines() == 0) {
-				square.getNeighbours().forEach(squareNeighbour -> {
-					if (!squareNeighbour.isDiscovered()) {
-						LOGGER.info("Also open " + squareNeighbour.getShort_description() + " because opened square "
-								+ square.getShort_description() + " is not surrounded by any mine");
-						open_square(squareNeighbour, open_neighbours_if_this_square_has_no_neighbour_mines);
-					}
-				});
+
+			long number_undiscovered_squares = game.getGameField().getAll_squares_as_ordered_list().stream()
+					.filter(e -> !e.isDiscovered()).count();
+			long number_of_flagged_squares = game.getGameField().getAll_squares_as_ordered_list().stream()
+					.filter(e -> e.isFlagged()).count();
+			if ((number_undiscovered_squares - number_of_flagged_squares) == 0F) {
+				win_game();
+			} else {
+				if (square.getNumber_of_neighbour_mines() == 0) {
+					square.getNeighbours().forEach(squareNeighbour -> {
+						if (!squareNeighbour.isDiscovered()) {
+							LOGGER.info(
+									"Also open " + squareNeighbour.getShort_description() + " because opened square "
+											+ square.getShort_description() + " is not surrounded by any mine");
+							open_square(squareNeighbour);
+						}
+					});
+				}
 			}
 		}
 	}
@@ -156,12 +168,22 @@ public class GameManager {
 
 	}
 
+	private void win_game() {
+
+		for (Square undiscovered_square : game.getGameField().getAll_squares_as_ordered_list().stream()
+				.filter(item -> !item.isDiscovered()).collect(Collectors.toList())) {
+			undiscovered_square.setDiscovered(true);
+		}
+		game.setWon();
+
+	}
+
 	public boolean reveal_neighbours_if_as_many_neighbor_flags_as_neighbour_mines(Square square) {
 		int number_of_neighbour_flags = square.getNumber_of_neighbour_flags();
 		int number_of_neighbour_mines = square.getNumber_of_neighbour_mines();
 		if (number_of_neighbour_flags == number_of_neighbour_mines) {
 			square.getNeighbours().stream().filter(neighbour_square -> !neighbour_square.isContains_mine())
-					.forEach(neighbour_not_mine_square -> open_square(neighbour_not_mine_square, false));
+					.forEach(neighbour_not_mine_square -> open_square(neighbour_not_mine_square));
 			return true;
 		}
 		return false;
