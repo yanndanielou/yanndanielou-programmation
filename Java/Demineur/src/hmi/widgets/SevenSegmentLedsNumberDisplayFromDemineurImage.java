@@ -7,9 +7,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import hmi.DemineurMainViewFrame;
+
 public class SevenSegmentLedsNumberDisplayFromDemineurImage extends JPanel {
 
 	private static final long serialVersionUID = -5796505066525142407L;
+	private static final Logger LOGGER = LogManager.getLogger(SevenSegmentLedsNumberDisplayFromDemineurImage.class);
+
 
 	private ArrayList<ImageIcon> zero_to_nine_icons = new ArrayList<>();
 
@@ -45,14 +52,16 @@ public class SevenSegmentLedsNumberDisplayFromDemineurImage extends JPanel {
 					0);
 			add(digit_as_label);
 			digits_as_label.add(digit_as_label);
+			LOGGER.debug("Add digit at " + digit_as_label.getLocation() + " and size:" + digit_as_label.getSize());
 
 			if (digit < number_of_digits) {
 				JLabel horizontal_space_between_digits_as_label = new JLabel(horizontal_space_between_digits_icon);
-				horizontal_space_between_digits_as_label.setSize(horizontal_space_between_digits_icon.getIconHeight(),
+				horizontal_space_between_digits_as_label.setSize(horizontal_space_between_digits_icon.getIconWidth(),
 						horizontal_space_between_digits_icon.getIconHeight());
 				horizontal_space_between_digits_as_label.setLocation(digit_as_label.getX() + digit_as_label.getWidth(),
 						0);
 				add(horizontal_space_between_digits_as_label);
+				LOGGER.debug("Add horizontal_space_between_digits_as_label at " + horizontal_space_between_digits_as_label.getLocation() + " and size:" + horizontal_space_between_digits_as_label.getSize());
 			}
 
 		}
