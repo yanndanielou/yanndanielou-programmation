@@ -6,8 +6,7 @@ Attribute VB_Name = "Application_Main"
 
 
 Sub Main_macro()
-
-    
+	Call create_text_file()
 End Sub
 
 Private Sub create_text_file()
