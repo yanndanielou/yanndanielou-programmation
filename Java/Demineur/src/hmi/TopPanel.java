@@ -8,13 +8,14 @@ import javax.swing.JPanel;
 import constants.HMIConstants;
 import game.Game;
 import game.GameStatusListener;
+import hmi.widgets.SevenSegmentLedsNumberDisplayFromDemineurImage;
 
 public class TopPanel extends JPanel implements GameStatusListener {
 
 	private static final long serialVersionUID = -4722225029326344692L;
 
-	private JLabel remaining_unflagged_mines_label;
-	private JLabel game_duration_label;
+	private SevenSegmentLedsNumberDisplayFromDemineurImage remaining_unflagged_mines_label;
+	private SevenSegmentLedsNumberDisplayFromDemineurImage game_duration_label;
 	private JButton smiley_button;
 
 	private ImageIcon smiley_normal_icon;
@@ -31,9 +32,8 @@ public class TopPanel extends JPanel implements GameStatusListener {
 		setLayout(null);
 		setSize(width, height);
 
-		remaining_unflagged_mines_label = new JLabel();
-		remaining_unflagged_mines_label.setText("Remaining unfallged mines");
-		remaining_unflagged_mines_label.setSize(20, HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT);
+		remaining_unflagged_mines_label = new SevenSegmentLedsNumberDisplayFromDemineurImage(3,200, HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT);
+//		remaining_unflagged_mines_label.setSize(200, HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT);
 		remaining_unflagged_mines_label.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH,
 				HMIConstants.EXTERNAL_FRAME_WIDTH);
 		add(remaining_unflagged_mines_label);
@@ -54,12 +54,12 @@ public class TopPanel extends JPanel implements GameStatusListener {
 		smiley_game_won = get_scalled_icon("Images/smiley_game_won.PNG");
 		smiley_click_in_progress = get_scalled_icon("Images/smiley_click_in_progress.PNG");
 
-		game_duration_label = new JLabel();
-		game_duration_label.setText("Game Duration");
-		game_duration_label.setSize(20, HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT);
+		game_duration_label = new SevenSegmentLedsNumberDisplayFromDemineurImage(3,200, HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT);
+//		game_duration_label.setSize(20, HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT);
 		game_duration_label.setLocation(getWidth() - game_duration_label.getWidth() - HMIConstants.EXTERNAL_FRAME_WIDTH,
 				HMIConstants.EXTERNAL_FRAME_WIDTH);
 		add(game_duration_label);
+		
 
 	}
 
