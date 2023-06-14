@@ -1,0 +1,23 @@
+MATLAB:badsubscript
+Subscript indices must either be real positive integers or logicals.
+Error in interpole_size (line 11)
+Error in Determiner_cinematique_ATP (line 560)
+Error in define_consignes (line 363)
+Error in Simuler_marche (line 3425)
+Error in Lancement_ATSPlus (line 1272)
+Error in Smt3_ATSPlus (line 629)
+
+
+
+Rapport d'erreurs de l'outil
+Date de création du journal d'erreurs : 03/06/2023
+Heure de création du journal d'erreurs : 14:49:55
+
+MATLAB:badsubscript
+Subscript indices must either be real positive integers or logicals.
+Error in interpole_size (line 11)
+Error in Determiner_cinematique_ATP (line 560)
+Error in define_consignes (line 363)
+Error in Simuler_marche (line 3425)
+Error in Lancement_ATSPlus (line 1272)
+Error in Smt3_ATSPlus (line 629)
