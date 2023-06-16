@@ -2,4 +2,6 @@ ProduireSimplesRuns*.txt
 DC_SYS_*.xlsm
 ~$*
 *.xla
-
+*.m
+*.ver
+ADONF*
