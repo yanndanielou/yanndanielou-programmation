@@ -113,19 +113,19 @@ def SimulerSimpleRunSimulation(self, _url, _stepInSecond, _dwellTimeInSecond, _c
 
 
 #@execution_time 
-def ProduireSimplesRuns(self, _url, _stepInSecond, _dwellTimeInSecond, _PasSauvegarde, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix):
+def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_nom_train_as_list, _stepInSecond, _dwellTimeInSecond, _PasSauvegarde, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix):
     logging.info("Start calling ProduireSimplesRuns")
     start_time_ProduireSimplesRuns = time.time()
     numero_mission_elementaire_courante = 0
     nombre_simulations_smt3_effectuees = 0
-    nbMissionsElementaires = len(self.missionsElementaires.values())
+    nbMissionsElementaires = len(all_elementary_missions_names_as_list.values())
     
     output_file_name = "output\\ProduireSimplesRuns_xml_inputs_and_output-" + now_as_string_for_file_suffix + ".txt"
     output_file = open(output_file_name, "w")
     logging.info('Create output file:' + output_file_name)
 
 
-    for mE in self.missionsElementaires.values():
+    for mE in all_elementary_missions_names_as_list:
         numero_mission_elementaire_courante = numero_mission_elementaire_courante + 1
         LoggerConfig.printAndLogInfo(str(numero_mission_elementaire_courante) + " eme ME " + mE.nom + " sur " + str(nbMissionsElementaires) + " . Avancement:" + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
         start_time_mission_elementaire = time.time()
@@ -247,14 +247,12 @@ def Lancer_simulations_sur_smt3_ATSPlus(smt3_port, SMT2_Data_param_for_SMT3_laun
     now_as_datetime = datetime.datetime.now()
     now_as_string_for_file_suffix = now_as_datetime.strftime("%Y_%m_%d %H_%M_%S %f")
 
-#      simuResults = SimulationResultsSingleton.Load(SimulationResultsSingleton, "D:\\SMT3_generation\\SMT3\\Simulation.sme")
-
     ignoredMER = ['']
     LoggerConfig.printAndLogInfo("ignoredMER : " + str(ignoredMER)) 
 
     LoggerConfig.printAndLogInfo("ProduireSimplesRuns") 
     pas_sauvegarde = 10
-    ProduireSimplesRuns("http://127.0.0.1:" + str(smt3_port), 0.4, 30.0,pas_sauvegarde,1.1,ignoredMER,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix)
+    ProduireSimplesRuns("http://127.0.0.1:" + str(smt3_port), all_elementary_missions_names_as_list, all_nom_modele_as_list, all_nom_train_as_list, 0.4, 30.0,pas_sauvegarde,1.1,ignoredMER,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix)
   
     LoggerConfig.printAndLogInfo("End of application") 
     
