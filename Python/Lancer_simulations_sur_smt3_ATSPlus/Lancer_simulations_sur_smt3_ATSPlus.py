@@ -34,7 +34,7 @@ end_line_character_in_text_file = "\n"
 
 
 #used for sure 
-def SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, output_file, _ignoredMER = None):
+def SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, input_output_dump_file, _ignoredMER = None):
     #logging.info("Start calling SimulerSimpleRunSimulation")
     error = ""
 
@@ -72,35 +72,84 @@ def SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOn
     regulationTypeTree_1.text = "ACCELERATED_RUN_PROFILE"
 
     #ET.dump(travelTimesRequestTree)
-    result = ""
     travelTimesRequestTree_as_str = ET.tostring(travelTimesRequestTree, encoding='utf8', method='xml')
     element = ET.XML(travelTimesRequestTree_as_str)
     ET.indent(element)
     #LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
     
-    output_file.write("Send to SMT3 \n")
-    output_file.write(ET.tostring(element, encoding='unicode'))
-    output_file.write("\n")
+    input_output_dump_file.write("Send to SMT3 \n")
+    input_output_dump_file.write(ET.tostring(element, encoding='unicode'))
+    input_output_dump_file.write("\n")
 
 
     headers = {'Content-Type': 'application/xml'}
     full_url = _url + '/SMT3-REST-Server/computeTravelTimes'
     try:
-        r = requests.post(full_url, data=ET.tostring(travelTimesRequestTree), headers=headers)
+        received_from_smt3 = requests.post(full_url, data=ET.tostring(travelTimesRequestTree), headers=headers)
     except:
         print('Erreur de requête au serveur')
         #print(xml)
         quit()
-    r.raise_for_status()
-    logging.info("HTTP status:" +  str(r.status_code))
+    received_from_smt3.raise_for_status()
+    logging.info("HTTP status:" +  str(received_from_smt3.status_code))
     
-    element = ET.XML(r.text)
-    ET.indent(element)
-    #LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
+    received_from_smt3_text = received_from_smt3.text
+
+    received_from_smt3_element = ET.XML(received_from_smt3_text)
+    totalTravelTimeInSecond1 = received_from_smt3_element.get("totalTravelTimeInSecond")
+    simpleRunProfileResult1 = received_from_smt3_element.get("simpleRunProfileResult")
+    travelTimes1 = received_from_smt3_element.get("travelTimes")
+
+
+
+    received_from_smt3_as_ET = ET.fromstring(received_from_smt3_text)
+
+    received_from_smt3_as_tree = ET.ElementTree(received_from_smt3_as_ET)
+
+    received_from_smt3_as_tree_root = received_from_smt3_as_tree.getroot()
+    simpleRunProfileResult11 = received_from_smt3_as_tree_root.get('simpleRunProfileResult')
+    simpleRunProfileResult12 = received_from_smt3_as_tree_root.find('simpleRunProfileResult')
+
+
+    simpleRunProfileResult = received_from_smt3_as_ET.get('simpleRunProfileResult')
+    simpleRunProfileResult_travelTimes = received_from_smt3_as_ET.get('simpleRunProfileResult.travelTimes')
+    travelTimes2 = received_from_smt3_as_ET.get('travelTimes')
+
+    travelTimes3 = received_from_smt3_as_ET.find('simpleRunProfileResult')
+    error = received_from_smt3_as_ET.find('errorMessage')
     
-    output_file.write("Received from SMT3 \n")
-    output_file.write(ET.tostring(element, encoding='unicode'))
-    output_file.write("\n")
+    for child in received_from_smt3_as_tree_root:
+        print(child.tag, child.attrib)
+
+    #received_from_smt3_as_tree_root.
+    travelTimesaaa = received_from_smt3_as_tree_root.get('travelTimes')
+
+    find_all = received_from_smt3_as_tree_root.findall("simpleRunProfileResult.travelTimes")
+    find_all2 = received_from_smt3_as_tree_root.findall('travelTimes')
+
+    totalTravelTimeInSecond_text = ""
+    errorMessage_text = ""
+
+    if received_from_smt3_as_tree_root is not None:
+        travelTimes_element = received_from_smt3_as_tree_root.find('travelTimes')
+    #get_totalTravelTimeInSecond = travelTimes_element.get("totalTravelTimeInSecond")
+        if travelTimes_element is not None:
+            totalTravelTimeInSecond_element = travelTimes_element.find("totalTravelTimeInSecond")
+            if travelTimes_element is not None:
+                totalTravelTimeInSecond_text = totalTravelTimeInSecond_element.text
+    
+    
+    errorMessage_Element = received_from_smt3_as_tree_root.find('errorMessage')
+    if errorMessage_Element is not None:
+        errorMessage_text = errorMessage_Element.text
+
+
+    ET.indent(received_from_smt3_element)
+    #LoggerConfig.printAndLogInfo(ET.tostring(received_from_smt3_element, encoding='unicode'))
+    
+    input_output_dump_file.write("Received from SMT3 \n")
+    input_output_dump_file.write(ET.tostring(received_from_smt3_element, encoding='unicode'))
+    input_output_dump_file.write("\n")
 
 
 
@@ -118,7 +167,7 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
         os.makedirs(output_directory)
 
     output_file_name = output_directory + "\\ProduireSimplesRuns_xml_inputs_and_output-" + now_as_string_for_file_suffix + ".txt"
-    output_file = open(output_file_name, "w")
+    input_output_dump_file = open(output_file_name, "w")
     logging.info('Create output file:' + output_file_name)
 
     for elementary_mission_name in all_elementary_missions_names_as_list:
@@ -130,13 +179,13 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
             numero_modele = numero_modele + 1
             
             #Envoi de la requête
-            output_file.write("\n")
+            input_output_dump_file.write("\n")
             start_time_SimulerSimpleRunSimulation = time.time()
             nombre_simulations_smt3_effectuees = nombre_simulations_smt3_effectuees + 1
             LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"] ")
-            output_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"] " +  " : Simulation ["+elementary_mission_name+","+modele_name+"] ")
+            input_output_dump_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"] " +  " : Simulation ["+elementary_mission_name+","+modele_name+"] ")
 
-            SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, output_file, _ignoredMER)
+            SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, input_output_dump_file, _ignoredMER)
 
             elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
             LoggerConfig.printAndLogInfo("Simulation " + str(nombre_simulations_smt3_effectuees) + " [" + elementary_mission_name + "," + modele_name + "]" + ". computed in: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
@@ -147,13 +196,13 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
             
             if(not (nombre_simulations_smt3_effectuees % _PasSauvegarde)):
                 LoggerConfig.printAndLogInfo("Save output file with partial results")
-                output_file.flush()
+                input_output_dump_file.flush()
                 # typically the above line would do. however this is used to ensure that the file is written
-                os.fsync(output_file.fileno())
+                os.fsync(input_output_dump_file.fileno())
 
 
     logging.info('Close output file:' + output_file_name)
-    output_file.close()
+    input_output_dump_file.close()
     
 
 
