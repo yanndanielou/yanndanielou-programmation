@@ -95,37 +95,9 @@ def SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOn
     
     received_from_smt3_text = received_from_smt3.text
 
-    received_from_smt3_element = ET.XML(received_from_smt3_text)
-    totalTravelTimeInSecond1 = received_from_smt3_element.get("totalTravelTimeInSecond")
-    simpleRunProfileResult1 = received_from_smt3_element.get("simpleRunProfileResult")
-    travelTimes1 = received_from_smt3_element.get("travelTimes")
-
-
-
     received_from_smt3_as_ET = ET.fromstring(received_from_smt3_text)
-
     received_from_smt3_as_tree = ET.ElementTree(received_from_smt3_as_ET)
-
     received_from_smt3_as_tree_root = received_from_smt3_as_tree.getroot()
-    simpleRunProfileResult11 = received_from_smt3_as_tree_root.get('simpleRunProfileResult')
-    simpleRunProfileResult12 = received_from_smt3_as_tree_root.find('simpleRunProfileResult')
-
-
-    simpleRunProfileResult = received_from_smt3_as_ET.get('simpleRunProfileResult')
-    simpleRunProfileResult_travelTimes = received_from_smt3_as_ET.get('simpleRunProfileResult.travelTimes')
-    travelTimes2 = received_from_smt3_as_ET.get('travelTimes')
-
-    travelTimes3 = received_from_smt3_as_ET.find('simpleRunProfileResult')
-    error = received_from_smt3_as_ET.find('errorMessage')
-    
-    for child in received_from_smt3_as_tree_root:
-        print(child.tag, child.attrib)
-
-    #received_from_smt3_as_tree_root.
-    travelTimesaaa = received_from_smt3_as_tree_root.get('travelTimes')
-
-    find_all = received_from_smt3_as_tree_root.findall("simpleRunProfileResult.travelTimes")
-    find_all2 = received_from_smt3_as_tree_root.findall('travelTimes')
 
     totalTravelTimeInSecond_text = ""
     errorMessage_text = ""
@@ -138,12 +110,11 @@ def SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOn
             if travelTimes_element is not None:
                 totalTravelTimeInSecond_text = totalTravelTimeInSecond_element.text
     
-    
     errorMessage_Element = received_from_smt3_as_tree_root.find('errorMessage')
     if errorMessage_Element is not None:
         errorMessage_text = errorMessage_Element.text
 
-
+    received_from_smt3_element = ET.XML(received_from_smt3_text)
     ET.indent(received_from_smt3_element)
     #LoggerConfig.printAndLogInfo(ET.tostring(received_from_smt3_element, encoding='unicode'))
     
