@@ -546,7 +546,7 @@ def open_text_file_and_return_lines(input_file_name):
     printAndLogInfo('Read input file:' + input_file_name)
     input_file_read = input_file.read()
     
-    printAndLogInfo('Close input file:' + input_SMT2_Data_mE_file_name)
+    printAndLogInfo('Close input file:' + input_file_name)
     input_file.close()
 
     input_file_lines = input_file_read.split(end_line_character_in_text_file)
