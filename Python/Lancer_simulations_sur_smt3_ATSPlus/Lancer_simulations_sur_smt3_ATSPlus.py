@@ -143,7 +143,7 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
             
             
             if elapsed_time_SimulerSimpleRunSimulation > 4:
-                LoggerConfig.printAndLogWarning("SMT3 was slow for mission elementaire " + str(numero_modele) + " [" + elementary_mission_name + "," + modele_name.nom + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
+                LoggerConfig.printAndLogWarning("SMT3 was slow for mission elementaire " + str(numero_modele) + " [" + elementary_mission_name + "," + modele_name + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
             
             if(not (nombre_simulations_smt3_effectuees % _PasSauvegarde)):
                 LoggerConfig.printAndLogInfo("Save output file with partial results")
