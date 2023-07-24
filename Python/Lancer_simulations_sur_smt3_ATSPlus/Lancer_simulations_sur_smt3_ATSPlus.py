@@ -81,11 +81,15 @@ def SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOn
     input_output_dump_file.write(ET.tostring(element, encoding='unicode'))
     input_output_dump_file.write("\n")
 
+    elapsed_time_simulation_SMT3 = None
 
     headers = {'Content-Type': 'application/xml'}
     full_url = _url + '/SMT3-REST-Server/computeTravelTimes'
     try:
+        start_time_simulation_SMT3 = time.time()
         received_from_smt3 = requests.post(full_url, data=ET.tostring(travelTimesRequestTree), headers=headers)
+        end_time_simulation_SMT3 = time.time()
+        elapsed_time_simulation_SMT3 = end_time_simulation_SMT3 - start_time_simulation_SMT3
     except:
         print('Erreur de requête au serveur')
         #print(xml)
@@ -130,6 +134,7 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
     start_time_ProduireSimplesRuns = time.time()
     numero_mission_elementaire_courante = 0
     nombre_simulations_smt3_effectuees = 0
+
     nbMissionsElementaires = len(all_elementary_missions_names_as_list)
     
     output_directory = "output"
@@ -227,6 +232,7 @@ def retrieve_all_field_string_content(SMT2_Data_file_name_with_path, field_name)
     SMT2_Data_file_content_description = SMT2_Data_file_content_description.replace(" ","")
 
     field_string_content_as_list = SMT2_Data_file_content_description.split(",")
+    #field_string_content_as_list.append("okok")
 
     LoggerConfig.printAndLogInfo(SMT2_Data_file_name_with_path + " has " + str(len(field_string_content_as_list)) + " objects " + field_name)
 
