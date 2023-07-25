@@ -29,6 +29,7 @@ import time
 
 #param
 end_line_character_in_text_file = "\n"
+csv_fields_separator = ";"
 
 
 class SMT3SimulationResult:
@@ -152,25 +153,28 @@ def SimulerSimpleRunSimulation(_url, stepInSecond, dwellTimeInSecond, _coeffOnRu
     return sMT3SimulationResult
 
 
-def saveResult(sMT3SimulationResult, input_output_dump_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees, _PasSauvegarde):
+def saveResult(sMT3SimulationResult, input_output_dump_file, result_csv_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees, _PasSauvegarde):
 
     
-    input_output_dump_file.write("\n")
+    input_output_dump_file.write(end_line_character_in_text_file)
     input_output_dump_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"] " +  " : Simulation ["+elementary_mission_name+","+modele_name+"] ")
 
-    input_output_dump_file.write("Send to SMT3 \n")
+    input_output_dump_file.write("Send to SMT3 "+ end_line_character_in_text_file)
     input_output_dump_file.write(sMT3SimulationResult.xml_request_to_SMT3_as_indented_text)
-    input_output_dump_file.write("\n")
+    input_output_dump_file.write(end_line_character_in_text_file)
     
 
-    input_output_dump_file.write("Received from SMT3 \n")
+    input_output_dump_file.write("Received from SMT3 " + end_line_character_in_text_file)
     input_output_dump_file.write(sMT3SimulationResult.xml_response_from_smt3_response_as_indented_text)
-    input_output_dump_file.write("\n")
+    input_output_dump_file.write(end_line_character_in_text_file)
 
+
+    result_csv_file.write(elementary_mission_name + csv_fields_separator + modele_name + csv_fields_separator + str(sMT3SimulationResult.smt3_execution_time) + csv_fields_separator + sMT3SimulationResult.totalTravelTimeInSecond_text + csv_fields_separator + sMT3SimulationResult.error_text +  end_line_character_in_text_file)
 
     if(not (nombre_simulations_smt3_effectuees % _PasSauvegarde)):
         LoggerConfig.printAndLogInfo("Save output file with partial results")
         input_output_dump_file.flush()
+        result_csv_file.flush()
         # typically the above line would do. however this is used to ensure that the file is written
         os.fsync(input_output_dump_file.fileno())
 
@@ -206,6 +210,7 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
 
     result_csv_file_name =  "ProduireSimplesRuns_csv_results_" + now_as_string_for_file_suffix + ".csv"
     result_csv_file = create_output_text_file(output_directory, result_csv_file_name)
+    result_csv_file.write("elementary_mission_name" + csv_fields_separator + "modele_name" + csv_fields_separator + "sMT3SimulationResult.smt3_execution_time" + csv_fields_separator + "sMT3SimulationResult.totalTravelTimeInSecond_text" + csv_fields_separator + "sMT3SimulationResult.error_text" +  end_line_character_in_text_file)
 
     for elementary_mission_name in all_elementary_missions_names_as_list:
         numero_mission_elementaire_courante = numero_mission_elementaire_courante + 1
@@ -230,7 +235,7 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
                 LoggerConfig.printAndLogWarning("SMT3 was slow for mission elementaire " + str(numero_modele) + " [" + elementary_mission_name + "," + modele_name + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
             
 
-            saveResult(sMT3SimulationResult, input_output_dump_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees, _PasSauvegarde)
+            saveResult(sMT3SimulationResult, input_output_dump_file, result_csv_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees, _PasSauvegarde)
 
     logging.info('Close output files:' + input_output_dump_file_name)
     input_output_dump_file.close()
@@ -288,6 +293,7 @@ def retrieve_all_field_string_content(SMT2_Data_file_name_with_path, field_name)
     SMT2_Data_file_content_description = SMT2_Data_file_content_description.replace(" ","")
 
     field_string_content_as_list = SMT2_Data_file_content_description.split(",")
+    field_string_content_as_list.sort()
     #field_string_content_as_list.append("okok")
 
     LoggerConfig.printAndLogInfo(SMT2_Data_file_name_with_path + " has " + str(len(field_string_content_as_list)) + " objects " + field_name)
