@@ -31,18 +31,25 @@ import time
 end_line_character_in_text_file = "\n"
 
 
+class SMT3SimulationResult:
+    #@execution_time 
+    def __init__(self, xml_request_to_SMT3_as_indented_text, xml_response_from_smt3_response_as_indented_text, error_text, totalTravelTimeInSecond_text, smt3_execution_time):
+        logging.info("Start calling __init__")
+        self.xml_request_to_SMT3_as_indented_text = xml_request_to_SMT3_as_indented_text
+        self.xml_response_from_smt3_response_as_indented_text = xml_response_from_smt3_response_as_indented_text
+        self.error_text = error_text
+        self.totalTravelTimeInSecond_text = totalTravelTimeInSecond_text
+        self.smt3_execution_time = smt3_execution_time
 
 
-#used for sure 
-def SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, input_output_dump_file, _ignoredMER = None):
-    #logging.info("Start calling SimulerSimpleRunSimulation")
-    error = ""
+def prepare_SMT3_Request(stepInSecond, dwellTimeInSecond, elementary_mission_name, modele_name):
+
 
     travelTimesRequestTree = ET.Element('travelTimesRequest')
     computationStepInSecondTree = ET.SubElement(travelTimesRequestTree, 'computationStepInSecond')
-    computationStepInSecondTree.text = str(_stepInSecond)
+    computationStepInSecondTree.text = str(stepInSecond)
     dwellTimeInSecondTree = ET.SubElement(travelTimesRequestTree, 'dwellTimeInSecond')
-    dwellTimeInSecondTree.text = str(_dwellTimeInSecond)
+    dwellTimeInSecondTree.text = str(dwellTimeInSecond)
     simulationTypeTree = ET.SubElement(travelTimesRequestTree, 'simulationType')
     simulationTypeTree.text = "SIMPLE_RUN_PROFILE_SIMULATION"
     trainsTree = ET.SubElement(travelTimesRequestTree, 'trains')
@@ -71,29 +78,12 @@ def SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOn
     regulationTypeTree_1 = ET.SubElement(trainTree_1, 'regulationType')
     regulationTypeTree_1.text = "ACCELERATED_RUN_PROFILE"
 
-    #ET.dump(travelTimesRequestTree)
-    travelTimesRequestTree_as_str = ET.tostring(travelTimesRequestTree, encoding='utf8', method='xml')
-    element = ET.XML(travelTimesRequestTree_as_str)
-    ET.indent(element)
-    #LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
-    
-    input_output_dump_file.write("Send to SMT3 \n")
-    input_output_dump_file.write(ET.tostring(element, encoding='unicode'))
-    input_output_dump_file.write("\n")
+    return travelTimesRequestTree
 
-    elapsed_time_simulation_SMT3 = None
 
-    headers = {'Content-Type': 'application/xml'}
-    full_url = _url + '/SMT3-REST-Server/computeTravelTimes'
-    try:
-        start_time_simulation_SMT3 = time.time()
-        received_from_smt3 = requests.post(full_url, data=ET.tostring(travelTimesRequestTree), headers=headers)
-        end_time_simulation_SMT3 = time.time()
-        elapsed_time_simulation_SMT3 = end_time_simulation_SMT3 - start_time_simulation_SMT3
-    except:
-        print('Erreur de requête au serveur')
-        #print(xml)
-        quit()
+def decode_smt3_result(xml_request_to_SMT3_as_indented_text, received_from_smt3, input_output_dump_file, elapsed_time_simulation_SMT3):
+
+    error = ""
     received_from_smt3.raise_for_status()
     logging.info("HTTP status:" +  str(received_from_smt3.status_code))
     
@@ -123,10 +113,49 @@ def SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOn
     #LoggerConfig.printAndLogInfo(ET.tostring(received_from_smt3_element, encoding='unicode'))
     
     input_output_dump_file.write("Received from SMT3 \n")
-    input_output_dump_file.write(ET.tostring(received_from_smt3_element, encoding='unicode'))
+    xml_response_from_smt3_response_as_indented_text = ET.tostring(received_from_smt3_element, encoding='unicode')
+    input_output_dump_file.write(xml_response_from_smt3_response_as_indented_text)
     input_output_dump_file.write("\n")
 
 
+    sMT3SimulationResult = SMT3SimulationResult(xml_request_to_SMT3_as_indented_text, xml_response_from_smt3_response_as_indented_text, errorMessage_text, totalTravelTimeInSecond_text, elapsed_time_simulation_SMT3)
+    return sMT3SimulationResult
+
+
+#used for sure 
+def SimulerSimpleRunSimulation(_url, stepInSecond, dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, input_output_dump_file, _ignoredMER = None):
+    #logging.info("Start calling SimulerSimpleRunSimulation")
+
+
+    travelTimesRequestTree = prepare_SMT3_Request(stepInSecond, dwellTimeInSecond, elementary_mission_name, modele_name)
+    #ET.dump(travelTimesRequestTree)
+    travelTimesRequestTree_as_str = ET.tostring(travelTimesRequestTree, encoding='utf8', method='xml')
+    element = ET.XML(travelTimesRequestTree_as_str)
+    ET.indent(element)
+    #LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
+    
+    xml_request_to_SMT3_as_indented_text = ET.tostring(element, encoding='unicode')
+
+    input_output_dump_file.write("Send to SMT3 \n")
+    input_output_dump_file.write(xml_request_to_SMT3_as_indented_text)
+    input_output_dump_file.write("\n")
+
+    elapsed_time_simulation_SMT3 = None
+
+    headers = {'Content-Type': 'application/xml'}
+    full_url = _url + '/SMT3-REST-Server/computeTravelTimes'
+    try:
+        start_time_simulation_SMT3 = time.time()
+        received_from_smt3 = requests.post(full_url, data=ET.tostring(travelTimesRequestTree), headers=headers)
+        end_time_simulation_SMT3 = time.time()
+        elapsed_time_simulation_SMT3 = end_time_simulation_SMT3 - start_time_simulation_SMT3
+    except:
+        print('Erreur de requête au serveur')
+        #print(xml)
+        quit()
+    
+    sMT3SimulationResult = decode_smt3_result(xml_request_to_SMT3_as_indented_text, received_from_smt3, input_output_dump_file, elapsed_time_simulation_SMT3)
+    return sMT3SimulationResult
 
 #@execution_time 
 def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_nom_train_as_list, _stepInSecond, _dwellTimeInSecond, _PasSauvegarde, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix):
@@ -142,9 +171,9 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
         LoggerConfig.printAndLogInfo('Create output directory:' + output_directory)
         os.makedirs(output_directory)
 
-    output_file_name = output_directory + "\\ProduireSimplesRuns_xml_inputs_and_output-" + now_as_string_for_file_suffix + ".txt"
-    input_output_dump_file = open(output_file_name, "w")
-    logging.info('Create output file:' + output_file_name)
+    input_output_dump_file_name = output_directory + "\\ProduireSimplesRuns_xml_inputs_and_output-" + now_as_string_for_file_suffix + ".txt"
+    input_output_dump_file = open(input_output_dump_file_name, "w")
+    logging.info('Create output file:' + input_output_dump_file_name)
 
     for elementary_mission_name in all_elementary_missions_names_as_list:
         numero_mission_elementaire_courante = numero_mission_elementaire_courante + 1
@@ -161,7 +190,7 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
             LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"] ")
             input_output_dump_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"] " +  " : Simulation ["+elementary_mission_name+","+modele_name+"] ")
 
-            SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, input_output_dump_file, _ignoredMER)
+            sMT3SimulationResult = SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, input_output_dump_file, _ignoredMER)
 
             elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
             LoggerConfig.printAndLogInfo("Simulation " + str(nombre_simulations_smt3_effectuees) + " [" + elementary_mission_name + "," + modele_name + "]" + ". computed in: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
@@ -177,7 +206,7 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
                 os.fsync(input_output_dump_file.fileno())
 
 
-    logging.info('Close output file:' + output_file_name)
+    logging.info('Close output file:' + input_output_dump_file_name)
     input_output_dump_file.close()
     
 
