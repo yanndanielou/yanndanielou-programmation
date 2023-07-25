@@ -139,6 +139,7 @@ def SimulerSimpleRunSimulation(_url, stepInSecond, dwellTimeInSecond, _coeffOnRu
     full_url = _url + '/SMT3-REST-Server/computeTravelTimes'
     try:
         start_time_simulation_SMT3 = time.time()
+        
         received_from_smt3 = requests.post(full_url, data=ET.tostring(travelTimesRequestTree), headers=headers)
         end_time_simulation_SMT3 = time.time()
         elapsed_time_simulation_SMT3 = end_time_simulation_SMT3 - start_time_simulation_SMT3
@@ -173,6 +174,18 @@ def saveResult(sMT3SimulationResult, input_output_dump_file, numero_mission_elem
         # typically the above line would do. however this is used to ensure that the file is written
         os.fsync(input_output_dump_file.fileno())
 
+def create_output_text_file(output_directory, output_file_name):
+    
+    if not os.path.exists(output_directory):
+        LoggerConfig.printAndLogInfo('Create output directory:' + output_directory)
+        os.makedirs(output_directory)
+
+    output_file_full_path = output_directory +  "\\" + output_file_name
+
+    input_output_dump_file = open(output_file_full_path, "w")
+    logging.info('Create output file:' + output_file_name)
+
+    return input_output_dump_file
 
 #@execution_time 
 def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_nom_train_as_list, _stepInSecond, _dwellTimeInSecond, _PasSauvegarde, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix):
@@ -188,9 +201,11 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
         LoggerConfig.printAndLogInfo('Create output directory:' + output_directory)
         os.makedirs(output_directory)
 
-    input_output_dump_file_name = output_directory + "\\ProduireSimplesRuns_xml_inputs_and_output-" + now_as_string_for_file_suffix + ".txt"
-    input_output_dump_file = open(input_output_dump_file_name, "w")
-    logging.info('Create output file:' + input_output_dump_file_name)
+    input_output_dump_file_name = "ProduireSimplesRuns_xml_inputs_and_output_" + now_as_string_for_file_suffix + ".txt"
+    input_output_dump_file = create_output_text_file(output_directory, input_output_dump_file_name)
+
+    result_csv_file_name =  "ProduireSimplesRuns_csv_results_" + now_as_string_for_file_suffix + ".csv"
+    result_csv_file = create_output_text_file(output_directory, result_csv_file_name)
 
     for elementary_mission_name in all_elementary_missions_names_as_list:
         numero_mission_elementaire_courante = numero_mission_elementaire_courante + 1
@@ -217,8 +232,9 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
 
             saveResult(sMT3SimulationResult, input_output_dump_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees, _PasSauvegarde)
 
-    logging.info('Close output file:' + input_output_dump_file_name)
+    logging.info('Close output files:' + input_output_dump_file_name)
     input_output_dump_file.close()
+    result_csv_file.close()
     
 
 
