@@ -123,7 +123,6 @@ def decode_smt3_result(xml_request_to_SMT3_as_indented_text, received_from_smt3,
 def SimulerSimpleRunSimulation(_url, stepInSecond, dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, _ignoredMER = None):
     #logging.info("Start calling SimulerSimpleRunSimulation")
 
-
     travelTimesRequestTree = prepare_SMT3_Request(stepInSecond, dwellTimeInSecond, elementary_mission_name, modele_name)
     #ET.dump(travelTimesRequestTree)
     travelTimesRequestTree_as_str = ET.tostring(travelTimesRequestTree, encoding='utf8', method='xml')
@@ -150,6 +149,30 @@ def SimulerSimpleRunSimulation(_url, stepInSecond, dwellTimeInSecond, _coeffOnRu
     
     sMT3SimulationResult = decode_smt3_result(xml_request_to_SMT3_as_indented_text, received_from_smt3, elapsed_time_simulation_SMT3)
     return sMT3SimulationResult
+
+
+def saveResult(sMT3SimulationResult, input_output_dump_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees, _PasSauvegarde):
+
+    
+    input_output_dump_file.write("\n")
+    input_output_dump_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"] " +  " : Simulation ["+elementary_mission_name+","+modele_name+"] ")
+
+    input_output_dump_file.write("Send to SMT3 \n")
+    input_output_dump_file.write(sMT3SimulationResult.xml_request_to_SMT3_as_indented_text)
+    input_output_dump_file.write("\n")
+    
+
+    input_output_dump_file.write("Received from SMT3 \n")
+    input_output_dump_file.write(sMT3SimulationResult.xml_response_from_smt3_response_as_indented_text)
+    input_output_dump_file.write("\n")
+
+
+    if(not (nombre_simulations_smt3_effectuees % _PasSauvegarde)):
+        LoggerConfig.printAndLogInfo("Save output file with partial results")
+        input_output_dump_file.flush()
+        # typically the above line would do. however this is used to ensure that the file is written
+        os.fsync(input_output_dump_file.fileno())
+
 
 #@execution_time 
 def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_nom_train_as_list, _stepInSecond, _dwellTimeInSecond, _PasSauvegarde, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix):
@@ -192,26 +215,7 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
                 LoggerConfig.printAndLogWarning("SMT3 was slow for mission elementaire " + str(numero_modele) + " [" + elementary_mission_name + "," + modele_name + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
             
 
-
-            input_output_dump_file.write("\n")
-            input_output_dump_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"] " +  " : Simulation ["+elementary_mission_name+","+modele_name+"] ")
-
-            input_output_dump_file.write("Send to SMT3 \n")
-            input_output_dump_file.write(sMT3SimulationResult.xml_request_to_SMT3_as_indented_text)
-            input_output_dump_file.write("\n")
-            
-
-            input_output_dump_file.write("Received from SMT3 \n")
-            input_output_dump_file.write(sMT3SimulationResult.xml_response_from_smt3_response_as_indented_text)
-            input_output_dump_file.write("\n")
-
-
-            if(not (nombre_simulations_smt3_effectuees % _PasSauvegarde)):
-                LoggerConfig.printAndLogInfo("Save output file with partial results")
-                input_output_dump_file.flush()
-                # typically the above line would do. however this is used to ensure that the file is written
-                os.fsync(input_output_dump_file.fileno())
-
+            saveResult(sMT3SimulationResult, input_output_dump_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees, _PasSauvegarde)
 
     logging.info('Close output file:' + input_output_dump_file_name)
     input_output_dump_file.close()
@@ -297,7 +301,14 @@ def Lancer_simulations_sur_smt3_ATSPlus(smt3_port, SMT2_Data_param_for_SMT3_laun
 
     LoggerConfig.printAndLogInfo("ProduireSimplesRuns") 
     pas_sauvegarde = 10
-    ProduireSimplesRuns("http://127.0.0.1:" + str(smt3_port), all_elementary_missions_names_as_list, all_nom_modele_as_list, all_nom_train_as_list, 0.4, 30.0,pas_sauvegarde,1.1,ignoredMER,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix)
+
+
+    url = "http://127.0.0.1:" + str(smt3_port)
+    step_in_second = 0.4
+
+    dwell_time_in_second = 30.0
+    coeff_on_run_time = 1.1
+    ProduireSimplesRuns(url, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_nom_train_as_list, step_in_second, dwell_time_in_second,pas_sauvegarde,coeff_on_run_time,ignoredMER,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix)
   
     LoggerConfig.printAndLogInfo("End of application") 
     
