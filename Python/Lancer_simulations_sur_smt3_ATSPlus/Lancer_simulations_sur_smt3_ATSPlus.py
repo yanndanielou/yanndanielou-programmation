@@ -185,7 +185,8 @@ def saveSimulation(sMT3Simulation, input_output_dump_file, result_csv_file, nume
     input_output_dump_file.write(end_line_character_in_text_file)
 
 
-    result_csv_file.write(elementary_mission_name + csv_fields_separator + modele_name + csv_fields_separator + str(sMT3SimulationResult.smt3_execution_time) + csv_fields_separator + sMT3SimulationResult.totalTravelTimeInSecond_text + csv_fields_separator + sMT3SimulationResult.error_text +  end_line_character_in_text_file)
+
+    result_csv_file.write(elementary_mission_name + csv_fields_separator + modele_name + csv_fields_separator + str(sMT3SimulationRequest.stepInSecond) + csv_fields_separator + str(sMT3SimulationRequest.dwellTimeInSecond) + csv_fields_separator + str(sMT3SimulationResult.smt3_execution_time) + csv_fields_separator + sMT3SimulationResult.totalTravelTimeInSecond_text + csv_fields_separator + sMT3SimulationResult.error_text +  end_line_character_in_text_file)
 
     if(not (nombre_simulations_smt3_effectuees % _PasSauvegarde)):
         LoggerConfig.printAndLogInfo("Save output file with partial results")
@@ -226,7 +227,7 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
 
     result_csv_file_name =  "ProduireSimplesRuns_csv_results_" + now_as_string_for_file_suffix + ".csv"
     result_csv_file = create_output_text_file(output_directory, result_csv_file_name)
-    result_csv_file.write("elementary_mission_name" + csv_fields_separator + "modele_name" + csv_fields_separator + "sMT3SimulationResult.smt3_execution_time" + csv_fields_separator + "sMT3SimulationResult.totalTravelTimeInSecond_text" + csv_fields_separator + "sMT3SimulationResult.error_text" +  end_line_character_in_text_file)
+    result_csv_file.write("elementary_mission_name" + csv_fields_separator + "modele_name" + csv_fields_separator + "stepInSecond" + csv_fields_separator + "dwellTimeInSecond" + csv_fields_separator + "sMT3SimulationResult.smt3_execution_time" + csv_fields_separator + "sMT3SimulationResult.totalTravelTimeInSecond_text" + csv_fields_separator + "sMT3SimulationResult.error_text" +  end_line_character_in_text_file)
 
     for elementary_mission_name in all_elementary_missions_names_as_list:
         numero_mission_elementaire_courante = numero_mission_elementaire_courante + 1
