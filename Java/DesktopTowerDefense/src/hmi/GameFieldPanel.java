@@ -13,12 +13,12 @@ import javax.swing.JPanel;
 import constants.HMIConstants;
 import game.Game;
 import game.GameStatusListener;
-import game.SquareListener;
-import game_board.GameField;
+import game.GameBoardPointListener;
+import game_board.GameBoard;
 import game_board.GameBoardPoint;
 import game_board.SquaresColumn;
 
-public class GameFieldPanel extends JPanel implements GameStatusListener, SquareListener {
+public class GameFieldPanel extends JPanel implements GameStatusListener, GameBoardPointListener {
 
 	private static final long serialVersionUID = -1541008040602802454L;
 
@@ -39,7 +39,7 @@ public class GameFieldPanel extends JPanel implements GameStatusListener, Square
 		this.DesktopTowerDefenseMainViewFrame = DesktopTowerDefenseMainViewFrame;
 	}
 
-	public void initialize_gamefield(GameField gameField) {
+	public void initialize_gamefield(GameBoard gameField) {
 		setLayout(null);
 		setSize(gameField.getTotalWidth(), gameField.getTotalHeight());
 

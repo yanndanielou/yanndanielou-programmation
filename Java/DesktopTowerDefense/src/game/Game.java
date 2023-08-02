@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import game_board.GameField;
+import game_board.GameBoard;
 
 public class Game {
 	private static final Logger LOGGER = LogManager.getLogger(Game.class);
@@ -13,9 +13,7 @@ public class Game {
 	private ArrayList<GameListener> game_listeners = new ArrayList<>();
 	private ArrayList<GameStatusListener> game_status_listeners = new ArrayList<>();
 
-	private GameDifficulty gameDifficulty;
-
-	private GameField gameField;
+	private GameBoard gameBoard;
 
 	private boolean lost = false;
 	private boolean over = false;
@@ -23,8 +21,8 @@ public class Game {
 
 	private boolean begun = false;
 
-	public Game(GameField gameField) {
-		this.gameField = gameField;
+	public Game(GameBoard gameField) {
+		this.gameBoard = gameField;
 		gameField.setGame(this);
 	}
 
@@ -38,16 +36,8 @@ public class Game {
 		game_status_listeners.add(listener);
 	}
 
-	public GameField getGameField() {
-		return gameField;
-	}
-
 	public void cancel() {
 		game_status_listeners.forEach((game_status_listener) -> game_status_listener.on_game_cancelled(this));
-	}
-
-	public GameDifficulty getDifficulty() {
-		return gameDifficulty;
 	}
 
 	public void setLost() {
@@ -83,6 +73,10 @@ public class Game {
 	public void setBegun() {
 		this.begun = true;
 		LOGGER.info("Game has begun. " + this);
+	}
+
+	public GameBoard getGameBoard() {
+		return gameBoard;
 	}
 
 }

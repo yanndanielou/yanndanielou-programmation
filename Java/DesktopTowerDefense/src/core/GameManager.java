@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import builders.GameBoardModelBuilder;
 import constants.Constants;
 import game.Game;
-import game_board.GameField;
+import game_board.GameBoard;
 import hmi.DesktopTowerDefenseMainViewGeneric;
 
 public class GameManager {
@@ -40,7 +40,7 @@ public class GameManager {
 		LOGGER.info("New game");
 
 		GameBoardModelBuilder gameBoardModelBuilder = new GameBoardModelBuilder(Constants.GAME_BOARD_JSON_DATA_MODEL_FILE_PATH);
-		GameField gameField = new GameField(gameBoardModelBuilder.getGameBoardDataModel());
+		GameBoard gameField = new GameBoard(gameBoardModelBuilder.getGameBoardDataModel());
 		game = new Game(gameField);
 		DesktopTowerDefenseMainView.register_to_game(game);
 

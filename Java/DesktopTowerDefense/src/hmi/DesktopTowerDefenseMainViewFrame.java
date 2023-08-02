@@ -76,7 +76,7 @@ public class DesktopTowerDefenseMainViewFrame extends JFrame implements DesktopT
 
 		// Built first to know dimensions
 		gameFieldPanel = new GameFieldPanel(this);
-		gameFieldPanel.initialize_gamefield(game.getGameField());
+		gameFieldPanel.initialize_gamefield(game.getGameBoard());
 
 		topPanel = new TopPanel(this, gameFieldPanel.getWidth(), HMIConstants.TOP_PANEL_HEIGHT);
 		add(topPanel);

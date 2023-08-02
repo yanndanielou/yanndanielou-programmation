@@ -1,0 +1,79 @@
+{
+   "simple_tower_bomb_data_model": {
+		 "description":"simple_tower_bomb_data_model"
+		 "height": 12,
+		 "width":11,
+		 "fixed_representation_image_path": "data/simple_tower_bomb.png",
+			"levels": [
+				{
+					"level_number":1,
+					"speed":5
+				},
+				{
+					"level_number":2,
+					"speed":5
+				},
+				{
+					"level_number":3,
+					"speed":5
+				}
+			]
+    },
+   "simple_tower_data_model": {
+		 "description":"Cheap tower that fires pellets."
+		 "height": 61,
+		 "width":61,
+			"levels": [
+				{
+					"level_number":1,
+					"cost":5,
+					"damage":10,
+					"range":60,
+					"fire_speed":"SLOW",
+					"sell_value":3
+				},
+				{
+					"level_number":2,
+					"cost":5,
+					"damage":20,
+					"range":60,
+					"fire_speed":"SLOW",
+					"sell_value":7,
+					"upgrade_time_in_seconds":3
+				},
+				{
+					"level_number":3,
+					"cost":10,
+					"damage":40,
+					"range":60,
+					"fire_speed":"SLOW",
+					"sell_value":15,
+					"upgrade_time_in_seconds":6
+				}
+			]
+    },
+   "normal_attacker": {
+		 "description":"normal_attacker"
+		 "height": 24,
+		 "width":24,
+		 "imune":false,
+		 "flying":false,
+			"levels": [
+				{
+					"level_number":1,
+					"health":20,
+					"speed":1
+				},
+				{
+					"level_number":2,
+					"health":26,
+					"speed":1
+				},
+				{
+					"level_number":3,
+					"health":30,
+					"speed":1
+				}
+			]
+    }
+}
