@@ -14,10 +14,10 @@ import belligerents.listeners.GameObjectListerner;
 public class SimpleTowerBomb extends Weapon {
 	private static final Logger LOGGER = LogManager.getLogger(SimpleTowerBomb.class);
 
-	public SimpleTowerBomb(AllySimpleBombDataModel genericObjectDataModel, int x, int y, int x_speed, Game game,
-			Belligerent parent_belligerent) {
+	public SimpleTowerBomb(Bpù genericObjectDataModel, int x, int y, int x_speed, Game game,
+			Belligerent parent_belligerent, Belligerent target_belligerent) {
 		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()),
-				genericObjectDataModel.getY_speed(), game, parent_belligerent);
+				genericObjectDataModel.getY_speed(), game, parent_belligerent, target_belligerent);
 		setX_speed(x_speed);
 	}
 
@@ -100,7 +100,7 @@ public class SimpleTowerBomb extends Weapon {
 	@Override
 	protected void down_border_of_game_board_reached() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

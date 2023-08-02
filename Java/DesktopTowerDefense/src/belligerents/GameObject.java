@@ -183,12 +183,6 @@ public abstract class GameObject {
 		return has_moved;
 	}
 
-	protected abstract void rocks_reached();
-
-	protected abstract void ocean_bed_reached();
-
-	protected abstract void top_of_object_reaches_surface();
-
 	public abstract BufferedImage get_graphical_representation_as_buffered_image();
 
 	// FIXME: remove BufferedImage and directly create icon from path

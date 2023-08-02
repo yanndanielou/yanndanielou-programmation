@@ -6,6 +6,7 @@ import java.util.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import builders.AttackerDataModel;
 import builders.genericobjects.GenericObjectDataModel;
 import builders.scenariolevel.ScenarioLevelEnnemyCreationDataModel;
 import builders.scenariolevel.SubmarineFireStrategyType;
@@ -15,15 +16,12 @@ import belligerents.listeners.GameObjectListerner;
 import time.TimeManager;
 import time.TimeManagerListener;
 
-public abstract class SubMarine extends Belligerent implements TimeManagerListener {
-	private static final Logger LOGGER = LogManager.getLogger(SubMarine.class);
-
-	protected SubmarineFireStrategyType fireStrategyType;
+public abstract class Attacker extends Belligerent implements TimeManagerListener {
+	private static final Logger LOGGER = LogManager.getLogger(Attacker.class);
 
 	protected int score_prize_money_on_destruction = 0;
 
-	public SubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
-			GenericObjectDataModel simple_submarine_data_model, Game game) {
+	public Attacker(AttackerDataModel attackerDataModel, Game game) {
 
 		super(new Rectangle(scenarioLevelEnnemyCreationDataModel.getX(),
 				scenarioLevelEnnemyCreationDataModel.getDepth() + game.getGameboard().get_water_level_y(),
@@ -58,12 +56,6 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 	@Override
 	protected void left_border_of_game_board_reached() {
 		setX_speed(getX_speed() * -1);
-	}
-
-	@Override
-	protected void ocean_bed_reached() {
-		// TODO Auto-generated method stub
-
 	}
 
 	private boolean check_if_in_geographical_position_is_inside_board() {
@@ -118,8 +110,7 @@ public abstract class SubMarine extends Belligerent implements TimeManagerListen
 
 	private boolean check_if_must_fire() {
 
-		boolean must_fire = is_allowed_to_fire()
-				&& check_if_in_geographical_position_is_inside_board()
+		boolean must_fire = is_allowed_to_fire() && check_if_in_geographical_position_is_inside_board()
 				&& check_if_in_geographical_position_of_fire_according_to_strategy();
 
 		return must_fire;

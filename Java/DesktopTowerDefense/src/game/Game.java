@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import builders.GameObjectsDataModel;
 import game_board.GameBoard;
 
 public class Game {
@@ -21,9 +22,12 @@ public class Game {
 
 	private boolean begun = false;
 
-	public Game(GameBoard gameField) {
-		this.gameBoard = gameField;
-		gameField.setGame(this);
+	private GameObjectsDataModel game_objects_data_model;
+
+	public Game(GameBoard gameBoard, GameObjectsDataModel game_objects_data_model) {
+		this.gameBoard = gameBoard;
+		this.game_objects_data_model = game_objects_data_model;
+		gameBoard.setGame(this);
 	}
 
 	public void add_game_listener(GameListener listener) {
@@ -77,6 +81,10 @@ public class Game {
 
 	public GameBoard getGameBoard() {
 		return gameBoard;
+	}
+
+	public GameObjectsDataModel getGame_objects_data_model() {
+		return game_objects_data_model;
 	}
 
 }

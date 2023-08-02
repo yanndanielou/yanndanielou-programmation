@@ -52,7 +52,7 @@
 				}
 			]
     },
-   "normal_attacker": {
+   "normal_attacker_data_model": {
 		 "description":"normal_attacker"
 		 "height": 24,
 		 "width":24,

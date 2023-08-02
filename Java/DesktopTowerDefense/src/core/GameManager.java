@@ -4,6 +4,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import builders.GameBoardModelBuilder;
+import builders.GameObjectsDataModel;
+import builders.GameObjectsModelBuilder;
 import constants.Constants;
 import game.Game;
 import game_board.GameBoard;
@@ -39,9 +41,13 @@ public class GameManager {
 	public void new_game() {
 		LOGGER.info("New game");
 
-		GameBoardModelBuilder gameBoardModelBuilder = new GameBoardModelBuilder(Constants.GAME_BOARD_JSON_DATA_MODEL_FILE_PATH);
-		GameBoard gameField = new GameBoard(gameBoardModelBuilder.getGameBoardDataModel());
-		game = new Game(gameField);
+		GameBoardModelBuilder gameBoardModelBuilder = new GameBoardModelBuilder(
+				Constants.GAME_BOARD_JSON_DATA_MODEL_FILE_PATH);
+		GameBoard gameBoard = new GameBoard(gameBoardModelBuilder.getGameBoardDataModel());
+		GameObjectsModelBuilder gameObjectsModelBuilder = new GameObjectsModelBuilder(
+				Constants.GAME_OBJECTS_JSON_DATA_MODEL_FILE_PATH);
+		GameObjectsDataModel game_objects_data_model = gameObjectsModelBuilder.getGame_objects_data_model();
+		game = new Game(gameBoard, game_objects_data_model);
 		DesktopTowerDefenseMainView.register_to_game(game);
 
 	}

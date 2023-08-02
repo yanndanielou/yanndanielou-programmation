@@ -1,7 +1,5 @@
 package builders;
 
-import java.util.ArrayList;
-
 public class GameBoardDataModel {
 
 	private int game_board_attacker_entry_absolute_x;

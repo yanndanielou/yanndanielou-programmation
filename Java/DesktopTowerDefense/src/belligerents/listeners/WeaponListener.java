@@ -1,8 +1,7 @@
 package belligerents.listeners;
 
-import belligerents.weapon.FloatingSubmarineBomb;
-import belligerents.weapon.SimpleTowerBomb;
 import belligerents.weapon.SimpleSubmarineBomb;
+import belligerents.weapon.SimpleTowerBomb;
 import belligerents.weapon.Weapon;
 
 public interface WeaponListener {

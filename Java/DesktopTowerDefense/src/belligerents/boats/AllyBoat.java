@@ -41,20 +41,6 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 		allyBoatListener.on_listen_to_ally_boat(this);
 	}
 
-	public void increase_left_speed() {
-		if (x_speed > -Constants.MAXIMUM_ALLY_BOAT_HORIZONTAL_SPEED) {
-			x_speed--;
-			LOGGER.info("Ally boat, increase left speed to:" + x_speed);
-		}
-	}
-
-	public void increase_right_speed() {
-		if (x_speed < Constants.MAXIMUM_ALLY_BOAT_HORIZONTAL_SPEED) {
-			x_speed++;
-			LOGGER.info("Ally boat, increase right speed to:" + x_speed);
-		}
-	}
-
 	@Override
 	protected void right_border_of_game_board_reached() {
 		stop_movement();
@@ -80,7 +66,8 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	@Override
 	public void impact_now() {
 		this.current_destruction_timer_in_milliseconds = 10_000;
-		movement_listeners.forEach((movement_listener) -> movement_listener.on_ally_boat_beginning_of_destruction(this));
+		movement_listeners
+				.forEach((movement_listener) -> movement_listener.on_ally_boat_beginning_of_destruction(this));
 	}
 
 	@Override
@@ -96,13 +83,13 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	}
 
 	@Override
-	public void on_simple_submarine_moved(SimpleSubMarine simpleSubMarine) {
+	public void on_simple_submarine_moved(NormalAttacker simpleSubMarine) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void on_submarine_end_of_destruction_and_clean(SubMarine subMarine) {
+	public void on_submarine_end_of_destruction_and_clean(Attacker subMarine) {
 		// TODO Auto-generated method stub
 
 	}
@@ -184,7 +171,7 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	}
 
 	@Override
-	public void on_listen_to_submarine(SubMarine subMarine) {
+	public void on_listen_to_submarine(Attacker subMarine) {
 		// TODO Auto-generated method stub
 
 	}
@@ -204,31 +191,15 @@ public class AllyBoat extends Belligerent implements GameObjectListerner {
 	@Override
 	public void on_listen_to_simple_submarine_bomb(SimpleSubmarineBomb simpleSubmarineBomb) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_listen_to_floating_submarine_bomb(FloatingSubmarineBomb floatingSubmarineBomb) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	@Override
-	protected void rocks_reached() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void on_submarine_beginning_of_destruction(SubMarine subMarine) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void on_weapon_beginning_of_destruction(Weapon weapon) {
-		// TODO Auto-generated method stub
-		
-	}
+	@Over
 
 }

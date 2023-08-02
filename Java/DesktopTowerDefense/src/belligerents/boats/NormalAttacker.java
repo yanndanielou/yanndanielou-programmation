@@ -9,11 +9,11 @@ import game.Game;
 import belligerents.listeners.GameObjectListerner;
 import belligerents.weapon.SimpleSubmarineBomb;
 
-public class SimpleSubMarine extends SubMarine {
+public class NormalAttacker extends Attacker {
 	// private static final Logger LOGGER =
 	// LogManager.getLogger(SimpleSubMarine.class);
 
-	public SimpleSubMarine(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
+	public NormalAttacker(ScenarioLevelEnnemyCreationDataModel scenarioLevelEnnemyCreationDataModel,
 			GenericObjectDataModel simple_submarine_data_model, Game game) {
 
 		super(scenarioLevelEnnemyCreationDataModel, simple_submarine_data_model, game);
@@ -42,7 +42,6 @@ public class SimpleSubMarine extends SubMarine {
 
 	@Override
 	protected void left_border_of_game_board_reached() {
-		setX_speed(getX_speed() * -1);
 	}
 
 	@Override
@@ -82,7 +81,7 @@ public class SimpleSubMarine extends SubMarine {
 	@Override
 	protected void rocks_reached() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

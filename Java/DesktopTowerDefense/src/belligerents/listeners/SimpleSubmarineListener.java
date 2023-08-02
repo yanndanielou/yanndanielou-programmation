@@ -1,9 +1,9 @@
 package belligerents.listeners;
 
-import belligerents.boats.SimpleSubMarine;
+import belligerents.boats.NormalAttacker;
 
 public interface SimpleSubmarineListener {
 
-	void on_simple_submarine_moved(SimpleSubMarine simpleSubMarine);
+	void on_simple_submarine_moved(NormalAttacker simpleSubMarine);
 
 }

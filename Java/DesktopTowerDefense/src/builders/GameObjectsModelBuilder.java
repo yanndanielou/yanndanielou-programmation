@@ -9,23 +9,23 @@ import com.google.gson.Gson;
 public class GameObjectsModelBuilder {
 	private Gson gson = new Gson();
 
-	private GameBoardDataModel game_difficulties_data_model;
-
-	public GameBoardDataModel getGameBoardDataModel() {
-		return game_difficulties_data_model;
-	}
+	private GameObjectsDataModel game_objects_data_model;
 
 	public GameObjectsModelBuilder(String game_board_data_model_json_file) {
 		BufferedReader br = null;
 
 		try {
-			
+
 			br = new BufferedReader(new FileReader(game_board_data_model_json_file));
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		game_difficulties_data_model = gson.fromJson(br, GameBoardDataModel.class);
+		game_objects_data_model = gson.fromJson(br, GameObjectsDataModel.class);
+	}
+
+	public GameObjectsDataModel getGame_objects_data_model() {
+		return game_objects_data_model;
 	}
 
 }
