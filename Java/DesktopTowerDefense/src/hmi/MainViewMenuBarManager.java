@@ -8,13 +8,10 @@ import java.awt.event.KeyEvent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import core.GameManager;
 
 public class MainViewMenuBarManager implements ActionListener {
 	private static final Logger LOGGER = LogManager.getLogger(MainViewMenuBarManager.class);
@@ -24,18 +21,15 @@ public class MainViewMenuBarManager implements ActionListener {
 
 	public MainViewMenuBarManager(DesktopTowerDefenseMainViewFrame parent) {
 		parent_main_view = parent;
+		menuBar = new JMenuBar();
 	}
 
-	public void createMenu() {
-		// Where the GUI is created:
+	private JMenu createGameMenuColumn() {
 
 		JMenu menu;
 		// JMenu submenu;
 		JMenuItem menuItem;
 		// JCheckBoxMenuItem cbMenuItem;
-
-		// Create the menu bar.
-		menuBar = new JMenuBar();
 
 		// Build the first menu.
 		menu = new JMenu("Game");
@@ -54,9 +48,6 @@ public class MainViewMenuBarManager implements ActionListener {
 		});
 		menu.add(menuItem);
 
-		// a group of radio button menu items
-		menu.addSeparator();
-
 		// a group of check box menu items
 		menu.addSeparator();
 
@@ -71,6 +62,13 @@ public class MainViewMenuBarManager implements ActionListener {
 			}
 		});
 		menu.add(menuItem);
+
+		return menu;
+	}
+
+	private JMenu createCheatsMenuColumn() {
+		JMenu menu;
+		JMenuItem menuItem;
 
 		// Build second menu in the menu bar.
 		menu = new JMenu("Cheats");
@@ -92,8 +90,21 @@ public class MainViewMenuBarManager implements ActionListener {
 			}
 		});
 		menu.add(menuItem);
+		return menu;
+	}
+
+	public void createMenu() {
+		// Create the menu bar.
+		menuBar.add(createGameMenuColumn());
+		menuBar.add(createTestsMenuColumn());
+		menuBar.add(createCheatsMenuColumn());
 
 		parent_main_view.setJMenuBar(menuBar);
+	}
+
+	private JMenu createTestsMenuColumn() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
