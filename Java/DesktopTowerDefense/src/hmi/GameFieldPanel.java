@@ -44,7 +44,7 @@ public class GameFieldPanel extends JLayeredPane implements GameStatusListener, 
 		empty_game_board_full_as_label.setSize(gameField.getTotalWidth(), gameField.getTotalHeight());
 		empty_game_board_full_as_label.setLocation(0, 0);
 
-		add(empty_game_board_full_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.BACKGROUND_IMAGE.ordinal());
+		add(empty_game_board_full_as_label, 1);
 
 	}
 
@@ -83,8 +83,9 @@ public class GameFieldPanel extends JLayeredPane implements GameStatusListener, 
 				(int) tower.getSurrounding_rectangle_absolute_on_complete_board().getHeight());
 		tower_to_label_map.put(tower, tower_as_label);
 		// add(tower_as_label);
-		add(tower_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS.ordinal());
+		add(tower_as_label, 0);
 		repaint();
+		
 	}
 
 	@Override
