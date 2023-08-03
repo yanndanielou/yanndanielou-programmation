@@ -8,10 +8,13 @@ import java.awt.event.KeyEvent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import core.GameManager;
 
 public class MainViewMenuBarManager implements ActionListener {
 	private static final Logger LOGGER = LogManager.getLogger(MainViewMenuBarManager.class);
@@ -47,18 +50,6 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new NewGameWhileGameIsInProgressPopup(parent_main_view).display_option_pane();
-				/*
-				 * if (GameManager.hasGameInProgress()) { Object[] options = { "Yes", "No" };
-				 * 
-				 * int n = JOptionPane.showOptionDialog(parent_main_view, "Abort current game?",
-				 * "Game in progress!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
-				 * null, options, options[0]); LOGGER.info("Abort current game popup answer: " +
-				 * n); if (n == JOptionPane.YES_OPTION) { LOGGER.info("Abo.rt current game");
-				 * GameManager.getInstance().abort_current_game(); } else if (n ==
-				 * JOptionPane.NO_OPTION) { LOGGER.info("Do not abort current game. Resume");
-				 * return; } else { LOGGER.info("Default answer (popup closed?)"); return; } }
-				 * GameManager.getInstance().new_game();
-				 */
 			}
 		});
 		menu.add(menuItem);
