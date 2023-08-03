@@ -32,9 +32,9 @@ public class SimpleTowerBomb extends Weapon {
 		stop_horizontal_movement();
 	}
 
-	@Override
+	@Deprecated
 	public void add_movement_listener(GameObjectListerner allyBoatListener) {
-		super.add_movement_listener(allyBoatListener);
+	//	super.add_movement_listener(allyBoatListener);
 		allyBoatListener.on_listen_to_simple_tower_bomb(this);
 	}
 
@@ -51,21 +51,21 @@ public class SimpleTowerBomb extends Weapon {
 
 	@Override
 	public void notify_movement() {
-		for (GameObjectListerner objectlistener : movement_listeners) {
-			objectlistener.on_simple_tower_bomb_moved(this);
-		}
+		// for (GameObjectListerner objectlistener : movement_listeners) {
+		// objectlistener.on_simple_tower_bomb_moved(this);
+		// }
 	}
 
 	@Override
 	public void notify_end_of_destruction_and_clean() {
 		super.notify_end_of_destruction_and_clean();
-		for (GameObjectListerner objectlistener : movement_listeners) {
-			objectlistener.on_simple_tower_bomb_end_of_destruction_and_clean(this);
-		}
+		// for (GameObjectListerner objectlistener : movement_listeners) {
+		// objectlistener.on_simple_tower_bomb_end_of_destruction_and_clean(this);
+		// }
 	}
 
 	@Override
-	public BufferedImage get_graphical_representation_as_buffered_image() {
+	protected BufferedImage get_graphical_representation_as_buffered_image() {
 		return getSimpleTowerBombImage(this);
 	}
 

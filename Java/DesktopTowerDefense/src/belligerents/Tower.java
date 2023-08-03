@@ -2,32 +2,40 @@ package belligerents;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import belligerents.listeners.GameObjectListerner;
-import belligerents.weapon.SimpleTowerBomb;
+import belligerents.listeners.TowerListener;
 import belligerents.weapon.Weapon;
 import builders.BombDataModel;
 import builders.TowerDataModel;
+import core.GameManager;
 import game.Game;
 
-public class Tower extends Belligerent implements GameObjectListerner {
+public class Tower extends Belligerent /* implements GameObjectListerner */ {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(Tower.class);
 
+	protected ArrayList<TowerListener> listeners = new ArrayList<>();
+
 	public Tower(TowerDataModel towerDataModel, BombDataModel weaponDataModel, Game game, int x, int y) {
 		super(new Rectangle(x, y, towerDataModel.getWidth(), towerDataModel.getHeight()), game);
+		
+		GameManager.getInstance().getDesktopTowerDefenseMainView().register_to_tower(this);
+		add_listener(game);
+		listeners.forEach((listener) -> listener.on_listen_to_tower(this));
 	}
 
 	@Override
 	public void notify_movement() {
+		listeners.forEach((listener) -> listener.on_tower_moved(this));
 	}
 
-	@Override
 	public void add_movement_listener(GameObjectListerner allyBoatListener) {
-		movement_listeners.add(allyBoatListener);
+//		movement_listeners.add(allyBoatListener);
 	}
 
 	@Override
@@ -51,67 +59,8 @@ public class Tower extends Belligerent implements GameObjectListerner {
 	}
 
 	@Override
-	public void on_normal_attacker_moved(NormalAttacker simpleSubMarine) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void on_attacker_end_of_destruction_and_clean(Attacker subMarine) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void on_simple_tower_bomb_moved(SimpleTowerBomb simpleAllyBomb) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void on_weapon_end_of_destruction_and_clean(Weapon weapon) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void on_listen_to_simple_tower_bomb(SimpleTowerBomb simpleAllyBomb) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void on_simple_tower_bomb_end_of_destruction_and_clean(SimpleTowerBomb simpleAllyBomb) {
-		living_bombs.remove(simpleAllyBomb);
-	}
-
-	@Override
-	public void on_simple_tower_bomb_beginning_of_destruction(SimpleTowerBomb simpleAllyBomb) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public BufferedImage get_graphical_representation_as_buffered_image() {
+	protected BufferedImage get_graphical_representation_as_buffered_image() {
 		return getSimpleTowerNormalImage(this);
-	}
-
-	@Override
-	public void on_listen_to_attacker(Attacker subMarine) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void on_attacker_beginning_of_destruction(Attacker attacker) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void on_weapon_beginning_of_destruction(Weapon weapon) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -120,4 +69,7 @@ public class Tower extends Belligerent implements GameObjectListerner {
 
 	}
 
+	public void add_listener(TowerListener tower_listener) {
+		listeners.add(tower_listener);
+	}
 }

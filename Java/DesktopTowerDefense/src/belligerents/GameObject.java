@@ -4,7 +4,6 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -12,7 +11,6 @@ import javax.swing.ImageIcon;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import belligerents.listeners.GameObjectListerner;
 import belligerents.weapon.SimpleTowerBomb;
 import belligerents.weapon.Weapon;
 import core.GameManager;
@@ -29,13 +27,11 @@ public abstract class GameObject {
 
 	protected boolean being_destroyed = false;
 
-	protected ArrayList<GameObjectListerner> movement_listeners = new ArrayList<GameObjectListerner>();
-
 	private BufferedImage simple_tower_normal_buffered_image = null;
 	private final String simple_tower_normal_image_path = "Images/Simple_tower.png";
 
 	private BufferedImage simple_tower_bomb_buffered_image = null;
-	private final String simple_tower_bomb_image_path = "Images/ally_simple_bomb_in_water.png";
+	private final String simple_tower_bomb_image_path = "Images/simple_tower_bomb.png";
 
 	private BufferedImage normal_attacker_buffered_image = null;
 	private final String normal_attacker_image_path = "Images/Attacker_normal_going_right.png";
@@ -191,7 +187,7 @@ public abstract class GameObject {
 		return has_moved;
 	}
 
-	public abstract BufferedImage get_graphical_representation_as_buffered_image();
+	protected abstract BufferedImage get_graphical_representation_as_buffered_image();
 
 	// FIXME: remove BufferedImage and directly create icon from path
 	public ImageIcon get_graphical_representation_as_icon() {
@@ -209,10 +205,6 @@ public abstract class GameObject {
 			notify_movement();
 		}
 		return has_moved;
-	}
-
-	public void add_movement_listener(GameObjectListerner game_object_listener) {
-		movement_listeners.add(game_object_listener);
 	}
 
 	protected abstract void right_border_of_game_board_reached();

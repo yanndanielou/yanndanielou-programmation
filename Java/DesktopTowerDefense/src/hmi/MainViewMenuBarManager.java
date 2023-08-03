@@ -13,6 +13,12 @@ import javax.swing.KeyStroke;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import builders.GameObjectsDataModel;
+import builders.TowerDataModel;
+import core.GameManager;
+import game.Game;
+import game_board.GameBoard;
+
 public class MainViewMenuBarManager implements ActionListener {
 	private static final Logger LOGGER = LogManager.getLogger(MainViewMenuBarManager.class);
 
@@ -66,6 +72,43 @@ public class MainViewMenuBarManager implements ActionListener {
 		return menu;
 	}
 
+	private JMenu createTestsMenuColumn() {
+
+		JMenu menu;
+		// JMenu submenu;
+		JMenuItem menuItem;
+		// JCheckBoxMenuItem cbMenuItem;
+
+		// Build the first menu.
+		menu = new JMenu("Tests");
+		menu.setMnemonic(KeyEvent.VK_T);
+		menuBar.add(menu);
+		menu.addActionListener(this);
+
+		menuItem = new JMenuItem("New Tower", KeyEvent.VK_N);
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				if (GameManager.hasGameInProgress()) {
+					GameManager gameManager = GameManager.getInstance();
+					Game game = gameManager.getGame();
+					GameBoard gameBoard = game.getGameBoard();
+					GameObjectsDataModel game_objects_data_model = game.getGame_objects_data_model();
+					TowerDataModel simple_tower_data_model = game_objects_data_model.getSimple_tower_data_model();
+
+					gameManager.createSimpleTower(
+							gameBoard.getTotalWidth() / 2 - simple_tower_data_model.getWidth() / 2,
+							gameBoard.getTotalHeight() / 2 - simple_tower_data_model.getHeight() / 2);
+				}
+			}
+		});
+		menu.add(menuItem);
+
+		return menu;
+
+	}
+
 	private JMenu createCheatsMenuColumn() {
 		JMenu menu;
 		JMenuItem menuItem;
@@ -100,11 +143,6 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuBar.add(createCheatsMenuColumn());
 
 		parent_main_view.setJMenuBar(menuBar);
-	}
-
-	private JMenu createTestsMenuColumn() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

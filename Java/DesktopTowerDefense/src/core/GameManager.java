@@ -3,9 +3,12 @@ package core;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import belligerents.Tower;
+import builders.BombDataModel;
 import builders.GameBoardModelBuilder;
 import builders.GameObjectsDataModel;
 import builders.GameObjectsModelBuilder;
+import builders.TowerDataModel;
 import constants.Constants;
 import game.Game;
 import game_board.GameBoard;
@@ -17,7 +20,7 @@ public class GameManager {
 	private static final Logger LOGGER = LogManager.getLogger(GameManager.class);
 
 	private Game game = null;
-	private DesktopTowerDefenseMainViewGeneric DesktopTowerDefenseMainView;
+	private DesktopTowerDefenseMainViewGeneric desktopTowerDefenseMainView;
 
 	private GameManager() {
 
@@ -48,7 +51,7 @@ public class GameManager {
 				Constants.GAME_OBJECTS_JSON_DATA_MODEL_FILE_PATH);
 		GameObjectsDataModel game_objects_data_model = gameObjectsModelBuilder.getGame_objects_data_model();
 		game = new Game(gameBoard, game_objects_data_model);
-		DesktopTowerDefenseMainView.register_to_game(game);
+		desktopTowerDefenseMainView.register_to_game(game);
 
 	}
 
@@ -62,8 +65,25 @@ public class GameManager {
 
 	}
 
-	public void setDesktopTowerDefenseMainView(DesktopTowerDefenseMainViewGeneric DesktopTowerDefenseMainView) {
-		this.DesktopTowerDefenseMainView = DesktopTowerDefenseMainView;
+	public void setDesktopTowerDefenseMainView(DesktopTowerDefenseMainViewGeneric desktopTowerDefenseMainView) {
+		this.desktopTowerDefenseMainView = desktopTowerDefenseMainView;
+	}
+
+	private Tower createTower(TowerDataModel towerDataModel, BombDataModel bombDataModel, int x, int y) {
+		Tower tower = new Tower(towerDataModel, bombDataModel, game, x, y);
+
+		return tower;
+	}
+
+	public Tower createSimpleTower(int x, int y) {
+		GameObjectsDataModel game_objects_data_model = game.getGame_objects_data_model();
+		Tower tower = createTower(game_objects_data_model.getSimple_tower_data_model(),
+				game_objects_data_model.getSimple_tower_bomb_data_model(), x, y);
+		return tower;
+	}
+
+	public DesktopTowerDefenseMainViewGeneric getDesktopTowerDefenseMainView() {
+		return desktopTowerDefenseMainView;
 	}
 
 }

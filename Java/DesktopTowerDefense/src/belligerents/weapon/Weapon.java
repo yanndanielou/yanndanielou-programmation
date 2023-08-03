@@ -4,7 +4,6 @@ import java.awt.Rectangle;
 
 import belligerents.Belligerent;
 import belligerents.GameObject;
-import belligerents.listeners.GameObjectListerner;
 import game.Game;
 
 public abstract class Weapon extends GameObject {
@@ -22,22 +21,22 @@ public abstract class Weapon extends GameObject {
 
 	public void end_of_destroy_and_clean() {
 		launcher.remove_living_bomb(this);
-		super.end_of_destroy_and_clean();
+		// super.end_of_destroy_and_clean();
 
-		movement_listeners
-				.forEach((movement_listener) -> movement_listener.on_weapon_end_of_destruction_and_clean(this));
+		// movement_listeners
+		// .forEach((movement_listener) ->
+		// movement_listener.on_weapon_end_of_destruction_and_clean(this));
 	}
 
 	@Override
 	public void impact_now(Weapon weapon) {
-		movement_listeners.forEach((movement_listener) -> movement_listener.on_weapon_beginning_of_destruction(this));
 	}
 
 	@Override
 	public void notify_end_of_destruction_and_clean() {
-		for (GameObjectListerner objectListerner : movement_listeners) {
-			objectListerner.on_weapon_end_of_destruction_and_clean(this);
-		}
+		// for (GameObjectListerner objectListerner : movement_listeners) {
+		// objectListerner.on_weapon_end_of_destruction_and_clean(this);
+		// }
 	}
 
 }

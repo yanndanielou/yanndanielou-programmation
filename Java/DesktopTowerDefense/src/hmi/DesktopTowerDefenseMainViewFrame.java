@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import belligerents.Tower;
 import constants.HMIConstants;
 import game.Game;
 
@@ -108,6 +109,11 @@ public class DesktopTowerDefenseMainViewFrame extends JFrame implements DesktopT
 		game.add_game_status_listener(topPanel);
 		game.add_game_status_listener(gameFieldPanel);
 
+	}
+
+	@Override
+	public void register_to_tower(Tower tower) {
+		tower.add_listener(gameFieldPanel);
 	}
 
 }

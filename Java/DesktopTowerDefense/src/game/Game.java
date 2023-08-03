@@ -5,14 +5,18 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import belligerents.Tower;
+import belligerents.listeners.TowerListener;
 import builders.GameObjectsDataModel;
 import game_board.GameBoard;
 
-public class Game {
+public class Game implements TowerListener {
 	private static final Logger LOGGER = LogManager.getLogger(Game.class);
 
 	private ArrayList<GameListener> game_listeners = new ArrayList<>();
 	private ArrayList<GameStatusListener> game_status_listeners = new ArrayList<>();
+
+	private ArrayList<Tower> towers = new ArrayList<>();
 
 	private GameBoard gameBoard;
 
@@ -85,6 +89,17 @@ public class Game {
 
 	public GameObjectsDataModel getGame_objects_data_model() {
 		return game_objects_data_model;
+	}
+
+	@Override
+	public void on_listen_to_tower(Tower tower) {
+		towers.add(tower);
+	}
+
+	@Override
+	public void on_tower_moved(Tower tower) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

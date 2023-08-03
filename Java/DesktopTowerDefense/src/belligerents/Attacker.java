@@ -32,9 +32,9 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 		TimeManager.getInstance().add_listener(this);
 	}
 
-	@Override
+	@Deprecated
 	public void add_movement_listener(GameObjectListerner submarineListener) {
-		super.add_movement_listener(submarineListener);
+		//super.add_movement_listener(submarineListener);
 		submarineListener.on_listen_to_attacker(this);
 	}
 
@@ -90,9 +90,6 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 
 	@Override
 	public void notify_end_of_destruction_and_clean() {
-		for (GameObjectListerner objectListerner : movement_listeners) {
-			objectListerner.on_attacker_end_of_destruction_and_clean(this);
-		}
 	}
 
 	@Override

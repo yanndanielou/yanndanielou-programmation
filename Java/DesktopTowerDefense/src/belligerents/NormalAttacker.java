@@ -2,7 +2,6 @@ package belligerents;
 
 import java.awt.image.BufferedImage;
 
-import belligerents.listeners.GameObjectListerner;
 import belligerents.weapon.Weapon;
 import builders.AttackerDataModel;
 import game.Game;
@@ -19,9 +18,9 @@ public class NormalAttacker extends Attacker {
 
 	@Override
 	public void notify_movement() {
-		for (GameObjectListerner allyBoatListener : movement_listeners) {
-			allyBoatListener.on_normal_attacker_moved(this);
-		}
+//		for (GameObjectListerner allyBoatListener : movement_listeners) {
+//			allyBoatListener.on_normal_attacker_moved(this);
+//		}
 	}
 
 	@Override
@@ -39,7 +38,7 @@ public class NormalAttacker extends Attacker {
 	}
 
 	@Override
-	public BufferedImage get_graphical_representation_as_buffered_image() {
+	protected BufferedImage get_graphical_representation_as_buffered_image() {
 		return getNormal_attacker_buffered_image(this);
 	}
 
