@@ -32,6 +32,8 @@ public class GameBoard {
 		this.total_height = gameBoardDataModel.getGame_board_total_height();
 	}
 
+	@SuppressWarnings("unused")
+	@Deprecated
 	private void create_initial_squares() {
 
 		for (int column = 0; column < total_width; column++) {

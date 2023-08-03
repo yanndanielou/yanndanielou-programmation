@@ -2,20 +2,19 @@ package belligerents.weapon;
 
 import java.awt.Rectangle;
 
-import game.Game;
+import belligerents.Belligerent;
 import belligerents.GameObject;
-import belligerents.boats.Belligerent;
 import belligerents.listeners.GameObjectListerner;
+import game.Game;
 
 public abstract class Weapon extends GameObject {
 
 	protected Belligerent launcher;
 	protected Belligerent target;
 
-	public Weapon(Rectangle surrounding_rectangle_absolute_on_complete_board, int y_speed, Game game,
-			Belligerent parent_belligerent, Belligerent target_belligerent) {
+	public Weapon(Rectangle surrounding_rectangle_absolute_on_complete_board, Game game, Belligerent parent_belligerent,
+			Belligerent target_belligerent) {
 		super(surrounding_rectangle_absolute_on_complete_board, game);
-		this.y_speed = y_speed;
 		this.launcher = parent_belligerent;
 		this.target = target_belligerent;
 		parent_belligerent.add_living_bomb(this);
@@ -30,7 +29,7 @@ public abstract class Weapon extends GameObject {
 	}
 
 	@Override
-	public void impact_now() {
+	public void impact_now(Weapon weapon) {
 		movement_listeners.forEach((movement_listener) -> movement_listener.on_weapon_beginning_of_destruction(this));
 	}
 

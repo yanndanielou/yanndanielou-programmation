@@ -12,9 +12,9 @@ import javax.swing.ImageIcon;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import belligerents.boats.AllyBoat;
 import belligerents.listeners.GameObjectListerner;
 import belligerents.weapon.SimpleTowerBomb;
+import belligerents.weapon.Weapon;
 import core.GameManager;
 import game.Game;
 import game_board.GameBoard;
@@ -23,11 +23,11 @@ public abstract class GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);
 
 	protected Rectangle surrounding_rectangle_absolute_on_complete_board;
-	protected int x_speed = 0;
-	protected int y_speed = 0;
+	protected Integer x_speed;
+	protected Integer y_speed;
 	protected Game game;
 
-	protected Integer current_destruction_timer_in_milliseconds = null;
+	protected boolean being_destroyed = false;
 
 	protected ArrayList<GameObjectListerner> movement_listeners = new ArrayList<GameObjectListerner>();
 
@@ -36,6 +36,9 @@ public abstract class GameObject {
 
 	private BufferedImage simple_tower_bomb_buffered_image = null;
 	private final String simple_tower_bomb_image_path = "Images/ally_simple_bomb_in_water.png";
+
+	private BufferedImage normal_attacker_buffered_image = null;
+	private final String normal_attacker_image_path = "Images/Attacker_normal_going_right.png";
 
 	public GameObject(Rectangle surrounding_rectangle_absolute_on_complete_board, Game game) {
 		this.surrounding_rectangle_absolute_on_complete_board = surrounding_rectangle_absolute_on_complete_board;
@@ -64,17 +67,22 @@ public abstract class GameObject {
 	private void initialize_and_load_images() {
 		initialize_towers();
 		initialize_bombs();
+		initialize_attackers();
+	}
+
+	private void initialize_attackers() {
+		normal_attacker_buffered_image = getBufferedImageFromFilePath(normal_attacker_image_path);
 	}
 
 	private void initialize_bombs() {
 		simple_tower_bomb_buffered_image = getBufferedImageFromFilePath(simple_tower_bomb_image_path);
 	}
 
-	public BufferedImage getSimpleTowerNormalImage(AllyBoat ally_boat) {
+	public BufferedImage getSimpleTowerNormalImage(SimpleTower simpleTower) {
 		return simple_tower_normal_buffered_image;
 	}
 
-	public BufferedImage getSimpleTowerBombImage(SimpleTowerBomb simpleAllyBomb) {
+	public BufferedImage getSimpleTowerBombImage(SimpleTowerBomb simpleTowerBomb) {
 		BufferedImage image = null;
 
 		image = simple_tower_bomb_buffered_image;
@@ -83,10 +91,10 @@ public abstract class GameObject {
 	}
 
 	public boolean is_being_destroyed() {
-		return current_destruction_timer_in_milliseconds != null;
+		return being_destroyed;
 	}
 
-	public abstract void impact_now();
+	public abstract void impact_now(Weapon weapon);
 
 	public Rectangle getSurrounding_rectangle_absolute_on_complete_board() {
 		return surrounding_rectangle_absolute_on_complete_board;
@@ -217,10 +225,6 @@ public abstract class GameObject {
 
 	public abstract void notify_end_of_destruction_and_clean();
 
-	public boolean is_completely_destroyed() {
-		return is_being_destroyed() && current_destruction_timer_in_milliseconds <= 0;
-	}
-
 	public void end_of_destroy_and_clean() {
 		notify_end_of_destruction_and_clean();
 	}
@@ -240,6 +244,10 @@ public abstract class GameObject {
 
 	public Game getGame() {
 		return game;
+	}
+
+	public BufferedImage getNormal_attacker_buffered_image(NormalAttacker normalAttacker) {
+		return normal_attacker_buffered_image;
 	}
 
 }

@@ -5,11 +5,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 
 import org.apache.logging.log4j.LogManager;
@@ -31,7 +29,6 @@ public class MainViewMenuBarManager implements ActionListener {
 		JMenu menu;
 		// JMenu submenu;
 		JMenuItem menuItem;
-		JRadioButtonMenuItem radioButtonMenuItem;
 		// JCheckBoxMenuItem cbMenuItem;
 
 		// Create the menu bar.
@@ -68,8 +65,6 @@ public class MainViewMenuBarManager implements ActionListener {
 
 		// a group of radio button menu items
 		menu.addSeparator();
-
-		ButtonGroup group = new ButtonGroup();
 
 		// a group of check box menu items
 		menu.addSeparator();

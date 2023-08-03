@@ -1,28 +1,17 @@
 package hmi;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import constants.HMIConstants;
 import game.Game;
-import game.GameStatusListener;
 import game.GameBoardPointListener;
+import game.GameStatusListener;
 import game_board.GameBoard;
-import game_board.GameBoardPoint;
-import game_board.SquaresColumn;
 
 public class GameFieldPanel extends JPanel implements GameStatusListener, GameBoardPointListener {
 
 	private static final long serialVersionUID = -1541008040602802454L;
-
-	private HashMap<GameBoardPoint, JButton> square_to_button_map = new HashMap<>();
 
 	private ImageIcon empty_game_board_full_as_icon = new ImageIcon("Images/Empty_game_board_full.png");
 	private JLabel empty_game_board_full_as_label;

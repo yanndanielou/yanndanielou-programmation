@@ -6,18 +6,19 @@ import java.awt.image.BufferedImage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import builders.genericobjects.AllySimpleBombDataModel;
-import game.Game;
-import belligerents.boats.Belligerent;
+import belligerents.Belligerent;
 import belligerents.listeners.GameObjectListerner;
+import builders.BombDataModel;
+import game.Game;
 
 public class SimpleTowerBomb extends Weapon {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(SimpleTowerBomb.class);
 
-	public SimpleTowerBomb(Bpù genericObjectDataModel, int x, int y, int x_speed, Game game,
+	public SimpleTowerBomb(BombDataModel genericObjectDataModel, int x, int y, int x_speed, Game game,
 			Belligerent parent_belligerent, Belligerent target_belligerent) {
-		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()),
-				genericObjectDataModel.getY_speed(), game, parent_belligerent, target_belligerent);
+		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), game,
+				parent_belligerent, target_belligerent);
 		setX_speed(x_speed);
 	}
 
@@ -34,7 +35,7 @@ public class SimpleTowerBomb extends Weapon {
 	@Override
 	public void add_movement_listener(GameObjectListerner allyBoatListener) {
 		super.add_movement_listener(allyBoatListener);
-		allyBoatListener.on_listen_to_simple_ally_bomb(this);
+		allyBoatListener.on_listen_to_simple_tower_bomb(this);
 	}
 
 	@Override
@@ -51,7 +52,7 @@ public class SimpleTowerBomb extends Weapon {
 	@Override
 	public void notify_movement() {
 		for (GameObjectListerner objectlistener : movement_listeners) {
-			objectlistener.on_simple_ally_bomb_moved(this);
+			objectlistener.on_simple_tower_bomb_moved(this);
 		}
 	}
 
@@ -59,37 +60,8 @@ public class SimpleTowerBomb extends Weapon {
 	public void notify_end_of_destruction_and_clean() {
 		super.notify_end_of_destruction_and_clean();
 		for (GameObjectListerner objectlistener : movement_listeners) {
-			objectlistener.on_simple_ally_bomb_end_of_destruction_and_clean(this);
+			objectlistener.on_simple_tower_bomb_end_of_destruction_and_clean(this);
 		}
-	}
-
-	@Override
-	protected void ocean_bed_reached() {
-		LOGGER.info("ocean_bed_reached, will delete" + this);
-
-		this.current_destruction_timer_in_milliseconds = 1_000;
-	}
-
-	@Override
-	protected void rocks_reached() {
-
-		LOGGER.info("rocks_reached, will delete" + this);
-
-		this.current_destruction_timer_in_milliseconds = 1_000;
-	}
-
-	@Override
-	protected void top_of_object_reaches_surface() {
-	}
-
-	@Override
-	public void impact_now() {
-		LOGGER.info("Impact now " + this);
-		this.current_destruction_timer_in_milliseconds = 500;
-		for (GameObjectListerner objectlistener : movement_listeners) {
-			objectlistener.on_simple_ally_bomb_beginning_of_destruction(this);
-		}
-		super.impact_now();
 	}
 
 	@Override
@@ -99,6 +71,12 @@ public class SimpleTowerBomb extends Weapon {
 
 	@Override
 	protected void down_border_of_game_board_reached() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void impact_now(Weapon weapon) {
 		// TODO Auto-generated method stub
 
 	}

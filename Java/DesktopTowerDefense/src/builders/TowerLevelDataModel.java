@@ -1,7 +1,5 @@
 package builders;
 
-import java.util.ArrayList;
-
 public class TowerLevelDataModel {
 
 	private String level_number;

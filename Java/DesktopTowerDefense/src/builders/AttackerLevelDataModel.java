@@ -1,7 +1,5 @@
 package builders;
 
-import java.util.ArrayList;
-
 public class AttackerLevelDataModel {
 
 	private String level_number;
