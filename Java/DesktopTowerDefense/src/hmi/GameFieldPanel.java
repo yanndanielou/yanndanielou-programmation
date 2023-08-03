@@ -26,7 +26,7 @@ public class GameFieldPanel extends JLayeredPane implements GameStatusListener, 
 	private HashMap<Tower, JLabel> tower_to_label_map = new HashMap<>();
 
 	private enum LAYERS_ORDERED_FROM_TOP_TO_BACK {
-		LABELS, UNDER_LABELS, BOMBS, BELLIGERENTS, ROCKS, BACKGROUND_IMAGE, UNVISIBLE;
+		BELLIGERENTS, BACKGROUND_IMAGE, UNVISIBLE;
 	}
 
 	private DesktopTowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame;;
@@ -44,7 +44,7 @@ public class GameFieldPanel extends JLayeredPane implements GameStatusListener, 
 		empty_game_board_full_as_label.setSize(gameField.getTotalWidth(), gameField.getTotalHeight());
 		empty_game_board_full_as_label.setLocation(0, 0);
 
-		add(empty_game_board_full_as_label, 1);
+		add(empty_game_board_full_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.BACKGROUND_IMAGE.ordinal());
 
 	}
 
@@ -82,10 +82,8 @@ public class GameFieldPanel extends JLayeredPane implements GameStatusListener, 
 		tower_as_label.setSize((int) tower.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
 				(int) tower.getSurrounding_rectangle_absolute_on_complete_board().getHeight());
 		tower_to_label_map.put(tower, tower_as_label);
-		// add(tower_as_label);
-		add(tower_as_label, 0);
-		repaint();
-		
+		add(tower_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS.ordinal());
+		//repaint();
 	}
 
 	@Override
