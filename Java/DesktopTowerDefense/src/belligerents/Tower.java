@@ -1,13 +1,13 @@
 package belligerents;
 
 import java.awt.Rectangle;
+import java.awt.geom.IllegalPathStateException;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import belligerents.listeners.GameObjectListerner;
 import belligerents.listeners.TowerListener;
 import belligerents.weapon.Weapon;
 import builders.BombDataModel;
@@ -23,7 +23,7 @@ public class Tower extends Belligerent /* implements GameObjectListerner */ {
 
 	public Tower(TowerDataModel towerDataModel, BombDataModel weaponDataModel, Game game, int x, int y) {
 		super(new Rectangle(x, y, towerDataModel.getWidth(), towerDataModel.getHeight()), game);
-		
+
 		GameManager.getInstance().getDesktopTowerDefenseMainView().register_to_tower(this);
 		add_listener(game);
 		listeners.forEach((listener) -> listener.on_listen_to_tower(this));
@@ -31,11 +31,7 @@ public class Tower extends Belligerent /* implements GameObjectListerner */ {
 
 	@Override
 	public void notify_movement() {
-		listeners.forEach((listener) -> listener.on_tower_moved(this));
-	}
-
-	public void add_movement_listener(GameObjectListerner allyBoatListener) {
-//		movement_listeners.add(allyBoatListener);
+		throw new IllegalPathStateException("Towers can't move");
 	}
 
 	@Override

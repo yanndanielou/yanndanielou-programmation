@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import belligerents.Attacker;
 import belligerents.Tower;
 import constants.HMIConstants;
 import game.Game;
@@ -114,6 +115,11 @@ public class DesktopTowerDefenseMainViewFrame extends JFrame implements DesktopT
 	@Override
 	public void register_to_tower(Tower tower) {
 		tower.add_listener(gameFieldPanel);
+	}
+
+	@Override
+	public void register_to_attacker(Attacker attacker) {
+		attacker.add_listener(gameFieldPanel);
 	}
 
 }

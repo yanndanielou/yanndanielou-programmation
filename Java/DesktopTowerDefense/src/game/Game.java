@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import belligerents.Attacker;
 import belligerents.Tower;
+import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
 import builders.GameObjectsDataModel;
 import game_board.GameBoard;
 
-public class Game implements TowerListener {
+public class Game implements TowerListener, AttackerListener {
 	private static final Logger LOGGER = LogManager.getLogger(Game.class);
 
 	private ArrayList<GameListener> game_listeners = new ArrayList<>();
@@ -97,7 +99,25 @@ public class Game implements TowerListener {
 	}
 
 	@Override
-	public void on_tower_moved(Tower tower) {
+	public void on_attacker_end_of_destruction_and_clean(Attacker attacker) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_listen_to_attacker(Attacker attacker) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_attacker_moved(Attacker attacker) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void on_attacker_beginning_of_destruction(Attacker attacker) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,13 +1,19 @@
 package core;
 
+import java.awt.Rectangle;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import belligerents.Attacker;
+import belligerents.NormalAttacker;
 import belligerents.Tower;
+import builders.AttackerDataModel;
 import builders.BombDataModel;
 import builders.GameBoardModelBuilder;
 import builders.GameObjectsDataModel;
 import builders.GameObjectsModelBuilder;
+import builders.RectangleDataModel;
 import builders.TowerDataModel;
 import constants.Constants;
 import game.Game;
@@ -80,6 +86,16 @@ public class GameManager {
 		Tower tower = createTower(game_objects_data_model.getSimple_tower_data_model(),
 				game_objects_data_model.getSimple_tower_bomb_data_model(), x, y);
 		return tower;
+	}
+
+	public Attacker createNormalAttacker(RectangleDataModel creation_area) {
+		GameObjectsDataModel game_objects_data_model = game.getGame_objects_data_model();
+		AttackerDataModel normal_attacker_data_model = game_objects_data_model.getNormal_attacker_data_model();
+
+		Rectangle creationAreaRectangle = creation_area.getRectangle();
+		NormalAttacker attacker = new NormalAttacker(normal_attacker_data_model, game,
+				(int) creationAreaRectangle.getX(), (int) creationAreaRectangle.getY());
+		return attacker;
 	}
 
 	public DesktopTowerDefenseMainViewGeneric getDesktopTowerDefenseMainView() {

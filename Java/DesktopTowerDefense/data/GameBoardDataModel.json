@@ -7,5 +7,14 @@
  "game_board_total_width":1050,
  "game_board_total_height":908,
  "game_board_attacker_entry_absolute_x":110,
- "game_board_attacker_entry_absolute_y":430
+ "game_board_attacker_entry_absolute_y":430,
+ "attackers_entry_areas": [
+					{
+						"name":"left_attacker_entry_area",
+						"x":0,
+						"y":356,
+						"width":107,
+						"height":181
+					}
+			]
 }

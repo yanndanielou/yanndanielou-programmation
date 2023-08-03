@@ -2,18 +2,20 @@ package belligerents;
 
 import java.awt.image.BufferedImage;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import belligerents.weapon.Weapon;
 import builders.AttackerDataModel;
 import game.Game;
 
 public class NormalAttacker extends Attacker {
-	// private static final Logger LOGGER =
-	// LogManager.getLogger(SimpleSubMarine.class);
+	private static final Logger LOGGER = LogManager.getLogger(NormalAttacker.class);
 
 	public NormalAttacker(AttackerDataModel attackerDataModel, Game game, int x, int y) {
 
 		super(attackerDataModel, game, x, y);
-
+		LOGGER.info("Create NormalAttacker at x:" + x + ", y:" + y);
 	}
 
 	@Override

@@ -19,17 +19,19 @@ public class GameBoard {
 
 	private ArrayList<SquaresColumn> squares_columns = new ArrayList<>();
 
+	private GameBoardDataModel gameBoardDataModel;
+
 	// private ArrayList<SquaresRow> squares_rows = new ArrayList<>();
 
 	private ArrayList<GameBoardPoint> all_squares_as_ordered_list = new ArrayList<GameBoardPoint>();
 
 	private Game game;
 
-
 	public GameBoard(GameBoardDataModel gameBoardDataModel) {
 
 		this.total_width = gameBoardDataModel.getGame_board_total_width();
 		this.total_height = gameBoardDataModel.getGame_board_total_height();
+		this.gameBoardDataModel = gameBoardDataModel;
 	}
 
 	@SuppressWarnings("unused")
@@ -147,5 +149,9 @@ public class GameBoard {
 			break;
 		}
 		return neighbour;
+	}
+
+	public GameBoardDataModel getGameBoardDataModel() {
+		return gameBoardDataModel;
 	}
 }

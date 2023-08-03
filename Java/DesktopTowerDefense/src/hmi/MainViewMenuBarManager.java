@@ -13,7 +13,9 @@ import javax.swing.KeyStroke;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import builders.GameBoardDataModel;
 import builders.GameObjectsDataModel;
+import builders.RectangleDataModel;
 import builders.TowerDataModel;
 import core.GameManager;
 import game.Game;
@@ -100,6 +102,24 @@ public class MainViewMenuBarManager implements ActionListener {
 					gameManager.createSimpleTower(
 							gameBoard.getTotalWidth() / 2 - simple_tower_data_model.getWidth() / 2,
 							gameBoard.getTotalHeight() / 2 - simple_tower_data_model.getHeight() / 2);
+				}
+			}
+		});
+		menu.add(menuItem);
+
+		menuItem = new JMenuItem("New normal attacker", KeyEvent.VK_A);
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, 0));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				if (GameManager.hasGameInProgress()) {
+					GameManager gameManager = GameManager.getInstance();
+					Game game = gameManager.getGame();
+					GameBoard gameBoard = game.getGameBoard();
+					GameBoardDataModel gameBoardDataModel = gameBoard.getGameBoardDataModel();
+					RectangleDataModel oneRandomEntryArea = gameBoardDataModel.getOneRandomEntryArea();
+
+					gameManager.createNormalAttacker(oneRandomEntryArea);
 				}
 			}
 		});

@@ -5,23 +5,23 @@ import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 
+import belligerents.Attacker;
 import belligerents.Tower;
+import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
 import game.Game;
 import game.GameBoardPointListener;
 import game.GameStatusListener;
 import game_board.GameBoard;
 
-public class GameFieldPanel extends JLayeredPane implements GameStatusListener, GameBoardPointListener, TowerListener {
+public class GameFieldPanel extends JLayeredPane
+		implements GameStatusListener, GameBoardPointListener, TowerListener, AttackerListener {
 
 	private static final long serialVersionUID = -1541008040602802454L;
 
 	private ImageIcon empty_game_board_full_as_icon = new ImageIcon("Images/Empty_game_board_full.png");
 	private JLabel empty_game_board_full_as_label;
-
-	private ImageIcon simple_tower_icon = new ImageIcon("Images/Simple_tower.png");
 
 	private HashMap<Tower, JLabel> tower_to_label_map = new HashMap<>();
 
@@ -69,10 +69,6 @@ public class GameFieldPanel extends JLayeredPane implements GameStatusListener, 
 		// TODO Auto-generated method stub
 	}
 
-	private void update_tower_location(Tower tower) {
-
-	}
-
 	@Override
 	public void on_listen_to_tower(Tower tower) {
 		ImageIcon get_graphical_representation_as_icon = tower.get_graphical_representation_as_icon();
@@ -83,11 +79,29 @@ public class GameFieldPanel extends JLayeredPane implements GameStatusListener, 
 				(int) tower.getSurrounding_rectangle_absolute_on_complete_board().getHeight());
 		tower_to_label_map.put(tower, tower_as_label);
 		add(tower_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS.ordinal());
-		//repaint();
+		// repaint();
 	}
 
 	@Override
-	public void on_tower_moved(Tower tower) {
+	public void on_attacker_end_of_destruction_and_clean(Attacker attacker) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_listen_to_attacker(Attacker attacker) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_attacker_moved(Attacker attacker) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_attacker_beginning_of_destruction(Attacker attacker) {
 		// TODO Auto-generated method stub
 
 	}

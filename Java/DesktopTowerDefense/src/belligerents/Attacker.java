@@ -1,13 +1,16 @@
 package belligerents;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import belligerents.listeners.AttackerListener;
 import belligerents.listeners.GameObjectListerner;
 import belligerents.weapon.Weapon;
 import builders.AttackerDataModel;
+import core.GameManager;
 import game.Game;
 import game_board.GameBoard;
 import time.TimeManager;
@@ -21,6 +24,8 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	protected AttackerDataModel attackerDataModel;
 	protected int remaining_health;
 
+	protected ArrayList<AttackerListener> listeners = new ArrayList<>();
+
 	public Attacker(AttackerDataModel attackerDataModel, Game game, int x, int y) {
 
 		super(new Rectangle(x, y, attackerDataModel.getWidth(), attackerDataModel.getHeight()), game);
@@ -30,11 +35,19 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 		setMax_number_of_living_bombs(0);
 
 		TimeManager.getInstance().add_listener(this);
+
+		GameManager.getInstance().getDesktopTowerDefenseMainView().register_to_attacker(this);
+		add_listener(game);
+		listeners.forEach((listener) -> listener.on_listen_to_attacker(this));
+	}
+
+	public void add_listener(AttackerListener attacker_listener) {
+		listeners.add(attacker_listener);
 	}
 
 	@Deprecated
 	public void add_movement_listener(GameObjectListerner submarineListener) {
-		//super.add_movement_listener(submarineListener);
+		// super.add_movement_listener(submarineListener);
 		submarineListener.on_listen_to_attacker(this);
 	}
 

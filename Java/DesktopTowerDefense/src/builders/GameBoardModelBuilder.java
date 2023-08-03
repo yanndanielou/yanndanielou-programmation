@@ -9,10 +9,10 @@ import com.google.gson.Gson;
 public class GameBoardModelBuilder {
 	private Gson gson = new Gson();
 
-	private GameBoardDataModel game_difficulties_data_model;
+	private GameBoardDataModel game_board_data_model;
 
 	public GameBoardDataModel getGameBoardDataModel() {
-		return game_difficulties_data_model;
+		return game_board_data_model;
 	}
 
 	public GameBoardModelBuilder(String game_board_data_model_json_file) {
@@ -25,7 +25,7 @@ public class GameBoardModelBuilder {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		game_difficulties_data_model = gson.fromJson(br, GameBoardDataModel.class);
+		game_board_data_model = gson.fromJson(br, GameBoardDataModel.class);
 	}
 
 }
