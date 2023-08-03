@@ -78,7 +78,7 @@ public abstract class GameObject {
 		simple_tower_bomb_buffered_image = getBufferedImageFromFilePath(simple_tower_bomb_image_path);
 	}
 
-	public BufferedImage getSimpleTowerNormalImage(SimpleTower simpleTower) {
+	public BufferedImage getSimpleTowerNormalImage(Tower simpleTower) {
 		return simple_tower_normal_buffered_image;
 	}
 

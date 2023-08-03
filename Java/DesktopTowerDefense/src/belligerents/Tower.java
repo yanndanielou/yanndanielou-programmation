@@ -13,11 +13,11 @@ import builders.BombDataModel;
 import builders.TowerDataModel;
 import game.Game;
 
-public class SimpleTower extends Belligerent implements GameObjectListerner {
+public class Tower extends Belligerent implements GameObjectListerner {
 	@SuppressWarnings("unused")
-	private static final Logger LOGGER = LogManager.getLogger(SimpleTower.class);
+	private static final Logger LOGGER = LogManager.getLogger(Tower.class);
 
-	public SimpleTower(TowerDataModel towerDataModel, BombDataModel weaponDataModel, Game game, int x, int y) {
+	public Tower(TowerDataModel towerDataModel, BombDataModel weaponDataModel, Game game, int x, int y) {
 		super(new Rectangle(x, y, towerDataModel.getWidth(), towerDataModel.getHeight()), game);
 	}
 
