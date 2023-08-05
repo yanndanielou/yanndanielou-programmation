@@ -41,7 +41,7 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 		GameManager.getInstance().getDesktopTowerDefenseMainView().register_to_attacker(this);
 		add_listener(game);
 		add_listener(game.getGameBoard());
-		// listeners.forEach((listener) -> listener.on_listen_to_attacker(this));*
+		// listeners.forEach((listener) -> listener.on_listen_to_attacker(this));
 
 		this.escape_destination = escape_destination;
 	}
@@ -80,6 +80,11 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	}
 
 	@Override
+	public void notify_movement() {
+		listeners.forEach((listener) -> listener.on_attacker_moved(this));
+	}
+
+	@Override
 	public void on_10ms_tick() {
 	}
 
@@ -114,7 +119,7 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	@Override
 	public void on_pause() {
 	}
-	
+
 	public Point getEscape_destination() {
 		return escape_destination;
 	}

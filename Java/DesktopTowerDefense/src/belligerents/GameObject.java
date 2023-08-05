@@ -188,6 +188,13 @@ public abstract class GameObject {
 		return (int) surrounding_rectangle_absolute_on_complete_board.getY();
 	}
 
+	public boolean move(int x_movement, int y_movement) {
+		boolean has_moved = false;
+		surrounding_rectangle_absolute_on_complete_board.translate(x_movement, y_movement);
+		notify_movement();
+		return has_moved;
+	}
+
 	public boolean proceed_vertical_movement() {
 		boolean has_moved = false;
 

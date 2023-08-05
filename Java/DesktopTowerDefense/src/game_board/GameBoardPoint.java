@@ -132,4 +132,8 @@ public class GameBoardPoint implements TowerListener, AttackerListener {
 
 	}
 
+	public Point asPoint() {
+		return new Point(row, column);
+	}
+
 }

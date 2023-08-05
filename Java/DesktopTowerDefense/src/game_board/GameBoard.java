@@ -60,6 +60,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 				// GameBoardPoint>());
 			} else {
 				game_board_of_one_row_per_column = new HashMap<>();
+				game_board_point_per_row_and_column.put(row, game_board_of_one_row_per_column);
 			}
 
 			for (int column = 0; column < total_width; column++) {
@@ -140,8 +141,19 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public GameBoardPoint getGameBoardPoint(int row, int column) {
 
-		Map<Integer, GameBoardPoint> map = game_board_point_per_row_and_column.get(row);
-		GameBoardPoint gameBoardPoint = map.get(column);
+		Map<Integer, GameBoardPoint> gameBoardPointOfRow = game_board_point_per_row_and_column.get(row);
+
+		if (gameBoardPointOfRow == null) {
+			throw new BadLogicException("Cannot find row :" + row + " to search column:" + column);
+		}
+
+		GameBoardPoint gameBoardPoint = gameBoardPointOfRow.get(column);
+
+		if (gameBoardPoint == null) {
+			throw new BadLogicException("Cannot find column :" + column + " inside row:" + row);
+		}
+
+		
 		return gameBoardPoint;
 	}
 
@@ -218,9 +230,9 @@ public class GameBoard implements TowerListener, AttackerListener {
 			if (!is_reference_gameBoardPoint_last_of_row && !is_reference_gameBoardPoint_first_of_column) {
 				neighbour = getGameBoardPoint(reference_gameBoardPoint_row + 1, reference_gameBoardPoint_column - 1);
 			}
-			break;
 		case EAST:
 			if (!is_reference_gameBoardPoint_last_of_row) {
+				break;
 				neighbour = getGameBoardPoint(reference_gameBoardPoint_row + 1, reference_gameBoardPoint_column);
 			}
 			break;

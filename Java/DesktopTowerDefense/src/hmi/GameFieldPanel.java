@@ -99,14 +99,13 @@ public class GameFieldPanel extends JLayeredPane
 
 	@Override
 	public void on_attacker_moved(Attacker attacker) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void on_attacker_beginning_of_destruction(Attacker attacker) {
-		// TODO Auto-generated method stub
-
+		JLabel jLabel = game_object_to_label_map.get(attacker);
+		jLabel.setLocation(attacker.get_extreme_left_point_x(), attacker.getHighestPointY());
 	}
 
 	@Override

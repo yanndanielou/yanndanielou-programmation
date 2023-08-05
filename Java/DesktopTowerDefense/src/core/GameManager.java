@@ -22,6 +22,7 @@ import game_board.GameBoard;
 import game_board.GameBoardPoint;
 import game_board.NeighbourGameBoardPointDirection;
 import hmi.DesktopTowerDefenseMainViewGeneric;
+import time.TimeManager;
 
 public class GameManager {
 
@@ -64,7 +65,8 @@ public class GameManager {
 		desktopTowerDefenseMainView.register_to_game(game);
 		attackerMovementOrchestor = new AttackerMovementOrchestor(game);
 		compute_neighbours_of_each_gameBoardPoint();
-
+		TimeManager.getInstance().start();
+		
 	}
 
 	private void compute_neighbours_of_each_gameBoardPoint() {

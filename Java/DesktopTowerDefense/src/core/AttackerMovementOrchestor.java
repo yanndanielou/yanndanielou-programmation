@@ -4,7 +4,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import belligerents.Attacker;
+import common.BadLogicException;
 import game.Game;
+import game_board.NeighbourGameBoardPointDirection;
 import time.TimeManager;
 import time.TimeManagerListener;
 
@@ -22,8 +24,38 @@ public class AttackerMovementOrchestor implements TimeManagerListener {
 
 	private void move_attackers() {
 		for (Attacker attacker : game.getAttackers()) {
-			if(attacker.is_allowed_to_move()) {
-				
+			if (attacker.is_allowed_to_move()) {
+				NeighbourGameBoardPointDirection nextMovementDirection = MovingObjectPathFinder.getInstance()
+						.getNextMovementDirection(attacker);
+				switch (nextMovementDirection) {
+				case EAST:
+					attacker.move(1, 0);
+					break;
+				case NORTH:
+					attacker.move(0, -1);
+					break;
+				case NORTH_EAST:
+					attacker.move(1, -1);
+					break;
+				case NORTH_WEST:
+					attacker.move(-1, 1);
+					break;
+				case SOUTH:
+					attacker.move(0, 1);
+					break;
+				case SOUTH_EAST:
+					attacker.move(1, 1);
+					break;
+				case SOUTH_WEST:
+					attacker.move(-1, 1);
+					break;
+				case WEST:
+					attacker.move(-1, 0);
+					break;
+				default:
+					throw new BadLogicException("");
+				}
+
 			}
 		}
 	}

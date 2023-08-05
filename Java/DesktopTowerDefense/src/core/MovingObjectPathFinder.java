@@ -6,6 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import belligerents.Attacker;
+import game_board.GameBoard;
+import game_board.GameBoardPoint;
 import game_board.NeighbourGameBoardPointDirection;
 
 public class MovingObjectPathFinder {
@@ -25,10 +27,36 @@ public class MovingObjectPathFinder {
 		return instance;
 	}
 
-	
+	private NeighbourGameBoardPointDirection getNextMovementDirectionForSmallerPathInStraightLine(Attacker attacker) {
+		Point upperLeftAttackerPoint = new Point(attacker.get_extreme_left_point_x(), attacker.getHighestPointY());
+		GameBoard gameBoard = attacker.getGame().getGameBoard();
+		Point destination = attacker.getEscape_destination();
+		GameBoardPoint upperLeftAttackerGameBoardPoint = gameBoard.getGameBoardPoint(upperLeftAttackerPoint);
+
+		NeighbourGameBoardPointDirection nearestDirection = null;
+		double minimum_distance = Double.MAX_VALUE;
+		for (NeighbourGameBoardPointDirection candidateDirection : NeighbourGameBoardPointDirection.values()) {
+
+			GameBoardPoint neighbourGameBoardPoint = gameBoard
+					.getNeighbourGameBoardPoint(upperLeftAttackerGameBoardPoint, candidateDirection);
+
+			if (neighbourGameBoardPoint != null) {
+
+				double distanceUsingCandidate = destination.distance(neighbourGameBoardPoint.asPoint());
+				if (distanceUsingCandidate < minimum_distance) {
+					nearestDirection = candidateDirection;
+				}
+			}
+		}
+
+		return nearestDirection;
+	}
+
 	public NeighbourGameBoardPointDirection getNextMovementDirection(Attacker attacker) {
 		Point destination = attacker.getEscape_destination();
-		return null;
+		NeighbourGameBoardPointDirection nextMovementDirectionForSmallerPathInStraightLine = getNextMovementDirectionForSmallerPathInStraightLine(
+				attacker);
+		return nextMovementDirectionForSmallerPathInStraightLine;
 	}
 
 }
