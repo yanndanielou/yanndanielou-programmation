@@ -17,7 +17,7 @@ public class GameBoard {
 	private int total_width = 0;
 	private int total_height = 0;
 
-	private ArrayList<SquaresColumn> squares_columns = new ArrayList<>();
+	private ArrayList<GameBoardPointsSeries> squares_columns = new ArrayList<>();
 
 	private GameBoardDataModel gameBoardDataModel;
 
@@ -39,10 +39,10 @@ public class GameBoard {
 	private void create_initial_squares() {
 
 		for (int column = 0; column < total_width; column++) {
-			SquaresColumn squaresColumn = new SquaresColumn(column);
+			GameBoardPointsSeries squaresColumn = new GameBoardPointsSeries(column);
 			squares_columns.add(squaresColumn);
 			for (int line = 0; line < total_height; line++) {
-				SquaresRow squaresRow = new SquaresRow(line);
+				GameBoardPointsSeries squaresRow = new GameBoardPointsSeries(line);
 
 				// FIXME: squares_rows.add(squaresRow);
 
@@ -68,7 +68,7 @@ public class GameBoard {
 		return all_squares_as_ordered_list;
 	}
 
-	public ArrayList<SquaresColumn> getSquaresColumns() {
+	public ArrayList<GameBoardPointsSeries> getSquaresColumns() {
 		return squares_columns;
 	}
 
@@ -93,7 +93,7 @@ public class GameBoard {
 		this.game = game;
 	}
 
-	public GameBoardPoint getNeighbourSquare(GameBoardPoint reference_square, NeighbourSquareDirection direction) {
+	public GameBoardPoint getNeighbourSquare(GameBoardPoint reference_square, NeighbourGameBoardPointDirection direction) {
 		GameBoardPoint neighbour = null;
 
 		int reference_square_column = reference_square.getColumn();

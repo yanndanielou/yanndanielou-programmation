@@ -28,9 +28,9 @@ public class GameBoardPoint {
 
 	private Game game;
 
-	private ArrayList<GameBoardPointListener> squareListeners = new ArrayList<>();
+	private ArrayList<GameBoardPointListener> game_board_point_Listeners = new ArrayList<>();
 
-	private HashMap<NeighbourSquareDirection, GameBoardPoint> neighbour_per_direction = new HashMap<>();
+	private HashMap<NeighbourGameBoardPointDirection, GameBoardPoint> neighbour_per_direction = new HashMap<>();
 
 	public GameBoardPoint(Game game, int line, int column) {
 		this.game = game;
@@ -39,7 +39,7 @@ public class GameBoardPoint {
 	}
 
 	public void addSquareListener(GameBoardPointListener squareListener) {
-		squareListeners.add(squareListener);
+		game_board_point_Listeners.add(squareListener);
 	}
 
 	public boolean isContains_mine() {
@@ -84,7 +84,7 @@ public class GameBoardPoint {
 		return column;
 	}
 
-	public void setNeighbour(NeighbourSquareDirection direction, GameBoardPoint neighbour) {
+	public void setNeighbour(NeighbourGameBoardPointDirection direction, GameBoardPoint neighbour) {
 		neighbour_per_direction.put(direction, neighbour);
 	}
 
