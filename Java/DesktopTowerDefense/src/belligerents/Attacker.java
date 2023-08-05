@@ -38,11 +38,13 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 
 		GameManager.getInstance().getDesktopTowerDefenseMainView().register_to_attacker(this);
 		add_listener(game);
-		listeners.forEach((listener) -> listener.on_listen_to_attacker(this));
+		add_listener(game.getGameBoard());
+		//listeners.forEach((listener) -> listener.on_listen_to_attacker(this));
 	}
 
 	public void add_listener(AttackerListener attacker_listener) {
 		listeners.add(attacker_listener);
+		attacker_listener.on_listen_to_attacker(this);
 	}
 
 	@Deprecated

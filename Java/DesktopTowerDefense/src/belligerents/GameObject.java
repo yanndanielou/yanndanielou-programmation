@@ -1,9 +1,12 @@
 package belligerents;
 
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -96,6 +99,17 @@ public abstract class GameObject {
 		return surrounding_rectangle_absolute_on_complete_board;
 	}
 
+	public List<Point> getAllPoints() {
+		ArrayList<Point> all_points = new ArrayList<>();
+		for (int x_point_it = get_extreme_left_point_x(); x_point_it < get_extreme_right_point_x(); x_point_it++) {
+			for (int y_point_it = getHighestPointY(); y_point_it < get_lowest_point_y(); y_point_it++) {
+				all_points.add(new Point(x_point_it, y_point_it));
+			}
+		}
+
+		return all_points;
+	}
+
 	public void setSurrounding_rectangle_absolute_on_complete_board(
 			Rectangle surrounding_rectangle_absolute_on_complete_board) {
 		this.surrounding_rectangle_absolute_on_complete_board = surrounding_rectangle_absolute_on_complete_board;
@@ -158,8 +172,20 @@ public abstract class GameObject {
 		return has_moved;
 	}
 
+	public int get_extreme_left_point_x() {
+		return (int) surrounding_rectangle_absolute_on_complete_board.getX();
+	}
+
+	public int get_extreme_right_point_x() {
+		return (int) surrounding_rectangle_absolute_on_complete_board.getMaxX();
+	}
+
 	public int get_lowest_point_y() {
 		return (int) surrounding_rectangle_absolute_on_complete_board.getMaxY();
+	}
+
+	public int getHighestPointY() {
+		return (int) surrounding_rectangle_absolute_on_complete_board.getY();
 	}
 
 	public boolean proceed_vertical_movement() {

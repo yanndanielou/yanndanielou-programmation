@@ -122,4 +122,10 @@ public class Game implements TowerListener, AttackerListener {
 		
 	}
 
+	@Override
+	public void on_tower_removal(Tower tower) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

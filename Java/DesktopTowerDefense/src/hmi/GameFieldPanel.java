@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
 import belligerents.Attacker;
+import belligerents.GameObject;
 import belligerents.Tower;
 import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
@@ -23,7 +24,7 @@ public class GameFieldPanel extends JLayeredPane
 	private ImageIcon empty_game_board_full_as_icon = new ImageIcon("Images/Empty_game_board_full.png");
 	private JLabel empty_game_board_full_as_label;
 
-	private HashMap<Tower, JLabel> tower_to_label_map = new HashMap<>();
+	private HashMap<GameObject, JLabel> game_object_to_label_map = new HashMap<>();
 
 	private enum LAYERS_ORDERED_FROM_TOP_TO_BACK {
 		BELLIGERENTS, BACKGROUND_IMAGE, UNVISIBLE;
@@ -71,15 +72,7 @@ public class GameFieldPanel extends JLayeredPane
 
 	@Override
 	public void on_listen_to_tower(Tower tower) {
-		ImageIcon get_graphical_representation_as_icon = tower.get_graphical_representation_as_icon();
-		JLabel tower_as_label = new JLabel(get_graphical_representation_as_icon);
-		tower_as_label.setLocation((int) tower.getSurrounding_rectangle_absolute_on_complete_board().getX(),
-				(int) tower.getSurrounding_rectangle_absolute_on_complete_board().getY());
-		tower_as_label.setSize((int) tower.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
-				(int) tower.getSurrounding_rectangle_absolute_on_complete_board().getHeight());
-		tower_to_label_map.put(tower, tower_as_label);
-		add(tower_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS.ordinal());
-		// repaint();
+		display_new_object_as_label(tower, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS);
 	}
 
 	@Override
@@ -88,10 +81,20 @@ public class GameFieldPanel extends JLayeredPane
 
 	}
 
+	private void display_new_object_as_label(GameObject gameObject, LAYERS_ORDERED_FROM_TOP_TO_BACK layer) {
+		ImageIcon get_graphical_representation_as_icon = gameObject.get_graphical_representation_as_icon();
+		JLabel objectAsLabel = new JLabel(get_graphical_representation_as_icon);
+		objectAsLabel.setLocation((int) gameObject.getSurrounding_rectangle_absolute_on_complete_board().getX(),
+				(int) gameObject.getSurrounding_rectangle_absolute_on_complete_board().getY());
+		objectAsLabel.setSize((int) gameObject.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
+				(int) gameObject.getSurrounding_rectangle_absolute_on_complete_board().getHeight());
+		game_object_to_label_map.put(gameObject, objectAsLabel);
+		add(objectAsLabel, layer.ordinal());
+	}
+
 	@Override
 	public void on_listen_to_attacker(Attacker attacker) {
-		// TODO Auto-generated method stub
-
+		display_new_object_as_label(attacker, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS);
 	}
 
 	@Override
@@ -102,6 +105,12 @@ public class GameFieldPanel extends JLayeredPane
 
 	@Override
 	public void on_attacker_beginning_of_destruction(Attacker attacker) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void on_tower_removal(Tower tower) {
 		// TODO Auto-generated method stub
 
 	}
