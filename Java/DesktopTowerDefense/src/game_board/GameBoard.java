@@ -17,13 +17,13 @@ public class GameBoard {
 	private int total_width = 0;
 	private int total_height = 0;
 
-	private ArrayList<GameBoardPointsSeries> squares_columns = new ArrayList<>();
+	private ArrayList<GameBoardPointsSeries> game_board_points_columns = new ArrayList<>();
 
 	private GameBoardDataModel gameBoardDataModel;
 
 	// private ArrayList<SquaresRow> squares_rows = new ArrayList<>();
 
-	private ArrayList<GameBoardPoint> all_squares_as_ordered_list = new ArrayList<GameBoardPoint>();
+	private ArrayList<GameBoardPoint> all_game_board_point_as_ordered_list = new ArrayList<GameBoardPoint>();
 
 	private Game game;
 
@@ -40,18 +40,18 @@ public class GameBoard {
 
 		for (int column = 0; column < total_width; column++) {
 			GameBoardPointsSeries squaresColumn = new GameBoardPointsSeries(column);
-			squares_columns.add(squaresColumn);
+			game_board_points_columns.add(squaresColumn);
 			for (int line = 0; line < total_height; line++) {
 				GameBoardPointsSeries squaresRow = new GameBoardPointsSeries(line);
 
 				// FIXME: squares_rows.add(squaresRow);
 
-				GameBoardPoint square = new GameBoardPoint(game, line, column);
+				GameBoardPoint gameBoardPoint = new GameBoardPoint(game, line, column);
 
-				squaresColumn.addSquare(square);
-				squaresRow.addSquare(square);
+				squaresColumn.addGameBoardPoint(gameBoardPoint);
+				squaresRow.addGameBoardPoint(gameBoardPoint);
 
-				all_squares_as_ordered_list.add(square);
+				all_game_board_point_as_ordered_list.add(gameBoardPoint);
 			}
 		}
 	}
@@ -65,15 +65,15 @@ public class GameBoard {
 	}
 
 	public ArrayList<GameBoardPoint> getAll_squares_as_ordered_list() {
-		return all_squares_as_ordered_list;
+		return all_game_board_point_as_ordered_list;
 	}
 
 	public ArrayList<GameBoardPointsSeries> getSquaresColumns() {
-		return squares_columns;
+		return game_board_points_columns;
 	}
 
 	public GameBoardPoint getSquare(int row, int column) {
-		List<GameBoardPoint> square_matching_column_and_row = all_squares_as_ordered_list.stream()
+		List<GameBoardPoint> square_matching_column_and_row = all_game_board_point_as_ordered_list.stream()
 				.filter(item -> item.getRow() == row && item.getColumn() == column).collect(Collectors.toList());
 
 		if (square_matching_column_and_row.size() > 1) {

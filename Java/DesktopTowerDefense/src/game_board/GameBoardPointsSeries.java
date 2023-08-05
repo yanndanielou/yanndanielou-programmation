@@ -12,16 +12,16 @@ public class GameBoardPointsSeries {
 		this.index = index;
 	}
 
-	public void setSquares(ArrayList<GameBoardPoint> squares) {
-		this.game_board_points = squares;
+	public void setGameBoardPoints(ArrayList<GameBoardPoint> gameBoardPoint) {
+		this.game_board_points = gameBoardPoint;
 	}
 
 	public ArrayList<GameBoardPoint> getGameBoardPoints() {
 		return game_board_points;
 	}
 
-	public void addSquare(GameBoardPoint square) {
-		game_board_points.add(square);
+	public void addGameBoardPoint(GameBoardPoint gameBoardPoint) {
+		game_board_points.add(gameBoardPoint);
 	}
 
 	public int getIndex() {
