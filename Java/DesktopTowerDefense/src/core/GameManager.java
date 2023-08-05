@@ -1,5 +1,6 @@
 package core;
 
+import java.awt.Point;
 import java.awt.Rectangle;
 
 import org.apache.logging.log4j.LogManager;
@@ -18,6 +19,8 @@ import builders.TowerDataModel;
 import constants.Constants;
 import game.Game;
 import game_board.GameBoard;
+import game_board.GameBoardPoint;
+import game_board.NeighbourGameBoardPointDirection;
 import hmi.DesktopTowerDefenseMainViewGeneric;
 
 public class GameManager {
@@ -27,6 +30,7 @@ public class GameManager {
 
 	private Game game = null;
 	private DesktopTowerDefenseMainViewGeneric desktopTowerDefenseMainView;
+	private AttackerMovementOrchestor attackerMovementOrchestor;
 
 	private GameManager() {
 
@@ -58,7 +62,27 @@ public class GameManager {
 		GameObjectsDataModel game_objects_data_model = gameObjectsModelBuilder.getGame_objects_data_model();
 		game = new Game(gameBoard, game_objects_data_model);
 		desktopTowerDefenseMainView.register_to_game(game);
+		attackerMovementOrchestor = new AttackerMovementOrchestor(game);
+		compute_neighbours_of_each_gameBoardPoint();
 
+	}
+
+	private void compute_neighbours_of_each_gameBoardPoint() {
+
+		LOGGER.info("compute_neighbours_of_each_gameBoardPoint: begin");
+		
+		GameBoard gameBoard = game.getGameBoard();
+
+		for (GameBoardPoint gameBoardPoint : gameBoard.getAll_gameBoardPoints_as_ordered_list()) {
+
+			for (NeighbourGameBoardPointDirection direction : NeighbourGameBoardPointDirection.values()) {
+				GameBoardPoint neighbourSquare = gameBoard.getNeighbourGameBoardPoint(gameBoardPoint, direction);
+				if (neighbourSquare != null) {
+					gameBoardPoint.setNeighbour(direction, neighbourSquare);
+				}
+			}
+		}		
+		LOGGER.info("compute_neighbours_of_each_gameBoardPoint: end");
 	}
 
 	public Game getGame() {
@@ -88,13 +112,17 @@ public class GameManager {
 		return tower;
 	}
 
-	public Attacker createNormalAttacker(RectangleDataModel creation_area) {
+	public Attacker createNormalAttacker(RectangleDataModel creation_area, RectangleDataModel oneRandomExitArea) {
 		GameObjectsDataModel game_objects_data_model = game.getGame_objects_data_model();
 		AttackerDataModel normal_attacker_data_model = game_objects_data_model.getNormal_attacker_data_model();
 
 		Rectangle creationAreaRectangle = creation_area.getRectangle();
+
+		Point attackerExitPoint = oneRandomExitArea.getOneRandomPointAllowingSubRectangleToFit(
+				normal_attacker_data_model.getWidth(), normal_attacker_data_model.getHeight());
+
 		NormalAttacker attacker = new NormalAttacker(normal_attacker_data_model, game,
-				(int) creationAreaRectangle.getX(), (int) creationAreaRectangle.getY());
+				(int) creationAreaRectangle.getX(), (int) creationAreaRectangle.getY(), attackerExitPoint);
 		return attacker;
 	}
 

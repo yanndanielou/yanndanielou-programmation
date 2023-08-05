@@ -17,6 +17,7 @@ import builders.GameBoardDataModel;
 import builders.GameObjectsDataModel;
 import builders.RectangleDataModel;
 import builders.TowerDataModel;
+import cheat_codes.CheatCodeManager;
 import core.GameManager;
 import game.Game;
 import game_board.GameBoard;
@@ -118,8 +119,10 @@ public class MainViewMenuBarManager implements ActionListener {
 					GameBoard gameBoard = game.getGameBoard();
 					GameBoardDataModel gameBoardDataModel = gameBoard.getGameBoardDataModel();
 					RectangleDataModel oneRandomEntryArea = gameBoardDataModel.getOneRandomEntryArea();
+					
+					RectangleDataModel oneRandomExitArea = gameBoardDataModel.getOneRandomExitArea();
 
-					gameManager.createNormalAttacker(oneRandomEntryArea);
+					gameManager.createNormalAttacker(oneRandomEntryArea, oneRandomExitArea);
 				}
 			}
 		});
@@ -153,6 +156,17 @@ public class MainViewMenuBarManager implements ActionListener {
 			}
 		});
 		menu.add(menuItem);
+
+		menuItem = new JMenuItem("Forbid enemies to move");
+		menuItem.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CheatCodeManager.getInstance().forbid_enemies_to_move();
+			}
+		});
+		menu.add(menuItem);
+
 		return menu;
 	}
 

@@ -16,5 +16,15 @@
 						"width":107,
 						"height":181
 					}
+			],
+ "attackers_exit_areas": [
+					{
+						"name":"right_attacker_exit_area",
+						"x":954,
+						"y":356,
+						"width":90,
+						"__comment_width__": "width is probably bigger in the real file, but it has no impact",
+						"height":181
+					}
 			]
 }

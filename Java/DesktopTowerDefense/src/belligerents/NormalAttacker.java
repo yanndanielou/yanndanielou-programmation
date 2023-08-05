@@ -1,5 +1,6 @@
 package belligerents;
 
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 
 import org.apache.logging.log4j.LogManager;
@@ -12,9 +13,9 @@ import game.Game;
 public class NormalAttacker extends Attacker {
 	private static final Logger LOGGER = LogManager.getLogger(NormalAttacker.class);
 
-	public NormalAttacker(AttackerDataModel attackerDataModel, Game game, int x, int y) {
+	public NormalAttacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escape_destination) {
 
-		super(attackerDataModel, game, x, y);
+		super(attackerDataModel, game, x, y, escape_destination);
 		LOGGER.info("Create NormalAttacker at x:" + x + ", y:" + y);
 	}
 

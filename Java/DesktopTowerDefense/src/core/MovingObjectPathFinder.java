@@ -1,7 +1,12 @@
 package core;
 
+import java.awt.Point;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import belligerents.Attacker;
+import game_board.NeighbourGameBoardPointDirection;
 
 public class MovingObjectPathFinder {
 	private static MovingObjectPathFinder instance;
@@ -18,6 +23,12 @@ public class MovingObjectPathFinder {
 			instance = new MovingObjectPathFinder();
 		}
 		return instance;
+	}
+
+	
+	public NeighbourGameBoardPointDirection getNextMovementDirection(Attacker attacker) {
+		Point destination = attacker.getEscape_destination();
+		return null;
 	}
 
 }

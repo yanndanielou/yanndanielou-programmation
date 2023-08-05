@@ -1,5 +1,6 @@
 package belligerents;
 
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
@@ -25,8 +26,9 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	protected int remaining_health;
 
 	protected ArrayList<AttackerListener> listeners = new ArrayList<>();
+	protected Point escape_destination;
 
-	public Attacker(AttackerDataModel attackerDataModel, Game game, int x, int y) {
+	public Attacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escape_destination) {
 
 		super(new Rectangle(x, y, attackerDataModel.getWidth(), attackerDataModel.getHeight()), game);
 
@@ -39,7 +41,9 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 		GameManager.getInstance().getDesktopTowerDefenseMainView().register_to_attacker(this);
 		add_listener(game);
 		add_listener(game.getGameBoard());
-		//listeners.forEach((listener) -> listener.on_listen_to_attacker(this));
+		// listeners.forEach((listener) -> listener.on_listen_to_attacker(this));*
+
+		this.escape_destination = escape_destination;
 	}
 
 	public void add_listener(AttackerListener attacker_listener) {
@@ -109,6 +113,10 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 
 	@Override
 	public void on_pause() {
+	}
+	
+	public Point getEscape_destination() {
+		return escape_destination;
 	}
 
 }

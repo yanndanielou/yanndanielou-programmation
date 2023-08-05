@@ -1,6 +1,7 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,6 +20,7 @@ public class Game implements TowerListener, AttackerListener {
 	private ArrayList<GameStatusListener> game_status_listeners = new ArrayList<>();
 
 	private ArrayList<Tower> towers = new ArrayList<>();
+	private ArrayList<Attacker> attackers = new ArrayList<>();
 
 	private GameBoard gameBoard;
 
@@ -101,31 +103,32 @@ public class Game implements TowerListener, AttackerListener {
 	@Override
 	public void on_attacker_end_of_destruction_and_clean(Attacker attacker) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_listen_to_attacker(Attacker attacker) {
-		// TODO Auto-generated method stub
-		
+		attackers.add(attacker);
 	}
 
 	@Override
 	public void on_attacker_moved(Attacker attacker) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void on_attacker_beginning_of_destruction(Attacker attacker) {
-		// TODO Auto-generated method stub
-		
+		attackers.remove(attacker);
 	}
 
 	@Override
 	public void on_tower_removal(Tower tower) {
-		// TODO Auto-generated method stub
-		
+		towers.remove(tower);
+	}
+
+	public List<Attacker> getAttackers() {
+		return attackers;
 	}
 
 }
