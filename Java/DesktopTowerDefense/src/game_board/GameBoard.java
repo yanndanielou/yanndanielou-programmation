@@ -153,7 +153,6 @@ public class GameBoard implements TowerListener, AttackerListener {
 			throw new BadLogicException("Cannot find column :" + column + " inside row:" + row);
 		}
 
-		
 		return gameBoardPoint;
 	}
 
@@ -214,10 +213,10 @@ public class GameBoard implements TowerListener, AttackerListener {
 		int reference_gameBoardPoint_row = reference_gameBoardPoint.getRow();
 
 		boolean is_reference_gameBoardPoint_first_of_column = reference_gameBoardPoint_column == 0;
-		boolean is_reference_gameBoardPoint_last_of_column = reference_gameBoardPoint_column == total_height - 1;
+		boolean is_reference_gameBoardPoint_last_of_column = reference_gameBoardPoint_column == total_width - 1;
 
 		boolean is_reference_gameBoardPoint_first_of_row = reference_gameBoardPoint_row == 0;
-		boolean is_reference_gameBoardPoint_last_of_row = reference_gameBoardPoint_row == total_width - 1;
+		boolean is_reference_gameBoardPoint_last_of_row = reference_gameBoardPoint_row == total_height - 1;
 
 		// left gameBoardPoint
 		switch (direction) {
@@ -230,9 +229,9 @@ public class GameBoard implements TowerListener, AttackerListener {
 			if (!is_reference_gameBoardPoint_last_of_row && !is_reference_gameBoardPoint_first_of_column) {
 				neighbour = getGameBoardPoint(reference_gameBoardPoint_row + 1, reference_gameBoardPoint_column - 1);
 			}
+			break;
 		case EAST:
 			if (!is_reference_gameBoardPoint_last_of_row) {
-				break;
 				neighbour = getGameBoardPoint(reference_gameBoardPoint_row + 1, reference_gameBoardPoint_column);
 			}
 			break;

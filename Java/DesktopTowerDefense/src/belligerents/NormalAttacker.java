@@ -20,13 +20,6 @@ public class NormalAttacker extends Attacker {
 	}
 
 	@Override
-	public void notify_movement() {
-//		for (GameObjectListerner allyBoatListener : movement_listeners) {
-//			allyBoatListener.on_normal_attacker_moved(this);
-//		}
-	}
-
-	@Override
 	protected void right_border_of_game_board_reached() {
 		setX_speed(getX_speed() * -1);
 	}
