@@ -1,14 +1,11 @@
 {
- "game_board_height_above_upper_walls":84,
- "game_board_inside_walls_height":677,
- "game_board_inside_walls_height":677,
- "game_board_inside_walls_absolulte_x":113,
- "game_board_inside_walls_absolulte_x":113,
+ "___game_board_height_above_upper_walls":84,
+ "___game_board_inside_walls_height":677,
+ "___game_board_inside_walls_height":677,
+ "___game_board_inside_walls_absolulte_x":113,
  "game_board_total_width":1050,
  "game_board_total_height":908,
- "game_board_attacker_entry_absolute_x":110,
- "game_board_attacker_entry_absolute_y":430,
- "attackers_entry_areas": [
+ "attackersEntryAreas": [
 					{
 						"name":"left_attacker_entry_area",
 						"x":0,
@@ -17,7 +14,16 @@
 						"height":181
 					}
 			],
- "attackers_exit_areas": [
+ "walls": [
+					{
+						"name":"upper_left_wall",
+						"x":107,
+						"y":84,
+						"width":30,
+						"height":271
+					}
+			],
+ "attackersExitAreas": [
 					{
 						"name":"right_attacker_exit_area",
 						"x":954,

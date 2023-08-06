@@ -56,7 +56,6 @@ public class MovingObjectPathFinder {
 	}
 
 	public NeighbourGameBoardPointDirection getNextMovementDirection(Attacker attacker) {
-		Point destination = attacker.getEscape_destination();
 		NeighbourGameBoardPointDirection nextMovementDirectionForSmallerPathInStraightLine = getNextMovementDirectionForSmallerPathInStraightLine(
 				attacker);
 		return nextMovementDirectionForSmallerPathInStraightLine;

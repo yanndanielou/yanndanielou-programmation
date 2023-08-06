@@ -3,9 +3,7 @@ package game_board;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,6 +18,7 @@ import game.Game;
 
 public class GameBoard implements TowerListener, AttackerListener {
 
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoard.class);
 
 	private int total_width = 0;
@@ -30,6 +29,10 @@ public class GameBoard implements TowerListener, AttackerListener {
 	private GameBoardDataModel gameBoardDataModel;
 
 	private ArrayList<GameBoardPoint> all_game_board_point_as_ordered_list = new ArrayList<>();
+
+	private ArrayList<GameBoardWall> walls = new ArrayList<>();
+	private ArrayList<GameBoardAttackersEntryArea> gameBoardAttackersEntryAreas = new ArrayList<>();
+	private ArrayList<GameBoardAttackersExitArea> gameBoardAttackersExitAreas = new ArrayList<>();
 
 	private Game game;
 
@@ -206,5 +209,29 @@ public class GameBoard implements TowerListener, AttackerListener {
 	public void on_attacker_beginning_of_destruction(Attacker attacker) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void addWall(GameBoardWall wall) {
+		walls.add(wall);
+	}
+
+	public ArrayList<GameBoardWall> getWalls() {
+		return walls;
+	}
+
+	public void addGameBoardAttackersExitArea(GameBoardAttackersExitArea gameBoardAttackersExitArea) {
+		gameBoardAttackersExitAreas.add(gameBoardAttackersExitArea);
+	}
+
+	public ArrayList<GameBoardAttackersExitArea> getGameBoardAttackersExitAreas() {
+		return gameBoardAttackersExitAreas;
+	}
+
+	public void addGameBoardAttackersEntryArea(GameBoardAttackersEntryArea gameBoardAttackersEntryArea) {
+		gameBoardAttackersEntryAreas.add(gameBoardAttackersEntryArea);
+	}
+
+	public ArrayList<GameBoardAttackersEntryArea> getGameBoardAttackersEntryAreas() {
+		return gameBoardAttackersEntryAreas;
 	}
 }

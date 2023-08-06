@@ -11,6 +11,7 @@ import belligerents.NormalAttacker;
 import belligerents.Tower;
 import builders.AttackerDataModel;
 import builders.BombDataModel;
+import builders.GameBoardDataModel;
 import builders.GameBoardModelBuilder;
 import builders.GameObjectsDataModel;
 import builders.GameObjectsModelBuilder;
@@ -19,7 +20,10 @@ import builders.TowerDataModel;
 import constants.Constants;
 import game.Game;
 import game_board.GameBoard;
+import game_board.GameBoardAttackersEntryArea;
+import game_board.GameBoardAttackersExitArea;
 import game_board.GameBoardPoint;
+import game_board.GameBoardWall;
 import game_board.NeighbourGameBoardPointDirection;
 import hmi.DesktopTowerDefenseMainViewGeneric;
 import time.TimeManager;
@@ -65,8 +69,28 @@ public class GameManager {
 		desktopTowerDefenseMainView.register_to_game(game);
 		attackerMovementOrchestor = new AttackerMovementOrchestor(game);
 		compute_neighbours_of_each_gameBoardPoint();
+		createGameBoardAreas();
 		TimeManager.getInstance().start();
+	}
 
+	private void createGameBoardAreas() {
+
+		GameBoard gameBoard = game.getGameBoard();
+		GameBoardDataModel gameBoardDataModel = gameBoard.getGameBoardDataModel();
+		for (RectangleDataModel wallDataModel : gameBoardDataModel.getWalls()) {
+			GameBoardWall wall = new GameBoardWall(game, wallDataModel);
+			gameBoard.addWall(wall);
+		}
+		for (RectangleDataModel attackersEntryAreaDataModel : gameBoardDataModel.getAttackersEntryAreas()) {
+			GameBoardAttackersEntryArea attackersEntryArea = new GameBoardAttackersEntryArea(game,
+					attackersEntryAreaDataModel);
+			gameBoard.addGameBoardAttackersEntryArea(attackersEntryArea);
+		}
+		for (RectangleDataModel attackersExitAreaDataModel : gameBoardDataModel.getAttackersExitAreas()) {
+			GameBoardAttackersExitArea attackersExitArea = new GameBoardAttackersExitArea(game,
+					attackersExitAreaDataModel);
+			gameBoard.addGameBoardAttackersExitArea(attackersExitArea);
+		}
 	}
 
 	private void compute_neighbours_of_each_gameBoardPoint() {

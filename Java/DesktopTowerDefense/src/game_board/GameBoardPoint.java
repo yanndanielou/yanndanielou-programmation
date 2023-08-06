@@ -22,7 +22,6 @@ public class GameBoardPoint implements TowerListener, AttackerListener {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardPoint.class);
 
-	private Point location;
 	private int row;
 	private int column;
 
