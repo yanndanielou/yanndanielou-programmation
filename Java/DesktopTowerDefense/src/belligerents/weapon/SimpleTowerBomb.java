@@ -16,9 +16,9 @@ public class SimpleTowerBomb extends Weapon {
 	private static final Logger LOGGER = LogManager.getLogger(SimpleTowerBomb.class);
 
 	public SimpleTowerBomb(BombDataModel genericObjectDataModel, int x, int y, int x_speed, Game game,
-			Belligerent parent_belligerent, Belligerent target_belligerent) {
+			Belligerent parent_belligerent, Belligerent target_belligerent, int evolutionLevel) {
 		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), game,
-				parent_belligerent, target_belligerent);
+				parent_belligerent, target_belligerent, evolutionLevel);
 		setX_speed(x_speed);
 	}
 
@@ -34,7 +34,7 @@ public class SimpleTowerBomb extends Weapon {
 
 	@Deprecated
 	public void add_movement_listener(GameObjectListerner allyBoatListener) {
-	//	super.add_movement_listener(allyBoatListener);
+		// super.add_movement_listener(allyBoatListener);
 		allyBoatListener.on_listen_to_simple_tower_bomb(this);
 	}
 

@@ -25,17 +25,9 @@ public class GameBoard implements TowerListener, AttackerListener {
 	private int total_width = 0;
 	private int total_height = 0;
 
-	@Deprecated
-	private ArrayList<GameBoardPointsSeries> game_board_points_columns = new ArrayList<>();
-	@Deprecated
-	private ArrayList<GameBoardPointsSeries> game_board_points_rows = new ArrayList<>();
-
 	private Map<Integer, Map<Integer, GameBoardPoint>> game_board_point_per_row_and_column = new HashMap<>();
 
 	private GameBoardDataModel gameBoardDataModel;
-
-	// private ArrayList<GameBoardPointsRow> gameBoardPoints_rows = new
-	// ArrayList<>();
 
 	private ArrayList<GameBoardPoint> all_game_board_point_as_ordered_list = new ArrayList<>();
 
@@ -71,29 +63,6 @@ public class GameBoard implements TowerListener, AttackerListener {
 		}
 	}
 
-	private void create_initial_gameBoardPoints_old() {
-
-		for (int column = 0; column < total_width; column++) {
-			GameBoardPointsSeries gameBoardPointsColumn = new GameBoardPointsSeries(column);
-			game_board_points_columns.add(gameBoardPointsColumn);
-			for (int line = 0; line < total_height; line++) {
-
-				if (game_board_points_rows.size() < line + 1) {
-					game_board_points_rows.add(new GameBoardPointsSeries(line));
-				}
-
-				GameBoardPointsSeries gameBoardPointsRow = game_board_points_rows.get(line);
-
-				GameBoardPoint gameBoardPoint = new GameBoardPoint(game, line, column);
-
-				gameBoardPointsColumn.addGameBoardPoint(gameBoardPoint);
-				gameBoardPointsRow.addGameBoardPoint(gameBoardPoint);
-
-				all_game_board_point_as_ordered_list.add(gameBoardPoint);
-			}
-		}
-	}
-
 	public int getTotalWidth() {
 		return total_width;
 	}
@@ -106,37 +75,8 @@ public class GameBoard implements TowerListener, AttackerListener {
 		return all_game_board_point_as_ordered_list;
 	}
 
-	@Deprecated
-	public ArrayList<GameBoardPointsSeries> getGameBoardPointsColumns() {
-		return game_board_points_columns;
-	}
-
 	public GameBoardPoint getGameBoardPoint(Point point) {
 		return getGameBoardPoint((int) point.getX(), (int) point.getY());
-	}
-
-	private GameBoardPoint getGameBoardPointOldWay(int row, int column) {
-		List<GameBoardPoint> gameBoardPoint_matching_column_and_row = all_game_board_point_as_ordered_list.stream()
-				.filter(item -> item.getRow() == row && item.getColumn() == column).collect(Collectors.toList());
-
-		if (gameBoardPoint_matching_column_and_row.size() > 1) {
-			throw new BadLogicException("Found more than one (" + gameBoardPoint_matching_column_and_row.size()
-					+ " gameBoardPoints with row:" + row + " and column:" + column + ". FOund: "
-					+ gameBoardPoint_matching_column_and_row);
-		}
-		if (gameBoardPoint_matching_column_and_row.isEmpty()) {
-			LOGGER.error("Could not find gameBoardPoint with row:" + row + " and column:" + column);
-			throw new BadLogicException("Could not find gameBoardPoint with row:" + row + " and column:" + column);
-			// Should return null if no exception found
-		}
-
-		return gameBoardPoint_matching_column_and_row.get(0);
-
-	}
-
-	private ArrayList<GameBoardPoint> getAllGameBoardPointOfRow(int row) {
-		ArrayList<GameBoardPoint> gameBoardPointsOfTheRow = game_board_points_columns.get(row).getGameBoardPoints();
-		return gameBoardPointsOfTheRow;
 	}
 
 	public GameBoardPoint getGameBoardPoint(int row, int column) {
@@ -154,51 +94,6 @@ public class GameBoard implements TowerListener, AttackerListener {
 		}
 
 		return gameBoardPoint;
-	}
-
-	@Deprecated
-	public GameBoardPoint getGameBoardPointMethod2(int row, int column) {
-
-		// List<GameBoardPoint> gameBoardPoint_matching_column_and_row =
-		// all_game_board_point_as_ordered_list.stream()
-		// .filter(item -> item.getRow() == row && item.getColumn() ==
-		// column).collect(Collectors.toList());
-		GameBoardPoint gameBoardPointFound = null;
-		if (row >= 908) {
-
-		}
-		ArrayList<GameBoardPoint> gameBoardPointsOfRow;
-		try {
-
-			gameBoardPointsOfRow = getAllGameBoardPointOfRow(row);
-		} catch (Exception e) {
-			// TODO: handle exception
-			gameBoardPointsOfRow = new ArrayList<>();
-			int pause = 1;
-		}
-
-		try {
-			gameBoardPointFound = gameBoardPointsOfRow.get(column);
-		} catch (Exception e) {
-			// TODO: handle exception
-			int pause = 1;
-		}
-		return gameBoardPointFound;
-		/*
-		 * if (gameBoardPoint_matching_column_and_row.size() > 1) { throw new
-		 * BadLogicException("Found more than one (" +
-		 * gameBoardPoint_matching_column_and_row.size() + " gameBoardPoints with row:"
-		 * + row + " and column:" + column + ". FOund: " +
-		 * gameBoardPoint_matching_column_and_row); } if
-		 * (gameBoardPoint_matching_column_and_row.isEmpty()) {
-		 * LOGGER.error("Could not find gameBoardPoint with row:" + row + " and column:"
-		 * + column); throw new
-		 * BadLogicException("Could not find gameBoardPoint with row:" + row +
-		 * " and column:" + column); // Should return null if no exception found }
-		 * 
-		 * return gameBoardPoint_matching_column_and_row.get(0);
-		 */
-
 	}
 
 	public void setGame(Game game) {

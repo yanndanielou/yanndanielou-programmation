@@ -102,7 +102,7 @@ public class MainViewMenuBarManager implements ActionListener {
 
 					gameManager.createSimpleTower(
 							gameBoard.getTotalWidth() / 2 - simple_tower_data_model.getWidth() / 2,
-							gameBoard.getTotalHeight() / 2 - simple_tower_data_model.getHeight() / 2);
+							gameBoard.getTotalHeight() / 2 - simple_tower_data_model.getHeight() / 2, 1);
 				}
 			}
 		});
@@ -119,10 +119,10 @@ public class MainViewMenuBarManager implements ActionListener {
 					GameBoard gameBoard = game.getGameBoard();
 					GameBoardDataModel gameBoardDataModel = gameBoard.getGameBoardDataModel();
 					RectangleDataModel oneRandomEntryArea = gameBoardDataModel.getOneRandomEntryArea();
-					
+
 					RectangleDataModel oneRandomExitArea = gameBoardDataModel.getOneRandomExitArea();
 
-					gameManager.createNormalAttacker(oneRandomEntryArea, oneRandomExitArea);
+					gameManager.createNormalAttacker(oneRandomEntryArea, oneRandomExitArea, 1);
 				}
 			}
 		});

@@ -39,9 +39,12 @@ public abstract class GameObject {
 	private BufferedImage normal_attacker_buffered_image = null;
 	private final String normal_attacker_image_path = "Images/Attacker_normal_going_right.png";
 
-	public GameObject(Rectangle surrounding_rectangle_absolute_on_complete_board, Game game) {
+	protected int evolutionLevel;
+
+	public GameObject(Rectangle surrounding_rectangle_absolute_on_complete_board, Game game, int evolutionLevel) {
 		this.surrounding_rectangle_absolute_on_complete_board = surrounding_rectangle_absolute_on_complete_board;
 		this.game = game;
+		this.evolutionLevel = evolutionLevel;
 
 		initialize_and_load_images();
 

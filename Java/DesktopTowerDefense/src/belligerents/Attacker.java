@@ -28,9 +28,10 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	protected ArrayList<AttackerListener> listeners = new ArrayList<>();
 	protected Point escape_destination;
 
-	public Attacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escape_destination) {
 
-		super(new Rectangle(x, y, attackerDataModel.getWidth(), attackerDataModel.getHeight()), game);
+	public Attacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escape_destination, int evolutionLevel) {
+
+		super(new Rectangle(x, y, attackerDataModel.getWidth(), attackerDataModel.getHeight()), game, evolutionLevel);
 
 		this.attackerDataModel = attackerDataModel;
 

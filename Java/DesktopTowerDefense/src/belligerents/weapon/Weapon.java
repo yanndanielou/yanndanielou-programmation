@@ -12,8 +12,8 @@ public abstract class Weapon extends GameObject {
 	protected Belligerent target;
 
 	public Weapon(Rectangle surrounding_rectangle_absolute_on_complete_board, Game game, Belligerent parent_belligerent,
-			Belligerent target_belligerent) {
-		super(surrounding_rectangle_absolute_on_complete_board, game);
+			Belligerent target_belligerent, int evolutionLevel) {
+		super(surrounding_rectangle_absolute_on_complete_board, game, evolutionLevel);
 		this.launcher = parent_belligerent;
 		this.target = target_belligerent;
 		parent_belligerent.add_living_bomb(this);

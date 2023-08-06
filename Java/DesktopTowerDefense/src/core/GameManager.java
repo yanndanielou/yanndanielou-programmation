@@ -66,13 +66,13 @@ public class GameManager {
 		attackerMovementOrchestor = new AttackerMovementOrchestor(game);
 		compute_neighbours_of_each_gameBoardPoint();
 		TimeManager.getInstance().start();
-		
+
 	}
 
 	private void compute_neighbours_of_each_gameBoardPoint() {
 
 		LOGGER.info("compute_neighbours_of_each_gameBoardPoint: begin");
-		
+
 		GameBoard gameBoard = game.getGameBoard();
 
 		for (GameBoardPoint gameBoardPoint : gameBoard.getAll_gameBoardPoints_as_ordered_list()) {
@@ -83,7 +83,7 @@ public class GameManager {
 					gameBoardPoint.setNeighbour(direction, neighbourSquare);
 				}
 			}
-		}		
+		}
 		LOGGER.info("compute_neighbours_of_each_gameBoardPoint: end");
 	}
 
@@ -101,20 +101,22 @@ public class GameManager {
 		this.desktopTowerDefenseMainView = desktopTowerDefenseMainView;
 	}
 
-	private Tower createTower(TowerDataModel towerDataModel, BombDataModel bombDataModel, int x, int y) {
-		Tower tower = new Tower(towerDataModel, bombDataModel, game, x, y);
+	private Tower createTower(TowerDataModel towerDataModel, BombDataModel bombDataModel, int evolutionLevel, int x,
+			int y) {
+		Tower tower = new Tower(towerDataModel, bombDataModel, game, evolutionLevel, x, y);
 
 		return tower;
 	}
 
-	public Tower createSimpleTower(int x, int y) {
+	public Tower createSimpleTower(int evolutionLevel, int x, int y) {
 		GameObjectsDataModel game_objects_data_model = game.getGame_objects_data_model();
 		Tower tower = createTower(game_objects_data_model.getSimple_tower_data_model(),
-				game_objects_data_model.getSimple_tower_bomb_data_model(), x, y);
+				game_objects_data_model.getSimple_tower_bomb_data_model(), evolutionLevel, x, y);
 		return tower;
 	}
 
-	public Attacker createNormalAttacker(RectangleDataModel creation_area, RectangleDataModel oneRandomExitArea) {
+	public Attacker createNormalAttacker(RectangleDataModel creation_area, RectangleDataModel oneRandomExitArea,
+			int evolutionLevel) {
 		GameObjectsDataModel game_objects_data_model = game.getGame_objects_data_model();
 		AttackerDataModel normal_attacker_data_model = game_objects_data_model.getNormal_attacker_data_model();
 
@@ -124,7 +126,8 @@ public class GameManager {
 				normal_attacker_data_model.getWidth(), normal_attacker_data_model.getHeight());
 
 		NormalAttacker attacker = new NormalAttacker(normal_attacker_data_model, game,
-				(int) creationAreaRectangle.getX(), (int) creationAreaRectangle.getY(), attackerExitPoint);
+				(int) creationAreaRectangle.getX(), (int) creationAreaRectangle.getY(), attackerExitPoint,
+				evolutionLevel);
 		return attacker;
 	}
 

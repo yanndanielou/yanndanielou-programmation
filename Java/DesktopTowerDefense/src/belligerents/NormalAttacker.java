@@ -13,9 +13,9 @@ import game.Game;
 public class NormalAttacker extends Attacker {
 	private static final Logger LOGGER = LogManager.getLogger(NormalAttacker.class);
 
-	public NormalAttacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escape_destination) {
+	public NormalAttacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escape_destination, int evolutionLevel) {
 
-		super(attackerDataModel, game, x, y, escape_destination);
+		super(attackerDataModel, game, x, y, escape_destination, evolutionLevel);
 		LOGGER.info("Create NormalAttacker at x:" + x + ", y:" + y);
 	}
 
