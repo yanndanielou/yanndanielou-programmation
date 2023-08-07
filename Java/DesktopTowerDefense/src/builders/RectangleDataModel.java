@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import common.RandomIntegerGenerator;
+import geometry.IntegerRectangle;
 
 public class RectangleDataModel {
 
@@ -17,8 +18,8 @@ public class RectangleDataModel {
 		return name;
 	}
 
-	public Rectangle getRectangle() {
-		return new Rectangle(x, y, width, height);
+	public IntegerRectangle getRectangle() {
+		return new IntegerRectangle(x, y, width, height);
 	}
 
 	public Point getOneRandomPointAllowingSubRectangleToFit(int subRectangleWidth, int subRectangleHeight) {

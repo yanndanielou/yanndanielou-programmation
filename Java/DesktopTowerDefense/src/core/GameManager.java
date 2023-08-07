@@ -1,7 +1,6 @@
 package core;
 
 import java.awt.Point;
-import java.awt.Rectangle;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,6 +24,7 @@ import game_board.GameBoardAttackersExitArea;
 import game_board.GameBoardPoint;
 import game_board.GameBoardWall;
 import game_board.NeighbourGameBoardPointDirection;
+import geometry.IntegerRectangle;
 import hmi.DesktopTowerDefenseMainViewGeneric;
 import time.TimeManager;
 
@@ -144,7 +144,7 @@ public class GameManager {
 		GameObjectsDataModel game_objects_data_model = game.getGame_objects_data_model();
 		AttackerDataModel normal_attacker_data_model = game_objects_data_model.getNormal_attacker_data_model();
 
-		Rectangle creationAreaRectangle = creation_area.getRectangle();
+		IntegerRectangle creationAreaRectangle = creation_area.getRectangle();
 
 		Point attackerExitPoint = oneRandomExitArea.getOneRandomPointAllowingSubRectangleToFit(
 				normal_attacker_data_model.getWidth(), normal_attacker_data_model.getHeight());

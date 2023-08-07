@@ -26,6 +26,10 @@ public class IntegerRectangle {
 		awtRectangle = new Rectangle(r.x, r.y, r.width, r.height);
 	}
 
+	public IntegerRectangle(IntegerRectangle r) {
+		awtRectangle = new Rectangle(r.getX(), r.getY(), r.getWidth(), r.getHeight());
+	}
+
 	public IntegerRectangle(int x, int y, int width, int height) {
 		awtRectangle = new Rectangle(x, y, width, height);
 	}

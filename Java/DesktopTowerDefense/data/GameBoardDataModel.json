@@ -1,72 +1,73 @@
 {
- "___game_board_height_above_upper_walls":84,
- "___game_board_inside_walls_height":677,
- "___game_board_inside_walls_height":677,
- "___game_board_inside_walls_absolulte_x":113,
- "game_board_total_width":1050,
- "game_board_total_height":908,
- "__attackersEntryAreasAsRectangles___removedAndReplacedByImageParsing": [
-					{
-						"name":"left_attacker_entry_area",
-						"x":0,
-						"y":356,
-						"width":107,
-						"height":181
-					}
-			],
- "__wallsAsRectangles___removedAndReplacedByImageParsing": [
-					{
-						"name":"upper_left_wall",
-						"x":107,
-						"y":84,
-						"width":30,
-						"height":271
-					}
-			],
- "__attackersExitAreasAsRectangles___removedAndReplacedByImageParsing": [
-					{
-						"name":"right_attacker_exit_area",
-						"x":954,
-						"y":356,
-						"width":90,
-						"__comment_width__": "width is probably bigger in the real file, but it has no impact",
-						"height":181
-					}
-			],			
-"wallsAsRGBInImageToParse":{
-			"imageToParsePath":"images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
-			"name":"all_walls",
-			 "rgbColorDefinition":{
-				"red": 0,
-				"green": 0,
-				"blue": 255			
-			 }			
-		 },
-"attackersEntryAreasAsRGBInImageToParse":{
-			"imageToParsePath":"images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
-			"name":"left_attacker_entry_area",
-			 "rgbColorDefinition":{
-				"red": 0,
-				"green": 0,
-				"blue": 255			
-			 }		
-		 },
-"attackersExitAreasAsRGBInImageToParse":{
-			"imageToParsePath":"images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
-			"name":"right_attacker_exit_area",
-			 "rgbColorDefinition":{
-				"red": 0,
-				"green": 0,
-				"blue": 255			
-			 }		
-		 }	,
-"nonPlayableAreasAsRGBInImageToParse":{
-			"imageToParsePath":"images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
-			"name":"area_outside_of_walls_that_is_not_playable",
-			 "rgbColorDefinition":{
-				"red": 0,
-				"green": 0,
-				"blue": 255			
-			 }			
-		 }	
+    "___game_board_height_above_upper_walls": 84,
+    "___game_board_inside_walls_height": 677,
+    "___game_board_inside_walls_height": 677,
+    "___game_board_inside_walls_absolulte_x": 113,
+    "game_board_total_width": 1050,
+    "game_board_total_height": 908,
+    "__attackersEntryAreasAsRectangles___removedAndReplacedByImageParsing": [{
+            "name": "left_attacker_entry_area",
+            "x": 0,
+            "y": 356,
+            "width": 107,
+            "height": 181
+        }
+    ],
+    "__wallsAsRectangles___removedAndReplacedByImageParsing": [{
+            "name": "upper_left_wall",
+            "x": 107,
+            "y": 84,
+            "width": 30,
+            "height": 271
+        }
+    ],
+    "__attackersExitAreasAsRectangles___removedAndReplacedByImageParsing": [{
+            "name": "right_attacker_exit_area",
+            "x": 954,
+            "y": 356,
+            "width": 90,
+            "__comment_width__": "width is probably bigger in the real file, but it has no impact",
+            "height": 181
+        }
+    ],
+    "wallsAsRGBInImageToParse": [{
+            "imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
+            "name": "all_walls",
+            "rgbColorDefinition": {
+                "red": 0,
+                "green": 0,
+                "blue": 255
+            }
+        }
+    ],
+    "attackersEntryAreasAsRGBInImageToParse": [{
+            "imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
+            "name": "left_attacker_entry_area",
+            "rgbColorDefinition": {
+                "red": 0,
+                "green": 0,
+                "blue": 255
+            }
+        }
+    ],
+    "attackersExitAreasAsRGBInImageToParse": [{
+            "imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
+            "name": "right_attacker_exit_area",
+            "rgbColorDefinition": {
+                "red": 0,
+                "green": 0,
+                "blue": 255
+            }
+        }
+    ],
+    "nonPlayableAreasAsRGBInImageToParse": [{
+            "imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
+            "name": "area_outside_of_walls_that_is_not_playable",
+            "rgbColorDefinition": {
+                "red": 0,
+                "green": 0,
+                "blue": 255
+            }
+        }
+    ]
 }
