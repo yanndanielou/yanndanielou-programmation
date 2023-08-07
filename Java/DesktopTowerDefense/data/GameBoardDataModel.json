@@ -34,9 +34,9 @@
             "imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
             "name": "all_walls",
             "rgbColorDefinition": {
-                "red": 0,
-                "green": 0,
-                "blue": 255
+                "red": 255,
+                "green": 242,
+                "blue": 0
             }
         }
     ],
@@ -44,9 +44,9 @@
             "imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
             "name": "left_attacker_entry_area",
             "rgbColorDefinition": {
-                "red": 0,
-                "green": 0,
-                "blue": 255
+                "red": 34,
+                "green": 177,
+                "blue": 76
             }
         }
     ],
@@ -54,9 +54,9 @@
             "imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
             "name": "right_attacker_exit_area",
             "rgbColorDefinition": {
-                "red": 0,
-                "green": 0,
-                "blue": 255
+                "red": 237,
+                "green": 28,
+                "blue": 36
             }
         }
     ],
@@ -64,9 +64,9 @@
             "imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
             "name": "area_outside_of_walls_that_is_not_playable",
             "rgbColorDefinition": {
-                "red": 0,
-                "green": 0,
-                "blue": 255
+                "red": 195,
+                "green": 195,
+                "blue": 195
             }
         }
     ]
