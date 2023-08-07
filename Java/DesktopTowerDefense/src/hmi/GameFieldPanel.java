@@ -21,7 +21,7 @@ public class GameFieldPanel extends JLayeredPane
 
 	private static final long serialVersionUID = -1541008040602802454L;
 
-	private ImageIcon empty_game_board_full_as_icon = new ImageIcon("Images/Empty_game_board_full.png");
+	private ImageIcon empty_game_board_full_as_icon = new ImageIcon("Images/Empty_game_board_full_1_entry_1_exit.png");
 	private JLabel empty_game_board_full_as_label;
 
 	private HashMap<GameObject, JLabel> game_object_to_label_map = new HashMap<>();

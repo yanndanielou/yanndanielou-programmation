@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import builders.game_board.RectangleDataModel;
 import game.Game;
 
-public class GameBoardAttackersEntryArea extends GameBoardRectangleArea {
+public class GameBoardAttackersEntryArea extends GameBoardRectangleDefinedArea {
 
 	/**
 	 * 

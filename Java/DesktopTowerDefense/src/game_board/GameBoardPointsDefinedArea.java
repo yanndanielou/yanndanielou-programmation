@@ -1,25 +1,22 @@
 package game_board;
 
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import builders.game_board.RectangleDataModel;
 import game.Game;
-import geometry.IntegerRectangle;
 
-public class GameBoardPointsArea extends GameBoardArea {
+public class GameBoardPointsDefinedArea extends GameBoardArea {
 
 	protected List<Point> points = new ArrayList<>();
 
 	@SuppressWarnings("unused")
-	private static final Logger LOGGER = LogManager.getLogger(GameBoardPointsArea.class);
+	private static final Logger LOGGER = LogManager.getLogger(GameBoardPointsDefinedArea.class);
 
-	public GameBoardPointsArea(Game game, String name) {
+	public GameBoardPointsDefinedArea(Game game, String name) {
 		super(game, name);
 	}
 

@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 import builders.game_board.RectangleDataModel;
 import game.Game;
 
-public class GameBoardWallRectangle extends GameBoardRectangleArea {
+public class GameBoardWallRectangle extends GameBoardRectangleDefinedArea {
 
 	/**
 	 * 

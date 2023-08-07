@@ -1,7 +1,6 @@
 package builders.game_board;
 
 import java.awt.Point;
-import java.awt.Rectangle;
 
 import common.RandomIntegerGenerator;
 import geometry.IntegerRectangle;

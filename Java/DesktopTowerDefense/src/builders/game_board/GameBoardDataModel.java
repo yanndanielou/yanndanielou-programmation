@@ -15,10 +15,10 @@ public class GameBoardDataModel {
 	private ArrayList<RectangleDataModel> attackersEntryAreasAsRectangles;
 	private ArrayList<RectangleDataModel> attackersExitAreasAsRectangles;
 	private ArrayList<RectangleDataModel> wallsAsRectangles;
-	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> wallsPointsAreaAsRGBInImageToParse;
-	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> attackersRectangleEntryAreasAsRGBInImageToParse;
-	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> attackersRectangleExitAreasAsRGBInImageToParse;
-	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> nonPlayablePointsAreasAsRGBInImageToParse;
+	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> pointsDefinedWallAreaAsRGBInImageToParse;
+	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> rectangleDefinedAttackersEntryAreasAsRGBInImageToParse;
+	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> rectangleDefinedAttackersExitAreasAsRGBInImageToParse;
+	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> pointsDefinedNonPlayableAreasAsRGBInImageToParse;
 
 	public int getGame_board_total_width() {
 		return game_board_total_width;
@@ -56,15 +56,45 @@ public class GameBoardDataModel {
 		return found.get(0);
 	}
 
+	private ArrayList<RectangleDataModel> emptyListIfNullRectangleDataModell(
+			ArrayList<RectangleDataModel> initialList) {
+		return initialList == null ? new ArrayList<>() : initialList;
+	}
+
+	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> emptyListIfNullGameBoardAreasByRGBImageRecognitionDataModel(
+			ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> initialList) {
+		return initialList == null ? new ArrayList<>() : initialList;
+	}
+
 	public ArrayList<RectangleDataModel> getWallsAsRectangles() {
-		return wallsAsRectangles;
+		return emptyListIfNullRectangleDataModell(wallsAsRectangles);
 	}
 
 	public ArrayList<RectangleDataModel> getAttackersEntryAreasAsRectangles() {
-		return attackersEntryAreasAsRectangles;
+		return emptyListIfNullRectangleDataModell(attackersEntryAreasAsRectangles);
 	}
 
 	public ArrayList<RectangleDataModel> getAttackersExitAreasAsRectangles() {
-		return attackersExitAreasAsRectangles;
+		return emptyListIfNullRectangleDataModell(attackersExitAreasAsRectangles);
 	}
+
+	public ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> getPointsDefinedNonPlayableAreasAsRGBInImageToParse() {
+		return emptyListIfNullGameBoardAreasByRGBImageRecognitionDataModel(
+				pointsDefinedNonPlayableAreasAsRGBInImageToParse);
+	}
+
+	public ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> getPointsDefinedWallAreaAsRGBInImageToParse() {
+		return emptyListIfNullGameBoardAreasByRGBImageRecognitionDataModel(pointsDefinedWallAreaAsRGBInImageToParse);
+	}
+
+	public ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> getRectangleDefinedAttackersEntryAreasAsRGBInImageToParse() {
+		return emptyListIfNullGameBoardAreasByRGBImageRecognitionDataModel(
+				rectangleDefinedAttackersEntryAreasAsRGBInImageToParse);
+	}
+
+	public ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> getRectangleDefinedAttackersExitAreasAsRGBInImageToParse() {
+		return emptyListIfNullGameBoardAreasByRGBImageRecognitionDataModel(
+				rectangleDefinedAttackersExitAreasAsRGBInImageToParse);
+	}
+
 }

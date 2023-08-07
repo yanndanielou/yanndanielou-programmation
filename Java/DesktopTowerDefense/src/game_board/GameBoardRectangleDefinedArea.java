@@ -11,20 +11,20 @@ import builders.game_board.RectangleDataModel;
 import game.Game;
 import geometry.IntegerRectangle;
 
-public class GameBoardRectangleArea extends GameBoardArea {
+public class GameBoardRectangleDefinedArea extends GameBoardArea {
 
 	protected IntegerRectangle rectangle;
 
 	@SuppressWarnings("unused")
-	private static final Logger LOGGER = LogManager.getLogger(GameBoardRectangleArea.class);
+	private static final Logger LOGGER = LogManager.getLogger(GameBoardRectangleDefinedArea.class);
 
 	@Deprecated
-	public GameBoardRectangleArea(Game game, Rectangle rectangle, String name) {
+	public GameBoardRectangleDefinedArea(Game game, Rectangle rectangle, String name) {
 		super(game, name);
 		this.rectangle = new IntegerRectangle(rectangle);
 	}
 
-	public GameBoardRectangleArea(Game game, RectangleDataModel rectangleDataModel) {
+	public GameBoardRectangleDefinedArea(Game game, RectangleDataModel rectangleDataModel) {
 		super(game, rectangleDataModel.getName());
 		this.rectangle = new IntegerRectangle(rectangleDataModel.getRectangle());
 	}

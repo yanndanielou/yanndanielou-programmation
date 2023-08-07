@@ -1,12 +1,6 @@
 package builders.game_board;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
-import common.BadLogicException;
 
 public class GameBoardAreasByRGBImageRecognitionDataModel {
 
