@@ -213,6 +213,9 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addWall(GameBoardWall wall) {
 		walls.add(wall);
+		for (Point wallPoint : wall.getAllPoints()) {
+			getGameBoardPoint(wallPoint).addWall(wall);
+		}
 	}
 
 	public ArrayList<GameBoardWall> getWalls() {
@@ -221,6 +224,10 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addGameBoardAttackersExitArea(GameBoardAttackersExitArea gameBoardAttackersExitArea) {
 		gameBoardAttackersExitAreas.add(gameBoardAttackersExitArea);
+		for (Point gameBoardAttackersExitAreaPoint : gameBoardAttackersExitArea.getAllPoints()) {
+			getGameBoardPoint(gameBoardAttackersExitAreaPoint)
+					.addGameBoardAttackersExitArea(gameBoardAttackersExitArea);
+		}
 	}
 
 	public ArrayList<GameBoardAttackersExitArea> getGameBoardAttackersExitAreas() {
@@ -229,6 +236,9 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addGameBoardAttackersEntryArea(GameBoardAttackersEntryArea gameBoardAttackersEntryArea) {
 		gameBoardAttackersEntryAreas.add(gameBoardAttackersEntryArea);
+		gameBoardAttackersEntryArea.getAllPoints()
+				.forEach((gameBoardAttackersEntryAreaPoint) -> getGameBoardPoint(gameBoardAttackersEntryAreaPoint));
+
 	}
 
 	public ArrayList<GameBoardAttackersEntryArea> getGameBoardAttackersEntryAreas() {
