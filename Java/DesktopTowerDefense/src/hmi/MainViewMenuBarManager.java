@@ -13,10 +13,10 @@ import javax.swing.KeyStroke;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import builders.GameBoardDataModel;
 import builders.GameObjectsDataModel;
-import builders.RectangleDataModel;
 import builders.TowerDataModel;
+import builders.game_board.GameBoardDataModel;
+import builders.game_board.RectangleDataModel;
 import cheat_codes.CheatCodeManager;
 import core.GameManager;
 import game.Game;

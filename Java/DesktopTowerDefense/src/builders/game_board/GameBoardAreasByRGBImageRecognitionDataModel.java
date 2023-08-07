@@ -1,4 +1,4 @@
-package builders;
+package builders.game_board;
 
 import java.awt.Color;
 import java.util.ArrayList;

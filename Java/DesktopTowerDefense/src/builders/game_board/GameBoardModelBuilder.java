@@ -1,4 +1,4 @@
-package builders;
+package builders.game_board;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

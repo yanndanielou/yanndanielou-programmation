@@ -1,5 +1,7 @@
 package builders;
 
+import builders.game_board.FireSpeedType;
+
 public class TowerLevelDataModel {
 
 	private String level_number;

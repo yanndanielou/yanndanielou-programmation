@@ -12,7 +12,7 @@ import belligerents.Attacker;
 import belligerents.Tower;
 import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
-import builders.GameBoardDataModel;
+import builders.game_board.GameBoardDataModel;
 import common.BadLogicException;
 import game.Game;
 
