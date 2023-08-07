@@ -1,17 +1,16 @@
 package belligerents.weapon;
 
-import java.awt.Rectangle;
-
 import belligerents.Belligerent;
 import belligerents.GameObject;
 import game.Game;
+import geometry.IntegerRectangle;
 
 public abstract class Weapon extends GameObject {
 
 	protected Belligerent launcher;
 	protected Belligerent target;
 
-	public Weapon(Rectangle surrounding_rectangle_absolute_on_complete_board, Game game, Belligerent parent_belligerent,
+	public Weapon(IntegerRectangle surrounding_rectangle_absolute_on_complete_board, Game game, Belligerent parent_belligerent,
 			Belligerent target_belligerent, int evolutionLevel) {
 		super(surrounding_rectangle_absolute_on_complete_board, game, evolutionLevel);
 		this.launcher = parent_belligerent;

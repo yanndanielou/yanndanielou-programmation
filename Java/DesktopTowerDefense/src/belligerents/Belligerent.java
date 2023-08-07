@@ -1,6 +1,5 @@
 package belligerents;
 
-import java.awt.Rectangle;
 import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -11,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import belligerents.weapon.Weapon;
 import builders.BombDataModel;
 import game.Game;
+import geometry.IntegerRectangle;
 
 public abstract class Belligerent extends GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(Belligerent.class);
@@ -28,14 +28,14 @@ public abstract class Belligerent extends GameObject {
 
 	protected ArrayList<Weapon> living_bombs = new ArrayList<Weapon>();
 
-	public Belligerent(Rectangle surrounding_rectangle_absolute_on_complete_board, BombDataModel weaponDataModel,
+	public Belligerent(IntegerRectangle surrounding_rectangle_absolute_on_complete_board, BombDataModel weaponDataModel,
 			int maximum_fire_frequency_in_milliseconds, Game game, int evolutionLevel) {
 		super(surrounding_rectangle_absolute_on_complete_board, game, evolutionLevel);
 		this.maximum_fire_frequency_in_milliseconds = maximum_fire_frequency_in_milliseconds;
 		this.weaponDataModel = weaponDataModel;
 	}
 
-	public Belligerent(Rectangle surrounding_rectangle_absolute_on_complete_board, Game game, int evolutionLevel) {
+	public Belligerent(IntegerRectangle surrounding_rectangle_absolute_on_complete_board, Game game, int evolutionLevel) {
 		super(surrounding_rectangle_absolute_on_complete_board, game, evolutionLevel);
 		this.maximum_fire_frequency_in_milliseconds = Integer.MAX_VALUE;
 		this.weaponDataModel = null;

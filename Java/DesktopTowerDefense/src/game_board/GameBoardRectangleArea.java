@@ -7,8 +7,9 @@ import org.apache.logging.log4j.Logger;
 
 import builders.RectangleDataModel;
 import game.Game;
+import geometry.IntegerRectangle;
 
-public class GameBoardRectangleArea extends Rectangle {
+public class GameBoardRectangleArea extends IntegerRectangle {
 
 	/**
 	 * 
@@ -37,4 +38,5 @@ public class GameBoardRectangleArea extends Rectangle {
 	public Game getGame() {
 		return game;
 	}
+
 }

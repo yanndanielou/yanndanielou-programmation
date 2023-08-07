@@ -1,6 +1,5 @@
 package belligerents;
 
-import java.awt.Rectangle;
 import java.awt.geom.IllegalPathStateException;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -14,6 +13,7 @@ import builders.BombDataModel;
 import builders.TowerDataModel;
 import core.GameManager;
 import game.Game;
+import geometry.IntegerRectangle;
 
 public class Tower extends Belligerent /* implements GameObjectListerner */ {
 	@SuppressWarnings("unused")
@@ -23,7 +23,7 @@ public class Tower extends Belligerent /* implements GameObjectListerner */ {
 
 	public Tower(TowerDataModel towerDataModel, BombDataModel weaponDataModel, Game game, int x, int y,
 			int evolutionLevel) {
-		super(new Rectangle(x, y, towerDataModel.getWidth(), towerDataModel.getHeight()), game, evolutionLevel);
+		super(new IntegerRectangle(x, y, towerDataModel.getWidth(), towerDataModel.getHeight()), game, evolutionLevel);
 
 		GameManager.getInstance().getDesktopTowerDefenseMainView().register_to_tower(this);
 		add_listener(game.getGameBoard());

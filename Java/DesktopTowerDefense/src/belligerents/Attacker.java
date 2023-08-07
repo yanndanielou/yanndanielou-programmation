@@ -1,7 +1,6 @@
 package belligerents;
 
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
@@ -14,6 +13,7 @@ import builders.AttackerDataModel;
 import core.GameManager;
 import game.Game;
 import game_board.GameBoard;
+import geometry.IntegerRectangle;
 import time.TimeManager;
 import time.TimeManagerListener;
 
@@ -31,7 +31,7 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 
 	public Attacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escape_destination, int evolutionLevel) {
 
-		super(new Rectangle(x, y, attackerDataModel.getWidth(), attackerDataModel.getHeight()), game, evolutionLevel);
+		super(new IntegerRectangle(x, y, attackerDataModel.getWidth(), attackerDataModel.getHeight()), game, evolutionLevel);
 
 		this.attackerDataModel = attackerDataModel;
 

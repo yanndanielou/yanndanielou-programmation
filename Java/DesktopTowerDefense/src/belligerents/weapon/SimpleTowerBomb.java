@@ -1,6 +1,5 @@
 package belligerents.weapon;
 
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import org.apache.logging.log4j.LogManager;
@@ -10,6 +9,7 @@ import belligerents.Belligerent;
 import belligerents.listeners.GameObjectListerner;
 import builders.BombDataModel;
 import game.Game;
+import geometry.IntegerRectangle;
 
 public class SimpleTowerBomb extends Weapon {
 	@SuppressWarnings("unused")
@@ -17,7 +17,7 @@ public class SimpleTowerBomb extends Weapon {
 
 	public SimpleTowerBomb(BombDataModel genericObjectDataModel, int x, int y, int x_speed, Game game,
 			Belligerent parent_belligerent, Belligerent target_belligerent, int evolutionLevel) {
-		super(new Rectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), game,
+		super(new IntegerRectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), game,
 				parent_belligerent, target_belligerent, evolutionLevel);
 		setX_speed(x_speed);
 	}
@@ -36,17 +36,6 @@ public class SimpleTowerBomb extends Weapon {
 	public void add_movement_listener(GameObjectListerner allyBoatListener) {
 		// super.add_movement_listener(allyBoatListener);
 		allyBoatListener.on_listen_to_simple_tower_bomb(this);
-	}
-
-	@Override
-	public boolean proceed_horizontal_movement() {
-		boolean ret = super.proceed_horizontal_movement();
-		if (x_speed < 0) {
-			x_speed = Math.min(0, x_speed + 1);
-		} else if (x_speed > 0) {
-			x_speed = Math.max(0, x_speed - 1);
-		}
-		return ret;
 	}
 
 	@Override

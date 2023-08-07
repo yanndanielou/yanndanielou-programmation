@@ -1,7 +1,6 @@
 package belligerents;
 
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -16,14 +15,14 @@ import org.apache.logging.log4j.Logger;
 
 import belligerents.weapon.SimpleTowerBomb;
 import belligerents.weapon.Weapon;
-import core.GameManager;
 import game.Game;
 import game_board.GameBoard;
+import geometry.IntegerRectangle;
 
 public abstract class GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);
 
-	protected Rectangle surrounding_rectangle_absolute_on_complete_board;
+	protected IntegerRectangle surrounding_rectangle_absolute_on_complete_board;
 	protected Integer x_speed;
 	protected Integer y_speed;
 	protected Game game;
@@ -41,7 +40,8 @@ public abstract class GameObject {
 
 	protected int evolutionLevel;
 
-	public GameObject(Rectangle surrounding_rectangle_absolute_on_complete_board, Game game, int evolutionLevel) {
+	public GameObject(IntegerRectangle surrounding_rectangle_absolute_on_complete_board, Game game,
+			int evolutionLevel) {
 		this.surrounding_rectangle_absolute_on_complete_board = surrounding_rectangle_absolute_on_complete_board;
 		this.game = game;
 		this.evolutionLevel = evolutionLevel;
@@ -98,7 +98,7 @@ public abstract class GameObject {
 
 	public abstract void impact_now(Weapon weapon);
 
-	public Rectangle getSurrounding_rectangle_absolute_on_complete_board() {
+	public IntegerRectangle getSurrounding_rectangle_absolute_on_complete_board() {
 		return surrounding_rectangle_absolute_on_complete_board;
 	}
 
@@ -114,7 +114,7 @@ public abstract class GameObject {
 	}
 
 	public void setSurrounding_rectangle_absolute_on_complete_board(
-			Rectangle surrounding_rectangle_absolute_on_complete_board) {
+			IntegerRectangle surrounding_rectangle_absolute_on_complete_board) {
 		this.surrounding_rectangle_absolute_on_complete_board = surrounding_rectangle_absolute_on_complete_board;
 	}
 
@@ -138,41 +138,6 @@ public abstract class GameObject {
 	public void setY_speed(int y_speed) {
 		LOGGER.info(this + " set y speed:" + y_speed);
 		this.y_speed = y_speed;
-	}
-
-	public boolean proceed_horizontal_movement() {
-		boolean has_moved = false;
-
-		double object_x = surrounding_rectangle_absolute_on_complete_board.getX();
-		double object_right = surrounding_rectangle_absolute_on_complete_board.getMaxX();
-		double object_width = surrounding_rectangle_absolute_on_complete_board.getWidth();
-		int game_board_total_width = GameManager.getInstance().getGame().getGameBoard().getTotalWidth();
-
-		if (getX_speed() < 0) {
-			if (object_x < getX_speed()) {
-				surrounding_rectangle_absolute_on_complete_board.setLocation(0,
-						(int) surrounding_rectangle_absolute_on_complete_board.getY());
-				left_border_of_game_board_reached();
-				has_moved = true;
-			} else {
-				surrounding_rectangle_absolute_on_complete_board.translate((int) getX_speed(), 0);
-				has_moved = true;
-			}
-		} else if (getX_speed() > 0) {
-			if (object_right + getX_speed() > game_board_total_width) {
-
-				surrounding_rectangle_absolute_on_complete_board.setLocation(
-						(int) (game_board_total_width - object_width),
-						(int) surrounding_rectangle_absolute_on_complete_board.getY());
-
-				right_border_of_game_board_reached();
-				has_moved = true;
-			} else {
-				surrounding_rectangle_absolute_on_complete_board.translate((int) getX_speed(), 0);
-				has_moved = true;
-			}
-		}
-		return has_moved;
 	}
 
 	public int get_extreme_left_point_x() {
@@ -230,17 +195,6 @@ public abstract class GameObject {
 		BufferedImage graphical_representation_as_buffered_image = get_graphical_representation_as_buffered_image();
 		ImageIcon imageIcon = new ImageIcon(graphical_representation_as_buffered_image);
 		return imageIcon;
-	}
-
-	public boolean proceed_movement() {
-		boolean has_moved = false;
-
-		has_moved = proceed_horizontal_movement() || proceed_vertical_movement();
-
-		if (has_moved) {
-			notify_movement();
-		}
-		return has_moved;
 	}
 
 	protected abstract void right_border_of_game_board_reached();
