@@ -29,6 +29,9 @@ public class GameBoardPoint implements TowerListener, AttackerListener {
 
 	private ArrayList<Tower> towers_present = new ArrayList<>();
 	private ArrayList<Attacker> attackers_present = new ArrayList<>();
+	private ArrayList<GameBoardWall> wallsPresent = new ArrayList<>();
+	private ArrayList<GameBoardAttackersEntryArea> gameBoardAttackersEntryAreasPresent = new ArrayList<>();
+	private ArrayList<GameBoardAttackersExitArea> gameBoardAttackersExitAreasPresent = new ArrayList<>();
 
 	private ArrayList<GameBoardPointListener> game_board_point_Listeners = new ArrayList<>();
 
@@ -43,6 +46,26 @@ public class GameBoardPoint implements TowerListener, AttackerListener {
 
 	public void addGameBoardPointListener(GameBoardPointListener gameBoardPointListener) {
 		game_board_point_Listeners.add(gameBoardPointListener);
+	}
+
+	public void addWall(GameBoardWall gameBoardWall) {
+		wallsPresent.add(gameBoardWall);
+	}
+
+	public boolean isWall() {
+		return !wallsPresent.isEmpty();
+	}
+
+	public boolean isOccupiedByTower() {
+		return !towers_present.isEmpty();
+	}
+
+	public void addGameBoardAttackersEntryArea(GameBoardAttackersEntryArea gameBoardAttackersEntryArea) {
+		gameBoardAttackersEntryAreasPresent.add(gameBoardAttackersEntryArea);
+	}
+
+	public void addGameBoardAttackersExitArea(GameBoardAttackersExitArea gameBoardAttackersExitArea) {
+		gameBoardAttackersExitAreasPresent.add(gameBoardAttackersExitArea);
 	}
 
 	public int getRow() {
@@ -85,14 +108,6 @@ public class GameBoardPoint implements TowerListener, AttackerListener {
 	public void on_tower_removal(Tower tower) {
 
 		if (towers_present.size() >= Constants.MAXIMUM_NUMBER_OF_TOWERS_ALLOWED_PER_LOCATION) {
-		}
-
-		found: {
-			if (1 == 1) {
-				break found;
-			} else {
-			}
-			return;
 		}
 
 		boolean removed = towers_present.remove(tower);
