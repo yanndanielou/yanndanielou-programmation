@@ -30,7 +30,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	private ArrayList<GameBoardPoint> all_game_board_point_as_ordered_list = new ArrayList<>();
 
-	private ArrayList<GameBoardWall> walls = new ArrayList<>();
+	private ArrayList<GameBoardWallRectangle> walls = new ArrayList<>();
 	private ArrayList<GameBoardAttackersEntryArea> gameBoardAttackersEntryAreas = new ArrayList<>();
 	private ArrayList<GameBoardAttackersExitArea> gameBoardAttackersExitAreas = new ArrayList<>();
 
@@ -211,14 +211,14 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	}
 
-	public void addWall(GameBoardWall wall) {
+	public void addWall(GameBoardWallRectangle wall) {
 		walls.add(wall);
 		for (Point wallPoint : wall.getAllPoints()) {
 			getGameBoardPoint(wallPoint).addWall(wall);
 		}
 	}
 
-	public ArrayList<GameBoardWall> getWalls() {
+	public ArrayList<GameBoardWallRectangle> getWalls() {
 		return walls;
 	}
 

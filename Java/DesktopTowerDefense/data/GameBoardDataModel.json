@@ -30,7 +30,7 @@
             "height": 181
         }
     ],
-    "wallsAsRGBInImageToParse": [{
+    "wallsPointsAreaAsRGBInImageToParse": [{
             "imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
             "name": "all_walls",
             "rgbColorDefinition": {
@@ -40,7 +40,7 @@
             }
         }
     ],
-    "attackersEntryAreasAsRGBInImageToParse": [{
+    "attackersRectangleEntryAreasAsRGBInImageToParse": [{
             "imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
             "name": "left_attacker_entry_area",
             "rgbColorDefinition": {
@@ -50,7 +50,7 @@
             }
         }
     ],
-    "attackersExitAreasAsRGBInImageToParse": [{
+    "attackersRectangleExitAreasAsRGBInImageToParse": [{
             "imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
             "name": "right_attacker_exit_area",
             "rgbColorDefinition": {
@@ -60,7 +60,7 @@
             }
         }
     ],
-    "nonPlayableAreasAsRGBInImageToParse": [{
+    "nonPlayablePointsAreasAsRGBInImageToParse": [{
             "imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
             "name": "area_outside_of_walls_that_is_not_playable",
             "rgbColorDefinition": {

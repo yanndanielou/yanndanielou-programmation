@@ -22,7 +22,7 @@ import game_board.GameBoard;
 import game_board.GameBoardAttackersEntryArea;
 import game_board.GameBoardAttackersExitArea;
 import game_board.GameBoardPoint;
-import game_board.GameBoardWall;
+import game_board.GameBoardWallRectangle;
 import game_board.NeighbourGameBoardPointDirection;
 import geometry.IntegerRectangle;
 import hmi.DesktopTowerDefenseMainViewGeneric;
@@ -62,6 +62,7 @@ public class GameManager {
 		GameBoardModelBuilder gameBoardModelBuilder = new GameBoardModelBuilder(
 				Constants.GAME_BOARD_JSON_DATA_MODEL_FILE_PATH);
 		GameBoard gameBoard = new GameBoard(gameBoardModelBuilder.getGameBoardDataModel());
+		gameBoardModelBuilder.buildAllAreas(game, gameBoard);
 		GameObjectsModelBuilder gameObjectsModelBuilder = new GameObjectsModelBuilder(
 				Constants.GAME_OBJECTS_JSON_DATA_MODEL_FILE_PATH);
 		GameObjectsDataModel game_objects_data_model = gameObjectsModelBuilder.getGame_objects_data_model();
@@ -69,28 +70,8 @@ public class GameManager {
 		desktopTowerDefenseMainView.register_to_game(game);
 		attackerMovementOrchestor = new AttackerMovementOrchestor(game);
 		compute_neighbours_of_each_gameBoardPoint();
-		createGameBoardAreas();
+		// createGameBoardAreas();
 		TimeManager.getInstance().start();
-	}
-
-	private void createGameBoardAreas() {
-
-		GameBoard gameBoard = game.getGameBoard();
-		GameBoardDataModel gameBoardDataModel = gameBoard.getGameBoardDataModel();
-		for (RectangleDataModel wallDataModel : gameBoardDataModel.getWallsAsRectangles()) {
-			GameBoardWall wall = new GameBoardWall(game, wallDataModel);
-			gameBoard.addWall(wall);
-		}
-		for (RectangleDataModel attackersEntryAreaDataModel : gameBoardDataModel.getAttackersEntryAreasAsRectangles()) {
-			GameBoardAttackersEntryArea attackersEntryArea = new GameBoardAttackersEntryArea(game,
-					attackersEntryAreaDataModel);
-			gameBoard.addGameBoardAttackersEntryArea(attackersEntryArea);
-		}
-		for (RectangleDataModel attackersExitAreaDataModel : gameBoardDataModel.getAttackersExitAreasAsRectangles()) {
-			GameBoardAttackersExitArea attackersExitArea = new GameBoardAttackersExitArea(game,
-					attackersExitAreaDataModel);
-			gameBoard.addGameBoardAttackersExitArea(attackersExitArea);
-		}
 	}
 
 	private void compute_neighbours_of_each_gameBoardPoint() {

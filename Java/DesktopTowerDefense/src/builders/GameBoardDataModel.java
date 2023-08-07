@@ -15,7 +15,10 @@ public class GameBoardDataModel {
 	private ArrayList<RectangleDataModel> attackersEntryAreasAsRectangles;
 	private ArrayList<RectangleDataModel> attackersExitAreasAsRectangles;
 	private ArrayList<RectangleDataModel> wallsAsRectangles;
-	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> wallsAsRGBInImageToParse;
+	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> wallsPointsAreaAsRGBInImageToParse;
+	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> attackersRectangleEntryAreasAsRGBInImageToParse;
+	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> attackersRectangleExitAreasAsRGBInImageToParse;
+	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> nonPlayablePointsAreasAsRGBInImageToParse;
 
 	public int getGame_board_total_width() {
 		return game_board_total_width;
