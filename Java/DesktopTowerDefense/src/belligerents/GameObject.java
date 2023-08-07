@@ -103,14 +103,7 @@ public abstract class GameObject {
 	}
 
 	public List<Point> getAllPoints() {
-		ArrayList<Point> all_points = new ArrayList<>();
-		for (int x_point_it = get_extreme_left_point_x(); x_point_it < get_extreme_right_point_x(); x_point_it++) {
-			for (int y_point_it = getHighestPointY(); y_point_it < get_lowest_point_y(); y_point_it++) {
-				all_points.add(new Point(x_point_it, y_point_it));
-			}
-		}
-
-		return all_points;
+		return surrounding_rectangle_absolute_on_complete_board.getAllPoints();
 	}
 
 	public void setSurrounding_rectangle_absolute_on_complete_board(
