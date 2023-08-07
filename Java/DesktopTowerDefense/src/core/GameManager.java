@@ -77,16 +77,16 @@ public class GameManager {
 
 		GameBoard gameBoard = game.getGameBoard();
 		GameBoardDataModel gameBoardDataModel = gameBoard.getGameBoardDataModel();
-		for (RectangleDataModel wallDataModel : gameBoardDataModel.getWalls()) {
+		for (RectangleDataModel wallDataModel : gameBoardDataModel.getWallsAsRectangles()) {
 			GameBoardWall wall = new GameBoardWall(game, wallDataModel);
 			gameBoard.addWall(wall);
 		}
-		for (RectangleDataModel attackersEntryAreaDataModel : gameBoardDataModel.getAttackersEntryAreas()) {
+		for (RectangleDataModel attackersEntryAreaDataModel : gameBoardDataModel.getAttackersEntryAreasAsRectangles()) {
 			GameBoardAttackersEntryArea attackersEntryArea = new GameBoardAttackersEntryArea(game,
 					attackersEntryAreaDataModel);
 			gameBoard.addGameBoardAttackersEntryArea(attackersEntryArea);
 		}
-		for (RectangleDataModel attackersExitAreaDataModel : gameBoardDataModel.getAttackersExitAreas()) {
+		for (RectangleDataModel attackersExitAreaDataModel : gameBoardDataModel.getAttackersExitAreasAsRectangles()) {
 			GameBoardAttackersExitArea attackersExitArea = new GameBoardAttackersExitArea(game,
 					attackersExitAreaDataModel);
 			gameBoard.addGameBoardAttackersExitArea(attackersExitArea);
