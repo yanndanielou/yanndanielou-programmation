@@ -10,10 +10,14 @@ import game.Game;
 
 public class GameBoardRectangleDefinedWall extends GameBoardRectangleDefinedArea {
 
+	private GameBoardRectangleDefinedArea gameBoardRectangleDefinedArea = null;
+	private GameBoardPointsListDefinedArea gameBoardPointsListDefinedArea = null;
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 8239100426793054601L;
+
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardRectangleDefinedWall.class);
 

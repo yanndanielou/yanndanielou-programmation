@@ -1,5 +1,6 @@
 package game_board;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +33,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 	private ArrayList<GameBoardRectangleDefinedWall> walls = new ArrayList<>();
 	private ArrayList<GameBoardAttackersEntryArea> gameBoardAttackersEntryAreas = new ArrayList<>();
 	private ArrayList<GameBoardAttackersExitArea> gameBoardAttackersExitAreas = new ArrayList<>();
+	private ArrayList<GameBoardPointsDefinedNonPlayableArea> nonPlayableAreas = new ArrayList<>();
 
 	private Game game;
 
@@ -256,6 +258,10 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addWall(GameBoardPointsDefinedWall wallArea) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	public void addNonPlayableArea(GameBoardPointsDefinedNonPlayableArea nonPlayableArea) {
+		nonPlayableAreas.add(nonPlayableArea);
 	}
 }

@@ -21,6 +21,7 @@ import game_board.GameBoard;
 import game_board.GameBoardAttackersEntryArea;
 import game_board.GameBoardAttackersExitArea;
 import game_board.GameBoardPoint;
+import game_board.GameBoardPointsDefinedNonPlayableArea;
 import game_board.GameBoardPointsDefinedWall;
 import game_board.GameBoardRectangleDefinedWall;
 import geometry.IntegerPoint;
@@ -98,6 +99,16 @@ public class GameBoardModelBuilder {
 					attackersExitAreaDataModel);
 			gameBoard.addGameBoardAttackersExitArea(attackersExitArea);
 		}
+		for (GameBoardAreasByRGBImageRecognitionDataModel nonPlayableAreaDataModel : gameBoardDataModel
+				.getPointsDefinedNonPlayableAreasAsRGBInImageToParse()) {
+			List<IntegerPoint> listOfPixelsInImageWithRGBAsPoint = getListOfPixelsInImageWithRGB(
+					nonPlayableAreaDataModel);
+			List<GameBoardPoint> listOfPixelsInImageWithRGBAsGameBoardPoints = gameBoard
+					.getGameBoardPoints(listOfPixelsInImageWithRGBAsPoint);
+			GameBoardPointsDefinedNonPlayableArea nonPlayableArea = new GameBoardPointsDefinedNonPlayableArea(game,
+					nonPlayableAreaDataModel.getName(), listOfPixelsInImageWithRGBAsGameBoardPoints);
+			gameBoard.addNonPlayableArea(nonPlayableArea);
+		}
 	}
 
 	private List<IntegerPoint> getListOfPixelsInImageWithRGB(
@@ -130,15 +141,7 @@ public class GameBoardModelBuilder {
 					// e.printStackTrace();
 					continue;
 				}
-
-				int blue = pixel_rgb & 0xff;
-				int green = (pixel_rgb & 0xff00) >> 8;
-				int red = (pixel_rgb & 0xff0000) >> 16;
-
 				Color pixelColor = new Color(pixel_rgb);
-				int red2 = pixelColor.getRed();
-				int blue2 = pixelColor.getBlue();
-				int green2 = pixelColor.getGreen();
 
 				if (searchedColor.equals(pixelColor)) {
 					pointsInImageWithRGB.add(new IntegerPoint(x, y));
