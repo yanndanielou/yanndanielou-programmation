@@ -63,6 +63,7 @@ public class GameManager {
 				Constants.GAME_OBJECTS_JSON_DATA_MODEL_FILE_PATH);
 		GameObjectsDataModel game_objects_data_model = gameObjectsModelBuilder.getGame_objects_data_model();
 		game = new Game(gameBoard, game_objects_data_model);
+		gameBoard.generatePredefinedConstructionLocations(game_objects_data_model.getSimple_tower_data_model());
 		desktopTowerDefenseMainView.register_to_game(game);
 		attackerMovementOrchestor = new AttackerMovementOrchestor(game);
 		compute_neighbours_of_each_gameBoardPoint();
@@ -109,7 +110,7 @@ public class GameManager {
 	}
 
 	public Tower createSimpleTower(int evolutionLevel, int x, int y) {
-		GameObjectsDataModel game_objects_data_model = game.getGame_objects_data_model();
+		GameObjectsDataModel game_objects_data_model = game.getGameObjectsDataModel();
 		Tower tower = createTower(game_objects_data_model.getSimple_tower_data_model(),
 				game_objects_data_model.getSimple_tower_bomb_data_model(), evolutionLevel, x, y);
 		return tower;
@@ -117,7 +118,7 @@ public class GameManager {
 
 	public Attacker createNormalAttacker(RectangleDataModel creation_area, RectangleDataModel oneRandomExitArea,
 			int evolutionLevel) {
-		GameObjectsDataModel game_objects_data_model = game.getGame_objects_data_model();
+		GameObjectsDataModel game_objects_data_model = game.getGameObjectsDataModel();
 		AttackerDataModel normal_attacker_data_model = game_objects_data_model.getNormal_attacker_data_model();
 
 		IntegerRectangle creationAreaRectangle = creation_area.getRectangle();

@@ -33,6 +33,12 @@ public abstract class GameBoardArea {
 		this.rectangleDefinedArea = rectangleInImageWithRGB;
 	}
 
+	protected GameBoardArea(GameBoard gameBoard, IntegerRectangle rectangleInImageWithRGB, String name) {
+		this.gameBoard = gameBoard;
+		this.name = name;
+		this.rectangleDefinedArea = rectangleInImageWithRGB;
+	}
+
 	public String getName() {
 		return name;
 	}

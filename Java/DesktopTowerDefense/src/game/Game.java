@@ -30,11 +30,11 @@ public class Game implements TowerListener, AttackerListener {
 
 	private boolean begun = false;
 
-	private GameObjectsDataModel game_objects_data_model;
+	private GameObjectsDataModel gameObjectsDataModel;
 
 	public Game(GameBoard gameBoard, GameObjectsDataModel game_objects_data_model) {
 		this.gameBoard = gameBoard;
-		this.game_objects_data_model = game_objects_data_model;
+		this.gameObjectsDataModel = game_objects_data_model;
 		gameBoard.setGame(this);
 	}
 
@@ -91,8 +91,8 @@ public class Game implements TowerListener, AttackerListener {
 		return gameBoard;
 	}
 
-	public GameObjectsDataModel getGame_objects_data_model() {
-		return game_objects_data_model;
+	public GameObjectsDataModel getGameObjectsDataModel() {
+		return gameObjectsDataModel;
 	}
 
 	@Override

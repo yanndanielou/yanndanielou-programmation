@@ -12,6 +12,7 @@ import belligerents.Attacker;
 import belligerents.Tower;
 import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
+import builders.TowerDataModel;
 import builders.game_board.GameBoardDataModel;
 import builders.game_board.GameBoardModelBuilder;
 import common.BadLogicException;
@@ -33,7 +34,8 @@ public class GameBoard implements TowerListener, AttackerListener {
 	private ArrayList<GameBoardAttackersEntryArea> gameBoardAttackersEntryAreas = new ArrayList<>();
 	private ArrayList<GameBoardAttackersExitArea> gameBoardAttackersExitAreas = new ArrayList<>();
 	private ArrayList<GameBoardNonPlayableArea> nonPlayableAreas = new ArrayList<>();
-	private ArrayList<GameBoardInitiallyConstructibleMacroArea> initiallyConstructibleAreas = new ArrayList<>();
+	private ArrayList<GameBoardInitiallyConstructibleMacroArea> initiallyConstructibleMacroAreas = new ArrayList<>();
+	private ArrayList<GameBoardPredefinedConstructionLocation> predefinedConstructionLocations = new ArrayList<>();
 
 	private Game game;
 
@@ -258,8 +260,14 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addGameBoardInitiallyConstructibleMacroArea(
 			GameBoardInitiallyConstructibleMacroArea constructibleArea) {
-		initiallyConstructibleAreas.add(constructibleArea);
+		initiallyConstructibleMacroAreas.add(constructibleArea);
 		constructibleArea.getAllPoints().forEach(
 				(gameBoardPoint) -> gameBoardPoint.addGameBoardInitiallyConstructibleMacroArea(constructibleArea));
+	}
+
+	public void generatePredefinedConstructionLocations(TowerDataModel towerDataModel) {
+		for (GameBoardPredefinedConstructionLocation predefinedConstructionLocation : predefinedConstructionLocations) {
+			// predefinedConstructionLocation.
+		}
 	}
 }

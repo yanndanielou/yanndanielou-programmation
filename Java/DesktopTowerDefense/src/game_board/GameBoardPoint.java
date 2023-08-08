@@ -34,8 +34,9 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	private ArrayList<GameBoardWallArea> wallsPresent = new ArrayList<>();
 	private ArrayList<GameBoardAttackersEntryArea> gameBoardAttackersEntryAreasPresent = new ArrayList<>();
 	private ArrayList<GameBoardAttackersExitArea> gameBoardAttackersExitAreasPresent = new ArrayList<>();
-	private ArrayList<GameBoardNonPlayableArea> gameBoardNonPlayableAreas = new ArrayList<>();
-	private ArrayList<GameBoardInitiallyConstructibleMacroArea> initiallyConstructibleAreas = new ArrayList<>();
+	private ArrayList<GameBoardNonPlayableArea> gameBoardNonPlayableAreasPresent = new ArrayList<>();
+	private ArrayList<GameBoardInitiallyConstructibleMacroArea> initiallyConstructibleMacroAreasPresent = new ArrayList<>();
+	private ArrayList<GameBoardPredefinedConstructionLocation> predefinedConstructionLocationsPresent = new ArrayList<>();
 
 	private ArrayList<GameBoardPointListener> game_board_point_Listeners = new ArrayList<>();
 
@@ -64,7 +65,7 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	}
 
 	public boolean isNonPlayableArea() {
-		return !gameBoardNonPlayableAreas.isEmpty();
+		return !gameBoardNonPlayableAreasPresent.isEmpty();
 	}
 
 	public void addGameBoardAttackersEntryArea(GameBoardAttackersEntryArea gameBoardAttackersEntryArea) {
@@ -153,12 +154,13 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 
 	}
 
-	public void addGameBoardInitiallyConstructibleMacroArea(GameBoardInitiallyConstructibleMacroArea gameBoardConstructibleArea) {
-		initiallyConstructibleAreas.add(gameBoardConstructibleArea);
+	public void addGameBoardInitiallyConstructibleMacroArea(
+			GameBoardInitiallyConstructibleMacroArea gameBoardConstructibleArea) {
+		initiallyConstructibleMacroAreasPresent.add(gameBoardConstructibleArea);
 	}
 
 	public void addNonPlayableArea(GameBoardNonPlayableArea nonPlayableArea) {
-		gameBoardNonPlayableAreas.add(nonPlayableArea);
+		gameBoardNonPlayableAreasPresent.add(nonPlayableArea);
 	}
 
 }

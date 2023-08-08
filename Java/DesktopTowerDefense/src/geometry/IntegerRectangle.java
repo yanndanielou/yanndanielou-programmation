@@ -94,6 +94,21 @@ public class IntegerRectangle {
 
 	}
 
+	public List<IntegerRectangle> getInnerSubRectangles(Dimension subRectanglesDimension) {
+		List<IntegerRectangle> innerSubRectangles = new ArrayList<>();
+
+		for (int yIter = getY(); yIter < getMaxY(); yIter += subRectanglesDimension.getHeight()) {
+			for (int xIter = getX(); xIter < getMaxX(); xIter += subRectanglesDimension.getWidth()) {
+				Point innerSubRectangleTopLeft = new Point(xIter, yIter);
+				IntegerRectangle innerSubRectangle = new IntegerRectangle(innerSubRectangleTopLeft,
+						subRectanglesDimension);
+				innerSubRectangles.add(innerSubRectangle);
+			}
+		}
+
+		return innerSubRectangles;
+	}
+
 	private Point getTopLeftPoint(List<? extends Point> points) {
 		double minXFound = points.get(0).getX();
 		double minYFound = points.get(0).getY();
