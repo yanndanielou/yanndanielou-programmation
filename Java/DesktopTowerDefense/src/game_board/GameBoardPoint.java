@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumMap;
 
+import org.apache.commons.collections4.ListUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.core.Is;
 
 import belligerents.Attacker;
 import belligerents.Tower;
@@ -60,6 +62,10 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 
 	public boolean isOccupiedByTower() {
 		return !towers_present.isEmpty();
+	}
+
+	public boolean isNonPlayableArea() {
+		return !gameBoardNonPlayableAreas.isEmpty();
 	}
 
 	public void addGameBoardAttackersEntryArea(GameBoardAttackersEntryArea gameBoardAttackersEntryArea) {

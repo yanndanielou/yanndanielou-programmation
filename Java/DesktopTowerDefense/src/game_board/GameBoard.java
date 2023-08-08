@@ -223,9 +223,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addWall(GameBoardWallArea wall) {
 		walls.add(wall);
-		wall.getAllPoints().forEach(wallPoint -> addWall(wall));
 		wall.getAllPoints().forEach((gameBoardPoint) -> gameBoardPoint.addWall(wall));
-
 	}
 
 	public ArrayList<GameBoardWallArea> getWalls() {
