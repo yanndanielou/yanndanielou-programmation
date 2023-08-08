@@ -57,7 +57,7 @@ public class GameManager {
 
 		GameBoardModelBuilder gameBoardModelBuilder = new GameBoardModelBuilder(
 				Constants.GAME_BOARD_JSON_DATA_MODEL_FILE_PATH);
-		GameBoard gameBoard = new GameBoard(gameBoardModelBuilder.getGameBoardDataModel());
+		GameBoard gameBoard = new GameBoard(gameBoardModelBuilder);
 		gameBoardModelBuilder.buildAllAreas(game, gameBoard);
 		GameObjectsModelBuilder gameObjectsModelBuilder = new GameObjectsModelBuilder(
 				Constants.GAME_OBJECTS_JSON_DATA_MODEL_FILE_PATH);

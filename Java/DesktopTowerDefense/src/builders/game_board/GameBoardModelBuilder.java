@@ -21,6 +21,8 @@ import game.Game;
 import game_board.GameBoard;
 import game_board.GameBoardAttackersEntryArea;
 import game_board.GameBoardAttackersExitArea;
+import game_board.GameBoardPoint;
+import game_board.GameBoardPointsDefinedWall;
 import game_board.GameBoardRectangleDefinedWall;
 import geometry.IntegerRectangle;
 
@@ -30,6 +32,7 @@ public class GameBoardModelBuilder {
 	private Gson gson = new Gson();
 
 	private GameBoardDataModel gameBoardDataModel;
+	private BufferedImage gameBoardFullBackgroundImageAsBufferedImage;
 
 	public GameBoardDataModel getGameBoardDataModel() {
 		return gameBoardDataModel;
@@ -46,6 +49,14 @@ public class GameBoardModelBuilder {
 			e.printStackTrace();
 		}
 		gameBoardDataModel = gson.fromJson(br, GameBoardDataModel.class);
+
+		File gameBoardFullBackgroundImageFile = new File(gameBoardDataModel.getGameBoardFullBackgroundImagePath());
+		try {
+			gameBoardFullBackgroundImageAsBufferedImage = ImageIO.read(gameBoardFullBackgroundImageFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public void buildAllAreas(Game game, GameBoard gameBoard) {
@@ -56,6 +67,12 @@ public class GameBoardModelBuilder {
 		}
 		for (GameBoardAreasByRGBImageRecognitionDataModel wallDataModel : gameBoardDataModel
 				.getPointsDefinedWallAreaAsRGBInImageToParse()) {
+			List<Point> listOfPixelsInImageWithRGBAsPoint = getListOfPixelsInImageWithRGB(wallDataModel);
+			List<GameBoardPoint> listOfPixelsInImageWithRGBAsGameBoardPoints = gameBoard
+					.getGameBoardPoints(listOfPixelsInImageWithRGBAsPoint);
+			GameBoardPointsDefinedWall wallArea = new GameBoardPointsDefinedWall(game, wallDataModel.getName(),
+					listOfPixelsInImageWithRGBAsGameBoardPoints);
+			gameBoard.addWall(wallArea);
 		}
 		for (RectangleDataModel attackersEntryAreaDataModel : gameBoardDataModel.getAttackersEntryAreasAsRectangles()) {
 			GameBoardAttackersEntryArea attackersEntryArea = new GameBoardAttackersEntryArea(game,
@@ -122,6 +139,14 @@ public class GameBoardModelBuilder {
 			GameBoardAreasByRGBImageRecognitionDataModel gameBoardAreasByRGBImageRecognitionDataModel) {
 
 		return null;
+	}
+
+	public int getGameBoardTotalHeight() {
+		return gameBoardFullBackgroundImageAsBufferedImage.getHeight();
+	}
+
+	public int getGameBoardTotalWidth() {
+		return gameBoardFullBackgroundImageAsBufferedImage.getWidth();
 	}
 
 }

@@ -12,8 +12,7 @@ import common.BadLogicException;
 
 public class GameBoardDataModel {
 
-	private int game_board_total_width;
-	private int game_board_total_height;
+	private String gameBoardFullBackgroundImagePath;
 
 	private ArrayList<RectangleDataModel> attackersEntryAreasAsRectangles;
 	private ArrayList<RectangleDataModel> attackersExitAreasAsRectangles;
@@ -22,14 +21,6 @@ public class GameBoardDataModel {
 	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> rectangleDefinedAttackersEntryAreasAsRGBInImageToParse;
 	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> rectangleDefinedAttackersExitAreasAsRGBInImageToParse;
 	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> pointsDefinedNonPlayableAreasAsRGBInImageToParse;
-
-	public int getGame_board_total_width() {
-		return game_board_total_width;
-	}
-
-	public int getGame_board_total_height() {
-		return game_board_total_height;
-	}
 
 	RectangleDataModel getAttackersEntryAreaByName(String name) {
 		List<RectangleDataModel> found = attackersEntryAreasAsRectangles.stream()
@@ -89,6 +80,10 @@ public class GameBoardDataModel {
 
 	public List<GameBoardAreasByRGBImageRecognitionDataModel> getRectangleDefinedAttackersExitAreasAsRGBInImageToParse() {
 		return ListUtils.emptyIfNull(rectangleDefinedAttackersExitAreasAsRGBInImageToParse);
+	}
+
+	public String getGameBoardFullBackgroundImagePath() {
+		return gameBoardFullBackgroundImagePath;
 	}
 
 }

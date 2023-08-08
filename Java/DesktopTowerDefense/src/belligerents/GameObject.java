@@ -1,6 +1,5 @@
 package belligerents;
 
-import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +15,7 @@ import belligerents.weapon.SimpleTowerBomb;
 import belligerents.weapon.Weapon;
 import game.Game;
 import game_board.GameBoard;
+import geometry.IntegerPoint;
 import geometry.IntegerRectangle;
 
 public abstract class GameObject {
@@ -101,7 +101,7 @@ public abstract class GameObject {
 		return surrounding_rectangle_absolute_on_complete_board;
 	}
 
-	public List<Point> getAllPoints() {
+	public List<IntegerPoint> getAllPoints() {
 		return surrounding_rectangle_absolute_on_complete_board.getAllPoints();
 	}
 

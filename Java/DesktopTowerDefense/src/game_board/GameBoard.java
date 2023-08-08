@@ -3,6 +3,7 @@ package game_board;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
@@ -13,6 +14,7 @@ import belligerents.Tower;
 import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
 import builders.game_board.GameBoardDataModel;
+import builders.game_board.GameBoardModelBuilder;
 import common.BadLogicException;
 import game.Game;
 
@@ -20,9 +22,6 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoard.class);
-
-	private int total_width = 0;
-	private int total_height = 0;
 
 	private Map<Integer, Map<Integer, GameBoardPoint>> game_board_point_per_row_and_column = new HashMap<>();
 
@@ -36,17 +35,18 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	private Game game;
 
-	public GameBoard(GameBoardDataModel gameBoardDataModel) {
+	private GameBoardModelBuilder gameBoardModelBuilder;
 
-		this.total_width = gameBoardDataModel.getGame_board_total_width();
-		this.total_height = gameBoardDataModel.getGame_board_total_height();
-		this.gameBoardDataModel = gameBoardDataModel;
+	public GameBoard(GameBoardModelBuilder gameBoardModelBuilder) {
+
+		this.gameBoardDataModel = gameBoardModelBuilder.getGameBoardDataModel();
+		this.gameBoardModelBuilder = gameBoardModelBuilder;
 		create_initial_gameBoardPoints();
 	}
 
 	private void create_initial_gameBoardPoints() {
 
-		for (int row = 0; row < total_height; row++) {
+		for (int row = 0; row < getTotalHeight(); row++) {
 
 			Map<Integer, GameBoardPoint> game_board_of_one_row_per_column;
 			if (game_board_point_per_row_and_column.containsKey(row)) {
@@ -58,7 +58,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 				game_board_point_per_row_and_column.put(row, game_board_of_one_row_per_column);
 			}
 
-			for (int column = 0; column < total_width; column++) {
+			for (int column = 0; column < getTotalWidth(); column++) {
 				GameBoardPoint gameBoardPoint = new GameBoardPoint(game, row, column);
 				game_board_of_one_row_per_column.put(column, gameBoardPoint);
 			}
@@ -67,11 +67,12 @@ public class GameBoard implements TowerListener, AttackerListener {
 	}
 
 	public int getTotalWidth() {
-		return total_width;
+		return gameBoardModelBuilder.getGameBoardTotalWidth();
+
 	}
 
 	public int getTotalHeight() {
-		return total_height;
+		return gameBoardModelBuilder.getGameBoardTotalHeight();
 	}
 
 	public ArrayList<GameBoardPoint> getAll_gameBoardPoints_as_ordered_list() {
@@ -80,6 +81,14 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public GameBoardPoint getGameBoardPoint(Point point) {
 		return getGameBoardPoint((int) point.getX(), (int) point.getY());
+	}
+
+	public List<GameBoardPoint> getGameBoardPoints(List<Point> points) {
+		List<GameBoardPoint> gameBoardPoints = new ArrayList<>();
+		for (Point point : points) {
+			gameBoardPoints.add(getGameBoardPoint(point));
+		}
+		return gameBoardPoints;
 	}
 
 	public GameBoardPoint getGameBoardPoint(int row, int column) {
@@ -111,10 +120,10 @@ public class GameBoard implements TowerListener, AttackerListener {
 		int reference_gameBoardPoint_row = reference_gameBoardPoint.getRow();
 
 		boolean is_reference_gameBoardPoint_first_of_column = reference_gameBoardPoint_column == 0;
-		boolean is_reference_gameBoardPoint_last_of_column = reference_gameBoardPoint_column == total_width - 1;
+		boolean is_reference_gameBoardPoint_last_of_column = reference_gameBoardPoint_column == getTotalWidth() - 1;
 
 		boolean is_reference_gameBoardPoint_first_of_row = reference_gameBoardPoint_row == 0;
-		boolean is_reference_gameBoardPoint_last_of_row = reference_gameBoardPoint_row == total_height - 1;
+		boolean is_reference_gameBoardPoint_last_of_row = reference_gameBoardPoint_row == getTotalHeight() - 1;
 
 		// left gameBoardPoint
 		switch (direction) {
@@ -243,5 +252,10 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public ArrayList<GameBoardAttackersEntryArea> getGameBoardAttackersEntryAreas() {
 		return gameBoardAttackersEntryAreas;
+	}
+
+	public void addWall(GameBoardPointsDefinedWall wallArea) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -41,10 +41,9 @@ public class MovingObjectPathFinder {
 					.getNeighbourGameBoardPoint(upperLeftAttackerGameBoardPoint, candidateDirection);
 
 			if (neighbourGameBoardPoint != null) {
-				Point neighbourCandidateAsPoint = neighbourGameBoardPoint.asPoint();
-				double distanceUsingCandidate = destination.distance(neighbourCandidateAsPoint);
+				double distanceUsingCandidate = destination.distance(neighbourGameBoardPoint);
 				LOGGER.debug("Distance from:" + upperLeftAttackerPoint + " and " + destination + " in direction:"
-						+ candidateDirection + " via:" + neighbourCandidateAsPoint + " : " + distanceUsingCandidate);
+						+ candidateDirection + " via:" + neighbourGameBoardPoint + " : " + distanceUsingCandidate);
 				if (distanceUsingCandidate < minimum_distance) {
 					nearestDirection = candidateDirection;
 					minimum_distance = distanceUsingCandidate;

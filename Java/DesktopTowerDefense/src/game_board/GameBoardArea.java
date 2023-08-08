@@ -1,6 +1,5 @@
 package game_board;
 
-import java.awt.Point;
 import java.util.List;
 
 import game.Game;
@@ -23,5 +22,5 @@ public abstract class GameBoardArea {
 		return game;
 	}
 
-	public abstract List<Point> getAllPoints();
+	public abstract List<GameBoardPoint> getAllPoints();
 }

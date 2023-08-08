@@ -16,14 +16,17 @@ import common.BadLogicException;
 import constants.Constants;
 import game.Game;
 import game.GameBoardPointListener;
+import geometry.IntegerPoint;
 
-public class GameBoardPoint implements TowerListener, AttackerListener {
+public class GameBoardPoint extends IntegerPoint implements TowerListener, AttackerListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7353270231660749618L;
 
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardPoint.class);
-
-	private int row;
-	private int column;
 
 	private Game game;
 
@@ -39,9 +42,8 @@ public class GameBoardPoint implements TowerListener, AttackerListener {
 			NeighbourGameBoardPointDirection.class);
 
 	public GameBoardPoint(Game game, int line, int column) {
+		super(column, line);
 		this.game = game;
-		this.row = line;
-		this.column = column;
 	}
 
 	public void addGameBoardPointListener(GameBoardPointListener gameBoardPointListener) {
@@ -69,11 +71,11 @@ public class GameBoardPoint implements TowerListener, AttackerListener {
 	}
 
 	public int getRow() {
-		return row;
+		return getYAsInt();
 	}
 
 	public int getColumn() {
-		return column;
+		return getXAsInt();
 	}
 
 	public void setNeighbour(NeighbourGameBoardPointDirection direction, GameBoardPoint neighbour) {
@@ -81,7 +83,7 @@ public class GameBoardPoint implements TowerListener, AttackerListener {
 	}
 
 	public String getShort_description() {
-		return "GameBoardPoint :" + "[" + row + "," + column + "]";
+		return "GameBoardPoint :" + "[" + getXAsInt() + "," + getYAsInt() + "]";
 	}
 
 	public Collection<GameBoardPoint> getNeighbours() {
@@ -144,10 +146,6 @@ public class GameBoardPoint implements TowerListener, AttackerListener {
 	public void on_attacker_beginning_of_destruction(Attacker attacker) {
 		// TODO Auto-generated method stub
 
-	}
-
-	public Point asPoint() {
-		return new Point(row, column);
 	}
 
 }

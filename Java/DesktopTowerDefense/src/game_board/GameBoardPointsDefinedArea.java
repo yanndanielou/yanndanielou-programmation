@@ -1,6 +1,5 @@
 package game_board;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,7 @@ import game.Game;
 
 public class GameBoardPointsDefinedArea extends GameBoardArea {
 
-	protected List<Point> points = new ArrayList<>();
+	protected List<GameBoardPoint> points = new ArrayList<>();
 
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardPointsDefinedArea.class);
@@ -20,8 +19,13 @@ public class GameBoardPointsDefinedArea extends GameBoardArea {
 		super(game, name);
 	}
 
+	public GameBoardPointsDefinedArea(Game game, String name, List<GameBoardPoint> points) {
+		super(game, name);
+		this.points = points;
+	}
+
 	@Override
-	public List<Point> getAllPoints() {
+	public List<GameBoardPoint> getAllPoints() {
 		return points;
 	}
 

@@ -3,9 +3,9 @@
     "___game_board_inside_walls_height": 677,
     "___game_board_inside_walls_height": 677,
     "___game_board_inside_walls_absolulte_x": 113,
-    "game_board_full_background_image_path": "Images/Empty_game_board_full_1_entry_1_exit.png",
-    "game_board_total_width": 1050,
-    "game_board_total_height": 908,
+    "gameBoardFullBackgroundImagePath": "Images/Empty_game_board_full_1_entry_1_exit.png",
+    "___game_board_total_width": 1050,
+    "___game_board_total_height": 908,
     "__attackersEntryAreasAsRectangles___removedAndReplacedByImageParsing": [{
             "name": "left_attacker_entry_area",
             "x": 0,
