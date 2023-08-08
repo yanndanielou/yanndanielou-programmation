@@ -9,10 +9,6 @@ import geometry.IntegerRectangle;
 
 public class GameBoardAttackersExitArea extends GameBoardArea {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3187118291142484504L;
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardAttackersExitArea.class);
 

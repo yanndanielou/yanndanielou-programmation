@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumMap;
 
-import org.apache.commons.collections4.ListUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hamcrest.core.Is;
 
 import belligerents.Attacker;
 import belligerents.Tower;
@@ -37,6 +35,7 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	private ArrayList<GameBoardAttackersEntryArea> gameBoardAttackersEntryAreasPresent = new ArrayList<>();
 	private ArrayList<GameBoardAttackersExitArea> gameBoardAttackersExitAreasPresent = new ArrayList<>();
 	private ArrayList<GameBoardNonPlayableArea> gameBoardNonPlayableAreas = new ArrayList<>();
+	private ArrayList<GameBoardInitiallyConstructibleArea> initiallyConstructibleAreas = new ArrayList<>();
 
 	private ArrayList<GameBoardPointListener> game_board_point_Listeners = new ArrayList<>();
 
@@ -152,6 +151,10 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	public void on_attacker_beginning_of_destruction(Attacker attacker) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void addGameBoardInitiallyConstructibleArea(GameBoardInitiallyConstructibleArea gameBoardConstructibleArea) {
+		initiallyConstructibleAreas.add(gameBoardConstructibleArea);
 	}
 
 	public void addNonPlayableArea(GameBoardNonPlayableArea nonPlayableArea) {

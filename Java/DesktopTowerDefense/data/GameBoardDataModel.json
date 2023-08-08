@@ -1,11 +1,5 @@
 {
-	"___game_board_height_above_upper_walls": 84,
-	"___game_board_inside_walls_height": 677,
-	"___game_board_inside_walls_height": 677,
-	"___game_board_inside_walls_absolulte_x": 113,
 	"gameBoardFullBackgroundImagePath": "Images/Empty_game_board_full_1_entry_1_exit.png",
-	"___game_board_total_width": 1050,
-	"___game_board_total_height": 908,
 	"__attackersEntryAreasAsRectangles___removedAndReplacedByImageParsing": [
 		{
 			"name": "left_attacker_entry_area",
