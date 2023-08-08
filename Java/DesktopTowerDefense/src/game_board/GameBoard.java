@@ -256,9 +256,10 @@ public class GameBoard implements TowerListener, AttackerListener {
 		nonPlayableArea.getAllPoints().forEach((gameBoardPoint) -> gameBoardPoint.addNonPlayableArea(nonPlayableArea));
 	}
 
-	public void addGameBoardInitiallyConstructibleMacroArea(GameBoardInitiallyConstructibleMacroArea constructibleArea) {
+	public void addGameBoardInitiallyConstructibleMacroArea(
+			GameBoardInitiallyConstructibleMacroArea constructibleArea) {
 		initiallyConstructibleAreas.add(constructibleArea);
-		constructibleArea.getAllPoints()
-				.forEach((gameBoardPoint) -> gameBoardPoint.addGameBoardInitiallyConstructibleMacroArea(constructibleArea));
+		constructibleArea.getAllPoints().forEach(
+				(gameBoardPoint) -> gameBoardPoint.addGameBoardInitiallyConstructibleMacroArea(constructibleArea));
 	}
 }
