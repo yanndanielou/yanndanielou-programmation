@@ -3,8 +3,10 @@ package game_board;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import builders.game_board.GameBoardNamedAreaDataModel;
 import builders.game_board.RectangleDataModel;
 import game.Game;
+import geometry.IntegerRectangle;
 
 public class GameBoardAttackersExitArea extends GameBoardRectangleDefinedArea {
 
@@ -18,4 +20,10 @@ public class GameBoardAttackersExitArea extends GameBoardRectangleDefinedArea {
 	public GameBoardAttackersExitArea(Game game, RectangleDataModel rectangleDataModel) {
 		super(game, rectangleDataModel);
 	}
+
+	public GameBoardAttackersExitArea(Game game, IntegerRectangle rectangleInImageWithRGB,
+			GameBoardNamedAreaDataModel gameBoardNamedAreaDataModel) {
+		super(game, rectangleInImageWithRGB, gameBoardNamedAreaDataModel);
+	}
+
 }

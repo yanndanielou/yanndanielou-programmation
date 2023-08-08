@@ -8,18 +8,18 @@ import org.apache.logging.log4j.Logger;
 
 import game.Game;
 
-public class GameBoardPointsDefinedArea extends GameBoardArea {
+public class GameBoardPointsListDefinedArea extends GameBoardArea {
 
 	protected List<GameBoardPoint> points = new ArrayList<>();
 
 	@SuppressWarnings("unused")
-	private static final Logger LOGGER = LogManager.getLogger(GameBoardPointsDefinedArea.class);
+	private static final Logger LOGGER = LogManager.getLogger(GameBoardPointsListDefinedArea.class);
 
-	public GameBoardPointsDefinedArea(Game game, String name) {
+	public GameBoardPointsListDefinedArea(Game game, String name) {
 		super(game, name);
 	}
 
-	public GameBoardPointsDefinedArea(Game game, String name, List<GameBoardPoint> points) {
+	public GameBoardPointsListDefinedArea(Game game, String name, List<GameBoardPoint> points) {
 		super(game, name);
 		this.points = points;
 	}

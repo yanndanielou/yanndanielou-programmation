@@ -1,6 +1,5 @@
 package game_board;
 
-import java.awt.Point;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -8,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import game.Game;
 
-public class GameBoardPointsDefinedWall extends GameBoardPointsDefinedArea {
+public class GameBoardPointsDefinedWall extends GameBoardPointsListDefinedArea {
 
 	/**
 	 * 

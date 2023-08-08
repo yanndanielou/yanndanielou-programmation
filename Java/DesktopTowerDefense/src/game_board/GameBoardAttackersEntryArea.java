@@ -3,8 +3,10 @@ package game_board;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import builders.game_board.GameBoardNamedAreaDataModel;
 import builders.game_board.RectangleDataModel;
 import game.Game;
+import geometry.IntegerRectangle;
 
 public class GameBoardAttackersEntryArea extends GameBoardRectangleDefinedArea {
 
@@ -12,10 +14,16 @@ public class GameBoardAttackersEntryArea extends GameBoardRectangleDefinedArea {
 	 * 
 	 */
 	private static final long serialVersionUID = -5168484650864604408L;
+
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardAttackersEntryArea.class);
 
 	public GameBoardAttackersEntryArea(Game game, RectangleDataModel rectangleDataModel) {
 		super(game, rectangleDataModel);
+	}
+
+	public GameBoardAttackersEntryArea(Game game, IntegerRectangle rectangleInImageWithRGB,
+			GameBoardNamedAreaDataModel gameBoardNamedAreaDataModel) {
+		super(game, rectangleInImageWithRGB, gameBoardNamedAreaDataModel);
 	}
 }

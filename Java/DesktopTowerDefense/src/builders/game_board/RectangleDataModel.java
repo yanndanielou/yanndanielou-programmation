@@ -5,17 +5,12 @@ import java.awt.Point;
 import common.RandomIntegerGenerator;
 import geometry.IntegerRectangle;
 
-public class RectangleDataModel {
+public class RectangleDataModel extends GameBoardNamedAreaDataModel {
 
-	private String name;
 	private Integer x;
 	private Integer y;
 	private Integer width;
 	private Integer height;
-
-	public String getName() {
-		return name;
-	}
 
 	public IntegerRectangle getRectangle() {
 		return new IntegerRectangle(x, y, width, height);

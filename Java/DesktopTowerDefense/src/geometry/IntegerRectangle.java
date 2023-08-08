@@ -6,7 +6,11 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class IntegerRectangle {
+	private static final Logger LOGGER = LogManager.getLogger(IntegerRectangle.class);
 
 	private Rectangle awtRectangle;
 
@@ -48,6 +52,118 @@ public class IntegerRectangle {
 
 	public IntegerRectangle(Dimension d) {
 		awtRectangle = new Rectangle(0, 0, d.width, d.height);
+	}
+
+	/***
+	 * Create IntegerRectangle from a list of points
+	 * 
+	 * @param rectangleAsListOfPoints
+	 */
+	public IntegerRectangle(List<? extends Point> rectangleAsListOfPoints) {
+
+		Point topLeftPoint = getTopLeftPoint(rectangleAsListOfPoints);
+		Point topRightPoint = getTopRightPoint(rectangleAsListOfPoints);
+		Point bottomLeftPoint = getBottomLeftPoint(rectangleAsListOfPoints);
+		Point bottomRightPoint = getBottomRightPoint(rectangleAsListOfPoints);
+
+		double upSideLength = topLeftPoint.distance(topRightPoint);
+		double leftSideLength = topLeftPoint.distance(bottomLeftPoint);
+		double bottomSideLength = bottomLeftPoint.distance(bottomRightPoint);
+		double rightSideSize = topRightPoint.distance(bottomRightPoint);
+
+		double topLeftToBottomRightDiagonalLength = topLeftPoint.distance(bottomRightPoint);
+		double topRightToBottomLeftDiagonalLength = topRightPoint.distance(bottomLeftPoint);
+
+		if (upSideLength != bottomSideLength) {
+			throw new BadGeometryException("Quadrilateral is not a parrallelogram");
+		}
+		if (leftSideLength != rightSideSize) {
+			throw new BadGeometryException("Quadrilateral is not a parrallelogram");
+		}
+		if (topLeftToBottomRightDiagonalLength != topRightToBottomLeftDiagonalLength) {
+			throw new BadGeometryException("Quadrilateral is not a rectangle");
+		}
+
+		double rectangleTheoricalArea = upSideLength * leftSideLength;
+		if (rectangleTheoricalArea != rectangleAsListOfPoints.size()) {
+			LOGGER.fatal("Actual size: " + rectangleAsListOfPoints.size() + " does not match theorical area:"
+					+ rectangleTheoricalArea);
+		}
+
+		awtRectangle = new Rectangle(topLeftPoint, new Dimension((int) upSideLength, (int) leftSideLength));
+
+	}
+
+	private Point getTopLeftPoint(List<? extends Point> points) {
+		double minXFound = points.get(0).getX();
+		double minYFound = points.get(0).getY();
+		Point topLeftPoint = points.get(0);
+		for (Point point : points) {
+			if (point.getX() < minXFound) {
+				minXFound = point.getX();
+			}
+			if (point.getY() < minYFound) {
+				minYFound = point.getY();
+			}
+			if (point.getX() <= minXFound && point.getY() <= minYFound) {
+				topLeftPoint = point;
+			}
+		}
+		return topLeftPoint;
+	}
+
+	private Point getTopRightPoint(List<? extends Point> points) {
+		double maxXFound = points.get(0).getX();
+		double minYFound = points.get(0).getY();
+		Point topRightPoint = points.get(0);
+		for (Point point : points) {
+			if (point.getX() > maxXFound) {
+				maxXFound = point.getX();
+			}
+			if (point.getY() < minYFound) {
+				minYFound = point.getY();
+			}
+			if (point.getX() >= maxXFound && point.getY() <= minYFound) {
+				topRightPoint = point;
+			}
+		}
+		return topRightPoint;
+	}
+
+	private Point getBottomLeftPoint(List<? extends Point> points) {
+		double minXFound = points.get(0).getX();
+		double maxYFound = points.get(0).getY();
+		Point bottomLeftPoint = points.get(0);
+		for (Point point : points) {
+			if (point.getX() < minXFound) {
+				minXFound = point.getX();
+			}
+			if (point.getY() > maxYFound) {
+				maxYFound = point.getY();
+			}
+			if (point.getX() <= minXFound && point.getY() >= maxYFound) {
+				bottomLeftPoint = point;
+			}
+		}
+		return bottomLeftPoint;
+	}
+
+	private Point getBottomRightPoint(List<? extends Point> points) {
+		double maxXFound = points.get(0).getX();
+		double maxYFound = points.get(0).getY();
+		Point bottomRightPoint = points.get(0);
+		for (Point point : points) {
+			if (point.getX() > maxXFound) {
+				maxXFound = point.getX();
+			}
+			if (point.getY() > maxYFound) {
+				maxYFound = point.getY();
+			}
+			if (point.getX() >= maxXFound && point.getY() >= maxYFound) {
+				bottomRightPoint = point;
+			}
+		}
+		return bottomRightPoint;
 	}
 
 	public int getX() {

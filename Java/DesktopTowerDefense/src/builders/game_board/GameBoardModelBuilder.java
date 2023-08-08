@@ -1,7 +1,6 @@
 package builders.game_board;
 
 import java.awt.Color;
-import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,6 +23,7 @@ import game_board.GameBoardAttackersExitArea;
 import game_board.GameBoardPoint;
 import game_board.GameBoardPointsDefinedWall;
 import game_board.GameBoardRectangleDefinedWall;
+import geometry.IntegerPoint;
 import geometry.IntegerRectangle;
 
 public class GameBoardModelBuilder {
@@ -67,7 +67,7 @@ public class GameBoardModelBuilder {
 		}
 		for (GameBoardAreasByRGBImageRecognitionDataModel wallDataModel : gameBoardDataModel
 				.getPointsDefinedWallAreaAsRGBInImageToParse()) {
-			List<Point> listOfPixelsInImageWithRGBAsPoint = getListOfPixelsInImageWithRGB(wallDataModel);
+			List<IntegerPoint> listOfPixelsInImageWithRGBAsPoint = getListOfPixelsInImageWithRGB(wallDataModel);
 			List<GameBoardPoint> listOfPixelsInImageWithRGBAsGameBoardPoints = gameBoard
 					.getGameBoardPoints(listOfPixelsInImageWithRGBAsPoint);
 			GameBoardPointsDefinedWall wallArea = new GameBoardPointsDefinedWall(game, wallDataModel.getName(),
@@ -79,19 +79,33 @@ public class GameBoardModelBuilder {
 					attackersEntryAreaDataModel);
 			gameBoard.addGameBoardAttackersEntryArea(attackersEntryArea);
 		}
+		for (GameBoardAreasByRGBImageRecognitionDataModel attackersEntryAreaDataModel : gameBoardDataModel
+				.getRectangleDefinedAttackersEntryAreasAsRGBInImageToParse()) {
+			IntegerRectangle rectangleInImageWithRGB = getRectangleInImageWithRGB(attackersEntryAreaDataModel);
+			GameBoardAttackersEntryArea attackersEntryArea = new GameBoardAttackersEntryArea(game,
+					rectangleInImageWithRGB, attackersEntryAreaDataModel);
+			gameBoard.addGameBoardAttackersEntryArea(attackersEntryArea);
+		}
 		for (RectangleDataModel attackersExitAreaDataModel : gameBoardDataModel.getAttackersExitAreasAsRectangles()) {
 			GameBoardAttackersExitArea attackersExitArea = new GameBoardAttackersExitArea(game,
 					attackersExitAreaDataModel);
 			gameBoard.addGameBoardAttackersExitArea(attackersExitArea);
 		}
+		for (GameBoardAreasByRGBImageRecognitionDataModel attackersExitAreaDataModel : gameBoardDataModel
+				.getRectangleDefinedAttackersExitAreasAsRGBInImageToParse()) {
+			IntegerRectangle rectangleInImageWithRGB = getRectangleInImageWithRGB(attackersExitAreaDataModel);
+			GameBoardAttackersExitArea attackersExitArea = new GameBoardAttackersExitArea(game, rectangleInImageWithRGB,
+					attackersExitAreaDataModel);
+			gameBoard.addGameBoardAttackersExitArea(attackersExitArea);
+		}
 	}
 
-	private List<Point> getListOfPixelsInImageWithRGB(
+	private List<IntegerPoint> getListOfPixelsInImageWithRGB(
 			GameBoardAreasByRGBImageRecognitionDataModel gameBoardAreasByRGBImageRecognitionDataModel) {
 
 		Color searchedColor = gameBoardAreasByRGBImageRecognitionDataModel.getBackgroundColorAsAwtColor();
 
-		List<Point> pointsInImageWithRGB = new ArrayList<>();
+		List<IntegerPoint> pointsInImageWithRGB = new ArrayList<>();
 
 		File imageFile = new File(gameBoardAreasByRGBImageRecognitionDataModel.getImageToParsePath());
 		BufferedImage imageBufferedImage = null;
@@ -127,18 +141,21 @@ public class GameBoardModelBuilder {
 				int green2 = pixelColor.getGreen();
 
 				if (searchedColor.equals(pixelColor)) {
-					pointsInImageWithRGB.add(new Point(x, y));
+					pointsInImageWithRGB.add(new IntegerPoint(x, y));
 				}
 			}
 		}
 
-		return null;
+		return pointsInImageWithRGB;
 	}
 
 	private IntegerRectangle getRectangleInImageWithRGB(
 			GameBoardAreasByRGBImageRecognitionDataModel gameBoardAreasByRGBImageRecognitionDataModel) {
 
-		return null;
+		List<IntegerPoint> listOfPixelsInImageWithRGB = getListOfPixelsInImageWithRGB(
+				gameBoardAreasByRGBImageRecognitionDataModel);
+		IntegerRectangle rectangle = new IntegerRectangle(listOfPixelsInImageWithRGB);
+		return rectangle;
 	}
 
 	public int getGameBoardTotalHeight() {

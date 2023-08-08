@@ -2,9 +2,8 @@ package builders.game_board;
 
 import java.awt.Color;
 
-public class GameBoardAreasByRGBImageRecognitionDataModel {
+public class GameBoardAreasByRGBImageRecognitionDataModel extends GameBoardNamedAreaDataModel {
 
-	private String name;
 	private String imageToParsePath;
 
 	private ColorDefinition rgbColorDefinition;
@@ -13,10 +12,6 @@ public class GameBoardAreasByRGBImageRecognitionDataModel {
 		int red;
 		int green;
 		int blue;
-	}
-
-	public String getName() {
-		return name;
 	}
 
 	public String getImageToParsePath() {

@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import builders.game_board.GameBoardNamedAreaDataModel;
 import builders.game_board.RectangleDataModel;
 import game.Game;
 import geometry.IntegerPoint;
@@ -28,6 +29,12 @@ public class GameBoardRectangleDefinedArea extends GameBoardArea {
 	public GameBoardRectangleDefinedArea(Game game, RectangleDataModel rectangleDataModel) {
 		super(game, rectangleDataModel.getName());
 		this.rectangle = new IntegerRectangle(rectangleDataModel.getRectangle());
+	}
+
+	public GameBoardRectangleDefinedArea(Game game, IntegerRectangle rectangleInImageWithRGB,
+			GameBoardNamedAreaDataModel gameBoardNamedAreaDataModel) {
+		super(game, gameBoardNamedAreaDataModel.getName());
+		this.rectangle = rectangleInImageWithRGB;
 	}
 
 	@Override

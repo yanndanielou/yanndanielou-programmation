@@ -1,6 +1,5 @@
 package game_board;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +16,7 @@ import builders.game_board.GameBoardDataModel;
 import builders.game_board.GameBoardModelBuilder;
 import common.BadLogicException;
 import game.Game;
+import geometry.IntegerPoint;
 
 public class GameBoard implements TowerListener, AttackerListener {
 
@@ -79,13 +79,13 @@ public class GameBoard implements TowerListener, AttackerListener {
 		return all_game_board_point_as_ordered_list;
 	}
 
-	public GameBoardPoint getGameBoardPoint(Point point) {
-		return getGameBoardPoint((int) point.getX(), (int) point.getY());
+	public GameBoardPoint getGameBoardPoint(IntegerPoint point) {
+		return getGameBoardPoint(point.getRow(), point.getColumn());
 	}
 
-	public List<GameBoardPoint> getGameBoardPoints(List<Point> points) {
+	public List<GameBoardPoint> getGameBoardPoints(List<IntegerPoint> points) {
 		List<GameBoardPoint> gameBoardPoints = new ArrayList<>();
-		for (Point point : points) {
+		for (IntegerPoint point : points) {
 			gameBoardPoints.add(getGameBoardPoint(point));
 		}
 		return gameBoardPoints;
@@ -181,7 +181,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 	}
 
 	private void placeTower(Tower tower) {
-		for (Point pointIt : tower.getAllPoints()) {
+		for (IntegerPoint pointIt : tower.getAllPoints()) {
 			GameBoardPoint gameBoardPoint = getGameBoardPoint(pointIt);
 			tower.add_listener(gameBoardPoint);
 		}
@@ -202,7 +202,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	@Override
 	public void on_listen_to_attacker(Attacker attacker) {
-		for (Point pointIt : attacker.getAllPoints()) {
+		for (IntegerPoint pointIt : attacker.getAllPoints()) {
 			GameBoardPoint gameBoardPoint = getGameBoardPoint(pointIt);
 			attacker.add_listener(gameBoardPoint);
 		}
@@ -222,7 +222,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addWall(GameBoardRectangleDefinedWall wall) {
 		walls.add(wall);
-		for (Point wallPoint : wall.getAllPoints()) {
+		for (IntegerPoint wallPoint : wall.getAllPoints()) {
 			getGameBoardPoint(wallPoint).addWall(wall);
 		}
 	}
@@ -233,7 +233,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addGameBoardAttackersExitArea(GameBoardAttackersExitArea gameBoardAttackersExitArea) {
 		gameBoardAttackersExitAreas.add(gameBoardAttackersExitArea);
-		for (Point gameBoardAttackersExitAreaPoint : gameBoardAttackersExitArea.getAllPoints()) {
+		for (IntegerPoint gameBoardAttackersExitAreaPoint : gameBoardAttackersExitArea.getAllPoints()) {
 			getGameBoardPoint(gameBoardAttackersExitAreaPoint)
 					.addGameBoardAttackersExitArea(gameBoardAttackersExitArea);
 		}
