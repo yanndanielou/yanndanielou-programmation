@@ -1,9 +1,12 @@
 package builders.game_board;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import org.apache.commons.collections4.ListUtils;
 
 import common.BadLogicException;
 
@@ -56,45 +59,36 @@ public class GameBoardDataModel {
 		return found.get(0);
 	}
 
-	private ArrayList<RectangleDataModel> emptyListIfNullRectangleDataModell(
-			ArrayList<RectangleDataModel> initialList) {
-		return initialList == null ? new ArrayList<>() : initialList;
+	public List<RectangleDataModel> getWallsAsRectangles() {
+		return ListUtils.emptyIfNull(wallsAsRectangles);
 	}
 
-	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> emptyListIfNullGameBoardAreasByRGBImageRecognitionDataModel(
-			ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> initialList) {
-		return initialList == null ? new ArrayList<>() : initialList;
+	public List<RectangleDataModel> getAttackersEntryAreasAsRectangles() {
+		return ListUtils.emptyIfNull(attackersEntryAreasAsRectangles);
 	}
 
-	public ArrayList<RectangleDataModel> getWallsAsRectangles() {
-		return emptyListIfNullRectangleDataModell(wallsAsRectangles);
+	public List<RectangleDataModel> getAttackersExitAreasAsRectangles() {
+		return ListUtils.emptyIfNull(attackersExitAreasAsRectangles);
 	}
 
-	public ArrayList<RectangleDataModel> getAttackersEntryAreasAsRectangles() {
-		return emptyListIfNullRectangleDataModell(attackersEntryAreasAsRectangles);
+	public List<GameBoardAreasByRGBImageRecognitionDataModel> getPointsDefinedNonPlayableAreasAsRGBInImageToParse() {
+		return ListUtils.emptyIfNull(pointsDefinedNonPlayableAreasAsRGBInImageToParse);
 	}
 
-	public ArrayList<RectangleDataModel> getAttackersExitAreasAsRectangles() {
-		return emptyListIfNullRectangleDataModell(attackersExitAreasAsRectangles);
+	public static <T> List<T> emptyIfNull(final List<T> list) {
+		return list == null ? Collections.<T>emptyList() : list;
 	}
 
-	public ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> getPointsDefinedNonPlayableAreasAsRGBInImageToParse() {
-		return emptyListIfNullGameBoardAreasByRGBImageRecognitionDataModel(
-				pointsDefinedNonPlayableAreasAsRGBInImageToParse);
+	public List<GameBoardAreasByRGBImageRecognitionDataModel> getPointsDefinedWallAreaAsRGBInImageToParse() {
+		return ListUtils.emptyIfNull(pointsDefinedWallAreaAsRGBInImageToParse);
 	}
 
-	public ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> getPointsDefinedWallAreaAsRGBInImageToParse() {
-		return emptyListIfNullGameBoardAreasByRGBImageRecognitionDataModel(pointsDefinedWallAreaAsRGBInImageToParse);
+	public List<GameBoardAreasByRGBImageRecognitionDataModel> getRectangleDefinedAttackersEntryAreasAsRGBInImageToParse() {
+		return ListUtils.emptyIfNull(rectangleDefinedAttackersEntryAreasAsRGBInImageToParse);
 	}
 
-	public ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> getRectangleDefinedAttackersEntryAreasAsRGBInImageToParse() {
-		return emptyListIfNullGameBoardAreasByRGBImageRecognitionDataModel(
-				rectangleDefinedAttackersEntryAreasAsRGBInImageToParse);
-	}
-
-	public ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> getRectangleDefinedAttackersExitAreasAsRGBInImageToParse() {
-		return emptyListIfNullGameBoardAreasByRGBImageRecognitionDataModel(
-				rectangleDefinedAttackersExitAreasAsRGBInImageToParse);
+	public List<GameBoardAreasByRGBImageRecognitionDataModel> getRectangleDefinedAttackersExitAreasAsRGBInImageToParse() {
+		return ListUtils.emptyIfNull(rectangleDefinedAttackersExitAreasAsRGBInImageToParse);
 	}
 
 }
