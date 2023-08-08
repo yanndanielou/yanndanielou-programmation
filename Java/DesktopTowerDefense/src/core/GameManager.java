@@ -14,10 +14,11 @@ import builders.GameObjectsDataModel;
 import builders.GameObjectsModelBuilder;
 import builders.TowerDataModel;
 import builders.game_board.GameBoardModelBuilder;
-import builders.game_board.RectangleDataModel;
 import constants.Constants;
 import game.Game;
 import game_board.GameBoard;
+import game_board.GameBoardAttackersEntryArea;
+import game_board.GameBoardAttackersExitArea;
 import game_board.GameBoardPoint;
 import game_board.NeighbourGameBoardPointDirection;
 import geometry.IntegerRectangle;
@@ -116,14 +117,14 @@ public class GameManager {
 		return tower;
 	}
 
-	public Attacker createNormalAttacker(RectangleDataModel creation_area, RectangleDataModel oneRandomExitArea,
-			int evolutionLevel) {
+	public Attacker createNormalAttacker(GameBoardAttackersEntryArea attackersEntryArea,
+			GameBoardAttackersExitArea exitArea, int evolutionLevel) {
 		GameObjectsDataModel game_objects_data_model = game.getGameObjectsDataModel();
 		AttackerDataModel normal_attacker_data_model = game_objects_data_model.getNormal_attacker_data_model();
 
-		IntegerRectangle creationAreaRectangle = creation_area.getRectangle();
+		IntegerRectangle creationAreaRectangle = attackersEntryArea.getRectangleDefinedArea();
 
-		Point attackerExitPoint = oneRandomExitArea.getOneRandomPointAllowingSubRectangleToFit(
+		Point attackerExitPoint = exitArea.getRectangleDefinedArea().getOneRandomPointAllowingSubRectangleToFit(
 				normal_attacker_data_model.getWidth(), normal_attacker_data_model.getHeight());
 
 		NormalAttacker attacker = new NormalAttacker(normal_attacker_data_model, game,

@@ -18,6 +18,7 @@ import builders.game_board.GameBoardModelBuilder;
 import common.BadLogicException;
 import game.Game;
 import geometry.IntegerPoint;
+import geometry.IntegerRectangle;
 
 public class GameBoard implements TowerListener, AttackerListener {
 
@@ -266,8 +267,17 @@ public class GameBoard implements TowerListener, AttackerListener {
 	}
 
 	public void generatePredefinedConstructionLocations(TowerDataModel towerDataModel) {
-		for (GameBoardPredefinedConstructionLocation predefinedConstructionLocation : predefinedConstructionLocations) {
-			// predefinedConstructionLocation.
+		for (GameBoardInitiallyConstructibleMacroArea initiallyConstructibleMacroArea : initiallyConstructibleMacroAreas) {
+			List<IntegerRectangle> predefinedConstructionsToCreateRectangles = initiallyConstructibleMacroArea
+					.getRectangleDefinedArea().getInnerSubRectangles(towerDataModel.getDimension());
+			for (IntegerRectangle predefinedConstructionRectangle : predefinedConstructionsToCreateRectangles) {
+				GameBoardPredefinedConstructionLocation predefinedConstructionLocation = new GameBoardPredefinedConstructionLocation(
+						this, predefinedConstructionRectangle);
+				predefinedConstructionLocations.add(predefinedConstructionLocation);
+				predefinedConstructionLocation.getAllPoints().forEach(
+						(gameBoardPoint) -> gameBoardPoint.addGameBoardPredefinedConstructionLocation(predefinedConstructionLocation));
+
+			}
 		}
 	}
 }

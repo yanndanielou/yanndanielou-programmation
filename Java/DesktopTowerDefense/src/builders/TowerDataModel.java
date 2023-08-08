@@ -1,5 +1,6 @@
 package builders;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 
 public class TowerDataModel {
@@ -29,6 +30,10 @@ public class TowerDataModel {
 
 	public Integer getMaximum_number_of_alive_ammunitions_allowed() {
 		return maximum_number_of_alive_ammunitions_allowed;
+	}
+
+	public Dimension getDimension() {
+		return new Dimension(width, height);
 	}
 
 }

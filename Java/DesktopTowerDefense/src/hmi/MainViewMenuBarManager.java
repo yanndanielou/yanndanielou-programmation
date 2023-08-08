@@ -15,12 +15,12 @@ import org.apache.logging.log4j.Logger;
 
 import builders.GameObjectsDataModel;
 import builders.TowerDataModel;
-import builders.game_board.GameBoardDataModel;
-import builders.game_board.RectangleDataModel;
 import cheat_codes.CheatCodeManager;
 import core.GameManager;
 import game.Game;
 import game_board.GameBoard;
+import game_board.GameBoardAttackersEntryArea;
+import game_board.GameBoardAttackersExitArea;
 
 public class MainViewMenuBarManager implements ActionListener {
 	private static final Logger LOGGER = LogManager.getLogger(MainViewMenuBarManager.class);
@@ -117,12 +117,12 @@ public class MainViewMenuBarManager implements ActionListener {
 					GameManager gameManager = GameManager.getInstance();
 					Game game = gameManager.getGame();
 					GameBoard gameBoard = game.getGameBoard();
-					GameBoardDataModel gameBoardDataModel = gameBoard.getGameBoardDataModel();
-					RectangleDataModel oneRandomEntryArea = gameBoardDataModel.getOneRandomEntryArea();
+					GameBoardAttackersEntryArea gameBoardAttackersEntryArea = gameBoard
+							.getGameBoardAttackersEntryAreas().get(0);
 
-					RectangleDataModel oneRandomExitArea = gameBoardDataModel.getOneRandomExitArea();
+					GameBoardAttackersExitArea oneRandomExitArea = gameBoard.getGameBoardAttackersExitAreas().get(0);
 
-					gameManager.createNormalAttacker(oneRandomEntryArea, oneRandomExitArea, 1);
+					gameManager.createNormalAttacker(gameBoardAttackersEntryArea, oneRandomExitArea, 1);
 				}
 			}
 		});

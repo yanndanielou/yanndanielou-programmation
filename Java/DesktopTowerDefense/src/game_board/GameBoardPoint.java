@@ -163,4 +163,9 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 		gameBoardNonPlayableAreasPresent.add(nonPlayableArea);
 	}
 
+	public void addGameBoardPredefinedConstructionLocation(
+			GameBoardPredefinedConstructionLocation predefinedConstructionLocation) {
+		predefinedConstructionLocationsPresent.add(predefinedConstructionLocation);
+	}
+
 }

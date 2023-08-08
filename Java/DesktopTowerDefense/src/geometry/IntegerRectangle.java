@@ -9,6 +9,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import common.RandomIntegerGenerator;
+
 public class IntegerRectangle {
 	private static final Logger LOGGER = LogManager.getLogger(IntegerRectangle.class);
 
@@ -218,6 +220,20 @@ public class IntegerRectangle {
 		}
 
 		return allPoints;
+	}
+
+	public Point getOneRandomPointAllowingSubRectangleToFit(int subRectangleWidth, int subRectangleHeight) {
+		int minX = getX();
+		int maxX = getX() + getWidth() - subRectangleWidth;
+
+		int minY = getY();
+		int maxY = getY() + getHeight() - subRectangleHeight;
+
+		int chosenX = RandomIntegerGenerator.getRandomNumberUsingNextInt(minX, maxX);
+		int chosenY = RandomIntegerGenerator.getRandomNumberUsingNextInt(minY, maxY);
+
+		return new Point(chosenX, chosenY);
+
 	}
 
 }

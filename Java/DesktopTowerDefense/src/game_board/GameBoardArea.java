@@ -50,4 +50,8 @@ public abstract class GameBoardArea {
 			return pointsDefinedArea;
 		}
 	}
+
+	public IntegerRectangle getRectangleDefinedArea() {
+		return rectangleDefinedArea;
+	}
 }
