@@ -15,15 +15,6 @@ public class GameBoardPointsListDefinedArea extends GameBoardArea {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardPointsListDefinedArea.class);
 
-	public GameBoardPointsListDefinedArea(Game game, String name) {
-		super(game, name);
-	}
-
-	public GameBoardPointsListDefinedArea(Game game, String name, List<GameBoardPoint> points) {
-		super(game, name);
-		this.points = points;
-	}
-
 	@Override
 	public List<GameBoardPoint> getAllPoints() {
 		return points;

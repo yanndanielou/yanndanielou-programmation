@@ -1,6 +1,5 @@
 package game_board;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,10 +29,10 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	private ArrayList<GameBoardPoint> all_game_board_point_as_ordered_list = new ArrayList<>();
 
-	private ArrayList<GameBoardRectangleDefinedWall> walls = new ArrayList<>();
+	private ArrayList<GameBoardWallArea> walls = new ArrayList<>();
 	private ArrayList<GameBoardAttackersEntryArea> gameBoardAttackersEntryAreas = new ArrayList<>();
 	private ArrayList<GameBoardAttackersExitArea> gameBoardAttackersExitAreas = new ArrayList<>();
-	private ArrayList<GameBoardPointsDefinedNonPlayableArea> nonPlayableAreas = new ArrayList<>();
+	private ArrayList<GameBoardNonPlayableArea> nonPlayableAreas = new ArrayList<>();
 
 	private Game game;
 
@@ -222,14 +221,14 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	}
 
-	public void addWall(GameBoardRectangleDefinedWall wall) {
+	public void addWall(GameBoardWallArea wall) {
 		walls.add(wall);
 		for (IntegerPoint wallPoint : wall.getAllPoints()) {
 			getGameBoardPoint(wallPoint).addWall(wall);
 		}
 	}
 
-	public ArrayList<GameBoardRectangleDefinedWall> getWalls() {
+	public ArrayList<GameBoardWallArea> getWalls() {
 		return walls;
 	}
 
@@ -256,12 +255,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 		return gameBoardAttackersEntryAreas;
 	}
 
-	public void addWall(GameBoardPointsDefinedWall wallArea) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void addNonPlayableArea(GameBoardPointsDefinedNonPlayableArea nonPlayableArea) {
+	public void addNonPlayableArea(GameBoardNonPlayableArea nonPlayableArea) {
 		nonPlayableAreas.add(nonPlayableArea);
 	}
 }

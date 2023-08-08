@@ -2,25 +2,46 @@ package game_board;
 
 import java.util.List;
 
-import game.Game;
+import builders.game_board.GameBoardNamedAreaDataModel;
+import builders.game_board.RectangleDataModel;
+import geometry.IntegerRectangle;
 
 public abstract class GameBoardArea {
 
-	protected Game game;
+	protected IntegerRectangle rectangleDefinedArea = null;
+	protected List<GameBoardPoint> pointsDefinedArea = null;
+
+	protected GameBoard gameBoard;
 	protected String name;
 
-	public GameBoardArea(Game game, String name) {
-		this.game = game;
+	public GameBoardArea(GameBoard gameBoard, String name, List<GameBoardPoint> points) {
+		this.gameBoard = gameBoard;
 		this.name = name;
+		this.pointsDefinedArea = points;
+	}
+
+	protected GameBoardArea(GameBoard gameBoard, RectangleDataModel rectangleDataModel) {
+		this.gameBoard = gameBoard;
+		this.name = rectangleDataModel.getName();
+		this.rectangleDefinedArea = new IntegerRectangle(rectangleDataModel.getRectangle());
+	}
+
+	protected GameBoardArea(GameBoard gameBoard, IntegerRectangle rectangleInImageWithRGB,
+			GameBoardNamedAreaDataModel gameBoardNamedAreaDataModel) {
+		this.gameBoard = gameBoard;
+		this.name = gameBoardNamedAreaDataModel.getName();
+		this.rectangleDefinedArea = rectangleInImageWithRGB;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public Game getGame() {
-		return game;
+	public List<GameBoardPoint> getAllPoints() {
+		if (rectangleDefinedArea != null) {
+			return gameBoard.getGameBoardPoints(rectangleDefinedArea.getAllPoints());
+		} else {
+			return pointsDefinedArea;
+		}
 	}
-
-	public abstract List<GameBoardPoint> getAllPoints();
 }

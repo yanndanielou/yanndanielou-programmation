@@ -16,14 +16,12 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.gson.Gson;
 
-import game.Game;
 import game_board.GameBoard;
 import game_board.GameBoardAttackersEntryArea;
 import game_board.GameBoardAttackersExitArea;
+import game_board.GameBoardNonPlayableArea;
 import game_board.GameBoardPoint;
-import game_board.GameBoardPointsDefinedNonPlayableArea;
-import game_board.GameBoardPointsDefinedWall;
-import game_board.GameBoardRectangleDefinedWall;
+import game_board.GameBoardWallArea;
 import geometry.IntegerPoint;
 import geometry.IntegerRectangle;
 
@@ -43,9 +41,7 @@ public class GameBoardModelBuilder {
 		BufferedReader br = null;
 
 		try {
-
 			br = new BufferedReader(new FileReader(game_board_data_model_json_file));
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -60,10 +56,10 @@ public class GameBoardModelBuilder {
 
 	}
 
-	public void buildAllAreas(Game game, GameBoard gameBoard) {
+	public void buildAllAreas(GameBoard gameBoard) {
 
 		for (RectangleDataModel wallDataModel : gameBoardDataModel.getWallsAsRectangles()) {
-			GameBoardRectangleDefinedWall wall = new GameBoardRectangleDefinedWall(game, wallDataModel);
+			GameBoardWallArea wall = new GameBoardWallArea(gameBoard, wallDataModel);
 			gameBoard.addWall(wall);
 		}
 		for (GameBoardAreasByRGBImageRecognitionDataModel wallDataModel : gameBoardDataModel
@@ -71,32 +67,32 @@ public class GameBoardModelBuilder {
 			List<IntegerPoint> listOfPixelsInImageWithRGBAsPoint = getListOfPixelsInImageWithRGB(wallDataModel);
 			List<GameBoardPoint> listOfPixelsInImageWithRGBAsGameBoardPoints = gameBoard
 					.getGameBoardPoints(listOfPixelsInImageWithRGBAsPoint);
-			GameBoardPointsDefinedWall wallArea = new GameBoardPointsDefinedWall(game, wallDataModel.getName(),
+			GameBoardWallArea wallArea = new GameBoardWallArea(gameBoard, wallDataModel.getName(),
 					listOfPixelsInImageWithRGBAsGameBoardPoints);
 			gameBoard.addWall(wallArea);
 		}
 		for (RectangleDataModel attackersEntryAreaDataModel : gameBoardDataModel.getAttackersEntryAreasAsRectangles()) {
-			GameBoardAttackersEntryArea attackersEntryArea = new GameBoardAttackersEntryArea(game,
+			GameBoardAttackersEntryArea attackersEntryArea = new GameBoardAttackersEntryArea(gameBoard,
 					attackersEntryAreaDataModel);
 			gameBoard.addGameBoardAttackersEntryArea(attackersEntryArea);
 		}
 		for (GameBoardAreasByRGBImageRecognitionDataModel attackersEntryAreaDataModel : gameBoardDataModel
 				.getRectangleDefinedAttackersEntryAreasAsRGBInImageToParse()) {
 			IntegerRectangle rectangleInImageWithRGB = getRectangleInImageWithRGB(attackersEntryAreaDataModel);
-			GameBoardAttackersEntryArea attackersEntryArea = new GameBoardAttackersEntryArea(game,
+			GameBoardAttackersEntryArea attackersEntryArea = new GameBoardAttackersEntryArea(gameBoard,
 					rectangleInImageWithRGB, attackersEntryAreaDataModel);
 			gameBoard.addGameBoardAttackersEntryArea(attackersEntryArea);
 		}
 		for (RectangleDataModel attackersExitAreaDataModel : gameBoardDataModel.getAttackersExitAreasAsRectangles()) {
-			GameBoardAttackersExitArea attackersExitArea = new GameBoardAttackersExitArea(game,
+			GameBoardAttackersExitArea attackersExitArea = new GameBoardAttackersExitArea(gameBoard,
 					attackersExitAreaDataModel);
 			gameBoard.addGameBoardAttackersExitArea(attackersExitArea);
 		}
 		for (GameBoardAreasByRGBImageRecognitionDataModel attackersExitAreaDataModel : gameBoardDataModel
 				.getRectangleDefinedAttackersExitAreasAsRGBInImageToParse()) {
 			IntegerRectangle rectangleInImageWithRGB = getRectangleInImageWithRGB(attackersExitAreaDataModel);
-			GameBoardAttackersExitArea attackersExitArea = new GameBoardAttackersExitArea(game, rectangleInImageWithRGB,
-					attackersExitAreaDataModel);
+			GameBoardAttackersExitArea attackersExitArea = new GameBoardAttackersExitArea(gameBoard,
+					rectangleInImageWithRGB, attackersExitAreaDataModel);
 			gameBoard.addGameBoardAttackersExitArea(attackersExitArea);
 		}
 		for (GameBoardAreasByRGBImageRecognitionDataModel nonPlayableAreaDataModel : gameBoardDataModel
@@ -105,7 +101,7 @@ public class GameBoardModelBuilder {
 					nonPlayableAreaDataModel);
 			List<GameBoardPoint> listOfPixelsInImageWithRGBAsGameBoardPoints = gameBoard
 					.getGameBoardPoints(listOfPixelsInImageWithRGBAsPoint);
-			GameBoardPointsDefinedNonPlayableArea nonPlayableArea = new GameBoardPointsDefinedNonPlayableArea(game,
+			GameBoardNonPlayableArea nonPlayableArea = new GameBoardNonPlayableArea(gameBoard,
 					nonPlayableAreaDataModel.getName(), listOfPixelsInImageWithRGBAsGameBoardPoints);
 			gameBoard.addNonPlayableArea(nonPlayableArea);
 		}

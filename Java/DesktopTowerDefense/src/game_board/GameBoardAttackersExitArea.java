@@ -5,10 +5,9 @@ import org.apache.logging.log4j.Logger;
 
 import builders.game_board.GameBoardNamedAreaDataModel;
 import builders.game_board.RectangleDataModel;
-import game.Game;
 import geometry.IntegerRectangle;
 
-public class GameBoardAttackersExitArea extends GameBoardRectangleDefinedArea {
+public class GameBoardAttackersExitArea extends GameBoardArea {
 
 	/**
 	 * 
@@ -17,13 +16,13 @@ public class GameBoardAttackersExitArea extends GameBoardRectangleDefinedArea {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardAttackersExitArea.class);
 
-	public GameBoardAttackersExitArea(Game game, RectangleDataModel rectangleDataModel) {
-		super(game, rectangleDataModel);
+	public GameBoardAttackersExitArea(GameBoard gameBoard, RectangleDataModel rectangleDataModel) {
+		super(gameBoard, rectangleDataModel);
 	}
 
-	public GameBoardAttackersExitArea(Game game, IntegerRectangle rectangleInImageWithRGB,
+	public GameBoardAttackersExitArea(GameBoard gameBoard, IntegerRectangle rectangleInImageWithRGB,
 			GameBoardNamedAreaDataModel gameBoardNamedAreaDataModel) {
-		super(game, rectangleInImageWithRGB, gameBoardNamedAreaDataModel);
+		super(gameBoard, rectangleInImageWithRGB, gameBoardNamedAreaDataModel);
 	}
 
 }

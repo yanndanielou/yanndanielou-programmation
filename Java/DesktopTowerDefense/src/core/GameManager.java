@@ -58,7 +58,7 @@ public class GameManager {
 		GameBoardModelBuilder gameBoardModelBuilder = new GameBoardModelBuilder(
 				Constants.GAME_BOARD_JSON_DATA_MODEL_FILE_PATH);
 		GameBoard gameBoard = new GameBoard(gameBoardModelBuilder);
-		gameBoardModelBuilder.buildAllAreas(game, gameBoard);
+		gameBoardModelBuilder.buildAllAreas(gameBoard);
 		GameObjectsModelBuilder gameObjectsModelBuilder = new GameObjectsModelBuilder(
 				Constants.GAME_OBJECTS_JSON_DATA_MODEL_FILE_PATH);
 		GameObjectsDataModel game_objects_data_model = gameObjectsModelBuilder.getGame_objects_data_model();
@@ -66,7 +66,6 @@ public class GameManager {
 		desktopTowerDefenseMainView.register_to_game(game);
 		attackerMovementOrchestor = new AttackerMovementOrchestor(game);
 		compute_neighbours_of_each_gameBoardPoint();
-		// createGameBoardAreas();
 		TimeManager.getInstance().start();
 	}
 

@@ -15,7 +15,6 @@ import geometry.IntegerRectangle;
 
 public class GameBoardRectangleDefinedArea extends GameBoardArea {
 
-	protected IntegerRectangle rectangle;
 
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardRectangleDefinedArea.class);
@@ -23,27 +22,19 @@ public class GameBoardRectangleDefinedArea extends GameBoardArea {
 	@Deprecated
 	public GameBoardRectangleDefinedArea(Game game, Rectangle rectangle, String name) {
 		super(game, name);
-		this.rectangle = new IntegerRectangle(rectangle);
+		this.rectangleDefinedArea = new IntegerRectangle(rectangle);
 	}
 
-	public GameBoardRectangleDefinedArea(Game game, RectangleDataModel rectangleDataModel) {
-		super(game, rectangleDataModel.getName());
-		this.rectangle = new IntegerRectangle(rectangleDataModel.getRectangle());
-	}
-
-	public GameBoardRectangleDefinedArea(Game game, IntegerRectangle rectangleInImageWithRGB,
-			GameBoardNamedAreaDataModel gameBoardNamedAreaDataModel) {
-		super(game, gameBoardNamedAreaDataModel.getName());
-		this.rectangle = rectangleInImageWithRGB;
-	}
 
 	@Override
 	public List<GameBoardPoint> getAllPoints() {
-		List<GameBoardPoint> allPoints = new ArrayList<>();
+		return game.getGameBoard().getGameBoardPoints(rectangleDefinedArea.getAllPoints());
+	/*	List<GameBoardPoint> allPoints = new ArrayList<>();
 		for (IntegerPoint point : rectangle.getAllPoints()) {
 			allPoints.add(game.getGameBoard().getGameBoardPoint(point.getRow(), point.getColumn()));
 		}
 		return allPoints;
+		*/
 	}
 
 }

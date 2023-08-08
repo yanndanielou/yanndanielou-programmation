@@ -5,7 +5,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="game_board/GameBoardPointsListDefinedArea.java|game_board/GameBoardRectangleDefinedArea.java" kind="src" path="src"/>
 	<classpathentry kind="lib" path="lib/log4j-api-2.20.0.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-core-2.20.0.jar"/>
 	<classpathentry kind="lib" path="lib/gson-2.10.1.jar"/>

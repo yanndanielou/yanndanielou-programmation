@@ -31,7 +31,7 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 
 	private ArrayList<Tower> towers_present = new ArrayList<>();
 	private ArrayList<Attacker> attackers_present = new ArrayList<>();
-	private ArrayList<GameBoardRectangleDefinedWall> wallsPresent = new ArrayList<>();
+	private ArrayList<GameBoardWallArea> wallsPresent = new ArrayList<>();
 	private ArrayList<GameBoardAttackersEntryArea> gameBoardAttackersEntryAreasPresent = new ArrayList<>();
 	private ArrayList<GameBoardAttackersExitArea> gameBoardAttackersExitAreasPresent = new ArrayList<>();
 
@@ -49,7 +49,7 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 		game_board_point_Listeners.add(gameBoardPointListener);
 	}
 
-	public void addWall(GameBoardRectangleDefinedWall gameBoardWall) {
+	public void addWall(GameBoardWallArea gameBoardWall) {
 		wallsPresent.add(gameBoardWall);
 	}
 
