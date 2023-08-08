@@ -85,7 +85,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 	}
 
 	public GameBoardPoint getGameBoardPoint(IntegerPoint point) {
-		return getGameBoardPoint(point.getRow(), point.getColumn());
+		return getGameBoardPointByRowAndColumn(point.getRow(), point.getColumn());
 	}
 
 	public List<GameBoardPoint> getGameBoardPoints(List<IntegerPoint> points) {
@@ -96,7 +96,11 @@ public class GameBoard implements TowerListener, AttackerListener {
 		return gameBoardPoints;
 	}
 
-	public GameBoardPoint getGameBoardPoint(int row, int column) {
+	public GameBoardPoint getGameBoardPointByXAndY(int x, int y) {
+		return getGameBoardPointByRowAndColumn(y, x);
+	}
+
+	public GameBoardPoint getGameBoardPointByRowAndColumn(int row, int column) {
 
 		Map<Integer, GameBoardPoint> gameBoardPointOfRow = game_board_point_per_row_and_column.get(row);
 
@@ -117,59 +121,62 @@ public class GameBoard implements TowerListener, AttackerListener {
 		this.game = game;
 	}
 
-	public GameBoardPoint getNeighbourGameBoardPoint(GameBoardPoint reference_gameBoardPoint,
+	public GameBoardPoint getNeighbourGameBoardPoint(GameBoardPoint referenceGameBoardPoint,
 			NeighbourGameBoardPointDirection direction) {
 		GameBoardPoint neighbour = null;
 
-		int reference_gameBoardPoint_column = reference_gameBoardPoint.getColumn();
-		int reference_gameBoardPoint_row = reference_gameBoardPoint.getRow();
+		int referenceGameBoardPointColumn = referenceGameBoardPoint.getColumn();
+		int referenceGameBoardPointRow = referenceGameBoardPoint.getRow();
 
-		boolean is_reference_gameBoardPoint_first_of_column = reference_gameBoardPoint_column == 0;
-		boolean is_reference_gameBoardPoint_last_of_column = reference_gameBoardPoint_column == getTotalWidth() - 1;
+		int referenceGameBoardPointX = referenceGameBoardPoint.getXAsInt();
+		int referenceGameBoardPointY = referenceGameBoardPoint.getYAsInt();
 
-		boolean is_reference_gameBoardPoint_first_of_row = reference_gameBoardPoint_row == 0;
-		boolean is_reference_gameBoardPoint_last_of_row = reference_gameBoardPoint_row == getTotalHeight() - 1;
+		boolean isReferenceGameBoardPointFirstOfColumn = referenceGameBoardPointRow == 0;
+		boolean isReferenceGameBoardPointLastOfColumn = referenceGameBoardPointRow == getTotalWidth() - 1;
+
+		boolean isReferenceGameBoardPointFirstOfRow = referenceGameBoardPointColumn == 0;
+		boolean isReferenceGameBoardPointLastOfRow = referenceGameBoardPointRow == getTotalHeight() - 1;
 
 		// left gameBoardPoint
 		switch (direction) {
 		case NORTH:
-			if (!is_reference_gameBoardPoint_first_of_column) {
-				neighbour = getGameBoardPoint(reference_gameBoardPoint_row, reference_gameBoardPoint_column - 1);
+			if (!isReferenceGameBoardPointFirstOfRow) {
+				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX, referenceGameBoardPointY - 1);
 			}
 			break;
 		case NORTH_EAST:
-			if (!is_reference_gameBoardPoint_last_of_row && !is_reference_gameBoardPoint_first_of_column) {
-				neighbour = getGameBoardPoint(reference_gameBoardPoint_row + 1, reference_gameBoardPoint_column - 1);
+			if (!isReferenceGameBoardPointLastOfRow && !isReferenceGameBoardPointFirstOfColumn) {
+				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX + 1, referenceGameBoardPointY - 1);
 			}
 			break;
 		case EAST:
-			if (!is_reference_gameBoardPoint_last_of_row) {
-				neighbour = getGameBoardPoint(reference_gameBoardPoint_row + 1, reference_gameBoardPoint_column);
+			if (!isReferenceGameBoardPointLastOfRow) {
+				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX + 1, referenceGameBoardPointY);
 			}
 			break;
 		case SOUTH_EAST:
-			if (!is_reference_gameBoardPoint_last_of_row && !is_reference_gameBoardPoint_last_of_column) {
-				neighbour = getGameBoardPoint(reference_gameBoardPoint_row + 1, reference_gameBoardPoint_column + 1);
+			if (!isReferenceGameBoardPointLastOfRow && !isReferenceGameBoardPointLastOfColumn) {
+				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX + 1, referenceGameBoardPointY + 1);
 			}
 			break;
 		case SOUTH:
-			if (!is_reference_gameBoardPoint_last_of_column) {
-				neighbour = getGameBoardPoint(reference_gameBoardPoint_row, reference_gameBoardPoint_column + 1);
+			if (!isReferenceGameBoardPointLastOfColumn) {
+				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX, referenceGameBoardPointY + 1);
 			}
 			break;
 		case SOUTH_WEST:
-			if (!is_reference_gameBoardPoint_first_of_row && !is_reference_gameBoardPoint_last_of_column) {
-				neighbour = getGameBoardPoint(reference_gameBoardPoint_row - 1, reference_gameBoardPoint_column + 1);
+			if (!isReferenceGameBoardPointFirstOfRow && !isReferenceGameBoardPointLastOfColumn) {
+				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX - 1, referenceGameBoardPointY + 1);
 			}
 			break;
 		case WEST:
-			if (!is_reference_gameBoardPoint_first_of_row) {
-				neighbour = getGameBoardPoint(reference_gameBoardPoint_row - 1, reference_gameBoardPoint_column);
+			if (!isReferenceGameBoardPointFirstOfRow) {
+				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX - 1, referenceGameBoardPointY);
 			}
 			break;
 		case NORTH_WEST:
-			if (!is_reference_gameBoardPoint_first_of_row && !is_reference_gameBoardPoint_first_of_column) {
-				neighbour = getGameBoardPoint(reference_gameBoardPoint_row - 1, reference_gameBoardPoint_column - 1);
+			if (!isReferenceGameBoardPointFirstOfRow && !isReferenceGameBoardPointFirstOfColumn) {
+				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX - 1, referenceGameBoardPointY - 1);
 			}
 			break;
 		}
@@ -274,8 +281,8 @@ public class GameBoard implements TowerListener, AttackerListener {
 				GameBoardPredefinedConstructionLocation predefinedConstructionLocation = new GameBoardPredefinedConstructionLocation(
 						this, predefinedConstructionRectangle);
 				predefinedConstructionLocations.add(predefinedConstructionLocation);
-				predefinedConstructionLocation.getAllPoints().forEach(
-						(gameBoardPoint) -> gameBoardPoint.addGameBoardPredefinedConstructionLocation(predefinedConstructionLocation));
+				predefinedConstructionLocation.getAllPoints().forEach((gameBoardPoint) -> gameBoardPoint
+						.addGameBoardPredefinedConstructionLocation(predefinedConstructionLocation));
 
 			}
 		}

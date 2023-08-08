@@ -29,7 +29,8 @@ public class MovingObjectPathFinder {
 	}
 
 	private NeighbourGameBoardPointDirection getNextMovementDirectionForSmallerPathInStraightLine(Attacker attacker) {
-		IntegerPoint upperLeftAttackerPoint = new IntegerPoint(attacker.get_extreme_left_point_x(), attacker.getHighestPointY());
+		IntegerPoint upperLeftAttackerPoint = new IntegerPoint(attacker.get_extreme_left_point_x(),
+				attacker.getHighestPointY());
 		GameBoard gameBoard = attacker.getGame().getGameBoard();
 		Point destination = attacker.getEscape_destination();
 		GameBoardPoint upperLeftAttackerGameBoardPoint = gameBoard.getGameBoardPoint(upperLeftAttackerPoint);
@@ -43,7 +44,7 @@ public class MovingObjectPathFinder {
 
 			if (neighbourGameBoardPoint != null) {
 				double distanceUsingCandidate = destination.distance(neighbourGameBoardPoint);
-				LOGGER.debug("Distance from:" + upperLeftAttackerPoint + " and " + destination + " in direction:"
+				LOGGER.info("Distance from:" + upperLeftAttackerPoint + " and " + destination + " in direction:"
 						+ candidateDirection + " via:" + neighbourGameBoardPoint + " : " + distanceUsingCandidate);
 				if (distanceUsingCandidate < minimum_distance) {
 					nearestDirection = candidateDirection;

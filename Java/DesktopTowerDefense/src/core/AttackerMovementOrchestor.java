@@ -27,7 +27,7 @@ public class AttackerMovementOrchestor implements TimeManagerListener {
 			if (attacker.is_allowed_to_move()) {
 				NeighbourGameBoardPointDirection nextMovementDirection = MovingObjectPathFinder.getInstance()
 						.getNextMovementDirection(attacker);
-				LOGGER.debug(attacker + " will move " + nextMovementDirection);
+				LOGGER.info(attacker + " will move " + nextMovementDirection);
 				switch (nextMovementDirection) {
 				case EAST:
 					attacker.move(1, 0);
