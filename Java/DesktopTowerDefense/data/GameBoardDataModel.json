@@ -24,6 +24,17 @@
 			"height": 271
 		}
 	],
+	"rectangleDefinedConstructibleAreasAsRGBInImageToParse": [
+		{
+			"imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
+			"name": "center_and_main_constructible_area",
+			"rgbColorDefinition": {
+				"red": 0,
+				"green": 162,
+				"blue": 232
+			}
+		}
+	],
 	"__attackersExitAreasAsRectangles___removedAndReplacedByImageParsing": [
 		{
 			"name": "right_attacker_exit_area",
