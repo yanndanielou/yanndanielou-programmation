@@ -34,6 +34,7 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	private ArrayList<GameBoardWallArea> wallsPresent = new ArrayList<>();
 	private ArrayList<GameBoardAttackersEntryArea> gameBoardAttackersEntryAreasPresent = new ArrayList<>();
 	private ArrayList<GameBoardAttackersExitArea> gameBoardAttackersExitAreasPresent = new ArrayList<>();
+	private ArrayList<GameBoardNonPlayableArea> gameBoardNonPlayableAreas = new ArrayList<>();
 
 	private ArrayList<GameBoardPointListener> game_board_point_Listeners = new ArrayList<>();
 
@@ -145,6 +146,10 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	public void on_attacker_beginning_of_destruction(Attacker attacker) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void addNonPlayableArea(GameBoardNonPlayableArea nonPlayableArea) {
+		gameBoardNonPlayableAreas.add(nonPlayableArea);
 	}
 
 }

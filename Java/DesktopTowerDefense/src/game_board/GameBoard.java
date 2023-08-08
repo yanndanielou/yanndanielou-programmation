@@ -223,9 +223,9 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addWall(GameBoardWallArea wall) {
 		walls.add(wall);
-		for (IntegerPoint wallPoint : wall.getAllPoints()) {
-			getGameBoardPoint(wallPoint).addWall(wall);
-		}
+		wall.getAllPoints().forEach(wallPoint -> addWall(wall));
+		wall.getAllPoints().forEach((gameBoardPoint) -> gameBoardPoint.addWall(wall));
+
 	}
 
 	public ArrayList<GameBoardWallArea> getWalls() {
@@ -234,10 +234,8 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addGameBoardAttackersExitArea(GameBoardAttackersExitArea gameBoardAttackersExitArea) {
 		gameBoardAttackersExitAreas.add(gameBoardAttackersExitArea);
-		for (IntegerPoint gameBoardAttackersExitAreaPoint : gameBoardAttackersExitArea.getAllPoints()) {
-			getGameBoardPoint(gameBoardAttackersExitAreaPoint)
-					.addGameBoardAttackersExitArea(gameBoardAttackersExitArea);
-		}
+		gameBoardAttackersExitArea.getAllPoints()
+				.forEach((gameBoardPoint) -> gameBoardPoint.addGameBoardAttackersExitArea(gameBoardAttackersExitArea));
 	}
 
 	public ArrayList<GameBoardAttackersExitArea> getGameBoardAttackersExitAreas() {
@@ -246,9 +244,8 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addGameBoardAttackersEntryArea(GameBoardAttackersEntryArea gameBoardAttackersEntryArea) {
 		gameBoardAttackersEntryAreas.add(gameBoardAttackersEntryArea);
-		gameBoardAttackersEntryArea.getAllPoints()
-				.forEach((gameBoardAttackersEntryAreaPoint) -> getGameBoardPoint(gameBoardAttackersEntryAreaPoint));
-
+		gameBoardAttackersEntryArea.getAllPoints().forEach(
+				(gameBoardPoint) -> gameBoardPoint.addGameBoardAttackersEntryArea(gameBoardAttackersEntryArea));
 	}
 
 	public ArrayList<GameBoardAttackersEntryArea> getGameBoardAttackersEntryAreas() {
@@ -257,5 +254,6 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addNonPlayableArea(GameBoardNonPlayableArea nonPlayableArea) {
 		nonPlayableAreas.add(nonPlayableArea);
+		nonPlayableArea.getAllPoints().forEach((gameBoardPoint) -> gameBoardPoint.addNonPlayableArea(nonPlayableArea));
 	}
 }
