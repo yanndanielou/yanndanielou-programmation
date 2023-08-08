@@ -21,6 +21,7 @@ public class GameBoardDataModel {
 	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> rectangleDefinedAttackersEntryAreasAsRGBInImageToParse;
 	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> rectangleDefinedAttackersExitAreasAsRGBInImageToParse;
 	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> pointsDefinedNonPlayableAreasAsRGBInImageToParse;
+	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> rectangleDefinedConstructibleAreasAsRGBInImageToParse;
 
 	RectangleDataModel getAttackersEntryAreaByName(String name) {
 		List<RectangleDataModel> found = attackersEntryAreasAsRectangles.stream()
@@ -80,6 +81,10 @@ public class GameBoardDataModel {
 
 	public List<GameBoardAreasByRGBImageRecognitionDataModel> getRectangleDefinedAttackersExitAreasAsRGBInImageToParse() {
 		return ListUtils.emptyIfNull(rectangleDefinedAttackersExitAreasAsRGBInImageToParse);
+	}
+
+	public List<GameBoardAreasByRGBImageRecognitionDataModel> getRectangleDefinedConstructibleAreasAsRGBInImageToParse() {
+		return ListUtils.emptyIfNull(rectangleDefinedConstructibleAreasAsRGBInImageToParse);
 	}
 
 	public String getGameBoardFullBackgroundImagePath() {
