@@ -1,2 +1,2 @@
-dir /B > __list_of_lib_files.txt
+dir *.lib,*.jar /B > __list_of_lib_files.txt
 timeout /t 10
