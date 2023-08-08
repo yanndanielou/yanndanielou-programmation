@@ -33,7 +33,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 	private ArrayList<GameBoardAttackersEntryArea> gameBoardAttackersEntryAreas = new ArrayList<>();
 	private ArrayList<GameBoardAttackersExitArea> gameBoardAttackersExitAreas = new ArrayList<>();
 	private ArrayList<GameBoardNonPlayableArea> nonPlayableAreas = new ArrayList<>();
-	private ArrayList<GameBoardInitiallyConstructibleArea> initiallyConstructibleAreas = new ArrayList<>();
+	private ArrayList<GameBoardInitiallyConstructibleMacroArea> initiallyConstructibleAreas = new ArrayList<>();
 
 	private Game game;
 
@@ -256,9 +256,9 @@ public class GameBoard implements TowerListener, AttackerListener {
 		nonPlayableArea.getAllPoints().forEach((gameBoardPoint) -> gameBoardPoint.addNonPlayableArea(nonPlayableArea));
 	}
 
-	public void addGameBoardInitiallyConstructibleArea(GameBoardInitiallyConstructibleArea constructibleArea) {
+	public void addGameBoardInitiallyConstructibleMacroArea(GameBoardInitiallyConstructibleMacroArea constructibleArea) {
 		initiallyConstructibleAreas.add(constructibleArea);
 		constructibleArea.getAllPoints()
-				.forEach((gameBoardPoint) -> gameBoardPoint.addGameBoardInitiallyConstructibleArea(constructibleArea));
+				.forEach((gameBoardPoint) -> gameBoardPoint.addGameBoardInitiallyConstructibleMacroArea(constructibleArea));
 	}
 }

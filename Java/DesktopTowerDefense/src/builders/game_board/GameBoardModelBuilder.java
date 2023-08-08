@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 import game_board.GameBoard;
 import game_board.GameBoardAttackersEntryArea;
 import game_board.GameBoardAttackersExitArea;
-import game_board.GameBoardInitiallyConstructibleArea;
+import game_board.GameBoardInitiallyConstructibleMacroArea;
 import game_board.GameBoardNonPlayableArea;
 import game_board.GameBoardPoint;
 import game_board.GameBoardWallArea;
@@ -99,9 +99,9 @@ public class GameBoardModelBuilder {
 		for (GameBoardAreasByRGBImageRecognitionDataModel constructibleAreaDataModel : gameBoardDataModel
 				.getRectangleDefinedConstructibleAreasAsRGBInImageToParse()) {
 			IntegerRectangle rectangleInImageWithRGB = getRectangleInImageWithRGB(constructibleAreaDataModel);
-			GameBoardInitiallyConstructibleArea constructibleArea = new GameBoardInitiallyConstructibleArea(gameBoard,
+			GameBoardInitiallyConstructibleMacroArea constructibleArea = new GameBoardInitiallyConstructibleMacroArea(gameBoard,
 					rectangleInImageWithRGB, constructibleAreaDataModel);
-			gameBoard.addGameBoardInitiallyConstructibleArea(constructibleArea);
+			gameBoard.addGameBoardInitiallyConstructibleMacroArea(constructibleArea);
 		}
 		for (GameBoardAreasByRGBImageRecognitionDataModel nonPlayableAreaDataModel : gameBoardDataModel
 				.getPointsDefinedNonPlayableAreasAsRGBInImageToParse()) {
