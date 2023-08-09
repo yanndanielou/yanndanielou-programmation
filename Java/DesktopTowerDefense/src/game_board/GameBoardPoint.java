@@ -138,7 +138,7 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	}
 
 	@Override
-	public void on_listen_to_attacker(Attacker attacker) {
+	public void onListenToAttacker(Attacker attacker) {
 		addAttacker(attacker);
 	}
 

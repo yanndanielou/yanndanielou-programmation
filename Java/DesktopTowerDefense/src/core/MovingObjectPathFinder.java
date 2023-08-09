@@ -32,11 +32,11 @@ public class MovingObjectPathFinder {
 		IntegerPoint upperLeftAttackerPoint = new IntegerPoint(attacker.get_extreme_left_point_x(),
 				attacker.getHighestPointY());
 		GameBoard gameBoard = attacker.getGame().getGameBoard();
-		Point destination = attacker.getEscape_destination();
+		Point destination = attacker.getEscapeDestination();
 		GameBoardPoint upperLeftAttackerGameBoardPoint = gameBoard.getGameBoardPoint(upperLeftAttackerPoint);
 
 		NeighbourGameBoardPointDirection nearestDirection = null;
-		double minimum_distance = Double.MAX_VALUE;
+		double minimumDistance = Double.MAX_VALUE;
 		for (NeighbourGameBoardPointDirection candidateDirection : NeighbourGameBoardPointDirection.values()) {
 
 			GameBoardPoint neighbourGameBoardPoint = gameBoard
@@ -46,9 +46,9 @@ public class MovingObjectPathFinder {
 				double distanceUsingCandidate = destination.distance(neighbourGameBoardPoint);
 				LOGGER.info("Distance from:" + upperLeftAttackerPoint + " and " + destination + " in direction:"
 						+ candidateDirection + " via:" + neighbourGameBoardPoint + " : " + distanceUsingCandidate);
-				if (distanceUsingCandidate < minimum_distance) {
+				if (distanceUsingCandidate < minimumDistance) {
 					nearestDirection = candidateDirection;
-					minimum_distance = distanceUsingCandidate;
+					minimumDistance = distanceUsingCandidate;
 				}
 			}
 		}

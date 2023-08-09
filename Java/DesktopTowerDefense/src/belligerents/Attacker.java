@@ -7,12 +7,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import belligerents.listeners.AttackerListener;
-import belligerents.listeners.GameObjectListerner;
 import belligerents.weapon.Weapon;
 import builders.AttackerDataModel;
 import core.GameManager;
 import game.Game;
-import game_board.GameBoard;
 import geometry.IntegerRectangle;
 import time.TimeManager;
 import time.TimeManagerListener;
@@ -21,17 +19,18 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(Attacker.class);
 
-	protected int score_prize_money_on_destruction = 0;
+	protected int scorePrizeMoneyOnDestruction = 0;
 	protected AttackerDataModel attackerDataModel;
-	protected int remaining_health;
+	protected int remainingHealth;
 
 	protected ArrayList<AttackerListener> listeners = new ArrayList<>();
-	protected Point escape_destination;
+	protected Point escapeDestination;
 
+	protected Attacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escapeDestination,
+			int evolutionLevel) {
 
-	public Attacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escape_destination, int evolutionLevel) {
-
-		super(new IntegerRectangle(x, y, attackerDataModel.getWidth(), attackerDataModel.getHeight()), game, evolutionLevel);
+		super(new IntegerRectangle(x, y, attackerDataModel.getWidth(), attackerDataModel.getHeight()), game,
+				evolutionLevel);
 
 		this.attackerDataModel = attackerDataModel;
 
@@ -40,22 +39,15 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 		TimeManager.getInstance().add_listener(this);
 
 		GameManager.getInstance().getDesktopTowerDefenseMainView().register_to_attacker(this);
-		add_listener(game);
-		add_listener(game.getGameBoard());
-		// listeners.forEach((listener) -> listener.on_listen_to_attacker(this));
+		addListener(game);
+		addListener(game.getGameBoard());
 
-		this.escape_destination = escape_destination;
+		this.escapeDestination = escapeDestination;
 	}
 
-	public void add_listener(AttackerListener attacker_listener) {
-		listeners.add(attacker_listener);
-		attacker_listener.on_listen_to_attacker(this);
-	}
-
-	@Deprecated
-	public void add_movement_listener(GameObjectListerner submarineListener) {
-		// super.add_movement_listener(submarineListener);
-		submarineListener.on_listen_to_attacker(this);
+	public void addListener(AttackerListener attackerListener) {
+		listeners.add(attackerListener);
+		attackerListener.onListenToAttacker(this);
 	}
 
 	@Override
@@ -68,25 +60,13 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 		setX_speed(getX_speed() * -1);
 	}
 
-	@SuppressWarnings("unused")
-	@Deprecated
-	private boolean check_if_in_geographical_position_is_inside_board() {
-		boolean geographical_position_is_inside_board = false;
-
-		GameBoard gameboard = getGame().getGameBoard();
-		geographical_position_is_inside_board = surrounding_rectangle_absolute_on_complete_board.getX() >= 0
-				&& surrounding_rectangle_absolute_on_complete_board.getMaxX() <= gameboard.getTotalWidth();
-
-		return geographical_position_is_inside_board;
-	}
-
 	@Override
 	public void notify_movement() {
-		listeners.forEach((listener) -> listener.on_attacker_moved(this));
+		listeners.forEach(listener -> listener.on_attacker_moved(this));
 	}
 
 	@Override
-	public void on_10ms_tick() {
+	public void on10msTick() {
 	}
 
 	@Override
@@ -94,18 +74,16 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	}
 
 	@Override
-	public void on_50ms_tick() {
+	public void on50msTick() {
 	}
 
 	@Override
-	public void on_100ms_tick() {
-		// TODO Auto-generated method stub
+	public void on100msTick() {
 
 	}
 
 	@Override
-	public void on_second_tick() {
-		// TODO Auto-generated method stub
+	public void onSecondTick() {
 
 	}
 
@@ -118,11 +96,11 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	}
 
 	@Override
-	public void on_pause() {
+	public void onPause() {
 	}
 
-	public Point getEscape_destination() {
-		return escape_destination;
+	public Point getEscapeDestination() {
+		return escapeDestination;
 	}
 
 }

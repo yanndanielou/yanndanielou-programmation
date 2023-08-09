@@ -98,7 +98,7 @@ public class MainViewMenuBarManager implements ActionListener {
 					Game game = gameManager.getGame();
 					GameBoard gameBoard = game.getGameBoard();
 					GameObjectsDataModel game_objects_data_model = game.getGameObjectsDataModel();
-					TowerDataModel simple_tower_data_model = game_objects_data_model.getSimple_tower_data_model();
+					TowerDataModel simple_tower_data_model = game_objects_data_model.getSimpleTowerDataModel();
 
 					gameManager.createSimpleTower(
 							gameBoard.getTotalWidth() / 2 - simple_tower_data_model.getWidth() / 2,

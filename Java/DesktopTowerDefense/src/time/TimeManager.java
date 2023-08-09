@@ -79,7 +79,7 @@ public class TimeManager extends TimerTask implements GameStatusListener {
 
 	private void notify_10ms_tick() {
 		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
-			time_manager_listener.on_10ms_tick();
+			time_manager_listener.on10msTick();
 		}
 	}
 
@@ -99,7 +99,7 @@ public class TimeManager extends TimerTask implements GameStatusListener {
 
 	private void notify_50ms_tick() {
 		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
-			time_manager_listener.on_50ms_tick();
+			time_manager_listener.on50msTick();
 		}
 	}
 
@@ -114,7 +114,7 @@ public class TimeManager extends TimerTask implements GameStatusListener {
 
 	private void notify_100ms_tick() {
 		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
-			time_manager_listener.on_100ms_tick();
+			time_manager_listener.on100msTick();
 		}
 	}
 
@@ -129,13 +129,13 @@ public class TimeManager extends TimerTask implements GameStatusListener {
 
 	private void notify_second_tick() {
 		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
-			time_manager_listener.on_second_tick();
+			time_manager_listener.onSecondTick();
 		}
 	}
 
 	private void notify_pause_or_stop() {
 		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
-			time_manager_listener.on_pause();
+			time_manager_listener.onPause();
 		}
 	}
 

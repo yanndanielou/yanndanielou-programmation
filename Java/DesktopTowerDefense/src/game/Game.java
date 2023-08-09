@@ -107,7 +107,7 @@ public class Game implements TowerListener, AttackerListener {
 	}
 
 	@Override
-	public void on_listen_to_attacker(Attacker attacker) {
+	public void onListenToAttacker(Attacker attacker) {
 		attackers.add(attacker);
 	}
 

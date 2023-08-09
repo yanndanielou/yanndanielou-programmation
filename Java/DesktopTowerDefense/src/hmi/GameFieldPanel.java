@@ -93,7 +93,7 @@ public class GameFieldPanel extends JLayeredPane
 	}
 
 	@Override
-	public void on_listen_to_attacker(Attacker attacker) {
+	public void onListenToAttacker(Attacker attacker) {
 		display_new_object_as_label(attacker, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS);
 	}
 

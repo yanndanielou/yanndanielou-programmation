@@ -35,7 +35,7 @@ public class NewGameWhileGameIsInProgressPopup {
 				LOGGER.info("Abort current game popup answer: " + n);
 				if (n == JOptionPane.YES_OPTION) {
 					LOGGER.info("Abort current game");
-					GameManager.getInstance().abort_current_game();
+					GameManager.getInstance().abortCurrentGame();
 				} else if (n == JOptionPane.NO_OPTION) {
 					LOGGER.info("Do not abort current game. Resume");
 					return;
@@ -44,11 +44,11 @@ public class NewGameWhileGameIsInProgressPopup {
 					return;
 				}
 			} else {
-				GameManager.getInstance().abort_current_game();
+				GameManager.getInstance().abortCurrentGame();
 			}
 
 		}
 
-		GameManager.getInstance().new_game();
+		GameManager.getInstance().newGame();
 	}
 }

@@ -22,7 +22,7 @@ public class AttackerMovementOrchestor implements TimeManagerListener {
 		TimeManager.getInstance().add_listener(this);
 	}
 
-	private void move_attackers() {
+	private void moveAttackers() {
 		for (Attacker attacker : game.getAttackers()) {
 			if (attacker.is_allowed_to_move()) {
 				NeighbourGameBoardPointDirection nextMovementDirection = MovingObjectPathFinder.getInstance()
@@ -62,31 +62,27 @@ public class AttackerMovementOrchestor implements TimeManagerListener {
 	}
 
 	@Override
-	public void on_10ms_tick() {
-		move_attackers();
+	public void on10msTick() {
+		moveAttackers();
 	}
 
 	@Override
-	public void on_50ms_tick() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void on_100ms_tick() {
-		// TODO Auto-generated method stub
+	public void on50msTick() {
 
 	}
 
 	@Override
-	public void on_second_tick() {
-		// TODO Auto-generated method stub
+	public void on100msTick() {
 
 	}
 
 	@Override
-	public void on_pause() {
-		// TODO Auto-generated method stub
+	public void onSecondTick() {
+
+	}
+
+	@Override
+	public void onPause() {
 
 	}
 

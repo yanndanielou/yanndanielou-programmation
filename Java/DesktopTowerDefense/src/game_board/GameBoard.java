@@ -80,7 +80,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 		return gameBoardModelBuilder.getGameBoardTotalHeight();
 	}
 
-	public ArrayList<GameBoardPoint> getAll_gameBoardPoints_as_ordered_list() {
+	public ArrayList<GameBoardPoint> getAllGameBoardPointsAsOrderedList() {
 		return all_game_board_point_as_ordered_list;
 	}
 
@@ -213,10 +213,10 @@ public class GameBoard implements TowerListener, AttackerListener {
 	}
 
 	@Override
-	public void on_listen_to_attacker(Attacker attacker) {
+	public void onListenToAttacker(Attacker attacker) {
 		for (IntegerPoint pointIt : attacker.getAllPoints()) {
 			GameBoardPoint gameBoardPoint = getGameBoardPoint(pointIt);
-			attacker.add_listener(gameBoardPoint);
+			attacker.addListener(gameBoardPoint);
 		}
 	}
 

@@ -53,7 +53,7 @@ public class GameManager {
 		return hasInstance() && getInstance().getGame() != null;
 	}
 
-	public void new_game() {
+	public void newGame() {
 		LOGGER.info("New game");
 
 		GameBoardModelBuilder gameBoardModelBuilder = new GameBoardModelBuilder(
@@ -62,22 +62,22 @@ public class GameManager {
 		gameBoardModelBuilder.buildAllAreas(gameBoard);
 		GameObjectsModelBuilder gameObjectsModelBuilder = new GameObjectsModelBuilder(
 				Constants.GAME_OBJECTS_JSON_DATA_MODEL_FILE_PATH);
-		GameObjectsDataModel game_objects_data_model = gameObjectsModelBuilder.getGame_objects_data_model();
-		game = new Game(gameBoard, game_objects_data_model);
-		gameBoard.generatePredefinedConstructionLocations(game_objects_data_model.getSimple_tower_data_model());
-		desktopTowerDefenseMainView.register_to_game(game);
+		GameObjectsDataModel gameObjectsDataModel = gameObjectsModelBuilder.getGame_objects_data_model();
+		game = new Game(gameBoard, gameObjectsDataModel);
+		gameBoard.generatePredefinedConstructionLocations(gameObjectsDataModel.getSimpleTowerDataModel());
+		desktopTowerDefenseMainView.registerToGame(game);
 		attackerMovementOrchestor = new AttackerMovementOrchestor(game);
-		compute_neighbours_of_each_gameBoardPoint();
+		computeNeighboursOfEachGameBoardPoint();
 		TimeManager.getInstance().start();
 	}
 
-	private void compute_neighbours_of_each_gameBoardPoint() {
+	private void computeNeighboursOfEachGameBoardPoint() {
 
 		LOGGER.info("compute_neighbours_of_each_gameBoardPoint: begin");
 
 		GameBoard gameBoard = game.getGameBoard();
 
-		for (GameBoardPoint gameBoardPoint : gameBoard.getAll_gameBoardPoints_as_ordered_list()) {
+		for (GameBoardPoint gameBoardPoint : gameBoard.getAllGameBoardPointsAsOrderedList()) {
 
 			for (NeighbourGameBoardPointDirection direction : NeighbourGameBoardPointDirection.values()) {
 				GameBoardPoint neighbourSquare = gameBoard.getNeighbourGameBoardPoint(gameBoardPoint, direction);
@@ -93,7 +93,7 @@ public class GameManager {
 		return game;
 	}
 
-	public void abort_current_game() {
+	public void abortCurrentGame() {
 		LOGGER.info("Abort current game");
 		game.cancel();
 
@@ -111,25 +111,24 @@ public class GameManager {
 	}
 
 	public Tower createSimpleTower(int evolutionLevel, int x, int y) {
-		GameObjectsDataModel game_objects_data_model = game.getGameObjectsDataModel();
-		Tower tower = createTower(game_objects_data_model.getSimple_tower_data_model(),
-				game_objects_data_model.getSimple_tower_bomb_data_model(), evolutionLevel, x, y);
+		GameObjectsDataModel gameObjectsDataModel = game.getGameObjectsDataModel();
+		Tower tower = createTower(gameObjectsDataModel.getSimpleTowerDataModel(),
+				gameObjectsDataModel.getSimpleTowerBombDataModel(), evolutionLevel, x, y);
 		return tower;
 	}
 
 	public Attacker createNormalAttacker(GameBoardAttackersEntryArea attackersEntryArea,
 			GameBoardAttackersExitArea exitArea, int evolutionLevel) {
-		GameObjectsDataModel game_objects_data_model = game.getGameObjectsDataModel();
-		AttackerDataModel normal_attacker_data_model = game_objects_data_model.getNormal_attacker_data_model();
+		GameObjectsDataModel gameObjectsDataModel = game.getGameObjectsDataModel();
+		AttackerDataModel normalAttackerDataModel = gameObjectsDataModel.getNormal_attacker_data_model();
 
 		IntegerRectangle creationAreaRectangle = attackersEntryArea.getRectangleDefinedArea();
 
 		Point attackerExitPoint = exitArea.getRectangleDefinedArea().getOneRandomPointAllowingSubRectangleToFit(
-				normal_attacker_data_model.getWidth(), normal_attacker_data_model.getHeight());
+				normalAttackerDataModel.getWidth(), normalAttackerDataModel.getHeight());
 
-		NormalAttacker attacker = new NormalAttacker(normal_attacker_data_model, game,
-				(int) creationAreaRectangle.getX(), (int) creationAreaRectangle.getY(), attackerExitPoint,
-				evolutionLevel);
+		NormalAttacker attacker = new NormalAttacker(normalAttackerDataModel, game, creationAreaRectangle.getX(),
+				creationAreaRectangle.getY(), attackerExitPoint, evolutionLevel);
 		return attacker;
 	}
 

@@ -105,7 +105,7 @@ public class DesktopTowerDefenseMainViewFrame extends JFrame implements DesktopT
 	}
 
 	@Override
-	public void register_to_game(Game game) {
+	public void registerToGame(Game game) {
 		new_game(game);
 		game.add_game_status_listener(topPanel);
 		game.add_game_status_listener(gameFieldPanel);
@@ -119,7 +119,7 @@ public class DesktopTowerDefenseMainViewFrame extends JFrame implements DesktopT
 
 	@Override
 	public void register_to_attacker(Attacker attacker) {
-		attacker.add_listener(gameFieldPanel);
+		attacker.addListener(gameFieldPanel);
 	}
 
 }
