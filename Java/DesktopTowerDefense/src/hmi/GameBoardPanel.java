@@ -1,12 +1,15 @@
 package hmi;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
 import belligerents.Attacker;
+import belligerents.Belligerent;
 import belligerents.GameObject;
 import belligerents.Tower;
 import belligerents.listeners.AttackerListener;
@@ -15,16 +18,21 @@ import game.Game;
 import game.GameBoardPointListener;
 import game.GameStatusListener;
 import game_board.GameBoard;
+import game_board.GameBoardPredefinedConstructionLocation;
 
-public class GameFieldPanel extends JLayeredPane
+public class GameBoardPanel extends JLayeredPane
 		implements GameStatusListener, GameBoardPointListener, TowerListener, AttackerListener {
 
 	private static final long serialVersionUID = -1541008040602802454L;
 
-	private ImageIcon empty_game_board_full_as_icon = new ImageIcon("Images/Empty_game_board_full_1_entry_1_exit.png");
-	private JLabel empty_game_board_full_as_label;
+	private ImageIcon emptyGameBoardBackgroundAsIcon;
+	private JLabel emptyGameBoardBackgroundAsLabel;
 
-	private HashMap<GameObject, JLabel> game_object_to_label_map = new HashMap<>();
+	@Deprecated
+	private List<JLabel> constructibleLocationsAsLabels = new ArrayList<>();
+
+	private HashMap<GameObject, JLabel> gameObjectToLabelMap = new HashMap<>();
+	private HashMap<GameBoardPredefinedConstructionLocation, ConstructionLocationPanel> constructionLocationToLabelMap = new HashMap<>();
 
 	private enum LAYERS_ORDERED_FROM_TOP_TO_BACK {
 		BELLIGERENTS, BACKGROUND_IMAGE, UNVISIBLE;
@@ -32,37 +40,48 @@ public class GameFieldPanel extends JLayeredPane
 
 	private DesktopTowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame;;
 
-	public GameFieldPanel(DesktopTowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame) {
+	public GameBoardPanel(DesktopTowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame) {
 		this.DesktopTowerDefenseMainViewFrame = DesktopTowerDefenseMainViewFrame;
 	}
 
-	public void initialize_gamefield(GameBoard gameField) {
+	public void initialize_gamefield(GameBoard gameBoard) {
 		setLayout(null);
-		setSize(gameField.getTotalWidth(), gameField.getTotalHeight());
+		setSize(gameBoard.getTotalWidth(), gameBoard.getTotalHeight());
 
-		empty_game_board_full_as_label = new JLabel(empty_game_board_full_as_icon);
+		emptyGameBoardBackgroundAsIcon = new ImageIcon(
+				gameBoard.getGameBoardDataModel().getGameBoardFullBackgroundImagePath());
+		emptyGameBoardBackgroundAsLabel = new JLabel(emptyGameBoardBackgroundAsIcon);
 
-		empty_game_board_full_as_label.setSize(gameField.getTotalWidth(), gameField.getTotalHeight());
-		empty_game_board_full_as_label.setLocation(0, 0);
+		emptyGameBoardBackgroundAsLabel.setSize(gameBoard.getTotalWidth(), gameBoard.getTotalHeight());
+		emptyGameBoardBackgroundAsLabel.setLocation(0, 0);
 
-		add(empty_game_board_full_as_label, LAYERS_ORDERED_FROM_TOP_TO_BACK.BACKGROUND_IMAGE.ordinal());
+		add(emptyGameBoardBackgroundAsLabel, LAYERS_ORDERED_FROM_TOP_TO_BACK.BACKGROUND_IMAGE.ordinal());
+
+		for (GameBoardPredefinedConstructionLocation predefinedConstructionLocation : gameBoard
+				.getPredefinedConstructionLocations()) {
+			ConstructionLocationPanel constructionLocationPanel = new ConstructionLocationPanel(this,
+					predefinedConstructionLocation);
+			add(constructionLocationPanel, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS.ordinal());
+			constructionLocationToLabelMap.put(predefinedConstructionLocation, constructionLocationPanel);
+		}
+		// repaint();
 
 	}
 
 	@Override
-	public void on_listen_to_game_status(Game game) {
+	public void onListenToGameStatus(Game game) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void on_game_cancelled(Game game) {
+	public void onGameCancelled(Game game) {
 		removeAll();
 		DesktopTowerDefenseMainViewFrame.removeGameFieldPanel();
 	}
 
 	@Override
-	public void on_game_lost(Game game) {
+	public void onGameLost(Game game) {
 	}
 
 	@Override
@@ -88,7 +107,7 @@ public class GameFieldPanel extends JLayeredPane
 				(int) gameObject.getSurrounding_rectangle_absolute_on_complete_board().getY());
 		objectAsLabel.setSize((int) gameObject.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
 				(int) gameObject.getSurrounding_rectangle_absolute_on_complete_board().getHeight());
-		game_object_to_label_map.put(gameObject, objectAsLabel);
+		gameObjectToLabelMap.put(gameObject, objectAsLabel);
 		add(objectAsLabel, layer.ordinal());
 	}
 
@@ -99,7 +118,7 @@ public class GameFieldPanel extends JLayeredPane
 
 	@Override
 	public void on_attacker_moved(Attacker attacker) {
-		JLabel jLabel = game_object_to_label_map.get(attacker);
+		JLabel jLabel = gameObjectToLabelMap.get(attacker);
 		jLabel.setLocation(attacker.get_extreme_left_point_x(), attacker.getHighestPointY());
 	}
 

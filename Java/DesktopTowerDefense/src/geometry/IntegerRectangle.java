@@ -192,11 +192,11 @@ public class IntegerRectangle {
 	}
 
 	public int getMaxX() {
-		return (int) awtRectangle.getX();
+		return (int) awtRectangle.getMaxX();
 	}
 
 	public int getMaxY() {
-		return (int) awtRectangle.getY();
+		return (int) awtRectangle.getMaxY();
 	}
 
 	public int getWidth() {

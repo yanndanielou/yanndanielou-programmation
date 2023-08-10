@@ -44,19 +44,19 @@ public class Game implements TowerListener, AttackerListener {
 	}
 
 	public void add_game_status_listener(GameStatusListener listener) {
-		listener.on_listen_to_game_status(this);
+		listener.onListenToGameStatus(this);
 		game_status_listeners.add(listener);
 	}
 
 	public void cancel() {
-		game_status_listeners.forEach((game_status_listener) -> game_status_listener.on_game_cancelled(this));
+		game_status_listeners.forEach((game_status_listener) -> game_status_listener.onGameCancelled(this));
 	}
 
 	public void setLost() {
 		LOGGER.info("Game is lost!");
 		lost = true;
 		over = true;
-		game_status_listeners.forEach((game_status_listener) -> game_status_listener.on_game_lost(this));
+		game_status_listeners.forEach((game_status_listener) -> game_status_listener.onGameLost(this));
 	}
 
 	public void setWon() {

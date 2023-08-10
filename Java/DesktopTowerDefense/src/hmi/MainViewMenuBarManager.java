@@ -52,7 +52,7 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new NewGameWhileGameIsInProgressPopup(parent_main_view).display_option_pane();
+				new NewGameWhileGameIsInProgressPopup(parent_main_view).displayOptionPane();
 			}
 		});
 		menu.add(menuItem);

@@ -1,5 +1,6 @@
 package game_board;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -234,7 +235,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addWall(GameBoardWallArea wall) {
 		walls.add(wall);
-		wall.getAllPoints().forEach((gameBoardPoint) -> gameBoardPoint.addWall(wall));
+		wall.getAllPoints().forEach(gameBoardPoint -> gameBoardPoint.addWall(wall));
 	}
 
 	public ArrayList<GameBoardWallArea> getWalls() {
@@ -273,18 +274,30 @@ public class GameBoard implements TowerListener, AttackerListener {
 				(gameBoardPoint) -> gameBoardPoint.addGameBoardInitiallyConstructibleMacroArea(constructibleArea));
 	}
 
+	private void generatePredefinedConstructionLocations(IntegerRectangle construtionAreaRectangle,
+			Dimension predefinedConstructionLocationsDimension) {
+
+		List<IntegerRectangle> predefinedConstructionsToCreateRectangles = construtionAreaRectangle
+				.getInnerSubRectangles(predefinedConstructionLocationsDimension);
+
+		for (IntegerRectangle predefinedConstructionRectangle : predefinedConstructionsToCreateRectangles) {
+			GameBoardPredefinedConstructionLocation predefinedConstructionLocation = new GameBoardPredefinedConstructionLocation(
+					this, predefinedConstructionRectangle);
+			predefinedConstructionLocations.add(predefinedConstructionLocation);
+			predefinedConstructionLocation.getAllPoints().forEach((gameBoardPoint) -> gameBoardPoint
+					.addGameBoardPredefinedConstructionLocation(predefinedConstructionLocation));
+
+		}
+	}
+
 	public void generatePredefinedConstructionLocations(TowerDataModel towerDataModel) {
 		for (GameBoardInitiallyConstructibleMacroArea initiallyConstructibleMacroArea : initiallyConstructibleMacroAreas) {
-			List<IntegerRectangle> predefinedConstructionsToCreateRectangles = initiallyConstructibleMacroArea
-					.getRectangleDefinedArea().getInnerSubRectangles(towerDataModel.getDimension());
-			for (IntegerRectangle predefinedConstructionRectangle : predefinedConstructionsToCreateRectangles) {
-				GameBoardPredefinedConstructionLocation predefinedConstructionLocation = new GameBoardPredefinedConstructionLocation(
-						this, predefinedConstructionRectangle);
-				predefinedConstructionLocations.add(predefinedConstructionLocation);
-				predefinedConstructionLocation.getAllPoints().forEach((gameBoardPoint) -> gameBoardPoint
-						.addGameBoardPredefinedConstructionLocation(predefinedConstructionLocation));
-
-			}
+			generatePredefinedConstructionLocations(initiallyConstructibleMacroArea.getRectangleDefinedArea(),
+					towerDataModel.getDimension());
 		}
+	}
+
+	public ArrayList<GameBoardPredefinedConstructionLocation> getPredefinedConstructionLocations() {
+		return predefinedConstructionLocations;
 	}
 }

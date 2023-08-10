@@ -24,7 +24,7 @@ public class DesktopTowerDefenseMainViewFrame extends JFrame implements DesktopT
 
 	private MainViewMenuBarManager mainViewMenuBarManager;
 
-	private GameFieldPanel gameFieldPanel;
+	private GameBoardPanel gameFieldPanel;
 	private TopPanel topPanel;
 
 	public DesktopTowerDefenseMainViewFrame() {
@@ -77,7 +77,7 @@ public class DesktopTowerDefenseMainViewFrame extends JFrame implements DesktopT
 	private void new_game(Game game) {
 
 		// Built first to know dimensions
-		gameFieldPanel = new GameFieldPanel(this);
+		gameFieldPanel = new GameBoardPanel(this);
 		gameFieldPanel.initialize_gamefield(game.getGameBoard());
 
 		topPanel = new TopPanel(this, gameFieldPanel.getWidth(), HMIConstants.TOP_PANEL_HEIGHT);

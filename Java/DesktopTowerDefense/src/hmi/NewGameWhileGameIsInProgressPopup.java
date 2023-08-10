@@ -19,7 +19,7 @@ public class NewGameWhileGameIsInProgressPopup {
 		this.parentComponent = parentComponent;
 	}
 
-	public void display_option_pane() {
+	public void displayOptionPane() {
 
 		// TODO Auto-generated constructor stub
 
