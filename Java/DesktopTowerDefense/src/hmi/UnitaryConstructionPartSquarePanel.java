@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 
 import game_board.GameBoardPredefinedConstructionLocation;
 
+@Deprecated
 public class UnitaryConstructionPartSquarePanel extends JPanel {
 
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardPanel.class);

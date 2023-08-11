@@ -39,8 +39,6 @@ public class GameBoardPanel extends JLayeredPane
 	@Deprecated
 	private List<JLabel> constructibleLocationsAsLabels = new ArrayList<>();
 
-	private List<UnitaryConstructionPartSquarePanel> unitaryConstructionPartSquarePanels = new ArrayList<>();
-
 	private HashMap<GameObject, JLabel> gameObjectToLabelMap = new HashMap<>();
 	private HashMap<GameBoardPredefinedConstructionLocation, ConstructionLocationPanel> constructionLocationToLabelMap = new HashMap<>();
 
