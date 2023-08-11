@@ -25,6 +25,7 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 	private MainViewMenuBarManager mainViewMenuBarManager;
 
 	private GameBoardPanel gameFieldPanel;
+	private SideCommandPanel sideCommandPanel;
 	private TopPanel topPanel;
 
 	public TowerDefenseMainViewFrame() {
@@ -78,7 +79,7 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 
 		// Built first to know dimensions
 		gameFieldPanel = new GameBoardPanel(this);
-		gameFieldPanel.initialize_gamefield(game.getGameBoard());
+		gameFieldPanel.initializeGamefield(game.getGameBoard());
 
 		topPanel = new TopPanel(this, gameFieldPanel.getWidth(), HMIConstants.TOP_PANEL_HEIGHT);
 		add(topPanel);
@@ -88,8 +89,13 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 		gameFieldPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH,
 				topPanel.getY() + topPanel.getHeight() + HMIConstants.EXTERNAL_FRAME_WIDTH);
 
+		sideCommandPanel = new SideCommandPanel(this);
+		sideCommandPanel.initializeGamefield(game.getGameBoard());
+		sideCommandPanel.setLocation(gameFieldPanel.getX() + gameFieldPanel.getWidth(), gameFieldPanel.getY());
+		add(sideCommandPanel);
+
 		setSize(new Dimension(
-				gameFieldPanel.getWidth() + 2 * HMIConstants.EXTERNAL_FRAME_WIDTH
+				gameFieldPanel.getWidth() + sideCommandPanel.getWidth() + 2 * HMIConstants.EXTERNAL_FRAME_WIDTH
 						+ HMIConstants.NOT_UNDERSTOOD_MISSING_FRAME_WIDTH,
 				gameFieldPanel.getY() + gameFieldPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight()
 						+ HMIConstants.EXTERNAL_FRAME_WIDTH + HMIConstants.NOT_UNDERSTOOD_MISSING_FRAME_HEIGHT));

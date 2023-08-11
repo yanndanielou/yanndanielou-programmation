@@ -13,6 +13,7 @@ import common.BadLogicException;
 public class GameBoardDataModel {
 
 	private String gameBoardFullBackgroundImagePath;
+	private String commandPanelBackgroundImagePath;
 
 	private DimensionDataModel predefinedConstructionLocationsDimensions;
 	private ArrayList<RectangleDataModel> attackersEntryAreasAsRectangles;
@@ -94,5 +95,9 @@ public class GameBoardDataModel {
 
 	public DimensionDataModel getPredefinedConstructionLocationsDimensions() {
 		return predefinedConstructionLocationsDimensions;
+	}
+
+	public String getCommandPanelBackgroundImagePath() {
+		return commandPanelBackgroundImagePath;
 	}
 }

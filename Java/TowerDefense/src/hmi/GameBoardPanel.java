@@ -52,7 +52,7 @@ public class GameBoardPanel extends JLayeredPane
 		this.DesktopTowerDefenseMainViewFrame = DesktopTowerDefenseMainViewFrame;
 	}
 
-	public void initialize_gamefield(GameBoard gameBoard) {
+	public void initializeGamefield(GameBoard gameBoard) {
 		setLayout(null);
 		setSize(gameBoard.getTotalWidth(), gameBoard.getTotalHeight());
 

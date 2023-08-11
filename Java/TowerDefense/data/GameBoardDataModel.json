@@ -4,6 +4,7 @@
 		"width": 0,
 		"height": 0
 	},
+	"commandPanelBackgroundImagePath": "Images/Command_pannel_background.png",
 	"__attackersEntryAreasAsRectangles___removedAndReplacedByImageParsing": [
 		{
 			"name": "left_attacker_entry_area",
