@@ -39,11 +39,13 @@ public class GameBoardPanel extends JLayeredPane
 	@Deprecated
 	private List<JLabel> constructibleLocationsAsLabels = new ArrayList<>();
 
+	private List<UnitaryConstructionPartSquarePanel> unitaryConstructionPartSquarePanels = new ArrayList<>();
+
 	private HashMap<GameObject, JLabel> gameObjectToLabelMap = new HashMap<>();
 	private HashMap<GameBoardPredefinedConstructionLocation, ConstructionLocationPanel> constructionLocationToLabelMap = new HashMap<>();
 
 	private enum LAYERS_ORDERED_FROM_TOP_TO_BACK {
-		BELLIGERENTS, BACKGROUND_IMAGE, UNVISIBLE;
+		BELLIGERENTS, UNVISIBLE_UNITARY_PARTIAL_CONSTRUCTION_SQUARE, BACKGROUND_IMAGE, UNVISIBLE;
 	}
 
 	private DesktopTowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame;;
@@ -75,24 +77,19 @@ public class GameBoardPanel extends JLayeredPane
 		// repaint();
 
 		/*
-		addMouseMotionListener(new MouseMotionListener() {
-
-			@Override
-			public void mouseMoved(MouseEvent mouseEvent) {
-				int mouseX = mouseEvent.getX();
-				int mouseY = mouseEvent.getY();
-
-				// TODO Auto-generated method stub
-				LOGGER.info("mouseMoved x:" + mouseX + ", y:" + mouseY + " : " + mouseEvent);
-			}
-
-			@Override
-			public void mouseDragged(MouseEvent mouseEvent) {
-				LOGGER.info("mouseDragged" + mouseEvent);
-
-			}
-		});
-*/
+		 * addMouseMotionListener(new MouseMotionListener() {
+		 * 
+		 * @Override public void mouseMoved(MouseEvent mouseEvent) { int mouseX =
+		 * mouseEvent.getX(); int mouseY = mouseEvent.getY();
+		 * 
+		 * // TODO Auto-generated method stub LOGGER.info("mouseMoved x:" + mouseX +
+		 * ", y:" + mouseY + " : " + mouseEvent); }
+		 * 
+		 * @Override public void mouseDragged(MouseEvent mouseEvent) {
+		 * LOGGER.info("mouseDragged" + mouseEvent);
+		 * 
+		 * } });
+		 */
 	}
 
 	@Override

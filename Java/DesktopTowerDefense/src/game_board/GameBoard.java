@@ -40,6 +40,8 @@ public class GameBoard implements TowerListener, AttackerListener {
 	private ArrayList<GameBoardInitiallyConstructibleMacroArea> initiallyConstructibleMacroAreas = new ArrayList<>();
 	private ArrayList<GameBoardPredefinedConstructionLocation> predefinedConstructionLocations = new ArrayList<>();
 
+	private ArrayList<IntegerRectangle> unitaryConstructionPartSquares = new ArrayList<>();
+
 	private Game game;
 
 	private GameBoardModelBuilder gameBoardModelBuilder;
@@ -285,30 +287,41 @@ public class GameBoard implements TowerListener, AttackerListener {
 			GameBoardPredefinedConstructionLocation predefinedConstructionLocation = new GameBoardPredefinedConstructionLocation(
 					this, predefinedConstructionRectangle);
 			predefinedConstructionLocations.add(predefinedConstructionLocation);
-			predefinedConstructionLocation.getAllPoints().forEach((gameBoardPoint) -> gameBoardPoint
-					.addGameBoardPredefinedConstructionLocation(predefinedConstructionLocation));
+			LOGGER.info(
+					"add predefinedConstructionLocation" + predefinedConstructionLocation.getRectangleDefinedArea());
+
+//			predefinedConstructionLocation.getAllPoints().forEach((gameBoardPoint) -> gameBoardPoint
+//					.addGameBoardPredefinedConstructionLocation(predefinedConstructionLocation));
 
 		}
+	}
+
+	private void generatePredefinedConstructionLocations(IntegerRectangle initialRectangle, int xTranslation,
+			int yTranslation, Dimension predefinedConstructionLocationDimension) {
+		Point translatedRectangleTopLeftPoint = new Point(initialRectangle.getTopLeftPoint());
+		translatedRectangleTopLeftPoint.translate(xTranslation, yTranslation);
+
+		Dimension translatedRectangleDimension = new Dimension(initialRectangle.getWidth() - xTranslation,
+				initialRectangle.getHeight() - yTranslation);
+
+		IntegerRectangle translatedRectangle = new IntegerRectangle(translatedRectangleTopLeftPoint,
+				translatedRectangleDimension);
+
+		generatePredefinedConstructionLocations(translatedRectangle, predefinedConstructionLocationDimension);
 	}
 
 	public void generatePredefinedConstructionLocations(TowerDataModel towerDataModel) {
 		for (GameBoardInitiallyConstructibleMacroArea initiallyConstructibleMacroArea : initiallyConstructibleMacroAreas) {
 			IntegerRectangle initiallyConstructibleMacroAreaRectangle = initiallyConstructibleMacroArea
 					.getRectangleDefinedArea();
+
 			generatePredefinedConstructionLocations(initiallyConstructibleMacroAreaRectangle,
 					towerDataModel.getDimension());
-			Point translatedRectangleTopLeftPoint = new Point(
-					initiallyConstructibleMacroAreaRectangle.getTopLeftPoint());
-			translatedRectangleTopLeftPoint.translate(towerDataModel.getWidth() / 2, 0);
 
-			Dimension translatedRectangleDimension = new Dimension(
-					initiallyConstructibleMacroAreaRectangle.getWidth() - towerDataModel.getWidth() / 2,
-					initiallyConstructibleMacroAreaRectangle.getHeight() - towerDataModel.getHeight() / 2);
-
-			IntegerRectangle translatedRectangle = new IntegerRectangle(translatedRectangleTopLeftPoint,
-					translatedRectangleDimension);
-
-			generatePredefinedConstructionLocations(translatedRectangle, towerDataModel.getDimension());
+			generatePredefinedConstructionLocations(initiallyConstructibleMacroAreaRectangle,
+					towerDataModel.getWidth() / 2, 0, towerDataModel.getDimension());
+			generatePredefinedConstructionLocations(initiallyConstructibleMacroAreaRectangle, 0,
+					towerDataModel.getHeight() / 2, towerDataModel.getDimension());
 		}
 	}
 

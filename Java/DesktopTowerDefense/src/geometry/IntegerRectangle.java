@@ -99,6 +99,13 @@ public class IntegerRectangle {
 	public List<IntegerRectangle> getInnerSubRectangles(Dimension subRectanglesDimension) {
 		List<IntegerRectangle> innerSubRectangles = new ArrayList<>();
 
+		if (subRectanglesDimension.getWidth() <= 0) {
+			throw new IllegalArgumentException("Width must be positive in " + subRectanglesDimension);
+		}
+		if (subRectanglesDimension.getHeight() <= 0) {
+			throw new IllegalArgumentException("Height must be positive in " + subRectanglesDimension);
+		}
+
 		double subRectangleHeight = subRectanglesDimension.getHeight();
 		for (int yIter = getY(); yIter + subRectangleHeight < getMaxY(); yIter += subRectangleHeight) {
 			double subRectangleWidth = subRectanglesDimension.getWidth();
@@ -109,7 +116,7 @@ public class IntegerRectangle {
 				innerSubRectangles.add(innerSubRectangle);
 			}
 		}
- 
+
 		return innerSubRectangles;
 	}
 
@@ -242,4 +249,8 @@ public class IntegerRectangle {
 
 	}
 
+	@Override
+	public String toString() {
+		return awtRectangle.toString();
+	}
 }
