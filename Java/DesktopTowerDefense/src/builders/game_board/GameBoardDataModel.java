@@ -14,6 +14,7 @@ public class GameBoardDataModel {
 
 	private String gameBoardFullBackgroundImagePath;
 
+	private DimensionDataModel predefinedConstructionLocationsDimensions;
 	private ArrayList<RectangleDataModel> attackersEntryAreasAsRectangles;
 	private ArrayList<RectangleDataModel> attackersExitAreasAsRectangles;
 	private ArrayList<RectangleDataModel> wallsAsRectangles;
@@ -91,4 +92,7 @@ public class GameBoardDataModel {
 		return gameBoardFullBackgroundImagePath;
 	}
 
+	public DimensionDataModel getPredefinedConstructionLocationsDimensions() {
+		return predefinedConstructionLocationsDimensions;
+	}
 }

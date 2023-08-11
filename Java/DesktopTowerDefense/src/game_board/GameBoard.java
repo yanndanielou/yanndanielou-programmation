@@ -1,6 +1,7 @@
 package game_board;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -296,10 +297,18 @@ public class GameBoard implements TowerListener, AttackerListener {
 					.getRectangleDefinedArea();
 			generatePredefinedConstructionLocations(initiallyConstructibleMacroAreaRectangle,
 					towerDataModel.getDimension());
-			IntegerRectangle translattedRectangle = new IntegerRectangle(initiallyConstructibleMacroAreaRectangle);
-			translattedRectangle.translate(towerDataModel.getWidth() / 2, towerDataModel.getHeight() / 2);
-			generatePredefinedConstructionLocations(translattedRectangle,
-					towerDataModel.getDimension());
+			Point translatedRectangleTopLeftPoint = new Point(
+					initiallyConstructibleMacroAreaRectangle.getTopLeftPoint());
+			translatedRectangleTopLeftPoint.translate(towerDataModel.getWidth() / 2, 0);
+
+			Dimension translatedRectangleDimension = new Dimension(
+					initiallyConstructibleMacroAreaRectangle.getWidth() - towerDataModel.getWidth() / 2,
+					initiallyConstructibleMacroAreaRectangle.getHeight() - towerDataModel.getHeight() / 2);
+
+			IntegerRectangle translatedRectangle = new IntegerRectangle(translatedRectangleTopLeftPoint,
+					translatedRectangleDimension);
+
+			generatePredefinedConstructionLocations(translatedRectangle, towerDataModel.getDimension());
 		}
 	}
 

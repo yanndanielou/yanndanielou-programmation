@@ -29,7 +29,7 @@ public abstract class GameObject {
 	protected boolean being_destroyed = false;
 
 	private BufferedImage simple_tower_normal_buffered_image = null;
-	private final String simple_tower_normal_image_path = "Images/Simple_tower.png";
+	private final String simple_tower_normal_image_path = "Images/Simple_tower_60x60.png";
 
 	private BufferedImage simple_tower_bomb_buffered_image = null;
 	private final String simple_tower_bomb_image_path = "Images/simple_tower_bomb.png";

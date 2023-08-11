@@ -74,6 +74,7 @@ public class GameBoardPanel extends JLayeredPane
 		}
 		// repaint();
 
+		/*
 		addMouseMotionListener(new MouseMotionListener() {
 
 			@Override
@@ -91,7 +92,7 @@ public class GameBoardPanel extends JLayeredPane
 
 			}
 		});
-
+*/
 	}
 
 	@Override

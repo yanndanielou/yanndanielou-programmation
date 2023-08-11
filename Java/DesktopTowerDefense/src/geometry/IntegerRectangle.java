@@ -109,11 +109,15 @@ public class IntegerRectangle {
 				innerSubRectangles.add(innerSubRectangle);
 			}
 		}
-
+ 
 		return innerSubRectangles;
 	}
 
-	private Point getTopLeftPoint(List<? extends Point> points) {
+	public Point getTopLeftPoint() {
+		return new Point(getX(), getY());
+	}
+
+	private static Point getTopLeftPoint(List<? extends Point> points) {
 		double minXFound = points.get(0).getX();
 		double minYFound = points.get(0).getY();
 		Point topLeftPoint = points.get(0);
