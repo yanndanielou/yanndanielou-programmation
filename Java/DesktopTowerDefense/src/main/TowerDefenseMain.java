@@ -4,16 +4,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import core.GameManager;
-import hmi.DesktopTowerDefenseMainViewFrame;
+import hmi.TowerDefenseMainViewFrame;
 
-public class DesktopTowerDefenseMain {
+public class TowerDefenseMain {
 
-	private static final Logger LOGGER = LogManager.getLogger(DesktopTowerDefenseMain.class);
+	private static final Logger LOGGER = LogManager.getLogger(TowerDefenseMain.class);
 
 	public static void main(String[] args) {
 		LOGGER.info("Application start info");
 
-		DesktopTowerDefenseMainViewFrame DesktopTowerDefenseMainView = new DesktopTowerDefenseMainViewFrame();
+		TowerDefenseMainViewFrame DesktopTowerDefenseMainView = new TowerDefenseMainViewFrame();
 		GameManager.getInstance().setDesktopTowerDefenseMainView(DesktopTowerDefenseMainView);
 
 		// Schedule a job for the event dispatch thread:

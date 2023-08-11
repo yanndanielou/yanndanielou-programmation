@@ -4,7 +4,7 @@ import belligerents.Attacker;
 import belligerents.Tower;
 import game.Game;
 
-public interface DesktopTowerDefenseMainViewGeneric {
+public interface TowerDefenseMainViewGeneric {
 
 	public void registerToGame(Game game);
 

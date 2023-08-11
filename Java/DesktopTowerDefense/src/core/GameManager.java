@@ -22,7 +22,7 @@ import game_board.GameBoardAttackersExitArea;
 import game_board.GameBoardPoint;
 import game_board.NeighbourGameBoardPointDirection;
 import geometry.IntegerRectangle;
-import hmi.DesktopTowerDefenseMainViewGeneric;
+import hmi.TowerDefenseMainViewGeneric;
 import time.TimeManager;
 
 public class GameManager {
@@ -31,7 +31,7 @@ public class GameManager {
 	private static final Logger LOGGER = LogManager.getLogger(GameManager.class);
 
 	private Game game = null;
-	private DesktopTowerDefenseMainViewGeneric desktopTowerDefenseMainView;
+	private TowerDefenseMainViewGeneric desktopTowerDefenseMainView;
 	private AttackerMovementOrchestor attackerMovementOrchestor;
 
 	private GameManager() {
@@ -99,7 +99,7 @@ public class GameManager {
 
 	}
 
-	public void setDesktopTowerDefenseMainView(DesktopTowerDefenseMainViewGeneric desktopTowerDefenseMainView) {
+	public void setDesktopTowerDefenseMainView(TowerDefenseMainViewGeneric desktopTowerDefenseMainView) {
 		this.desktopTowerDefenseMainView = desktopTowerDefenseMainView;
 	}
 
@@ -132,7 +132,7 @@ public class GameManager {
 		return attacker;
 	}
 
-	public DesktopTowerDefenseMainViewGeneric getDesktopTowerDefenseMainView() {
+	public TowerDefenseMainViewGeneric getDesktopTowerDefenseMainView() {
 		return desktopTowerDefenseMainView;
 	}
 

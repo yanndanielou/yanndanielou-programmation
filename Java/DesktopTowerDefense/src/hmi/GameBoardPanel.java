@@ -46,9 +46,9 @@ public class GameBoardPanel extends JLayeredPane
 		BELLIGERENTS, UNVISIBLE_UNITARY_PARTIAL_CONSTRUCTION_SQUARE, BACKGROUND_IMAGE, UNVISIBLE;
 	}
 
-	private DesktopTowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame;;
+	private TowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame;;
 
-	public GameBoardPanel(DesktopTowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame) {
+	public GameBoardPanel(TowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame) {
 		this.DesktopTowerDefenseMainViewFrame = DesktopTowerDefenseMainViewFrame;
 	}
 

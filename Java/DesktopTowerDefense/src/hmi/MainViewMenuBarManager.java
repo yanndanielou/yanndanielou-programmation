@@ -25,10 +25,10 @@ import game_board.GameBoardAttackersExitArea;
 public class MainViewMenuBarManager implements ActionListener {
 	private static final Logger LOGGER = LogManager.getLogger(MainViewMenuBarManager.class);
 
-	private DesktopTowerDefenseMainViewFrame parent_main_view = null;
+	private TowerDefenseMainViewFrame parent_main_view = null;
 	private JMenuBar menuBar;
 
-	public MainViewMenuBarManager(DesktopTowerDefenseMainViewFrame parent) {
+	public MainViewMenuBarManager(TowerDefenseMainViewFrame parent) {
 		parent_main_view = parent;
 		menuBar = new JMenuBar();
 	}

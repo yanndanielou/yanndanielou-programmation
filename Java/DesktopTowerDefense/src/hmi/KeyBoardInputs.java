@@ -13,7 +13,7 @@ public class KeyBoardInputs implements KeyListener {
 
 	// private SinkSubmarinesMainView sinkSubmarinesMainView = null;
 
-	public KeyBoardInputs(DesktopTowerDefenseMainViewFrame DesktopTowerDefenseMainView) {
+	public KeyBoardInputs(TowerDefenseMainViewFrame DesktopTowerDefenseMainView) {
 //		this.sinkSubmarinesMainView = sinkSubmarinesMainView;
 	}
 

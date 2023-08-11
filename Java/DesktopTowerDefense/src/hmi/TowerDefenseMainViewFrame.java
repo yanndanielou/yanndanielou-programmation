@@ -16,18 +16,18 @@ import belligerents.Tower;
 import constants.HMIConstants;
 import game.Game;
 
-public class DesktopTowerDefenseMainViewFrame extends JFrame implements DesktopTowerDefenseMainViewGeneric {
+public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMainViewGeneric {
 
 	private static final long serialVersionUID = 1443136088686746460L;
 
-	private static final Logger LOGGER = LogManager.getLogger(DesktopTowerDefenseMainViewFrame.class);
+	private static final Logger LOGGER = LogManager.getLogger(TowerDefenseMainViewFrame.class);
 
 	private MainViewMenuBarManager mainViewMenuBarManager;
 
 	private GameBoardPanel gameFieldPanel;
 	private TopPanel topPanel;
 
-	public DesktopTowerDefenseMainViewFrame() {
+	public TowerDefenseMainViewFrame() {
 		super("DesktopTowerDefense");
 		mainViewMenuBarManager = new MainViewMenuBarManager(this);
 	}

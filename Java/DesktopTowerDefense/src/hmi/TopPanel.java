@@ -9,9 +9,9 @@ public class TopPanel extends JPanel implements GameStatusListener {
 
 	private static final long serialVersionUID = -4722225029326344692L;
 
-	private DesktopTowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame;
+	private TowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame;
 
-	public TopPanel(DesktopTowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame, int width, int height) {
+	public TopPanel(TowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame, int width, int height) {
 
 		this.DesktopTowerDefenseMainViewFrame = DesktopTowerDefenseMainViewFrame;
 		setLayout(null);
