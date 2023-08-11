@@ -292,7 +292,13 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void generatePredefinedConstructionLocations(TowerDataModel towerDataModel) {
 		for (GameBoardInitiallyConstructibleMacroArea initiallyConstructibleMacroArea : initiallyConstructibleMacroAreas) {
-			generatePredefinedConstructionLocations(initiallyConstructibleMacroArea.getRectangleDefinedArea(),
+			IntegerRectangle initiallyConstructibleMacroAreaRectangle = initiallyConstructibleMacroArea
+					.getRectangleDefinedArea();
+			generatePredefinedConstructionLocations(initiallyConstructibleMacroAreaRectangle,
+					towerDataModel.getDimension());
+			IntegerRectangle translattedRectangle = new IntegerRectangle(initiallyConstructibleMacroAreaRectangle);
+			translattedRectangle.translate(towerDataModel.getWidth() / 2, towerDataModel.getHeight() / 2);
+			generatePredefinedConstructionLocations(translattedRectangle,
 					towerDataModel.getDimension());
 		}
 	}

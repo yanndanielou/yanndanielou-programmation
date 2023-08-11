@@ -1,5 +1,10 @@
 package hmi;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +19,7 @@ import belligerents.GameObject;
 import belligerents.Tower;
 import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
+import core.GameManager;
 import game.Game;
 import game.GameBoardPointListener;
 import game.GameStatusListener;
@@ -22,6 +28,8 @@ import game_board.GameBoardPredefinedConstructionLocation;
 
 public class GameBoardPanel extends JLayeredPane
 		implements GameStatusListener, GameBoardPointListener, TowerListener, AttackerListener {
+
+	private static final Logger LOGGER = LogManager.getLogger(GameBoardPanel.class);
 
 	private static final long serialVersionUID = -1541008040602802454L;
 
@@ -65,6 +73,24 @@ public class GameBoardPanel extends JLayeredPane
 			constructionLocationToLabelMap.put(predefinedConstructionLocation, constructionLocationPanel);
 		}
 		// repaint();
+
+		addMouseMotionListener(new MouseMotionListener() {
+
+			@Override
+			public void mouseMoved(MouseEvent mouseEvent) {
+				int mouseX = mouseEvent.getX();
+				int mouseY = mouseEvent.getY();
+
+				// TODO Auto-generated method stub
+				LOGGER.info("mouseMoved x:" + mouseX + ", y:" + mouseY + " : " + mouseEvent);
+			}
+
+			@Override
+			public void mouseDragged(MouseEvent mouseEvent) {
+				LOGGER.info("mouseDragged" + mouseEvent);
+
+			}
+		});
 
 	}
 

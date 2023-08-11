@@ -1,5 +1,9 @@
 {
 	"gameBoardFullBackgroundImagePath": "Images/Empty_game_board_full_1_entry_1_exit.png",
+	"predefinedConstructionLocationsDimensions": {
+		"width": 0,
+		"height": 0
+	},
 	"__attackersEntryAreasAsRectangles___removedAndReplacedByImageParsing": [
 		{
 			"name": "left_attacker_entry_area",

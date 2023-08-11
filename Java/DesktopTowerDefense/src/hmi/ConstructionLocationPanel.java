@@ -1,6 +1,8 @@
 package hmi;
 
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.Random;
 
 import javax.swing.JLabel;
@@ -40,6 +42,7 @@ public class ConstructionLocationPanel extends JPanel {
 		 * representationAsLabel.setLocation(getLocation());
 		 * representationAsLabel.setSize(getSize()); add(representationAsLabel);
 		 */
+
 	}
 
 }
