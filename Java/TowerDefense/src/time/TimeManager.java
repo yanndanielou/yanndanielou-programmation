@@ -172,9 +172,15 @@ public class TimeManager extends TimerTask implements GameStatusListener {
 	}
 
 	@Override
-	public void on_game_won(Game game) {
+	public void onGameWon(Game game) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void onGameStarted(Game game) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -39,7 +39,7 @@ public class Game implements TowerListener, AttackerListener {
 	}
 
 	public void add_game_listener(GameListener listener) {
-		listener.on_listen_to_game(this);
+		listener.onListenToGame(this);
 		game_listeners.add(listener);
 	}
 
@@ -63,7 +63,7 @@ public class Game implements TowerListener, AttackerListener {
 		LOGGER.info("Game is won!");
 		won = true;
 		over = true;
-		game_status_listeners.forEach((game_status_listener) -> game_status_listener.on_game_won(this));
+		game_status_listeners.forEach((game_status_listener) -> game_status_listener.onGameWon(this));
 	}
 
 	public boolean isLost() {
@@ -101,7 +101,7 @@ public class Game implements TowerListener, AttackerListener {
 	}
 
 	@Override
-	public void on_attacker_end_of_destruction_and_clean(Attacker attacker) {
+	public void onAttackerEndOfDestructionAndClean(Attacker attacker) {
 		// TODO Auto-generated method stub
 
 	}
@@ -118,7 +118,7 @@ public class Game implements TowerListener, AttackerListener {
 	}
 
 	@Override
-	public void on_attacker_beginning_of_destruction(Attacker attacker) {
+	public void onAttackerBeginningOfDestruction(Attacker attacker) {
 		attackers.remove(attacker);
 	}
 

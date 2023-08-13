@@ -107,7 +107,7 @@ public class GameBoardPanel extends JLayeredPane
 	}
 
 	@Override
-	public void on_game_won(Game game) {
+	public void onGameWon(Game game) {
 		// TODO Auto-generated method stub
 	}
 
@@ -117,7 +117,7 @@ public class GameBoardPanel extends JLayeredPane
 	}
 
 	@Override
-	public void on_attacker_end_of_destruction_and_clean(Attacker attacker) {
+	public void onAttackerEndOfDestructionAndClean(Attacker attacker) {
 		// TODO Auto-generated method stub
 
 	}
@@ -145,13 +145,19 @@ public class GameBoardPanel extends JLayeredPane
 	}
 
 	@Override
-	public void on_attacker_beginning_of_destruction(Attacker attacker) {
+	public void onAttackerBeginningOfDestruction(Attacker attacker) {
 	}
 
 	@Override
 	public void on_tower_removal(Tower tower) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void onGameStarted(Game game) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -211,7 +211,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 	}
 
 	@Override
-	public void on_attacker_end_of_destruction_and_clean(Attacker attacker) {
+	public void onAttackerEndOfDestructionAndClean(Attacker attacker) {
 		// TODO Auto-generated method stub
 
 	}
@@ -231,7 +231,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 	}
 
 	@Override
-	public void on_attacker_beginning_of_destruction(Attacker attacker) {
+	public void onAttackerBeginningOfDestruction(Attacker attacker) {
 		// TODO Auto-generated method stub
 
 	}
@@ -287,7 +287,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 			GameBoardPredefinedConstructionLocation predefinedConstructionLocation = new GameBoardPredefinedConstructionLocation(
 					this, predefinedConstructionRectangle);
 			predefinedConstructionLocations.add(predefinedConstructionLocation);
-			LOGGER.info(
+			LOGGER.debug(
 					"add predefinedConstructionLocation" + predefinedConstructionLocation.getRectangleDefinedArea());
 
 //			predefinedConstructionLocation.getAllPoints().forEach((gameBoardPoint) -> gameBoardPoint

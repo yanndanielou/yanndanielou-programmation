@@ -1,6 +1,14 @@
 package hmi;
 
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.nio.file.FileSystemNotFoundException;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
@@ -22,9 +30,15 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 	private ImageIcon sideCommandPanelBackgroundAsIcon;
 	private JLabel sideCommandPanelBackgroundAsLabel;
 	private TowerDefenseMainViewFrame towerDefenseMainViewFrame;
+	private GameBoard gameBoard;
+
+	private JLabel mainMenuButtonAsLabel;
+	private JLabel startGameButtonAsLabel;
+	private JButton createSimpleTowerButton;
+	private JButton changeVolumeButton;
 
 	private enum LAYERS_ORDERED_FROM_TOP_TO_BACK {
-		TOWERS_CONSTRUCTION_SELECTION, SELECTED_BELLIGERENT_DETAILS, BACKGROUND_IMAGE, UNVISIBLE;
+		TOWERS_CONSTRUCTION_SELECTION, GAME_BUTTONS,SELECTED_BELLIGERENT_DETAILS, BACKGROUND_IMAGE, UNVISIBLE;
 	}
 
 	public SideCommandPanel(TowerDefenseMainViewFrame towerDefenseMainViewFrame) {
@@ -33,6 +47,8 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 
 	public void initializeGamefield(GameBoard gameBoard) {
 		setLayout(null);
+
+		this.gameBoard = gameBoard;
 
 		sideCommandPanelBackgroundAsIcon = new ImageIcon(
 				gameBoard.getGameBoardDataModel().getCommandPanelBackgroundImagePath());
@@ -44,10 +60,49 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 		sideCommandPanelBackgroundAsLabel.setLocation(0, 0);
 		sideCommandPanelBackgroundAsLabel.setSize(getSize());
 
+		ImageIcon mainMenuButtonAsIcon = new ImageIcon("Images/Main_menu_button_in_side_command_panel.PNG");
+		mainMenuButtonAsLabel = new JLabel(mainMenuButtonAsIcon);
+		mainMenuButtonAsLabel.setSize(mainMenuButtonAsIcon.getIconWidth(), mainMenuButtonAsIcon.getIconHeight());
+		mainMenuButtonAsLabel.setLocation(220, 2);
+		add(mainMenuButtonAsLabel, LAYERS_ORDERED_FROM_TOP_TO_BACK.TOWERS_CONSTRUCTION_SELECTION.ordinal());
+
+		ImageIcon startGameButtonAsIcon = new ImageIcon("Images/Start_game_button_in_side_command_panel.PNG");
+		startGameButtonAsLabel = new JLabel(startGameButtonAsIcon);
+		startGameButtonAsLabel.setSize(startGameButtonAsIcon.getIconWidth(), startGameButtonAsIcon.getIconHeight());
+		startGameButtonAsLabel.setLocation(42, 50);
+		add(startGameButtonAsLabel, LAYERS_ORDERED_FROM_TOP_TO_BACK.TOWERS_CONSTRUCTION_SELECTION.ordinal());
+
+		createSimpleTowerButton = createJButtonFromImage("Images/simple_tower_construction_buttons_in_side_command_panel.PNG");
+		createSimpleTowerButton.setLocation(42, 130);
+		add(createSimpleTowerButton, LAYERS_ORDERED_FROM_TOP_TO_BACK.TOWERS_CONSTRUCTION_SELECTION.ordinal());
+		createSimpleTowerButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		changeVolumeButton = createJButtonFromImage("Images/Volume_muted_button_in_side_command_panel.PNG");
+		changeVolumeButton.setLocation(startGameButtonAsLabel.getX(), mainMenuButtonAsLabel.getY());
+		add(changeVolumeButton, LAYERS_ORDERED_FROM_TOP_TO_BACK.GAME_BUTTONS.ordinal());
+
+	}
+
+	private JButton createJButtonFromImage(String imagePath) {
+		ImageIcon buttonIcon = new ImageIcon(imagePath);
+		if (buttonIcon.getIconHeight() <= 0) {
+			throw new FileSystemNotFoundException("Invalid path:" + imagePath);
+		}
+		JButton buttonToCreate = new JButton(buttonIcon);
+		buttonToCreate.setSize(buttonIcon.getIconWidth(), buttonIcon.getIconHeight());
+		buttonToCreate.setBorder(null);
+		return buttonToCreate;
 	}
 
 	@Override
-	public void on_attacker_end_of_destruction_and_clean(Attacker attacker) {
+	public void onAttackerEndOfDestructionAndClean(Attacker attacker) {
 		// TODO Auto-generated method stub
 
 	}
@@ -65,7 +120,7 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 	}
 
 	@Override
-	public void on_attacker_beginning_of_destruction(Attacker attacker) {
+	public void onAttackerBeginningOfDestruction(Attacker attacker) {
 		// TODO Auto-generated method stub
 
 	}
@@ -84,7 +139,6 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 
 	@Override
 	public void onListenToGameStatus(Game game) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -101,7 +155,13 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 	}
 
 	@Override
-	public void on_game_won(Game game) {
+	public void onGameWon(Game game) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onGameStarted(Game game) {
 		// TODO Auto-generated method stub
 
 	}

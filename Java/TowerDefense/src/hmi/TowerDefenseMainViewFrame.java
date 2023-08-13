@@ -90,9 +90,9 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 				topPanel.getY() + topPanel.getHeight() + HMIConstants.EXTERNAL_FRAME_WIDTH);
 
 		sideCommandPanel = new SideCommandPanel(this);
-		sideCommandPanel.initializeGamefield(game.getGameBoard());
 		sideCommandPanel.setLocation(gameFieldPanel.getX() + gameFieldPanel.getWidth(), gameFieldPanel.getY());
 		add(sideCommandPanel);
+		sideCommandPanel.initializeGamefield(game.getGameBoard());
 
 		setSize(new Dimension(
 				gameFieldPanel.getWidth() + sideCommandPanel.getWidth() + 2 * HMIConstants.EXTERNAL_FRAME_WIDTH
