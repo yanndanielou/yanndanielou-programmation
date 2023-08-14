@@ -12,6 +12,7 @@ import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
 import builders.GameObjectsDataModel;
 import game_board.GameBoard;
+import time.TimeManager;
 
 public class Game implements TowerListener, AttackerListener {
 	private static final Logger LOGGER = LogManager.getLogger(Game.class);
@@ -36,6 +37,8 @@ public class Game implements TowerListener, AttackerListener {
 		this.gameBoard = gameBoard;
 		this.gameObjectsDataModel = game_objects_data_model;
 		gameBoard.setGame(this);
+		add_game_status_listener(TimeManager.getInstance());
+
 	}
 
 	public void add_game_listener(GameListener listener) {
@@ -82,9 +85,10 @@ public class Game implements TowerListener, AttackerListener {
 		return begun;
 	}
 
-	public void setBegun() {
+	public void start() {
 		this.begun = true;
-		LOGGER.info("Game has begun. " + this);
+		LOGGER.info("Game has started. " + this);
+		game_status_listeners.forEach((game_status_listener) -> game_status_listener.onGameStarted(this));
 	}
 
 	public GameBoard getGameBoard() {

@@ -68,7 +68,6 @@ public class GameManager {
 		desktopTowerDefenseMainView.registerToGame(game);
 		attackerMovementOrchestor = new AttackerMovementOrchestor(game);
 		computeNeighboursOfEachGameBoardPoint();
-		TimeManager.getInstance().start();
 	}
 
 	private void computeNeighboursOfEachGameBoardPoint() {

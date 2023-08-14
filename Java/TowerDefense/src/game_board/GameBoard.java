@@ -125,6 +125,10 @@ public class GameBoard implements TowerListener, AttackerListener {
 		this.game = game;
 	}
 
+	public Game getGame() {
+		return game;
+	}
+
 	public GameBoardPoint getNeighbourGameBoardPoint(GameBoardPoint referenceGameBoardPoint,
 			NeighbourGameBoardPointDirection direction) {
 		GameBoardPoint neighbour = null;

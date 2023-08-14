@@ -3,6 +3,8 @@ package hmi;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.nio.file.FileSystemNotFoundException;
 
@@ -38,7 +40,7 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 	private JButton changeVolumeButton;
 
 	private enum LAYERS_ORDERED_FROM_TOP_TO_BACK {
-		TOWERS_CONSTRUCTION_SELECTION, GAME_BUTTONS,SELECTED_BELLIGERENT_DETAILS, BACKGROUND_IMAGE, UNVISIBLE;
+		TOWERS_CONSTRUCTION_SELECTION, GAME_BUTTONS, SELECTED_BELLIGERENT_DETAILS, BACKGROUND_IMAGE, UNVISIBLE;
 	}
 
 	public SideCommandPanel(TowerDefenseMainViewFrame towerDefenseMainViewFrame) {
@@ -71,17 +73,20 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 		startGameButtonAsLabel.setSize(startGameButtonAsIcon.getIconWidth(), startGameButtonAsIcon.getIconHeight());
 		startGameButtonAsLabel.setLocation(42, 50);
 		add(startGameButtonAsLabel, LAYERS_ORDERED_FROM_TOP_TO_BACK.TOWERS_CONSTRUCTION_SELECTION.ordinal());
+		startGameButtonAsLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				gameBoard.getGame().start();
+				startGameButtonAsLabel.setVisible(false);
+			}
+		});
 
-		createSimpleTowerButton = createJButtonFromImage("Images/simple_tower_construction_buttons_in_side_command_panel.PNG");
+		createSimpleTowerButton = createJButtonFromImage(
+				"Images/simple_tower_construction_buttons_in_side_command_panel.PNG");
 		createSimpleTowerButton.setLocation(42, 130);
 		add(createSimpleTowerButton, LAYERS_ORDERED_FROM_TOP_TO_BACK.TOWERS_CONSTRUCTION_SELECTION.ordinal());
-		createSimpleTowerButton.addActionListener(new ActionListener() {
+		createSimpleTowerButton.addActionListener((event) -> {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
-			}
 		});
 
 		changeVolumeButton = createJButtonFromImage("Images/Volume_muted_button_in_side_command_panel.PNG");

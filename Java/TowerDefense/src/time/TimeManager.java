@@ -163,24 +163,22 @@ public class TimeManager extends TimerTask implements GameStatusListener {
 
 	@Override
 	public void onGameCancelled(Game game) {
+		stop();
 	}
 
 	@Override
 	public void onGameLost(Game game) {
-		// TODO Auto-generated method stub
-
+		stop();
 	}
 
 	@Override
 	public void onGameWon(Game game) {
-		// TODO Auto-generated method stub
-
+		stop();
 	}
 
 	@Override
 	public void onGameStarted(Game game) {
-		// TODO Auto-generated method stub
-		
+		start();
 	}
 
 }
