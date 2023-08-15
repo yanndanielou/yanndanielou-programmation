@@ -14,4 +14,14 @@ public class GameBoardPredefinedConstructionLocation extends GameBoardArea {
 		super(gameBoard, rectangleInImageWithRGB, "");
 	}
 
+	public boolean isNewConstructionAllowed() {
+		for (GameBoardPoint gameBoardPoint : getAllPoints()) {
+			if (gameBoardPoint.isWall() || gameBoardPoint.isOccupiedByTower() || gameBoardPoint.isNonPlayableArea()
+					|| gameBoardPoint.isOccupiedByAttacker()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 }

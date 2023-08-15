@@ -63,6 +63,10 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	public boolean isOccupiedByTower() {
 		return !towers_present.isEmpty();
 	}
+	
+	public boolean isOccupiedByAttacker(){
+		return !attackers_present.isEmpty();
+	}
 
 	public boolean isNonPlayableArea() {
 		return !gameBoardNonPlayableAreasPresent.isEmpty();

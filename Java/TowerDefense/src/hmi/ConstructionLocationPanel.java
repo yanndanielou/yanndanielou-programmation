@@ -27,7 +27,7 @@ public class ConstructionLocationPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1504209832169214216L;
-	private Color backgroundColor;
+	private Color randomSelectedBackgroundColorForDebug;
 	Random random = new Random();
 
 	public ConstructionLocationPanel(GameBoardPanel gameBoardPanel,
@@ -36,7 +36,8 @@ public class ConstructionLocationPanel extends JPanel {
 		this.gameBoardPanel = gameBoardPanel;
 		this.setLayout(null);
 		setOpaque(false);
-		backgroundColor = new Color(random.nextInt(0, 255), random.nextInt(0, 255), random.nextInt(0, 255));
+		randomSelectedBackgroundColorForDebug = new Color(random.nextInt(0, 255), random.nextInt(0, 255),
+				random.nextInt(0, 255));
 		this.setLocation(gameBoardPredefinedConstructionLocation.getRectangleDefinedArea().getX(),
 				gameBoardPredefinedConstructionLocation.getRectangleDefinedArea().getY());
 		this.setSize(gameBoardPredefinedConstructionLocation.getRectangleDefinedArea().getWidth(),
@@ -50,42 +51,20 @@ public class ConstructionLocationPanel extends JPanel {
 		mouseOverSelectionForConstructionWhenEmptyPanel.setOpaque(false);
 
 		add(mouseOverSelectionForConstructionWhenEmptyPanel);
-		mouseOverSelectionForConstructionWhenEmptyPanel.addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				setBackground(null);
-				mouseOverSelectionForConstructionWhenEmptyPanel.setBackground(null);
-				setOpaque(false);
-				mouseOverSelectionForConstructionWhenEmptyPanel.setOpaque(false);
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				setBackground(backgroundColor);
-				mouseOverSelectionForConstructionWhenEmptyPanel.setBackground(backgroundColor);
-				setOpaque(true);
-				mouseOverSelectionForConstructionWhenEmptyPanel.setOpaque(true);
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
+		mouseOverSelectionForConstructionWhenEmptyPanel
+				.addMouseListener(new ConstructionLocationPanelMouseOverListenerForConstruction(this,
+						mouseOverSelectionForConstructionWhenEmptyPanel));
 	}
 
+	public Color getRandomSelectedBackgroundColorForDebug() {
+		return randomSelectedBackgroundColorForDebug;
+	}
+
+	public GameBoardPanel getGameBoardPanel() {
+		return gameBoardPanel;
+	}
+
+	public GameBoardPredefinedConstructionLocation getGameBoardPredefinedConstructionLocation() {
+		return gameBoardPredefinedConstructionLocation;
+	}
 }
