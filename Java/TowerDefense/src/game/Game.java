@@ -138,4 +138,7 @@ public class Game implements TowerListener, AttackerListener {
 		return attackers;
 	}
 
+	public Player getPlayer() {
+		return player;
+	}
 }

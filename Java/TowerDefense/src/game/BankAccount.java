@@ -13,7 +13,14 @@ public class BankAccount {
 	private ArrayList<BankAccountListener> bankAccountlisteners = new ArrayList<>();
 	private Player player;
 
+	private int bankAccountMoney;
+
 	public BankAccount(Player player) {
 		this.player = player;
+		bankAccountMoney = 0;
+	}
+
+	public int getBankAccountMoney() {
+		return bankAccountMoney;
 	}
 }

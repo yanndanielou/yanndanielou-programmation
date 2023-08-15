@@ -25,7 +25,7 @@ public class ConstructionLocationPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1504209832169214216L;
 	private Color randomSelectedBackgroundColorForDebug;
-	Random random = new Random();
+	private Random random = new Random();
 
 	public ConstructionLocationPanel(GameBoardPanel gameBoardPanel,
 			GameBoardPredefinedConstructionLocation gameBoardPredefinedConstructionLocation) {
@@ -63,5 +63,9 @@ public class ConstructionLocationPanel extends JPanel {
 
 	public GameBoardPredefinedConstructionLocation getGameBoardPredefinedConstructionLocation() {
 		return gameBoardPredefinedConstructionLocation;
+	}
+
+	public HmiPresenter getHmiPresenter() {
+		return gameBoardPanel.getHmiPresenter();
 	}
 }

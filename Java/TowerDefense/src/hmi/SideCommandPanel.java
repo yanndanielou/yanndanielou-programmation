@@ -36,8 +36,6 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 	private JButton createSimpleTowerButton;
 	private JButton changeVolumeButton;
 
-	private TowerDataModel selectedForConstructionTower = null;
-
 	private enum LAYERS_ORDERED_FROM_TOP_TO_BACK {
 		TOWERS_CONSTRUCTION_SELECTION, GAME_BUTTONS, SELECTED_BELLIGERENT_DETAILS, BACKGROUND_IMAGE, UNVISIBLE;
 	}
@@ -85,19 +83,14 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 		createSimpleTowerButton.setLocation(42, 130);
 		add(createSimpleTowerButton, LAYERS_ORDERED_FROM_TOP_TO_BACK.TOWERS_CONSTRUCTION_SELECTION.ordinal());
 		createSimpleTowerButton.addActionListener((event) -> {
-			selectTowerForConstruction(gameBoard.getGame().getGameObjectsDataModel().getSimpleTowerDataModel());
+			getHmiPresenter().selectTowerForConstruction(
+					gameBoard.getGame().getGameObjectsDataModel().getSimpleTowerDataModel());
 		});
 
 		changeVolumeButton = createJButtonFromImage("Images/Volume_muted_button_in_side_command_panel.PNG");
 		changeVolumeButton.setLocation(startGameButtonAsLabel.getX(), mainMenuButtonAsLabel.getY());
 		add(changeVolumeButton, LAYERS_ORDERED_FROM_TOP_TO_BACK.GAME_BUTTONS.ordinal());
 
-	}
-
-	private void selectTowerForConstruction(TowerDataModel newlySelectedForConstructionTower) {
-		if (selectedForConstructionTower != newlySelectedForConstructionTower) {
-			this.selectedForConstructionTower = newlySelectedForConstructionTower;
-		}
 	}
 
 	private JButton createJButtonFromImage(String imagePath) {
@@ -174,5 +167,9 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 	public void onGameStarted(Game game) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public HmiPresenter getHmiPresenter() {
+		return towerDefenseMainViewFrame.getHmiPresenter();
 	}
 }

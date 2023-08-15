@@ -28,6 +28,8 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 	private SideCommandPanel sideCommandPanel;
 	private TopPanel topPanel;
 
+	private HmiPresenter hmiPresenter = null;
+
 	public TowerDefenseMainViewFrame() {
 		super("DesktopTowerDefense");
 		mainViewMenuBarManager = new MainViewMenuBarManager(this);
@@ -94,6 +96,8 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 		add(sideCommandPanel);
 		sideCommandPanel.initializeGamefield(game.getGameBoard());
 
+		hmiPresenter = new HmiPresenter(this, topPanel, gameFieldPanel, sideCommandPanel);
+
 		setSize(new Dimension(
 				gameFieldPanel.getWidth() + sideCommandPanel.getWidth() + 2 * HMIConstants.EXTERNAL_FRAME_WIDTH
 						+ HMIConstants.NOT_UNDERSTOOD_MISSING_FRAME_WIDTH,
@@ -128,4 +132,11 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 		attacker.addListener(gameFieldPanel);
 	}
 
+	public SideCommandPanel getSideCommandPanel() {
+		return sideCommandPanel;
+	}
+
+	public HmiPresenter getHmiPresenter() {
+		return hmiPresenter;
+	}
 }

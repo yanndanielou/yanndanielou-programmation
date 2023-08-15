@@ -40,6 +40,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 	private ArrayList<GameBoardInitiallyConstructibleMacroArea> initiallyConstructibleMacroAreas = new ArrayList<>();
 	private ArrayList<GameBoardPredefinedConstructionLocation> predefinedConstructionLocations = new ArrayList<>();
 
+	@Deprecated
 	private ArrayList<IntegerRectangle> unitaryConstructionPartSquares = new ArrayList<>();
 
 	private Game game;

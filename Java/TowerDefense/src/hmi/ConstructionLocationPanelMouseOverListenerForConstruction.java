@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import constants.HMIConstants;
 import game_board.GameBoardAttackersEntryArea;
 
 public class ConstructionLocationPanelMouseOverListenerForConstruction extends MouseAdapter {
@@ -16,6 +17,7 @@ public class ConstructionLocationPanelMouseOverListenerForConstruction extends M
 
 	private ConstructionLocationPanel constructionLocationPanel;
 	private JPanel mouseOverSelectionForConstructionWhenEmptyPanel;
+	private boolean constructionAllowed;
 
 	public ConstructionLocationPanelMouseOverListenerForConstruction(
 			ConstructionLocationPanel constructionLocationPanel,
@@ -34,18 +36,40 @@ public class ConstructionLocationPanelMouseOverListenerForConstruction extends M
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		constructionLocationPanel.setBackground(constructionLocationPanel.getRandomSelectedBackgroundColorForDebug());
-		mouseOverSelectionForConstructionWhenEmptyPanel
-				.setBackground(constructionLocationPanel.getRandomSelectedBackgroundColorForDebug());
+
+		if (constructionLocationPanel.getHmiPresenter().getSelectedForConstructionTower() == null) {
+			return;
+		}
+		
+		updateConstructionAllowed();
+
+		if (constructionAllowed) {
+			constructionLocationPanel.setBackground(HMIConstants.POSSIBLE_CONSTRUCTION_COLOR);
+			mouseOverSelectionForConstructionWhenEmptyPanel.setBackground(HMIConstants.POSSIBLE_CONSTRUCTION_COLOR);
+		} else {
+			constructionLocationPanel.setBackground(HMIConstants.IMPOSSIBLE_CONSTRUCTION_COLOR);
+			mouseOverSelectionForConstructionWhenEmptyPanel.setBackground(HMIConstants.IMPOSSIBLE_CONSTRUCTION_COLOR);
+		}
 		constructionLocationPanel.setOpaque(true);
 		mouseOverSelectionForConstructionWhenEmptyPanel.setOpaque(true);
 	}
 
+	private void updateConstructionAllowed() {
+		boolean canAffordConstruction = constructionLocationPanel.getGameBoardPanel().getGameBoard().getGame()
+				.getPlayer()
+				.canAffordToConstruct(constructionLocationPanel.getHmiPresenter().getSelectedForConstructionTower());
+
+		constructionAllowed = canAffordConstruction
+				&& constructionLocationPanel.getGameBoardPredefinedConstructionLocation().isNewConstructionAllowed();
+	}
+
+	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (constructionLocationPanel.getGameBoardPredefinedConstructionLocation().isNewConstructionAllowed()) {
+
+		if (constructionAllowed) {
 
 		} else {
-			LOGGER.info("");
+			LOGGER.info("Ignored click, construction is forbidden");
 		}
 	}
 }

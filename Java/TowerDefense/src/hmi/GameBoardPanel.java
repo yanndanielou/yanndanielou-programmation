@@ -39,17 +39,21 @@ public class GameBoardPanel extends JLayeredPane
 	private HashMap<GameObject, JLabel> gameObjectToLabelMap = new HashMap<>();
 	private HashMap<GameBoardPredefinedConstructionLocation, ConstructionLocationPanel> constructionLocationToLabelMap = new HashMap<>();
 
+	private GameBoard gameBoard;
+
 	private enum LAYERS_ORDERED_FROM_TOP_TO_BACK {
 		BELLIGERENTS, UNVISIBLE_UNITARY_PARTIAL_CONSTRUCTION_SQUARE, BACKGROUND_IMAGE, UNVISIBLE;
 	}
 
-	private TowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame;
+	private TowerDefenseMainViewFrame towerDefenseMainViewFrame;
 
-	public GameBoardPanel(TowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame) {
-		this.DesktopTowerDefenseMainViewFrame = DesktopTowerDefenseMainViewFrame;
+	public GameBoardPanel(TowerDefenseMainViewFrame towerDefenseMainViewFrame) {
+		this.towerDefenseMainViewFrame = towerDefenseMainViewFrame;
 	}
 
 	public void initializeGamefield(GameBoard gameBoard) {
+		this.gameBoard = gameBoard;
+
 		setLayout(null);
 		setSize(gameBoard.getTotalWidth(), gameBoard.getTotalHeight());
 
@@ -96,7 +100,7 @@ public class GameBoardPanel extends JLayeredPane
 	@Override
 	public void onGameCancelled(Game game) {
 		removeAll();
-		DesktopTowerDefenseMainViewFrame.removeGameFieldPanel();
+		towerDefenseMainViewFrame.removeGameFieldPanel();
 	}
 
 	@Override
@@ -157,4 +161,15 @@ public class GameBoardPanel extends JLayeredPane
 
 	}
 
+	public TowerDefenseMainViewFrame getTowerDefenseMainViewFrame() {
+		return towerDefenseMainViewFrame;
+	}
+
+	public HmiPresenter getHmiPresenter() {
+		return towerDefenseMainViewFrame.getHmiPresenter();
+	}
+
+	public GameBoard getGameBoard() {
+		return gameBoard;
+	}
 }
