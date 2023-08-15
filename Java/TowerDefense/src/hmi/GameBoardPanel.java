@@ -1,10 +1,5 @@
 package hmi;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,13 +8,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import belligerents.Attacker;
-import belligerents.Belligerent;
 import belligerents.GameObject;
 import belligerents.Tower;
 import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
-import core.GameManager;
 import game.Game;
 import game.GameBoardPointListener;
 import game.GameStatusListener;
@@ -29,6 +25,7 @@ import game_board.GameBoardPredefinedConstructionLocation;
 public class GameBoardPanel extends JLayeredPane
 		implements GameStatusListener, GameBoardPointListener, TowerListener, AttackerListener {
 
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardPanel.class);
 
 	private static final long serialVersionUID = -1541008040602802454L;
@@ -46,7 +43,7 @@ public class GameBoardPanel extends JLayeredPane
 		BELLIGERENTS, UNVISIBLE_UNITARY_PARTIAL_CONSTRUCTION_SQUARE, BACKGROUND_IMAGE, UNVISIBLE;
 	}
 
-	private TowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame;;
+	private TowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame;
 
 	public GameBoardPanel(TowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame) {
 		this.DesktopTowerDefenseMainViewFrame = DesktopTowerDefenseMainViewFrame;
@@ -125,10 +122,10 @@ public class GameBoardPanel extends JLayeredPane
 	private void display_new_object_as_label(GameObject gameObject, LAYERS_ORDERED_FROM_TOP_TO_BACK layer) {
 		ImageIcon get_graphical_representation_as_icon = gameObject.get_graphical_representation_as_icon();
 		JLabel objectAsLabel = new JLabel(get_graphical_representation_as_icon);
-		objectAsLabel.setLocation((int) gameObject.getSurrounding_rectangle_absolute_on_complete_board().getX(),
-				(int) gameObject.getSurrounding_rectangle_absolute_on_complete_board().getY());
-		objectAsLabel.setSize((int) gameObject.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
-				(int) gameObject.getSurrounding_rectangle_absolute_on_complete_board().getHeight());
+		objectAsLabel.setLocation(gameObject.getSurrounding_rectangle_absolute_on_complete_board().getX(),
+				gameObject.getSurrounding_rectangle_absolute_on_complete_board().getY());
+		objectAsLabel.setSize(gameObject.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
+				gameObject.getSurrounding_rectangle_absolute_on_complete_board().getHeight());
 		gameObjectToLabelMap.put(gameObject, objectAsLabel);
 		add(objectAsLabel, layer.ordinal());
 	}
@@ -157,7 +154,7 @@ public class GameBoardPanel extends JLayeredPane
 	@Override
 	public void onGameStarted(Game game) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

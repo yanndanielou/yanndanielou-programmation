@@ -1,16 +1,11 @@
 package hmi;
 
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
 import java.nio.file.FileSystemNotFoundException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
@@ -28,6 +23,7 @@ import game_board.GameBoard;
 
 public class SideCommandPanel extends JLayeredPane implements GameStatusListener, TowerListener, AttackerListener {
 
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(SideCommandPanel.class);
 
 	private ImageIcon sideCommandPanelBackgroundAsIcon;

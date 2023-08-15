@@ -23,7 +23,6 @@ import game_board.GameBoardPoint;
 import game_board.NeighbourGameBoardPointDirection;
 import geometry.IntegerRectangle;
 import hmi.TowerDefenseMainViewGeneric;
-import time.TimeManager;
 
 public class GameManager {
 

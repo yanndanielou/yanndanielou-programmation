@@ -33,10 +33,13 @@ public class Game implements TowerListener, AttackerListener {
 
 	private GameObjectsDataModel gameObjectsDataModel;
 
+	private Player player;
+
 	public Game(GameBoard gameBoard, GameObjectsDataModel game_objects_data_model) {
 		this.gameBoard = gameBoard;
 		this.gameObjectsDataModel = game_objects_data_model;
 		gameBoard.setGame(this);
+		player = new Player(this);
 		add_game_status_listener(TimeManager.getInstance());
 
 	}

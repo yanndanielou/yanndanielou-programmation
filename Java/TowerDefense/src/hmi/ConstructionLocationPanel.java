@@ -1,11 +1,8 @@
 package hmi;
 
 import java.awt.Color;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Random;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.apache.logging.log4j.LogManager;
@@ -15,13 +12,13 @@ import game_board.GameBoardPredefinedConstructionLocation;
 
 public class ConstructionLocationPanel extends JPanel {
 
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardPanel.class);
 	private String name;
 
 	private GameBoardPredefinedConstructionLocation gameBoardPredefinedConstructionLocation;
 	private GameBoardPanel gameBoardPanel;
 
-	private JLabel representationAsLabel;
 	private JPanel mouseOverSelectionForConstructionWhenEmptyPanel;
 	/**
 	 * 
