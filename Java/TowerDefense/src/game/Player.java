@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,12 +13,15 @@ public class Player {
 	private static final Logger LOGGER = LogManager.getLogger(Player.class);
 
 	private Game game;
-	private BankAccount bankAccount;
 	private int remainingNumberOfLives;
+	private int gold;
+
+	private ArrayList<GoldListener> goldlisteners = new ArrayList<>();
 
 	public Player(Game game) {
 		this.game = game;
-		bankAccount = new BankAccount(this);
+		gold = 0;
+
 	}
 
 	public int getRemainingNumberOfLives() {
@@ -29,7 +34,15 @@ public class Player {
 
 	public boolean canAffordToConstruct(TowerDataModel towerDataModelToCreate) {
 		Integer towerCost = towerDataModelToCreate.getLevels().get(0).getCost();
-		return bankAccount.getBankAccountMoney() >= towerCost;
+		return gold >= towerCost;
+	}
+
+	public int getGold() {
+		return gold;
+	}
+
+	public void addGold(int addedMoney) {
+		gold += addedMoney;
 	}
 
 }

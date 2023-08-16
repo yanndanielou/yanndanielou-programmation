@@ -167,6 +167,16 @@ public class MainViewMenuBarManager implements ActionListener {
 		});
 		menu.add(menuItem);
 
+		menuItem = new JMenuItem("Mode gold");
+		menuItem.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_G, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CheatCodeManager.getInstance().moreGold();
+			}
+		});
+		menu.add(menuItem);
+
 		return menu;
 	}
 

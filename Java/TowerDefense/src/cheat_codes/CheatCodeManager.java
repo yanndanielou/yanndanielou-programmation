@@ -37,4 +37,11 @@ public class CheatCodeManager {
 		}
 	}
 
+	public void moreGold() {
+		if (GameManager.hasGameInProgress()) {
+			Game game = GameManager.getInstance().getGame();
+			game.getPlayer().addGold(100);
+		}
+	}
+
 }
