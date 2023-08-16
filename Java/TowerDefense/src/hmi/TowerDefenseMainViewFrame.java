@@ -82,19 +82,21 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 		// Built first to know dimensions
 		gameFieldPanel = new GameBoardPanel(this);
 		gameFieldPanel.initializeGamefield(game.getGameBoard());
-
-		topPanel = new TopPanel(this, gameFieldPanel.getWidth(), HMIConstants.TOP_PANEL_HEIGHT);
-		add(topPanel);
-		topPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH, HMIConstants.EXTERNAL_FRAME_WIDTH);
-
 		add(gameFieldPanel);
-		gameFieldPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH,
-				topPanel.getY() + topPanel.getHeight() + HMIConstants.EXTERNAL_FRAME_WIDTH);
 
 		sideCommandPanel = new SideCommandPanel(this);
-		sideCommandPanel.setLocation(gameFieldPanel.getX() + gameFieldPanel.getWidth(), gameFieldPanel.getY());
-		add(sideCommandPanel);
 		sideCommandPanel.initializeGamefield(game.getGameBoard());
+		add(sideCommandPanel);
+
+		topPanel = new TopPanel(this, gameFieldPanel.getWidth() + sideCommandPanel.getWidth(),
+				HMIConstants.TOP_PANEL_HEIGHT);
+		topPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH, HMIConstants.EXTERNAL_FRAME_WIDTH);
+		add(topPanel);
+
+		gameFieldPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH,
+				topPanel.getY() + topPanel.getHeight());
+
+		sideCommandPanel.setLocation(gameFieldPanel.getX() + gameFieldPanel.getWidth(), gameFieldPanel.getY());
 
 		hmiPresenter = new HmiPresenter(this, topPanel, gameFieldPanel, sideCommandPanel);
 

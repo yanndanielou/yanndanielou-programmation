@@ -30,7 +30,6 @@ public class GameBoardPanel extends JLayeredPane
 
 	private static final long serialVersionUID = -1541008040602802454L;
 
-	private ImageIcon emptyGameBoardBackgroundAsIcon;
 	private JLabel emptyGameBoardBackgroundAsLabel;
 
 	@Deprecated
@@ -57,11 +56,8 @@ public class GameBoardPanel extends JLayeredPane
 		setLayout(null);
 		setSize(gameBoard.getTotalWidth(), gameBoard.getTotalHeight());
 
-		emptyGameBoardBackgroundAsIcon = new ImageIcon(
-				gameBoard.getGameBoardDataModel().getGameBoardFullBackgroundImagePath());
-		emptyGameBoardBackgroundAsLabel = new JLabel(emptyGameBoardBackgroundAsIcon);
-
-		emptyGameBoardBackgroundAsLabel.setSize(gameBoard.getTotalWidth(), gameBoard.getTotalHeight());
+		emptyGameBoardBackgroundAsLabel = HMIUtils
+				.createJLabelFromImage(gameBoard.getGameBoardDataModel().getGameBoardFullBackgroundImagePath());
 		emptyGameBoardBackgroundAsLabel.setLocation(0, 0);
 
 		add(emptyGameBoardBackgroundAsLabel, LAYERS_ORDERED_FROM_TOP_TO_BACK.BACKGROUND_IMAGE.ordinal());

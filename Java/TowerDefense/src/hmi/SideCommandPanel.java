@@ -22,6 +22,11 @@ import game_board.GameBoard;
 
 public class SideCommandPanel extends JLayeredPane implements GameStatusListener, TowerListener, AttackerListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7463188292663402748L;
+
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(SideCommandPanel.class);
 
@@ -76,8 +81,8 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 			}
 		});
 
-		createSimpleTowerButton = createJButtonFromImage(
-				"Images/simple_tower_construction_buttons_in_side_command_panel.PNG");
+		createSimpleTowerButton = HMIUtils
+				.createJButtonFromImage("Images/simple_tower_construction_buttons_in_side_command_panel.PNG");
 		createSimpleTowerButton.setLocation(42, 130);
 		add(createSimpleTowerButton, LAYERS_ORDERED_FROM_TOP_TO_BACK.TOWERS_CONSTRUCTION_SELECTION.ordinal());
 		createSimpleTowerButton.addActionListener((event) -> {
@@ -85,21 +90,10 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 					gameBoard.getGame().getGameObjectsDataModel().getSimpleTowerDataModel());
 		});
 
-		changeVolumeButton = createJButtonFromImage("Images/Volume_muted_button_in_side_command_panel.PNG");
+		changeVolumeButton = HMIUtils.createJButtonFromImage("Images/Volume_muted_button_in_side_command_panel.PNG");
 		changeVolumeButton.setLocation(startGameButtonAsLabel.getX(), mainMenuButtonAsLabel.getY());
 		add(changeVolumeButton, LAYERS_ORDERED_FROM_TOP_TO_BACK.GAME_BUTTONS.ordinal());
 
-	}
-
-	private JButton createJButtonFromImage(String imagePath) {
-		ImageIcon buttonIcon = new ImageIcon(imagePath);
-		if (buttonIcon.getIconHeight() <= 0) {
-			throw new FileSystemNotFoundException("Invalid path:" + imagePath);
-		}
-		JButton buttonToCreate = new JButton(buttonIcon);
-		buttonToCreate.setSize(buttonIcon.getIconWidth(), buttonIcon.getIconHeight());
-		buttonToCreate.setBorder(null);
-		return buttonToCreate;
 	}
 
 	@Override
