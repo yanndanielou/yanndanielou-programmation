@@ -191,6 +191,16 @@ public class MainViewMenuBarManager implements ActionListener {
 		});
 		menu.add(menuItem);
 
+		menuItem = new JMenuItem("One more life");
+		menuItem.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CheatCodeManager.getInstance().oneMoreLife();
+			}
+		});
+		menu.add(menuItem);
+
 		return menu;
 	}
 

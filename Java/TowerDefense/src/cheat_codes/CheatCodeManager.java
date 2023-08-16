@@ -1,5 +1,7 @@
 package cheat_codes;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -24,8 +26,21 @@ public class CheatCodeManager {
 		return instance;
 	}
 
-	public boolean try_and_apply_text_cheat_code(String text_cheat_code) {
-		LOGGER.info("text_cheat_code_entered:" + text_cheat_code);
+	public boolean try_and_apply_text_cheat_code(String textCheatCode) {
+		LOGGER.info("text_cheat_code_entered:" + textCheatCode);
+
+		try {
+
+			Method method = this.getClass().getDeclaredMethod(textCheatCode);
+			method.invoke(this);
+			return true;
+		} catch (SecurityException e) {
+
+		} catch (NoSuchMethodException e) {
+		} catch (IllegalArgumentException e) {
+		} catch (IllegalAccessException e) {
+		} catch (InvocationTargetException e) {
+		}
 		return false;
 	}
 
@@ -41,6 +56,13 @@ public class CheatCodeManager {
 		if (GameManager.hasGameInProgress()) {
 			Game game = GameManager.getInstance().getGame();
 			game.getPlayer().addGold(100);
+		}
+	}
+
+	public void oneMoreLife() {
+		if (GameManager.hasGameInProgress()) {
+			Game game = GameManager.getInstance().getGame();
+			game.getPlayer().addOneLife();
 		}
 	}
 

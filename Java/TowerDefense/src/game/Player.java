@@ -59,6 +59,10 @@ public class Player {
 		setGold(gold + addedMoney);
 	}
 
+	public void addOneLife() {
+		setRemainingNumberOfLives(remainingNumberOfLives + 1);
+	}
+
 	public void loseOneLife() {
 		setRemainingNumberOfLives(remainingNumberOfLives - 1);
 	}
