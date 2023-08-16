@@ -37,6 +37,9 @@ constantRegexPatternAsString = "^[A-Z][_a-zA-Z0-9]*$"
 wordRegexPatternAsString = "^[a-zA-Z][_a-zA-Z0-9]*$"
 wordRegexCompiledPattern = re.compile(wordRegexPatternAsString)
 
+wordContainingUnderscoreToTranformRegexPatternAsString = "^[a-zA-Z]*[_([a-zA-Z0-9])]*$"
+wordContainingUnderscoreToTranformRegexCompiledPattern = re.compile(wordContainingUnderscoreToTranformRegexPatternAsString)
+
 
 allowedRegexPatternAsStringsList=[camelCaseRegexPatternAsString,classRegexPatternAsString,constantRegexPatternAsString]
 allowedRegexCompiledPatternsList = [re.compile(i) for i in allowedRegexPatternAsStringsList]
@@ -148,6 +151,9 @@ def getAllTextWordsInFile(fileReadContent):
     
     return allTexts
 
+def getAllUndescoreContainingTextWordsInFile(fileReadContent):
+
+
 
 def getAllTextWordsInFileOldWay(fileReadContent):
     allWords = set()
@@ -172,7 +178,8 @@ def getAllTextWordsInFileOldWay(fileReadContent):
     #fileReadContent = fileReadContent.replace(")"," ")
     #fileReadContent = fileReadContent.replace(";"," ")
     #fileReadContent = fileReadContent.replace("->"," ")
-    #fileReadContent = fileReadContent.replace("}"," ")
+  
+    parentFolderContainingCode = "C:\\Temp\\TowerDefense"  #fileReadContent = fileReadContent.replace("}"," ")
     #fileReadContent = fileReadContent.replace("{"," ")
     #fileReadContent = fileReadContent.replace("*"," ")
 
