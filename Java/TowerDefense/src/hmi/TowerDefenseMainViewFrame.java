@@ -15,6 +15,7 @@ import belligerents.Attacker;
 import belligerents.Tower;
 import constants.HMIConstants;
 import game.Game;
+import game.Player;
 
 public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMainViewGeneric {
 
@@ -93,8 +94,7 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 		topPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH, HMIConstants.EXTERNAL_FRAME_WIDTH);
 		add(topPanel);
 
-		gameFieldPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH,
-				topPanel.getY() + topPanel.getHeight());
+		gameFieldPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH, topPanel.getY() + topPanel.getHeight());
 
 		sideCommandPanel.setLocation(gameFieldPanel.getX() + gameFieldPanel.getWidth(), gameFieldPanel.getY());
 
@@ -141,5 +141,10 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 
 	public HmiPresenter getHmiPresenter() {
 		return hmiPresenter;
+	}
+
+	@Override
+	public void registerToPlayer(Player player) {
+		player.addPlayerListener(topPanel);
 	}
 }

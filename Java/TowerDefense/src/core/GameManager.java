@@ -67,6 +67,7 @@ public class GameManager {
 		gameBoard.generatePredefinedConstructionLocations(gameObjectsDataModel.getSimpleTowerDataModel());
 		desktopTowerDefenseMainView.registerToGame(game);
 		attackerMovementOrchestor = new AttackerMovementOrchestor(game);
+		desktopTowerDefenseMainView.registerToPlayer(game.getPlayer());
 		computeNeighboursOfEachGameBoardPoint();
 	}
 

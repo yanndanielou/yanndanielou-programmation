@@ -16,12 +16,15 @@ public class Player {
 	private int remainingNumberOfLives;
 	private int gold;
 
-	private ArrayList<GoldListener> goldlisteners = new ArrayList<>();
+	private ArrayList<PlayerListener> playerlisteners = new ArrayList<>();
 
 	public Player(Game game) {
 		this.game = game;
 		gold = 0;
+	}
 
+	public void addPlayerListener(PlayerListener playerListener) {
+		playerlisteners.add(playerListener);
 	}
 
 	public int getRemainingNumberOfLives() {
@@ -29,7 +32,11 @@ public class Player {
 	}
 
 	public void setRemainingNumberOfLives(int remainingNumberOfLives) {
-		this.remainingNumberOfLives = remainingNumberOfLives;
+		if (this.remainingNumberOfLives != remainingNumberOfLives) {
+			this.remainingNumberOfLives = remainingNumberOfLives;
+			playerlisteners
+					.forEach((playerlistener) -> playerlistener.onRemaningLivesChange(this, remainingNumberOfLives));
+		}
 	}
 
 	public boolean canAffordToConstruct(TowerDataModel towerDataModelToCreate) {
@@ -41,12 +48,19 @@ public class Player {
 		return gold;
 	}
 
+	public void setGold(int gold) {
+		if (this.gold != gold) {
+			this.gold = gold;
+			playerlisteners.forEach((playerlistener) -> playerlistener.onGoldChange(this, gold));
+		}
+	}
+
 	public void addGold(int addedMoney) {
-		gold += addedMoney;
+		setGold(gold + addedMoney);
 	}
 
 	public void loseOneLife() {
-		remainingNumberOfLives--;
+		setRemainingNumberOfLives(remainingNumberOfLives - 1);
 	}
 
 }
