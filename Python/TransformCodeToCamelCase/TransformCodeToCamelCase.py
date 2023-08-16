@@ -139,7 +139,11 @@ def replacetext(search_text,replace_text):
 def getAllTextWordsInFile(fileReadContent):
     allTexts = set()
     
+    currentWord = ""
     for letter in fileReadContent:
+        if letter.isLetter():
+            a =2
+
         logging.info("Letter:" + letter)
     
     return allTexts
@@ -149,40 +153,61 @@ def getAllTextWordsInFileOldWay(fileReadContent):
     allWords = set()
     
 
-    fileReadContent = fileReadContent.replace("<"," ")
-    fileReadContent = fileReadContent.replace("="," ")
-    fileReadContent = fileReadContent.replace(">"," ")
-    fileReadContent = fileReadContent.replace("&"," ")
+    #fileReadContent = fileReadContent.replace("<"," ")
+    #fileReadContent = fileReadContent.replace("="," ")
+    #fileReadContent = fileReadContent.replace(">"," ")
+    #fileReadContent = fileReadContent.replace("&"," ")
 
     
     
-    fileReadContent = fileReadContent.replace("+"," ")
-    fileReadContent = fileReadContent.replace("-"," ")
+    #fileReadContent = fileReadContent.replace("+"," ")
+    #fileReadContent = fileReadContent.replace("-"," ")
     
 
-    fileReadContent = fileReadContent.replace(","," ")
-    fileReadContent = fileReadContent.replace("."," ")
-    fileReadContent = fileReadContent.replace(":"," ")
-    fileReadContent = fileReadContent.replace(end_line_character_in_text_file," ")
-    fileReadContent = fileReadContent.replace("("," ")
-    fileReadContent = fileReadContent.replace(")"," ")
-    fileReadContent = fileReadContent.replace(";"," ")
-    fileReadContent = fileReadContent.replace("->"," ")
-    fileReadContent = fileReadContent.replace("}"," ")
-    fileReadContent = fileReadContent.replace("{"," ")
+    #fileReadContent = fileReadContent.replace(","," ")
+    #fileReadContent = fileReadContent.replace("."," ")
+    #fileReadContent = fileReadContent.replace(":"," ")
+    #fileReadContent = fileReadContent.replace(end_line_character_in_text_file," ")
+    #fileReadContent = fileReadContent.replace("("," ")
+    #fileReadContent = fileReadContent.replace(")"," ")
+    #fileReadContent = fileReadContent.replace(";"," ")
+    #fileReadContent = fileReadContent.replace("->"," ")
+    #fileReadContent = fileReadContent.replace("}"," ")
+    #fileReadContent = fileReadContent.replace("{"," ")
+    #fileReadContent = fileReadContent.replace("*"," ")
 
     fileReadContent = fileReadContent.replace(end_line_character_in_text_file," ")
 
     for fileReadContentSplit in fileReadContent.split():
-        if wordRegexCompiledPattern.match("fileReadContentSplit"):
+        if wordRegexCompiledPattern.match(fileReadContentSplit):
             allWords.add(fileReadContentSplit)
         else:
             logging.info("Ignored because not a word:" +fileReadContentSplit)
     
     return allWords
 
+
+def getUnderscoreContainingCodeWordTransformedIntoCamelCase(initialWordWithUnderscore):
+    codeWordTransformedIntoCamelCase = ""
+    nextLetterMustBeCapitalLetter = False
+
+    for letter in initialWordWithUnderscore:
+        if letter =="_":
+            nextLetterMustBeCapitalLetter = True
+        elif nextLetterMustBeCapitalLetter:
+            codeWordTransformedIntoCamelCase += letter.upper()
+            nextLetterMustBeCapitalLetter = False
+        else:
+            codeWordTransformedIntoCamelCase += letter
+
+
+    printAndLogInfo(initialWordWithUnderscore  + " transformed to camel case is:" + codeWordTransformedIntoCamelCase)
+    return codeWordTransformedIntoCamelCase
+
+
 def getAllNonCamelCaseTextInFileAsUniqueList(fileReadContent):
-    allWordsInFile =  getAllTextWordsInFile(fileReadContent)
+    allNonCamelCaseTextInFileAsSet = set()
+    allWordsInFile =  getAllTextWordsInFileOldWay(fileReadContent)
     for word in allWordsInFile:
         wordIsAllowed = False
         for allowedRegexCompiledPattern in allowedRegexCompiledPatternsList:
@@ -190,20 +215,37 @@ def getAllNonCamelCaseTextInFileAsUniqueList(fileReadContent):
                 wordIsAllowed = True
                 break
         if not wordIsAllowed:
-           printAndLogInfo(word + " is not camel case") 
+           printAndLogInfo(word + " is not camel case")
+           allNonCamelCaseTextInFileAsSet.add(word)
 
-    return 1
+    return allNonCamelCaseTextInFileAsSet
     
 
 
 def replaceAllTextByCamelCaseInFile(fileFullPath, path, fileNameWithoutExtension,fileExtension ):
+    fileReadContent = None
+    
     # Opening the file in read and write mode
     with open(fileFullPath,'r+') as f:
         # Reading the file data and store
         # it in a file variable
         fileReadContent = f.read()
 
-        getAllNonCamelCaseTextInFileAsUniqueList(fileReadContent)
+        allNonCamelCaseTextInFileAsSet = getAllNonCamelCaseTextInFileAsUniqueList(fileReadContent)
+        for nonCamelCaseTextInFile in allNonCamelCaseTextInFileAsSet:
+            codeWordTransformedIntoCamelCase = getUnderscoreContainingCodeWordTransformedIntoCamelCase(nonCamelCaseTextInFile)
+
+            fileReadContent.replace(nonCamelCaseTextInFile,codeWordTransformedIntoCamelCase)
+
+        
+    # Opening our text file in write only
+    # mode to write the replaced content
+    with open(fileFullPath, 'w') as file:
+    
+        # Writing the replaced data in our
+        # text file
+        file.write(fileReadContent)
+
 
      
 def TransformCodeToCamelCase(argv):
