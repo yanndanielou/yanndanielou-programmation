@@ -24,6 +24,23 @@ import re
 end_line_character_in_text_file = "\n"
 logger_level = logging.INFO
 
+camelCaseRegexPatternAsString="^[a-z][a-zA-Z0-9]*$"
+camelCaseRegexCompiledPattern = re.compile(camelCaseRegexPatternAsString)
+
+classRegexPatternAsString = "^[A-Z][a-zA-Z0-9]*$"
+
+
+javaAnnotationRegexPatternAsString = "^@[a-zA-Z0-9]*$"
+
+constantRegexPatternAsString = "^[A-Z][_a-zA-Z0-9]*$"
+
+wordRegexPatternAsString = "^[a-zA-Z][_a-zA-Z0-9]*$"
+wordRegexCompiledPattern = re.compile(wordRegexPatternAsString)
+
+
+allowedRegexPatternAsStringsList=[camelCaseRegexPatternAsString,classRegexPatternAsString,constantRegexPatternAsString]
+allowedRegexCompiledPatternsList = [re.compile(i) for i in allowedRegexPatternAsStringsList]
+
 
 def printAndLogCriticalAndKill(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
@@ -119,6 +136,76 @@ def replacetext(search_text,replace_text):
     # Return "Text replaced" string
     return "Text replaced"
 
+def getAllTextWordsInFile(fileReadContent):
+    allTexts = set()
+    
+    for letter in fileReadContent:
+        logging.info("Letter:" + letter)
+    
+    return allTexts
+
+
+def getAllTextWordsInFileOldWay(fileReadContent):
+    allWords = set()
+    
+
+    fileReadContent = fileReadContent.replace("<"," ")
+    fileReadContent = fileReadContent.replace("="," ")
+    fileReadContent = fileReadContent.replace(">"," ")
+    fileReadContent = fileReadContent.replace("&"," ")
+
+    
+    
+    fileReadContent = fileReadContent.replace("+"," ")
+    fileReadContent = fileReadContent.replace("-"," ")
+    
+
+    fileReadContent = fileReadContent.replace(","," ")
+    fileReadContent = fileReadContent.replace("."," ")
+    fileReadContent = fileReadContent.replace(":"," ")
+    fileReadContent = fileReadContent.replace(end_line_character_in_text_file," ")
+    fileReadContent = fileReadContent.replace("("," ")
+    fileReadContent = fileReadContent.replace(")"," ")
+    fileReadContent = fileReadContent.replace(";"," ")
+    fileReadContent = fileReadContent.replace("->"," ")
+    fileReadContent = fileReadContent.replace("}"," ")
+    fileReadContent = fileReadContent.replace("{"," ")
+
+    fileReadContent = fileReadContent.replace(end_line_character_in_text_file," ")
+
+    for fileReadContentSplit in fileReadContent.split():
+        if wordRegexCompiledPattern.match("fileReadContentSplit"):
+            allWords.add(fileReadContentSplit)
+        else:
+            logging.info("Ignored because not a word:" +fileReadContentSplit)
+    
+    return allWords
+
+def getAllNonCamelCaseTextInFileAsUniqueList(fileReadContent):
+    allWordsInFile =  getAllTextWordsInFile(fileReadContent)
+    for word in allWordsInFile:
+        wordIsAllowed = False
+        for allowedRegexCompiledPattern in allowedRegexCompiledPatternsList:
+            if allowedRegexCompiledPattern.match(word) is not None:
+                wordIsAllowed = True
+                break
+        if not wordIsAllowed:
+           printAndLogInfo(word + " is not camel case") 
+
+    return 1
+    
+
+
+def replaceAllTextByCamelCaseInFile(fileFullPath, path, fileNameWithoutExtension,fileExtension ):
+    # Opening the file in read and write mode
+    with open(fileFullPath,'r+') as f:
+        # Reading the file data and store
+        # it in a file variable
+        fileReadContent = f.read()
+
+        getAllNonCamelCaseTextInFileAsUniqueList(fileReadContent)
+
+     
 def TransformCodeToCamelCase(argv):
 
     list_arguments_names = ["parentFolderContainingCode","SMT2_Data_mE_file_name_with_path","numero_premiere_mission_elementaire_a_traiter=","numero_derniere_mission_elementaire_a_traiter=","port_smt3="]
@@ -150,8 +237,9 @@ def TransformCodeToCamelCase(argv):
             fileNameWithoutExtension = fileNameWithExtension.split(".")[0]
             fileExtension = fileNameWithExtension.split(".")[1]
             if fileExtension in codeExtensionConsideredList:
-                #print(os.path.join(path, fileNameWithExtension))
-                printAndLogInfo("Must treat file " +fileNameWithExtension)
+                fileFullPath = os.path.join(path, fileNameWithExtension)
+                printAndLogInfo("Must treat file " +fileFullPath)
+                replaceAllTextByCamelCaseInFile(fileFullPath, path, fileNameWithoutExtension,fileExtension)
 
             else:
                 logging.info("Ignored file " +fileNameWithExtension + " because its extension :" + fileExtension + " is not one of the selected ones:" +str(codeExtensionConsideredList) )
@@ -159,7 +247,7 @@ def TransformCodeToCamelCase(argv):
 
 
 def main(argv):
-    log_file_name = 'TransformCodeToCamelCase' + ".log"
+    log_file_name = 'TransformCodeToCamelCase_' +  str(random.randrange(100000)) + ".log"
     #log_file_name = 'TransformCodeToCamelCase' + "." +  str(random.randrange(10000)) + ".log"
     configureLogger(log_file_name)    
     printAndLogInfo('Start application. Log file name: ' + log_file_name)
