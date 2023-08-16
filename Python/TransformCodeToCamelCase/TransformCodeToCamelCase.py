@@ -223,19 +223,20 @@ def getAllNonCamelCaseTextInFileAsUniqueList(fileReadContent):
 
 
 def replaceAllTextByCamelCaseInFile(fileFullPath, path, fileNameWithoutExtension,fileExtension ):
-    fileReadContent = None
+    camelCaseFileContent = None
     
     # Opening the file in read and write mode
     with open(fileFullPath,'r+') as f:
         # Reading the file data and store
         # it in a file variable
         fileReadContent = f.read()
+        camelCaseFileContent =  fileReadContent
 
         allNonCamelCaseTextInFileAsSet = getAllNonCamelCaseTextInFileAsUniqueList(fileReadContent)
         for nonCamelCaseTextInFile in allNonCamelCaseTextInFileAsSet:
             codeWordTransformedIntoCamelCase = getUnderscoreContainingCodeWordTransformedIntoCamelCase(nonCamelCaseTextInFile)
 
-            fileReadContent.replace(nonCamelCaseTextInFile,codeWordTransformedIntoCamelCase)
+            camelCaseFileContent = camelCaseFileContent.replace(nonCamelCaseTextInFile,codeWordTransformedIntoCamelCase)
 
         
     # Opening our text file in write only
@@ -244,7 +245,7 @@ def replaceAllTextByCamelCaseInFile(fileFullPath, path, fileNameWithoutExtension
     
         # Writing the replaced data in our
         # text file
-        file.write(fileReadContent)
+        file.write(camelCaseFileContent)
 
 
      
