@@ -37,10 +37,10 @@ public class ConstructionLocationPanelMouseOverListenerForConstruction extends M
 	@Override
 	public void mouseEntered(MouseEvent e) {
 
-		if (constructionLocationPanel.getHmiPresenter().getSelectedForConstructionTower() == null) {
+		if (getHmiPresenter().getSelectedForConstructionTower() == null) {
 			return;
 		}
-		
+
 		updateConstructionAllowed();
 
 		if (constructionAllowed) {
@@ -56,18 +56,21 @@ public class ConstructionLocationPanelMouseOverListenerForConstruction extends M
 
 	private void updateConstructionAllowed() {
 		boolean canAffordConstruction = constructionLocationPanel.getGameBoardPanel().getGameBoard().getGame()
-				.getPlayer()
-				.canAffordToConstruct(constructionLocationPanel.getHmiPresenter().getSelectedForConstructionTower());
+				.getPlayer().canAffordToConstruct(getHmiPresenter().getSelectedForConstructionTower());
 
 		constructionAllowed = canAffordConstruction
 				&& constructionLocationPanel.getGameBoardPredefinedConstructionLocation().isNewConstructionAllowed();
+	}
+
+	private HmiPresenter getHmiPresenter() {
+		return constructionLocationPanel.getHmiPresenter();
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
 		if (constructionAllowed) {
-
+			getHmiPresenter().createSelectedTower(constructionLocationPanel.getGameBoardPredefinedConstructionLocation());
 		} else {
 			LOGGER.info("Ignored click, construction is forbidden");
 		}

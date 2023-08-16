@@ -1,5 +1,7 @@
 package core;
 
+import java.util.ArrayList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,8 +25,8 @@ public class AttackerMovementOrchestor implements TimeManagerListener {
 	}
 
 	private void moveAttackers() {
-		for (Attacker attacker : game.getAttackers()) {
-			if (attacker.is_allowed_to_move()) {
+		for (Attacker attacker : new ArrayList<>(game.getAttackers())) {
+			if (attacker.isAllowedToMove()) {
 				NeighbourGameBoardPointDirection nextMovementDirection = MovingObjectPathFinder.getInstance()
 						.getNextMovementDirection(attacker);
 				LOGGER.info(attacker + " will move " + nextMovementDirection);

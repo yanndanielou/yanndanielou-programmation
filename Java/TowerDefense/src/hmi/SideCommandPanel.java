@@ -16,7 +16,6 @@ import belligerents.Attacker;
 import belligerents.Tower;
 import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
-import builders.TowerDataModel;
 import game.Game;
 import game.GameStatusListener;
 import game_board.GameBoard;
@@ -74,7 +73,6 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				gameBoard.getGame().start();
-				startGameButtonAsLabel.setVisible(false);
 			}
 		});
 
@@ -165,11 +163,16 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 
 	@Override
 	public void onGameStarted(Game game) {
-		// TODO Auto-generated method stub
-
+		startGameButtonAsLabel.setVisible(false);
 	}
 
 	public HmiPresenter getHmiPresenter() {
 		return towerDefenseMainViewFrame.getHmiPresenter();
+	}
+
+	@Override
+	public void onAttackerEscape(Attacker attacker) {
+		// TODO Auto-generated method stub
+
 	}
 }

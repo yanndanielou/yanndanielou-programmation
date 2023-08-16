@@ -117,14 +117,15 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 	@Override
 	public void registerToGame(Game game) {
 		new_game(game);
-		game.add_game_status_listener(topPanel);
-		game.add_game_status_listener(gameFieldPanel);
+		game.addGameStatusListener(topPanel);
+		game.addGameStatusListener(gameFieldPanel);
+		game.addGameStatusListener(sideCommandPanel);
 
 	}
 
 	@Override
 	public void register_to_tower(Tower tower) {
-		tower.add_listener(gameFieldPanel);
+		tower.addListener(gameFieldPanel);
 	}
 
 	@Override

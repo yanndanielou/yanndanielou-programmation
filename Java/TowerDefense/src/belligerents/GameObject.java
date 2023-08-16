@@ -152,31 +152,7 @@ public abstract class GameObject {
 		boolean has_moved = false;
 		surrounding_rectangle_absolute_on_complete_board.translate(x_movement, y_movement);
 		notify_movement();
-		return has_moved;
-	}
 
-	public boolean proceed_vertical_movement() {
-		boolean has_moved = false;
-
-		if (getY_speed() < 0) {
-
-			surrounding_rectangle_absolute_on_complete_board.translate(0, getY_speed());
-			has_moved = true;
-
-		} else if (getY_speed() > 0) {
-
-			GameBoard gameboard = getGame().getGameBoard();
-			surrounding_rectangle_absolute_on_complete_board.translate(0, getY_speed());
-
-			// FIXME: this checks only if one of the two extremities reach the rock: but
-			// rocks can also be reached at middle of object
-			int lowest_point_y = get_lowest_point_y();
-			if (lowest_point_y >= gameboard.getTotalHeight()) {
-				down_border_of_game_board_reached();
-			}
-
-			has_moved = true;
-		}
 		return has_moved;
 	}
 

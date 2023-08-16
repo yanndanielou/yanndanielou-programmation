@@ -128,7 +128,7 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 					"Cannot remove tower " + tower + " to point:" + this + " because was not present");
 
 		}
-		tower.add_listener(this);
+		tower.addListener(this);
 	}
 
 	@Override
@@ -170,6 +170,12 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	public void addGameBoardPredefinedConstructionLocation(
 			GameBoardPredefinedConstructionLocation predefinedConstructionLocation) {
 		predefinedConstructionLocationsPresent.add(predefinedConstructionLocation);
+	}
+
+	@Override
+	public void onAttackerEscape(Attacker attacker) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

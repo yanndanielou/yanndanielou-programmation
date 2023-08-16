@@ -11,6 +11,7 @@ import belligerents.Tower;
 import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
 import builders.GameObjectsDataModel;
+import core.GameManager;
 import game_board.GameBoard;
 import time.TimeManager;
 
@@ -18,7 +19,7 @@ public class Game implements TowerListener, AttackerListener {
 	private static final Logger LOGGER = LogManager.getLogger(Game.class);
 
 	private ArrayList<GameListener> game_listeners = new ArrayList<>();
-	private ArrayList<GameStatusListener> game_status_listeners = new ArrayList<>();
+	private ArrayList<GameStatusListener> gameStatusListeners = new ArrayList<>();
 
 	private ArrayList<Tower> towers = new ArrayList<>();
 	private ArrayList<Attacker> attackers = new ArrayList<>();
@@ -34,13 +35,15 @@ public class Game implements TowerListener, AttackerListener {
 	private GameObjectsDataModel gameObjectsDataModel;
 
 	private Player player;
+	private GameManager gameManager;
 
-	public Game(GameBoard gameBoard, GameObjectsDataModel game_objects_data_model) {
+	public Game(GameManager gameManager, GameBoard gameBoard, GameObjectsDataModel game_objects_data_model) {
+		this.gameManager = gameManager;
 		this.gameBoard = gameBoard;
 		this.gameObjectsDataModel = game_objects_data_model;
 		gameBoard.setGame(this);
 		player = new Player(this);
-		add_game_status_listener(TimeManager.getInstance());
+		addGameStatusListener(TimeManager.getInstance());
 
 	}
 
@@ -49,27 +52,27 @@ public class Game implements TowerListener, AttackerListener {
 		game_listeners.add(listener);
 	}
 
-	public void add_game_status_listener(GameStatusListener listener) {
+	public void addGameStatusListener(GameStatusListener listener) {
 		listener.onListenToGameStatus(this);
-		game_status_listeners.add(listener);
+		gameStatusListeners.add(listener);
 	}
 
 	public void cancel() {
-		game_status_listeners.forEach((game_status_listener) -> game_status_listener.onGameCancelled(this));
+		gameStatusListeners.forEach((game_status_listener) -> game_status_listener.onGameCancelled(this));
 	}
 
 	public void setLost() {
 		LOGGER.info("Game is lost!");
 		lost = true;
 		over = true;
-		game_status_listeners.forEach((game_status_listener) -> game_status_listener.onGameLost(this));
+		gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameLost(this));
 	}
 
 	public void setWon() {
 		LOGGER.info("Game is won!");
 		won = true;
 		over = true;
-		game_status_listeners.forEach((game_status_listener) -> game_status_listener.onGameWon(this));
+		gameStatusListeners.forEach((game_status_listener) -> game_status_listener.onGameWon(this));
 	}
 
 	public boolean isLost() {
@@ -89,9 +92,12 @@ public class Game implements TowerListener, AttackerListener {
 	}
 
 	public void start() {
+		if (begun) {
+			throw new IllegalStateException("Game already started!");
+		}
 		this.begun = true;
 		LOGGER.info("Game has started. " + this);
-		game_status_listeners.forEach((game_status_listener) -> game_status_listener.onGameStarted(this));
+		gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameStarted(this));
 	}
 
 	public GameBoard getGameBoard() {
@@ -140,5 +146,18 @@ public class Game implements TowerListener, AttackerListener {
 
 	public Player getPlayer() {
 		return player;
+	}
+
+	public GameManager getGameManager() {
+		return gameManager;
+	}
+
+	@Override
+	public void onAttackerEscape(Attacker attacker) {
+		attackers.remove(attacker);
+		player.loseOneLife();
+		if (player.getRemainingNumberOfLives() <= 0) {
+			setLost();
+		}
 	}
 }

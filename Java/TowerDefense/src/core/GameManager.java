@@ -20,6 +20,7 @@ import game_board.GameBoard;
 import game_board.GameBoardAttackersEntryArea;
 import game_board.GameBoardAttackersExitArea;
 import game_board.GameBoardPoint;
+import game_board.GameBoardPredefinedConstructionLocation;
 import game_board.NeighbourGameBoardPointDirection;
 import geometry.IntegerRectangle;
 import hmi.TowerDefenseMainViewGeneric;
@@ -62,7 +63,7 @@ public class GameManager {
 		GameObjectsModelBuilder gameObjectsModelBuilder = new GameObjectsModelBuilder(
 				Constants.GAME_OBJECTS_JSON_DATA_MODEL_FILE_PATH);
 		GameObjectsDataModel gameObjectsDataModel = gameObjectsModelBuilder.getGame_objects_data_model();
-		game = new Game(gameBoard, gameObjectsDataModel);
+		game = new Game(this, gameBoard, gameObjectsDataModel);
 		gameBoard.generatePredefinedConstructionLocations(gameObjectsDataModel.getSimpleTowerDataModel());
 		desktopTowerDefenseMainView.registerToGame(game);
 		attackerMovementOrchestor = new AttackerMovementOrchestor(game);
@@ -99,6 +100,14 @@ public class GameManager {
 
 	public void setDesktopTowerDefenseMainView(TowerDefenseMainViewGeneric desktopTowerDefenseMainView) {
 		this.desktopTowerDefenseMainView = desktopTowerDefenseMainView;
+	}
+
+	public Tower createTower(TowerDataModel towerDataModel,
+			GameBoardPredefinedConstructionLocation predefinedConstructionLocation) {
+		IntegerRectangle rectangleDefinedArea = predefinedConstructionLocation.getRectangleDefinedArea();
+		Tower tower = new Tower(towerDataModel, null, game, 0, rectangleDefinedArea.getX(),
+				rectangleDefinedArea.getY());
+		return tower;
 	}
 
 	private Tower createTower(TowerDataModel towerDataModel, BombDataModel bombDataModel, int evolutionLevel, int x,

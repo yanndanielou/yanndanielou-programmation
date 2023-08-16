@@ -21,13 +21,13 @@ public class Tower extends Belligerent /* implements GameObjectListerner */ {
 
 	protected ArrayList<TowerListener> listeners = new ArrayList<>();
 
-	public Tower(TowerDataModel towerDataModel, BombDataModel weaponDataModel, Game game, int x, int y,
-			int evolutionLevel) {
+	public Tower(TowerDataModel towerDataModel, BombDataModel weaponDataModel, Game game, int evolutionLevel, int x,
+			int y) {
 		super(new IntegerRectangle(x, y, towerDataModel.getWidth(), towerDataModel.getHeight()), game, evolutionLevel);
 
 		GameManager.getInstance().getDesktopTowerDefenseMainView().register_to_tower(this);
-		add_listener(game.getGameBoard());
-		add_listener(game);
+		addListener(game.getGameBoard());
+		addListener(game);
 		// listeners.forEach((listener) -> listener.on_listen_to_tower(this));
 	}
 
@@ -67,7 +67,7 @@ public class Tower extends Belligerent /* implements GameObjectListerner */ {
 
 	}
 
-	public void add_listener(TowerListener tower_listener) {
+	public void addListener(TowerListener tower_listener) {
 		listeners.add(tower_listener);
 		tower_listener.on_listen_to_tower(this);
 	}

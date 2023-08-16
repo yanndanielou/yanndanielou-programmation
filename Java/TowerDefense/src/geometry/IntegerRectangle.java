@@ -249,6 +249,10 @@ public class IntegerRectangle {
 
 	}
 
+	public boolean contains(Point p) {
+		return awtRectangle.contains(p);
+	}
+
 	@Override
 	public String toString() {
 		return awtRectangle.toString();

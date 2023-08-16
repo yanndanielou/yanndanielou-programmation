@@ -60,6 +60,20 @@ public class MainViewMenuBarManager implements ActionListener {
 		// a group of check box menu items
 		menu.addSeparator();
 
+		menuItem = new JMenuItem("Start Game", KeyEvent.VK_S);
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (GameManager.hasGameInProgress()) {
+					GameManager.getInstance().getGame().start();
+				}
+			}
+		});
+		menu.add(menuItem);
+		
+		// a group of check box menu items
+		menu.addSeparator();
+
 		menuItem = new JMenuItem("Exit", KeyEvent.VK_P);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.ALT_DOWN_MASK));
 		// menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really
@@ -100,9 +114,9 @@ public class MainViewMenuBarManager implements ActionListener {
 					GameObjectsDataModel game_objects_data_model = game.getGameObjectsDataModel();
 					TowerDataModel simple_tower_data_model = game_objects_data_model.getSimpleTowerDataModel();
 
-					gameManager.createSimpleTower(
+					gameManager.createSimpleTower(1,
 							gameBoard.getTotalWidth() / 2 - simple_tower_data_model.getWidth() / 2,
-							gameBoard.getTotalHeight() / 2 - simple_tower_data_model.getHeight() / 2, 1);
+							gameBoard.getTotalHeight() / 2 - simple_tower_data_model.getHeight() / 2);
 				}
 			}
 		});

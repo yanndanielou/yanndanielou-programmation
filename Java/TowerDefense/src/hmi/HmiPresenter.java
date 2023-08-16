@@ -1,6 +1,7 @@
 package hmi;
 
 import builders.TowerDataModel;
+import game_board.GameBoardPredefinedConstructionLocation;
 
 public class HmiPresenter {
 
@@ -10,8 +11,8 @@ public class HmiPresenter {
 
 	private TowerDataModel selectedForConstructionTower = null;
 
-	public HmiPresenter(TowerDefenseMainViewFrame towerDefenseMainViewFrame2, TopPanel topPanel,
-			GameBoardPanel gameFieldPanel, SideCommandPanel sideCommandPanel2) {
+	public HmiPresenter(TowerDefenseMainViewFrame towerDefenseMainViewFrame, TopPanel topPanel,
+			GameBoardPanel gameBoardPanel, SideCommandPanel sideCommandPanel) {
 		this.gameBoardPanel = gameBoardPanel;
 		this.sideCommandPanel = sideCommandPanel;
 		this.towerDefenseMainViewFrame = towerDefenseMainViewFrame;
@@ -25,5 +26,10 @@ public class HmiPresenter {
 
 	public TowerDataModel getSelectedForConstructionTower() {
 		return selectedForConstructionTower;
+	}
+
+	public void createSelectedTower(GameBoardPredefinedConstructionLocation gameBoardPredefinedConstructionLocation) {
+		gameBoardPanel.getGameBoard().getGame().getGameManager().createTower(selectedForConstructionTower,
+				gameBoardPredefinedConstructionLocation);
 	}
 }

@@ -51,7 +51,7 @@ public abstract class Belligerent extends GameObject {
 		return allowed_to_fire;
 	}
 
-	public boolean is_allowed_to_move() {
+	public boolean isAllowedToMove() {
 		boolean allowed_to_fire = !forbid_to_move_by_cheatcode && !is_being_destroyed();
 		return allowed_to_fire;
 	}

@@ -1,6 +1,7 @@
 package belligerents;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
@@ -26,6 +27,8 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	protected ArrayList<AttackerListener> listeners = new ArrayList<>();
 	protected Point escapeDestination;
 
+	protected boolean escapeDestinationReached = false;
+
 	protected Attacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escapeDestination,
 			int evolutionLevel) {
 
@@ -43,6 +46,26 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 		addListener(game.getGameBoard());
 
 		this.escapeDestination = escapeDestination;
+	}
+
+	@Override
+	public boolean move(int x_movement, int y_movement) {
+		boolean moved = super.move(x_movement, y_movement);
+		if (surrounding_rectangle_absolute_on_complete_board.contains(escapeDestination)) {
+			escaped();
+		}
+		return moved;
+	}
+
+	@Override
+	public boolean isAllowedToMove() {
+		return super.isAllowedToMove() && !escapeDestinationReached;
+	}
+
+	protected void escaped() {
+		LOGGER.info(this + " has just escaped!");
+		escapeDestinationReached = true;
+		listeners.forEach(listener -> listener.onAttackerEscape(this));
 	}
 
 	public void addListener(AttackerListener attackerListener) {

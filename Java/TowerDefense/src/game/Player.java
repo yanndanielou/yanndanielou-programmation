@@ -45,4 +45,8 @@ public class Player {
 		gold += addedMoney;
 	}
 
+	public void loseOneLife() {
+		remainingNumberOfLives--;
+	}
+
 }

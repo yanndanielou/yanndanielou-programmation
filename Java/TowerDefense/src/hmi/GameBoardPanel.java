@@ -172,4 +172,12 @@ public class GameBoardPanel extends JLayeredPane
 	public GameBoard getGameBoard() {
 		return gameBoard;
 	}
+
+	@Override
+	public void onAttackerEscape(Attacker attacker) {
+		JLabel attackerRepresentationLabel = gameObjectToLabelMap.get(attacker);
+		attackerRepresentationLabel.setVisible(false);
+		remove(attackerRepresentationLabel);
+		gameObjectToLabelMap.remove(attacker);
+	}
 }

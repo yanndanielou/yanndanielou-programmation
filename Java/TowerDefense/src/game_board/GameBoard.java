@@ -204,7 +204,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 	private void placeTower(Tower tower) {
 		for (IntegerPoint pointIt : tower.getAllPoints()) {
 			GameBoardPoint gameBoardPoint = getGameBoardPoint(pointIt);
-			tower.add_listener(gameBoardPoint);
+			tower.addListener(gameBoardPoint);
 		}
 
 	}
@@ -332,5 +332,11 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public ArrayList<GameBoardPredefinedConstructionLocation> getPredefinedConstructionLocations() {
 		return predefinedConstructionLocations;
+	}
+
+	@Override
+	public void onAttackerEscape(Attacker attacker) {
+		// TODO Auto-generated method stub
+		
 	}
 }
