@@ -58,7 +58,7 @@ public class Game implements TowerListener, AttackerListener {
 	}
 
 	public void cancel() {
-		gameStatusListeners.forEach((game_status_listener) -> game_status_listener.onGameCancelled(this));
+		gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameCancelled(this));
 	}
 
 	public void setLost() {
@@ -72,7 +72,7 @@ public class Game implements TowerListener, AttackerListener {
 		LOGGER.info("Game is won!");
 		won = true;
 		over = true;
-		gameStatusListeners.forEach((game_status_listener) -> game_status_listener.onGameWon(this));
+		gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameWon(this));
 	}
 
 	public boolean isLost() {
