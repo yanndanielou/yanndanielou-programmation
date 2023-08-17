@@ -1,4 +1,4 @@
-package cheat_codes;
+package cheatcodes;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

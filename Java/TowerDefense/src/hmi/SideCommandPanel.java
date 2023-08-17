@@ -18,7 +18,7 @@ import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
 import game.Game;
 import game.GameStatusListener;
-import game_board.GameBoard;
+import gameboard.GameBoard;
 
 public class SideCommandPanel extends JLayeredPane implements GameStatusListener, TowerListener, AttackerListener {
 

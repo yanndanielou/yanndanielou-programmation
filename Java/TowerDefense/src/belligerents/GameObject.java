@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 import belligerents.weapon.SimpleTowerBomb;
 import belligerents.weapon.Weapon;
 import game.Game;
-import game_board.GameBoard;
+import gameboard.GameBoard;
 import geometry.IntegerPoint;
 import geometry.IntegerRectangle;
 

@@ -1,4 +1,4 @@
-package game_board;
+package gameboard;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

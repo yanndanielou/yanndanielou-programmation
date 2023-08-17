@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import constants.HMIConstants;
-import game_board.GameBoardAttackersEntryArea;
+import gameboard.GameBoardAttackersEntryArea;
 
 public class ConstructionLocationPanelMouseOverListenerForConstruction extends MouseAdapter {
 	@SuppressWarnings("unused")

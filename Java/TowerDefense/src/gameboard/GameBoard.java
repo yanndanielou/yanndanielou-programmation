@@ -1,4 +1,4 @@
-package game_board;
+package gameboard;
 
 import java.awt.Dimension;
 import java.awt.Point;
@@ -15,8 +15,8 @@ import belligerents.Tower;
 import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
 import builders.TowerDataModel;
-import builders.game_board.GameBoardDataModel;
-import builders.game_board.GameBoardModelBuilder;
+import builders.gameboard.GameBoardDataModel;
+import builders.gameboard.GameBoardModelBuilder;
 import common.BadLogicException;
 import game.Game;
 import geometry.IntegerPoint;

@@ -1,7 +1,7 @@
 package hmi;
 
 import builders.TowerDataModel;
-import game_board.GameBoardPredefinedConstructionLocation;
+import gameboard.GameBoardPredefinedConstructionLocation;
 
 public class HmiPresenter {
 

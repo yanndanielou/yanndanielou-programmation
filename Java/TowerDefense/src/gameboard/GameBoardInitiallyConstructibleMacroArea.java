@@ -1,9 +1,9 @@
-package game_board;
+package gameboard;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import builders.game_board.GameBoardNamedAreaDataModel;
+import builders.gameboard.GameBoardNamedAreaDataModel;
 import geometry.IntegerRectangle;
 
 public class GameBoardInitiallyConstructibleMacroArea extends GameBoardArea {

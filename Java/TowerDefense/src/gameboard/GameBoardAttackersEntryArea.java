@@ -1,10 +1,10 @@
-package game_board;
+package gameboard;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import builders.game_board.GameBoardNamedAreaDataModel;
-import builders.game_board.RectangleDataModel;
+import builders.gameboard.GameBoardNamedAreaDataModel;
+import builders.gameboard.RectangleDataModel;
 import geometry.IntegerRectangle;
 
 public class GameBoardAttackersEntryArea extends GameBoardArea {

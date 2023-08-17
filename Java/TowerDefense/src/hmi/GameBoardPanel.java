@@ -19,8 +19,8 @@ import belligerents.listeners.TowerListener;
 import game.Game;
 import game.GameBoardPointListener;
 import game.GameStatusListener;
-import game_board.GameBoard;
-import game_board.GameBoardPredefinedConstructionLocation;
+import gameboard.GameBoard;
+import gameboard.GameBoardPredefinedConstructionLocation;
 
 public class GameBoardPanel extends JLayeredPane
 		implements GameStatusListener, GameBoardPointListener, TowerListener, AttackerListener {

@@ -46,7 +46,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import cheat_codes.CheatCodeManager;
+import cheatcodes.CheatCodeManager;
 
 /* 1.4 example used by DialogDemo.java. */
 class CheatCodeDialog extends JDialog implements ActionListener, PropertyChangeListener {

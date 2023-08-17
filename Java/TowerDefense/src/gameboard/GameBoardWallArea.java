@@ -1,11 +1,11 @@
-package game_board;
+package gameboard;
 
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import builders.game_board.RectangleDataModel;
+import builders.gameboard.RectangleDataModel;
 
 public class GameBoardWallArea extends GameBoardArea {
 

@@ -6,9 +6,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import belligerents.Attacker;
-import game_board.GameBoard;
-import game_board.GameBoardPoint;
-import game_board.NeighbourGameBoardPointDirection;
+import gameboard.GameBoard;
+import gameboard.GameBoardPoint;
+import gameboard.NeighbourGameBoardPointDirection;
 import geometry.IntegerPoint;
 
 public class MovingObjectPathFinder {

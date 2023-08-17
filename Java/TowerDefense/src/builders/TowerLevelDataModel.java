@@ -1,6 +1,6 @@
 package builders;
 
-import builders.game_board.FireSpeedType;
+import builders.gameboard.FireSpeedType;
 
 public class TowerLevelDataModel {
 

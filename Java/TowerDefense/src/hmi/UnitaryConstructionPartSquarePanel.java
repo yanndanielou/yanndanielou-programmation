@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import game_board.GameBoardPredefinedConstructionLocation;
+import gameboard.GameBoardPredefinedConstructionLocation;
 
 @Deprecated
 public class UnitaryConstructionPartSquarePanel extends JPanel {

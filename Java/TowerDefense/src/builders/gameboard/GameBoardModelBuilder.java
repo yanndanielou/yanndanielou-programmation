@@ -1,4 +1,4 @@
-package builders.game_board;
+package builders.gameboard;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -16,13 +16,13 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.gson.Gson;
 
-import game_board.GameBoard;
-import game_board.GameBoardAttackersEntryArea;
-import game_board.GameBoardAttackersExitArea;
-import game_board.GameBoardInitiallyConstructibleMacroArea;
-import game_board.GameBoardNonPlayableArea;
-import game_board.GameBoardPoint;
-import game_board.GameBoardWallArea;
+import gameboard.GameBoard;
+import gameboard.GameBoardAttackersEntryArea;
+import gameboard.GameBoardAttackersExitArea;
+import gameboard.GameBoardInitiallyConstructibleMacroArea;
+import gameboard.GameBoardNonPlayableArea;
+import gameboard.GameBoardPoint;
+import gameboard.GameBoardWallArea;
 import geometry.IntegerPoint;
 import geometry.IntegerRectangle;
 

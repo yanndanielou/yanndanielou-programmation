@@ -1,4 +1,4 @@
-package builders.game_board;
+package builders.gameboard;
 
 public abstract class GameBoardNamedAreaDataModel {
 

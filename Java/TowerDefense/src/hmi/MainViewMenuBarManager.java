@@ -15,12 +15,12 @@ import org.apache.logging.log4j.Logger;
 
 import builders.GameObjectsDataModel;
 import builders.TowerDataModel;
-import cheat_codes.CheatCodeManager;
+import cheatcodes.CheatCodeManager;
 import core.GameManager;
 import game.Game;
-import game_board.GameBoard;
-import game_board.GameBoardAttackersEntryArea;
-import game_board.GameBoardAttackersExitArea;
+import gameboard.GameBoard;
+import gameboard.GameBoardAttackersEntryArea;
+import gameboard.GameBoardAttackersExitArea;
 
 public class MainViewMenuBarManager implements ActionListener {
 	private static final Logger LOGGER = LogManager.getLogger(MainViewMenuBarManager.class);

@@ -12,7 +12,7 @@ import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
 import builders.GameObjectsDataModel;
 import core.GameManager;
-import game_board.GameBoard;
+import gameboard.GameBoard;
 import time.TimeManager;
 
 public class Game implements TowerListener, AttackerListener {

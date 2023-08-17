@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 import belligerents.Attacker;
 import common.BadLogicException;
 import game.Game;
-import game_board.NeighbourGameBoardPointDirection;
+import gameboard.NeighbourGameBoardPointDirection;
 import time.TimeManager;
 import time.TimeManagerListener;
 
