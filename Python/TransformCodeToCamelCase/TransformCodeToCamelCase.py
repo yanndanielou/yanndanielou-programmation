@@ -264,9 +264,14 @@ def replaceAllTextByCamelCaseInFile(fileFullPath, path, fileNameWithoutExtension
         allUndescoreContainingTextWordsInFileAsSet = getAllUndescoreContainingTextWordsInFile(camelCaseFileContent)
 
         for undescoreContainingTextWord in allUndescoreContainingTextWordsInFileAsSet:
-            codeWordTransformedIntoCamelCase = getUnderscoreContainingCodeWordTransformedIntoCamelCase(undescoreContainingTextWord)
+            allowed = False
+            for allowedRegexCompiledPattern in allowedRegexCompiledPatternsList:
+                if allowedRegexCompiledPattern.match(undescoreContainingTextWord):
+                    allowed=True
 
-            camelCaseFileContent = camelCaseFileContent.replace(undescoreContainingTextWord,codeWordTransformedIntoCamelCase)
+            if not allowed:
+                codeWordTransformedIntoCamelCase = getUnderscoreContainingCodeWordTransformedIntoCamelCase(undescoreContainingTextWord)
+                camelCaseFileContent = camelCaseFileContent.replace(undescoreContainingTextWord,codeWordTransformedIntoCamelCase)
 
         
     # Opening our text file in write only
