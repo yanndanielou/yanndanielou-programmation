@@ -1,5 +1,6 @@
 ﻿# -*-coding:Utf-8 -*
 
+
 #For logs
 import random
 import logging
@@ -15,6 +16,8 @@ import datetime
 import time
 
 #For args
+import argparse
+
 import getopt
 
 #Regex
@@ -38,7 +41,9 @@ wordRegexPatternAsString = "^[a-zA-Z][_a-zA-Z0-9]*$"
 wordRegexCompiledPattern = re.compile(wordRegexPatternAsString)
 
 wordContainingUnderscoreToTranformRegexPatternAsString = "^[a-zA-Z]*[_([a-zA-Z0-9])]*$"
-wordContainingUnderscoreToTranformRegexCompiledPattern = re.compile(wordContainingUnderscoreToTranformRegexPatternAsString)
+wordContainingUnderscoreToTranformRegexPatternAsString = "^[a-zA-Z]*[_([a-zA-Z0-9])]*$"
+
+#wordContainingUnderscoreToTranformRegexCompiledPattern = re.compile(wordContainingUnderscoreToTranformRegexPatternAsString)
 
 
 allowedRegexPatternAsStringsList=[camelCaseRegexPatternAsString,classRegexPatternAsString,constantRegexPatternAsString]
@@ -153,7 +158,24 @@ def getAllTextWordsInFile(fileReadContent):
 
 def getAllUndescoreContainingTextWordsInFile(fileReadContent):
 
+    allUndescoreContainingTextWordsAsSet = set()
 
+    fileReadContent = fileReadContent.replace(end_line_character_in_text_file," ")
+    fileReadContent = fileReadContent.replace("."," ")
+    fileReadContent = fileReadContent.replace("  "," ")
+    fileReadContent = fileReadContent.replace("\t"," ")
+    
+    fileReadContent = fileReadContent.replace("("," ")
+    fileReadContent = fileReadContent.replace(")"," ")
+    fileReadContent = fileReadContent.replace(";"," ")
+
+    allCodeSyntaxElementsAsList = fileReadContent.split(" ")
+    allCodeSyntaxElementsAsSet = set(allCodeSyntaxElementsAsList)
+    for codeSyntaxElement in allCodeSyntaxElementsAsSet:
+        if "_" in codeSyntaxElement:
+            allUndescoreContainingTextWordsAsSet.add(codeSyntaxElement)
+
+    return allUndescoreContainingTextWordsAsSet
 
 def getAllTextWordsInFileOldWay(fileReadContent):
     allWords = set()
@@ -239,11 +261,12 @@ def replaceAllTextByCamelCaseInFile(fileFullPath, path, fileNameWithoutExtension
         fileReadContent = f.read()
         camelCaseFileContent =  fileReadContent
 
-        allNonCamelCaseTextInFileAsSet = getAllNonCamelCaseTextInFileAsUniqueList(fileReadContent)
-        for nonCamelCaseTextInFile in allNonCamelCaseTextInFileAsSet:
-            codeWordTransformedIntoCamelCase = getUnderscoreContainingCodeWordTransformedIntoCamelCase(nonCamelCaseTextInFile)
+        allUndescoreContainingTextWordsInFileAsSet = getAllUndescoreContainingTextWordsInFile(camelCaseFileContent)
 
-            camelCaseFileContent = camelCaseFileContent.replace(nonCamelCaseTextInFile,codeWordTransformedIntoCamelCase)
+        for undescoreContainingTextWord in allUndescoreContainingTextWordsInFileAsSet:
+            codeWordTransformedIntoCamelCase = getUnderscoreContainingCodeWordTransformedIntoCamelCase(undescoreContainingTextWord)
+
+            camelCaseFileContent = camelCaseFileContent.replace(undescoreContainingTextWord,codeWordTransformedIntoCamelCase)
 
         
     # Opening our text file in write only
@@ -257,28 +280,22 @@ def replaceAllTextByCamelCaseInFile(fileFullPath, path, fileNameWithoutExtension
 
      
 def TransformCodeToCamelCase(argv):
-
-    list_arguments_names = ["parentFolderContainingCode","SMT2_Data_mE_file_name_with_path","numero_premiere_mission_elementaire_a_traiter=","numero_derniere_mission_elementaire_a_traiter=","port_smt3="]
+  
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-p', '--parentFolderContainingCode')
+    parser.add_argument('-c', '--codeExtensionConsideredSplitByComa')
+    args_parsed = parser.parse_args(argv)
     
-    parentFolderContainingCode = "C:\\Temp\\TowerDefense"
-    codeExtensionConsideredSplitByComa = "java,cpp,c"
-
-    try:
-        opts, args = getopt.getopt(argv,"hi:o:", list_arguments_names)
-    except getopt.GetoptError as err:
-        errorMessage = "Unsupported arguments list." + str(err) + " Allowed arguments:" + str(list_arguments_names) + ". Application stopped"
-        printAndLogCriticalAndKill(errorMessage)
-    for opt, arg in opts:
-        if opt in ("-h", "--help"):
-            printAndLogInfo("Allowed arguments:" + str(list_arguments_names) + ". Application stopped")
-            sys.exit()
-        elif opt == "--parentFolderContainingCode":
-            parentFolderContainingCode = arg
-        elif opt == "--codeExtensionConsideredSplitByComa":
-            codeExtensionConsideredSplitByComa = arg
-        else:
-            printAndLogCriticalAndKill (" Option:" + opt + " unknown with value:" + opt + ". Allowed arguments:" + str(list_arguments_names) + ". Application stopped")
-
+    
+    parentFolderContainingCode = args_parsed.parentFolderContainingCode
+    if parentFolderContainingCode is None:
+        parentFolderContainingCode = "C:\\Temp\\TowerDefense"
+        printAndLogWarning("Argument parentFolderContainingCode is not defined. Use default value:" + parentFolderContainingCode)
+    
+    codeExtensionConsideredSplitByComa = args_parsed.codeExtensionConsideredSplitByComa
+    if codeExtensionConsideredSplitByComa is None:
+        codeExtensionConsideredSplitByComa = "java,cpp,c"
+        printAndLogWarning("Argument codeExtensionConsideredSplitByComa is not defined. Use default value:" + codeExtensionConsideredSplitByComa)
 
     codeExtensionConsideredList = codeExtensionConsideredSplitByComa.split(",")
 
@@ -298,8 +315,11 @@ def TransformCodeToCamelCase(argv):
 
 def main(argv):
     log_file_name = 'TransformCodeToCamelCase_' +  str(random.randrange(100000)) + ".log"
+
+
     #log_file_name = 'TransformCodeToCamelCase' + "." +  str(random.randrange(10000)) + ".log"
     configureLogger(log_file_name)    
+    
     printAndLogInfo('Start application. Log file name: ' + log_file_name)
     TransformCodeToCamelCase(argv)
     printAndLogInfo('End application')
