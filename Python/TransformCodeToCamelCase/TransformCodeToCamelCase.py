@@ -35,7 +35,7 @@ classRegexPatternAsString = "^[A-Z][a-zA-Z0-9]*$"
 
 javaAnnotationRegexPatternAsString = "^@[a-zA-Z0-9]*$"
 
-constantRegexPatternAsString = "^[A-Z][_a-zA-Z0-9]*$"
+constantRegexPatternAsString = "^[A-Z][_A-Z0-9]*$"
 
 wordRegexPatternAsString = "^[a-zA-Z][_a-zA-Z0-9]*$"
 wordRegexCompiledPattern = re.compile(wordRegexPatternAsString)
@@ -120,35 +120,6 @@ def configureLogger(log_file_name):
     # logging.critical
 
 
-# Creating a function to
-# replace the text
-def replacetext(search_text, replace_text):
-
-    # Opening the file in read and write mode
-    with open('SampleFile.txt', 'r+') as f:
-
-        # Reading the file data and store
-        # it in a file variable
-        file = f.read()
-
-        # Replacing the pattern with the string
-        # in the file data
-        file = re.sub(search_text, replace_text, file)
-
-        # Setting the position to the top
-        # of the page to insert data
-        f.seek(0)
-
-        # Writing replaced data in the file
-        f.write(file)
-
-        # Truncating the file size
-        f.truncate()
-
-    # Return "Text replaced" string
-    return "Text replaced"
-
-
 def getAllTextWordsInFile(fileReadContent):
     allTexts = set()
 
@@ -175,6 +146,8 @@ def getAllUndescoreContainingTextWordsInFile(fileReadContent):
     fileReadContent = fileReadContent.replace("(", " ")
     fileReadContent = fileReadContent.replace(")", " ")
     fileReadContent = fileReadContent.replace(";", " ")
+    
+    fileReadContent = fileReadContent.replace(",", " ")
 
     allCodeSyntaxElementsAsList = fileReadContent.split(" ")
     allCodeSyntaxElementsAsSet = set(allCodeSyntaxElementsAsList)
@@ -247,6 +220,7 @@ def getAllNonCamelCaseTextInFileAsUniqueList(fileReadContent):
         wordIsAllowed = False
         for allowedRegexCompiledPattern in allowedRegexCompiledPatternsList:
             if allowedRegexCompiledPattern.match(word) is not None:
+                printAndLogInfo("Not camel case :" + word + " is allowed")
                 wordIsAllowed = True
                 break
         if not wordIsAllowed:
@@ -272,13 +246,21 @@ def replaceAllTextByCamelCaseInFile(fileFullPath, path, fileNameWithoutExtension
         for undescoreContainingTextWord in allUndescoreContainingTextWordsInFileAsSet:
             allowed = False
             for allowedRegexCompiledPattern in allowedRegexCompiledPatternsList:
+                
+                if undescoreContainingTextWord == "EXTERNAL_FRAME_WIDTH":
+                    pause = 1
                 if allowedRegexCompiledPattern.match(undescoreContainingTextWord):
+                    logging.info(undescoreContainingTextWord +  " is allowed thanks to for regex: " + allowedRegexCompiledPattern.pattern)
+
                     allowed = True
+                else:
+                    logging.info(undescoreContainingTextWord +  " is not allowed for regex: " + allowedRegexCompiledPattern.pattern)
 
             if not allowed:
                 codeWordTransformedIntoCamelCase = getUnderscoreContainingCodeWordTransformedIntoCamelCase(
                     undescoreContainingTextWord)
-
+                camelCaseFileContent = camelCaseFileContent.replace(
+                    undescoreContainingTextWord, codeWordTransformedIntoCamelCase)
 
     if not noOperation:
         # Opening our text file in write only
@@ -289,7 +271,8 @@ def replaceAllTextByCamelCaseInFile(fileFullPath, path, fileNameWithoutExtension
             # text file
             file.write(camelCaseFileContent)
     else:
-        logging.info("Output file would be:" + camelCaseFileContent)
+        logging.debug("Output file would be:" + camelCaseFileContent)
+
 
 def TransformCodeToCamelCase(argv):
 
@@ -314,7 +297,7 @@ def TransformCodeToCamelCase(argv):
     noOperation = args_parsed.nop
     if noOperation is None:
         noOperation = False
-        printAndLogWarning(
+        printAndLogInfo(
             "Argument noOperation is not defined. Use default value:" + str(noOperation))
 
     codeExtensionConsideredList = codeExtensionConsideredSplitByComa.split(",")
