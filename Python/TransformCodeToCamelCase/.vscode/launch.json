@@ -8,7 +8,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-			"args": ["--parentFolderContainingCode","D:/GitHub/yanndanielou-programmation/Java/TowerDefense", "--codeExtensionConsideredSplitByComa","java,cpp,c,h"]
+			"args": ["--parentFolderContainingCode","D:/GitHub/yanndanielou-programmation/Java/TowerDefense", "--codeExtensionConsideredSplitByComa","java,cpp,c,h,json"]
 
         }
     ]
