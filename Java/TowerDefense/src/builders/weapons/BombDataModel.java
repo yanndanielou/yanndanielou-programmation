@@ -1,4 +1,4 @@
-package builders;
+package builders.weapons;
 
 import java.util.ArrayList;
 

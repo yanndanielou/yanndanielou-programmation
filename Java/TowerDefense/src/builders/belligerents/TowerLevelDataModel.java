@@ -1,4 +1,4 @@
-package builders;
+package builders.belligerents;
 
 import builders.gameboard.FireSpeedType;
 

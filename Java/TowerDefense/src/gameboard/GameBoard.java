@@ -14,7 +14,7 @@ import belligerents.Attacker;
 import belligerents.Tower;
 import belligerents.listeners.AttackerListener;
 import belligerents.listeners.TowerListener;
-import builders.TowerDataModel;
+import builders.belligerents.TowerDataModel;
 import builders.gameboard.GameBoardDataModel;
 import builders.gameboard.GameBoardModelBuilder;
 import common.BadLogicException;
@@ -39,9 +39,6 @@ public class GameBoard implements TowerListener, AttackerListener {
 	private ArrayList<GameBoardNonPlayableArea> nonPlayableAreas = new ArrayList<>();
 	private ArrayList<GameBoardInitiallyConstructibleMacroArea> initiallyConstructibleMacroAreas = new ArrayList<>();
 	private ArrayList<GameBoardPredefinedConstructionLocation> predefinedConstructionLocations = new ArrayList<>();
-
-	@Deprecated
-	private ArrayList<IntegerRectangle> unitaryConstructionPartSquares = new ArrayList<>();
 
 	private Game game;
 

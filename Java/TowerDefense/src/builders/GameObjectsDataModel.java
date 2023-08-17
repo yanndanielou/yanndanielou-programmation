@@ -1,5 +1,9 @@
 package builders;
 
+import builders.belligerents.AttackerDataModel;
+import builders.belligerents.TowerDataModel;
+import builders.weapons.BombDataModel;
+
 public class GameObjectsDataModel {
 
 	private AttackerDataModel normalAttackerDataModel;

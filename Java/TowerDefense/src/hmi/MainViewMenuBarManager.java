@@ -14,7 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import builders.GameObjectsDataModel;
-import builders.TowerDataModel;
+import builders.belligerents.TowerDataModel;
 import cheatcodes.CheatCodeManager;
 import core.GameManager;
 import game.Game;

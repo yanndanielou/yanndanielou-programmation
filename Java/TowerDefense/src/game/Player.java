@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import builders.TowerDataModel;
+import builders.belligerents.TowerDataModel;
 
 public class Player {
 

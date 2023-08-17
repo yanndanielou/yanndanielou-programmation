@@ -48,7 +48,7 @@ public class CheatCodeManager {
 		if (GameManager.hasGameInProgress()) {
 			Game game = GameManager.getInstance().getGame();
 			List<Attacker> allAttackers = game.getAttackers();
-			allAttackers.forEach((attacker) -> attacker.forbidToMove());
+			allAttackers.forEach(attacker -> attacker.forbidToMove());
 		}
 	}
 

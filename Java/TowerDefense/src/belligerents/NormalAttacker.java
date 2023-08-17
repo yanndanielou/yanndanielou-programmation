@@ -7,7 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import belligerents.weapon.Weapon;
-import builders.AttackerDataModel;
+import builders.belligerents.AttackerDataModel;
 import game.Game;
 
 public class NormalAttacker extends Attacker {

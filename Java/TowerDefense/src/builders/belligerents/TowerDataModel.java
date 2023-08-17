@@ -1,4 +1,4 @@
-package builders;
+package builders.belligerents;
 
 import java.awt.Dimension;
 import java.util.ArrayList;

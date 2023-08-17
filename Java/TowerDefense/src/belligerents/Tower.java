@@ -9,8 +9,8 @@ import org.apache.logging.log4j.Logger;
 
 import belligerents.listeners.TowerListener;
 import belligerents.weapon.Weapon;
-import builders.BombDataModel;
-import builders.TowerDataModel;
+import builders.belligerents.TowerDataModel;
+import builders.weapons.BombDataModel;
 import core.GameManager;
 import game.Game;
 import geometry.IntegerRectangle;

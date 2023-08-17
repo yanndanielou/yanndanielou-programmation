@@ -14,7 +14,6 @@ import org.apache.logging.log4j.Logger;
 import belligerents.weapon.SimpleTowerBomb;
 import belligerents.weapon.Weapon;
 import game.Game;
-import gameboard.GameBoard;
 import geometry.IntegerPoint;
 import geometry.IntegerRectangle;
 
@@ -29,7 +28,7 @@ public abstract class GameObject {
 	protected boolean beingDestroyed = false;
 
 	private BufferedImage simpleTowerNormalBufferedImage = null;
-	private final String simpleTowerNormalImagePath = "Images/Simple_tower_60x60.png";
+	private final static String simpleTowerNormalImagePath = "Images/Simple_tower_60x60.png";
 
 	private BufferedImage simpleTowerBombBufferedImage = null;
 	private final String simpleTowerBombImagePath = "Images/simple_tower_bomb.png";

@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import belligerents.Belligerent;
 import belligerents.listeners.GameObjectListerner;
-import builders.BombDataModel;
+import builders.weapons.BombDataModel;
 import game.Game;
 import geometry.IntegerRectangle;
 

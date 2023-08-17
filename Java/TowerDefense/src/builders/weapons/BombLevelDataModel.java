@@ -1,4 +1,4 @@
-package builders;
+package builders.weapons;
 
 public class BombLevelDataModel {
 

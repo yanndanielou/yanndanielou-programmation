@@ -1,7 +1,6 @@
 package belligerents;
 
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
@@ -9,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import belligerents.listeners.AttackerListener;
 import belligerents.weapon.Weapon;
-import builders.AttackerDataModel;
+import builders.belligerents.AttackerDataModel;
 import core.GameManager;
 import game.Game;
 import geometry.IntegerRectangle;

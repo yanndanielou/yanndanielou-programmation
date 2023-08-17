@@ -8,7 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import belligerents.weapon.Weapon;
-import builders.BombDataModel;
+import builders.weapons.BombDataModel;
 import game.Game;
 import geometry.IntegerRectangle;
 
