@@ -11,8 +11,8 @@ public interface TowerDefenseMainViewGeneric {
 
 	public void registerToPlayer(Player player);
 
-	public void register_to_tower(Tower tower);
+	public void registerToTower(Tower tower);
 
-	public void register_to_attacker(Attacker attacker);
+	public void registerToAttacker(Attacker attacker);
 
 }

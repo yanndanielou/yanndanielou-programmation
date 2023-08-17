@@ -12,12 +12,12 @@ public class HMIUtils {
 	private HMIUtils() {
 	}
 
-	public static ImageIcon getScalledIcon(String image_path, int width, int height) {
+	public static ImageIcon getScalledIcon(String imagePath, int width, int height) {
 
-		Image img = new ImageIcon(image_path).getImage();
-		Image scalled_image = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+		Image img = new ImageIcon(imagePath).getImage();
+		Image scalledImage = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 
-		ImageIcon imageIcon = new ImageIcon(scalled_image);
+		ImageIcon imageIcon = new ImageIcon(scalledImage);
 		return imageIcon;
 
 	}

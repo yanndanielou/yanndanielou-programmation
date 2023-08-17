@@ -226,9 +226,9 @@ public class IntegerRectangle {
 
 	public List<IntegerPoint> getAllPoints() {
 		ArrayList<IntegerPoint> allPoints = new ArrayList<>();
-		for (int x_point_it = getX(); x_point_it < getMaxX(); x_point_it++) {
-			for (int y_point_it = getY(); y_point_it < getMaxY(); y_point_it++) {
-				allPoints.add(new IntegerPoint(x_point_it, y_point_it));
+		for (int xPointIt = getX(); xPointIt < getMaxX(); xPointIt++) {
+			for (int yPointIt = getY(); yPointIt < getMaxY(); yPointIt++) {
+				allPoints.add(new IntegerPoint(xPointIt, yPointIt));
 			}
 		}
 

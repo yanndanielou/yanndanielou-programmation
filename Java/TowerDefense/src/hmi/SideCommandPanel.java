@@ -63,7 +63,7 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 		sideCommandPanelBackgroundAsLabel.setLocation(0, 0);
 		sideCommandPanelBackgroundAsLabel.setSize(getSize());
 
-		ImageIcon mainMenuButtonAsIcon = new ImageIcon("Images/Main_menu_button_in_side_command_panel.PNG");
+		ImageIcon mainMenuButtonAsIcon = new ImageIcon("Images/MainMenuButtonInSideCommandPanel.PNG");
 		mainMenuButtonAsLabel = new JLabel(mainMenuButtonAsIcon);
 		mainMenuButtonAsLabel.setSize(mainMenuButtonAsIcon.getIconWidth(), mainMenuButtonAsIcon.getIconHeight());
 		mainMenuButtonAsLabel.setLocation(220, 2);
@@ -109,7 +109,7 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 	}
 
 	@Override
-	public void on_attacker_moved(Attacker attacker) {
+	public void onAttackerMoved(Attacker attacker) {
 		// TODO Auto-generated method stub
 
 	}
@@ -121,13 +121,13 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 	}
 
 	@Override
-	public void on_listen_to_tower(Tower tower) {
+	public void onListenToTower(Tower tower) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void on_tower_removal(Tower tower) {
+	public void onTowerRemoval(Tower tower) {
 		// TODO Auto-generated method stub
 
 	}

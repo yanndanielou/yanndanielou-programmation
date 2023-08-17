@@ -145,8 +145,8 @@ class CheatCodeDialog extends JDialog implements ActionListener, PropertyChangeL
 			if (btnString1.equals(value)) {
 				typedText = textField.getText();
 
-				boolean cheat_code_is_valid = CheatCodeManager.getInstance().try_and_apply_text_cheat_code(typedText);
-				if (cheat_code_is_valid) {
+				boolean cheatCodeIsValid = CheatCodeManager.getInstance().tryAndApplyTextCheatCode(typedText);
+				if (cheatCodeIsValid) {
 					clearAndHide();
 				} else {
 					// text was invalid

@@ -26,8 +26,8 @@ public class CheatCodeManager {
 		return instance;
 	}
 
-	public boolean try_and_apply_text_cheat_code(String textCheatCode) {
-		LOGGER.info("text_cheat_code_entered:" + textCheatCode);
+	public boolean tryAndApplyTextCheatCode(String textCheatCode) {
+		LOGGER.info("textCheatCodeEntered:" + textCheatCode);
 
 		try {
 
@@ -44,11 +44,11 @@ public class CheatCodeManager {
 		return false;
 	}
 
-	public void forbid_enemies_to_move() {
+	public void forbidEnemiesToMove() {
 		if (GameManager.hasGameInProgress()) {
 			Game game = GameManager.getInstance().getGame();
-			List<Attacker> all_attackers = game.getAttackers();
-			all_attackers.forEach((attacker) -> attacker.forbid_to_move());
+			List<Attacker> allAttackers = game.getAttackers();
+			allAttackers.forEach((attacker) -> attacker.forbidToMove());
 		}
 	}
 

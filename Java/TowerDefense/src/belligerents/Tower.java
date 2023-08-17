@@ -25,50 +25,50 @@ public class Tower extends Belligerent /* implements GameObjectListerner */ {
 			int y) {
 		super(new IntegerRectangle(x, y, towerDataModel.getWidth(), towerDataModel.getHeight()), game, evolutionLevel);
 
-		GameManager.getInstance().getDesktopTowerDefenseMainView().register_to_tower(this);
+		GameManager.getInstance().getDesktopTowerDefenseMainView().registerToTower(this);
 		addListener(game.getGameBoard());
 		addListener(game);
-		// listeners.forEach((listener) -> listener.on_listen_to_tower(this));
+		// listeners.forEach((listener) -> listener.onListenToTower(this));
 	}
 
 	@Override
-	public void notify_movement() {
+	public void notifyMovement() {
 		throw new IllegalPathStateException("Towers can't move");
 	}
 
 	@Override
-	protected void right_border_of_game_board_reached() {
-		stop_movement();
+	protected void rightBorderOfGameBoardReached() {
+		stopMovement();
 	}
 
 	@Override
-	protected void left_border_of_game_board_reached() {
-		stop_movement();
+	protected void leftBorderOfGameBoardReached() {
+		stopMovement();
 	}
 
 	@Override
-	public void impact_now(Weapon weapon) {
+	public void impactNow(Weapon weapon) {
 	}
 
 	@Override
-	public void notify_end_of_destruction_and_clean() {
+	public void notifyEndOfDestructionAndClean() {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	protected BufferedImage get_graphical_representation_as_buffered_image() {
+	protected BufferedImage getGraphicalRepresentationAsBufferedImage() {
 		return getSimpleTowerNormalImage(this);
 	}
 
 	@Override
-	protected void down_border_of_game_board_reached() {
+	protected void downBorderOfGameBoardReached() {
 		// TODO Auto-generated method stub
 
 	}
 
-	public void addListener(TowerListener tower_listener) {
-		listeners.add(tower_listener);
-		tower_listener.on_listen_to_tower(this);
+	public void addListener(TowerListener towerListener) {
+		listeners.add(towerListener);
+		towerListener.onListenToTower(this);
 	}
 }

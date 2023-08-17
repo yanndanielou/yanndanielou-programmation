@@ -4,15 +4,15 @@ import builders.gameboard.FireSpeedType;
 
 public class TowerLevelDataModel {
 
-	private String level_number;
+	private String levelNumber;
 	private Integer cost;
 	private Integer damage;
 	private Integer range;
-	private FireSpeedType fire_speed;
-	private Integer sell_value;
+	private FireSpeedType fireSpeed;
+	private Integer sellValue;
 
-	public String getLevel_number() {
-		return level_number;
+	public String getLevelNumber() {
+		return levelNumber;
 	}
 
 	public Integer getCost() {
@@ -27,12 +27,12 @@ public class TowerLevelDataModel {
 		return range;
 	}
 
-	public FireSpeedType getFire_speed() {
-		return fire_speed;
+	public FireSpeedType getFireSpeed() {
+		return fireSpeed;
 	}
 
-	public Integer getSell_value() {
-		return sell_value;
+	public Integer getSellValue() {
+		return sellValue;
 	}
 
 }

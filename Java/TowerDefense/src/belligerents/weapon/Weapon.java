@@ -10,31 +10,31 @@ public abstract class Weapon extends GameObject {
 	protected Belligerent launcher;
 	protected Belligerent target;
 
-	public Weapon(IntegerRectangle surrounding_rectangle_absolute_on_complete_board, Game game, Belligerent parent_belligerent,
-			Belligerent target_belligerent, int evolutionLevel) {
-		super(surrounding_rectangle_absolute_on_complete_board, game, evolutionLevel);
-		this.launcher = parent_belligerent;
-		this.target = target_belligerent;
-		parent_belligerent.add_living_bomb(this);
+	public Weapon(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game, Belligerent parentBelligerent,
+			Belligerent targetBelligerent, int evolutionLevel) {
+		super(surroundingRectangleAbsoluteOnCompleteBoard, game, evolutionLevel);
+		this.launcher = parentBelligerent;
+		this.target = targetBelligerent;
+		parentBelligerent.addLivingBomb(this);
 	}
 
-	public void end_of_destroy_and_clean() {
-		launcher.remove_living_bomb(this);
-		// super.end_of_destroy_and_clean();
+	public void endOfDestroyAndClean() {
+		launcher.removeLivingBomb(this);
+		// super.endOfDestroyAndClean();
 
-		// movement_listeners
-		// .forEach((movement_listener) ->
-		// movement_listener.on_weapon_end_of_destruction_and_clean(this));
-	}
-
-	@Override
-	public void impact_now(Weapon weapon) {
+		// movementListeners
+		// .forEach((movementListener) ->
+		// movementListener.onWeaponEndOfDestructionAndClean(this));
 	}
 
 	@Override
-	public void notify_end_of_destruction_and_clean() {
-		// for (GameObjectListerner objectListerner : movement_listeners) {
-		// objectListerner.on_weapon_end_of_destruction_and_clean(this);
+	public void impactNow(Weapon weapon) {
+	}
+
+	@Override
+	public void notifyEndOfDestructionAndClean() {
+		// for (GameObjectListerner objectListerner : movementListeners) {
+		// objectListerner.onWeaponEndOfDestructionAndClean(this);
 		// }
 	}
 

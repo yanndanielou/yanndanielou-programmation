@@ -39,16 +39,16 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 	@SuppressWarnings("unused")
 	private void setApplicationIcon() {
 
-		BufferedImage application_buffered_image = null;
-		File application_image_file = null;
-		String application_image_path = "Images/DesktopTowerDefense_application_icon.png";
+		BufferedImage applicationBufferedImage = null;
+		File applicationImageFile = null;
+		String applicationImagePath = "Images/DesktopTowerDefenseApplicationIcon.png";
 
-		application_image_file = new File(application_image_path);
+		applicationImageFile = new File(applicationImagePath);
 		try {
-			application_buffered_image = ImageIO.read(application_image_file);
-			setIconImage(application_buffered_image);
+			applicationBufferedImage = ImageIO.read(applicationImageFile);
+			setIconImage(applicationBufferedImage);
 		} catch (IOException e1) {
-			LOGGER.info("Could not define application icon " + application_image_path);
+			LOGGER.info("Could not define application icon " + applicationImagePath);
 		}
 	}
 
@@ -78,7 +78,7 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 		return mainViewMenuBarManager;
 	}
 
-	private void new_game(Game game) {
+	private void newGame(Game game) {
 
 		// Built first to know dimensions
 		gameFieldPanel = new GameBoardPanel(this);
@@ -118,7 +118,7 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 
 	@Override
 	public void registerToGame(Game game) {
-		new_game(game);
+		newGame(game);
 		game.addGameStatusListener(topPanel);
 		game.addGameStatusListener(gameFieldPanel);
 		game.addGameStatusListener(sideCommandPanel);
@@ -126,12 +126,12 @@ public class TowerDefenseMainViewFrame extends JFrame implements TowerDefenseMai
 	}
 
 	@Override
-	public void register_to_tower(Tower tower) {
+	public void registerToTower(Tower tower) {
 		tower.addListener(gameFieldPanel);
 	}
 
 	@Override
-	public void register_to_attacker(Attacker attacker) {
+	public void registerToAttacker(Attacker attacker) {
 		attacker.addListener(gameFieldPanel);
 	}
 

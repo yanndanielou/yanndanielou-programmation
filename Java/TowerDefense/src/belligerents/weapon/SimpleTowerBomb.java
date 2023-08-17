@@ -15,57 +15,57 @@ public class SimpleTowerBomb extends Weapon {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(SimpleTowerBomb.class);
 
-	public SimpleTowerBomb(BombDataModel genericObjectDataModel, int x, int y, int x_speed, Game game,
-			Belligerent parent_belligerent, Belligerent target_belligerent, int evolutionLevel) {
+	public SimpleTowerBomb(BombDataModel genericObjectDataModel, int x, int y, int xSpeed, Game game,
+			Belligerent parentBelligerent, Belligerent targetBelligerent, int evolutionLevel) {
 		super(new IntegerRectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), game,
-				parent_belligerent, target_belligerent, evolutionLevel);
-		setX_speed(x_speed);
+				parentBelligerent, targetBelligerent, evolutionLevel);
+		setXSpeed(xSpeed);
 	}
 
 	@Override
-	protected void right_border_of_game_board_reached() {
-		stop_horizontal_movement();
+	protected void rightBorderOfGameBoardReached() {
+		stopHorizontalMovement();
 	}
 
 	@Override
-	protected void left_border_of_game_board_reached() {
-		stop_horizontal_movement();
+	protected void leftBorderOfGameBoardReached() {
+		stopHorizontalMovement();
 	}
 
 	@Deprecated
-	public void add_movement_listener(GameObjectListerner allyBoatListener) {
-		// super.add_movement_listener(allyBoatListener);
-		allyBoatListener.on_listen_to_simple_tower_bomb(this);
+	public void addMovementListener(GameObjectListerner allyBoatListener) {
+		// super.addMovementListener(allyBoatListener);
+		allyBoatListener.onListenToSimpleTowerBomb(this);
 	}
 
 	@Override
-	public void notify_movement() {
-		// for (GameObjectListerner objectlistener : movement_listeners) {
-		// objectlistener.on_simple_tower_bomb_moved(this);
+	public void notifyMovement() {
+		// for (GameObjectListerner objectlistener : movementListeners) {
+		// objectlistener.onSimpleTowerBombMoved(this);
 		// }
 	}
 
 	@Override
-	public void notify_end_of_destruction_and_clean() {
-		super.notify_end_of_destruction_and_clean();
-		// for (GameObjectListerner objectlistener : movement_listeners) {
-		// objectlistener.on_simple_tower_bomb_end_of_destruction_and_clean(this);
+	public void notifyEndOfDestructionAndClean() {
+		super.notifyEndOfDestructionAndClean();
+		// for (GameObjectListerner objectlistener : movementListeners) {
+		// objectlistener.onSimpleTowerBombEndOfDestructionAndClean(this);
 		// }
 	}
 
 	@Override
-	protected BufferedImage get_graphical_representation_as_buffered_image() {
+	protected BufferedImage getGraphicalRepresentationAsBufferedImage() {
 		return getSimpleTowerBombImage(this);
 	}
 
 	@Override
-	protected void down_border_of_game_board_reached() {
+	protected void downBorderOfGameBoardReached() {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void impact_now(Weapon weapon) {
+	public void impactNow(Weapon weapon) {
 		// TODO Auto-generated method stub
 
 	}

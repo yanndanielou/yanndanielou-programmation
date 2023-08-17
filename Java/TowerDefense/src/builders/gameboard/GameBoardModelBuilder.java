@@ -38,11 +38,11 @@ public class GameBoardModelBuilder {
 		return gameBoardDataModel;
 	}
 
-	public GameBoardModelBuilder(String game_board_data_model_json_file) {
+	public GameBoardModelBuilder(String gameBoardDataModelJsonFile) {
 		BufferedReader br = null;
 
 		try {
-			br = new BufferedReader(new FileReader(game_board_data_model_json_file));
+			br = new BufferedReader(new FileReader(gameBoardDataModelJsonFile));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -136,16 +136,16 @@ public class GameBoardModelBuilder {
 		for (int x = 0; x < imageWidth; x++) {
 
 			for (int y = 0; y < imageHeight; y++) {
-				int pixel_rgb = -1;
+				int pixelRgb = -1;
 				try {
-					pixel_rgb = imageBufferedImage.getRGB(x, y);
+					pixelRgb = imageBufferedImage.getRGB(x, y);
 
 				} catch (ArrayIndexOutOfBoundsException e) {
 					LOGGER.fatal("x:" + x + ", y:" + y + ", " + e.getLocalizedMessage());
 					// e.printStackTrace();
 					continue;
 				}
-				Color pixelColor = new Color(pixel_rgb);
+				Color pixelColor = new Color(pixelRgb);
 
 				if (searchedColor.equals(pixelColor)) {
 					pointsInImageWithRGB.add(new IntegerPoint(x, y));

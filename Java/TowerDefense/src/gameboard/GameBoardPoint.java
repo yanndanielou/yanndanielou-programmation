@@ -29,8 +29,8 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 
 	private Game game;
 
-	private ArrayList<Tower> towers_present = new ArrayList<>();
-	private ArrayList<Attacker> attackers_present = new ArrayList<>();
+	private ArrayList<Tower> towersPresent = new ArrayList<>();
+	private ArrayList<Attacker> attackersPresent = new ArrayList<>();
 	private ArrayList<GameBoardWallArea> wallsPresent = new ArrayList<>();
 	private ArrayList<GameBoardAttackersEntryArea> gameBoardAttackersEntryAreasPresent = new ArrayList<>();
 	private ArrayList<GameBoardAttackersExitArea> gameBoardAttackersExitAreasPresent = new ArrayList<>();
@@ -38,9 +38,9 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	private ArrayList<GameBoardInitiallyConstructibleMacroArea> initiallyConstructibleMacroAreasPresent = new ArrayList<>();
 	private ArrayList<GameBoardPredefinedConstructionLocation> predefinedConstructionLocationsPresent = new ArrayList<>();
 
-	private ArrayList<GameBoardPointListener> game_board_point_Listeners = new ArrayList<>();
+	private ArrayList<GameBoardPointListener> gameBoardPointListeners = new ArrayList<>();
 
-	private EnumMap<NeighbourGameBoardPointDirection, GameBoardPoint> neighbour_per_direction = new EnumMap<>(
+	private EnumMap<NeighbourGameBoardPointDirection, GameBoardPoint> neighbourPerDirection = new EnumMap<>(
 			NeighbourGameBoardPointDirection.class);
 
 	public GameBoardPoint(Game game, int line, int column) {
@@ -49,7 +49,7 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	}
 
 	public void addGameBoardPointListener(GameBoardPointListener gameBoardPointListener) {
-		game_board_point_Listeners.add(gameBoardPointListener);
+		gameBoardPointListeners.add(gameBoardPointListener);
 	}
 
 	public void addWall(GameBoardWallArea gameBoardWall) {
@@ -61,11 +61,11 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	}
 
 	public boolean isOccupiedByTower() {
-		return !towers_present.isEmpty();
+		return !towersPresent.isEmpty();
 	}
 	
 	public boolean isOccupiedByAttacker(){
-		return !attackers_present.isEmpty();
+		return !attackersPresent.isEmpty();
 	}
 
 	public boolean isNonPlayableArea() {
@@ -89,15 +89,15 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	}
 
 	public void setNeighbour(NeighbourGameBoardPointDirection direction, GameBoardPoint neighbour) {
-		neighbour_per_direction.put(direction, neighbour);
+		neighbourPerDirection.put(direction, neighbour);
 	}
 
-	public String getShort_description() {
+	public String getShortDescription() {
 		return "GameBoardPoint :" + "[" + getXAsInt() + "," + getYAsInt() + "]";
 	}
 
 	public Collection<GameBoardPoint> getNeighbours() {
-		return neighbour_per_direction.values();
+		return neighbourPerDirection.values();
 	}
 
 	public Game getGame() {
@@ -105,24 +105,24 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	}
 
 	private void addTower(Tower tower) {
-		if (towers_present.size() >= Constants.MAXIMUM_NUMBER_OF_TOWERS_ALLOWED_PER_LOCATION) {
+		if (towersPresent.size() >= Constants.MAXIMUM_NUMBER_OF_TOWERS_ALLOWED_PER_LOCATION) {
 			throw new BadLogicException("Cannot add tower " + tower + " to point:" + this);
 		}
-		towers_present.add(tower);
+		towersPresent.add(tower);
 	}
 
 	@Override
-	public void on_listen_to_tower(Tower tower) {
+	public void onListenToTower(Tower tower) {
 		addTower(tower);
 	}
 
 	@Override
-	public void on_tower_removal(Tower tower) {
+	public void onTowerRemoval(Tower tower) {
 
-		if (towers_present.size() >= Constants.MAXIMUM_NUMBER_OF_TOWERS_ALLOWED_PER_LOCATION) {
+		if (towersPresent.size() >= Constants.MAXIMUM_NUMBER_OF_TOWERS_ALLOWED_PER_LOCATION) {
 		}
 
-		boolean removed = towers_present.remove(tower);
+		boolean removed = towersPresent.remove(tower);
 		if (!removed) {
 			throw new BadLogicException(
 					"Cannot remove tower " + tower + " to point:" + this + " because was not present");
@@ -138,7 +138,7 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	}
 
 	private void addAttacker(Attacker attacker) {
-		attackers_present.add(attacker);
+		attackersPresent.add(attacker);
 	}
 
 	@Override
@@ -147,7 +147,7 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 	}
 
 	@Override
-	public void on_attacker_moved(Attacker attacker) {
+	public void onAttackerMoved(Attacker attacker) {
 		// TODO Auto-generated method stub
 
 	}

@@ -10,7 +10,7 @@ public class RandomIntegerGenerator {
 	}
 
 	public static int getRandomNumberUsingNextInt(int min, int max) {
-		int random_int = random.nextInt(max - min) + min;
-		return random_int;
+		int randomInt = random.nextInt(max - min) + min;
+		return randomInt;
 	}
 }

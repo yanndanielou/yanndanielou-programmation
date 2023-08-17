@@ -7,7 +7,7 @@ public class BombDataModel {
 	private String description;
 	private Integer height;
 	private Integer width;
-	private String fixed_representation_image_path;
+	private String fixedRepresentationImagePath;
 	private ArrayList<BombLevelDataModel> levels;
 
 	public String getDescription() {
@@ -22,8 +22,8 @@ public class BombDataModel {
 		return width;
 	}
 
-	public String getFixed_representation_image_path() {
-		return fixed_representation_image_path;
+	public String getFixedRepresentationImagePath() {
+		return fixedRepresentationImagePath;
 	}
 
 	public ArrayList<BombLevelDataModel> getLevels() {

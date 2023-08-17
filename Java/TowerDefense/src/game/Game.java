@@ -18,7 +18,7 @@ import time.TimeManager;
 public class Game implements TowerListener, AttackerListener {
 	private static final Logger LOGGER = LogManager.getLogger(Game.class);
 
-	private ArrayList<GameListener> game_listeners = new ArrayList<>();
+	private ArrayList<GameListener> gameListeners = new ArrayList<>();
 	private ArrayList<GameStatusListener> gameStatusListeners = new ArrayList<>();
 
 	private ArrayList<Tower> towers = new ArrayList<>();
@@ -37,19 +37,19 @@ public class Game implements TowerListener, AttackerListener {
 	private Player player;
 	private GameManager gameManager;
 
-	public Game(GameManager gameManager, GameBoard gameBoard, GameObjectsDataModel game_objects_data_model) {
+	public Game(GameManager gameManager, GameBoard gameBoard, GameObjectsDataModel gameObjectsDataModel) {
 		this.gameManager = gameManager;
 		this.gameBoard = gameBoard;
-		this.gameObjectsDataModel = game_objects_data_model;
+		this.gameObjectsDataModel = gameObjectsDataModel;
 		gameBoard.setGame(this);
 		player = new Player(this);
 		addGameStatusListener(TimeManager.getInstance());
 
 	}
 
-	public void add_game_listener(GameListener listener) {
+	public void addGameListener(GameListener listener) {
 		listener.onListenToGame(this);
-		game_listeners.add(listener);
+		gameListeners.add(listener);
 	}
 
 	public void addGameStatusListener(GameStatusListener listener) {
@@ -109,7 +109,7 @@ public class Game implements TowerListener, AttackerListener {
 	}
 
 	@Override
-	public void on_listen_to_tower(Tower tower) {
+	public void onListenToTower(Tower tower) {
 		towers.add(tower);
 	}
 
@@ -125,7 +125,7 @@ public class Game implements TowerListener, AttackerListener {
 	}
 
 	@Override
-	public void on_attacker_moved(Attacker attacker) {
+	public void onAttackerMoved(Attacker attacker) {
 		// TODO Auto-generated method stub
 
 	}
@@ -136,7 +136,7 @@ public class Game implements TowerListener, AttackerListener {
 	}
 
 	@Override
-	public void on_tower_removal(Tower tower) {
+	public void onTowerRemoval(Tower tower) {
 		towers.remove(tower);
 	}
 

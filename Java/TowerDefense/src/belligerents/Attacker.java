@@ -37,11 +37,11 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 
 		this.attackerDataModel = attackerDataModel;
 
-		setMax_number_of_living_bombs(0);
+		setMaxNumberOfLivingBombs(0);
 
-		TimeManager.getInstance().add_listener(this);
+		TimeManager.getInstance().addListener(this);
 
-		GameManager.getInstance().getDesktopTowerDefenseMainView().register_to_attacker(this);
+		GameManager.getInstance().getDesktopTowerDefenseMainView().registerToAttacker(this);
 		addListener(game);
 		addListener(game.getGameBoard());
 
@@ -49,9 +49,9 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	}
 
 	@Override
-	public boolean move(int x_movement, int y_movement) {
-		boolean moved = super.move(x_movement, y_movement);
-		if (surrounding_rectangle_absolute_on_complete_board.contains(escapeDestination)) {
+	public boolean move(int xMovement, int yMovement) {
+		boolean moved = super.move(xMovement, yMovement);
+		if (surroundingRectangleAbsoluteOnCompleteBoard.contains(escapeDestination)) {
 			escaped();
 		}
 		return moved;
@@ -74,18 +74,18 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	}
 
 	@Override
-	protected void right_border_of_game_board_reached() {
-		setX_speed(getX_speed() * -1);
+	protected void rightBorderOfGameBoardReached() {
+		setXSpeed(getXSpeed() * -1);
 	}
 
 	@Override
-	protected void left_border_of_game_board_reached() {
-		setX_speed(getX_speed() * -1);
+	protected void leftBorderOfGameBoardReached() {
+		setXSpeed(getXSpeed() * -1);
 	}
 
 	@Override
-	public void notify_movement() {
-		listeners.forEach(listener -> listener.on_attacker_moved(this));
+	public void notifyMovement() {
+		listeners.forEach(listener -> listener.onAttackerMoved(this));
 	}
 
 	@Override
@@ -93,7 +93,7 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	}
 
 	@Override
-	public void on_20ms_tick() {
+	public void on20msTick() {
 	}
 
 	@Override
@@ -111,11 +111,11 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	}
 
 	@Override
-	public void impact_now(Weapon weapon) {
+	public void impactNow(Weapon weapon) {
 	}
 
 	@Override
-	public void notify_end_of_destruction_and_clean() {
+	public void notifyEndOfDestructionAndClean() {
 	}
 
 	@Override

@@ -4,7 +4,7 @@ public interface TimeManagerListener {
 
 	public void on10msTick();
 
-	default public void on_20ms_tick() {
+	default public void on20msTick() {
 	}
 
 	public void on50msTick();

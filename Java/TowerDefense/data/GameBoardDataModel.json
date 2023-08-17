@@ -7,7 +7,7 @@
 	"commandPanelBackgroundImagePath": "Images/Command_pannel_background.png",
 	"__attackersEntryAreasAsRectangles___removedAndReplacedByImageParsing": [
 		{
-			"name": "left_attacker_entry_area",
+			"name": "leftAttackerEntryArea",
 			"x": 0,
 			"y": 356,
 			"width": 107,
@@ -16,7 +16,7 @@
 	],
 	"__wallsAsRectangles___removedAndReplacedByImageParsing": [
 		{
-			"name": "upper_left_wall",
+			"name": "upperLeftWall",
 			"x": 107,
 			"y": 84,
 			"width": 30,
@@ -26,7 +26,7 @@
 	"rectangleDefinedConstructibleAreasAsRGBInImageToParse": [
 		{
 			"imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
-			"name": "center_and_main_constructible_area",
+			"name": "centerAndMainConstructibleArea",
 			"rgbColorDefinition": {
 				"red": 0,
 				"green": 162,
@@ -36,7 +36,7 @@
 	],
 	"__attackersExitAreasAsRectangles___removedAndReplacedByImageParsing": [
 		{
-			"name": "right_attacker_exit_area",
+			"name": "rightAttackerExitArea",
 			"x": 954,
 			"y": 356,
 			"width": 90,
@@ -47,7 +47,7 @@
 	"pointsDefinedWallAreaAsRGBInImageToParse": [
 		{
 			"imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
-			"name": "all_walls",
+			"name": "allWalls",
 			"rgbColorDefinition": {
 				"red": 255,
 				"green": 242,
@@ -58,7 +58,7 @@
 	"rectangleDefinedAttackersEntryAreasAsRGBInImageToParse": [
 		{
 			"imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
-			"name": "left_attacker_entry_area",
+			"name": "leftAttackerEntryArea",
 			"rgbColorDefinition": {
 				"red": 34,
 				"green": 177,
@@ -69,7 +69,7 @@
 	"rectangleDefinedAttackersExitAreasAsRGBInImageToParse": [
 		{
 			"imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
-			"name": "right_attacker_exit_area",
+			"name": "rightAttackerExitArea",
 			"rgbColorDefinition": {
 				"red": 237,
 				"green": 28,
@@ -80,7 +80,7 @@
 	"pointsDefinedNonPlayableAreasAsRGBInImageToParse": [
 		{
 			"imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
-			"name": "area_outside_of_walls_that_is_not_playable",
+			"name": "areaOutsideOfWallsThatIsNotPlayable",
 			"rgbColorDefinition": {
 				"red": 195,
 				"green": 195,

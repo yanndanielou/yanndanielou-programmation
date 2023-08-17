@@ -21,183 +21,183 @@ import geometry.IntegerRectangle;
 public abstract class GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);
 
-	protected IntegerRectangle surrounding_rectangle_absolute_on_complete_board;
-	protected Integer x_speed;
-	protected Integer y_speed;
+	protected IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard;
+	protected Integer xSpeed;
+	protected Integer ySpeed;
 	protected Game game;
 
-	protected boolean being_destroyed = false;
+	protected boolean beingDestroyed = false;
 
-	private BufferedImage simple_tower_normal_buffered_image = null;
-	private final String simple_tower_normal_image_path = "Images/Simple_tower_60x60.png";
+	private BufferedImage simpleTowerNormalBufferedImage = null;
+	private final String simpleTowerNormalImagePath = "Images/Simple_tower_60x60.png";
 
-	private BufferedImage simple_tower_bomb_buffered_image = null;
-	private final String simple_tower_bomb_image_path = "Images/simple_tower_bomb.png";
+	private BufferedImage simpleTowerBombBufferedImage = null;
+	private final String simpleTowerBombImagePath = "Images/simple_tower_bomb.png";
 
-	private BufferedImage normal_attacker_buffered_image = null;
-	private final String normal_attacker_image_path = "Images/Attacker_normal_going_right.png";
+	private BufferedImage normalAttackerBufferedImage = null;
+	private final String normalAttackerImagePath = "Images/Attacker_normal_going_right.png";
 
 	protected int evolutionLevel;
 
-	public GameObject(IntegerRectangle surrounding_rectangle_absolute_on_complete_board, Game game,
+	public GameObject(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game,
 			int evolutionLevel) {
-		this.surrounding_rectangle_absolute_on_complete_board = surrounding_rectangle_absolute_on_complete_board;
+		this.surroundingRectangleAbsoluteOnCompleteBoard = surroundingRectangleAbsoluteOnCompleteBoard;
 		this.game = game;
 		this.evolutionLevel = evolutionLevel;
 
-		initialize_and_load_images();
+		initializeAndLoadImages();
 
-		LOGGER.info("Created: " + this + " at " + surrounding_rectangle_absolute_on_complete_board);
+		LOGGER.info("Created: " + this + " at " + surroundingRectangleAbsoluteOnCompleteBoard);
 	}
 
-	private BufferedImage getBufferedImageFromFilePath(String image_path) {
-		File image_file = new File(image_path);
+	private BufferedImage getBufferedImageFromFilePath(String imagePath) {
+		File imageFile = new File(imagePath);
 		BufferedImage bufferedImage = null;
 		try {
-			bufferedImage = ImageIO.read(image_file);
+			bufferedImage = ImageIO.read(imageFile);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		return bufferedImage;
 	}
 
-	private void initialize_towers() {
-		simple_tower_normal_buffered_image = getBufferedImageFromFilePath(simple_tower_normal_image_path);
+	private void initializeTowers() {
+		simpleTowerNormalBufferedImage = getBufferedImageFromFilePath(simpleTowerNormalImagePath);
 	}
 
-	private void initialize_and_load_images() {
-		initialize_towers();
-		initialize_bombs();
-		initialize_attackers();
+	private void initializeAndLoadImages() {
+		initializeTowers();
+		initializeBombs();
+		initializeAttackers();
 	}
 
-	private void initialize_attackers() {
-		normal_attacker_buffered_image = getBufferedImageFromFilePath(normal_attacker_image_path);
+	private void initializeAttackers() {
+		normalAttackerBufferedImage = getBufferedImageFromFilePath(normalAttackerImagePath);
 	}
 
-	private void initialize_bombs() {
-		simple_tower_bomb_buffered_image = getBufferedImageFromFilePath(simple_tower_bomb_image_path);
+	private void initializeBombs() {
+		simpleTowerBombBufferedImage = getBufferedImageFromFilePath(simpleTowerBombImagePath);
 	}
 
 	public BufferedImage getSimpleTowerNormalImage(Tower simpleTower) {
-		return simple_tower_normal_buffered_image;
+		return simpleTowerNormalBufferedImage;
 	}
 
 	public BufferedImage getSimpleTowerBombImage(SimpleTowerBomb simpleTowerBomb) {
 		BufferedImage image = null;
 
-		image = simple_tower_bomb_buffered_image;
+		image = simpleTowerBombBufferedImage;
 
 		return image;
 	}
 
-	public boolean is_being_destroyed() {
-		return being_destroyed;
+	public boolean isBeingDestroyed() {
+		return beingDestroyed;
 	}
 
-	public abstract void impact_now(Weapon weapon);
+	public abstract void impactNow(Weapon weapon);
 
-	public IntegerRectangle getSurrounding_rectangle_absolute_on_complete_board() {
-		return surrounding_rectangle_absolute_on_complete_board;
+	public IntegerRectangle getSurroundingRectangleAbsoluteOnCompleteBoard() {
+		return surroundingRectangleAbsoluteOnCompleteBoard;
 	}
 
 	public List<IntegerPoint> getAllPoints() {
-		return surrounding_rectangle_absolute_on_complete_board.getAllPoints();
+		return surroundingRectangleAbsoluteOnCompleteBoard.getAllPoints();
 	}
 
-	public void setSurrounding_rectangle_absolute_on_complete_board(
-			IntegerRectangle surrounding_rectangle_absolute_on_complete_board) {
-		this.surrounding_rectangle_absolute_on_complete_board = surrounding_rectangle_absolute_on_complete_board;
+	public void setSurroundingRectangleAbsoluteOnCompleteBoard(
+			IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard) {
+		this.surroundingRectangleAbsoluteOnCompleteBoard = surroundingRectangleAbsoluteOnCompleteBoard;
 	}
 
-	public int getX_speed() {
-		return x_speed;
+	public int getXSpeed() {
+		return xSpeed;
 	}
 
-	public boolean is_in_movement() {
-		return x_speed != 0 || y_speed != 0;
+	public boolean isInMovement() {
+		return xSpeed != 0 || ySpeed != 0;
 	}
 
-	public void setX_speed(int x_speed) {
-		LOGGER.debug(this + " set x speed:" + x_speed);
-		this.x_speed = x_speed;
+	public void setXSpeed(int xSpeed) {
+		LOGGER.debug(this + " set x speed:" + xSpeed);
+		this.xSpeed = xSpeed;
 	}
 
-	public int getY_speed() {
-		return y_speed;
+	public int getYSpeed() {
+		return ySpeed;
 	}
 
-	public void setY_speed(int y_speed) {
-		LOGGER.info(this + " set y speed:" + y_speed);
-		this.y_speed = y_speed;
+	public void setYSpeed(int ySpeed) {
+		LOGGER.info(this + " set y speed:" + ySpeed);
+		this.ySpeed = ySpeed;
 	}
 
-	public int get_extreme_left_point_x() {
-		return (int) surrounding_rectangle_absolute_on_complete_board.getX();
+	public int getExtremeLeftPointX() {
+		return (int) surroundingRectangleAbsoluteOnCompleteBoard.getX();
 	}
 
-	public int get_extreme_right_point_x() {
-		return (int) surrounding_rectangle_absolute_on_complete_board.getMaxX();
+	public int getExtremeRightPointX() {
+		return (int) surroundingRectangleAbsoluteOnCompleteBoard.getMaxX();
 	}
 
-	public int get_lowest_point_y() {
-		return (int) surrounding_rectangle_absolute_on_complete_board.getMaxY();
+	public int getLowestPointY() {
+		return (int) surroundingRectangleAbsoluteOnCompleteBoard.getMaxY();
 	}
 
 	public int getHighestPointY() {
-		return (int) surrounding_rectangle_absolute_on_complete_board.getY();
+		return (int) surroundingRectangleAbsoluteOnCompleteBoard.getY();
 	}
 
-	public boolean move(int x_movement, int y_movement) {
-		boolean has_moved = false;
-		surrounding_rectangle_absolute_on_complete_board.translate(x_movement, y_movement);
-		notify_movement();
+	public boolean move(int xMovement, int yMovement) {
+		boolean hasMoved = false;
+		surroundingRectangleAbsoluteOnCompleteBoard.translate(xMovement, yMovement);
+		notifyMovement();
 
-		return has_moved;
+		return hasMoved;
 	}
 
-	protected abstract BufferedImage get_graphical_representation_as_buffered_image();
+	protected abstract BufferedImage getGraphicalRepresentationAsBufferedImage();
 
 	// FIXME: remove BufferedImage and directly create icon from path
-	public ImageIcon get_graphical_representation_as_icon() {
-		BufferedImage graphical_representation_as_buffered_image = get_graphical_representation_as_buffered_image();
-		ImageIcon imageIcon = new ImageIcon(graphical_representation_as_buffered_image);
+	public ImageIcon getGraphicalRepresentationAsIcon() {
+		BufferedImage graphicalRepresentationAsBufferedImage = getGraphicalRepresentationAsBufferedImage();
+		ImageIcon imageIcon = new ImageIcon(graphicalRepresentationAsBufferedImage);
 		return imageIcon;
 	}
 
-	protected abstract void right_border_of_game_board_reached();
+	protected abstract void rightBorderOfGameBoardReached();
 
-	protected abstract void left_border_of_game_board_reached();
+	protected abstract void leftBorderOfGameBoardReached();
 
-	protected abstract void down_border_of_game_board_reached();
+	protected abstract void downBorderOfGameBoardReached();
 
-	public abstract void notify_movement();
+	public abstract void notifyMovement();
 
-	public abstract void notify_end_of_destruction_and_clean();
+	public abstract void notifyEndOfDestructionAndClean();
 
-	public void end_of_destroy_and_clean() {
-		notify_end_of_destruction_and_clean();
+	public void endOfDestroyAndClean() {
+		notifyEndOfDestructionAndClean();
 	}
 
-	public void stop_horizontal_movement() {
-		x_speed = 0;
+	public void stopHorizontalMovement() {
+		xSpeed = 0;
 	}
 
-	public void stop_vertical_movement() {
-		y_speed = 0;
+	public void stopVerticalMovement() {
+		ySpeed = 0;
 	}
 
-	public void stop_movement() {
-		stop_horizontal_movement();
-		stop_vertical_movement();
+	public void stopMovement() {
+		stopHorizontalMovement();
+		stopVerticalMovement();
 	}
 
 	public Game getGame() {
 		return game;
 	}
 
-	public BufferedImage getNormal_attacker_buffered_image(NormalAttacker normalAttacker) {
-		return normal_attacker_buffered_image;
+	public BufferedImage getNormalAttackerBufferedImage(NormalAttacker normalAttacker) {
+		return normalAttackerBufferedImage;
 	}
 
 }

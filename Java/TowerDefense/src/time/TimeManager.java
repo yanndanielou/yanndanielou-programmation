@@ -12,15 +12,15 @@ import game.GameStatusListener;
 
 public class TimeManager extends TimerTask implements GameStatusListener {
 	private static TimeManager instance = null;
-	private static TimeManager previous_instance_before_pause = null;
+	private static TimeManager previousInstanceBeforePause = null;
 
 	private static final Logger LOGGER = LogManager.getLogger(TimeManager.class);
 
-	private ArrayList<TimeManagerListener> new_listeners_waiting_current_tick_to_register = new ArrayList<>();
-	private ArrayList<TimeManagerListener> time_manager_listeners = new ArrayList<>();
+	private ArrayList<TimeManagerListener> newListenersWaitingCurrentTickToRegister = new ArrayList<>();
+	private ArrayList<TimeManagerListener> timeManagerListeners = new ArrayList<>();
 
 	private Timer timer;
-	private int number_of_10ms_tick = 0;
+	private int numberOf10msTick = 0;
 
 	private boolean aTickIsUnderProcessing = false;
 
@@ -33,17 +33,17 @@ public class TimeManager extends TimerTask implements GameStatusListener {
 		if (instance == null) {
 			instance = new TimeManager();
 
-			if (previous_instance_before_pause != null) {
-				instance.new_listeners_waiting_current_tick_to_register = previous_instance_before_pause.time_manager_listeners;
-				previous_instance_before_pause = null;
+			if (previousInstanceBeforePause != null) {
+				instance.newListenersWaitingCurrentTickToRegister = previousInstanceBeforePause.timeManagerListeners;
+				previousInstanceBeforePause = null;
 			}
 		}
 		return instance;
 	}
 
-	public void add_listener(TimeManagerListener listener) {
-		// LOGGER.info("add_listener:" + listener);
-		new_listeners_waiting_current_tick_to_register.add(listener);
+	public void addListener(TimeManagerListener listener) {
+		// LOGGER.info("addListener:" + listener);
+		newListenersWaitingCurrentTickToRegister.add(listener);
 	}
 
 	@Override
@@ -52,90 +52,90 @@ public class TimeManager extends TimerTask implements GameStatusListener {
 			LOGGER.fatal("A tick is already under processing, discard current tick");
 		}
 		aTickIsUnderProcessing = true;
-		tick_10ms();
+		tick10ms();
 		aTickIsUnderProcessing = false;
 	}
 
-	private void tick_10ms() {
-		number_of_10ms_tick++;
-		if (number_of_10ms_tick % 10 == 0) {
-			tick_100ms();
+	private void tick10ms() {
+		numberOf10msTick++;
+		if (numberOf10msTick % 10 == 0) {
+			tick100ms();
 		}
-		if (number_of_10ms_tick % 2 == 0) {
-			tick_20ms();
+		if (numberOf10msTick % 2 == 0) {
+			tick20ms();
 		}
-		if (number_of_10ms_tick % 5 == 0) {
-			tick_50ms();
+		if (numberOf10msTick % 5 == 0) {
+			tick50ms();
 		}
-		if (number_of_10ms_tick % 100 == 0) {
-			tick_second();
+		if (numberOf10msTick % 100 == 0) {
+			tickSecond();
 		}
 
-		notify_10ms_tick();
+		notify10msTick();
 
-		time_manager_listeners.addAll(new_listeners_waiting_current_tick_to_register);
-		new_listeners_waiting_current_tick_to_register.clear();
+		timeManagerListeners.addAll(newListenersWaitingCurrentTickToRegister);
+		newListenersWaitingCurrentTickToRegister.clear();
 	}
 
-	private void notify_10ms_tick() {
-		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
-			time_manager_listener.on10msTick();
-		}
-	}
-
-	private void tick_20ms() {
-		notify_20ms_tick();
-	}
-
-	private void notify_20ms_tick() {
-		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
-			time_manager_listener.on_20ms_tick();
+	private void notify10msTick() {
+		for (TimeManagerListener timeManagerListener : timeManagerListeners) {
+			timeManagerListener.on10msTick();
 		}
 	}
 
-	private void tick_50ms() {
-		notify_50ms_tick();
+	private void tick20ms() {
+		notify20msTick();
 	}
 
-	private void notify_50ms_tick() {
-		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
-			time_manager_listener.on50msTick();
+	private void notify20msTick() {
+		for (TimeManagerListener timeManagerListener : timeManagerListeners) {
+			timeManagerListener.on20msTick();
 		}
 	}
 
-	private void tick_100ms() {
-		// System.out.println("tick_100ms:" + new Date());
-		LOGGER.debug("tick_100ms begin");
-
-		notify_100ms_tick();
-
-		LOGGER.debug("tick_100ms end");
+	private void tick50ms() {
+		notify50msTick();
 	}
 
-	private void notify_100ms_tick() {
-		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
-			time_manager_listener.on100msTick();
+	private void notify50msTick() {
+		for (TimeManagerListener timeManagerListener : timeManagerListeners) {
+			timeManagerListener.on50msTick();
 		}
 	}
 
-	private void tick_second() {
-		// System.out.println("tick_second:" + new Date());
-		LOGGER.trace("tick_second begin");
+	private void tick100ms() {
+		// System.out.println("tick100ms:" + new Date());
+		LOGGER.debug("tick100ms begin");
 
-		notify_second_tick();
+		notify100msTick();
 
-		LOGGER.debug("tick_second end");
+		LOGGER.debug("tick100ms end");
 	}
 
-	private void notify_second_tick() {
-		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
-			time_manager_listener.onSecondTick();
+	private void notify100msTick() {
+		for (TimeManagerListener timeManagerListener : timeManagerListeners) {
+			timeManagerListener.on100msTick();
 		}
 	}
 
-	private void notify_pause_or_stop() {
-		for (TimeManagerListener time_manager_listener : time_manager_listeners) {
-			time_manager_listener.onPause();
+	private void tickSecond() {
+		// System.out.println("tickSecond:" + new Date());
+		LOGGER.trace("tickSecond begin");
+
+		notifySecondTick();
+
+		LOGGER.debug("tickSecond end");
+	}
+
+	private void notifySecondTick() {
+		for (TimeManagerListener timeManagerListener : timeManagerListeners) {
+			timeManagerListener.onSecondTick();
+		}
+	}
+
+	private void notifyPauseOrStop() {
+		for (TimeManagerListener timeManagerListener : timeManagerListeners) {
+			timeManagerListener.onPause();
 		}
 	}
 
@@ -147,8 +147,8 @@ public class TimeManager extends TimerTask implements GameStatusListener {
 	}
 
 	public void stop() {
-		previous_instance_before_pause = instance;
-		notify_pause_or_stop();
+		previousInstanceBeforePause = instance;
+		notifyPauseOrStop();
 		timer.cancel();
 		timer.purge();
 		instance = null;

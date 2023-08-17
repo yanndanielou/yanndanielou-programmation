@@ -2,11 +2,11 @@ package builders;
 
 public class BombLevelDataModel {
 
-	private String level_number;
+	private String levelNumber;
 	private int speed;
 
-	public String getLevel_number() {
-		return level_number;
+	public String getLevelNumber() {
+		return levelNumber;
 	}
 
 	public int getSpeed() {

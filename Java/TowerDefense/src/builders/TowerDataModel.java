@@ -8,7 +8,7 @@ public class TowerDataModel {
 	private String description;
 	private Integer height;
 	private Integer width;
-	private Integer maximum_number_of_alive_ammunitions_allowed;
+	private Integer maximumNumberOfAliveAmmunitionsAllowed;
 
 	private ArrayList<TowerLevelDataModel> levels;
 
@@ -28,8 +28,8 @@ public class TowerDataModel {
 		return width;
 	}
 
-	public Integer getMaximum_number_of_alive_ammunitions_allowed() {
-		return maximum_number_of_alive_ammunitions_allowed;
+	public Integer getMaximumNumberOfAliveAmmunitionsAllowed() {
+		return maximumNumberOfAliveAmmunitionsAllowed;
 	}
 
 	public Dimension getDimension() {

@@ -13,33 +13,33 @@ import game.Game;
 public class NormalAttacker extends Attacker {
 	private static final Logger LOGGER = LogManager.getLogger(NormalAttacker.class);
 
-	public NormalAttacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escape_destination, int evolutionLevel) {
+	public NormalAttacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escapeDestination, int evolutionLevel) {
 
-		super(attackerDataModel, game, x, y, escape_destination, evolutionLevel);
+		super(attackerDataModel, game, x, y, escapeDestination, evolutionLevel);
 		LOGGER.info("Create NormalAttacker at x:" + x + ", y:" + y);
 	}
 
 	@Override
-	protected void right_border_of_game_board_reached() {
-		setX_speed(getX_speed() * -1);
+	protected void rightBorderOfGameBoardReached() {
+		setXSpeed(getXSpeed() * -1);
 	}
 
 	@Override
-	protected void left_border_of_game_board_reached() {
+	protected void leftBorderOfGameBoardReached() {
 	}
 
 	@Override
-	public void impact_now(Weapon weapon) {
-		super.impact_now(weapon);
+	public void impactNow(Weapon weapon) {
+		super.impactNow(weapon);
 	}
 
 	@Override
-	protected BufferedImage get_graphical_representation_as_buffered_image() {
-		return getNormal_attacker_buffered_image(this);
+	protected BufferedImage getGraphicalRepresentationAsBufferedImage() {
+		return getNormalAttackerBufferedImage(this);
 	}
 
 	@Override
-	protected void down_border_of_game_board_reached() {
+	protected void downBorderOfGameBoardReached() {
 		// TODO Auto-generated method stub
 
 	}

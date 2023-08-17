@@ -25,11 +25,11 @@ import gameboard.GameBoardAttackersExitArea;
 public class MainViewMenuBarManager implements ActionListener {
 	private static final Logger LOGGER = LogManager.getLogger(MainViewMenuBarManager.class);
 
-	private TowerDefenseMainViewFrame parent_main_view = null;
+	private TowerDefenseMainViewFrame parentMainView = null;
 	private JMenuBar menuBar;
 
 	public MainViewMenuBarManager(TowerDefenseMainViewFrame parent) {
-		parent_main_view = parent;
+		parentMainView = parent;
 		menuBar = new JMenuBar();
 	}
 
@@ -52,7 +52,7 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new NewGameWhileGameIsInProgressPopup(parent_main_view).displayOptionPane();
+				new NewGameWhileGameIsInProgressPopup(parentMainView).displayOptionPane();
 			}
 		});
 		menu.add(menuItem);
@@ -81,7 +81,7 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LOGGER.info("Kill application");
-				parent_main_view.dispose();
+				parentMainView.dispose();
 			}
 		});
 		menu.add(menuItem);
@@ -111,12 +111,12 @@ public class MainViewMenuBarManager implements ActionListener {
 					GameManager gameManager = GameManager.getInstance();
 					Game game = gameManager.getGame();
 					GameBoard gameBoard = game.getGameBoard();
-					GameObjectsDataModel game_objects_data_model = game.getGameObjectsDataModel();
-					TowerDataModel simple_tower_data_model = game_objects_data_model.getSimpleTowerDataModel();
+					GameObjectsDataModel gameObjectsDataModel = game.getGameObjectsDataModel();
+					TowerDataModel simpleTowerDataModel = gameObjectsDataModel.getSimpleTowerDataModel();
 
 					gameManager.createSimpleTower(1,
-							gameBoard.getTotalWidth() / 2 - simple_tower_data_model.getWidth() / 2,
-							gameBoard.getTotalHeight() / 2 - simple_tower_data_model.getHeight() / 2);
+							gameBoard.getTotalWidth() / 2 - simpleTowerDataModel.getWidth() / 2,
+							gameBoard.getTotalHeight() / 2 - simpleTowerDataModel.getHeight() / 2);
 				}
 			}
 		});
@@ -162,9 +162,9 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CheatCodeDialog cheatCodeDialog = new CheatCodeDialog(parent_main_view);
+				CheatCodeDialog cheatCodeDialog = new CheatCodeDialog(parentMainView);
 				cheatCodeDialog.pack();
-				cheatCodeDialog.setLocationRelativeTo(parent_main_view);
+				cheatCodeDialog.setLocationRelativeTo(parentMainView);
 				cheatCodeDialog.setVisible(true);
 				LOGGER.info("actionPerformed" + e);
 			}
@@ -176,7 +176,7 @@ public class MainViewMenuBarManager implements ActionListener {
 				KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CheatCodeManager.getInstance().forbid_enemies_to_move();
+				CheatCodeManager.getInstance().forbidEnemiesToMove();
 			}
 		});
 		menu.add(menuItem);
@@ -210,7 +210,7 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuBar.add(createTestsMenuColumn());
 		menuBar.add(createCheatsMenuColumn());
 
-		parent_main_view.setJMenuBar(menuBar);
+		parentMainView.setJMenuBar(menuBar);
 	}
 
 	@Override

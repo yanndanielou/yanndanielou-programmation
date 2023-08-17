@@ -109,8 +109,8 @@ public class GameBoardPanel extends JLayeredPane
 	}
 
 	@Override
-	public void on_listen_to_tower(Tower tower) {
-		display_new_object_as_label(tower, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS);
+	public void onListenToTower(Tower tower) {
+		displayNewObjectAsLabel(tower, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS);
 	}
 
 	@Override
@@ -119,26 +119,26 @@ public class GameBoardPanel extends JLayeredPane
 
 	}
 
-	private void display_new_object_as_label(GameObject gameObject, LAYERS_ORDERED_FROM_TOP_TO_BACK layer) {
-		ImageIcon get_graphical_representation_as_icon = gameObject.get_graphical_representation_as_icon();
-		JLabel objectAsLabel = new JLabel(get_graphical_representation_as_icon);
-		objectAsLabel.setLocation(gameObject.getSurrounding_rectangle_absolute_on_complete_board().getX(),
-				gameObject.getSurrounding_rectangle_absolute_on_complete_board().getY());
-		objectAsLabel.setSize(gameObject.getSurrounding_rectangle_absolute_on_complete_board().getWidth(),
-				gameObject.getSurrounding_rectangle_absolute_on_complete_board().getHeight());
+	private void displayNewObjectAsLabel(GameObject gameObject, LAYERS_ORDERED_FROM_TOP_TO_BACK layer) {
+		ImageIcon getGraphicalRepresentationAsIcon = gameObject.getGraphicalRepresentationAsIcon();
+		JLabel objectAsLabel = new JLabel(getGraphicalRepresentationAsIcon);
+		objectAsLabel.setLocation(gameObject.getSurroundingRectangleAbsoluteOnCompleteBoard().getX(),
+				gameObject.getSurroundingRectangleAbsoluteOnCompleteBoard().getY());
+		objectAsLabel.setSize(gameObject.getSurroundingRectangleAbsoluteOnCompleteBoard().getWidth(),
+				gameObject.getSurroundingRectangleAbsoluteOnCompleteBoard().getHeight());
 		gameObjectToLabelMap.put(gameObject, objectAsLabel);
 		add(objectAsLabel, layer.ordinal());
 	}
 
 	@Override
 	public void onListenToAttacker(Attacker attacker) {
-		display_new_object_as_label(attacker, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS);
+		displayNewObjectAsLabel(attacker, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS);
 	}
 
 	@Override
-	public void on_attacker_moved(Attacker attacker) {
+	public void onAttackerMoved(Attacker attacker) {
 		JLabel jLabel = gameObjectToLabelMap.get(attacker);
-		jLabel.setLocation(attacker.get_extreme_left_point_x(), attacker.getHighestPointY());
+		jLabel.setLocation(attacker.getExtremeLeftPointX(), attacker.getHighestPointY());
 	}
 
 	@Override
@@ -146,7 +146,7 @@ public class GameBoardPanel extends JLayeredPane
 	}
 
 	@Override
-	public void on_tower_removal(Tower tower) {
+	public void onTowerRemoval(Tower tower) {
 		// TODO Auto-generated method stub
 
 	}

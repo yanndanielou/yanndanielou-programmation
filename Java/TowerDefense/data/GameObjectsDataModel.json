@@ -1,82 +1,82 @@
 {
-   "simple_tower_bomb_data_model": {
-		 "description":"simple_tower_bomb_data_model",
+   "simpleTowerBombDataModel": {
+		 "description":"simpleTowerBombDataModel",
 		 "height": 12,
 		 "width":11,
-		 "maximum_number_of_alive_ammunitions_allowed":1,
-		 "fixed_representation_image_path": "data/simple_tower_bomb.png",
+		 "maximumNumberOfAliveAmmunitionsAllowed":1,
+		 "fixedRepresentationImagePath": "data/simple_tower_bomb.png",
 			"levels": [
 				{
-					"level_number":1,
+					"levelNumber":1,
 					"speed":5
 				},
 				{
-					"level_number":2,
+					"levelNumber":2,
 					"speed":5
 				},
 				{
-					"level_number":3,
+					"levelNumber":3,
 					"speed":5
 				}
 			]
     },
-   "simple_tower_data_model": {
+   "simpleTowerDataModel": {
 		 "description":"Cheap tower that fires pellets.",
 		 "height": 60,
 		 "width":60,
 			"levels": [
 				{
-					"level_number":1,
+					"levelNumber":1,
 					"cost":5,
 					"damage":10,
 					"range":60,
-					"fire_speed":"SLOW",
-					"sell_value":3
+					"fireSpeed":"SLOW",
+					"sellValue":3
 				},
 				{
-					"level_number":2,
+					"levelNumber":2,
 					"cost":5,
 					"damage":20,
 					"range":60,
-					"fire_speed":"SLOW",
-					"sell_value":7,
-					"upgrade_time_in_seconds":3
+					"fireSpeed":"SLOW",
+					"sellValue":7,
+					"upgradeTimeInSeconds":3
 				},
 				{
-					"level_number":3,
+					"levelNumber":3,
 					"cost":10,
 					"damage":40,
 					"range":60,
-					"fire_speed":"SLOW",
-					"sell_value":15,
-					"upgrade_time_in_seconds":6
+					"fireSpeed":"SLOW",
+					"sellValue":15,
+					"upgradeTimeInSeconds":6
 				}
 			]
     },
-   "normal_attacker_data_model": {
-		 "description":"normal_attacker",
+   "normalAttackerDataModel": {
+		 "description":"normalAttacker",
 		 "height": 24,
 		 "width":24,
 		 "imune":false,
 		 "flying":false,
 			"levels": [
 				{
-					"level_number":1,
+					"levelNumber":1,
 					"health":20,
 					"speed":1,
-					"score_prize_money_on_destruction":1
+					"scorePrizeMoneyOnDestruction":1
 				},
 				{
-					"level_number":2,
+					"levelNumber":2,
 					"health":26,
 					"speed":1,
-					"score_prize_money_on_destruction":2
+					"scorePrizeMoneyOnDestruction":2
 				},
 				{
-					"level_number":3,
+					"levelNumber":3,
 					"health":30,
 					"speed":1,
-					"score_prize_money_on_destruction":3
+					"scorePrizeMoneyOnDestruction":3
 				}
 			]
     }

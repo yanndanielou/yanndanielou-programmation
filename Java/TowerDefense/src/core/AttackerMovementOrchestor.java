@@ -21,7 +21,7 @@ public class AttackerMovementOrchestor implements TimeManagerListener {
 
 	public AttackerMovementOrchestor(Game game) {
 		this.game = game;
-		TimeManager.getInstance().add_listener(this);
+		TimeManager.getInstance().addListener(this);
 	}
 
 	private void moveAttackers() {

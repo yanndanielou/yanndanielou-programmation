@@ -8,7 +8,7 @@ public interface AttackerListener {
 
 	void onListenToAttacker(Attacker attacker);
 
-	void on_attacker_moved(Attacker attacker);
+	void onAttackerMoved(Attacker attacker);
 
 	void onAttackerBeginningOfDestruction(Attacker attacker);
 

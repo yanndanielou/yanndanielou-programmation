@@ -15,110 +15,110 @@ import geometry.IntegerRectangle;
 public abstract class Belligerent extends GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(Belligerent.class);
 
-	final int maximum_fire_frequency_in_milliseconds;
+	final int maximumFireFrequencyInMilliseconds;
 
 	protected Instant lastAllyBombDroppedTime = null;
 
-	private int max_number_of_living_bombs;
+	private int maxNumberOfLivingBombs;
 
-	protected boolean forbid_to_fire_by_cheatcode = false;
-	protected boolean forbid_to_move_by_cheatcode = false;
+	protected boolean forbidToFireByCheatcode = false;
+	protected boolean forbidToMoveByCheatcode = false;
 
 	protected BombDataModel weaponDataModel = null;
 
-	protected ArrayList<Weapon> living_bombs = new ArrayList<Weapon>();
+	protected ArrayList<Weapon> livingBombs = new ArrayList<Weapon>();
 
-	public Belligerent(IntegerRectangle surrounding_rectangle_absolute_on_complete_board, BombDataModel weaponDataModel,
-			int maximum_fire_frequency_in_milliseconds, Game game, int evolutionLevel) {
-		super(surrounding_rectangle_absolute_on_complete_board, game, evolutionLevel);
-		this.maximum_fire_frequency_in_milliseconds = maximum_fire_frequency_in_milliseconds;
+	public Belligerent(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, BombDataModel weaponDataModel,
+			int maximumFireFrequencyInMilliseconds, Game game, int evolutionLevel) {
+		super(surroundingRectangleAbsoluteOnCompleteBoard, game, evolutionLevel);
+		this.maximumFireFrequencyInMilliseconds = maximumFireFrequencyInMilliseconds;
 		this.weaponDataModel = weaponDataModel;
 	}
 
-	public Belligerent(IntegerRectangle surrounding_rectangle_absolute_on_complete_board, Game game, int evolutionLevel) {
-		super(surrounding_rectangle_absolute_on_complete_board, game, evolutionLevel);
-		this.maximum_fire_frequency_in_milliseconds = Integer.MAX_VALUE;
+	public Belligerent(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game, int evolutionLevel) {
+		super(surroundingRectangleAbsoluteOnCompleteBoard, game, evolutionLevel);
+		this.maximumFireFrequencyInMilliseconds = Integer.MAX_VALUE;
 		this.weaponDataModel = null;
 	}
 
-	public int getMaximum_fire_frequency_in_milliseconds() {
-		return maximum_fire_frequency_in_milliseconds;
+	public int getMaximumFireFrequencyInMilliseconds() {
+		return maximumFireFrequencyInMilliseconds;
 	}
 
-	public boolean is_allowed_to_fire() {
-		boolean allowed_to_fire = !forbid_to_fire_by_cheatcode && !is_being_destroyed()
-				&& is_minimal_time_since_last_fire_fulfilled() && !has_reached_maximum_number_of_living_bombs();
-		return allowed_to_fire;
+	public boolean isAllowedToFire() {
+		boolean allowedToFire = !forbidToFireByCheatcode && !isBeingDestroyed()
+				&& isMinimalTimeSinceLastFireFulfilled() && !hasReachedMaximumNumberOfLivingBombs();
+		return allowedToFire;
 	}
 
 	public boolean isAllowedToMove() {
-		boolean allowed_to_fire = !forbid_to_move_by_cheatcode && !is_being_destroyed();
-		return allowed_to_fire;
+		boolean allowedToFire = !forbidToMoveByCheatcode && !isBeingDestroyed();
+		return allowedToFire;
 	}
 
-	public void forbid_to_fire() {
-		forbid_to_fire_by_cheatcode = true;
+	public void forbidToFire() {
+		forbidToFireByCheatcode = true;
 	}
 
-	public void forbid_to_move() {
-		forbid_to_move_by_cheatcode = true;
+	public void forbidToMove() {
+		forbidToMoveByCheatcode = true;
 	}
 
-	public int get_remaining_number_of_living_bombs_allowed() {
-		return max_number_of_living_bombs - living_bombs.size();
+	public int getRemainingNumberOfLivingBombsAllowed() {
+		return maxNumberOfLivingBombs - livingBombs.size();
 	}
 
-	public boolean has_reached_maximum_number_of_living_bombs() {
-		return get_remaining_number_of_living_bombs_allowed() <= 0;
+	public boolean hasReachedMaximumNumberOfLivingBombs() {
+		return getRemainingNumberOfLivingBombsAllowed() <= 0;
 	}
 
-	public boolean is_minimal_time_since_last_fire_fulfilled() {
-		boolean minimum_delay_between_two_ally_bombs_dropped_fulfilled = false;
+	public boolean isMinimalTimeSinceLastFireFulfilled() {
+		boolean minimumDelayBetweenTwoAllyBombsDroppedFulfilled = false;
 
 		if (lastAllyBombDroppedTime != null) {
-			Instant right_now = ZonedDateTime.now().toInstant();
-			long milliseconds_since_last_ally_bomb_dropped = right_now.toEpochMilli()
+			Instant rightNow = ZonedDateTime.now().toInstant();
+			long millisecondsSinceLastAllyBombDropped = rightNow.toEpochMilli()
 					- lastAllyBombDroppedTime.toEpochMilli();
 
-			if (milliseconds_since_last_ally_bomb_dropped > maximum_fire_frequency_in_milliseconds) {
-				minimum_delay_between_two_ally_bombs_dropped_fulfilled = true;
+			if (millisecondsSinceLastAllyBombDropped > maximumFireFrequencyInMilliseconds) {
+				minimumDelayBetweenTwoAllyBombsDroppedFulfilled = true;
 			} else {
-				LOGGER.debug("Cannot fire bomb because last one was " + milliseconds_since_last_ally_bomb_dropped
+				LOGGER.debug("Cannot fire bomb because last one was " + millisecondsSinceLastAllyBombDropped
 						+ " milliseconds ago");
 			}
 		} else {
-			minimum_delay_between_two_ally_bombs_dropped_fulfilled = true;
+			minimumDelayBetweenTwoAllyBombsDroppedFulfilled = true;
 		}
 
-		return minimum_delay_between_two_ally_bombs_dropped_fulfilled;
+		return minimumDelayBetweenTwoAllyBombsDroppedFulfilled;
 	}
 
 	public Instant getLastAllyBombDroppedTime() {
 		return lastAllyBombDroppedTime;
 	}
 
-	public void on_fire() {
+	public void onFire() {
 		lastAllyBombDroppedTime = ZonedDateTime.now().toInstant();
 	}
 
-	public int getMax_number_of_living_bombs() {
-		return max_number_of_living_bombs;
+	public int getMaxNumberOfLivingBombs() {
+		return maxNumberOfLivingBombs;
 	}
 
-	public void setMax_number_of_living_bombs(int max_number_of_living_bombs) {
-		this.max_number_of_living_bombs = max_number_of_living_bombs;
+	public void setMaxNumberOfLivingBombs(int maxNumberOfLivingBombs) {
+		this.maxNumberOfLivingBombs = maxNumberOfLivingBombs;
 	}
 
-	public void add_living_bomb(Weapon w) {
-		living_bombs.add(w);
+	public void addLivingBomb(Weapon w) {
+		livingBombs.add(w);
 	}
 
-	public ArrayList<Weapon> getLiving_bombs() {
-		return living_bombs;
+	public ArrayList<Weapon> getLivingBombs() {
+		return livingBombs;
 	}
 
-	public boolean remove_living_bomb(Weapon weapon) {
-		boolean removed = living_bombs.remove(weapon);
+	public boolean removeLivingBomb(Weapon weapon) {
+		boolean removed = livingBombs.remove(weapon);
 		if (!removed) {
 			LOGGER.info("Could not remove living bomb:" + removed);
 		}
