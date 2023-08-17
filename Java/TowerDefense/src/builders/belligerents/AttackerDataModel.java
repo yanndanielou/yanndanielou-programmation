@@ -1,6 +1,7 @@
 package builders.belligerents;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AttackerDataModel {
 
@@ -12,7 +13,7 @@ public class AttackerDataModel {
 
 	private ArrayList<AttackerLevelDataModel> levels;
 
-	public ArrayList<AttackerLevelDataModel> getLevels() {
+	public List<AttackerLevelDataModel> getLevels() {
 		return levels;
 	}
 

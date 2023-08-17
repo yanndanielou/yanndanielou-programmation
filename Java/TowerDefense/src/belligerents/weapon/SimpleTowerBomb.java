@@ -60,13 +60,13 @@ public class SimpleTowerBomb extends Weapon {
 
 	@Override
 	protected void downBorderOfGameBoardReached() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void impactNow(Weapon weapon) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 

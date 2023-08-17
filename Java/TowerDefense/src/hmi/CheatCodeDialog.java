@@ -95,6 +95,7 @@ class CheatCodeDialog extends JDialog implements ActionListener, PropertyChangeL
 		// Handle window closing correctly.
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		addWindowListener(new WindowAdapter() {
+			@Override
 			public void windowClosing(WindowEvent we) {
 				/*
 				 * Instead of directly closing the window, we're going to change the
@@ -106,6 +107,7 @@ class CheatCodeDialog extends JDialog implements ActionListener, PropertyChangeL
 
 		// Ensure the text field always gets the first focus.
 		addComponentListener(new ComponentAdapter() {
+			@Override
 			public void componentShown(ComponentEvent ce) {
 				textField.requestFocusInWindow();
 			}

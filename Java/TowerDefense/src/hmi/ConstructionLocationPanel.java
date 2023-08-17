@@ -13,8 +13,7 @@ import gameboard.GameBoardPredefinedConstructionLocation;
 public class ConstructionLocationPanel extends JPanel {
 
 	@SuppressWarnings("unused")
-	private static final Logger LOGGER = LogManager.getLogger(GameBoardPanel.class);
-	private String name;
+	private static final Logger LOGGER = LogManager.getLogger(ConstructionLocationPanel.class);
 
 	private GameBoardPredefinedConstructionLocation gameBoardPredefinedConstructionLocation;
 	private GameBoardPanel gameBoardPanel;
@@ -39,8 +38,6 @@ public class ConstructionLocationPanel extends JPanel {
 				gameBoardPredefinedConstructionLocation.getRectangleDefinedArea().getY());
 		this.setSize(gameBoardPredefinedConstructionLocation.getRectangleDefinedArea().getWidth(),
 				gameBoardPredefinedConstructionLocation.getRectangleDefinedArea().getHeight());
-
-		name = "" + random.nextInt();
 
 		mouseOverSelectionForConstructionWhenEmptyPanel = new JPanel();
 		mouseOverSelectionForConstructionWhenEmptyPanel.setLayout(null);

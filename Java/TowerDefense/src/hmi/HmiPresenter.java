@@ -6,7 +6,9 @@ import gameboard.GameBoardPredefinedConstructionLocation;
 public class HmiPresenter {
 
 	private GameBoardPanel gameBoardPanel;
+	@SuppressWarnings("unused")
 	private SideCommandPanel sideCommandPanel;
+	@SuppressWarnings("unused")
 	private TowerDefenseMainViewFrame towerDefenseMainViewFrame;
 
 	private TowerDataModel selectedForConstructionTower = null;

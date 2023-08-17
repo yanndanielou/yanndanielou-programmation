@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import belligerents.Attacker;
+import belligerents.Belligerent;
 import core.GameManager;
 import game.Game;
 
@@ -34,13 +35,9 @@ public class CheatCodeManager {
 			Method method = this.getClass().getDeclaredMethod(textCheatCode);
 			method.invoke(this);
 			return true;
-		} catch (SecurityException e) {
+		} catch (SecurityException | NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
 
-		} catch (NoSuchMethodException e) {
-		} catch (IllegalArgumentException e) {
-		} catch (IllegalAccessException e) {
-		} catch (InvocationTargetException e) {
-		}
+		}    
 		return false;
 	}
 
@@ -48,7 +45,7 @@ public class CheatCodeManager {
 		if (GameManager.hasGameInProgress()) {
 			Game game = GameManager.getInstance().getGame();
 			List<Attacker> allAttackers = game.getAttackers();
-			allAttackers.forEach(attacker -> attacker.forbidToMove());
+			allAttackers.forEach(Belligerent::forbidToMove);
 		}
 	}
 

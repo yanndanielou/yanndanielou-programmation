@@ -28,18 +28,17 @@ public abstract class GameObject {
 	protected boolean beingDestroyed = false;
 
 	private BufferedImage simpleTowerNormalBufferedImage = null;
-	private final static String simpleTowerNormalImagePath = "Images/Simple_tower_60x60.png";
+	private static final String SIMPLE_TOWER_NORMAL_IMAGE_PATH = "Images/Simple_tower_60x60.png";
 
 	private BufferedImage simpleTowerBombBufferedImage = null;
-	private final String simpleTowerBombImagePath = "Images/simple_tower_bomb.png";
+	private static final String SIMPLE_TOWER_BOMB_IMAGE_PATH = "Images/simple_tower_bomb.png";
 
 	private BufferedImage normalAttackerBufferedImage = null;
-	private final String normalAttackerImagePath = "Images/Attacker_normal_going_right.png";
+	private static final String NORMAL_ATTACKER_IMAGE_PATH = "Images/Attacker_normal_going_right.png";
 
 	protected int evolutionLevel;
 
-	public GameObject(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game,
-			int evolutionLevel) {
+	protected GameObject(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game, int evolutionLevel) {
 		this.surroundingRectangleAbsoluteOnCompleteBoard = surroundingRectangleAbsoluteOnCompleteBoard;
 		this.game = game;
 		this.evolutionLevel = evolutionLevel;
@@ -61,7 +60,7 @@ public abstract class GameObject {
 	}
 
 	private void initializeTowers() {
-		simpleTowerNormalBufferedImage = getBufferedImageFromFilePath(simpleTowerNormalImagePath);
+		simpleTowerNormalBufferedImage = getBufferedImageFromFilePath(SIMPLE_TOWER_NORMAL_IMAGE_PATH);
 	}
 
 	private void initializeAndLoadImages() {
@@ -71,11 +70,11 @@ public abstract class GameObject {
 	}
 
 	private void initializeAttackers() {
-		normalAttackerBufferedImage = getBufferedImageFromFilePath(normalAttackerImagePath);
+		normalAttackerBufferedImage = getBufferedImageFromFilePath(NORMAL_ATTACKER_IMAGE_PATH);
 	}
 
 	private void initializeBombs() {
-		simpleTowerBombBufferedImage = getBufferedImageFromFilePath(simpleTowerBombImagePath);
+		simpleTowerBombBufferedImage = getBufferedImageFromFilePath(SIMPLE_TOWER_BOMB_IMAGE_PATH);
 	}
 
 	public BufferedImage getSimpleTowerNormalImage(Tower simpleTower) {
@@ -132,19 +131,19 @@ public abstract class GameObject {
 	}
 
 	public int getExtremeLeftPointX() {
-		return (int) surroundingRectangleAbsoluteOnCompleteBoard.getX();
+		return surroundingRectangleAbsoluteOnCompleteBoard.getX();
 	}
 
 	public int getExtremeRightPointX() {
-		return (int) surroundingRectangleAbsoluteOnCompleteBoard.getMaxX();
+		return surroundingRectangleAbsoluteOnCompleteBoard.getMaxX();
 	}
 
 	public int getLowestPointY() {
-		return (int) surroundingRectangleAbsoluteOnCompleteBoard.getMaxY();
+		return surroundingRectangleAbsoluteOnCompleteBoard.getMaxY();
 	}
 
 	public int getHighestPointY() {
-		return (int) surroundingRectangleAbsoluteOnCompleteBoard.getY();
+		return surroundingRectangleAbsoluteOnCompleteBoard.getY();
 	}
 
 	public boolean move(int xMovement, int yMovement) {

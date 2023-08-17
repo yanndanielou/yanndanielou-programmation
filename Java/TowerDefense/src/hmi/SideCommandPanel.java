@@ -84,7 +84,7 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 				.createJButtonFromImage("Images/simple_tower_construction_buttons_in_side_command_panel.PNG");
 		createSimpleTowerButton.setLocation(42, 130);
 		add(createSimpleTowerButton, LAYERS_ORDERED_FROM_TOP_TO_BACK.TOWERS_CONSTRUCTION_SELECTION.ordinal());
-		createSimpleTowerButton.addActionListener((event) -> {
+		createSimpleTowerButton.addActionListener(event -> {
 			getHmiPresenter().selectTowerForConstruction(
 					gameBoard.getGame().getGameObjectsDataModel().getSimpleTowerDataModel());
 		});
@@ -97,37 +97,37 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 
 	@Override
 	public void onAttackerEndOfDestructionAndClean(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void onListenToAttacker(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void onAttackerMoved(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void onAttackerBeginningOfDestruction(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void onListenToTower(Tower tower) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void onTowerRemoval(Tower tower) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
@@ -138,19 +138,19 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 
 	@Override
 	public void onGameCancelled(Game game) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void onGameLost(Game game) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void onGameWon(Game game) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
@@ -165,7 +165,7 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 
 	@Override
 	public void onAttackerEscape(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 }

@@ -58,8 +58,6 @@ public class GameBoard implements TowerListener, AttackerListener {
 			Map<Integer, GameBoardPoint> gameBoardOfOneRowPerColumn;
 			if (gameBoardPointPerRowAndColumn.containsKey(row)) {
 				gameBoardOfOneRowPerColumn = gameBoardPointPerRowAndColumn.get(row);
-				// gameBoardOfOneRowPerColumn.put(new HashMap<>row, new Map<Integer,
-				// GameBoardPoint>());
 			} else {
 				gameBoardOfOneRowPerColumn = new HashMap<>();
 				gameBoardPointPerRowAndColumn.put(row, gameBoardOfOneRowPerColumn);
@@ -208,13 +206,13 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	@Override
 	public void onTowerRemoval(Tower tower) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void onAttackerEndOfDestructionAndClean(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
@@ -228,13 +226,13 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	@Override
 	public void onAttackerMoved(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void onAttackerBeginningOfDestruction(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
@@ -250,7 +248,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 	public void addGameBoardAttackersExitArea(GameBoardAttackersExitArea gameBoardAttackersExitArea) {
 		gameBoardAttackersExitAreas.add(gameBoardAttackersExitArea);
 		gameBoardAttackersExitArea.getAllPoints()
-				.forEach((gameBoardPoint) -> gameBoardPoint.addGameBoardAttackersExitArea(gameBoardAttackersExitArea));
+				.forEach(gameBoardPoint -> gameBoardPoint.addGameBoardAttackersExitArea(gameBoardAttackersExitArea));
 	}
 
 	public ArrayList<GameBoardAttackersExitArea> getGameBoardAttackersExitAreas() {
@@ -259,8 +257,8 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addGameBoardAttackersEntryArea(GameBoardAttackersEntryArea gameBoardAttackersEntryArea) {
 		gameBoardAttackersEntryAreas.add(gameBoardAttackersEntryArea);
-		gameBoardAttackersEntryArea.getAllPoints().forEach(
-				(gameBoardPoint) -> gameBoardPoint.addGameBoardAttackersEntryArea(gameBoardAttackersEntryArea));
+		gameBoardAttackersEntryArea.getAllPoints()
+				.forEach(gameBoardPoint -> gameBoardPoint.addGameBoardAttackersEntryArea(gameBoardAttackersEntryArea));
 	}
 
 	public ArrayList<GameBoardAttackersEntryArea> getGameBoardAttackersEntryAreas() {
@@ -269,14 +267,14 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void addNonPlayableArea(GameBoardNonPlayableArea nonPlayableArea) {
 		nonPlayableAreas.add(nonPlayableArea);
-		nonPlayableArea.getAllPoints().forEach((gameBoardPoint) -> gameBoardPoint.addNonPlayableArea(nonPlayableArea));
+		nonPlayableArea.getAllPoints().forEach(gameBoardPoint -> gameBoardPoint.addNonPlayableArea(nonPlayableArea));
 	}
 
 	public void addGameBoardInitiallyConstructibleMacroArea(
 			GameBoardInitiallyConstructibleMacroArea constructibleArea) {
 		initiallyConstructibleMacroAreas.add(constructibleArea);
 		constructibleArea.getAllPoints().forEach(
-				(gameBoardPoint) -> gameBoardPoint.addGameBoardInitiallyConstructibleMacroArea(constructibleArea));
+				gameBoardPoint -> gameBoardPoint.addGameBoardInitiallyConstructibleMacroArea(constructibleArea));
 	}
 
 	private void generatePredefinedConstructionLocations(IntegerRectangle construtionAreaRectangle,
@@ -291,10 +289,6 @@ public class GameBoard implements TowerListener, AttackerListener {
 			predefinedConstructionLocations.add(predefinedConstructionLocation);
 			LOGGER.debug(
 					"add predefinedConstructionLocation" + predefinedConstructionLocation.getRectangleDefinedArea());
-
-//			predefinedConstructionLocation.getAllPoints().forEach((gameBoardPoint) -> gameBoardPoint
-//					.addGameBoardPredefinedConstructionLocation(predefinedConstructionLocation));
-
 		}
 	}
 
@@ -333,7 +327,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	@Override
 	public void onAttackerEscape(Attacker attacker) {
-		// TODO Auto-generated method stub
-		
+		// Auto-generated method stub
+
 	}
 }

@@ -26,16 +26,16 @@ public abstract class Belligerent extends GameObject {
 
 	protected BombDataModel weaponDataModel = null;
 
-	protected ArrayList<Weapon> livingBombs = new ArrayList<Weapon>();
+	protected ArrayList<Weapon> livingBombs = new ArrayList<>();
 
-	public Belligerent(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, BombDataModel weaponDataModel,
+	protected Belligerent(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, BombDataModel weaponDataModel,
 			int maximumFireFrequencyInMilliseconds, Game game, int evolutionLevel) {
 		super(surroundingRectangleAbsoluteOnCompleteBoard, game, evolutionLevel);
 		this.maximumFireFrequencyInMilliseconds = maximumFireFrequencyInMilliseconds;
 		this.weaponDataModel = weaponDataModel;
 	}
 
-	public Belligerent(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game, int evolutionLevel) {
+	protected Belligerent(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game, int evolutionLevel) {
 		super(surroundingRectangleAbsoluteOnCompleteBoard, game, evolutionLevel);
 		this.maximumFireFrequencyInMilliseconds = Integer.MAX_VALUE;
 		this.weaponDataModel = null;

@@ -27,7 +27,7 @@ public class GameBoardDataModel {
 
 	RectangleDataModel getAttackersEntryAreaByName(String name) {
 		List<RectangleDataModel> found = attackersEntryAreasAsRectangles.stream()
-				.filter(item -> Objects.equals(item.getName(), name)).collect(Collectors.toList());
+				.filter(item -> Objects.equals(item.getName(), name)).toList();
 		if (found.size() != 1) {
 			throw new BadLogicException("Should not find " + found.size() + " AttackersEntryArea with name" + name);
 		}

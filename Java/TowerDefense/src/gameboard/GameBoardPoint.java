@@ -133,7 +133,7 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 
 	@Override
 	public void onAttackerEndOfDestructionAndClean(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
@@ -148,13 +148,13 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 
 	@Override
 	public void onAttackerMoved(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void onAttackerBeginningOfDestruction(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
@@ -174,7 +174,7 @@ public class GameBoardPoint extends IntegerPoint implements TowerListener, Attac
 
 	@Override
 	public void onAttackerEscape(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		
 	}
 

@@ -1,0 +1,18 @@
+{
+	"gameDataModels": [
+		{
+			"name": "EASY",
+			"comment": "Easy Mode",
+			"numberOfInitialLives": 20,
+			"numberOfInitialGold": 80,
+			"scenariosLevels": [
+				{
+					"attackersType": "normalAttacker",
+					"numberOfAttackers": 20,
+					"attackersEntryAreasAsComaSeparatedList": "leftAttackerEntryArea",
+					"attackersEntryAreaStrategy": "FLIP_FLOP"
+				}
+			]
+		}
+	]
+}

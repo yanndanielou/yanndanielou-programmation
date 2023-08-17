@@ -13,7 +13,7 @@ import gameboard.GameBoardAttackersEntryArea;
 
 public class ConstructionLocationPanelMouseOverListenerForConstruction extends MouseAdapter {
 	@SuppressWarnings("unused")
-	private static final Logger LOGGER = LogManager.getLogger(GameBoardAttackersEntryArea.class);
+	private static final Logger LOGGER = LogManager.getLogger(ConstructionLocationPanelMouseOverListenerForConstruction.class);
 
 	private ConstructionLocationPanel constructionLocationPanel;
 	private JPanel mouseOverSelectionForConstructionWhenEmptyPanel;

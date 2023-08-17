@@ -40,7 +40,7 @@ public class NormalAttacker extends Attacker {
 
 	@Override
 	protected void downBorderOfGameBoardReached() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 

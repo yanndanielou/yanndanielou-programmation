@@ -52,7 +52,7 @@ public class Tower extends Belligerent /* implements GameObjectListerner */ {
 
 	@Override
 	public void notifyEndOfDestructionAndClean() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
@@ -63,7 +63,7 @@ public class Tower extends Belligerent /* implements GameObjectListerner */ {
 
 	@Override
 	protected void downBorderOfGameBoardReached() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 

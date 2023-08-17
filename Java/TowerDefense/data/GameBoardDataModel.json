@@ -59,6 +59,7 @@
 		{
 			"imageToParsePath": "images/Empty_game_board_full_1_entry_1_exit_for_scanning.png",
 			"name": "leftAttackerEntryArea",
+			"associatedExitAreaName": "rightAttackerExitArea",
 			"rgbColorDefinition": {
 				"red": 34,
 				"green": 177,

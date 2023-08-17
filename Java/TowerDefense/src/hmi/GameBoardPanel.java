@@ -1,8 +1,6 @@
 package hmi;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -31,9 +29,6 @@ public class GameBoardPanel extends JLayeredPane
 	private static final long serialVersionUID = -1541008040602802454L;
 
 	private JLabel emptyGameBoardBackgroundAsLabel;
-
-	@Deprecated
-	private List<JLabel> constructibleLocationsAsLabels = new ArrayList<>();
 
 	private HashMap<GameObject, JLabel> gameObjectToLabelMap = new HashMap<>();
 	private HashMap<GameBoardPredefinedConstructionLocation, ConstructionLocationPanel> constructionLocationToLabelMap = new HashMap<>();
@@ -69,27 +64,12 @@ public class GameBoardPanel extends JLayeredPane
 			add(constructionLocationPanel, LAYERS_ORDERED_FROM_TOP_TO_BACK.BELLIGERENTS.ordinal());
 			constructionLocationToLabelMap.put(predefinedConstructionLocation, constructionLocationPanel);
 		}
-		// repaint();
 
-		/*
-		 * addMouseMotionListener(new MouseMotionListener() {
-		 * 
-		 * @Override public void mouseMoved(MouseEvent mouseEvent) { int mouseX =
-		 * mouseEvent.getX(); int mouseY = mouseEvent.getY();
-		 * 
-		 * // TODO Auto-generated method stub LOGGER.info("mouseMoved x:" + mouseX +
-		 * ", y:" + mouseY + " : " + mouseEvent); }
-		 * 
-		 * @Override public void mouseDragged(MouseEvent mouseEvent) {
-		 * LOGGER.info("mouseDragged" + mouseEvent);
-		 * 
-		 * } });
-		 */
 	}
 
 	@Override
 	public void onListenToGameStatus(Game game) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
@@ -105,7 +85,7 @@ public class GameBoardPanel extends JLayeredPane
 
 	@Override
 	public void onGameWon(Game game) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 	}
 
 	@Override
@@ -115,7 +95,7 @@ public class GameBoardPanel extends JLayeredPane
 
 	@Override
 	public void onAttackerEndOfDestructionAndClean(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
@@ -147,13 +127,13 @@ public class GameBoardPanel extends JLayeredPane
 
 	@Override
 	public void onTowerRemoval(Tower tower) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void onGameStarted(Game game) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 

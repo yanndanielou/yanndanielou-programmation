@@ -15,7 +15,7 @@ public class TopPanel extends JPanel implements GameStatusListener, PlayerListen
 
 	private static final long serialVersionUID = -4722225029326344692L;
 
-	private TowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame;
+	private TowerDefenseMainViewFrame desktopTowerDefenseMainViewFrame;
 
 	private JLabel scoreStaticLabel;
 	private JLabel currentScoreTextLabel;
@@ -27,8 +27,8 @@ public class TopPanel extends JPanel implements GameStatusListener, PlayerListen
 	private JLabel goldSymbolAsLabel;
 	private JLabel currentGoldTextLabel;
 
-	public TopPanel(TowerDefenseMainViewFrame DesktopTowerDefenseMainViewFrame, int width, int height) {
-		this.DesktopTowerDefenseMainViewFrame = DesktopTowerDefenseMainViewFrame;
+	public TopPanel(TowerDefenseMainViewFrame desktopTowerDefenseMainViewFrame, int width, int height) {
+		this.desktopTowerDefenseMainViewFrame = desktopTowerDefenseMainViewFrame;
 
 		setSize(width, height);
 
@@ -108,21 +108,22 @@ public class TopPanel extends JPanel implements GameStatusListener, PlayerListen
 	@Override
 	public void onGameCancelled(Game game) {
 		removeAll();
-		DesktopTowerDefenseMainViewFrame.removeTopPanel();
+		desktopTowerDefenseMainViewFrame.removeTopPanel();
 	}
 
 	@Override
 	public void onGameLost(Game game) {
-
+		// Auto-generated method stub
 	}
 
 	@Override
 	public void onGameWon(Game game) {
+		// Auto-generated method stub
 	}
 
 	@Override
 	public void onGameStarted(Game game) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 

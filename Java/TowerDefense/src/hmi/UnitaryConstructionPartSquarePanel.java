@@ -14,10 +14,10 @@ import org.apache.logging.log4j.Logger;
 
 import gameboard.GameBoardPredefinedConstructionLocation;
 
-@Deprecated
+@Deprecated(since = "", forRemoval = false)
 public class UnitaryConstructionPartSquarePanel extends JPanel {
 
-	private static final Logger LOGGER = LogManager.getLogger(GameBoardPanel.class);
+	private static final Logger LOGGER = LogManager.getLogger(UnitaryConstructionPartSquarePanel.class);
 	private String name;
 
 	private GameBoardPredefinedConstructionLocation gameBoardPredefinedConstructionLocation;
@@ -36,7 +36,6 @@ public class UnitaryConstructionPartSquarePanel extends JPanel {
 		this.gameBoardPredefinedConstructionLocation = gameBoardPredefinedConstructionLocation;
 		this.gameBoardPanel = gameBoardPanel;
 		this.setLayout(null);
-		// this.setBackground(Color.BLACK);
 		this.setBackground(new Color(random.nextInt(0, 255), random.nextInt(0, 255), random.nextInt(0, 255)));
 		this.setLocation(gameBoardPredefinedConstructionLocation.getRectangleDefinedArea().getX(),
 				gameBoardPredefinedConstructionLocation.getRectangleDefinedArea().getY());
@@ -44,20 +43,14 @@ public class UnitaryConstructionPartSquarePanel extends JPanel {
 				gameBoardPredefinedConstructionLocation.getRectangleDefinedArea().getHeight());
 
 		name = "" + random.nextInt();
-		/*
-		 * setVisible(true);
-		 * 
-		 * representationAsLabel = new JLabel("pl");
-		 * representationAsLabel.setLocation(getLocation());
-		 * representationAsLabel.setSize(getSize()); add(representationAsLabel);
-		 */ addMouseMotionListener(new MouseMotionListener() {
+		addMouseMotionListener(new MouseMotionListener() {
 
 			@Override
 			public void mouseMoved(MouseEvent mouseEvent) {
 				int mouseX = mouseEvent.getX();
 				int mouseY = mouseEvent.getY();
 
-				// TODO Auto-generated method stub
+				// Auto-generated method stub
 				LOGGER.info(name + " mouseMoved x:" + mouseX + ", y:" + mouseY + " : " + mouseEvent);
 			}
 
@@ -72,31 +65,31 @@ public class UnitaryConstructionPartSquarePanel extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
+				// Auto-generated method stub
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
+				// Auto-generated method stub
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
+				// Auto-generated method stub
 
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
+				// Auto-generated method stub
 
 			}
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
+				// Auto-generated method stub
 
 			}
 		});

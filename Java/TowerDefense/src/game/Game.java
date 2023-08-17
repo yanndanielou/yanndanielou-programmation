@@ -115,7 +115,7 @@ public class Game implements TowerListener, AttackerListener {
 
 	@Override
 	public void onAttackerEndOfDestructionAndClean(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
@@ -126,7 +126,7 @@ public class Game implements TowerListener, AttackerListener {
 
 	@Override
 	public void onAttackerMoved(Attacker attacker) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 

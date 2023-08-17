@@ -142,7 +142,6 @@ public class GameBoardModelBuilder {
 
 				} catch (ArrayIndexOutOfBoundsException e) {
 					LOGGER.fatal("x:" + x + ", y:" + y + ", " + e.getLocalizedMessage());
-					// e.printStackTrace();
 					continue;
 				}
 				Color pixelColor = new Color(pixelRgb);
