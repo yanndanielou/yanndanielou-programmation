@@ -120,19 +120,6 @@ def configureLogger(log_file_name):
     # logging.critical
 
 
-def getAllTextWordsInFile(fileReadContent):
-    allTexts = set()
-
-    currentWord = ""
-    for letter in fileReadContent:
-        if letter.isLetter():
-            a = 2
-
-        logging.info("Letter:" + letter)
-
-    return allTexts
-
-
 def getAllUndescoreContainingTextWordsInFile(fileReadContent):
 
     allUndescoreContainingTextWordsAsSet = set()
@@ -146,6 +133,9 @@ def getAllUndescoreContainingTextWordsInFile(fileReadContent):
     fileReadContent = fileReadContent.replace("(", " ")
     fileReadContent = fileReadContent.replace(")", " ")
     fileReadContent = fileReadContent.replace(";", " ")
+
+    
+    fileReadContent = fileReadContent.replace(":", " ")
     
     fileReadContent = fileReadContent.replace(",", " ")
 
@@ -157,42 +147,6 @@ def getAllUndescoreContainingTextWordsInFile(fileReadContent):
 
     return allUndescoreContainingTextWordsAsSet
 
-
-def getAllTextWordsInFileOldWay(fileReadContent):
-    allWords = set()
-
-    # fileReadContent = fileReadContent.replace("<"," ")
-    # fileReadContent = fileReadContent.replace("="," ")
-    # fileReadContent = fileReadContent.replace(">"," ")
-    # fileReadContent = fileReadContent.replace("&"," ")
-
-    # fileReadContent = fileReadContent.replace("+"," ")
-    # fileReadContent = fileReadContent.replace("-"," ")
-
-    # fileReadContent = fileReadContent.replace(","," ")
-    # fileReadContent = fileReadContent.replace("."," ")
-    # fileReadContent = fileReadContent.replace(":"," ")
-    # fileReadContent = fileReadContent.replace(end_line_character_in_text_file," ")
-    # fileReadContent = fileReadContent.replace("("," ")
-    # fileReadContent = fileReadContent.replace(")"," ")
-    # fileReadContent = fileReadContent.replace(";"," ")
-    # fileReadContent = fileReadContent.replace("->"," ")
-
-    # fileReadContent = fileReadContent.replace("}"," ")
-    parentFolderContainingCode = "C:\\Temp\\TowerDefense"
-    # fileReadContent = fileReadContent.replace("{"," ")
-    # fileReadContent = fileReadContent.replace("*"," ")
-
-    fileReadContent = fileReadContent.replace(
-        end_line_character_in_text_file, " ")
-
-    for fileReadContentSplit in fileReadContent.split():
-        if wordRegexCompiledPattern.match(fileReadContentSplit):
-            allWords.add(fileReadContentSplit)
-        else:
-            logging.info("Ignored because not a word:" + fileReadContentSplit)
-
-    return allWords
 
 
 def getUnderscoreContainingCodeWordTransformedIntoCamelCase(initialWordWithUnderscore):
@@ -211,23 +165,6 @@ def getUnderscoreContainingCodeWordTransformedIntoCamelCase(initialWordWithUnder
     printAndLogInfo(initialWordWithUnderscore +
                     " transformed to camel case is:" + codeWordTransformedIntoCamelCase)
     return codeWordTransformedIntoCamelCase
-
-
-def getAllNonCamelCaseTextInFileAsUniqueList(fileReadContent):
-    allNonCamelCaseTextInFileAsSet = set()
-    allWordsInFile = getAllTextWordsInFileOldWay(fileReadContent)
-    for word in allWordsInFile:
-        wordIsAllowed = False
-        for allowedRegexCompiledPattern in allowedRegexCompiledPatternsList:
-            if allowedRegexCompiledPattern.match(word) is not None:
-                printAndLogInfo("Not camel case :" + word + " is allowed")
-                wordIsAllowed = True
-                break
-        if not wordIsAllowed:
-            printAndLogInfo(word + " is not camel case")
-            allNonCamelCaseTextInFileAsSet.add(word)
-
-    return allNonCamelCaseTextInFileAsSet
 
 
 def replaceAllTextByCamelCaseInFile(fileFullPath, path, fileNameWithoutExtension, fileExtension, noOperation):
