@@ -16,23 +16,14 @@ public class GameBoardDataModel {
 	private String commandPanelBackgroundImagePath;
 
 	private DimensionDataModel predefinedConstructionLocationsDimensions;
-	private ArrayList<RectangleDataModel> attackersEntryAreasAsRectangles;
+	private ArrayList<GameBoardAttackersEntryAreasAsRectangleDataModel> attackersEntryAreasAsRectangles;
 	private ArrayList<RectangleDataModel> attackersExitAreasAsRectangles;
 	private ArrayList<RectangleDataModel> wallsAsRectangles;
 	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> pointsDefinedWallAreaAsRGBInImageToParse;
-	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> rectangleDefinedAttackersEntryAreasAsRGBInImageToParse;
+	private ArrayList<GameBoardAttackersEntryAreasByRGBImageRecognitionDataModel> rectangleDefinedAttackersEntryAreasAsRGBInImageToParse;
 	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> rectangleDefinedAttackersExitAreasAsRGBInImageToParse;
 	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> pointsDefinedNonPlayableAreasAsRGBInImageToParse;
 	private ArrayList<GameBoardAreasByRGBImageRecognitionDataModel> rectangleDefinedConstructibleAreasAsRGBInImageToParse;
-
-	RectangleDataModel getAttackersEntryAreaByName(String name) {
-		List<RectangleDataModel> found = attackersEntryAreasAsRectangles.stream()
-				.filter(item -> Objects.equals(item.getName(), name)).toList();
-		if (found.size() != 1) {
-			throw new BadLogicException("Should not find " + found.size() + " AttackersEntryArea with name" + name);
-		}
-		return found.get(0);
-	}
 
 	public RectangleDataModel getOneRandomEntryArea() {
 		RectangleDataModel rectangleDataModel = attackersEntryAreasAsRectangles.get(0);
@@ -57,7 +48,7 @@ public class GameBoardDataModel {
 		return ListUtils.emptyIfNull(wallsAsRectangles);
 	}
 
-	public List<RectangleDataModel> getAttackersEntryAreasAsRectangles() {
+	public List<GameBoardAttackersEntryAreasAsRectangleDataModel> getAttackersEntryAreasAsRectangles() {
 		return ListUtils.emptyIfNull(attackersEntryAreasAsRectangles);
 	}
 
@@ -77,7 +68,7 @@ public class GameBoardDataModel {
 		return ListUtils.emptyIfNull(pointsDefinedWallAreaAsRGBInImageToParse);
 	}
 
-	public List<GameBoardAreasByRGBImageRecognitionDataModel> getRectangleDefinedAttackersEntryAreasAsRGBInImageToParse() {
+	public List<GameBoardAttackersEntryAreasByRGBImageRecognitionDataModel> getRectangleDefinedAttackersEntryAreasAsRGBInImageToParse() {
 		return ListUtils.emptyIfNull(rectangleDefinedAttackersEntryAreasAsRGBInImageToParse);
 	}
 

@@ -72,18 +72,6 @@ public class GameBoardModelBuilder {
 					listOfPixelsInImageWithRGBAsGameBoardPoints);
 			gameBoard.addWall(wallArea);
 		}
-		for (RectangleDataModel attackersEntryAreaDataModel : gameBoardDataModel.getAttackersEntryAreasAsRectangles()) {
-			GameBoardAttackersEntryArea attackersEntryArea = new GameBoardAttackersEntryArea(gameBoard,
-					attackersEntryAreaDataModel);
-			gameBoard.addGameBoardAttackersEntryArea(attackersEntryArea);
-		}
-		for (GameBoardAreasByRGBImageRecognitionDataModel attackersEntryAreaDataModel : gameBoardDataModel
-				.getRectangleDefinedAttackersEntryAreasAsRGBInImageToParse()) {
-			IntegerRectangle rectangleInImageWithRGB = getRectangleInImageWithRGB(attackersEntryAreaDataModel);
-			GameBoardAttackersEntryArea attackersEntryArea = new GameBoardAttackersEntryArea(gameBoard,
-					rectangleInImageWithRGB, attackersEntryAreaDataModel);
-			gameBoard.addGameBoardAttackersEntryArea(attackersEntryArea);
-		}
 		for (RectangleDataModel attackersExitAreaDataModel : gameBoardDataModel.getAttackersExitAreasAsRectangles()) {
 			GameBoardAttackersExitArea attackersExitArea = new GameBoardAttackersExitArea(gameBoard,
 					attackersExitAreaDataModel);
@@ -96,11 +84,25 @@ public class GameBoardModelBuilder {
 					rectangleInImageWithRGB, attackersExitAreaDataModel);
 			gameBoard.addGameBoardAttackersExitArea(attackersExitArea);
 		}
+		for (GameBoardAttackersEntryAreasAsRectangleDataModel attackersEntryAreaDataModel : gameBoardDataModel
+				.getAttackersEntryAreasAsRectangles()) {
+			GameBoardAttackersEntryArea attackersEntryArea = new GameBoardAttackersEntryArea(gameBoard,
+					attackersEntryAreaDataModel, attackersEntryAreaDataModel.getAssociatedExitAreaName());
+			gameBoard.addGameBoardAttackersEntryArea(attackersEntryArea);
+		}
+		for (GameBoardAttackersEntryAreasByRGBImageRecognitionDataModel attackersEntryAreaDataModel : gameBoardDataModel
+				.getRectangleDefinedAttackersEntryAreasAsRGBInImageToParse()) {
+			IntegerRectangle rectangleInImageWithRGB = getRectangleInImageWithRGB(attackersEntryAreaDataModel);
+			GameBoardAttackersEntryArea attackersEntryArea = new GameBoardAttackersEntryArea(gameBoard,
+					rectangleInImageWithRGB, attackersEntryAreaDataModel,
+					attackersEntryAreaDataModel.getAssociatedExitAreaName());
+			gameBoard.addGameBoardAttackersEntryArea(attackersEntryArea);
+		}
 		for (GameBoardAreasByRGBImageRecognitionDataModel constructibleAreaDataModel : gameBoardDataModel
 				.getRectangleDefinedConstructibleAreasAsRGBInImageToParse()) {
 			IntegerRectangle rectangleInImageWithRGB = getRectangleInImageWithRGB(constructibleAreaDataModel);
-			GameBoardInitiallyConstructibleMacroArea constructibleArea = new GameBoardInitiallyConstructibleMacroArea(gameBoard,
-					rectangleInImageWithRGB, constructibleAreaDataModel);
+			GameBoardInitiallyConstructibleMacroArea constructibleArea = new GameBoardInitiallyConstructibleMacroArea(
+					gameBoard, rectangleInImageWithRGB, constructibleAreaDataModel);
 			gameBoard.addGameBoardInitiallyConstructibleMacroArea(constructibleArea);
 		}
 		for (GameBoardAreasByRGBImageRecognitionDataModel nonPlayableAreaDataModel : gameBoardDataModel
