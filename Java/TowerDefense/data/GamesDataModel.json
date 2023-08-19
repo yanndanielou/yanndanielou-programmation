@@ -8,10 +8,10 @@
 			"scenariosLevels": [
 				{
 					"attackersType": "normalAttacker",
+					"attackersEvolutionLevel": 1,
 					"numberOfAttackers": 20,
 					"attackersEntryAreasAsComaSeparatedList": "leftAttackerEntryArea",
-					"attackersEntryAreaStrategy": "FLIP_FLOP"
-				}
+					"attackersEntryAreaStrategy": "CHANGE_ATTACKER_ENTRY_AREA_AT_EACH_ATTACKER"				}
 			]
 		}
 	]
