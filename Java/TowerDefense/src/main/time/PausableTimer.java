@@ -30,7 +30,7 @@ public class PausableTimer {
 		LOGGER.info("PausableTimer created");
 	}
 
-	public void start(TimerTask timerTask, long period) {
+	public void start(TimerTask timerTask, long delay, long period) {
 
 		this.period = period;
 		this.persistentToAllPausesAndResumesTaskToBeExecuted = timerTask;
@@ -45,7 +45,7 @@ public class PausableTimer {
 			}
 		};
 
-		timer.scheduleAtFixedRate(timerTask, 0, period);
+		timer.scheduleAtFixedRate(timerTask, delay, period);
 
 		LOGGER.info("PausableTimer started");
 	}
@@ -81,7 +81,14 @@ public class PausableTimer {
 		LOGGER.info("Pause has lasted:" + pauseDurationInMilliseconds + " milliseconds");
 
 		timer = new Timer(true);
-		timer.scheduleAtFixedRate(persistentToAllPausesAndResumesTaskToBeExecuted,
+		taskInstanciatedForCurrentTimer = new TimerTask() {
+			@Override
+			public void run() {
+				persistentToAllPausesAndResumesTaskToBeExecuted.run();
+			}
+		};
+
+		timer.scheduleAtFixedRate(taskInstanciatedForCurrentTimer,
 				millisecondsBeforeNextScheduledExecution, period);
 
 		paused = true;

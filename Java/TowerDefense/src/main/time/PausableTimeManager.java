@@ -125,7 +125,7 @@ public class PausableTimeManager extends TimerTask {
 
 	public void start() {
 		timer = new PausableTimer();
-		timer.start(this, 10);
+		timer.start(this, 0, 10);
 		LOGGER.info("PausableTimeManager started");
 	}
 
