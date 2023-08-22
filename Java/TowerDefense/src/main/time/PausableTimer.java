@@ -71,6 +71,7 @@ public class PausableTimer {
 	public void resume() {
 		if (!paused) {
 			LOGGER.error("PausableTimer cannot be resumed because wasn't paused");
+			return;
 		}
 		if (millisecondsBeforeNextScheduledExecution != null) {
 			LOGGER.error("PausableTimer cannot be resumed because has no millisecondsBeforeNextScheduledExecution");
@@ -88,8 +89,7 @@ public class PausableTimer {
 			}
 		};
 
-		timer.scheduleAtFixedRate(taskInstanciatedForCurrentTimer,
-				millisecondsBeforeNextScheduledExecution, period);
+		timer.scheduleAtFixedRate(taskInstanciatedForCurrentTimer, millisecondsBeforeNextScheduledExecution, period);
 
 		paused = true;
 	}
