@@ -1,22 +1,18 @@
 package test.time;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Date;
 import java.util.TimerTask;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
-import de.bechte.junit.runners.context.HierarchicalContextRunner;
 import main.time.PausableTimer;
 
-@RunWith(HierarchicalContextRunner.class)
 public class PausableTimerTest {
 	static final Logger LOGGER = LogManager.getLogger(PausableTimerTest.class);
 
@@ -43,17 +39,18 @@ public class PausableTimerTest {
 		}
 	}
 
-	@Before
+	@BeforeEach
 	public void before() {
 		timerTaskForTests = new TimerTaskForTests();
 	}
 
+	@Nested
 	public class PausableTimerWithDelay {
 
 		protected int taskDelay = PERIOD_1_SECOND;
 		protected int taskPeriod = 5 * PERIOD_1_SECOND;
 
-		@Before
+		@BeforeEach
 		public void before() {
 			pausableTimer = new PausableTimer();
 			pausableTimer.start(timerTaskForTests, taskDelay, taskPeriod);
@@ -84,7 +81,7 @@ public class PausableTimerTest {
 			System.out.println(new Date() + " canPauseAndResume : begin");
 
 			try {
-				Thread.sleep(taskDelay);
+				Thread.sleep((long) (taskDelay * 1.1));
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -125,10 +122,11 @@ public class PausableTimerTest {
 		}
 	}
 
+	@Nested
 	public class PausableTimerWithoutDelay {
 		protected int taskPeriod = 5 * PERIOD_1_SECOND;
 
-		@Before
+		@BeforeEach
 		public void before() {
 			pausableTimer = new PausableTimer();
 			pausableTimer.start(timerTaskForTests, 0, taskPeriod);
