@@ -3,6 +3,7 @@ package main.belligerents;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -14,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 import main.belligerents.weapon.SimpleTowerBomb;
 import main.belligerents.weapon.Weapon;
 import main.game.Game;
+import main.gameboard.GameBoardPoint;
 import main.geometry.IntegerPoint;
 import main.geometry.IntegerRectangle;
 
@@ -128,6 +130,19 @@ public abstract class GameObject {
 	public void setYSpeed(int ySpeed) {
 		LOGGER.info(this + " set y speed:" + ySpeed);
 		this.ySpeed = ySpeed;
+	}
+
+	public List<GameBoardPoint> getAllCornersGameBoardPoints() {
+		ArrayList<GameBoardPoint> allCornersGameBoardPoints = new ArrayList<>();
+		allCornersGameBoardPoints
+				.add(game.getGameBoard().getGameBoardPointByXAndY(getExtremeLeftPointX(), getHighestPointY()));
+		allCornersGameBoardPoints
+				.add(game.getGameBoard().getGameBoardPointByXAndY(getExtremeRightPointX(), getHighestPointY()));
+		allCornersGameBoardPoints
+				.add(game.getGameBoard().getGameBoardPointByXAndY(getExtremeLeftPointX(), getLowestPointY()));
+		allCornersGameBoardPoints
+				.add(game.getGameBoard().getGameBoardPointByXAndY(getExtremeRightPointX(), getLowestPointY()));
+		return allCornersGameBoardPoints;
 	}
 
 	public int getExtremeLeftPointX() {
