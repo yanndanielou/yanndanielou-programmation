@@ -33,7 +33,7 @@ public class AttackerDataModel {
 		return imune;
 	}
 
-	public Boolean getFlying() {
+	public Boolean isFlying() {
 		return flying;
 	}
 
