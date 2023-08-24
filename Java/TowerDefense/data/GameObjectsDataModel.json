@@ -1,83 +1,110 @@
 {
-   "simpleTowerBombDataModel": {
-		 "description":"simpleTowerBombDataModel",
-		 "height": 12,
-		 "width":11,
-		 "maximumNumberOfAliveAmmunitionsAllowed":1,
-		 "fixedRepresentationImagePath": "data/simple_tower_bomb.png",
-			"levels": [
-				{
-					"levelNumber":1,
-					"speed":5
-				},
-				{
-					"levelNumber":2,
-					"speed":5
-				},
-				{
-					"levelNumber":3,
-					"speed":5
-				}
-			]
-    },
-   "simpleTowerDataModel": {
-		 "description":"Cheap tower that fires pellets.",
-		 "height": 60,
-		 "width":60,
-			"levels": [
-				{
-					"levelNumber":1,
-					"cost":5,
-					"damage":10,
-					"range":60,
-					"fireSpeed":"SLOW",
-					"sellValue":3
-				},
-				{
-					"levelNumber":2,
-					"cost":5,
-					"damage":20,
-					"range":60,
-					"fireSpeed":"SLOW",
-					"sellValue":7,
-					"upgradeTimeInSeconds":3
-				},
-				{
-					"levelNumber":3,
-					"cost":10,
-					"damage":40,
-					"range":60,
-					"fireSpeed":"SLOW",
-					"sellValue":15,
-					"upgradeTimeInSeconds":6
-				}
-			]
-    },
-   "normalAttackerDataModel": {
-		 "description":"normalAttacker",
-		 "height": 24,
-		 "width":24,
-		 "imune":false,
-		 "flying":false,
-			"levels": [
-				{
-					"levelNumber":1,
-					"health":20,
-					"speed":1,
-					"scorePrizeMoneyOnDestruction":1
-				},
-				{
-					"levelNumber":2,
-					"health":26,
-					"speed":1,
-					"scorePrizeMoneyOnDestruction":2
-				},
-				{
-					"levelNumber":3,
-					"health":30,
-					"speed":1,
-					"scorePrizeMoneyOnDestruction":3
-				}
-			]
-    }
+	"simpleTowerBombDataModel": {
+		"description": "simpleTowerBombDataModel",
+		"height": 12,
+		"width": 11,
+		"maximumNumberOfAliveAmmunitionsAllowed": 1,
+		"fixedRepresentationImagePath": "data/simple_tower_bomb.png",
+		"levels": [
+			{
+				"levelNumber": 1,
+				"speed": 5
+			},
+			{
+				"levelNumber": 2,
+				"speed": 5
+			},
+			{
+				"levelNumber": 3,
+				"speed": 5
+			}
+		]
+	},
+	"simpleTowerDataModel": {
+		"description": "Cheap tower that fires pellets.",
+		"height": 60,
+		"width": 60,
+		"levels": [
+			{
+				"levelNumber": 1,
+				"cost": 5,
+				"damage": 10,
+				"range": 60,
+				"fireSpeed": "SLOW",
+				"sellValue": 3
+			},
+			{
+				"levelNumber": 2,
+				"cost": 5,
+				"damage": 20,
+				"range": 60,
+				"fireSpeed": "SLOW",
+				"sellValue": 7,
+				"upgradeTimeInSeconds": 3
+			},
+			{
+				"levelNumber": 3,
+				"cost": 10,
+				"damage": 40,
+				"range": 60,
+				"fireSpeed": "SLOW",
+				"sellValue": 15,
+				"upgradeTimeInSeconds": 6
+			}
+		]
+	},
+	"normalAttackerDataModel": {
+		"description": "normalAttacker",
+		"height": 29,
+		"width": 40,
+		"imune": false,
+		"flying": false,
+		"levels": [
+			{
+				"levelNumber": 1,
+				"health": 20,
+				"speed": 1,
+				"scorePrizeMoneyOnDestruction": 1
+			},
+			{
+				"levelNumber": 2,
+				"health": 26,
+				"speed": 1,
+				"scorePrizeMoneyOnDestruction": 2
+			},
+			{
+				"levelNumber": 3,
+				"health": 30,
+				"speed": 1,
+				"scorePrizeMoneyOnDestruction": 3
+			}
+		]
+	},
+	"flyingAttackerDataModel": {
+		"description": "flyingAttacker",
+		"height": 24,
+		"width": 24,
+		"imune": false,
+		"flying": true,
+		"levels": [
+			{
+				"levelNumber": 1,
+				"health": 50,
+				"speed": 1,
+				"scorePrizeMoneyOnDestruction": 1
+			},
+			{
+				"levelNumber": 2,
+				"health": 105,
+				"speed": 1,
+				"scorePrizeMoneyOnDestruction": 2
+			},
+			{
+				"levelNumber": 3,
+				"health": 220,
+				"speed": 1,
+				"scorePrizeMoneyOnDestruction": 3
+			}
+		]
+	}
 }
