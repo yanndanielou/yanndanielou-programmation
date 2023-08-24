@@ -28,6 +28,16 @@ public class MovingObjectPathFinder {
 		return instance;
 	}
 
+	private boolean isMovementAllowed(GameBoard gameBoard, Attacker attacker,
+			NeighbourGameBoardPointDirection direction) {
+
+		for (GameBoardPoint attackerCornerGameBoardPoint : attacker.getAllCornersGameBoardPoints()) {
+
+		}
+
+		return true;
+	}
+
 	private NeighbourGameBoardPointDirection getNextMovementDirectionForSmallerPathInStraightLine(Attacker attacker) {
 		IntegerPoint upperLeftAttackerPoint = new IntegerPoint(attacker.getExtremeLeftPointX(),
 				attacker.getHighestPointY());

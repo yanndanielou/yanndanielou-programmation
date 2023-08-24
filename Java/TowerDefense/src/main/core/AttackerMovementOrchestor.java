@@ -65,6 +65,11 @@ public class AttackerMovementOrchestor implements TimeManagerListener {
 
 	@Override
 	public void on10msTick() {
+
+	}
+
+	@Override
+	public void on20msTick() {
 		moveAttackers();
 	}
 
