@@ -21,8 +21,6 @@ public abstract class GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);
 
 	protected IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard;
-	protected Integer xSpeed;
-	protected Integer ySpeed;
 	protected Game game;
 
 	protected boolean beingDestroyed = false;
@@ -101,28 +99,6 @@ public abstract class GameObject {
 		this.surroundingRectangleAbsoluteOnCompleteBoard = surroundingRectangleAbsoluteOnCompleteBoard;
 	}
 
-	public int getXSpeed() {
-		return xSpeed;
-	}
-
-	public boolean isInMovement() {
-		return xSpeed != 0 || ySpeed != 0;
-	}
-
-	public void setXSpeed(int xSpeed) {
-		LOGGER.debug(this + " set x speed:" + xSpeed);
-		this.xSpeed = xSpeed;
-	}
-
-	public int getYSpeed() {
-		return ySpeed;
-	}
-
-	public void setYSpeed(int ySpeed) {
-		LOGGER.info(this + " set y speed:" + ySpeed);
-		this.ySpeed = ySpeed;
-	}
-
 	public List<GameBoardPoint> getAllCornersGameBoardPoints() {
 		ArrayList<GameBoardPoint> allCornersGameBoardPoints = new ArrayList<>();
 		allCornersGameBoardPoints
@@ -186,19 +162,6 @@ public abstract class GameObject {
 		notifyEndOfDestructionAndClean();
 	}
 
-	public void stopHorizontalMovement() {
-		xSpeed = 0;
-	}
-
-	public void stopVerticalMovement() {
-		ySpeed = 0;
-	}
-
-	public void stopMovement() {
-		stopHorizontalMovement();
-		stopVerticalMovement();
-	}
-
 	public Game getGame() {
 		return game;
 	}
@@ -211,4 +174,7 @@ public abstract class GameObject {
 		return flyingAttackerBufferedImage;
 	}
 
+	public int getEvolutionLevel() {
+		return evolutionLevel;
+	}
 }

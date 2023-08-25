@@ -37,16 +37,6 @@ public class Tower extends Belligerent /* implements GameObjectListerner */ {
 	}
 
 	@Override
-	protected void rightBorderOfGameBoardReached() {
-		stopMovement();
-	}
-
-	@Override
-	protected void leftBorderOfGameBoardReached() {
-		stopMovement();
-	}
-
-	@Override
 	public void impactNow(Weapon weapon) {
 	}
 

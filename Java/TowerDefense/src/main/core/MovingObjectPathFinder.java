@@ -10,6 +10,7 @@ import main.gameboard.GameBoard;
 import main.gameboard.GameBoardPoint;
 import main.gameboard.NeighbourGameBoardPointDirection;
 import main.geometry2d.integergeometry.IntegerPoint;
+import main.geometry2d.vectors.Vector2D;
 
 public class MovingObjectPathFinder {
 	private static MovingObjectPathFinder instance;
@@ -28,8 +29,7 @@ public class MovingObjectPathFinder {
 		return instance;
 	}
 
-	private boolean isMovementAllowed(GameBoard gameBoard, Attacker attacker,
-			NeighbourGameBoardPointDirection direction) {
+	private boolean isMovementAllowed(GameBoard gameBoard, Attacker attacker, int dx, int dy) {
 
 		for (GameBoardPoint attackerCornerGameBoardPoint : attacker.getAllCornersGameBoardPoints()) {
 
@@ -70,6 +70,14 @@ public class MovingObjectPathFinder {
 		NeighbourGameBoardPointDirection nextMovementDirectionForSmallerPathInStraightLine = getNextMovementDirectionForSmallerPathInStraightLine(
 				attacker);
 		return nextMovementDirectionForSmallerPathInStraightLine;
+	}
+
+	public Vector2D getNextMovement(Attacker attacker) {
+		Point attackerDestination = attacker.getEscapeDestination();
+		if (attacker.getAttackerDataModel().isFlying()) {
+
+		}
+		return null;
 	}
 
 }

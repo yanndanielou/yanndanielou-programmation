@@ -1,5 +1,7 @@
 package main.geometry2d.vectors;
 
+import java.awt.Point;
+
 public class Vector2D implements Cloneable {
 
 	public double x;
@@ -13,8 +15,19 @@ public class Vector2D implements Cloneable {
 		this.y = y;
 	}
 
+	public Vector2D(Point origin, Point destination) {
+		this.x = destination.getX() - origin.getX();
+		this.y = destination.getY() - origin.getY();
+	}
+
 	public Vector2D(Vector2D v) {
 		set(v);
+	}
+
+	public void resizeTo(double newLength) {
+		double currentLength = getLength();
+		double ratioToApply = newLength / currentLength;
+		this.multiply(ratioToApply);
 	}
 
 	private void set(Vector2D v) {
@@ -24,10 +37,6 @@ public class Vector2D implements Cloneable {
 
 	public double getLength() {
 		return Math.sqrt(x * x + y * y);
-	}
-
-	public double getLengthSq() {
-		return (x * x + y * y);
 	}
 
 	public double getAngle() {
@@ -54,6 +63,15 @@ public class Vector2D implements Cloneable {
 		this.y -= vy;
 	}
 
+	public void multiply(double scalar) {
+		x *= scalar;
+		y *= scalar;
+	}
+
+	public Vector2D getMultiplied(double scalar) {
+		return new Vector2D(x * scalar, y * scalar);
+	}
+
 	public void divide(double scalar) {
 		x /= scalar;
 		y /= scalar;
@@ -77,18 +95,6 @@ public class Vector2D implements Cloneable {
 
 	public static double dot(Vector2D v1, Vector2D v2) {
 		return v1.x * v2.x + v1.y * v2.y;
-	}
-
-	public double cross(Vector2D v) {
-		return (this.x * v.y - this.y * v.x);
-	}
-
-	public double cross(double vx, double vy) {
-		return (this.x * vy - this.y * vx);
-	}
-
-	public static double cross(Vector2D v1, Vector2D v2) {
-		return (v1.x * v2.y - v1.y * v2.x);
 	}
 
 	public double project(Vector2D v) {

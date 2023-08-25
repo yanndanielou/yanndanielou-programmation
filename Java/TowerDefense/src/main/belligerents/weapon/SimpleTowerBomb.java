@@ -15,21 +15,18 @@ public class SimpleTowerBomb extends Weapon {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(SimpleTowerBomb.class);
 
-	public SimpleTowerBomb(BombDataModel genericObjectDataModel, int x, int y, int xSpeed, Game game,
-			Belligerent parentBelligerent, Belligerent targetBelligerent, int evolutionLevel) {
+	public SimpleTowerBomb(BombDataModel genericObjectDataModel, int x, int y, Game game, Belligerent parentBelligerent,
+			Belligerent targetBelligerent, int evolutionLevel) {
 		super(new IntegerRectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), game,
 				parentBelligerent, targetBelligerent, evolutionLevel);
-		setXSpeed(xSpeed);
 	}
 
 	@Override
 	protected void rightBorderOfGameBoardReached() {
-		stopHorizontalMovement();
 	}
 
 	@Override
 	protected void leftBorderOfGameBoardReached() {
-		stopHorizontalMovement();
 	}
 
 	@Deprecated

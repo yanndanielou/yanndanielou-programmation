@@ -74,16 +74,6 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	}
 
 	@Override
-	protected void rightBorderOfGameBoardReached() {
-		setXSpeed(getXSpeed() * -1);
-	}
-
-	@Override
-	protected void leftBorderOfGameBoardReached() {
-		setXSpeed(getXSpeed() * -1);
-	}
-
-	@Override
 	public void notifyMovement() {
 		listeners.forEach(listener -> listener.onAttackerMoved(this));
 	}
@@ -124,6 +114,10 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 
 	public Point getEscapeDestination() {
 		return escapeDestination;
+	}
+
+	public AttackerDataModel getAttackerDataModel() {
+		return attackerDataModel;
 	}
 
 }
