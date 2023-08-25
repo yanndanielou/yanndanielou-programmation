@@ -62,7 +62,7 @@ public class ConstructionLocationPanel extends JPanel {
 		return gameBoardPredefinedConstructionLocation;
 	}
 
-	public HmiPresenter getHmiPresenter() {
+	public HmiEditionMode getHmiPresenter() {
 		return gameBoardPanel.getHmiPresenter();
 	}
 }

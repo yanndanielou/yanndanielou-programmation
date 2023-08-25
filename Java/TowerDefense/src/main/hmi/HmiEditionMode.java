@@ -3,7 +3,7 @@ package main.hmi;
 import main.builders.belligerents.TowerDataModel;
 import main.gameboard.GameBoardPredefinedConstructionLocation;
 
-public class HmiPresenter {
+public class HmiEditionMode {
 
 	private GameBoardPanel gameBoardPanel;
 	@SuppressWarnings("unused")
@@ -13,7 +13,7 @@ public class HmiPresenter {
 
 	private TowerDataModel selectedForConstructionTower = null;
 
-	public HmiPresenter(TowerDefenseMainViewFrame towerDefenseMainViewFrame, TopPanel topPanel,
+	public HmiEditionMode(TowerDefenseMainViewFrame towerDefenseMainViewFrame, TopPanel topPanel,
 			GameBoardPanel gameBoardPanel, SideCommandPanel sideCommandPanel) {
 		this.gameBoardPanel = gameBoardPanel;
 		this.sideCommandPanel = sideCommandPanel;

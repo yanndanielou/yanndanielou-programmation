@@ -61,7 +61,7 @@ public class ConstructionLocationPanelMouseOverListenerForConstruction extends M
 				&& constructionLocationPanel.getGameBoardPredefinedConstructionLocation().isNewConstructionAllowed();
 	}
 
-	private HmiPresenter getHmiPresenter() {
+	private HmiEditionMode getHmiPresenter() {
 		return constructionLocationPanel.getHmiPresenter();
 	}
 

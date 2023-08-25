@@ -16,7 +16,6 @@ public class FlyingAttacker extends Attacker {
 			int evolutionLevel) {
 
 		super(attackerDataModel, game, x, y, escapeDestination, evolutionLevel);
-		LOGGER.info("Create NormalAttacker at x:" + x + ", y:" + y);
 	}
 
 	@Override

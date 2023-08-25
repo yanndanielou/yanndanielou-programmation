@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import main.belligerents.Attacker;
+import main.belligerents.FlyingAttacker;
 import main.belligerents.NormalAttacker;
 import main.belligerents.Tower;
 import main.builders.GameObjectsDataModel;
@@ -136,6 +137,21 @@ public class GameManager {
 				normalAttackerDataModel.getWidth(), normalAttackerDataModel.getHeight());
 
 		NormalAttacker attacker = new NormalAttacker(normalAttackerDataModel, game, creationAreaRectangle.getX(),
+				creationAreaRectangle.getY(), attackerExitPoint, evolutionLevel);
+		return attacker;
+	}
+
+	public Attacker createFlyingAttacker(GameBoardAttackersEntryArea attackersEntryArea,
+			GameBoardAttackersExitArea exitArea, int evolutionLevel) {
+		GameObjectsDataModel gameObjectsDataModel = game.getGameObjectsDataModel();
+		AttackerDataModel attackerDataModel = gameObjectsDataModel.getFlyingAttackerDataModel();
+
+		IntegerRectangle creationAreaRectangle = attackersEntryArea.getRectangleDefinedArea();
+
+		Point attackerExitPoint = exitArea.getRectangleDefinedArea().getOneRandomPointAllowingSubRectangleToFit(
+				attackerDataModel.getWidth(), attackerDataModel.getHeight());
+
+		FlyingAttacker attacker = new FlyingAttacker(attackerDataModel, game, creationAreaRectangle.getX(),
 				creationAreaRectangle.getY(), attackerExitPoint, evolutionLevel);
 		return attacker;
 	}

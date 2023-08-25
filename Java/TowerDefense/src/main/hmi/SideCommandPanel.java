@@ -160,7 +160,7 @@ public class SideCommandPanel extends JLayeredPane implements GameStatusListener
 		startGameButtonAsLabel.setVisible(false);
 	}
 
-	public HmiPresenter getHmiPresenter() {
+	public HmiEditionMode getHmiPresenter() {
 		return towerDefenseMainViewFrame.getHmiPresenter();
 	}
 

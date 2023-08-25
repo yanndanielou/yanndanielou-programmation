@@ -166,6 +166,26 @@ public class MainViewMenuBarManager implements ActionListener {
 		});
 		menu.add(menuItem);
 
+		menuItem = new JMenuItem("New flying attacker", KeyEvent.VK_F);
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				if (GameManager.hasGameInProgress()) {
+					GameManager gameManager = GameManager.getInstance();
+					Game game = gameManager.getGame();
+					GameBoard gameBoard = game.getGameBoard();
+					GameBoardAttackersEntryArea gameBoardAttackersEntryArea = gameBoard
+							.getGameBoardAttackersEntryAreas().get(0);
+
+					GameBoardAttackersExitArea oneRandomExitArea = gameBoard.getGameBoardAttackersExitAreas().get(0);
+
+					gameManager.createFlyingAttacker(gameBoardAttackersEntryArea, oneRandomExitArea, 0);
+				}
+			}
+		});
+		menu.add(menuItem);
+
 		return menu;
 
 	}

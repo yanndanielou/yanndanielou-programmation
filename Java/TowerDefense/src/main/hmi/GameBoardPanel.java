@@ -142,7 +142,7 @@ public class GameBoardPanel extends JLayeredPane
 		return towerDefenseMainViewFrame;
 	}
 
-	public HmiPresenter getHmiPresenter() {
+	public HmiEditionMode getHmiPresenter() {
 		return towerDefenseMainViewFrame.getHmiPresenter();
 	}
 

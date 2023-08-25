@@ -208,7 +208,7 @@ public abstract class GameObject {
 	}
 
 	public BufferedImage getFlyingAttackerBufferedImage(Attacker normalAttacker) {
-		return normalAttackerBufferedImage;
+		return flyingAttackerBufferedImage;
 	}
 
 }
