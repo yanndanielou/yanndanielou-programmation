@@ -9,6 +9,7 @@ import main.belligerents.Attacker;
 import main.common.exceptions.BadLogicException;
 import main.game.Game;
 import main.gameboard.NeighbourGameBoardPointDirection;
+import main.geometry2d.vectors.Vector2D;
 import main.time.TimeManager;
 import main.time.TimeManagerListener;
 
@@ -25,6 +26,18 @@ public class AttackerMovementOrchestor implements TimeManagerListener {
 	}
 
 	private void moveAttackers() {
+		for (Attacker attacker : new ArrayList<>(game.getAttackers())) {
+			if (attacker.isAllowedToMove()) {
+				Vector2D nextMovement = MovingObjectPathFinder.getInstance().getNextMovement(attacker);
+				LOGGER.info(attacker + " will move " + nextMovement);
+				attacker.move(nextMovement);
+
+			}
+		}
+	}
+
+	@Deprecated
+	private void moveAttackersBasedOnGrid() {
 		for (Attacker attacker : new ArrayList<>(game.getAttackers())) {
 			if (attacker.isAllowedToMove()) {
 				NeighbourGameBoardPointDirection nextMovementDirection = MovingObjectPathFinder.getInstance()

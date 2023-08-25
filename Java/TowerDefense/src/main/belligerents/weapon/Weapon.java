@@ -2,6 +2,7 @@ package main.belligerents.weapon;
 
 import main.belligerents.Belligerent;
 import main.belligerents.GameObject;
+import main.builders.weapons.BombDataModel;
 import main.game.Game;
 import main.geometry2d.integergeometry.IntegerRectangle;
 
@@ -9,12 +10,15 @@ public abstract class Weapon extends GameObject {
 
 	protected Belligerent launcher;
 	protected Belligerent target;
+	protected BombDataModel genericObjectDataModel;
 
-	public Weapon(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game, Belligerent parentBelligerent,
+	public Weapon(BombDataModel genericObjectDataModel, int x, int y, Game game, Belligerent parentBelligerent,
 			Belligerent targetBelligerent, int evolutionLevel) {
-		super(surroundingRectangleAbsoluteOnCompleteBoard, game, evolutionLevel);
+		super(new IntegerRectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), game,
+				evolutionLevel);
 		this.launcher = parentBelligerent;
 		this.target = targetBelligerent;
+		this.genericObjectDataModel = genericObjectDataModel;
 		parentBelligerent.addLivingBomb(this);
 	}
 
@@ -38,4 +42,8 @@ public abstract class Weapon extends GameObject {
 		// }
 	}
 
+	@Override
+	public float getSpeed() {
+		return genericObjectDataModel.getLevels().get(evolutionLevel).getSpeed();
+	}
 }

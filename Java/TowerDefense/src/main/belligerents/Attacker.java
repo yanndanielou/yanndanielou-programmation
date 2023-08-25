@@ -120,4 +120,10 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 		return attackerDataModel;
 	}
 
+	@Override
+	public float getSpeed() {
+		return attackerDataModel.getLevels().get(evolutionLevel).getSpeed(); 
+	}
+
+	
 }

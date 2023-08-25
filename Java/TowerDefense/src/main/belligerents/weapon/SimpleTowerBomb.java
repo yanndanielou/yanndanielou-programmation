@@ -9,7 +9,6 @@ import main.belligerents.Belligerent;
 import main.belligerents.listeners.GameObjectListerner;
 import main.builders.weapons.BombDataModel;
 import main.game.Game;
-import main.geometry2d.integergeometry.IntegerRectangle;
 
 public class SimpleTowerBomb extends Weapon {
 	@SuppressWarnings("unused")
@@ -17,8 +16,7 @@ public class SimpleTowerBomb extends Weapon {
 
 	public SimpleTowerBomb(BombDataModel genericObjectDataModel, int x, int y, Game game, Belligerent parentBelligerent,
 			Belligerent targetBelligerent, int evolutionLevel) {
-		super(new IntegerRectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), game,
-				parentBelligerent, targetBelligerent, evolutionLevel);
+		super(genericObjectDataModel, x, y, game, parentBelligerent, targetBelligerent, evolutionLevel);
 	}
 
 	@Override

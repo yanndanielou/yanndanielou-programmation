@@ -16,6 +16,7 @@ import main.game.Game;
 import main.gameboard.GameBoardPoint;
 import main.geometry2d.integergeometry.IntegerPoint;
 import main.geometry2d.integergeometry.IntegerRectangle;
+import main.geometry2d.vectors.Vector2D;
 
 public abstract class GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);
@@ -101,15 +102,27 @@ public abstract class GameObject {
 
 	public List<GameBoardPoint> getAllCornersGameBoardPoints() {
 		ArrayList<GameBoardPoint> allCornersGameBoardPoints = new ArrayList<>();
-		allCornersGameBoardPoints
-				.add(game.getGameBoard().getGameBoardPointByXAndY(getExtremeLeftPointX(), getHighestPointY()));
-		allCornersGameBoardPoints
-				.add(game.getGameBoard().getGameBoardPointByXAndY(getExtremeRightPointX(), getHighestPointY()));
-		allCornersGameBoardPoints
-				.add(game.getGameBoard().getGameBoardPointByXAndY(getExtremeLeftPointX(), getLowestPointY()));
-		allCornersGameBoardPoints
-				.add(game.getGameBoard().getGameBoardPointByXAndY(getExtremeRightPointX(), getLowestPointY()));
+		allCornersGameBoardPoints.add(getTopLeftCorner());
+		allCornersGameBoardPoints.add(getTopRightCorner());
+		allCornersGameBoardPoints.add(getBottomLeftCorner());
+		allCornersGameBoardPoints.add(getBottomRightCorner());
 		return allCornersGameBoardPoints;
+	}
+
+	public GameBoardPoint getBottomLeftCorner() {
+		return game.getGameBoard().getGameBoardPointByXAndY(getExtremeLeftPointX(), getLowestPointY());
+	}
+
+	public GameBoardPoint getBottomRightCorner() {
+		return game.getGameBoard().getGameBoardPointByXAndY(getExtremeRightPointX(), getLowestPointY());
+	}
+
+	public GameBoardPoint getTopLeftCorner() {
+		return game.getGameBoard().getGameBoardPointByXAndY(getExtremeLeftPointX(), getHighestPointY());
+	}
+
+	public GameBoardPoint getTopRightCorner() {
+		return game.getGameBoard().getGameBoardPointByXAndY(getExtremeRightPointX(), getHighestPointY());
 	}
 
 	public int getExtremeLeftPointX() {
@@ -126,6 +139,10 @@ public abstract class GameObject {
 
 	public int getHighestPointY() {
 		return surroundingRectangleAbsoluteOnCompleteBoard.getY();
+	}
+
+	public boolean move(Vector2D nextMovement) {
+		return move((int) nextMovement.getX(), (int) nextMovement.getY());
 	}
 
 	public boolean move(int xMovement, int yMovement) {
@@ -177,4 +194,6 @@ public abstract class GameObject {
 	public int getEvolutionLevel() {
 		return evolutionLevel;
 	}
+
+	public abstract float getSpeed();
 }

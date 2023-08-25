@@ -73,9 +73,13 @@ public class MovingObjectPathFinder {
 	}
 
 	public Vector2D getNextMovement(Attacker attacker) {
-		Point attackerDestination = attacker.getEscapeDestination();
+		Point attackerEscapeDestination = attacker.getEscapeDestination();
+		GameBoardPoint attackerTopLeftCorner = attacker.getTopLeftCorner();
 		if (attacker.getAttackerDataModel().isFlying()) {
-
+			Vector2D fromAttackerTopLeftCornerToEscapeDestination = new Vector2D(attackerTopLeftCorner,
+					attackerEscapeDestination);
+			fromAttackerTopLeftCornerToEscapeDestination.resizeTo(attacker.getSpeed());
+			return fromAttackerTopLeftCornerToEscapeDestination;
 		}
 		return null;
 	}

@@ -145,6 +145,14 @@ public class Vector2D implements Cloneable {
 		return new Vector2D(x, y);
 	}
 
+	public double getX() {
+		return x;
+	}
+
+	public double getY() {
+		return y;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == this) {
