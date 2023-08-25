@@ -3,7 +3,7 @@ package main.belligerents.weapon;
 import main.belligerents.Belligerent;
 import main.belligerents.GameObject;
 import main.game.Game;
-import main.geometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerRectangle;
 
 public abstract class Weapon extends GameObject {
 

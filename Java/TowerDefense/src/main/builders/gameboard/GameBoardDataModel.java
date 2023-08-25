@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.collections4.ListUtils;
 
-import main.common.BadLogicException;
+import main.common.exceptions.BadLogicException;
 
 public class GameBoardDataModel {
 

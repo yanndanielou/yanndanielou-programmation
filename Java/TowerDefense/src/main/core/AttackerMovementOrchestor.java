@@ -6,7 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import main.belligerents.Attacker;
-import main.common.BadLogicException;
+import main.common.exceptions.BadLogicException;
 import main.game.Game;
 import main.gameboard.NeighbourGameBoardPointDirection;
 import main.time.TimeManager;

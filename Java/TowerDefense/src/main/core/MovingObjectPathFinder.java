@@ -9,7 +9,7 @@ import main.belligerents.Attacker;
 import main.gameboard.GameBoard;
 import main.gameboard.GameBoardPoint;
 import main.gameboard.NeighbourGameBoardPointDirection;
-import main.geometry.IntegerPoint;
+import main.geometry2d.integergeometry.IntegerPoint;
 
 public class MovingObjectPathFinder {
 	private static MovingObjectPathFinder instance;

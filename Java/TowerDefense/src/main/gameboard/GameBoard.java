@@ -17,10 +17,10 @@ import main.belligerents.listeners.TowerListener;
 import main.builders.belligerents.TowerDataModel;
 import main.builders.gameboard.GameBoardDataModel;
 import main.builders.gameboard.GameBoardModelBuilder;
-import main.common.BadLogicException;
+import main.common.exceptions.BadLogicException;
 import main.game.Game;
-import main.geometry.IntegerPoint;
-import main.geometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerPoint;
+import main.geometry2d.integergeometry.IntegerRectangle;
 
 public class GameBoard implements TowerListener, AttackerListener {
 

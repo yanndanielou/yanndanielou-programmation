@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 import main.belligerents.weapon.Weapon;
 import main.builders.weapons.BombDataModel;
 import main.game.Game;
-import main.geometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerRectangle;
 
 public abstract class Belligerent extends GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(Belligerent.class);

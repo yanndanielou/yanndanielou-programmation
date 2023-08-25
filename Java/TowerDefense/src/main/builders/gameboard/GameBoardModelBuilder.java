@@ -23,8 +23,8 @@ import main.gameboard.GameBoardInitiallyConstructibleMacroArea;
 import main.gameboard.GameBoardNonPlayableArea;
 import main.gameboard.GameBoardPoint;
 import main.gameboard.GameBoardWallArea;
-import main.geometry.IntegerPoint;
-import main.geometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerPoint;
+import main.geometry2d.integergeometry.IntegerRectangle;
 
 public class GameBoardModelBuilder {
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardModelBuilder.class);

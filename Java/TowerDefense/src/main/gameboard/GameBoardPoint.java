@@ -11,11 +11,11 @@ import main.belligerents.Attacker;
 import main.belligerents.Tower;
 import main.belligerents.listeners.AttackerListener;
 import main.belligerents.listeners.TowerListener;
-import main.common.BadLogicException;
+import main.common.exceptions.BadLogicException;
 import main.constants.Constants;
 import main.game.Game;
 import main.game.GameBoardPointListener;
-import main.geometry.IntegerPoint;
+import main.geometry2d.integergeometry.IntegerPoint;
 
 public class GameBoardPoint extends IntegerPoint implements TowerListener, AttackerListener {
 

@@ -1,6 +1,6 @@
 package main.builders.gameboard;
 
-import main.geometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerRectangle;
 
 public class RectangleDataModel extends GameBoardNamedAreaDataModel {
 

@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import main.builders.gameboard.GameBoardNamedAreaDataModel;
 import main.builders.gameboard.RectangleDataModel;
-import main.geometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerRectangle;
 
 public class GameBoardAttackersEntryArea extends GameBoardArea {
 

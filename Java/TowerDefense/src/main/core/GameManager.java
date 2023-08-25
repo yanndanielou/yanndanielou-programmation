@@ -22,7 +22,7 @@ import main.gameboard.GameBoardAttackersExitArea;
 import main.gameboard.GameBoardPoint;
 import main.gameboard.GameBoardPredefinedConstructionLocation;
 import main.gameboard.NeighbourGameBoardPointDirection;
-import main.geometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerRectangle;
 import main.hmi.TowerDefenseMainViewGeneric;
 
 public class GameManager {

@@ -9,7 +9,7 @@ import main.belligerents.Belligerent;
 import main.belligerents.listeners.GameObjectListerner;
 import main.builders.weapons.BombDataModel;
 import main.game.Game;
-import main.geometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerRectangle;
 
 public class SimpleTowerBomb extends Weapon {
 	@SuppressWarnings("unused")

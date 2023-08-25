@@ -11,7 +11,7 @@ import main.belligerents.weapon.Weapon;
 import main.builders.belligerents.AttackerDataModel;
 import main.core.GameManager;
 import main.game.Game;
-import main.geometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerRectangle;
 import main.time.TimeManager;
 import main.time.TimeManagerListener;
 

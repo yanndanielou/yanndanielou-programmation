@@ -16,8 +16,8 @@ import main.belligerents.weapon.SimpleTowerBomb;
 import main.belligerents.weapon.Weapon;
 import main.game.Game;
 import main.gameboard.GameBoardPoint;
-import main.geometry.IntegerPoint;
-import main.geometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerPoint;
+import main.geometry2d.integergeometry.IntegerRectangle;
 
 public abstract class GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);

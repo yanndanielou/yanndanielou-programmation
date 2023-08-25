@@ -1,4 +1,4 @@
-package main.geometry;
+package main.geometry2d.exceptions;
 
 public class BadGeometryException extends RuntimeException {
 
@@ -11,8 +11,8 @@ public class BadGeometryException extends RuntimeException {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BadGeometryException(String s) {
-		super(s);
+	public BadGeometryException(String message) {
+		super(message);
 	}
 
 }

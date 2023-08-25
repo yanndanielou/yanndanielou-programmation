@@ -4,7 +4,7 @@ import java.util.List;
 
 import main.builders.gameboard.GameBoardNamedAreaDataModel;
 import main.builders.gameboard.RectangleDataModel;
-import main.geometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerRectangle;
 
 public abstract class GameBoardArea {
 
