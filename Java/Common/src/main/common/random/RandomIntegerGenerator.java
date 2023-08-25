@@ -1,4 +1,4 @@
-package main.common;
+package main.common.random;
 
 import java.util.Random;
 
