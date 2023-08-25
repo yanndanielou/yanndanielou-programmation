@@ -9,10 +9,10 @@ import org.apache.logging.log4j.Logger;
 import main.builders.belligerents.AttackerDataModel;
 import main.game.Game;
 
-public class NormalAttacker extends Attacker {
-	private static final Logger LOGGER = LogManager.getLogger(NormalAttacker.class);
+public class FlyingAttacker extends Attacker {
+	private static final Logger LOGGER = LogManager.getLogger(FlyingAttacker.class);
 
-	public NormalAttacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escapeDestination,
+	public FlyingAttacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escapeDestination,
 			int evolutionLevel) {
 
 		super(attackerDataModel, game, x, y, escapeDestination, evolutionLevel);
@@ -21,7 +21,7 @@ public class NormalAttacker extends Attacker {
 
 	@Override
 	protected BufferedImage getGraphicalRepresentationAsBufferedImage() {
-		return getNormalAttackerBufferedImage(this);
+		return getFlyingAttackerBufferedImage(this);
 	}
 
 }

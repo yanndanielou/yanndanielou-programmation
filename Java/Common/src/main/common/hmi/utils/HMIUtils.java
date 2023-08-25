@@ -1,8 +1,12 @@
-package main.hmi;
+package main.common.hmi.utils;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.FileSystemNotFoundException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -41,5 +45,16 @@ public class HMIUtils {
 		JLabel labelToCreate = new JLabel(buttonIcon);
 		labelToCreate.setSize(buttonIcon.getIconWidth(), buttonIcon.getIconHeight());
 		return labelToCreate;
+	}
+
+	public static BufferedImage getBufferedImageFromFilePath(String imagePath) {
+		File imageFile = new File(imagePath);
+		BufferedImage bufferedImage = null;
+		try {
+			bufferedImage = ImageIO.read(imageFile);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		return bufferedImage;
 	}
 }

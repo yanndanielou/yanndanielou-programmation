@@ -1,12 +1,9 @@
 package main.belligerents;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import org.apache.logging.log4j.LogManager;
@@ -14,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import main.belligerents.weapon.SimpleTowerBomb;
 import main.belligerents.weapon.Weapon;
+import main.common.hmi.utils.HMIUtils;
 import main.game.Game;
 import main.gameboard.GameBoardPoint;
 import main.geometry2d.integergeometry.IntegerPoint;
@@ -38,6 +36,9 @@ public abstract class GameObject {
 	private BufferedImage normalAttackerBufferedImage = null;
 	private static final String NORMAL_ATTACKER_IMAGE_PATH = "Images/Attacker_normal_going_right.png";
 
+	private BufferedImage flyingAttackerBufferedImage = null;
+	private static final String FLYINIG_ATTACKER_GOING_RIGHT_IMAGE_PATH = "Images/Attacker_flying_going_right.png";
+
 	protected int evolutionLevel;
 
 	protected GameObject(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game, int evolutionLevel) {
@@ -50,19 +51,8 @@ public abstract class GameObject {
 		LOGGER.info("Created: " + this + " at " + surroundingRectangleAbsoluteOnCompleteBoard);
 	}
 
-	private BufferedImage getBufferedImageFromFilePath(String imagePath) {
-		File imageFile = new File(imagePath);
-		BufferedImage bufferedImage = null;
-		try {
-			bufferedImage = ImageIO.read(imageFile);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		return bufferedImage;
-	}
-
 	private void initializeTowers() {
-		simpleTowerNormalBufferedImage = getBufferedImageFromFilePath(SIMPLE_TOWER_NORMAL_IMAGE_PATH);
+		simpleTowerNormalBufferedImage = HMIUtils.getBufferedImageFromFilePath(SIMPLE_TOWER_NORMAL_IMAGE_PATH);
 	}
 
 	private void initializeAndLoadImages() {
@@ -72,11 +62,12 @@ public abstract class GameObject {
 	}
 
 	private void initializeAttackers() {
-		normalAttackerBufferedImage = getBufferedImageFromFilePath(NORMAL_ATTACKER_IMAGE_PATH);
+		normalAttackerBufferedImage = HMIUtils.getBufferedImageFromFilePath(NORMAL_ATTACKER_IMAGE_PATH);
+		flyingAttackerBufferedImage = HMIUtils.getBufferedImageFromFilePath(FLYINIG_ATTACKER_GOING_RIGHT_IMAGE_PATH);
 	}
 
 	private void initializeBombs() {
-		simpleTowerBombBufferedImage = getBufferedImageFromFilePath(SIMPLE_TOWER_BOMB_IMAGE_PATH);
+		simpleTowerBombBufferedImage = HMIUtils.getBufferedImageFromFilePath(SIMPLE_TOWER_BOMB_IMAGE_PATH);
 	}
 
 	public BufferedImage getSimpleTowerNormalImage(Tower simpleTower) {
@@ -178,11 +169,14 @@ public abstract class GameObject {
 		return imageIcon;
 	}
 
-	protected abstract void rightBorderOfGameBoardReached();
+	protected void rightBorderOfGameBoardReached() {
+	}
 
-	protected abstract void leftBorderOfGameBoardReached();
+	protected void leftBorderOfGameBoardReached() {
+	}
 
-	protected abstract void downBorderOfGameBoardReached();
+	protected void downBorderOfGameBoardReached() {
+	}
 
 	public abstract void notifyMovement();
 
@@ -209,7 +203,11 @@ public abstract class GameObject {
 		return game;
 	}
 
-	public BufferedImage getNormalAttackerBufferedImage(NormalAttacker normalAttacker) {
+	public BufferedImage getNormalAttackerBufferedImage(Attacker normalAttacker) {
+		return normalAttackerBufferedImage;
+	}
+
+	public BufferedImage getFlyingAttackerBufferedImage(Attacker normalAttacker) {
 		return normalAttackerBufferedImage;
 	}
 

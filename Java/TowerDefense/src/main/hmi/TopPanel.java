@@ -5,6 +5,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import main.common.hmi.utils.HMIUtils;
 import main.constants.HMIConstants;
 import main.game.Game;
 import main.game.GameStatusListener;
