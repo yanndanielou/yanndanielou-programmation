@@ -1,8 +1,8 @@
 package test.common.random;
 
 import static main.matcher.BasicMatchers.empty;
-import static main.matcher.BasicMatchers.is;
 import static main.matcher.BasicMatchers.greaterThanOrEqualTo;
+import static main.matcher.BasicMatchers.is;
 import static main.matcher.BasicMatchers.lessThanOrEqualTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;

@@ -45,7 +45,8 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 		addListener(game.getGameBoard());
 
 		this.escapeDestination = escapeDestination;
-		LOGGER.info("Create attacker " + this.getClass().getCanonicalName() + " at x:" + x + ", y:" + y);
+		LOGGER.info("Create attacker " + this.getClass().getCanonicalName() + " " + attackerDataModel.getDescription()
+				+ " at x:" + x + ", y:" + y);
 	}
 
 	@Override

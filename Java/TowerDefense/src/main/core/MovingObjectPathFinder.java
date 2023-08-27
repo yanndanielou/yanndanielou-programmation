@@ -39,8 +39,8 @@ public class MovingObjectPathFinder {
 	}
 
 	private NeighbourGameBoardPointDirection getNextMovementDirectionForSmallerPathInStraightLine(Attacker attacker) {
-		IntegerPrecisionPoint upperLeftAttackerPoint = new IntegerPrecisionPoint(attacker.getExtremeLeftPointXWithIntegerPrecision(),
-				attacker.getHighestPointY());
+		IntegerPrecisionPoint upperLeftAttackerPoint = new IntegerPrecisionPoint(
+				attacker.getExtremeLeftPointXWithIntegerPrecision(), attacker.getHighestPointY());
 		GameBoard gameBoard = attacker.getGame().getGameBoard();
 		Point destination = attacker.getEscapeDestination();
 		GameBoardPoint upperLeftAttackerGameBoardPoint = gameBoard.getGameBoardPoint(upperLeftAttackerPoint);
@@ -81,7 +81,9 @@ public class MovingObjectPathFinder {
 			fromAttackerTopLeftCornerToEscapeDestination.resizeTo(attacker.getSpeed());
 			return fromAttackerTopLeftCornerToEscapeDestination;
 		}
-		return null;
+		else {
+			throw new org.apache.commons.lang3.NotImplementedException();
+		}
 	}
 
 }

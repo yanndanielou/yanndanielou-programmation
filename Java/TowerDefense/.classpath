@@ -14,6 +14,7 @@
 	<classpathentry kind="lib" path="lib/log4j-core-2.20.0.jar"/>
 	<classpathentry kind="lib" path="lib/gson-2.10.1.jar"/>
 	<classpathentry kind="lib" path="lib/commons-collections4-4.4.jar" sourcepath="lib/commons-collections4-4.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.13.0.jar" sourcepath="lib/commons-lang3-3.13.0-sources.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/hamcrest-core-1.3.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/hamcrest-junit-2.0.0.0.jar"/>
