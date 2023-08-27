@@ -19,8 +19,8 @@ import main.builders.gameboard.GameBoardDataModel;
 import main.builders.gameboard.GameBoardModelBuilder;
 import main.common.exceptions.BadLogicException;
 import main.game.Game;
-import main.geometry2d.integergeometry.IntegerPoint;
-import main.geometry2d.integergeometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerPrecisionPoint;
+import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public class GameBoard implements TowerListener, AttackerListener {
 
@@ -84,13 +84,13 @@ public class GameBoard implements TowerListener, AttackerListener {
 		return allGameBoardPointAsOrderedList;
 	}
 
-	public GameBoardPoint getGameBoardPoint(IntegerPoint point) {
+	public GameBoardPoint getGameBoardPoint(IntegerPrecisionPoint point) {
 		return getGameBoardPointByRowAndColumn(point.getRow(), point.getColumn());
 	}
 
-	public List<GameBoardPoint> getGameBoardPoints(List<IntegerPoint> points) {
+	public List<GameBoardPoint> getGameBoardPoints(List<IntegerPrecisionPoint> points) {
 		List<GameBoardPoint> gameBoardPoints = new ArrayList<>();
-		for (IntegerPoint point : points) {
+		for (IntegerPrecisionPoint point : points) {
 			gameBoardPoints.add(getGameBoardPoint(point));
 		}
 		return gameBoardPoints;
@@ -197,7 +197,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 	}
 
 	private void placeTower(Tower tower) {
-		for (IntegerPoint pointIt : tower.getAllPoints()) {
+		for (IntegerPrecisionPoint pointIt : tower.getAllPoints()) {
 			GameBoardPoint gameBoardPoint = getGameBoardPoint(pointIt);
 			tower.addListener(gameBoardPoint);
 		}
@@ -218,7 +218,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	@Override
 	public void onListenToAttacker(Attacker attacker) {
-		for (IntegerPoint pointIt : attacker.getAllPoints()) {
+		for (IntegerPrecisionPoint pointIt : attacker.getAllPoints()) {
 			GameBoardPoint gameBoardPoint = getGameBoardPoint(pointIt);
 			attacker.addListener(gameBoardPoint);
 		}
@@ -277,13 +277,13 @@ public class GameBoard implements TowerListener, AttackerListener {
 				gameBoardPoint -> gameBoardPoint.addGameBoardInitiallyConstructibleMacroArea(constructibleArea));
 	}
 
-	private void generatePredefinedConstructionLocations(IntegerRectangle construtionAreaRectangle,
+	private void generatePredefinedConstructionLocations(IntegerPrecisionRectangle construtionAreaRectangle,
 			Dimension predefinedConstructionLocationsDimension) {
 
-		List<IntegerRectangle> predefinedConstructionsToCreateRectangles = construtionAreaRectangle
+		List<IntegerPrecisionRectangle> predefinedConstructionsToCreateRectangles = construtionAreaRectangle
 				.getInnerSubRectangles(predefinedConstructionLocationsDimension);
 
-		for (IntegerRectangle predefinedConstructionRectangle : predefinedConstructionsToCreateRectangles) {
+		for (IntegerPrecisionRectangle predefinedConstructionRectangle : predefinedConstructionsToCreateRectangles) {
 			GameBoardPredefinedConstructionLocation predefinedConstructionLocation = new GameBoardPredefinedConstructionLocation(
 					this, predefinedConstructionRectangle);
 			predefinedConstructionLocations.add(predefinedConstructionLocation);
@@ -292,7 +292,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 		}
 	}
 
-	private void generatePredefinedConstructionLocations(IntegerRectangle initialRectangle, int xTranslation,
+	private void generatePredefinedConstructionLocations(IntegerPrecisionRectangle initialRectangle, int xTranslation,
 			int yTranslation, Dimension predefinedConstructionLocationDimension) {
 		Point translatedRectangleTopLeftPoint = new Point(initialRectangle.getTopLeftPoint());
 		translatedRectangleTopLeftPoint.translate(xTranslation, yTranslation);
@@ -300,7 +300,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 		Dimension translatedRectangleDimension = new Dimension(initialRectangle.getWidth() - xTranslation,
 				initialRectangle.getHeight() - yTranslation);
 
-		IntegerRectangle translatedRectangle = new IntegerRectangle(translatedRectangleTopLeftPoint,
+		IntegerPrecisionRectangle translatedRectangle = new IntegerPrecisionRectangle(translatedRectangleTopLeftPoint,
 				translatedRectangleDimension);
 
 		generatePredefinedConstructionLocations(translatedRectangle, predefinedConstructionLocationDimension);
@@ -308,7 +308,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public void generatePredefinedConstructionLocations(TowerDataModel towerDataModel) {
 		for (GameBoardInitiallyConstructibleMacroArea initiallyConstructibleMacroArea : initiallyConstructibleMacroAreas) {
-			IntegerRectangle initiallyConstructibleMacroAreaRectangle = initiallyConstructibleMacroArea
+			IntegerPrecisionRectangle initiallyConstructibleMacroAreaRectangle = initiallyConstructibleMacroArea
 					.getRectangleDefinedArea();
 
 			generatePredefinedConstructionLocations(initiallyConstructibleMacroAreaRectangle,

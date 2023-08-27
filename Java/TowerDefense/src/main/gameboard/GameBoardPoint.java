@@ -15,9 +15,9 @@ import main.common.exceptions.BadLogicException;
 import main.constants.Constants;
 import main.game.Game;
 import main.game.GameBoardPointListener;
-import main.geometry2d.integergeometry.IntegerPoint;
+import main.geometry2d.integergeometry.IntegerPrecisionPoint;
 
-public class GameBoardPoint extends IntegerPoint implements TowerListener, AttackerListener {
+public class GameBoardPoint extends IntegerPrecisionPoint implements TowerListener, AttackerListener {
 
 	/**
 	 * 

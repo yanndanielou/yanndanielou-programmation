@@ -4,11 +4,11 @@ import java.util.List;
 
 import main.builders.gameboard.GameBoardNamedAreaDataModel;
 import main.builders.gameboard.RectangleDataModel;
-import main.geometry2d.integergeometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public abstract class GameBoardArea {
 
-	protected IntegerRectangle rectangleDefinedArea = null;
+	protected IntegerPrecisionRectangle rectangleDefinedArea = null;
 	protected List<GameBoardPoint> pointsDefinedArea = null;
 
 	protected GameBoard gameBoard;
@@ -23,17 +23,17 @@ public abstract class GameBoardArea {
 	protected GameBoardArea(GameBoard gameBoard, RectangleDataModel rectangleDataModel) {
 		this.gameBoard = gameBoard;
 		this.name = rectangleDataModel.getName();
-		this.rectangleDefinedArea = new IntegerRectangle(rectangleDataModel.getRectangle());
+		this.rectangleDefinedArea = new IntegerPrecisionRectangle(rectangleDataModel.getRectangle());
 	}
 
-	protected GameBoardArea(GameBoard gameBoard, IntegerRectangle rectangleInImageWithRGB,
+	protected GameBoardArea(GameBoard gameBoard, IntegerPrecisionRectangle rectangleInImageWithRGB,
 			GameBoardNamedAreaDataModel gameBoardNamedAreaDataModel) {
 		this.gameBoard = gameBoard;
 		this.name = gameBoardNamedAreaDataModel.getName();
 		this.rectangleDefinedArea = rectangleInImageWithRGB;
 	}
 
-	protected GameBoardArea(GameBoard gameBoard, IntegerRectangle rectangleInImageWithRGB, String name) {
+	protected GameBoardArea(GameBoard gameBoard, IntegerPrecisionRectangle rectangleInImageWithRGB, String name) {
 		this.gameBoard = gameBoard;
 		this.name = name;
 		this.rectangleDefinedArea = rectangleInImageWithRGB;
@@ -51,7 +51,7 @@ public abstract class GameBoardArea {
 		}
 	}
 
-	public IntegerRectangle getRectangleDefinedArea() {
+	public IntegerPrecisionRectangle getRectangleDefinedArea() {
 		return rectangleDefinedArea;
 	}
 }

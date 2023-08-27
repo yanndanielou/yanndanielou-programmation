@@ -4,7 +4,7 @@ import main.belligerents.Belligerent;
 import main.belligerents.GameObject;
 import main.builders.weapons.BombDataModel;
 import main.game.Game;
-import main.geometry2d.integergeometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public abstract class Weapon extends GameObject {
 
@@ -14,7 +14,7 @@ public abstract class Weapon extends GameObject {
 
 	public Weapon(BombDataModel genericObjectDataModel, int x, int y, Game game, Belligerent parentBelligerent,
 			Belligerent targetBelligerent, int evolutionLevel) {
-		super(new IntegerRectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), game,
+		super(new IntegerPrecisionRectangle(x, y, genericObjectDataModel.getWidth(), genericObjectDataModel.getHeight()), game,
 				evolutionLevel);
 		this.launcher = parentBelligerent;
 		this.target = targetBelligerent;

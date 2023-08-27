@@ -16,6 +16,7 @@ public class Vector2D implements Cloneable {
 	}
 
 	public Vector2D(Point origin, Point destination) {
+		Float a;
 		this.x = destination.getX() - origin.getX();
 		this.y = destination.getY() - origin.getY();
 	}

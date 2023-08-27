@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 import main.belligerents.weapon.Weapon;
 import main.builders.weapons.BombDataModel;
 import main.game.Game;
-import main.geometry2d.integergeometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public abstract class Belligerent extends GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(Belligerent.class);
@@ -28,14 +28,14 @@ public abstract class Belligerent extends GameObject {
 
 	protected ArrayList<Weapon> livingBombs = new ArrayList<>();
 
-	protected Belligerent(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, BombDataModel weaponDataModel,
+	protected Belligerent(IntegerPrecisionRectangle surroundingRectangleAbsoluteOnCompleteBoard, BombDataModel weaponDataModel,
 			int maximumFireFrequencyInMilliseconds, Game game, int evolutionLevel) {
 		super(surroundingRectangleAbsoluteOnCompleteBoard, game, evolutionLevel);
 		this.maximumFireFrequencyInMilliseconds = maximumFireFrequencyInMilliseconds;
 		this.weaponDataModel = weaponDataModel;
 	}
 
-	protected Belligerent(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game, int evolutionLevel) {
+	protected Belligerent(IntegerPrecisionRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game, int evolutionLevel) {
 		super(surroundingRectangleAbsoluteOnCompleteBoard, game, evolutionLevel);
 		this.maximumFireFrequencyInMilliseconds = Integer.MAX_VALUE;
 		this.weaponDataModel = null;

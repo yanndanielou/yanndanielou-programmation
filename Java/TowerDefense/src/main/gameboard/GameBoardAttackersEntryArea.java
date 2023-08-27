@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import main.builders.gameboard.GameBoardNamedAreaDataModel;
 import main.builders.gameboard.RectangleDataModel;
-import main.geometry2d.integergeometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public class GameBoardAttackersEntryArea extends GameBoardArea {
 
@@ -27,7 +27,7 @@ public class GameBoardAttackersEntryArea extends GameBoardArea {
 		computeAssociatedGameBoardAttackersExitArea(associatedAttackersExitAreaName);
 	}
 
-	public GameBoardAttackersEntryArea(GameBoard gameBoard, IntegerRectangle rectangleInImageWithRGB,
+	public GameBoardAttackersEntryArea(GameBoard gameBoard, IntegerPrecisionRectangle rectangleInImageWithRGB,
 			GameBoardNamedAreaDataModel gameBoardNamedAreaDataModel, String associatedAttackersExitAreaName) {
 		super(gameBoard, rectangleInImageWithRGB, gameBoardNamedAreaDataModel);
 		this.associatedAttackersExitAreaName = associatedAttackersExitAreaName;

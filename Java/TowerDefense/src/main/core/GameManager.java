@@ -23,7 +23,7 @@ import main.gameboard.GameBoardAttackersExitArea;
 import main.gameboard.GameBoardPoint;
 import main.gameboard.GameBoardPredefinedConstructionLocation;
 import main.gameboard.NeighbourGameBoardPointDirection;
-import main.geometry2d.integergeometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.hmi.TowerDefenseMainViewGeneric;
 
 public class GameManager {
@@ -106,7 +106,7 @@ public class GameManager {
 
 	public Tower createTower(TowerDataModel towerDataModel,
 			GameBoardPredefinedConstructionLocation predefinedConstructionLocation) {
-		IntegerRectangle rectangleDefinedArea = predefinedConstructionLocation.getRectangleDefinedArea();
+		IntegerPrecisionRectangle rectangleDefinedArea = predefinedConstructionLocation.getRectangleDefinedArea();
 		Tower tower = new Tower(towerDataModel, null, game, 0, rectangleDefinedArea.getX(),
 				rectangleDefinedArea.getY());
 		return tower;
@@ -131,7 +131,7 @@ public class GameManager {
 		GameObjectsDataModel gameObjectsDataModel = game.getGameObjectsDataModel();
 		AttackerDataModel normalAttackerDataModel = gameObjectsDataModel.getNormalAttackerDataModel();
 
-		IntegerRectangle creationAreaRectangle = attackersEntryArea.getRectangleDefinedArea();
+		IntegerPrecisionRectangle creationAreaRectangle = attackersEntryArea.getRectangleDefinedArea();
 
 		Point attackerExitPoint = exitArea.getRectangleDefinedArea().getOneRandomPointAllowingSubRectangleToFit(
 				normalAttackerDataModel.getWidth(), normalAttackerDataModel.getHeight());
@@ -146,7 +146,7 @@ public class GameManager {
 		GameObjectsDataModel gameObjectsDataModel = game.getGameObjectsDataModel();
 		AttackerDataModel attackerDataModel = gameObjectsDataModel.getFlyingAttackerDataModel();
 
-		IntegerRectangle creationAreaRectangle = attackersEntryArea.getRectangleDefinedArea();
+		IntegerPrecisionRectangle creationAreaRectangle = attackersEntryArea.getRectangleDefinedArea();
 
 		Point attackerExitPoint = exitArea.getRectangleDefinedArea().getOneRandomPointAllowingSubRectangleToFit(
 				attackerDataModel.getWidth(), attackerDataModel.getHeight());

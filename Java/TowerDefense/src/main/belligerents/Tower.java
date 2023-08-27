@@ -13,7 +13,7 @@ import main.builders.belligerents.TowerDataModel;
 import main.builders.weapons.BombDataModel;
 import main.core.GameManager;
 import main.game.Game;
-import main.geometry2d.integergeometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public class Tower extends Belligerent /* implements GameObjectListerner */ {
 	@SuppressWarnings("unused")
@@ -25,7 +25,7 @@ public class Tower extends Belligerent /* implements GameObjectListerner */ {
 
 	public Tower(TowerDataModel towerDataModel, BombDataModel weaponDataModel, Game game, int evolutionLevel, int x,
 			int y) {
-		super(new IntegerRectangle(x, y, towerDataModel.getWidth(), towerDataModel.getHeight()), game, evolutionLevel);
+		super(new IntegerPrecisionRectangle(x, y, towerDataModel.getWidth(), towerDataModel.getHeight()), game, evolutionLevel);
 
 		this.towerDataModel = towerDataModel;
 

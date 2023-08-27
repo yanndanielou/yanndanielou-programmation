@@ -14,14 +14,14 @@ import main.belligerents.weapon.Weapon;
 import main.common.hmi.utils.HMIUtils;
 import main.game.Game;
 import main.gameboard.GameBoardPoint;
-import main.geometry2d.integergeometry.IntegerPoint;
-import main.geometry2d.integergeometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerPrecisionPoint;
+import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.geometry2d.vectors.Vector2D;
 
 public abstract class GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);
 
-	protected IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard;
+	protected IntegerPrecisionRectangle surroundingRectangleAbsoluteOnCompleteBoard;
 	protected Game game;
 
 	protected boolean beingDestroyed = false;
@@ -40,7 +40,7 @@ public abstract class GameObject {
 
 	protected int evolutionLevel;
 
-	protected GameObject(IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game, int evolutionLevel) {
+	protected GameObject(IntegerPrecisionRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game, int evolutionLevel) {
 		this.surroundingRectangleAbsoluteOnCompleteBoard = surroundingRectangleAbsoluteOnCompleteBoard;
 		this.game = game;
 		this.evolutionLevel = evolutionLevel;
@@ -87,16 +87,16 @@ public abstract class GameObject {
 
 	public abstract void impactNow(Weapon weapon);
 
-	public IntegerRectangle getSurroundingRectangleAbsoluteOnCompleteBoard() {
+	public IntegerPrecisionRectangle getSurroundingRectangleAbsoluteOnCompleteBoard() {
 		return surroundingRectangleAbsoluteOnCompleteBoard;
 	}
 
-	public List<IntegerPoint> getAllPoints() {
+	public List<IntegerPrecisionPoint> getAllPoints() {
 		return surroundingRectangleAbsoluteOnCompleteBoard.getAllPoints();
 	}
 
 	public void setSurroundingRectangleAbsoluteOnCompleteBoard(
-			IntegerRectangle surroundingRectangleAbsoluteOnCompleteBoard) {
+			IntegerPrecisionRectangle surroundingRectangleAbsoluteOnCompleteBoard) {
 		this.surroundingRectangleAbsoluteOnCompleteBoard = surroundingRectangleAbsoluteOnCompleteBoard;
 	}
 
@@ -142,7 +142,7 @@ public abstract class GameObject {
 	}
 
 	public boolean move(Vector2D nextMovement) {
-		return move((int) nextMovement.getX(), (int) nextMovement.getY());
+		return move((int) Math.round(nextMovement.getX()), (int) Math.round(nextMovement.getY()));
 	}
 
 	public boolean move(int xMovement, int yMovement) {

@@ -12,12 +12,12 @@ import org.apache.logging.log4j.Logger;
 import main.common.random.RandomIntegerGenerator;
 import main.geometry2d.exceptions.BadGeometryException;
 
-public class IntegerRectangle {
-	private static final Logger LOGGER = LogManager.getLogger(IntegerRectangle.class);
+public class IntegerPrecisionRectangle {
+	private static final Logger LOGGER = LogManager.getLogger(IntegerPrecisionRectangle.class);
 
 	private Rectangle awtRectangle;
 
-	public IntegerRectangle() {
+	public IntegerPrecisionRectangle() {
 		awtRectangle = new Rectangle(0, 0, 0, 0);
 	}
 
@@ -29,31 +29,31 @@ public class IntegerRectangle {
 	 *          constructed {@code Rectangle}
 	 * @since 1.1
 	 */
-	public IntegerRectangle(Rectangle r) {
+	public IntegerPrecisionRectangle(Rectangle r) {
 		awtRectangle = new Rectangle(r.x, r.y, r.width, r.height);
 	}
 
-	public IntegerRectangle(IntegerRectangle r) {
+	public IntegerPrecisionRectangle(IntegerPrecisionRectangle r) {
 		awtRectangle = new Rectangle(r.getX(), r.getY(), r.getWidth(), r.getHeight());
 	}
 
-	public IntegerRectangle(int x, int y, int width, int height) {
+	public IntegerPrecisionRectangle(int x, int y, int width, int height) {
 		awtRectangle = new Rectangle(x, y, width, height);
 	}
 
-	public IntegerRectangle(int width, int height) {
+	public IntegerPrecisionRectangle(int width, int height) {
 		awtRectangle = new Rectangle(0, 0, width, height);
 	}
 
-	public IntegerRectangle(Point p, Dimension d) {
+	public IntegerPrecisionRectangle(Point p, Dimension d) {
 		awtRectangle = new Rectangle(p.x, p.y, d.width, d.height);
 	}
 
-	public IntegerRectangle(Point p) {
+	public IntegerPrecisionRectangle(Point p) {
 		awtRectangle = new Rectangle(p.x, p.y, 0, 0);
 	}
 
-	public IntegerRectangle(Dimension d) {
+	public IntegerPrecisionRectangle(Dimension d) {
 		awtRectangle = new Rectangle(0, 0, d.width, d.height);
 	}
 
@@ -62,7 +62,7 @@ public class IntegerRectangle {
 	 * 
 	 * @param rectangleAsListOfPoints
 	 */
-	public IntegerRectangle(List<? extends Point> rectangleAsListOfPoints) {
+	public IntegerPrecisionRectangle(List<? extends Point> rectangleAsListOfPoints) {
 
 		Point topLeftPoint = getTopLeftPoint(rectangleAsListOfPoints);
 		Point topRightPoint = getTopRightPoint(rectangleAsListOfPoints);
@@ -97,8 +97,8 @@ public class IntegerRectangle {
 
 	}
 
-	public List<IntegerRectangle> getInnerSubRectangles(Dimension subRectanglesDimension) {
-		List<IntegerRectangle> innerSubRectangles = new ArrayList<>();
+	public List<IntegerPrecisionRectangle> getInnerSubRectangles(Dimension subRectanglesDimension) {
+		List<IntegerPrecisionRectangle> innerSubRectangles = new ArrayList<>();
 
 		if (subRectanglesDimension.getWidth() <= 0) {
 			throw new IllegalArgumentException("Width must be positive in " + subRectanglesDimension);
@@ -112,7 +112,7 @@ public class IntegerRectangle {
 			double subRectangleWidth = subRectanglesDimension.getWidth();
 			for (int xIter = getX(); xIter + subRectangleWidth < getMaxX(); xIter += subRectangleWidth) {
 				Point innerSubRectangleTopLeft = new Point(xIter, yIter);
-				IntegerRectangle innerSubRectangle = new IntegerRectangle(innerSubRectangleTopLeft,
+				IntegerPrecisionRectangle innerSubRectangle = new IntegerPrecisionRectangle(innerSubRectangleTopLeft,
 						subRectanglesDimension);
 				innerSubRectangles.add(innerSubRectangle);
 			}
@@ -225,11 +225,11 @@ public class IntegerRectangle {
 		awtRectangle.translate(dx, dy);
 	}
 
-	public List<IntegerPoint> getAllPoints() {
-		ArrayList<IntegerPoint> allPoints = new ArrayList<>();
+	public List<IntegerPrecisionPoint> getAllPoints() {
+		ArrayList<IntegerPrecisionPoint> allPoints = new ArrayList<>();
 		for (int xPointIt = getX(); xPointIt < getMaxX(); xPointIt++) {
 			for (int yPointIt = getY(); yPointIt < getMaxY(); yPointIt++) {
-				allPoints.add(new IntegerPoint(xPointIt, yPointIt));
+				allPoints.add(new IntegerPrecisionPoint(xPointIt, yPointIt));
 			}
 		}
 

@@ -9,7 +9,7 @@ import main.belligerents.Attacker;
 import main.gameboard.GameBoard;
 import main.gameboard.GameBoardPoint;
 import main.gameboard.NeighbourGameBoardPointDirection;
-import main.geometry2d.integergeometry.IntegerPoint;
+import main.geometry2d.integergeometry.IntegerPrecisionPoint;
 import main.geometry2d.vectors.Vector2D;
 
 public class MovingObjectPathFinder {
@@ -39,7 +39,7 @@ public class MovingObjectPathFinder {
 	}
 
 	private NeighbourGameBoardPointDirection getNextMovementDirectionForSmallerPathInStraightLine(Attacker attacker) {
-		IntegerPoint upperLeftAttackerPoint = new IntegerPoint(attacker.getExtremeLeftPointX(),
+		IntegerPrecisionPoint upperLeftAttackerPoint = new IntegerPrecisionPoint(attacker.getExtremeLeftPointX(),
 				attacker.getHighestPointY());
 		GameBoard gameBoard = attacker.getGame().getGameBoard();
 		Point destination = attacker.getEscapeDestination();

@@ -11,7 +11,7 @@ import main.belligerents.weapon.Weapon;
 import main.builders.belligerents.AttackerDataModel;
 import main.core.GameManager;
 import main.game.Game;
-import main.geometry2d.integergeometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.time.TimeManager;
 import main.time.TimeManagerListener;
 
@@ -31,7 +31,7 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	protected Attacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escapeDestination,
 			int evolutionLevel) {
 
-		super(new IntegerRectangle(x, y, attackerDataModel.getWidth(), attackerDataModel.getHeight()), game,
+		super(new IntegerPrecisionRectangle(x, y, attackerDataModel.getWidth(), attackerDataModel.getHeight()), game,
 				evolutionLevel);
 
 		this.attackerDataModel = attackerDataModel;

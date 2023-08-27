@@ -3,14 +3,14 @@ package main.gameboard;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import main.geometry2d.integergeometry.IntegerRectangle;
+import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public class GameBoardPredefinedConstructionLocation extends GameBoardArea {
 
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardPredefinedConstructionLocation.class);
 
-	public GameBoardPredefinedConstructionLocation(GameBoard gameBoard, IntegerRectangle rectangleInImageWithRGB) {
+	public GameBoardPredefinedConstructionLocation(GameBoard gameBoard, IntegerPrecisionRectangle rectangleInImageWithRGB) {
 		super(gameBoard, rectangleInImageWithRGB, "");
 	}
 

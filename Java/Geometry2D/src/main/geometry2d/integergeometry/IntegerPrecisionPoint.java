@@ -2,21 +2,21 @@ package main.geometry2d.integergeometry;
 
 import java.awt.Point;
 
-public class IntegerPoint extends Point {
+public class IntegerPrecisionPoint extends Point {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6972482105132872818L;
 
-	public IntegerPoint() {
+	public IntegerPrecisionPoint() {
 		super();
 	}
 
-	public IntegerPoint(int x, int y) {
+	public IntegerPrecisionPoint(int x, int y) {
 		super(x, y);
 	}
 
-	public IntegerPoint(Point p) {
+	public IntegerPrecisionPoint(Point p) {
 		super(p);
 	}
 
