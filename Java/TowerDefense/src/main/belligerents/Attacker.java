@@ -49,9 +49,9 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	}
 
 	@Override
-	public boolean move(int xMovement, int yMovement) {
+	public boolean move(float xMovement, float yMovement) {
 		boolean moved = super.move(xMovement, yMovement);
-		if (surroundingRectangleAbsoluteOnCompleteBoard.contains(escapeDestination)) {
+		if (surroundingRectangleAbsoluteOnCompleteBoard.getIntegerPrecisionRectangle().contains(escapeDestination)) {
 			escaped();
 		}
 		return moved;
@@ -122,8 +122,7 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 
 	@Override
 	public float getSpeed() {
-		return attackerDataModel.getLevels().get(evolutionLevel).getSpeed(); 
+		return attackerDataModel.getLevels().get(evolutionLevel).getSpeed();
 	}
 
-	
 }

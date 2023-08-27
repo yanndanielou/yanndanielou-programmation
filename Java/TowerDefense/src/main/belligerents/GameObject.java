@@ -14,6 +14,7 @@ import main.belligerents.weapon.Weapon;
 import main.common.hmi.utils.HMIUtils;
 import main.game.Game;
 import main.gameboard.GameBoardPoint;
+import main.geometry2d.gameboard.IntegerDimensionsRectangleShapeWithFloatLocationPrecisionOnIntegerPrecisionGrid;
 import main.geometry2d.integergeometry.IntegerPrecisionPoint;
 import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.geometry2d.vectors.Vector2D;
@@ -21,7 +22,8 @@ import main.geometry2d.vectors.Vector2D;
 public abstract class GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);
 
-	protected IntegerPrecisionRectangle surroundingRectangleAbsoluteOnCompleteBoard;
+	protected IntegerDimensionsRectangleShapeWithFloatLocationPrecisionOnIntegerPrecisionGrid surroundingRectangleAbsoluteOnCompleteBoard;
+
 	protected Game game;
 
 	protected boolean beingDestroyed = false;
@@ -40,8 +42,10 @@ public abstract class GameObject {
 
 	protected int evolutionLevel;
 
-	protected GameObject(IntegerPrecisionRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game, int evolutionLevel) {
-		this.surroundingRectangleAbsoluteOnCompleteBoard = surroundingRectangleAbsoluteOnCompleteBoard;
+	protected GameObject(IntegerPrecisionRectangle surroundingRectangleAbsoluteOnCompleteBoard, Game game,
+			int evolutionLevel) {
+		this.surroundingRectangleAbsoluteOnCompleteBoard = new IntegerDimensionsRectangleShapeWithFloatLocationPrecisionOnIntegerPrecisionGrid(
+				surroundingRectangleAbsoluteOnCompleteBoard);
 		this.game = game;
 		this.evolutionLevel = evolutionLevel;
 
@@ -87,17 +91,8 @@ public abstract class GameObject {
 
 	public abstract void impactNow(Weapon weapon);
 
-	public IntegerPrecisionRectangle getSurroundingRectangleAbsoluteOnCompleteBoard() {
-		return surroundingRectangleAbsoluteOnCompleteBoard;
-	}
-
 	public List<IntegerPrecisionPoint> getAllPoints() {
-		return surroundingRectangleAbsoluteOnCompleteBoard.getAllPoints();
-	}
-
-	public void setSurroundingRectangleAbsoluteOnCompleteBoard(
-			IntegerPrecisionRectangle surroundingRectangleAbsoluteOnCompleteBoard) {
-		this.surroundingRectangleAbsoluteOnCompleteBoard = surroundingRectangleAbsoluteOnCompleteBoard;
+		return surroundingRectangleAbsoluteOnCompleteBoard.getIntegerPrecisionRectangle().getAllPoints();
 	}
 
 	public List<GameBoardPoint> getAllCornersGameBoardPoints() {
@@ -110,7 +105,8 @@ public abstract class GameObject {
 	}
 
 	public GameBoardPoint getBottomLeftCorner() {
-		return game.getGameBoard().getGameBoardPointByXAndY(getExtremeLeftPointX(), getLowestPointY());
+		return game.getGameBoard().getGameBoardPointByXAndY(getExtremeLeftPointXWithIntegerPrecision(),
+				getLowestPointY());
 	}
 
 	public GameBoardPoint getBottomRightCorner() {
@@ -118,34 +114,43 @@ public abstract class GameObject {
 	}
 
 	public GameBoardPoint getTopLeftCorner() {
-		return game.getGameBoard().getGameBoardPointByXAndY(getExtremeLeftPointX(), getHighestPointY());
+		return game.getGameBoard().getGameBoardPointByXAndY(getExtremeLeftPointXWithIntegerPrecision(),
+				getHighestPointY());
 	}
 
 	public GameBoardPoint getTopRightCorner() {
 		return game.getGameBoard().getGameBoardPointByXAndY(getExtremeRightPointX(), getHighestPointY());
 	}
 
-	public int getExtremeLeftPointX() {
-		return surroundingRectangleAbsoluteOnCompleteBoard.getX();
+	public int getExtremeLeftPointXWithIntegerPrecision() {
+		return surroundingRectangleAbsoluteOnCompleteBoard.getIntegerPrecisionRectangle().getX();
 	}
 
 	public int getExtremeRightPointX() {
-		return surroundingRectangleAbsoluteOnCompleteBoard.getMaxX();
+		return surroundingRectangleAbsoluteOnCompleteBoard.getIntegerPrecisionRectangle().getMaxX();
 	}
 
 	public int getLowestPointY() {
-		return surroundingRectangleAbsoluteOnCompleteBoard.getMaxY();
+		return surroundingRectangleAbsoluteOnCompleteBoard.getIntegerPrecisionRectangle().getMaxY();
 	}
 
 	public int getHighestPointY() {
-		return surroundingRectangleAbsoluteOnCompleteBoard.getY();
+		return surroundingRectangleAbsoluteOnCompleteBoard.getIntegerPrecisionRectangle().getY();
+	}
+
+	public int getWidth() {
+		return surroundingRectangleAbsoluteOnCompleteBoard.getWidth();
+	}
+
+	public int getHeight() {
+		return surroundingRectangleAbsoluteOnCompleteBoard.getHeight();
 	}
 
 	public boolean move(Vector2D nextMovement) {
-		return move((int) Math.round(nextMovement.getX()), (int) Math.round(nextMovement.getY()));
+		return move(Math.round(nextMovement.getX()), Math.round(nextMovement.getY()));
 	}
 
-	public boolean move(int xMovement, int yMovement) {
+	public boolean move(float xMovement, float yMovement) {
 		boolean hasMoved = false;
 		surroundingRectangleAbsoluteOnCompleteBoard.translate(xMovement, yMovement);
 		notifyMovement();

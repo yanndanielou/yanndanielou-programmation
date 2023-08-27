@@ -39,7 +39,7 @@ public class MovingObjectPathFinder {
 	}
 
 	private NeighbourGameBoardPointDirection getNextMovementDirectionForSmallerPathInStraightLine(Attacker attacker) {
-		IntegerPrecisionPoint upperLeftAttackerPoint = new IntegerPrecisionPoint(attacker.getExtremeLeftPointX(),
+		IntegerPrecisionPoint upperLeftAttackerPoint = new IntegerPrecisionPoint(attacker.getExtremeLeftPointXWithIntegerPrecision(),
 				attacker.getHighestPointY());
 		GameBoard gameBoard = attacker.getGame().getGameBoard();
 		Point destination = attacker.getEscapeDestination();

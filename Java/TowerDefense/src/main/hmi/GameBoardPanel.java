@@ -103,10 +103,8 @@ public class GameBoardPanel extends JLayeredPane
 	private void displayNewObjectAsLabel(GameObject gameObject, LAYERS_ORDERED_FROM_TOP_TO_BACK layer) {
 		ImageIcon getGraphicalRepresentationAsIcon = gameObject.getGraphicalRepresentationAsIcon();
 		JLabel objectAsLabel = new JLabel(getGraphicalRepresentationAsIcon);
-		objectAsLabel.setLocation(gameObject.getSurroundingRectangleAbsoluteOnCompleteBoard().getX(),
-				gameObject.getSurroundingRectangleAbsoluteOnCompleteBoard().getY());
-		objectAsLabel.setSize(gameObject.getSurroundingRectangleAbsoluteOnCompleteBoard().getWidth(),
-				gameObject.getSurroundingRectangleAbsoluteOnCompleteBoard().getHeight());
+		objectAsLabel.setLocation(gameObject.getExtremeRightPointX(), gameObject.getHighestPointY());
+		objectAsLabel.setSize(gameObject.getWidth(), gameObject.getHeight());
 		gameObjectToLabelMap.put(gameObject, objectAsLabel);
 		add(objectAsLabel, layer.ordinal());
 	}
@@ -119,7 +117,7 @@ public class GameBoardPanel extends JLayeredPane
 	@Override
 	public void onAttackerMoved(Attacker attacker) {
 		JLabel jLabel = gameObjectToLabelMap.get(attacker);
-		jLabel.setLocation(attacker.getExtremeLeftPointX(), attacker.getHighestPointY());
+		jLabel.setLocation(attacker.getExtremeLeftPointXWithIntegerPrecision(), attacker.getHighestPointY());
 	}
 
 	@Override

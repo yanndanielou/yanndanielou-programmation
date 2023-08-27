@@ -225,6 +225,10 @@ public class IntegerPrecisionRectangle {
 		awtRectangle.translate(dx, dy);
 	}
 
+	public void setLocation(int x, int y) {
+		awtRectangle.setLocation(x, y);
+	}
+
 	public List<IntegerPrecisionPoint> getAllPoints() {
 		ArrayList<IntegerPrecisionPoint> allPoints = new ArrayList<>();
 		for (int xPointIt = getX(); xPointIt < getMaxX(); xPointIt++) {
