@@ -10,6 +10,7 @@ import main.builders.belligerents.AttackerDataModel;
 import main.game.Game;
 
 public class FlyingAttacker extends Attacker {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(FlyingAttacker.class);
 
 	public FlyingAttacker(AttackerDataModel attackerDataModel, Game game, int x, int y, Point escapeDestination,

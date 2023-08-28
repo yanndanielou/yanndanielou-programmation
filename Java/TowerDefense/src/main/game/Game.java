@@ -196,4 +196,8 @@ public class Game implements TowerListener, AttackerListener {
 			LOGGER.info("Game is not paused, cannot resume!");
 		}
 	}
+
+	public PausableTimeManager getTimeManager() {
+		return pausableTimeManager;
+	}
 }

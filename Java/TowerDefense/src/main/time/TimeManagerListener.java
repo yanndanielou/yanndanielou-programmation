@@ -2,17 +2,22 @@ package main.time;
 
 public interface TimeManagerListener {
 
-	public void on10msTick();
+	default public void on10msTick() {
+	}
 
 	default public void on20msTick() {
 	}
 
-	public void on50msTick();
+	default public void on50msTick() {
+	}
 
-	public void on100msTick();
+	default public void on100msTick() {
+	}
 
-	public void onSecondTick();
+	default public void onSecondTick() {
+	}
 
-	public void onPause();
+	default public void onPause() {
+	}
 
 }
