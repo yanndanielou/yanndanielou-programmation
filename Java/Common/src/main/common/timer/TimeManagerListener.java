@@ -1,4 +1,4 @@
-package main.time;
+package main.common.timer;
 
 public interface TimeManagerListener {
 

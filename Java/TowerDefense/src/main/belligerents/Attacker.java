@@ -9,11 +9,10 @@ import org.apache.logging.log4j.Logger;
 import main.belligerents.listeners.AttackerListener;
 import main.belligerents.weapon.Weapon;
 import main.builders.belligerents.AttackerDataModel;
+import main.common.timer.TimeManagerListener;
 import main.core.GameManager;
 import main.game.Game;
 import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
-import main.time.TimeManager;
-import main.time.TimeManagerListener;
 
 public abstract class Attacker extends Belligerent implements TimeManagerListener {
 	@SuppressWarnings("unused")
@@ -38,7 +37,7 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 
 		setMaxNumberOfLivingBombs(0);
 
-		TimeManager.getInstance().addListener(this);
+		game.getTimeManager().addListener(this);
 
 		GameManager.getInstance().getDesktopTowerDefenseMainView().registerToAttacker(this);
 		addListener(game);

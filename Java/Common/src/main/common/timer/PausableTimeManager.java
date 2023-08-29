@@ -1,10 +1,13 @@
-package main.time;
+package main.common.timer;
 
 import java.util.ArrayList;
 import java.util.TimerTask;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import main.common.timer.PausableTimer;
+import main.common.timer.TimeManagerListener;
 
 public class PausableTimeManager extends TimerTask {
 
@@ -24,6 +27,7 @@ public class PausableTimeManager extends TimerTask {
 	}
 
 	public void addListener(TimeManagerListener listener) {
+		newListenersWaitingCurrentTickToRegister.add(listener);
 	}
 
 	@Override
@@ -124,9 +128,9 @@ public class PausableTimeManager extends TimerTask {
 	}
 
 	public void start() {
+		LOGGER.info("PausableTimeManager: start");
 		timer = new PausableTimer();
 		timer.start(this, 0, 10);
-		LOGGER.info("PausableTimeManager started");
 	}
 
 	public void pause() {

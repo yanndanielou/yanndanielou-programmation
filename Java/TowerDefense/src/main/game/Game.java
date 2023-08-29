@@ -12,10 +12,10 @@ import main.belligerents.Tower;
 import main.belligerents.listeners.AttackerListener;
 import main.belligerents.listeners.TowerListener;
 import main.builders.GameObjectsDataModel;
+import main.common.timer.PausableTimeManager;
 import main.core.GameManager;
 import main.gameboard.GameBoard;
-import main.time.PausableTimeManager;
-import main.time.TimeManager;
+import main.time.GameTimeManager;
 
 public class Game implements TowerListener, AttackerListener {
 	private static final Logger LOGGER = LogManager.getLogger(Game.class);
@@ -45,7 +45,7 @@ public class Game implements TowerListener, AttackerListener {
 
 	private int numberOfSecondsSinceGameStart;
 
-	private PausableTimeManager pausableTimeManager;
+	private GameTimeManager gameTimeManager;
 
 	public Game(GameManager gameManager, GameBoard gameBoard, GameObjectsDataModel gameObjectsDataModel) {
 		this.gameManager = gameManager;
@@ -53,8 +53,8 @@ public class Game implements TowerListener, AttackerListener {
 		this.gameObjectsDataModel = gameObjectsDataModel;
 		gameBoard.setGame(this);
 		player = new Player(this);
-		addGameStatusListener(TimeManager.getInstance());
-		pausableTimeManager = new PausableTimeManager();
+		gameTimeManager = new GameTimeManager();
+		addGameStatusListener(gameTimeManager);
 
 	}
 
@@ -110,8 +110,6 @@ public class Game implements TowerListener, AttackerListener {
 		numberOfSecondsSinceGameStart = 0;
 		LOGGER.info("Game has started. " + this);
 		gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameStarted(this));
-
-		pausableTimeManager.start();
 	}
 
 	public GameBoard getGameBoard() {
@@ -182,7 +180,8 @@ public class Game implements TowerListener, AttackerListener {
 	public void pause() {
 		if (!paused) {
 			paused = true;
-			pausableTimeManager.pause();
+			gameTimeManager.pause();
+			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGamePaused(this));
 		} else {
 			LOGGER.info("Game is already paused, cannot pause!");
 		}
@@ -191,13 +190,13 @@ public class Game implements TowerListener, AttackerListener {
 	public void resume() {
 		if (paused) {
 			paused = false;
-			pausableTimeManager.resume();
+			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameResumed(this));
 		} else {
 			LOGGER.info("Game is not paused, cannot resume!");
 		}
 	}
 
 	public PausableTimeManager getTimeManager() {
-		return pausableTimeManager;
+		return gameTimeManager;
 	}
 }

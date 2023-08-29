@@ -7,11 +7,10 @@ import org.apache.logging.log4j.Logger;
 
 import main.belligerents.Attacker;
 import main.common.exceptions.BadLogicException;
+import main.common.timer.TimeManagerListener;
 import main.game.Game;
 import main.gameboard.NeighbourGameBoardPointDirection;
 import main.geometry2d.vectors.Vector2D;
-import main.time.TimeManager;
-import main.time.TimeManagerListener;
 
 public class AttackerMovementOrchestor implements TimeManagerListener {
 
@@ -22,14 +21,14 @@ public class AttackerMovementOrchestor implements TimeManagerListener {
 
 	public AttackerMovementOrchestor(Game game) {
 		this.game = game;
-		TimeManager.getInstance().addListener(this);
+		game.getTimeManager().addListener(this);
 	}
 
 	private void moveAttackers() {
 		for (Attacker attacker : new ArrayList<>(game.getAttackers())) {
 			if (attacker.isAllowedToMove()) {
 				Vector2D nextMovement = MovingObjectPathFinder.getInstance().getNextMovement(attacker);
-				LOGGER.info(attacker + " will move " + nextMovement);
+				LOGGER.debug(attacker + " will move " + nextMovement);
 				attacker.move(nextMovement);
 
 			}
