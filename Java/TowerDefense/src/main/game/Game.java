@@ -14,10 +14,11 @@ import main.belligerents.listeners.TowerListener;
 import main.builders.GameObjectsDataModel;
 import main.common.timer.PausableTimeManager;
 import main.core.GameManager;
+import main.game.game.GenericGame;
 import main.gameboard.GameBoard;
 import main.time.GameTimeManager;
 
-public class Game implements TowerListener, AttackerListener {
+public class Game extends GenericGame implements TowerListener, AttackerListener {
 	private static final Logger LOGGER = LogManager.getLogger(Game.class);
 
 	private ArrayList<GameListener> gameListeners = new ArrayList<>();
@@ -27,10 +28,6 @@ public class Game implements TowerListener, AttackerListener {
 	private ArrayList<Attacker> attackers = new ArrayList<>();
 
 	private GameBoard gameBoard;
-
-	private boolean lost = false;
-	private boolean over = false;
-	private boolean won = false;
 
 	private boolean begun = false;
 
@@ -42,8 +39,6 @@ public class Game implements TowerListener, AttackerListener {
 	private GameManager gameManager;
 
 	private Duration gameDuration;
-
-	private int numberOfSecondsSinceGameStart;
 
 	private GameTimeManager gameTimeManager;
 
@@ -73,33 +68,13 @@ public class Game implements TowerListener, AttackerListener {
 	}
 
 	public void setLost() {
-		LOGGER.info("Game is lost!");
-		lost = true;
-		over = true;
+		super.setLost();
 		gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameLost(this));
 	}
 
 	public void setWon() {
-		LOGGER.info("Game is won!");
-		won = true;
-		over = true;
+		super.setWon();
 		gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameWon(this));
-	}
-
-	public boolean isLost() {
-		return lost;
-	}
-
-	public boolean isOver() {
-		return over;
-	}
-
-	public boolean isWon() {
-		return won;
-	}
-
-	public boolean isBegun() {
-		return begun;
 	}
 
 	public void start() {
@@ -107,7 +82,6 @@ public class Game implements TowerListener, AttackerListener {
 			throw new IllegalStateException("Game already started!");
 		}
 		this.begun = true;
-		numberOfSecondsSinceGameStart = 0;
 		LOGGER.info("Game has started. " + this);
 		gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameStarted(this));
 	}
@@ -177,26 +151,31 @@ public class Game implements TowerListener, AttackerListener {
 		return gameDuration;
 	}
 
-	public void pause() {
+	public boolean pause() {
 		if (!paused) {
 			paused = true;
 			gameTimeManager.pause();
 			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGamePaused(this));
+			return true;
 		} else {
 			LOGGER.info("Game is already paused, cannot pause!");
+			return false;
 		}
 	}
 
-	public void resume() {
+	public boolean resume() {
 		if (paused) {
 			paused = false;
 			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameResumed(this));
+			return true;
 		} else {
 			LOGGER.info("Game is not paused, cannot resume!");
+			return false;
 		}
 	}
 
 	public PausableTimeManager getTimeManager() {
 		return gameTimeManager;
 	}
+
 }
