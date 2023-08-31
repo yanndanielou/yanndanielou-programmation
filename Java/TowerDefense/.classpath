@@ -22,6 +22,7 @@
 	<classpathentry kind="lib" path="../ExternalLibraries/hamcrest-matchers-1.0.1.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/junit-hierarchicalcontextrunner-4.12.1.jar"/>
 	<classpathentry kind="src" path="/Common"/>
+	<classpathentry kind="src" path="/Game"/>
 	<classpathentry kind="src" path="/Geometry2D"/>
 
 

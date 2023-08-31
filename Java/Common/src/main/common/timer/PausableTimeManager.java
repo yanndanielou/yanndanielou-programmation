@@ -6,9 +6,6 @@ import java.util.TimerTask;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import main.common.timer.PausableTimer;
-import main.common.timer.TimeManagerListener;
-
 public class PausableTimeManager extends TimerTask {
 
 	private static final Logger LOGGER = LogManager.getLogger(PausableTimeManager.class);

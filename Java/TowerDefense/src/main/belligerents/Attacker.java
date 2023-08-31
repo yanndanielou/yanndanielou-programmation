@@ -79,37 +79,11 @@ public abstract class Attacker extends Belligerent implements TimeManagerListene
 	}
 
 	@Override
-	public void on10msTick() {
-	}
-
-	@Override
-	public void on20msTick() {
-	}
-
-	@Override
-	public void on50msTick() {
-	}
-
-	@Override
-	public void on100msTick() {
-
-	}
-
-	@Override
-	public void onSecondTick() {
-
-	}
-
-	@Override
 	public void impactNow(Weapon weapon) {
 	}
 
 	@Override
 	public void notifyEndOfDestructionAndClean() {
-	}
-
-	@Override
-	public void onPause() {
 	}
 
 	public Point getEscapeDestination() {
