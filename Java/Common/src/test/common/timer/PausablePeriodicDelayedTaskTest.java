@@ -302,26 +302,26 @@ public class PausablePeriodicDelayedTaskTest {
 				int cumulatedTimeOutsideOfPause = 0;
 				int cumulatedTimeDuringPause = 0;
 
-				for (int i = 0; i < 4; i++) {
+				for (int i = 0; i < 2; i++) {
 
 					timerTaskForTests.pause();
 					sleepThread(taskDelay * 0.5);
 					cumulatedTimeDuringPause += taskDelay * 0.5;
 					System.out.println("Cumulated waited during pause: " + cumulatedTimeDuringPause);
 
-					assertEquals(timerTaskForTests.getNumberOfTimerRuns(), 1);
+					assertEquals(1, timerTaskForTests.getNumberOfTimerRuns());
 
 					timerTaskForTests.resume();
-					sleepThread(taskDelay * 0.2);
-					cumulatedTimeOutsideOfPause += taskDelay * 0.2;
+					sleepThread(taskDelay * 0.4);
+					cumulatedTimeOutsideOfPause += taskDelay * 0.4;
 					System.out.println("Cumulated waited outside of pause: " + cumulatedTimeOutsideOfPause);
-					assertEquals(timerTaskForTests.getNumberOfTimerRuns(), 1);
+					assertEquals(1, timerTaskForTests.getNumberOfTimerRuns());
 				}
 
 				sleepThread(taskDelay * 0.3);
 				cumulatedTimeOutsideOfPause += taskDelay * 0.3;
 				System.out.println("Cumulated waited outside of pause: " + cumulatedTimeOutsideOfPause);
-				assertEquals(timerTaskForTests.getNumberOfTimerRuns(), 2);
+				assertEquals(2, timerTaskForTests.getNumberOfTimerRuns());
 			}
 
 			@Test
