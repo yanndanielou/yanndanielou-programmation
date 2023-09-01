@@ -12,19 +12,18 @@ public abstract class PausableOneShotDelayedTask {
 
 	private static final Logger LOGGER = LogManager.getLogger(PausableOneShotDelayedTask.class);
 
-	private final long initialDelayInMilliseconds;
-	private long remainingDelayInMilliseconds;
+	protected final long initialDelayInMilliseconds;
+	protected long remainingDelayInMilliseconds;
 
-	private TimerTask taskInstanciatedForCurrentTimer;
-	private Timer timer;
+	protected TimerTask taskInstanciatedForCurrentTimer;
+	protected Timer timer;
 
-	private String label;
+	protected String label;
 
-	private boolean paused = false;
-	private boolean cancelled = false;
-	
+	protected boolean paused = false;
+	protected boolean cancelled = false;
 
-	public PausableOneShotDelayedTask(long delay) {
+	protected PausableOneShotDelayedTask(long delay) {
 		LOGGER.info("PausableOneShotDelayedTask created");
 		this.initialDelayInMilliseconds = delay;
 		this.remainingDelayInMilliseconds = initialDelayInMilliseconds;
@@ -32,7 +31,7 @@ public abstract class PausableOneShotDelayedTask {
 		createTimer();
 	}
 
-	public PausableOneShotDelayedTask(String label, long delay) {
+	protected PausableOneShotDelayedTask(String label, long delay) {
 		LOGGER.info("PausableOneShotDelayedTask " + label + " created");
 		this.initialDelayInMilliseconds = delay;
 		this.remainingDelayInMilliseconds = initialDelayInMilliseconds;
@@ -44,7 +43,7 @@ public abstract class PausableOneShotDelayedTask {
 		return cancelled;
 	}
 
-	private void createTimer() {
+	protected void createTimer() {
 
 		// running timer task as daemon thread
 		timer = new Timer(true);
@@ -52,6 +51,7 @@ public abstract class PausableOneShotDelayedTask {
 			@Override
 			public void run() {
 				runTask();
+				afterTaskRun();
 			}
 		};
 
@@ -104,6 +104,10 @@ public abstract class PausableOneShotDelayedTask {
 
 		paused = false;
 		createTimer();
+	}
+
+	protected void afterTaskRun() {
+
 	}
 
 	/**
