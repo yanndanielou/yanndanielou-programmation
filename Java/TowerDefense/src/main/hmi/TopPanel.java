@@ -8,11 +8,13 @@ import javax.swing.JPanel;
 import main.common.hmi.utils.HMIUtils;
 import main.constants.HMIConstants;
 import main.game.Game;
+import main.game.GameDuration;
+import main.game.GameDurationListener;
 import main.game.GameStatusListener;
 import main.game.Player;
 import main.game.PlayerListener;
 
-public class TopPanel extends JPanel implements GameStatusListener, PlayerListener {
+public class TopPanel extends JPanel implements GameStatusListener, PlayerListener, GameDurationListener {
 
 	private static final long serialVersionUID = -4722225029326344692L;
 
@@ -138,6 +140,12 @@ public class TopPanel extends JPanel implements GameStatusListener, PlayerListen
 	@Override
 	public void onRemaningLivesChange(Player player, int remainingLives) {
 		remainingLivesTextLabel.setText("" + remainingLives);
+	}
+
+	@Override
+	public void onSecondsDurationChanged(GameDuration gameDuration, int numberOfSecondsSinceGameStart) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

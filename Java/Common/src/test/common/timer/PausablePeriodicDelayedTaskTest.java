@@ -17,9 +17,7 @@ import main.common.timer.PausablePeriodicDelayedTask;
 public class PausablePeriodicDelayedTaskTest {
 	static final Logger LOGGER = LogManager.getLogger(PausablePeriodicDelayedTaskTest.class);
 
-	private final static int DELAY_1_SECOND = 1000;
-	private final static int DELAY_5_SECONDS = 5 * DELAY_1_SECOND;
-	private final static int DELAY_10_SECONDS = 10 * DELAY_1_SECOND;
+	private final static int DELAY_1_SECOND = TimeConstants.ONE_SECOND;
 
 	protected PausablePeriodicDelayedTaskForTests timerTaskForTests;
 
@@ -44,7 +42,7 @@ public class PausablePeriodicDelayedTaskTest {
 		}
 
 		@Override
-		public void runTask() {
+		public void run() {
 			System.out.println(new Date() + " PausableTimerTest : run");
 			numberOfTimerRuns++;
 		}

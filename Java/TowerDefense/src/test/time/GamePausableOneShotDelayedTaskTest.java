@@ -1,4 +1,4 @@
-package test.game.timer;
+package test.time;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -44,7 +44,7 @@ public class GamePausableOneShotDelayedTaskTest {
 		}
 
 		@Override
-		public void runTask() {
+		public void run() {
 			System.out.println(new Date() + " PausableTimerTest : run");
 			numberOfTimerRuns++;
 

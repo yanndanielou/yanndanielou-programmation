@@ -50,7 +50,7 @@ public abstract class PausableOneShotDelayedTask {
 		taskInstanciatedForCurrentTimer = new TimerTask() {
 			@Override
 			public void run() {
-				runTask();
+				PausableOneShotDelayedTask.this.run();
 				afterTaskRun();
 			}
 		};
@@ -113,5 +113,5 @@ public abstract class PausableOneShotDelayedTask {
 	/**
 	 * The action to be performed by this timer task.
 	 */
-	public abstract void runTask();
+	public abstract void run();
 }

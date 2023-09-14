@@ -38,7 +38,7 @@ public class Game extends GenericGame implements TowerListener, AttackerListener
 	private Player player;
 	private GameManager gameManager;
 
-	private Duration gameDuration;
+	private GameDuration gameDuration;
 
 	private GameTimeManager gameTimeManager;
 
@@ -50,7 +50,8 @@ public class Game extends GenericGame implements TowerListener, AttackerListener
 		player = new Player(this);
 		gameTimeManager = new GameTimeManager();
 		addGameStatusListener(gameTimeManager);
-
+		gameDuration = new GameDuration();
+		addGameStatusListener(gameDuration);
 	}
 
 	public void addGameListener(GameListener listener) {
@@ -147,7 +148,7 @@ public class Game extends GenericGame implements TowerListener, AttackerListener
 		}
 	}
 
-	public Duration getGameDuration() {
+	public GameDuration getGameDuration() {
 		return gameDuration;
 	}
 

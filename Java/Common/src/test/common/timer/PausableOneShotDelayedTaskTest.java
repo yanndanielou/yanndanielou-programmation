@@ -44,7 +44,7 @@ public class PausableOneShotDelayedTaskTest {
 		}
 
 		@Override
-		public void runTask() {
+		public void run() {
 			System.out.println(new Date() + " PausableTimerTest : run");
 			numberOfTimerRuns++;
 
