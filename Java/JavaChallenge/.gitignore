@@ -1,1 +1,14 @@
 /bin/
+
+/src/main/BasicOperation.java
+/src/main/HighestDigit.java
+/src/main/NumericString.java
+/src/main/SandboxMain.java
+/src/main/VideoLength.java
+/src/test/BasicOperationTest.java
+/src/test/ChallengeTests.java
+/src/test/HighestDigitTest.java
+/src/test/NumericStringTests.java
+/src/test/SandboxMainTest.java
+/src/test/VideoLengthTests.java
+
