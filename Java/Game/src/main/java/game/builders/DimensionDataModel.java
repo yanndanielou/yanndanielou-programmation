@@ -1,4 +1,4 @@
-package main.builders.gameboard;
+package game.builders;
 
 import java.awt.Dimension;
 

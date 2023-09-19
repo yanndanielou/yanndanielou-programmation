@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import main.builders.gameboard.RectangleDataModel;
+import game.builders.RectangleDataModel;
 
 public class GameBoardWallArea extends GameBoardArea {
 

@@ -3,9 +3,9 @@ package main.gameboard;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import game.builders.GameBoardNamedAreaDataModel;
+import game.builders.RectangleDataModel;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
-import main.builders.gameboard.GameBoardNamedAreaDataModel;
-import main.builders.gameboard.RectangleDataModel;
 
 public class GameBoardAttackersExitArea extends GameBoardArea {
 

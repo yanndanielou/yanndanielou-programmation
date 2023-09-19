@@ -16,6 +16,8 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.gson.Gson;
 
+import game.builders.GameBoardAreasByRGBImageRecognitionDataModel;
+import game.builders.RectangleDataModel;
 import geometry2d.integergeometry.IntegerPrecisionPoint;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.gameboard.GameBoard;

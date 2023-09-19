@@ -8,6 +8,11 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/log4j/log4j-2.20.0/log4j-api-2.20.0.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/log4j/log4j-2.20.0/log4j-core-2.20.0.jar"/>
+	
 	<classpathentry kind="src" path="/Common"/>
+	<classpathentry kind="src" path="/Geometry2D"/>
+	
 	<classpathentry kind="output" path="bin"/>
+	
+	
 </classpath>

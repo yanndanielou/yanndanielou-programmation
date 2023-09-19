@@ -2,9 +2,9 @@ package main.gameboard;
 
 import java.util.List;
 
+import game.builders.GameBoardNamedAreaDataModel;
+import game.builders.RectangleDataModel;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
-import main.builders.gameboard.GameBoardNamedAreaDataModel;
-import main.builders.gameboard.RectangleDataModel;
 
 public abstract class GameBoardArea {
 
