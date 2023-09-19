@@ -17,8 +17,6 @@ public class PausableTimerTest {
 	static final Logger LOGGER = LogManager.getLogger(PausableTimerTest.class);
 
 	private final static int PERIOD_1_SECOND = 1000;
-	private final static int PERIOD_5_SECONDS = 5 * PERIOD_1_SECOND;
-	private final static int PERIOD_10_SECONDS = 10 * PERIOD_1_SECOND;
 
 	private final static int VERY_SLOW_PERIOD_TO_WAIT_FIRST_RUN_WHEN_NO_DELAY = 10;
 
@@ -224,10 +222,6 @@ public class PausableTimerTest {
 
 			}
 
-			@Test
-			public void canPauseAndResumeSeveralTimesWithoutCrash() {
-
-			}
 
 		}
 	}

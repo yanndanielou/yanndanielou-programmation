@@ -10,7 +10,6 @@ public class PausableTimer {
 
 	private static final Logger LOGGER = LogManager.getLogger(PausableTimer.class);
 
-	private Timer previousTimerBeforePause = null;
 	private Timer timer;
 	private TimerTask persistentToAllPausesAndResumesTaskToBeExecuted;
 

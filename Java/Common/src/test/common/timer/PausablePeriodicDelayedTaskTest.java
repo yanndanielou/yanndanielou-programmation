@@ -172,6 +172,8 @@ public class PausablePeriodicDelayedTaskTest {
 			public void canPauseAndResumeSeveralTimesAndRunAfterGoodDelay() {
 
 				int cumulatedTimeOutsideOfPause = 0;
+				
+				@SuppressWarnings("unused")
 				int cumulatedTimeDuringPause = 0;
 
 				for (int i = 0; i < 9; i++) {

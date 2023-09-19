@@ -18,8 +18,6 @@ public class PausableOneShotDelayedTaskTest {
 	static final Logger LOGGER = LogManager.getLogger(PausableOneShotDelayedTaskTest.class);
 
 	private final static int DELAY_1_SECOND = 1000;
-	private final static int DELAY_5_SECONDS = 5 * DELAY_1_SECOND;
-	private final static int DELAY_10_SECONDS = 10 * DELAY_1_SECOND;
 
 	protected PausableOneShotDelayedTaskForTests timerTaskForTests;
 
@@ -163,7 +161,10 @@ public class PausableOneShotDelayedTaskTest {
 		@Test
 		public void canPauseAndResumeSeveralTimesAndRunAfterGoodDelay() {
 
+			@SuppressWarnings("unused")
 			int cumulatedTimeOutsideOfPause = 0;
+			
+			@SuppressWarnings("unused")
 			int cumulatedTimeDuringPause = 0;
 
 			for (int i = 0; i < 9; i++) {
@@ -176,13 +177,13 @@ public class PausableOneShotDelayedTaskTest {
 				timerTaskForTests.resume();
 				sleepThread(100);
 				cumulatedTimeOutsideOfPause += 100;
-				System.out.println("Cumulated waited outside of pause: " + cumulatedTimeOutsideOfPause);
+				//System.out.println("Cumulated waited outside of pause: " + cumulatedTimeOutsideOfPause);
 				assertEquals(timerTaskForTests.getNumberOfTimerRuns(), 0);
 			}
 
 			sleepThread(100);
 			cumulatedTimeOutsideOfPause += 100;
-			System.out.println("Cumulated waited outside of pause: " + cumulatedTimeOutsideOfPause);
+			//System.out.println("Cumulated waited outside of pause: " + cumulatedTimeOutsideOfPause);
 			assertEquals(timerTaskForTests.getNumberOfTimerRuns(), 1);
 		}
 
