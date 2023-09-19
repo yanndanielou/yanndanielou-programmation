@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.belligerents.listeners.TowerListener;
 import main.belligerents.weapon.Weapon;
 import main.builders.belligerents.TowerDataModel;
 import main.builders.weapons.BombDataModel;
 import main.core.GameManager;
 import main.game.Game;
-import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public class Tower extends Belligerent /* implements GameObjectListerner */ {
 	@SuppressWarnings("unused")

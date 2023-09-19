@@ -1,6 +1,6 @@
 package main.game;
 
-import main.game.game.GenericGameListener;
+import game.genericgame.GenericGameListener;
 
 public interface GameListener extends GenericGameListener<Game> {
 

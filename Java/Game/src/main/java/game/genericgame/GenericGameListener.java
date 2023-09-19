@@ -1,4 +1,4 @@
-package main.game.game;
+package game.genericgame;
 
 public interface GenericGameListener<T> {
 

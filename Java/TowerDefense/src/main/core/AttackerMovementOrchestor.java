@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import geometry2d.vectors.Vector2D;
 import main.belligerents.Attacker;
 import main.common.exceptions.BadLogicException;
 import main.common.timer.TimeManagerListener;
 import main.game.Game;
 import main.gameboard.NeighbourGameBoardPointDirection;
-import main.geometry2d.vectors.Vector2D;
 
 public class AttackerMovementOrchestor implements TimeManagerListener {
 

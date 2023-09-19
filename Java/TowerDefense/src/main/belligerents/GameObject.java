@@ -9,15 +9,15 @@ import javax.swing.ImageIcon;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import geometry2d.gameboard.IntegerDimensionsRectangleShapeWithFloatLocationPrecisionOnIntegerPrecisionGrid;
+import geometry2d.integergeometry.IntegerPrecisionPoint;
+import geometry2d.integergeometry.IntegerPrecisionRectangle;
+import geometry2d.vectors.Vector2D;
 import main.belligerents.weapon.SimpleTowerBomb;
 import main.belligerents.weapon.Weapon;
 import main.common.hmi.utils.HMIUtils;
 import main.game.Game;
 import main.gameboard.GameBoardPoint;
-import main.geometry2d.gameboard.IntegerDimensionsRectangleShapeWithFloatLocationPrecisionOnIntegerPrecisionGrid;
-import main.geometry2d.integergeometry.IntegerPrecisionPoint;
-import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
-import main.geometry2d.vectors.Vector2D;
 
 public abstract class GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(GameObject.class);

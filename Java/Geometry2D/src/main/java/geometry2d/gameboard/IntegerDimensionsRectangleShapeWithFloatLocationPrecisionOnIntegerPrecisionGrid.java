@@ -1,8 +1,8 @@
-package main.geometry2d.gameboard;
+package geometry2d.gameboard;
 
 import java.awt.geom.Rectangle2D;
 
-import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
+import geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public class IntegerDimensionsRectangleShapeWithFloatLocationPrecisionOnIntegerPrecisionGrid {
 	protected Rectangle2D.Float floatPrecisionRectangle;

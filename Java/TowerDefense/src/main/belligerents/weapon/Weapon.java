@@ -1,10 +1,10 @@
 package main.belligerents.weapon;
 
+import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.belligerents.Belligerent;
 import main.belligerents.GameObject;
 import main.builders.weapons.BombDataModel;
 import main.game.Game;
-import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public abstract class Weapon extends GameObject {
 

@@ -5,12 +5,12 @@ import java.awt.Point;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import geometry2d.integergeometry.IntegerPrecisionPoint;
+import geometry2d.vectors.Vector2D;
 import main.belligerents.Attacker;
 import main.gameboard.GameBoard;
 import main.gameboard.GameBoardPoint;
 import main.gameboard.NeighbourGameBoardPointDirection;
-import main.geometry2d.integergeometry.IntegerPrecisionPoint;
-import main.geometry2d.vectors.Vector2D;
 
 public class MovingObjectPathFinder {
 	private static MovingObjectPathFinder instance;

@@ -1,4 +1,4 @@
-package main.geometry2d.vectors;
+package geometry2d.vectors;
 
 import java.awt.Point;
 

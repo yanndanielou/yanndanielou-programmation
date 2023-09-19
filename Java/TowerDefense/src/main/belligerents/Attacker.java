@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.belligerents.listeners.AttackerListener;
 import main.belligerents.weapon.Weapon;
 import main.builders.belligerents.AttackerDataModel;
 import main.common.timer.TimeManagerListener;
 import main.core.GameManager;
 import main.game.Game;
-import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public abstract class Attacker extends Belligerent implements TimeManagerListener {
 	@SuppressWarnings("unused")

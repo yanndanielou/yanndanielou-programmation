@@ -1,4 +1,4 @@
-package main.geometry2d.exceptions;
+package geometry2d.exceptions;
 
 public class BadGeometryException extends RuntimeException {
 

@@ -1,12 +1,10 @@
-package test.geometry2d.exceptions;
+package geometry2d.exceptions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import main.geometry2d.exceptions.BadGeometryException;
 
 public class BadGeometryExceptionTest {
 

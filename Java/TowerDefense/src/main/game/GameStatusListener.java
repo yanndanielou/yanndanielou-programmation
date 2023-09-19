@@ -1,6 +1,6 @@
 package main.game;
 
-import main.game.game.GenericGameStatusListener;
+import game.genericgame.GenericGameStatusListener;
 
 public interface GameStatusListener extends GenericGameStatusListener<Game> {
 

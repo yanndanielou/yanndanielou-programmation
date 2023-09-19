@@ -10,7 +10,7 @@
 	<classpathentry kind="lib" path="../ExternalLibraries/junit-4.12.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/junit-hierarchicalcontextrunner-4.11.1.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/junit-hierarchicalcontextrunner-4.12.1.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/log4j-api-2.20.0.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/log4j-core-2.20.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/log4j/log4j-2.20.0/log4j-api-2.20.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/log4j/log4j-2.20.0/log4j-core-2.20.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

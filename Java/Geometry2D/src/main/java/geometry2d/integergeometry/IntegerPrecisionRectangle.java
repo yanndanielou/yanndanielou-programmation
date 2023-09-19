@@ -1,4 +1,4 @@
-package main.geometry2d.integergeometry;
+package geometry2d.integergeometry;
 
 import java.awt.Dimension;
 import java.awt.Point;
@@ -9,8 +9,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import geometry2d.exceptions.BadGeometryException;
 import main.common.random.RandomIntegerGenerator;
-import main.geometry2d.exceptions.BadGeometryException;
 
 public class IntegerPrecisionRectangle {
 	private static final Logger LOGGER = LogManager.getLogger(IntegerPrecisionRectangle.class);

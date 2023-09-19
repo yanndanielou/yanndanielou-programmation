@@ -16,6 +16,8 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.gson.Gson;
 
+import geometry2d.integergeometry.IntegerPrecisionPoint;
+import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.gameboard.GameBoard;
 import main.gameboard.GameBoardAttackersEntryArea;
 import main.gameboard.GameBoardAttackersExitArea;
@@ -23,8 +25,6 @@ import main.gameboard.GameBoardInitiallyConstructibleMacroArea;
 import main.gameboard.GameBoardNonPlayableArea;
 import main.gameboard.GameBoardPoint;
 import main.gameboard.GameBoardWallArea;
-import main.geometry2d.integergeometry.IntegerPrecisionPoint;
-import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public class GameBoardModelBuilder {
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardModelBuilder.class);

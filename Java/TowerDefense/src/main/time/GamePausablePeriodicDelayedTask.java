@@ -1,8 +1,8 @@
 package main.time;
 
+import game.genericgame.GenericGame;
+import game.genericgame.GenericGameStatusListener;
 import main.common.timer.PausablePeriodicDelayedTask;
-import main.game.game.GenericGame;
-import main.game.game.GenericGameStatusListener;
 
 public abstract class GamePausablePeriodicDelayedTask extends PausablePeriodicDelayedTask
 		implements GenericGameStatusListener<GenericGame> {

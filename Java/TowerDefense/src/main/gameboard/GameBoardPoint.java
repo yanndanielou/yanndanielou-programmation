@@ -7,6 +7,7 @@ import java.util.EnumMap;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import geometry2d.integergeometry.IntegerPrecisionPoint;
 import main.belligerents.Attacker;
 import main.belligerents.Tower;
 import main.belligerents.listeners.AttackerListener;
@@ -15,7 +16,6 @@ import main.common.exceptions.BadLogicException;
 import main.constants.Constants;
 import main.game.Game;
 import main.game.GameBoardPointListener;
-import main.geometry2d.integergeometry.IntegerPrecisionPoint;
 
 public class GameBoardPoint extends IntegerPrecisionPoint implements TowerListener, AttackerListener {
 

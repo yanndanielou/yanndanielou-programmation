@@ -3,8 +3,8 @@ package main.gameboard;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.builders.gameboard.GameBoardNamedAreaDataModel;
-import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public class GameBoardInitiallyConstructibleMacroArea extends GameBoardArea {
 

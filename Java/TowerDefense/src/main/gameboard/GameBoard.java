@@ -10,6 +10,8 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import geometry2d.integergeometry.IntegerPrecisionPoint;
+import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.belligerents.Attacker;
 import main.belligerents.Tower;
 import main.belligerents.listeners.AttackerListener;
@@ -19,8 +21,6 @@ import main.builders.gameboard.GameBoardDataModel;
 import main.builders.gameboard.GameBoardModelBuilder;
 import main.common.exceptions.BadLogicException;
 import main.game.Game;
-import main.geometry2d.integergeometry.IntegerPrecisionPoint;
-import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public class GameBoard implements TowerListener, AttackerListener {
 

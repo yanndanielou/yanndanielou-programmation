@@ -1,4 +1,4 @@
-package main.game.game;
+package game.genericgame;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.belligerents.weapon.Weapon;
 import main.builders.weapons.BombDataModel;
 import main.game.Game;
-import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public abstract class Belligerent extends GameObject {
 	private static final Logger LOGGER = LogManager.getLogger(Belligerent.class);

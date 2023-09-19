@@ -3,7 +3,7 @@ package main.gameboard;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import main.geometry2d.integergeometry.IntegerPrecisionRectangle;
+import geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public class GameBoardPredefinedConstructionLocation extends GameBoardArea {
 

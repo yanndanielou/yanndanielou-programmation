@@ -1,4 +1,4 @@
-package main.geometry2d.integergeometry;
+package geometry2d.integergeometry;
 
 import java.awt.Point;
 
