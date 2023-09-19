@@ -1,4 +1,4 @@
-package main;
+package challenge;
 
 import java.util.List;
 
