@@ -1,0 +1,7 @@
+https://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar
+
+https://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar
+
+powershell -Command "(New-Object Net.WebClient).DownloadFile('https://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar', 'commons-collections4-4.4.jar')
+
+timeout /t 10
