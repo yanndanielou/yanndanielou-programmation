@@ -5,6 +5,7 @@ import java.awt.Point;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import game.gameboard.NeighbourGameBoardPointDirection;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.belligerents.Attacker;
 import main.belligerents.FlyingAttacker;
@@ -23,7 +24,6 @@ import main.gameboard.GameBoardAttackersEntryArea;
 import main.gameboard.GameBoardAttackersExitArea;
 import main.gameboard.GameBoardPoint;
 import main.gameboard.GameBoardPredefinedConstructionLocation;
-import main.gameboard.NeighbourGameBoardPointDirection;
 import main.hmi.TowerDefenseMainViewGeneric;
 
 public class GameManager {

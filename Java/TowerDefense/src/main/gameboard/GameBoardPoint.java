@@ -1,13 +1,11 @@
 package main.gameboard;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.EnumMap;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import geometry2d.integergeometry.IntegerPrecisionPoint;
+import game.gameboard.GenericGameIntegerBoardPoint;
 import main.belligerents.Attacker;
 import main.belligerents.Tower;
 import main.belligerents.listeners.AttackerListener;
@@ -17,7 +15,7 @@ import main.constants.Constants;
 import main.game.Game;
 import main.game.GameBoardPointListener;
 
-public class GameBoardPoint extends IntegerPrecisionPoint implements TowerListener, AttackerListener {
+public class GameBoardPoint extends GenericGameIntegerBoardPoint implements TowerListener, AttackerListener {
 
 	/**
 	 * 
@@ -40,9 +38,6 @@ public class GameBoardPoint extends IntegerPrecisionPoint implements TowerListen
 
 	private ArrayList<GameBoardPointListener> gameBoardPointListeners = new ArrayList<>();
 
-	private EnumMap<NeighbourGameBoardPointDirection, GameBoardPoint> neighbourPerDirection = new EnumMap<>(
-			NeighbourGameBoardPointDirection.class);
-
 	public GameBoardPoint(Game game, int line, int column) {
 		super(column, line);
 		this.game = game;
@@ -63,8 +58,8 @@ public class GameBoardPoint extends IntegerPrecisionPoint implements TowerListen
 	public boolean isOccupiedByTower() {
 		return !towersPresent.isEmpty();
 	}
-	
-	public boolean isOccupiedByAttacker(){
+
+	public boolean isOccupiedByAttacker() {
 		return !attackersPresent.isEmpty();
 	}
 
@@ -78,26 +73,6 @@ public class GameBoardPoint extends IntegerPrecisionPoint implements TowerListen
 
 	public void addGameBoardAttackersExitArea(GameBoardAttackersExitArea gameBoardAttackersExitArea) {
 		gameBoardAttackersExitAreasPresent.add(gameBoardAttackersExitArea);
-	}
-
-	public int getRow() {
-		return getYAsInt();
-	}
-
-	public int getColumn() {
-		return getXAsInt();
-	}
-
-	public void setNeighbour(NeighbourGameBoardPointDirection direction, GameBoardPoint neighbour) {
-		neighbourPerDirection.put(direction, neighbour);
-	}
-
-	public String getShortDescription() {
-		return "GameBoardPoint :" + "[" + getXAsInt() + "," + getYAsInt() + "]";
-	}
-
-	public Collection<GameBoardPoint> getNeighbours() {
-		return neighbourPerDirection.values();
 	}
 
 	public Game getGame() {
@@ -175,7 +150,7 @@ public class GameBoardPoint extends IntegerPrecisionPoint implements TowerListen
 	@Override
 	public void onAttackerEscape(Attacker attacker) {
 		// Auto-generated method stub
-		
+
 	}
 
 }

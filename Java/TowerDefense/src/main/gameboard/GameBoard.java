@@ -10,6 +10,7 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import game.gameboard.NeighbourGameBoardPointDirection;
 import geometry2d.integergeometry.IntegerPrecisionPoint;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.belligerents.Attacker;

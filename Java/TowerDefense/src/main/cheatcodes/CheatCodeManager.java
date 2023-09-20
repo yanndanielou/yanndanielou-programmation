@@ -1,21 +1,16 @@
 package main.cheatcodes;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import game.cheatcode.GenericCheatCodeManager;
 import main.belligerents.Attacker;
 import main.belligerents.Belligerent;
 import main.core.GameManager;
 import main.game.Game;
 
-public class CheatCodeManager {
+public class CheatCodeManager extends GenericCheatCodeManager {
 
 	private static CheatCodeManager instance;
-	private static final Logger LOGGER = LogManager.getLogger(CheatCodeManager.class);
 
 	private CheatCodeManager() {
 	}
@@ -25,20 +20,6 @@ public class CheatCodeManager {
 			instance = new CheatCodeManager();
 		}
 		return instance;
-	}
-
-	public boolean tryAndApplyTextCheatCode(String textCheatCode) {
-		LOGGER.info("textCheatCodeEntered:" + textCheatCode);
-
-		try {
-
-			Method method = this.getClass().getDeclaredMethod(textCheatCode);
-			method.invoke(this);
-			return true;
-		} catch (SecurityException | NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
-
-		}    
-		return false;
 	}
 
 	public void forbidEnemiesToMove() {
