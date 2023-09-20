@@ -105,21 +105,21 @@ public abstract class GameObject {
 	}
 
 	public GameBoardPoint getBottomLeftCorner() {
-		return game.getGameBoard().getGameBoardPointByXAndY(getExtremeLeftPointXWithIntegerPrecision(),
+		return (GameBoardPoint) game.getGameBoard().getGameBoardPointByXAndY(getExtremeLeftPointXWithIntegerPrecision(),
 				getLowestPointY());
 	}
 
 	public GameBoardPoint getBottomRightCorner() {
-		return game.getGameBoard().getGameBoardPointByXAndY(getExtremeRightPointX(), getLowestPointY());
+		return (GameBoardPoint) game.getGameBoard().getGameBoardPointByXAndY(getExtremeRightPointX(), getLowestPointY());
 	}
 
 	public GameBoardPoint getTopLeftCorner() {
-		return game.getGameBoard().getGameBoardPointByXAndY(getExtremeLeftPointXWithIntegerPrecision(),
+		return (GameBoardPoint) game.getGameBoard().getGameBoardPointByXAndY(getExtremeLeftPointXWithIntegerPrecision(),
 				getHighestPointY());
 	}
 
 	public GameBoardPoint getTopRightCorner() {
-		return game.getGameBoard().getGameBoardPointByXAndY(getExtremeRightPointX(), getHighestPointY());
+		return (GameBoardPoint) game.getGameBoard().getGameBoardPointByXAndY(getExtremeRightPointX(), getHighestPointY());
 	}
 
 	public int getExtremeLeftPointXWithIntegerPrecision() {

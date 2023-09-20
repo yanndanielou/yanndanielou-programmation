@@ -4,6 +4,9 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
 	
+	<classpathentry excluding="**/*.java" kind="src" path="src/main/resources"/>
+
+	
 	
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
 		<attributes>
@@ -13,7 +16,9 @@
 	
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 
+	<classpathentry kind="src" path="/Game"/>
 	<classpathentry kind="src" path="/Common"/>
+	<classpathentry kind="src" path="/Geometry2D"/>
 
 	<classpathentry kind="output" path="bin"/>
 	

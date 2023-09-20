@@ -4,6 +4,7 @@ import java.util.List;
 
 import game.builders.GameBoardNamedAreaDataModel;
 import game.builders.RectangleDataModel;
+import game.gameboard.GenericGameIntegerBoardPoint;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 public abstract class GameBoardArea {
@@ -45,7 +46,8 @@ public abstract class GameBoardArea {
 
 	public List<GameBoardPoint> getAllPoints() {
 		if (rectangleDefinedArea != null) {
-			return gameBoard.getGameBoardPoints(rectangleDefinedArea.getAllPoints());
+			List<GenericGameIntegerBoardPoint> gameBoardPoints = gameBoard.getGameBoardPoints(rectangleDefinedArea.getAllPoints());
+			return gameBoardPoints.stream().map(sic -> (GameBoardPoint) sic).toList();
 		} else {
 			return pointsDefinedArea;
 		}

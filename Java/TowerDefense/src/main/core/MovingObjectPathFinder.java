@@ -43,13 +43,13 @@ public class MovingObjectPathFinder {
 				attacker.getExtremeLeftPointXWithIntegerPrecision(), attacker.getHighestPointY());
 		GameBoard gameBoard = attacker.getGame().getGameBoard();
 		Point destination = attacker.getEscapeDestination();
-		GameBoardPoint upperLeftAttackerGameBoardPoint = gameBoard.getGameBoardPoint(upperLeftAttackerPoint);
+		GameBoardPoint upperLeftAttackerGameBoardPoint = (GameBoardPoint) gameBoard.getGameBoardPoint(upperLeftAttackerPoint);
 
 		NeighbourGameBoardPointDirection nearestDirection = null;
 		double minimumDistance = Double.MAX_VALUE;
 		for (NeighbourGameBoardPointDirection candidateDirection : NeighbourGameBoardPointDirection.values()) {
 
-			GameBoardPoint neighbourGameBoardPoint = gameBoard
+			GameBoardPoint neighbourGameBoardPoint = (GameBoardPoint) gameBoard
 					.getNeighbourGameBoardPoint(upperLeftAttackerGameBoardPoint, candidateDirection);
 
 			if (neighbourGameBoardPoint != null) {

@@ -5,7 +5,6 @@ import java.awt.Point;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import game.gameboard.NeighbourGameBoardPointDirection;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.belligerents.Attacker;
 import main.belligerents.FlyingAttacker;
@@ -22,7 +21,6 @@ import main.game.Game;
 import main.gameboard.GameBoard;
 import main.gameboard.GameBoardAttackersEntryArea;
 import main.gameboard.GameBoardAttackersExitArea;
-import main.gameboard.GameBoardPoint;
 import main.gameboard.GameBoardPredefinedConstructionLocation;
 import main.hmi.TowerDefenseMainViewGeneric;
 
@@ -69,25 +67,6 @@ public class GameManager {
 		desktopTowerDefenseMainView.registerToGame(game);
 		attackerMovementOrchestor = new AttackerMovementOrchestor(game);
 		desktopTowerDefenseMainView.registerToPlayer(game.getPlayer());
-		computeNeighboursOfEachGameBoardPoint();
-	}
-
-	private void computeNeighboursOfEachGameBoardPoint() {
-
-		LOGGER.info("computeNeighboursOfEachGameBoardPoint: begin");
-
-		GameBoard gameBoard = game.getGameBoard();
-
-		for (GameBoardPoint gameBoardPoint : gameBoard.getAllGameBoardPointsAsOrderedList()) {
-
-			for (NeighbourGameBoardPointDirection direction : NeighbourGameBoardPointDirection.values()) {
-				GameBoardPoint neighbourSquare = gameBoard.getNeighbourGameBoardPoint(gameBoardPoint, direction);
-				if (neighbourSquare != null) {
-					gameBoardPoint.setNeighbour(direction, neighbourSquare);
-				}
-			}
-		}
-		LOGGER.info("computeNeighboursOfEachGameBoardPoint: end");
 	}
 
 	public Game getGame() {

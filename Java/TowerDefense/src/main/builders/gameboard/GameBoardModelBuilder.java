@@ -69,7 +69,7 @@ public class GameBoardModelBuilder {
 				.getPointsDefinedWallAreaAsRGBInImageToParse()) {
 			List<IntegerPrecisionPoint> listOfPixelsInImageWithRGBAsPoint = getListOfPixelsInImageWithRGB(wallDataModel);
 			List<GameBoardPoint> listOfPixelsInImageWithRGBAsGameBoardPoints = gameBoard
-					.getGameBoardPoints(listOfPixelsInImageWithRGBAsPoint);
+					.getGameBoardPoints(listOfPixelsInImageWithRGBAsPoint).stream().map(sic -> (GameBoardPoint) sic).toList();
 			GameBoardWallArea wallArea = new GameBoardWallArea(gameBoard, wallDataModel.getName(),
 					listOfPixelsInImageWithRGBAsGameBoardPoints);
 			gameBoard.addWall(wallArea);
@@ -112,7 +112,7 @@ public class GameBoardModelBuilder {
 			List<IntegerPrecisionPoint> listOfPixelsInImageWithRGBAsPoint = getListOfPixelsInImageWithRGB(
 					nonPlayableAreaDataModel);
 			List<GameBoardPoint> listOfPixelsInImageWithRGBAsGameBoardPoints = gameBoard
-					.getGameBoardPoints(listOfPixelsInImageWithRGBAsPoint);
+					.getGameBoardPoints(listOfPixelsInImageWithRGBAsPoint).stream().map(sic -> (GameBoardPoint) sic).toList();;
 			GameBoardNonPlayableArea nonPlayableArea = new GameBoardNonPlayableArea(gameBoard,
 					nonPlayableAreaDataModel.getName(), listOfPixelsInImageWithRGBAsGameBoardPoints);
 			gameBoard.addNonPlayableArea(nonPlayableArea);

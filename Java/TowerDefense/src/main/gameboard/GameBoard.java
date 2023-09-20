@@ -10,7 +10,8 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import game.gameboard.NeighbourGameBoardPointDirection;
+import game.gameboard.GenericGameBoard;
+import game.gameboard.GenericGameIntegerBoardPoint;
 import geometry2d.integergeometry.IntegerPrecisionPoint;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.belligerents.Attacker;
@@ -20,10 +21,9 @@ import main.belligerents.listeners.TowerListener;
 import main.builders.belligerents.TowerDataModel;
 import main.builders.gameboard.GameBoardDataModel;
 import main.builders.gameboard.GameBoardModelBuilder;
-import main.common.exceptions.BadLogicException;
 import main.game.Game;
 
-public class GameBoard implements TowerListener, AttackerListener {
+public class GameBoard extends GenericGameBoard implements TowerListener, AttackerListener {
 
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoard.class);
@@ -81,42 +81,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 		return gameBoardModelBuilder.getGameBoardTotalHeight();
 	}
 
-	public ArrayList<GameBoardPoint> getAllGameBoardPointsAsOrderedList() {
-		return allGameBoardPointAsOrderedList;
-	}
 
-	public GameBoardPoint getGameBoardPoint(IntegerPrecisionPoint point) {
-		return getGameBoardPointByRowAndColumn(point.getRow(), point.getColumn());
-	}
-
-	public List<GameBoardPoint> getGameBoardPoints(List<IntegerPrecisionPoint> points) {
-		List<GameBoardPoint> gameBoardPoints = new ArrayList<>();
-		for (IntegerPrecisionPoint point : points) {
-			gameBoardPoints.add(getGameBoardPoint(point));
-		}
-		return gameBoardPoints;
-	}
-
-	public GameBoardPoint getGameBoardPointByXAndY(int x, int y) {
-		return getGameBoardPointByRowAndColumn(y, x);
-	}
-
-	public GameBoardPoint getGameBoardPointByRowAndColumn(int row, int column) {
-
-		Map<Integer, GameBoardPoint> gameBoardPointOfRow = gameBoardPointPerRowAndColumn.get(row);
-
-		if (gameBoardPointOfRow == null) {
-			throw new BadLogicException("Cannot find row :" + row + " to search column:" + column);
-		}
-
-		GameBoardPoint gameBoardPoint = gameBoardPointOfRow.get(column);
-
-		if (gameBoardPoint == null) {
-			throw new BadLogicException("Cannot find column :" + column + " inside row:" + row);
-		}
-
-		return gameBoardPoint;
-	}
 
 	public void setGame(Game game) {
 		this.game = game;
@@ -124,68 +89,6 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	public Game getGame() {
 		return game;
-	}
-
-	public GameBoardPoint getNeighbourGameBoardPoint(GameBoardPoint referenceGameBoardPoint,
-			NeighbourGameBoardPointDirection direction) {
-		GameBoardPoint neighbour = null;
-
-		int referenceGameBoardPointColumn = referenceGameBoardPoint.getColumn();
-		int referenceGameBoardPointRow = referenceGameBoardPoint.getRow();
-
-		int referenceGameBoardPointX = referenceGameBoardPoint.getXAsInt();
-		int referenceGameBoardPointY = referenceGameBoardPoint.getYAsInt();
-
-		boolean isReferenceGameBoardPointFirstOfColumn = referenceGameBoardPointRow == 0;
-		boolean isReferenceGameBoardPointLastOfColumn = referenceGameBoardPointRow == getTotalWidth() - 1;
-
-		boolean isReferenceGameBoardPointFirstOfRow = referenceGameBoardPointColumn == 0;
-		boolean isReferenceGameBoardPointLastOfRow = referenceGameBoardPointRow == getTotalHeight() - 1;
-
-		// left gameBoardPoint
-		switch (direction) {
-		case NORTH:
-			if (!isReferenceGameBoardPointFirstOfRow) {
-				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX, referenceGameBoardPointY - 1);
-			}
-			break;
-		case NORTH_EAST:
-			if (!isReferenceGameBoardPointLastOfRow && !isReferenceGameBoardPointFirstOfColumn) {
-				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX + 1, referenceGameBoardPointY - 1);
-			}
-			break;
-		case EAST:
-			if (!isReferenceGameBoardPointLastOfRow) {
-				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX + 1, referenceGameBoardPointY);
-			}
-			break;
-		case SOUTH_EAST:
-			if (!isReferenceGameBoardPointLastOfRow && !isReferenceGameBoardPointLastOfColumn) {
-				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX + 1, referenceGameBoardPointY + 1);
-			}
-			break;
-		case SOUTH:
-			if (!isReferenceGameBoardPointLastOfColumn) {
-				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX, referenceGameBoardPointY + 1);
-			}
-			break;
-		case SOUTH_WEST:
-			if (!isReferenceGameBoardPointFirstOfRow && !isReferenceGameBoardPointLastOfColumn) {
-				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX - 1, referenceGameBoardPointY + 1);
-			}
-			break;
-		case WEST:
-			if (!isReferenceGameBoardPointFirstOfRow) {
-				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX - 1, referenceGameBoardPointY);
-			}
-			break;
-		case NORTH_WEST:
-			if (!isReferenceGameBoardPointFirstOfRow && !isReferenceGameBoardPointFirstOfColumn) {
-				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX - 1, referenceGameBoardPointY - 1);
-			}
-			break;
-		}
-		return neighbour;
 	}
 
 	public GameBoardDataModel getGameBoardDataModel() {
@@ -199,7 +102,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 
 	private void placeTower(Tower tower) {
 		for (IntegerPrecisionPoint pointIt : tower.getAllPoints()) {
-			GameBoardPoint gameBoardPoint = getGameBoardPoint(pointIt);
+			GameBoardPoint gameBoardPoint = (GameBoardPoint) getGameBoardPoint(pointIt);
 			tower.addListener(gameBoardPoint);
 		}
 
@@ -220,7 +123,7 @@ public class GameBoard implements TowerListener, AttackerListener {
 	@Override
 	public void onListenToAttacker(Attacker attacker) {
 		for (IntegerPrecisionPoint pointIt : attacker.getAllPoints()) {
-			GameBoardPoint gameBoardPoint = getGameBoardPoint(pointIt);
+			GameBoardPoint gameBoardPoint = (GameBoardPoint) getGameBoardPoint(pointIt);
 			attacker.addListener(gameBoardPoint);
 		}
 	}
@@ -330,5 +233,10 @@ public class GameBoard implements TowerListener, AttackerListener {
 	public void onAttackerEscape(Attacker attacker) {
 		// Auto-generated method stub
 
+	}
+
+	@Override
+	protected GenericGameIntegerBoardPoint createGameBoardPoint(int row, int column) {
+		return new GameBoardPoint(game, row, column);
 	}
 }

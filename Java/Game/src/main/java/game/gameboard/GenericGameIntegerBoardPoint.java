@@ -25,14 +25,6 @@ public abstract class GenericGameIntegerBoardPoint extends IntegerPrecisionPoint
 		super(column, line);
 	}
 
-	public int getRow() {
-		return getYAsInt();
-	}
-
-	public int getColumn() {
-		return getXAsInt();
-	}
-
 	public void setNeighbour(NeighbourGameBoardPointDirection direction, GenericGameIntegerBoardPoint neighbour) {
 		neighbourPerDirection.put(direction, neighbour);
 	}
