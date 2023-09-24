@@ -19,15 +19,12 @@ public class Cell extends GenericGameIntegerBoardPoint {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(Cell.class);
 
-	private Game game;
-
 	private boolean alive = false;
 
 	private ArrayList<CellListener> gameBoardPointListeners = new ArrayList<>();
 
 	public Cell(Game game, int line, int column) {
 		super(column, line);
-		this.game = game;
 	}
 
 	public void addGameBoardPointListener(CellListener gameBoardPointListener) {

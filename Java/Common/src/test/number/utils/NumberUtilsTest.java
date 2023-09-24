@@ -1,5 +1,7 @@
 package test.number.utils;
 
+import static main.matcher.BasicMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Nested;
@@ -7,9 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import main.common.numbers.utils.NumberUtils;
 import main.util.CollectionUtils;
-import static main.matcher.BasicMatchers.is;
-
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class NumberUtilsTest {
 

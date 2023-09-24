@@ -4,10 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -17,10 +15,8 @@ import javax.swing.KeyStroke;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import game.gameboard.GenericGameIntegerBoardPoint;
 import gameoflife.core.GameManager;
 import gameoflife.gameboard.Cell;
-import gameoflife.gameboard.GameBoard;
 import main.common.random.RandomIntegerGenerator;
 
 public class MainViewMenuBarManager implements ActionListener {

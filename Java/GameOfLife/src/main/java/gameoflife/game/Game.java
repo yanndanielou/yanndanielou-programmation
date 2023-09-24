@@ -42,22 +42,12 @@ public class Game extends GenericGame  {
 		gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameCancelled(this));
 	}
 
-	public void setLost() {
-		super.setLost();
-		gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameLost(this));
-	}
-
-	public void setWon() {
-		super.setWon();
-		gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameWon(this));
-	}
-
 	public void start() {
 		if (begun) {
 			throw new IllegalStateException("Game already started!");
 		}
 		this.begun = true;
-		LOGGER.info("Game has started. " + this);
+		LOGGER.info("Game has started");
 		gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameStarted(this));
 	}
 

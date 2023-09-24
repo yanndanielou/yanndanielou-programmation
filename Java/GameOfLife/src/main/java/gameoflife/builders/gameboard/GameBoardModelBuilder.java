@@ -10,6 +10,8 @@ import org.apache.logging.log4j.Logger;
 import com.google.gson.Gson;
 
 public class GameBoardModelBuilder {
+	
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardModelBuilder.class);
 
 	private Gson gson = new Gson();

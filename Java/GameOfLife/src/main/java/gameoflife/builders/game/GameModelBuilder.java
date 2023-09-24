@@ -1,14 +1,12 @@
 package gameoflife.builders.game;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
 import com.google.gson.Gson;
 
 public class GameModelBuilder {
-	private Gson gson = new Gson();
 
+	@SuppressWarnings("unused")
+	private Gson gson = new Gson();
+/*
 
 	public GameModelBuilder(String gameBoardDataModelJsonFile) {
 		BufferedReader br = null;
@@ -18,5 +16,7 @@ public class GameModelBuilder {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 	}
+	*/
 }
