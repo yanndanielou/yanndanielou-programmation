@@ -3,19 +3,19 @@ package gameoflife.hmi;
 import java.util.HashMap;
 
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
 import gameoflife.game.GameBoardPointListener;
 import gameoflife.game.GameStatusListener;
 import gameoflife.gameboard.GameBoard;
 import gameoflife.gameboard.GameBoardPoint;
 
-public class GameBoardPanel extends JLayeredPane
-		implements GameStatusListener, GameBoardPointListener {
+public class GameBoardPanel extends JPanel implements GameStatusListener, GameBoardPointListener {
 
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardPanel.class);
@@ -28,10 +28,6 @@ public class GameBoardPanel extends JLayeredPane
 
 	private GameBoard gameBoard;
 
-	private enum LAYERS_ORDERED_FROM_TOP_TO_BACK {
-		BELLIGERENTS, UNVISIBLE_UNITARY_PARTIAL_CONSTRUCTION_SQUARE, BACKGROUND_IMAGE, UNVISIBLE;
-	}
-
 	private GameOfLifeMainViewFrame towerDefenseMainViewFrame;
 
 	public GameBoardPanel(GameOfLifeMainViewFrame towerDefenseMainViewFrame) {
@@ -42,11 +38,7 @@ public class GameBoardPanel extends JLayeredPane
 		this.gameBoard = gameBoard;
 
 		setLayout(null);
-		setSize(gameBoard.getTotalWidth(), gameBoard.getTotalHeight());
-
-		add(emptyGameBoardBackgroundAsLabel, LAYERS_ORDERED_FROM_TOP_TO_BACK.BACKGROUND_IMAGE.ordinal());
-
-
+		setSize(gameBoard.getTotalWidth() * HMIConstants.CELL_WIDTH_IN_PIXELS, gameBoard.getTotalHeight() * HMIConstants.CELL_HEIGHT_IN_PIXELS);
 	}
 
 	@Override

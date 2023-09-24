@@ -14,9 +14,11 @@ public class HMIConstants {
 
 	public static final int MENU_BAR_HEIGHT = 10;
 
-	public static final Color TOP_PANEL_BACKGROUND_COLOR = Color.BLACK;
+	public static final Color TOP_PANEL_BACKGROUND_COLOR = Color.GRAY;
 	public static final int TOP_PANEL_HORIZONTAL_SPACES_BETWEEN_SYMBOLS_AND_TEXT_VALUE = 15;
-
+	
+	public static final int CELL_HEIGHT_IN_PIXELS = 10;
+	public static final int CELL_WIDTH_IN_PIXELS = 10;
 
 	// FIXME
 	public static final int NOT_UNDERSTOOD_MISSING_FRAME_HEIGHT = 50;
