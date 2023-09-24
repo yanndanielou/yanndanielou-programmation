@@ -4,7 +4,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import constants.HMIConstants;
 import game.Game;
 import game.GameStatusListener;
 import hmi.widgets.SevenSegmentLedsNumberDisplayFromDemineurImage;
