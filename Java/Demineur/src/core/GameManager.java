@@ -89,7 +89,7 @@ public class GameManager {
 		GameField gameField = game.getGameField();
 
 		gameField.getAll_squares_as_ordered_list().stream()
-				.forEach(square -> square.compute_Number_of_neighbor_mines());
+				.forEach(Square::compute_Number_of_neighbor_mines);
 
 	}
 
