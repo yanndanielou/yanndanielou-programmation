@@ -52,4 +52,12 @@ public class Cell extends GenericGameIntegerBoardPoint {
 		return alive;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Cell [alive=").append(alive).append(", x=").append(x).append(", y=").append(y).append("]");
+		return builder.toString();
+	}
+
+	
 }

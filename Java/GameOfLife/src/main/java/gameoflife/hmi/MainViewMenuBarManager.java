@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.List;
-import java.util.function.Predicate;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -123,7 +122,6 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuBar.add(menu);
 		menu.addActionListener(this);
 
-
 		menuItem = new JMenuItem("Set one random dead cell alive", KeyEvent.VK_A);
 		menuItem.setAccelerator(
 				KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
@@ -133,14 +131,26 @@ public class MainViewMenuBarManager implements ActionListener {
 
 				if (GameManager.hasGameInProgress()) {
 
-					List<Cell> notAliveCells = GameManager.getInstance().getGame().getGameBoard()
-							.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast)
-							.filter(Predicate.not(Cell::isAlive)).toList();
+					List<Cell> notAliveCells = GameManager.getInstance().getGame().getAllDeadCells();
 					if (!notAliveCells.isEmpty()) {
 						Cell cell = notAliveCells
 								.get(RandomIntegerGenerator.getRandomNumberUsingNextInt(0, notAliveCells.size() - 1));
 						cell.setAlive();
 					}
+				}
+			}
+		});
+		menu.add(menuItem);
+
+		menuItem = new JMenuItem("Play one step", KeyEvent.VK_O);
+		menuItem.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				if (GameManager.hasGameInProgress()) {
+					GameManager.getInstance().getGame().playOneStep();
 				}
 			}
 		});
@@ -154,9 +164,7 @@ public class MainViewMenuBarManager implements ActionListener {
 
 			if (GameManager.hasGameInProgress()) {
 
-				List<Cell> aliveCells = GameManager.getInstance().getGame().getGameBoard()
-						.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).filter(Cell::isAlive)
-						.toList();
+				List<Cell> aliveCells = GameManager.getInstance().getGame().getAllAliveCells();
 				if (!aliveCells.isEmpty()) {
 					Cell cell = aliveCells
 							.get(RandomIntegerGenerator.getRandomNumberUsingNextInt(0, aliveCells.size() - 1));

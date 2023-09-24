@@ -1,17 +1,20 @@
 package gameoflife.game;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import game.genericgame.GenericGame;
 import gameoflife.core.GameManager;
+import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
 import gameoflife.time.GameTimeManager;
 import main.common.timer.PausableTimeManager;
 
-public class Game extends GenericGame  {
+public class Game extends GenericGame {
 	private static final Logger LOGGER = LogManager.getLogger(Game.class);
 
 	private ArrayList<GameStatusListener> gameStatusListeners = new ArrayList<>();
@@ -55,7 +58,6 @@ public class Game extends GenericGame  {
 		return gameBoard;
 	}
 
-
 	public GameManager getGameManager() {
 		return gameManager;
 	}
@@ -85,6 +87,58 @@ public class Game extends GenericGame  {
 
 	public PausableTimeManager getTimeManager() {
 		return gameTimeManager;
+	}
+
+	public List<Cell> getAllAliveCells() {
+		return getGameBoard().getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).filter(Cell::isAlive)
+				.toList();
+	}
+
+	public List<Cell> getAllDeadCells() {
+		return getGameBoard().getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast)
+				.filter(Predicate.not(Cell::isAlive)).toList();
+
+	}
+
+	public List<Cell> getAllCells() {
+		return getGameBoard().getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).toList();
+	}
+
+	public void playOneStep() {
+		List<Cell> newlyAliveCells = new ArrayList<>();
+		List<Cell> newlyDeadCells = new ArrayList<>();
+
+		for (Cell cell : getAllCells()) {
+			int numberOfAliveNeighbours = (int) cell.getNeighbours().stream().map(Cell.class::cast)
+					.filter(Cell::isAlive).count();
+
+			if (cell.isAlive()) {
+				if (numberOfAliveNeighbours < 2) {
+					LOGGER.info(cell + " becomes dies by underpopulation");
+					// Any live cell with fewer than two live neighbours dies, as if by
+					// underpopulation.
+					newlyDeadCells.add(cell);
+				} else if (numberOfAliveNeighbours > 3) {
+					LOGGER.info(cell + " becomes dies by overpopulation");
+					// Any live cell with more than three live neighbours dies, as if by
+					// overpopulation.
+					newlyDeadCells.add(cell);
+				}
+			} else {
+
+				if (numberOfAliveNeighbours == 3) {
+					LOGGER.info(cell + " becomes alive by reproduction");
+					// Any dead cell with exactly three live neighbours becomes a live cell, as if
+					// by reproduction.
+					newlyAliveCells.add(cell);
+				}
+			}
+
+		}
+
+		newlyAliveCells.forEach(e -> e.setAlive());
+		newlyDeadCells.forEach(e -> e.setDead());
+
 	}
 
 }
