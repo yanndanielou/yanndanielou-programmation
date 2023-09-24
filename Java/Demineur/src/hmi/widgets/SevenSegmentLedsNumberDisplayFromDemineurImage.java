@@ -10,8 +10,6 @@ import javax.swing.JPanel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import hmi.DemineurMainViewFrame;
-
 public class SevenSegmentLedsNumberDisplayFromDemineurImage extends JPanel {
 
 	private static final long serialVersionUID = -5796505066525142407L;
