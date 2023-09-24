@@ -47,8 +47,7 @@ public class GameBoard extends GenericGameBoard {
 
 	@Override
 	protected GenericGameIntegerBoardPoint createGameBoardPoint(int row, int column) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Cell(game, row, column);
 	}
 
 }

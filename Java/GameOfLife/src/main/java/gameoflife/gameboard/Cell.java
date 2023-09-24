@@ -9,7 +9,7 @@ import game.gameboard.GenericGameIntegerBoardPoint;
 import gameoflife.game.Game;
 import gameoflife.game.GameBoardPointListener;
 
-public class GameBoardPoint extends GenericGameIntegerBoardPoint  {
+public class Cell extends GenericGameIntegerBoardPoint  {
 
 	/**
 	 * 
@@ -17,13 +17,13 @@ public class GameBoardPoint extends GenericGameIntegerBoardPoint  {
 	private static final long serialVersionUID = 7353270231660749618L;
 
 	@SuppressWarnings("unused")
-	private static final Logger LOGGER = LogManager.getLogger(GameBoardPoint.class);
+	private static final Logger LOGGER = LogManager.getLogger(Cell.class);
 
 	private Game game;
 
 	private ArrayList<GameBoardPointListener> gameBoardPointListeners = new ArrayList<>();
 
-	public GameBoardPoint(Game game, int line, int column) {
+	public Cell(Game game, int line, int column) {
 		super(column, line);
 		this.game = game;
 	}

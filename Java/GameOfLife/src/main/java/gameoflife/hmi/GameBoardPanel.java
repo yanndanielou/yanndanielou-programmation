@@ -13,7 +13,7 @@ import gameoflife.game.Game;
 import gameoflife.game.GameBoardPointListener;
 import gameoflife.game.GameStatusListener;
 import gameoflife.gameboard.GameBoard;
-import gameoflife.gameboard.GameBoardPoint;
+import gameoflife.gameboard.Cell;
 
 public class GameBoardPanel extends JPanel implements GameStatusListener, GameBoardPointListener {
 
@@ -24,7 +24,7 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, GameBo
 
 	private JLabel emptyGameBoardBackgroundAsLabel;
 
-	private HashMap<GameBoardPoint, JLabel> gameObjectToLabelMap = new HashMap<>();
+	private HashMap<Cell, JLabel> gameObjectToLabelMap = new HashMap<>();
 
 	private GameBoard gameBoard;
 
