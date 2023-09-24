@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 import geometry2d.integergeometry.IntegerPrecisionPoint;
 import main.common.exceptions.BadLogicException;
 
-public abstract class GenericGameBoard  {
+public abstract class GenericGameBoard {
 
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GenericGameBoard.class);
@@ -20,19 +20,17 @@ public abstract class GenericGameBoard  {
 
 	private ArrayList<GenericGameIntegerBoardPoint> allGameBoardPointAsOrderedList = new ArrayList<>();
 
-
 	protected GenericGameBoard() {
 	}
-	
+
 	protected void afterConstructor() {
 		createInitialGameBoardPoints();
 		computeNeighboursOfEachGameBoardPoint();
 	}
-	
+
 	protected void computeNeighboursOfEachGameBoardPoint() {
 
 		LOGGER.info("computeNeighboursOfEachGameBoardPoint: begin");
-
 
 		for (GenericGameIntegerBoardPoint gameBoardPoint : getAllGameBoardPointsAsOrderedList()) {
 
@@ -61,11 +59,12 @@ public abstract class GenericGameBoard  {
 			for (int column = 0; column < getTotalWidth(); column++) {
 				GenericGameIntegerBoardPoint gameBoardPoint = createGameBoardPoint(row, column);
 				gameBoardOfOneRowPerColumn.put(column, gameBoardPoint);
+				allGameBoardPointAsOrderedList.add(gameBoardPoint);
 			}
 
 		}
 	}
-	
+
 	protected abstract GenericGameIntegerBoardPoint createGameBoardPoint(int row, int column);
 
 	public abstract int getTotalWidth();
@@ -119,16 +118,22 @@ public abstract class GenericGameBoard  {
 		int referenceGameBoardPointX = referenceGameBoardPoint.getXAsInt();
 		int referenceGameBoardPointY = referenceGameBoardPoint.getYAsInt();
 
+		boolean isReferencePointInTopLine = referenceGameBoardPoint.getRow() == 0;
+		boolean isReferencePointInBottomLine = referenceGameBoardPoint.getRow() == getTotalHeight() - 1;
+
+		boolean isReferencePointInLeftExtremityColumn = referenceGameBoardPoint.getColumn() == 0;
+		boolean isReferencePointInRightExtremityColumn = referenceGameBoardPoint.getColumn() == getTotalWidth() - 1;
+
 		boolean isReferenceGameBoardPointFirstOfColumn = referenceGameBoardPointRow == 0;
 		boolean isReferenceGameBoardPointLastOfColumn = referenceGameBoardPointRow == getTotalWidth() - 1;
 
 		boolean isReferenceGameBoardPointFirstOfRow = referenceGameBoardPointColumn == 0;
-		boolean isReferenceGameBoardPointLastOfRow = referenceGameBoardPointRow == getTotalHeight() - 1;
+		boolean isReferenceGameBoardPointLastOfRow = referenceGameBoardPointColumn == getTotalHeight() - 1;
 
 		// left gameBoardPoint
 		switch (direction) {
 		case NORTH:
-			if (!isReferenceGameBoardPointFirstOfRow) {
+			if (!isReferencePointInTopLine) {
 				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX, referenceGameBoardPointY - 1);
 			}
 			break;
