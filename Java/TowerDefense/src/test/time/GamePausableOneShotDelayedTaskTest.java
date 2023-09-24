@@ -164,13 +164,11 @@ public class GamePausableOneShotDelayedTaskTest {
 		public void canPauseAndResumeSeveralTimesAndRunAfterGoodDelay() {
 
 			int cumulatedTimeOutsideOfPause = 0;
-			int cumulatedTimeDuringPause = 0;
 
 			for (int i = 0; i < 9; i++) {
 
 				timerTaskForTests.pause();
 				sleepThread(200);
-				cumulatedTimeDuringPause += 100;
 				assertEquals(timerTaskForTests.getNumberOfTimerRuns(), 0);
 
 				timerTaskForTests.resume();
