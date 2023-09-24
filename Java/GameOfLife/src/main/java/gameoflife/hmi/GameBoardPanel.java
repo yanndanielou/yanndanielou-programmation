@@ -3,7 +3,7 @@ package gameoflife.hmi;
 import java.awt.Color;
 import java.util.HashMap;
 
-import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.apache.logging.log4j.LogManager;
@@ -23,7 +23,7 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 
 	private static final long serialVersionUID = -1541008040602802454L;
 
-	private HashMap<Cell, JButton> gameObjectToLabelMap = new HashMap<>();
+	private HashMap<Cell, JPanel> gameObjectToLabelMap = new HashMap<>();
 
 	private GameBoard gameBoard;
 	private GameOfLifeMainViewFrame towerDefenseMainViewFrame;
@@ -43,31 +43,31 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 			int lineNumber = cell.getRow();
 			int columnNumber = cell.getColumn();
 
-			JButton jButton = new JButton();
+			JPanel displayedObject = new JPanel();
 
-			gameObjectToLabelMap.put(cell, jButton);
+			gameObjectToLabelMap.put(cell, displayedObject);
 
-			jButton.setSize(HMIConstants.CELL_WIDTH_IN_PIXELS, HMIConstants.CELL_HEIGHT_IN_PIXELS);
+			displayedObject.setSize(HMIConstants.CELL_WIDTH_IN_PIXELS, HMIConstants.CELL_HEIGHT_IN_PIXELS);
 
-			jButton.setToolTipText("Line " + lineNumber + " column " + columnNumber);
-			jButton.setLocation(lineNumber * HMIConstants.CELL_WIDTH_IN_PIXELS,
+			displayedObject.setToolTipText("Line " + lineNumber + " column " + columnNumber);
+			displayedObject.setLocation(lineNumber * HMIConstants.CELL_WIDTH_IN_PIXELS,
 					columnNumber * HMIConstants.CELL_HEIGHT_IN_PIXELS);
 
 			cell.addGameBoardPointListener(this);
 
 			redrawCell(cell);
-			add(jButton);
+			add(displayedObject);
 		}
 
 	}
 
 	private void redrawCell(Cell cell) {
-		JButton jButton = gameObjectToLabelMap.get(cell);
+		JComponent component = gameObjectToLabelMap.get(cell);
 
 		if (cell.isAlive()) {
-			jButton.setForeground(Color.BLACK);
+			component.setBackground(Color.BLACK);
 		} else {
-			jButton.setForeground(Color.WHITE);
+			component.setBackground(Color.WHITE);
 		}
 
 	}

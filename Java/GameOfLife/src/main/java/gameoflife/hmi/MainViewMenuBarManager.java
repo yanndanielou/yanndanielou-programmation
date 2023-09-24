@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -19,6 +20,7 @@ import org.apache.logging.log4j.Logger;
 import game.gameboard.GenericGameIntegerBoardPoint;
 import gameoflife.core.GameManager;
 import gameoflife.gameboard.Cell;
+import gameoflife.gameboard.GameBoard;
 import main.common.random.RandomIntegerGenerator;
 
 public class MainViewMenuBarManager implements ActionListener {
@@ -125,9 +127,10 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuBar.add(menu);
 		menu.addActionListener(this);
 
+
 		menuItem = new JMenuItem("Set one random dead cell alive", KeyEvent.VK_A);
 		menuItem.setAccelerator(
-				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -135,8 +138,8 @@ public class MainViewMenuBarManager implements ActionListener {
 				if (GameManager.hasGameInProgress()) {
 
 					List<Cell> notAliveCells = GameManager.getInstance().getGame().getGameBoard()
-							.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).filter(Cell::isAlive)
-							.toList();
+							.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast)
+							.filter(Predicate.not(Cell::isAlive)).toList();
 					if (!notAliveCells.isEmpty()) {
 						Cell cell = notAliveCells
 								.get(RandomIntegerGenerator.getRandomNumberUsingNextInt(0, notAliveCells.size() - 1));
@@ -149,15 +152,15 @@ public class MainViewMenuBarManager implements ActionListener {
 
 		menuItem = new JMenuItem("Set one random alive cell to dead", KeyEvent.VK_D);
 		menuItem.setAccelerator(
-				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+				KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		menuItem.addActionListener(e -> {
 
 			if (GameManager.hasGameInProgress()) {
 
 				List<Cell> aliveCells = GameManager.getInstance().getGame().getGameBoard()
-						.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast)
-						.filter(Predicate.not(Cell::isAlive)).toList();
+						.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).filter(Cell::isAlive)
+						.toList();
 				if (!aliveCells.isEmpty()) {
 					Cell cell = aliveCells
 							.get(RandomIntegerGenerator.getRandomNumberUsingNextInt(0, aliveCells.size() - 1));

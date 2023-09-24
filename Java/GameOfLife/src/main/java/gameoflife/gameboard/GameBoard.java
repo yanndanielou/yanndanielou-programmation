@@ -20,7 +20,6 @@ public class GameBoard extends GenericGameBoard {
 
 
 	public GameBoard(GameBoardModelBuilder gameBoardModelBuilder) {
-
 		this.gameBoardDataModel = gameBoardModelBuilder.getGameBoardDataModel();
 		afterConstructor();
 	}
