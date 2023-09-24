@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -13,7 +16,10 @@ import javax.swing.KeyStroke;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import game.gameboard.GenericGameIntegerBoardPoint;
 import gameoflife.core.GameManager;
+import gameoflife.gameboard.Cell;
+import main.common.random.RandomIntegerGenerator;
 
 public class MainViewMenuBarManager implements ActionListener {
 	private static final Logger LOGGER = LogManager.getLogger(MainViewMenuBarManager.class);
@@ -119,6 +125,47 @@ public class MainViewMenuBarManager implements ActionListener {
 		menuBar.add(menu);
 		menu.addActionListener(this);
 
+		menuItem = new JMenuItem("Set one random dead cell alive", KeyEvent.VK_A);
+		menuItem.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				if (GameManager.hasGameInProgress()) {
+
+					List<Cell> notAliveCells = GameManager.getInstance().getGame().getGameBoard()
+							.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).filter(Cell::isAlive)
+							.toList();
+					if (!notAliveCells.isEmpty()) {
+						Cell cell = notAliveCells
+								.get(RandomIntegerGenerator.getRandomNumberUsingNextInt(0, notAliveCells.size() - 1));
+						cell.setAlive();
+					}
+				}
+			}
+		});
+		menu.add(menuItem);
+
+		menuItem = new JMenuItem("Set one random alive cell to dead", KeyEvent.VK_D);
+		menuItem.setAccelerator(
+				KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.SHIFT_DOWN_MASK | InputEvent.CTRL_DOWN_MASK));
+		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		menuItem.addActionListener(e -> {
+
+			if (GameManager.hasGameInProgress()) {
+
+				List<Cell> aliveCells = GameManager.getInstance().getGame().getGameBoard()
+						.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast)
+						.filter(Predicate.not(Cell::isAlive)).toList();
+				if (!aliveCells.isEmpty()) {
+					Cell cell = aliveCells
+							.get(RandomIntegerGenerator.getRandomNumberUsingNextInt(0, aliveCells.size() - 1));
+					cell.setDead();
+				}
+			}
+		});
+		menu.add(menuItem);
 
 		return menu;
 

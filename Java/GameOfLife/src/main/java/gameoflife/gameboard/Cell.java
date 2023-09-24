@@ -6,10 +6,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import game.gameboard.GenericGameIntegerBoardPoint;
+import gameoflife.game.CellListener;
 import gameoflife.game.Game;
-import gameoflife.game.GameBoardPointListener;
 
-public class Cell extends GenericGameIntegerBoardPoint  {
+public class Cell extends GenericGameIntegerBoardPoint {
 
 	/**
 	 * 
@@ -21,16 +21,38 @@ public class Cell extends GenericGameIntegerBoardPoint  {
 
 	private Game game;
 
-	private ArrayList<GameBoardPointListener> gameBoardPointListeners = new ArrayList<>();
+	private boolean alive = false;
+
+	private ArrayList<CellListener> gameBoardPointListeners = new ArrayList<>();
 
 	public Cell(Game game, int line, int column) {
 		super(column, line);
 		this.game = game;
 	}
 
-	public void addGameBoardPointListener(GameBoardPointListener gameBoardPointListener) {
+	public void addGameBoardPointListener(CellListener gameBoardPointListener) {
 		gameBoardPointListeners.add(gameBoardPointListener);
 	}
 
+	public void setAlive() {
+		setAlive(true);
+	}
+
+	public void setDead() {
+		setAlive(false);
+	}
+
+	private void setAlive(boolean alive) {
+		if (this.alive != alive) {
+			this.alive = alive;
+			gameBoardPointListeners
+					.forEach((gameStatusListener) -> gameStatusListener.onCellAliveStatusChanged(alive, this));
+
+		}
+	}
+
+	public boolean isAlive() {
+		return alive;
+	}
 
 }
