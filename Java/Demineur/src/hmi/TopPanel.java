@@ -2,7 +2,6 @@ package hmi;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import constants.HMIConstants;
@@ -31,7 +30,7 @@ public class TopPanel extends JPanel implements GameStatusListener {
 
 		setLayout(null);
 		setSize(width, height);
-
+/*
 		remaining_unflagged_mines_label = new SevenSegmentLedsNumberDisplayFromDemineurImage(3,200, HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT);
 //		remaining_unflagged_mines_label.setSize(200, HMIConstants.TOP_PANEL_ELEMENTS_HEIGHT);
 		remaining_unflagged_mines_label.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH,
@@ -60,7 +59,7 @@ public class TopPanel extends JPanel implements GameStatusListener {
 				HMIConstants.EXTERNAL_FRAME_WIDTH);
 		add(game_duration_label);
 		
-
+*/
 	}
 
 	private ImageIcon get_scalled_icon(String image_path) {
@@ -70,7 +69,7 @@ public class TopPanel extends JPanel implements GameStatusListener {
 
 	@Override
 	public void on_listen_to_game_status(Game game) {
-		smiley_button.setIcon(smiley_normal_icon);
+//		smiley_button.setIcon(smiley_normal_icon);
 	}
 
 	@Override
