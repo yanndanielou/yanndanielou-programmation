@@ -16,9 +16,9 @@ public abstract class GenericGameBoard {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GenericGameBoard.class);
 
-	private Map<Integer, Map<Integer, GenericGameIntegerBoardPoint>> gameBoardPointPerRowAndColumn = new HashMap<>();
+	private Map<Integer, Map<Integer, GenericIntegerGameBoardPoint>> gameBoardPointPerRowAndColumn = new HashMap<>();
 
-	private ArrayList<GenericGameIntegerBoardPoint> allGameBoardPointAsOrderedList = new ArrayList<>();
+	private ArrayList<GenericIntegerGameBoardPoint> allGameBoardPointAsOrderedList = new ArrayList<>();
 
 	protected GenericGameBoard() {
 	}
@@ -32,10 +32,10 @@ public abstract class GenericGameBoard {
 
 		LOGGER.info("computeNeighboursOfEachGameBoardPoint: begin");
 
-		for (GenericGameIntegerBoardPoint gameBoardPoint : getAllGameBoardPointsAsOrderedList()) {
+		for (GenericIntegerGameBoardPoint gameBoardPoint : getAllGameBoardPointsAsOrderedList()) {
 
 			for (NeighbourGameBoardPointDirection direction : NeighbourGameBoardPointDirection.values()) {
-				GenericGameIntegerBoardPoint neighbourSquare = getNeighbourGameBoardPoint(gameBoardPoint, direction);
+				GenericIntegerGameBoardPoint neighbourSquare = getNeighbourGameBoardPoint(gameBoardPoint, direction);
 				if (neighbourSquare != null) {
 					gameBoardPoint.setNeighbour(direction, neighbourSquare);
 				}
@@ -48,7 +48,7 @@ public abstract class GenericGameBoard {
 
 		for (int row = 0; row < getTotalHeight(); row++) {
 
-			Map<Integer, GenericGameIntegerBoardPoint> gameBoardOfOneRowPerColumn;
+			Map<Integer, GenericIntegerGameBoardPoint> gameBoardOfOneRowPerColumn;
 			if (gameBoardPointPerRowAndColumn.containsKey(row)) {
 				gameBoardOfOneRowPerColumn = gameBoardPointPerRowAndColumn.get(row);
 			} else {
@@ -57,7 +57,7 @@ public abstract class GenericGameBoard {
 			}
 
 			for (int column = 0; column < getTotalWidth(); column++) {
-				GenericGameIntegerBoardPoint gameBoardPoint = createGameBoardPoint(row, column);
+				GenericIntegerGameBoardPoint gameBoardPoint = createGameBoardPoint(row, column);
 				gameBoardOfOneRowPerColumn.put(column, gameBoardPoint);
 				allGameBoardPointAsOrderedList.add(gameBoardPoint);
 			}
@@ -65,41 +65,41 @@ public abstract class GenericGameBoard {
 		}
 	}
 
-	protected abstract GenericGameIntegerBoardPoint createGameBoardPoint(int row, int column);
+	protected abstract GenericIntegerGameBoardPoint createGameBoardPoint(int row, int column);
 
 	public abstract int getTotalWidth();
 
 	public abstract int getTotalHeight();
 
-	public ArrayList<GenericGameIntegerBoardPoint> getAllGameBoardPointsAsOrderedList() {
+	public ArrayList<GenericIntegerGameBoardPoint> getAllGameBoardPointsAsOrderedList() {
 		return allGameBoardPointAsOrderedList;
 	}
 
-	public GenericGameIntegerBoardPoint getGameBoardPoint(IntegerPrecisionPoint point) {
+	public GenericIntegerGameBoardPoint getGameBoardPoint(IntegerPrecisionPoint point) {
 		return getGameBoardPointByRowAndColumn(point.getRow(), point.getColumn());
 	}
 
-	public List<GenericGameIntegerBoardPoint> getGameBoardPoints(List<IntegerPrecisionPoint> points) {
-		List<GenericGameIntegerBoardPoint> gameBoardPoints = new ArrayList<>();
+	public List<GenericIntegerGameBoardPoint> getGameBoardPoints(List<IntegerPrecisionPoint> points) {
+		List<GenericIntegerGameBoardPoint> gameBoardPoints = new ArrayList<>();
 		for (IntegerPrecisionPoint point : points) {
 			gameBoardPoints.add(getGameBoardPoint(point));
 		}
 		return gameBoardPoints;
 	}
 
-	public GenericGameIntegerBoardPoint getGameBoardPointByXAndY(int x, int y) {
+	public GenericIntegerGameBoardPoint getGameBoardPointByXAndY(int x, int y) {
 		return getGameBoardPointByRowAndColumn(y, x);
 	}
 
-	public GenericGameIntegerBoardPoint getGameBoardPointByRowAndColumn(int row, int column) {
+	public GenericIntegerGameBoardPoint getGameBoardPointByRowAndColumn(int row, int column) {
 
-		Map<Integer, GenericGameIntegerBoardPoint> gameBoardPointOfRow = gameBoardPointPerRowAndColumn.get(row);
+		Map<Integer, GenericIntegerGameBoardPoint> gameBoardPointOfRow = gameBoardPointPerRowAndColumn.get(row);
 
 		if (gameBoardPointOfRow == null) {
 			throw new BadLogicException("Cannot find row :" + row + " to search column:" + column);
 		}
 
-		GenericGameIntegerBoardPoint gameBoardPoint = gameBoardPointOfRow.get(column);
+		GenericIntegerGameBoardPoint gameBoardPoint = gameBoardPointOfRow.get(column);
 
 		if (gameBoardPoint == null) {
 			throw new BadLogicException("Cannot find column :" + column + " inside row:" + row);
@@ -108,9 +108,9 @@ public abstract class GenericGameBoard {
 		return gameBoardPoint;
 	}
 
-	public GenericGameIntegerBoardPoint getNeighbourGameBoardPoint(GenericGameIntegerBoardPoint referenceGameBoardPoint,
+	public GenericIntegerGameBoardPoint getNeighbourGameBoardPoint(GenericIntegerGameBoardPoint referenceGameBoardPoint,
 			NeighbourGameBoardPointDirection direction) {
-		GenericGameIntegerBoardPoint neighbour = null;
+		GenericIntegerGameBoardPoint neighbour = null;
 
 		int referenceGameBoardPointColumn = referenceGameBoardPoint.getColumn();
 		int referenceGameBoardPointRow = referenceGameBoardPoint.getRow();
