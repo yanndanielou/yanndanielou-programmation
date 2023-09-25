@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import game.gameboard.GenericGameBoard;
-import game.gameboard.GenericGameIntegerBoardPoint;
+import game.gameboard.GenericIntegerGameBoardPoint;
 import gameoflife.builders.gameboard.GameBoardDataModel;
 import gameoflife.builders.gameboard.GameBoardModelBuilder;
 import gameoflife.game.Game;
@@ -45,7 +45,7 @@ public class GameBoard extends GenericGameBoard {
 	}
 
 	@Override
-	protected GenericGameIntegerBoardPoint createGameBoardPoint(int row, int column) {
+	protected GenericIntegerGameBoardPoint createGameBoardPoint(int row, int column) {
 		return new Cell(game, row, column);
 	}
 
