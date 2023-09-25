@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import game.gameboard.GenericGameIntegerBoardPoint;
+import game.gameboard.GenericIntegerGameBoardPoint;
 import gameoflife.game.CellListener;
 import gameoflife.game.Game;
 
-public class Cell extends GenericGameIntegerBoardPoint {
+public class Cell extends GenericIntegerGameBoardPoint {
 
 	/**
 	 * 
