@@ -54,6 +54,7 @@ public class Game extends GenericGame {
 		return gameBoard;
 	}
 
+	@Deprecated
 	public GameManager getGameManager() {
 		return gameManager;
 	}

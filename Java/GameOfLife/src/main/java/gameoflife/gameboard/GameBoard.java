@@ -17,19 +17,24 @@ public class GameBoard extends GenericGameBoard {
 	private GameBoardDataModel gameBoardDataModel;
 
 	private Game game;
+	
+	protected int width;
+	protected int height;
 
 
 	public GameBoard(GameBoardModelBuilder gameBoardModelBuilder) {
 		this.gameBoardDataModel = gameBoardModelBuilder.getGameBoardDataModel();
+		width = (int) gameBoardDataModel.getGameBoardDimensions().getDimension().getWidth();
+		height = (int) gameBoardDataModel.getGameBoardDimensions().getDimension().getHeight();
 		afterConstructor();
 	}
 
 	public int getTotalWidth() {
-		return (int) gameBoardDataModel.getGameBoardDimensions().getDimension().getWidth();
+		return width ;
 	}
 
 	public int getTotalHeight() {
-		return (int) gameBoardDataModel.getGameBoardDimensions().getDimension().getHeight();
+		return height;
 	}
 
 	public void setGame(Game game) {
