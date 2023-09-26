@@ -40,10 +40,6 @@ public class GameBoard extends GenericGameBoard {
 		return game;
 	}
 
-	public GameBoardDataModel getGameBoardDataModel() {
-		return gameBoardDataModel;
-	}
-
 	@Override
 	protected GenericIntegerGameBoardPoint createGameBoardPoint(int row, int column) {
 		return new Cell(game, row, column);

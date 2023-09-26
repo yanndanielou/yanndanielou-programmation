@@ -21,10 +21,6 @@ public class Game extends GenericGame {
 
 	private GameBoard gameBoard;
 
-	private boolean begun = false;
-
-	private boolean paused = false;
-
 	private GameManager gameManager;
 
 	private GameTimeManager gameTimeManager;

@@ -172,7 +172,7 @@ public abstract class GenericGameBoard {
 				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX - 1, referenceGameBoardPointY);
 			}
 			break;
-		case NORTH_WEST:
+		default: //NORTH_WEST
 			if (!isReferenceGameBoardPointFirstOfRow && !isReferenceGameBoardPointFirstOfColumn) {
 				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX - 1, referenceGameBoardPointY - 1);
 			}

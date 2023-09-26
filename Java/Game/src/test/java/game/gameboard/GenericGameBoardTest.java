@@ -60,11 +60,31 @@ class GenericGameBoardTest {
 						assertEquals(expectedX.intValue(), neighbour.getX());
 						assertEquals(expectedY.intValue(), neighbour.getY());
 					}
-
 				}
-
 			}
 
+			@Nested
+			public class BottomRightCornerCell {
+
+				@BeforeEach
+				void setUp() throws Exception {
+					gameBoardPoint = gameBoard.getGameBoardPointByXAndY(9, 9);
+				}
+
+				@ParameterizedTest
+				@CsvSource(value = { "NORTH,9,8", "NORTH_EAST,NIL,NIL", "EAST,NIL,NIL", "SOUTH_EAST,NIL,NIL", "SOUTH,NIL,NIL", "SOUTH_WEST,NIL,NIL",
+						"WEST,8,9", "NORTH_WEST,8,8" }, nullValues = "NIL")
+				void testNeighbour(NeighbourGameBoardPointDirection direction, Integer expectedX, Integer expectedY) {
+					GenericIntegerGameBoardPoint neighbour = gameBoard.getNeighbourGameBoardPoint(gameBoardPoint,
+							direction);
+					if (expectedX == null || expectedY == null) {
+						assertNull(neighbour);
+					} else {
+						assertEquals(expectedX.intValue(), neighbour.getX());
+						assertEquals(expectedY.intValue(), neighbour.getY());
+					}
+				}
+			}
 			@Nested
 			public class MiddleCell {
 
