@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import game.gameboard.GenericGameIntegerBoardPoint;
+import game.gameboard.GenericIntegerGameBoardPoint;
 import main.belligerents.Attacker;
 import main.belligerents.Tower;
 import main.belligerents.listeners.AttackerListener;
@@ -15,7 +15,7 @@ import main.constants.Constants;
 import main.game.Game;
 import main.game.GameBoardPointListener;
 
-public class GameBoardPoint extends GenericGameIntegerBoardPoint implements TowerListener, AttackerListener {
+public class GameBoardPoint extends GenericIntegerGameBoardPoint implements TowerListener, AttackerListener {
 
 	/**
 	 * 

@@ -11,7 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import game.gameboard.GenericGameBoard;
-import game.gameboard.GenericGameIntegerBoardPoint;
+import game.gameboard.GenericIntegerGameBoardPoint;
 import geometry2d.integergeometry.IntegerPrecisionPoint;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import main.belligerents.Attacker;
@@ -236,7 +236,7 @@ public class GameBoard extends GenericGameBoard implements TowerListener, Attack
 	}
 
 	@Override
-	protected GenericGameIntegerBoardPoint createGameBoardPoint(int row, int column) {
+	protected GenericIntegerGameBoardPoint createGameBoardPoint(int row, int column) {
 		return new GameBoardPoint(game, row, column);
 	}
 }
