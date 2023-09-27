@@ -1,6 +1,6 @@
 package main.numbers;
 
-import static main.numbers.InfiniteNaturalNumber.*;
+import static main.numbers.InfiniteNaturalNumber.THREE;
 import static main.numbers.InfiniteNaturalNumber.TWO;
 
 import java.util.ArrayList;
