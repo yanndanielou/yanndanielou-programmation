@@ -86,26 +86,12 @@ public class Game extends GenericGame {
 		return gameTimeManager;
 	}
 
-	public List<Cell> getAllAliveCells() {
-		return getGameBoard().getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).filter(Cell::isAlive)
-				.toList();
-	}
-
-	public List<Cell> getAllDeadCells() {
-		return getGameBoard().getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast)
-				.filter(Predicate.not(Cell::isAlive)).toList();
-
-	}
-
-	public List<Cell> getAllCells() {
-		return getGameBoard().getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).toList();
-	}
 
 	public void playOneStep() {
 		List<Cell> newlyAliveCells = new ArrayList<>();
 		List<Cell> newlyDeadCells = new ArrayList<>();
 
-		for (Cell cell : getAllCells()) {
+		for (Cell cell : gameBoard.getAllCells()) {
 			int numberOfAliveNeighbours = (int) cell.getNeighbours().stream().map(Cell.class::cast)
 					.filter(Cell::isAlive).count();
 
