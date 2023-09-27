@@ -42,6 +42,11 @@ public class GameManager {
 		GameBoardModelBuilder gameBoardModelBuilder = new GameBoardModelBuilder(
 				Constants.GAME_BOARD_JSON_DATA_MODEL_FILE_PATH);
 		GameBoard gameBoard = new GameBoard(gameBoardModelBuilder);
+		newGame(gameBoard);
+	}
+	
+	public void newGame(GameBoard gameBoard) {
+		
 		game = new Game(this, gameBoard);
 		gameOfLifeMainView.registerToGame(game);
 	}
