@@ -42,7 +42,7 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 			applicationBufferedImage = ImageIO.read(applicationImageFile);
 			setIconImage(applicationBufferedImage);
 		} catch (IOException e1) {
-			LOGGER.info("Could not define application icon " + applicationImagePath);
+			LOGGER.info(() -> "Could not define application icon " + applicationImagePath);
 		}
 	}
 
@@ -79,13 +79,11 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		gameFieldPanel.initializeGamefield(game.getGameBoard());
 		add(gameFieldPanel);
 
-		topPanel = new TopPanel(this, gameFieldPanel.getWidth(),
-				HMIConstants.TOP_PANEL_HEIGHT);
+		topPanel = new TopPanel(this, gameFieldPanel.getWidth(), HMIConstants.TOP_PANEL_HEIGHT);
 		topPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH, HMIConstants.EXTERNAL_FRAME_WIDTH);
 		add(topPanel);
 
 		gameFieldPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH, topPanel.getY() + topPanel.getHeight());
-
 
 		setSize(new Dimension(
 				gameFieldPanel.getWidth() + 2 * HMIConstants.EXTERNAL_FRAME_WIDTH
@@ -106,8 +104,8 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	@Override
 	public void registerToGame(Game game) {
 		newGame(game);
-		//game.addGameStatusListener(topPanel);
+		// game.addGameStatusListener(topPanel);
 		game.addGameStatusListener(gameFieldPanel);
-}
+	}
 
 }
