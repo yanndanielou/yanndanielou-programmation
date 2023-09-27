@@ -2,7 +2,7 @@
 public class MaxReccursiveApplication {
 
 	public static void main(String[] args) {
-		-Xss4m
+		//-Xss4m
 		reccursiveFunction(0);
 	}
 
