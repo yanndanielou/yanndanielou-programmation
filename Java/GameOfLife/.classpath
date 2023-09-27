@@ -31,5 +31,7 @@
 	<classpathentry kind="lib" path="../ExternalLibraries/byte-buddy/byte-buddy-1.14.6.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/byte-buddy/byte-buddy-agent-1.14.6.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/objenesis/objenesis-3.3.jar"/>
+
+	<classpathentry kind="lib" path="../ExternalLibraries/orgs/appache/commons/commons-lang3-3.13.0.jar" sourcepath="../ExternalLibraries/orgs/appache/commons/commons-lang3-3.13.0-sources.jar"/>	
 	
 </classpath>
