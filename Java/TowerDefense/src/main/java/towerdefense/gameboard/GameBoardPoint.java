@@ -94,9 +94,6 @@ public class GameBoardPoint extends GenericIntegerGameBoardPoint implements Towe
 	@Override
 	public void onTowerRemoval(Tower tower) {
 
-		if (towersPresent.size() >= Constants.MAXIMUM_NUMBER_OF_TOWERS_ALLOWED_PER_LOCATION) {
-		}
-
 		boolean removed = towersPresent.remove(tower);
 		if (!removed) {
 			throw new BadLogicException(
