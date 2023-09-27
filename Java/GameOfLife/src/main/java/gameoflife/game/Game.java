@@ -109,7 +109,7 @@ public class Game extends GenericGame {
 			} else {
 
 				if (numberOfAliveNeighbours == 3) {
-					LOGGER.info(cell + " becomes alive by reproduction");
+					LOGGER.info(() -> cell + " becomes alive by reproduction");
 					// Any dead cell with exactly three live neighbours becomes a live cell, as if
 					// by reproduction.
 					newlyAliveCells.add(cell);
