@@ -61,6 +61,7 @@ public class TopPanel extends JPanel implements GameStatusListener {
 */
 	}
 
+	@SuppressWarnings("unused")
 	private ImageIcon get_scalled_icon(String image_path) {
 		return HMIUtils.get_scalled_icon(image_path, (int) (smiley_button.getWidth() * 0.9),
 				(int) (smiley_button.getHeight() * 0.9));
