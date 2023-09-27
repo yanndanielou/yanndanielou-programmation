@@ -12,6 +12,10 @@ public final class CollectionUtils {
 		return new ArrayList<>(from);
 	}
 
+	public static <T> List<T> copy(List<T> from) {
+		return toList(from);
+	}
+
 	@SafeVarargs
 	public static <T> List<T> asList(T... items) {
 		List<T> ret = new ArrayList<>();
@@ -23,9 +27,9 @@ public final class CollectionUtils {
 		return ret;
 	}
 
-	  public static <T> Set<T> emptySet() {
-	    return new HashSet<>();
-	  }
+	public static <T> Set<T> emptySet() {
+		return new HashSet<>();
+	}
 
 	public static <T> List<T> emptyList() {
 		return new ArrayList<>();
