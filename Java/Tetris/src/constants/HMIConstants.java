@@ -1,7 +1,5 @@
 package constants;
 
-import java.awt.Color;
-
 public class HMIConstants {
 
 	private HMIConstants() {
