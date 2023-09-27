@@ -11,12 +11,4 @@ public class DimensionDataModel extends GameBoardNamedAreaDataModel {
 		return new Dimension(width, height);
 	}
 	
-	public Integer getWidth() {
-		return width;
-	}
-	
-	public Integer getHeight() {
-		return height;
-	}
-
 }
