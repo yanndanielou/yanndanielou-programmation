@@ -86,7 +86,6 @@ public class Game extends GenericGame {
 		return gameTimeManager;
 	}
 
-
 	public void playOneStep() {
 		List<Cell> newlyAliveCells = new ArrayList<>();
 		List<Cell> newlyDeadCells = new ArrayList<>();
@@ -97,12 +96,12 @@ public class Game extends GenericGame {
 
 			if (cell.isAlive()) {
 				if (numberOfAliveNeighbours < 2) {
-					LOGGER.info(cell + " becomes dies by underpopulation");
+					LOGGER.info(() -> cell + " dies by underpopulation");
 					// Any live cell with fewer than two live neighbours dies, as if by
 					// underpopulation.
 					newlyDeadCells.add(cell);
 				} else if (numberOfAliveNeighbours > 3) {
-					LOGGER.info(cell + " becomes dies by overpopulation");
+					LOGGER.info(() -> cell + " dies by overpopulation");
 					// Any live cell with more than three live neighbours dies, as if by
 					// overpopulation.
 					newlyDeadCells.add(cell);

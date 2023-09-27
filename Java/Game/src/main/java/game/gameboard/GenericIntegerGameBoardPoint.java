@@ -21,8 +21,8 @@ public class GenericIntegerGameBoardPoint extends IntegerPrecisionPoint {
 	private EnumMap<NeighbourGameBoardPointDirection, GenericIntegerGameBoardPoint> neighbourPerDirection = new EnumMap<>(
 			NeighbourGameBoardPointDirection.class);
 
-	protected GenericIntegerGameBoardPoint(int line, int column) {
-		super(column, line);
+	protected GenericIntegerGameBoardPoint(int x, int y) {
+		super(x, y);
 	}
 
 	public void setNeighbour(NeighbourGameBoardPointDirection direction, GenericIntegerGameBoardPoint neighbour) {

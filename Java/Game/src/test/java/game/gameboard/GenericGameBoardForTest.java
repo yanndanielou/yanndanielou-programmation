@@ -12,8 +12,8 @@ public class GenericGameBoardForTest extends GenericGameBoard {
 	}
 
 	@Override
-	protected GenericIntegerGameBoardPoint createGameBoardPoint(int row, int column) {
-		return new GenericIntegerGameBoardPoint(row, column);
+	protected GenericIntegerGameBoardPoint createGameBoardPoint(int x, int y) {
+		return new GenericIntegerGameBoardPoint(x, y);
 	}
 
 	@Override

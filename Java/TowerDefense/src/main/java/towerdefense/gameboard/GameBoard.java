@@ -49,27 +49,7 @@ public class GameBoard extends GenericGameBoard implements TowerListener, Attack
 
 		this.gameBoardDataModel = gameBoardModelBuilder.getGameBoardDataModel();
 		this.gameBoardModelBuilder = gameBoardModelBuilder;
-		createInitialGameBoardPoints();
-	}
-
-	private void createInitialGameBoardPoints() {
-
-		for (int row = 0; row < getTotalHeight(); row++) {
-
-			Map<Integer, GameBoardPoint> gameBoardOfOneRowPerColumn;
-			if (gameBoardPointPerRowAndColumn.containsKey(row)) {
-				gameBoardOfOneRowPerColumn = gameBoardPointPerRowAndColumn.get(row);
-			} else {
-				gameBoardOfOneRowPerColumn = new HashMap<>();
-				gameBoardPointPerRowAndColumn.put(row, gameBoardOfOneRowPerColumn);
-			}
-
-			for (int column = 0; column < getTotalWidth(); column++) {
-				GameBoardPoint gameBoardPoint = new GameBoardPoint(game, row, column);
-				gameBoardOfOneRowPerColumn.put(column, gameBoardPoint);
-			}
-
-		}
+		afterConstructor();
 	}
 
 	public int getTotalWidth() {
@@ -236,7 +216,7 @@ public class GameBoard extends GenericGameBoard implements TowerListener, Attack
 	}
 
 	@Override
-	protected GenericIntegerGameBoardPoint createGameBoardPoint(int row, int column) {
-		return new GameBoardPoint(game, row, column);
+	protected GenericIntegerGameBoardPoint createGameBoardPoint(int x, int y) {
+		return new GameBoardPoint(game, x, y);
 	}
 }

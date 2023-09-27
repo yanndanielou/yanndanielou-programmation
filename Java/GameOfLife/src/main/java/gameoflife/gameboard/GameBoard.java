@@ -1,5 +1,8 @@
 package gameoflife.gameboard;
 
+import java.util.List;
+import java.util.function.Predicate;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,10 +20,9 @@ public class GameBoard extends GenericGameBoard {
 	private GameBoardDataModel gameBoardDataModel;
 
 	private Game game;
-	
+
 	protected int width;
 	protected int height;
-
 
 	public GameBoard(GameBoardModelBuilder gameBoardModelBuilder) {
 		this.gameBoardDataModel = gameBoardModelBuilder.getGameBoardDataModel();
@@ -30,7 +32,7 @@ public class GameBoard extends GenericGameBoard {
 	}
 
 	public int getTotalWidth() {
-		return width ;
+		return width;
 	}
 
 	public int getTotalHeight() {
@@ -45,9 +47,26 @@ public class GameBoard extends GenericGameBoard {
 		return game;
 	}
 
+	public Cell getCellByXAndY(int x, int y) {
+		return (Cell) getGameBoardPointByXAndY(x, y);
+	}
+
 	@Override
-	protected GenericIntegerGameBoardPoint createGameBoardPoint(int row, int column) {
-		return new Cell(game, row, column);
+	protected GenericIntegerGameBoardPoint createGameBoardPoint(int x, int y) {
+		return new Cell(game, x, y);
+	}
+
+	public List<Cell> getAllCells() {
+		return getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).toList();
+	}
+
+	public List<Cell> getAllAliveCells() {
+		return getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).filter(Cell::isAlive).toList();
+	}
+
+	public List<Cell> getAllDeadCells() {
+		return getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).filter(Predicate.not(Cell::isAlive))
+				.toList();
 	}
 
 }

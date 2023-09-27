@@ -40,18 +40,17 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 				gameBoard.getTotalHeight() * HMIConstants.CELL_HEIGHT_IN_PIXELS);
 
 		for (Cell cell : gameBoard.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).toList()) {
-			int lineNumber = cell.getRow();
-			int columnNumber = cell.getColumn();
-
 			JPanel displayedObject = new JPanel();
 
 			gameObjectToLabelMap.put(cell, displayedObject);
 
 			displayedObject.setSize(HMIConstants.CELL_WIDTH_IN_PIXELS, HMIConstants.CELL_HEIGHT_IN_PIXELS);
 
-			displayedObject.setToolTipText("Line " + lineNumber + " column " + columnNumber);
-			displayedObject.setLocation(lineNumber * HMIConstants.CELL_WIDTH_IN_PIXELS,
-					columnNumber * HMIConstants.CELL_HEIGHT_IN_PIXELS);
+			int cellX = cell.getXAsInt();
+			int cellY = cell.getYAsInt();
+			displayedObject.setToolTipText("X: " + cellX + " Y: " + cellY);
+			displayedObject.setLocation(cellX * HMIConstants.CELL_WIDTH_IN_PIXELS,
+					cellY * HMIConstants.CELL_HEIGHT_IN_PIXELS);
 
 			cell.addGameBoardPointListener(this);
 

@@ -38,8 +38,8 @@ public class GameBoardPoint extends GenericIntegerGameBoardPoint implements Towe
 
 	private ArrayList<GameBoardPointListener> gameBoardPointListeners = new ArrayList<>();
 
-	public GameBoardPoint(Game game, int line, int column) {
-		super(column, line);
+	public GameBoardPoint(Game game, int x, int y) {
+		super(x, y);
 		this.game = game;
 	}
 

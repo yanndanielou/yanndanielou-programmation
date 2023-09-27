@@ -23,8 +23,8 @@ public class Cell extends GenericIntegerGameBoardPoint {
 
 	private ArrayList<CellListener> gameBoardPointListeners = new ArrayList<>();
 
-	public Cell(Game game, int line, int column) {
-		super(column, line);
+	public Cell(Game game, int x, int y) {
+		super(x, y);
 	}
 
 	public void addGameBoardPointListener(CellListener gameBoardPointListener) {

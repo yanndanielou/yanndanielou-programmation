@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,7 +17,7 @@ public abstract class GenericGameBoard {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GenericGameBoard.class);
 
-	private Map<Integer, Map<Integer, GenericIntegerGameBoardPoint>> gameBoardPointPerRowAndColumn = new HashMap<>();
+	private Map<Integer, Map<Integer, GenericIntegerGameBoardPoint>> gameBoardPointPerXAndY = new HashMap<>();
 
 	private ArrayList<GenericIntegerGameBoardPoint> allGameBoardPointAsOrderedList = new ArrayList<>();
 
@@ -46,26 +47,26 @@ public abstract class GenericGameBoard {
 
 	private void createInitialGameBoardPoints() {
 
-		for (int row = 0; row < getTotalHeight(); row++) {
+		for (int x = 0; x < getTotalWidth(); x++) {
 
-			Map<Integer, GenericIntegerGameBoardPoint> gameBoardOfOneRowPerColumn;
-			if (gameBoardPointPerRowAndColumn.containsKey(row)) {
-				gameBoardOfOneRowPerColumn = gameBoardPointPerRowAndColumn.get(row);
+			Map<Integer, GenericIntegerGameBoardPoint> gameBoardOfOneXPerY;
+			if (gameBoardPointPerXAndY.containsKey(x)) {
+				gameBoardOfOneXPerY = gameBoardPointPerXAndY.get(x);
 			} else {
-				gameBoardOfOneRowPerColumn = new HashMap<>();
-				gameBoardPointPerRowAndColumn.put(row, gameBoardOfOneRowPerColumn);
+				gameBoardOfOneXPerY = new HashMap<>();
+				gameBoardPointPerXAndY.put(x, gameBoardOfOneXPerY);
 			}
 
-			for (int column = 0; column < getTotalWidth(); column++) {
-				GenericIntegerGameBoardPoint gameBoardPoint = createGameBoardPoint(row, column);
-				gameBoardOfOneRowPerColumn.put(column, gameBoardPoint);
+			for (int y = 0; y < getTotalHeight(); y++) {
+				GenericIntegerGameBoardPoint gameBoardPoint = createGameBoardPoint(x, y);
+				gameBoardOfOneXPerY.put(y, gameBoardPoint);
 				allGameBoardPointAsOrderedList.add(gameBoardPoint);
 			}
-
 		}
+
 	}
 
-	protected abstract GenericIntegerGameBoardPoint createGameBoardPoint(int row, int column);
+	protected abstract GenericIntegerGameBoardPoint createGameBoardPoint(int x, int y);
 
 	public abstract int getTotalWidth();
 
@@ -76,7 +77,7 @@ public abstract class GenericGameBoard {
 	}
 
 	public GenericIntegerGameBoardPoint getGameBoardPoint(IntegerPrecisionPoint point) {
-		return getGameBoardPointByRowAndColumn(point.getRow(), point.getColumn());
+		return getGameBoardPointByXAndY(point.getXAsInt(), point.getYAsInt());
 	}
 
 	public List<GenericIntegerGameBoardPoint> getGameBoardPoints(List<IntegerPrecisionPoint> points) {
@@ -88,24 +89,20 @@ public abstract class GenericGameBoard {
 	}
 
 	public GenericIntegerGameBoardPoint getGameBoardPointByXAndY(int x, int y) {
-		return getGameBoardPointByRowAndColumn(y, x);
-	}
+		Map<Integer, GenericIntegerGameBoardPoint> gameBoardPointsOfX = gameBoardPointPerXAndY.get(x);
 
-	public GenericIntegerGameBoardPoint getGameBoardPointByRowAndColumn(int row, int column) {
-
-		Map<Integer, GenericIntegerGameBoardPoint> gameBoardPointOfRow = gameBoardPointPerRowAndColumn.get(row);
-
-		if (gameBoardPointOfRow == null) {
-			throw new BadLogicException("Cannot find row :" + row + " to search column:" + column);
+		if (gameBoardPointsOfX == null) {
+			throw new BadLogicException("Cannot find x :" + x + " to search y:" + y);
 		}
 
-		GenericIntegerGameBoardPoint gameBoardPoint = gameBoardPointOfRow.get(column);
+		GenericIntegerGameBoardPoint gameBoardPoint = gameBoardPointsOfX.get(y);
 
 		if (gameBoardPoint == null) {
-			throw new BadLogicException("Cannot find column :" + column + " inside row:" + row);
+			throw new BadLogicException("Cannot find y :" + y + " inside x:" + x);
 		}
 
 		return gameBoardPoint;
+
 	}
 
 	public GenericIntegerGameBoardPoint getNeighbourGameBoardPoint(GenericIntegerGameBoardPoint referenceGameBoardPoint,
@@ -119,7 +116,7 @@ public abstract class GenericGameBoard {
 		int referenceGameBoardPointY = referenceGameBoardPoint.getYAsInt();
 
 		boolean isReferencePointInTopLine = referenceGameBoardPoint.getRow() == 0;
-		
+
 		@SuppressWarnings("unused")
 		boolean isReferencePointInBottomLine = referenceGameBoardPoint.getRow() == getTotalHeight() - 1;
 
@@ -143,37 +140,37 @@ public abstract class GenericGameBoard {
 			}
 			break;
 		case NORTH_EAST:
-			if (!isReferenceGameBoardPointLastOfRow && !isReferenceGameBoardPointFirstOfColumn) {
+			if (!isReferencePointInTopLine && !isReferencePointInRightExtremityColumn) {
 				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX + 1, referenceGameBoardPointY - 1);
 			}
 			break;
 		case EAST:
-			if (!isReferenceGameBoardPointLastOfRow) {
+			if (!isReferencePointInRightExtremityColumn) {
 				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX + 1, referenceGameBoardPointY);
 			}
 			break;
 		case SOUTH_EAST:
-			if (!isReferenceGameBoardPointLastOfRow && !isReferenceGameBoardPointLastOfColumn) {
+			if (!isReferencePointInBottomLine && !isReferencePointInRightExtremityColumn) {
 				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX + 1, referenceGameBoardPointY + 1);
 			}
 			break;
 		case SOUTH:
-			if (!isReferenceGameBoardPointLastOfColumn) {
+			if (!isReferencePointInBottomLine) {
 				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX, referenceGameBoardPointY + 1);
 			}
 			break;
 		case SOUTH_WEST:
-			if (!isReferenceGameBoardPointFirstOfRow && !isReferenceGameBoardPointLastOfColumn) {
+			if (!isReferencePointInBottomLine && !isReferencePointInLeftExtremityColumn) {
 				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX - 1, referenceGameBoardPointY + 1);
 			}
 			break;
 		case WEST:
-			if (!isReferenceGameBoardPointFirstOfRow) {
+			if (!isReferencePointInLeftExtremityColumn) {
 				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX - 1, referenceGameBoardPointY);
 			}
 			break;
-		default: //NORTH_WEST
-			if (!isReferenceGameBoardPointFirstOfRow && !isReferenceGameBoardPointFirstOfColumn) {
+		default: // NORTH_WEST
+			if (!isReferencePointInTopLine && !isReferencePointInLeftExtremityColumn) {
 				neighbour = getGameBoardPointByXAndY(referenceGameBoardPointX - 1, referenceGameBoardPointY - 1);
 			}
 			break;
