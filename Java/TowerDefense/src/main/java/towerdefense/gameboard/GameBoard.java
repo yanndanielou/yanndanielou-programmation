@@ -61,8 +61,6 @@ public class GameBoard extends GenericGameBoard implements TowerListener, Attack
 		return gameBoardModelBuilder.getGameBoardTotalHeight();
 	}
 
-
-
 	public void setGame(Game game) {
 		this.game = game;
 	}
@@ -171,8 +169,8 @@ public class GameBoard extends GenericGameBoard implements TowerListener, Attack
 			GameBoardPredefinedConstructionLocation predefinedConstructionLocation = new GameBoardPredefinedConstructionLocation(
 					this, predefinedConstructionRectangle);
 			predefinedConstructionLocations.add(predefinedConstructionLocation);
-			LOGGER.debug(
-					"add predefinedConstructionLocation" + predefinedConstructionLocation.getRectangleDefinedArea());
+			LOGGER.debug(() -> "add predefinedConstructionLocation"
+					+ predefinedConstructionLocation.getRectangleDefinedArea());
 		}
 	}
 
