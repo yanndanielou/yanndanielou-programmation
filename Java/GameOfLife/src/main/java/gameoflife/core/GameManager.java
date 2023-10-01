@@ -41,12 +41,13 @@ public class GameManager {
 
 		GameBoardModelBuilder gameBoardModelBuilder = new GameBoardModelBuilder(
 				Constants.GAME_BOARD_JSON_DATA_MODEL_FILE_PATH);
+		LOGGER.info("Create gameboard");
 		GameBoard gameBoard = new GameBoard(gameBoardModelBuilder);
 		newGame(gameBoard);
 	}
 	
 	public void newGame(GameBoard gameBoard) {
-		
+		LOGGER.info("Create gameboard");
 		game = new Game(this, gameBoard);
 		gameOfLifeMainView.registerToGame(game);
 	}

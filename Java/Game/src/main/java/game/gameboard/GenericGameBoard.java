@@ -46,6 +46,7 @@ public abstract class GenericGameBoard {
 	}
 
 	private void createInitialGameBoardPoints() {
+		LOGGER.info("createInitialGameBoardPoints: begin");
 
 		for (int x = 0; x < getTotalWidth(); x++) {
 
