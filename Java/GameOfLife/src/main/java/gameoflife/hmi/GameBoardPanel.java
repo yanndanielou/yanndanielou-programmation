@@ -1,6 +1,7 @@
 package gameoflife.hmi;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.HashMap;
 
 import javax.swing.JButton;
@@ -19,7 +20,6 @@ import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
-import main.common.random.RandomColorGenerator;
 
 public class GameBoardPanel extends JLayeredPane implements GameStatusListener, CellListener {
 
@@ -55,8 +55,8 @@ public class GameBoardPanel extends JLayeredPane implements GameStatusListener, 
 		this.gameBoard = gameBoard;
 
 		setLayout(null);
-		setSize(gameBoard.getTotalWidth() * HMIConstants.CELL_WIDTH_IN_PIXELS,
-				gameBoard.getTotalHeight() * HMIConstants.CELL_HEIGHT_IN_PIXELS);
+		setPreferredSize(new Dimension(gameBoard.getTotalWidth() * HMIConstants.CELL_WIDTH_IN_PIXELS,
+				gameBoard.getTotalHeight() * HMIConstants.CELL_HEIGHT_IN_PIXELS));
 
 		for (Cell cell : gameBoard.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).toList()) {
 			JPanel displayedObject = new JPanel();
