@@ -28,7 +28,7 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	private GameBoardPanel gameFieldPanel;
 	private TopPanel topPanel;
 	private JScrollPane gameFieldScrollPane;
-	
+
 	JPanel mainViewContentPane;
 
 	public GameOfLifeMainViewFrame() {
@@ -57,15 +57,16 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	 * the event dispatch thread.
 	 */
 	public void createAndShowGUI() {
-	
-        setLocationRelativeTo(null);
-        setVisible(true);
-        
+
+		setLocationRelativeTo(null);
+		setVisible(true);
+
 		mainViewMenuBarManager.createMenu();
 		this.addKeyListener(new KeyBoardInputs(this));
 
 		this.setMinimumSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
-		
+
+		setLocationRelativeTo(null);
 	}
 
 	public MainViewMenuBarManager getMainViewMenuBarManager() {
@@ -74,47 +75,43 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 
 	private void newGame(Game game) {
 
-		
-		
 		// Built first to know dimensions
 		gameFieldPanel = new GameBoardPanel(this);
 		gameFieldPanel.initializeGamefield(game.getGameBoard());
-			
-		
-		
-		mainViewContentPane = new  JPanel();
-		
-		gameFieldScrollPane = new JScrollPane(gameFieldPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		//gameFieldScrollPane.getViewport().setPreferredSize(gameFieldPanel.getPreferredSize());
+
+		mainViewContentPane = new JPanel();
+
+		gameFieldScrollPane = new JScrollPane(gameFieldPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		gameFieldScrollPane.setSize(getSize());
+
+		gameFieldScrollPane.getViewport().setPreferredSize(gameFieldPanel.getPreferredSize());
 
 		mainViewContentPane.setLayout(new BorderLayout());
-        mainViewContentPane.add(gameFieldScrollPane);
+		mainViewContentPane.add(gameFieldScrollPane);
+		mainViewContentPane.setSize(getSize());
 
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setContentPane(mainViewContentPane);
+		// pack();
+		setVisible(true);
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        getContentPane().add(mainViewContentPane);
-      //  pack();
-        setLocationRelativeTo(null);
-        setVisible(true);
-				
-		
-		
-		//gameFieldScrollPane.setViewportView(gameFieldPanel);
+		// gameFieldScrollPane.setViewportView(gameFieldPanel);
 		//
 
-		//add(gameFieldPanel);
+		// add(gameFieldPanel);
 
-		
-	//	gameFieldPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH, HMIConstants.EXTERNAL_FRAME_WIDTH);
+		// gameFieldPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH,
+		// HMIConstants.EXTERNAL_FRAME_WIDTH);
 
-		
-	/*	
-		setSize(new Dimension(
-				gameFieldPanel.getWidth() + 2 * HMIConstants.EXTERNAL_FRAME_WIDTH
-						+ HMIConstants.NOT_UNDERSTOOD_MISSING_FRAME_WIDTH,
-				gameFieldPanel.getY() + gameFieldPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight()
-						+ HMIConstants.EXTERNAL_FRAME_WIDTH + HMIConstants.NOT_UNDERSTOOD_MISSING_FRAME_HEIGHT));
-*/
+		/*
+		 * setSize(new Dimension( gameFieldPanel.getWidth() + 2 *
+		 * HMIConstants.EXTERNAL_FRAME_WIDTH +
+		 * HMIConstants.NOT_UNDERSTOOD_MISSING_FRAME_WIDTH, gameFieldPanel.getY() +
+		 * gameFieldPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight()
+		 * + HMIConstants.EXTERNAL_FRAME_WIDTH +
+		 * HMIConstants.NOT_UNDERSTOOD_MISSING_FRAME_HEIGHT));
+		 */
 	}
 
 	public void removeTopPanel() {
