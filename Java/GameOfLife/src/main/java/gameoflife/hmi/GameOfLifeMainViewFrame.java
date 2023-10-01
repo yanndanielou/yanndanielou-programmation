@@ -27,6 +27,9 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 
 	private GameBoardPanel gameFieldPanel;
 	private TopPanel topPanel;
+
+	private MainViewPanel mainViewPanel;
+
 	private JScrollPane gameFieldScrollPane;
 
 	JPanel mainViewContentPane;
@@ -66,7 +69,7 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		mainViewMenuBarManager.createMenu();
 		this.addKeyListener(new KeyBoardInputs(this));
 
-		//this.setMinimumSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
+		// this.setMinimumSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
 
 		setLocationRelativeTo(null);
 	}
@@ -81,21 +84,26 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		gameFieldPanel = new GameBoardPanel(this);
 		gameFieldPanel.initializeGamefield(game.getGameBoard());
 
+		mainViewPanel = new MainViewPanel(this, gameFieldPanel);
+
 		mainViewContentPane = new JPanel();
 
 		gameFieldScrollPane = new JScrollPane(gameFieldPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		gameFieldScrollPane.setPreferredSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
 
-		gameFieldScrollPane.getViewport().setPreferredSize(gameFieldPanel.getPreferredSize());
+		// gameFieldScrollPane.getViewport().setPreferredSize(gameFieldPanel.getPreferredSize());
 
 		mainViewContentPane.setLayout(new BorderLayout());
 		mainViewContentPane.add(gameFieldScrollPane);
 		mainViewContentPane.setSize(getSize());
 
 		setContentPane(mainViewContentPane);
+
+		setMinimumSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
 		pack();
-		setVisible(true);
+
+		// setVisible(true);
 
 		// gameFieldScrollPane.setViewportView(gameFieldPanel);
 		//
