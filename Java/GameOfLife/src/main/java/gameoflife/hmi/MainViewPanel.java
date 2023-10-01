@@ -36,17 +36,17 @@ public class MainViewPanel extends JLayeredPane {
 
 	public MainViewPanel(GameOfLifeMainViewFrame towerDefenseMainViewFrame, GameBoardPanel gameBoardPanel) {
 		setLayout(null);
-		setPreferredSize(gameBoardPanel.getPreferredSize());
-		setVisible(true);
-
-		gameBoardPanel.setLocation(0,0);
-		gameBoardPanel.setVisible(true);
-		add(gameBoardPanel, LAYERS_ORDERED_FROM_TOP_TO_BACK.BUTTONS);
+		setPreferredSize(gameBoardPanel.getSize());
 
 		panButton = HMIUtils.createJButtonFromImage("src/main/resources/images/PanButtonIcon.png");
 		panButton.setLocation((int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(),
 				(int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getHeight());
 		add(panButton, LAYERS_ORDERED_FROM_TOP_TO_BACK.BUTTONS);
+
+		
+		gameBoardPanel.setLocation(0,0);
+//		gameBoardPanel.setVisible(true);
+		add(gameBoardPanel, LAYERS_ORDERED_FROM_TOP_TO_BACK.CELLS);
 
 	}
 

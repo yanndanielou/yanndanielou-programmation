@@ -1,12 +1,15 @@
 package gameoflife.hmi;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -16,6 +19,7 @@ import org.apache.logging.log4j.Logger;
 
 import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
+import main.common.hmi.utils.HMIUtils;
 
 public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainViewGeneric {
 
@@ -28,11 +32,14 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	private GameBoardPanel gameFieldPanel;
 	private TopPanel topPanel;
 
-	private MainViewPanel mainViewPanel;
+	//private MainViewPanel mainViewPanel;
 
 	private JScrollPane gameFieldScrollPane;
 
-	JPanel mainViewContentPane;
+	JPanel topLevelPanelForJFrame;
+	JLayeredPane level1LayeredPane;
+	
+	private JButton panButton;
 
 	public GameOfLifeMainViewFrame() {
 		super("DesktopGameOfLife");
@@ -69,8 +76,6 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		mainViewMenuBarManager.createMenu();
 		this.addKeyListener(new KeyBoardInputs(this));
 
-		// this.setMinimumSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
-
 		setLocationRelativeTo(null);
 	}
 
@@ -80,47 +85,52 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 
 	private void newGame(Game game) {
 
-		// Built first to know dimensions
 		gameFieldPanel = new GameBoardPanel(this);
 		gameFieldPanel.initializeGamefield(game.getGameBoard());
 
-		mainViewPanel = new MainViewPanel(this, gameFieldPanel);
+		gameFieldPanel.setPreferredSize(gameFieldPanel.getSize());
+		gameFieldPanel.setBounds(0, 0, (int) gameFieldPanel.getSize().getWidth(), (int) gameFieldPanel.getSize().getHeight());
 
-		mainViewContentPane = new JPanel();
+	//	mainViewPanel = new MainViewPanel(this, gameFieldPanel);
+
+		topLevelPanelForJFrame = new JPanel();
+		
 
 		gameFieldScrollPane = new JScrollPane(gameFieldPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		gameFieldScrollPane.setPreferredSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
+		//gameFieldScrollPane.setPreferredSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
+		//gameFieldScrollPane.setLocation(0, 0);
+		gameFieldScrollPane.setBounds(0, 0, (int) HMIConstants.MINIMUM_WINDOW_DIMENSION.getWidth(), (int) HMIConstants.MINIMUM_WINDOW_DIMENSION.getHeight());
 
-		// gameFieldScrollPane.getViewport().setPreferredSize(gameFieldPanel.getPreferredSize());
 
-		mainViewContentPane.setLayout(new BorderLayout());
-		mainViewContentPane.add(gameFieldScrollPane);
-		mainViewContentPane.setSize(getSize());
 
-		setContentPane(mainViewContentPane);
+		panButton = HMIUtils.createJButtonFromImage("src/main/resources/images/PanButtonIcon.png");
+		panButton.setLocation((int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(),
+				(int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getHeight());
+		
+		
+		// mainViewContentPane.add(panButton, 0);
+
+
+
+		level1LayeredPane = new JLayeredPane(); 
+		level1LayeredPane.setPreferredSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
+
+		level1LayeredPane.add(gameFieldScrollPane, 50, 0);
+		level1LayeredPane.add(panButton, 51, 0);	
+
+
+		/*topLevelPanelForJFrame.setLayout(null);
+		topLevelPanelForJFrame.setSize(getSize());
+			*/
+		topLevelPanelForJFrame.add(level1LayeredPane, BorderLayout.CENTER);
+		topLevelPanelForJFrame.add(level1LayeredPane);
+		
+		setContentPane(topLevelPanelForJFrame);
 
 		setMinimumSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
 		pack();
 
-		// setVisible(true);
-
-		// gameFieldScrollPane.setViewportView(gameFieldPanel);
-		//
-
-		// add(gameFieldPanel);
-
-		// gameFieldPanel.setLocation(HMIConstants.EXTERNAL_FRAME_WIDTH,
-		// HMIConstants.EXTERNAL_FRAME_WIDTH);
-
-		/*
-		 * setSize(new Dimension( gameFieldPanel.getWidth() + 2 *
-		 * HMIConstants.EXTERNAL_FRAME_WIDTH +
-		 * HMIConstants.NOT_UNDERSTOOD_MISSING_FRAME_WIDTH, gameFieldPanel.getY() +
-		 * gameFieldPanel.getHeight() + mainViewMenuBarManager.getMenuBar().getHeight()
-		 * + HMIConstants.EXTERNAL_FRAME_WIDTH +
-		 * HMIConstants.NOT_UNDERSTOOD_MISSING_FRAME_HEIGHT));
-		 */
 	}
 
 	public void removeTopPanel() {

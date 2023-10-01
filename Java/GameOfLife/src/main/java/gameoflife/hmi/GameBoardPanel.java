@@ -56,7 +56,7 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 		this.gameBoard = gameBoard;
 
 		setLayout(null);
-		setPreferredSize(new Dimension(gameBoard.getTotalWidth() * HMIConstants.CELL_WIDTH_IN_PIXELS,
+		setSize(new Dimension(gameBoard.getTotalWidth() * HMIConstants.CELL_WIDTH_IN_PIXELS,
 				gameBoard.getTotalHeight() * HMIConstants.CELL_HEIGHT_IN_PIXELS));
 
 
