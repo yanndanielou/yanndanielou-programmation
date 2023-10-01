@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -18,6 +19,7 @@ import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
+import main.common.random.RandomColorGenerator;
 
 public class GameBoardPanel extends JLayeredPane implements GameStatusListener, CellListener {
 
@@ -66,6 +68,8 @@ public class GameBoardPanel extends JLayeredPane implements GameStatusListener, 
 			int cellX = cell.getXAsInt();
 			int cellY = cell.getYAsInt();
 			displayedObject.setToolTipText("X: " + cellX + " Y: " + cellY);
+			displayedObject.add(new JLabel(displayedObject.getToolTipText()));
+			//displayedObject.set(RandomColorGenerator.getRandomColor());
 			displayedObject.setLocation(cellX * HMIConstants.CELL_WIDTH_IN_PIXELS,
 					cellY * HMIConstants.CELL_HEIGHT_IN_PIXELS);
 
