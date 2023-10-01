@@ -20,8 +20,9 @@ import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
+import main.common.hmi.utils.HMIUtils;
 
-public class GameBoardPanel extends JLayeredPane implements GameStatusListener, CellListener {
+public class GameBoardPanel extends JPanel implements GameStatusListener, CellListener {
 
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardPanel.class);
@@ -29,22 +30,22 @@ public class GameBoardPanel extends JLayeredPane implements GameStatusListener, 
 	private static final long serialVersionUID = -1541008040602802454L;
 
 	private JButton panButton;
-	
+
 	private JButton drawButton;
-	
+
 	private JButton playButton;
 	private JButton pauseButton;
-	
+
 	private JSlider zoomLevelSlider;
 
 	private HashMap<Cell, JPanel> gameObjectToLabelMap = new HashMap<>();
 
 	private GameBoard gameBoard;
 	private GameOfLifeMainViewFrame towerDefenseMainViewFrame;
-	
+/*
 	private enum LAYERS_ORDERED_FROM_TOP_TO_BACK {
-		BUTTONS,CELLS;
-	}
+		BUTTONS, CELLS;
+	}*/
 
 	public GameBoardPanel(GameOfLifeMainViewFrame towerDefenseMainViewFrame) {
 		this.towerDefenseMainViewFrame = towerDefenseMainViewFrame;
@@ -58,6 +59,7 @@ public class GameBoardPanel extends JLayeredPane implements GameStatusListener, 
 		setPreferredSize(new Dimension(gameBoard.getTotalWidth() * HMIConstants.CELL_WIDTH_IN_PIXELS,
 				gameBoard.getTotalHeight() * HMIConstants.CELL_HEIGHT_IN_PIXELS));
 
+
 		for (Cell cell : gameBoard.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).toList()) {
 			JPanel displayedObject = new JPanel();
 
@@ -69,14 +71,15 @@ public class GameBoardPanel extends JLayeredPane implements GameStatusListener, 
 			int cellY = cell.getYAsInt();
 			displayedObject.setToolTipText("X: " + cellX + " Y: " + cellY);
 			displayedObject.add(new JLabel(displayedObject.getToolTipText()));
-			//displayedObject.set(RandomColorGenerator.getRandomColor());
+			// displayedObject.set(RandomColorGenerator.getRandomColor());
 			displayedObject.setLocation(cellX * HMIConstants.CELL_WIDTH_IN_PIXELS,
 					cellY * HMIConstants.CELL_HEIGHT_IN_PIXELS);
 
 			cell.addGameBoardPointListener(this);
 
 			redrawCell(cell);
-			add(displayedObject, LAYERS_ORDERED_FROM_TOP_TO_BACK.CELLS);
+			//add(displayedObject, LAYERS_ORDERED_FROM_TOP_TO_BACK.CELLS);
+			add(displayedObject);
 		}
 		LOGGER.info("initializeGamefield : end");
 	}
