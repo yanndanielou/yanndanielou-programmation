@@ -1,7 +1,6 @@
 package gameoflife.hmi;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +9,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -61,10 +61,12 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		setLocationRelativeTo(null);
 		setVisible(true);
 
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		mainViewMenuBarManager.createMenu();
 		this.addKeyListener(new KeyBoardInputs(this));
 
-		this.setMinimumSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
+		//this.setMinimumSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
 
 		setLocationRelativeTo(null);
 	}
@@ -81,9 +83,9 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 
 		mainViewContentPane = new JPanel();
 
-		gameFieldScrollPane = new JScrollPane(gameFieldPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		gameFieldScrollPane.setSize(getSize());
+		gameFieldScrollPane = new JScrollPane(gameFieldPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		gameFieldScrollPane.setPreferredSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
 
 		gameFieldScrollPane.getViewport().setPreferredSize(gameFieldPanel.getPreferredSize());
 
@@ -91,9 +93,8 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		mainViewContentPane.add(gameFieldScrollPane);
 		mainViewContentPane.setSize(getSize());
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setContentPane(mainViewContentPane);
-		// pack();
+		pack();
 		setVisible(true);
 
 		// gameFieldScrollPane.setViewportView(gameFieldPanel);
