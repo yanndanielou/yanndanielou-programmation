@@ -2,14 +2,14 @@ package gameoflife.hmi;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.Collection;
 import java.util.HashMap;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
+import javax.swing.border.Border;
+import javax.swing.border.MatteBorder;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,7 +20,6 @@ import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
-import main.common.hmi.utils.HMIUtils;
 
 public class GameBoardPanel extends JPanel implements GameStatusListener, CellListener {
 
@@ -29,23 +28,13 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 
 	private static final long serialVersionUID = -1541008040602802454L;
 
-	private JButton panButton;
-
-	private JButton drawButton;
-
-	private JButton playButton;
-	private JButton pauseButton;
-
-	private JSlider zoomLevelSlider;
-
 	private HashMap<Cell, JPanel> gameObjectToLabelMap = new HashMap<>();
 
 	private GameBoard gameBoard;
 	private GameOfLifeMainViewFrame towerDefenseMainViewFrame;
-/*
-	private enum LAYERS_ORDERED_FROM_TOP_TO_BACK {
-		BUTTONS, CELLS;
-	}*/
+	/*
+	 * private enum LAYERS_ORDERED_FROM_TOP_TO_BACK { BUTTONS, CELLS; }
+	 */
 
 	public GameBoardPanel(GameOfLifeMainViewFrame towerDefenseMainViewFrame) {
 		this.towerDefenseMainViewFrame = towerDefenseMainViewFrame;
@@ -58,7 +47,6 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 		setLayout(null);
 		setSize(new Dimension(gameBoard.getTotalWidth() * HMIConstants.CELL_WIDTH_IN_PIXELS,
 				gameBoard.getTotalHeight() * HMIConstants.CELL_HEIGHT_IN_PIXELS));
-
 
 		for (Cell cell : gameBoard.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).toList()) {
 			JPanel displayedObject = new JPanel();
@@ -78,7 +66,7 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 			cell.addGameBoardPointListener(this);
 
 			redrawCell(cell);
-			//add(displayedObject, LAYERS_ORDERED_FROM_TOP_TO_BACK.CELLS);
+			// add(displayedObject, LAYERS_ORDERED_FROM_TOP_TO_BACK.CELLS);
 			add(displayedObject);
 		}
 		LOGGER.info("initializeGamefield : end");
@@ -133,6 +121,14 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 	@Override
 	public void onCellAliveStatusChanged(boolean alive, Cell cell) {
 		redrawCell(cell);
+	}
+
+	public void displayGrid() {
+		for (JPanel cell : gameObjectToLabelMap.values()) {
+			Border border = null;
+			border = new MatteBorder(1, 1, 1, 1, Color.BLACK);
+			cell.setBorder(border);
+		}
 	}
 
 }

@@ -33,16 +33,10 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	private MainViewMenuBarManager mainViewMenuBarManager;
 
 	private GameBoardPanel gameFieldPanel;
-	private TopPanel topPanel;
-
-	// private MainViewPanel mainViewPanel;
 
 	private JScrollPane gameFieldScrollPane;
 
-	JPanel topLevelPanelForJFrame;
-	JLayeredPane level1LayeredPane;
-
-	private JButton panButton;
+	private MainViewTopPanel level1LayeredPane;
 
 	protected Dimension frameExtraDimensionComparedToInputTopLevelPanel;
 
@@ -97,35 +91,16 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		gameFieldPanel.setBounds(0, 0, (int) gameFieldPanel.getSize().getWidth(),
 				(int) gameFieldPanel.getSize().getHeight());
 
-		// mainViewPanel = new MainViewPanel(this, gameFieldPanel);
-
-		topLevelPanelForJFrame = new JPanel();
+		JPanel topLevelPanelForJFrame = new JPanel();
 
 		gameFieldScrollPane = new JScrollPane(gameFieldPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		// gameFieldScrollPane.setPreferredSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
-		// gameFieldScrollPane.setLocation(0, 0);
 		gameFieldScrollPane.setBounds(0, 0, (int) HMIConstants.MINIMUM_WINDOW_DIMENSION.getWidth(),
 				(int) HMIConstants.MINIMUM_WINDOW_DIMENSION.getHeight());
 
-		panButton = HMIUtils.createJButtonFromImage("src/main/resources/images/PanButtonIcon.png");
-		panButton.setLocation((int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(),
-				(int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getHeight());
+		level1LayeredPane = new MainViewTopPanel(this, gameFieldScrollPane);
 
-		// mainViewContentPane.add(panButton, 0);
-
-		level1LayeredPane = new JLayeredPane();
-		level1LayeredPane.setPreferredSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
-
-		level1LayeredPane.add(gameFieldScrollPane, 50, 0);
-		level1LayeredPane.add(panButton, 51, 0);
-
-		/*
-		 * topLevelPanelForJFrame.setLayout(null);
-		 * topLevelPanelForJFrame.setSize(getSize());
-		 */
 		topLevelPanelForJFrame.add(level1LayeredPane, BorderLayout.CENTER);
-		// topLevelPanelForJFrame.add(level1LayeredPane);
 
 		setContentPane(topLevelPanelForJFrame);
 
@@ -141,26 +116,24 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 			@Override
 			public void componentResized(ComponentEvent evt) {
 				Dimension newFrameSize = evt.getComponent().getSize();
-				
-				Dimension newFrameContentSize = new Dimension((int) (newFrameSize.getWidth() - frameExtraDimensionComparedToInputTopLevelPanel.getWidth()),
-						(int) (newFrameSize.getHeight()- frameExtraDimensionComparedToInputTopLevelPanel.getHeight()));
 
-				gameFieldScrollPane.setBounds(0, 0,
-						(int) newFrameContentSize.getWidth(),
+				Dimension newFrameContentSize = new Dimension(
+						(int) (newFrameSize.getWidth() - frameExtraDimensionComparedToInputTopLevelPanel.getWidth()),
+						(int) (newFrameSize.getHeight() - frameExtraDimensionComparedToInputTopLevelPanel.getHeight()));
+
+				gameFieldScrollPane.setBounds(0, 0, (int) newFrameContentSize.getWidth(),
 						(int) newFrameContentSize.getHeight());
 
 				level1LayeredPane.setPreferredSize(newFrameContentSize);
+				/* @formatter:off
+				gameFieldScrollPane.repaint();
+				level1LayeredPane.repaint();
+				gameFieldPanel.repaint();
+				 @formatter:on*/
 
-				// level1LayeredPane.setBounds(0, 0, (int) size.getWidth(), (int)
-				// size.getHeight());
-				// repaint();
 			}
 		});
 
-	}
-
-	public void removeTopPanel() {
-		remove(topPanel);
 	}
 
 	public void removeGameFieldPanel() {
@@ -170,8 +143,12 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	@Override
 	public void registerToGame(Game game) {
 		newGame(game);
-		// game.addGameStatusListener(topPanel);
 		game.addGameStatusListener(gameFieldPanel);
+	}
+
+
+	public GameBoardPanel getGameBoardPanel() {
+		return gameFieldPanel;
 	}
 
 }
