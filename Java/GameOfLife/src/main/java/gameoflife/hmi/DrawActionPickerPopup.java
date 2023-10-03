@@ -8,7 +8,6 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -35,8 +34,8 @@ public class DrawActionPickerPopup extends JFrame {
 
 	private JLabel bottomLabel;
 
-	private final static int VERTICAL_SPACE_BETWEEN_OBJECTS = 10;
-	private final static int BASIC_COMPONENTS_HEIGHT = 20;
+	private static final  int VERTICAL_SPACE_BETWEEN_OBJECTS = 10;
+	private static final  int BASIC_COMPONENTS_HEIGHT = 20;
 
 	private DrawAction drawActionChosen = null;
 
@@ -121,7 +120,6 @@ public class DrawActionPickerPopup extends JFrame {
 			dispose();
 		});
 
-		int buttonsY = 300;
 		int buttonsWidth = 75;
 		okButton.setSize(buttonsWidth, BASIC_COMPONENTS_HEIGHT);
 		// okButton.setLocation(1 * getWidth() / 3 - okButton.getWidth() / 2, buttonsY);

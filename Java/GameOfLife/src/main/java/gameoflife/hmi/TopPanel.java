@@ -60,7 +60,7 @@ public class TopPanel extends JPanel implements GameStatusListener {
 				(int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getHeight());
 		drawButton.addActionListener(e -> {
 			LOGGER.info(() -> "Draw button actionned");
-			hmiPresenter.setDrawActionInProgress(DrawAction.TOGGLE_STATE);
+			hmiPresenter.setDrawActionInProgress(null);
 			new DrawActionPickerPopup(gameOfLifeMainViewFrame);
 		});
 		add(drawButton);

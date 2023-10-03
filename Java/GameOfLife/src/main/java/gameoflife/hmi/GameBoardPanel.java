@@ -3,7 +3,6 @@ package gameoflife.hmi;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.MouseMotionListener;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -60,7 +59,7 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 			int cellY = cell.getYAsInt();
 			displayedObject.setToolTipText("X: " + cellX + " Y: " + cellY);
 			displayedObject.setLayout(new BorderLayout());
-			displayedObject.add(new JLabel(displayedObject.getToolTipText()), BorderLayout.CENTER);
+			//displayedObject.add(new JLabel(displayedObject.getToolTipText()), BorderLayout.CENTER);
 			// displayedObject.set(RandomColorGenerator.getRandomColor());
 
 			//displayedObject.addMouseMotionListener(new CellMouseMotionListener(this, cell, displayedObject));

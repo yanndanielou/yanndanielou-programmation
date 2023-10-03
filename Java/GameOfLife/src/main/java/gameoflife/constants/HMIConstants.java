@@ -9,7 +9,7 @@ public class HMIConstants {
 		// no way to instantiate this class
 	}
 
-	public static final Dimension MINIMUM_WINDOW_DIMENSION = new Dimension(300, 300);
+	public static final Dimension MINIMUM_WINDOW_DIMENSION = new Dimension(400, 600);
 
 	public static final Dimension SPACE_BETWEEN_COMMANDS_DIMENSION = new Dimension(5, 5);
 
