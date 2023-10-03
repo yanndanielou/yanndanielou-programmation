@@ -9,6 +9,7 @@ public class HmiPresenter {
 	private GameBoardPanel gameBoardPanel;
 	private BottomPanel bottomPanel;
 	private FullFrameContentPanel frameContentPanel;
+	private boolean panInProgress;
 
 	private int cellSizeInPixels;
 
@@ -30,6 +31,7 @@ public class HmiPresenter {
 
 		setCellSizeInPixel(HMIConstants.INITIAL_CELL_SIZE_IN_PIXELS);
 		hideGrid();
+		setPanInProgress(false);
 	}
 
 	public void setCellSizeInPixel(int cellSizeInPixels) {
@@ -59,6 +61,14 @@ public class HmiPresenter {
 
 	public DrawAction getDrawActionInProgress() {
 		return drawActionInProgress;
+	}
+	
+	public void setPanInProgress(boolean panInProgress) {
+		this.panInProgress = panInProgress;
+	}
+	
+	public boolean isPanInProgress() {
+		return panInProgress;
 	}
 
 }

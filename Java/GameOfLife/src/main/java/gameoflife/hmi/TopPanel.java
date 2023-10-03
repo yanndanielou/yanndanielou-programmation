@@ -51,6 +51,8 @@ public class TopPanel extends JPanel implements GameStatusListener {
 				(int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getHeight());
 		panButton.addActionListener(e -> {
 			LOGGER.info(() -> "Pan button actionned");
+			hmiPresenter.setPanInProgress(true);
+			hmiPresenter.setDrawActionInProgress(null);
 		});
 		add(panButton);
 

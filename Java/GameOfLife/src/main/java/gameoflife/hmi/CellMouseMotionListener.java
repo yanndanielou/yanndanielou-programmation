@@ -21,7 +21,6 @@ public class CellMouseMotionListener implements MouseMotionListener, MouseListen
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// document why this method is empty
 
 	}
 

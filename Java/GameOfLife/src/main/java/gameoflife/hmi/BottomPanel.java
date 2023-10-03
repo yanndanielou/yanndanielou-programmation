@@ -41,13 +41,13 @@ public class BottomPanel extends JPanel implements GameStatusListener {
 
 		setPreferredSize(new Dimension(gameOfLifeMainViewFrame.getWidth(), HMIConstants.BOTTOM_PANNEL_HEIGHT));
 
-		setSpeed1ForPlaySpeedButton = HMIUtils.createJButtonFromImage("src/main/resources/images/SetSpeed1ForPlaySpeedButtonIcon.png");
+		setSpeed1ForPlaySpeedButton = HMIUtils
+				.createJButtonFromImage("src/main/resources/images/SetSpeed1ForPlaySpeedButtonIcon.png");
 		setSpeed1ForPlaySpeedButton.setLocation((int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(), 0);
 		setSpeed1ForPlaySpeedButton.addActionListener(e -> {
 			LOGGER.info(() -> "Set speed 1 for play button actionned");
 		});
 		add(setSpeed1ForPlaySpeedButton);
-
 
 		playSpeedSpinner = new JSpinner(new SpinnerNumberModel(1, 0, 100, 1));
 		playSpeedSpinner.setLocation((int) (setSpeed1ForPlaySpeedButton.getBounds().getMaxX()
@@ -72,8 +72,20 @@ public class BottomPanel extends JPanel implements GameStatusListener {
 				+ HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth()), 0);
 		playButton.addActionListener(e -> {
 			LOGGER.info(() -> "Play button actionned");
+			Object playSpeedValueAsObject = playSpeedSpinner.getValue();
+			int playSpeedValueAsInt = (int) playSpeedValueAsObject;
+			game.autoPlay(playSpeedValueAsInt);
 		});
 		add(playButton);
+
+		pauseButton = HMIUtils.createJButtonFromImage("src/main/resources/images/PauseButtonIcon.png");
+		pauseButton.setLocation(
+				(int) (playButton.getBounds().getMaxX() + HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth()), 0);
+		pauseButton.addActionListener(e -> {
+			LOGGER.info(() -> "Pause button actionned");
+			game.pause();
+		});
+		add(pauseButton);
 	}
 
 	@Override

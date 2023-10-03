@@ -68,10 +68,10 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		mainViewMenuBarManager.createMenu();
 		this.addKeyListener(new KeyBoardInputs(this));
 
-		setLocationRelativeTo(null);
 		
 		setMinimumSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
 		pack();
+		setLocationRelativeTo(null);
 	}
 
 	public MainViewMenuBarManager getMainViewMenuBarManager() {

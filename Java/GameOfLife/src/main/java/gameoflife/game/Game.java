@@ -10,6 +10,7 @@ import game.genericgame.GenericGame;
 import gameoflife.core.GameManager;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
+import gameoflife.time.GamePausablePeriodicDelayedTask;
 import gameoflife.time.GameTimeManager;
 import main.common.timer.PausableTimeManager;
 
@@ -22,13 +23,13 @@ public class Game extends GenericGame {
 
 	private GameManager gameManager;
 
-	private GameTimeManager gameTimeManager;
+	private GamePausablePeriodicDelayedTask autoPlayTask;
 
 	public Game(GameManager gameManager, GameBoard gameBoard) {
 		this.gameManager = gameManager;
 		this.gameBoard = gameBoard;
 		gameBoard.setGame(this);
-		gameTimeManager = new GameTimeManager();
+		start();
 	}
 
 	public void addGameStatusListener(GameStatusListener listener) {
@@ -61,7 +62,10 @@ public class Game extends GenericGame {
 	public boolean pause() {
 		if (!paused) {
 			paused = true;
-			gameTimeManager.pause();
+			if (autoPlayTask != null) {
+				autoPlayTask.cancel();
+				autoPlayTask = null;
+			}
 			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGamePaused(this));
 			return true;
 		} else {
@@ -79,10 +83,6 @@ public class Game extends GenericGame {
 			LOGGER.info("Game is not paused, cannot resume!");
 			return false;
 		}
-	}
-
-	public PausableTimeManager getTimeManager() {
-		return gameTimeManager;
 	}
 
 	public void playOneStep() {
@@ -120,6 +120,20 @@ public class Game extends GenericGame {
 		newlyAliveCells.forEach(e -> e.setAlive());
 		newlyDeadCells.forEach(e -> e.setDead());
 
+	}
+
+	public void autoPlay(int playSpeedValueAsInt) {
+		if(paused) {
+			resume();
+		}
+		
+		autoPlayTask = new GamePausablePeriodicDelayedTask(this, 1000 / playSpeedValueAsInt) {
+
+			@Override
+			public void run() {
+				playOneStep();
+			}
+		};
 	}
 
 }
