@@ -44,7 +44,7 @@ public class MainViewTopPanel extends JLayeredPane {
 		setPreferredSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
 
 		add(gameFieldScrollPane, LAYERS_ORDERED_FROM_TOP_TO_BACK.CELLS, 0);
-
+/*
 		panButton = HMIUtils.createJButtonFromImage("src/main/resources/images/PanButtonIcon.png");
 		panButton.setLocation((int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(),
 				(int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getHeight());
@@ -88,7 +88,7 @@ public class MainViewTopPanel extends JLayeredPane {
 			gameOfLifeMainViewFrame.getGameBoardPanel().displayGrid();
 		});
 		add(showGridButton, LAYERS_ORDERED_FROM_TOP_TO_BACK.BUTTONS, 0);
-
+*/
 	}
 
 }

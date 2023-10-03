@@ -1,5 +1,6 @@
 package gameoflife.hmi;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Collection;
@@ -58,7 +59,8 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 			int cellX = cell.getXAsInt();
 			int cellY = cell.getYAsInt();
 			displayedObject.setToolTipText("X: " + cellX + " Y: " + cellY);
-			displayedObject.add(new JLabel(displayedObject.getToolTipText()));
+			displayedObject.setLayout(new BorderLayout());
+			displayedObject.add(new JLabel(displayedObject.getToolTipText()), BorderLayout.CENTER);
 			// displayedObject.set(RandomColorGenerator.getRandomColor());
 			displayedObject.setLocation(cellX * HMIConstants.CELL_WIDTH_IN_PIXELS,
 					cellY * HMIConstants.CELL_HEIGHT_IN_PIXELS);

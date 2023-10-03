@@ -1,7 +1,6 @@
 package gameoflife.hmi;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -10,19 +9,17 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.border.Border;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
-import main.common.hmi.utils.HMIUtils;
 
 public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainViewGeneric {
 
@@ -32,11 +29,12 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 
 	private MainViewMenuBarManager mainViewMenuBarManager;
 
+	private TopPanel topPanel;
 	private GameBoardPanel gameFieldPanel;
 
 	private JScrollPane gameFieldScrollPane;
 
-	private MainViewTopPanel level1LayeredPane;
+	// private MainViewTopPanel level1LayeredPane;
 
 	protected Dimension frameExtraDimensionComparedToInputTopLevelPanel;
 
@@ -67,7 +65,6 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	 */
 	public void createAndShowGUI() {
 
-		setLocationRelativeTo(null);
 		setVisible(true);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,6 +73,8 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		this.addKeyListener(new KeyBoardInputs(this));
 
 		setLocationRelativeTo(null);
+
+		setResizable(false);
 	}
 
 	public MainViewMenuBarManager getMainViewMenuBarManager() {
@@ -84,30 +83,44 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 
 	private void newGame(Game game) {
 
+		setSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
+		this.setLayout(new BorderLayout());
+		
+		topPanel = new TopPanel(this);
+		//topPanel.setSize();
+		add(topPanel, BorderLayout.NORTH);
+
 		gameFieldPanel = new GameBoardPanel(this);
 		gameFieldPanel.initializeGamefield(game.getGameBoard());
 
 		gameFieldPanel.setPreferredSize(gameFieldPanel.getSize());
-		gameFieldPanel.setBounds(0, 0, (int) gameFieldPanel.getSize().getWidth(),
-				(int) gameFieldPanel.getSize().getHeight());
-
+		/*
+		 * gameFieldPanel.setBounds(0, 0, (int) gameFieldPanel.getSize().getWidth(),
+		 * (int) gameFieldPanel.getSize().getHeight());
+		 */
 		JPanel topLevelPanelForJFrame = new JPanel();
 
 		gameFieldScrollPane = new JScrollPane(gameFieldPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		gameFieldScrollPane.setBounds(0, 0, (int) HMIConstants.MINIMUM_WINDOW_DIMENSION.getWidth(),
-				(int) HMIConstants.MINIMUM_WINDOW_DIMENSION.getHeight());
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		gameFieldScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-		level1LayeredPane = new MainViewTopPanel(this, gameFieldScrollPane);
+		// gameFieldScrollPane.setBounds(0, 0, (int)
+		// HMIConstants.MINIMUM_WINDOW_DIMENSION.getWidth(),
+		// (int) HMIConstants.MINIMUM_WINDOW_DIMENSION.getHeight());
 
-		topLevelPanelForJFrame.add(level1LayeredPane, BorderLayout.CENTER);
+//		topLevelPanelForJFrame.add(gameFieldScrollPane, BorderLayout.CENTER);
 
-		setContentPane(topLevelPanelForJFrame);
+		add(gameFieldScrollPane, BorderLayout.CENTER);
 
-		setMinimumSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
-		pack();
+		// pack();
 
+		setLocationRelativeTo(null);
+
+		/*		
 		Dimension initialFrameSize = this.getSize();
+		
+		
+		
 		frameExtraDimensionComparedToInputTopLevelPanel = new Dimension(
 				(int) (initialFrameSize.getWidth() - HMIConstants.MINIMUM_WINDOW_DIMENSION.getWidth()),
 				(int) (initialFrameSize.getHeight() - HMIConstants.MINIMUM_WINDOW_DIMENSION.getHeight()));
@@ -124,16 +137,15 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 				gameFieldScrollPane.setBounds(0, 0, (int) newFrameContentSize.getWidth(),
 						(int) newFrameContentSize.getHeight());
 
-				level1LayeredPane.setPreferredSize(newFrameContentSize);
+				//level1LayeredPane.setPreferredSize(newFrameContentSize);
 				/* @formatter:off
 				gameFieldScrollPane.repaint();
 				level1LayeredPane.repaint();
 				gameFieldPanel.repaint();
 				 @formatter:on*/
-
-			}
-		});
-
+		/*
+		 * } });
+		 */
 	}
 
 	public void removeGameFieldPanel() {
@@ -145,7 +157,6 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		newGame(game);
 		game.addGameStatusListener(gameFieldPanel);
 	}
-
 
 	public GameBoardPanel getGameBoardPanel() {
 		return gameFieldPanel;
