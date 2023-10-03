@@ -28,10 +28,12 @@ public class BottomPanel extends JPanel implements GameStatusListener {
 	private JButton setSpeed1ForPlaySpeedButton;
 	private JButton stepForwardButton;
 
+	private HmiPresenter hmiPresenter;
+
 	@SuppressWarnings("unused")
 	private GameOfLifeMainViewFrame gameOfLifeMainViewFrame;
 
-	public BottomPanel(GameOfLifeMainViewFrame gameOfLifeMainViewFrame) {
+	public BottomPanel(GameOfLifeMainViewFrame gameOfLifeMainViewFrame, Game game) {
 		this.gameOfLifeMainViewFrame = gameOfLifeMainViewFrame;
 
 		setLayout(null);
@@ -61,6 +63,7 @@ public class BottomPanel extends JPanel implements GameStatusListener {
 				+ HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth()), 0);
 		stepForwardButton.addActionListener(e -> {
 			LOGGER.info(() -> "Step forward button actionned");
+			game.playOneStep();
 		});
 		add(stepForwardButton);
 
@@ -76,5 +79,9 @@ public class BottomPanel extends JPanel implements GameStatusListener {
 	@Override
 	public void onGameCancelled(Game game) {
 		gameOfLifeMainViewFrame.removeBottomPanel();
+	}
+
+	public void setHmiPresenter(HmiPresenter hmiPresenter) {
+		this.hmiPresenter = hmiPresenter;
 	}
 }

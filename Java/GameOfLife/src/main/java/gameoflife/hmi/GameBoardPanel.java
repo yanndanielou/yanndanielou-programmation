@@ -3,8 +3,9 @@ package gameoflife.hmi;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -33,12 +34,15 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 
 	private GameBoard gameBoard;
 	private GameOfLifeMainViewFrame towerDefenseMainViewFrame;
+
+	private HmiPresenter hmiPresenter;
 	/*
 	 * private enum LAYERS_ORDERED_FROM_TOP_TO_BACK { BUTTONS, CELLS; }
 	 */
 
-	public GameBoardPanel(GameOfLifeMainViewFrame towerDefenseMainViewFrame) {
+	public GameBoardPanel(GameOfLifeMainViewFrame towerDefenseMainViewFrame, Game game) {
 		this.towerDefenseMainViewFrame = towerDefenseMainViewFrame;
+		initializeGamefield(game.getGameBoard());
 	}
 
 	public void initializeGamefield(GameBoard gameBoard) {
@@ -48,17 +52,11 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 		setLayout(null);
 //		setSize(new Dimension(gameBoard.getTotalWidth() * HMIConstants.CELL_WIDTH_IN_PIXELS,
 //				gameBoard.getTotalHeight() * HMIConstants.CELL_HEIGHT_IN_PIXELS));
-		Dimension dimension = new Dimension(gameBoard.getTotalWidth() * HMIConstants.CELL_WIDTH_IN_PIXELS,
-				gameBoard.getTotalHeight() * HMIConstants.CELL_HEIGHT_IN_PIXELS);
-		//setSize(dimension);
-		setPreferredSize(dimension);
-		
+
 		for (Cell cell : gameBoard.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).toList()) {
 			JPanel displayedObject = new JPanel();
 
 			gameObjectToLabelMap.put(cell, displayedObject);
-
-			displayedObject.setSize(HMIConstants.CELL_WIDTH_IN_PIXELS, HMIConstants.CELL_HEIGHT_IN_PIXELS);
 
 			int cellX = cell.getXAsInt();
 			int cellY = cell.getYAsInt();
@@ -66,8 +64,6 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 			displayedObject.setLayout(new BorderLayout());
 			displayedObject.add(new JLabel(displayedObject.getToolTipText()), BorderLayout.CENTER);
 			// displayedObject.set(RandomColorGenerator.getRandomColor());
-			displayedObject.setLocation(cellX * HMIConstants.CELL_WIDTH_IN_PIXELS,
-					cellY * HMIConstants.CELL_HEIGHT_IN_PIXELS);
 
 			cell.addGameBoardPointListener(this);
 
@@ -135,6 +131,35 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 			border = new MatteBorder(1, 1, 1, 1, Color.BLACK);
 			cell.setBorder(border);
 		}
+	}
+
+	public void hideGrid() {
+		for (JPanel cell : gameObjectToLabelMap.values()) {
+			cell.setBorder(null);
+		}
+	}
+
+	public void setHmiPresenter(HmiPresenter hmiPresenter) {
+		this.hmiPresenter = hmiPresenter;
+	}
+
+	public void setCellSizeInPixel(int cellSizeInPixels) {
+
+		for (Entry<Cell, JPanel> entrySet : gameObjectToLabelMap.entrySet()) {
+			Cell cell = entrySet.getKey();
+			JPanel cellPanel = entrySet.getValue();
+
+			cellPanel.setSize(cellSizeInPixels, cellSizeInPixels);
+
+			int cellX = cell.getXAsInt();
+			int cellY = cell.getYAsInt();
+
+			cellPanel.setLocation(cellX * cellSizeInPixels, cellY * cellSizeInPixels);
+		}
+		Dimension dimension = new Dimension(gameBoard.getTotalWidth() * HMIConstants.INITIAL_CELL_SIZE_IN_PIXELS,
+				gameBoard.getTotalHeight() * cellSizeInPixels);
+		// setSize(dimension);
+		setPreferredSize(dimension);
 	}
 
 }

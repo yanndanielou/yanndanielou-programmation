@@ -2,23 +2,17 @@ package gameoflife.hmi;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.border.Border;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
 
 public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainViewGeneric {
@@ -36,6 +30,7 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	private JScrollPane gameFieldScrollPane;
 
 	private FullFrameContentPanel fullFrameContent;
+	private HmiPresenter hmiPresenter;
 
 	// private MainViewTopPanel level1LayeredPane;
 
@@ -90,16 +85,16 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	private void newGame(Game game) {
 		this.setLayout(new BorderLayout());
 
-		topPanel = new TopPanel(this);
-		
-		gameBoardPanel = new GameBoardPanel(this);
-		gameBoardPanel.initializeGamefield(game.getGameBoard());
-		
-		bottomPanel = new BottomPanel(this); 
-		
-		
+		topPanel = new TopPanel(this, game);
+
+		gameBoardPanel = new GameBoardPanel(this, game);
+
+		bottomPanel = new BottomPanel(this, game);
+
 		fullFrameContent = new FullFrameContentPanel(this, topPanel, gameBoardPanel, bottomPanel);
 		add(fullFrameContent);
+
+		hmiPresenter = new HmiPresenter(this, topPanel, gameBoardPanel, bottomPanel, fullFrameContent);
 
 		pack();
 

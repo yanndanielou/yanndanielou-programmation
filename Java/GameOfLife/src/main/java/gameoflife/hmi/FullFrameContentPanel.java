@@ -16,6 +16,8 @@ public class FullFrameContentPanel extends JPanel {
 	private BottomPanel bottomPanel;
 	private GameOfLifeMainViewFrame desktopGameOfLifeMainViewFrame;
 
+	private HmiPresenter hmiPresenter;
+
 	public FullFrameContentPanel(GameOfLifeMainViewFrame desktopGameOfLifeMainViewFrame, TopPanel topPanel,
 			GameBoardPanel gameBoardPanel, BottomPanel bottomPanel) {
 		this.desktopGameOfLifeMainViewFrame = desktopGameOfLifeMainViewFrame;
@@ -41,6 +43,11 @@ public class FullFrameContentPanel extends JPanel {
 	@Override
 	public Dimension getPreferredSize() {
 		return HMIConstants.MINIMUM_WINDOW_DIMENSION;
+	}
+
+
+	public void setHmiPresenter(HmiPresenter hmiPresenter) {
+		this.hmiPresenter = hmiPresenter;
 	}
 
 }
