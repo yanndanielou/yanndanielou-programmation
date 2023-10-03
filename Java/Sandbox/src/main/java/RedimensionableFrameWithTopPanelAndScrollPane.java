@@ -10,15 +10,15 @@ import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-public class TestScrollPane {
+public class RedimensionableFrameWithTopPanelAndScrollPane {
 
 	private static int NUMBER_BUTTONS_ROWS = 26;
 	private static int NUMBER_BUTTONS_COLUMNS = 100;
     public static void main(String[] args) {
-        new TestScrollPane();
+        new RedimensionableFrameWithTopPanelAndScrollPane();
     }
 
-    public TestScrollPane() {
+    public RedimensionableFrameWithTopPanelAndScrollPane() {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
