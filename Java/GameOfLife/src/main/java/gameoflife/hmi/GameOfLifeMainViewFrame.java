@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
 
 public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainViewGeneric {
@@ -31,8 +32,6 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 
 	private FullFrameContentPanel fullFrameContent;
 	private HmiPresenter hmiPresenter;
-
-	// private MainViewTopPanel level1LayeredPane;
 
 	protected Dimension frameExtraDimensionComparedToInputTopLevelPanel;
 
@@ -62,9 +61,6 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	 * the event dispatch thread.
 	 */
 	public void createAndShowGUI() {
-
-		// setLayout(new BorderLayout());
-
 		setVisible(true);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,9 +69,9 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		this.addKeyListener(new KeyBoardInputs(this));
 
 		setLocationRelativeTo(null);
+		
+		setMinimumSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
 		pack();
-
-		// setResizable(false);
 	}
 
 	public MainViewMenuBarManager getMainViewMenuBarManager() {

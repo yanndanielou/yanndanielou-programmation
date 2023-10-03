@@ -132,6 +132,6 @@ public class TopPanel extends JPanel implements GameStatusListener {
 	}
 
 	public void setCellSizeInPixel(int cellSizeInPixels) {
-		zoomLevelSlider.setValue(cellSizeInPixels);		
+		zoomLevelSlider.setValue(cellSizeInPixels);	
 	}
 }
