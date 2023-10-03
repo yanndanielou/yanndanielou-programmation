@@ -123,6 +123,10 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		return gameBoardPanel;
 	}
 
+	
+	public HmiPresenter getHmiPresenter() {
+		return hmiPresenter;
+	}
 }
 
 /*		

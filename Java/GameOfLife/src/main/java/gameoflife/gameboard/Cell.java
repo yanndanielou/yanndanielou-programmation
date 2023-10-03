@@ -38,6 +38,10 @@ public class Cell extends GenericIntegerGameBoardPoint {
 	public void setDead() {
 		setAlive(false);
 	}
+	
+	public void toggleState(){
+		setAlive(!isAlive());
+	}
 
 	private void setAlive(boolean alive) {
 		if (this.alive != alive) {

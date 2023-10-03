@@ -32,7 +32,7 @@ public class TopPanel extends JPanel implements GameStatusListener {
 
 	private JButton showGridButton;
 	private JButton hideGridButton;
-	
+
 	private HmiPresenter hmiPresenter;
 
 	@SuppressWarnings("unused")
@@ -60,10 +60,13 @@ public class TopPanel extends JPanel implements GameStatusListener {
 				(int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getHeight());
 		drawButton.addActionListener(e -> {
 			LOGGER.info(() -> "Draw button actionned");
+			hmiPresenter.setDrawActionInProgress(DrawAction.TOGGLE_STATE);
+			new DrawActionPickerPopup(gameOfLifeMainViewFrame);
 		});
 		add(drawButton);
 
-		zoomLevelSlider = new JSlider(SwingConstants.HORIZONTAL, HMIConstants.MINIMUM_CELL_SIZE_IN_PIXELS, HMIConstants.MAXIMUM_CELL_SIZE_IN_PIXELS, HMIConstants.MAXIMUM_CELL_SIZE_IN_PIXELS);
+		zoomLevelSlider = new JSlider(SwingConstants.HORIZONTAL, HMIConstants.MINIMUM_CELL_SIZE_IN_PIXELS,
+				HMIConstants.MAXIMUM_CELL_SIZE_IN_PIXELS, HMIConstants.MAXIMUM_CELL_SIZE_IN_PIXELS);
 		zoomLevelSlider.setLocation(
 				(int) drawButton.getBounds().getMaxX() + (int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(),
 				(int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getHeight());
@@ -79,7 +82,7 @@ public class TopPanel extends JPanel implements GameStatusListener {
 		zoomLevelSlider.addChangeListener(e -> {
 			hmiPresenter.setCellSizeInPixel(zoomLevelSlider.getValue());
 		});
-		
+
 		JLabel zoomLevelStaticLabel = new JLabel("Zoom level");
 		add(zoomLevelStaticLabel);
 		zoomLevelStaticLabel.setLabelFor(zoomLevelSlider);
@@ -93,10 +96,10 @@ public class TopPanel extends JPanel implements GameStatusListener {
 		showGridButton.addActionListener(e -> {
 			LOGGER.info(() -> "Show grid button actionned");
 			hmiPresenter.displayGrid();
-			
+
 		});
 		add(showGridButton);
-		
+
 		hideGridButton = HMIUtils.createJButtonFromImage("src/main/resources/images/GridButtonIcon.png");
 		hideGridButton.setLocation(
 				(int) zoomLevelSlider.getBounds().getMaxX()
@@ -106,7 +109,7 @@ public class TopPanel extends JPanel implements GameStatusListener {
 		hideGridButton.addActionListener(e -> {
 			LOGGER.info(() -> "Show grid button actionned");
 			hmiPresenter.hideGrid();
-			
+
 		});
 		add(hideGridButton);
 
@@ -132,6 +135,6 @@ public class TopPanel extends JPanel implements GameStatusListener {
 	}
 
 	public void setCellSizeInPixel(int cellSizeInPixels) {
-		zoomLevelSlider.setValue(cellSizeInPixels);	
+		zoomLevelSlider.setValue(cellSizeInPixels);
 	}
 }

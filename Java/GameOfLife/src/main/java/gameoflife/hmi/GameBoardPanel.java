@@ -3,9 +3,9 @@ package gameoflife.hmi;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseMotionListener;
 import java.util.HashMap;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -62,6 +62,9 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 			displayedObject.setLayout(new BorderLayout());
 			displayedObject.add(new JLabel(displayedObject.getToolTipText()), BorderLayout.CENTER);
 			// displayedObject.set(RandomColorGenerator.getRandomColor());
+
+			//displayedObject.addMouseMotionListener(new CellMouseMotionListener(this, cell, displayedObject));
+			displayedObject.addMouseListener(new CellMouseMotionListener(this, cell, displayedObject));
 
 			cell.addGameBoardPointListener(this);
 
@@ -159,4 +162,11 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 		setPreferredSize(dimension);
 	}
 
+	public void setDrawActionInProgress(DrawAction drawActionInProgress) {
+
+	}
+
+	public HmiPresenter getHmiPresenter() {
+		return hmiPresenter;
+	}
 }
