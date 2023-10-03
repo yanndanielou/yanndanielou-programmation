@@ -13,12 +13,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import gameoflife.constants.HMIConstants;
+import gameoflife.game.Game;
+import gameoflife.game.GameStatusListener;
 import main.common.hmi.utils.HMIUtils;
 
-public class TopPanel extends JPanel {
-	
-	private static final Logger LOGGER = LogManager.getLogger(TopPanel.class);
+public class TopPanel extends JPanel implements GameStatusListener {
 
+	private static final Logger LOGGER = LogManager.getLogger(TopPanel.class);
 
 	private static final long serialVersionUID = -4722225029326344692L;
 
@@ -33,16 +34,17 @@ public class TopPanel extends JPanel {
 
 	private JButton showGridButton;
 
-	
 	@SuppressWarnings("unused")
-	private GameOfLifeMainViewFrame desktopGameOfLifeMainViewFrame;
+	private GameOfLifeMainViewFrame gameOfLifeMainViewFrame;
 
-	public TopPanel(GameOfLifeMainViewFrame desktopGameOfLifeMainViewFrame) {
-		this.desktopGameOfLifeMainViewFrame = desktopGameOfLifeMainViewFrame;
+	public TopPanel(GameOfLifeMainViewFrame gameOfLifeMainViewFrame) {
+		this.gameOfLifeMainViewFrame = gameOfLifeMainViewFrame;
 
 		setLayout(null);
 		setBackground(HMIConstants.TOP_PANEL_BACKGROUND_COLOR);
-		
+
+		setPreferredSize(new Dimension(gameOfLifeMainViewFrame.getWidth(), HMIConstants.TOP_PANEL_HEIGHT));
+
 		panButton = HMIUtils.createJButtonFromImage("src/main/resources/images/PanButtonIcon.png");
 		panButton.setLocation((int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(),
 				(int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getHeight());
@@ -60,14 +62,14 @@ public class TopPanel extends JPanel {
 		});
 		add(drawButton);
 
-		zoomLevelSlider = new JSlider(SwingConstants.HORIZONTAL, 5, 200, HMIConstants.CELL_HEIGHT_IN_PIXELS);
+		zoomLevelSlider = new JSlider(SwingConstants.HORIZONTAL, 5, 100, HMIConstants.CELL_HEIGHT_IN_PIXELS);
 		zoomLevelSlider.setLocation(
 				(int) drawButton.getBounds().getMaxX() + (int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(),
 				(int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getHeight());
 		zoomLevelSlider.setMajorTickSpacing(10);
 		zoomLevelSlider.setMinorTickSpacing(1);
 		zoomLevelSlider.setPaintTicks(true);
-		zoomLevelSlider.setPaintLabels(true);
+		// zoomLevelSlider.setPaintLabels(true);
 		zoomLevelSlider.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 		Font font = new Font("Serif", Font.ITALIC, 15);
 		zoomLevelSlider.setFont(font);
@@ -83,10 +85,14 @@ public class TopPanel extends JPanel {
 				(int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getHeight());
 		showGridButton.addActionListener(e -> {
 			LOGGER.info(() -> "Show grid button actionned");
-			//gameOfLifeMainViewFrame.getGameBoardPanel().displayGrid();
+			gameOfLifeMainViewFrame.getGameBoardPanel().displayGrid();
 		});
 		add(showGridButton);
 
 	}
 
+	@Override
+	public void onGameCancelled(Game game) {
+		gameOfLifeMainViewFrame.removeTopPanel();
+	}
 }

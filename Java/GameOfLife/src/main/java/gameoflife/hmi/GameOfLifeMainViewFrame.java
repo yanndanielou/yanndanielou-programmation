@@ -30,9 +30,12 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	private MainViewMenuBarManager mainViewMenuBarManager;
 
 	private TopPanel topPanel;
-	private GameBoardPanel gameFieldPanel;
+	private GameBoardPanel gameBoardPanel;
+	private BottomPanel bottomPanel;
 
 	private JScrollPane gameFieldScrollPane;
+
+	private FullFrameContentPanel fullFrameContent;
 
 	// private MainViewTopPanel level1LayeredPane;
 
@@ -65,6 +68,8 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	 */
 	public void createAndShowGUI() {
 
+		// setLayout(new BorderLayout());
+
 		setVisible(true);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,8 +78,9 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		this.addKeyListener(new KeyBoardInputs(this));
 
 		setLocationRelativeTo(null);
+		pack();
 
-		setResizable(false);
+		// setResizable(false);
 	}
 
 	public MainViewMenuBarManager getMainViewMenuBarManager() {
@@ -82,42 +88,51 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	}
 
 	private void newGame(Game game) {
-
-		setSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
 		this.setLayout(new BorderLayout());
-		
+
 		topPanel = new TopPanel(this);
-		add(topPanel, BorderLayout.NORTH);
-
-		gameFieldPanel = new GameBoardPanel(this);
-		gameFieldPanel.initializeGamefield(game.getGameBoard());
 		
-		gameFieldScrollPane = new JScrollPane(gameFieldPanel);
+		gameBoardPanel = new GameBoardPanel(this);
+		gameBoardPanel.initializeGamefield(game.getGameBoard());
+		
+		bottomPanel = new BottomPanel(this); 
+		
+		
+		fullFrameContent = new FullFrameContentPanel(this, topPanel, gameBoardPanel, bottomPanel);
+		add(fullFrameContent);
 
-		add(gameFieldScrollPane, BorderLayout.CENTER);
+		pack();
 
-		//Center to screen
+		// Center to screen
 		setLocationRelativeTo(null);
+		setVisible(true);
 	}
 
 	public void removeGameFieldPanel() {
-		remove(gameFieldPanel);
+		remove(gameBoardPanel);
+	}
+
+	public void removeTopPanel() {
+		remove(topPanel);
 	}
 
 	@Override
 	public void registerToGame(Game game) {
 		newGame(game);
-		game.addGameStatusListener(gameFieldPanel);
+		game.addGameStatusListener(gameBoardPanel);
+		game.addGameStatusListener(topPanel);
+	}
+
+	public void removeBottomPanel() {
+		// TODO Auto-generated method stub
+
 	}
 
 	public GameBoardPanel getGameBoardPanel() {
-		return gameFieldPanel;
+		return gameBoardPanel;
 	}
 
 }
-
-
-
 
 /*		
 Dimension initialFrameSize = this.getSize();

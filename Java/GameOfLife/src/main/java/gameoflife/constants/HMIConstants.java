@@ -13,6 +13,7 @@ public class HMIConstants {
 
 	public static final Dimension SPACE_BETWEEN_COMMANDS_DIMENSION = new Dimension(5,5);
 
+
 	
 	public static final int EXTERNAL_FRAME_WIDTH = 1;
 	public static final int TOP_PANEL_HEIGHT = 45;
@@ -25,6 +26,10 @@ public class HMIConstants {
 	
 	public static final int CELL_HEIGHT_IN_PIXELS = 100;
 	public static final int CELL_WIDTH_IN_PIXELS = 100;
+	
+
+	public static final int TOP_PANNEL_HEIGHT = 40;
+	public static final int BOTTOM_PANNEL_HEIGHT = TOP_PANNEL_HEIGHT;
 
 	// FIXME
 	public static final int NOT_UNDERSTOOD_MISSING_FRAME_HEIGHT = 50;

@@ -46,9 +46,12 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 		this.gameBoard = gameBoard;
 
 		setLayout(null);
-		setSize(new Dimension(gameBoard.getTotalWidth() * HMIConstants.CELL_WIDTH_IN_PIXELS,
-				gameBoard.getTotalHeight() * HMIConstants.CELL_HEIGHT_IN_PIXELS));
-		setPreferredSize(getSize());
+//		setSize(new Dimension(gameBoard.getTotalWidth() * HMIConstants.CELL_WIDTH_IN_PIXELS,
+//				gameBoard.getTotalHeight() * HMIConstants.CELL_HEIGHT_IN_PIXELS));
+		Dimension dimension = new Dimension(gameBoard.getTotalWidth() * HMIConstants.CELL_WIDTH_IN_PIXELS,
+				gameBoard.getTotalHeight() * HMIConstants.CELL_HEIGHT_IN_PIXELS);
+		//setSize(dimension);
+		setPreferredSize(dimension);
 		
 		for (Cell cell : gameBoard.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).toList()) {
 			JPanel displayedObject = new JPanel();
