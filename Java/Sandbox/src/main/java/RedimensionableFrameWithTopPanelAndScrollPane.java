@@ -45,7 +45,6 @@ public class RedimensionableFrameWithTopPanelAndScrollPane {
 
     public class ButtonsGridPage extends JPanel {
 
-        JFrame frame = new JFrame();
         JButton buttonsInGrid[][] = new JButton[NUMBER_BUTTONS_COLUMNS][NUMBER_BUTTONS_ROWS];
         JButton centralButton = new JButton("Central button");
         JPanel topPanel = new JPanel();
