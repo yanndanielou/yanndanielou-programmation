@@ -91,27 +91,13 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 
 		gameFieldPanel = new GameBoardPanel(this);
 		gameFieldPanel.initializeGamefield(game.getGameBoard());
-
-		gameFieldPanel.setPreferredSize(gameFieldPanel.getSize());
 		
-		JPanel topLevelPanelForJFrame = new JPanel();
-
-		gameFieldScrollPane = new JScrollPane(gameFieldPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		gameFieldScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
-		// gameFieldScrollPane.setBounds(0, 0, (int)
-		// HMIConstants.MINIMUM_WINDOW_DIMENSION.getWidth(),
-		// (int) HMIConstants.MINIMUM_WINDOW_DIMENSION.getHeight());
-
-//		topLevelPanelForJFrame.add(gameFieldScrollPane, BorderLayout.CENTER);
+		gameFieldScrollPane = new JScrollPane(gameFieldPanel);
 
 		add(gameFieldScrollPane, BorderLayout.CENTER);
 
-		// pack();
-
+		//Center to screen
 		setLocationRelativeTo(null);
-
 	}
 
 	public void removeGameFieldPanel() {
