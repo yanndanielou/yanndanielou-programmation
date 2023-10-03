@@ -28,6 +28,8 @@ public class BottomPanel extends JPanel implements GameStatusListener {
 	private JButton setSpeed1ForPlaySpeedButton;
 	private JButton stepForwardButton;
 
+	private HmiPresenter hmiPresenter;
+
 	@SuppressWarnings("unused")
 	private GameOfLifeMainViewFrame gameOfLifeMainViewFrame;
 
@@ -77,5 +79,9 @@ public class BottomPanel extends JPanel implements GameStatusListener {
 	@Override
 	public void onGameCancelled(Game game) {
 		gameOfLifeMainViewFrame.removeBottomPanel();
+	}
+
+	public void setHmiPresenter(HmiPresenter hmiPresenter) {
+		this.hmiPresenter = hmiPresenter;
 	}
 }
