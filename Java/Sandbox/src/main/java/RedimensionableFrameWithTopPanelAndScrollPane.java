@@ -14,6 +14,11 @@ public class RedimensionableFrameWithTopPanelAndScrollPane {
 
 	private static int NUMBER_BUTTONS_ROWS = 26;
 	private static int NUMBER_BUTTONS_COLUMNS = 100;
+	
+
+	private static int BUTTON_WIDTH = 70;
+	private static int BUTTON_HEIGHT = 20;
+	
     public static void main(String[] args) {
         new RedimensionableFrameWithTopPanelAndScrollPane();
     }
@@ -41,7 +46,7 @@ public class RedimensionableFrameWithTopPanelAndScrollPane {
     public class ButtonsGridPage extends JPanel {
 
         JFrame frame = new JFrame();
-        JButton buttonsInGrid[][] = new JButton[NUMBER_BUTTONS_ROWS][NUMBER_BUTTONS_COLUMNS];
+        JButton buttonsInGrid[][] = new JButton[NUMBER_BUTTONS_COLUMNS][NUMBER_BUTTONS_ROWS];
         JButton centralButton = new JButton("Central button");
         JPanel topPanel = new JPanel();
         JPanel buttonsPanel = new JPanel();
@@ -51,18 +56,25 @@ public class RedimensionableFrameWithTopPanelAndScrollPane {
 
             JPanel pane = new JPanel();
             topPanel.add(centralButton);
-            buttonsPanel.setLayout(new GridLayout(NUMBER_BUTTONS_ROWS, NUMBER_BUTTONS_COLUMNS));
+            buttonsPanel.setLayout(null);
             pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
             pane.add(topPanel);
 
 //            pane.setPreferredSize(new Dimension(500, 500));
 
-            for (int i = 0; i < NUMBER_BUTTONS_ROWS; i++) {
-                for (int j = 0; j < NUMBER_BUTTONS_COLUMNS; j++) {
-                    buttonsInGrid[i][j] = new JButton("" + i + " " + j);
-                    buttonsPanel.add(buttonsInGrid[i][j]);
+            for (int x = 0; x < NUMBER_BUTTONS_COLUMNS; x++) {
+                for (int y = 0; y < NUMBER_BUTTONS_ROWS; y++) {
+                    buttonsInGrid[x][y] = new JButton("" + x + " " + y);
+                    buttonsInGrid[x][y].setSize(new Dimension(BUTTON_WIDTH,BUTTON_HEIGHT));
+                    buttonsInGrid[x][y].setPreferredSize(new Dimension(BUTTON_WIDTH,BUTTON_HEIGHT));
+//                    buttonsInGrid[i][j].setMaximumSize(new Dimension(20,10));
+                    buttonsInGrid[x][y].setLocation(x*BUTTON_WIDTH, y*BUTTON_HEIGHT);
+                    buttonsPanel.add(buttonsInGrid[x][y]);
+                    
                 }
             }
+            
+            buttonsPanel.setPreferredSize(new Dimension(BUTTON_WIDTH*NUMBER_BUTTONS_COLUMNS, BUTTON_HEIGHT*NUMBER_BUTTONS_ROWS));
 
             add(pane, BorderLayout.NORTH);
             add(new JScrollPane(buttonsPanel));
