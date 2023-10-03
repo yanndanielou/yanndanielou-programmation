@@ -47,7 +47,7 @@ public class DrawActionPickerPopup extends JFrame {
 
 		this.setTitle("Draw action picker");
 
-		this.setSize(200, 200);
+	//	this.setSize(200, 200);
 
 		// getContentPane().setLayout(null);
 
@@ -152,6 +152,8 @@ public class DrawActionPickerPopup extends JFrame {
 		updateOkButtonState();
 		updateImagesApparence();
 		updateBottomLabelText();
+		
+		pack();
 	}
 
 	private void onDrawActionChosen() {
