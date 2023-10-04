@@ -21,6 +21,8 @@ public class Cell extends GenericIntegerGameBoardPoint {
 
 	private boolean alive = false;
 
+	private Integer lastDeathNumberOfSteps;
+
 	private ArrayList<CellListener> gameBoardPointListeners = new ArrayList<>();
 
 	public Cell(Game game, int x, int y) {
@@ -31,29 +33,52 @@ public class Cell extends GenericIntegerGameBoardPoint {
 		gameBoardPointListeners.add(gameBoardPointListener);
 	}
 
-	public void setAlive() {
-		setAlive(true);
+	public boolean setAlive() {
+		return setAlive(true);
 	}
 
-	public void setDead() {
-		setAlive(false);
-	}
-	
-	public void toggleState(){
-		setAlive(!isAlive());
+	public boolean setDead() {
+		return setAlive(false);
 	}
 
-	private void setAlive(boolean alive) {
+	public boolean toggleState() {
+		return setAlive(!isAlive());
+	}
+
+	private boolean setAlive(boolean alive) {
 		if (this.alive != alive) {
 			this.alive = alive;
 			gameBoardPointListeners
 					.forEach((gameStatusListener) -> gameStatusListener.onCellAliveStatusChanged(alive, this));
 
+			if (isDead()) {
+				lastDeathNumberOfSteps = 0;
+			} else {
+				lastDeathNumberOfSteps = null;
+			}
+
+			return true;
 		}
+		return false;
+	}
+
+	public boolean isDead() {
+		return !isAlive();
 	}
 
 	public boolean isAlive() {
 		return alive;
+	}
+
+	public boolean isDeadAndWasPreviouslyAliveDuringGame() {
+		return lastDeathNumberOfSteps != null;
+	}
+
+	public void increaseCurrentDeathPeriod() {
+		if (lastDeathNumberOfSteps == null) {
+			int a = 1;
+		}
+		lastDeathNumberOfSteps++;
 	}
 
 	@Override
@@ -63,5 +88,4 @@ public class Cell extends GenericIntegerGameBoardPoint {
 		return builder.toString();
 	}
 
-	
 }

@@ -97,12 +97,12 @@ public class Game extends GenericGame {
 
 			if (cell.isAlive()) {
 				if (numberOfAliveNeighbours < 2) {
-					LOGGER.info(() -> cell + " dies by underpopulation");
+					LOGGER.debug(() -> cell + " dies by underpopulation");
 					// Any live cell with fewer than two live neighbours dies, as if by
 					// underpopulation.
 					newlyDeadCells.add(cell);
 				} else if (numberOfAliveNeighbours > 3) {
-					LOGGER.info(() -> cell + " dies by overpopulation");
+					LOGGER.debug(() -> cell + " dies by overpopulation");
 					// Any live cell with more than three live neighbours dies, as if by
 					// overpopulation.
 					newlyDeadCells.add(cell);
@@ -110,7 +110,7 @@ public class Game extends GenericGame {
 			} else {
 
 				if (numberOfAliveNeighbours == 3) {
-					LOGGER.info(() -> cell + " becomes alive by reproduction");
+					LOGGER.debug(() -> cell + " becomes alive by reproduction");
 					// Any dead cell with exactly three live neighbours becomes a live cell, as if
 					// by reproduction.
 					newlyAliveCells.add(cell);
@@ -121,7 +121,26 @@ public class Game extends GenericGame {
 
 		newlyAliveCells.forEach(Cell::setAlive);
 		newlyDeadCells.forEach(Cell::setDead);
+		
+		gameBoard.getAllDeadCellsThatHaveBeenAlive().forEach(Cell::increaseCurrentDeathPeriod);
 
+		if (gameBoard.getAllAliveCells().isEmpty()) {
+			lifeHasEnded();
+		}
+		if (newlyAliveCells.isEmpty() && newlyDeadCells.isEmpty()) {
+			lifeIsStill();
+		}
+
+	}
+
+	private void lifeIsStill() {
+		over = true;
+		
+	}
+
+	private void lifeHasEnded() {
+		over = true;
+		
 	}
 
 	public void setAutoPlaySpeedPerSecond(int autoPlaySpeedPerSecond) {

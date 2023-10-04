@@ -16,9 +16,9 @@ import org.apache.logging.log4j.Logger;
 import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
-import gameoflife.hmi.DrawActionPickerPopup;
 import gameoflife.hmi.GameOfLifeMainViewFrame;
 import gameoflife.hmi.HmiPresenter;
+import gameoflife.hmi.dialogs.DrawActionPickerPopup;
 import main.common.hmi.utils.HMIUtils;
 
 public class TopPanel extends BasePanel implements GameStatusListener {

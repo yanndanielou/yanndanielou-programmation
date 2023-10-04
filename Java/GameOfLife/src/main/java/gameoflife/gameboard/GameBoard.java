@@ -69,4 +69,9 @@ public class GameBoard extends GenericGameBoard {
 				.toList();
 	}
 
+	public List<Cell> getAllDeadCellsThatHaveBeenAlive() {
+		return getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).filter(Cell::isDeadAndWasPreviouslyAliveDuringGame)
+				.toList();
+	}
+
 }

@@ -22,8 +22,8 @@ public class HMIConstants {
 	public static final Color TOP_PANEL_BACKGROUND_COLOR = Color.GRAY;
 	public static final int TOP_PANEL_HORIZONTAL_SPACES_BETWEEN_SYMBOLS_AND_TEXT_VALUE = 15;
 
-	public static final int MINIMUM_CELL_SIZE_IN_PIXELS = 0;
-	public static final int MAXIMUM_CELL_SIZE_IN_PIXELS = 300;
+	public static final int MINIMUM_CELL_SIZE_IN_PIXELS = 1;
+	public static final int MAXIMUM_CELL_SIZE_IN_PIXELS = 100;
 	public static final int INITIAL_CELL_SIZE_IN_PIXELS = Math.max(1, MAXIMUM_CELL_SIZE_IN_PIXELS / 20);
 
 	

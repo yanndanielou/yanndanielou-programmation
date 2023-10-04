@@ -43,12 +43,11 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		mainViewMenuBarManager = new MainViewMenuBarManager(this);
 	}
 
-	@SuppressWarnings("unused")
 	private void setApplicationIcon() {
 
 		BufferedImage applicationBufferedImage = null;
 		File applicationImageFile = null;
-		String applicationImagePath = "Images/DesktopGameOfLifeApplicationIcon.png";
+		String applicationImagePath = "src/main/resources/images/ApplicationIcon.png";
 
 		applicationImageFile = new File(applicationImagePath);
 		try {
@@ -64,6 +63,8 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	 * the event dispatch thread.
 	 */
 	public void createAndShowGUI() {
+		setApplicationIcon();
+		
 		setVisible(true);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

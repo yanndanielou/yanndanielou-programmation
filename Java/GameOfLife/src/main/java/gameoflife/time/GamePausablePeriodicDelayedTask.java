@@ -2,12 +2,13 @@ package gameoflife.time;
 
 import game.genericgame.GenericGame;
 import game.genericgame.GenericGameStatusListener;
+import gameoflife.game.Game;
 import main.common.timer.PausablePeriodicDelayedTask;
 
 public abstract class GamePausablePeriodicDelayedTask extends PausablePeriodicDelayedTask
 		implements GenericGameStatusListener<GenericGame> {
 
-	protected GamePausablePeriodicDelayedTask(GenericGame game, long delay) {
+	protected GamePausablePeriodicDelayedTask(Game game, long delay) {
 		super(delay);
 	}
 

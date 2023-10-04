@@ -1,10 +1,12 @@
 package gameoflife.hmi.mouseaction;
 
+import java.awt.MouseInfo;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,26 +30,21 @@ public class DrawCellWithMouse implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
+		boolean mouseButton1IsPressedWithMask = (e.getModifiersEx() & MouseEvent.BUTTON1_DOWN_MASK) != 0;
 
-		if (drawActionInProgress != null) {
+		if (drawActionInProgress != null && mouseButton1IsPressedWithMask) {
 			Cell cell = cellPanel.getCell();
 
 			switch (drawActionInProgress) {

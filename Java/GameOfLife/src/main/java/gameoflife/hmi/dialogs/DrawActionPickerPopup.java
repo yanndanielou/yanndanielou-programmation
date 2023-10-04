@@ -1,4 +1,4 @@
-package gameoflife.hmi;
+package gameoflife.hmi.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -18,6 +18,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import gameoflife.hmi.DrawAction;
+import gameoflife.hmi.GameOfLifeMainViewFrame;
 import main.common.hmi.utils.HMIUtils;
 
 public class DrawActionPickerPopup extends JFrame {
@@ -153,6 +155,8 @@ public class DrawActionPickerPopup extends JFrame {
 		updateBottomLabelText();
 		
 		pack();
+		
+		setLocationRelativeTo(gameOfLifeMainViewFrame);
 	}
 
 	private void onDrawActionChosen() {
@@ -176,7 +180,18 @@ public class DrawActionPickerPopup extends JFrame {
 	}
 
 	private void updateOkButtonState() {
-		okButton.setEnabled(drawActionChosen != null);
+		boolean okButtonEnabled = drawActionChosen != null;
+		okButton.setEnabled(okButtonEnabled);
+		
+		if(okButtonEnabled) {
+			getRootPane().setDefaultButton(okButton);
+			okButton.requestFocus();
+		}
+		else {
+			getRootPane().setDefaultButton(cancelButton);
+			cancelButton.requestFocus();
+		}
+
 	}
 
 }

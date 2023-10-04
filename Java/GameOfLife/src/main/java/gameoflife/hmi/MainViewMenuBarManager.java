@@ -14,6 +14,8 @@ import org.apache.logging.log4j.Logger;
 
 import gameoflife.core.GameManager;
 import gameoflife.gameboard.Cell;
+import gameoflife.hmi.dialogs.CheatCodeDialog;
+import gameoflife.hmi.dialogs.NewGameWhileGameIsInProgressPopup;
 import main.common.random.RandomIntegerGenerator;
 
 public class MainViewMenuBarManager {
