@@ -1,6 +1,9 @@
 package gameoflife.hmi;
 
 import gameoflife.constants.HMIConstants;
+import gameoflife.hmi.panel.BottomPanel;
+import gameoflife.hmi.panel.GameBoardPanel;
+import gameoflife.hmi.panel.TopPanel;
 
 public class HmiPresenter {
 
@@ -62,11 +65,21 @@ public class HmiPresenter {
 	public DrawAction getDrawActionInProgress() {
 		return drawActionInProgress;
 	}
-	
-	public void setPanInProgress(boolean panInProgress) {
-		this.panInProgress = panInProgress;
+
+	public void togglePanInProgress() {
+		setPanInProgress(!panInProgress);
 	}
-	
+
+	protected void setPanInProgress(boolean panInProgress) {
+		this.panInProgress = panInProgress;
+		gameBoardPanel.setPanInProgress(panInProgress);
+
+		if (panInProgress) {
+			setDrawActionInProgress(null);
+		}
+
+	}
+
 	public boolean isPanInProgress() {
 		return panInProgress;
 	}

@@ -15,6 +15,9 @@ import org.apache.logging.log4j.Logger;
 
 import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
+import gameoflife.hmi.panel.BottomPanel;
+import gameoflife.hmi.panel.GameBoardPanel;
+import gameoflife.hmi.panel.TopPanel;
 
 public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainViewGeneric {
 

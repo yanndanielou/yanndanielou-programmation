@@ -24,7 +24,7 @@ public abstract class PausableOneShotDelayedTask {
 	protected boolean cancelled = false;
 
 	protected PausableOneShotDelayedTask(long delay) {
-		LOGGER.info("PausableOneShotDelayedTask created");
+		LOGGER.info(() -> "PausableOneShotDelayedTask created");
 		this.initialDelayInMilliseconds = delay;
 		this.remainingDelayInMilliseconds = initialDelayInMilliseconds;
 		this.label = "";
@@ -32,7 +32,7 @@ public abstract class PausableOneShotDelayedTask {
 	}
 
 	protected PausableOneShotDelayedTask(String label, long delay) {
-		LOGGER.info("PausableOneShotDelayedTask " + label + " created");
+		LOGGER.info(() -> "PausableOneShotDelayedTask " + label + " created");
 		this.initialDelayInMilliseconds = delay;
 		this.remainingDelayInMilliseconds = initialDelayInMilliseconds;
 		this.label = label;
@@ -60,7 +60,7 @@ public abstract class PausableOneShotDelayedTask {
 	}
 
 	public void cancel() {
-		System.out.println("PausableOneShotDelayedTask: cancel");
+		LOGGER.info("PausableOneShotDelayedTask: cancel");
 		timer.cancel();
 		timer.purge();
 		timer = null;
@@ -68,7 +68,7 @@ public abstract class PausableOneShotDelayedTask {
 	}
 
 	public void pause() {
-		System.out.println("PausableOneShotDelayedTask: pause");
+		LOGGER.info("PausableOneShotDelayedTask: pause");
 
 		if (isCancelled()) {
 			throw new BadLogicException("Cannot pause delayed task if already cancelled");
@@ -80,10 +80,10 @@ public abstract class PausableOneShotDelayedTask {
 		paused = true;
 
 		long scheduledExecutionTime = taskInstanciatedForCurrentTimer.scheduledExecutionTime();
-		System.out.println("scheduledExecutionTime:" + scheduledExecutionTime);
+		LOGGER.debug("scheduledExecutionTime:" + scheduledExecutionTime);
 
 		long currentTimeMillis = System.currentTimeMillis();
-		System.out.println("currentTimeMillis:" + currentTimeMillis);
+		LOGGER.debug("currentTimeMillis:" + currentTimeMillis);
 
 		long millisecondsBeforeNextScheduledExecution = scheduledExecutionTime - currentTimeMillis;
 		remainingDelayInMilliseconds = millisecondsBeforeNextScheduledExecution;

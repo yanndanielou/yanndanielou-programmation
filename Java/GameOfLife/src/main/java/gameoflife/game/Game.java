@@ -23,6 +23,8 @@ public class Game extends GenericGame {
 
 	private GameManager gameManager;
 
+	private int autoPlaySpeedPerSecond;
+
 	private GamePausablePeriodicDelayedTask autoPlayTask;
 
 	public Game(GameManager gameManager, GameBoard gameBoard) {
@@ -117,17 +119,36 @@ public class Game extends GenericGame {
 
 		}
 
-		newlyAliveCells.forEach(e -> e.setAlive());
-		newlyDeadCells.forEach(e -> e.setDead());
+		newlyAliveCells.forEach(Cell::setAlive);
+		newlyDeadCells.forEach(Cell::setDead);
 
 	}
 
-	public void autoPlay(int playSpeedValueAsInt) {
-		if(paused) {
+	public void setAutoPlaySpeedPerSecond(int autoPlaySpeedPerSecond) {
+
+		if (this.autoPlaySpeedPerSecond != autoPlaySpeedPerSecond) {
+			this.autoPlaySpeedPerSecond = autoPlaySpeedPerSecond;
+
+			if (begun) {
+				if (!paused) {
+					if (autoPlayTask != null) {
+						autoPlayTask.cancel();
+						autoPlayTask = null;
+						autoPlay(autoPlaySpeedPerSecond);
+					}
+				}
+			}
+		}
+	}
+
+	public void autoPlay(int autoPlaySpeedPerSecond) {
+		this.autoPlaySpeedPerSecond = autoPlaySpeedPerSecond;
+
+		if (paused) {
 			resume();
 		}
-		
-		autoPlayTask = new GamePausablePeriodicDelayedTask(this, 1000 / playSpeedValueAsInt) {
+
+		autoPlayTask = new GamePausablePeriodicDelayedTask(this, 1000 / autoPlaySpeedPerSecond) {
 
 			@Override
 			public void run() {

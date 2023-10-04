@@ -22,6 +22,7 @@ import main.common.hmi.utils.HMIUtils;
 
 public class DrawActionPickerPopup extends JFrame {
 
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(DrawActionPickerPopup.class);
 
 	private static final long serialVersionUID = 1285388602192141194L;

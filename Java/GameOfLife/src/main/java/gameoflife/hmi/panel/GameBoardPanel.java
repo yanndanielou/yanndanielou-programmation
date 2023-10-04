@@ -1,4 +1,4 @@
-package gameoflife.hmi;
+package gameoflife.hmi.panel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
@@ -21,23 +20,21 @@ import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
+import gameoflife.hmi.DrawAction;
+import gameoflife.hmi.GameOfLifeMainViewFrame;
+import gameoflife.hmi.mouseaction.DrawCellWithMouse;
 
-public class GameBoardPanel extends JPanel implements GameStatusListener, CellListener {
+public class GameBoardPanel extends BasePanel implements GameStatusListener, CellListener {
 
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(GameBoardPanel.class);
 
 	private static final long serialVersionUID = -1541008040602802454L;
 
-	private HashMap<Cell, JPanel> gameObjectToLabelMap = new HashMap<>();
+	private HashMap<Cell, CellPanel> gameObjectToLabelMap = new HashMap<>();
 
 	private GameBoard gameBoard;
 	private GameOfLifeMainViewFrame towerDefenseMainViewFrame;
-
-	private HmiPresenter hmiPresenter;
-	/*
-	 * private enum LAYERS_ORDERED_FROM_TOP_TO_BACK { BUTTONS, CELLS; }
-	 */
 
 	public GameBoardPanel(GameOfLifeMainViewFrame towerDefenseMainViewFrame, Game game) {
 		this.towerDefenseMainViewFrame = towerDefenseMainViewFrame;
@@ -51,7 +48,7 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 		setLayout(null);
 
 		for (Cell cell : gameBoard.getAllGameBoardPointsAsOrderedList().stream().map(Cell.class::cast).toList()) {
-			JPanel displayedObject = new JPanel();
+			CellPanel displayedObject = new CellPanel(this, cell);
 
 			gameObjectToLabelMap.put(cell, displayedObject);
 
@@ -59,16 +56,15 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 			int cellY = cell.getYAsInt();
 			displayedObject.setToolTipText("X: " + cellX + " Y: " + cellY);
 			displayedObject.setLayout(new BorderLayout());
-			//displayedObject.add(new JLabel(displayedObject.getToolTipText()), BorderLayout.CENTER);
-			// displayedObject.set(RandomColorGenerator.getRandomColor());
 
-			//displayedObject.addMouseMotionListener(new CellMouseMotionListener(this, cell, displayedObject));
-			displayedObject.addMouseListener(new CellMouseMotionListener(this, cell, displayedObject));
+			// displayedObject.addMouseMotionListener(new DrawCellWithMouse(this, cell,
+			// displayedObject));
+			// displayedObject.addMouseListener(new DrawCellWithMouse(this, cell,
+			// displayedObject));
 
 			cell.addGameBoardPointListener(this);
 
 			redrawCell(cell);
-			// add(displayedObject, LAYERS_ORDERED_FROM_TOP_TO_BACK.CELLS);
 			add(displayedObject);
 		}
 		LOGGER.info("initializeGamefield : end");
@@ -139,15 +135,11 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 		}
 	}
 
-	public void setHmiPresenter(HmiPresenter hmiPresenter) {
-		this.hmiPresenter = hmiPresenter;
-	}
-
 	public void setCellSizeInPixel(int cellSizeInPixels) {
 
-		for (Entry<Cell, JPanel> entrySet : gameObjectToLabelMap.entrySet()) {
+		for (Entry<Cell, CellPanel> entrySet : gameObjectToLabelMap.entrySet()) {
 			Cell cell = entrySet.getKey();
-			JPanel cellPanel = entrySet.getValue();
+			CellPanel cellPanel = entrySet.getValue();
 
 			cellPanel.setSize(cellSizeInPixels, cellSizeInPixels);
 
@@ -162,10 +154,10 @@ public class GameBoardPanel extends JPanel implements GameStatusListener, CellLi
 	}
 
 	public void setDrawActionInProgress(DrawAction drawActionInProgress) {
-
+		gameObjectToLabelMap.values().forEach(e -> e.setDrawActionInProgress(drawActionInProgress));
 	}
 
-	public HmiPresenter getHmiPresenter() {
-		return hmiPresenter;
+	public void setPanInProgress(boolean panInProgress) {
+		gameObjectToLabelMap.values().forEach(e -> e.setPanInProgress(panInProgress));
 	}
 }

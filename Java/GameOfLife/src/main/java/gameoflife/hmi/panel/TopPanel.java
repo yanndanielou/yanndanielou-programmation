@@ -1,4 +1,4 @@
-package gameoflife.hmi;
+package gameoflife.hmi.panel;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -16,9 +16,12 @@ import org.apache.logging.log4j.Logger;
 import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
+import gameoflife.hmi.DrawActionPickerPopup;
+import gameoflife.hmi.GameOfLifeMainViewFrame;
+import gameoflife.hmi.HmiPresenter;
 import main.common.hmi.utils.HMIUtils;
 
-public class TopPanel extends JPanel implements GameStatusListener {
+public class TopPanel extends BasePanel implements GameStatusListener {
 
 	private static final Logger LOGGER = LogManager.getLogger(TopPanel.class);
 
@@ -32,8 +35,6 @@ public class TopPanel extends JPanel implements GameStatusListener {
 
 	private JButton showGridButton;
 	private JButton hideGridButton;
-
-	private HmiPresenter hmiPresenter;
 
 	@SuppressWarnings("unused")
 	private GameOfLifeMainViewFrame gameOfLifeMainViewFrame;
@@ -51,8 +52,7 @@ public class TopPanel extends JPanel implements GameStatusListener {
 				(int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getHeight());
 		panButton.addActionListener(e -> {
 			LOGGER.info(() -> "Pan button actionned");
-			hmiPresenter.setPanInProgress(true);
-			hmiPresenter.setDrawActionInProgress(null);
+			hmiPresenter.togglePanInProgress();
 		});
 		add(panButton);
 
@@ -120,10 +120,6 @@ public class TopPanel extends JPanel implements GameStatusListener {
 	@Override
 	public void onGameCancelled(Game game) {
 		gameOfLifeMainViewFrame.removeTopPanel();
-	}
-
-	public void setHmiPresenter(HmiPresenter hmiPresenter) {
-		this.hmiPresenter = hmiPresenter;
 	}
 
 	public void onGridHidden() {

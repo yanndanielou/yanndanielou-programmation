@@ -2,12 +2,17 @@ package gameoflife.hmi;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import gameoflife.constants.HMIConstants;
+import gameoflife.hmi.panel.BottomPanel;
+import gameoflife.hmi.panel.GameBoardPanel;
+import gameoflife.hmi.panel.TopPanel;
 
 public class FullFrameContentPanel extends JPanel {
 
@@ -32,12 +37,20 @@ public class FullFrameContentPanel extends JPanel {
 		topPanelParentPane.add(topPanel);
 
 		add(topPanelParentPane, BorderLayout.NORTH);
-		add(new JScrollPane(gameBoardPanel));
+		JScrollPane scrollPane = new JScrollPane(gameBoardPanel);
+		add(scrollPane);
 
 		JPanel bottomPanelParentPane = new JPanel();
 		bottomPanelParentPane.setLayout(new BoxLayout(bottomPanelParentPane, BoxLayout.Y_AXIS));
 		bottomPanelParentPane.add(bottomPanel);
 		add(bottomPanelParentPane, BorderLayout.SOUTH);
+		
+		FullFrameContentPanelMouseAdapter frameContentPanelMouseAdapter = new FullFrameContentPanelMouseAdapter(this);
+		
+
+		scrollPane.addMouseListener(frameContentPanelMouseAdapter);
+		scrollPane.addMouseMotionListener(frameContentPanelMouseAdapter);
+	
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package gameoflife.hmi;
+package gameoflife.hmi.panel;
 
 import java.awt.Dimension;
 
@@ -13,9 +13,11 @@ import org.apache.logging.log4j.Logger;
 import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
+import gameoflife.hmi.GameOfLifeMainViewFrame;
+import gameoflife.hmi.HmiPresenter;
 import main.common.hmi.utils.HMIUtils;
 
-public class BottomPanel extends JPanel implements GameStatusListener {
+public class BottomPanel extends BasePanel implements GameStatusListener {
 
 	private static final Logger LOGGER = LogManager.getLogger(BottomPanel.class);
 
@@ -27,8 +29,6 @@ public class BottomPanel extends JPanel implements GameStatusListener {
 	private JSpinner playSpeedSpinner;
 	private JButton setSpeed1ForPlaySpeedButton;
 	private JButton stepForwardButton;
-
-	private HmiPresenter hmiPresenter;
 
 	@SuppressWarnings("unused")
 	private GameOfLifeMainViewFrame gameOfLifeMainViewFrame;
@@ -55,6 +55,7 @@ public class BottomPanel extends JPanel implements GameStatusListener {
 		playSpeedSpinner.setSize(50, setSpeed1ForPlaySpeedButton.getHeight());
 		playSpeedSpinner.addChangeListener(e -> {
 			LOGGER.info(() -> "Play speed changed to : " + playSpeedSpinner.getValue());
+			game.setAutoPlaySpeedPerSecond(getAutoPlaySpeedPerSecond());
 		});
 		add(playSpeedSpinner);
 
@@ -72,9 +73,7 @@ public class BottomPanel extends JPanel implements GameStatusListener {
 				+ HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth()), 0);
 		playButton.addActionListener(e -> {
 			LOGGER.info(() -> "Play button actionned");
-			Object playSpeedValueAsObject = playSpeedSpinner.getValue();
-			int playSpeedValueAsInt = (int) playSpeedValueAsObject;
-			game.autoPlay(playSpeedValueAsInt);
+			game.autoPlay(getAutoPlaySpeedPerSecond());
 		});
 		add(playButton);
 
@@ -88,12 +87,14 @@ public class BottomPanel extends JPanel implements GameStatusListener {
 		add(pauseButton);
 	}
 
+	private int getAutoPlaySpeedPerSecond() {
+		Object playSpeedValueAsObject = playSpeedSpinner.getValue();
+		return (int) playSpeedValueAsObject;
+	}
+
 	@Override
 	public void onGameCancelled(Game game) {
 		gameOfLifeMainViewFrame.removeBottomPanel();
 	}
 
-	public void setHmiPresenter(HmiPresenter hmiPresenter) {
-		this.hmiPresenter = hmiPresenter;
-	}
 }
