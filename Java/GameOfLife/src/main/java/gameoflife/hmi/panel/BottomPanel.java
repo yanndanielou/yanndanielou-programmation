@@ -3,7 +3,6 @@ package gameoflife.hmi.panel;
 import java.awt.Dimension;
 
 import javax.swing.JButton;
-import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
@@ -14,7 +13,6 @@ import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
 import gameoflife.hmi.GameOfLifeMainViewFrame;
-import gameoflife.hmi.HmiPresenter;
 import main.common.hmi.utils.HMIUtils;
 
 public class BottomPanel extends BasePanel implements GameStatusListener {
@@ -49,7 +47,7 @@ public class BottomPanel extends BasePanel implements GameStatusListener {
 		});
 		add(setSpeed1ForPlaySpeedButton);
 
-		playSpeedSpinner = new JSpinner(new SpinnerNumberModel(1, 0, 100, 1));
+		playSpeedSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 100, 1));
 		playSpeedSpinner.setLocation((int) (setSpeed1ForPlaySpeedButton.getBounds().getMaxX()
 				+ HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth()), 0);
 		playSpeedSpinner.setSize(50, setSpeed1ForPlaySpeedButton.getHeight());

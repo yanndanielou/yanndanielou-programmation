@@ -70,7 +70,6 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		mainViewMenuBarManager.createMenu();
-		this.addKeyListener(new KeyBoardInputs(this));
 
 		
 		setMinimumSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
@@ -96,6 +95,9 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 
 		hmiPresenter = new HmiPresenter(this, topPanel, gameBoardPanel, bottomPanel, fullFrameContent);
 
+		this.addKeyListener(new KeyBoardInputs(this, hmiPresenter));
+
+		
 		pack();
 
 		// Center to screen

@@ -1,21 +1,14 @@
 package gameoflife.hmi.mouseaction;
 
-import java.awt.MouseInfo;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import gameoflife.gameboard.Cell;
 import gameoflife.hmi.DrawAction;
-import gameoflife.hmi.HmiPresenter;
 import gameoflife.hmi.panel.CellPanel;
-import gameoflife.hmi.panel.GameBoardPanel;
 
 public class DrawCellWithMouse implements MouseListener {
 	private static final Logger LOGGER = LogManager.getLogger(DrawCellWithMouse.class);

@@ -6,7 +6,6 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 
@@ -17,7 +16,6 @@ import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
 import gameoflife.hmi.GameOfLifeMainViewFrame;
-import gameoflife.hmi.HmiPresenter;
 import gameoflife.hmi.dialogs.DrawActionPickerPopup;
 import main.common.hmi.utils.HMIUtils;
 

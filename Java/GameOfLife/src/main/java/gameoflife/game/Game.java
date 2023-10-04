@@ -11,8 +11,6 @@ import gameoflife.core.GameManager;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
 import gameoflife.time.GamePausablePeriodicDelayedTask;
-import gameoflife.time.GameTimeManager;
-import main.common.timer.PausableTimeManager;
 
 public class Game extends GenericGame {
 	private static final Logger LOGGER = LogManager.getLogger(Game.class);

@@ -22,7 +22,7 @@ import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
 import gameoflife.hmi.DrawAction;
 import gameoflife.hmi.GameOfLifeMainViewFrame;
-import gameoflife.hmi.mouseaction.DrawCellWithMouse;
+import gameoflife.hmi.KeyBoardInputs;
 
 public class GameBoardPanel extends BasePanel implements GameStatusListener, CellListener {
 
@@ -65,8 +65,12 @@ public class GameBoardPanel extends BasePanel implements GameStatusListener, Cel
 			cell.addGameBoardPointListener(this);
 
 			redrawCell(cell);
-			add(displayedObject);
+			add(displayedObject);		
+
 		}
+		this.addKeyListener(new KeyBoardInputs(this, hmiPresenter));
+
+		
 		LOGGER.info("initializeGamefield : end");
 	}
 
