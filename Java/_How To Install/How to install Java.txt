@@ -8,5 +8,6 @@ Sonar:
 SonarLint for Eclipse	8.0.0.80157	org.sonarlint.eclipse.feature.feature.group	SonarSource
 
 Profiler:
+https://visualvm.github.io/
 https://www.experts-exchange.com/videos/543/Installing-VisualVM-Launcher-in-Eclipse.html
 
