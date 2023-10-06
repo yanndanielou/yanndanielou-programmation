@@ -10,4 +10,7 @@ SonarLint for Eclipse	8.0.0.80157	org.sonarlint.eclipse.feature.feature.group	So
 Profiler:
 https://visualvm.github.io/
 https://www.experts-exchange.com/videos/543/Installing-VisualVM-Launcher-in-Eclipse.html
+Installer plugin startup profiler (https://player.vimeo.com/video/423589706)
+
+
 
