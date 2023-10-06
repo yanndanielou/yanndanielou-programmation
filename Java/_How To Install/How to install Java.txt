@@ -1,0 +1,6 @@
+
+
+
+Profiler:
+https://www.experts-exchange.com/videos/543/Installing-VisualVM-Launcher-in-Eclipse.html
+
