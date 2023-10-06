@@ -14,3 +14,6 @@ Installer plugin startup profiler (https://player.vimeo.com/video/423589706)
 
 
 
+Gradle
+:Buildship
+https://www.vogella.com/tutorials/EclipseGradle/article.html
