@@ -1,8 +1,9 @@
+@ECHO DOWNLOAD_FILE_FROM_LINK 
 
-:DOWNLOAD_FILE_FROM_LINK
+@SET FULL_LINK=%1
+@for /f "delims=" %%i in ("%FULL_LINK%") do set "fileName=%%~nxi"
 
-ECHO DOWNLOAD_FILE_FROM_LINK 
-for %%a in (%1:/= %) do set fileName=%%a
-echo fileName is %fileName%
+@echo Download file %fileName% from 
 
 
+powershell -Command "(New-Object Net.WebClient).DownloadFile('%FULL_LINK%', '%fileName%')
