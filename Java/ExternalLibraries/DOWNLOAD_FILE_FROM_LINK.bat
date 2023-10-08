@@ -1,4 +1,4 @@
-@ECHO DOWNLOAD_FILE_FROM_LINK 
+rem @ECHO DOWNLOAD_FILE_FROM_LINK 
 
 @SET FULL_LINK=%1
 @for /f "delims=" %%i in ("%FULL_LINK%") do set "fileName=%%~nxi"
