@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Nested;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CalculatorTest {
 
@@ -15,7 +16,6 @@ class CalculatorTest {
         assertEquals(15, Calculator.multiply(5, 3));
 
     }
-
 
     @Nested
     class Divide {
