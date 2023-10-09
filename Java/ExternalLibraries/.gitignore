@@ -1,5 +1,2 @@
-/orgs/*.jar
-/log4j/*.jar
-lib/
 mockito-5.5.0
-
+*.jar

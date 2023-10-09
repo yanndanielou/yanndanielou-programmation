@@ -17,15 +17,15 @@
 	<classpathentry kind="output" path="bin"/>
 	
 	
-	<classpathentry kind="lib" path="../ExternalLibraries/log4j/log4j-2.20.0/log4j-api-2.20.0.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/log4j/log4j-2.20.0/log4j-core-2.20.0.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/gson/gson-2.10.1/gson-2.10.1.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/mockito/mockito-5.5.0/mockito-core-5.5.0.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/mockito/mockito-5.5.0/mockito-junit-jupiter-5.5.0.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/byte-buddy/byte-buddy-1.14.6.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/byte-buddy/byte-buddy-agent-1.14.6.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/objenesis/objenesis-3.3.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/log4j-api-2.20.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/log4j-core-2.20.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/gson-2.10.1.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/mockito-core-5.5.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/mockito-junit-jupiter-5.5.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/byte-buddy-1.14.6.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/byte-buddy-agent-1.14.6.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/objenesis-3.3.jar"/>
 
-	<classpathentry kind="lib" path="../ExternalLibraries/orgs/appache/commons/commons-lang3-3.13.0.jar" sourcepath="../ExternalLibraries/orgs/appache/commons/commons-lang3-3.13.0-sources.jar"/>	
+	<classpathentry kind="lib" path="../ExternalLibraries/commons-lang3-3.13.0.jar" sourcepath="../ExternalLibraries/commons-lang3-3.13.0-sources.jar"/>	
 	
 </classpath>

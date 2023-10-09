@@ -7,6 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="output" path="bin"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/log4j/log4j-2.20.0/log4j-api-2.20.0.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/log4j/log4j-2.20.0/log4j-core-2.20.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/log4j-api-2.20.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/log4j-core-2.20.0.jar"/>
 </classpath>

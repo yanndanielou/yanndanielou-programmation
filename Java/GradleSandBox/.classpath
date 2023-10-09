@@ -11,6 +11,6 @@
 	<classpathentry kind="output" path="bin"/>
 	
 	
-	<classpathentry kind="lib" path="../ExternalLibraries/joda-time/joda-time-2.12.5.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/joda-time-2.12.5.jar"/>
 	
 </classpath>
