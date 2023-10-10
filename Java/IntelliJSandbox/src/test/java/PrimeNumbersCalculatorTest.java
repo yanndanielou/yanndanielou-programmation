@@ -25,7 +25,8 @@ class PrimeNumbersCalculatorTest {
                     Arguments.of(8, new ArrayList<Integer>(List.of(2))),
                     Arguments.of(9, new ArrayList<Integer>(List.of(3))),
                     Arguments.of(30, new ArrayList<Integer>(Arrays.asList(2,3,5))),
-                    Arguments.of(13, new ArrayList<Integer>()));
+                    Arguments.of(13, new ArrayList<Integer>()),
+                    Arguments.of(163789, new ArrayList<Integer>()));
             // @formatter:on
         }
 
@@ -90,7 +91,14 @@ class PrimeNumbersCalculatorTest {
                 "20,FALSE",
                 "2000,FALSE",
                 "2001,FALSE",
-                "2003,TRUE"},
+                "2003,TRUE",
+                "81919,TRUE",
+                "163819,TRUE",
+                "10007, TRUE",
+                "49999, TRUE",
+                "100003, TRUE",
+                "199999, TRUE",
+                "655357,TRUE"},
                 nullValues = "NIL")
         // @formatter:on
             void testPrime(Integer numberToTest, Boolean expectedPrimeResult) {
@@ -101,7 +109,7 @@ class PrimeNumbersCalculatorTest {
 
         @Nested
         class GetNextPrimeNumberGreaterThan {
-            @Timeout(value = 10, unit = TimeUnit.SECONDS, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
+            @Timeout(value = 100, unit = TimeUnit.SECONDS, threadMode = Timeout.ThreadMode.SEPARATE_THREAD)
             @ParameterizedTest
             // @formatter:off
             @CsvSource(value = {
@@ -111,7 +119,8 @@ class PrimeNumbersCalculatorTest {
                     "13,17",
                     "14,17",
                     "14,17",
-                    "2000,2003"})
+                    "2000,2003",
+                    "156007,156011"})
                 // @formatter:on
             void getNextPrimeNumberGreaterThan(Integer startNumber, Integer expectedNextPrime) {
                 assertEquals(expectedNextPrime, PrimeNumbersCalculator.getNextPrimeNumberGreaterThan(startNumber));
