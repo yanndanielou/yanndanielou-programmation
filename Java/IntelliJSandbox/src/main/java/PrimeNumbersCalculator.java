@@ -1,6 +1,8 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,6 +44,26 @@ public class PrimeNumbersCalculator {
     }
 */
 
+    public static List<Integer> printAllPrimeNumberIntoTextFileUntil(int limitOfNumberToTestIfPrime, String filePath) {
+        List<Integer> allPrimeNumbersUntil = computeAllPrimeNumbersUntil(limitOfNumberToTestIfPrime);
+
+        // Open the file.
+        PrintWriter printWriter = null;
+        try {
+            printWriter = new PrintWriter(filePath);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        PrintWriter finalPrintWriter = printWriter;
+        allPrimeNumbersUntil.forEach(e -> finalPrintWriter.println(e));
+
+        // Close the file.
+        printWriter.close();  // Step 4
+
+        return allPrimeNumbersUntil;
+    }
+
     public static List<Integer> computeAllPrimeNumbersUntil(int limitOfNumberToTestIfPrime) {
         // FROM Java 21: use List.getLast
         if (limitOfNumberToTestIfPrime < KNOWN_FIRST_PRIME_NUMBERS.get(KNOWN_FIRST_PRIME_NUMBERS.size() - 1)) {
@@ -51,7 +73,8 @@ public class PrimeNumbersCalculator {
         List<Integer> primeNumbersFound = new ArrayList<Integer>(KNOWN_FIRST_PRIME_NUMBERS);
         for (int currentTestedNumber = BIGGEST_KNOWN_PRIME_NUMBERS + 1; currentTestedNumber <= limitOfNumberToTestIfPrime; currentTestedNumber++) {
             int newlyDiscoveredPrimeNumber = getNextPrimeNumberGreaterThan(currentTestedNumber, primeNumbersFound);
-            if(newlyDiscoveredPrimeNumber <= limitOfNumberToTestIfPrime){
+            if (newlyDiscoveredPrimeNumber <= limitOfNumberToTestIfPrime) {
+                LOGGER.debug("Prime number found:" + newlyDiscoveredPrimeNumber);
                 primeNumbersFound.add(newlyDiscoveredPrimeNumber);
                 currentTestedNumber = newlyDiscoveredPrimeNumber;
             }
@@ -129,7 +152,7 @@ public class PrimeNumbersCalculator {
     public static Integer getNextPrimeNumberGreaterThan(int startNumber, List<Integer> startNumberDivisors) {
         for (int i = startNumber + 1; ; i++) {
             boolean iIsPrime = isPrime(i, startNumberDivisors);
-            LOGGER.info("getNextPrimeNumberGreaterThan, tested: " + i + " prime:"+ iIsPrime);
+            LOGGER.debug("getNextPrimeNumberGreaterThan, tested: " + i + " prime:" + iIsPrime);
             if (iIsPrime) {
                 return i;
             }
