@@ -1,0 +1,8 @@
+/bin/
+gradle
+.gradle
+settings.gradle
+lib
+gradlew*
+README
+
