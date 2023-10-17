@@ -3,12 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17"/>	
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/hamcrest-all-1.3.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/hamcrest-core-1.3.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/hamcrest-junit-2.0.0.0.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/hamcrest-matchers-1.0.1.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/junit-hierarchicalcontextrunner-4.11.1.jar"/>
-	<classpathentry kind="lib" path="../ExternalLibraries/junit-hierarchicalcontextrunner-4.12.1.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/log4j-api-2.20.0.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/log4j-core-2.20.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
