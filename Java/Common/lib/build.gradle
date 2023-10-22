@@ -7,6 +7,12 @@ repositories {
     mavenCentral() // <2>
 }
 
+// tag::jar[]
+jar {
+    archiveBaseName = 'common'
+    archiveVersion =  '0.0.1'
+}
+
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3' // <3>
 	
