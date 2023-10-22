@@ -13,6 +13,6 @@ call gradlew build >> gradle_logs.log  2>&1
 
 ECHO %DATE% %TIME% >> gradle_logs.log
 
-xcopy lib\build\libs\*.jar ..\InternalLibraries\
+xcopy /Y  lib\build\libs\*.jar ..\InternalLibraries\
 
 timeout /t 15

@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -47,9 +49,14 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 
 		BufferedImage applicationBufferedImage = null;
 		File applicationImageFile = null;
-		String applicationImagePath = "src/main/resources/images/ApplicationIcon.png";
+		String applicationImagePath = "ApplicationIcon.png";
 
-		applicationImageFile = new File(applicationImagePath);
+		URL resourceURL = getClass().getResource(applicationImagePath);
+		LOGGER.info(() -> "resourceURL:" + resourceURL);
+		InputStream resourceInputStream = getClass().getResourceAsStream(applicationImagePath);
+		LOGGER.info(() -> "resourceInputStream:" + resourceInputStream);
+
+		applicationImageFile = new File(resourceURL.getFile());
 		try {
 			applicationBufferedImage = ImageIO.read(applicationImageFile);
 			setIconImage(applicationBufferedImage);
@@ -64,14 +71,13 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	 */
 	public void createAndShowGUI() {
 		setApplicationIcon();
-		
+
 		setVisible(true);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		mainViewMenuBarManager.createMenu();
 
-		
 		setMinimumSize(HMIConstants.MINIMUM_WINDOW_DIMENSION);
 		pack();
 		setLocationRelativeTo(null);
@@ -97,7 +103,6 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 
 		this.addKeyListener(new KeyBoardInputs(this, hmiPresenter));
 
-		
 		pack();
 
 		// Center to screen
@@ -129,7 +134,6 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		return gameBoardPanel;
 	}
 
-	
 	public HmiPresenter getHmiPresenter() {
 		return hmiPresenter;
 	}

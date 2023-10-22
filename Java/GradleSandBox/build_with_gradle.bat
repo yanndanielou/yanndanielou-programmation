@@ -17,6 +17,8 @@ rem call gradlew jar >> gradle_logs.log  2>&1
 ECHO %DATE% %TIME% >> gradle_logs.log
 
 
+call run_application_jar_fan.bat
+
 
 
 

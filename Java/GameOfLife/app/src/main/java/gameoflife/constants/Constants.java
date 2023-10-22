@@ -6,5 +6,5 @@ public class Constants {
 		// no way to instantiate this class
 	}
 
-	public static final String GAME_BOARD_JSON_DATA_MODEL_FILE_PATH = "src/main/resources/datamodels/GameBoardDataModel.json";
+	public static final String GAME_BOARD_JSON_DATA_MODEL_FILE_PATH = "GameBoardDataModel.json";
 }

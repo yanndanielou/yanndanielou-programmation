@@ -79,10 +79,10 @@ public class DrawActionPickerPopup extends JFrame {
 		iconsPanel.setLayout(new FlowLayout());
 
 		drawAliveCellImageLabel = HMIUtils
-				.createJLabelFromImage("src/main/resources/images/DrawAliveCellButtonIcon.png");
-		drawDeadCellImageLabel = HMIUtils.createJLabelFromImage("src/main/resources/images/DrawDeadCellButtonIcon.png");
+				.createJLabelFromImagePathAndClass("DrawAliveCellButtonIcon.png", getClass());
+		drawDeadCellImageLabel = HMIUtils.createJLabelFromImagePathAndClass("DrawDeadCellButtonIcon.png", getClass());
 		toggleCellStatusImageLabel = HMIUtils
-				.createJLabelFromImage("src/main/resources/images/DrawToggleCellStateButtonIcon.png");
+				.createJLabelFromImagePathAndClass("DrawToggleCellStateButtonIcon.png", getClass());
 
 		drawAliveCellImageLabel.addMouseListener(new MouseAdapter() {
 			@Override

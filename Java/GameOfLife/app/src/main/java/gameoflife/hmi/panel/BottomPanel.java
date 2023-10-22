@@ -39,7 +39,7 @@ public class BottomPanel extends BasePanel implements GameStatusListener {
 
 		setPreferredSize(new Dimension(gameOfLifeMainViewFrame.getWidth(), HMIConstants.BOTTOM_PANNEL_HEIGHT));
 		setSpeed1ForPlaySpeedButton = HMIUtils				
-				.createJButtonFromImage("SetSpeed1ForPlaySpeedButtonIcon.png");
+				.createJButtonFromImagePathAndClass("SetSpeed1ForPlaySpeedButtonIcon.png", getClass());
 		setSpeed1ForPlaySpeedButton.setLocation((int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(), 0);
 		setSpeed1ForPlaySpeedButton.addActionListener(e -> {
 			LOGGER.info(() -> "Set speed 1 for play button actionned");
@@ -56,7 +56,7 @@ public class BottomPanel extends BasePanel implements GameStatusListener {
 		});
 		add(playSpeedSpinner);
 
-		stepForwardButton = HMIUtils.createJButtonFromImage("app/src/main/resources/images/StepForwardButtonIcon.png");
+		stepForwardButton = HMIUtils.createJButtonFromImagePathAndClass("StepForwardButtonIcon.png", getClass());
 		stepForwardButton.setLocation((int) (playSpeedSpinner.getBounds().getMaxX()
 				+ HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth()), 0);
 		stepForwardButton.addActionListener(e -> {
@@ -65,16 +65,16 @@ public class BottomPanel extends BasePanel implements GameStatusListener {
 		});
 		add(stepForwardButton);
 
-		playButton = HMIUtils.createJButtonFromImage("app/src/main/resources/images/PlayButtonIcon.png");
+		playButton = HMIUtils.createJButtonFromImagePathAndClass("PlayButtonIcon.png", getClass());
 		playButton.setLocation((int) (stepForwardButton.getBounds().getMaxX()
 				+ HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth()), 0);
 		playButton.addActionListener(e -> {
-			LOGGER.info(() -> "Play button actionned");
+			LOGGER.info(() -> "Play button act	ionned");
 			game.autoPlay(getAutoPlaySpeedPerSecond());
 		});
 		add(playButton);
 
-		pauseButton = HMIUtils.createJButtonFromImage("app/src/main/resources/images/PauseButtonIcon.png");
+		pauseButton = HMIUtils.createJButtonFromImagePathAndClass("PauseButtonIcon.png", getClass());
 		pauseButton.setLocation(
 				(int) (playButton.getBounds().getMaxX() + HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth()), 0);
 		pauseButton.addActionListener(e -> {

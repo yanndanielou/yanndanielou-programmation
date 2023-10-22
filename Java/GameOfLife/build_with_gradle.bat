@@ -14,9 +14,13 @@ rem call gradlew shadowJar >> gradle_logs.log  2>&1
 
 rem call gradlew jar >> gradle_logs.log  2>&1
 
+
 ECHO %DATE% %TIME% >> gradle_logs.log
 
 
 
+run_application_jar.bat
+
+ECHO %DATE% %TIME% >> gradle_logs.log
 
 timeout /t 15
