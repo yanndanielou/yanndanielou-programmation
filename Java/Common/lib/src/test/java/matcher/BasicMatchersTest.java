@@ -10,13 +10,12 @@ import static matcher.BasicMatchers.greaterThan;
 import static matcher.BasicMatchers.hasSize;
 import static matcher.BasicMatchers.is;
 import static matcher.BasicMatchers.not;
-import static util.CollectionUtils.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static util.CollectionUtils.asList;
 
 import java.util.ArrayList;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 
 public class BasicMatchersTest {
 
