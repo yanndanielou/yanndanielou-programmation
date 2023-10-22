@@ -1,0 +1,67 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+mainClassName = 'hello.HelloWorld'
+
+// tag::repositories[]
+repositories { 
+    mavenCentral() 
+}
+// end::repositories[]
+
+// tag::jar[]
+jar {
+    archiveBaseName = 'gradle-sandbox'
+    archiveVersion =  '0.1.0'
+}
+// end::jar[]
+
+
+application {
+    mainClass = 'gradlesandbox.application.GradleSandboxApplication' // <5>
+}
+
+// tag::dependencies[]
+sourceCompatibility = 21
+targetCompatibility = 21
+
+dependencies {
+    implementation "joda-time:joda-time:2.2"
+    testImplementation "junit:junit:4.12"
+	
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	
+    implementation "joda-time:joda-time:2.2"
+	
+	
+	
+    // runtimeOnly group: 'org.springframework', name: 'spring-core', version: '2.5'
+   //  runtimeOnly 'org.springframework:spring-core:2.5',
+   //          'org.springframework:spring-aop:2.5'
+   //  runtimeOnly(
+   //      [group: 'org.springframework', name: 'spring-core', version: '2.5'],
+   //      [group: 'org.springframework', name: 'spring-aop', version: '2.5']
+   //  )
+   //  runtimeOnly('org.hibernate:hibernate:3.0.5') {
+   //      transitive = true
+   //  }
+   //  runtimeOnly group: 'org.hibernate', name: 'hibernate', version: '3.0.5', transitive: true
+   //  runtimeOnly(group: 'org.hibernate', name: 'hibernate', version: '3.0.5') {
+   //      transitive = true
+   //  }
+
+	
+	
+}
+// end::dependencies[]
+
+// tag::wrapper[]
+// end::wrapper[]
+
+
+tasks.named('test') {
+    useJUnitPlatform() // <6>
+}
+

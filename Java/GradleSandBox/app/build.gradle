@@ -1,0 +1,28 @@
+
+plugins {
+    id 'application' // <1>
+}
+
+repositories {
+    mavenCentral() // <2>
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3' // <3>
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation 'com.google.guava:guava:32.1.1-jre' // <4>
+	
+	// https://mvnrepository.com/artifact/joda-time/joda-time
+	implementation group: 'joda-time', name: 'joda-time', version: '2.2'
+
+}
+
+application {
+    mainClass = 'gradlesandbox.application.GradleSandboxApplication' // <5>
+}
+
+tasks.named('test') {
+    useJUnitPlatform() // <6>
+}
