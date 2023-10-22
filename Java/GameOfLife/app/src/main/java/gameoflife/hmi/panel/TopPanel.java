@@ -45,7 +45,7 @@ public class TopPanel extends BasePanel implements GameStatusListener {
 
 		setPreferredSize(new Dimension(gameOfLifeMainViewFrame.getWidth(), HMIConstants.TOP_PANEL_HEIGHT));
 
-		panButton = HMIUtils.createJButtonFromImage("src/main/resources/images/PanButtonIcon.png");
+		panButton = HMIUtils.createJButtonFromImage("app/src/main/resources/images/PanButtonIcon.png");
 		panButton.setLocation((int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(),
 				(int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getHeight());
 		panButton.addActionListener(e -> {
@@ -54,7 +54,7 @@ public class TopPanel extends BasePanel implements GameStatusListener {
 		});
 		add(panButton);
 
-		drawButton = HMIUtils.createJButtonFromImage("src/main/resources/images/DrawButtonIcon.png");
+		drawButton = HMIUtils.createJButtonFromImage("app/src/main/resources/images/DrawButtonIcon.png");
 		drawButton.setLocation(
 				(int) panButton.getBounds().getMaxX() + (int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(),
 				(int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getHeight());
@@ -87,7 +87,7 @@ public class TopPanel extends BasePanel implements GameStatusListener {
 		add(zoomLevelStaticLabel);
 		zoomLevelStaticLabel.setLabelFor(zoomLevelSlider);
 
-		showGridButton = HMIUtils.createJButtonFromImage("src/main/resources/images/GridButtonIcon.png");
+		showGridButton = HMIUtils.createJButtonFromImage("app/src/main/resources/images/GridButtonIcon.png");
 		showGridButton.setLocation(
 				(int) zoomLevelSlider.getBounds().getMaxX()
 						+ (int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(),
@@ -100,7 +100,7 @@ public class TopPanel extends BasePanel implements GameStatusListener {
 		});
 		add(showGridButton);
 
-		hideGridButton = HMIUtils.createJButtonFromImage("src/main/resources/images/GridButtonIcon.png");
+		hideGridButton = HMIUtils.createJButtonFromImage("app/src/main/resources/images/GridButtonIcon.png");
 		hideGridButton.setLocation(
 				(int) zoomLevelSlider.getBounds().getMaxX()
 						+ (int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(),

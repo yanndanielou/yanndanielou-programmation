@@ -99,7 +99,7 @@ class ConwaysGameOfLifeManuelStepsTest {
 				// @formatter:off
 				return Stream.of(
 						Arguments.of(CollectionUtils.asList(new MutablePair<Integer, Integer>(5, 5),new MutablePair<Integer, Integer>(5, 6),new MutablePair<Integer, Integer>(6, 5),new MutablePair<Integer, Integer>(6, 6)), "Block"),
-						Arguments.of(CollectionUtils.asList(new MutablePair<Integer, Integer>(2, 1),new MutablePair<Integer, Integer>(1, 2),new MutablePair<Integer, Integer>(3, 2),new MutablePair<Integer, Integer>(2, 4)), "Tub"),
+						Arguments.of(CollectionUtils.asList(new MutablePair<Integer, Integer>(2, 1),new MutablePair<Integer, Integer>(1, 2),new MutablePair<Integer, Integer>(3, 2),new MutablePair<Integer, Integer>(2, 3)), "Tub"),
 						Arguments.of(CollectionUtils.asList(new MutablePair<Integer, Integer>(2, 1),new MutablePair<Integer, Integer>(3, 1),new MutablePair<Integer, Integer>(1, 2),new MutablePair<Integer, Integer>(4, 2),new MutablePair<Integer, Integer>(2, 3),new MutablePair<Integer, Integer>(3, 3)), "Bee-Hive")
 						);
 				// @formatter:on	
