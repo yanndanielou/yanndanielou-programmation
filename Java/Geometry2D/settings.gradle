@@ -1,0 +1,3 @@
+
+rootProject.name = 'Geometry2D'
+include('lib')
