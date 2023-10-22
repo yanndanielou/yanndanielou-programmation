@@ -1,4 +1,4 @@
-package main.common.exceptions;
+package common.exceptions;
 
 public class BadLogicException extends RuntimeException {
 
