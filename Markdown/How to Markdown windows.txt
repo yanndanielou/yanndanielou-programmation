@@ -1,5 +1,5 @@
 Notepad ++: 
 
 Plugins (via plugin manager):
-- MarkdownViewer++ (testé par YDA 2023-10-22 OK)
-- NppMarkdownPanel
+- MarkdownViewer++ (testé par YDA 2023-10-22 OK mais pas synchro auto)
+- NppMarkdownPanel (testé par YDA 2023-10-22 OK)
