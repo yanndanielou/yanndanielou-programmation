@@ -1,6 +1,8 @@
 
 plugins {
     id 'application' // <1>
+	id 'com.github.johnrengelman.shadow' version '8.1.1'
+
 }
 
 repositories {
@@ -15,12 +17,25 @@ dependencies {
     implementation 'com.google.guava:guava:32.1.1-jre' // <4>
 	
 	// https://mvnrepository.com/artifact/joda-time/joda-time
-	implementation group: 'joda-time', name: 'joda-time', version: '2.2'
+	implementation group: 'joda-time', name: 'joda-time', version: '2.12.5'
 
 }
 
+// Task "distZip" added by plugin "java-library-distribution":
+distZip.shouldRunAfter(build)
+
 application {
     mainClass = 'gradlesandbox.application.GradleSandboxApplication' // <5>
+}
+
+jar {
+
+  shadowJar.archiveBaseName = 'gradleSandBox'
+  shadowJar.archiveVersion =  '0.0.1'
+	
+  manifest {
+    attributes 'Main-Class': application.mainClass
+  }
 }
 
 tasks.named('test') {
