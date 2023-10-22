@@ -5,6 +5,8 @@ SET JDK_HOME="C:\Program Files\java\jdk-21"
 ECHO %DATE% %TIME% >> gradle_logs.log
 
 SET JAVA_HOME=%JDK_HOME%
+
+rem call %GRADLE_PATH%\gradle.bat wrapper --gradle-version %GRADLE_VERSION%  >> gradle_logs.log  2>&1
 call gradlew build >> gradle_logs.log  2>&1
 
 timeout /t 15
