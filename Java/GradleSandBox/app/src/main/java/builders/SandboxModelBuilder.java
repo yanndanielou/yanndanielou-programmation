@@ -18,11 +18,16 @@ public class SandboxModelBuilder {
 	public SandboxDataModel getGameBoardDataModel() {
 		return gameBoardDataModel;
 	}
+	
+	
 
 	public SandboxModelBuilder() {
+		
+		System.out.println(getClass().getName());
+		
 		BufferedReader bufferedReader = null;
 
-		String gameBoardDataModelJsonFile = "./datamodels/SandboxDataModel.json";
+		String gameBoardDataModelJsonFile = "app/src/main/resources/datamodels/SandboxDataModel.json";
 
 		try {
 			bufferedReader = new BufferedReader(new FileReader(gameBoardDataModelJsonFile));

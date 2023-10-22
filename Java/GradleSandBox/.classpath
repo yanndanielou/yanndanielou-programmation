@@ -17,5 +17,6 @@
 	
 	<classpathentry kind="lib" path="../ExternalLibraries/joda-time-2.12.5.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/gson-2.10.1.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/spring-core-6.0.13.jar"/>
 	
 </classpath>
