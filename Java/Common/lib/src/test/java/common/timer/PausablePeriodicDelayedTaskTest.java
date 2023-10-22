@@ -1,4 +1,4 @@
-package test.common.timer;
+package common.timer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -11,8 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import main.common.exceptions.BadLogicException;
-import main.common.timer.PausablePeriodicDelayedTask;
+import common.exceptions.BadLogicException;
 
 public class PausablePeriodicDelayedTaskTest {
 	static final Logger LOGGER = LogManager.getLogger(PausablePeriodicDelayedTaskTest.class);

@@ -1,11 +1,6 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Calculator {
     private static final Logger LOGGER = LogManager.getLogger(Calculator.class);
 

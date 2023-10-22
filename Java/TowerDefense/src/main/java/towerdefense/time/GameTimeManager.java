@@ -3,7 +3,7 @@ package towerdefense.time;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import main.common.timer.PausableTimeManager;
+import common.timer.PausableTimeManager;
 import towerdefense.game.Game;
 import towerdefense.game.GameStatusListener;
 

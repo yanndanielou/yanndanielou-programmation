@@ -1,16 +1,14 @@
-package test.util;
+package util;
 
-import static main.matcher.BasicMatchers.containsExactly;
-import static main.matcher.BasicMatchers.containsExactlyAll;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static matcher.BasicMatchers.containsExactly;
+import static matcher.BasicMatchers.containsExactlyAll;
 import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.List;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import main.util.CollectionUtils;
 
 public class CollectionUtilsTest {
 

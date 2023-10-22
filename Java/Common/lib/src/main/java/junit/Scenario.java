@@ -1,4 +1,4 @@
-package main.junit;
+package junit;
 
 public class Scenario {
 	public Scenario() {

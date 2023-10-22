@@ -1,9 +1,9 @@
-package test.common.random;
+package common.random;
 
-import static main.matcher.BasicMatchers.empty;
-import static main.matcher.BasicMatchers.greaterThanOrEqualTo;
-import static main.matcher.BasicMatchers.is;
-import static main.matcher.BasicMatchers.lessThanOrEqualTo;
+import static matcher.BasicMatchers.empty;
+import static matcher.BasicMatchers.greaterThanOrEqualTo;
+import static matcher.BasicMatchers.is;
+import static matcher.BasicMatchers.lessThanOrEqualTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import main.common.random.RandomIntegerGenerator;
 
 class RandomIntegerGeneratorTest {
 

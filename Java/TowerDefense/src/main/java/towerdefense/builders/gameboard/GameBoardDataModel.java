@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.collections4.ListUtils;
 
+import common.exceptions.BadLogicException;
 import game.builders.DimensionDataModel;
 import game.builders.GameBoardAreasByRGBImageRecognitionDataModel;
 import game.builders.RectangleDataModel;
-import main.common.exceptions.BadLogicException;
 
 public class GameBoardDataModel {
 

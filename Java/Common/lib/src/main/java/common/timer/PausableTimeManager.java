@@ -1,4 +1,4 @@
-package main.common.timer;
+package common.timer;
 
 import java.util.ArrayList;
 import java.util.TimerTask;

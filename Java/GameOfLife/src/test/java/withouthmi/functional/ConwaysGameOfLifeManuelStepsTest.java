@@ -27,7 +27,7 @@ import gameoflife.game.Game;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
 import gameoflife.hmi.GameOfLifeMainViewFrame;
-import main.util.CollectionUtils;
+import util.CollectionUtils;
 
 @ExtendWith(MockitoExtension.class)
 class ConwaysGameOfLifeManuelStepsTest {

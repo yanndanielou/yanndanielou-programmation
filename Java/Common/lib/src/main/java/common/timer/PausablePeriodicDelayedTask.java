@@ -1,4 +1,4 @@
-package main.common.timer;
+package common.timer;
 
 public abstract class PausablePeriodicDelayedTask extends PausableOneShotDelayedTask {
 

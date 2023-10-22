@@ -5,7 +5,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import main.common.hmi.utils.HMIUtils;
+import common.hmi.utils.HMIUtils;
 import towerdefense.constants.HMIConstants;
 import towerdefense.game.Game;
 import towerdefense.game.GameDuration;

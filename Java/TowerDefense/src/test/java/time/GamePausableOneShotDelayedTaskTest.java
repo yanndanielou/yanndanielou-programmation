@@ -11,8 +11,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import main.common.exceptions.BadLogicException;
-import main.common.timer.PausableOneShotDelayedTask;
+import common.exceptions.BadLogicException;
+import common.timer.PausableOneShotDelayedTask;
 
 public class GamePausableOneShotDelayedTaskTest {
 	static final Logger LOGGER = LogManager.getLogger(GamePausableOneShotDelayedTaskTest.class);

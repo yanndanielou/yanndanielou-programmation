@@ -1,6 +1,6 @@
 package challenge;
 
-import main.common.numbers.utils.NumberUtils;
+import common.numbers.utils.NumberUtils;
 
 public class HighestDigit {
 

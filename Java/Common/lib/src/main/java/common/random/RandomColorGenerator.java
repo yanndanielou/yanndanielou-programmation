@@ -1,4 +1,4 @@
-package main.common.random;
+package common.random;
 
 import java.awt.Color;
 

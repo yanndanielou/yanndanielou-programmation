@@ -1,8 +1,8 @@
 package towerdefense.time;
 
+import common.timer.PausablePeriodicDelayedTask;
 import game.genericgame.GenericGame;
 import game.genericgame.GenericGameStatusListener;
-import main.common.timer.PausablePeriodicDelayedTask;
 
 public abstract class GamePausablePeriodicDelayedTask extends PausablePeriodicDelayedTask
 		implements GenericGameStatusListener<GenericGame> {

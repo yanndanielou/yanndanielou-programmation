@@ -9,11 +9,11 @@ import javax.swing.SpinnerNumberModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import common.hmi.utils.HMIUtils;
 import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
 import gameoflife.hmi.GameOfLifeMainViewFrame;
-import main.common.hmi.utils.HMIUtils;
 
 public class BottomPanel extends BasePanel implements GameStatusListener {
 

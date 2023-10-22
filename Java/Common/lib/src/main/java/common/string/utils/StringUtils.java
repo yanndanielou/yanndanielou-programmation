@@ -1,4 +1,4 @@
-package main.common.string.utils;
+package common.string.utils;
 
 public class StringUtils {
 

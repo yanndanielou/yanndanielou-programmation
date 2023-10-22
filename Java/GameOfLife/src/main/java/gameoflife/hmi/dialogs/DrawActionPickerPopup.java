@@ -18,9 +18,9 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import common.hmi.utils.HMIUtils;
 import gameoflife.hmi.DrawAction;
 import gameoflife.hmi.GameOfLifeMainViewFrame;
-import main.common.hmi.utils.HMIUtils;
 
 public class DrawActionPickerPopup extends JFrame {
 

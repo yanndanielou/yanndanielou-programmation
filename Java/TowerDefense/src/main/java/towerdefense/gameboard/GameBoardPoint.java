@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import common.exceptions.BadLogicException;
 import game.gameboard.GenericIntegerGameBoardPoint;
-import main.common.exceptions.BadLogicException;
 import towerdefense.belligerents.Attacker;
 import towerdefense.belligerents.Tower;
 import towerdefense.belligerents.listeners.AttackerListener;

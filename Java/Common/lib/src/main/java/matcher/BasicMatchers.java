@@ -1,4 +1,4 @@
-package main.matcher;
+package matcher;
 
 import java.util.Collection;
 

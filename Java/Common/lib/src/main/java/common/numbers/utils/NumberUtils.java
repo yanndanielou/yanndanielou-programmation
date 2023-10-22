@@ -1,4 +1,4 @@
-package main.common.numbers.utils;
+package common.numbers.utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

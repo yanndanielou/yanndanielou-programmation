@@ -1,16 +1,16 @@
-package test.matcher;
+package matcher;
 
-import static main.matcher.BasicMatchers.contains;
-import static main.matcher.BasicMatchers.containsAll;
-import static main.matcher.BasicMatchers.containsExactly;
-import static main.matcher.BasicMatchers.containsExactlyInAnyOrder;
-import static main.matcher.BasicMatchers.empty;
-import static main.matcher.BasicMatchers.equalTo;
-import static main.matcher.BasicMatchers.greaterThan;
-import static main.matcher.BasicMatchers.hasSize;
-import static main.matcher.BasicMatchers.is;
-import static main.matcher.BasicMatchers.not;
-import static main.util.CollectionUtils.asList;
+import static matcher.BasicMatchers.contains;
+import static matcher.BasicMatchers.containsAll;
+import static matcher.BasicMatchers.containsExactly;
+import static matcher.BasicMatchers.containsExactlyInAnyOrder;
+import static matcher.BasicMatchers.empty;
+import static matcher.BasicMatchers.equalTo;
+import static matcher.BasicMatchers.greaterThan;
+import static matcher.BasicMatchers.hasSize;
+import static matcher.BasicMatchers.is;
+import static matcher.BasicMatchers.not;
+import static util.CollectionUtils.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.ArrayList;

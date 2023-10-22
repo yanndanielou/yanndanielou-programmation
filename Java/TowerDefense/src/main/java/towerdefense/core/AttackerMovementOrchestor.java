@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import common.exceptions.BadLogicException;
+import common.timer.TimeManagerListener;
 import game.gameboard.NeighbourGameBoardPointDirection;
 import geometry2d.vectors.Vector2D;
-import main.common.exceptions.BadLogicException;
-import main.common.timer.TimeManagerListener;
 import towerdefense.belligerents.Attacker;
 import towerdefense.game.Game;
 

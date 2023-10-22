@@ -2,7 +2,7 @@ package challenge;
 
 import java.util.List;
 
-import main.common.numbers.utils.NumberUtils;
+import common.numbers.utils.NumberUtils;
 
 public class Challenge {
 

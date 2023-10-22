@@ -1,4 +1,4 @@
-package main.common.hmi.utils;
+package common.hmi.utils;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;

@@ -1,7 +1,7 @@
 package towerdefense.time;
 
+import common.timer.PausableOneShotDelayedTask;
 import game.genericgame.GenericGameStatusListener;
-import main.common.timer.PausableOneShotDelayedTask;
 import towerdefense.game.Game;
 
 public abstract class GamePausableOneShotDelayedTask extends PausableOneShotDelayedTask

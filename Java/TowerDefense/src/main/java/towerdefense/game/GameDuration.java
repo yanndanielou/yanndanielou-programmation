@@ -6,7 +6,7 @@ import java.util.Date;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import test.common.timer.TimeConstants;
+import common.timer.TimeConstants;
 import towerdefense.time.GamePausableOneShotDelayedTask;
 
 public class GameDuration implements GameStatusListener {

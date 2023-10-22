@@ -1,4 +1,4 @@
-package test.common.timer;
+package common.timer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -10,8 +10,6 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import main.common.timer.PausableTimer;
 
 public class PausableTimerTest {
 	static final Logger LOGGER = LogManager.getLogger(PausableTimerTest.class);

@@ -12,11 +12,11 @@ import javax.swing.KeyStroke;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import common.random.RandomIntegerGenerator;
 import gameoflife.core.GameManager;
 import gameoflife.gameboard.Cell;
 import gameoflife.hmi.dialogs.CheatCodeDialog;
 import gameoflife.hmi.dialogs.NewGameWhileGameIsInProgressPopup;
-import main.common.random.RandomIntegerGenerator;
 
 public class MainViewMenuBarManager {
 	private static final Logger LOGGER = LogManager.getLogger(MainViewMenuBarManager.class);

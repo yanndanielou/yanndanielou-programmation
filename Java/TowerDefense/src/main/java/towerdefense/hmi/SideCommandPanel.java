@@ -11,7 +11,7 @@ import javax.swing.JLayeredPane;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import main.common.hmi.utils.HMIUtils;
+import common.hmi.utils.HMIUtils;
 import towerdefense.belligerents.Attacker;
 import towerdefense.belligerents.Tower;
 import towerdefense.belligerents.listeners.AttackerListener;

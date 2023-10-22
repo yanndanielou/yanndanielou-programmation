@@ -1,4 +1,4 @@
-package main.junit;
+package junit;
 
 import java.time.Duration;
 import java.time.LocalTime;

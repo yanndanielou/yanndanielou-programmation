@@ -1,4 +1,4 @@
-package test.common.timer;
+package common.timer;
 
 public final class TimeConstants {
 

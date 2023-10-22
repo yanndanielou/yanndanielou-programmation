@@ -9,11 +9,11 @@ import javax.swing.ImageIcon;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import common.hmi.utils.HMIUtils;
 import geometry2d.gameboard.IntegerDimensionsRectangleShapeWithFloatLocationPrecisionOnIntegerPrecisionGrid;
 import geometry2d.integergeometry.IntegerPrecisionPoint;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import geometry2d.vectors.Vector2D;
-import main.common.hmi.utils.HMIUtils;
 import towerdefense.belligerents.weapon.SimpleTowerBomb;
 import towerdefense.belligerents.weapon.Weapon;
 import towerdefense.game.Game;

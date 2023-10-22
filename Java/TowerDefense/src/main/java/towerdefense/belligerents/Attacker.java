@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import common.timer.TimeManagerListener;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
-import main.common.timer.TimeManagerListener;
 import towerdefense.belligerents.listeners.AttackerListener;
 import towerdefense.belligerents.weapon.Weapon;
 import towerdefense.builders.belligerents.AttackerDataModel;

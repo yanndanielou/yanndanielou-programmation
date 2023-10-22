@@ -9,8 +9,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import common.random.RandomIntegerGenerator;
 import geometry2d.exceptions.BadGeometryException;
-import main.common.random.RandomIntegerGenerator;
 
 public class IntegerPrecisionRectangle {
 	private static final Logger LOGGER = LogManager.getLogger(IntegerPrecisionRectangle.class);

@@ -3,9 +3,9 @@ package gameoflife.time;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import common.timer.PausableTimeManager;
 import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
-import main.common.timer.PausableTimeManager;
 
 public class GameTimeManager extends PausableTimeManager implements GameStatusListener {
 
