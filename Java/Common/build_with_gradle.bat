@@ -11,7 +11,7 @@ SET JAVA_HOME=%JDK_HOME%
 call %GRADLE_PATH%\gradle.bat wrapper --gradle-version %GRADLE_VERSION%  >> gradle_logs.log  2>&1
 call gradlew build >> gradle_logs.log  2>&1
 
-ECHO %DATE% %TIME% >> gradle_logs.log*
+ECHO %DATE% %TIME% >> gradle_logs.log
 
 xcopy lib\build\libs\*.jar ..\InternalLibraries\
 
