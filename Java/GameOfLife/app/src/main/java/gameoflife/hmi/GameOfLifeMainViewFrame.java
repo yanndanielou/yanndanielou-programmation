@@ -3,9 +3,11 @@ package gameoflife.hmi;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
@@ -48,17 +50,13 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	private void setApplicationIcon() {
 
 		BufferedImage applicationBufferedImage = null;
-		File applicationImageFile = null;
 		String applicationImagePath = "ApplicationIcon.png";
 
-		URL resourceURL = getClass().getResource(applicationImagePath);
-		LOGGER.info(() -> "resourceURL:" + resourceURL);
 		InputStream resourceInputStream = getClass().getResourceAsStream(applicationImagePath);
 		LOGGER.info(() -> "resourceInputStream:" + resourceInputStream);
 
-		applicationImageFile = new File(resourceURL.getFile());
 		try {
-			applicationBufferedImage = ImageIO.read(applicationImageFile);
+			applicationBufferedImage = ImageIO.read(resourceInputStream);
 			setIconImage(applicationBufferedImage);
 		} catch (IOException e1) {
 			LOGGER.info(() -> "Could not define application icon " + applicationImagePath);
