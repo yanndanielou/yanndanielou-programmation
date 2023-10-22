@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 
 import com.google.gson.Gson;
 
@@ -19,17 +20,21 @@ public class SandboxModelBuilder {
 	}
 
 	public SandboxModelBuilder() {
-		String gameBoardDataModelJsonFile = "./SandboxDataModel.json";
+		BufferedReader bufferedReader = null;
 
-		InputStream inputStream = getClass().getResourceAsStream(gameBoardDataModelJsonFile);
-		InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+		String gameBoardDataModelJsonFile = "./datamodels/SandboxDataModel.json";
 
-		/*
-		 * try { reader = new BufferedReader(new
-		 * FileReader(gameBoardDataModelJsonFile)); } catch (IOException e) {
-		 * e.printStackTrace(); }
-		 */
+		try {
+			bufferedReader = new BufferedReader(new FileReader(gameBoardDataModelJsonFile));
+		} catch (IOException e) {
+			e.printStackTrace();
+
+			URL resource = SandboxModelBuilder.class.getResource(gameBoardDataModelJsonFile);
+			InputStream inputStream = SandboxModelBuilder.class.getResourceAsStream(gameBoardDataModelJsonFile);
+			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+			bufferedReader = new BufferedReader(inputStreamReader);
+		}
+
 		gameBoardDataModel = gson.fromJson(bufferedReader, SandboxDataModel.class);
 
 	}
