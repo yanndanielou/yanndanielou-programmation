@@ -38,9 +38,8 @@ public class BottomPanel extends BasePanel implements GameStatusListener {
 		setBackground(HMIConstants.TOP_PANEL_BACKGROUND_COLOR);
 
 		setPreferredSize(new Dimension(gameOfLifeMainViewFrame.getWidth(), HMIConstants.BOTTOM_PANNEL_HEIGHT));
-
-		setSpeed1ForPlaySpeedButton = HMIUtils
-				.createJButtonFromImage("app/src/main/resources/images/SetSpeed1ForPlaySpeedButtonIcon.png");
+		setSpeed1ForPlaySpeedButton = HMIUtils				
+				.createJButtonFromImage("SetSpeed1ForPlaySpeedButtonIcon.png");
 		setSpeed1ForPlaySpeedButton.setLocation((int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(), 0);
 		setSpeed1ForPlaySpeedButton.addActionListener(e -> {
 			LOGGER.info(() -> "Set speed 1 for play button actionned");

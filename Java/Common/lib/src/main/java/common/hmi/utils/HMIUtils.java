@@ -4,12 +4,15 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.FileSystemNotFoundException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+import org.junit.jupiter.api.ClassOrderer.ClassName;
 
 public class HMIUtils {
 
@@ -27,9 +30,20 @@ public class HMIUtils {
 	}
 
 	public static JButton createJButtonFromImage(String imagePath) {
-		ImageIcon buttonIcon = new ImageIcon(imagePath);
-		if (buttonIcon.getIconHeight() <= 0) {
-			throw new FileSystemNotFoundException("Invalid path:" + imagePath);
+		ImageIcon buttonIcon = null;
+
+		// Try with
+		InputStream stream = HMIUtils.class.getClassLoader().getResourceAsStream(imagePath);
+		try {
+			BufferedImage bufferedImage = ImageIO.read(stream);
+			buttonIcon = new ImageIcon(bufferedImage);
+		} catch (IOException | IllegalArgumentException e) {
+			e.printStackTrace();
+
+			buttonIcon = new ImageIcon(imagePath);
+			if (buttonIcon.getIconHeight() <= 0) {
+				buttonIcon = new ImageIcon(imagePath);
+			}
 		}
 		JButton buttonToCreate = new JButton(buttonIcon);
 		buttonToCreate.setSize(buttonIcon.getIconWidth(), buttonIcon.getIconHeight());
@@ -57,4 +71,5 @@ public class HMIUtils {
 		}
 		return bufferedImage;
 	}
+
 }
