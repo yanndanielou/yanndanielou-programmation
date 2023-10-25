@@ -119,19 +119,19 @@ public class TetrisMainViewFrame extends JFrame implements GameStatusListener {
 	}
 
 	@Override
-	public void on_game_paused(Game game) {
+	public void onGamePaused(Game game) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void on_game_resumed(Game game) {
+	public void onGameResumed(Game game) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void on_listen_to_game_status(Game game) {
+	public void onListenToGameStatus(Game game) {
 		gameFieldPanel.initialize_gamefield(game.getGameField());
 		panel_content.setSize((int) (gameFieldPanel.getWidth() * 2), (int) (gameFieldPanel.getHeight()*1.5));
 		gameFieldPanel.setLocation(panel_content.getWidth() / 2 - gameFieldPanel.getWidth() / 2, panel_content.getHeight() / 2 - gameFieldPanel.getHeight() / 2);
@@ -140,12 +140,12 @@ public class TetrisMainViewFrame extends JFrame implements GameStatusListener {
 	}
 
 	@Override
-	public void on_game_cancelled(Game game) {
-		gameFieldPanel.on_game_cancelled(game);
+	public void onGameCancelled(Game game) {
+		gameFieldPanel.onGameCancelled(game);
 	}
 
 	@Override
-	public void on_game_over(Game game) {
+	public void onGameOver(Game game) {
 		// TODO Auto-generated method stub
 
 	}

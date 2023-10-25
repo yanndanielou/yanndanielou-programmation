@@ -86,4 +86,20 @@ public class HmiPresenter {
 		return panInProgress;
 	}
 
+	public BottomPanel getBottomPanel() {
+		return bottomPanel;
+	}
+
+	public FullFrameContentPanel getFrameContentPanel() {
+		return frameContentPanel;
+	}
+
+	public GameBoardPanel getGameBoardPanel() {
+		return gameBoardPanel;
+	}
+
+	public GameOfLifeMainViewFrame getGameOfLifeMainViewFrame() {
+		return gameOfLifeMainViewFrame;
+	}
+
 }

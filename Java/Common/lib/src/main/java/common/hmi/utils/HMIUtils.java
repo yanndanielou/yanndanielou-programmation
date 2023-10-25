@@ -27,7 +27,7 @@ public class HMIUtils {
 
 	}
 
-	public static JButton createJButtonFromImagePathAndClass(String imagePath, Class class1) {
+	public static JButton createJButtonFromImagePathAndClass(String imagePath, Class<?> class1) {
 		return createJButtonFromImage(class1.getResourceAsStream(imagePath));
 	}
 
@@ -53,7 +53,7 @@ public class HMIUtils {
 		return buttonToCreate;
 	}
 
-	public static JLabel createJLabelFromImagePathAndClass(String imagePath, Class class1) {
+	public static JLabel createJLabelFromImagePathAndClass(String imagePath, Class<?> class1) {
 		InputStream resourceAsStream = class1.getResourceAsStream(imagePath);
 		Image image;
 		try {

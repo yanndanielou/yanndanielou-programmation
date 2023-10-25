@@ -8,7 +8,6 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-import javax.swing.JScrollPane;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -34,7 +33,7 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	private GameBoardPanel gameBoardPanel;
 	private BottomPanel bottomPanel;
 
-	private JScrollPane gameFieldScrollPane;
+	//private JScrollPane gameFieldScrollPane;
 
 	private FullFrameContentPanel fullFrameContent;
 	private HmiPresenter hmiPresenter;

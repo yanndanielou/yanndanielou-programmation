@@ -12,8 +12,8 @@ public class TopPanel extends JPanel implements GameStatusListener {
 
 	private static final long serialVersionUID = -4722225029326344692L;
 
-	private SevenSegmentLedsNumberDisplayFromDemineurImage remaining_unflagged_mines_label;
-	private SevenSegmentLedsNumberDisplayFromDemineurImage game_duration_label;
+	private SevenSegmentLedsNumberDisplayFromDemineurImage remainingUnflaggedMinesLabel;
+	private SevenSegmentLedsNumberDisplayFromDemineurImage gameDurationLabel;
 	private JButton smiley_button;
 
 	private ImageIcon smiley_normal_icon;

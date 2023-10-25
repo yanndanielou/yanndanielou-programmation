@@ -29,7 +29,7 @@ public class Game {
 	}
 
 	public void add_game_status_listener(GameStatusListener listener) {
-		listener.on_listen_to_game_status(this);
+		listener.onListenToGameStatus(this);
 		game_status_listeners.add(listener);
 	}
 
@@ -46,7 +46,7 @@ public class Game {
 	}
 
 	public void abort() {
-		game_status_listeners.forEach((game_status_listener) -> game_status_listener.on_game_cancelled(this));
+		game_status_listeners.forEach((game_status_listener) -> game_status_listener.onGameCancelled(this));
 	}
 
 }

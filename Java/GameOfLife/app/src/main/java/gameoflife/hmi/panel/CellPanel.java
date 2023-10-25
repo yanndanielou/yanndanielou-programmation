@@ -9,6 +9,7 @@ import gameoflife.hmi.mouseaction.DrawCellWithMouse;
 import gameoflife.hmi.mouseaction.ScrollOnGameBoardPanelOnMouseDragAndDrop;
 
 public class CellPanel extends BasePanel {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(CellPanel.class);
 
 	private static final long serialVersionUID = -4722225029326344692L;

@@ -61,31 +61,31 @@ public class GameFieldPanel extends JPanel implements GameStatusListener {
 	}
 
 	@Override
-	public void on_game_paused(Game game) {
+	public void onGamePaused(Game game) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void on_game_resumed(Game game) {
+	public void onGameResumed(Game game) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void on_listen_to_game_status(Game game) {
+	public void onListenToGameStatus(Game game) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void on_game_cancelled(Game game) {
+	public void onGameCancelled(Game game) {
 		removeAll();
 		all_squares = null;
 	}
 
 	@Override
-	public void on_game_over(Game game) {
+	public void onGameOver(Game game) {
 		// TODO Auto-generated method stub
 
 	}

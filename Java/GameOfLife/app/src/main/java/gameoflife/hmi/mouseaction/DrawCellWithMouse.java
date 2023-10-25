@@ -11,6 +11,7 @@ import gameoflife.hmi.enums.DrawAction;
 import gameoflife.hmi.panel.CellPanel;
 
 public class DrawCellWithMouse implements MouseListener {
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(DrawCellWithMouse.class);
 
 	private CellPanel cellPanel;

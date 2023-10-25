@@ -15,20 +15,16 @@ import gameoflife.hmi.mouseaction.FullFrameContentPanelMouseAdapter;
 
 public class FullFrameContentPanel extends JPanel {
 
-	private TopPanel topPanel;
-	private GameBoardPanel gameBoardPanel;
-	private BottomPanel bottomPanel;
-	private GameOfLifeMainViewFrame desktopGameOfLifeMainViewFrame;
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4499026061683356916L;
+	
 	private HmiPresenter hmiPresenter;
 
 	public FullFrameContentPanel(GameOfLifeMainViewFrame desktopGameOfLifeMainViewFrame, TopPanel topPanel,
 			GameBoardPanel gameBoardPanel, BottomPanel bottomPanel) {
-		this.desktopGameOfLifeMainViewFrame = desktopGameOfLifeMainViewFrame;
-		this.topPanel = topPanel;
-		this.gameBoardPanel = gameBoardPanel;
-		this.bottomPanel = bottomPanel;
-
+	
 		setLayout(new BorderLayout());
 
 		JPanel topPanelParentPane = new JPanel();

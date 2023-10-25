@@ -37,7 +37,6 @@ public class DrawActionPickerPopup extends JFrame {
 
 	private JLabel bottomLabel;
 
-	private static final  int VERTICAL_SPACE_BETWEEN_OBJECTS = 10;
 	private static final  int BASIC_COMPONENTS_HEIGHT = 20;
 
 	private DrawAction drawActionChosen = null;
