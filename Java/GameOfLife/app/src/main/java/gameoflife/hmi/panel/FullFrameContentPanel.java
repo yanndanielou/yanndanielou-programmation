@@ -1,4 +1,4 @@
-package gameoflife.hmi;
+package gameoflife.hmi.panel;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -8,10 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import gameoflife.constants.HMIConstants;
+import gameoflife.hmi.GameOfLifeMainViewFrame;
+import gameoflife.hmi.HmiPresenter;
+import gameoflife.hmi.KeyBoardInputs;
 import gameoflife.hmi.mouseaction.FullFrameContentPanelMouseAdapter;
-import gameoflife.hmi.panel.BottomPanel;
-import gameoflife.hmi.panel.GameBoardPanel;
-import gameoflife.hmi.panel.TopPanel;
 
 public class FullFrameContentPanel extends JPanel {
 

@@ -11,7 +11,7 @@ import javax.swing.SwingUtilities;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import gameoflife.hmi.FullFrameContentPanel;
+import gameoflife.hmi.panel.FullFrameContentPanel;
 
 public class FullFrameContentPanelMouseAdapter extends MouseAdapter {
 	private static final Logger LOGGER = LogManager.getLogger(FullFrameContentPanelMouseAdapter.class);

@@ -1,4 +1,4 @@
-package gameoflife.hmi;
+package gameoflife.hmi.menubar;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -15,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 import common.random.RandomIntegerGenerator;
 import gameoflife.core.GameManager;
 import gameoflife.gameboard.Cell;
+import gameoflife.hmi.GameOfLifeMainViewFrame;
 import gameoflife.hmi.dialogs.CheatCodeDialog;
 import gameoflife.hmi.dialogs.NewGameWhileGameIsInProgressPopup;
 

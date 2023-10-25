@@ -3,12 +3,8 @@ package gameoflife.hmi;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -19,7 +15,10 @@ import org.apache.logging.log4j.Logger;
 
 import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
+import gameoflife.hmi.interfaces.GameOfLifeMainViewGeneric;
+import gameoflife.hmi.menubar.MainViewMenuBarManager;
 import gameoflife.hmi.panel.BottomPanel;
+import gameoflife.hmi.panel.FullFrameContentPanel;
 import gameoflife.hmi.panel.GameBoardPanel;
 import gameoflife.hmi.panel.TopPanel;
 

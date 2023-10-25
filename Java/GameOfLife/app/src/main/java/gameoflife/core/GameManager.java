@@ -7,7 +7,7 @@ import gameoflife.builders.gameboard.GameBoardModelBuilder;
 import gameoflife.constants.Constants;
 import gameoflife.game.Game;
 import gameoflife.gameboard.GameBoard;
-import gameoflife.hmi.GameOfLifeMainViewGeneric;
+import gameoflife.hmi.interfaces.GameOfLifeMainViewGeneric;
 
 public class GameManager {
 
