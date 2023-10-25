@@ -1,6 +1,7 @@
 package gameoflife.hmi;
 
 import gameoflife.constants.HMIConstants;
+import gameoflife.hmi.enums.DrawAction;
 import gameoflife.hmi.panel.BottomPanel;
 import gameoflife.hmi.panel.FullFrameContentPanel;
 import gameoflife.hmi.panel.GameBoardPanel;

@@ -7,7 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import gameoflife.gameboard.Cell;
-import gameoflife.hmi.DrawAction;
+import gameoflife.hmi.enums.DrawAction;
 import gameoflife.hmi.panel.CellPanel;
 
 public class DrawCellWithMouse implements MouseListener {

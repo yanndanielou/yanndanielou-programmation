@@ -20,9 +20,9 @@ import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
-import gameoflife.hmi.DrawAction;
 import gameoflife.hmi.GameOfLifeMainViewFrame;
 import gameoflife.hmi.KeyBoardInputs;
+import gameoflife.hmi.enums.DrawAction;
 
 public class GameBoardPanel extends BasePanel implements GameStatusListener, CellListener {
 

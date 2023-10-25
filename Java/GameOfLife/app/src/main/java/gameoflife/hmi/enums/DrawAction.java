@@ -1,4 +1,4 @@
-package gameoflife.hmi;
+package gameoflife.hmi.enums;
 
 public enum DrawAction {
 
