@@ -107,95 +107,6 @@ def configureLogger(log_file_name):
     # logging.critical
 
 
-def getAllUndescoreContainingTextWordsInFile(fileReadContent):
-
-    allUndescoreContainingTextWordsAsSet = set()
-
-    fileReadContent = fileReadContent.replace(
-        end_line_character_in_text_file, " ")
-    fileReadContent = fileReadContent.replace(".", " ")
-    fileReadContent = fileReadContent.replace("  ", " ")
-    fileReadContent = fileReadContent.replace("\t", " ")
-
-    fileReadContent = fileReadContent.replace("(", " ")
-    fileReadContent = fileReadContent.replace(")", " ")
-    fileReadContent = fileReadContent.replace(";", " ")
-
-    
-    fileReadContent = fileReadContent.replace(":", " ")
-    
-    fileReadContent = fileReadContent.replace(",", " ")
-
-    allCodeSyntaxElementsAsList = fileReadContent.split(" ")
-    allCodeSyntaxElementsAsSet = set(allCodeSyntaxElementsAsList)
-    for codeSyntaxElement in allCodeSyntaxElementsAsSet:
-        if "_" in codeSyntaxElement:
-            allUndescoreContainingTextWordsAsSet.add(codeSyntaxElement)
-
-    return allUndescoreContainingTextWordsAsSet
-
-
-
-def getUnderscoreContainingCodeWordTransformedIntoCamelCase(initialWordWithUnderscore):
-    codeWordTransformedIntoCamelCase = ""
-    nextLetterMustBeCapitalLetter = False
-
-    for letter in initialWordWithUnderscore:
-        if letter == "_":
-            nextLetterMustBeCapitalLetter = True
-        elif nextLetterMustBeCapitalLetter:
-            codeWordTransformedIntoCamelCase += letter.upper()
-            nextLetterMustBeCapitalLetter = False
-        else:
-            codeWordTransformedIntoCamelCase += letter
-
-    printAndLogInfo(initialWordWithUnderscore +
-                    " transformed to camel case is:" + codeWordTransformedIntoCamelCase)
-    return codeWordTransformedIntoCamelCase
-
-
-def replaceAllTextByCamelCaseInFile(fileFullPath, path, fileNameWithoutExtension, fileExtension, noOperation):
-    camelCaseFileContent = None
-
-    # Opening the file in read and write mode
-    with open(fileFullPath, 'r+') as f:
-        # Reading the file data and store
-        # it in a file variable
-        fileReadContent = f.read()
-        camelCaseFileContent = fileReadContent
-
-        allUndescoreContainingTextWordsInFileAsSet = getAllUndescoreContainingTextWordsInFile(
-            camelCaseFileContent)
-
-        for undescoreContainingTextWord in allUndescoreContainingTextWordsInFileAsSet:
-            allowed = False
-            for allowedRegexCompiledPattern in allowedRegexCompiledPatternsList:
-                
-                if undescoreContainingTextWord == "EXTERNAL_FRAME_WIDTH":
-                    pause = 1
-                if allowedRegexCompiledPattern.match(undescoreContainingTextWord):
-                    logging.info(undescoreContainingTextWord +  " is allowed thanks to for regex: " + allowedRegexCompiledPattern.pattern)
-
-                    allowed = True
-                else:
-                    logging.info(undescoreContainingTextWord +  " is not allowed for regex: " + allowedRegexCompiledPattern.pattern)
-
-            if not allowed:
-                codeWordTransformedIntoCamelCase = getUnderscoreContainingCodeWordTransformedIntoCamelCase(
-                    undescoreContainingTextWord)
-                camelCaseFileContent = camelCaseFileContent.replace(
-                    undescoreContainingTextWord, codeWordTransformedIntoCamelCase)
-
-    if not noOperation:
-        # Opening our text file in write only
-        # mode to write the replaced content
-        with open(fileFullPath, 'w') as file:
-
-            # Writing the replaced data in our
-            # text file
-            file.write(camelCaseFileContent)
-    else:
-        logging.debug("Output file would be:" + camelCaseFileContent)
 
 def transformTextToValidExcelDate(initialText):
     transformedText = initialText.replace("UTC+1","")
@@ -225,7 +136,9 @@ def transformExcelFileToCsvFiles(excelFileNameWithExtension):
 
     for workbookSheetName in workbook_sheetnames:
         read_file = pandas.read_excel (excelFileNameWithExtension, sheet_name=workbookSheetName)
-        read_file.to_csv (excelFileNameWithoutExtension + '/' + workbookSheetName + '.csv', index = None, header=True)
+        output_csv_file = excelFileNameWithoutExtension + '/' + workbookSheetName + '.csv'
+        printAndLogInfo("Extract sheet " + workbookSheetName + " to " + output_csv_file)
+        read_file.to_csv (output_csv_file, index = None, header=True)
 
 
 def transformAllExcelFilesToCsvFiles(argv):
@@ -235,13 +148,7 @@ def transformAllExcelFilesToCsvFiles(argv):
     for excelFileName in listOfExcelFileNames:
         transformExcelFileToCsvFiles(excelFileName)
     
-    workbook = load_workbook(filename="QueryResult.xlsx")
-    workbook_sheetnames = workbook.sheetnames 
-    print(workbook_sheetnames)
-
-    sheet = workbook.active
-    printAndLogInfo("sheet:" + str(sheet))
-
+  
 
 
 def main(argv):
