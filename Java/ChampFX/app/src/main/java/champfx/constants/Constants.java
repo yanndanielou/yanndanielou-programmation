@@ -1,4 +1,4 @@
-package gameoflife.constants;
+package champfx.constants;
 
 public class Constants {
 
