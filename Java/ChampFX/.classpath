@@ -26,7 +26,38 @@
 	<classpathentry kind="lib" path="../ExternalLibraries/byte-buddy-agent-1.14.6.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/objenesis-3.3.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/commons-httpclient-3.1.jar"/>
+	
+	<classpathentry kind="lib" path="../ExternalLibraries/jena-2.6.4.jar"/>
+	
+	<!--
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib-src/jena-arq-4.10.0-sources.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib-src/jena-cmds-4.10.0-sources.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib-src/jena-core-4.10.0-sources.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib-src/jena-rdfconnection-4.10.0-sources.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib-src/jena-shacl-4.10.0-sources.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib-src/jena-shex-4.10.0-sources.jar"/>
 
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-arq-4.10.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-base-4.10.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-cmds-4.10.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-core-4.10.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-dboe-base-4.10.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-dboe-index-4.10.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-dboe-storage-4.10.0"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-dboe-transaction-4.10.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-dboe-trans-data-4.10.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-iri-4.10.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-rdfconnection-4.10.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-rdfpatch-4.10.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-shacl-4.10.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-shex-4.10.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-tdb2-4.10.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/apache-jena-4.10.0/apache-jena-4.10.0/lib/jena-tdb-4.10.0.jar"/>
+	-->
+	
 	<classpathentry kind="lib" path="../ExternalLibraries/commons-lang3-3.13.0.jar" sourcepath="../ExternalLibraries/commons-lang3-3.13.0-sources.jar"/>	
+	<classpathentry kind="lib" path="../ExternalLibraries/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/commons-io-2.15.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/commons-codec-1.16.0.jar"/>
 	
 </classpath>
