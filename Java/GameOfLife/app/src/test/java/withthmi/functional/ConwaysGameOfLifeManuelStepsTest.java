@@ -1,4 +1,4 @@
-package withouthmi.functional;
+package withthmi.functional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -46,51 +46,55 @@ class ConwaysGameOfLifeManuelStepsTest {
 	protected Game game;
 
 	@Nested
-	public class SquareGameBoard {
-
-		int gameBoardWidth = 10;
-		int gameBoardHeight = 10;
-
-		List<Cell> initiallyAliveCells;
-		List<Cell> initiallyDeadCells;
+	public class WithHmi {
+		GameOfLifeMainViewFrame mainView;
 
 		@BeforeEach
 		void setUp() throws Exception {
-			Dimension gameBoardDimension = new Dimension(gameBoardWidth, gameBoardHeight);
+			mainView = new GameOfLifeMainViewFrame();
+			GameManager.getInstance().setMainViewFrame(mainView);
 
-			Mockito.when(gameBoardModelBuilder.getGameBoardDataModel().getGameBoardDimensions().getDimension())
-					.thenReturn(gameBoardDimension);
+			// Schedule a job for the event dispatch thread:
+			// creating and showing this application's GUI.
+			javax.swing.SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					mainView.createAndShowGUI();
+				}
+			});
+		}
 
-			gameBoard = new GameBoard(gameBoardModelBuilder);
-			GameManager gameManager = GameManager.getInstance();
-			gameManager.newGame(gameBoard);
-			game = gameManager.getGame();
-
+		@AfterEach
+		void tearDown() throws Exception {
+			mainView.dispose();
 		}
 
 		@Nested
-		public class AutoPlay {
+		public class SquareGameBoard {
+
+			int gameBoardWidth = 10;
+			int gameBoardHeight = 10;
+
+			List<Cell> initiallyAliveCells;
+			List<Cell> initiallyDeadCells;
+
 			@BeforeEach
 			void setUp() throws Exception {
-				game.setAutoPlaySpeedPerSecond(1);
+				Dimension gameBoardDimension = new Dimension(gameBoardWidth, gameBoardHeight);
+
+				Mockito.when(gameBoardModelBuilder.getGameBoardDataModel().getGameBoardDimensions().getDimension())
+						.thenReturn(gameBoardDimension);
+
+				gameBoard = new GameBoard(gameBoardModelBuilder);
+				GameManager gameManager = GameManager.getInstance();
+				gameManager.newGame(gameBoard);
+				game = gameManager.getGame();
+
 			}
 
 			@Nested
-			public class runAfterEachDelay {
+			public class StillLife {
 
-			}
-
-			@Nested
-			public class canPauseAndResumeOnce {
-
-			}
-
-		}
-
-		@Nested
-		public class StillLife {
-
-			private static Stream<Arguments> provideStillLifeForms() {
+				private static Stream<Arguments> provideStillLifeForms() {
 
 				// @formatter:off
 				return Stream.of(
@@ -99,32 +103,41 @@ class ConwaysGameOfLifeManuelStepsTest {
 						Arguments.of(CollectionUtils.asList(new MutablePair<Integer, Integer>(2, 1),new MutablePair<Integer, Integer>(3, 1),new MutablePair<Integer, Integer>(1, 2),new MutablePair<Integer, Integer>(4, 2),new MutablePair<Integer, Integer>(2, 3),new MutablePair<Integer, Integer>(3, 3)), "Bee-Hive")
 						);
 				// @formatter:on	
-			}
-
-			@BeforeEach
-			void setUp() throws Exception {
-
-			}
-
-			@ParameterizedTest
-			@MethodSource("provideStillLifeForms")
-			void playOneStepChangesNothing(List<Pair<Integer, Integer>> listOfAliveCellsCoordinates, String name) {
-				for (Pair<Integer, Integer> cellCoordinates : listOfAliveCellsCoordinates) {
-					Integer left = cellCoordinates.getLeft();
-					Cell cellByXAndY = gameBoard.getCellByXAndY(left, cellCoordinates.getRight());
-					cellByXAndY.setAlive();
 				}
 
-				initiallyAliveCells = CollectionUtils.copy(gameBoard.getAllAliveCells());
-				initiallyDeadCells = CollectionUtils.copy(gameBoard.getAllDeadCells());
+				@BeforeEach
+				void setUp() throws Exception {
 
-				game.playOneStep();
+				}
 
-				List<Cell> afterPlayAliveCells = CollectionUtils.copy(gameBoard.getAllAliveCells());
-				List<Cell> afterPlayDeadCells = CollectionUtils.copy(gameBoard.getAllDeadCells());
+				@AfterEach
+				void tearDown() throws Exception {
+					mainView.dispose();
+					
+					
 
-				assertEquals(initiallyAliveCells, afterPlayAliveCells);
-				assertEquals(initiallyDeadCells, afterPlayDeadCells);
+				}
+
+				@ParameterizedTest
+				@MethodSource("provideStillLifeForms")
+				void playOneStepChangesNothing(List<Pair<Integer, Integer>> listOfAliveCellsCoordinates, String name) {
+					for (Pair<Integer, Integer> cellCoordinates : listOfAliveCellsCoordinates) {
+						Integer left = cellCoordinates.getLeft();
+						Cell cellByXAndY = gameBoard.getCellByXAndY(left, cellCoordinates.getRight());
+						cellByXAndY.setAlive();
+					}
+					
+					initiallyAliveCells = CollectionUtils.copy(gameBoard.getAllAliveCells());
+					initiallyDeadCells = CollectionUtils.copy(gameBoard.getAllDeadCells());
+
+					game.playOneStep();
+					
+					List<Cell> afterPlayAliveCells = CollectionUtils.copy(gameBoard.getAllAliveCells());
+					List<Cell> afterPlayDeadCells = CollectionUtils.copy(gameBoard.getAllDeadCells());
+					
+					assertEquals(initiallyAliveCells, afterPlayAliveCells);
+					assertEquals(initiallyDeadCells, afterPlayDeadCells);
+				}
 			}
 		}
 	}

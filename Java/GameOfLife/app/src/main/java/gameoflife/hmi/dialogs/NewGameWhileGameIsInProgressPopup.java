@@ -27,7 +27,7 @@ public class NewGameWhileGameIsInProgressPopup {
 		if (GameManager.hasGameInProgress()) {
 
 			Game game = GameManager.getInstance().getGame();
-			if (!game.isOver() && game.isBegun()) {
+			if (game.isBegun()) {
 
 				Object[] options = { "Yes", "No" };
 

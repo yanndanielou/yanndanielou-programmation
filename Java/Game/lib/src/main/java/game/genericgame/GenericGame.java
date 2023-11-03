@@ -15,7 +15,7 @@ public abstract class GenericGame {
 
 	protected boolean begun = false;
 
-	protected boolean paused = false;
+
 
 /*	public void addGameListener(GenericGameListener listener) {
 		listener.onListenToGame(this);

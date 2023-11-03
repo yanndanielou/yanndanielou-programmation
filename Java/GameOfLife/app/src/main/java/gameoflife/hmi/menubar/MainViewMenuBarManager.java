@@ -70,15 +70,6 @@ public class MainViewMenuBarManager {
 		// a group of check box menu items
 		menu.addSeparator();
 
-		menuItem = new JMenuItem("Start Game", KeyEvent.VK_S);
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0));
-		menuItem.addActionListener(e -> {
-			if (GameManager.hasGameInProgress()) {
-				GameManager.getInstance().getGame().start();
-			}
-		});
-		menu.add(menuItem);
-
 		// a group of check box menu items
 		menu.addSeparator();
 

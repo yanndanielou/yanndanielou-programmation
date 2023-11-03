@@ -3,6 +3,8 @@ package gameoflife.game;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.print.attribute.standard.MediaSize.ISO;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,7 +14,7 @@ import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
 import gameoflife.time.GamePausablePeriodicDelayedTask;
 
-public class Game extends GenericGame {
+public class Game {
 	private static final Logger LOGGER = LogManager.getLogger(Game.class);
 
 	private ArrayList<GameStatusListener> gameStatusListeners = new ArrayList<>();
@@ -23,6 +25,11 @@ public class Game extends GenericGame {
 
 	private int autoPlaySpeedPerSecond;
 
+	protected boolean paused = false;
+	protected boolean autoPlayActivated = false;
+
+	private int generation = 0;
+
 	private GamePausablePeriodicDelayedTask autoPlayTask;
 
 	private List<PauseReason> pauseReasons = new ArrayList<>();
@@ -31,7 +38,6 @@ public class Game extends GenericGame {
 		this.gameManager = gameManager;
 		this.gameBoard = gameBoard;
 		gameBoard.setGame(this);
-		start();
 	}
 
 	public void addGameStatusListener(GameStatusListener listener) {
@@ -41,15 +47,6 @@ public class Game extends GenericGame {
 
 	public void cancel() {
 		gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameCancelled(this));
-	}
-
-	public void start() {
-		if (begun) {
-			throw new IllegalStateException("Game already started!");
-		}
-		this.begun = true;
-		LOGGER.info("Game has started");
-		gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameStarted(this));
 	}
 
 	public GameBoard getGameBoard() {
@@ -94,6 +91,11 @@ public class Game extends GenericGame {
 			LOGGER.info("Resume game");
 			paused = false;
 			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameResumed(this));
+			
+			if(autoPlayActivated) {
+				autoPlay(autoPlaySpeedPerSecond);
+			}
+			
 			return true;
 		} else {
 			LOGGER.info("Game is not paused, cannot resume!");
@@ -102,6 +104,8 @@ public class Game extends GenericGame {
 	}
 
 	public void playOneStep() {
+		++generation;
+
 		List<Cell> newlyAliveCells = new ArrayList<>();
 		List<Cell> newlyDeadCells = new ArrayList<>();
 
@@ -148,13 +152,9 @@ public class Game extends GenericGame {
 	}
 
 	private void lifeIsStill() {
-		over = true;
-
 	}
 
 	private void lifeHasEnded() {
-		over = true;
-
 	}
 
 	public void setAutoPlaySpeedPerSecond(int autoPlaySpeedPerSecond) {
@@ -162,7 +162,7 @@ public class Game extends GenericGame {
 		if (this.autoPlaySpeedPerSecond != autoPlaySpeedPerSecond) {
 			this.autoPlaySpeedPerSecond = autoPlaySpeedPerSecond;
 
-			if (begun) {
+			if (autoPlayActivated) {
 				if (!paused) {
 					if (autoPlayTask != null) {
 						autoPlayTask.cancel();
@@ -188,6 +188,12 @@ public class Game extends GenericGame {
 				playOneStep();
 			}
 		};
+
+		autoPlayActivated = true;
+	}
+
+	public boolean isBegun() {
+		return generation > 0;
 	}
 
 }
