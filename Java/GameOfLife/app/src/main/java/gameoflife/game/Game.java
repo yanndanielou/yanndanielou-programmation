@@ -25,6 +25,8 @@ public class Game extends GenericGame {
 
 	private GamePausablePeriodicDelayedTask autoPlayTask;
 
+	private List<PauseReason> pauseReasons = new ArrayList<>();
+
 	public Game(GameManager gameManager, GameBoard gameBoard) {
 		this.gameManager = gameManager;
 		this.gameBoard = gameBoard;
@@ -59,8 +61,14 @@ public class Game extends GenericGame {
 		return gameManager;
 	}
 
-	public boolean pause() {
+	public void addPauseReason(PauseReason pauseReason) {
+		pauseReasons.add(pauseReason);
+		pause();
+	}
+
+	private boolean pause() {
 		if (!paused) {
+			LOGGER.info("Pause game");
 			paused = true;
 			if (autoPlayTask != null) {
 				autoPlayTask.cancel();
@@ -74,8 +82,16 @@ public class Game extends GenericGame {
 		}
 	}
 
-	public boolean resume() {
+	public void removePauseReason(PauseReason pauseReason) {
+		pauseReasons.remove(pauseReason);
+		if (pauseReasons.isEmpty()) {
+			resume();
+		}
+	}
+
+	private boolean resume() {
 		if (paused) {
+			LOGGER.info("Resume game");
 			paused = false;
 			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameResumed(this));
 			return true;
@@ -119,7 +135,7 @@ public class Game extends GenericGame {
 
 		newlyAliveCells.forEach(Cell::setAlive);
 		newlyDeadCells.forEach(Cell::setDead);
-		
+
 		gameBoard.getAllDeadCellsThatHaveBeenAlive().forEach(Cell::increaseCurrentDeathPeriod);
 
 		if (gameBoard.getAllAliveCells().isEmpty()) {
@@ -133,12 +149,12 @@ public class Game extends GenericGame {
 
 	private void lifeIsStill() {
 		over = true;
-		
+
 	}
 
 	private void lifeHasEnded() {
 		over = true;
-		
+
 	}
 
 	public void setAutoPlaySpeedPerSecond(int autoPlaySpeedPerSecond) {
