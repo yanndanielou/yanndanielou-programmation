@@ -13,6 +13,7 @@ import common.hmi.utils.HMIUtils;
 import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
+import gameoflife.game.PauseReason;
 import gameoflife.hmi.GameOfLifeMainViewFrame;
 
 public class BottomPanel extends BasePanel implements GameStatusListener {
@@ -79,7 +80,7 @@ public class BottomPanel extends BasePanel implements GameStatusListener {
 				(int) (playButton.getBounds().getMaxX() + HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth()), 0);
 		pauseButton.addActionListener(e -> {
 			LOGGER.info(() -> "Pause button actionned");
-			game.pause();
+			game.addPauseReason(PauseReason.PAUSE_REQUESTED_IN_HMI);
 		});
 		add(pauseButton);
 	}
