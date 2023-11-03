@@ -72,6 +72,7 @@ class ConwaysGameOfLifeManuelStepsTest {
 		public class AutoPlay {
 			@BeforeEach
 			void setUp() throws Exception {
+				
 				game.setAutoPlaySpeedPerSecond(1);
 			}
 
