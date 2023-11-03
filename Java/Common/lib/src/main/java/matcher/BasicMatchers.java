@@ -39,6 +39,7 @@ public class BasicMatchers {
 		return org.hamcrest.core.IsNull.<T>notNullValue(type);
 	}
 
+	@SuppressWarnings("deprecation")
 	@SafeVarargs
 	public static <T> org.hamcrest.Matcher<java.lang.Iterable<T>> contains(T... items) {
 		return org.hamcrest.core.IsCollectionContaining.<T>hasItems(items);
