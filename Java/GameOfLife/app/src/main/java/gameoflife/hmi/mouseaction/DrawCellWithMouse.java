@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import gameoflife.game.PauseReason;
 import gameoflife.gameboard.Cell;
 import gameoflife.hmi.enums.DrawAction;
 import gameoflife.hmi.panel.CellPanel;
@@ -28,10 +29,14 @@ public class DrawCellWithMouse implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		LOGGER.info(() -> "mousePressed " + e);
+		cellPanel.getGameBoardPanel().getGameBoard().getGame().addPauseReason(PauseReason.CELL_DRAWING_IN_PROGRESS);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		LOGGER.info(() -> "mouseReleased " + e);
+		cellPanel.getGameBoardPanel().getGameBoard().getGame().removePauseReason(PauseReason.CELL_DRAWING_IN_PROGRESS);
 	}
 
 	@Override
