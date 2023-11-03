@@ -6,34 +6,34 @@ import game.genericgame.GenericGameStatusListener;
 import gameoflife.game.Game;
 
 public abstract class GamePausablePeriodicDelayedTask extends PausablePeriodicDelayedTask
-		implements GenericGameStatusListener<GenericGame> {
+		implements GenericGameStatusListener<Game> {
 
 	protected GamePausablePeriodicDelayedTask(Game game, long delay) {
 		super(delay);
 	}
 
 	@Override
-	public void onGameCancelled(GenericGame game) {
+	public void onGameCancelled(Game game) {
 		cancel();
 	}
 
 	@Override
-	public void onGameLost(GenericGame game) {
+	public void onGameLost(Game game) {
 		cancel();
 	}
 
 	@Override
-	public void onGameWon(GenericGame game) {
+	public void onGameWon(Game game) {
 		cancel();
 	}
 
 	@Override
-	public void onGamePaused(GenericGame game) {
+	public void onGamePaused(Game game) {
 		pause();
 	}
 
 	@Override
-	public void onGameResumed(GenericGame game) {
+	public void onGameResumed(Game game) {
 		resume();
 	}
 
