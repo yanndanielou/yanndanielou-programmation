@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 
 import common.random.RandomIntegerGenerator;
 import gameoflife.core.GameManager;
+import gameoflife.game.PauseReason;
 import gameoflife.gameboard.Cell;
 import gameoflife.hmi.GameOfLifeMainViewFrame;
 import gameoflife.hmi.dialogs.CheatCodeDialog;
@@ -53,7 +54,7 @@ public class MainViewMenuBarManager {
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, 0));
 		menuItem.addActionListener(e -> {
 			if (GameManager.hasGameInProgress()) {
-				GameManager.getInstance().getGame().pause();
+				GameManager.getInstance().getGame().addPauseReason(PauseReason.PAUSE_REQUESTED_IN_HMI);
 			}
 		});
 		menu.add(menuItem);
@@ -61,7 +62,7 @@ public class MainViewMenuBarManager {
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, 0));
 		menuItem.addActionListener(e -> {
 			if (GameManager.hasGameInProgress()) {
-				GameManager.getInstance().getGame().resume();
+				GameManager.getInstance().getGame().removePauseReason(PauseReason.PAUSE_REQUESTED_IN_HMI);
 			}
 		});
 		menu.add(menuItem);
