@@ -117,20 +117,11 @@ public abstract class GenericGameBoard {
 
 		boolean isReferencePointInTopLine = referenceGameBoardPoint.getRow() == 0;
 
-		@SuppressWarnings("unused")
 		boolean isReferencePointInBottomLine = referenceGameBoardPoint.getRow() == getTotalHeight() - 1;
 
-		@SuppressWarnings("unused")
 		boolean isReferencePointInLeftExtremityColumn = referenceGameBoardPoint.getColumn() == 0;
 
-		@SuppressWarnings("unused")
 		boolean isReferencePointInRightExtremityColumn = referenceGameBoardPoint.getColumn() == getTotalWidth() - 1;
-
-		boolean isReferenceGameBoardPointFirstOfColumn = referenceGameBoardPointRow == 0;
-		boolean isReferenceGameBoardPointLastOfColumn = referenceGameBoardPointRow == getTotalWidth() - 1;
-
-		boolean isReferenceGameBoardPointFirstOfRow = referenceGameBoardPointColumn == 0;
-		boolean isReferenceGameBoardPointLastOfRow = referenceGameBoardPointColumn == getTotalHeight() - 1;
 
 		// left gameBoardPoint
 		switch (direction) {
