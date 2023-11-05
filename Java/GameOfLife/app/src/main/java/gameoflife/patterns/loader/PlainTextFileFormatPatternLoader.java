@@ -36,12 +36,12 @@ public class PlainTextFileFormatPatternLoader extends FilePatternLoader {
 	}
 
 	@Override
-	public List<Character> commentsCharacters() {
+	protected List<Character> commentsCharacters() {
 		return List.of(COMMENT_LINE_FIRST_CHARACTER);
 	}
 
 	@Override
-	public List<java.util.regex.Pattern> cellsDefinitionPatterns() {
+	protected List<java.util.regex.Pattern> cellsDefinitionPatterns() {
 		return List.of(cellsDefinitionPattern);
 	}
 

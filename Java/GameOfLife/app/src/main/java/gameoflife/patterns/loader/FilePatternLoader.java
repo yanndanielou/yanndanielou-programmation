@@ -27,17 +27,17 @@ public abstract class FilePatternLoader {
 		}
 
 		List<String> allCellsDefinitionsLines = getAllCellsDefinitionsLines(scanner);
-		parseCellsDefinitionsLines(allCellsDefinitionsLines);
+		Pattern pattern = parseCellsDefinitionsLines(allCellsDefinitionsLines);
 
 		scanner.close();
-		return null;
+		return pattern;
 	}
 
 	protected abstract Pattern parseCellsDefinitionsLines(List<String> allCellsDefinitionsLines);
 
-	public abstract List<Character> commentsCharacters();
+	protected abstract List<Character> commentsCharacters();
 
-	public abstract List<java.util.regex.Pattern> cellsDefinitionPatterns();
+	protected abstract List<java.util.regex.Pattern> cellsDefinitionPatterns();
 
 	private boolean isCommentLine(String line) {
 		for (Character commentCharacter : commentsCharacters()) {
@@ -58,7 +58,7 @@ public abstract class FilePatternLoader {
 		return false;
 	}
 
-	public List<String> getAllCellsDefinitionsLines(Scanner scanner) {
+	protected List<String> getAllCellsDefinitionsLines(Scanner scanner) {
 		int lineNumber = 0;
 		List<String> allCellsDefinitionsLines = new ArrayList<>();
 
