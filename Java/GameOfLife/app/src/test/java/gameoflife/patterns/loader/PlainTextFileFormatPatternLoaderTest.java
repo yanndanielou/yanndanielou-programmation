@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import gameoflife.patterns.Pattern;
+import geometry2d.integergeometry.IntegerPrecisionRectangle;
 
 class PlainTextFileFormatPatternLoaderTest {
 	PlainTextFileFormatPatternLoader loader = new PlainTextFileFormatPatternLoader();
@@ -30,8 +31,9 @@ class PlainTextFileFormatPatternLoaderTest {
 	}
 
 	@Test
-	void test() {
+	void gliderCells() {
 		Pattern pattern = loader.loadFile("app/src/main/resources/gameoflife/patterns/glider.cells");
+		IntegerPrecisionRectangle rectangleBoundingBox = pattern.getRectangleBoundingBox();
 		assertNotNull(pattern);
 	}
 

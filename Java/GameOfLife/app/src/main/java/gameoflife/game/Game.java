@@ -12,7 +12,9 @@ import game.genericgame.GenericGame;
 import gameoflife.core.GameManager;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
+import gameoflife.patterns.Pattern;
 import gameoflife.time.GamePausablePeriodicDelayedTask;
+import geometry2d.integergeometry.IntegerPrecisionPoint;
 
 public class Game {
 	private static final Logger LOGGER = LogManager.getLogger(Game.class);
@@ -91,11 +93,11 @@ public class Game {
 			LOGGER.info("Resume game");
 			paused = false;
 			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameResumed(this));
-			
-			if(autoPlayActivated) {
+
+			if (autoPlayActivated) {
 				autoPlay(autoPlaySpeedPerSecond);
 			}
-			
+
 			return true;
 		} else {
 			LOGGER.info("Game is not paused, cannot resume!");
@@ -194,6 +196,14 @@ public class Game {
 
 	public boolean isBegun() {
 		return generation > 0;
+	}
+
+	public void applyPattern(Pattern pattern, int x, int y) {
+		for (IntegerPrecisionPoint aliveCellCoordinate : pattern.getAliveCellsCoordinates()) {
+			Cell cellByXAndY = gameBoard.getCellByXAndY(x + aliveCellCoordinate.getXAsInt(),
+					y + aliveCellCoordinate.getYAsInt());
+			cellByXAndY.setAlive();
+		}
 	}
 
 }

@@ -57,6 +57,15 @@ public class IntegerPrecisionRectangle {
 		awtRectangle = new Rectangle(0, 0, d.width, d.height);
 	}
 
+	public static IntegerPrecisionRectangle getRectangleBoundingBoxOfPoints(
+			List<? extends Point> rectangleAsListOfPoints) {
+		Point topLeftPoint = getTopLeftPoint(rectangleAsListOfPoints);
+		Point topRightPoint = getTopRightPoint(rectangleAsListOfPoints);
+		Point bottomLeftPoint = getBottomLeftPoint(rectangleAsListOfPoints);
+		Point bottomRightPoint = getBottomRightPoint(rectangleAsListOfPoints);
+
+	}
+
 	/***
 	 * Create IntegerRectangle from a list of points
 	 * 
@@ -143,7 +152,7 @@ public class IntegerPrecisionRectangle {
 		return topLeftPoint;
 	}
 
-	private Point getTopRightPoint(List<? extends Point> points) {
+	private static Point getTopRightPoint(List<? extends Point> points) {
 		double maxXFound = points.get(0).getX();
 		double minYFound = points.get(0).getY();
 		Point topRightPoint = points.get(0);
@@ -161,7 +170,7 @@ public class IntegerPrecisionRectangle {
 		return topRightPoint;
 	}
 
-	private Point getBottomLeftPoint(List<? extends Point> points) {
+	private static Point getBottomLeftPoint(List<? extends Point> points) {
 		double minXFound = points.get(0).getX();
 		double maxYFound = points.get(0).getY();
 		Point bottomLeftPoint = points.get(0);
@@ -179,7 +188,7 @@ public class IntegerPrecisionRectangle {
 		return bottomLeftPoint;
 	}
 
-	private Point getBottomRightPoint(List<? extends Point> points) {
+	private static Point getBottomRightPoint(List<? extends Point> points) {
 		double maxXFound = points.get(0).getX();
 		double maxYFound = points.get(0).getY();
 		Point bottomRightPoint = points.get(0);
