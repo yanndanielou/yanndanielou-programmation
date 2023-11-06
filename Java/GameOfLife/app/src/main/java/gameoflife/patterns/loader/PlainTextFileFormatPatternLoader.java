@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
+import java.util.stream.IntStream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import gameoflife.patterns.Pattern;
+import geometry2d.integergeometry.IntegerPrecisionPoint;
 
 /***
  * @link https://conwaylife.com/wiki/Plaintext
@@ -26,16 +28,17 @@ public class PlainTextFileFormatPatternLoader extends FilePatternLoader {
 	@Override
 	protected Pattern parseCellsDefinitionsLines(List<String> allCellsDefinitionsLines) {
 		Pattern pattern = new Pattern();
-		for (String line : allCellsDefinitionsLines) {
-			for (int i = 0; i < line.length(); i++) {
-				char charAt = line.charAt(i);
+		IntStream.range(0, allCellsDefinitionsLines.size()).forEachOrdered(cellDefinitionLineNumber -> {
+			String cellDefinitionLine = allCellsDefinitionsLines.get(cellDefinitionLineNumber);
+			for (int charPositionInLine = 0; charPositionInLine < cellDefinitionLine.length(); charPositionInLine++) {
+				char charAt = cellDefinitionLine.charAt(charPositionInLine);
 				if (charAt == ALIVE_CELL_CHARACTER) {
-
+					pattern.addAliveCell(new IntegerPrecisionPoint(charPositionInLine, cellDefinitionLineNumber));
 				} else if (charAt == DEAD_CELL_CHARACTER) {
-
+					pattern.addDeadCell(new IntegerPrecisionPoint(charPositionInLine, cellDefinitionLineNumber));
 				}
 			}
-		}
+		});
 		return pattern;
 	}
 
