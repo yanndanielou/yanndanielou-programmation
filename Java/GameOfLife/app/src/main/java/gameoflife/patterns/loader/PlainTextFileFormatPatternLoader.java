@@ -21,7 +21,7 @@ public class PlainTextFileFormatPatternLoader extends FilePatternLoader {
 	private static final char ALIVE_CELL_CHARACTER = 'O';
 
 	java.util.regex.Pattern cellsDefinitionPattern = java.util.regex.Pattern
-			.compile("[" + "\\" + DEAD_CELL_CHARACTER + ALIVE_CELL_CHARACTER + "]");
+			.compile("^[" + "\\" + DEAD_CELL_CHARACTER + ALIVE_CELL_CHARACTER + "]*$");
 
 	@Override
 	protected Pattern parseCellsDefinitionsLines(List<String> allCellsDefinitionsLines) {
@@ -29,7 +29,11 @@ public class PlainTextFileFormatPatternLoader extends FilePatternLoader {
 		for (String line : allCellsDefinitionsLines) {
 			for (int i = 0; i < line.length(); i++) {
 				char charAt = line.charAt(i);
+				if (charAt == ALIVE_CELL_CHARACTER) {
 
+				} else if (charAt == DEAD_CELL_CHARACTER) {
+
+				}
 			}
 		}
 		return pattern;
