@@ -4,7 +4,11 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -42,11 +46,16 @@ public class IntegerPrecisionRectangle {
 	}
 
 	public IntegerPrecisionRectangle(int width, int height) {
-		awtRectangle = new Rectangle(0, 0, width, height);
+		awtRectangle = new Rectangle(width, height);
 	}
 
 	public IntegerPrecisionRectangle(Point p, Dimension d) {
 		awtRectangle = new Rectangle(p.x, p.y, d.width, d.height);
+	}
+
+	public IntegerPrecisionRectangle(Point topLeft, Point bottomRight) {
+		this(topLeft, new Dimension((int) (bottomRight.getX() - topLeft.getX()),
+				(int) (bottomRight.getY() - topLeft.getY())));
 	}
 
 	public IntegerPrecisionRectangle(Point p) {
@@ -59,11 +68,14 @@ public class IntegerPrecisionRectangle {
 
 	public static IntegerPrecisionRectangle getRectangleBoundingBoxOfPoints(
 			List<? extends Point> rectangleAsListOfPoints) {
-		Point topLeftPoint = getTopLeftPoint(rectangleAsListOfPoints);
-		Point topRightPoint = getTopRightPoint(rectangleAsListOfPoints);
-		Point bottomLeftPoint = getBottomLeftPoint(rectangleAsListOfPoints);
-		Point bottomRightPoint = getBottomRightPoint(rectangleAsListOfPoints);
 
+		double minX = getMinX(rectangleAsListOfPoints);
+		double maxX = getMaxX(rectangleAsListOfPoints);
+		double minY = getMinY(rectangleAsListOfPoints);
+		double maxY = getMaxY(rectangleAsListOfPoints);
+
+		return new IntegerPrecisionRectangle(new IntegerPrecisionPoint(minX, minY),
+				new IntegerPrecisionPoint(maxX, maxY));
 	}
 
 	/***
@@ -188,6 +200,32 @@ public class IntegerPrecisionRectangle {
 		return bottomLeftPoint;
 	}
 
+	private static Point pointFromOptional(Optional<? extends Point> optionalPoint) {
+		return optionalPoint.orElseThrow(() -> new IllegalArgumentException("List of point was empty"));
+	}
+
+	public static double getMinX(List<? extends Point> points) {
+		Point point = pointFromOptional(points.stream().sorted(Comparator.comparingDouble(Point::getX)).findFirst());
+		return point.getX();
+	}
+
+	public static double getMaxX(List<? extends Point> points) {
+		Point point = pointFromOptional(
+				points.stream().sorted(Comparator.comparingDouble(Point::getX).reversed()).findFirst());
+		return point.getX();
+	}
+
+	public static double getMinY(List<? extends Point> points) {
+		Point point = pointFromOptional(points.stream().sorted(Comparator.comparingDouble(Point::getY)).findFirst());
+		return point.getY();
+	}
+
+	public static double getMaxY(List<? extends Point> points) {
+		Point point = pointFromOptional(
+				points.stream().sorted(Comparator.comparingDouble(Point::getY).reversed()).findFirst());
+		return point.getY();
+	}
+
 	private static Point getBottomRightPoint(List<? extends Point> points) {
 		double maxXFound = points.get(0).getX();
 		double maxYFound = points.get(0).getY();
@@ -240,8 +278,8 @@ public class IntegerPrecisionRectangle {
 
 	public List<IntegerPrecisionPoint> getAllPoints() {
 		ArrayList<IntegerPrecisionPoint> allPoints = new ArrayList<>();
-		for (int xPointIt = getX(); xPointIt < getMaxX(); xPointIt++) {
-			for (int yPointIt = getY(); yPointIt < getMaxY(); yPointIt++) {
+		for (int xPointIt = getX(); xPointIt <= getMaxX(); xPointIt++) {
+			for (int yPointIt = getY(); yPointIt <= getMaxY(); yPointIt++) {
 				allPoints.add(new IntegerPrecisionPoint(xPointIt, yPointIt));
 			}
 		}
@@ -271,4 +309,22 @@ public class IntegerPrecisionRectangle {
 	public String toString() {
 		return awtRectangle.toString();
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(awtRectangle);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		IntegerPrecisionRectangle other = (IntegerPrecisionRectangle) obj;
+		return Objects.equals(awtRectangle, other.awtRectangle);
+	}
+
 }
