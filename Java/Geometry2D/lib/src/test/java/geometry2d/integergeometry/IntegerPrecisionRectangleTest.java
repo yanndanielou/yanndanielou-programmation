@@ -55,18 +55,24 @@ class IntegerPrecisionRectangleTest {
 
 	@Nested
 	class GetRectangleBoundingBoxOfPoints {
-		@Test
-		void ofRectangle12() {
-			IntegerPrecisionRectangle rectangle = new IntegerPrecisionRectangle(1, 2);
-			List<IntegerPrecisionPoint> allRectanglePoints = rectangle.getAllPoints();
-			IntegerPrecisionRectangle rectangleBoundingBoxOfPoints = IntegerPrecisionRectangle
-					.getRectangleBoundingBoxOfPoints(allRectanglePoints);
-			assertEquals(rectangle, rectangleBoundingBoxOfPoints);
-		}
-
-		@Test
-		void ofRectangle56() {
-			IntegerPrecisionRectangle rectangle = new IntegerPrecisionRectangle(5, 6);
+		@ParameterizedTest
+		// @formatter:off
+        @CsvSource(value = {
+                "1,2",
+                "2,3",
+                "3,4",
+                "4,5",
+                "5,6",
+                "3,5",
+                "5,7",
+                "6,7",
+                "13,17",
+                "14,17",
+                "14,17",
+                "2000,2003"})
+            // @formatter:on
+		void ofRectangle(int width, int height) {
+			IntegerPrecisionRectangle rectangle = new IntegerPrecisionRectangle(width, height);
 			List<IntegerPrecisionPoint> allRectanglePoints = rectangle.getAllPoints();
 			IntegerPrecisionRectangle rectangleBoundingBoxOfPoints = IntegerPrecisionRectangle
 					.getRectangleBoundingBoxOfPoints(allRectanglePoints);
