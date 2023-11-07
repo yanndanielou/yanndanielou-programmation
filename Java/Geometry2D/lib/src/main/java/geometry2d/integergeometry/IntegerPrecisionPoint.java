@@ -16,6 +16,10 @@ public class IntegerPrecisionPoint extends Point {
 		super(x, y);
 	}
 
+	public IntegerPrecisionPoint(double x, double y) {
+		super((int) x, (int) y);
+	}
+
 	public IntegerPrecisionPoint(Point p) {
 		super(p);
 	}
