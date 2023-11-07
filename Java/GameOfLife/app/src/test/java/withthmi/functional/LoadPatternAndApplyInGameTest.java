@@ -35,7 +35,7 @@ import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import util.CollectionUtils;
 
 @ExtendWith(MockitoExtension.class)
-class LoadPatternAndApplyInGame {
+class LoadPatternAndApplyInGameTest {
 
 	@Mock
 	protected GameManager gameManager;
