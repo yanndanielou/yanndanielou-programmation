@@ -25,6 +25,7 @@ public class DrawCellWithMouse implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		actionCellPanel();
 	}
 
 	@Override
@@ -38,28 +39,32 @@ public class DrawCellWithMouse implements MouseListener {
 		LOGGER.info(() -> "mouseReleased " + e);
 		cellPanel.getGameBoardPanel().getGameBoard().getGame().removePauseReason(PauseReason.CELL_DRAWING_IN_PROGRESS);
 	}
+	
+	private void actionCellPanel() {
+		Cell cell = cellPanel.getCell();
+
+		switch (drawActionInProgress) {
+		case SET_ALIVE:
+			cell.setAlive();
+			break;
+		case SET_DEAD:
+			cell.setDead();
+			break;
+		case TOGGLE_STATE:
+			cell.toggleState();
+			break;
+		default:
+			break;
+
+		}
+	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		boolean mouseButton1IsPressedWithMask = (e.getModifiersEx() & MouseEvent.BUTTON1_DOWN_MASK) != 0;
 
 		if (drawActionInProgress != null && mouseButton1IsPressedWithMask) {
-			Cell cell = cellPanel.getCell();
-
-			switch (drawActionInProgress) {
-			case SET_ALIVE:
-				cell.setAlive();
-				break;
-			case SET_DEAD:
-				cell.setDead();
-				break;
-			case TOGGLE_STATE:
-				cell.toggleState();
-				break;
-			default:
-				break;
-
-			}
+			actionCellPanel();
 		}
 	}
 

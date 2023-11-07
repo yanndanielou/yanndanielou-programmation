@@ -26,7 +26,7 @@ public class Pattern {
 		List<IntegerPrecisionPoint> allCells = Stream
 				.concat(aliveCellsCoordinates.stream(), deadCellsCoordinates.stream()).toList();
 
-		IntegerPrecisionRectangle integerPrecisionRectangle = new IntegerPrecisionRectangle(allCells);
+		IntegerPrecisionRectangle integerPrecisionRectangle = IntegerPrecisionRectangle.getRectangleBoundingBoxOfPoints(allCells);
 
 		return integerPrecisionRectangle;
 	}
