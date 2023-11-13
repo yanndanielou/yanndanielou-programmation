@@ -1,13 +1,15 @@
 package gameoflife.hmi;
 
 import gameoflife.constants.HMIConstants;
+import gameoflife.game.Game;
+import gameoflife.game.GameListener;
 import gameoflife.hmi.enums.DrawAction;
 import gameoflife.hmi.panel.BottomPanel;
 import gameoflife.hmi.panel.FullFrameContentPanel;
 import gameoflife.hmi.panel.GameBoardPanel;
 import gameoflife.hmi.panel.TopPanel;
 
-public class HmiPresenter {
+public class HmiPresenter implements GameListener {
 
 	private GameOfLifeMainViewFrame gameOfLifeMainViewFrame;
 	private TopPanel topPanel;

@@ -20,6 +20,7 @@ public class Game {
 	private static final Logger LOGGER = LogManager.getLogger(Game.class);
 
 	private ArrayList<GameStatusListener> gameStatusListeners = new ArrayList<>();
+	private ArrayList<GameListener> gameListeners = new ArrayList<>();
 
 	private GameBoard gameBoard;
 
@@ -45,6 +46,10 @@ public class Game {
 	public void addGameStatusListener(GameStatusListener listener) {
 		listener.onListenToGameStatus(this);
 		gameStatusListeners.add(listener);
+	}
+
+	public void addGameListener(GameListener listener) {
+		gameListeners.add(listener);
 	}
 
 	public void cancel() {
@@ -163,6 +168,8 @@ public class Game {
 
 		if (this.autoPlaySpeedPerSecond != autoPlaySpeedPerSecond) {
 			this.autoPlaySpeedPerSecond = autoPlaySpeedPerSecond;
+			gameListeners.forEach(
+					(gameListener) -> gameListener.onAutoPlaySpeedPerSecondChanged(this, autoPlaySpeedPerSecond));
 
 			if (autoPlayActivated) {
 				if (!paused) {
@@ -177,7 +184,12 @@ public class Game {
 	}
 
 	public void autoPlay(int autoPlaySpeedPerSecond) {
-		this.autoPlaySpeedPerSecond = autoPlaySpeedPerSecond;
+
+		if (this.autoPlaySpeedPerSecond != autoPlaySpeedPerSecond) {
+			this.autoPlaySpeedPerSecond = autoPlaySpeedPerSecond;
+			gameListeners.forEach(
+					(gameListener) -> gameListener.onAutoPlaySpeedPerSecondChanged(this, autoPlaySpeedPerSecond));
+		}
 
 		if (paused) {
 			resume();

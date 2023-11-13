@@ -12,11 +12,12 @@ import org.apache.logging.log4j.Logger;
 import common.hmi.utils.HMIUtils;
 import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
+import gameoflife.game.GameListener;
 import gameoflife.game.GameStatusListener;
 import gameoflife.game.PauseReason;
 import gameoflife.hmi.GameOfLifeMainViewFrame;
 
-public class BottomPanel extends BasePanel implements GameStatusListener {
+public class BottomPanel extends BasePanel implements GameStatusListener, GameListener {
 
 	private static final Logger LOGGER = LogManager.getLogger(BottomPanel.class);
 
@@ -39,11 +40,12 @@ public class BottomPanel extends BasePanel implements GameStatusListener {
 		setBackground(HMIConstants.TOP_PANEL_BACKGROUND_COLOR);
 
 		setPreferredSize(new Dimension(gameOfLifeMainViewFrame.getWidth(), HMIConstants.BOTTOM_PANNEL_HEIGHT));
-		setSpeed1ForPlaySpeedButton = HMIUtils				
-				.createJButtonFromImagePathAndClass("SetSpeed1ForPlaySpeedButtonIcon.png", getClass());
+		setSpeed1ForPlaySpeedButton = HMIUtils.createJButtonFromImagePathAndClass("SetSpeed1ForPlaySpeedButtonIcon.png",
+				getClass());
 		setSpeed1ForPlaySpeedButton.setLocation((int) HMIConstants.SPACE_BETWEEN_COMMANDS_DIMENSION.getWidth(), 0);
 		setSpeed1ForPlaySpeedButton.addActionListener(e -> {
 			LOGGER.info(() -> "Set speed 1 for play button actionned");
+			game.setAutoPlaySpeedPerSecond(1);
 		});
 		add(setSpeed1ForPlaySpeedButton);
 
@@ -95,4 +97,8 @@ public class BottomPanel extends BasePanel implements GameStatusListener {
 		gameOfLifeMainViewFrame.removeBottomPanel();
 	}
 
+	@Override
+	public void onAutoPlaySpeedPerSecondChanged(Game game, int autoPlaySpeedPerSecond) {
+		playSpeedSpinner.setValue(autoPlaySpeedPerSecond);
+	}
 }

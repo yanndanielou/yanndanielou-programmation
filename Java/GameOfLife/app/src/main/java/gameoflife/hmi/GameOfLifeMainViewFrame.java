@@ -33,7 +33,7 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 	private GameBoardPanel gameBoardPanel;
 	private BottomPanel bottomPanel;
 
-	//private JScrollPane gameFieldScrollPane;
+	// private JScrollPane gameFieldScrollPane;
 
 	private FullFrameContentPanel fullFrameContent;
 	private HmiPresenter hmiPresenter;
@@ -119,6 +119,8 @@ public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainVie
 		newGame(game);
 		game.addGameStatusListener(gameBoardPanel);
 		game.addGameStatusListener(topPanel);
+		game.addGameListener(hmiPresenter);
+		game.addGameListener(bottomPanel);
 	}
 
 	public void removeBottomPanel() {
