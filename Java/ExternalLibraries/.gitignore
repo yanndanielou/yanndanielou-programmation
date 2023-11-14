@@ -4,3 +4,14 @@ jena-4.10.0-source-release
 apache-jena-4.10.0
 jena-4.10.0
 *.jar
+*.html
+*.exe
+*.dll
+*.jmod
+*.md
+LICENSE
+*.ja
+openjdk-21.0.1_windows-x64_bin
+openjfx-21.0.1_windows-x64_bin-sdk
+
+
