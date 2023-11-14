@@ -8,6 +8,7 @@ import gameoflife.hmi.panel.BottomPanel;
 import gameoflife.hmi.panel.FullFrameContentPanel;
 import gameoflife.hmi.panel.GameBoardPanel;
 import gameoflife.hmi.panel.TopPanel;
+import gameoflife.patterns.Pattern;
 
 public class HmiPresenter implements GameListener {
 
@@ -81,7 +82,10 @@ public class HmiPresenter implements GameListener {
 		if (panInProgress) {
 			setDrawActionInProgress(null);
 		}
+	}
 
+	public void placePatternOnGameBoard(Pattern pattern) {
+		gameBoardPanel.setPlacePatternActionInProgress(pattern);
 	}
 
 	public boolean isPanInProgress() {

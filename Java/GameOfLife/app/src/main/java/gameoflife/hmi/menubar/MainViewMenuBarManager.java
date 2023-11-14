@@ -2,8 +2,10 @@ package gameoflife.hmi.menubar;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.util.List;
 
+import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -19,6 +21,8 @@ import gameoflife.gameboard.Cell;
 import gameoflife.hmi.GameOfLifeMainViewFrame;
 import gameoflife.hmi.dialogs.CheatCodeDialog;
 import gameoflife.hmi.dialogs.NewGameWhileGameIsInProgressPopup;
+import gameoflife.patterns.Pattern;
+import gameoflife.patterns.loader.FilePatternLoaderManager;
 
 public class MainViewMenuBarManager {
 	private static final Logger LOGGER = LogManager.getLogger(MainViewMenuBarManager.class);
@@ -164,9 +168,39 @@ public class MainViewMenuBarManager {
 		return menu;
 	}
 
+	private JMenu createPatternsMenuColumn() {
+		JMenu menu;
+		JMenuItem menuItem;
+
+		// Build second menu in the menu bar.
+		menu = new JMenu("Patterns");
+		menu.setMnemonic(KeyEvent.VK_P);
+		getMenuBar().add(menu);
+
+		menuItem = new JMenuItem("Load pattern", KeyEvent.VK_C);
+		menuItem.addActionListener(e -> {
+			JFileChooser fc = new JFileChooser("app/src/main/resources/gameoflife/patterns");
+			int returnVal = fc.showOpenDialog(parentMainView);
+
+			if (returnVal == JFileChooser.APPROVE_OPTION) {
+				File file = fc.getSelectedFile();
+				// This is where a real application would open the file.
+				LOGGER.info(() -> "Opening: " + file.getName() + ".");
+				Pattern pattern = FilePatternLoaderManager.loadFilePattern(file);
+				parentMainView.getHmiPresenter().placePatternOnGameBoard(pattern);
+			} else {
+				LOGGER.info("Open command cancelled by user.");
+			}
+
+		});
+		menu.add(menuItem);
+		return menu;
+	}
+
 	public void createMenu() {
 		// Create the menu bar.
 		menuBar.add(createGameMenuColumn());
+		menuBar.add(createPatternsMenuColumn());
 		menuBar.add(createTestsMenuColumn());
 		menuBar.add(createCheatsMenuColumn());
 

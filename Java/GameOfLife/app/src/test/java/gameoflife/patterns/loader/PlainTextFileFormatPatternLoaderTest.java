@@ -32,7 +32,7 @@ class PlainTextFileFormatPatternLoaderTest {
 
 	@Test
 	void gliderCells() {
-		Pattern pattern = loader.loadFile("app/src/main/resources/gameoflife/patterns/glider.cells");
+		Pattern pattern = FilePatternLoaderManager.loadFilePattern("app/src/main/resources/gameoflife/patterns/glider.cells");
 		IntegerPrecisionRectangle rectangleBoundingBox = pattern.getRectangleBoundingBox();
 		assertNotNull(pattern);
 	}

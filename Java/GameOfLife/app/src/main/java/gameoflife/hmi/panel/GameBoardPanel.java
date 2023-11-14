@@ -21,8 +21,10 @@ import gameoflife.game.GameStatusListener;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
 import gameoflife.hmi.GameOfLifeMainViewFrame;
+import gameoflife.hmi.HmiPresenter;
 import gameoflife.hmi.KeyBoardInputs;
 import gameoflife.hmi.enums.DrawAction;
+import gameoflife.patterns.Pattern;
 
 public class GameBoardPanel extends BasePanel implements GameStatusListener, CellListener {
 
@@ -65,12 +67,11 @@ public class GameBoardPanel extends BasePanel implements GameStatusListener, Cel
 			cell.addGameBoardPointListener(this);
 
 			redrawCell(cell);
-			add(displayedObject);		
+			add(displayedObject);
 
 		}
 		this.addKeyListener(new KeyBoardInputs(this, hmiPresenter));
 
-		
 		LOGGER.info("initializeGamefield : end");
 	}
 
@@ -125,6 +126,13 @@ public class GameBoardPanel extends BasePanel implements GameStatusListener, Cel
 		redrawCell(cell);
 	}
 
+	@Override
+	public void setHmiPresenter(HmiPresenter hmiPresenter) {
+		super.setHmiPresenter(hmiPresenter);
+		gameObjectToLabelMap.values().forEach(cellPanel -> cellPanel.setHmiPresenter(hmiPresenter));
+
+	}
+
 	public void displayGrid() {
 		for (JPanel cell : gameObjectToLabelMap.values()) {
 			Border border = null;
@@ -159,6 +167,10 @@ public class GameBoardPanel extends BasePanel implements GameStatusListener, Cel
 
 	public void setDrawActionInProgress(DrawAction drawActionInProgress) {
 		gameObjectToLabelMap.values().forEach(e -> e.setDrawActionInProgress(drawActionInProgress));
+	}
+
+	public void setPlacePatternActionInProgress(Pattern pattern) {
+		gameObjectToLabelMap.values().forEach(e -> e.setPlaceNewPatternActionInProgress(pattern));
 	}
 
 	public void setPanInProgress(boolean panInProgress) {

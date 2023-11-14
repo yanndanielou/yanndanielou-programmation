@@ -6,7 +6,9 @@ import org.apache.logging.log4j.Logger;
 import gameoflife.gameboard.Cell;
 import gameoflife.hmi.enums.DrawAction;
 import gameoflife.hmi.mouseaction.DrawCellWithMouse;
+import gameoflife.hmi.mouseaction.PlaceNewPatternWithMouse;
 import gameoflife.hmi.mouseaction.ScrollOnGameBoardPanelOnMouseDragAndDrop;
+import gameoflife.patterns.Pattern;
 
 public class CellPanel extends BasePanel {
 	@SuppressWarnings("unused")
@@ -17,6 +19,7 @@ public class CellPanel extends BasePanel {
 	private GameBoardPanel gameBoardPanel;
 	private Cell cell;
 	private DrawCellWithMouse drawCellWithMouse;
+	private PlaceNewPatternWithMouse placeNewPatternWithMouse;
 	private ScrollOnGameBoardPanelOnMouseDragAndDrop scrollOnGameBoardPanelOnMouseDragAndDrop;
 
 	public CellPanel(GameBoardPanel gameBoardPanel, Cell cell) {
@@ -36,7 +39,16 @@ public class CellPanel extends BasePanel {
 			drawCellWithMouse = new DrawCellWithMouse(this, drawActionInProgress);
 			addMouseListener(drawCellWithMouse);
 		}
+	}
 
+	public void setPlaceNewPatternActionInProgress(Pattern pattern) {
+		if (placeNewPatternWithMouse != null) {
+			removeMouseListener(placeNewPatternWithMouse);
+		}
+		if (pattern != null) {
+			placeNewPatternWithMouse = new PlaceNewPatternWithMouse(this, pattern);
+			addMouseListener(placeNewPatternWithMouse);
+		}
 	}
 
 	public void setPanInProgress(boolean panInProgress) {
