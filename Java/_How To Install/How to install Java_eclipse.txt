@@ -17,3 +17,19 @@ Installer plugin startup profiler (https://player.vimeo.com/video/423589706)
 Gradle
 :Buildship
 https://www.vogella.com/tutorials/EclipseGradle/article.html
+
+
+JavaFX
+Follow https://openjfx.io/openjfx-docs/
+Download OpenJDK: https://jdk.java.net/21/
+https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_windows-x64_bin.zip
+Once installed, you can use the java command from your command line.
+Check if the correct java version is installed. The following shows the output for OpenJDK 21:
+
+https://download2.gluonhq.com/openjfx/21.0.1/openjfx-21.0.1_windows-x64_bin-sdk.zip
+
+Definir variable environnement
+set PATH_TO_FX="path\to\javafx-sdk-21.0.1\lib"
+
+
+
