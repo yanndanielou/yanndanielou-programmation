@@ -30,6 +30,9 @@
 	<classpathentry kind="lib" path="../ExternalLibraries/commons-io-2.15.0.jar"/>
 	
 	
+	<classpathentry kind="lib" path="../ExternalLibraries/testfx-junit5-4.0.17.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/testfx-core-4.0.17.jar"/>
+	
 	<classpathentry kind="lib" path="../ExternalLibraries/guava-32.1.3-jre.jar"/>
 <!--
 	<classpathentry kind="lib" path="../ExternalLibraries/guava-32.1.3-jre.jar" sourcepath="../ExternalLibraries/guava-32.1.3-jre-sources.jar"/>

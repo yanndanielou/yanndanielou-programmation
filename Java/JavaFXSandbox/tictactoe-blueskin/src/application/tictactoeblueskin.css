@@ -1,0 +1,61 @@
+/**
+ * Copyright 2013 John Smith <send2jsmith@gmail.com>
+ *
+ * This file is part of Jewelsea Tic-Tac-Toe.
+ *
+ * Jewelsea Tic-Tac-Toe is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Jewelsea Tic-Tac-Toe is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Jewelsea Tic-Tac-Toe.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Contact details: http://jewelsea.wordpress.com
+ */
+
+/**
+ * tictactoe-blueskin.css - place in same source directory as TicTacToe.java and
+ * ensure the build system copies the file over to the output path.
+ */
+.root {
+  -fx-background-color: midnightblue;
+  -fx-padding: 30px;
+  -fx-font-size: 20px;
+  -fx-font-family: "Comic Sans MS";
+}
+
+.info {
+  -fx-text-fill: whitesmoke;
+}
+
+.button {
+  -fx-base: antiquewhite;
+}
+
+.game-controls {
+  -fx-spacing: 20px;
+  -fx-alignment: center;
+}
+
+.status-indicator {
+  -fx-alignment: center;
+  -fx-padding: 16px;
+}
+
+.board {
+  -fx-background-color: slategrey;
+  -fx-hgap: 10px;
+  -fx-vgap: 10px;
+  /**-fx-effect: dropshadow(gaussian, slategrey, 20, 0, 0, 0);*/ /* effect disabled as it causes texture tearing on java 8b79 ea for OS X*/
+}
+
+.square {
+  -fx-padding: 10px;
+  -fx-background-color: azure;
+}
