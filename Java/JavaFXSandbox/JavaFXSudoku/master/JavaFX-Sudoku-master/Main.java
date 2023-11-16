@@ -237,6 +237,24 @@ public class Main extends Application {
 	}
 
 	/**
+	 * Sets up the legend state by checking if any of the number has nine or more
+	 * appearance in the player's Sudoku board
+	 */
+	private void setLegend() {
+		for (int i = 1; i < 10; i++) {
+			if (getNum(i) >= 9) {
+				if (!numGridPane.numButtonsMap.get(i - 1).getId().equals("legendFull")) {
+					numGridPane.numButtonsMap.get(i - 1).setId("legendFull");
+				}
+			} else if (i != value) {
+				numGridPane.numButtonsMap.get(i - 1).setId("");
+			} else {
+				numGridPane.numButtonsMap.get(i - 1).setId("legend");
+			}
+		}
+	}
+
+	/**
 	 * Counts the time elapsed in seconds from the start of the game, from 0 to
 	 * infinite and display that number in the title bard
 	 */
@@ -276,7 +294,7 @@ public class Main extends Application {
 		newGameButton = new Button("New Game");
 		newGameButton.setOnAction(e -> {
 			if (value != 0) {
-				numButtonsMap.get(value - 1).setId("");
+				numGridPane.numButtonsMap.get(value - 1).setId("");
 				value = 0;
 			}
 			timeline.stop();
@@ -334,24 +352,24 @@ public class Main extends Application {
 		untouchedList = new ArrayList<Integer>(boardList);
 		boardTextMap = new HashMap<Integer, Button>();
 		gridMap = new HashMap<Integer, GridPane>();
+		numGridPane.numButtonsMap = new HashMap<Integer, Button>();
 
 		// Generates the GUI for the board
 		generateBoard();
 
-		numGridPane.setUpLegend();
 		// Sets up the legend (nine numbers at the bottom)
 		for (int i = 0; i < 9; i++) {
-			numButtonsMap.put(i, new Button());
-			numButtonsMap.get(i).setText(String.valueOf(i + 1));
-			numGridPane.add(numButtonsMap.get(i), i, 0);
+			numGridPane.numButtonsMap.put(i, new Button());
+			numGridPane.numButtonsMap.get(i).setText(String.valueOf(i + 1));
+			numGridPane.add(numGridPane.numButtonsMap.get(i), i, 0);
 
 			final int lo = i + 1;
 
-			numButtonsMap.get(i).setOnAction(e -> {
+			numGridPane.numButtonsMap.get(i).setOnAction(e -> {
 
-				if (value == Integer.valueOf(numButtonsMap.get(lo - 1).getText())) {
+				if (value == Integer.valueOf(numGridPane.numButtonsMap.get(lo - 1).getText())) {
 					if (getNum(value) < 9) {
-						numButtonsMap.get(value - 1).setId("");
+						numGridPane.numButtonsMap.get(value - 1).setId("");
 					}
 
 					for (int k = 0; k < 81; k++) {
@@ -367,11 +385,11 @@ public class Main extends Application {
 					value = 0;
 				} else {
 					if (value != 0 && getNum(value) < 9) {
-						numButtonsMap.get(value - 1).setId("");
+						numGridPane.numButtonsMap.get(value - 1).setId("");
 					}
 
 					value = lo;
-					numButtonsMap.get(value - 1).setId("legend");
+					numGridPane.numButtonsMap.get(value - 1).setId("legend");
 
 					for (int k = 0; k < 81; k++) {
 						if ((boardTextMap.get(k).getText()).equals(String.valueOf(value))) {
@@ -387,15 +405,15 @@ public class Main extends Application {
 				}
 
 				if (getNum(value) >= 9 && value != 0) {
-					numButtonsMap.get(value - 1).setId("legendFull");
+					numGridPane.numButtonsMap.get(value - 1).setId("legendFull");
 				}
 			});
 
-			numButtonsMap.get(i).setOnMouseEntered(e -> {
+			numGridPane.numButtonsMap.get(i).setOnMouseEntered(e -> {
 				scene.setCursor(Cursor.HAND);
 			});
 
-			numButtonsMap.get(i).setOnMouseExited(e -> {
+			numGridPane.numButtonsMap.get(i).setOnMouseExited(e -> {
 				scene.setCursor(Cursor.DEFAULT);
 			});
 		}

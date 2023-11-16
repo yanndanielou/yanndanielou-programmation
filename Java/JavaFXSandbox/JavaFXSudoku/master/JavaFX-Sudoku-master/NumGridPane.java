@@ -26,25 +26,6 @@ import javafx.util.Duration;
 
 public class NumGridPane extends GridPane {
 
-	private Map<Integer, Button> numButtonsMap = new HashMap<Integer, Button>();
-
-
-	/**
-	 * Sets up the legend state by checking if any of the number has nine or more
-	 * appearance in the player's Sudoku board
-	 */
-	public void setLegend() {
-		for (int i = 1; i < 10; i++) {
-			if (getNum(i) >= 9) {
-				if (!numButtonsMap.get(i - 1).getId().equals("legendFull")) {
-					numButtonsMap.get(i - 1).setId("legendFull");
-				}
-			} else if (i != value) {
-				numButtonsMap.get(i - 1).setId("");
-			} else {
-				numButtonsMap.get(i - 1).setId("legend");
-			}
-		}
-	}
+	Map<Integer, Button> numButtonsMap = new HashMap<Integer, Button>();
 
 }
