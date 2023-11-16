@@ -34,14 +34,14 @@ public class Main extends Application {
 	private GridPane table;
 	private Sudoku sudoku;
 
-	private ArrayList<Integer> board, untouched;
-	private Map<Integer, Button> boardText, numButtons;
-	private Map<Integer, GridPane> grid;
+	private ArrayList<Integer> boardList, untouchedList;
+	private Map<Integer, Button> boardTextMap, numButtonsMap;
+	private Map<Integer, GridPane> gridMap;
 
 	private Image applicationIcon;
 	private HBox hbox;
-	private Button clear, newGame;
-	private GridPane num;
+	private Button clearButton, newGameButton;
+	private GridPane numGridPane;
 
 	private Date start;
 	private Timeline timeline;
@@ -80,16 +80,16 @@ public class Main extends Application {
 	 * @param i     the location of the button in the Sudoku board
 	 */
 	private void changeIdsHelper(String[] array, int i) {
-		if (!(boardText.get(i).getText()).equals(String.valueOf(value)) || value == 0) {
-			if (untouched.get(i) != 0) {
-				boardText.get(i).setId(array[0]);
-			} else if (board.get(i) != 0) {
-				boardText.get(i).setId(array[1]);
+		if (!(boardTextMap.get(i).getText()).equals(String.valueOf(value)) || value == 0) {
+			if (untouchedList.get(i) != 0) {
+				boardTextMap.get(i).setId(array[0]);
+			} else if (boardList.get(i) != 0) {
+				boardTextMap.get(i).setId(array[1]);
 			} else {
-				boardText.get(i).setId(array[2]);
+				boardTextMap.get(i).setId(array[2]);
 			}
 		} else {
-			boardText.get(i).setId(array[3]);
+			boardTextMap.get(i).setId(array[3]);
 		}
 	}
 
@@ -99,7 +99,7 @@ public class Main extends Application {
 	private void reset() {
 		// Removes every buttons (GridPane) inside the main GridPane
 		for (int i = 0; i < 9; i++) {
-			table.getChildren().remove(grid.get(i));
+			table.getChildren().remove(gridMap.get(i));
 		}
 
 		// Creates a new Sudoku board for the player
@@ -111,12 +111,12 @@ public class Main extends Application {
 		System.out.println(sudoku.toString());
 
 		// Get player's board
-		board = sudoku.getPlayer();
+		boardList = sudoku.getPlayer();
 
 		// List and maps of Buttons, GridPanes and value of the board
-		untouched = new ArrayList<Integer>(board);
-		boardText = new HashMap<Integer, Button>();
-		grid = new HashMap<Integer, GridPane>();
+		untouchedList = new ArrayList<Integer>(boardList);
+		boardTextMap = new HashMap<Integer, Button>();
+		gridMap = new HashMap<Integer, GridPane>();
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class Main extends Application {
 	private int getNum(int num) {
 		int count = 0;
 		for (int p = 0; p < 81; p++) {
-			if (Integer.valueOf(boardText.get(p).getText()) == num) {
+			if (Integer.valueOf(boardTextMap.get(p).getText()) == num) {
 				count++;
 			}
 		}
@@ -142,7 +142,7 @@ public class Main extends Application {
 		// Each block
 		for (int i = 0; i < 9; i++) {
 
-			grid.put(i, new GridPane());
+			gridMap.put(i, new GridPane());
 
 			int t = i % 3 * 3 + (i / 3) * 27;
 			int temp = 0;
@@ -157,27 +157,27 @@ public class Main extends Application {
 					final int pos = j + k;
 
 					// New Button
-					boardText.put(pos, new Button());
+					boardTextMap.put(pos, new Button());
 
-					if (board.get(pos) == 0) {
-						boardText.get(pos).setId("zero");
+					if (boardList.get(pos) == 0) {
+						boardTextMap.get(pos).setId("zero");
 
-						boardText.get(pos).setOnAction(e -> {
+						boardTextMap.get(pos).setOnAction(e -> {
 							if (value != 0) {
-								if (boardText.get(pos).getText().equals(String.valueOf(value))) {
-									boardText.get(pos).setText("0");
-									board.set(pos, 0);
-									boardText.get(pos).setId("helperZero");
+								if (boardTextMap.get(pos).getText().equals(String.valueOf(value))) {
+									boardTextMap.get(pos).setText("0");
+									boardList.set(pos, 0);
+									boardTextMap.get(pos).setId("helperZero");
 								} else {
-									boardText.get(pos).setText(String.valueOf(value));
-									boardText.get(pos).setId("");
-									board.set(pos, value);
+									boardTextMap.get(pos).setText(String.valueOf(value));
+									boardTextMap.get(pos).setId("");
+									boardList.set(pos, value);
 								}
 
 								for (int l = 0; l < 81; l++) {
-									if (!boardText.get(l).getId().equals("number")
-											&& boardText.get(l).getText().equals(String.valueOf(value))) {
-										boardText.get(l).setId("number");
+									if (!boardTextMap.get(l).getId().equals("number")
+											&& boardTextMap.get(l).getText().equals(String.valueOf(value))) {
+										boardTextMap.get(l).setId("number");
 									}
 								}
 
@@ -185,7 +185,7 @@ public class Main extends Application {
 							}
 
 							// Checks if the game is done
-							if (sudoku.checkBoard(board)) {
+							if (sudoku.checkBoard(boardList)) {
 								timeline.stop();
 
 								Alert alert = new Alert(AlertType.NONE,
@@ -195,44 +195,44 @@ public class Main extends Application {
 								alert.showAndWait();
 
 								if (alert.getResult() == ButtonType.YES) {
-									newGame.fire();
+									newGameButton.fire();
 								} else if (alert.getResult() == ButtonType.NO) {
 									stage.close();
 								} else if (alert.getResult() == ButtonType.CANCEL) {
-									clear.fire();
+									clearButton.fire();
 								}
 							}
 						});
 
 					} else {
-						boardText.get(pos).setId("preset");
+						boardTextMap.get(pos).setId("preset");
 					}
 
-					boardText.get(pos).setOnMouseEntered(e -> {
-						if (!sudoku.checkBoard(board) && value != 0) {
+					boardTextMap.get(pos).setOnMouseEntered(e -> {
+						if (!sudoku.checkBoard(boardList) && value != 0) {
 							changeHorizontalIds(new String[] { "helper", "helper", "helperZero", "numberHelper" },
 									pos / 9);
 							changeVerticalIds(new String[] { "helper", "helper", "helperZero", "numberHelper" },
 									pos % 9);
-							if (board.get(pos) == 0) {
+							if (boardList.get(pos) == 0) {
 								scene.setCursor(Cursor.HAND);
 							}
 						}
 					});
 
-					boardText.get(pos).setOnMouseExited(e -> {
-						if (!sudoku.checkBoard(board) && value != 0) {
+					boardTextMap.get(pos).setOnMouseExited(e -> {
+						if (!sudoku.checkBoard(boardList) && value != 0) {
 							changeHorizontalIds(new String[] { "preset", "", "zero", "number" }, pos / 9);
 							changeVerticalIds(new String[] { "preset", "", "zero", "number" }, pos % 9);
 							scene.setCursor(Cursor.DEFAULT);
 						}
 					});
 
-					boardText.get(pos).setText(String.valueOf(board.get(pos)));
-					grid.get(i).add(boardText.get(pos), k, temp);
+					boardTextMap.get(pos).setText(String.valueOf(boardList.get(pos)));
+					gridMap.get(i).add(boardTextMap.get(pos), k, temp);
 				}
 			}
-			table.add(grid.get(i), i % 3, i / 3);
+			table.add(gridMap.get(i), i % 3, i / 3);
 		}
 	}
 
@@ -243,13 +243,13 @@ public class Main extends Application {
 	private void setLegend() {
 		for (int i = 1; i < 10; i++) {
 			if (getNum(i) >= 9) {
-				if (!numButtons.get(i - 1).getId().equals("legendFull")) {
-					numButtons.get(i - 1).setId("legendFull");
+				if (!numButtonsMap.get(i - 1).getId().equals("legendFull")) {
+					numButtonsMap.get(i - 1).setId("legendFull");
 				}
 			} else if (i != value) {
-				numButtons.get(i - 1).setId("");
+				numButtonsMap.get(i - 1).setId("");
 			} else {
-				numButtons.get(i - 1).setId("legend");
+				numButtonsMap.get(i - 1).setId("legend");
 			}
 		}
 	}
@@ -277,13 +277,13 @@ public class Main extends Application {
 		stage = primaryStage;
 
 		// Clear button
-		clear = new Button("Clear");
-		clear.setOnAction(e -> {
-			board = new ArrayList<Integer>(untouched);
+		clearButton = new Button("Clear");
+		clearButton.setOnAction(e -> {
+			boardList = new ArrayList<Integer>(untouchedList);
 			for (int i = 0; i < 81; i++) {
-				if (board.get(i) != Integer.valueOf(boardText.get(i).getText())) {
-					boardText.get(i).setText(String.valueOf(board.get(i)));
-					boardText.get(i).setId("zero");
+				if (boardList.get(i) != Integer.valueOf(boardTextMap.get(i).getText())) {
+					boardTextMap.get(i).setText(String.valueOf(boardList.get(i)));
+					boardTextMap.get(i).setId("zero");
 				}
 			}
 
@@ -291,10 +291,10 @@ public class Main extends Application {
 		});
 
 		// New game button
-		newGame = new Button("New Game");
-		newGame.setOnAction(e -> {
+		newGameButton = new Button("New Game");
+		newGameButton.setOnAction(e -> {
 			if (value != 0) {
-				numButtons.get(value - 1).setId("");
+				numButtonsMap.get(value - 1).setId("");
 				value = 0;
 			}
 			timeline.stop();
@@ -315,23 +315,23 @@ public class Main extends Application {
 		table.setAlignment(Pos.CENTER);
 
 		// Layout of the nine numbers at the bottom (legend)
-		num = new GridPane();
-		num.setHgap(2);
-		num.setPadding(new Insets(0, 0, 16, 0));
-		num.setAlignment(Pos.CENTER);
+		numGridPane = new GridPane();
+		numGridPane.setHgap(2);
+		numGridPane.setPadding(new Insets(0, 0, 16, 0));
+		numGridPane.setAlignment(Pos.CENTER);
 
 		// Layout of the top two buttons
 		hbox = new HBox();
 		hbox.setSpacing(10);
 		hbox.setPadding(new Insets(16, 0, 0, 0));
 		hbox.setAlignment(Pos.CENTER);
-		hbox.getChildren().addAll(newGame, clear);
+		hbox.getChildren().addAll(newGameButton, clearButton);
 
 		// Main layout of the Game
 		root = new BorderPane();
 		root.setTop(hbox);
 		root.setCenter(table);
-		root.setBottom(num);
+		root.setBottom(numGridPane);
 
 		// Generates the Sudoku board
 		sudoku = new Sudoku();
@@ -346,38 +346,38 @@ public class Main extends Application {
 		primaryStage.getIcons().add(applicationIcon);
 
 		// Get player's board
-		board = sudoku.getPlayer();
+		boardList = sudoku.getPlayer();
 
 		// List and maps of buttons, GridPanes and value of the board
-		untouched = new ArrayList<Integer>(board);
-		boardText = new HashMap<Integer, Button>();
-		grid = new HashMap<Integer, GridPane>();
-		numButtons = new HashMap<Integer, Button>();
+		untouchedList = new ArrayList<Integer>(boardList);
+		boardTextMap = new HashMap<Integer, Button>();
+		gridMap = new HashMap<Integer, GridPane>();
+		numButtonsMap = new HashMap<Integer, Button>();
 
 		// Generates the GUI for the board
 		generateBoard();
 
 		// Sets up the legend (nine numbers at the bottom)
 		for (int i = 0; i < 9; i++) {
-			numButtons.put(i, new Button());
-			numButtons.get(i).setText(String.valueOf(i + 1));
-			num.add(numButtons.get(i), i, 0);
+			numButtonsMap.put(i, new Button());
+			numButtonsMap.get(i).setText(String.valueOf(i + 1));
+			numGridPane.add(numButtonsMap.get(i), i, 0);
 
 			final int lo = i + 1;
 
-			numButtons.get(i).setOnAction(e -> {
+			numButtonsMap.get(i).setOnAction(e -> {
 
-				if (value == Integer.valueOf(numButtons.get(lo - 1).getText())) {
+				if (value == Integer.valueOf(numButtonsMap.get(lo - 1).getText())) {
 					if (getNum(value) < 9) {
-						numButtons.get(value - 1).setId("");
+						numButtonsMap.get(value - 1).setId("");
 					}
 
 					for (int k = 0; k < 81; k++) {
-						if ((boardText.get(k).getText()).equals(String.valueOf(value))) {
-							if (untouched.get(k) != 0) {
-								boardText.get(k).setId("preset");
-							} else if (board.get(k) != 0) {
-								boardText.get(k).setId("");
+						if ((boardTextMap.get(k).getText()).equals(String.valueOf(value))) {
+							if (untouchedList.get(k) != 0) {
+								boardTextMap.get(k).setId("preset");
+							} else if (boardList.get(k) != 0) {
+								boardTextMap.get(k).setId("");
 							}
 						}
 					}
@@ -385,35 +385,35 @@ public class Main extends Application {
 					value = 0;
 				} else {
 					if (value != 0 && getNum(value) < 9) {
-						numButtons.get(value - 1).setId("");
+						numButtonsMap.get(value - 1).setId("");
 					}
 
 					value = lo;
-					numButtons.get(value - 1).setId("legend");
+					numButtonsMap.get(value - 1).setId("legend");
 
 					for (int k = 0; k < 81; k++) {
-						if ((boardText.get(k).getText()).equals(String.valueOf(value))) {
-							boardText.get(k).setId("number");
+						if ((boardTextMap.get(k).getText()).equals(String.valueOf(value))) {
+							boardTextMap.get(k).setId("number");
 						} else {
-							if (untouched.get(k) != 0) {
-								boardText.get(k).setId("preset");
-							} else if (board.get(k) != 0) {
-								boardText.get(k).setId("");
+							if (untouchedList.get(k) != 0) {
+								boardTextMap.get(k).setId("preset");
+							} else if (boardList.get(k) != 0) {
+								boardTextMap.get(k).setId("");
 							}
 						}
 					}
 				}
 
 				if (getNum(value) >= 9 && value != 0) {
-					numButtons.get(value - 1).setId("legendFull");
+					numButtonsMap.get(value - 1).setId("legendFull");
 				}
 			});
 
-			numButtons.get(i).setOnMouseEntered(e -> {
+			numButtonsMap.get(i).setOnMouseEntered(e -> {
 				scene.setCursor(Cursor.HAND);
 			});
 
-			numButtons.get(i).setOnMouseExited(e -> {
+			numButtonsMap.get(i).setOnMouseExited(e -> {
 				scene.setCursor(Cursor.DEFAULT);
 			});
 		}

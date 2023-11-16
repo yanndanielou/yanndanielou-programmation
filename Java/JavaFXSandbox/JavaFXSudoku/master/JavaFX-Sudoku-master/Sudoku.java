@@ -17,16 +17,13 @@ public class Sudoku {
 	/**
 	 * Uncovered Sudoku board
 	 */
-	private ArrayList<Integer> board;
+	private ArrayList<Integer> uncoveredSudokuBoard;
 
 	/**
 	 * Semi-uncovered Sudoku board
 	 */
-	private ArrayList<Integer> player;
+	private ArrayList<Integer> semiUncoveredSudokuBoard;
 
-	/**
-	 * Constructor for Sudoku
-	 */
 	public Sudoku() {
 		clear();
 	}
@@ -44,7 +41,7 @@ public class Sudoku {
 	 * @return an ArrayList containing the player's Sudoku board
 	 */
 	public ArrayList<Integer> getPlayer() {
-		return player;
+		return semiUncoveredSudokuBoard;
 	}
 
 	/**
@@ -54,10 +51,10 @@ public class Sudoku {
 	 */
 	public void generatePlayer(int num) {
 		for (int i = 0; i < num; i++) {
-			ArrayList<Integer> zerosIndex = getIndexes(player, 0);
+			ArrayList<Integer> zerosIndex = getIndexes(semiUncoveredSudokuBoard, 0);
 			int rand = generateRandom(zerosIndex.size() - 1, 0);
 
-			player.set(zerosIndex.get(rand), board.get(zerosIndex.get(rand)));
+			semiUncoveredSudokuBoard.set(zerosIndex.get(rand), uncoveredSudokuBoard.get(zerosIndex.get(rand)));
 		}
 
 		/*
@@ -107,18 +104,18 @@ public class Sudoku {
 	 * @param num the index of the current element in board
 	 */
 	private void generateBoard(int num) {
-		if (!fullBoard() && !checkBoard(board)) {
+		if (!fullBoard() && !checkBoard(uncoveredSudokuBoard)) {
 			ArrayList<Integer> available = complement(
-					combineArrayList(Arrays.asList(getNeighbours(num, board), previousGenerate.get(num))));
+					combineArrayList(Arrays.asList(getNeighbours(num, uncoveredSudokuBoard), previousGenerate.get(num))));
 
 			if (available.size() == 0) {
-				board.set(num, 0);
+				uncoveredSudokuBoard.set(num, 0);
 				previousGenerate.get(num).clear();
 
 				generateBoard(num - 1);
 			} else {
-				board.set(num, available.get(generateRandom(available.size(), 0)));
-				previousGenerate.get(num).add(board.get(num));
+				uncoveredSudokuBoard.set(num, available.get(generateRandom(available.size(), 0)));
+				previousGenerate.get(num).add(uncoveredSudokuBoard.get(num));
 
 				generateBoard(num + 1);
 			}
@@ -132,23 +129,23 @@ public class Sudoku {
 	 */
 	private boolean solve(int num, ArrayList<Integer> zeros) {
 		ArrayList<Integer> available = complement(
-				combineArrayList(Arrays.asList(getNeighbours(num, player), previousVerify.get(num))));
+				combineArrayList(Arrays.asList(getNeighbours(num, semiUncoveredSudokuBoard), previousVerify.get(num))));
 
 		if (available.size() == 0) {
 			if (num == zeros.get(0)) {
 				return true;
 			} else {
-				player.set(num, 0);
+				semiUncoveredSudokuBoard.set(num, 0);
 				previousVerify.get(num).clear();
 
 				return solve(zeros.get(zeros.indexOf(num) - 1), zeros);
 			}
 		} else {
-			player.set(num, available.get(0));
-			previousVerify.get(num).add(player.get(num));
+			semiUncoveredSudokuBoard.set(num, available.get(0));
+			previousVerify.get(num).add(semiUncoveredSudokuBoard.get(num));
 
 			if (num == zeros.get(zeros.size() - 1)) {
-				if (available.size() == 1 && player.equals(board)) {
+				if (available.size() == 1 && semiUncoveredSudokuBoard.equals(uncoveredSudokuBoard)) {
 					return solve(num, zeros);
 				} else {
 					return false;
@@ -270,7 +267,7 @@ public class Sudoku {
 	 * @return true if the board is full, false otherwise
 	 */
 	private boolean fullBoard() {
-		return !board.contains(0);
+		return !uncoveredSudokuBoard.contains(0);
 	}
 
 	/**
@@ -386,8 +383,8 @@ public class Sudoku {
 	 * Clears and reinitializes the ArrayLists
 	 */
 	public void clear() {
-		board = new ArrayList<Integer>(Collections.nCopies(81, 0));
-		player = new ArrayList<Integer>(Collections.nCopies(81, 0));
+		uncoveredSudokuBoard = new ArrayList<Integer>(Collections.nCopies(81, 0));
+		semiUncoveredSudokuBoard = new ArrayList<Integer>(Collections.nCopies(81, 0));
 		previousGenerate = new ArrayList<ArrayList<Integer>>();
 		previousVerify = new ArrayList<ArrayList<Integer>>();
 
@@ -403,8 +400,8 @@ public class Sudoku {
 	 */
 	@SuppressWarnings("unused")
 	private void generateRandomBoard() {
-		for (int i = 0; i < board.size(); i++) {
-			board.set(i, generateRandom(9, 1));
+		for (int i = 0; i < uncoveredSudokuBoard.size(); i++) {
+			uncoveredSudokuBoard.set(i, generateRandom(9, 1));
 		}
 	}
 
@@ -465,6 +462,6 @@ public class Sudoku {
 	 * @return String representation of the Sudoku board
 	 */
 	public String toString() {
-		return printBoard(board);
+		return printBoard(uncoveredSudokuBoard);
 	}
 }
