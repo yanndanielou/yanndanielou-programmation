@@ -2,3 +2,5 @@
 *.zip
 *.jar
 /bin/
+javafx-sdk-21.0.1
+
