@@ -29,19 +29,19 @@ public class Main extends Application {
 	private int value = 0;
 	private long countUp = 0;
 
-	private BorderPane root;
+	private BorderPane rootBorderPane;
 	private Scene scene;
-	private GridPane table;
+	private GridPane tableGridPane;
 	private Sudoku sudoku;
 
 	private ArrayList<Integer> boardList, untouchedList;
-	private Map<Integer, Button> boardTextMap, numButtonsMap;
+	private Map<Integer, Button> boardTextMap;
 	private Map<Integer, GridPane> gridMap;
 
 	private Image applicationIcon;
-	private HBox hbox;
+	private HBox topHbox;
 	private Button clearButton, newGameButton;
-	private GridPane numGridPane;
+	private NumGridPane numGridPane;
 
 	private Date start;
 	private Timeline timeline;
@@ -99,7 +99,7 @@ public class Main extends Application {
 	private void reset() {
 		// Removes every buttons (GridPane) inside the main GridPane
 		for (int i = 0; i < 9; i++) {
-			table.getChildren().remove(gridMap.get(i));
+			tableGridPane.getChildren().remove(gridMap.get(i));
 		}
 
 		// Creates a new Sudoku board for the player
@@ -232,25 +232,7 @@ public class Main extends Application {
 					gridMap.get(i).add(boardTextMap.get(pos), k, temp);
 				}
 			}
-			table.add(gridMap.get(i), i % 3, i / 3);
-		}
-	}
-
-	/**
-	 * Sets up the legend state by checking if any of the number has nine or more
-	 * appearance in the player's Sudoku board
-	 */
-	private void setLegend() {
-		for (int i = 1; i < 10; i++) {
-			if (getNum(i) >= 9) {
-				if (!numButtonsMap.get(i - 1).getId().equals("legendFull")) {
-					numButtonsMap.get(i - 1).setId("legendFull");
-				}
-			} else if (i != value) {
-				numButtonsMap.get(i - 1).setId("");
-			} else {
-				numButtonsMap.get(i - 1).setId("legend");
-			}
+			tableGridPane.add(gridMap.get(i), i % 3, i / 3);
 		}
 	}
 
@@ -309,29 +291,29 @@ public class Main extends Application {
 		startTimer();
 
 		// Layout of the board
-		table = new GridPane();
-		table.setVgap(8);
-		table.setHgap(8);
-		table.setAlignment(Pos.CENTER);
+		tableGridPane = new GridPane();
+		tableGridPane.setVgap(8);
+		tableGridPane.setHgap(8);
+		tableGridPane.setAlignment(Pos.CENTER);
 
 		// Layout of the nine numbers at the bottom (legend)
-		numGridPane = new GridPane();
+		numGridPane = new NumGridPane();
 		numGridPane.setHgap(2);
 		numGridPane.setPadding(new Insets(0, 0, 16, 0));
 		numGridPane.setAlignment(Pos.CENTER);
 
 		// Layout of the top two buttons
-		hbox = new HBox();
-		hbox.setSpacing(10);
-		hbox.setPadding(new Insets(16, 0, 0, 0));
-		hbox.setAlignment(Pos.CENTER);
-		hbox.getChildren().addAll(newGameButton, clearButton);
+		topHbox = new HBox();
+		topHbox.setSpacing(10);
+		topHbox.setPadding(new Insets(16, 0, 0, 0));
+		topHbox.setAlignment(Pos.CENTER);
+		topHbox.getChildren().addAll(newGameButton, clearButton);
 
 		// Main layout of the Game
-		root = new BorderPane();
-		root.setTop(hbox);
-		root.setCenter(table);
-		root.setBottom(numGridPane);
+		rootBorderPane = new BorderPane();
+		rootBorderPane.setTop(topHbox);
+		rootBorderPane.setCenter(tableGridPane);
+		rootBorderPane.setBottom(numGridPane);
 
 		// Generates the Sudoku board
 		sudoku = new Sudoku();
@@ -352,11 +334,11 @@ public class Main extends Application {
 		untouchedList = new ArrayList<Integer>(boardList);
 		boardTextMap = new HashMap<Integer, Button>();
 		gridMap = new HashMap<Integer, GridPane>();
-		numButtonsMap = new HashMap<Integer, Button>();
 
 		// Generates the GUI for the board
 		generateBoard();
 
+		numGridPane.setUpLegend();
 		// Sets up the legend (nine numbers at the bottom)
 		for (int i = 0; i < 9; i++) {
 			numButtonsMap.put(i, new Button());
@@ -423,7 +405,7 @@ public class Main extends Application {
 		setLegend();
 
 		// Sets the scene to the BorderPane layout and links the CSS file
-		scene = new Scene(root, 350, 450);
+		scene = new Scene(rootBorderPane, 350, 450);
 		scene.getStylesheets().add("file:resources/application.css");
 
 		// Sets the stage, sets its title, displays it, and restricts its minimal size
