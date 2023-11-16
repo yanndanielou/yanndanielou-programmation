@@ -1,21 +1,10 @@
 package application;
 
-import javafx.application.Application;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.*;
-import javafx.beans.value.*;
-import javafx.event.*;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.image.*;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
-import javafx.stage.Stage;
-import javafx.scene.input.KeyCombination;
-
-import java.util.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 
 public class GameControls extends HBox {
 	GameControls(final GameManager gameManager, final Game game) {
