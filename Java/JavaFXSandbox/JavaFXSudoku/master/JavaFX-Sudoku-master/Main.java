@@ -30,9 +30,11 @@ public class Main extends Application {
 	private long countUp = 0;
 
 	private BorderPane rootBorderPane;
+	private BorderPane mainViewBorderPane;
 	private Scene scene;
 	private GridPane tableGridPane;
 	private Sudoku sudoku;
+	private SudokuMainMenuBar menuBar;
 
 	private ArrayList<Integer> boardList, untouchedList;
 	private Map<Integer, Button> boardTextMap;
@@ -327,9 +329,17 @@ public class Main extends Application {
 		topHbox.setAlignment(Pos.CENTER);
 		topHbox.getChildren().addAll(newGameButton, clearButton);
 
+		menuBar = new SudokuMainMenuBar();
+		
+		
+		mainViewBorderPane = new BorderPane();
+		mainViewBorderPane.setTop(menuBar);
+		mainViewBorderPane.setCenter(topHbox);
+		
+		
 		// Main layout of the Game
 		rootBorderPane = new BorderPane();
-		rootBorderPane.setTop(topHbox);
+		rootBorderPane.setTop(mainViewBorderPane);
 		rootBorderPane.setCenter(tableGridPane);
 		rootBorderPane.setBottom(numGridPane);
 

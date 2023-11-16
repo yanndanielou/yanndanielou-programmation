@@ -31,7 +31,8 @@ public class Sudoku {
 	 * Creates a board with only 20 to 40 elements uncovered
 	 */
 	public void generatePlayer() {
-		generatePlayer(generateRandom(40, 20));
+		int numberOfUncoveredElements = generateRandom(40, 20);
+		generatePlayer(numberOfUncoveredElements);
 	}
 
 	/**
@@ -55,39 +56,6 @@ public class Sudoku {
 
 			semiUncoveredSudokuBoard.set(zerosIndex.get(rand), uncoveredSudokuBoard.get(zerosIndex.get(rand)));
 		}
-
-		/*
-		 * Test the solve method System.out.println(printBoard(board));
-		 * System.out.println(printBoard(player));
-		 * 
-		 * System.out.println(sudokuString(player));
-		 * 
-		 * try { System.out.println(solve(getIndexes(player, 0).get(0),
-		 * getIndexes(player, 0))); } catch (StackOverflowError e) {
-		 * System.out.println("------"); }
-		 * 
-		 * System.out.println(printBoard(player));
-		 */
-	}
-
-	/*
-	 * Test the solve method public static void main(String[] args) { Sudoku s = new
-	 * Sudoku(); s.generateBoard(); s.generatePlayer(); }
-	 */
-
-	/**
-	 * Used to verify with online sudoku solver
-	 */
-	public String sudokuString(ArrayList<Integer> l) {
-		String sudoku = "";
-		for (int i : l) {
-			if (i == 0) {
-				sudoku += ".";
-			} else {
-				sudoku += i;
-			}
-		}
-		return sudoku;
 	}
 
 	/**
@@ -104,8 +72,8 @@ public class Sudoku {
 	 */
 	private void generateBoard(int num) {
 		if (!fullBoard() && !checkBoard(uncoveredSudokuBoard)) {
-			ArrayList<Integer> available = complement(
-					combineArrayList(Arrays.asList(getNeighbours(num, uncoveredSudokuBoard), previousGenerate.get(num))));
+			ArrayList<Integer> available = complement(combineArrayList(
+					Arrays.asList(getNeighbours(num, uncoveredSudokuBoard), previousGenerate.get(num))));
 
 			if (available.size() == 0) {
 				uncoveredSudokuBoard.set(num, 0);
