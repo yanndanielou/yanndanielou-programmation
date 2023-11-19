@@ -3,11 +3,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -22,12 +18,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class Main extends Application {
 
 	private int value = 0;
-	private long countUp = 0;
+	long countUp = 0;
 
 	private BorderPane rootBorderPane;
 	private BorderPane mainViewBorderPane;
@@ -46,7 +41,7 @@ public class Main extends Application {
 	private NumGridPane numGridPane;
 
 	private Date start;
-	private Timeline timeline;
+	private SudokuTimeline timeline;
 
 	private Stage stage;
 
@@ -262,14 +257,7 @@ public class Main extends Application {
 	 */
 	private void startTimer() {
 		start = Calendar.getInstance().getTime();
-		timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-			countUp = Calendar.getInstance().getTime().getTime() - start.getTime();
-			stage.setTitle(
-					"Sudoku - Time: " + String.valueOf(TimeUnit.SECONDS.convert(countUp, TimeUnit.MILLISECONDS)));
-		}));
-
-		timeline.setCycleCount(Animation.INDEFINITE);
-		timeline.play();
+		timeline = new SudokuTimeline(this, start, stage);
 	}
 
 	@Override
