@@ -25,30 +25,31 @@ import javafx.stage.Stage;
 public class SudokuMain extends Application {
 	private static final Logger LOGGER = LogManager.getLogger(SudokuMain.class);
 
-
-	private int value = 0;
+	int value = 0;
 	long countUp = 0;
 
-	private BorderPane rootBorderPane;
-	private BorderPane mainViewBorderPane;
-	private Scene scene;
-	private GridPane tableGridPane;
-	private Sudoku sudoku;
-	private SudokuMainMenuBar menuBar;
+	BorderPane rootBorderPane;
+	BorderPane mainViewBorderPane;
+	Scene scene;
+	GridPane tableGridPane;
+	Sudoku sudoku;
+	SudokuMainMenuBar menuBar;
 
-	private ArrayList<Integer> boardList, untouchedList;
-	private Map<Integer, Button> boardTextMap;
-	private Map<Integer, GridPane> gridMap;
+	ViewPresenter viewPresenter;
 
-	private Image applicationIcon;
-	private HBox topHbox;
-	private Button clearButton, newGameButton;
-	private NumGridPane numGridPane;
+	ArrayList<Integer> boardList, untouchedList;
+	Map<Integer, Button> boardButtonsByIntegerMap;
+	Map<Integer, GridPane> gridPaneByIntegerMap;
 
-	private Date start;
-	private SudokuTimeline timeline;
+	Image applicationIcon;
+	HBox topHbox;
+	Button clearButton, newGameButton;
+	NumGridPane numGridPane;
 
-	private Stage stage;
+	Date start;
+	SudokuTimeline timeline;
+
+	Stage stage;
 
 	/**
 	 * Changes the CSS ids of the horizontal line
@@ -56,7 +57,7 @@ public class SudokuMain extends Application {
 	 * @param array an Array of CSS ids
 	 * @param start the horizontal line number
 	 */
-	private void changeHorizontalIds(String[] array, int start) {
+	public void changeHorizontalIds(String[] array, int start) {
 		for (int i = start * 9; i < start * 9 + 9; i++) {
 			changeIdsHelper(array, i);
 		}
@@ -68,7 +69,7 @@ public class SudokuMain extends Application {
 	 * @param array an Array of CSS ids
 	 * @param start the vertical line number
 	 */
-	private void changeVerticalIds(String[] array, int start) {
+	public void changeVerticalIds(String[] array, int start) {
 		for (int i = start; i < start + 9 * 9; i += 9) {
 			changeIdsHelper(array, i);
 		}
@@ -82,26 +83,26 @@ public class SudokuMain extends Application {
 	 * @param i     the location of the button in the Sudoku board
 	 */
 	private void changeIdsHelper(String[] array, int i) {
-		if (!(boardTextMap.get(i).getText()).equals(String.valueOf(value)) || value == 0) {
+		if (!(boardButtonsByIntegerMap.get(i).getText()).equals(String.valueOf(value)) || value == 0) {
 			if (untouchedList.get(i) != 0) {
-				boardTextMap.get(i).setId(array[0]);
+				boardButtonsByIntegerMap.get(i).setId(array[0]);
 			} else if (boardList.get(i) != 0) {
-				boardTextMap.get(i).setId(array[1]);
+				boardButtonsByIntegerMap.get(i).setId(array[1]);
 			} else {
-				boardTextMap.get(i).setId(array[2]);
+				boardButtonsByIntegerMap.get(i).setId(array[2]);
 			}
 		} else {
-			boardTextMap.get(i).setId(array[3]);
+			boardButtonsByIntegerMap.get(i).setId(array[3]);
 		}
 	}
 
 	/**
 	 * Resets the game
 	 */
-	private void reset() {
+	void reset() {
 		// Removes every buttons (GridPane) inside the main GridPane
 		for (int i = 0; i < 9; i++) {
-			tableGridPane.getChildren().remove(gridMap.get(i));
+			tableGridPane.getChildren().remove(gridPaneByIntegerMap.get(i));
 		}
 
 		// Creates a new Sudoku board for the player
@@ -117,8 +118,8 @@ public class SudokuMain extends Application {
 
 		// List and maps of Buttons, GridPanes and value of the board
 		untouchedList = new ArrayList<Integer>(boardList);
-		boardTextMap = new HashMap<Integer, Button>();
-		gridMap = new HashMap<Integer, GridPane>();
+		boardButtonsByIntegerMap = new HashMap<Integer, Button>();
+		gridPaneByIntegerMap = new HashMap<Integer, GridPane>();
 	}
 
 	/**
@@ -130,7 +131,7 @@ public class SudokuMain extends Application {
 	private int getNum(int num) {
 		int count = 0;
 		for (int p = 0; p < 81; p++) {
-			if (Integer.valueOf(boardTextMap.get(p).getText()) == num) {
+			if (Integer.valueOf(boardButtonsByIntegerMap.get(p).getText()) == num) {
 				count++;
 			}
 		}
@@ -140,11 +141,11 @@ public class SudokuMain extends Application {
 	/**
 	 * Generates the board, in terms of GUI
 	 */
-	private void generateBoard() {
+	void generateBoard() {
 		// Each block
 		for (int i = 0; i < 9; i++) {
 
-			gridMap.put(i, new GridPane());
+			gridPaneByIntegerMap.put(i, new GridPane());
 
 			int t = i % 3 * 3 + (i / 3) * 27;
 			int temp = 0;
@@ -159,27 +160,28 @@ public class SudokuMain extends Application {
 					final int pos = j + k;
 
 					// New Button
-					boardTextMap.put(pos, new Button());
+					boardButtonsByIntegerMap.put(pos, new Button());
 
 					if (boardList.get(pos) == 0) {
-						boardTextMap.get(pos).setId("zero");
+						boardButtonsByIntegerMap.get(pos).setId("zero");
 
-						boardTextMap.get(pos).setOnAction(e -> {
+						boardButtonsByIntegerMap.get(pos).setOnAction(e -> {
 							if (value != 0) {
-								if (boardTextMap.get(pos).getText().equals(String.valueOf(value))) {
-									boardTextMap.get(pos).setText("0");
+								if (boardButtonsByIntegerMap.get(pos).getText().equals(String.valueOf(value))) {
+									boardButtonsByIntegerMap.get(pos).setText("0");
 									boardList.set(pos, 0);
-									boardTextMap.get(pos).setId("helperZero");
+									boardButtonsByIntegerMap.get(pos).setId("helperZero");
 								} else {
-									boardTextMap.get(pos).setText(String.valueOf(value));
-									boardTextMap.get(pos).setId("");
+									boardButtonsByIntegerMap.get(pos).setText(String.valueOf(value));
+									boardButtonsByIntegerMap.get(pos).setId("");
 									boardList.set(pos, value);
 								}
 
 								for (int l = 0; l < 81; l++) {
-									if (!boardTextMap.get(l).getId().equals("number")
-											&& boardTextMap.get(l).getText().equals(String.valueOf(value))) {
-										boardTextMap.get(l).setId("number");
+									if (!boardButtonsByIntegerMap.get(l).getId().equals("number")
+											&& boardButtonsByIntegerMap.get(l).getText()
+													.equals(String.valueOf(value))) {
+										boardButtonsByIntegerMap.get(l).setId("number");
 									}
 								}
 
@@ -207,11 +209,11 @@ public class SudokuMain extends Application {
 						});
 
 					} else {
-						boardTextMap.get(pos).setId("preset");
+						boardButtonsByIntegerMap.get(pos).setId("preset");
 					}
 
-					boardTextMap.get(pos).setOnMouseEntered(e -> {
-						LOGGER.info(()-> "boardTextMap "+ pos + " setOnMouseEntered");
+					boardButtonsByIntegerMap.get(pos).setOnMouseEntered(e -> {
+						LOGGER.info(() -> "boardTextMap " + pos + " setOnMouseEntered");
 						if (!sudoku.checkBoard(boardList) && value != 0) {
 							changeHorizontalIds(new String[] { "helper", "helper", "helperZero", "numberHelper" },
 									pos / 9);
@@ -223,20 +225,15 @@ public class SudokuMain extends Application {
 						}
 					});
 
-					boardTextMap.get(pos).setOnMouseExited(e -> {
-						LOGGER.info(()-> "boardTextMap "+ pos + " setOnMouseExited");
-						if (!sudoku.checkBoard(boardList) && value != 0) {
-							changeHorizontalIds(new String[] { "preset", "", "zero", "number" }, pos / 9);
-							changeVerticalIds(new String[] { "preset", "", "zero", "number" }, pos % 9);
-							scene.setCursor(Cursor.DEFAULT);
-						}
+					boardButtonsByIntegerMap.get(pos).setOnMouseExited(e -> {
+						viewPresenter.setOnMouseExitedBoardButtonsByIntegerMap(pos);
 					});
 
-					boardTextMap.get(pos).setText(String.valueOf(boardList.get(pos)));
-					gridMap.get(i).add(boardTextMap.get(pos), k, temp);
+					boardButtonsByIntegerMap.get(pos).setText(String.valueOf(boardList.get(pos)));
+					gridPaneByIntegerMap.get(i).add(boardButtonsByIntegerMap.get(pos), k, temp);
 				}
 			}
-			tableGridPane.add(gridMap.get(i), i % 3, i / 3);
+			tableGridPane.add(gridPaneByIntegerMap.get(i), i % 3, i / 3);
 		}
 	}
 
@@ -244,16 +241,17 @@ public class SudokuMain extends Application {
 	 * Sets up the legend state by checking if any of the number has nine or more
 	 * appearance in the player's Sudoku board
 	 */
-	private void setLegend() {
+	void setLegend() {
 		for (int i = 1; i < 10; i++) {
+			Button button = numGridPane.numButtonsMap.get(i - 1);
 			if (getNum(i) >= 9) {
-				if (!numGridPane.numButtonsMap.get(i - 1).getId().equals("legendFull")) {
-					numGridPane.numButtonsMap.get(i - 1).setId("legendFull");
+				if (!button.getId().equals("legendFull")) {
+					button.setId("legendFull");
 				}
 			} else if (i != value) {
-				numGridPane.numButtonsMap.get(i - 1).setId("");
+				button.setId("");
 			} else {
-				numGridPane.numButtonsMap.get(i - 1).setId("legend");
+				button.setId("legend");
 			}
 		}
 	}
@@ -262,7 +260,7 @@ public class SudokuMain extends Application {
 	 * Counts the time elapsed in seconds from the start of the game, from 0 to
 	 * infinite and display that number in the title bard
 	 */
-	private void startTimer() {
+	void startTimer() {
 		start = Calendar.getInstance().getTime();
 		timeline = new SudokuTimeline(this, start, stage);
 	}
@@ -275,31 +273,17 @@ public class SudokuMain extends Application {
 
 		// Clear button
 		clearButton = new Button("Clear");
-		clearButton.setOnAction(e -> {
-			boardList = new ArrayList<Integer>(untouchedList);
-			for (int i = 0; i < 81; i++) {
-				if (boardList.get(i) != Integer.valueOf(boardTextMap.get(i).getText())) {
-					boardTextMap.get(i).setText(String.valueOf(boardList.get(i)));
-					boardTextMap.get(i).setId("zero");
-				}
-			}
+		clearButton.setOnAction(
 
-			setLegend();
-		});
+				e -> {
+					viewPresenter.onClearButtonAction();
+				});
 
 		// New game button
 		newGameButton = new Button("New Game");
 		newGameButton.setOnAction(e -> {
-			if (value != 0) {
-				numGridPane.numButtonsMap.get(value - 1).setId("");
-				value = 0;
-			}
-			timeline.stop();
-			stage.setTitle("Sudoku - Time: 0");
-			reset();
-			generateBoard();
-			startTimer();
-			setLegend();
+			viewPresenter.onNewGameButtonAction(value);
+
 		});
 
 		// Starts the timer
@@ -317,6 +301,8 @@ public class SudokuMain extends Application {
 		numGridPane.setPadding(new Insets(0, 0, 16, 0));
 		numGridPane.setAlignment(Pos.CENTER);
 
+		viewPresenter = new ViewPresenter(this);
+
 		// Layout of the top two buttons
 		topHbox = new HBox();
 		topHbox.setSpacing(10);
@@ -325,13 +311,11 @@ public class SudokuMain extends Application {
 		topHbox.getChildren().addAll(newGameButton, clearButton);
 
 		menuBar = new SudokuMainMenuBar();
-		
-		
+
 		mainViewBorderPane = new BorderPane();
 		mainViewBorderPane.setTop(menuBar);
 		mainViewBorderPane.setCenter(topHbox);
-		
-		
+
 		// Main layout of the Game
 		rootBorderPane = new BorderPane();
 		rootBorderPane.setTop(mainViewBorderPane);
@@ -355,8 +339,8 @@ public class SudokuMain extends Application {
 
 		// List and maps of buttons, GridPanes and value of the board
 		untouchedList = new ArrayList<Integer>(boardList);
-		boardTextMap = new HashMap<Integer, Button>();
-		gridMap = new HashMap<Integer, GridPane>();
+		boardButtonsByIntegerMap = new HashMap<Integer, Button>();
+		gridPaneByIntegerMap = new HashMap<Integer, GridPane>();
 		numGridPane.numButtonsMap = new HashMap<Integer, Button>();
 
 		// Generates the GUI for the board
@@ -372,17 +356,19 @@ public class SudokuMain extends Application {
 
 			numGridPane.numButtonsMap.get(i).setOnAction(e -> {
 
+				//viewPresenter.onNumButtonActioned();
+
 				if (value == Integer.valueOf(numGridPane.numButtonsMap.get(lo - 1).getText())) {
 					if (getNum(value) < 9) {
 						numGridPane.numButtonsMap.get(value - 1).setId("");
 					}
 
 					for (int k = 0; k < 81; k++) {
-						if ((boardTextMap.get(k).getText()).equals(String.valueOf(value))) {
+						if ((boardButtonsByIntegerMap.get(k).getText()).equals(String.valueOf(value))) {
 							if (untouchedList.get(k) != 0) {
-								boardTextMap.get(k).setId("preset");
+								boardButtonsByIntegerMap.get(k).setId("preset");
 							} else if (boardList.get(k) != 0) {
-								boardTextMap.get(k).setId("");
+								boardButtonsByIntegerMap.get(k).setId("");
 							}
 						}
 					}
@@ -397,13 +383,13 @@ public class SudokuMain extends Application {
 					numGridPane.numButtonsMap.get(value - 1).setId("legend");
 
 					for (int k = 0; k < 81; k++) {
-						if ((boardTextMap.get(k).getText()).equals(String.valueOf(value))) {
-							boardTextMap.get(k).setId("number");
+						if ((boardButtonsByIntegerMap.get(k).getText()).equals(String.valueOf(value))) {
+							boardButtonsByIntegerMap.get(k).setId("number");
 						} else {
 							if (untouchedList.get(k) != 0) {
-								boardTextMap.get(k).setId("preset");
+								boardButtonsByIntegerMap.get(k).setId("preset");
 							} else if (boardList.get(k) != 0) {
-								boardTextMap.get(k).setId("");
+								boardButtonsByIntegerMap.get(k).setId("");
 							}
 						}
 					}
