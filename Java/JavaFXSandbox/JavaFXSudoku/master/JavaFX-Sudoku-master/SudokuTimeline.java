@@ -12,7 +12,7 @@ public class SudokuTimeline {
 
 	private javafx.animation.Timeline timeline;
 
-	public SudokuTimeline(Main main, Date start, Stage stage) {
+	public SudokuTimeline(SudokuMain main, Date start, Stage stage) {
 		timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
 			main.countUp = Calendar.getInstance().getTime().getTime() - start.getTime();
 			stage.setTitle(
