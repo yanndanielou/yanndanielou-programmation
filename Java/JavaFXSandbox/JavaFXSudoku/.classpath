@@ -3,6 +3,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="master/JavaFX-Sudoku-master"/>
 	
+	<classpathentry excluding="**/*.java" kind="src" path="resources"/>
+
 	
 	<classpathentry kind="lib" path="../../ExternalLibraries/log4j-api-2.20.0.jar"/>
 	<classpathentry kind="lib" path="../../ExternalLibraries/log4j-core-2.20.0.jar"/>

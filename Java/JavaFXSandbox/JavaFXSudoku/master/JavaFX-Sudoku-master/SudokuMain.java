@@ -37,13 +37,15 @@ public class SudokuMain extends Application {
 
 	ViewPresenter viewPresenter;
 
-	ArrayList<Integer> boardList, untouchedList;
+	ArrayList<Integer> boardList;
+	ArrayList<Integer> untouchedList;
 	Map<Integer, Button> boardButtonsByIntegerMap;
 	Map<Integer, GridPane> gridPaneByIntegerMap;
 
 	Image applicationIcon;
 	HBox topHbox;
-	Button clearButton, newGameButton;
+	Button clearButton;
+	Button newGameButton;
 	NumGridPane numGridPane;
 
 	Date start;
@@ -128,7 +130,7 @@ public class SudokuMain extends Application {
 	 * @param num the number researched
 	 * @return a number of elements equal to the parameter
 	 */
-	private int getNum(int num) {
+	int getNum(int num) {
 		int count = 0;
 		for (int p = 0; p < 81; p++) {
 			if (Integer.valueOf(boardButtonsByIntegerMap.get(p).getText()) == num) {
@@ -226,7 +228,7 @@ public class SudokuMain extends Application {
 					});
 
 					boardButtonsByIntegerMap.get(pos).setOnMouseExited(e -> {
-						viewPresenter.setOnMouseExitedBoardButtonsByIntegerMap(pos);
+						viewPresenter.onMouseExitedBoardButtonsByIntegerMap(pos);
 					});
 
 					boardButtonsByIntegerMap.get(pos).setText(String.valueOf(boardList.get(pos)));
@@ -349,63 +351,29 @@ public class SudokuMain extends Application {
 		// Sets up the legend (nine numbers at the bottom)
 		for (int i = 0; i < 9; i++) {
 			numGridPane.numButtonsMap.put(i, new Button());
-			numGridPane.numButtonsMap.get(i).setText(String.valueOf(i + 1));
-			numGridPane.add(numGridPane.numButtonsMap.get(i), i, 0);
+			Button selectDigitSelectionButton = numGridPane.numButtonsMap.get(i);
+			selectDigitSelectionButton.setText(String.valueOf(i + 1));
+			numGridPane.add(selectDigitSelectionButton, i, 0);
 
 			final int lo = i + 1;
 
-			numGridPane.numButtonsMap.get(i).setOnAction(e -> {
+			selectDigitSelectionButton.setOnAction(
 
-				//viewPresenter.onNumButtonActioned();
+					e -> {
 
-				if (value == Integer.valueOf(numGridPane.numButtonsMap.get(lo - 1).getText())) {
-					if (getNum(value) < 9) {
-						numGridPane.numButtonsMap.get(value - 1).setId("");
-					}
+						// viewPresenter.onNumButtonActioned();
 
-					for (int k = 0; k < 81; k++) {
-						if ((boardButtonsByIntegerMap.get(k).getText()).equals(String.valueOf(value))) {
-							if (untouchedList.get(k) != 0) {
-								boardButtonsByIntegerMap.get(k).setId("preset");
-							} else if (boardList.get(k) != 0) {
-								boardButtonsByIntegerMap.get(k).setId("");
-							}
-						}
-					}
+						Button genericDigitSelectionButton = numGridPane.numButtonsMap.get(lo - 1);
+						viewPresenter.onGenericDigitSelectionButtonActivated(genericDigitSelectionButton, lo);
+					});
 
-					value = 0;
-				} else {
-					if (value != 0 && getNum(value) < 9) {
-						numGridPane.numButtonsMap.get(value - 1).setId("");
-					}
-
-					value = lo;
-					numGridPane.numButtonsMap.get(value - 1).setId("legend");
-
-					for (int k = 0; k < 81; k++) {
-						if ((boardButtonsByIntegerMap.get(k).getText()).equals(String.valueOf(value))) {
-							boardButtonsByIntegerMap.get(k).setId("number");
-						} else {
-							if (untouchedList.get(k) != 0) {
-								boardButtonsByIntegerMap.get(k).setId("preset");
-							} else if (boardList.get(k) != 0) {
-								boardButtonsByIntegerMap.get(k).setId("");
-							}
-						}
-					}
-				}
-
-				if (getNum(value) >= 9 && value != 0) {
-					numGridPane.numButtonsMap.get(value - 1).setId("legendFull");
-				}
+			selectDigitSelectionButton.setOnMouseEntered(e -> {
+				viewPresenter.onMouseEnteredToNumberSelection();
 			});
 
-			numGridPane.numButtonsMap.get(i).setOnMouseEntered(e -> {
-				scene.setCursor(Cursor.HAND);
-			});
+			selectDigitSelectionButton.setOnMouseExited(e -> {
+				viewPresenter.onMouseExitedToNumberSelection();
 
-			numGridPane.numButtonsMap.get(i).setOnMouseExited(e -> {
-				scene.setCursor(Cursor.DEFAULT);
 			});
 		}
 
