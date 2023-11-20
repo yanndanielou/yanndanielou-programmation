@@ -7,6 +7,8 @@ CALL DOWNLOAD_FILE_FROM_LINK "https://repository.mulesoft.org/nexus/content/repo
 CALL DOWNLOAD_FILE_FROM_LINK "http://www.java2s.com/Code/JarDownload/script/script-10.jar.zip"
 
 
+CALL DOWNLOAD_FILE_FROM_LINK "https://repo1.maven.org/maven2/org/fuin/utils4j/0.12.0/utils4j-0.12.0.jar"
+
 cd openjfx-21.0.1_windows-x64_bin-sdk\javafx-sdk-21.0.1
 powershell -command "Expand-Archive -Force 'src.zip' 'src'"
 
