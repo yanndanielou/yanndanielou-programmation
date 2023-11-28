@@ -8,3 +8,5 @@ gradle
 .gradle
 .idea
 gradle*
+master/
+
