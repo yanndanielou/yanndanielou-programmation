@@ -3,10 +3,11 @@ package tictactoeblueskin.application;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.scene.Node;
+import tictactoeblueskin.game.Game;
 
 
-class Square {
-	enum State {
+public class Square {
+	public enum State {
 		EMPTY, NOUGHT, CROSS
 	}
 

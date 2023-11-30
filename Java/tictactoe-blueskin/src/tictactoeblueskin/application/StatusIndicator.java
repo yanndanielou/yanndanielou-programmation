@@ -6,8 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import tictactoeblueskin.game.Game;
 
-class StatusIndicator extends HBox {
+public class StatusIndicator extends HBox {
 	private final ImageView playerToken = new ImageView();
 	private final Label playerLabel = new Label("Current Player: ");
 

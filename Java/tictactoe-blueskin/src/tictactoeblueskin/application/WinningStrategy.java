@@ -2,10 +2,10 @@ package tictactoeblueskin.application;
 
 import java.util.HashMap;
 import java.util.Map;
+import tictactoeblueskin.game.Board;
 
-
-class WinningStrategy {
-	private final Board board;
+public class WinningStrategy {
+	private final tictactoeblueskin.game.Board board;
 
 	private static final int NOUGHT_WON = 3;
 	private static final int CROSS_WON = 30;
@@ -17,7 +17,7 @@ class WinningStrategy {
 		values.put(Square.State.CROSS, 10);
 	}
 
-	public WinningStrategy(Board board) {
+	public WinningStrategy(tictactoeblueskin.game.Board board) {
 		this.board = board;
 	}
 

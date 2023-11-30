@@ -1,10 +1,12 @@
-package tictactoeblueskin.application;
+package tictactoeblueskin.game;
 
 
 import javafx.scene.Node;
+import tictactoeblueskin.application.BoardSkin;
+import tictactoeblueskin.application.Square;
 
 
-class Board {
+public class Board {
 	private final BoardSkin skin;
 
 	private final Square[][] squares = new Square[3][3];

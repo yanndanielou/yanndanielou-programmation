@@ -1,4 +1,4 @@
-package tictactoeblueskin.application;
+package tictactoeblueskin.game;
 
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.ReadOnlyBooleanWrapper;
@@ -11,6 +11,10 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyCombination;
+import tictactoeblueskin.application.GameManager;
+import tictactoeblueskin.application.GameSkin;
+import tictactoeblueskin.application.Square;
+import tictactoeblueskin.application.WinningStrategy;
 
 public class Game {
 	private GameSkin skin;
