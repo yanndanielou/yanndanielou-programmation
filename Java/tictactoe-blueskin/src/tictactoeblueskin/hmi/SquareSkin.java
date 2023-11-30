@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import tictactoeblueskin.game.Square;
+import tictactoeblueskin.game.SquareState;
 
 public class SquareSkin extends StackPane {
 	static final Image noughtImage = new Image(
@@ -32,10 +33,10 @@ public class SquareSkin extends StackPane {
 			}
 		});
 
-		square.stateProperty().addListener(new ChangeListener<Square.State>() {
+		square.stateProperty().addListener(new ChangeListener<SquareState>() {
 			@Override
-			public void changed(ObservableValue<? extends Square.State> observableValue, Square.State oldState,
-					Square.State state) {
+			public void changed(ObservableValue<? extends SquareState> observableValue, SquareState oldState,
+					SquareState state) {
 				switch (state) {
 				case EMPTY:
 					imageView.setImage(null);
