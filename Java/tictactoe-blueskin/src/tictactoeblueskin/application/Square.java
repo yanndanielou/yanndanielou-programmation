@@ -1,4 +1,4 @@
-package application;
+package tictactoeblueskin.application;
 
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;

@@ -1,5 +1,5 @@
 module tictactoe {
 	requires javafx.controls;
 	
-	opens application to javafx.graphics, javafx.fxml;
+	opens tictactoeblueskin.application to javafx.graphics, javafx.fxml;
 }

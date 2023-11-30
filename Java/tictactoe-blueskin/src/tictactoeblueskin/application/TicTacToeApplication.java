@@ -1,10 +1,10 @@
-package application;
+package tictactoeblueskin.application;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class TicTacToe extends Application {
+public class TicTacToeApplication extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		GameManager gameManager = new GameManager();
@@ -23,7 +23,7 @@ public class TicTacToe extends Application {
 	}
 
 	public static void main(String[] args) {
-		Application.launch(TicTacToe.class);
+		Application.launch(TicTacToeApplication.class);
 	}
 }
 

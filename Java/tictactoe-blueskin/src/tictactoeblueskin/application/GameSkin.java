@@ -1,4 +1,4 @@
-package application;
+package tictactoeblueskin.application;
 
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.VBox;
