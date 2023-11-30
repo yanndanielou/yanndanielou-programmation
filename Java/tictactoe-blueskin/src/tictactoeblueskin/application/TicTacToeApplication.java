@@ -3,6 +3,7 @@ package tictactoeblueskin.application;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import tictactoeblueskin.hmi.SquareSkin;
 
 public class TicTacToeApplication extends Application {
 	@Override

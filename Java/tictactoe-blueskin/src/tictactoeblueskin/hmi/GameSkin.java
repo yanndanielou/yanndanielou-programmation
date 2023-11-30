@@ -1,7 +1,8 @@
-package tictactoeblueskin.application;
+package tictactoeblueskin.hmi;
 
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.VBox;
+import tictactoeblueskin.application.GameManager;
 import tictactoeblueskin.game.Game;
 
 public class GameSkin extends VBox {

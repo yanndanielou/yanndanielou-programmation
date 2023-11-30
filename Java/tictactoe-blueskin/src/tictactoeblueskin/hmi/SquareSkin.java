@@ -1,4 +1,4 @@
-package tictactoeblueskin.application;
+package tictactoeblueskin.hmi;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import tictactoeblueskin.application.Square;
 
 public class SquareSkin extends StackPane {
 	static final Image noughtImage = new Image(
@@ -16,7 +17,7 @@ public class SquareSkin extends StackPane {
 
 	private final ImageView imageView = new ImageView();
 
-	SquareSkin(final Square square) {
+	public SquareSkin(final Square square) {
 		getStyleClass().add("square");
 
 		imageView.setMouseTransparent(true);

@@ -2,7 +2,6 @@ package tictactoeblueskin.application;
 
 import java.util.HashMap;
 import java.util.Map;
-import tictactoeblueskin.game.Board;
 
 public class WinningStrategy {
 	private final tictactoeblueskin.game.Board board;

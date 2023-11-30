@@ -1,4 +1,4 @@
-package tictactoeblueskin.application;
+package tictactoeblueskin.hmi;
 
 
 import javafx.beans.binding.Bindings;
@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import tictactoeblueskin.application.Square;
 import tictactoeblueskin.game.Game;
 
 public class StatusIndicator extends HBox {

@@ -1,8 +1,7 @@
-package tictactoeblueskin.application;
-
-import tictactoeblueskin.game.Board;
+package tictactoeblueskin.hmi;
 
 import javafx.scene.layout.GridPane;
+import tictactoeblueskin.game.Board;
 
 
 public class BoardSkin extends GridPane {
