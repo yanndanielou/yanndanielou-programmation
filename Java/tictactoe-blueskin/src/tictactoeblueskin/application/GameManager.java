@@ -6,7 +6,7 @@ public class GameManager {
 	private Scene gameScene;
 	private Game game;
 
-	GameManager() {
+	public GameManager() {
 		newGame();
 	}
 

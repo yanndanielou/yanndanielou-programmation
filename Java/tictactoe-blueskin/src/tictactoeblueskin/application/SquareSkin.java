@@ -8,10 +8,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
-class SquareSkin extends StackPane {
+public class SquareSkin extends StackPane {
 	static final Image noughtImage = new Image(
 			"http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/128/green-cd-icon.png");
-	static final Image crossImage = new Image(
+	public static final Image crossImage = new Image(
 			"http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/128/blue-cross-icon.png");
 
 	private final ImageView imageView = new ImageView();
