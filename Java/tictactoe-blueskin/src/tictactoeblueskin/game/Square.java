@@ -7,19 +7,17 @@ import tictactoeblueskin.hmi.SquareSkin;
 
 
 public class Square {
-	public enum State {
-		EMPTY, NOUGHT, CROSS
-	}
+
 
 	private final SquareSkin skin;
 
-	private ReadOnlyObjectWrapper<State> state = new ReadOnlyObjectWrapper<>(State.EMPTY);
+	private ReadOnlyObjectWrapper<SquareState> state = new ReadOnlyObjectWrapper<>(SquareState.EMPTY);
 
-	public ReadOnlyObjectProperty<State> stateProperty() {
+	public ReadOnlyObjectProperty<SquareState> stateProperty() {
 		return state.getReadOnlyProperty();
 	}
 
-	public State getState() {
+	public SquareState getState() {
 		return state.get();
 	}
 
@@ -32,7 +30,7 @@ public class Square {
 	}
 
 	public void pressed() {
-		if (!game.isGameOver() && state.get() == State.EMPTY) {
+		if (!game.isGameOver() && state.get() == SquareState.EMPTY) {
 			state.set(game.getCurrentPlayer());
 			game.boardUpdated();
 			game.nextTurn();

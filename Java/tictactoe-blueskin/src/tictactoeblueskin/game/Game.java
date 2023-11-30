@@ -18,18 +18,18 @@ public class Game {
 	private Board board = new Board(this);
 	private WinningStrategy winningStrategy = new WinningStrategy(board);
 
-	private ReadOnlyObjectWrapper<Square.State> currentPlayer = new ReadOnlyObjectWrapper<>(Square.State.CROSS);
+	private ReadOnlyObjectWrapper<SquareState> currentPlayer = new ReadOnlyObjectWrapper<>(SquareState.CROSS);
 
-	public ReadOnlyObjectProperty<Square.State> currentPlayerProperty() {
+	public ReadOnlyObjectProperty<SquareState> currentPlayerProperty() {
 		return currentPlayer.getReadOnlyProperty();
 	}
-	public Square.State getCurrentPlayer() {
+	public SquareState getCurrentPlayer() {
 		return currentPlayer.get();
 	}
 
-	private ReadOnlyObjectWrapper<Square.State> winner = new ReadOnlyObjectWrapper<>(Square.State.EMPTY);
+	private ReadOnlyObjectWrapper<SquareState> winner = new ReadOnlyObjectWrapper<>(SquareState.EMPTY);
 
-	public ReadOnlyObjectProperty<Square.State> winnerProperty() {
+	public ReadOnlyObjectProperty<SquareState> winnerProperty() {
 		return winner.getReadOnlyProperty();
 	}
 
@@ -54,7 +54,7 @@ public class Game {
 	}
 
 	public Game(GameManager gameManager) {
-		gameOver.bind(winnerProperty().isNotEqualTo(Square.State.EMPTY).or(drawnProperty()));
+		gameOver.bind(winnerProperty().isNotEqualTo(SquareState.EMPTY).or(drawnProperty()));
 
 		// Create MenuBar
 		MenuBar menuBar = new MenuBar();
@@ -101,10 +101,10 @@ public class Game {
 		switch (currentPlayer.get()) {
 		case EMPTY:
 		case NOUGHT:
-			currentPlayer.set(Square.State.CROSS);
+			currentPlayer.set(SquareState.CROSS);
 			break;
 		case CROSS:
-			currentPlayer.set(Square.State.NOUGHT);
+			currentPlayer.set(SquareState.NOUGHT);
 			break;
 		}
 	}
@@ -114,7 +114,7 @@ public class Game {
 		drawn.set(winningStrategy.isDrawn());
 
 		if (isDrawn()) {
-			currentPlayer.set(Square.State.EMPTY);
+			currentPlayer.set(SquareState.EMPTY);
 		}
 	}
 

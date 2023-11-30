@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import tictactoeblueskin.game.Game;
-import tictactoeblueskin.game.Square;
+import tictactoeblueskin.game.SquareState;
 
 public class StatusIndicator extends HBox {
 	private final ImageView playerToken = new ImageView();
@@ -28,14 +28,14 @@ public class StatusIndicator extends HBox {
 
 	private void bindIndicatorFieldsToGame(Game game) {
 		playerToken.imageProperty()
-				.bind(Bindings.when(game.currentPlayerProperty().isEqualTo(Square.State.NOUGHT))
+				.bind(Bindings.when(game.currentPlayerProperty().isEqualTo(SquareState.NOUGHT))
 						.then(SquareSkin.noughtImage)
-						.otherwise(Bindings.when(game.currentPlayerProperty().isEqualTo(Square.State.CROSS))
+						.otherwise(Bindings.when(game.currentPlayerProperty().isEqualTo(SquareState.CROSS))
 								.then(SquareSkin.crossImage).otherwise((Image) null)));
 
 		playerLabel.textProperty()
 				.bind(Bindings.when(game.gameOverProperty().not()).then("Current Player: ")
-						.otherwise(Bindings.when(game.winnerProperty().isEqualTo(Square.State.EMPTY)).then("Draw")
+						.otherwise(Bindings.when(game.winnerProperty().isEqualTo(SquareState.EMPTY)).then("Draw")
 								.otherwise("Winning Player: ")));
 	}
 }

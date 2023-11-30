@@ -9,18 +9,18 @@ public class WinningStrategy {
 	private static final int NOUGHT_WON = 3;
 	private static final int CROSS_WON = 30;
 
-	private static final Map<Square.State, Integer> values = new HashMap<>();
+	private static final Map<SquareState, Integer> values = new HashMap<>();
 	static {
-		values.put(Square.State.EMPTY, 0);
-		values.put(Square.State.NOUGHT, 1);
-		values.put(Square.State.CROSS, 10);
+		values.put(SquareState.EMPTY, 0);
+		values.put(SquareState.NOUGHT, 1);
+		values.put(SquareState.CROSS, 10);
 	}
 
 	public WinningStrategy(tictactoeblueskin.game.Board board) {
 		this.board = board;
 	}
 
-	public Square.State getWinner() {
+	public SquareState getWinner() {
 		for (int i = 0; i < 3; i++) {
 			int score = 0;
 			for (int j = 0; j < 3; j++) {
@@ -57,19 +57,19 @@ public class WinningStrategy {
 			return winner(score);
 		}
 
-		return Square.State.EMPTY;
+		return SquareState.EMPTY;
 	}
 
 	public boolean isDrawn() {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				if (board.getSquare(i, j).getState() == Square.State.EMPTY) {
+				if (board.getSquare(i, j).getState() == SquareState.EMPTY) {
 					return false;
 				}
 			}
 		}
 
-		return getWinner() == Square.State.EMPTY;
+		return getWinner() == SquareState.EMPTY;
 	}
 
 	private Integer valueOf(int i, int j) {
@@ -80,13 +80,13 @@ public class WinningStrategy {
 		return score == NOUGHT_WON || score == CROSS_WON;
 	}
 
-	private Square.State winner(int score) {
+	private SquareState winner(int score) {
 		if (score == NOUGHT_WON)
-			return Square.State.NOUGHT;
+			return SquareState.NOUGHT;
 		if (score == CROSS_WON)
-			return Square.State.CROSS;
+			return SquareState.CROSS;
 
-		return Square.State.EMPTY;
+		return SquareState.EMPTY;
 	}
 }
 
