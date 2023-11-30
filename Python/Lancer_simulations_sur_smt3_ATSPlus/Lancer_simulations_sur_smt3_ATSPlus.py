@@ -48,6 +48,7 @@ class SMT3SimulationResult:
         self.received_from_smt3 = received_from_smt3
         self.xml_response_from_smt3_response_as_indented_text = xml_response_from_smt3_response_as_indented_text
         self.error_text = error_text
+        self.error_text_in_one_line = error_text.replace("\n", "\n")
         self.totalTravelTimeInSecond_text = totalTravelTimeInSecond_text
         self.smt3_execution_time = smt3_execution_time
 
@@ -201,7 +202,7 @@ def saveSimulation(sMT3Simulation, input_output_dump_file, result_csv_file, nume
     input_output_dump_file.write(sMT3SimulationResult.xml_response_from_smt3_response_as_indented_text)
     input_output_dump_file.write(end_line_character_in_text_file)
 
-    result_csv_file.write(elementary_mission_name + csv_fields_separator + modele_name + csv_fields_separator + str(sMT3SimulationRequest.stepInSecond) + csv_fields_separator + str(sMT3SimulationRequest.dwellTimeInSecond) + csv_fields_separator + str(sMT3SimulationResult.smt3_execution_time) + csv_fields_separator + sMT3SimulationResult.totalTravelTimeInSecond_text + csv_fields_separator + sMT3SimulationResult.error_text +  end_line_character_in_text_file)
+    result_csv_file.write(elementary_mission_name + csv_fields_separator + modele_name + csv_fields_separator + str(sMT3SimulationRequest.stepInSecond) + csv_fields_separator + str(sMT3SimulationRequest.dwellTimeInSecond) + csv_fields_separator + str(sMT3SimulationResult.smt3_execution_time) + csv_fields_separator + sMT3SimulationResult.totalTravelTimeInSecond_text + csv_fields_separator + sMT3SimulationResult.error_text_in_one_line +  end_line_character_in_text_file)
 
     if(not (nombre_simulations_smt3_effectuees % _PasSauvegarde)):
         LoggerConfig.printAndLogInfo("Save output file with partial results")
