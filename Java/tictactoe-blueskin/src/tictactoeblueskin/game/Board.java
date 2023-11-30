@@ -2,7 +2,6 @@ package tictactoeblueskin.game;
 
 
 import javafx.scene.Node;
-import tictactoeblueskin.application.Square;
 import tictactoeblueskin.hmi.BoardSkin;
 
 

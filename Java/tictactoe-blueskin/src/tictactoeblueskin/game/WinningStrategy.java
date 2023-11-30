@@ -1,4 +1,4 @@
-package tictactoeblueskin.application;
+package tictactoeblueskin.game;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,9 +1,8 @@
-package tictactoeblueskin.application;
+package tictactoeblueskin.game;
 
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.scene.Node;
-import tictactoeblueskin.game.Game;
 import tictactoeblueskin.hmi.SquareSkin;
 
 

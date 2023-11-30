@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
-import tictactoeblueskin.application.Square;
+import tictactoeblueskin.game.Square;
 
 public class SquareSkin extends StackPane {
 	static final Image noughtImage = new Image(

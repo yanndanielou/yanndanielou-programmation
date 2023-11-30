@@ -11,9 +11,6 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyCombination;
-import tictactoeblueskin.application.GameManager;
-import tictactoeblueskin.application.Square;
-import tictactoeblueskin.application.WinningStrategy;
 import tictactoeblueskin.hmi.GameSkin;
 
 public class Game {

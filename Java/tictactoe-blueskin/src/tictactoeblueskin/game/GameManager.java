@@ -1,7 +1,6 @@
-package tictactoeblueskin.application;
+package tictactoeblueskin.game;
 
 import javafx.scene.Scene;
-import tictactoeblueskin.game.Game;
 
 public class GameManager {
 	private Scene gameScene;

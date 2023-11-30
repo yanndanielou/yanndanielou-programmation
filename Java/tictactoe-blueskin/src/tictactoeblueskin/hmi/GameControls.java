@@ -5,8 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import tictactoeblueskin.application.GameManager;
 import tictactoeblueskin.game.Game;
+import tictactoeblueskin.game.GameManager;
 
 public class GameControls extends HBox {
 	GameControls(final GameManager gameManager, final Game game) {
