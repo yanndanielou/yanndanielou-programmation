@@ -48,7 +48,7 @@ class SMT3SimulationResult:
         self.received_from_smt3 = received_from_smt3
         self.xml_response_from_smt3_response_as_indented_text = xml_response_from_smt3_response_as_indented_text
         self.error_text = error_text
-        self.error_text_in_one_line = error_text.replace("\n", "\n")
+        self.error_text_in_one_line = error_text.replace("\n", "\\n")
         self.totalTravelTimeInSecond_text = totalTravelTimeInSecond_text
         self.smt3_execution_time = smt3_execution_time
 
@@ -210,6 +210,7 @@ def saveSimulation(sMT3Simulation, input_output_dump_file, result_csv_file, nume
         result_csv_file.flush()
         # typically the above line would do. however this is used to ensure that the file is written
         os.fsync(input_output_dump_file.fileno())
+        os.fsync(result_csv_file.fileno())
 
 def create_output_text_file(output_directory, output_file_name):
     
