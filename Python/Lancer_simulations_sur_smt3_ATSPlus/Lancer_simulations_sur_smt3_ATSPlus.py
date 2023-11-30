@@ -11,6 +11,10 @@ import sys
 import joblib
 
 
+#For hmi
+import tkinter as tk
+from tkinter import filedialog
+
 #For logs
 import LoggerConfig
 import logging
@@ -248,16 +252,18 @@ def ProduireSimplesRuns( _url, all_elementary_missions_names_as_list, all_nom_mo
         for modele_name in all_nom_modele_as_list:
             numero_modele = numero_modele + 1
 
-            for stepInSecond_multiplicator_coeff in range(1,1000000):
+            for stepInSecond_multiplicator_coeff in range(1,6):
+
+                stepInSecondToApply = _stepInSecond * stepInSecond_multiplicator_coeff
                 
                 #Envoi de la requête
                 start_time_SimulerSimpleRunSimulation = time.time()
                 nombre_simulations_smt3_effectuees = nombre_simulations_smt3_effectuees + 1
-                LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"] ")
+                LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"]  stepInSecondToApply:" + str(stepInSecondToApply))
 
 
                 try:
-                    sMT3Simulation = SimulerSimpleRunSimulation(_url, _stepInSecond * stepInSecond_multiplicator_coeff, _dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, _ignoredMER)
+                    sMT3Simulation = SimulerSimpleRunSimulation(_url, stepInSecondToApply, _dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, _ignoredMER)
 
  
                     elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
@@ -369,7 +375,7 @@ def Lancer_simulations_sur_smt3_ATSPlus(smt3_port, SMT2_Data_param_for_SMT3_laun
 
 
     url = "http://127.0.0.1:" + str(smt3_port)
-    step_in_second = 0.1
+    step_in_second = 0.2
 
     dwell_time_in_second = 30.0
     coeff_on_run_time = 1.1
@@ -391,11 +397,11 @@ def main(argv):
     numero_derniere_mission_elementaire_a_traiter = None
 
     
-    SMT2_Data_param_for_SMT3_launched_in_Matlab_file_name_with_path = 'SMT2_Data_param_for_SMT3_launched_in_Matlab.m'
-    SMT2_Data_mE_file_name_with_path = 'SMT2_Data_mE.m'
+    SMT2_Data_param_for_SMT3_launched_in_Matlab_file_name_with_path = '7316_ME_D5_3_0_P1\\SMT2_Data_param_for_SMT3_launched_in_Matlab.m'
+    SMT2_Data_mE_file_name_with_path = '7316_ME_D5_3_0_P1\\SMT2_Data_mE.m'
 
 
-    port_smt3 = 8082
+    port_smt3 = 8080
 
     try:
         opts, args = getopt.getopt(argv,"hi:o:", list_arguments_names)
@@ -418,6 +424,14 @@ def main(argv):
             SMT2_Data_mE_file_name_with_path = arg
         else:
             LoggerConfig.printAndLogCriticalAndKill (" Option:" + opt + " unknown with value:" + opt + ". Allowed arguments:" + str(list_arguments_names) + ". Application stopped")
+
+
+    root = tk.Tk()
+    root.withdraw()
+
+    #SMT2_Data_mE_file_name_with_path = filedialog.askopenfilename(initialdir = "D:/SMT3/donnnees_projet/7316_ME_D5_3_0_P1",title = "Select file SMT2_Data_mE",filetypes = (("SMT2_Data_mE","*.m")))
+    #SMT2_Data_param_for_SMT3_launched_in_Matlab_file_name_with_path = filedialog.askopenfilename(initialdir = "D:/SMT3/donnnees_projet/7316_ME_D5_3_0_P1",title = "Select file SMT2_Data_mE",filetypes = (("SMT2_Data_mE","SMT2_Data_mE.m")))
+
 
     system("title " + " Lancer_simulations_sur_smt3 " + str(numero_premiere_mission_elementaire_a_traiter) + " "  + str(numero_derniere_mission_elementaire_a_traiter) + " "  + str(port_smt3) + " " )
     Lancer_simulations_sur_smt3_ATSPlus(port_smt3,SMT2_Data_param_for_SMT3_launched_in_Matlab_file_name_with_path, SMT2_Data_mE_file_name_with_path, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter)
