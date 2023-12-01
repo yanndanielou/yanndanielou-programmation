@@ -1,4 +1,4 @@
-package tictactoeblueskin.application;
+package tictactoeblueskin;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
