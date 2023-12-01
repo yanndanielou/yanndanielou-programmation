@@ -19,7 +19,7 @@ public class TicTacToeApplication extends Application {
 		stage.setScene(scene);
 		stage.show();
 	}
-
+ 
 
 	public static void main(String[] args) {
 		Application.launch(TicTacToeApplication.class);
