@@ -48,8 +48,8 @@ class SMT3SimulationRequest:
 
 
 class SMT3SimulationResult:
-    def __init__(self, url, received_from_smt3, xml_response_from_smt3_response_as_indented_text, error_text, totalTravelTimeInSecond_text, smt3_execution_time):
-        self.url = url
+    def __init__(self, smt3Server, received_from_smt3, xml_response_from_smt3_response_as_indented_text, error_text, totalTravelTimeInSecond_text, smt3_execution_time):
+        self.smt3Server = smt3Server
         self.received_from_smt3 = received_from_smt3
         self.xml_response_from_smt3_response_as_indented_text = xml_response_from_smt3_response_as_indented_text
         self.error_text = error_text
@@ -105,7 +105,7 @@ def prepare_SMT3_Request(stepInSecond, dwellTimeInSecond, elementary_mission_nam
     return travelTimesRequestTree
 
 
-def decode_smt3_result(url, received_from_smt3, elapsed_time_simulation_SMT3):
+def decode_smt3_result(smt3Server, url, received_from_smt3, elapsed_time_simulation_SMT3):
 
     #received_from_smt3.raise_for_status()
     logging.info("HTTP status:" +  str(received_from_smt3.status_code))
@@ -139,7 +139,7 @@ def decode_smt3_result(url, received_from_smt3, elapsed_time_simulation_SMT3):
         
         xml_response_from_smt3_response_as_indented_text = ET.tostring(received_from_smt3_element, encoding='unicode')
 
-        sMT3SimulationResult = SMT3SimulationResult(url, received_from_smt3, xml_response_from_smt3_response_as_indented_text, errorMessage_text, totalTravelTimeInSecond_text, elapsed_time_simulation_SMT3)
+        sMT3SimulationResult = SMT3SimulationResult(smt3Server, received_from_smt3, xml_response_from_smt3_response_as_indented_text, errorMessage_text, totalTravelTimeInSecond_text, elapsed_time_simulation_SMT3)
     
     if received_from_smt3.status_code != 200:
         LoggerConfig.printAndLogInfo("status_code:" + str(received_from_smt3.status_code))
@@ -189,7 +189,7 @@ def SimulerSimpleRunSimulation(smt3Servers, stepInSecond, dwellTimeInSecond, _co
             #print(xml)
             quit()
         
-        sMT3SimulationResult = decode_smt3_result(smt3Server.url, received_from_smt3, elapsed_time_simulation_SMT3)
+        sMT3SimulationResult = decode_smt3_result(smt3Server, smt3Server.url, received_from_smt3, elapsed_time_simulation_SMT3)
         sMT3SimulationResults.append(sMT3SimulationResult)
 
     sMT3Simulation = SMT3Simulation(sMT3SimulationRequest, sMT3SimulationResults, elementary_mission_name, modele_name)
@@ -197,18 +197,20 @@ def SimulerSimpleRunSimulation(smt3Servers, stepInSecond, dwellTimeInSecond, _co
     return sMT3Simulation
 
 
-def saveSimulation(sMT3Simulation, input_output_dump_file, result_csv_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees, _PasSauvegarde):
+def saveSimulation(sMT3Simulation, result_csv_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees, _PasSauvegarde):
 
     sMT3SimulationRequest = sMT3Simulation.sMT3SimulationRequest
     
     
-    input_output_dump_file.write(end_line_character_in_text_file)
-    input_output_dump_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"] " +  " : Simulation ["+elementary_mission_name+","+modele_name+"] ")
+    for sMT3SimulationResult in sMT3Simulation.sMT3SimulationResults:
+        input_output_dump_file = sMT3SimulationResult.smt3Server.input_output_dump_file
+        input_output_dump_file.write(end_line_character_in_text_file)
+        input_output_dump_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"] " +  " : Simulation ["+elementary_mission_name+","+modele_name+"] ")
 
-    input_output_dump_file.write("Send to SMT3 "+ end_line_character_in_text_file)
-    input_output_dump_file.write(sMT3SimulationRequest.xml_request_to_SMT3_as_indented_text)
-    input_output_dump_file.write(end_line_character_in_text_file)
-    
+        input_output_dump_file.write("Send to SMT3 "+ end_line_character_in_text_file)
+        input_output_dump_file.write(sMT3SimulationRequest.xml_request_to_SMT3_as_indented_text)
+        input_output_dump_file.write(end_line_character_in_text_file)
+        
     result_csv_file.write(elementary_mission_name + csv_fields_separator + modele_name + csv_fields_separator + str(sMT3SimulationRequest.stepInSecond) + csv_fields_separator + str(sMT3SimulationRequest.dwellTimeInSecond) + csv_fields_separator)
 
 
@@ -217,14 +219,19 @@ def saveSimulation(sMT3Simulation, input_output_dump_file, result_csv_file, nume
         input_output_dump_file.write(end_line_character_in_text_file)
         input_output_dump_file.write("Received from SMT3 " + end_line_character_in_text_file)
 
-        result_csv_file.write(str(sMT3SimulationResult.smt3_execution_time) + csv_fields_separator + sMT3SimulationResult.totalTravelTimeInSecond_text + csv_fields_separator + sMT3SimulationResult.error_text_in_one_line)
+        result_csv_file.write(str(sMT3SimulationResult.smt3_execution_time) + csv_fields_separator + sMT3SimulationResult.totalTravelTimeInSecond_text + csv_fields_separator + sMT3SimulationResult.error_text_in_one_line + csv_fields_separator)
 
     result_csv_file.write( end_line_character_in_text_file)
 
 
     if(not (nombre_simulations_smt3_effectuees % _PasSauvegarde)):
         LoggerConfig.printAndLogInfo("Save output file with partial results")
-        input_output_dump_file.flush()
+        for sMT3SimulationResult in sMT3Simulation.sMT3SimulationResults:
+            input_output_dump_file = sMT3SimulationResult.smt3Server.input_output_dump_file
+            input_output_dump_file.flush()
+            # typically the above line would do. however this is used to ensure that the file is written
+            os.fsync(input_output_dump_file.fileno())
+            
         result_csv_file.flush()
         # typically the above line would do. however this is used to ensure that the file is written
         os.fsync(input_output_dump_file.fileno())
@@ -257,15 +264,16 @@ def ProduireSimplesRuns( smt3Servers, all_elementary_missions_names_as_list, all
         LoggerConfig.printAndLogInfo('Create output directory:' + output_directory)
         os.makedirs(output_directory)
 
-    input_output_dump_file_name = "ProduireSimplesRuns_xml_inputs_and_output_" + now_as_string_for_file_suffix + ".txt"
-    input_output_dump_file = create_output_text_file(output_directory, input_output_dump_file_name)
+    for smt3Server in smt3Servers:
+        smt3Server.input_output_dump_file_name = "Inputs_and_output_" + now_as_string_for_file_suffix + smt3Server.description() + ".txt"
+        smt3Server.input_output_dump_file = create_output_text_file(output_directory, smt3Server.input_output_dump_file_name)
 
     result_csv_file_name =  "ProduireSimplesRuns_csv_results_" + now_as_string_for_file_suffix + ".csv"
     result_csv_file = create_output_text_file(output_directory, result_csv_file_name)
 
     result_csv_file.write("elementary_mission_name" + csv_fields_separator + "modele_name" + csv_fields_separator + "stepInSecond" + csv_fields_separator + "dwellTimeInSecond" + csv_fields_separator)
     for smt3Server in smt3Servers:
-        result_csv_file.write("sMT3SimulationResult." + smt3Server.smt3Version + "_" + str(smt3Server.port) + ".smt3_execution_time" + csv_fields_separator + "sMT3SimulationResult." + smt3Server.smt3Version + "_" + str(smt3Server.port) + ".totalTravelTimeInSecond_text" + csv_fields_separator + "sMT3SimulationResult." + smt3Server.smt3Version + "_" + str(smt3Server.port) + ".error_text")
+        result_csv_file.write("sMT3SimulationResult." + smt3Server.description() + ".smt3_execution_time" + csv_fields_separator + "sMT3SimulationResult." + smt3Server.smt3Version + "_" + str(smt3Server.port) + ".totalTravelTimeInSecond_text" + csv_fields_separator + "sMT3SimulationResult." + smt3Server.smt3Version + "_" + str(smt3Server.port) + ".error_text")
 
     result_csv_file.write( end_line_character_in_text_file)
 
@@ -301,7 +309,7 @@ def ProduireSimplesRuns( smt3Servers, all_elementary_missions_names_as_list, all
                         LoggerConfig.printAndLogWarning("SMT3 was slow for mission elementaire " + str(numero_modele) + " [" + elementary_mission_name + "," + modele_name + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
                     
 
-                    saveSimulation(sMT3Simulation, input_output_dump_file, result_csv_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees, _PasSauvegarde)
+                    saveSimulation(sMT3Simulation, result_csv_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees, _PasSauvegarde)
 
                 except requests.exceptions.ConnectionError as err:
                     # eg, no internet
@@ -313,8 +321,9 @@ def ProduireSimplesRuns( smt3Servers, all_elementary_missions_names_as_list, all
                     raise SystemExit(err)
                 # the rest of my code is going here
 
-    logging.info('Close output files:' + input_output_dump_file_name)
-    input_output_dump_file.close()
+    for smt3Server in smt3Servers: 
+        logging.info('Close output files:' + smt3Server.input_output_dump_file_name)
+        smt3Server.input_output_dump_file.close()
     result_csv_file.close()
     
 
@@ -398,7 +407,7 @@ def Lancer_simulations_sur_smt3_ATSPlus(smt3Servers, SMT2_Data_param_for_SMT3_la
     LoggerConfig.printAndLogInfo("ignoredMER : " + str(ignoredMER)) 
 
     LoggerConfig.printAndLogInfo("ProduireSimplesRuns") 
-    pas_sauvegarde = 10
+    pas_sauvegarde = 3
 
     for smt3Server in smt3Servers:
         smt3Server.url = "http://127.0.0.1:" + str(smt3Server.port)
@@ -427,9 +436,6 @@ def main(argv):
     
     SMT2_Data_param_for_SMT3_launched_in_Matlab_file_name_with_path = '7316_ME_D5_3_0_P1\\SMT2_Data_param_for_SMT3_launched_in_Matlab.m'
     SMT2_Data_mE_file_name_with_path = '7316_ME_D5_3_0_P1\\SMT2_Data_mE.m'
-
-    ports_smt3 = list()
-    ports_smt3.append(8080)
 
     try:
         opts, args = getopt.getopt(argv,"hi:o:", list_arguments_names)
@@ -461,7 +467,7 @@ def main(argv):
     #SMT2_Data_param_for_SMT3_launched_in_Matlab_file_name_with_path = filedialog.askopenfilename(initialdir = "D:/SMT3/donnnees_projet/7316_ME_D5_3_0_P1",title = "Select file SMT2_Data_mE",filetypes = (("SMT2_Data_mE","SMT2_Data_mE.m")))
 
 
-    system("title " + " Lancer_simulations_sur_smt3 " + str(numero_premiere_mission_elementaire_a_traiter) + " "  + str(numero_derniere_mission_elementaire_a_traiter) + " "  + str(ports_smt3) + " " )
+    system("title " + " Lancer_simulations_sur_smt3 " + str(numero_premiere_mission_elementaire_a_traiter) + " "  + str(numero_derniere_mission_elementaire_a_traiter) )
     Lancer_simulations_sur_smt3_ATSPlus(param.sMT3Servers,SMT2_Data_param_for_SMT3_launched_in_Matlab_file_name_with_path, SMT2_Data_mE_file_name_with_path, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter)
 
     LoggerConfig.printAndLogInfo('End application')
