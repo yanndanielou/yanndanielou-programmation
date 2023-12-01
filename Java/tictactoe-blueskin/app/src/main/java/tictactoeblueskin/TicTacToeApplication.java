@@ -12,7 +12,7 @@ public class TicTacToeApplication extends Application {
 		GameManager gameManager = new GameManager();
 
 		Scene scene = gameManager.getGameScene();
-		scene.getStylesheets().add(getResource("tictactoeblueskin.css"));
+		scene.getStylesheets().add("tictactoeblueskin.css");
 
 		stage.setTitle("Tic-Tac-Toe");
 		stage.getIcons().add(SquareSkin.crossImage);
@@ -20,9 +20,6 @@ public class TicTacToeApplication extends Application {
 		stage.show();
 	}
 
-	private String getResource(String resourceName) {
-		return getClass().getResource(resourceName).toExternalForm();
-	}
 
 	public static void main(String[] args) {
 		Application.launch(TicTacToeApplication.class);
