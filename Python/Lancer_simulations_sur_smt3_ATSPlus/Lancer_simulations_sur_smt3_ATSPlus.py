@@ -203,21 +203,20 @@ def saveSimulation(sMT3Simulation, result_csv_file, numero_mission_elementaire_c
     
     
     for sMT3SimulationResult in sMT3Simulation.sMT3SimulationResults:
-        input_output_dump_file = sMT3SimulationResult.smt3Server.input_output_dump_file
-        input_output_dump_file.write(end_line_character_in_text_file)
-        input_output_dump_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"] " +  " : Simulation ["+elementary_mission_name+","+modele_name+"] ")
+        sMT3SimulationResult.smt3Server.input_output_dump_file.write(end_line_character_in_text_file)
+        sMT3SimulationResult.smt3Server.input_output_dump_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"] " +  " : Simulation ["+elementary_mission_name+","+modele_name+"] ")
 
-        input_output_dump_file.write("Send to SMT3 "+ end_line_character_in_text_file)
-        input_output_dump_file.write(sMT3SimulationRequest.xml_request_to_SMT3_as_indented_text)
-        input_output_dump_file.write(end_line_character_in_text_file)
+        sMT3SimulationResult.smt3Server.input_output_dump_file.write("Send to SMT3 "+ end_line_character_in_text_file)
+        sMT3SimulationResult.smt3Server.input_output_dump_file.write(sMT3SimulationRequest.xml_request_to_SMT3_as_indented_text)
+        sMT3SimulationResult.smt3Server.input_output_dump_file.write(end_line_character_in_text_file)
         
     result_csv_file.write(elementary_mission_name + csv_fields_separator + modele_name + csv_fields_separator + str(sMT3SimulationRequest.stepInSecond) + csv_fields_separator + str(sMT3SimulationRequest.dwellTimeInSecond) + csv_fields_separator)
 
 
     for sMT3SimulationResult in sMT3Simulation.sMT3SimulationResults:
-        input_output_dump_file.write(sMT3SimulationResult.xml_response_from_smt3_response_as_indented_text)
-        input_output_dump_file.write(end_line_character_in_text_file)
-        input_output_dump_file.write("Received from SMT3 " + end_line_character_in_text_file)
+        sMT3SimulationResult.smt3Server.input_output_dump_file.write(sMT3SimulationResult.xml_response_from_smt3_response_as_indented_text)
+        sMT3SimulationResult.smt3Server.input_output_dump_file.write(end_line_character_in_text_file)
+        sMT3SimulationResult.smt3Server.input_output_dump_file.write("Received from SMT3 " + end_line_character_in_text_file)
 
         result_csv_file.write(str(sMT3SimulationResult.smt3_execution_time) + csv_fields_separator + sMT3SimulationResult.totalTravelTimeInSecond_text + csv_fields_separator + sMT3SimulationResult.error_text_in_one_line + csv_fields_separator)
 
@@ -227,14 +226,12 @@ def saveSimulation(sMT3Simulation, result_csv_file, numero_mission_elementaire_c
     if(not (nombre_simulations_smt3_effectuees % _PasSauvegarde)):
         LoggerConfig.printAndLogInfo("Save output file with partial results")
         for sMT3SimulationResult in sMT3Simulation.sMT3SimulationResults:
-            input_output_dump_file = sMT3SimulationResult.smt3Server.input_output_dump_file
-            input_output_dump_file.flush()
+            sMT3SimulationResult.smt3Server.input_output_dump_file.flush()
             # typically the above line would do. however this is used to ensure that the file is written
-            os.fsync(input_output_dump_file.fileno())
+            os.fsync(sMT3SimulationResult.smt3Server.input_output_dump_file.fileno())
             
         result_csv_file.flush()
         # typically the above line would do. however this is used to ensure that the file is written
-        os.fsync(input_output_dump_file.fileno())
         os.fsync(result_csv_file.fileno())
 
 def create_output_text_file(output_directory, output_file_name):
