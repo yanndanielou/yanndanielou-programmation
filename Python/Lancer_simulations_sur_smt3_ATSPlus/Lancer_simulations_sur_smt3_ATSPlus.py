@@ -270,7 +270,7 @@ def ProduireSimplesRuns( smt3Servers, all_elementary_missions_names_as_list, all
 
     result_csv_file.write("elementary_mission_name" + csv_fields_separator + "modele_name" + csv_fields_separator + "stepInSecond" + csv_fields_separator + "dwellTimeInSecond" + csv_fields_separator)
     for smt3Server in smt3Servers:
-        result_csv_file.write("sMT3SimulationResult." + smt3Server.description() + ".smt3_execution_time" + csv_fields_separator + "sMT3SimulationResult." + smt3Server.smt3Version + "_" + str(smt3Server.port) + ".totalTravelTimeInSecond_text" + csv_fields_separator + "sMT3SimulationResult." + smt3Server.smt3Version + "_" + str(smt3Server.port) + ".error_text")
+        result_csv_file.write("sMT3SimulationResult." + smt3Server.description() + ".smt3_execution_time" + csv_fields_separator + "sMT3SimulationResult." + smt3Server.smt3Version + "_" + str(smt3Server.port) + ".totalTravelTimeInSecond_text" + csv_fields_separator + "sMT3SimulationResult." + smt3Server.smt3Version + "_" + str(smt3Server.port) + ".error_text" + csv_fields_separator)
 
     result_csv_file.write( end_line_character_in_text_file)
 
