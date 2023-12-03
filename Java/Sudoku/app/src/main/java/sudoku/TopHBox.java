@@ -42,14 +42,14 @@ public class TopHBox extends HBox {
 				}
 			}
 
-			sudokuApplication.digitsBottomGridPane.setLegend();
+			sudokuApplication.digitsBottomGridPane.updateDigitSelectionInBottomButtonsState();
 		});
 
 		// New game button
 		newGameButton = new Button("New Game");
 		newGameButton.setOnAction(e -> {
 			if (sudokuApplication.currentlySelectedDigit != 0) {
-				sudokuApplication.digitsBottomGridPane.numButtons.get(sudokuApplication.currentlySelectedDigit - 1).setId("");
+				sudokuApplication.digitsBottomGridPane.digitSelectionInBottomButton.get(sudokuApplication.currentlySelectedDigit - 1).setId("");
 				sudokuApplication.currentlySelectedDigit = 0;
 			}
 			sudokuApplication.timeline.stop();
@@ -57,7 +57,7 @@ public class TopHBox extends HBox {
 			sudokuApplication.reset();
 			sudokuApplication.generateBoard();
 			sudokuApplication.startTimer();
-			sudokuApplication.digitsBottomGridPane.setLegend();
+			sudokuApplication.digitsBottomGridPane.updateDigitSelectionInBottomButtonsState();
 		});
 
 		setSpacing(10);

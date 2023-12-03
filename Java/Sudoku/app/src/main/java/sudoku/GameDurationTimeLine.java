@@ -32,10 +32,7 @@ public class GameDurationTimeLine {
 
 	public GameDurationTimeLine(SudokuApplication sudokuApplication, Stage stage) {
 		timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-			sudokuApplication.game.countUp = Calendar.getInstance().getTime().getTime()
-					- sudokuApplication.game.startDate.getTime();
-			stage.setTitle("Sudoku - Time: "
-					+ String.valueOf(TimeUnit.SECONDS.convert(sudokuApplication.game.countUp, TimeUnit.MILLISECONDS)));
+			sudokuApplication.game.updateDuration(e);
 		}));
 
 		timeline.setCycleCount(Animation.INDEFINITE);

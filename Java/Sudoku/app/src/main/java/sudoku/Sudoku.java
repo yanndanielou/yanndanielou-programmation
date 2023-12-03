@@ -1,4 +1,5 @@
 package sudoku;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -6,6 +7,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * The class <b>Sudoku</b> builds playable Sudoku game board using a
@@ -18,6 +22,8 @@ import java.util.Scanner;
  *
  */
 public class Sudoku {
+
+	private static final Logger LOGGER = LogManager.getLogger(Sudoku.class);
 
 	/**
 	 * Keeps track of the values already tried at the specified location in the
@@ -98,6 +104,7 @@ public class Sudoku {
 	 * @param num
 	 */
 	public void generatePlayer(int num) {
+		LOGGER.info(() -> "Generate player for num:" + num);
 		for (int i = 0; i < num; i++) {
 			ArrayList<Integer> zerosIndex = getIndexes(player, 0);
 			int rand = generateRandom(zerosIndex.size() - 1, 0);
@@ -105,13 +112,12 @@ public class Sudoku {
 			player.set(zerosIndex.get(rand), boardAsListOfIntegers.get(zerosIndex.get(rand)));
 		}
 
-
 	}
 
 	/**
 	 * Used to verify with online sudoku solver
 	 */
-	public String sudokuString(ArrayList<Integer> l) {
+	private String sudokuString(ArrayList<Integer> l) {
 		String sudoku = "";
 		for (int i : l) {
 			if (i == 0) {
@@ -136,9 +142,10 @@ public class Sudoku {
 	 * @param num the index of the current element in board
 	 */
 	private void generateBoard(int num) {
+		LOGGER.info(() -> "GenerateBoard with num:" + num);
 		if (!fullBoard() && !checkBoard(boardAsListOfIntegers)) {
-			ArrayList<Integer> available = complement(
-					combineArrayList(Arrays.asList(getNeighbours(num, boardAsListOfIntegers), previousGenerate.get(num))));
+			ArrayList<Integer> available = complement(combineArrayList(
+					Arrays.asList(getNeighbours(num, boardAsListOfIntegers), previousGenerate.get(num))));
 
 			if (available.size() == 0) {
 				boardAsListOfIntegers.set(num, 0);
@@ -182,7 +189,9 @@ public class Sudoku {
 			temp.addAll(list.subList(i, i + 3));
 		}
 
-		return removeZeros(temp);
+		ArrayList<Integer> removeZeros = removeZeros(temp);
+		LOGGER.info(() -> "getBlock with num:" + num + " and list:" + list + " returns:" + removeZeros);
+		return removeZeros;
 	}
 
 	/**
@@ -200,7 +209,8 @@ public class Sudoku {
 			temp.add(list.get(i));
 		}
 
-		return removeZeros(temp);
+		ArrayList<Integer> removeZeros = removeZeros(temp);
+		return removeZeros;
 	}
 
 	/**
@@ -459,6 +469,7 @@ public class Sudoku {
 	 *
 	 * @return String representation of the Sudoku board
 	 */
+	@Override
 	public String toString() {
 		return printBoard(boardAsListOfIntegers);
 	}

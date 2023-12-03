@@ -55,6 +55,8 @@ public class SudokuApplication extends Application {
 
 	public Stage stage;
 
+	public ViewPresenter viewPresenter;
+
 	/**
 	 * Changes the CSS ids of the horizontal line
 	 * 
@@ -91,7 +93,8 @@ public class SudokuApplication extends Application {
 	public void changeIdsHelper(String[] array, int i) {
 		LOGGER.info(() -> "changeIdsHelper:" + array + " and i:" + i);
 
-		if (!(boardText.get(i).getText()).equals(String.valueOf(currentlySelectedDigit)) || currentlySelectedDigit == 0) {
+		if (!(boardText.get(i).getText()).equals(String.valueOf(currentlySelectedDigit))
+				|| currentlySelectedDigit == 0) {
 			if (untouchedCells.get(i) != 0) {
 				boardText.get(i).setId(array[0]);
 			} else if (board.get(i) != 0) {
@@ -122,9 +125,11 @@ public class SudokuApplication extends Application {
 
 		// Print out the sol-ution
 		System.out.println(sudoku.toString());
+		LOGGER.info(() -> "sudoku" + sudoku.toString());
 
 		// Get player's board
 		board = sudoku.getPlayer();
+		LOGGER.info(() -> "board" + board);
 
 		// List and maps of Buttons, GridPanes and value of the board
 		untouchedCells = new ArrayList<Integer>(board);
@@ -191,13 +196,13 @@ public class SudokuApplication extends Application {
 								}
 
 								for (int l = 0; l < 81; l++) {
-									if (!boardText.get(l).getId().equals("number")
-											&& boardText.get(l).getText().equals(String.valueOf(currentlySelectedDigit))) {
+									if (!boardText.get(l).getId().equals("number") && boardText.get(l).getText()
+											.equals(String.valueOf(currentlySelectedDigit))) {
 										boardText.get(l).setId("number");
 									}
 								}
 
-								digitsBottomGridPane.setLegend();
+								digitsBottomGridPane.updateDigitSelectionInBottomButtonsState();
 							}
 
 							// Checks if the game is done
@@ -205,7 +210,7 @@ public class SudokuApplication extends Application {
 								timeline.stop();
 
 								Alert alert = new Alert(AlertType.NONE,
-										"You just completed the sudoku board in " + game.countUp / 1000
+										"You just completed the sudoku board in " + game.gameDurationInMilliseconds / 1000
 												+ " seconds. Do you want to play again?",
 										ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
 								alert.showAndWait();
@@ -271,17 +276,20 @@ public class SudokuApplication extends Application {
 
 		game = new Game(this);
 
+		viewPresenter = new ViewPresenter(this, game, stage);
+		game.setViewPresenter(viewPresenter);
+
 		// Starts the timer
 		startTimer();
 
 		// Layout of the board
 		tableGridPane = new GridPane();
-		tableGridPane.setVgap(8);
-		tableGridPane.setHgap(8);
+		tableGridPane.setVgap(15);
+		tableGridPane.setHgap(15);
 		tableGridPane.setAlignment(Pos.CENTER);
 
 		// Layout of the nine numbers at the bottom (legend)
-		digitsBottomGridPane = new DigitsBottomGridPane(this);
+		digitsBottomGridPane = new DigitsBottomGridPane(this, viewPresenter);
 
 		// Layout of the top two buttons
 		topHbox = new TopHBox(this);
@@ -309,24 +317,25 @@ public class SudokuApplication extends Application {
 		untouchedCells = new ArrayList<Integer>(board);
 		boardText = new HashMap<Integer, Button>();
 		grid = new HashMap<Integer, GridPane>();
-		digitsBottomGridPane.numButtons = new HashMap<Integer, Button>();
+		digitsBottomGridPane.digitSelectionInBottomButton = new HashMap<Integer, Button>();
 
 		// Generates the GUI for the board
 		generateBoard();
 
 		// Sets up the legend (nine numbers at the bottom)
 		for (int i = 0; i < 9; i++) {
-			digitsBottomGridPane.numButtons.put(i, new Button());
-			digitsBottomGridPane.numButtons.get(i).setText(String.valueOf(i + 1));
-			digitsBottomGridPane.add(digitsBottomGridPane.numButtons.get(i), i, 0);
+			digitsBottomGridPane.digitSelectionInBottomButton.put(i, new Button());
+			digitsBottomGridPane.digitSelectionInBottomButton.get(i).setText(String.valueOf(i + 1));
+			digitsBottomGridPane.add(digitsBottomGridPane.digitSelectionInBottomButton.get(i), i, 0);
 
 			final int lo = i + 1;
 
-			digitsBottomGridPane.numButtons.get(i).setOnAction(e -> {
+			digitsBottomGridPane.digitSelectionInBottomButton.get(i).setOnAction(e -> {
 
-				if (currentlySelectedDigit == Integer.valueOf(digitsBottomGridPane.numButtons.get(lo - 1).getText())) {
+				if (currentlySelectedDigit == Integer
+						.valueOf(digitsBottomGridPane.digitSelectionInBottomButton.get(lo - 1).getText())) {
 					if (getNumberOfOccurenceInBoardOfNum(currentlySelectedDigit) < 9) {
-						digitsBottomGridPane.numButtons.get(currentlySelectedDigit - 1).setId("");
+						digitsBottomGridPane.digitSelectionInBottomButton.get(currentlySelectedDigit - 1).setId("");
 					}
 
 					for (int k = 0; k < 81; k++) {
@@ -340,15 +349,15 @@ public class SudokuApplication extends Application {
 					}
 
 					currentlySelectedDigit = 0;
-					LOGGER.info(() -> "value set to " + currentlySelectedDigit);
+					LOGGER.info(() -> "currentlySelectedDigit set to " + currentlySelectedDigit);
 				} else {
 					if (currentlySelectedDigit != 0 && getNumberOfOccurenceInBoardOfNum(currentlySelectedDigit) < 9) {
-						digitsBottomGridPane.numButtons.get(currentlySelectedDigit - 1).setId("");
+						digitsBottomGridPane.digitSelectionInBottomButton.get(currentlySelectedDigit - 1).setId("");
 					}
 
 					currentlySelectedDigit = lo;
-					LOGGER.info(() -> "value set to " + currentlySelectedDigit);
-					digitsBottomGridPane.numButtons.get(currentlySelectedDigit - 1).setId("legend");
+					LOGGER.info(() -> "currentlySelectedDigit set to " + currentlySelectedDigit);
+					digitsBottomGridPane.digitSelectionInBottomButton.get(currentlySelectedDigit - 1).setId("legend");
 
 					for (int k = 0; k < 81; k++) {
 						if ((boardText.get(k).getText()).equals(String.valueOf(currentlySelectedDigit))) {
@@ -364,22 +373,23 @@ public class SudokuApplication extends Application {
 				}
 
 				if (getNumberOfOccurenceInBoardOfNum(currentlySelectedDigit) >= 9 && currentlySelectedDigit != 0) {
-					digitsBottomGridPane.numButtons.get(currentlySelectedDigit - 1).setId("legendFull");
+					digitsBottomGridPane.digitSelectionInBottomButton.get(currentlySelectedDigit - 1)
+							.setId("legendFull");
 				}
 			});
 
-			digitsBottomGridPane.numButtons.get(i).setOnMouseEntered(e -> {
+			digitsBottomGridPane.digitSelectionInBottomButton.get(i).setOnMouseEntered(e -> {
 				scene.setCursor(Cursor.HAND);
 			});
 
-			digitsBottomGridPane.numButtons.get(i).setOnMouseExited(e -> {
+			digitsBottomGridPane.digitSelectionInBottomButton.get(i).setOnMouseExited(e -> {
 				scene.setCursor(Cursor.DEFAULT);
 			});
 		}
 
 		// Sets up the state of the legend (nine numbers at the bottom) according to the
 		// player's Sudoku board
-		digitsBottomGridPane.setLegend();
+		digitsBottomGridPane.updateDigitSelectionInBottomButtonsState();
 
 		// Sets the scene to the BorderPane layout and links the CSS file
 		scene = new Scene(rootBorderPane, 350, 450);
