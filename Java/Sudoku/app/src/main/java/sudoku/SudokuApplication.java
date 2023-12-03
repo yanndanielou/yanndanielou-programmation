@@ -44,7 +44,7 @@ public class SudokuApplication extends Application {
 	public Game game;
 
 	public ArrayList<Integer> board, untouchedCells;
-	public Map<Integer, Button> boardText;
+	public Map<Integer, Button> sudokuCellButton;
 	public Map<Integer, SudokuSquareBoxAsGridPane> grid;
 
 	public TopHBox topHbox;
@@ -93,17 +93,17 @@ public class SudokuApplication extends Application {
 	public void changeIdsHelper(String[] array, int i) {
 		LOGGER.info(() -> "changeIdsHelper:" + array + " and i:" + i);
 
-		if (!(boardText.get(i).getText()).equals(String.valueOf(currentlySelectedDigit))
+		if (!(sudokuCellButton.get(i).getText()).equals(String.valueOf(currentlySelectedDigit))
 				|| currentlySelectedDigit == 0) {
 			if (untouchedCells.get(i) != 0) {
-				boardText.get(i).setId(array[0]);
+				sudokuCellButton.get(i).setId(array[0]);
 			} else if (board.get(i) != 0) {
-				boardText.get(i).setId(array[1]);
+				sudokuCellButton.get(i).setId(array[1]);
 			} else {
-				boardText.get(i).setId(array[2]);
+				sudokuCellButton.get(i).setId(array[2]);
 			}
 		} else {
-			boardText.get(i).setId(array[3]);
+			sudokuCellButton.get(i).setId(array[3]);
 		}
 	}
 
@@ -131,7 +131,7 @@ public class SudokuApplication extends Application {
 
 		// List and maps of Buttons, GridPanes and value of the board
 		untouchedCells = new ArrayList<Integer>(board);
-		boardText = new HashMap<Integer, Button>();
+		sudokuCellButton = new HashMap<Integer, Button>();
 		grid = new HashMap<Integer, SudokuSquareBoxAsGridPane>();
 	}
 
@@ -144,7 +144,7 @@ public class SudokuApplication extends Application {
 	public int getNumberOfOccurenceInBoardOfNum(int num) {
 		int count = 0;
 		for (int p = 0; p < 81; p++) {
-			if (Integer.valueOf(boardText.get(p).getText()) == num) {
+			if (Integer.valueOf(sudokuCellButton.get(p).getText()) == num) {
 				count++;
 			}
 		}
@@ -176,27 +176,27 @@ public class SudokuApplication extends Application {
 					final int pos = j + k;
 
 					// New Button
-					boardText.put(pos, new Button());
+					sudokuCellButton.put(pos, new Button());
 
 					if (board.get(pos) == 0) {
-						boardText.get(pos).setId("zero");
+						sudokuCellButton.get(pos).setId("zero");
 
-						boardText.get(pos).setOnAction(e -> {
+						sudokuCellButton.get(pos).setOnAction(e -> {
 							if (currentlySelectedDigit != 0) {
-								if (boardText.get(pos).getText().equals(String.valueOf(currentlySelectedDigit))) {
-									boardText.get(pos).setText("0");
+								if (sudokuCellButton.get(pos).getText().equals(String.valueOf(currentlySelectedDigit))) {
+									sudokuCellButton.get(pos).setText("0");
 									board.set(pos, 0);
-									boardText.get(pos).setId("helperZero");
+									sudokuCellButton.get(pos).setId("helperZero");
 								} else {
-									boardText.get(pos).setText(String.valueOf(currentlySelectedDigit));
-									boardText.get(pos).setId("");
+									sudokuCellButton.get(pos).setText(String.valueOf(currentlySelectedDigit));
+									sudokuCellButton.get(pos).setId("");
 									board.set(pos, currentlySelectedDigit);
 								}
 
 								for (int l = 0; l < 81; l++) {
-									if (!boardText.get(l).getId().equals("number") && boardText.get(l).getText()
+									if (!sudokuCellButton.get(l).getId().equals("number") && sudokuCellButton.get(l).getText()
 											.equals(String.valueOf(currentlySelectedDigit))) {
-										boardText.get(l).setId("number");
+										sudokuCellButton.get(l).setId("number");
 									}
 								}
 
@@ -225,10 +225,10 @@ public class SudokuApplication extends Application {
 						});
 
 					} else {
-						boardText.get(pos).setId("preset");
+						sudokuCellButton.get(pos).setId("preset");
 					}
 
-					boardText.get(pos).setOnMouseEntered(e -> {
+					sudokuCellButton.get(pos).setOnMouseEntered(e -> {
 						if (!sudoku.checkBoard(board) && currentlySelectedDigit != 0) {
 							changeHorizontalIds(new String[] { "helper", "helper", "helperZero", "numberHelper" },
 									pos / 9);
@@ -240,7 +240,7 @@ public class SudokuApplication extends Application {
 						}
 					});
 
-					boardText.get(pos).setOnMouseExited(e -> {
+					sudokuCellButton.get(pos).setOnMouseExited(e -> {
 						if (!sudoku.checkBoard(board) && currentlySelectedDigit != 0) {
 							changeHorizontalIds(new String[] { "preset", "", "zero", "number" }, pos / 9);
 							changeVerticalIds(new String[] { "preset", "", "zero", "number" }, pos % 9);
@@ -248,8 +248,8 @@ public class SudokuApplication extends Application {
 						}
 					});
 
-					boardText.get(pos).setText(String.valueOf(board.get(pos)));
-					grid.get(i).add(boardText.get(pos), k, temp);
+					sudokuCellButton.get(pos).setText(String.valueOf(board.get(pos)));
+					grid.get(i).add(sudokuCellButton.get(pos), k, temp);
 				}
 			}
 			sudokuSquareBoxesGridPane.add(grid.get(i), i % 3, i / 3);
@@ -312,7 +312,7 @@ public class SudokuApplication extends Application {
 
 		// List and maps of buttons, GridPanes and value of the board
 		untouchedCells = new ArrayList<Integer>(board);
-		boardText = new HashMap<Integer, Button>();
+		sudokuCellButton = new HashMap<Integer, Button>();
 		grid = new HashMap<Integer, SudokuSquareBoxAsGridPane>();
 		digitsBottomGridPane.digitSelectionInBottomButton = new HashMap<Integer, Button>();
 
@@ -336,11 +336,11 @@ public class SudokuApplication extends Application {
 					}
 
 					for (int k = 0; k < 81; k++) {
-						if ((boardText.get(k).getText()).equals(String.valueOf(currentlySelectedDigit))) {
+						if ((sudokuCellButton.get(k).getText()).equals(String.valueOf(currentlySelectedDigit))) {
 							if (untouchedCells.get(k) != 0) {
-								boardText.get(k).setId("preset");
+								sudokuCellButton.get(k).setId("preset");
 							} else if (board.get(k) != 0) {
-								boardText.get(k).setId("");
+								sudokuCellButton.get(k).setId("");
 							}
 						}
 					}
@@ -357,13 +357,13 @@ public class SudokuApplication extends Application {
 					digitsBottomGridPane.digitSelectionInBottomButton.get(currentlySelectedDigit - 1).setId("legend");
 
 					for (int k = 0; k < 81; k++) {
-						if ((boardText.get(k).getText()).equals(String.valueOf(currentlySelectedDigit))) {
-							boardText.get(k).setId("number");
+						if ((sudokuCellButton.get(k).getText()).equals(String.valueOf(currentlySelectedDigit))) {
+							sudokuCellButton.get(k).setId("number");
 						} else {
 							if (untouchedCells.get(k) != 0) {
-								boardText.get(k).setId("preset");
+								sudokuCellButton.get(k).setId("preset");
 							} else if (board.get(k) != 0) {
-								boardText.get(k).setId("");
+								sudokuCellButton.get(k).setId("");
 							}
 						}
 					}

@@ -36,9 +36,9 @@ public class TopHBox extends HBox {
 		clearButton.setOnAction(e -> {
 			sudokuApplication.board = new ArrayList<Integer>(sudokuApplication.untouchedCells);
 			for (int i = 0; i < 81; i++) {
-				if (sudokuApplication.board.get(i) != Integer.valueOf(sudokuApplication.boardText.get(i).getText())) {
-					sudokuApplication.boardText.get(i).setText(String.valueOf(sudokuApplication.board.get(i)));
-					sudokuApplication.boardText.get(i).setId("zero");
+				if (sudokuApplication.board.get(i) != Integer.valueOf(sudokuApplication.sudokuCellButton.get(i).getText())) {
+					sudokuApplication.sudokuCellButton.get(i).setText(String.valueOf(sudokuApplication.board.get(i)));
+					sudokuApplication.sudokuCellButton.get(i).setId("zero");
 				}
 			}
 
