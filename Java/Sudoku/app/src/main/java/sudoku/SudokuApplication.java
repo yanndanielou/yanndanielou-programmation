@@ -48,11 +48,11 @@ public class SudokuApplication extends Application {
 	private Map<Integer, GridPane> grid;
 
 	private Image applicationIcon;
-	private HBox hbox;
-	private Button clear, newGame;
+	private TopHBox topHbox;
+	public Button clearButton, newGameButton;
 	private GridPane num;
 
-	private Date start;
+	private Date startDate;
 	private Timeline timeline;
 
 	private Stage stage;
@@ -211,11 +211,11 @@ public class SudokuApplication extends Application {
 								alert.showAndWait();
 
 								if (alert.getResult() == ButtonType.YES) {
-									newGame.fire();
+									newGameButton.fire();
 								} else if (alert.getResult() == ButtonType.NO) {
 									stage.close();
 								} else if (alert.getResult() == ButtonType.CANCEL) {
-									clear.fire();
+									clearButton.fire();
 								}
 							}
 						});
@@ -275,9 +275,9 @@ public class SudokuApplication extends Application {
 	 * infinite and display that number in the title bard
 	 */
 	private void startTimer() {
-		start = Calendar.getInstance().getTime();
+		startDate = Calendar.getInstance().getTime();
 		timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-			countUp = Calendar.getInstance().getTime().getTime() - start.getTime();
+			countUp = Calendar.getInstance().getTime().getTime() - startDate.getTime();
 			stage.setTitle(
 					"Sudoku - Time: " + String.valueOf(TimeUnit.SECONDS.convert(countUp, TimeUnit.MILLISECONDS)));
 		}));
@@ -293,8 +293,8 @@ public class SudokuApplication extends Application {
 		stage = primaryStage;
 
 		// Clear button
-		clear = new Button("Clear");
-		clear.setOnAction(e -> {
+		clearButton = new Button("Clear");
+		clearButton.setOnAction(e -> {
 			board = new ArrayList<Integer>(untouched);
 			for (int i = 0; i < 81; i++) {
 				if (board.get(i) != Integer.valueOf(boardText.get(i).getText())) {
@@ -307,8 +307,8 @@ public class SudokuApplication extends Application {
 		});
 
 		// New game button
-		newGame = new Button("New Game");
-		newGame.setOnAction(e -> {
+		newGameButton = new Button("New Game");
+		newGameButton.setOnAction(e -> {
 			if (value != 0) {
 				numButtons.get(value - 1).setId("");
 				value = 0;
@@ -337,15 +337,12 @@ public class SudokuApplication extends Application {
 		num.setAlignment(Pos.CENTER);
 
 		// Layout of the top two buttons
-		hbox = new HBox();
-		hbox.setSpacing(10);
-		hbox.setPadding(new Insets(16, 0, 0, 0));
-		hbox.setAlignment(Pos.CENTER);
-		hbox.getChildren().addAll(newGame, clear);
+		topHbox = new TopHBox(this);
+		
 
 		// Main layout of the Game
 		rootBorderPane = new BorderPane();
-		rootBorderPane.setTop(hbox);
+		rootBorderPane.setTop(topHbox);
 		rootBorderPane.setCenter(tableGridPane);
 		rootBorderPane.setBottom(num);
 
