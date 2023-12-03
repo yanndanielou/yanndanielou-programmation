@@ -33,7 +33,7 @@ import javafx.util.Duration;
  * @author Benoît
  *
  */
-public class TicTacToeApplication extends Application {
+public class SudokuApplication extends Application {
 
 	private int value = 0;
 	private long countUp = 0;
