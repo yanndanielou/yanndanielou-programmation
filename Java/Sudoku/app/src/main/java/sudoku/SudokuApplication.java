@@ -35,37 +35,35 @@ import javafx.util.Duration;
  */
 public class SudokuApplication extends Application {
 
-	private int value = 0;
-	private long countUp = 0;
+	public int value = 0;
+	public long countUp = 0;
 
-	private BorderPane rootBorderPane;
-	private Scene scene;
-	private GridPane tableGridPane;
-	private Sudoku sudoku;
+	public BorderPane rootBorderPane;
+	public Scene scene;
+	public GridPane tableGridPane;
+	public Sudoku sudoku;
 
-	private ArrayList<Integer> board, untouched;
-	private Map<Integer, Button> boardText, numButtons;
-	private Map<Integer, GridPane> grid;
+	public ArrayList<Integer> board, untouched;
+	public Map<Integer, Button> boardText, numButtons;
+	public Map<Integer, GridPane> grid;
 
-	private Image applicationIcon;
-	private TopHBox topHbox;
-	public Button clearButton, newGameButton;
-	private GridPane num;
+	public Image applicationIcon;
+	public TopHBox topHbox;
 
-	private Date startDate;
-	private Timeline timeline;
+	public GridPane num;
 
-	private Stage stage;
+	public Date startDate;
+	public Timeline timeline;
+
+	public Stage stage;
 
 	/**
 	 * Changes the CSS ids of the horizontal line
 	 * 
-	 * @param array
-	 *            an Array of CSS ids
-	 * @param start
-	 *            the horizontal line number
+	 * @param array an Array of CSS ids
+	 * @param start the horizontal line number
 	 */
-	private void changeHorizontalIds(String[] array, int start) {
+	public void changeHorizontalIds(String[] array, int start) {
 		for (int i = start * 9; i < start * 9 + 9; i++) {
 			changeIdsHelper(array, i);
 		}
@@ -74,12 +72,10 @@ public class SudokuApplication extends Application {
 	/**
 	 * Changes the CSS ids of the vertical line
 	 * 
-	 * @param array
-	 *            an Array of CSS ids
-	 * @param start
-	 *            the vertical line number
+	 * @param array an Array of CSS ids
+	 * @param start the vertical line number
 	 */
-	private void changeVerticalIds(String[] array, int start) {
+	public void changeVerticalIds(String[] array, int start) {
 		for (int i = start; i < start + 9 * 9; i += 9) {
 			changeIdsHelper(array, i);
 		}
@@ -89,12 +85,10 @@ public class SudokuApplication extends Application {
 	 * Changes the CSS ids of a specific Sudoku board element according to its
 	 * original state
 	 * 
-	 * @param array
-	 *            an Array of CSS ids
-	 * @param i
-	 *            the location of the button in the Sudoku board
+	 * @param array an Array of CSS ids
+	 * @param i     the location of the button in the Sudoku board
 	 */
-	private void changeIdsHelper(String[] array, int i) {
+	public void changeIdsHelper(String[] array, int i) {
 		if (!(boardText.get(i).getText()).equals(String.valueOf(value)) || value == 0) {
 			if (untouched.get(i) != 0) {
 				boardText.get(i).setId(array[0]);
@@ -111,7 +105,7 @@ public class SudokuApplication extends Application {
 	/**
 	 * Resets the game
 	 */
-	private void reset() {
+	public void reset() {
 		// Removes every buttons (GridPane) inside the main GridPane
 		for (int i = 0; i < 9; i++) {
 			tableGridPane.getChildren().remove(grid.get(i));
@@ -137,11 +131,10 @@ public class SudokuApplication extends Application {
 	/**
 	 * Returns the number of elements of the specified number
 	 * 
-	 * @param num
-	 *            the number researched
+	 * @param num the number researched
 	 * @return a number of elements equal to the parameter
 	 */
-	private int getNum(int num) {
+	public int getNum(int num) {
 		int count = 0;
 		for (int p = 0; p < 81; p++) {
 			if (Integer.valueOf(boardText.get(p).getText()) == num) {
@@ -154,7 +147,7 @@ public class SudokuApplication extends Application {
 	/**
 	 * Generates the board, in terms of GUI
 	 */
-	private void generateBoard() {
+	public void generateBoard() {
 		// Each block
 		for (int i = 0; i < 9; i++) {
 
@@ -205,17 +198,17 @@ public class SudokuApplication extends Application {
 								timeline.stop();
 
 								Alert alert = new Alert(AlertType.NONE,
-										"You just completed the sudoku board in " + countUp/1000
+										"You just completed the sudoku board in " + countUp / 1000
 												+ " seconds. Do you want to play again?",
 										ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
 								alert.showAndWait();
 
 								if (alert.getResult() == ButtonType.YES) {
-									newGameButton.fire();
+									topHbox.newGameButton.fire();
 								} else if (alert.getResult() == ButtonType.NO) {
 									stage.close();
 								} else if (alert.getResult() == ButtonType.CANCEL) {
-									clearButton.fire();
+									topHbox.clearButton.fire();
 								}
 							}
 						});
@@ -256,7 +249,7 @@ public class SudokuApplication extends Application {
 	 * Sets up the legend state by checking if any of the number has nine or more
 	 * appearance in the player's Sudoku board
 	 */
-	private void setLegend() {
+	public void setLegend() {
 		for (int i = 1; i < 10; i++) {
 			if (getNum(i) >= 9) {
 				if (!numButtons.get(i - 1).getId().equals("legendFull")) {
@@ -274,7 +267,7 @@ public class SudokuApplication extends Application {
 	 * Counts the time elapsed in seconds from the start of the game, from 0 to
 	 * infinite and display that number in the title bard
 	 */
-	private void startTimer() {
+	public void startTimer() {
 		startDate = Calendar.getInstance().getTime();
 		timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
 			countUp = Calendar.getInstance().getTime().getTime() - startDate.getTime();
@@ -292,34 +285,7 @@ public class SudokuApplication extends Application {
 		// able to manipulate it in other methods
 		stage = primaryStage;
 
-		// Clear button
-		clearButton = new Button("Clear");
-		clearButton.setOnAction(e -> {
-			board = new ArrayList<Integer>(untouched);
-			for (int i = 0; i < 81; i++) {
-				if (board.get(i) != Integer.valueOf(boardText.get(i).getText())) {
-					boardText.get(i).setText(String.valueOf(board.get(i)));
-					boardText.get(i).setId("zero");
-				}
-			}
-
-			setLegend();
-		});
-
-		// New game button
-		newGameButton = new Button("New Game");
-		newGameButton.setOnAction(e -> {
-			if (value != 0) {
-				numButtons.get(value - 1).setId("");
-				value = 0;
-			}
-			timeline.stop();
-			stage.setTitle("Sudoku - Time: 0");
-			reset();
-			generateBoard();
-			startTimer();
-			setLegend();
-		});
+	
 
 		// Starts the timer
 		startTimer();
@@ -338,7 +304,6 @@ public class SudokuApplication extends Application {
 
 		// Layout of the top two buttons
 		topHbox = new TopHBox(this);
-		
 
 		// Main layout of the Game
 		rootBorderPane = new BorderPane();

@@ -1,4 +1,5 @@
 package sudoku;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -25,14 +26,44 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-
 public class TopHBox extends HBox {
-	
+
+	public Button clearButton, newGameButton;
+
 	public TopHBox(SudokuApplication sudokuApplication) {
+		// Clear button
+		clearButton = new Button("Clear");
+		clearButton.setOnAction(e -> {
+			sudokuApplication.board = new ArrayList<Integer>(sudokuApplication.untouched);
+			for (int i = 0; i < 81; i++) {
+				if (sudokuApplication.board.get(i) != Integer.valueOf(sudokuApplication.boardText.get(i).getText())) {
+					sudokuApplication.boardText.get(i).setText(String.valueOf(sudokuApplication.board.get(i)));
+					sudokuApplication.boardText.get(i).setId("zero");
+				}
+			}
+
+			sudokuApplication.setLegend();
+		});
+
+		// New game button
+		newGameButton = new Button("New Game");
+		newGameButton.setOnAction(e -> {
+			if (sudokuApplication.value != 0) {
+				sudokuApplication.numButtons.get(sudokuApplication.value - 1).setId("");
+				sudokuApplication.value = 0;
+			}
+			sudokuApplication.timeline.stop();
+			sudokuApplication.stage.setTitle("Sudoku - Time: 0");
+			sudokuApplication.reset();
+			sudokuApplication.generateBoard();
+			sudokuApplication.startTimer();
+			sudokuApplication.setLegend();
+		});
+
 		setSpacing(10);
 		setPadding(new Insets(16, 0, 0, 0));
 		setAlignment(Pos.CENTER);
-		getChildren().addAll(sudokuApplication.newGameButton, sudokuApplication.clearButton);
+		getChildren().addAll(newGameButton, clearButton);
 	}
 
 }
