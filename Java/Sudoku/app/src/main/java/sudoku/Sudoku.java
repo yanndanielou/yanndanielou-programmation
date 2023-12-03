@@ -28,7 +28,7 @@ public class Sudoku {
 	/**
 	 * Uncovered Sudoku board
 	 */
-	private ArrayList<Integer> board;
+	private ArrayList<Integer> boardAsListOfIntegers;
 
 	/**
 	 * Semi-uncovered Sudoku board
@@ -102,30 +102,11 @@ public class Sudoku {
 			ArrayList<Integer> zerosIndex = getIndexes(player, 0);
 			int rand = generateRandom(zerosIndex.size() - 1, 0);
 
-			player.set(zerosIndex.get(rand), board.get(zerosIndex.get(rand)));
+			player.set(zerosIndex.get(rand), boardAsListOfIntegers.get(zerosIndex.get(rand)));
 		}
 
-		/* Test the solve method
-		System.out.println(printBoard(board));
-		System.out.println(printBoard(player));
 
-		System.out.println(sudokuString(player));
-
-		try {
-			System.out.println(solve(getIndexes(player, 0).get(0), getIndexes(player, 0)));
-		} catch (StackOverflowError e) {
-			System.out.println("------");
-		}
-
-		System.out.println(printBoard(player));*/
 	}
-
-	/* Test the solve method
-	public static void main(String[] args) {
-		Sudoku s = new Sudoku();
-		s.generateBoard();
-		s.generatePlayer();
-	} */
 
 	/**
 	 * Used to verify with online sudoku solver
@@ -155,54 +136,20 @@ public class Sudoku {
 	 * @param num the index of the current element in board
 	 */
 	private void generateBoard(int num) {
-		if (!fullBoard() && !checkBoard(board)) {
+		if (!fullBoard() && !checkBoard(boardAsListOfIntegers)) {
 			ArrayList<Integer> available = complement(
-					combineArrayList(Arrays.asList(getNeighbours(num, board), previousGenerate.get(num))));
+					combineArrayList(Arrays.asList(getNeighbours(num, boardAsListOfIntegers), previousGenerate.get(num))));
 
 			if (available.size() == 0) {
-				board.set(num, 0);
+				boardAsListOfIntegers.set(num, 0);
 				previousGenerate.get(num).clear();
 
 				generateBoard(num - 1);
 			} else {
-				board.set(num, available.get(generateRandom(available.size(), 0)));
-				previousGenerate.get(num).add(board.get(num));
+				boardAsListOfIntegers.set(num, available.get(generateRandom(available.size(), 0)));
+				previousGenerate.get(num).add(boardAsListOfIntegers.get(num));
 
 				generateBoard(num + 1);
-			}
-		}
-	}
-
-	/**
-	 * Checks if there are more than two possible solutions
-	 * 
-	 * TODO: Fix StackOverflow error
-	 */
-	private boolean solve(int num, ArrayList<Integer> zeros) {
-		ArrayList<Integer> available = complement(
-				combineArrayList(Arrays.asList(getNeighbours(num, player), previousVerify.get(num))));
-
-		if (available.size() == 0) {
-			if (num == zeros.get(0)) {
-				return true;
-			} else {
-				player.set(num, 0);
-				previousVerify.get(num).clear();
-
-				return solve(zeros.get(zeros.indexOf(num) - 1), zeros);
-			}
-		} else {
-			player.set(num, available.get(0));
-			previousVerify.get(num).add(player.get(num));
-
-			if (num == zeros.get(zeros.size() - 1)) {
-				if (available.size() == 1 && player.equals(board)) {
-					return solve(num, zeros);
-				} else {
-					return false;
-				}
-			} else {
-				return solve(zeros.get(zeros.indexOf(num) + 1), zeros);
 			}
 		}
 	}
@@ -318,7 +265,7 @@ public class Sudoku {
 	 * @return true if the board is full, false otherwise
 	 */
 	private boolean fullBoard() {
-		return !board.contains(0);
+		return !boardAsListOfIntegers.contains(0);
 	}
 
 	/**
@@ -434,7 +381,7 @@ public class Sudoku {
 	 * Clears and reinitializes the ArrayLists
 	 */
 	public void clear() {
-		board = new ArrayList<Integer>(Collections.nCopies(81, 0));
+		boardAsListOfIntegers = new ArrayList<Integer>(Collections.nCopies(81, 0));
 		player = new ArrayList<Integer>(Collections.nCopies(81, 0));
 		previousGenerate = new ArrayList<ArrayList<Integer>>();
 		previousVerify = new ArrayList<ArrayList<Integer>>();
@@ -451,8 +398,8 @@ public class Sudoku {
 	 */
 	@SuppressWarnings("unused")
 	private void generateRandomBoard() {
-		for (int i = 0; i < board.size(); i++) {
-			board.set(i, generateRandom(9, 1));
+		for (int i = 0; i < boardAsListOfIntegers.size(); i++) {
+			boardAsListOfIntegers.set(i, generateRandom(9, 1));
 		}
 	}
 
@@ -513,6 +460,6 @@ public class Sudoku {
 	 * @return String representation of the Sudoku board
 	 */
 	public String toString() {
-		return printBoard(board);
+		return printBoard(boardAsListOfIntegers);
 	}
 }

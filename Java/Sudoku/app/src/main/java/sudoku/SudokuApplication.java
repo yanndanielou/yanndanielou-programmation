@@ -38,9 +38,9 @@ public class SudokuApplication extends Application {
 	private int value = 0;
 	private long countUp = 0;
 
-	private BorderPane root;
+	private BorderPane rootBorderPane;
 	private Scene scene;
-	private GridPane table;
+	private GridPane tableGridPane;
 	private Sudoku sudoku;
 
 	private ArrayList<Integer> board, untouched;
@@ -114,7 +114,7 @@ public class SudokuApplication extends Application {
 	private void reset() {
 		// Removes every buttons (GridPane) inside the main GridPane
 		for (int i = 0; i < 9; i++) {
-			table.getChildren().remove(grid.get(i));
+			tableGridPane.getChildren().remove(grid.get(i));
 		}
 
 		// Creates a new Sudoku board for the player
@@ -248,7 +248,7 @@ public class SudokuApplication extends Application {
 					grid.get(i).add(boardText.get(pos), k, temp);
 				}
 			}
-			table.add(grid.get(i), i % 3, i / 3);
+			tableGridPane.add(grid.get(i), i % 3, i / 3);
 		}
 	}
 
@@ -325,10 +325,10 @@ public class SudokuApplication extends Application {
 		startTimer();
 
 		// Layout of the board
-		table = new GridPane();
-		table.setVgap(8);
-		table.setHgap(8);
-		table.setAlignment(Pos.CENTER);
+		tableGridPane = new GridPane();
+		tableGridPane.setVgap(8);
+		tableGridPane.setHgap(8);
+		tableGridPane.setAlignment(Pos.CENTER);
 
 		// Layout of the nine numbers at the bottom (legend)
 		num = new GridPane();
@@ -344,10 +344,10 @@ public class SudokuApplication extends Application {
 		hbox.getChildren().addAll(newGame, clear);
 
 		// Main layout of the Game
-		root = new BorderPane();
-		root.setTop(hbox);
-		root.setCenter(table);
-		root.setBottom(num);
+		rootBorderPane = new BorderPane();
+		rootBorderPane.setTop(hbox);
+		rootBorderPane.setCenter(tableGridPane);
+		rootBorderPane.setBottom(num);
 
 		// Generates the Sudoku board
 		sudoku = new Sudoku();
@@ -358,7 +358,7 @@ public class SudokuApplication extends Application {
 		System.out.println(sudoku.toString());
 
 		// Application icon
-		applicationIcon = new Image("file:resources/sudoku.png");
+		applicationIcon = new Image("sudoku.png");
 		primaryStage.getIcons().add(applicationIcon);
 
 		// Get player's board
@@ -439,7 +439,7 @@ public class SudokuApplication extends Application {
 		setLegend();
 
 		// Sets the scene to the BorderPane layout and links the CSS file
-		scene = new Scene(root, 350, 450);
+		scene = new Scene(rootBorderPane, 350, 450);
 		scene.getStylesheets().add("application.css");
 
 		// Sets the stage, sets its title, displays it, and restricts its minimal size
