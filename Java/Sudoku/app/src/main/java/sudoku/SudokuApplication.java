@@ -39,13 +39,13 @@ public class SudokuApplication extends Application {
 
 	public BorderPane rootBorderPane;
 	public Scene scene;
-	public SudokuSquareBoxesGridPane tableGridPane;
+	public SudokuSquareBoxesGridPane sudokuSquareBoxesGridPane;
 	public Sudoku sudoku;
 	public Game game;
 
 	public ArrayList<Integer> board, untouchedCells;
 	public Map<Integer, Button> boardText;
-	public Map<Integer, GridPane> grid;
+	public Map<Integer, SudokuSquareBoxAsGridPane> grid;
 
 	public TopHBox topHbox;
 
@@ -113,11 +113,9 @@ public class SudokuApplication extends Application {
 	public void reset() {
 
 		LOGGER.info(() -> "reset");
-		// Removes every buttons (GridPane) inside the main GridPane
-		for (int i = 0; i < 9; i++) {
-			tableGridPane.getChildren().remove(grid.get(i));
-		}
 
+		sudokuSquareBoxesGridPane.reset();
+		
 		// Creates a new Sudoku board for the player
 		sudoku.clear();
 		sudoku.generateBoard();
@@ -134,7 +132,7 @@ public class SudokuApplication extends Application {
 		// List and maps of Buttons, GridPanes and value of the board
 		untouchedCells = new ArrayList<Integer>(board);
 		boardText = new HashMap<Integer, Button>();
-		grid = new HashMap<Integer, GridPane>();
+		grid = new HashMap<Integer, SudokuSquareBoxAsGridPane>();
 	}
 
 	/**
@@ -163,7 +161,7 @@ public class SudokuApplication extends Application {
 		// Each block
 		for (int i = 0; i < 9; i++) {
 
-			grid.put(i, new GridPane());
+			grid.put(i, new SudokuSquareBoxAsGridPane(this, game, viewPresenter, stage));
 
 			int t = i % 3 * 3 + (i / 3) * 27;
 			int temp = 0;
@@ -254,7 +252,7 @@ public class SudokuApplication extends Application {
 					grid.get(i).add(boardText.get(pos), k, temp);
 				}
 			}
-			tableGridPane.add(grid.get(i), i % 3, i / 3);
+			sudokuSquareBoxesGridPane.add(grid.get(i), i % 3, i / 3);
 			LOGGER.info(() -> "Add ");
 		}
 	}
@@ -285,7 +283,7 @@ public class SudokuApplication extends Application {
 		startTimer();
 
 		// Layout of the board
-		tableGridPane = new SudokuSquareBoxesGridPane();
+		sudokuSquareBoxesGridPane = new SudokuSquareBoxesGridPane(this, game, viewPresenter, stage);
 
 		// Layout of the nine numbers at the bottom (legend)
 		digitsBottomGridPane = new DigitsBottomGridPane(this, viewPresenter);
@@ -296,7 +294,7 @@ public class SudokuApplication extends Application {
 		// Main layout of the Game
 		rootBorderPane = new BorderPane();
 		rootBorderPane.setTop(topHbox);
-		rootBorderPane.setCenter(tableGridPane);
+		rootBorderPane.setCenter(sudokuSquareBoxesGridPane);
 		rootBorderPane.setBottom(digitsBottomGridPane);
 
 		// Generates the Sudoku board
@@ -315,7 +313,7 @@ public class SudokuApplication extends Application {
 		// List and maps of buttons, GridPanes and value of the board
 		untouchedCells = new ArrayList<Integer>(board);
 		boardText = new HashMap<Integer, Button>();
-		grid = new HashMap<Integer, GridPane>();
+		grid = new HashMap<Integer, SudokuSquareBoxAsGridPane>();
 		digitsBottomGridPane.digitSelectionInBottomButton = new HashMap<Integer, Button>();
 
 		// Generates the GUI for the board

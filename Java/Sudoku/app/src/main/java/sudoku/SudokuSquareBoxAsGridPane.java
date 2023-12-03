@@ -32,23 +32,12 @@ import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class SudokuSquareBoxesGridPane extends GridPane {
+public class SudokuSquareBoxAsGridPane extends GridPane {
 	SudokuApplication sudokuApplication;
-	public SudokuSquareBoxesGridPane(SudokuApplication sudokuApplication, Game game, ViewPresenter viewPresenter,
+	public SudokuSquareBoxAsGridPane(SudokuApplication sudokuApplication, Game game, ViewPresenter viewPresenter,
 			Stage stage) {
-		setVgap(10);
-		setHgap(10);
-		setAlignment(Pos.CENTER);
 		this.sudokuApplication = sudokuApplication;
 	}
 
-	public void reset() {
-		// Removes every buttons (GridPane) inside the main GridPane
-		for (int i = 0; i < 9; i++) {
-			getChildren().remove(sudokuApplication.grid.get(i));
-
-		}
-
-	}
 
 }
