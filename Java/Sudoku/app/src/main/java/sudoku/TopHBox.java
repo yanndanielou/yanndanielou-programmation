@@ -34,7 +34,7 @@ public class TopHBox extends HBox {
 		// Clear button
 		clearButton = new Button("Clear");
 		clearButton.setOnAction(e -> {
-			sudokuApplication.board = new ArrayList<Integer>(sudokuApplication.untouched);
+			sudokuApplication.board = new ArrayList<Integer>(sudokuApplication.untouchedCells);
 			for (int i = 0; i < 81; i++) {
 				if (sudokuApplication.board.get(i) != Integer.valueOf(sudokuApplication.boardText.get(i).getText())) {
 					sudokuApplication.boardText.get(i).setText(String.valueOf(sudokuApplication.board.get(i)));
@@ -42,14 +42,14 @@ public class TopHBox extends HBox {
 				}
 			}
 
-			sudokuApplication.setLegend();
+			sudokuApplication.digitsBottomGridPane.setLegend();
 		});
 
 		// New game button
 		newGameButton = new Button("New Game");
 		newGameButton.setOnAction(e -> {
 			if (sudokuApplication.value != 0) {
-				sudokuApplication.numButtons.get(sudokuApplication.value - 1).setId("");
+				sudokuApplication.digitsBottomGridPane.numButtons.get(sudokuApplication.value - 1).setId("");
 				sudokuApplication.value = 0;
 			}
 			sudokuApplication.timeline.stop();
@@ -57,7 +57,7 @@ public class TopHBox extends HBox {
 			sudokuApplication.reset();
 			sudokuApplication.generateBoard();
 			sudokuApplication.startTimer();
-			sudokuApplication.setLegend();
+			sudokuApplication.digitsBottomGridPane.setLegend();
 		});
 
 		setSpacing(10);

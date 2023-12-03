@@ -36,14 +36,13 @@ public class SudokuApplication extends Application {
 	public Sudoku sudoku;
 	public Game game;
 
-	public ArrayList<Integer> board, untouched;
-	public Map<Integer, Button> boardText, numButtons;
+	public ArrayList<Integer> board, untouchedCells;
+	public Map<Integer, Button> boardText;
 	public Map<Integer, GridPane> grid;
 
-	public Image applicationIcon;
 	public TopHBox topHbox;
 
-	public GridPane num;
+	public DigitsBottomGridPane digitsBottomGridPane;
 
 	public GameDurationTimeLine timeline;
 
@@ -82,7 +81,7 @@ public class SudokuApplication extends Application {
 	 */
 	public void changeIdsHelper(String[] array, int i) {
 		if (!(boardText.get(i).getText()).equals(String.valueOf(value)) || value == 0) {
-			if (untouched.get(i) != 0) {
+			if (untouchedCells.get(i) != 0) {
 				boardText.get(i).setId(array[0]);
 			} else if (board.get(i) != 0) {
 				boardText.get(i).setId(array[1]);
@@ -115,7 +114,7 @@ public class SudokuApplication extends Application {
 		board = sudoku.getPlayer();
 
 		// List and maps of Buttons, GridPanes and value of the board
-		untouched = new ArrayList<Integer>(board);
+		untouchedCells = new ArrayList<Integer>(board);
 		boardText = new HashMap<Integer, Button>();
 		grid = new HashMap<Integer, GridPane>();
 	}
@@ -126,7 +125,7 @@ public class SudokuApplication extends Application {
 	 * @param num the number researched
 	 * @return a number of elements equal to the parameter
 	 */
-	public int getNum(int num) {
+	public int getNumberOfOccurenceInBoardOfNum(int num) {
 		int count = 0;
 		for (int p = 0; p < 81; p++) {
 			if (Integer.valueOf(boardText.get(p).getText()) == num) {
@@ -182,7 +181,7 @@ public class SudokuApplication extends Application {
 									}
 								}
 
-								setLegend();
+								digitsBottomGridPane.setLegend();
 							}
 
 							// Checks if the game is done
@@ -238,24 +237,6 @@ public class SudokuApplication extends Application {
 	}
 
 	/**
-	 * Sets up the legend state by checking if any of the number has nine or more
-	 * appearance in the player's Sudoku board
-	 */
-	public void setLegend() {
-		for (int i = 1; i < 10; i++) {
-			if (getNum(i) >= 9) {
-				if (!numButtons.get(i - 1).getId().equals("legendFull")) {
-					numButtons.get(i - 1).setId("legendFull");
-				}
-			} else if (i != value) {
-				numButtons.get(i - 1).setId("");
-			} else {
-				numButtons.get(i - 1).setId("legend");
-			}
-		}
-	}
-
-	/**
 	 * Counts the time elapsed in seconds from the start of the game, from 0 to
 	 * infinite and display that number in the title bard
 	 */
@@ -284,10 +265,7 @@ public class SudokuApplication extends Application {
 		tableGridPane.setAlignment(Pos.CENTER);
 
 		// Layout of the nine numbers at the bottom (legend)
-		num = new GridPane();
-		num.setHgap(2);
-		num.setPadding(new Insets(0, 0, 16, 0));
-		num.setAlignment(Pos.CENTER);
+		digitsBottomGridPane = new DigitsBottomGridPane(this);
 
 		// Layout of the top two buttons
 		topHbox = new TopHBox(this);
@@ -296,7 +274,7 @@ public class SudokuApplication extends Application {
 		rootBorderPane = new BorderPane();
 		rootBorderPane.setTop(topHbox);
 		rootBorderPane.setCenter(tableGridPane);
-		rootBorderPane.setBottom(num);
+		rootBorderPane.setBottom(digitsBottomGridPane);
 
 		// Generates the Sudoku board
 		sudoku = new Sudoku();
@@ -306,40 +284,38 @@ public class SudokuApplication extends Application {
 		// Prints out the solution
 		System.out.println(sudoku.toString());
 
-		// Application icon
-		applicationIcon = new Image("sudoku.png");
-		primaryStage.getIcons().add(applicationIcon);
+		defineApplicationIcon();
 
 		// Get player's board
 		board = sudoku.getPlayer();
 
 		// List and maps of buttons, GridPanes and value of the board
-		untouched = new ArrayList<Integer>(board);
+		untouchedCells = new ArrayList<Integer>(board);
 		boardText = new HashMap<Integer, Button>();
 		grid = new HashMap<Integer, GridPane>();
-		numButtons = new HashMap<Integer, Button>();
+		digitsBottomGridPane.numButtons = new HashMap<Integer, Button>();
 
 		// Generates the GUI for the board
 		generateBoard();
 
 		// Sets up the legend (nine numbers at the bottom)
 		for (int i = 0; i < 9; i++) {
-			numButtons.put(i, new Button());
-			numButtons.get(i).setText(String.valueOf(i + 1));
-			num.add(numButtons.get(i), i, 0);
+			digitsBottomGridPane.numButtons.put(i, new Button());
+			digitsBottomGridPane.numButtons.get(i).setText(String.valueOf(i + 1));
+			digitsBottomGridPane.add(digitsBottomGridPane.numButtons.get(i), i, 0);
 
 			final int lo = i + 1;
 
-			numButtons.get(i).setOnAction(e -> {
+			digitsBottomGridPane.numButtons.get(i).setOnAction(e -> {
 
-				if (value == Integer.valueOf(numButtons.get(lo - 1).getText())) {
-					if (getNum(value) < 9) {
-						numButtons.get(value - 1).setId("");
+				if (value == Integer.valueOf(digitsBottomGridPane.numButtons.get(lo - 1).getText())) {
+					if (getNumberOfOccurenceInBoardOfNum(value) < 9) {
+						digitsBottomGridPane.numButtons.get(value - 1).setId("");
 					}
 
 					for (int k = 0; k < 81; k++) {
 						if ((boardText.get(k).getText()).equals(String.valueOf(value))) {
-							if (untouched.get(k) != 0) {
+							if (untouchedCells.get(k) != 0) {
 								boardText.get(k).setId("preset");
 							} else if (board.get(k) != 0) {
 								boardText.get(k).setId("");
@@ -349,18 +325,18 @@ public class SudokuApplication extends Application {
 
 					value = 0;
 				} else {
-					if (value != 0 && getNum(value) < 9) {
-						numButtons.get(value - 1).setId("");
+					if (value != 0 && getNumberOfOccurenceInBoardOfNum(value) < 9) {
+						digitsBottomGridPane.numButtons.get(value - 1).setId("");
 					}
 
 					value = lo;
-					numButtons.get(value - 1).setId("legend");
+					digitsBottomGridPane.numButtons.get(value - 1).setId("legend");
 
 					for (int k = 0; k < 81; k++) {
 						if ((boardText.get(k).getText()).equals(String.valueOf(value))) {
 							boardText.get(k).setId("number");
 						} else {
-							if (untouched.get(k) != 0) {
+							if (untouchedCells.get(k) != 0) {
 								boardText.get(k).setId("preset");
 							} else if (board.get(k) != 0) {
 								boardText.get(k).setId("");
@@ -369,23 +345,23 @@ public class SudokuApplication extends Application {
 					}
 				}
 
-				if (getNum(value) >= 9 && value != 0) {
-					numButtons.get(value - 1).setId("legendFull");
+				if (getNumberOfOccurenceInBoardOfNum(value) >= 9 && value != 0) {
+					digitsBottomGridPane.numButtons.get(value - 1).setId("legendFull");
 				}
 			});
 
-			numButtons.get(i).setOnMouseEntered(e -> {
+			digitsBottomGridPane.numButtons.get(i).setOnMouseEntered(e -> {
 				scene.setCursor(Cursor.HAND);
 			});
 
-			numButtons.get(i).setOnMouseExited(e -> {
+			digitsBottomGridPane.numButtons.get(i).setOnMouseExited(e -> {
 				scene.setCursor(Cursor.DEFAULT);
 			});
 		}
 
 		// Sets up the state of the legend (nine numbers at the bottom) according to the
 		// player's Sudoku board
-		setLegend();
+		digitsBottomGridPane.setLegend();
 
 		// Sets the scene to the BorderPane layout and links the CSS file
 		scene = new Scene(rootBorderPane, 350, 450);
@@ -397,6 +373,12 @@ public class SudokuApplication extends Application {
 		primaryStage.show();
 		primaryStage.setMinHeight(primaryStage.getHeight());
 		primaryStage.setMinWidth(primaryStage.getWidth());
+	}
+
+	private void defineApplicationIcon() {
+		// Application icon
+		Image applicationIcon = new Image("sudoku.png");
+		stage.getIcons().add(applicationIcon);
 	}
 
 	/**
