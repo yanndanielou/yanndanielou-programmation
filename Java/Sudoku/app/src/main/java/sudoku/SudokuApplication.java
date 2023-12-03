@@ -210,7 +210,8 @@ public class SudokuApplication extends Application {
 								timeline.stop();
 
 								Alert alert = new Alert(AlertType.NONE,
-										"You just completed the sudoku board in " + game.gameDurationInMilliseconds / 1000
+										"You just completed the sudoku board in "
+												+ game.gameDurationInMilliseconds / 1000
 												+ " seconds. Do you want to play again?",
 										ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
 								alert.showAndWait();
@@ -254,6 +255,7 @@ public class SudokuApplication extends Application {
 				}
 			}
 			tableGridPane.add(grid.get(i), i % 3, i / 3);
+			LOGGER.info(() -> "");
 		}
 	}
 
@@ -284,8 +286,8 @@ public class SudokuApplication extends Application {
 
 		// Layout of the board
 		tableGridPane = new GridPane();
-		tableGridPane.setVgap(15);
-		tableGridPane.setHgap(15);
+		tableGridPane.setVgap(8);
+		tableGridPane.setHgap(8);
 		tableGridPane.setAlignment(Pos.CENTER);
 
 		// Layout of the nine numbers at the bottom (legend)

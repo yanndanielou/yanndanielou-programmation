@@ -28,7 +28,7 @@ public class Game {
 
 	public void updateDuration(ActionEvent e) {
 		gameDurationInMilliseconds = Calendar.getInstance().getTime().getTime() - startDate.getTime();
-		LOGGER.info(() -> "Game duration updated to " + gameDurationInMilliseconds);
+		LOGGER.debug(() -> "Game duration updated to " + gameDurationInMilliseconds);
 		viewPresenter.onGameDurationUpdated(gameDurationInMilliseconds);
 	}
 
