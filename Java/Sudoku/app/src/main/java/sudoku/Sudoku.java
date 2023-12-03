@@ -1,12 +1,22 @@
 package sudoku;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
+/**
+ * The class <b>Sudoku</b> builds playable Sudoku game board using a
+ * backtracking recursive algorithm. It possess many useful methods for the
+ * manipulation of that board. You can also play the game in the command
+ * line/terminal by calling the method start(), but I mostly focused on an GUI
+ * integration of this game in the Main class.
+ * 
+ * @author Benoît
+ *
+ */
 public class Sudoku {
 
 	/**
@@ -18,13 +28,16 @@ public class Sudoku {
 	/**
 	 * Uncovered Sudoku board
 	 */
-	private ArrayList<Integer> uncoveredSudokuBoard;
+	private ArrayList<Integer> board;
 
 	/**
 	 * Semi-uncovered Sudoku board
 	 */
-	private ArrayList<Integer> semiUncoveredSudokuBoard;
+	private ArrayList<Integer> player;
 
+	/**
+	 * Constructor for Sudoku
+	 */
 	public Sudoku() {
 		clear();
 	}
@@ -33,8 +46,41 @@ public class Sudoku {
 	 * Creates a board with only 20 to 40 elements uncovered
 	 */
 	public void generatePlayer() {
-		int numberOfUncoveredElements = generateRandom(40, 20);
-		generatePlayer(numberOfUncoveredElements);
+		generatePlayer(generateRandom(40, 20));
+	}
+
+	/**
+	 * Command line Sudoku game
+	 */
+	public void start() {
+		generateBoard();
+		generatePlayer();
+
+		System.out.println(toString());
+		Scanner sc = new Scanner(System.in);
+
+		while (!checkBoard(player)) {
+			System.out.println(printBoard(player));
+
+			System.out.println("\nPlease enter the row of the number");
+			int row = sc.nextInt();
+			System.out.println("Please enter the column of the number");
+			int col = sc.nextInt();
+			System.out.println("What is the value?");
+			int value = sc.nextInt();
+
+			while (value <= 0 || value > 9) {
+				System.out.println("Invalid value");
+				System.out.println("What is the value?");
+				value = sc.nextInt();
+			}
+
+			player.set(value, (row - 1) * 9 + col - 1);
+		}
+
+		sc.close();
+
+		System.out.println("Sudoku solved!");
 	}
 
 	/**
@@ -43,7 +89,7 @@ public class Sudoku {
 	 * @return an ArrayList containing the player's Sudoku board
 	 */
 	public ArrayList<Integer> getPlayer() {
-		return semiUncoveredSudokuBoard;
+		return player;
 	}
 
 	/**
@@ -53,11 +99,47 @@ public class Sudoku {
 	 */
 	public void generatePlayer(int num) {
 		for (int i = 0; i < num; i++) {
-			ArrayList<Integer> zerosIndex = getIndexes(semiUncoveredSudokuBoard, 0);
+			ArrayList<Integer> zerosIndex = getIndexes(player, 0);
 			int rand = generateRandom(zerosIndex.size() - 1, 0);
 
-			semiUncoveredSudokuBoard.set(zerosIndex.get(rand), uncoveredSudokuBoard.get(zerosIndex.get(rand)));
+			player.set(zerosIndex.get(rand), board.get(zerosIndex.get(rand)));
 		}
+
+		/* Test the solve method
+		System.out.println(printBoard(board));
+		System.out.println(printBoard(player));
+
+		System.out.println(sudokuString(player));
+
+		try {
+			System.out.println(solve(getIndexes(player, 0).get(0), getIndexes(player, 0)));
+		} catch (StackOverflowError e) {
+			System.out.println("------");
+		}
+
+		System.out.println(printBoard(player));*/
+	}
+
+	/* Test the solve method
+	public static void main(String[] args) {
+		Sudoku s = new Sudoku();
+		s.generateBoard();
+		s.generatePlayer();
+	} */
+
+	/**
+	 * Used to verify with online sudoku solver
+	 */
+	public String sudokuString(ArrayList<Integer> l) {
+		String sudoku = "";
+		for (int i : l) {
+			if (i == 0) {
+				sudoku += ".";
+			} else {
+				sudoku += i;
+			}
+		}
+		return sudoku;
 	}
 
 	/**
@@ -73,18 +155,18 @@ public class Sudoku {
 	 * @param num the index of the current element in board
 	 */
 	private void generateBoard(int num) {
-		if (!fullBoard() && !checkBoard(uncoveredSudokuBoard)) {
-			ArrayList<Integer> available = complement(combineArrayList(
-					Arrays.asList(getNeighbours(num, uncoveredSudokuBoard), previousGenerate.get(num))));
+		if (!fullBoard() && !checkBoard(board)) {
+			ArrayList<Integer> available = complement(
+					combineArrayList(Arrays.asList(getNeighbours(num, board), previousGenerate.get(num))));
 
 			if (available.size() == 0) {
-				uncoveredSudokuBoard.set(num, 0);
+				board.set(num, 0);
 				previousGenerate.get(num).clear();
 
 				generateBoard(num - 1);
 			} else {
-				uncoveredSudokuBoard.set(num, available.get(generateRandom(available.size(), 0)));
-				previousGenerate.get(num).add(uncoveredSudokuBoard.get(num));
+				board.set(num, available.get(generateRandom(available.size(), 0)));
+				previousGenerate.get(num).add(board.get(num));
 
 				generateBoard(num + 1);
 			}
@@ -98,23 +180,23 @@ public class Sudoku {
 	 */
 	private boolean solve(int num, ArrayList<Integer> zeros) {
 		ArrayList<Integer> available = complement(
-				combineArrayList(Arrays.asList(getNeighbours(num, semiUncoveredSudokuBoard), previousVerify.get(num))));
+				combineArrayList(Arrays.asList(getNeighbours(num, player), previousVerify.get(num))));
 
 		if (available.size() == 0) {
 			if (num == zeros.get(0)) {
 				return true;
 			} else {
-				semiUncoveredSudokuBoard.set(num, 0);
+				player.set(num, 0);
 				previousVerify.get(num).clear();
 
 				return solve(zeros.get(zeros.indexOf(num) - 1), zeros);
 			}
 		} else {
-			semiUncoveredSudokuBoard.set(num, available.get(0));
-			previousVerify.get(num).add(semiUncoveredSudokuBoard.get(num));
+			player.set(num, available.get(0));
+			previousVerify.get(num).add(player.get(num));
 
 			if (num == zeros.get(zeros.size() - 1)) {
-				if (available.size() == 1 && semiUncoveredSudokuBoard.equals(uncoveredSudokuBoard)) {
+				if (available.size() == 1 && player.equals(board)) {
 					return solve(num, zeros);
 				} else {
 					return false;
@@ -236,7 +318,7 @@ public class Sudoku {
 	 * @return true if the board is full, false otherwise
 	 */
 	private boolean fullBoard() {
-		return !uncoveredSudokuBoard.contains(0);
+		return !board.contains(0);
 	}
 
 	/**
@@ -352,8 +434,8 @@ public class Sudoku {
 	 * Clears and reinitializes the ArrayLists
 	 */
 	public void clear() {
-		uncoveredSudokuBoard = new ArrayList<Integer>(Collections.nCopies(81, 0));
-		semiUncoveredSudokuBoard = new ArrayList<Integer>(Collections.nCopies(81, 0));
+		board = new ArrayList<Integer>(Collections.nCopies(81, 0));
+		player = new ArrayList<Integer>(Collections.nCopies(81, 0));
 		previousGenerate = new ArrayList<ArrayList<Integer>>();
 		previousVerify = new ArrayList<ArrayList<Integer>>();
 
@@ -369,8 +451,8 @@ public class Sudoku {
 	 */
 	@SuppressWarnings("unused")
 	private void generateRandomBoard() {
-		for (int i = 0; i < uncoveredSudokuBoard.size(); i++) {
-			uncoveredSudokuBoard.set(i, generateRandom(9, 1));
+		for (int i = 0; i < board.size(); i++) {
+			board.set(i, generateRandom(9, 1));
 		}
 	}
 
@@ -431,6 +513,6 @@ public class Sudoku {
 	 * @return String representation of the Sudoku board
 	 */
 	public String toString() {
-		return printBoard(uncoveredSudokuBoard);
+		return printBoard(board);
 	}
 }

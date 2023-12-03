@@ -1,12 +1,3 @@
-/bin/
-/logs
-app/logs
-app/build
-/target/
-*.class
-gradle
-.gradle
-.idea
-gradle*
-master/
-
+/bin
+/bin*
+logs/
