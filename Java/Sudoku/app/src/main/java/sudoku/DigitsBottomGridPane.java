@@ -47,7 +47,7 @@ public class DigitsBottomGridPane extends GridPane {
 				if (!numButtons.get(i - 1).getId().equals("legendFull")) {
 					numButtons.get(i - 1).setId("legendFull");
 				}
-			} else if (i != sudokuApplication.value) {
+			} else if (i != sudokuApplication.currentlySelectedDigit) {
 				numButtons.get(i - 1).setId("");
 			} else {
 				numButtons.get(i - 1).setId("legend");

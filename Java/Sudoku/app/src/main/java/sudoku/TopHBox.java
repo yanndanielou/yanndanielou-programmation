@@ -48,9 +48,9 @@ public class TopHBox extends HBox {
 		// New game button
 		newGameButton = new Button("New Game");
 		newGameButton.setOnAction(e -> {
-			if (sudokuApplication.value != 0) {
-				sudokuApplication.digitsBottomGridPane.numButtons.get(sudokuApplication.value - 1).setId("");
-				sudokuApplication.value = 0;
+			if (sudokuApplication.currentlySelectedDigit != 0) {
+				sudokuApplication.digitsBottomGridPane.numButtons.get(sudokuApplication.currentlySelectedDigit - 1).setId("");
+				sudokuApplication.currentlySelectedDigit = 0;
 			}
 			sudokuApplication.timeline.stop();
 			sudokuApplication.stage.setTitle("Sudoku - Time: 0");

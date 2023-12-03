@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -26,9 +29,13 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class SudokuApplication extends Application {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-	public int value = 0;
+public class SudokuApplication extends Application {
+	private static final Logger LOGGER = LogManager.getLogger(SudokuApplication.class);
+
+	public int currentlySelectedDigit = 0;
 
 	public BorderPane rootBorderPane;
 	public Scene scene;
@@ -55,6 +62,7 @@ public class SudokuApplication extends Application {
 	 * @param start the horizontal line number
 	 */
 	public void changeHorizontalIds(String[] array, int start) {
+		LOGGER.info(() -> "changeHorizontalIds:" + array + " and start:" + start);
 		for (int i = start * 9; i < start * 9 + 9; i++) {
 			changeIdsHelper(array, i);
 		}
@@ -67,6 +75,7 @@ public class SudokuApplication extends Application {
 	 * @param start the vertical line number
 	 */
 	public void changeVerticalIds(String[] array, int start) {
+		LOGGER.info(() -> "changeVerticalIds:" + array + " and start:" + start);
 		for (int i = start; i < start + 9 * 9; i += 9) {
 			changeIdsHelper(array, i);
 		}
@@ -80,7 +89,9 @@ public class SudokuApplication extends Application {
 	 * @param i     the location of the button in the Sudoku board
 	 */
 	public void changeIdsHelper(String[] array, int i) {
-		if (!(boardText.get(i).getText()).equals(String.valueOf(value)) || value == 0) {
+		LOGGER.info(() -> "changeIdsHelper:" + array + " and i:" + i);
+
+		if (!(boardText.get(i).getText()).equals(String.valueOf(currentlySelectedDigit)) || currentlySelectedDigit == 0) {
 			if (untouchedCells.get(i) != 0) {
 				boardText.get(i).setId(array[0]);
 			} else if (board.get(i) != 0) {
@@ -97,6 +108,8 @@ public class SudokuApplication extends Application {
 	 * Resets the game
 	 */
 	public void reset() {
+
+		LOGGER.info(() -> "reset");
 		// Removes every buttons (GridPane) inside the main GridPane
 		for (int i = 0; i < 9; i++) {
 			tableGridPane.getChildren().remove(grid.get(i));
@@ -132,6 +145,9 @@ public class SudokuApplication extends Application {
 				count++;
 			}
 		}
+
+		final int countTotal = count;
+		LOGGER.info(() -> "getNumberOfOccurenceInBoardOfNum " + num + " = " + countTotal);
 		return count;
 	}
 
@@ -163,20 +179,20 @@ public class SudokuApplication extends Application {
 						boardText.get(pos).setId("zero");
 
 						boardText.get(pos).setOnAction(e -> {
-							if (value != 0) {
-								if (boardText.get(pos).getText().equals(String.valueOf(value))) {
+							if (currentlySelectedDigit != 0) {
+								if (boardText.get(pos).getText().equals(String.valueOf(currentlySelectedDigit))) {
 									boardText.get(pos).setText("0");
 									board.set(pos, 0);
 									boardText.get(pos).setId("helperZero");
 								} else {
-									boardText.get(pos).setText(String.valueOf(value));
+									boardText.get(pos).setText(String.valueOf(currentlySelectedDigit));
 									boardText.get(pos).setId("");
-									board.set(pos, value);
+									board.set(pos, currentlySelectedDigit);
 								}
 
 								for (int l = 0; l < 81; l++) {
 									if (!boardText.get(l).getId().equals("number")
-											&& boardText.get(l).getText().equals(String.valueOf(value))) {
+											&& boardText.get(l).getText().equals(String.valueOf(currentlySelectedDigit))) {
 										boardText.get(l).setId("number");
 									}
 								}
@@ -209,7 +225,7 @@ public class SudokuApplication extends Application {
 					}
 
 					boardText.get(pos).setOnMouseEntered(e -> {
-						if (!sudoku.checkBoard(board) && value != 0) {
+						if (!sudoku.checkBoard(board) && currentlySelectedDigit != 0) {
 							changeHorizontalIds(new String[] { "helper", "helper", "helperZero", "numberHelper" },
 									pos / 9);
 							changeVerticalIds(new String[] { "helper", "helper", "helperZero", "numberHelper" },
@@ -221,7 +237,7 @@ public class SudokuApplication extends Application {
 					});
 
 					boardText.get(pos).setOnMouseExited(e -> {
-						if (!sudoku.checkBoard(board) && value != 0) {
+						if (!sudoku.checkBoard(board) && currentlySelectedDigit != 0) {
 							changeHorizontalIds(new String[] { "preset", "", "zero", "number" }, pos / 9);
 							changeVerticalIds(new String[] { "preset", "", "zero", "number" }, pos % 9);
 							scene.setCursor(Cursor.DEFAULT);
@@ -308,13 +324,13 @@ public class SudokuApplication extends Application {
 
 			digitsBottomGridPane.numButtons.get(i).setOnAction(e -> {
 
-				if (value == Integer.valueOf(digitsBottomGridPane.numButtons.get(lo - 1).getText())) {
-					if (getNumberOfOccurenceInBoardOfNum(value) < 9) {
-						digitsBottomGridPane.numButtons.get(value - 1).setId("");
+				if (currentlySelectedDigit == Integer.valueOf(digitsBottomGridPane.numButtons.get(lo - 1).getText())) {
+					if (getNumberOfOccurenceInBoardOfNum(currentlySelectedDigit) < 9) {
+						digitsBottomGridPane.numButtons.get(currentlySelectedDigit - 1).setId("");
 					}
 
 					for (int k = 0; k < 81; k++) {
-						if ((boardText.get(k).getText()).equals(String.valueOf(value))) {
+						if ((boardText.get(k).getText()).equals(String.valueOf(currentlySelectedDigit))) {
 							if (untouchedCells.get(k) != 0) {
 								boardText.get(k).setId("preset");
 							} else if (board.get(k) != 0) {
@@ -323,17 +339,19 @@ public class SudokuApplication extends Application {
 						}
 					}
 
-					value = 0;
+					currentlySelectedDigit = 0;
+					LOGGER.info(() -> "value set to " + currentlySelectedDigit);
 				} else {
-					if (value != 0 && getNumberOfOccurenceInBoardOfNum(value) < 9) {
-						digitsBottomGridPane.numButtons.get(value - 1).setId("");
+					if (currentlySelectedDigit != 0 && getNumberOfOccurenceInBoardOfNum(currentlySelectedDigit) < 9) {
+						digitsBottomGridPane.numButtons.get(currentlySelectedDigit - 1).setId("");
 					}
 
-					value = lo;
-					digitsBottomGridPane.numButtons.get(value - 1).setId("legend");
+					currentlySelectedDigit = lo;
+					LOGGER.info(() -> "value set to " + currentlySelectedDigit);
+					digitsBottomGridPane.numButtons.get(currentlySelectedDigit - 1).setId("legend");
 
 					for (int k = 0; k < 81; k++) {
-						if ((boardText.get(k).getText()).equals(String.valueOf(value))) {
+						if ((boardText.get(k).getText()).equals(String.valueOf(currentlySelectedDigit))) {
 							boardText.get(k).setId("number");
 						} else {
 							if (untouchedCells.get(k) != 0) {
@@ -345,8 +363,8 @@ public class SudokuApplication extends Application {
 					}
 				}
 
-				if (getNumberOfOccurenceInBoardOfNum(value) >= 9 && value != 0) {
-					digitsBottomGridPane.numButtons.get(value - 1).setId("legendFull");
+				if (getNumberOfOccurenceInBoardOfNum(currentlySelectedDigit) >= 9 && currentlySelectedDigit != 0) {
+					digitsBottomGridPane.numButtons.get(currentlySelectedDigit - 1).setId("legendFull");
 				}
 			});
 
