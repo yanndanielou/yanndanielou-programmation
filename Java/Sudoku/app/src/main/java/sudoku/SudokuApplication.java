@@ -26,22 +26,15 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-/**
- * The class <b>Main</b> is a Sudoku game that can be played using a GUI
- * provided by JavaFX.
- * 
- * @author Benoît
- *
- */
 public class SudokuApplication extends Application {
 
 	public int value = 0;
-	public long countUp = 0;
 
 	public BorderPane rootBorderPane;
 	public Scene scene;
 	public GridPane tableGridPane;
 	public Sudoku sudoku;
+	public Game game;
 
 	public ArrayList<Integer> board, untouched;
 	public Map<Integer, Button> boardText, numButtons;
@@ -52,8 +45,7 @@ public class SudokuApplication extends Application {
 
 	public GridPane num;
 
-	public Date startDate;
-	public Timeline timeline;
+	public GameDurationTimeLine timeline;
 
 	public Stage stage;
 
@@ -116,7 +108,7 @@ public class SudokuApplication extends Application {
 		sudoku.generateBoard();
 		sudoku.generatePlayer();
 
-		// Print out the solution
+		// Print out the sol-ution
 		System.out.println(sudoku.toString());
 
 		// Get player's board
@@ -198,7 +190,7 @@ public class SudokuApplication extends Application {
 								timeline.stop();
 
 								Alert alert = new Alert(AlertType.NONE,
-										"You just completed the sudoku board in " + countUp / 1000
+										"You just completed the sudoku board in " + game.countUp / 1000
 												+ " seconds. Do you want to play again?",
 										ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
 								alert.showAndWait();
@@ -268,24 +260,19 @@ public class SudokuApplication extends Application {
 	 * infinite and display that number in the title bard
 	 */
 	public void startTimer() {
-		startDate = Calendar.getInstance().getTime();
-		timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-			countUp = Calendar.getInstance().getTime().getTime() - startDate.getTime();
-			stage.setTitle(
-					"Sudoku - Time: " + String.valueOf(TimeUnit.SECONDS.convert(countUp, TimeUnit.MILLISECONDS)));
-		}));
+		game.start();
+		timeline = new GameDurationTimeLine(this, stage);
 
-		timeline.setCycleCount(Animation.INDEFINITE);
-		timeline.play();
 	}
 
 	@Override
 	public void start(Stage primaryStage) {
+
 		// Creates a reference to the primaryStage to be
 		// able to manipulate it in other methods
 		stage = primaryStage;
 
-	
+		game = new Game(this);
 
 		// Starts the timer
 		startTimer();
