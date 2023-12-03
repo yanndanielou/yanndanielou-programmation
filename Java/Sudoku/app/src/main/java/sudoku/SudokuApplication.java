@@ -39,7 +39,7 @@ public class SudokuApplication extends Application {
 
 	public BorderPane rootBorderPane;
 	public Scene scene;
-	public GridPane tableGridPane;
+	public SudokuSquareBoxesGridPane tableGridPane;
 	public Sudoku sudoku;
 	public Game game;
 
@@ -255,7 +255,7 @@ public class SudokuApplication extends Application {
 				}
 			}
 			tableGridPane.add(grid.get(i), i % 3, i / 3);
-			LOGGER.info(() -> "");
+			LOGGER.info(() -> "Add ");
 		}
 	}
 
@@ -285,10 +285,7 @@ public class SudokuApplication extends Application {
 		startTimer();
 
 		// Layout of the board
-		tableGridPane = new GridPane();
-		tableGridPane.setVgap(8);
-		tableGridPane.setHgap(8);
-		tableGridPane.setAlignment(Pos.CENTER);
+		tableGridPane = new SudokuSquareBoxesGridPane();
 
 		// Layout of the nine numbers at the bottom (legend)
 		digitsBottomGridPane = new DigitsBottomGridPane(this, viewPresenter);
