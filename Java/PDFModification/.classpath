@@ -14,11 +14,15 @@
 	<classpathentry kind="lib" path="../ExternalLibraries/log4j-api-2.20.0.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/log4j-core-2.20.0.jar"/>
 	
+	<!--
+	<classpathentry kind="lib" path="../ExternalLibraries/pdfbox-app-2.0.30.jar"/>
+	-->
+	<!--
+	
+	-->
 	<classpathentry kind="lib" path="../ExternalLibraries/pdfbox-app-3.0.1.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/debugger-app-3.0.1.jar"/>
-	<!--
 	<classpathentry kind="lib" path="../ExternalLibraries/preflight-app-3.0.1.jar"/>
-	-->
 	
 	
 </classpath>
