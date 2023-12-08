@@ -60,7 +60,10 @@ class SimulationsRequestsManager:
 
 class SimulationToBePerformed:
     def __init__(self, elementary_mission_name, modele_name, step_in_second, dwellTimeInSecond):
-        a = 1
+        self.elementary_mission_name = elementary_mission_name
+        self.modele_name = modele_name
+        self.step_in_second = step_in_second
+        self.dwellTimeInSecond = dwellTimeInSecond
 
 
 def open_text_file_and_return_lines(input_file_name):  
