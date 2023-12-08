@@ -36,11 +36,18 @@ all_nom_modele_as_list = SimulationsRequestsManager.retrieve_all_field_string_co
 #LoggerConfig.printAndLogInfo("Nombre de missions élémentaires : " + str(len(all_elementary_missions_names_as_list)))
 #LoggerConfig.printAndLogInfo("Nombre de modeles : " + str(len(all_nom_modele_as_list)))
 
+all_steps_in_second = list()
+all_steps_in_second.append(0.2)
+all_steps_in_second.append(0.4)
+all_steps_in_second.append(0.6)
+all_steps_in_second.append(0.8)
+all_steps_in_second.append(1)
+
                         
 step_in_second = 0.2
 dwell_time_in_second = 30.0
 simulationsRequestsManager = SimulationsRequestsManager.SimulationsRequestsManager()
-simulationsRequestsManager.generateAllMissionElementaireCombinations(step_in_second, dwell_time_in_second, all_elementary_missions_names_as_list, all_nom_modele_as_list)
+simulationsRequestsManager.generateAllMissionElementaireCombinations( dwell_time_in_second, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_steps_in_second)
 #simulationsRequestsManager.default_step_in_second.append
 
 simulationsNumberToKeep = list()

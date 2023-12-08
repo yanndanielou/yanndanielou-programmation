@@ -47,13 +47,14 @@ class SimulationsRequestsManager:
         self.simulationsToBePerformed = list()
 
 
-    def generateAllMissionElementaireCombinations(self, step_in_second, dwell_time_in_second, all_elementary_missions_names_as_list, all_nom_modele_as_list):
+    def generateAllMissionElementaireCombinations(self, dwell_time_in_second, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_steps_in_second):
         LoggerConfig.printAndLogInfo("generateAllMissionElementaireCombinations begin")
 
         for elementary_mission_name in all_elementary_missions_names_as_list:
             for nom_modele in all_nom_modele_as_list:
-                simulationToBePerformed = SimulationToBePerformed(elementary_mission_name, nom_modele, step_in_second, dwell_time_in_second)
-                self.simulationsToBePerformed.append(simulationToBePerformed)
+                for step_in_second in all_steps_in_second:
+                    simulationToBePerformed = SimulationToBePerformed(elementary_mission_name, nom_modele, step_in_second, dwell_time_in_second)
+                    self.simulationsToBePerformed.append(simulationToBePerformed)
 
         LoggerConfig.printAndLogInfo("generateAllMissionElementaireCombinations end")
 
@@ -68,7 +69,7 @@ class SimulationsRequestsManager:
             if numeroSimulation in simulationsNumberToKeep:
                 simulationsToKeep.append(simulationToBePerformed)
 
-        self.simulationsToBePerformed.clear
+        self.simulationsToBePerformed.clear()
         self.simulationsToBePerformed = self.simulationsToBePerformed + simulationsToKeep
         LoggerConfig.printAndLogInfo("onlyKeepSimulationsNumber end. Keep " + str(len(simulationsToKeep)) + " simulations")
 
