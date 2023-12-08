@@ -57,6 +57,21 @@ class SimulationsRequestsManager:
 
         LoggerConfig.printAndLogInfo("generateAllMissionElementaireCombinations end")
 
+    def onlyKeepSimulationsNumber(self, simulationsNumberToKeep):
+        
+        LoggerConfig.printAndLogInfo("onlyKeepSimulationsNumber begin")
+        simulationsToKeep = list()
+
+        numeroSimulation = 0
+        for simulationToBePerformed in self.simulationsToBePerformed:
+            numeroSimulation = numeroSimulation + 1
+            if numeroSimulation in simulationsNumberToKeep:
+                simulationsToKeep.append(simulationToBePerformed)
+
+        self.simulationsToBePerformed.clear
+        self.simulationsToBePerformed = self.simulationsToBePerformed + simulationsToKeep
+        LoggerConfig.printAndLogInfo("onlyKeepSimulationsNumber end. Keep " + str(len(simulationsToKeep)) + " simulations")
+
 
 class SimulationToBePerformed:
     def __init__(self, elementary_mission_name, modele_name, step_in_second, dwellTimeInSecond):
