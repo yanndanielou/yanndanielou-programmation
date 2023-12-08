@@ -41,10 +41,22 @@ csv_fields_separator = ";"
 
 
 class SimulationsRequestsManager:
-    def __init__(self, xml_request_to_SMT3_as_indented_text, stepInSecond, dwellTimeInSecond):
-        self.default_step_in_second = 0.2
-        self.defalut_dwell_time_in_second = 30.0
-        self.default_coeff_on_run_time = 1.1
+    def __init__(self):
+        self.default_step_in_second = None
+        self.defalut_dwell_time_in_second = None
+        self.simulationsToBePerformed = list()
+
+
+    def generateAllMissionElementaireCombinations(self, step_in_second, dwell_time_in_second, all_elementary_missions_names_as_list, all_nom_modele_as_list):
+        LoggerConfig.printAndLogInfo("generateAllMissionElementaireCombinations begin")
+
+        for elementary_mission_name in all_elementary_missions_names_as_list:
+            for nom_modele in all_nom_modele_as_list:
+                simulationToBePerformed = SimulationToBePerformed(elementary_mission_name, nom_modele, step_in_second, dwell_time_in_second)
+                self.simulationsToBePerformed.append(simulationToBePerformed)
+
+        LoggerConfig.printAndLogInfo("generateAllMissionElementaireCombinations end")
+
 
 class SimulationToBePerformed:
     def __init__(self, elementary_mission_name, modele_name, step_in_second, dwellTimeInSecond):
