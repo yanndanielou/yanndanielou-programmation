@@ -350,31 +350,6 @@ def launch(smt3_port, numero_premiere_mission_elementaire_a_traiter, numero_dern
     LoggerConfig.printAndLogInfo('End application')
     
 
-
-def open_text_file_and_return_lines(input_file_name):  
-    logging.info('Check existence of input file:' + input_file_name)
-
-    if not os.path.exists(input_file_name):
-        logging.critical("Input file:" + input_file_name + " does not exist. Application stopped")
-        sys.exit()
-
-    LoggerConfig.printAndLogInfo('Full path:' + os.path.abspath(input_file_name))
-
-
-    LoggerConfig.printAndLogInfo('Opening input file:' + input_file_name)    
-    input_file = open(input_file_name, "r")
-    
-    LoggerConfig.printAndLogInfo('Read input file:' + input_file_name)
-    input_file_read = input_file.read()
-    
-    LoggerConfig.printAndLogInfo('Close input file:' + input_file_name)
-    input_file.close()
-
-    input_file_lines = input_file_read.split(end_line_character_in_text_file)
-    LoggerConfig.printAndLogInfo(input_file_name + " has " + str(len(input_file_lines)) + " lines")
-
-    return input_file_lines
-
 def Lancer_simulations_sur_smt3_ATSPlus(smt3Servers, simulationsRequestsManager):
 
     now_as_datetime = datetime.now()
