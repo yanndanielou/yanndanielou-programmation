@@ -375,29 +375,6 @@ def open_text_file_and_return_lines(input_file_name):
 
     return input_file_lines
 
-
-def retrieve_all_field_string_content(SMT2_Data_file_name_with_path, field_name):
-
-    SMT2_Data_file_lines = open_text_file_and_return_lines(SMT2_Data_file_name_with_path)
-    SMT2_Data_file_content_in_one_line = "".join(SMT2_Data_file_lines)
-
-    SMT2_Data_file_content_description = SMT2_Data_file_content_in_one_line.split("'" + field_name +"',{")[1]
-    SMT2_Data_file_content_description = SMT2_Data_file_content_description.split("}")[0]
-    SMT2_Data_file_content_description = SMT2_Data_file_content_description.replace("...","")
-    SMT2_Data_file_content_description = SMT2_Data_file_content_description.replace("'","")
-    SMT2_Data_file_content_description = SMT2_Data_file_content_description.replace(end_line_character_in_text_file,"")
-    SMT2_Data_file_content_description = SMT2_Data_file_content_description.replace(" ","")
-
-    field_string_content_as_list = SMT2_Data_file_content_description.split(",")
-    field_string_content_as_list.sort()
-    #field_string_content_as_list.append("okok")
-
-    LoggerConfig.printAndLogInfo(SMT2_Data_file_name_with_path + " has " + str(len(field_string_content_as_list)) + " objects " + field_name)
-
-    return field_string_content_as_list
-
-
-
 def Lancer_simulations_sur_smt3_ATSPlus(smt3Servers, simulationsRequestsManager):
 
     now_as_datetime = datetime.now()
