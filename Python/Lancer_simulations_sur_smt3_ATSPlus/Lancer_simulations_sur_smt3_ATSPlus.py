@@ -197,7 +197,7 @@ def SimulerSimpleRunSimulation(smt3Servers, stepInSecond, dwellTimeInSecond, _co
     return sMT3Simulation
 
 
-def saveSimulation(sMT3Simulation, result_csv_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees, _PasSauvegarde):
+def saveSimulation(sMT3Simulation, result_csv_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees):
 
     sMT3SimulationRequest = sMT3Simulation.sMT3SimulationRequest
     
@@ -223,7 +223,7 @@ def saveSimulation(sMT3Simulation, result_csv_file, numero_mission_elementaire_c
     result_csv_file.write( end_line_character_in_text_file)
 
 
-    if(not (nombre_simulations_smt3_effectuees % _PasSauvegarde)):
+    if(not (nombre_simulations_smt3_effectuees % param.pas_sauvegarde)):
         LoggerConfig.printAndLogInfo("Save output file with partial results")
         for sMT3SimulationResult in sMT3Simulation.sMT3SimulationResults:
             sMT3SimulationResult.smt3Server.input_output_dump_file.flush()
@@ -248,7 +248,7 @@ def create_output_text_file(output_directory, output_file_name):
     return input_output_dump_file
 
 #@execution_time 
-def ProduireSimplesRuns( smt3Servers, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_nom_train_as_list, _stepInSecond, _dwellTimeInSecond, _PasSauvegarde, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix):
+def ProduireSimplesRuns( smt3Servers, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_nom_train_as_list, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix):
     logging.info("Start calling ProduireSimplesRuns")
     start_time_ProduireSimplesRuns = time.time()
     numero_mission_elementaire_courante = 0
@@ -294,29 +294,33 @@ def ProduireSimplesRuns( smt3Servers, all_elementary_missions_names_as_list, all
                 LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"]  stepInSecondToApply:" + str(stepInSecondToApply))
 
 
-                try:
-                    sMT3Simulation = SimulerSimpleRunSimulation(smt3Servers, stepInSecondToApply, _dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, _ignoredMER)
+                if param.listNumerosSimulationsAEffectuer is None or nombre_simulations_smt3_effectuees in param.listNumerosSimulationsAEffectuer:
+                    try:
+                        sMT3Simulation = SimulerSimpleRunSimulation(smt3Servers, stepInSecondToApply, _dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, _ignoredMER)
 
- 
-                    elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
-                    LoggerConfig.printAndLogInfo("Simulation " + str(nombre_simulations_smt3_effectuees) + " [" + elementary_mission_name + "," + modele_name + "]" + ". computed in: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
-                
+    
+                        elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
+                        LoggerConfig.printAndLogInfo("Simulation " + str(nombre_simulations_smt3_effectuees) + " [" + elementary_mission_name + "," + modele_name + "]" + ". computed in: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
                     
-                    if elapsed_time_SimulerSimpleRunSimulation > 4:
-                        LoggerConfig.printAndLogWarning("SMT3 was slow for mission elementaire " + str(numero_modele) + " [" + elementary_mission_name + "," + modele_name + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
-                    
+                        
+                        if elapsed_time_SimulerSimpleRunSimulation > 4:
+                            LoggerConfig.printAndLogWarning("SMT3 was slow for mission elementaire " + str(numero_modele) + " [" + elementary_mission_name + "," + modele_name + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
+                        
 
-                    saveSimulation(sMT3Simulation, result_csv_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees, _PasSauvegarde)
+                        saveSimulation(sMT3Simulation, result_csv_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees)
 
-                except requests.exceptions.ConnectionError as err:
-                    # eg, no internet
-                    LoggerConfig.printAndLogInfo(err)
-                    raise SystemExit(err)
-                except requests.exceptions.HTTPError as err:
-                    # eg, url, server and other errors
-                    LoggerConfig.printAndLogInfo(str(err))
-                    raise SystemExit(err)
-                # the rest of my code is going here
+                    except requests.exceptions.ConnectionError as err:
+                        # eg, no internet
+                        LoggerConfig.printAndLogInfo(err)
+                        raise SystemExit(err)
+                    except requests.exceptions.HTTPError as err:
+                        # eg, url, server and other errors
+                        LoggerConfig.printAndLogInfo(str(err))
+                        raise SystemExit(err)
+                    # the rest of my code is going here
+                else:
+                    LoggerConfig.printAndLogInfo("Simulation ignorée (filtrée par paramétrage): " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"]  stepInSecondToApply:" + str(stepInSecondToApply))
+
 
     for smt3Server in smt3Servers: 
         logging.info('Close output files:' + smt3Server.input_output_dump_file_name)
@@ -404,7 +408,6 @@ def Lancer_simulations_sur_smt3_ATSPlus(smt3Servers, SMT2_Data_param_for_SMT3_la
     LoggerConfig.printAndLogInfo("ignoredMER : " + str(ignoredMER)) 
 
     LoggerConfig.printAndLogInfo("ProduireSimplesRuns") 
-    pas_sauvegarde = 3
 
     for smt3Server in smt3Servers:
         smt3Server.url = "http://127.0.0.1:" + str(smt3Server.port)
@@ -413,7 +416,7 @@ def Lancer_simulations_sur_smt3_ATSPlus(smt3Servers, SMT2_Data_param_for_SMT3_la
 
     dwell_time_in_second = 30.0
     coeff_on_run_time = 1.1
-    ProduireSimplesRuns(smt3Servers, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_nom_train_as_list, step_in_second, dwell_time_in_second,pas_sauvegarde,coeff_on_run_time,ignoredMER,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix)
+    ProduireSimplesRuns(smt3Servers, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_nom_train_as_list, step_in_second, dwell_time_in_second,coeff_on_run_time,ignoredMER,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix)
   
     LoggerConfig.printAndLogInfo("End of application") 
     
