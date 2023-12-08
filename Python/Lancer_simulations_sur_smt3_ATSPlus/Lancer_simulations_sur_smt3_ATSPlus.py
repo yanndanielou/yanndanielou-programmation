@@ -287,7 +287,7 @@ def ProduireSimplesRuns( smt3Servers, simulationsRequestsManager, now_as_string_
             numero_mission_elementaire_courante = numero_mission_elementaire_courante + 1
             numero_modele = 0
 
-        LoggerConfig.printAndLogInfo(str(numero_mission_elementaire_courante) + " eme ME " + elementary_mission_name + " sur " + str(len(simulationsRequestsManager.simulationsToBePerformed)) + " simulations . Avancement:" + str(round(numero_mission_elementaire_courante*100/len(simulationsRequestsManager.simulationsToBePerformed),2)) + "%")
+        LoggerConfig.printAndLogInfo(str(numero_mission_elementaire_courante) + " eme ME " + elementary_mission_name + " sur " + str(len(simulationsRequestsManager.simulationsToBePerformed)) + " simulations . Avancement:" + str(round(nombre_simulations_smt3_effectuees*100/len(simulationsRequestsManager.simulationsToBePerformed),2)) + "%")
 
         if previous_modele_name != modele_name:
             numero_modele = numero_modele + 1
