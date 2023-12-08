@@ -34,6 +34,8 @@ import SMT3Server
 
 import param
 
+import SimulationsRequestsManager
+
 #param
 end_line_character_in_text_file = "\n"
 csv_fields_separator = ";"
@@ -154,7 +156,7 @@ def decode_smt3_result(smt3Server, url, received_from_smt3, elapsed_time_simulat
 
 
 #used for sure 
-def SimulerSimpleRunSimulation(smt3Servers, stepInSecond, dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, _ignoredMER = None):
+def SimulerSimpleRunSimulation(smt3Servers, stepInSecond, dwellTimeInSecond, elementary_mission_name, modele_name, _ignoredMER = None):
     #logging.info("Start calling SimulerSimpleRunSimulation")
 
     travelTimesRequestTree = prepare_SMT3_Request(stepInSecond, dwellTimeInSecond, elementary_mission_name, modele_name)
@@ -248,7 +250,7 @@ def create_output_text_file(output_directory, output_file_name):
     return input_output_dump_file
 
 #@execution_time 
-def ProduireSimplesRuns( smt3Servers, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_nom_train_as_list, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix):
+def ProduireSimplesRuns( smt3Servers, all_elementary_missions_names_as_list, all_nom_modele_as_list, _stepInSecond, _dwellTimeInSecond, _ignoredMER, now_as_string_for_file_suffix):
     logging.info("Start calling ProduireSimplesRuns")
     start_time_ProduireSimplesRuns = time.time()
     numero_mission_elementaire_courante = 0
@@ -296,7 +298,7 @@ def ProduireSimplesRuns( smt3Servers, all_elementary_missions_names_as_list, all
 
                 if param.listNumerosSimulationsAEffectuer is None or nombre_simulations_smt3_effectuees in param.listNumerosSimulationsAEffectuer:
                     try:
-                        sMT3Simulation = SimulerSimpleRunSimulation(smt3Servers, stepInSecondToApply, _dwellTimeInSecond, _coeffOnRunTime, elementary_mission_name, modele_name, _ignoredMER)
+                        sMT3Simulation = SimulerSimpleRunSimulation(smt3Servers, stepInSecondToApply, _dwellTimeInSecond, elementary_mission_name, modele_name, _ignoredMER)
 
     
                         elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
@@ -415,8 +417,7 @@ def Lancer_simulations_sur_smt3_ATSPlus(smt3Servers, SMT2_Data_param_for_SMT3_la
     step_in_second = 0.2
 
     dwell_time_in_second = 30.0
-    coeff_on_run_time = 1.1
-    ProduireSimplesRuns(smt3Servers, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_nom_train_as_list, step_in_second, dwell_time_in_second,coeff_on_run_time,ignoredMER,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix)
+    ProduireSimplesRuns(smt3Servers, all_elementary_missions_names_as_list, all_nom_modele_as_list, step_in_second, dwell_time_in_second,ignoredMER, now_as_string_for_file_suffix)
   
     LoggerConfig.printAndLogInfo("End of application") 
     
