@@ -345,16 +345,16 @@ class Graphe:
                         self.couplesMeSePerturbant.append(coupleSePerturbe)
 
     #used for sure 
-    def SimulerSimpleRunSimulation(self, _url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, output_file, _ignoredMER = None):
+    def SimulerSimpleRunSimulation(self, mE, modele, output_file):
         #logging.info("Start calling SimulerSimpleRunSimulation")
         error = ""
         simulationResults = SimulationResultsSingleton()
 
         travelTimesRequestTree = ET.Element('travelTimesRequest')
         computationStepInSecondTree = ET.SubElement(travelTimesRequestTree, 'computationStepInSecond')
-        computationStepInSecondTree.text = str(_stepInSecond)
+        computationStepInSecondTree.text = str("stepInSecond")
         dwellTimeInSecondTree = ET.SubElement(travelTimesRequestTree, 'dwellTimeInSecond')
-        dwellTimeInSecondTree.text = str(_dwellTimeInSecond)
+        dwellTimeInSecondTree.text = str("_dwellTimeInSecond")
         simulationTypeTree = ET.SubElement(travelTimesRequestTree, 'simulationType')
         simulationTypeTree.text = "SIMPLE_RUN_PROFILE_SIMULATION"
         trainsTree = ET.SubElement(travelTimesRequestTree, 'trains')
@@ -378,8 +378,6 @@ class Graphe:
                 error = "Erreur Grave : mission élémentaire " + mE.nom + " sans nextElementaryTrip"
                 os.system("pause")
                 # sys.exit()
-        if(_ignoredMER != None and mE.missionElementaireRegulation.nom in _ignoredMER):
-            error = "Erreur Grave : mission élémentaire " + mE.nom + " ignorée par la simulation"
 
         regulationTypeTree_1 = ET.SubElement(trainTree_1, 'regulationType')
         regulationTypeTree_1.text = "ACCELERATED_RUN_PROFILE"
@@ -403,36 +401,31 @@ class Graphe:
 
 
         headers = {'Content-Type': 'application/xml'}
-        full_url = _url + '/SMT3-REST-Server/computeTravelTimes'
-        try:
-            r = requests.post(full_url, data=ET.tostring(travelTimesRequestTree), headers=headers)
-        except:
-            print('Erreur de requête au serveur')
-            #print(xml)
-            quit()
-        r.raise_for_status()
-        logging.info("HTTP status:" +  str(r.status_code))
+        output_file.write("YDA:")
+        et_tostring = ET.tostring(travelTimesRequestTree)
+
         
-        element = ET.XML(r.text)
-        ET.indent(element)
-        #LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
-        
-        output_file.write("Received from SMT3 \n")
-        output_file.write(ET.tostring(element, encoding='unicode'))
         output_file.write("\n")
 
 
 
     #@execution_time 
-    def ProduireSimplesRuns(self, _url, _stepInSecond, _dwellTimeInSecond, _PasSauvegarde, _coeffOnRunTime, _ignoredMER, numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter, now_as_string_for_file_suffix):
+    def ProduireSimplesRuns(self, now_as_string_for_file_suffix):
         logging.info("Start calling ProduireSimplesRuns")
         start_time_ProduireSimplesRuns = time.time()
         numero_mission_elementaire_courante = 0
         nombre_simulations_smt3_effectuees = 0
         simulationResults = SimulationResultsSingleton()
         nbMissionsElementaires = len(self.missionsElementaires.values())
+
+        pasSauvegarde = 5
+
+        output_directory = "output"
+        if not os.path.exists(output_directory):
+            LoggerConfig.printAndLogInfo('Create output directory:' + output_directory)
+            os.makedirs(output_directory)
         
-        output_file_name = "output\\ProduireSimplesRuns_xml_inputs_and_output-" + now_as_string_for_file_suffix + ".txt"
+        output_file_name = output_directory + "\\ProduireSimplesRuns_xml_inputs_and_output-" + now_as_string_for_file_suffix + ".txt"
         output_file = open(output_file_name, "w")
         logging.info('Create output file:' + output_file_name)
 
@@ -441,8 +434,7 @@ class Graphe:
             numero_mission_elementaire_courante = numero_mission_elementaire_courante + 1
             LoggerConfig.printAndLogInfo(str(numero_mission_elementaire_courante) + " eme ME " + mE.nom + " sur " + str(nbMissionsElementaires) + " . Avancement:" + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
             start_time_mission_elementaire = time.time()
-            is_current_mission_elementaire_to_be_computed = numero_mission_elementaire_courante >= numero_premiere_mission_elementaire_a_traiter and numero_mission_elementaire_courante <= numero_derniere_mission_elementaire_a_traiter
-            if  is_current_mission_elementaire_to_be_computed:
+            if  True:
                 numero_nature = 0
                 for nature in mE.missionElementaireRegulation.naturesTrains:
                     numero_nature = numero_nature + 1
@@ -466,7 +458,7 @@ class Graphe:
                                 LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] ")
                                 output_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] " +  " : Simulation ["+mE.nom+","+modele.nom+"] ")
 
-                                self.SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, output_file, _ignoredMER)
+                                self.SimulerSimpleRunSimulation(mE, modele, output_file)
                                 elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
                                 LoggerConfig.printAndLogInfo("Simulation " + str(nombre_simulations_smt3_effectuees) + " [" + mE.nom + "," + modele.nom + "]" + ". computed in: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
                                 
@@ -474,7 +466,7 @@ class Graphe:
                                 if elapsed_time_SimulerSimpleRunSimulation > 4:
                                     LoggerConfig.printAndLogWarning("SMT3 was slow for mission elementaire " + str(numero_modele) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
                                 
-                                if(not (nombre_simulations_smt3_effectuees % _PasSauvegarde)):
+                                if(not (nombre_simulations_smt3_effectuees % pasSauvegarde)):
                                     LoggerConfig.printAndLogInfo("Save output file with partial results")
                                     output_file.flush()
                                     # typically the above line would do. however this is used to ensure that the file is written
