@@ -398,7 +398,10 @@ class Graphe:
         element = ET.XML(travelTimesRequestTree_as_str)
         ET.indent(element)
         #LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
-        
+    
+        output_file.write("Send to SMT3 \n")
+        output_file.write(ET.tostring(element, encoding='unicode'))
+        output_file.write("\n")
         
         output_file.write("mE.nom\t"+mE.nom+"\tmodele.nom\t"+modele.nom+"\tnextElementaryTripIdentifierTree_1.text\t"+nextElementaryTripIdentifierTree_1_text + "\n")        
         output_file.write("\n")
@@ -426,7 +429,7 @@ class Graphe:
 
         for mE in self.missionsElementaires.values():
             numero_mission_elementaire_courante = numero_mission_elementaire_courante + 1
-            LoggerConfig.printAndLogInfo(str(numero_mission_elementaire_courante) + " eme ME " + mE.nom + " sur " + str(nbMissionsElementaires) + " . Avancement:" + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
+            #LoggerConfig.printAndLogInfo(str(numero_mission_elementaire_courante) + " eme ME " + mE.nom + " sur " + str(nbMissionsElementaires) + " . Avancement:" + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
             start_time_mission_elementaire = time.time()
             if  True:
                 numero_nature = 0
@@ -449,22 +452,11 @@ class Graphe:
                                 output_file.write("\n")
                                 start_time_SimulerSimpleRunSimulation = time.time()
                                 nombre_simulations_smt3_effectuees = nombre_simulations_smt3_effectuees + 1
-                                LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] ")
+                                LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] "  + " . Avancement:" + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
                                 output_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] " +  " : Simulation ["+mE.nom+","+modele.nom+"] \n")
 
                                 self.SimulerSimpleRunSimulation(mE, modele, output_file)
-                                elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
-                                LoggerConfig.printAndLogInfo("Simulation " + str(nombre_simulations_smt3_effectuees) + " [" + mE.nom + "," + modele.nom + "]" + ". computed in: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
-                                
-                                
-                                if elapsed_time_SimulerSimpleRunSimulation > 4:
-                                    LoggerConfig.printAndLogWarning("SMT3 was slow for mission elementaire " + str(numero_modele) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
-                                
-                                if(not (nombre_simulations_smt3_effectuees % pasSauvegarde)):
-                                    LoggerConfig.printAndLogInfo("Save output file with partial results")
-                                    output_file.flush()
-                                    # typically the above line would do. however this is used to ensure that the file is written
-                                    os.fsync(output_file.fileno())
+
             else:
                 logging.info(str(numero_mission_elementaire_courante) + " eme mission elementaire a ignorer: " + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
 
