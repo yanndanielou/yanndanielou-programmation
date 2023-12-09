@@ -450,7 +450,7 @@ class Graphe:
                                 start_time_SimulerSimpleRunSimulation = time.time()
                                 nombre_simulations_smt3_effectuees = nombre_simulations_smt3_effectuees + 1
                                 LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] ")
-                                output_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] " +  " : Simulation ["+mE.nom+","+modele.nom+"] ")
+                                output_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] " +  " : Simulation ["+mE.nom+","+modele.nom+"] \n")
 
                                 self.SimulerSimpleRunSimulation(mE, modele, output_file)
                                 elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
