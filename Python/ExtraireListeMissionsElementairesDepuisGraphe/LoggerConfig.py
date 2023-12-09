@@ -5,6 +5,12 @@ import sys
 
 import time
 
+
+# To get line number for logs
+from inspect import currentframe, getframeinfo
+import inspect
+
+
 logger_level = logging.INFO
     
 def printAndLogCriticalAndKill(toPrintAndLog):
@@ -14,9 +20,14 @@ def printAndLogCriticalAndKill(toPrintAndLog):
     sys.exit()
 
 def printAndLogInfo(toPrintAndLog):
+    
     log_timestamp = time.asctime( time.localtime(time.time()))
-    print(log_timestamp + '\t' + toPrintAndLog)
-    logging.info(toPrintAndLog)
+
+    previous_stack = inspect.stack(1)[1]
+    line_number = previous_stack.lineno
+
+    print(log_timestamp + '\t' + "line#" + str(line_number) + '\t' + str() + toPrintAndLog)
+    logging.info("line#" + str(line_number) + '\t' +toPrintAndLog)
     
     
 def printAndLogWarning(toPrintAndLog):
