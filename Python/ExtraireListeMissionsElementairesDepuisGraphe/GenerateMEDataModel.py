@@ -446,7 +446,7 @@ class Graphe:
                     #nature = self.natures[natureitem]
                     for modele in nature.modeles:
                         
-                        logging.info(mE.nom + " nature " + str(nature) + " modele:" + str(modele))
+                        logging.debug(mE.nom + " nature " + str(nature) + " modele:" + str(modele))
                         numero_modele = numero_modele + 1
                         if(modele.aSimuler):
                             if((mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM") and simulationResults.FindSimpleRunSimulation(mE.missionElementaireRegulation, modele) != None):
@@ -458,7 +458,8 @@ class Graphe:
                                 output_txt_file.write("\n")
                                 start_time_SimulerSimpleRunSimulation = time.time()
                                 nombre_simulations_smt3_effectuees = nombre_simulations_smt3_effectuees + 1
-                                LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] "  + " . Avancement:" + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
+                                if nombre_simulations_smt3_effectuees%100 == 0:
+                                    LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] "  + " . Avancement:" + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
                                 output_txt_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] " +  " : Simulation ["+mE.nom+","+modele.nom+"] \n")
 
                                 self.SimulerSimpleRunSimulation(mE, modele, output_txt_file, output_csv_file_with_simulations_to_perform)
@@ -4983,7 +4984,7 @@ class SimulationResults:
 
     #@execution_time 
     def FindSimpleRunSimulation(self, mE, modeleTrain):
-        logging.info("Start calling FindSimpleRunSimulation")
+        logging.debug("Start calling FindSimpleRunSimulation")
         for simu in self.simplesRunsSimulations:
             if(simu.mE == mE.nom and simu.modele == modeleTrain.nom):
                 #print(simu.mE + "==" + mE.nom + "   " + simu.modele + "==" + modeleTrain.nom)
