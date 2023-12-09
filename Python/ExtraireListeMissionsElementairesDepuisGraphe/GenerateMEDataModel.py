@@ -345,7 +345,7 @@ class Graphe:
                         self.couplesMeSePerturbant.append(coupleSePerturbe)
 
     #used for sure 
-    def SimulerSimpleRunSimulation(self, mE, modele, output_file):
+    def SimulerSimpleRunSimulation(self, mE, modele, output_txt_file, output_csv_file_with_simulations_to_perform):
         #logging.info("Start calling SimulerSimpleRunSimulation")
         error = ""
         simulationResults = SimulationResultsSingleton()
@@ -399,12 +399,12 @@ class Graphe:
         ET.indent(element)
         #LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
     
-        output_file.write("Send to SMT3 \n")
-        output_file.write(ET.tostring(element, encoding='unicode'))
-        output_file.write("\n")
+        output_txt_file.write("Send to SMT3 \n")
+        output_txt_file.write(ET.tostring(element, encoding='unicode'))
+        output_txt_file.write("\n")
         
-        output_file.write("mE.nom\t"+mE.nom+"\tmodele.nom\t"+modele.nom+"\tnextElementaryTripIdentifierTree_1.text\t"+nextElementaryTripIdentifierTree_1_text + "\n")        
-        output_file.write("\n")
+        output_csv_file_with_simulations_to_perform.write(mE.nom+"\t"+modele.nom+"\t"+nextElementaryTripIdentifierTree_1_text + "\n")        
+        output_txt_file.write("\n")
 
     #@execution_time 
     def ProduireSimplesRuns(self, now_as_string_for_file_suffix):
@@ -422,9 +422,15 @@ class Graphe:
             LoggerConfig.printAndLogInfo('Create output directory:' + output_directory)
             os.makedirs(output_directory)
         
-        output_file_name = output_directory + "\\ProduireSimplesRuns_xml_inputs_and_output-" + now_as_string_for_file_suffix + ".txt"
-        output_file = open(output_file_name, "w")
-        logging.info('Create output file:' + output_file_name)
+        output_txt_file_name = output_directory + "\\ProduireSimplesRuns_xml_inputs_and_output-" + now_as_string_for_file_suffix + ".txt"
+        output_txt_file = open(output_txt_file_name, "w")
+        logging.info('Create output text file:' + output_txt_file_name)
+
+        output_csv_file_with_simulations_to_perform_name = output_directory + "\\simulations_to_perform-" + now_as_string_for_file_suffix + ".csv"
+        output_csv_file_with_simulations_to_perform = open(output_csv_file_with_simulations_to_perform_name, "w")
+        logging.info('Create output file:' + output_csv_file_with_simulations_to_perform_name)
+        output_csv_file_with_simulations_to_perform.write("mE.nom\tmodele.nom\tnextElementaryTripIdentifierTree_1.text\t" + "\n")        
+
 
 
         for mE in self.missionsElementaires.values():
@@ -444,25 +450,26 @@ class Graphe:
                         numero_modele = numero_modele + 1
                         if(modele.aSimuler):
                             if((mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM") and simulationResults.FindSimpleRunSimulation(mE.missionElementaireRegulation, modele) != None):
-                                output_file.write(str(numero_mission_elementaire_courante) + " eme mission elementaire " + str(numero_modele) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
-                                output_file.write("\n")
+                                output_txt_file.write(str(numero_mission_elementaire_courante) + " eme mission elementaire " + str(numero_modele) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
+                                output_txt_file.write("\n")
                                 LoggerConfig.printAndLogInfo(str(numero_mission_elementaire_courante) + " eme mission elementaire " + str(numero_modele) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
                             elif(mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM"):
                                 #Envoi de la requête
-                                output_file.write("\n")
+                                output_txt_file.write("\n")
                                 start_time_SimulerSimpleRunSimulation = time.time()
                                 nombre_simulations_smt3_effectuees = nombre_simulations_smt3_effectuees + 1
                                 LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] "  + " . Avancement:" + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
-                                output_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] " +  " : Simulation ["+mE.nom+","+modele.nom+"] \n")
+                                output_txt_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] " +  " : Simulation ["+mE.nom+","+modele.nom+"] \n")
 
-                                self.SimulerSimpleRunSimulation(mE, modele, output_file)
+                                self.SimulerSimpleRunSimulation(mE, modele, output_txt_file, output_csv_file_with_simulations_to_perform)
 
             else:
                 logging.info(str(numero_mission_elementaire_courante) + " eme mission elementaire a ignorer: " + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
 
 
-        logging.info('Close output file:' + output_file_name)
-        output_file.close()
+        logging.info('Close output file:' + output_txt_file_name)
+        output_txt_file.close()
+        output_csv_file_with_simulations_to_perform.close()
         
     #@execution_time 
     def DefinirIntervalMax__disabled_YDA(self, mE1, mE2, modtrain1, modtrain2):
