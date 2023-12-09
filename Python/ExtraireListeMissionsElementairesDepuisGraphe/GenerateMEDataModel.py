@@ -369,9 +369,13 @@ class Graphe:
         modelTree_1 = ET.SubElement(trainTree_1, 'model')
         modelTree_1.text = modele.nom
         nextElemTrip = mE.FindNextElementaryTrip()
+
+        nextElementaryTripIdentifierTree_1_text = ""
+
         if(nextElemTrip is not None):
             nextElementaryTripIdentifierTree_1 = ET.SubElement(trainTree_1, 'nextElementaryTripIdentifier')
             nextElementaryTripIdentifierTree_1.text = nextElemTrip.nom
+            nextElementaryTripIdentifierTree_1_text = nextElementaryTripIdentifierTree_1.text
         else:
             if(mE.missionElementaireRegulation.poDestination.isPAFQuai or mE.missionElementaireRegulation.poDestination.isPTA):
                 print("Erreur Grave : mission élémentaire " + mE.nom + " sans nextElementaryTrip")
@@ -395,6 +399,10 @@ class Graphe:
         ET.indent(element)
         #LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
         
+        
+        output_file.write("mE.nom\t"+mE.nom+"\tmodele.nom\t"+modele.nom+"\tnextElementaryTripIdentifierTree_1.text\t"+nextElementaryTripIdentifierTree_1_text)
+
+
         output_file.write("Send to SMT3 \n")
         output_file.write(ET.tostring(element, encoding='unicode'))
         output_file.write("\n")
@@ -402,6 +410,7 @@ class Graphe:
 
         headers = {'Content-Type': 'application/xml'}
         output_file.write("YDA:")
+        output_file.write("blockType:")
         et_tostring = ET.tostring(travelTimesRequestTree)
 
         
