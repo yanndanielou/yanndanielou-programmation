@@ -400,23 +400,8 @@ class Graphe:
         #LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
         
         
-        output_file.write("mE.nom\t"+mE.nom+"\tmodele.nom\t"+modele.nom+"\tnextElementaryTripIdentifierTree_1.text\t"+nextElementaryTripIdentifierTree_1_text)
-
-
-        output_file.write("Send to SMT3 \n")
-        output_file.write(ET.tostring(element, encoding='unicode'))
+        output_file.write("mE.nom\t"+mE.nom+"\tmodele.nom\t"+modele.nom+"\tnextElementaryTripIdentifierTree_1.text\t"+nextElementaryTripIdentifierTree_1_text + "\n")        
         output_file.write("\n")
-
-
-        headers = {'Content-Type': 'application/xml'}
-        output_file.write("YDA:")
-        output_file.write("blockType:")
-        et_tostring = ET.tostring(travelTimesRequestTree)
-
-        
-        output_file.write("\n")
-
-
 
     #@execution_time 
     def ProduireSimplesRuns(self, now_as_string_for_file_suffix):
