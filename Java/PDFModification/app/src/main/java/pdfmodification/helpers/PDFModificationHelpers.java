@@ -39,18 +39,16 @@ public class PDFModificationHelpers {
 	static final String documentWithWatermark = "documentWithWatermark.pdf";
 	static final String outputDirectoryName = "output";
 
-	
-	
-	public static void method1YDA() throws IOException {
+	public static PDDocument createWatermarkOnlyDocument() throws IOException {
 
-		PDDocument document = new PDDocument();
+		PDDocument watermarkOnlyDocument = new PDDocument();
 
 		PDRectangle rectangle = PDRectangle.A4;
-		PDPage page = new PDPage(rectangle);
+		PDPage watermarkPage = new PDPage(rectangle);
 
-		document.addPage(page);
+		watermarkOnlyDocument.addPage(watermarkPage);
 
-		PDPageContentStream watermarkPageContentStream = new PDPageContentStream(document, page, AppendMode.APPEND, true);
+		PDPageContentStream watermarkPageContentStream = new PDPageContentStream(watermarkOnlyDocument, watermarkPage, AppendMode.APPEND, true);
 
 		watermarkPageContentStream.beginText();
 		watermarkPageContentStream.newLineAtOffset(rectangle.getWidth() / 3, rectangle.getHeight() / 2);
@@ -66,37 +64,27 @@ public class PDFModificationHelpers {
 		watermarkPageContentStream.endText();
 
 		watermarkPageContentStream.close();
+		
+		return watermarkOnlyDocument;
+	}
+	
+	
+	public static void method1YDA() throws IOException {
 
-		FileHelper.removeFileIfExists(watermarkOnlyPDFFileName);
-
-		LOGGER.info(() -> "Save output pdf");
-		document.save(watermarkOnlyPDFFileName);
+		PDDocument watermarkOnlyDocument = createWatermarkOnlyDocument();
 
 		// OverlayPDF
-		UUID randomUUID = java.util.UUID.randomUUID();
-		String fileName = randomUUID.toString() + ".pdf";
-		FileUtils.copyFile(new File(originalPDFDocumentBeforeAnyModification), new File(fileName));
-
-		File file = new File(fileName);
-		PDDocument originalDoc = Loader.loadPDF(file);
-
 		Overlay overlayer = new Overlay();
-		overlayer.setInputPDF(originalDoc);
-		overlayer.setAllPagesOverlayPDF(originalDoc);
+		overlayer.setInputFile(originalPDFDocumentBeforeAnyModification);
 		overlayer.setAllPagesOverlayFile(watermarkOnlyPDFFileName);
 		overlayer.setOverlayPosition(Position.BACKGROUND);
 
-		originalDoc.save("ooo.pdf");
 		overlayer.close();
-
-		PDDocument watermarkDocument = new PDDocument();
-		overlayer.setAllPagesOverlayPDF(watermarkDocument);
-
+		
+		DirectoryHelper.createFolderIfNotExists(outputDirectoryName);
 		try (PDDocument result = overlayer.overlay(new HashMap<>())) {
-			result.save(documentWithWatermark);
+			result.save(outputDirectoryName + "/" + documentWithWatermark);
 		}
-		// watermarkDocument.save(documentWithWatermark);
-
 	}
 
 	/**
