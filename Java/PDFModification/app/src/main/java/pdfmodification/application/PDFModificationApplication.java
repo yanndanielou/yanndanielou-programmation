@@ -93,37 +93,40 @@ public class PDFModificationApplication {
 
 	/**
 	 * https://stackoverflow.com/questions/32844926/using-overlay-in-pdfbox-2-0
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	public static void method3() throws IOException {
 		UUID randomUUID = java.util.UUID.randomUUID();
 		String fileName = randomUUID.toString() + ".pdf";
-	    FileUtils.copyFile(new File(originalPDFDocumentBeforeAnyModification), new File(fileName));
-
+		FileUtils.copyFile(new File(originalPDFDocumentBeforeAnyModification), new File(fileName));
 
 		PDRectangle rectangle = PDRectangle.A4;
-	    
+
 		File file = new File(fileName);
 		PDDocument originalDoc = Loader.loadPDF(file);
-		PDPage page1 = originalDoc.getPage(0);
-		PDPageContentStream contentStream = new PDPageContentStream(originalDoc, page1, AppendMode.APPEND, true);
-		
-		//PDColor nonStrokingColor = PDColor.
-		
-		contentStream.setNonStrokingColor(Color.gray);
-		contentStream.beginText();	
-		contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 30);
-		contentStream.newLineAtOffset(rectangle.getWidth() / 3, rectangle.getHeight() / 2);
-		contentStream.showText("My watermark");
-		contentStream.endText();
-		contentStream.close();
-		
-        File dir = new File(outputDirectoryName);
-        if (!dir.exists()) dir.mkdirs();
-        
-        originalDoc.save(outputDirectoryName + "/" + "result " + fileName);
-		//Files.createDirectories(Paths.get(outputDirectoryName));
-		//Files.createDirectory(Paths.get(outputDirectoryName), null)
+		for (PDPage page1 : originalDoc.getPages()) {
+
+			PDPageContentStream contentStream = new PDPageContentStream(originalDoc, page1, AppendMode.APPEND, true);
+
+			// PDColor nonStrokingColor = PDColor.
+
+			contentStream.setNonStrokingColor(Color.gray);
+			contentStream.beginText();
+			contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 30);
+			contentStream.newLineAtOffset(rectangle.getWidth() / 3, rectangle.getHeight() / 2);
+			contentStream.showText("My watermark");
+			contentStream.endText();
+			contentStream.close();
+		}
+
+		File dir = new File(outputDirectoryName);
+		if (!dir.exists())
+			dir.mkdirs();
+
+		originalDoc.save(outputDirectoryName + "/" + "result " + fileName);
+		// Files.createDirectories(Paths.get(outputDirectoryName));
+		// Files.createDirectory(Paths.get(outputDirectoryName), null)
 
 		originalDoc.close();
 	}
