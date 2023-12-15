@@ -3,6 +3,7 @@ package pdfmodification.application;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
@@ -32,14 +33,15 @@ public class PDFModificationApplication {
 	protected static final Logger LOGGER = LogManager.getLogger(PDFModificationApplication.class);
 
 	static final String originalPDFDocumentBeforeAnyModification = "SSC3_2_AdminTools_GUMPS_SyReqSpec 02 00.pdf";
-	static final String overlayPDFFileName = "Watermark xx.pdf";
+	static final String watermarkOnlyPDFFileName = "Watermark xx.pdf";
 	static final String documentWithWatermark = "documentWithWatermark.pdf";
 	static final String outputDirectoryName = "output";
 
 	public static void main(String[] args) throws Exception {
 
 		LOGGER.info(() -> "Application started");
-		method3();
+		method1YDA();
+//		method3();
 
 		LOGGER.info(() -> "Application end");
 
@@ -59,6 +61,8 @@ public class PDFModificationApplication {
 		contentStream.beginText();
 		contentStream.newLineAtOffset(rectangle.getWidth() / 3, rectangle.getHeight() / 2);
 
+		contentStream.setStrokingColor(Color.blue);
+		contentStream.setNonStrokingColor(Color.gray);
 		contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 20);
 		contentStream.showText("My watermark");
 		contentStream.setTextMatrix(new Matrix(1, 0, 0, 1.5f, 7, 30));
@@ -69,7 +73,7 @@ public class PDFModificationApplication {
 
 		contentStream.close();
 
-		File myObj = new File(overlayPDFFileName);
+		File myObj = new File(watermarkOnlyPDFFileName);
 		if (myObj.delete()) {
 			System.out.println("Delete previous version of file file: " + myObj.getName());
 		} else {
@@ -77,18 +81,31 @@ public class PDFModificationApplication {
 		}
 
 		LOGGER.info(() -> "Save output pdf");
-		document.save(overlayPDFFileName);
+		document.save(watermarkOnlyPDFFileName);
 
 		// OverlayPDF
+		UUID randomUUID = java.util.UUID.randomUUID();
+		String fileName = randomUUID.toString() + ".pdf";
+		FileUtils.copyFile(new File(originalPDFDocumentBeforeAnyModification), new File(fileName));
+
+		File file = new File(fileName);
+		PDDocument originalDoc = Loader.loadPDF(file);
+
 		Overlay overlayer = new Overlay();
-		overlayer.setInputFile(overlayPDFFileName);
-		overlayer.setAllPagesOverlayFile(originalPDFDocumentBeforeAnyModification);
-		overlayer.setOverlayPosition(Position.FOREGROUND);
+		overlayer.setInputPDF(originalDoc);
+		overlayer.setAllPagesOverlayFile(watermarkOnlyPDFFileName);
+		overlayer.setOverlayPosition(Position.BACKGROUND);
+
+		originalDoc.save("ooo.pdf");
 		overlayer.close();
 
 		PDDocument watermarkDocument = new PDDocument();
 		overlayer.setAllPagesOverlayPDF(watermarkDocument);
-		watermarkDocument.save(documentWithWatermark);
+
+		try (PDDocument result = overlayer.overlay(new HashMap<>())) {
+			result.save(documentWithWatermark);
+		}
+		// watermarkDocument.save(documentWithWatermark);
 
 	}
 
@@ -114,7 +131,7 @@ public class PDFModificationApplication {
 
 			contentStream.setNonStrokingColor(Color.gray);
 			contentStream.beginText();
-			contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 30);
+			contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 99);
 			contentStream.newLineAtOffset(rectangle.getWidth() / 3, rectangle.getHeight() / 2);
 			contentStream.showText("My watermark");
 			contentStream.endText();
@@ -124,34 +141,35 @@ public class PDFModificationApplication {
 		File dir = new File(outputDirectoryName);
 		if (!dir.exists())
 			dir.mkdirs();
-		
+
 		// Define the length of the encryption key.
 		// Possible values are 40, 128 or 256.
 		int keyLength = 256;
 
 		AccessPermission ap = new AccessPermission();
 
-		// disable printing, 
+		// disable printing,
 		ap.setCanPrint(false);
-		//disable copying
+		// disable copying
 		ap.setCanExtractContent(false);
-		//Disable other things if needed...
+		// Disable other things if needed...
 
 		// Owner password (to open the file with all permissions) is "12345"
-		// User password (to open the file but with restricted permissions, is empty here)
+		// User password (to open the file but with restricted permissions, is empty
+		// here)
 		String ownerPasswordToPrintPDF = "12345";
 		String userPasswordToOpenPDF = "abdde";
 		StandardProtectionPolicy spp = new StandardProtectionPolicy(ownerPasswordToPrintPDF, userPasswordToOpenPDF, ap);
 		spp.setEncryptionKeyLength(keyLength);
 
-		//Apply protection
+		// Apply protection
 		originalDoc.protect(spp);
 
-/*		
-		PDEncryption pdEncryption = new PDEncryption();
-		pdEncryption.setOwnerEncryptionKey("OK".getBytes());
-		originalDoc.setEncryptionDictionary(pdEncryption);
-*/
+		/*
+		 * PDEncryption pdEncryption = new PDEncryption();
+		 * pdEncryption.setOwnerEncryptionKey("OK".getBytes());
+		 * originalDoc.setEncryptionDictionary(pdEncryption);
+		 */
 		originalDoc.save(outputDirectoryName + "/" + "result " + fileName);
 		// Files.createDirectories(Paths.get(outputDirectoryName));
 		// Files.createDirectory(Paths.get(outputDirectoryName), null)
