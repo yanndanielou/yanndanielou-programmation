@@ -3,8 +3,6 @@ package pdfmodification.application;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
@@ -18,6 +16,9 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.PDPageContentStream.AppendMode;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.encryption.AccessPermission;
+import org.apache.pdfbox.pdmodel.encryption.PDEncryption;
+import org.apache.pdfbox.pdmodel.encryption.StandardProtectionPolicy;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 import org.apache.pdfbox.util.Matrix;
@@ -123,7 +124,34 @@ public class PDFModificationApplication {
 		File dir = new File(outputDirectoryName);
 		if (!dir.exists())
 			dir.mkdirs();
+		
+		// Define the length of the encryption key.
+		// Possible values are 40, 128 or 256.
+		int keyLength = 256;
 
+		AccessPermission ap = new AccessPermission();
+
+		// disable printing, 
+		ap.setCanPrint(false);
+		//disable copying
+		ap.setCanExtractContent(false);
+		//Disable other things if needed...
+
+		// Owner password (to open the file with all permissions) is "12345"
+		// User password (to open the file but with restricted permissions, is empty here)
+		String ownerPasswordToPrintPDF = "12345";
+		String userPasswordToOpenPDF = "abdde";
+		StandardProtectionPolicy spp = new StandardProtectionPolicy(ownerPasswordToPrintPDF, userPasswordToOpenPDF, ap);
+		spp.setEncryptionKeyLength(keyLength);
+
+		//Apply protection
+		originalDoc.protect(spp);
+
+/*		
+		PDEncryption pdEncryption = new PDEncryption();
+		pdEncryption.setOwnerEncryptionKey("OK".getBytes());
+		originalDoc.setEncryptionDictionary(pdEncryption);
+*/
 		originalDoc.save(outputDirectoryName + "/" + "result " + fileName);
 		// Files.createDirectories(Paths.get(outputDirectoryName));
 		// Files.createDirectory(Paths.get(outputDirectoryName), null)
