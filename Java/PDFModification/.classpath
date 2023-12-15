@@ -3,6 +3,9 @@
 	<classpathentry kind="src" path="app/src/main/java"/>
 	<classpathentry kind="src" output="target/test-classes" path="app/src/test/java"/>
 	
+	<classpathentry kind="src" path="/Common"/>
+
+	
 	<classpathentry excluding="**/*.java" kind="src" path="app/src/main/resources"/>
 
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
@@ -11,10 +14,11 @@
 	<classpathentry kind="output" path="bin"/>
 	
 	
+	
 	<classpathentry kind="lib" path="../ExternalLibraries/log4j-api-2.20.0.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/log4j-core-2.20.0.jar"/>
 	
-		<classpathentry kind="lib" path="../ExternalLibraries/commons-io-2.15.0.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/commons-io-2.15.0.jar"/>
 
 	
 	<!--
