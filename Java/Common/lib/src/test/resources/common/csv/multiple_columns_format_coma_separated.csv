@@ -1,0 +1,2 @@
+Column1StringWithoutQuote,Column2Integer,Column3Boolean,Column4Float,Column5WithDoubleQuotes
+abcdef,12345,True,145.23,"a b c d e f"
