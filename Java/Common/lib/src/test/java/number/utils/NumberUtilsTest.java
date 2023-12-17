@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import common.collection.CollectionUtils;
 import common.numbers.utils.NumberUtils;
-import util.CollectionUtils;
 
 public class NumberUtilsTest {
 

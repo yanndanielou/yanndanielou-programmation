@@ -10,6 +10,8 @@ import java.util.List;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import common.collection.CollectionUtils;
+
 public class CollectionUtilsTest {
 
 	@Nested

@@ -1,4 +1,4 @@
-package util;
+package common.duration;
 
 import java.time.Duration;
 

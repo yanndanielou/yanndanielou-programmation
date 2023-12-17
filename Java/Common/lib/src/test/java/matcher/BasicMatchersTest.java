@@ -1,5 +1,6 @@
 package matcher;
 
+import static common.collection.CollectionUtils.asList;
 import static matcher.BasicMatchers.contains;
 import static matcher.BasicMatchers.containsAll;
 import static matcher.BasicMatchers.containsExactly;
@@ -11,7 +12,6 @@ import static matcher.BasicMatchers.hasSize;
 import static matcher.BasicMatchers.is;
 import static matcher.BasicMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static util.CollectionUtils.asList;
 
 import java.util.ArrayList;
 
