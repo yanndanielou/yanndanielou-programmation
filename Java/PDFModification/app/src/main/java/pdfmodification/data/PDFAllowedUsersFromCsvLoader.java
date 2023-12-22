@@ -18,7 +18,7 @@ public class PDFAllowedUsersFromCsvLoader {
 
 
 		try (Reader reader = Files.newBufferedReader(inputCsvFile)) {
-			CsvToBean<PDFAllowedUser> cb = new CsvToBeanBuilder<PDFAllowedUser>(reader).withType(PDFAllowedUser.class)
+			CsvToBean<PDFAllowedUser> cb = new CsvToBeanBuilder<PDFAllowedUser>(reader).withType(PDFAllowedUser.class).withSeparator(';')
 					.build();
 
 			return cb.parse();
