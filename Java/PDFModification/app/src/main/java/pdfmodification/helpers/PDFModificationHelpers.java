@@ -34,10 +34,12 @@ import common.directories.FileHelper;
 public class PDFModificationHelpers {
 	protected static final Logger LOGGER = LogManager.getLogger(PDFModificationHelpers.class);
 
-	static final String originalPDFDocumentBeforeAnyModification = "SSC3_2_AdminTools_GUMPS_SyReqSpec 02 00.pdf";
-	static final String watermarkOnlyPDFFileName = "Watermark xx.pdf";
-	static final String documentWithWatermark = "documentWithWatermark.pdf";
-	static final String outputDirectoryName = "output";
+	public static final String outputDirectoryName = "output";
+	public static final String inputDirectoryName = "input";
+	public static final String originalPDFDocumentBeforeAnyModification = inputDirectoryName
+			+ "\\SSC3_2_AdminTools_GUMPS_SyReqSpec 02 00.pdf";
+	public static final String watermarkOnlyPDFFileName = outputDirectoryName + "\\Watermark xx.pdf";
+	public static final String documentWithWatermark = outputDirectoryName + "\\documentWithWatermark.pdf";
 
 	public static PDDocument createWatermarkOnlyDocument() throws IOException {
 
@@ -48,7 +50,8 @@ public class PDFModificationHelpers {
 
 		watermarkOnlyDocument.addPage(watermarkPage);
 
-		PDPageContentStream watermarkPageContentStream = new PDPageContentStream(watermarkOnlyDocument, watermarkPage, AppendMode.APPEND, true);
+		PDPageContentStream watermarkPageContentStream = new PDPageContentStream(watermarkOnlyDocument, watermarkPage,
+				AppendMode.APPEND, true);
 
 		watermarkPageContentStream.beginText();
 		watermarkPageContentStream.newLineAtOffset(rectangle.getWidth() / 3, rectangle.getHeight() / 2);
@@ -64,12 +67,11 @@ public class PDFModificationHelpers {
 		watermarkPageContentStream.endText();
 
 		watermarkPageContentStream.close();
-		
+
 		return watermarkOnlyDocument;
 	}
-	
-	
-	public static void method1YDA() throws IOException {
+
+	public static void allStepsInOneMethodWithoutIntermediateFile() throws IOException {
 
 		PDDocument watermarkOnlyDocument = createWatermarkOnlyDocument();
 
@@ -80,7 +82,7 @@ public class PDFModificationHelpers {
 		overlayer.setOverlayPosition(Position.BACKGROUND);
 
 		overlayer.close();
-		
+
 		DirectoryHelper.createFolderIfNotExists(outputDirectoryName);
 		try (PDDocument result = overlayer.overlay(new HashMap<>())) {
 			result.save(outputDirectoryName + "/" + documentWithWatermark);
@@ -116,7 +118,7 @@ public class PDFModificationHelpers {
 			contentStream.close();
 		}
 
-		DirectoryHelper.createFolderIfNotExists(outputDirectoryName); 
+		DirectoryHelper.createFolderIfNotExists(outputDirectoryName);
 
 		// Define the length of the encryption key.
 		// Possible values are 40, 128 or 256.
