@@ -33,6 +33,8 @@
 	
 	
 	<classpathentry kind="lib" path="../ExternalLibraries/opencsv-5.9.jar" sourcepath="../ExternalLibraries/opencsv-5.9-sources.jar"/>
-	
+	<classpathentry kind="lib" path="../ExternalLibraries/commons-collections4-4.4.jar" sourcepath="lib/commons-collections4-4.4-sources.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/commons-lang3-3.13.0.jar" sourcepath="lib/commons-lang3-3.13.0-sources.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/commons-beanutils-1.9.4.jar"/>
 	
 </classpath>
