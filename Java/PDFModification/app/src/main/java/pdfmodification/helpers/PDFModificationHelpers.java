@@ -36,8 +36,9 @@ public class PDFModificationHelpers {
 
 	public static final String outputDirectoryName = "output";
 	public static final String inputDirectoryName = "input";
-	public static final String originalPDFDocumentBeforeAnyModification = inputDirectoryName
-			+ "\\SSC3_2_AdminTools_GUMPS_SyReqSpec 02 00.pdf";
+	public static final String originalPDFDocumentBeforeAnyModificationFileName = "SSC3_2_AdminTools_GUMPS_SyReqSpec 02 00.pdf";
+	public static final String originalPDFDocumentBeforeAnyModificationFullPath = inputDirectoryName + "\\"
+			+ originalPDFDocumentBeforeAnyModificationFileName;
 	public static final String watermarkOnlyPDFFileName = outputDirectoryName + "\\Watermark xx.pdf";
 	public static final String documentWithWatermark = outputDirectoryName + "\\documentWithWatermark.pdf";
 
@@ -77,7 +78,7 @@ public class PDFModificationHelpers {
 
 		// OverlayPDF
 		Overlay overlayer = new Overlay();
-		overlayer.setInputFile(originalPDFDocumentBeforeAnyModification);
+		overlayer.setInputFile(originalPDFDocumentBeforeAnyModificationFileName);
 		overlayer.setAllPagesOverlayFile(watermarkOnlyPDFFileName);
 		overlayer.setOverlayPosition(Position.BACKGROUND);
 
@@ -97,7 +98,7 @@ public class PDFModificationHelpers {
 	public static void method3() throws IOException {
 		UUID randomUUID = java.util.UUID.randomUUID();
 		String fileName = randomUUID.toString() + ".pdf";
-		FileUtils.copyFile(new File(originalPDFDocumentBeforeAnyModification), new File(fileName));
+		FileUtils.copyFile(new File(originalPDFDocumentBeforeAnyModificationFileName), new File(fileName));
 
 		PDRectangle rectangle = PDRectangle.A4;
 

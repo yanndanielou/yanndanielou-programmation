@@ -3,7 +3,12 @@ package pdfmodification.application;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
@@ -18,11 +23,19 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.PDPageContentStream.AppendMode;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.encryption.AccessPermission;
-import org.apache.pdfbox.pdmodel.encryption.PDEncryption;
 import org.apache.pdfbox.pdmodel.encryption.StandardProtectionPolicy;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 import org.apache.pdfbox.util.Matrix;
+
+import com.opencsv.CSVParser;
+import com.opencsv.CSVParserBuilder;
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
+
+import pdfmodification.data.PDFAllowedUser;
+import pdfmodification.data.PDFAllowedUsersFromCsvLoader;
+import pdfmodification.helpers.PDFModificationHelpers;
 
 /**
  * https://github.com/topobyte/pdfbox-tools/blob/master/src/main/java/org/apache/pdfbox/tools/OverlayPDF.java
@@ -32,48 +45,51 @@ import org.apache.pdfbox.util.Matrix;
 public class PDFModificationApplication {
 	protected static final Logger LOGGER = LogManager.getLogger(PDFModificationApplication.class);
 
-	static final String originalPDFDocumentBeforeAnyModification = "SSC3_2_AdminTools_GUMPS_SyReqSpec 02 00.pdf";
-	static final String watermarkOnlyPDFFileName = "Watermark xx.pdf";
-	static final String documentWithWatermark = "documentWithWatermark.pdf";
-	static final String outputDirectoryName = "output";
-
 	public static void main(String[] args) throws Exception {
 
 		LOGGER.info(() -> "Application started");
-		method1YDA();
-//		method3();
+
+		//List<PDFAllowedUser> pdfAllowedUsers = PDFAllowedUsersFromCsvLoader				.getPDFAllowedUsersFromCsvFile("Input/Documentation Produit - Passwords.csv");
+		List<PDFAllowedUser> pdfAllowedUsers = PDFAllowedUsersFromCsvLoader
+				.getPDFAllowedUsersFromCsvFile("Input/test_passwords.csv");
+
+		LOGGER.info(() -> "Number of pdfAllowedUsers:" + pdfAllowedUsers.size());
+
+		method3();
+//		allStepsInOneMethodWithIntermediateFiles();
 
 		LOGGER.info(() -> "Application end");
 
 	}
 
-	public static void method1YDA() throws IOException {
+	public static void allStepsInOneMethodWithIntermediateFiles() throws IOException {
 
-		PDDocument document = new PDDocument();
+		PDDocument newWatermarkOnlyDocument = new PDDocument();
 
 		PDRectangle rectangle = PDRectangle.A4;
-		PDPage page = new PDPage(rectangle);
+		PDPage watermarkOnlyPage = new PDPage(rectangle);
 
-		document.addPage(page);
+		newWatermarkOnlyDocument.addPage(watermarkOnlyPage);
 
-		PDPageContentStream contentStream = new PDPageContentStream(document, page, AppendMode.APPEND, true);
+		PDPageContentStream watermarkOnlyDocumentPageContentStream = new PDPageContentStream(newWatermarkOnlyDocument,
+				watermarkOnlyPage, AppendMode.APPEND, true);
 
-		contentStream.beginText();
-		contentStream.newLineAtOffset(rectangle.getWidth() / 3, rectangle.getHeight() / 2);
+		watermarkOnlyDocumentPageContentStream.beginText();
+		watermarkOnlyDocumentPageContentStream.newLineAtOffset(rectangle.getWidth() / 3, rectangle.getHeight() / 2);
 
-		contentStream.setStrokingColor(Color.blue);
-		contentStream.setNonStrokingColor(Color.gray);
-		contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 20);
-		contentStream.showText("My watermark");
-		contentStream.setTextMatrix(new Matrix(1, 0, 0, 1.5f, 7, 30));
-		contentStream.showText("Stretched text (size 12, factor 1.5)");
-		contentStream.setTextMatrix(new Matrix(1, 0, 0, 2f, 7, 5));
-		contentStream.showText("Stretched text (size 12, factor 2)");
-		contentStream.endText();
+		watermarkOnlyDocumentPageContentStream.setStrokingColor(Color.blue);
+		watermarkOnlyDocumentPageContentStream.setNonStrokingColor(Color.gray);
+		watermarkOnlyDocumentPageContentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 20);
+		watermarkOnlyDocumentPageContentStream.showText("My watermark");
+		watermarkOnlyDocumentPageContentStream.setTextMatrix(new Matrix(1, 0, 0, 1.5f, 7, 30));
+		watermarkOnlyDocumentPageContentStream.showText("Stretched text (size 12, factor 1.5)");
+		watermarkOnlyDocumentPageContentStream.setTextMatrix(new Matrix(1, 0, 0, 2f, 7, 5));
+		watermarkOnlyDocumentPageContentStream.showText("Stretched text (size 12, factor 2)");
+		watermarkOnlyDocumentPageContentStream.endText();
 
-		contentStream.close();
+		watermarkOnlyDocumentPageContentStream.close();
 
-		File myObj = new File(watermarkOnlyPDFFileName);
+		File myObj = new File(PDFModificationHelpers.watermarkOnlyPDFFileName);
 		if (myObj.delete()) {
 			System.out.println("Delete previous version of file file: " + myObj.getName());
 		} else {
@@ -81,29 +97,29 @@ public class PDFModificationApplication {
 		}
 
 		LOGGER.info(() -> "Save output pdf");
-		document.save(watermarkOnlyPDFFileName);
+		newWatermarkOnlyDocument.save(PDFModificationHelpers.watermarkOnlyPDFFileName);
 
 		// OverlayPDF
 		UUID randomUUID = java.util.UUID.randomUUID();
-		String fileName = randomUUID.toString() + ".pdf";
-		FileUtils.copyFile(new File(originalPDFDocumentBeforeAnyModification), new File(fileName));
+		String fileName = PDFModificationHelpers.outputDirectoryName + randomUUID.toString() + ".pdf";
+		FileUtils.copyFile(new File(PDFModificationHelpers.originalPDFDocumentBeforeAnyModificationFullPath),
+				new File(fileName));
 
 		File file = new File(fileName);
 		PDDocument originalDoc = Loader.loadPDF(file);
 
 		Overlay overlayer = new Overlay();
 		overlayer.setInputPDF(originalDoc);
-		overlayer.setAllPagesOverlayFile(watermarkOnlyPDFFileName);
+		overlayer.setAllPagesOverlayFile(PDFModificationHelpers.watermarkOnlyPDFFileName);
 		overlayer.setOverlayPosition(Position.BACKGROUND);
 
-		originalDoc.save("ooo.pdf");
 		overlayer.close();
 
 		PDDocument watermarkDocument = new PDDocument();
 		overlayer.setAllPagesOverlayPDF(watermarkDocument);
 
 		try (PDDocument result = overlayer.overlay(new HashMap<>())) {
-			result.save(documentWithWatermark);
+			result.save(PDFModificationHelpers.documentWithWatermark);
 		}
 		// watermarkDocument.save(documentWithWatermark);
 
@@ -114,31 +130,31 @@ public class PDFModificationApplication {
 	 * 
 	 * @throws IOException
 	 */
-	public static void method3() throws IOException {
-		UUID randomUUID = java.util.UUID.randomUUID();
-		String fileName = randomUUID.toString() + ".pdf";
-		FileUtils.copyFile(new File(originalPDFDocumentBeforeAnyModification), new File(fileName));
+	private static void method3() throws IOException {
 
 		PDRectangle rectangle = PDRectangle.A4;
 
-		File file = new File(fileName);
+		File file = new File(PDFModificationHelpers.originalPDFDocumentBeforeAnyModificationFullPath);
 		PDDocument originalDoc = Loader.loadPDF(file);
-		for (PDPage page1 : originalDoc.getPages()) {
+		for (PDPage originalDocPage : originalDoc.getPages()) {
 
-			PDPageContentStream contentStream = new PDPageContentStream(originalDoc, page1, AppendMode.APPEND, true);
+			PDPageContentStream pageOfOriginalDocumentWithMatermarkAsContentStream = new PDPageContentStream(
+					originalDoc, originalDocPage, AppendMode.APPEND, true);
 
 			// PDColor nonStrokingColor = PDColor.
 
-			contentStream.setNonStrokingColor(Color.gray);
-			contentStream.beginText();
-			contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 99);
-			contentStream.newLineAtOffset(rectangle.getWidth() / 3, rectangle.getHeight() / 2);
-			contentStream.showText("My watermark");
-			contentStream.endText();
-			contentStream.close();
+			pageOfOriginalDocumentWithMatermarkAsContentStream.setNonStrokingColor(Color.gray);
+			pageOfOriginalDocumentWithMatermarkAsContentStream.beginText();
+			pageOfOriginalDocumentWithMatermarkAsContentStream
+					.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 99);
+			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(rectangle.getWidth() / 3,
+					rectangle.getHeight() / 2);
+			pageOfOriginalDocumentWithMatermarkAsContentStream.showText("My watermark");
+			pageOfOriginalDocumentWithMatermarkAsContentStream.endText();
+			pageOfOriginalDocumentWithMatermarkAsContentStream.close();
 		}
 
-		File dir = new File(outputDirectoryName);
+		File dir = new File(PDFModificationHelpers.outputDirectoryName);
 		if (!dir.exists())
 			dir.mkdirs();
 
@@ -158,7 +174,7 @@ public class PDFModificationApplication {
 		// User password (to open the file but with restricted permissions, is empty
 		// here)
 		String ownerPasswordToPrintPDF = "12345";
-		String userPasswordToOpenPDF = "abdde";
+		String userPasswordToOpenPDF = "abcde";
 		StandardProtectionPolicy spp = new StandardProtectionPolicy(ownerPasswordToPrintPDF, userPasswordToOpenPDF, ap);
 		spp.setEncryptionKeyLength(keyLength);
 
@@ -170,7 +186,8 @@ public class PDFModificationApplication {
 		 * pdEncryption.setOwnerEncryptionKey("OK".getBytes());
 		 * originalDoc.setEncryptionDictionary(pdEncryption);
 		 */
-		originalDoc.save(outputDirectoryName + "/" + "result " + fileName);
+		originalDoc.save(PDFModificationHelpers.outputDirectoryName + "/" + "result "
+				+ PDFModificationHelpers.originalPDFDocumentBeforeAnyModificationFileName);
 		// Files.createDirectories(Paths.get(outputDirectoryName));
 		// Files.createDirectory(Paths.get(outputDirectoryName), null)
 
