@@ -22,5 +22,29 @@ public class PDFAllowedUser {
 	
 	@CsvBindByName(column = "motDePasseImpression")
 	private String motDePasseImpression;
+
+	public String getNom() {
+		return nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public String getAccesHautementConfidentiel() {
+		return accesHautementConfidentiel;
+	}
+
+	public String getValiditeAcces() {
+		return validiteAcces;
+	}
+
+	public String getMotDePasseOuverture() {
+		return motDePasseOuverture;
+	}
+
+	public String getMotDePasseImpression() {
+		return motDePasseImpression;
+	}
 	
 }

@@ -33,6 +33,7 @@ import com.opencsv.CSVParserBuilder;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
+import common.directories.DirectoryHelper;
 import pdfmodification.data.PDFAllowedUser;
 import pdfmodification.data.PDFAllowedUsersFromCsvLoader;
 import pdfmodification.helpers.PDFModificationHelpers;
@@ -49,13 +50,17 @@ public class PDFModificationApplication {
 
 		LOGGER.info(() -> "Application started");
 
-		//List<PDFAllowedUser> pdfAllowedUsers = PDFAllowedUsersFromCsvLoader				.getPDFAllowedUsersFromCsvFile("Input/Documentation Produit - Passwords.csv");
+		// List<PDFAllowedUser> pdfAllowedUsers = PDFAllowedUsersFromCsvLoader
+		// .getPDFAllowedUsersFromCsvFile("Input/Documentation Produit -
+		// Passwords.csv");
 		List<PDFAllowedUser> pdfAllowedUsers = PDFAllowedUsersFromCsvLoader
 				.getPDFAllowedUsersFromCsvFile("Input/test_passwords.csv");
 
 		LOGGER.info(() -> "Number of pdfAllowedUsers:" + pdfAllowedUsers.size());
 
-		method3();
+		for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
+			addWatermarkAndEncryptButWatermarkIsJustTextAdded(pdfAllowedUser);
+		}
 //		allStepsInOneMethodWithIntermediateFiles();
 
 		LOGGER.info(() -> "Application end");
@@ -128,11 +133,17 @@ public class PDFModificationApplication {
 	/**
 	 * https://stackoverflow.com/questions/32844926/using-overlay-in-pdfbox-2-0
 	 * 
+	 * @param pdfAllowedUser
+	 * 
 	 * @throws IOException
 	 */
-	private static void method3() throws IOException {
+	private static void addWatermarkAndEncryptButWatermarkIsJustTextAdded(PDFAllowedUser pdfAllowedUser)
+			throws IOException {
 
 		PDRectangle rectangle = PDRectangle.A4;
+
+		String watermarkText = "Confidentiel. Copie réservée à " + pdfAllowedUser.getPrenom() + " "
+				+ pdfAllowedUser.getNom();
 
 		File file = new File(PDFModificationHelpers.originalPDFDocumentBeforeAnyModificationFullPath);
 		PDDocument originalDoc = Loader.loadPDF(file);
@@ -149,14 +160,12 @@ public class PDFModificationApplication {
 					.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 99);
 			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(rectangle.getWidth() / 3,
 					rectangle.getHeight() / 2);
-			pageOfOriginalDocumentWithMatermarkAsContentStream.showText("My watermark");
+			pageOfOriginalDocumentWithMatermarkAsContentStream.showText(watermarkText);
 			pageOfOriginalDocumentWithMatermarkAsContentStream.endText();
 			pageOfOriginalDocumentWithMatermarkAsContentStream.close();
 		}
 
-		File dir = new File(PDFModificationHelpers.outputDirectoryName);
-		if (!dir.exists())
-			dir.mkdirs();
+		DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
 
 		// Define the length of the encryption key.
 		// Possible values are 40, 128 or 256.
@@ -173,23 +182,22 @@ public class PDFModificationApplication {
 		// Owner password (to open the file with all permissions) is "12345"
 		// User password (to open the file but with restricted permissions, is empty
 		// here)
-		String ownerPasswordToPrintPDF = "12345";
-		String userPasswordToOpenPDF = "abcde";
+		String ownerPasswordToPrintPDF = pdfAllowedUser.getMotDePasseImpression();
+		String userPasswordToOpenPDF = pdfAllowedUser.getMotDePasseOuverture();
 		StandardProtectionPolicy spp = new StandardProtectionPolicy(ownerPasswordToPrintPDF, userPasswordToOpenPDF, ap);
 		spp.setEncryptionKeyLength(keyLength);
 
 		// Apply protection
 		originalDoc.protect(spp);
 
-		/*
-		 * PDEncryption pdEncryption = new PDEncryption();
-		 * pdEncryption.setOwnerEncryptionKey("OK".getBytes());
-		 * originalDoc.setEncryptionDictionary(pdEncryption);
-		 */
-		originalDoc.save(PDFModificationHelpers.outputDirectoryName + "/" + "result "
-				+ PDFModificationHelpers.originalPDFDocumentBeforeAnyModificationFileName);
-		// Files.createDirectories(Paths.get(outputDirectoryName));
-		// Files.createDirectory(Paths.get(outputDirectoryName), null)
+		String generatedPersonnalizedProtectedPDFFileNameWithExtension = PDFModificationHelpers.originalPDFDocumentBeforeAnyModificationFileNameWithoutExtension
+				+ " " + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom() + PDFModificationHelpers.PDF_EXTENSION_WITH_POINT;
+		String generatedPersonnalizedProtectedPDFFullPath = PDFModificationHelpers.outputDirectoryName + "/"
+				+ generatedPersonnalizedProtectedPDFFileNameWithExtension;
+
+		LOGGER.info(() -> "Save generated protected PDF:" + generatedPersonnalizedProtectedPDFFullPath + " for "
+				+ pdfAllowedUser);
+		originalDoc.save(generatedPersonnalizedProtectedPDFFullPath);
 
 		originalDoc.close();
 	}
