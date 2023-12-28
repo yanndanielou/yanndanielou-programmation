@@ -169,16 +169,16 @@ public class PDFModificationApplication {
 					.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 50);
 
 			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(rectangle.getWidth() / 10,
-					rectangle.getHeight() / 10 * 2);
+					rectangle.getHeight() / 10 * 3);
 			pageOfOriginalDocumentWithMatermarkAsContentStream.showText("Confidentiel - Propriété Siemens");
 
-			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(0, -40);
+			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(0, -50);
 			pageOfOriginalDocumentWithMatermarkAsContentStream.showText("Draft");
 
-			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(0, -40);
+			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(0, -50);
 			pageOfOriginalDocumentWithMatermarkAsContentStream.showText("Copie réservée à");
 
-			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(0, -40);
+			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(0, -50);
 			pageOfOriginalDocumentWithMatermarkAsContentStream
 					.showText(pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
 
