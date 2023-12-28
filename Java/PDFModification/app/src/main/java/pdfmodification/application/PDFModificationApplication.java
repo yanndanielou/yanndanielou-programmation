@@ -33,7 +33,8 @@ import com.opencsv.CSVParserBuilder;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
-import common.directories.DirectoryHelper;
+import common.filesanddirectories.DirectoryHelper;
+import common.filesanddirectories.FileHelper;
 import pdfmodification.data.PDFAllowedUser;
 import pdfmodification.data.PDFAllowedUsersFromCsvLoader;
 import pdfmodification.helpers.PDFModificationHelpers;
@@ -50,23 +51,21 @@ public class PDFModificationApplication {
 
 		LOGGER.info(() -> "Application started");
 
-		// List<PDFAllowedUser> pdfAllowedUsers = PDFAllowedUsersFromCsvLoader
-		// .getPDFAllowedUsersFromCsvFile("Input/Documentation Produit -
-		// Passwords.csv");
 		List<PDFAllowedUser> pdfAllowedUsers = PDFAllowedUsersFromCsvLoader
-				.getPDFAllowedUsersFromCsvFile("Input/test_passwords.csv");
+				.getPDFAllowedUsersFromCsvFile("Input/Password à garder en INTERNE.csv");
 
 		LOGGER.info(() -> "Number of pdfAllowedUsers:" + pdfAllowedUsers.size());
 
 		for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
 			addWatermarkAndEncryptButWatermarkIsJustTextAdded(pdfAllowedUser);
 		}
-//		allStepsInOneMethodWithIntermediateFiles();
 
 		LOGGER.info(() -> "Application end");
 
 	}
 
+	/*
+	@Deprecated
 	public static void allStepsInOneMethodWithIntermediateFiles() throws IOException {
 
 		PDDocument newWatermarkOnlyDocument = new PDDocument();
@@ -129,6 +128,7 @@ public class PDFModificationApplication {
 		// watermarkDocument.save(documentWithWatermark);
 
 	}
+	*/
 
 	/**
 	 * https://stackoverflow.com/questions/32844926/using-overlay-in-pdfbox-2-0
@@ -156,11 +156,33 @@ public class PDFModificationApplication {
 
 			pageOfOriginalDocumentWithMatermarkAsContentStream.setNonStrokingColor(Color.gray);
 			pageOfOriginalDocumentWithMatermarkAsContentStream.beginText();
+			/*
+			 * Matrix matrix = Matrix.getRotateInstance(Math.toRadians(90), 0, 0);
+			 * matrix.translate(0, -originalDocPage.getMediaBox().getWidth());
+			 * 
+			 * pageOfOriginalDocumentWithMatermarkAsContentStream.setTextMatrix(matrix);
+			 */
 			pageOfOriginalDocumentWithMatermarkAsContentStream
-					.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 99);
+					.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 50);
+			
 			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(rectangle.getWidth() / 3,
-					rectangle.getHeight() / 2);
-			pageOfOriginalDocumentWithMatermarkAsContentStream.showText(watermarkText);
+					rectangle.getHeight() / 6 * 1);
+			pageOfOriginalDocumentWithMatermarkAsContentStream.showText("Confidentiel - Propriété Siemens");
+			
+			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(rectangle.getWidth() / 3,
+					rectangle.getHeight() / 6 * 2);
+			pageOfOriginalDocumentWithMatermarkAsContentStream.showText("Version Draft");
+			
+			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(rectangle.getWidth() / 3,
+					rectangle.getHeight() / 6 * 3);
+			pageOfOriginalDocumentWithMatermarkAsContentStream.showText("Copie réservée à");
+			
+			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(rectangle.getWidth() / 3,
+					rectangle.getHeight() / 6 * 4);
+			pageOfOriginalDocumentWithMatermarkAsContentStream.showText(pdfAllowedUser.getPrenom() + " "
+					+ pdfAllowedUser.getNom());
+			
+			
 			pageOfOriginalDocumentWithMatermarkAsContentStream.endText();
 			pageOfOriginalDocumentWithMatermarkAsContentStream.close();
 		}
@@ -191,9 +213,12 @@ public class PDFModificationApplication {
 		originalDoc.protect(spp);
 
 		String generatedPersonnalizedProtectedPDFFileNameWithExtension = PDFModificationHelpers.originalPDFDocumentBeforeAnyModificationFileNameWithoutExtension
-				+ " " + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom() + PDFModificationHelpers.PDF_EXTENSION_WITH_POINT;
+				+ " " + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom()
+				+ PDFModificationHelpers.PDF_EXTENSION_WITH_POINT;
 		String generatedPersonnalizedProtectedPDFFullPath = PDFModificationHelpers.outputDirectoryName + "/"
 				+ generatedPersonnalizedProtectedPDFFileNameWithExtension;
+		
+		FileHelper.removeFileIfExists(generatedPersonnalizedProtectedPDFFullPath);
 
 		LOGGER.info(() -> "Save generated protected PDF:" + generatedPersonnalizedProtectedPDFFullPath + " for "
 				+ pdfAllowedUser);
