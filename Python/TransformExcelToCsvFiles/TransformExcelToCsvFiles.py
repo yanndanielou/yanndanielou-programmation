@@ -145,6 +145,8 @@ def transformAllExcelFilesToCsvFiles(argv):
 
     listOfExcelFileNames = getListOfExcelFilesNames()
 
+    printAndLogInfo("Number of excel files found:" + str(len(listOfExcelFileNames)) + " : " + str(listOfExcelFileNames))
+ 
     for excelFileName in listOfExcelFileNames:
         transformExcelFileToCsvFiles(excelFileName)
     
