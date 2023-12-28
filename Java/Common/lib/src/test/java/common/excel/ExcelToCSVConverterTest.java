@@ -28,7 +28,7 @@ public class ExcelToCSVConverterTest {
 
 			@Test
 			void basicExampleExcelFile() {
-				ExcelToCSVConverter.convertAllWorksheetFromExcelFileToCSV("ExcelWorksheetToTestCsvConversion.xlsx");
+				ExcelToCSVConverter.convertAllWorksheetFromExcelFileToCSV("lib/src/test/resources/common/excel/ExcelWorksheetToTestCsvConversion.xlsx");
 			}
 		}
 	}
