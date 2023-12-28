@@ -16,6 +16,8 @@ import logging
 import os
 import sys
 
+import param;
+
 # To get line number for logs
 from inspect import currentframe, getframeinfo
 import inspect
@@ -138,7 +140,7 @@ def transformExcelFileToCsvFiles(excelFileNameWithExtension):
         read_file = pandas.read_excel (excelFileNameWithExtension, sheet_name=workbookSheetName)
         output_csv_file = excelFileNameWithoutExtension + '/' + workbookSheetName + '.csv'
         printAndLogInfo("Extract sheet " + workbookSheetName + " to " + output_csv_file)
-        read_file.to_csv (output_csv_file, index = None, header=True)
+        read_file.to_csv (output_csv_file, sep=param.csv_separator, index = None, header=True)
 
 
 def transformAllExcelFilesToCsvFiles(argv):
