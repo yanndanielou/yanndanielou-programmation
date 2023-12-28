@@ -35,6 +35,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
 
 import common.filesanddirectories.DirectoryHelper;
 import common.filesanddirectories.FileHelper;
+import common.filesanddirectories.FileNameExtensionAndPathHelper;
 import pdfmodification.data.PDFAllowedUser;
 import pdfmodification.data.PDFAllowedUsersFromCsvLoader;
 import pdfmodification.helpers.PDFModificationHelpers;
@@ -145,85 +146,93 @@ public class PDFModificationApplication {
 
 		PDRectangle rectangle = PDRectangle.A4;
 
-		String watermarkText = "Confidentiel. Copie réservée à " + pdfAllowedUser.getPrenom() + " "
-				+ pdfAllowedUser.getNom();
+		File[] inputPDFFiles = FileNameExtensionAndPathHelper
+				.getAllFilesNamesWithExtension(PDFModificationHelpers.inputDirectoryName, ".pdf");
 
-		File file = new File(PDFModificationHelpers.originalPDFDocumentBeforeAnyModificationFullPath);
-		PDDocument originalDoc = Loader.loadPDF(file);
-		for (PDPage originalDocPage : originalDoc.getPages()) {
+		for (File inputPDFFile : inputPDFFiles) {
 
-			PDPageContentStream pageOfOriginalDocumentWithMatermarkAsContentStream = new PDPageContentStream(
-					originalDoc, originalDocPage, AppendMode.APPEND, true);
+			LOGGER.info("Handle input PDF file:" + inputPDFFile.getAbsolutePath());
 
-			// PDColor nonStrokingColor = PDColor.
+			String fileNameWithoutExtension = FileNameExtensionAndPathHelper
+					.getFileNameWithoutExtension(inputPDFFile.getName());
 
-			pageOfOriginalDocumentWithMatermarkAsContentStream.setNonStrokingColor(Color.gray);
-			pageOfOriginalDocumentWithMatermarkAsContentStream.beginText();
-			/*
-			 * Matrix matrix = Matrix.getRotateInstance(Math.toRadians(90), 0, 0);
-			 * matrix.translate(0, -originalDocPage.getMediaBox().getWidth());
-			 * 
-			 * pageOfOriginalDocumentWithMatermarkAsContentStream.setTextMatrix(matrix);
-			 */
-			pageOfOriginalDocumentWithMatermarkAsContentStream
-					.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 50);
+			PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
+			for (PDPage originalDocPage : originalDoc.getPages()) {
 
-			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(rectangle.getWidth() / 10,
-					rectangle.getHeight() / 10 * 3);
-			pageOfOriginalDocumentWithMatermarkAsContentStream.showText("Confidentiel - Propriété Siemens");
+				PDPageContentStream pageOfOriginalDocumentWithMatermarkAsContentStream = new PDPageContentStream(
+						originalDoc, originalDocPage, AppendMode.APPEND, true);
 
-			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(0, -50);
-			pageOfOriginalDocumentWithMatermarkAsContentStream.showText("Draft");
+				// PDColor nonStrokingColor = PDColor.
 
-			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(0, -50);
-			pageOfOriginalDocumentWithMatermarkAsContentStream.showText("Copie réservée à");
+				pageOfOriginalDocumentWithMatermarkAsContentStream.setNonStrokingColor(Color.gray);
+				pageOfOriginalDocumentWithMatermarkAsContentStream.beginText();
+				/*
+				 * Matrix matrix = Matrix.getRotateInstance(Math.toRadians(90), 0, 0);
+				 * matrix.translate(0, -originalDocPage.getMediaBox().getWidth());
+				 * 
+				 * pageOfOriginalDocumentWithMatermarkAsContentStream.setTextMatrix(matrix);
+				 */
+				pageOfOriginalDocumentWithMatermarkAsContentStream
+						.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 50);
 
-			pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(0, -50);
-			pageOfOriginalDocumentWithMatermarkAsContentStream
-					.showText(pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
+				pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(rectangle.getWidth() / 10,
+						rectangle.getHeight() / 10 * 4);
+				pageOfOriginalDocumentWithMatermarkAsContentStream.showText("Confidentiel - Propriété Siemens");
 
-			pageOfOriginalDocumentWithMatermarkAsContentStream.endText();
-			pageOfOriginalDocumentWithMatermarkAsContentStream.close();
+				pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(0, -50);
+				pageOfOriginalDocumentWithMatermarkAsContentStream.showText("Draft");
+
+				pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(0, -50);
+				pageOfOriginalDocumentWithMatermarkAsContentStream.showText("Copie réservée à");
+
+				pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(0, -50);
+				pageOfOriginalDocumentWithMatermarkAsContentStream
+						.showText(pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
+
+				pageOfOriginalDocumentWithMatermarkAsContentStream.endText();
+				pageOfOriginalDocumentWithMatermarkAsContentStream.close();
+			}
+
+			DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
+
+			// Define the length of the encryption key.
+			// Possible values are 40, 128 or 256.
+			int keyLength = 256;
+
+			AccessPermission ap = new AccessPermission();
+
+			// disable printing,
+			ap.setCanPrint(false);
+			// disable copying
+			ap.setCanExtractContent(false);
+			// Disable other things if needed...
+
+			// Owner password (to open the file with all permissions) is "12345"
+			// User password (to open the file but with restricted permissions, is empty
+			// here)
+			String ownerPasswordToPrintPDF = pdfAllowedUser.getMotDePasseImpression();
+			String userPasswordToOpenPDF = pdfAllowedUser.getMotDePasseOuverture();
+			StandardProtectionPolicy spp = new StandardProtectionPolicy(ownerPasswordToPrintPDF, userPasswordToOpenPDF,
+					ap);
+			spp.setEncryptionKeyLength(keyLength);
+
+			// Apply protection
+			originalDoc.protect(spp);
+
+			String generatedPersonnalizedProtectedPDFFileNameWithExtension = fileNameWithoutExtension + " "
+					+ pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom()
+					+ PDFModificationHelpers.PDF_EXTENSION_WITH_POINT;
+			String generatedPersonnalizedProtectedPDFFullPath = PDFModificationHelpers.outputDirectoryName + "/"
+					+ generatedPersonnalizedProtectedPDFFileNameWithExtension;
+
+			FileHelper.removeFileIfExists(generatedPersonnalizedProtectedPDFFullPath);
+
+			LOGGER.info(() -> "Save generated protected PDF:" + generatedPersonnalizedProtectedPDFFullPath + " for "
+					+ pdfAllowedUser);
+			originalDoc.save(generatedPersonnalizedProtectedPDFFullPath);
+
+			originalDoc.close();
 		}
-
-		DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
-
-		// Define the length of the encryption key.
-		// Possible values are 40, 128 or 256.
-		int keyLength = 256;
-
-		AccessPermission ap = new AccessPermission();
-
-		// disable printing,
-		ap.setCanPrint(false);
-		// disable copying
-		ap.setCanExtractContent(false);
-		// Disable other things if needed...
-
-		// Owner password (to open the file with all permissions) is "12345"
-		// User password (to open the file but with restricted permissions, is empty
-		// here)
-		String ownerPasswordToPrintPDF = pdfAllowedUser.getMotDePasseImpression();
-		String userPasswordToOpenPDF = pdfAllowedUser.getMotDePasseOuverture();
-		StandardProtectionPolicy spp = new StandardProtectionPolicy(ownerPasswordToPrintPDF, userPasswordToOpenPDF, ap);
-		spp.setEncryptionKeyLength(keyLength);
-
-		// Apply protection
-		originalDoc.protect(spp);
-
-		String generatedPersonnalizedProtectedPDFFileNameWithExtension = PDFModificationHelpers.originalPDFDocumentBeforeAnyModificationFileNameWithoutExtension
-				+ " " + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom()
-				+ PDFModificationHelpers.PDF_EXTENSION_WITH_POINT;
-		String generatedPersonnalizedProtectedPDFFullPath = PDFModificationHelpers.outputDirectoryName + "/"
-				+ generatedPersonnalizedProtectedPDFFileNameWithExtension;
-
-		FileHelper.removeFileIfExists(generatedPersonnalizedProtectedPDFFullPath);
-
-		LOGGER.info(() -> "Save generated protected PDF:" + generatedPersonnalizedProtectedPDFFullPath + " for "
-				+ pdfAllowedUser);
-		originalDoc.save(generatedPersonnalizedProtectedPDFFullPath);
-
-		originalDoc.close();
 	}
 
 	/**
