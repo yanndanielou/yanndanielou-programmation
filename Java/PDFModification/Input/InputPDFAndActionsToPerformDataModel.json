@@ -1,39 +1,38 @@
 {
- "inputPdfWithFileMaskForMultiplePDF":
- {
-	"filePathMask":"*.pdf",
- },
- "textsToDisplay": [
-			{
-				"newLineAtOffset": {
-					"x": 59,
-					"y": 336
-				},
-				"type":"FREE_TEXT",
-				"text":"Confidentiel - Propriété Siemens"
+	"inputPdfWithFileMaskForMultiplePDF": {
+		"filePathMask": "*.pdf"
+	},
+	"textsToDisplay": [
+		{
+			"newLineAtOffset": {
+				"x": 59,
+				"y": 336
 			},
-			{
-				"newLineAtOffset": {
-					"x": 0,
-					"y": -50
-				}
-				"text":"Draft - incomplet et non final"
+			"type": "FREE_TEXT",
+			"text": "Confidentiel - Propriété Siemens"
+		},
+		{
+			"newLineAtOffset": {
+				"x": 0,
+				"y": -50
 			},
-			{
-				"newLineAtOffset": {
-					"x": 0,
-					"y": -50
-				},
-				"type":"FREE_TEXT",
-				"text":"Copie réservée à"
+			"type": "FREE_TEXT",
+			"text": "Draft - incomplet et non final"
+		},
+		{
+			"newLineAtOffset": {
+				"x": 0,
+				"y": -50
 			},
-			{
-				"newLineAtOffset": {
-					"x": 0,
-					"y": -50
-				},
-				"type":"FREE_TEXT",
-				"text":"Draft"
-			}
-		]
+			"type": "FREE_TEXT",
+			"text": "Copie réservée à"
+		},
+		{
+			"newLineAtOffset": {
+				"x": 0,
+				"y": -50
+			},
+			"type": "FIRST_NAME_SPACE_AND_LAST_NAME"
+		}
+	]
 }
