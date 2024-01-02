@@ -1,4 +1,4 @@
-package pdfmodification.data;
+package pdfmodification.data.users;
 
 import java.io.IOException;
 import java.io.Reader;

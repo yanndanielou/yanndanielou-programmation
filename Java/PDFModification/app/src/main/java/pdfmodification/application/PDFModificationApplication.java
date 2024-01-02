@@ -36,8 +36,8 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import common.filesanddirectories.DirectoryHelper;
 import common.filesanddirectories.FileHelper;
 import common.filesanddirectories.FileNameExtensionAndPathHelper;
-import pdfmodification.data.PDFAllowedUser;
-import pdfmodification.data.PDFAllowedUsersFromCsvLoader;
+import pdfmodification.data.users.PDFAllowedUser;
+import pdfmodification.data.users.PDFAllowedUsersFromCsvLoader;
 import pdfmodification.helpers.PDFModificationHelpers;
 
 /**
@@ -175,8 +175,10 @@ public class PDFModificationApplication {
 				pageOfOriginalDocumentWithMatermarkAsContentStream
 						.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 50);
 
-				pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(rectangle.getWidth() / 10,
-						rectangle.getHeight() / 10 * 4);
+				float f = rectangle.getWidth() / 10;
+				float g = rectangle.getHeight() / 10 * 4;
+				pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(f,
+						g);
 				pageOfOriginalDocumentWithMatermarkAsContentStream.showText("Confidentiel - Propriété Siemens");
 
 				pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(0, -50);

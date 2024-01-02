@@ -1,0 +1,39 @@
+{
+ "inputPdfWithFileMaskForMultiplePDF":
+ {
+	"filePathMask":"*.pdf",
+ },
+ "textsToDisplay": [
+			{
+				"newLineAtOffset": {
+					"x": 59,
+					"y": 336
+				},
+				"type":"FREE_TEXT",
+				"text":"Confidentiel - Propriété Siemens"
+			},
+			{
+				"newLineAtOffset": {
+					"x": 0,
+					"y": -50
+				}
+				"text":"Draft - incomplet et non final"
+			},
+			{
+				"newLineAtOffset": {
+					"x": 0,
+					"y": -50
+				},
+				"type":"FREE_TEXT",
+				"text":"Copie réservée à"
+			},
+			{
+				"newLineAtOffset": {
+					"x": 0,
+					"y": -50
+				},
+				"type":"FREE_TEXT",
+				"text":"Draft"
+			}
+		]
+}
