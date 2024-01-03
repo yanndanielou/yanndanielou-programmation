@@ -2,7 +2,9 @@ package game.builders;
 
 import java.awt.Color;
 
-public class GameBoardAreasByRGBImageRecognitionDataModel extends GameBoardNamedAreaDataModel {
+import common.builders.NamedDataModel;
+
+public class GameBoardAreasByRGBImageRecognitionDataModel extends NamedDataModel {
 
 	private String imageToParsePath;
 

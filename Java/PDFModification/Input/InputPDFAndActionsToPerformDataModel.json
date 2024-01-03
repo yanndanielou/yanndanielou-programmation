@@ -2,7 +2,7 @@
 	"inputPdfWithFileMaskForMultiplePDF": {
 		"filePathMask": "*.pdf"
 	},
-	"textsToDisplay": [
+	"textLinesToDisplay": [
 		{
 			"newLineAtOffset": {
 				"x": 59,

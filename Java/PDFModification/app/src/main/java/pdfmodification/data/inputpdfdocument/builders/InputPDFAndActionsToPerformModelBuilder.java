@@ -1,4 +1,4 @@
-package builders;
+package pdfmodification.data.inputpdfdocument.builders;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,26 +6,24 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 
-public class GameDifficultyModelBuilder {
+public class InputPDFAndActionsToPerformModelBuilder {
 	private Gson gson = new Gson();
 
-	private GameDifficultiesDataModel game_difficulties_data_model;
+	private InputPDFAndActionsToPerformDataModel inputPDFAndActionsToPerformDataModel;
 
-	public GameDifficultiesDataModel getGameDifficultiesDataModel() {
-		return game_difficulties_data_model;
+	public InputPDFAndActionsToPerformDataModel getInputPDFAndActionsToPerformDataModel() {
+		return inputPDFAndActionsToPerformDataModel;
 	}
 
-	public GameDifficultyModelBuilder(String game_board_data_model_json_file) {
+	public InputPDFAndActionsToPerformModelBuilder(String jsonFilePath) {
 		BufferedReader br = null;
 
 		try {
-			
-			br = new BufferedReader(new FileReader(game_board_data_model_json_file));
-
+			br = new BufferedReader(new FileReader(jsonFilePath));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		game_difficulties_data_model = gson.fromJson(br, GameDifficultiesDataModel.class);
+		inputPDFAndActionsToPerformDataModel = gson.fromJson(br, InputPDFAndActionsToPerformDataModel.class);
 	}
 
 }

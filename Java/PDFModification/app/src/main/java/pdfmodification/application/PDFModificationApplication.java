@@ -3,20 +3,11 @@ package pdfmodification.application;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.pdfbox.Loader;
-import org.apache.pdfbox.multipdf.Overlay;
-import org.apache.pdfbox.multipdf.Overlay.Position;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -26,16 +17,12 @@ import org.apache.pdfbox.pdmodel.encryption.AccessPermission;
 import org.apache.pdfbox.pdmodel.encryption.StandardProtectionPolicy;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
-import org.apache.pdfbox.util.Matrix;
-
-import com.opencsv.CSVParser;
-import com.opencsv.CSVParserBuilder;
-import com.opencsv.bean.CsvToBean;
-import com.opencsv.bean.CsvToBeanBuilder;
 
 import common.filesanddirectories.DirectoryHelper;
 import common.filesanddirectories.FileHelper;
 import common.filesanddirectories.FileNameExtensionAndPathHelper;
+import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformDataModel;
+import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformModelBuilder;
 import pdfmodification.data.users.PDFAllowedUser;
 import pdfmodification.data.users.PDFAllowedUsersFromCsvLoader;
 import pdfmodification.helpers.PDFModificationHelpers;
@@ -56,6 +43,9 @@ public class PDFModificationApplication {
 				.getPDFAllowedUsersFromCsvFile("Input/Password à garder en INTERNE.csv");
 
 		LOGGER.info(() -> "Number of pdfAllowedUsers:" + pdfAllowedUsers.size());
+
+		InputPDFAndActionsToPerformModelBuilder inputPDFAndActionsToPerformModelBuilder = new InputPDFAndActionsToPerformModelBuilder("Input/InputPDFAndActionsToPerformDataModel.json");
+		InputPDFAndActionsToPerformDataModel inputPDFAndActionsToPerformDataModel = inputPDFAndActionsToPerformModelBuilder.getInputPDFAndActionsToPerformDataModel();
 
 		for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
 			addWatermarkAndEncryptButWatermarkIsJustTextAdded(pdfAllowedUser);
@@ -177,8 +167,7 @@ public class PDFModificationApplication {
 
 				float f = rectangle.getWidth() / 10;
 				float g = rectangle.getHeight() / 10 * 4;
-				pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(f,
-						g);
+				pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(f, g);
 				pageOfOriginalDocumentWithMatermarkAsContentStream.showText("Confidentiel - Propriété Siemens");
 
 				pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(0, -50);

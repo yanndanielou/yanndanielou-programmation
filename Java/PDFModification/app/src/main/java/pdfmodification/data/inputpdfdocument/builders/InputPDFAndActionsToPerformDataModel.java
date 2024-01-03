@@ -1,14 +1,13 @@
-package builders;
+package pdfmodification.data.inputpdfdocument.builders;
 
 import java.util.ArrayList;
 
-public class GameDifficultiesDataModel {
+public class InputPDFAndActionsToPerformDataModel {
 
-	private ArrayList<GameDifficultyDataModel> game_difficulty_data_models;
+	private ArrayList<TextLineToDisplayDataModel> textLinesToDisplay;
 
-	public ArrayList<GameDifficultyDataModel> getGame_difficulty_data_models() {
-		return game_difficulty_data_models;
+	public ArrayList<TextLineToDisplayDataModel> getTextLinesToDisplay() {
+		return textLinesToDisplay;
 	}
-
 
 }
