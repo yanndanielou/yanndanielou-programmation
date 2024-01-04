@@ -3,7 +3,7 @@
 		{
 			"inputPdfWithFileMaskForMultiplePDF": {
 				"folderPath": "Input",
-				"fileNameMask": "SSC3_2_AdminTools_GUMPS_SyReqSpec*.pdf"
+				"fileNameMask": "NExTEO-2A0000-02-0107-00 SSC3_2_AdminTools_GUMPS_SyReqSpec*.pdf"
 			},
 			"pageNumberToDelete": [
 				{
