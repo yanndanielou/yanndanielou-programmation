@@ -3,6 +3,7 @@ package pdfmodification.application;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -24,6 +25,7 @@ import common.filesanddirectories.FileHelper;
 import common.filesanddirectories.FileNameExtensionAndPathHelper;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformDataModel;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformModelBuilder;
+import pdfmodification.data.inputpdfdocument.builders.InputPDFsDataModel;
 import pdfmodification.data.inputpdfdocument.builders.PDFFontDataModel;
 import pdfmodification.data.inputpdfdocument.builders.TextLineToDisplayDataModel;
 import pdfmodification.data.users.PDFAllowedUser;
@@ -73,27 +75,42 @@ public class PDFModificationApplication {
 		for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
 			LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
 
-			List<File> inputPDFFiles = inputPDFAndActionsToPerformDataModel.getInputPDFFiles();
-			for (File inputPDFFile : inputPDFFiles) {
+			for (InputPDFsDataModel inputPdf : inputPDFAndActionsToPerformDataModel.getInputPdfs()) {
+				List<File> inputPDFFiles = inputPdf.getInputPDFFiles();
 
-				LOGGER.info(() -> "Handle input PDF file:" + inputPDFFile.getAbsolutePath());
+				for (File inputPDFFile : inputPDFFiles) {
 
-				LOGGER.info(() -> "Load PDF");
-				PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
+					LOGGER.info(() -> "Handle input PDF file:" + inputPDFFile.getAbsolutePath());
 
-				LOGGER.info(() -> "Add watermark on each page");
-				addWatermarkOnEachPage(originalDoc, inputPDFAndActionsToPerformDataModel, pdfAllowedUser);
+					LOGGER.info(() -> "Load PDF");
+					PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
 
-				DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
+					List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
+					LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
+					deletePages(originalDoc, allPageNumberToDelete);
 
-				LOGGER.info(() -> "Protect PDF");
-				protectPDF(originalDoc, pdfAllowedUser);
+					LOGGER.info(() -> "Add watermark on each page");
+					addWatermarkOnEachPage(originalDoc, inputPDFAndActionsToPerformDataModel, pdfAllowedUser);
 
-				LOGGER.info(() -> "Save output PDF");
-				saveOutputPDF(inputPDFFile, originalDoc, pdfAllowedUser);
+					DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
 
-				originalDoc.close();
+					LOGGER.info(() -> "Protect PDF");
+					protectPDF(originalDoc, pdfAllowedUser);
+
+					LOGGER.info(() -> "Save output PDF");
+					saveOutputPDF(inputPDFFile, originalDoc, pdfAllowedUser);
+
+					originalDoc.close();
+				}
 			}
+		}
+	}
+
+	private static void deletePages(PDDocument originalDoc, List<Integer> allPageNumberToDelete) {
+		int numberOfPagesAlreadyDeleted = 0;
+		for (Integer pageNumberToDelete : allPageNumberToDelete) {
+			originalDoc.removePage(pageNumberToDelete - numberOfPagesAlreadyDeleted);
+			numberOfPagesAlreadyDeleted++;
 		}
 	}
 
@@ -113,7 +130,8 @@ public class PDFModificationApplication {
 
 				ColorDataModel nonStrokingColorDataModel = textLinesToDisplay.getNonStrokingColor();
 				if (nonStrokingColorDataModel != null) {
-					pageOfOriginalDocumentWithMatermarkAsContentStream.setNonStrokingColor(nonStrokingColorDataModel.getColorAsAwtColor());
+					pageOfOriginalDocumentWithMatermarkAsContentStream
+							.setNonStrokingColor(nonStrokingColorDataModel.getColorAsAwtColor());
 				}
 
 				PDFFontDataModel pdfFont = textLinesToDisplay.getFont();

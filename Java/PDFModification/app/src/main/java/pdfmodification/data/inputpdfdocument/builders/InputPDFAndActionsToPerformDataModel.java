@@ -8,16 +8,16 @@ import common.builders.FileByMaskDataModel;
 
 public class InputPDFAndActionsToPerformDataModel {
 
-	private FileByMaskDataModel inputPdfWithFileMaskForMultiplePDF;
+	private List<InputPDFsDataModel> inputPdfs;
 
-	private ArrayList<TextLineToDisplayDataModel> textLinesToDisplay;
+	private List<TextLineToDisplayDataModel> textLinesToDisplay;
 
-	public ArrayList<TextLineToDisplayDataModel> getTextLinesToDisplay() {
+	public List<TextLineToDisplayDataModel> getTextLinesToDisplay() {
 		return textLinesToDisplay;
 	}
 
-	public List<File> getInputPDFFiles() {
-		return inputPdfWithFileMaskForMultiplePDF.getResolvedFiles();
+	public List<InputPDFsDataModel> getInputPdfs() {
+		return inputPdfs;
 	}
 
 }

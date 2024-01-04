@@ -1,8 +1,34 @@
 {
-	"inputPdfWithFileMaskForMultiplePDF": {
-		"folderPath": "Input",
-		"fileNameMask": "*.pdf"
-	},
+	"inputPdfs": [
+		{
+			"inputPdfWithFileMaskForMultiplePDF": {
+				"folderPath": "Input",
+				"fileNameMask": "SSC3_2_AdminTools_GUMPS_SyReqSpec*.pdf"
+			},
+			"pageNumberToDelete": [
+				{
+					"pageNumber": 110,
+					"offset": 1
+				},
+				{
+					"pageNumber": 304,
+					"offset": 1
+				},
+				{
+					"pageNumber": 305,
+					"offset": 1
+				},
+				{
+					"pageNumber": 307,
+					"offset": 1
+				},
+				{
+					"pageNumber": 309,
+					"offset": 1
+				}
+			]
+		}
+	],
 	"textLinesToDisplay": [
 		{
 			"font": {
@@ -50,6 +76,14 @@
 				"fontName": "HELVETICA",
 				"fontSize": 15
 			},
+			"newLineAtOffset": {
+				"x": 0,
+				"y": -30
+			},
+			"textType": "FREE_TEXT",
+			"freeText": "Siemens se réserve le droit d'apporter toute modification dans les versions ultérieures"
+		},
+		{
 			"newLineAtOffset": {
 				"x": 0,
 				"y": -25
