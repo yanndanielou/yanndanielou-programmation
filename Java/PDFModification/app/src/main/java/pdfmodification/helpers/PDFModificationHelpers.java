@@ -24,7 +24,6 @@ import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 import org.apache.pdfbox.util.Matrix;
 
 import common.filesanddirectories.DirectoryHelper;
-import common.filesanddirectories.FileHelper;
 
 /**
  * https://github.com/topobyte/pdfbox-tools/blob/master/src/main/java/org/apache/pdfbox/tools/OverlayPDF.java

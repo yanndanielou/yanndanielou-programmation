@@ -1,35 +1,5 @@
 package pdfmodification.application;
 
-import java.awt.Color;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.pdfbox.Loader;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.PDPageContentStream.AppendMode;
-import org.apache.pdfbox.pdmodel.common.PDRectangle;
-import org.apache.pdfbox.pdmodel.encryption.AccessPermission;
-import org.apache.pdfbox.pdmodel.encryption.StandardProtectionPolicy;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName;
-
-import common.builders.PointDataModel;
-import common.filesanddirectories.DirectoryHelper;
-import common.filesanddirectories.FileHelper;
-import common.filesanddirectories.FileNameExtensionAndPathHelper;
-import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformDataModel;
-import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformModelBuilder;
-import pdfmodification.data.inputpdfdocument.builders.PDFFontDataModel;
-import pdfmodification.data.inputpdfdocument.builders.TextLineToDisplayDataModel;
-import pdfmodification.data.users.PDFAllowedUser;
-import pdfmodification.data.users.PDFAllowedUsersFromCsvLoader;
-import pdfmodification.helpers.PDFModificationHelpers;
-
 /**
  * https://github.com/topobyte/pdfbox-tools/blob/master/src/main/java/org/apache/pdfbox/tools/OverlayPDF.java
  * 

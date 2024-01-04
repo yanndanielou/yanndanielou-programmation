@@ -1,10 +1,8 @@
 package pdfmodification.data.users;
 
-import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvBindByName;
 
 import pdfmodification.data.ValiditeAcces;
-
-import com.opencsv.bean.CsvBindByName;
 
 public class PDFAllowedUser {
 

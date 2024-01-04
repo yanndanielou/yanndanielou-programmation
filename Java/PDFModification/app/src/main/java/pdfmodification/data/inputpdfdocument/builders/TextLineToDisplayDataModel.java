@@ -1,7 +1,8 @@
 package pdfmodification.data.inputpdfdocument.builders;
 
-import org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName;
+import java.awt.Color;
 
+import common.builders.ColorDataModel;
 import common.builders.PointDataModel;
 import pdfmodification.data.TextToDisplayType;
 import pdfmodification.data.users.PDFAllowedUser;
@@ -12,6 +13,7 @@ public class TextLineToDisplayDataModel {
 	private TextToDisplayType textType;
 	private PDFFontDataModel font;
 	private PointDataModel newLineAtOffset;
+	private ColorDataModel nonStrokingColor;
 
 	public String computeText(PDFAllowedUser pdfAllowedUser) {
 		switch (textType) {
@@ -32,4 +34,11 @@ public class TextLineToDisplayDataModel {
 		return font;
 	}
 
+	public ColorDataModel getNonStrokingColor() {
+		return nonStrokingColor;
+	}
+	/*
+	 * public Color getNonStrokingColor() { if (nonStrokingColor == null) { return
+	 * null; } return nonStrokingColor.getColorAsAwtColor(); }
+	 */
 }

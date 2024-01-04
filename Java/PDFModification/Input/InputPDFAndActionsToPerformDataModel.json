@@ -8,7 +8,10 @@
 			"font": {
 				"fontName__": "Standard14Fonts.FontName.HELVETICA",
 				"fontName": "HELVETICA",
-				"fontSize": 40
+				"fontSize": 30
+			},
+			"nonStrokingColor": {
+				"colorName": "gray"
 			},
 			"newLineAtOffset": {
 				"x": 59,
@@ -21,24 +24,35 @@
 			"font": {
 				"fontName__": "Standard14Fonts.FontName.HELVETICA",
 				"fontName": "HELVETICA",
-				"fontSize": 30
+				"fontSize": 20
+			},
+			"nonStrokingColor": {
+				"colorName": "lightGray"
 			},
 			"newLineAtOffset": {
 				"x": 0,
-				"y": -50
+				"y": -30
 			},
 			"textType": "FREE_TEXT",
 			"freeText": "Draft - incomplet et non final"
 		},
 		{
+			"newLineAtOffset": {
+				"x": 0,
+				"y": -30
+			},
+			"textType": "FREE_TEXT",
+			"freeText": "Pour premier aperçu du produit Gumps par SNCF"
+		},
+		{
 			"font": {
 				"fontName__": "Standard14Fonts.FontName.HELVETICA",
 				"fontName": "HELVETICA",
-				"fontSize": 20
+				"fontSize": 15
 			},
 			"newLineAtOffset": {
 				"x": 0,
-				"y": -50
+				"y": -25
 			},
 			"textType": "FREE_TEXT",
 			"freeText": "Copie réservée à"
@@ -46,7 +60,7 @@
 		{
 			"newLineAtOffset": {
 				"x": 0,
-				"y": -50
+				"y": -15
 			},
 			"textType": "FIRST_NAME_SPACE_AND_LAST_NAME"
 		},
@@ -58,7 +72,7 @@
 			},
 			"newLineAtOffset": {
 				"x": 0,
-				"y": -50
+				"y": -10
 			},
 			"textType": "FREE_TEXT",
 			"freeText": "Ne pas diffuser"
