@@ -18,6 +18,11 @@
 			"freeText": "Confidentiel - Propriété Siemens"
 		},
 		{
+			"font": {
+				"fontName__": "Standard14Fonts.FontName.HELVETICA",
+				"fontName": "HELVETICA",
+				"fontSize": 30
+			},
 			"newLineAtOffset": {
 				"x": 0,
 				"y": -50
@@ -26,6 +31,11 @@
 			"freeText": "Draft - incomplet et non final"
 		},
 		{
+			"font": {
+				"fontName__": "Standard14Fonts.FontName.HELVETICA",
+				"fontName": "HELVETICA",
+				"fontSize": 20
+			},
 			"newLineAtOffset": {
 				"x": 0,
 				"y": -50
@@ -41,6 +51,11 @@
 			"textType": "FIRST_NAME_SPACE_AND_LAST_NAME"
 		},
 		{
+			"font": {
+				"fontName__": "Standard14Fonts.FontName.HELVETICA",
+				"fontName": "HELVETICA",
+				"fontSize": 10
+			},
 			"newLineAtOffset": {
 				"x": 0,
 				"y": -50
