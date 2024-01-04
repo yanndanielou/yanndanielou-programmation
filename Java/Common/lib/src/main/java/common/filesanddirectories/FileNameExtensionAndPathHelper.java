@@ -3,7 +3,9 @@ package common.filesanddirectories;
 import java.io.File;
 import java.io.FilenameFilter;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.filefilter.WildcardFileFilter;
 
 public class FileNameExtensionAndPathHelper {
 
@@ -27,6 +29,14 @@ public class FileNameExtensionAndPathHelper {
 				return false;
 			}
 		});
+	}
+
+	public static File[] getAllFilesNamesMatchingMask(String directoryName, String... masks) {
+		File directory = new File(directoryName);
+		WildcardFileFilter wildcardFileFilter = WildcardFileFilter.builder().setWildcards(masks).get();
+		FilenameFilter filenameFilter = (FilenameFilter) wildcardFileFilter;
+		File[] listFiles = directory.listFiles(filenameFilter);
+		return listFiles;
 	}
 
 }

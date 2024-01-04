@@ -1,38 +1,52 @@
 {
 	"inputPdfWithFileMaskForMultiplePDF": {
-		"filePathMask": "*.pdf"
+		"folderPath": "Input",
+		"fileNameMask": "*.pdf"
 	},
 	"textLinesToDisplay": [
 		{
+			"font": {
+				"fontName__": "Standard14Fonts.FontName.HELVETICA",
+				"fontName": "HELVETICA",
+				"fontSize": 40
+			},
 			"newLineAtOffset": {
 				"x": 59,
 				"y": 336
 			},
-			"type": "FREE_TEXT",
-			"text": "Confidentiel - Propriété Siemens"
+			"textType": "FREE_TEXT",
+			"freeText": "Confidentiel - Propriété Siemens"
 		},
 		{
 			"newLineAtOffset": {
 				"x": 0,
 				"y": -50
 			},
-			"type": "FREE_TEXT",
-			"text": "Draft - incomplet et non final"
+			"textType": "FREE_TEXT",
+			"freeText": "Draft - incomplet et non final"
 		},
 		{
 			"newLineAtOffset": {
 				"x": 0,
 				"y": -50
 			},
-			"type": "FREE_TEXT",
-			"text": "Copie réservée à"
+			"textType": "FREE_TEXT",
+			"freeText": "Copie réservée à"
 		},
 		{
 			"newLineAtOffset": {
 				"x": 0,
 				"y": -50
 			},
-			"type": "FIRST_NAME_SPACE_AND_LAST_NAME"
+			"textType": "FIRST_NAME_SPACE_AND_LAST_NAME"
+		},
+		{
+			"newLineAtOffset": {
+				"x": 0,
+				"y": -50
+			},
+			"textType": "FREE_TEXT",
+			"freeText": "Ne pas diffuser"
 		}
 	]
 }

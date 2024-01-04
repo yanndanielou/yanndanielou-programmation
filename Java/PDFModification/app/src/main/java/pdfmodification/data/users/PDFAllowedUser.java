@@ -1,6 +1,9 @@
 package pdfmodification.data.users;
 
 import com.opencsv.bean.CsvBindByPosition;
+
+import pdfmodification.data.ValiditeAcces;
+
 import com.opencsv.bean.CsvBindByName;
 
 public class PDFAllowedUser {
@@ -10,16 +13,16 @@ public class PDFAllowedUser {
 
 	@CsvBindByName(column = "prenom")
 	private String prenom;
-	
+
 	@CsvBindByName(column = "accesHautementConfidentiel")
 	private String accesHautementConfidentiel;
-	
+
 	@CsvBindByName(column = "validiteAcces")
-	private String validiteAcces;
-	
+	private ValiditeAcces validiteAcces;
+
 	@CsvBindByName(column = "motDePasseOuverture")
 	private String motDePasseOuverture;
-	
+
 	@CsvBindByName(column = "motDePasseImpression")
 	private String motDePasseImpression;
 
@@ -35,10 +38,6 @@ public class PDFAllowedUser {
 		return accesHautementConfidentiel;
 	}
 
-	public String getValiditeAcces() {
-		return validiteAcces;
-	}
-
 	public String getMotDePasseOuverture() {
 		return motDePasseOuverture;
 	}
@@ -46,5 +45,16 @@ public class PDFAllowedUser {
 	public String getMotDePasseImpression() {
 		return motDePasseImpression;
 	}
-	
+
+	public boolean isAllowedToAccessPDF() {
+		return ValiditeAcces.Oui.equals(validiteAcces);
+	}
+
+	@Override
+	public String toString() {
+		return "PDFAllowedUser [nom=" + nom + ", prenom=" + prenom + ", accesHautementConfidentiel="
+				+ accesHautementConfidentiel + ", validiteAcces=" + validiteAcces + ", motDePasseOuverture="
+				+ motDePasseOuverture + ", motDePasseImpression=" + motDePasseImpression + "]";
+	}
+
 }
