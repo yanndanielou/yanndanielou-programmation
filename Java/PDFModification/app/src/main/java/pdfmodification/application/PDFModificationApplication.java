@@ -108,8 +108,9 @@ public class PDFModificationApplication {
 
 	private static void deletePages(PDDocument originalDoc, List<Integer> allPageNumberToDelete) {
 		int numberOfPagesAlreadyDeleted = 0;
+		int offset = 1;
 		for (Integer pageNumberToDelete : allPageNumberToDelete) {
-			originalDoc.removePage(pageNumberToDelete - numberOfPagesAlreadyDeleted);
+			originalDoc.removePage(pageNumberToDelete - offset - numberOfPagesAlreadyDeleted);
 			numberOfPagesAlreadyDeleted++;
 		}
 	}

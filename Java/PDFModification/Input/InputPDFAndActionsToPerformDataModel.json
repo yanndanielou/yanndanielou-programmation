@@ -3,30 +3,57 @@
 		{
 			"inputPdfWithFileMaskForMultiplePDF": {
 				"folderPath": "Input",
-				"fileNameMask": "NExTEO-2A0000-02-0107-00 SSC3_2_AdminTools_GUMPS_SyReqSpec*.pdf"
+				"fileNameMask": "NExTEO-2A0000-02-0107-00*SSC3_2_AdminTools_GUMPS_SyReqSpec*.pdf"
 			},
 			"pageNumberToDelete": [
 				{
-					"pageNumber": 110,
-					"offset": 1
+					"pageNumber": 110
 				},
 				{
-					"pageNumber": 304,
-					"offset": 1
+					"pageNumber": 304
 				},
 				{
-					"pageNumber": 305,
-					"offset": 1
+					"pageNumber": 305
 				},
 				{
-					"pageNumber": 307,
-					"offset": 1
+					"pageNumber": 307
 				},
 				{
-					"pageNumber": 309,
-					"offset": 1
+					"pageNumber": 309
 				}
 			]
+		},
+		{
+			"inputPdfWithFileMaskForMultiplePDF": {
+				"folderPath": "Input",
+				"fileNameMask": "NExTEO-2A0000-02-0109-00 SSC3_2_AdminTools_GUMPS_SWArchSpec 02 00*.pdf"
+			},
+			"pageNumberToDelete": [
+				{
+					"pageNumber": 121
+				},
+				{
+					"pageNumber": 186
+				},
+				{
+					"pageNumber": 218
+				},
+				{
+					"pageNumber": 234
+				},
+				{
+					"pageNumber": 235
+				},
+				{
+					"pageNumber": 236
+				}
+			]
+		},
+		{
+			"inputPdfWithFileMaskForMultiplePDF": {
+				"folderPath": "Input",
+				"fileNameMask": "NExTEO-2A0000-02-0119-00 SSC3_2_AdminTools_GUMPS_HMISpec*.pdf"
+			}
 		}
 	],
 	"textLinesToDisplay": [
