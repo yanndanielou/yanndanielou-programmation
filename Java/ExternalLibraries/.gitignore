@@ -18,6 +18,9 @@ ats-distrib-4.1.0-20180928.101205-138-javadoc
 *.pdf
 pdfbox-app-3.0.1
 pdfbox_trunk/
+*.7z
+
+
 
 
 
