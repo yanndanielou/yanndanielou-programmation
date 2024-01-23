@@ -1,4 +1,4 @@
-package crypto;
+package crypto.aes;
 
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import crypto.aes.AESUtil;
 
-public class CryptoUtilsTest {
+public class AESUtilTest {
 
 	@Nested
 	public class AES {
