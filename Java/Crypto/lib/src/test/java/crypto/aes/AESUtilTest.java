@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import crypto.aes.AESUtil;
+import com.baeldung.aes.AESUtil;
 
 public class AESUtilTest {
 

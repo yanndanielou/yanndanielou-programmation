@@ -1,5 +1,4 @@
-package crypto.aes;
-// Initially com.baeldung.aes
+package com.baeldung.aes;
 
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;

@@ -14,6 +14,9 @@
 	
 	<classpathentry kind="lib" path="../ExternalLibraries/commons-io-2.15.0.jar"/>
 	
+	<classpathentry kind="lib" path="../ExternalLibraries/commons-lang3-3.13.0.jar" sourcepath="../ExternalLibraries/commons-lang3-3.13.0-sources.jar"/>
+
+	
 	<!-- Not working <classpathentry kind="lib" path="../ExternalLibraries/spire.xls.free-5.1.0.jar"/> java.lang.IllegalAccessError: class com.spire.xls.packages.sprRFA (in unnamed module @0x48eff760) cannot access class sun.security.action.GetPropertyAction (in module java.base) because module java.base does not export sun.security.action to unnamed module @0x48eff760
 	at com.spire.xls.packages.sprRFA.spr  (Unknown Source)
 	at com.spire.xls.packages.sprRFA.spr  (Unknown Source)
