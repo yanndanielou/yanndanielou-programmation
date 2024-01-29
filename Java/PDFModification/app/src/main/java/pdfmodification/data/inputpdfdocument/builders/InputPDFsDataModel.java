@@ -10,6 +10,7 @@ import common.builders.IntegersDataModel;
 public class InputPDFsDataModel {
 	private FileByMaskDataModel inputPdfWithFileMaskForMultiplePDF;
 	private List<PageNumberToDeleteDataModel> pageNumberToDelete;
+	private String outputFilePrefixToAdd;
 
 	public List<File> getInputPDFFiles() {
 		return inputPdfWithFileMaskForMultiplePDF.getResolvedFiles();
@@ -24,5 +25,9 @@ public class InputPDFsDataModel {
 			allIntegers.add(integersDataModel.getPageNumber());
 		}
 		return allIntegers;
+	}
+	
+	public String getOutputFilePrefixToAdd() {
+		return outputFilePrefixToAdd;
 	}
 }

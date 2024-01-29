@@ -29,7 +29,8 @@
 				"fileNameMask": "SSC3_2_Admintools_GUMPS_UserManual*.pdf"
 			},
 			"pageNumberToDelete": [
-			]
+			],
+			"outputFilePrefixToAdd": "NExTEO-2A0000-11-1021-06 "
 		},
 		{
 			"inputPdfWithFileMaskForMultiplePDF": {

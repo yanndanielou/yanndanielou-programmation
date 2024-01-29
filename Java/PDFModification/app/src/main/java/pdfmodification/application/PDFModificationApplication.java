@@ -18,11 +18,14 @@ import org.apache.pdfbox.pdmodel.encryption.StandardProtectionPolicy;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName;
 
+import com.google.common.base.Strings;
+
 import common.builders.ColorDataModel;
 import common.builders.PointDataModel;
 import common.filesanddirectories.DirectoryHelper;
 import common.filesanddirectories.FileHelper;
 import common.filesanddirectories.FileNameExtensionAndPathHelper;
+import common.string.utils.StringUtils;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformDataModel;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformModelBuilder;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFsDataModel;
@@ -98,7 +101,7 @@ public class PDFModificationApplication {
 					protectPDF(originalDoc, pdfAllowedUser);
 
 					LOGGER.info(() -> "Save output PDF");
-					saveOutputPDF(inputPDFFile, originalDoc, pdfAllowedUser);
+					saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
 
 					originalDoc.close();
 				}
@@ -156,15 +159,17 @@ public class PDFModificationApplication {
 
 	}
 
-	private static void saveOutputPDF(File inputPDFFile, PDDocument originalDoc, PDFAllowedUser pdfAllowedUser)
-			throws IOException {
+	private static void saveOutputPDF(InputPDFsDataModel inputPdf, File inputPDFFile, PDDocument originalDoc,
+			PDFAllowedUser pdfAllowedUser) throws IOException {
 
 		String fileNameWithoutExtension = FileNameExtensionAndPathHelper
 				.getFileNameWithoutExtension(inputPDFFile.getName());
 		String generatedPersonnalizedProtectedPDFFileNameWithExtension = fileNameWithoutExtension + " "
 				+ pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom()
 				+ PDFModificationHelpers.PDF_EXTENSION_WITH_POINT;
+
 		String generatedPersonnalizedProtectedPDFFullPath = PDFModificationHelpers.outputDirectoryName + "/"
+				+ Strings.nullToEmpty(inputPdf.getOutputFilePrefixToAdd())
 				+ generatedPersonnalizedProtectedPDFFileNameWithExtension;
 
 		FileHelper.removeFileIfExists(generatedPersonnalizedProtectedPDFFullPath);
