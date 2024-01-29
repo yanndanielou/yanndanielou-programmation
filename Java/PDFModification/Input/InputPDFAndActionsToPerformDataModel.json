@@ -26,6 +26,14 @@
 		{
 			"inputPdfWithFileMaskForMultiplePDF": {
 				"folderPath": "Input",
+				"fileNameMask": "SSC3_2_Admintools_GUMPS_UserManual*.pdf"
+			},
+			"pageNumberToDelete": [
+			]
+		},
+		{
+			"inputPdfWithFileMaskForMultiplePDF": {
+				"folderPath": "Input",
 				"fileNameMask": "NExTEO-2A0000-02-0109-00 SSC3_2_AdminTools_GUMPS_SWArchSpec 02 00*.pdf"
 			},
 			"pageNumberToDelete": [
