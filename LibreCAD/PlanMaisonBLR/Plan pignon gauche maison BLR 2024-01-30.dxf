@@ -311,7 +311,7 @@ $DIMUPT
   9
 $DIMDEC
  70
-    2
+    4
   9
 $DIMTDEC
  70
@@ -335,7 +335,7 @@ $DIMAUNIT
   9
 $DIMADEC
  70
-    0
+    2
   9
 $DIMALTRND
  40
@@ -805,6 +805,10 @@ $GRIDMODE
  70
     1
   9
+$SNAPSTYLE
+ 70
+    0
+  9
 $PLIMMIN
  10
 0
@@ -1111,9 +1115,9 @@ AcDbViewportTableRecord
  21
 1
  12
-478.0292510986328
+724.8648391760382
  22
-451.207160949707
+371.6381348550714
  13
 0
  23
@@ -1139,7 +1143,7 @@ AcDbViewportTableRecord
  37
 0
  40
-927.4482727050781
+1061.043922632094
  41
 1.740359897172236
  42
@@ -2385,7 +2389,7 @@ Standard
  70
     0
  40
-1
+2.5
  41
 2.5
  42
@@ -2437,7 +2441,7 @@ Standard
  77
     0
  78
-    1
+    8
  79
     0
 170
@@ -2475,7 +2479,7 @@ Standard
 277
     2
 278
-    0
+   44
 279
     0
 280
@@ -2497,7 +2501,7 @@ Standard
 289
     3
 340
-standard
+STANDARD
 341
 
 371
@@ -2997,30 +3001,6 @@ ByLayer
 100
 AcDbLine
  10
-810
- 20
-0
- 11
-810
- 21
-384
-  0
-LINE
-  5
-5C
-100
-AcDbEntity
-  8
-0
-  6
-ByLayer
- 62
-  256
-370
-   -1
-100
-AcDbLine
- 10
 394
  20
 0
@@ -3031,7 +3011,7 @@ AcDbLine
   0
 LINE
   5
-5D
+5C
 100
 AcDbEntity
   8
@@ -3055,7 +3035,7 @@ AcDbLine
   0
 LINE
   5
-5E
+5D
 100
 AcDbEntity
   8
@@ -3079,7 +3059,7 @@ AcDbLine
   0
 LINE
   5
-5F
+5E
 100
 AcDbEntity
   8
@@ -3096,6 +3076,32 @@ AcDbLine
 594
  20
 567
+ 11
+494
+ 21
+659
+  0
+LINE
+  5
+5F
+100
+AcDbEntity
+  8
+0
+  6
+DOTTINY
+ 62
+  253
+420
+10526884
+370
+   -1
+100
+AcDbLine
+ 10
+494
+ 20
+0
  11
 494
  21
@@ -3119,32 +3125,6 @@ DOTTINY
 100
 AcDbLine
  10
-494
- 20
-0
- 11
-494
- 21
-659
-  0
-LINE
-  5
-61
-100
-AcDbEntity
-  8
-0
-  6
-DOTTINY
- 62
-  253
-420
-10526884
-370
-   -1
-100
-AcDbLine
- 10
 594
  20
 0
@@ -3155,7 +3135,7 @@ AcDbLine
   0
 LINE
   5
-62
+61
 100
 AcDbEntity
   8
@@ -3179,7 +3159,7 @@ AcDbLine
   0
 LINE
   5
-63
+62
 100
 AcDbEntity
   8
@@ -3203,7 +3183,7 @@ AcDbLine
   0
 LINE
   5
-64
+63
 100
 AcDbEntity
   8
@@ -3224,6 +3204,150 @@ AcDbLine
 267
  21
 659
+  0
+LINE
+  5
+64
+100
+AcDbEntity
+  8
+0
+  6
+ByLayer
+ 62
+  256
+370
+   -1
+100
+AcDbLine
+ 10
+810
+ 20
+0
+ 11
+771
+ 21
+0
+  0
+LINE
+  5
+65
+100
+AcDbEntity
+  8
+0
+  6
+ByLayer
+ 62
+  256
+370
+   -1
+100
+AcDbLine
+ 10
+809.4352222865529
+ 20
+0
+ 11
+809.4352222865529
+ 21
+296
+  0
+LINE
+  5
+66
+100
+AcDbEntity
+  8
+0
+  6
+ByLayer
+ 62
+  256
+370
+   -1
+100
+AcDbLine
+ 10
+809.4352222865529
+ 20
+296
+ 11
+792.4352222865529
+ 21
+296
+  0
+LINE
+  5
+67
+100
+AcDbEntity
+  8
+0
+  6
+ByLayer
+ 62
+  256
+370
+   -1
+100
+AcDbLine
+ 10
+792.4352222865529
+ 20
+296
+ 11
+792.4352222865529
+ 21
+375
+  0
+LINE
+  5
+68
+100
+AcDbEntity
+  8
+0
+  6
+ByLayer
+ 62
+  256
+370
+   -1
+100
+AcDbLine
+ 10
+792.4352222865529
+ 20
+375
+ 11
+782.4352222865529
+ 21
+375
+  0
+LINE
+  5
+69
+100
+AcDbEntity
+  8
+0
+  6
+ByLayer
+ 62
+  256
+370
+   -1
+100
+AcDbLine
+ 10
+782.4352222865529
+ 20
+375
+ 11
+594
+ 21
+567
   0
 ENDSEC
   0
@@ -3257,7 +3381,7 @@ AcDbDictionary
   0
 PLOTSETTINGS
   5
-65
+6A
 100
 AcDbPlotSettings
   6
