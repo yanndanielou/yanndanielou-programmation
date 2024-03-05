@@ -13,7 +13,10 @@ pas_sauvegarde = 1
 sMT3Servers = list()
 #sMT3Servers.append(SMT3Server.SMT3Server(8081, "D_5_3_0", "A"))
 #sMT3Servers.append(SMT3Server.SMT3Server(8082, "D5_3_2", ""))
-sMT3Servers.append(SMT3Server.SMT3Server(8083, "D5_3_2_1",""))
+#sMT3Servers.append(SMT3Server.SMT3Server(8083, "D5_3_2_1",""))
+sMT3Servers.append(SMT3Server.SMT3Server(8084, "D5_3_3",""))
+sMT3Servers.append(SMT3Server.SMT3Server(8086, "D5_3_4",""))
+sMT3Servers.append(SMT3Server.SMT3Server(8087, "D5_3_4_P1",""))
 #sMT3Servers.append(SMT3Server.SMT3Server(8084, "D5_3_2_Beta2", "B"))
 #sMT3Servers.append(SMT3Server.SMT3Server(8081, "D_5_3_0", "C"))
 #sMT3Servers.append(SMT3Server.SMT3Server(8084, "D5_3_2_Beta3", "D"))
@@ -49,6 +52,9 @@ dwell_time_in_second = 30.0
 simulationsRequestsManager = SimulationsRequestsManager.SimulationsRequestsManager()
 simulationsRequestsManager.generateAllMissionElementaireCombinations( dwell_time_in_second, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_steps_in_second)
 #simulationsRequestsManager.default_step_in_second.append
+
+
+simulationsRequestsManager.simulationsNumbersToIgnore = simulationsRequestsManager.simulationsNumbersToIgnore + list(range(1,13900))
 
 simulationsNumberToKeep = list()
 simulationsNumberToKeep.append(751)
@@ -1334,4 +1340,4 @@ simulationsNumberToKeep.append(92106)
 simulationsNumberToKeep.append(92108)
 simulationsNumberToKeep.append(92109)
 
-simulationsRequestsManager.onlyKeepSimulationsNumber(simulationsNumberToKeep)
+#simulationsRequestsManager.onlyKeepSimulationsNumber(simulationsNumberToKeep)

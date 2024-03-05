@@ -45,6 +45,7 @@ class SimulationsRequestsManager:
         self.default_step_in_second = None
         self.defalut_dwell_time_in_second = None
         self.simulationsToBePerformed = list()
+        self.simulationsNumbersToIgnore = list()
 
 
     def generateAllMissionElementaireCombinations(self, dwell_time_in_second, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_steps_in_second):
