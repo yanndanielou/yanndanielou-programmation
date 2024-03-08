@@ -204,7 +204,7 @@ def SimulerSimpleRunSimulation(smt3Servers, stepInSecond, dwellTimeInSecond, ele
 
         if exception_in_post_request is not None:
             print(exception_in_post_request)
-            sMT3SimulationResult = SMT3SimulationResult(smt3Server, "", "", str(exception_in_post_request), "", elapsed_time_simulation_SMT3)
+            sMT3SimulationResult = SMT3SimulationResult(smt3Server, "!!Error!!", str(exception_in_post_request), str(exception_in_post_request), "", elapsed_time_simulation_SMT3)
 
         else:
             sMT3SimulationResult = decode_smt3_result(smt3Server, smt3Server.url, received_from_smt3, elapsed_time_simulation_SMT3)
