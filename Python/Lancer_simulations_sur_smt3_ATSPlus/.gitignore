@@ -1,6 +1,10 @@
 GenerateME-LoadGraphe-SimuSMT-808*
 *.m
-*.txt
+Output\*.txt
+output/*.txt
+SMT2*.txt
+Derniere*.txt
+Modific*.txt
 *.7z
 *.csv
 *.ver
