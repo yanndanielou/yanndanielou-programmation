@@ -156,12 +156,17 @@ def decode_smt3_result(smt3Server, url, received_from_smt3, elapsed_time_simulat
 
 
 #used for sure 
-def SimulerSimpleRunSimulation(smt3Servers, stepInSecond, dwellTimeInSecond, elementary_mission_name, modele_name):
+def SimulerSimpleRunSimulation(simulationToBePerformed, smt3Servers, stepInSecond, dwellTimeInSecond, elementary_mission_name, modele_name):
     #logging.info("Start calling SimulerSimpleRunSimulation")
 
-    travelTimesRequestTree = prepare_SMT3_Request(stepInSecond, dwellTimeInSecond, elementary_mission_name, modele_name)
-    #ET.dump(travelTimesRequestTree)
+    if simulationToBePerformed.fullXmlRequestText is not None:
+        travelTimesRequestTree = ET.fromstring(simulationToBePerformed.fullXmlRequestText)
+    else:
+        travelTimesRequestTree = prepare_SMT3_Request(stepInSecond, dwellTimeInSecond, elementary_mission_name, modele_name)
+
     travelTimesRequestTree_as_str = ET.tostring(travelTimesRequestTree, encoding='utf8', method='xml')
+
+    #ET.dump(travelTimesRequestTree)
     element = ET.XML(travelTimesRequestTree_as_str)
     ET.indent(element)
     
@@ -319,7 +324,7 @@ def ProduireSimplesRuns( smt3Servers, simulationsRequestsManager, now_as_string_
         else:
             if param.listNumerosSimulationsAEffectuer is None or nombre_simulations_smt3_effectuees in param.listNumerosSimulationsAEffectuer:
                 try:
-                    sMT3Simulation = SimulerSimpleRunSimulation(smt3Servers, step_in_second, dwellTimeInSecond, elementary_mission_name, modele_name)
+                    sMT3Simulation = SimulerSimpleRunSimulation(simulationToBePerformed, smt3Servers, step_in_second, dwellTimeInSecond, elementary_mission_name, modele_name)
 
 
                     elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
