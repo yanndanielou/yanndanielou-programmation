@@ -50,7 +50,7 @@ class SMT3SimulationRequest:
 
 
 class SMT3SimulationResult:
-    def __init__(self, smt3Server, received_from_smt3, xml_response_from_smt3_response_as_indented_text, error_text, totalTravelTimeInSecond_text, smt3_execution_time):
+    def __init__(self, smt3Server, received_from_smt3, xml_response_from_smt3_response_as_indented_text, error_text, totalTravelTimeInSecond_text, numberOfTravelTimeAndSpeedAtControlPointElements, smt3_execution_time):
         self.smt3Server = smt3Server
         self.received_from_smt3 = received_from_smt3
         self.xml_response_from_smt3_response_as_indented_text = xml_response_from_smt3_response_as_indented_text
@@ -58,6 +58,7 @@ class SMT3SimulationResult:
         self.error_text_in_one_line = error_text.replace("\n", "\\n")
         self.totalTravelTimeInSecond_text = totalTravelTimeInSecond_text
         self.smt3_execution_time = smt3_execution_time
+        self.numberOfTravelTimeAndSpeedAtControlPointElements = numberOfTravelTimeAndSpeedAtControlPointElements
 
 
 class SMT3Simulation:
@@ -123,14 +124,23 @@ def decode_smt3_result(smt3Server, url, received_from_smt3, elapsed_time_simulat
         totalTravelTimeInSecond_text = ""
         errorMessage_text = ""
 
+        numberOfTravelTimeAndSpeedAtControlPointElements = 0
+
         if received_from_smt3_as_tree_root is not None:
             travelTimes_element = received_from_smt3_as_tree_root.find('travelTimes')
         #get_totalTravelTimeInSecond = travelTimes_element.get("totalTravelTimeInSecond")
             if travelTimes_element is not None:
+
                 totalTravelTimeInSecond_element = travelTimes_element.find("totalTravelTimeInSecond")
                 if travelTimes_element is not None:
                     totalTravelTimeInSecond_text = totalTravelTimeInSecond_element.text
-        
+
+                travelTimesAndSpeedAtControlPoints_element = travelTimes_element.find("travelTimesAndSpeedAtControlPoints")
+                if travelTimesAndSpeedAtControlPoints_element is not None:
+                    travelTimeAndSpeedAtControlPoint_all_elements = travelTimesAndSpeedAtControlPoints_element.findall("travelTimeAndSpeedAtControlPoint")
+                    if travelTimeAndSpeedAtControlPoint_all_elements is not None:
+                        numberOfTravelTimeAndSpeedAtControlPointElements = len(travelTimeAndSpeedAtControlPoint_all_elements)
+
         errorMessage_Element = received_from_smt3_as_tree_root.find('errorMessage')
         if errorMessage_Element is not None:
             errorMessage_text = errorMessage_Element.text
@@ -141,7 +151,7 @@ def decode_smt3_result(smt3Server, url, received_from_smt3, elapsed_time_simulat
         
         xml_response_from_smt3_response_as_indented_text = ET.tostring(received_from_smt3_element, encoding='unicode')
 
-        sMT3SimulationResult = SMT3SimulationResult(smt3Server, received_from_smt3, xml_response_from_smt3_response_as_indented_text, errorMessage_text, totalTravelTimeInSecond_text, elapsed_time_simulation_SMT3)
+        sMT3SimulationResult = SMT3SimulationResult(smt3Server, received_from_smt3, xml_response_from_smt3_response_as_indented_text, errorMessage_text, totalTravelTimeInSecond_text, numberOfTravelTimeAndSpeedAtControlPointElements, elapsed_time_simulation_SMT3)
     
     if received_from_smt3.status_code != 200:
         LoggerConfig.printAndLogInfo("status_code:" + str(received_from_smt3.status_code))
@@ -209,7 +219,7 @@ def SimulerSimpleRunSimulation(simulationToBePerformed, smt3Servers, stepInSecon
 
         if exception_in_post_request is not None:
             print(exception_in_post_request)
-            sMT3SimulationResult = SMT3SimulationResult(smt3Server, "!!Error!!", str(exception_in_post_request), str(exception_in_post_request), "", elapsed_time_simulation_SMT3)
+            sMT3SimulationResult = SMT3SimulationResult(smt3Server, "!!Error!!", str(exception_in_post_request), str(exception_in_post_request), "", 0, elapsed_time_simulation_SMT3)
 
         else:
             sMT3SimulationResult = decode_smt3_result(smt3Server, smt3Server.url, received_from_smt3, elapsed_time_simulation_SMT3)
@@ -242,7 +252,7 @@ def saveSimulation(sMT3Simulation, result_csv_file, numero_mission_elementaire_c
         sMT3SimulationResult.smt3Server.input_output_dump_file.write(end_line_character_in_text_file)
         sMT3SimulationResult.smt3Server.input_output_dump_file.write("Received from SMT3 " + end_line_character_in_text_file)
 
-        result_csv_file.write(str(sMT3SimulationResult.smt3_execution_time) + csv_fields_separator + sMT3SimulationResult.totalTravelTimeInSecond_text + csv_fields_separator + sMT3SimulationResult.error_text_in_one_line + csv_fields_separator)
+        result_csv_file.write(str(sMT3SimulationResult.smt3_execution_time) + csv_fields_separator + sMT3SimulationResult.totalTravelTimeInSecond_text + csv_fields_separator + str(sMT3SimulationResult.numberOfTravelTimeAndSpeedAtControlPointElements) + csv_fields_separator + sMT3SimulationResult.error_text_in_one_line + csv_fields_separator)
 
     result_csv_file.write( end_line_character_in_text_file)
 
@@ -292,7 +302,7 @@ def ProduireSimplesRuns( smt3Servers, simulationsRequestsManager, now_as_string_
 
     result_csv_file.write("elementary_mission_name" + csv_fields_separator + "modele_name" + csv_fields_separator + "stepInSecond" + csv_fields_separator + "dwellTimeInSecond" + csv_fields_separator)
     for smt3Server in smt3Servers:
-        result_csv_file.write("sMT3SimulationResult." + smt3Server.description() + ".smt3_execution_time" + csv_fields_separator + "sMT3SimulationResult." + smt3Server.smt3Version + "_" + str(smt3Server.port) + ".totalTravelTimeInSecond_text" + csv_fields_separator + "sMT3SimulationResult." + smt3Server.smt3Version + "_" + str(smt3Server.port) + ".error_text" + csv_fields_separator)
+        result_csv_file.write("sMT3SimulationResult." + smt3Server.description() + ".smt3_execution_time" + csv_fields_separator + "sMT3SimulationResult." + smt3Server.description() + ".totalTravelTimeInSecond_text" + csv_fields_separator + "sMT3SimulationResult." + smt3Server.description() + ".numberOfTravelTimeAndSpeedAtControlPointElements" + csv_fields_separator + "sMT3SimulationResult." + smt3Server.description() + ".error_text" + csv_fields_separator)
 
     result_csv_file.write( end_line_character_in_text_file)
 
