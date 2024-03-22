@@ -31,6 +31,8 @@ import javax.crypto.NoSuchPaddingException;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junitpioneer.jupiter.cartesian.CartesianTest;
+import org.junitpioneer.jupiter.cartesian.CartesianTest.Values;
 
 public class CertificateBasedCryptoTest {
 
@@ -70,18 +72,18 @@ public class CertificateBasedCryptoTest {
 	@Nested
 	public class EncryptAndDecryptStringUsingRSAEncryption {
 
-		String cipherTransformations[] = { "RSA/ECB/PKCS1Padding", "AES/CBC/NoPadding", "AES/CBC/PKCS5Padding",
-				"AES/ECB/NoPadding", "AES/ECB/PKCS5Padding", "DES/CBC/NoPadding", "DES/CBC/PKCS5Padding",
-				"DES/ECB/NoPadding", "DES/ECB/PKCS5Padding", "DESede/CBC/NoPadding", "DESede/CBC/PKCS5Padding",
-				"DESede/ECB/NoPadding", "DESede/ECB/PKCS5Padding", "RSA/ECB/PKCS1Padding",
-				"RSA/ECB/OAEPWithSHA-1AndMGF1Padding", "RSA/ECB/OAEPWithSHA-256AndMGF1Padding" };
+		@CartesianTest
+		void signatureIsValid(
+				@Values(strings = { "RSA/ECB/PKCS1Padding", "AES/CBC/NoPadding", "AES/CBC/PKCS5Padding",
+						"AES/ECB/NoPadding", "AES/ECB/PKCS5Padding", "DES/CBC/NoPadding", "DES/CBC/PKCS5Padding",
+						"DES/ECB/NoPadding", "DES/ECB/PKCS5Padding", "DESede/CBC/NoPadding", "DESede/CBC/PKCS5Padding",
+						"DESede/ECB/NoPadding", "DESede/ECB/PKCS5Padding", "RSA/ECB/PKCS1Padding",
+						"RSA/ECB/OAEPWithSHA-1AndMGF1Padding", "RSA/ECB/OAEPWithSHA-256AndMGF1Padding" }) String cipherTransformation)
+				throws KeyStoreException, NoSuchAlgorithmException, CertificateException, FileNotFoundException,
+				IOException, NoSuchProviderException, NoSuchPaddingException, UnrecoverableKeyException,
+				InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
 
-		@Test
-		void signatureIsValid() throws KeyStoreException, NoSuchAlgorithmException, CertificateException,
-				FileNotFoundException, IOException, NoSuchProviderException, NoSuchPaddingException,
-				UnrecoverableKeyException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
-
-			//Security.addProvider(new BouncyCastleProvider());
+			// Security.addProvider(new BouncyCastleProvider());
 			/*
 			 * // Load keystore and truststore KeyStore keyStore =
 			 * KeyStore.getInstance("JKS"); keyStore.load(new
@@ -107,27 +109,25 @@ public class CertificateBasedCryptoTest {
 
 			// Encrypt data using public key
 
-			for (String cipherTransformation : cipherTransformations) {
-				System.out.println("cipherTransformation:" + cipherTransformation);
-				// Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "BC");
-				Cipher cipher = Cipher.getInstance(cipherTransformation);
-				cipher.init(Cipher.ENCRYPT_MODE, publicKey);
-				String originalStringToEncrypt = "Hello, world!";
-				byte[] encryptedData = cipher.doFinal(originalStringToEncrypt.getBytes());
-				String encryptedDataAsString = new String(encryptedData);
-				assertNotEquals(originalStringToEncrypt, encryptedDataAsString);
+			System.out.println("cipherTransformation:" + cipherTransformation);
+			// Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "BC");
+			Cipher cipher = Cipher.getInstance(cipherTransformation);
+			cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+			String originalStringToEncrypt = "Hello, world!";
+			byte[] encryptedData = cipher.doFinal(originalStringToEncrypt.getBytes());
+			String encryptedDataAsString = new String(encryptedData);
+			assertNotEquals(originalStringToEncrypt, encryptedDataAsString);
 
-				// Decrypt data using private key
-				cipher.init(Cipher.DECRYPT_MODE, privateKey);
-				byte[] decryptedDataAsByteArray = cipher.doFinal(encryptedData);
-				String decryptedString = new String(decryptedDataAsByteArray);
+			// Decrypt data using private key
+			cipher.init(Cipher.DECRYPT_MODE, privateKey);
+			byte[] decryptedDataAsByteArray = cipher.doFinal(encryptedData);
+			String decryptedString = new String(decryptedDataAsByteArray);
 
-				System.out.println("Original string: " + originalStringToEncrypt);
-				System.out.println("Encrypted data as String: " + encryptedDataAsString);
-				System.out.println("Decrypted string: " + decryptedString);
-				assertEquals(decryptedString, originalStringToEncrypt);
+			System.out.println("Original string: " + originalStringToEncrypt);
+			System.out.println("Encrypted data as String: " + encryptedDataAsString);
+			System.out.println("Decrypted string: " + decryptedString);
+			assertEquals(decryptedString, originalStringToEncrypt);
 
-			}
 		}
 	}
 }
