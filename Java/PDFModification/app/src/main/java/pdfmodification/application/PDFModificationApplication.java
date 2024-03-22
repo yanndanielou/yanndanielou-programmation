@@ -29,6 +29,7 @@ import common.string.utils.StringUtils;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformDataModel;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformModelBuilder;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFsDataModel;
+import pdfmodification.data.inputpdfdocument.builders.ListOfPDFBatchesDataModel;
 import pdfmodification.data.inputpdfdocument.builders.PDFFontDataModel;
 import pdfmodification.data.inputpdfdocument.builders.TextLineToDisplayDataModel;
 import pdfmodification.data.users.PDFAllowedUser;
@@ -55,10 +56,10 @@ public class PDFModificationApplication {
 
 		InputPDFAndActionsToPerformModelBuilder inputPDFAndActionsToPerformModelBuilder = new InputPDFAndActionsToPerformModelBuilder(
 				"Input/InputPDFAndActionsToPerformDataModel.json");
-		InputPDFAndActionsToPerformDataModel inputPDFAndActionsToPerformDataModel = inputPDFAndActionsToPerformModelBuilder
-				.getInputPDFAndActionsToPerformDataModel();
+		ListOfPDFBatchesDataModel listOfPDFBatchesDataModel = inputPDFAndActionsToPerformModelBuilder
+				.getListOfPDFBatchesDataModel();
 
-		addWatermarkAndEncryptButWatermarkIsJustTextAdded(inputPDFAndActionsToPerformDataModel, pdfAllowedUsers);
+		addWatermarkAndEncryptButWatermarkIsJustTextAdded(listOfPDFBatchesDataModel, pdfAllowedUsers);
 
 		LOGGER.info(() -> "Application end");
 
@@ -72,38 +73,41 @@ public class PDFModificationApplication {
 	 * @throws IOException
 	 */
 	private static void addWatermarkAndEncryptButWatermarkIsJustTextAdded(
-			InputPDFAndActionsToPerformDataModel inputPDFAndActionsToPerformDataModel,
-			List<PDFAllowedUser> pdfAllowedUsers) throws IOException {
+			ListOfPDFBatchesDataModel listOfPDFBatchesDataModel, List<PDFAllowedUser> pdfAllowedUsers)
+			throws IOException {
 
-		for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
-			LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
+		for (InputPDFAndActionsToPerformDataModel pdfBatch : listOfPDFBatchesDataModel.getPdfBatchs()) {
 
-			for (InputPDFsDataModel inputPdf : inputPDFAndActionsToPerformDataModel.getInputPdfs()) {
-				List<File> inputPDFFiles = inputPdf.getInputPDFFiles();
+			for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
+				LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
 
-				for (File inputPDFFile : inputPDFFiles) {
+				for (InputPDFsDataModel inputPdf : pdfBatch.getInputPdfs()) {
+					List<File> inputPDFFiles = inputPdf.getInputPDFFiles();
 
-					LOGGER.info(() -> "Handle input PDF file:" + inputPDFFile.getAbsolutePath());
+					for (File inputPDFFile : inputPDFFiles) {
 
-					LOGGER.info(() -> "Load PDF");
-					PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
+						LOGGER.info(() -> "Handle input PDF file:" + inputPDFFile.getAbsolutePath());
 
-					List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
-					LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
-					deletePages(originalDoc, allPageNumberToDelete);
+						LOGGER.info(() -> "Load PDF");
+						PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
 
-					LOGGER.info(() -> "Add watermark on each page");
-					addWatermarkOnEachPage(originalDoc, inputPDFAndActionsToPerformDataModel, pdfAllowedUser);
+						List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
+						LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
+						deletePages(originalDoc, allPageNumberToDelete);
 
-					DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
+						LOGGER.info(() -> "Add watermark on each page");
+						addWatermarkOnEachPage(originalDoc, pdfBatch, pdfAllowedUser);
 
-					LOGGER.info(() -> "Protect PDF");
-					protectPDF(originalDoc, pdfAllowedUser);
+						DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
 
-					LOGGER.info(() -> "Save output PDF");
-					saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
+						LOGGER.info(() -> "Protect PDF");
+						protectPDF(originalDoc, pdfAllowedUser);
 
-					originalDoc.close();
+						LOGGER.info(() -> "Save output PDF");
+						saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
+
+						originalDoc.close();
+					}
 				}
 			}
 		}
@@ -162,14 +166,17 @@ public class PDFModificationApplication {
 	private static void saveOutputPDF(InputPDFsDataModel inputPdf, File inputPDFFile, PDDocument originalDoc,
 			PDFAllowedUser pdfAllowedUser) throws IOException {
 
-		String fileNameWithoutExtension = FileNameExtensionAndPathHelper
-				.getFileNameWithoutExtension(inputPDFFile.getName());
+		String fileNameWithoutExtension = inputPdf.getGenericOutputFileName();
+		if (fileNameWithoutExtension == null) {
+			fileNameWithoutExtension = Strings.nullToEmpty(inputPdf.getOutputFilePrefixToAdd())
+					+ FileNameExtensionAndPathHelper.getFileNameWithoutExtension(inputPDFFile.getName());
+		}
+
 		String generatedPersonnalizedProtectedPDFFileNameWithExtension = fileNameWithoutExtension + " "
 				+ pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom()
 				+ PDFModificationHelpers.PDF_EXTENSION_WITH_POINT;
 
 		String generatedPersonnalizedProtectedPDFFullPath = PDFModificationHelpers.outputDirectoryName + "/"
-				+ Strings.nullToEmpty(inputPdf.getOutputFilePrefixToAdd())
 				+ generatedPersonnalizedProtectedPDFFileNameWithExtension;
 
 		FileHelper.removeFileIfExists(generatedPersonnalizedProtectedPDFFullPath);

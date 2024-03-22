@@ -9,11 +9,7 @@ import com.google.gson.Gson;
 public class InputPDFAndActionsToPerformModelBuilder {
 	private Gson gson = new Gson();
 
-	private InputPDFAndActionsToPerformDataModel inputPDFAndActionsToPerformDataModel;
-
-	public InputPDFAndActionsToPerformDataModel getInputPDFAndActionsToPerformDataModel() {
-		return inputPDFAndActionsToPerformDataModel;
-	}
+	private ListOfPDFBatchesDataModel listOfPDFBatchesDataModel;
 
 	public InputPDFAndActionsToPerformModelBuilder(String jsonFilePath) {
 		BufferedReader br = null;
@@ -23,7 +19,11 @@ public class InputPDFAndActionsToPerformModelBuilder {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		inputPDFAndActionsToPerformDataModel = gson.fromJson(br, InputPDFAndActionsToPerformDataModel.class);
+		listOfPDFBatchesDataModel = gson.fromJson(br, ListOfPDFBatchesDataModel.class);
+	}
+
+	public ListOfPDFBatchesDataModel getListOfPDFBatchesDataModel() {
+		return listOfPDFBatchesDataModel;
 	}
 
 }

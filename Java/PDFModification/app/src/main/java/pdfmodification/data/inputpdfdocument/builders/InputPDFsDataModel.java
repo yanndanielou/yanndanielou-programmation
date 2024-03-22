@@ -11,6 +11,7 @@ public class InputPDFsDataModel {
 	private FileByMaskDataModel inputPdfWithFileMaskForMultiplePDF;
 	private List<PageNumberToDeleteDataModel> pageNumberToDelete;
 	private String outputFilePrefixToAdd;
+	private String genericOutputFileName;
 
 	public List<File> getInputPDFFiles() {
 		return inputPdfWithFileMaskForMultiplePDF.getResolvedFiles();
@@ -26,8 +27,12 @@ public class InputPDFsDataModel {
 		}
 		return allIntegers;
 	}
-	
+
 	public String getOutputFilePrefixToAdd() {
 		return outputFilePrefixToAdd;
+	}
+
+	public String getGenericOutputFileName() {
+		return genericOutputFileName;
 	}
 }

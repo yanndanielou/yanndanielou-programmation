@@ -1,151 +1,215 @@
 {
-	"inputPdfs": [
+	"pdfBatchs": [
 		{
-			"inputPdfWithFileMaskForMultiplePDF": {
-				"folderPath": "Input",
-				"fileNameMask": "NExTEO-2A0000-02-0107-00*SSC3_2_AdminTools_GUMPS_SyReqSpec*.pdf"
-			},
-			"pageNumberToDelete": [
+			"label": "Gumps pre denali 0 ",
+			"inputPdfs": [
 				{
-					"pageNumber": 110
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "NExTEO-2A0000-02-0107-00*SSC3_2_AdminTools_GUMPS_SyReqSpec*.pdf"
+					},
+					"pageNumberToDelete": [
+						{
+							"pageNumber": 110
+						},
+						{
+							"pageNumber": 304
+						},
+						{
+							"pageNumber": 305
+						},
+						{
+							"pageNumber": 307
+						},
+						{
+							"pageNumber": 309
+						}
+					]
 				},
 				{
-					"pageNumber": 304
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "SSC3_2_Admintools_GUMPS_UserManual*.pdf"
+					},
+					"pageNumberToDelete": [
+					],
+					"outputFilePrefixToAdd": "NExTEO-2A0000-11-1021-06 "
 				},
 				{
-					"pageNumber": 305
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "NExTEO-2A0000-02-0109-00 SSC3_2_AdminTools_GUMPS_SWArchSpec 02 00*.pdf"
+					},
+					"pageNumberToDelete": [
+						{
+							"pageNumber": 121
+						},
+						{
+							"pageNumber": 186
+						},
+						{
+							"pageNumber": 218
+						},
+						{
+							"pageNumber": 234
+						},
+						{
+							"pageNumber": 235
+						},
+						{
+							"pageNumber": 236
+						}
+					]
 				},
 				{
-					"pageNumber": 307
-				},
-				{
-					"pageNumber": 309
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "NExTEO-2A0000-02-0119-00 SSC3_2_AdminTools_GUMPS_HMISpec*.pdf"
+					}
 				}
-			]
-		},
-		{
-			"inputPdfWithFileMaskForMultiplePDF": {
-				"folderPath": "Input",
-				"fileNameMask": "SSC3_2_Admintools_GUMPS_UserManual*.pdf"
-			},
-			"pageNumberToDelete": [
 			],
-			"outputFilePrefixToAdd": "NExTEO-2A0000-11-1021-06 "
-		},
-		{
-			"inputPdfWithFileMaskForMultiplePDF": {
-				"folderPath": "Input",
-				"fileNameMask": "NExTEO-2A0000-02-0109-00 SSC3_2_AdminTools_GUMPS_SWArchSpec 02 00*.pdf"
-			},
-			"pageNumberToDelete": [
+			"textLinesToDisplay": [
 				{
-					"pageNumber": 121
+					"font": {
+						"fontName__": "Standard14Fonts.FontName.HELVETICA",
+						"fontName": "HELVETICA",
+						"fontSize": 30
+					},
+					"nonStrokingColor": {
+						"colorName": "gray"
+					},
+					"newLineAtOffset": {
+						"x": 59,
+						"y": 336
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Confidentiel - Propriété Siemens"
 				},
 				{
-					"pageNumber": 186
+					"font": {
+						"fontName__": "Standard14Fonts.FontName.HELVETICA",
+						"fontName": "HELVETICA",
+						"fontSize": 20
+					},
+					"nonStrokingColor": {
+						"colorName": "lightGray"
+					},
+					"newLineAtOffset": {
+						"x": 0,
+						"y": -30
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Draft - incomplet et non final"
 				},
 				{
-					"pageNumber": 218
+					"newLineAtOffset": {
+						"x": 0,
+						"y": -30
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Pour premier aperçu du produit Gumps par SNCF"
 				},
 				{
-					"pageNumber": 234
+					"font": {
+						"fontName__": "Standard14Fonts.FontName.HELVETICA",
+						"fontName": "HELVETICA",
+						"fontSize": 15
+					},
+					"newLineAtOffset": {
+						"x": 0,
+						"y": -30
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Siemens se réserve le droit d'apporter toute modification dans les versions ultérieures"
 				},
 				{
-					"pageNumber": 235
+					"newLineAtOffset": {
+						"x": 0,
+						"y": -25
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Copie réservée à"
 				},
 				{
-					"pageNumber": 236
+					"newLineAtOffset": {
+						"x": 0,
+						"y": -15
+					},
+					"textType": "FIRST_NAME_SPACE_AND_LAST_NAME"
+				},
+				{
+					"font": {
+						"fontName__": "Standard14Fonts.FontName.HELVETICA",
+						"fontName": "HELVETICA",
+						"fontSize": 10
+					},
+					"newLineAtOffset": {
+						"x": 0,
+						"y": -10
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Ne pas diffuser"
 				}
 			]
 		},
 		{
-			"inputPdfWithFileMaskForMultiplePDF": {
-				"folderPath": "Input",
-				"fileNameMask": "NExTEO-2A0000-02-0119-00 SSC3_2_AdminTools_GUMPS_HMISpec*.pdf"
-			}
-		}
-	],
-	"textLinesToDisplay": [
-		{
-			"font": {
-				"fontName__": "Standard14Fonts.FontName.HELVETICA",
-				"fontName": "HELVETICA",
-				"fontSize": 30
-			},
-			"nonStrokingColor": {
-				"colorName": "gray"
-			},
-			"newLineAtOffset": {
-				"x": 59,
-				"y": 336
-			},
-			"textType": "FREE_TEXT",
-			"freeText": "Confidentiel - Propriété Siemens"
-		},
-		{
-			"font": {
-				"fontName__": "Standard14Fonts.FontName.HELVETICA",
-				"fontName": "HELVETICA",
-				"fontSize": 20
-			},
-			"nonStrokingColor": {
-				"colorName": "lightGray"
-			},
-			"newLineAtOffset": {
-				"x": 0,
-				"y": -30
-			},
-			"textType": "FREE_TEXT",
-			"freeText": "Draft - incomplet et non final"
-		},
-		{
-			"newLineAtOffset": {
-				"x": 0,
-				"y": -30
-			},
-			"textType": "FREE_TEXT",
-			"freeText": "Pour premier aperçu du produit Gumps par SNCF"
-		},
-		{
-			"font": {
-				"fontName__": "Standard14Fonts.FontName.HELVETICA",
-				"fontName": "HELVETICA",
-				"fontSize": 15
-			},
-			"newLineAtOffset": {
-				"x": 0,
-				"y": -30
-			},
-			"textType": "FREE_TEXT",
-			"freeText": "Siemens se réserve le droit d'apporter toute modification dans les versions ultérieures"
-		},
-		{
-			"newLineAtOffset": {
-				"x": 0,
-				"y": -25
-			},
-			"textType": "FREE_TEXT",
-			"freeText": "Copie réservée à"
-		},
-		{
-			"newLineAtOffset": {
-				"x": 0,
-				"y": -15
-			},
-			"textType": "FIRST_NAME_SPACE_AND_LAST_NAME"
-		},
-		{
-			"font": {
-				"fontName__": "Standard14Fonts.FontName.HELVETICA",
-				"fontName": "HELVETICA",
-				"fontSize": 10
-			},
-			"newLineAtOffset": {
-				"x": 0,
-				"y": -10
-			},
-			"textType": "FREE_TEXT",
-			"freeText": "Ne pas diffuser"
+			"label": "Documentation ATC pour 2nd regard",
+			"date": "2024-03-22",
+			"inputPdfs": [
+				{
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_SFE_PAS_V13_00_8.0 Rev_Valid_V3F3.pdf"
+					},
+					"genericOutputFileName": "NExTEO-S-251000-02-0107-03 Spécification fonctionnelle du PAS V13-00"
+				}
+			],
+			"textLinesToDisplay": [
+				{
+					"font": {
+						"fontName__": "Standard14Fonts.FontName.HELVETICA",
+						"fontName": "HELVETICA",
+						"fontSize": 30
+					},
+					"nonStrokingColor": {
+						"colorName": "gray"
+					},
+					"newLineAtOffset": {
+						"x": 59,
+						"y": 336
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Confidentiel - Propriété Siemens"
+				},
+				{
+					"newLineAtOffset": {
+						"x": 0,
+						"y": -25
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Copie réservée à"
+				},
+				{
+					"newLineAtOffset": {
+						"x": 0,
+						"y": -15
+					},
+					"textType": "FIRST_NAME_SPACE_AND_LAST_NAME"
+				},
+				{
+					"font": {
+						"fontName__": "Standard14Fonts.FontName.HELVETICA",
+						"fontName": "HELVETICA",
+						"fontSize": 10
+					},
+					"newLineAtOffset": {
+						"x": 0,
+						"y": -10
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Ne pas diffuser"
+				}
+			]
 		}
 	]
 }
