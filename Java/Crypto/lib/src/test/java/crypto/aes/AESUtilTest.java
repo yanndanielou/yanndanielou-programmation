@@ -30,8 +30,8 @@ public class AESUtilTest {
 			IvParameterSpec ivParameterSpec = AESUtil.generateIv();
 			String algorithm = "AES/CBC/PKCS5Padding";
 			String cipherText = AESUtil.encrypt(algorithm, input, key, ivParameterSpec);
-			String plainText = AESUtil.decrypt(algorithm, cipherText, key, ivParameterSpec);
-			Assertions.assertEquals(input, plainText);
+			String decryptedPlainText = AESUtil.decrypt(algorithm, cipherText, key, ivParameterSpec);
+			Assertions.assertEquals(input, decryptedPlainText);
 		}
 	}
 
