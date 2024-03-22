@@ -48,6 +48,18 @@ class SimulationsRequestsManager:
         self.simulationsNumbersToIgnore = list()
 
 
+    def createSimulationsToBePerformedFromTextFileContainingAllFullXMLRequest(self, simulationsToBePerformedFullXMLRequestsFileName):
+        LoggerConfig.printAndLogInfo("createSimulationsToBePerformedFromTextFileContainingAllFullXMLRequest begin")
+
+        simulationsToBePerformedFullXMLRequestsLines = open_text_file_and_return_lines(simulationsToBePerformedFullXMLRequestsFileName)
+
+        for simulationsToBePerformedFullXMLRequestsLine in simulationsToBePerformedFullXMLRequestsLines:
+                simulationToBePerformed = SimulationToBePerformed("None","None", "None","None", simulationsToBePerformedFullXMLRequestsLine)
+                self.simulationsToBePerformed.append(simulationToBePerformed)
+
+        LoggerConfig.printAndLogInfo("createSimulationsToBePerformedFromTextFileContainingAllFullXMLRequest end")
+
+
     def generateAllMissionElementaireCombinations(self, dwell_time_in_second, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_steps_in_second):
         LoggerConfig.printAndLogInfo("generateAllMissionElementaireCombinations begin")
 
@@ -76,11 +88,12 @@ class SimulationsRequestsManager:
 
 
 class SimulationToBePerformed:
-    def __init__(self, elementary_mission_name, modele_name, step_in_second, dwellTimeInSecond):
+    def __init__(self, elementary_mission_name, modele_name, step_in_second, dwellTimeInSecond, fullXmlRequestText=None):
         self.elementary_mission_name = elementary_mission_name
         self.modele_name = modele_name
         self.step_in_second = step_in_second
         self.dwellTimeInSecond = dwellTimeInSecond
+        self.fullXmlRequestText = fullXmlRequestText
 
 
 def open_text_file_and_return_lines(input_file_name):  
