@@ -162,6 +162,27 @@
 						"fileNameMask": "TCR3_SFE_PAS_V13_00_8.0 Rev_Valid_V3F3.pdf"
 					},
 					"genericOutputFileName": "NExTEO-S-251000-02-0107-03 Spécification fonctionnelle du PAS V13-00"
+				},
+				{
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_SFE_PAL_V09_00_8.0 Rev_Valid_V3F3.pdf"
+					},
+					"genericOutputFileName": "NExTEO-S-252200-02-0107-00 Spécification fonctionnelle du PAL V09-00"
+				},
+				{
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_SFE_MES_V09_00_8.0 Rev_Valid_V3F3.pdf"
+					},
+					"genericOutputFileName": "NExTEO-S-252300-02-0107-00 Spécification fonctionnelle du MES V09-00"
+				},
+				{
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_SFE_PAE_V14_0_8.0 Rev_Valid_V3F3.pdf"
+					},
+					"genericOutputFileName": "NExTEO-B-251000-02-0107-00 Spécification fonctionnelle du PAE V14-00"
 				}
 			],
 			"textLinesToDisplay": [
@@ -184,7 +205,7 @@
 				{
 					"newLineAtOffset": {
 						"x": 0,
-						"y": -25
+						"y": -30
 					},
 					"textType": "FREE_TEXT",
 					"freeText": "Copie réservée à"
@@ -192,7 +213,7 @@
 				{
 					"newLineAtOffset": {
 						"x": 0,
-						"y": -15
+						"y": -30
 					},
 					"textType": "FIRST_NAME_SPACE_AND_LAST_NAME"
 				},
