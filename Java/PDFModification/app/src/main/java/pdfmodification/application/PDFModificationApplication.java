@@ -78,15 +78,35 @@ public class PDFModificationApplication {
 
 		for (InputPDFAndActionsToPerformDataModel pdfBatch : listOfPDFBatchesDataModel.getPdfBatchs()) {
 
-			for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
-				LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
+			for (InputPDFsDataModel inputPdf : pdfBatch.getInputPdfs()) {
+				List<File> inputPDFFiles = inputPdf.getInputPDFFiles();
 
-				for (InputPDFsDataModel inputPdf : pdfBatch.getInputPdfs()) {
-					List<File> inputPDFFiles = inputPdf.getInputPDFFiles();
+				for (File inputPDFFile : inputPDFFiles) {
 
-					for (File inputPDFFile : inputPDFFiles) {
+					LOGGER.info(() -> "Handle input PDF file:" + inputPDFFile.getAbsolutePath());
 
-						LOGGER.info(() -> "Handle input PDF file:" + inputPDFFile.getAbsolutePath());
+					{
+						LOGGER.info(() -> "Load PDF");
+						PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
+
+						List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
+						LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
+						deletePages(originalDoc, allPageNumberToDelete);
+
+						LOGGER.info(() -> "Add watermark on each page");
+						addWatermarkOnEachPage(originalDoc, pdfBatch, new PDFAllowedUser());
+
+						DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
+
+						LOGGER.info(() -> "Save output PDF");
+						saveOutputPDF(inputPdf, inputPDFFile, originalDoc, new PDFAllowedUser());
+
+						originalDoc.close();
+					}
+
+					for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
+						LOGGER.info(
+								() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
 
 						LOGGER.info(() -> "Load PDF");
 						PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
