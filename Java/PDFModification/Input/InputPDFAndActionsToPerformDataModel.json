@@ -183,6 +183,20 @@
 						"fileNameMask": "TCR3_SFE_PAE_V14_0_8.0 Rev_Valid_V3F3.pdf"
 					},
 					"genericOutputFileName": "NExTEO-B-251000-02-0107-00 Spécification fonctionnelle du PAE V14-00"
+				},
+				{
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_DDIP_B_RL3F3-a_Ed_7_0.pdf"
+					},
+					"genericOutputFileName": "NExTEO-B-251100-04-0314-00 Document de Définition des Invariants et des paramètres Bord (Partie produit TGMT CBTC V3) V07-00"
+				},
+				{
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_DDIP_S_ed7.7_RL3F2.1-a.pdf"
+					},
+					"genericOutputFileName": "NExTEO-B-251100-04-0314-00 Document de Définition des Invariants et des paramètres Sol V07-07"
 				}
 			],
 			"textLinesToDisplay": [
