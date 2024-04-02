@@ -196,7 +196,28 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_DDIP_S_ed7.7_RL3F2.1-a.pdf"
 					},
-					"genericOutputFileName": "NExTEO-B-251100-04-0314-00 Document de Définition des Invariants et des paramètres Sol V07-07"
+					"genericOutputFileName": "NExTEO-252000-04-0314-01 Document de Définition des Invariants et des paramètres Sol (Partie produit TGMT CBTC V3) V07-07"
+				},
+				{
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_DSL_PAE_AS_RL3F3a_V6_0.pdf"
+					},
+					"genericOutputFileName": "NExTEO-B-251000-04-0315-03 Document de spécification du logiciel PAE_AS (Partie produit TGMT CBTC V3) V06-00"
+				},
+				{
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_SPS_V11_00_BL_3.0_Rev_Valid V3F3.pdf"
+					},
+					"genericOutputFileName": "NExTEO-200000-02-0116-07 Spécification des paramètres système (Partie produit TGMT CBTC V3) V11-00"
+				},
+				{
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "SDC_V3F3_ed1.0.pdf"
+					},
+					"genericOutputFileName": "NExTEO-200000-02-0116-06 Spécification des données de configuration système CBTC (Partie produit TGMT CBTC V3) V04-00"
 				}
 			],
 			"textLinesToDisplay": [
