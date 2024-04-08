@@ -1,7 +1,5 @@
 package pdfmodification.data.inputpdfdocument.builders;
 
-import java.awt.Color;
-
 import common.builders.ColorDataModel;
 import common.builders.PointDataModel;
 import pdfmodification.data.TextToDisplayType;

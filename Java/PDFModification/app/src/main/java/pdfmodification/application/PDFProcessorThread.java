@@ -8,27 +8,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.PDPageContentStream.AppendMode;
-import org.apache.pdfbox.pdmodel.encryption.AccessPermission;
-import org.apache.pdfbox.pdmodel.encryption.StandardProtectionPolicy;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName;
 
-import com.google.common.base.Strings;
-
-import common.builders.ColorDataModel;
-import common.builders.PointDataModel;
-import common.duration.CodeDurationCounter;
-import common.duration.FormatterUtils;
 import common.filesanddirectories.DirectoryHelper;
-import common.filesanddirectories.FileHelper;
-import common.filesanddirectories.FileNameExtensionAndPathHelper;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformDataModel;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFsDataModel;
-import pdfmodification.data.inputpdfdocument.builders.PDFFontDataModel;
-import pdfmodification.data.inputpdfdocument.builders.TextLineToDisplayDataModel;
 import pdfmodification.data.users.PDFAllowedUser;
 import pdfmodification.helpers.PDFModificationHelpers;
 

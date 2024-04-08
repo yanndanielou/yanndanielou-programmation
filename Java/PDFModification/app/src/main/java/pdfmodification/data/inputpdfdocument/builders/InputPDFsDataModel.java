@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.builders.FileByMaskDataModel;
-import common.builders.IntegersDataModel;
 
 public class InputPDFsDataModel {
 	private FileByMaskDataModel inputPdfWithFileMaskForMultiplePDF;

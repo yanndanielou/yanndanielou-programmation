@@ -104,10 +104,10 @@ public class PDFProcessorGenericThread extends Thread {
 		String generatedPersonnalizedProtectedPDFFullPath = PDFModificationHelpers.outputDirectoryName + "/"
 				+ generatedPersonnalizedProtectedPDFFileNameWithExtension;
 
-		FileHelper.removeFileIfExists(generatedPersonnalizedProtectedPDFFullPath);
+		boolean fileRemoved = FileHelper.removeFileIfExists(generatedPersonnalizedProtectedPDFFullPath);
 
 		LOGGER.info(() -> "Save generated protected PDF:" + generatedPersonnalizedProtectedPDFFullPath + " for "
-				+ pdfAllowedUser);
+				+ pdfAllowedUser + ". Previous file removed:" + fileRemoved);
 
 		CodeDurationCounter saveTimeDurationCounter = new CodeDurationCounter();
 		originalDoc.save(generatedPersonnalizedProtectedPDFFullPath);

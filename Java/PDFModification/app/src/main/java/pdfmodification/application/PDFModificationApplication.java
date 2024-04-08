@@ -2,7 +2,6 @@ package pdfmodification.application;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +27,6 @@ import common.duration.FormatterUtils;
 import common.filesanddirectories.DirectoryHelper;
 import common.filesanddirectories.FileHelper;
 import common.filesanddirectories.FileNameExtensionAndPathHelper;
-import common.numbers.utils.NumberUtils;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformDataModel;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformModelBuilder;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFsDataModel;
@@ -47,7 +45,8 @@ import pdfmodification.helpers.PDFModificationHelpers;
 public class PDFModificationApplication {
 	protected static final Logger LOGGER = LogManager.getLogger(PDFModificationApplication.class);
 
-	public static final MultiThreadStrategy MULTITHREAD_STRATEGY = MultiThreadStrategy.ONE_THREAD_PER_INPUT_PDF;
+	//public static final MultiThreadStrategy MULTITHREAD_STRATEGY = MultiThreadStrategy.ONE_THREAD_PER_INPUT_PDF;
+	public static final MultiThreadStrategy MULTITHREAD_STRATEGY = MultiThreadStrategy.MONOTHREAD;
 
 	public static void main(String[] args) throws Exception {
 
@@ -108,7 +107,7 @@ public class PDFModificationApplication {
 
 				for (File inputPDFFile : inputPDFFiles) {
 					pdfProcessorThreads.addAll(handlePdf(pdfAllowedUsers, pdfBatch, inputPdf, inputPDFFile));
-					pdfProcessorThreads.add(new PDFProcessorThread(pdfAllowedUsers, pdfBatch, inputPdf, inputPDFFile));
+					//pdfProcessorThreads.add(new PDFProcessorThread(pdfAllowedUsers, pdfBatch, inputPdf, inputPDFFile));
 
 				}
 			}
@@ -124,7 +123,7 @@ public class PDFModificationApplication {
 
 		List<Thread> threads = new ArrayList<>();
 
-		if (MULTITHREAD_STRATEGY == MultiThreadStrategy.ONE_THREAD_PER_OUTPUT_PDF) {
+		if (MULTITHREAD_STRATEGY == MultiThreadStrategy.ONE_THREAD_PER_INPUT_PDF) {
 			return CollectionUtils.asList(new PDFProcessorThread(pdfAllowedUsers, pdfBatch, inputPdf, inputPDFFile));
 		}
 
