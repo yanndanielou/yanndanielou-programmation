@@ -10,6 +10,9 @@ import java.util.stream.IntStream;
 
 //@SuppressWarnings("java:S1118")
 public class NumberUtils {
+	
+	public static final int NUMBER_OF_NANO_IN_MILLI = 1000*1000;
+	public static final int NUMBER_OF_NANO_UNIT = 1000*1000*1000;
 
 	public static boolean isEven(int number) {
 		return number % 2 == 0;
