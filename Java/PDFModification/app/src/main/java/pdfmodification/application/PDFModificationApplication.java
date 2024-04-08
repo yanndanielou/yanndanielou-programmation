@@ -2,6 +2,7 @@ package pdfmodification.application;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -20,6 +21,8 @@ import com.google.common.base.Strings;
 
 import common.builders.ColorDataModel;
 import common.builders.PointDataModel;
+import common.duration.CodeDurationCounter;
+import common.duration.FormatterUtils;
 import common.filesanddirectories.DirectoryHelper;
 import common.filesanddirectories.FileHelper;
 import common.filesanddirectories.FileNameExtensionAndPathHelper;
@@ -44,7 +47,7 @@ public class PDFModificationApplication {
 
 	public static void main(String[] args) throws Exception {
 
-		long applicationStartTime = System.nanoTime();
+		CodeDurationCounter applicationDurationCounter = new CodeDurationCounter();
 
 		LOGGER.info(() -> "Application started");
 
@@ -61,11 +64,8 @@ public class PDFModificationApplication {
 
 		addWatermarkAndEncryptButWatermarkIsJustTextAdded(listOfPDFBatchesDataModel, pdfAllowedUsers);
 
-		long applicationEndTime = System.nanoTime();
-		double applicationDurationInNanoSecond = (applicationEndTime - applicationStartTime); // divide by 1000000 to
-																								// get milliseconds.
 		LOGGER.info(() -> "Application end. Duration:"
-				+ applicationDurationInNanoSecond / NumberUtils.NUMBER_OF_NANO_UNIT + " seconds");
+				+ FormatterUtils.GetDurationAsString(applicationDurationCounter.getDuration()));
 
 	}
 
@@ -208,15 +208,10 @@ public class PDFModificationApplication {
 		LOGGER.info(() -> "Save generated protected PDF:" + generatedPersonnalizedProtectedPDFFullPath + " for "
 				+ pdfAllowedUser);
 
-		long beforeFileSaveTime = System.nanoTime();
+		CodeDurationCounter saveTimeDurationCounter = new CodeDurationCounter();
 		originalDoc.save(generatedPersonnalizedProtectedPDFFullPath);
-		long afterFileSaveTime = System.nanoTime();
-		double durationInNanoSecond = (afterFileSaveTime - beforeFileSaveTime); // divide by 1000000 to get
-																				// milliseconds.
 
-		double durationInSecond = durationInNanoSecond / NumberUtils.NUMBER_OF_NANO_UNIT;
-
-		LOGGER.info(() -> "Saved in " + durationInSecond + " seconds");
+		LOGGER.info(() -> "Saved in " + FormatterUtils.GetDurationAsString(saveTimeDurationCounter.getDuration()));
 	}
 
 	public static void protectPDF(PDDocument documentToProtect, PDFAllowedUser pdfAllowedUser) throws IOException {
