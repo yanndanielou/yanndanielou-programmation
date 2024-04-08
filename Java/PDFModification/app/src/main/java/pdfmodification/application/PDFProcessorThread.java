@@ -1,0 +1,113 @@
+package pdfmodification.application;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.pdfbox.Loader;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.PDPageContentStream.AppendMode;
+import org.apache.pdfbox.pdmodel.encryption.AccessPermission;
+import org.apache.pdfbox.pdmodel.encryption.StandardProtectionPolicy;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName;
+
+import com.google.common.base.Strings;
+
+import common.builders.ColorDataModel;
+import common.builders.PointDataModel;
+import common.duration.CodeDurationCounter;
+import common.duration.FormatterUtils;
+import common.filesanddirectories.DirectoryHelper;
+import common.filesanddirectories.FileHelper;
+import common.filesanddirectories.FileNameExtensionAndPathHelper;
+import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformDataModel;
+import pdfmodification.data.inputpdfdocument.builders.InputPDFsDataModel;
+import pdfmodification.data.inputpdfdocument.builders.PDFFontDataModel;
+import pdfmodification.data.inputpdfdocument.builders.TextLineToDisplayDataModel;
+import pdfmodification.data.users.PDFAllowedUser;
+import pdfmodification.helpers.PDFModificationHelpers;
+
+public class PDFProcessorThread extends PDFProcessorGenericThread {
+
+	List<PDFAllowedUser> pdfAllowedUsers;
+	InputPDFAndActionsToPerformDataModel pdfBatch;
+	InputPDFsDataModel inputPdf;
+	File inputPDFFile;
+
+	protected static final Logger LOGGER = LogManager.getLogger(PDFProcessorThread.class);
+
+	public PDFProcessorThread(List<PDFAllowedUser> pdfAllowedUsers, InputPDFAndActionsToPerformDataModel pdfBatch,
+			InputPDFsDataModel inputPdf, File inputPDFFile) {
+
+		this.pdfAllowedUsers = pdfAllowedUsers;
+		this.pdfBatch = pdfBatch;
+		this.inputPdf = inputPdf;
+		this.inputPDFFile = inputPDFFile;
+
+	}
+
+	@Override
+	public void run() {
+		LOGGER.info(() -> "Handle input PDF file:" + inputPDFFile.getAbsolutePath());
+
+		try {
+			handlePdf();
+			LOGGER.info(() -> "Thread has handled all PDFs");
+		} catch (IOException e) {
+			e.printStackTrace();
+			LOGGER.fatal(() -> "Could not treat PDF: " + this);
+		}
+	}
+
+	
+	
+	private void handlePdf() throws IOException {
+		{
+			LOGGER.info(() -> "Load PDF");
+			PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
+
+			List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
+			LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
+			deletePages(originalDoc, allPageNumberToDelete);
+
+			LOGGER.info(() -> "Add watermark on each page");
+			addWatermarkOnEachPage(originalDoc, pdfBatch, new PDFAllowedUser());
+
+			DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
+
+			LOGGER.info(() -> "Save output PDF");
+			saveOutputPDF(inputPdf, inputPDFFile, originalDoc, new PDFAllowedUser());
+
+			originalDoc.close();
+		}
+
+		for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
+			LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
+
+			LOGGER.info(() -> "Load PDF");
+			PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
+
+			List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
+			LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
+			deletePages(originalDoc, allPageNumberToDelete);
+
+			LOGGER.info(() -> "Add watermark on each page");
+			addWatermarkOnEachPage(originalDoc, pdfBatch, pdfAllowedUser);
+
+			DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
+
+			LOGGER.info(() -> "Protect PDF");
+			protectPDF(originalDoc, pdfAllowedUser);
+
+			LOGGER.info(() -> "Save output PDF");
+			saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
+
+			originalDoc.close();
+		}
+	}
+}

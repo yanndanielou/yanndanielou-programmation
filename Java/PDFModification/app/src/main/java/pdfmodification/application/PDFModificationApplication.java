@@ -3,6 +3,7 @@ package pdfmodification.application;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -21,6 +22,7 @@ import com.google.common.base.Strings;
 
 import common.builders.ColorDataModel;
 import common.builders.PointDataModel;
+import common.collection.CollectionUtils;
 import common.duration.CodeDurationCounter;
 import common.duration.FormatterUtils;
 import common.filesanddirectories.DirectoryHelper;
@@ -45,6 +47,8 @@ import pdfmodification.helpers.PDFModificationHelpers;
 public class PDFModificationApplication {
 	protected static final Logger LOGGER = LogManager.getLogger(PDFModificationApplication.class);
 
+	public static final MultiThreadStrategy MULTITHREAD_STRATEGY = MultiThreadStrategy.ONE_THREAD_PER_INPUT_PDF;
+
 	public static void main(String[] args) throws Exception {
 
 		CodeDurationCounter applicationDurationCounter = new CodeDurationCounter();
@@ -62,7 +66,22 @@ public class PDFModificationApplication {
 		ListOfPDFBatchesDataModel listOfPDFBatchesDataModel = inputPDFAndActionsToPerformModelBuilder
 				.getListOfPDFBatchesDataModel();
 
-		addWatermarkAndEncryptButWatermarkIsJustTextAdded(listOfPDFBatchesDataModel, pdfAllowedUsers);
+		List<Thread> pDFProcessorThreads = addWatermarkAndEncryptButWatermarkIsJustTextAdded(listOfPDFBatchesDataModel,
+				pdfAllowedUsers);
+
+		if (!pDFProcessorThreads.isEmpty()) {
+			LOGGER.info("Start threads");
+			pDFProcessorThreads.forEach(e -> e.start());
+			LOGGER.info("Wait for threads end");
+			pDFProcessorThreads.forEach(e -> {
+				try {
+					e.join();
+				} catch (InterruptedException e1) {
+					LOGGER.fatal(() -> "Could not join thread" + e);
+					e1.printStackTrace();
+				}
+			});
+		}
 
 		LOGGER.info(() -> "Application end. Duration:"
 				+ FormatterUtils.GetDurationAsString(applicationDurationCounter.getDuration()));
@@ -76,9 +95,11 @@ public class PDFModificationApplication {
 	 * 
 	 * @throws IOException
 	 */
-	private static void addWatermarkAndEncryptButWatermarkIsJustTextAdded(
+	private static List<Thread> addWatermarkAndEncryptButWatermarkIsJustTextAdded(
 			ListOfPDFBatchesDataModel listOfPDFBatchesDataModel, List<PDFAllowedUser> pdfAllowedUsers)
 			throws IOException {
+
+		List<Thread> pdfProcessorThreads = new ArrayList<>();
 
 		for (InputPDFAndActionsToPerformDataModel pdfBatch : listOfPDFBatchesDataModel.getPdfBatchs()) {
 
@@ -86,55 +107,77 @@ public class PDFModificationApplication {
 				List<File> inputPDFFiles = inputPdf.getInputPDFFiles();
 
 				for (File inputPDFFile : inputPDFFiles) {
+					pdfProcessorThreads.addAll(handlePdf(pdfAllowedUsers, pdfBatch, inputPdf, inputPDFFile));
+					pdfProcessorThreads.add(new PDFProcessorThread(pdfAllowedUsers, pdfBatch, inputPdf, inputPDFFile));
 
-					LOGGER.info(() -> "Handle input PDF file:" + inputPDFFile.getAbsolutePath());
-
-					{
-						LOGGER.info(() -> "Load PDF");
-						PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
-
-						List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
-						LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
-						deletePages(originalDoc, allPageNumberToDelete);
-
-						LOGGER.info(() -> "Add watermark on each page");
-						addWatermarkOnEachPage(originalDoc, pdfBatch, new PDFAllowedUser());
-
-						DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
-
-						LOGGER.info(() -> "Save output PDF");
-						saveOutputPDF(inputPdf, inputPDFFile, originalDoc, new PDFAllowedUser());
-
-						originalDoc.close();
-					}
-
-					for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
-						LOGGER.info(
-								() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
-
-						LOGGER.info(() -> "Load PDF");
-						PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
-
-						List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
-						LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
-						deletePages(originalDoc, allPageNumberToDelete);
-
-						LOGGER.info(() -> "Add watermark on each page");
-						addWatermarkOnEachPage(originalDoc, pdfBatch, pdfAllowedUser);
-
-						DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
-
-						LOGGER.info(() -> "Protect PDF");
-						protectPDF(originalDoc, pdfAllowedUser);
-
-						LOGGER.info(() -> "Save output PDF");
-						saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
-
-						originalDoc.close();
-					}
 				}
 			}
 		}
+		return pdfProcessorThreads;
+	}
+
+	private static List<Thread> handlePdf(List<PDFAllowedUser> pdfAllowedUsers,
+			InputPDFAndActionsToPerformDataModel pdfBatch, InputPDFsDataModel inputPdf, File inputPDFFile)
+			throws IOException {
+
+		LOGGER.info(() -> "Handle input PDF file:" + inputPDFFile.getAbsolutePath());
+
+		List<Thread> threads = new ArrayList<>();
+
+		if (MULTITHREAD_STRATEGY == MultiThreadStrategy.ONE_THREAD_PER_OUTPUT_PDF) {
+			return CollectionUtils.asList(new PDFProcessorThread(pdfAllowedUsers, pdfBatch, inputPdf, inputPDFFile));
+		}
+
+		if (MULTITHREAD_STRATEGY == MultiThreadStrategy.ONE_THREAD_PER_OUTPUT_PDF) {
+			threads.add(new PDFProcessorForNoUserThread(pdfBatch, inputPdf, inputPDFFile));
+		} else {
+			LOGGER.info(() -> "Load PDF");
+			PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
+
+			List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
+			LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
+			deletePages(originalDoc, allPageNumberToDelete);
+
+			LOGGER.info(() -> "Add watermark on each page");
+			addWatermarkOnEachPage(originalDoc, pdfBatch, new PDFAllowedUser());
+
+			DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
+
+			LOGGER.info(() -> "Save output PDF");
+			saveOutputPDF(inputPdf, inputPDFFile, originalDoc, new PDFAllowedUser());
+
+			originalDoc.close();
+		}
+
+		for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
+			if (MULTITHREAD_STRATEGY == MultiThreadStrategy.ONE_THREAD_PER_OUTPUT_PDF) {
+				threads.add(new PDFProcessorForUneUserThread(pdfAllowedUser, pdfBatch, inputPdf, inputPDFFile));
+			} else {
+				LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
+
+				LOGGER.info(() -> "Load PDF");
+				PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
+
+				List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
+				LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
+				deletePages(originalDoc, allPageNumberToDelete);
+
+				LOGGER.info(() -> "Add watermark on each page");
+				addWatermarkOnEachPage(originalDoc, pdfBatch, pdfAllowedUser);
+
+				DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
+
+				LOGGER.info(() -> "Protect PDF");
+				protectPDF(originalDoc, pdfAllowedUser);
+
+				LOGGER.info(() -> "Save output PDF");
+				saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
+
+				originalDoc.close();
+			}
+		}
+
+		return threads;
 	}
 
 	private static void deletePages(PDDocument originalDoc, List<Integer> allPageNumberToDelete) {
