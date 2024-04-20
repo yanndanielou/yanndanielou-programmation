@@ -25,14 +25,25 @@ public class MainBarMenu extends MenuBar {
 
 		Menu menu = new Menu("Menu 1");
 
-		MenuItem menuItem1 = new MenuItem("Increase application Width");
-		menuItem1.setOnAction(e -> {
+		
+		Menu applicationSizeSubMenu = new Menu("Application size");
+		menu.getItems().add(applicationSizeSubMenu);
+		Menu applicationWidthSubMenu = new Menu("width");
+		applicationSizeSubMenu.getItems().add(applicationWidthSubMenu);
+
+		MenuItem increaseApplicationWidthSubMenu = new MenuItem("Increase application Width");
+		increaseApplicationWidthSubMenu.setOnAction(e -> {
 			sudokuApplication.stage.setWidth(sudokuApplication.stage.getWidth() + 100);
 		});
+		applicationWidthSubMenu.getItems().add(increaseApplicationWidthSubMenu);
+
+		MenuItem decreaseApplicationWidthSubMenu = new MenuItem("Decrease application Width");
+		decreaseApplicationWidthSubMenu.setOnAction(e -> {
+			sudokuApplication.stage.setWidth(sudokuApplication.stage.getWidth() - 100);
+		});
+		applicationWidthSubMenu.getItems().add(decreaseApplicationWidthSubMenu);
 
 		MenuItem menuItem2 = new MenuItem("Item 2");
-
-		menu.getItems().add(menuItem1);
 		menu.getItems().add(menuItem2);
 
 		Menu subMenu = new Menu("Menu 1.1");
