@@ -56,38 +56,10 @@ public class Game {
 	public Game(GameManager gameManager) {
 		gameOver.bind(winnerProperty().isNotEqualTo(SquareState.EMPTY).or(drawnProperty()));
 
-		// Create MenuBar
-		MenuBar menuBar = new MenuBar();
+		MainMenuBar mainMenuBar = new MainMenuBar();
 
-		// Create menus
-		Menu fileMenu = new Menu("File");
-		Menu editMenu = new Menu("Edit");
-		Menu helpMenu = new Menu("Help");
 
-		// Create MenuItems
-		MenuItem newItem = new MenuItem("New");
-		MenuItem openFileItem = new MenuItem("Open File");
-		MenuItem exitItem = new MenuItem("Exit");
-
-		// Set Accelerator for Exit MenuItem.
-		exitItem.setAccelerator(KeyCombination.keyCombination("Ctrl+X"));
-
-		// When user click on the Exit item.
-		exitItem.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent event) {
-				System.exit(0);
-			}
-		});
-
-		// Add menuItems to the Menus
-		fileMenu.getItems().addAll(newItem, openFileItem, exitItem);
-
-		// Add Menus to the MenuBar
-		menuBar.getMenus().addAll(fileMenu, editMenu, helpMenu);
-
-		skin = new GameSkin(gameManager, this, menuBar);
+		skin = new GameSkin(gameManager, this, mainMenuBar);
 	}
 
 	public Board getBoard() {
