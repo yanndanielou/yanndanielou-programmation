@@ -37,11 +37,13 @@ public class SudokuApplication extends Application {
 
 	public int currentlySelectedDigit = 0;
 
+	public BorderPane mainViewBorderPane;
 	public BorderPane rootBorderPane;
 	public Scene scene;
 	public SudokuSquareBoxesGridPane sudokuSquareBoxesGridPane;
 	public Sudoku sudoku;
 	public Game game;
+	public MainBarMenu mainBarMenu;
 
 	public ArrayList<Integer> board, untouchedCells;
 	public Map<Integer, Button> sudokuCellButton;
@@ -296,6 +298,12 @@ public class SudokuApplication extends Application {
 		rootBorderPane.setTop(topHbox);
 		rootBorderPane.setCenter(sudokuSquareBoxesGridPane);
 		rootBorderPane.setBottom(digitsBottomGridPane);
+		
+		mainBarMenu = new MainBarMenu(this);
+		
+		mainViewBorderPane = new BorderPane();
+		mainViewBorderPane.setTop(mainBarMenu);
+		mainViewBorderPane.setCenter(rootBorderPane);
 
 		// Generates the Sudoku board
 		sudoku = new Sudoku();
@@ -389,7 +397,7 @@ public class SudokuApplication extends Application {
 		digitsBottomGridPane.updateDigitSelectionInBottomButtonsState();
 
 		// Sets the scene to the BorderPane layout and links the CSS file
-		scene = new Scene(rootBorderPane, 350, 450);
+		scene = new Scene(mainViewBorderPane, 350, 500);
 		scene.getStylesheets().add("application.css");
 
 		// Sets the stage, sets its title, displays it, and restricts its minimal size
