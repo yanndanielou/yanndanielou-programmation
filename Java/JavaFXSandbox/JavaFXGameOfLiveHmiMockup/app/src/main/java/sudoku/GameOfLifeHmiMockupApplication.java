@@ -37,6 +37,8 @@ public class GameOfLifeHmiMockupApplication extends Application {
 	private static final int CELL_SIZE = 10;
 	private static boolean SHOW_BORDERS = true;
 
+	private static float ZOOM_FACTOR = 1;
+
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -57,9 +59,9 @@ public class GameOfLifeHmiMockupApplication extends Application {
 		Button stepButton = new Button("Step");
 		Button runButton = new Button("Run");
 		Button stopButton = new Button("Stop");
-		Button showGridButton = new Button("Show grid");
-		Button hideGridButton = new Button("Hide grid");
 		Button toggleGridButton = new Button("Toggle Grid");
+		Button zoomInButton = new Button("Zoom In");
+		Button zoomOutButton = new Button("Zoom out");
 
 		ScrollPane scrollPane = new ScrollPane(canvas);
 
@@ -67,8 +69,8 @@ public class GameOfLifeHmiMockupApplication extends Application {
 		mainViewBorderPane.setTop(mainBarMenu);
 		mainViewBorderPane.setCenter(scrollPane);
 
-		root.getChildren().addAll(mainViewBorderPane,
-				new HBox(10, resetButton, stepButton, runButton, stopButton, toggleGridButton));
+		root.getChildren().addAll(mainViewBorderPane, new HBox(10, resetButton, stepButton, runButton, stopButton,
+				toggleGridButton, zoomInButton, zoomOutButton));
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
@@ -96,13 +98,29 @@ public class GameOfLifeHmiMockupApplication extends Application {
 		runButton.setOnAction(l -> runAnimation.start());
 		stepButton.setOnAction(l -> life.tick());
 		stopButton.setOnAction(l -> runAnimation.stop());
-		toggleGridButton.setOnAction(new EventHandler<ActionEvent>() {
+		toggleGridButton.setOnAction(e -> {
+			SHOW_BORDERS = !SHOW_BORDERS;
+			life.draw();
+		});
 
-			@Override
-			public void handle(ActionEvent arg0) {
-				SHOW_BORDERS = !SHOW_BORDERS;
-				life.draw();
-			}
+		zoomInButton.setOnAction(e -> {
+			/* ZOOM_FACTOR++; */
+			ZOOM_FACTOR *= 1.5;
+			canvas.setScaleX(ZOOM_FACTOR);
+			canvas.setScaleY(ZOOM_FACTOR);
+
+		});
+		zoomOutButton.setOnAction(e -> {
+			ZOOM_FACTOR /= 1.5;
+
+			/*
+			 * if (ZOOM_FACTOR >= 2) { ZOOM_FACTOR--; } else { ZOOM_FACTOR /= 2; }
+			 * 
+			 * 
+			 */
+			canvas.setScaleX(ZOOM_FACTOR);
+			canvas.setScaleY(ZOOM_FACTOR);
+
 		});
 	}
 
