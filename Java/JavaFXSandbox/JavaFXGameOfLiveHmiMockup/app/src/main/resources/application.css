@@ -1,8 +1,8 @@
 
 #aliveCell {
-	-fx-background-color: LAVENDER;	
+	-fx-background-color: PURPLE;
 }
 
 #deadCell {
-	-fx-background-color: PURPLE;
+	-fx-background-color: LAVENDER;	
 }

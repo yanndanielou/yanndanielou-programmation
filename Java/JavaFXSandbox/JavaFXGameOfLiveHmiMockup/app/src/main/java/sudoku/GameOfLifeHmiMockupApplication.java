@@ -8,22 +8,22 @@ import org.apache.logging.log4j.Logger;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Slider;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
-import javafx.scene.layout.GridPane;
-
-import javafx.scene.control.ScrollPane;
 
 /***
  * Source:
@@ -36,8 +36,10 @@ public class GameOfLifeHmiMockupApplication extends Application {
 
 	private static final int APPLICATION_WIDTH = 500;
 	private static final int APPLICATION_HEIGHT = 500;
-	private static int CELL_SIZE = 10;
+	private static float CELL_SIZE = 10;
 	private static boolean SHOW_BORDERS = true;
+
+	private int RUN_SPEED_IN_MILLISECONDS = 500;
 
 	private static float ZOOM_FACTOR = 1;
 
@@ -50,7 +52,6 @@ public class GameOfLifeHmiMockupApplication extends Application {
 
 		defineApplicationIcon();
 
-
 		MainBarMenu mainBarMenu = new MainBarMenu(this);
 
 		GridPane gridPane = new GridPane();
@@ -59,6 +60,7 @@ public class GameOfLifeHmiMockupApplication extends Application {
 		Button resetButton = new Button("Reset");
 		Button stepButton = new Button("Step");
 		Button runButton = new Button("Run");
+		Slider speedSlider = new Slider(1, 2000, 1);
 		Button stopButton = new Button("Stop");
 		Button toggleGridButton = new Button("Toggle Grid");
 		Button zoomInButton = new Button("Zoom In");
@@ -70,19 +72,17 @@ public class GameOfLifeHmiMockupApplication extends Application {
 		BorderPane mainViewBorderPane = new BorderPane();
 		mainViewBorderPane.setTop(mainBarMenu);
 		mainViewBorderPane.setCenter(scrollPane);
-		
+
 		HBox controlButtonsHBox = new HBox();
 
-		controlButtonsHBox.getChildren().addAll(resetButton, stepButton, runButton, stopButton,
+		controlButtonsHBox.getChildren().addAll(resetButton, stepButton, runButton, speedSlider, stopButton,
 				toggleGridButton, zoomInButton, zoomOutButton);
-		
+
 		mainViewBorderPane.setBottom(controlButtonsHBox);
-		
+
 		Scene scene = new Scene(mainViewBorderPane, APPLICATION_WIDTH, APPLICATION_HEIGHT + 100);
 		scene.getStylesheets().add("application.css");
 
-		
-		
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
@@ -99,7 +99,7 @@ public class GameOfLifeHmiMockupApplication extends Application {
 			@Override
 			public void handle(long now) {
 				// only update once every second
-				if ((now - lastUpdate) >= TimeUnit.MILLISECONDS.toNanos(500)) {
+				if ((now - lastUpdate) >= TimeUnit.MILLISECONDS.toNanos(RUN_SPEED_IN_MILLISECONDS)) {
 					life.tick();
 					lastUpdate = now;
 				}
@@ -108,6 +108,12 @@ public class GameOfLifeHmiMockupApplication extends Application {
 
 		resetButton.setOnAction(l -> life.init());
 		runButton.setOnAction(l -> runAnimation.start());
+		speedSlider.valueProperty().addListener((obs, oldval, newVal) -> {
+			long roundLong = Math.round((double) newVal);
+			int valueAsInt = (int) roundLong;
+			LOGGER.info("New slider value:" + newVal + " rounded:" + valueAsInt);
+			RUN_SPEED_IN_MILLISECONDS = valueAsInt;
+		});
 		stepButton.setOnAction(l -> life.tick());
 		stopButton.setOnAction(l -> runAnimation.stop());
 		toggleGridButton.setOnAction(e -> {
@@ -175,7 +181,7 @@ public class GameOfLifeHmiMockupApplication extends Application {
 			gridButtons = new Button[rows][cols];
 		}
 
-		public void resizeCells(int cellSize) {
+		public void resizeCells(float cellSize) {
 
 			LOGGER.info(() -> "Resize cells: " + cellSize);
 			for (int i = 0; i < rows; i++) {
@@ -195,6 +201,34 @@ public class GameOfLifeHmiMockupApplication extends Application {
 				for (int j = 0; j < cols; j++) {
 					grid[i][j] = random.nextInt(2);
 					gridButtons[i][j] = new Button();
+					gridButtons[i][j].setTooltip(new Tooltip(i + " " + j));
+
+					ContextMenu contextMenu = new ContextMenu();
+					Menu changeStateMenu = new Menu("Change state");
+					MenuItem menuSetAlive = new MenuItem("Set alive");
+					MenuItem menuSetDead = new MenuItem("Set dead");
+					MenuItem menuToggleState = new MenuItem("Toggle state");
+
+					final int iFinal = i;
+					final int jFinal = j;
+
+					menuSetAlive.setOnAction((event) -> {
+						grid[iFinal][jFinal] = 1;
+						updateButtonState(iFinal, jFinal);
+					});
+					menuSetDead.setOnAction((event) -> {
+						grid[iFinal][jFinal] = 0;
+						updateButtonState(iFinal, jFinal);
+					});
+					menuToggleState.setOnAction((event) -> {
+						grid[iFinal][jFinal] = (grid[iFinal][jFinal] + 1) % 1;
+						updateButtonState(iFinal, jFinal);
+					});
+
+					changeStateMenu.getItems().addAll(menuSetAlive, menuSetDead);
+					contextMenu.getItems().addAll(changeStateMenu, menuToggleState);
+					gridButtons[i][j].setContextMenu(contextMenu);
+
 					gridPane.add(gridButtons[i][j], i, j);
 				}
 			}
@@ -207,12 +241,16 @@ public class GameOfLifeHmiMockupApplication extends Application {
 		private void draw() {
 			for (int i = 0; i < grid.length; i++) {
 				for (int j = 0; j < grid[i].length; j++) {
-					if (grid[i][j] == 1) {
-						gridButtons[i][j].setId("aliveCell");
-					} else {
-						gridButtons[i][j].setId("deadCell");
-					}
+					updateButtonState(i, j);
 				}
+			}
+		}
+
+		private void updateButtonState(int i, int j) {
+			if (grid[i][j] == 1) {
+				gridButtons[i][j].setId("aliveCell");
+			} else {
+				gridButtons[i][j].setId("deadCell");
 			}
 		}
 
