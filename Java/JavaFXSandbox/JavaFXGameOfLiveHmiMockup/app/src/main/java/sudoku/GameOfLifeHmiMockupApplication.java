@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -21,6 +23,10 @@ import javafx.stage.Stage;
 
 import javafx.scene.control.ScrollPane;
 
+/***
+ * Source:
+ * https://steemit.com/programming/@satoshio/conway-s-game-of-life-implementation-in-javafx
+ */
 public class GameOfLifeHmiMockupApplication extends Application {
 	private static final Logger LOGGER = LogManager.getLogger(GameOfLifeHmiMockupApplication.class);
 
@@ -29,6 +35,7 @@ public class GameOfLifeHmiMockupApplication extends Application {
 	private static final int APPLICATION_WIDTH = 500;
 	private static final int APPLICATION_HEIGHT = 500;
 	private static final int CELL_SIZE = 10;
+	private static boolean SHOW_BORDERS = true;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -41,27 +48,27 @@ public class GameOfLifeHmiMockupApplication extends Application {
 
 		VBox root = new VBox(10);
 		Scene scene = new Scene(root, APPLICATION_WIDTH, APPLICATION_HEIGHT + 100);
-		
-		MainBarMenu mainBarMenu = new MainBarMenu(this);
-		
 
-		
+		MainBarMenu mainBarMenu = new MainBarMenu(this);
+
 		final Canvas canvas = new Canvas(APPLICATION_WIDTH, APPLICATION_HEIGHT);
 
-		Button reset = new Button("Reset");
-		Button step = new Button("Step");
-		Button run = new Button("Run");
-		Button stop = new Button("Stop");
+		Button resetButton = new Button("Reset");
+		Button stepButton = new Button("Step");
+		Button runButton = new Button("Run");
+		Button stopButton = new Button("Stop");
+		Button showGridButton = new Button("Show grid");
+		Button hideGridButton = new Button("Hide grid");
+		Button toggleGridButton = new Button("Toggle Grid");
 
 		ScrollPane scrollPane = new ScrollPane(canvas);
-		
 
 		BorderPane mainViewBorderPane = new BorderPane();
 		mainViewBorderPane.setTop(mainBarMenu);
 		mainViewBorderPane.setCenter(scrollPane);
-		
-		
-		root.getChildren().addAll(mainViewBorderPane, new HBox(10, reset, step, run, stop));
+
+		root.getChildren().addAll(mainViewBorderPane,
+				new HBox(10, resetButton, stepButton, runButton, stopButton, toggleGridButton));
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
@@ -85,10 +92,18 @@ public class GameOfLifeHmiMockupApplication extends Application {
 			}
 		};
 
-		reset.setOnAction(l -> life.init());
-		run.setOnAction(l -> runAnimation.start());
-		step.setOnAction(l -> life.tick());
-		stop.setOnAction(l -> runAnimation.stop());
+		resetButton.setOnAction(l -> life.init());
+		runButton.setOnAction(l -> runAnimation.start());
+		stepButton.setOnAction(l -> life.tick());
+		stopButton.setOnAction(l -> runAnimation.stop());
+		toggleGridButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				SHOW_BORDERS = !SHOW_BORDERS;
+				life.draw();
+			}
+		});
 	}
 
 	private void defineApplicationIcon() {
@@ -136,12 +151,19 @@ public class GameOfLifeHmiMockupApplication extends Application {
 
 			for (int i = 0; i < grid.length; i++) {
 				for (int j = 0; j < grid[i].length; j++) {
-					// first rect will end up becoming the border	
-					graphics.setFill(Color.gray(0.5, 0.5));
-					
-					graphics.fillRect(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-					graphics.setFill(grid[i][j] == 1 ?Color.PURPLE:Color.LAVENDER);
-					graphics.fillRect((i * CELL_SIZE) + 1, (j * CELL_SIZE) + 1, CELL_SIZE - 2, CELL_SIZE - 2);
+					// first rect will end up becoming the border
+
+					if (SHOW_BORDERS) {
+						graphics.setFill(Color.gray(0.5, 0.5));
+						graphics.fillRect(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+					}
+
+					graphics.setFill(grid[i][j] == 1 ? Color.PURPLE : Color.LAVENDER);
+					if (SHOW_BORDERS) {
+						graphics.fillRect((i * CELL_SIZE) + 1, (j * CELL_SIZE) + 1, CELL_SIZE - 2, CELL_SIZE - 2);
+					} else {
+						graphics.fillRect((i * CELL_SIZE), (j * CELL_SIZE), CELL_SIZE, CELL_SIZE);
+					}
 				}
 			}
 		}
