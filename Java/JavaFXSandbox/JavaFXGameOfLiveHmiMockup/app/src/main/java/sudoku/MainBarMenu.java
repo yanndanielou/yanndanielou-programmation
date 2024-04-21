@@ -14,9 +14,9 @@ import javafx.scene.input.KeyCombination;
 
 public class MainBarMenu extends MenuBar {
 
-	public SudokuApplication sudokuApplication;
+	public GameOfLifeHmiMockupApplication sudokuApplication;
 
-	public MainBarMenu(SudokuApplication sudokuApplication) {
+	public MainBarMenu(GameOfLifeHmiMockupApplication sudokuApplication) {
 		this.sudokuApplication = sudokuApplication;
 
 		createMenu1();
@@ -36,14 +36,14 @@ public class MainBarMenu extends MenuBar {
 		MenuItem increaseApplicationWidthSubMenu = new MenuItem("Increase application Width");
 		increaseApplicationWidthSubMenu.setAccelerator(new KeyCodeCombination(KeyCode.I, KeyCombination.CONTROL_DOWN,KeyCombination.SHIFT_DOWN));
 		increaseApplicationWidthSubMenu.setOnAction(e -> {
-			sudokuApplication.stage.setWidth(sudokuApplication.stage.getWidth() + 100);
+			sudokuApplication.primaryStage.setWidth(sudokuApplication.primaryStage.getWidth() + 100);
 		});
 		applicationWidthSubMenu.getItems().add(increaseApplicationWidthSubMenu);
 
 		MenuItem decreaseApplicationWidthSubMenu = new MenuItem("Decrease application Width");
 		decreaseApplicationWidthSubMenu.setAccelerator(new KeyCodeCombination(KeyCode.D, KeyCombination.CONTROL_DOWN,KeyCombination.SHIFT_DOWN));
 		decreaseApplicationWidthSubMenu.setOnAction(e -> {
-			sudokuApplication.stage.setWidth(sudokuApplication.stage.getWidth() - 100);
+			sudokuApplication.primaryStage.setWidth(sudokuApplication.primaryStage.getWidth() - 100);
 		});
 		applicationWidthSubMenu.getItems().add(decreaseApplicationWidthSubMenu);
 

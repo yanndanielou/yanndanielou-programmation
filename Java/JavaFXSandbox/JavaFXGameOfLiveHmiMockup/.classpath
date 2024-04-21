@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="src" path="app/src/main/java"/>
+	<classpathentry excluding="**/*.java" kind="src" path="app/src/main/resources"/>
+
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="master/JavaFX-Sudoku-master"/>
-	
-	<classpathentry excluding="**/*.java" kind="src" path="resources"/>
-
-	
-	<classpathentry kind="lib" path="../../ExternalLibraries/log4j-api-2.20.0.jar"/>
-	<classpathentry kind="lib" path="../../ExternalLibraries/log4j-core-2.20.0.jar"/>
-
-	
-	<!--
-	<classpathentry kind="src" path="javafx-sdk-21.0.1\src\javafx.base"/>
-	<classpathentry kind="src" path="javafx-sdk-21.0.1\src\javafx.controls"/>
-	<classpathentry kind="src" path="javafx-sdk-21.0.1\src\javafx.fxml"/>
-	<classpathentry kind="src" path="javafx-sdk-21.0.1\src\javafx.graphics"/>
-	<classpathentry kind="src" path="javafx-sdk-21.0.1\src\javafx.media"/>
-	<classpathentry kind="src" path="javafx-sdk-21.0.1\src\javafx.swing"/>
-	<classpathentry kind="src" path="javafx-sdk-21.0.1\src\javafx.web"/>
-	-->
-	
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
+	
+	
+	<classpathentry kind="lib" path="../../ExternalLibraries/log4j-api-2.20.0.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="../../ExternalLibraries/log4j-core-2.20.0.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	
 	<classpathentry kind="lib" path="../../ExternalLibraries/openjfx-21.0.1_windows-x64_bin-sdk/javafx-sdk-21.0.1/lib/javafx.base.jar">
 		<attributes>
