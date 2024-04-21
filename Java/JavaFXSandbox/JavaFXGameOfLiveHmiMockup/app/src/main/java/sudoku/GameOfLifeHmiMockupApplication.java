@@ -136,18 +136,12 @@ public class GameOfLifeHmiMockupApplication extends Application {
 
 			for (int i = 0; i < grid.length; i++) {
 				for (int j = 0; j < grid[i].length; j++) {
-					if (grid[i][j] == 1) {
-						// first rect will end up becoming the border
-						graphics.setFill(Color.gray(0.5, 0.5));
-						graphics.fillRect(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-						graphics.setFill(Color.PURPLE);
-						graphics.fillRect((i * CELL_SIZE) + 1, (j * CELL_SIZE) + 1, CELL_SIZE - 2, CELL_SIZE - 2);
-					} else {
-						graphics.setFill(Color.gray(0.5, 0.5));
-						graphics.fillRect(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-						graphics.setFill(Color.LAVENDER);
-						graphics.fillRect((i * CELL_SIZE) + 1, (j * CELL_SIZE) + 1, CELL_SIZE - 2, CELL_SIZE - 2);
-					}
+					// first rect will end up becoming the border	
+					graphics.setFill(Color.gray(0.5, 0.5));
+					
+					graphics.fillRect(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+					graphics.setFill(grid[i][j] == 1 ?Color.PURPLE:Color.LAVENDER);
+					graphics.fillRect((i * CELL_SIZE) + 1, (j * CELL_SIZE) + 1, CELL_SIZE - 2, CELL_SIZE - 2);
 				}
 			}
 		}
