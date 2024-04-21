@@ -21,6 +21,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import javafx.scene.layout.GridPane;
+
 import javafx.scene.control.ScrollPane;
 
 /***
@@ -34,7 +36,7 @@ public class GameOfLifeHmiMockupApplication extends Application {
 
 	private static final int APPLICATION_WIDTH = 500;
 	private static final int APPLICATION_HEIGHT = 500;
-	private static final int CELL_SIZE = 10;
+	private static int CELL_SIZE = 10;
 	private static boolean SHOW_BORDERS = true;
 
 	private static float ZOOM_FACTOR = 1;
@@ -48,11 +50,10 @@ public class GameOfLifeHmiMockupApplication extends Application {
 
 		defineApplicationIcon();
 
-		VBox root = new VBox(10);
-		Scene scene = new Scene(root, APPLICATION_WIDTH, APPLICATION_HEIGHT + 100);
 
 		MainBarMenu mainBarMenu = new MainBarMenu(this);
 
+		GridPane gridPane = new GridPane();
 		final Canvas canvas = new Canvas(APPLICATION_WIDTH, APPLICATION_HEIGHT);
 
 		Button resetButton = new Button("Reset");
@@ -63,14 +64,25 @@ public class GameOfLifeHmiMockupApplication extends Application {
 		Button zoomInButton = new Button("Zoom In");
 		Button zoomOutButton = new Button("Zoom out");
 
-		ScrollPane scrollPane = new ScrollPane(canvas);
+		// ScrollPane scrollPane = new ScrollPane(canvas);
+		ScrollPane scrollPane = new ScrollPane(gridPane);
 
 		BorderPane mainViewBorderPane = new BorderPane();
 		mainViewBorderPane.setTop(mainBarMenu);
 		mainViewBorderPane.setCenter(scrollPane);
+		
+		HBox controlButtonsHBox = new HBox();
 
-		root.getChildren().addAll(mainViewBorderPane, new HBox(10, resetButton, stepButton, runButton, stopButton,
-				toggleGridButton, zoomInButton, zoomOutButton));
+		controlButtonsHBox.getChildren().addAll(resetButton, stepButton, runButton, stopButton,
+				toggleGridButton, zoomInButton, zoomOutButton);
+		
+		mainViewBorderPane.setBottom(controlButtonsHBox);
+		
+		Scene scene = new Scene(mainViewBorderPane, APPLICATION_WIDTH, APPLICATION_HEIGHT + 100);
+		scene.getStylesheets().add("application.css");
+
+		
+		
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
@@ -78,7 +90,7 @@ public class GameOfLifeHmiMockupApplication extends Application {
 		int cols = (int) Math.floor(APPLICATION_WIDTH / CELL_SIZE);
 
 		GraphicsContext graphics = canvas.getGraphicsContext2D();
-		Life life = new Life(rows, cols, graphics);
+		Life life = new Life(rows, cols, graphics, gridPane);
 		life.init();
 
 		AnimationTimer runAnimation = new AnimationTimer() {
@@ -109,6 +121,9 @@ public class GameOfLifeHmiMockupApplication extends Application {
 			canvas.setScaleX(ZOOM_FACTOR);
 			canvas.setScaleY(ZOOM_FACTOR);
 
+			CELL_SIZE *= 1.5;
+			life.resizeCells(CELL_SIZE);
+
 		});
 		zoomOutButton.setOnAction(e -> {
 			ZOOM_FACTOR /= 1.5;
@@ -120,6 +135,9 @@ public class GameOfLifeHmiMockupApplication extends Application {
 			 */
 			canvas.setScaleX(ZOOM_FACTOR);
 			canvas.setScaleY(ZOOM_FACTOR);
+
+			CELL_SIZE /= 1.5;
+			life.resizeCells(CELL_SIZE);
 
 		});
 	}
@@ -143,26 +161,63 @@ public class GameOfLifeHmiMockupApplication extends Application {
 		private final int rows;
 		private final int cols;
 		private int[][] grid;
+		private Button[][] gridButtons;
 		private Random random = new Random();
 		private final GraphicsContext graphics;
+		private GridPane gridPane;
 
-		public Life(int rows, int cols, GraphicsContext graphics) {
+		public Life(int rows, int cols, GraphicsContext graphics, GridPane gridPane) {
 			this.rows = rows;
 			this.cols = cols;
 			this.graphics = graphics;
+			this.gridPane = gridPane;
 			grid = new int[rows][cols];
+			gridButtons = new Button[rows][cols];
+		}
+
+		public void resizeCells(int cellSize) {
+
+			LOGGER.info(() -> "Resize cells: " + cellSize);
+			for (int i = 0; i < rows; i++) {
+				for (int j = 0; j < cols; j++) {
+					gridButtons[i][j].setMaxHeight(cellSize);
+					gridButtons[i][j].setMinHeight(cellSize);
+					gridButtons[i][j].setMaxWidth(cellSize);
+					gridButtons[i][j].setMinWidth(cellSize);
+				}
+			}
 		}
 
 		public void init() {
+
+			LOGGER.info(() -> "Init");
 			for (int i = 0; i < rows; i++) {
 				for (int j = 0; j < cols; j++) {
 					grid[i][j] = random.nextInt(2);
+					gridButtons[i][j] = new Button();
+					gridPane.add(gridButtons[i][j], i, j);
 				}
 			}
+			resizeCells(CELL_SIZE);
+
+			LOGGER.info(() -> "Will draw now");
 			draw();
 		}
 
 		private void draw() {
+			for (int i = 0; i < grid.length; i++) {
+				for (int j = 0; j < grid[i].length; j++) {
+					if (grid[i][j] == 1) {
+						gridButtons[i][j].setId("aliveCell");
+					} else {
+						gridButtons[i][j].setId("deadCell");
+					}
+				}
+			}
+		}
+
+		@Deprecated
+		private void drawWithCanvas() {
 			// clear graphics
 			graphics.setFill(Color.LAVENDER);
 			graphics.fillRect(0, 0, APPLICATION_WIDTH, APPLICATION_HEIGHT);
