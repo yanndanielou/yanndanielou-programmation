@@ -1,27 +1,19 @@
 package tetris.application;
 
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Slider;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import tetris.hmi.MainBarMenu;
@@ -55,18 +47,26 @@ public class TetrisApplication extends Application {
 
 		MainBarMenu mainBarMenu = new MainBarMenu(this);
 
+		Pane mainViewPane = new Pane();
+
 		BorderPane mainViewBorderPane = new BorderPane();
 		mainViewBorderPane.setTop(mainBarMenu);
-//		mainViewBorderPane.setCenter(scrollPane);
+		mainViewBorderPane.setCenter(mainViewPane);
 
-		HBox controlButtonsHBox = new HBox();
-		
 		Scene scene = new Scene(mainViewBorderPane, APPLICATION_WIDTH, APPLICATION_HEIGHT);
 		scene.getStylesheets().add("application.css");
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		
+
+		primaryStage.setTitle("Tetris");
+
+		VBox scoreVBox = new VBox();
+		// scoreVBox.resize(100,100);
+		scoreVBox.setMinSize(100, 100);
+		mainViewPane.getChildren().add(scoreVBox);
+		scoreVBox.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
+		scoreVBox.getChildren().add(new Label("Score:"));
 
 	}
 

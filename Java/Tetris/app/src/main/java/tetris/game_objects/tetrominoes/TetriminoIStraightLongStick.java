@@ -1,4 +1,4 @@
-package game_objects.tetrominoes;
+package tetris.game_objects.tetrominoes;
 
 public class TetriminoIStraightLongStick extends Tetromino {
 

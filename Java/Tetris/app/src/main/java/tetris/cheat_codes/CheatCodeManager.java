@@ -1,4 +1,4 @@
-package cheat_codes;
+package tetris.cheat_codes;
 
 
 

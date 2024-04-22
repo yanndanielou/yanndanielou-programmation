@@ -1,4 +1,4 @@
-package constants;
+package tetris.constants;
 
 public class Constants {
 
