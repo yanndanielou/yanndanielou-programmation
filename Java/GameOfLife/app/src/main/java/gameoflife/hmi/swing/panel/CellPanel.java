@@ -1,13 +1,13 @@
-package gameoflife.hmi.panel;
+package gameoflife.hmi.swing.panel;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import gameoflife.gameboard.Cell;
 import gameoflife.hmi.enums.DrawAction;
-import gameoflife.hmi.mouseaction.DrawCellWithMouse;
-import gameoflife.hmi.mouseaction.PlaceNewPatternWithMouse;
-import gameoflife.hmi.mouseaction.ScrollOnGameBoardPanelOnMouseDragAndDrop;
+import gameoflife.hmi.swing.mouseaction.DrawCellWithMouse;
+import gameoflife.hmi.swing.mouseaction.PlaceNewPatternWithMouse;
+import gameoflife.hmi.swing.mouseaction.ScrollOnGameBoardPanelOnMouseDragAndDrop;
 import gameoflife.patterns.Pattern;
 
 public class CellPanel extends BasePanel {

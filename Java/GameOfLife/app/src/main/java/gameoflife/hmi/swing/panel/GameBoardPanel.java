@@ -1,4 +1,4 @@
-package gameoflife.hmi.panel;
+package gameoflife.hmi.swing.panel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,10 +20,10 @@ import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
-import gameoflife.hmi.GameOfLifeMainViewFrame;
-import gameoflife.hmi.HmiPresenter;
-import gameoflife.hmi.KeyBoardInputs;
 import gameoflife.hmi.enums.DrawAction;
+import gameoflife.hmi.swing.GameOfLifeMainViewFrame;
+import gameoflife.hmi.swing.HmiPresenter;
+import gameoflife.hmi.swing.KeyBoardInputs;
 import gameoflife.patterns.Pattern;
 
 public class GameBoardPanel extends BasePanel implements GameStatusListener, CellListener {

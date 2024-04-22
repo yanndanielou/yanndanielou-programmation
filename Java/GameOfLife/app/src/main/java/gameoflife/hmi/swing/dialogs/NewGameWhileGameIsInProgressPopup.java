@@ -1,4 +1,4 @@
-package gameoflife.hmi.dialogs;
+package gameoflife.hmi.swing.dialogs;
 
 import java.awt.Component;
 
@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import gameoflife.core.GameManager;
 import gameoflife.game.Game;
-import gameoflife.hmi.menubar.MainViewMenuBarManager;
+import gameoflife.hmi.swing.menubar.MainViewMenuBarManager;
 
 public class NewGameWhileGameIsInProgressPopup {
 	private static final Logger LOGGER = LogManager.getLogger(MainViewMenuBarManager.class);

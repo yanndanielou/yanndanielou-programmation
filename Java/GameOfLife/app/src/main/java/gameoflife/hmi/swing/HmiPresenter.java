@@ -1,13 +1,12 @@
-package gameoflife.hmi;
+package gameoflife.hmi.swing;
 
 import gameoflife.constants.HMIConstants;
-import gameoflife.game.Game;
 import gameoflife.game.GameListener;
 import gameoflife.hmi.enums.DrawAction;
-import gameoflife.hmi.panel.BottomPanel;
-import gameoflife.hmi.panel.FullFrameContentPanel;
-import gameoflife.hmi.panel.GameBoardPanel;
-import gameoflife.hmi.panel.TopPanel;
+import gameoflife.hmi.swing.panel.BottomPanel;
+import gameoflife.hmi.swing.panel.FullFrameContentPanel;
+import gameoflife.hmi.swing.panel.GameBoardPanel;
+import gameoflife.hmi.swing.panel.TopPanel;
 import gameoflife.patterns.Pattern;
 
 public class HmiPresenter implements GameListener {

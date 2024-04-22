@@ -20,14 +20,14 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import common.collection.CollectionUtils;
 import gameoflife.builders.gameboard.GameBoardDataModel;
 import gameoflife.builders.gameboard.GameBoardModelBuilder;
 import gameoflife.core.GameManager;
 import gameoflife.game.Game;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
-import gameoflife.hmi.GameOfLifeMainViewFrame;
-import util.CollectionUtils;
+import gameoflife.hmi.swing.GameOfLifeMainViewFrame;
 
 @ExtendWith(MockitoExtension.class)
 class ConwaysGameOfLifeManuelStepsTest {

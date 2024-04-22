@@ -1,4 +1,4 @@
-package gameoflife.hmi;
+package gameoflife.hmi.swing;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -15,11 +15,11 @@ import org.apache.logging.log4j.Logger;
 import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
 import gameoflife.hmi.interfaces.GameOfLifeMainViewGeneric;
-import gameoflife.hmi.menubar.MainViewMenuBarManager;
-import gameoflife.hmi.panel.BottomPanel;
-import gameoflife.hmi.panel.FullFrameContentPanel;
-import gameoflife.hmi.panel.GameBoardPanel;
-import gameoflife.hmi.panel.TopPanel;
+import gameoflife.hmi.swing.menubar.MainViewMenuBarManager;
+import gameoflife.hmi.swing.panel.BottomPanel;
+import gameoflife.hmi.swing.panel.FullFrameContentPanel;
+import gameoflife.hmi.swing.panel.GameBoardPanel;
+import gameoflife.hmi.swing.panel.TopPanel;
 
 public class GameOfLifeMainViewFrame extends JFrame implements GameOfLifeMainViewGeneric {
 

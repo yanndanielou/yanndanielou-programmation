@@ -1,4 +1,4 @@
-package gameoflife.hmi.menubar;
+package gameoflife.hmi.swing.menubar;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -18,9 +18,9 @@ import common.random.RandomIntegerGenerator;
 import gameoflife.core.GameManager;
 import gameoflife.game.PauseReason;
 import gameoflife.gameboard.Cell;
-import gameoflife.hmi.GameOfLifeMainViewFrame;
-import gameoflife.hmi.dialogs.CheatCodeDialog;
-import gameoflife.hmi.dialogs.NewGameWhileGameIsInProgressPopup;
+import gameoflife.hmi.swing.GameOfLifeMainViewFrame;
+import gameoflife.hmi.swing.dialogs.CheatCodeDialog;
+import gameoflife.hmi.swing.dialogs.NewGameWhileGameIsInProgressPopup;
 import gameoflife.patterns.Pattern;
 import gameoflife.patterns.loader.FilePatternLoaderManager;
 

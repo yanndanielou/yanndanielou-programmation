@@ -1,4 +1,4 @@
-package gameoflife.hmi.mouseaction;
+package gameoflife.hmi.swing.mouseaction;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 import gameoflife.game.PauseReason;
 import gameoflife.gameboard.Cell;
 import gameoflife.hmi.enums.DrawAction;
-import gameoflife.hmi.panel.CellPanel;
+import gameoflife.hmi.swing.panel.CellPanel;
 
 public class DrawCellWithMouse implements MouseListener {
 	@SuppressWarnings("unused")

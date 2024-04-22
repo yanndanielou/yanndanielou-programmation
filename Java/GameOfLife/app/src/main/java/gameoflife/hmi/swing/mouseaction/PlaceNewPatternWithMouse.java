@@ -1,4 +1,4 @@
-package gameoflife.hmi.mouseaction;
+package gameoflife.hmi.swing.mouseaction;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -9,8 +9,7 @@ import org.apache.logging.log4j.Logger;
 import gameoflife.game.Game;
 import gameoflife.game.PauseReason;
 import gameoflife.gameboard.Cell;
-import gameoflife.hmi.enums.DrawAction;
-import gameoflife.hmi.panel.CellPanel;
+import gameoflife.hmi.swing.panel.CellPanel;
 import gameoflife.patterns.Pattern;
 
 public class PlaceNewPatternWithMouse implements MouseListener {

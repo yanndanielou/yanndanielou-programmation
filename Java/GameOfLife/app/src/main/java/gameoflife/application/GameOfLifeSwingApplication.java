@@ -4,11 +4,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import gameoflife.core.GameManager;
-import gameoflife.hmi.GameOfLifeMainViewFrame;
+import gameoflife.hmi.swing.GameOfLifeMainViewFrame;
 
-public class GameOfLifeApplication {
+public class GameOfLifeSwingApplication {
 
-	private static final Logger LOGGER = LogManager.getLogger(GameOfLifeApplication.class);
+	private static final Logger LOGGER = LogManager.getLogger(GameOfLifeSwingApplication.class);
 
 	public static void main(String[] args) {
 		LOGGER.info("Application start info");

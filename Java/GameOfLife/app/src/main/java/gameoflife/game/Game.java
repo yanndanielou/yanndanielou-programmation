@@ -3,12 +3,9 @@ package gameoflife.game;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.print.attribute.standard.MediaSize.ISO;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import game.genericgame.GenericGame;
 import gameoflife.core.GameManager;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;

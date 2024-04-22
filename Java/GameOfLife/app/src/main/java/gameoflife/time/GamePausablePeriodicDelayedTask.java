@@ -1,7 +1,6 @@
 package gameoflife.time;
 
 import common.timer.PausablePeriodicDelayedTask;
-import game.genericgame.GenericGame;
 import game.genericgame.GenericGameStatusListener;
 import gameoflife.game.Game;
 

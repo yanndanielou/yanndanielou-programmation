@@ -1,9 +1,9 @@
-package gameoflife.hmi.panel;
+package gameoflife.hmi.swing.panel;
 
 import javax.swing.JPanel;
 
-import gameoflife.hmi.HmiPresenter;
-import gameoflife.hmi.KeyBoardInputs;
+import gameoflife.hmi.swing.HmiPresenter;
+import gameoflife.hmi.swing.KeyBoardInputs;
 
 public abstract class BasePanel extends JPanel {
 	/**

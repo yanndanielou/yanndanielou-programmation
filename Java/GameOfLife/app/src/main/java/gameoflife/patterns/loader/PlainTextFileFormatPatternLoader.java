@@ -1,9 +1,6 @@
 package gameoflife.patterns.loader;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.regex.Matcher;
 import java.util.stream.IntStream;
 
 import org.apache.logging.log4j.LogManager;

@@ -1,4 +1,4 @@
-package gameoflife.hmi.dialogs;
+package gameoflife.hmi.swing.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,8 +19,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import common.hmi.utils.HMIUtils;
-import gameoflife.hmi.GameOfLifeMainViewFrame;
 import gameoflife.hmi.enums.DrawAction;
+import gameoflife.hmi.swing.GameOfLifeMainViewFrame;
 
 public class DrawActionPickerPopup extends JFrame {
 

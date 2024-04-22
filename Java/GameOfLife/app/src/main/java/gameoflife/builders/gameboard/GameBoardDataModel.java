@@ -1,6 +1,6 @@
 package gameoflife.builders.gameboard;
 
-import game.builders.DimensionDataModel;
+import common.builders.DimensionDataModel;
 
 public class GameBoardDataModel {
 

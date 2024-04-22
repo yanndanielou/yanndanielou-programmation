@@ -1,4 +1,4 @@
-package gameoflife.hmi.panel;
+package gameoflife.hmi.swing.panel;
 
 import java.awt.Dimension;
 
@@ -15,7 +15,7 @@ import gameoflife.game.Game;
 import gameoflife.game.GameListener;
 import gameoflife.game.GameStatusListener;
 import gameoflife.game.PauseReason;
-import gameoflife.hmi.GameOfLifeMainViewFrame;
+import gameoflife.hmi.swing.GameOfLifeMainViewFrame;
 
 public class BottomPanel extends BasePanel implements GameStatusListener, GameListener {
 

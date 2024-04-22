@@ -1,4 +1,4 @@
-package gameoflife.hmi;
+package gameoflife.hmi.swing;
 
 import java.awt.Container;
 import java.awt.event.KeyEvent;

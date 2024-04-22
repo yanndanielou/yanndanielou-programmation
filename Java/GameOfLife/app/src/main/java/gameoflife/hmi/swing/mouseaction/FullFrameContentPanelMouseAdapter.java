@@ -1,4 +1,4 @@
-package gameoflife.hmi.mouseaction;
+package gameoflife.hmi.swing.mouseaction;
 
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -11,7 +11,7 @@ import javax.swing.SwingUtilities;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import gameoflife.hmi.panel.FullFrameContentPanel;
+import gameoflife.hmi.swing.panel.FullFrameContentPanel;
 
 public class FullFrameContentPanelMouseAdapter extends MouseAdapter {
 	private static final Logger LOGGER = LogManager.getLogger(FullFrameContentPanelMouseAdapter.class);

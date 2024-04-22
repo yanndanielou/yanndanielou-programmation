@@ -8,7 +8,6 @@ import java.util.stream.Stream;
 
 import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,14 +19,13 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import common.collection.CollectionUtils;
 import gameoflife.builders.gameboard.GameBoardDataModel;
 import gameoflife.builders.gameboard.GameBoardModelBuilder;
 import gameoflife.core.GameManager;
 import gameoflife.game.Game;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
-import gameoflife.hmi.GameOfLifeMainViewFrame;
-import util.CollectionUtils;
 
 @ExtendWith(MockitoExtension.class)
 class ConwaysGameOfLifeManuelStepsTest {

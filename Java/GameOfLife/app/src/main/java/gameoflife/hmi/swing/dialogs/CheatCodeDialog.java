@@ -1,4 +1,4 @@
-package gameoflife.hmi.dialogs;
+package gameoflife.hmi.swing.dialogs;
 
 import java.awt.Frame;
 

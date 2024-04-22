@@ -1,22 +1,15 @@
 package withthmi.functional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.awt.Dimension;
 import java.util.List;
-import java.util.stream.Stream;
 
-import org.apache.commons.lang3.tuple.MutablePair;
-import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Answers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -28,11 +21,10 @@ import gameoflife.core.GameManager;
 import gameoflife.game.Game;
 import gameoflife.gameboard.Cell;
 import gameoflife.gameboard.GameBoard;
-import gameoflife.hmi.GameOfLifeMainViewFrame;
+import gameoflife.hmi.swing.GameOfLifeMainViewFrame;
 import gameoflife.patterns.Pattern;
 import gameoflife.patterns.loader.PlainTextFileFormatPatternLoader;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
-import util.CollectionUtils;
 
 @ExtendWith(MockitoExtension.class)
 class LoadPatternAndApplyInGameTest {

@@ -1,4 +1,4 @@
-package gameoflife.hmi.panel;
+package gameoflife.hmi.swing.panel;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -16,8 +16,8 @@ import common.hmi.utils.HMIUtils;
 import gameoflife.constants.HMIConstants;
 import gameoflife.game.Game;
 import gameoflife.game.GameStatusListener;
-import gameoflife.hmi.GameOfLifeMainViewFrame;
-import gameoflife.hmi.dialogs.DrawActionPickerPopup;
+import gameoflife.hmi.swing.GameOfLifeMainViewFrame;
+import gameoflife.hmi.swing.dialogs.DrawActionPickerPopup;
 
 public class TopPanel extends BasePanel implements GameStatusListener {
 
