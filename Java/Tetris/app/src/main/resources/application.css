@@ -1,0 +1,11 @@
+.root {
+    -fx-background-image: url("../Images/Background_motif_1.png");
+}
+
+#aliveCell {
+	-fx-background-color: PURPLE;
+}
+
+#deadCell {
+	-fx-background-color: LAVENDER;	
+}
