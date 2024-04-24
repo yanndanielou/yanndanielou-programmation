@@ -20,6 +20,8 @@ pdfbox-app-3.0.1
 pdfbox_trunk/
 *.7z
 jogamp-all-platforms/
+javafx-sdk-22.0.1/
+jdk-22.0.1/
 
 
 
