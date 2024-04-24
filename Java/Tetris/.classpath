@@ -11,6 +11,9 @@
 	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 	
+	<!--
+	<classpathentry kind="src" path="/Common"/>
+	-->
 	
 	<classpathentry kind="lib" path="../ExternalLibraries/log4j-api-2.20.0.jar">
 		<attributes>
