@@ -23,7 +23,7 @@ $INSBASE
   9
 $EXTMIN
  10
--556.9308996200574
+-89.59999999999999
  20
 -620
  30
@@ -31,7 +31,7 @@ $EXTMIN
   9
 $EXTMAX
  10
-286.328125
+228.7
  20
 0
  30
@@ -311,7 +311,7 @@ $DIMUPT
   9
 $DIMDEC
  70
-    2
+    4
   9
 $DIMTDEC
  70
@@ -335,7 +335,7 @@ $DIMAUNIT
   9
 $DIMADEC
  70
-    0
+    2
   9
 $DIMALTRND
  40
@@ -805,6 +805,10 @@ $GRIDMODE
  70
     1
   9
+$SNAPSTYLE
+ 70
+    0
+  9
 $GRIDUNIT
  10
 0
@@ -1117,9 +1121,9 @@ AcDbViewportTableRecord
  21
 1
  12
-73.82812500000229
+199.2187500000061
  22
--63.28125000000196
+30.27343750000093
  13
 0
  23
@@ -2271,7 +2275,7 @@ AcDbSymbolTableRecord
 100
 AcDbTextStyleTableRecord
   2
-Standard
+standard
  70
     0
  40
@@ -2285,7 +2289,7 @@ Standard
  42
 1
   3
-txt
+standard
   4
 
   0
@@ -2391,7 +2395,7 @@ Standard
  70
     0
  40
-1
+2.5
  41
 2.5
  42
@@ -2481,7 +2485,7 @@ Standard
 277
     2
 278
-    0
+   44
 279
     0
 280
@@ -3611,6 +3615,50 @@ AcDbLine
  21
 -191.4999999999999
   0
+TEXT
+  5
+75
+100
+AcDbEntity
+  8
+0
+  6
+ByLayer
+ 62
+    2
+370
+   -1
+100
+AcDbText
+ 10
+210.1562500000065
+ 20
+-128.125000000004
+ 30
+0
+ 40
+5
+  1
+Hauteur: 61 cm (au plus bas)
+ 50
+90
+ 41
+1
+ 51
+0
+  7
+standard
+ 71
+    0
+210
+0
+220
+0
+230
+1
+100
+AcDbText
+  0
 ENDSEC
   0
 SECTION
@@ -3643,7 +3691,7 @@ AcDbDictionary
   0
 PLOTSETTINGS
   5
-75
+76
 100
 AcDbPlotSettings
   6
