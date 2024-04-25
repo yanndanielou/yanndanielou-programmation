@@ -44,23 +44,9 @@ public class TetrisApplication extends Application {
 		// able to manipulate it in other methods
 		this.primaryStage = primaryStage;
 
-		defineApplicationIcon();
-		
 		MainViewPane mainViewPane = new MainViewPane(primaryStage);
 		mainViewPane.initialise();
 
-	}
-
-	private void defineApplicationIcon() {
-		// Application icon
-		String applicationIconPath = "applicationIcon.png";
-		LOGGER.info(() -> "defineApplicationIcon:" + applicationIconPath);
-		try {
-			Image applicationIcon = new Image(applicationIconPath);
-			primaryStage.getIcons().add(applicationIcon);
-		} catch (IllegalArgumentException illegalArgumentException) {
-			LOGGER.error(() -> "Could not defineApplicationIcon:" + applicationIconPath);
-		}
 	}
 
 	/**
