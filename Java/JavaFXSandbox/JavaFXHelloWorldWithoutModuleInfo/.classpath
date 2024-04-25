@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	</classpathentry>
+	
+	<classpathentry kind="src" path="app/src/main/java"/>
+	<classpathentry excluding="**/*.java" kind="src" path="app/src/main/resources"/>
+	
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFxOpenJFX21_0_1"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,47 @@
+2024-04-25 build OK
+
+VM Arguments
+--module-path  "D:\GitHub\yanndanielou-programmation\Java\ExternalLibraries\openjfx-21.0.1_windows-x64_bin-sdk\javafx-sdk-21.0.1\lib" --add-modules javafx.controls,javafx.fxml,javafx.graphics
+
+
+Project creation
+
+JavaFX and Eclipse
+This section explains how to create a JavaFX application in Eclipse. JavaFX 15.0.1 and Eclipse 2020-12 (4.18.0) were used for the IDE screenshots.
+
+Download an appropriate JDK for your operating system and set JAVA_HOME to the JDK directory. Refer to Install Java section for more information.
+
+Include the new JDK as Installed JREs in Eclipse -> Window -> Preferences -> Java -> Installed JREs -> Add.
+
+You can create a JavaFX modular or non-modular project and use the IDE tools, Maven or Gradle build tools.
+
+Non-modular projects
+IDE
+Follow these steps to create a JavaFX non-modular project and use the IDE tools to build it and run it. Alternatively, you can download a similar project from here.
+
+Download the appropriate JavaFX SDK for your operating system and unzip it to a desired location, for instance /Users/your-user/Downloads/javafx-sdk-22.0.1.
+
+Create a new User Library under Eclipse -> Window -> Preferences -> Java -> Build Path -> User Libraries -> New.Add User LibraryName it JavaFX21 and include the jars under the lib folder from JavaFX 21.Add JavaFX jars
+
+1. Create a Java project
+Select File -> New -> Java Project, and provide a name to the project, like HelloFX, and a location.Create a Java projectMake sure JDK 11 or greater is selected. You don't need to add a module-info.java file. You can include the JavaFX22.0.1 library into the classpath.Add JavaFX11 libraryAn empty project will be opened.
+
+2. Add JavaFX classes
+You can add a main class Main, based on this one, with an FXML file and a controller.Add JavaFX project
+
+Warning: If you now run the project it will compile but you will get this error:
+
+Error: JavaFX runtime components are missing, and are required to run this application
+This error is shown since the Java 21 launcher checks if the main class extends javafx.application.Application. If that is the case, it is required to have the javafx.graphics module on the module-path.
+3. Add VM arguments
+To solve the issue, click on Run -> Run Configurations...  -> Java Application, create a new launch configuration for your project named `hellofx` and add these VM arguments:
+
+Linux/Mac
+Windows
+
+--module-path "\path\to\javafx-sdk-22.0.1\lib" --add-modules javafx.controls,javafx.fxml
+Warning: Make sure the checkbox "Use the -XstartOnFirstThread argument when launching with SWT" is not checked.
+VM argumentsClick apply and close the dialog.
+
+4. Run the project
+Click Run -> Run As -> Java Application -> Main - hellofx to run the project.
