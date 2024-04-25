@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import tetris.hmi.MainBarMenu;
+import tetris.hmi.MainViewPane;
 
 /***
  * Source:
@@ -25,7 +26,7 @@ import tetris.hmi.MainBarMenu;
 public class TetrisApplication extends Application {
 	private static final Logger LOGGER = LogManager.getLogger(TetrisApplication.class);
 
-	public Stage primaryStage;
+	public Stage primaryStage; 
 
 	private static final int APPLICATION_WIDTH = 500;
 	private static final int APPLICATION_HEIGHT = 500;
@@ -44,29 +45,9 @@ public class TetrisApplication extends Application {
 		this.primaryStage = primaryStage;
 
 		defineApplicationIcon();
-
-		MainBarMenu mainBarMenu = new MainBarMenu(this);
-
-		Pane mainViewPane = new Pane();
-
-		BorderPane mainViewBorderPane = new BorderPane();
-		mainViewBorderPane.setTop(mainBarMenu);
-		mainViewBorderPane.setCenter(mainViewPane);
-
-		Scene scene = new Scene(mainViewBorderPane, APPLICATION_WIDTH, APPLICATION_HEIGHT);
-		scene.getStylesheets().add("application.css");
-
-		primaryStage.setScene(scene);
-		primaryStage.show();
-
-		primaryStage.setTitle("Tetris");
-
-		VBox scoreVBox = new VBox();
-		// scoreVBox.resize(100,100);
-		scoreVBox.setMinSize(100, 100);
-		mainViewPane.getChildren().add(scoreVBox);
-		scoreVBox.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
-		scoreVBox.getChildren().add(new Label("Score:"));
+		
+		MainViewPane mainViewPane = new MainViewPane(primaryStage);
+		mainViewPane.initialise();
 
 	}
 
