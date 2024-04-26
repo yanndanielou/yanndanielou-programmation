@@ -41,5 +41,8 @@
 	<classpathentry kind="lib" path="../ExternalLibraries/commons-collections4-4.4.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/ooxml-schemas-1.0.jar"/>
 	
+	
+	<classpathentry kind="lib" path="../ExternalLibraries/gson-2.10.1.jar"/>
+	
 	<classpathentry kind="output" path="bin"/>
 </classpath>

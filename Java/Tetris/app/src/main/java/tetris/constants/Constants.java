@@ -6,7 +6,6 @@ public class Constants {
 		// no way to instantiate this class
 	}
 
-	public static final int GAMEFIELD_WIDTH = 10;
-	public static final int GAMEFIELD_HEIGHT = 20;
-
+	public static final String GAME_BOARD_JSON_DATA_MODEL_FILE_PATH = "GameBoardDataModel.json";
+	
 }

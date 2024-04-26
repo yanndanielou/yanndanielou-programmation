@@ -16,26 +16,18 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import tetris.hmi.MainBarMenu;
-import tetris.hmi.MainViewPane;
+import tetris.core.GameManager;
+import tetris.hmi.javafx.MainBarMenu;
+import tetris.hmi.javafx.views.MainViewPane;
 
 /***
  * Source:
  * https://steemit.com/programming/@satoshio/conway-s-game-of-life-implementation-in-javafx
  */
-public class TetrisApplication extends Application {
-	private static final Logger LOGGER = LogManager.getLogger(TetrisApplication.class);
+public class TetrisJavaFxApplication extends Application {
+	private static final Logger LOGGER = LogManager.getLogger(TetrisJavaFxApplication.class);
 
 	public Stage primaryStage; 
-
-	private static final int APPLICATION_WIDTH = 500;
-	private static final int APPLICATION_HEIGHT = 500;
-	private static float CELL_SIZE = 10;
-	private static boolean SHOW_BORDERS = true;
-
-	private int RUN_SPEED_IN_MILLISECONDS = 500;
-
-	private static float ZOOM_FACTOR = 1;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -46,7 +38,7 @@ public class TetrisApplication extends Application {
 
 		MainViewPane mainViewPane = new MainViewPane(primaryStage);
 		mainViewPane.initialise();
-
+		
 	}
 
 	/**

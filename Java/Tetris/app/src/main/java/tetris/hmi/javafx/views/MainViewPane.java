@@ -1,4 +1,4 @@
-package tetris.hmi;
+package tetris.hmi.javafx.views;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
@@ -19,11 +19,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import tetris.application.TetrisApplication;
+import tetris.application.TetrisJavaFxApplication;
+import tetris.core.GameManager;
+import tetris.game.Game;
+import tetris.hmi.TetrisMainViewGeneric;
+import tetris.hmi.javafx.MainBarMenu;
 
 
 
-public class MainViewPane extends Pane{
+public class MainViewPane extends Pane implements TetrisMainViewGeneric{
 	
 	private static final Logger LOGGER = LogManager.getLogger(MainViewPane.class);
 
@@ -45,7 +49,6 @@ public class MainViewPane extends Pane{
 		mainViewBorderPane.setTop(mainBarMenu);
 		mainViewBorderPane.setCenter(this);
 		
-
 		Scene scene = new Scene(mainViewBorderPane, APPLICATION_WIDTH, APPLICATION_HEIGHT);
 		scene.getStylesheets().add("application.css");
 
@@ -54,14 +57,13 @@ public class MainViewPane extends Pane{
 
 		primaryStage.setTitle("Tetris - " + common.string.utils.StringUtils.getISO8601CurrentLocalTime());
 
-		VBox scoreVBox = new VBox();
-		// scoreVBox.resize(100,100);
-		scoreVBox.setMinSize(100, 100);
-		this.getChildren().add(scoreVBox);
-		scoreVBox.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
-		scoreVBox.getChildren().add(new Label("Score:"));
+		
+		ScoreFrame scoreFrame = new ScoreFrame();
+		mainViewBorderPane.setLeft(scoreFrame);
 		
 		defineApplicationIcon();
+		
+		GameManager.getInstance().setMainViewFrame(this);
 
 
 	}
@@ -77,6 +79,12 @@ public class MainViewPane extends Pane{
 		} catch (IllegalArgumentException illegalArgumentException) {
 			LOGGER.error(() -> "Could not defineApplicationIcon:" + applicationIconPath);
 		}
+	}
+
+	@Override
+	public void registerToGame(Game game) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
