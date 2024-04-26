@@ -13,6 +13,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import tetris.application.TetrisJavaFxApplication;
+import tetris.core.GameManager;
 import tetris.hmi.javafx.dialogs.NewGameWhileGameIsInProgressPopup;
 
 public class MainBarMenu extends MenuBar {
@@ -23,6 +24,7 @@ public class MainBarMenu extends MenuBar {
 		this.tetrisApplication = sudokuApplication;
 
 		createMenuGame();
+		createMenuTest();
 		createMenuSkill();
 		createMenuOptions();
 		createMenuHelp();
@@ -37,6 +39,28 @@ public class MainBarMenu extends MenuBar {
 		});
 		newGameMenuItem.setAccelerator(KeyCharacterCombination.valueOf("F2"));
 		menu.getItems().add(newGameMenuItem);
+
+		getMenus().add(menu);
+	}
+
+	private void createMenuTest() {
+
+		Menu menu = new Menu("Tests");
+
+		Menu dropNewTetromino = new Menu("Drop new Tetrimino");
+
+		MenuItem launchNewTetrominoOSquareMenuItem = new MenuItem("Tetromino O (square)");
+		dropNewTetromino.getItems().add(launchNewTetrominoOSquareMenuItem);
+		dropNewTetromino.setOnAction(e -> {
+			if(GameManager.hasGameInProgress()) {
+			//	GameManager.getInstance().getGame().dropNewTetrimino()
+			}
+		});
+
+		launchNewTetrominoOSquareMenuItem.setAccelerator(
+				new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
+
+		menu.getItems().add(dropNewTetromino);
 
 		getMenus().add(menu);
 	}

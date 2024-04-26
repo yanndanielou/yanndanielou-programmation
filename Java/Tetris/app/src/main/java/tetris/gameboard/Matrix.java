@@ -1,15 +1,11 @@
 package tetris.gameboard;
 
-import java.util.List;
-import java.util.function.Predicate;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import game.gameboard.GenericGameBoard;
 import game.gameboard.GenericIntegerGameBoardPoint;
 import tetris.builders.gameboard.GameBoardDataModel;
-import tetris.builders.gameboard.GameBoardModelBuilder;
 import tetris.game.Game;
 
 public class Matrix extends GenericGameBoard {
@@ -56,22 +52,5 @@ public class Matrix extends GenericGameBoard {
 		return new MatrixCell(game, x, y);
 	}
 
-	public List<MatrixCell> getAllCells() {
-		return getAllGameBoardPointsAsOrderedList().stream().map(MatrixCell.class::cast).toList();
-	}
-
-	public List<MatrixCell> getAllAliveCells() {
-		return getAllGameBoardPointsAsOrderedList().stream().map(MatrixCell.class::cast).filter(MatrixCell::isAlive).toList();
-	}
-
-	public List<MatrixCell> getAllDeadCells() {
-		return getAllGameBoardPointsAsOrderedList().stream().map(MatrixCell.class::cast).filter(Predicate.not(MatrixCell::isAlive))
-				.toList();
-	}
-
-	public List<MatrixCell> getAllDeadCellsThatHaveBeenAlive() {
-		return getAllGameBoardPointsAsOrderedList().stream().map(MatrixCell.class::cast).filter(MatrixCell::isDeadAndWasPreviouslyAliveDuringGame)
-				.toList();
-	}
 
 }
