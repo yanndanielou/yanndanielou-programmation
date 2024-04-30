@@ -1,8 +1,8 @@
 package tetris.game_objects.tetrominoes_types;
 
-public class TetriminoT extends Tetromino {
+public class TetrominoT extends Tetromino {
 
-	public TetriminoT() {
+	public TetrominoT() {
 		// TODO Auto-generated constructor stub
 	}
 

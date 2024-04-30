@@ -25,30 +25,32 @@ import tetris.game.Game;
 import tetris.hmi.TetrisMainViewGeneric;
 import tetris.hmi.javafx.MainBarMenu;
 
+public class MainViewPane extends Pane implements TetrisMainViewGeneric {
 
-
-public class MainViewPane extends Pane implements TetrisMainViewGeneric{
-	
 	private static final Logger LOGGER = LogManager.getLogger(MainViewPane.class);
 
 	private static final int APPLICATION_WIDTH = 500;
 	private static final int APPLICATION_HEIGHT = 500;
-	
-	MainBarMenu mainBarMenu ;
+
+	MainBarMenu mainBarMenu;
 	Stage primaryStage;
-	
+	ScoreFrame scoreFrame;
+	MatrixView matrixView;
+
 	public MainViewPane(Stage primaryStage) {
-		
+
 		this.primaryStage = primaryStage;
 	}
-	
+
 	public void initialise() {
 		mainBarMenu = new MainBarMenu(null);
 
 		BorderPane mainViewBorderPane = new BorderPane();
 		mainViewBorderPane.setTop(mainBarMenu);
-		mainViewBorderPane.setCenter(this);
 		
+		matrixView = new MatrixView();
+		mainViewBorderPane.setCenter(matrixView);
+
 		Scene scene = new Scene(mainViewBorderPane, APPLICATION_WIDTH, APPLICATION_HEIGHT);
 		scene.getStylesheets().add("application.css");
 
@@ -57,17 +59,14 @@ public class MainViewPane extends Pane implements TetrisMainViewGeneric{
 
 		primaryStage.setTitle("Tetris - " + common.string.utils.StringUtils.getISO8601CurrentLocalTime());
 
-		
-		ScoreFrame scoreFrame = new ScoreFrame();
+		scoreFrame = new ScoreFrame();
 		mainViewBorderPane.setLeft(scoreFrame);
-		
+
 		defineApplicationIcon();
-		
+
 		GameManager.getInstance().setMainViewFrame(this);
 
-
 	}
-	
 
 	private void defineApplicationIcon() {
 		// Application icon
@@ -83,9 +82,7 @@ public class MainViewPane extends Pane implements TetrisMainViewGeneric{
 
 	@Override
 	public void registerToGame(Game game) {
-		// TODO Auto-generated method stub
-		
+matrixView.initialize(game);
 	}
-
 
 }

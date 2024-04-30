@@ -1,9 +1,9 @@
 package tetris.game;
 
+import tetris.game_objects.Mino;
 import tetris.gameboard.MatrixCell;
 
 public interface CellListener {
-	
-	public void onCellAliveStatusChanged(boolean alive, MatrixCell cell);
+	void onCellContentChanged(MatrixCell matrixCell, Mino mino);
 
 }

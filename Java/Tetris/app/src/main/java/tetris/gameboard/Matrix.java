@@ -20,19 +20,17 @@ public class Matrix extends GenericGameBoard {
 	protected int width;
 	protected int height;
 
-	public Matrix(GameBoardDataModel gameBoardDataModel2) {
-		this.gameBoardDataModel = gameBoardDataModel2;
-		width = (int) gameBoardDataModel.getGameBoardDimensions().getDimension().getWidth();
-		height = (int) gameBoardDataModel.getGameBoardDimensions().getDimension().getHeight();
+	public Matrix(GameBoardDataModel gameBoardDataModel) {
+		this.gameBoardDataModel = gameBoardDataModel;
 		afterConstructor();
 	}
 
 	public int getTotalWidth() {
-		return width;
+		return (int) gameBoardDataModel.getGameBoardDimensions().getDimension().getWidth();
 	}
 
 	public int getTotalHeight() {
-		return height;
+		return (int) gameBoardDataModel.getGameBoardDimensions().getDimension().getHeight();
 	}
 
 	public void setGame(Game game) {
@@ -43,7 +41,7 @@ public class Matrix extends GenericGameBoard {
 		return game;
 	}
 
-	public MatrixCell getCellByXAndY(int x, int y) {
+	public MatrixCell getMatrixCellByXAndY(int x, int y) {
 		return (MatrixCell) getGameBoardPointByXAndY(x, y);
 	}
 
@@ -51,6 +49,5 @@ public class Matrix extends GenericGameBoard {
 	protected GenericIntegerGameBoardPoint createGameBoardPoint(int x, int y) {
 		return new MatrixCell(game, x, y);
 	}
-
 
 }

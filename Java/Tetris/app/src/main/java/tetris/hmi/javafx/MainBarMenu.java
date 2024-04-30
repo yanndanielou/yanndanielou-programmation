@@ -14,6 +14,8 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import tetris.application.TetrisJavaFxApplication;
 import tetris.core.GameManager;
+import tetris.game_objects.tetrominoes_types.TetrominoOSquare;
+import tetris.game_objects.tetrominoes_types.TetrominoType;
 import tetris.hmi.javafx.dialogs.NewGameWhileGameIsInProgressPopup;
 
 public class MainBarMenu extends MenuBar {
@@ -52,8 +54,8 @@ public class MainBarMenu extends MenuBar {
 		MenuItem launchNewTetrominoOSquareMenuItem = new MenuItem("Tetromino O (square)");
 		dropNewTetromino.getItems().add(launchNewTetrominoOSquareMenuItem);
 		dropNewTetromino.setOnAction(e -> {
-			if(GameManager.hasGameInProgress()) {
-			//	GameManager.getInstance().getGame().dropNewTetrimino()
+			if (GameManager.hasGameInProgress()) {
+				GameManager.getInstance().getGame().tryAndDropNewTetrimino(TetrominoType.O_SQUARE);
 			}
 		});
 

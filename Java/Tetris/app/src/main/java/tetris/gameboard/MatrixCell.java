@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import game.gameboard.GenericIntegerGameBoardPoint;
 import tetris.game.CellListener;
 import tetris.game.Game;
+import tetris.game_objects.Mino;
 
 public class MatrixCell extends GenericIntegerGameBoardPoint {
 
@@ -21,6 +22,8 @@ public class MatrixCell extends GenericIntegerGameBoardPoint {
 
 	private ArrayList<CellListener> gameBoardPointListeners = new ArrayList<>();
 
+	private Mino mino;
+
 	public MatrixCell(Game game, int x, int y) {
 		super(x, y);
 	}
@@ -29,6 +32,18 @@ public class MatrixCell extends GenericIntegerGameBoardPoint {
 		gameBoardPointListeners.add(gameBoardPointListener);
 	}
 
+	public Mino getMino() {
+		return mino;
+	}
 
+	public void setMino(Mino mino) {
+		this.mino = mino;
+		
+		gameBoardPointListeners.forEach((gameStatusListener) -> gameStatusListener.onCellContentChanged(this, mino));
+	}
+
+	public void setVoid() {
+		setMino(null);
+	}
 
 }
