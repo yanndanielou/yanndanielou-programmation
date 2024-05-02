@@ -96,7 +96,7 @@ public class Game {
 			LOGGER.info("Pause game");
 			paused = true;
 			if (currentDropMinoPeriodicTask != null) {
-				cancelCurrentDropMinoTask();
+				currentDropMinoPeriodicTask.pause();
 			}
 			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGamePaused(this));
 			return true;
@@ -118,6 +118,14 @@ public class Game {
 		if (paused) {
 			LOGGER.info("Resume game");
 			paused = false;
+
+			if (currentDropMinoPeriodicTask != null) {
+				currentDropMinoPeriodicTask.resume();
+			}
+			if (currentOneShotTask != null) {
+				currentOneShotTask.resume();
+			}
+			
 			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameResumed(this));
 
 			return true;
