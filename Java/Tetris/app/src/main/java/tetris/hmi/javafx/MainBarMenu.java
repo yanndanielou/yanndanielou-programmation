@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import tetris.application.TetrisJavaFxApplication;
 import tetris.core.GameManager;
+import tetris.game.PauseReason;
 import tetris.game_objects.tetrominoes_types.TetrominoOSquare;
 import tetris.game_objects.tetrominoes_types.TetrominoType;
 import tetris.hmi.javafx.dialogs.NewGameWhileGameIsInProgressPopup;
@@ -35,12 +36,23 @@ public class MainBarMenu extends MenuBar {
 	private void createMenuGame() {
 
 		Menu menu = new Menu("Game");
+		
 		MenuItem newGameMenuItem = new MenuItem("New");
 		newGameMenuItem.setOnAction(e -> {
 			new NewGameWhileGameIsInProgressPopup();
 		});
 		newGameMenuItem.setAccelerator(KeyCharacterCombination.valueOf("F2"));
 		menu.getItems().add(newGameMenuItem);
+		
+
+		MenuItem pauseMenuItem = new MenuItem("Pause");
+		pauseMenuItem.setOnAction(e -> {
+			if(GameManager.hasGameInProgress()) {
+				GameManager.getInstance().getGame().togglePauseReason(PauseReason.PAUSE_REQUESTED_IN_HMI);
+			}
+		});
+		pauseMenuItem.setAccelerator(KeyCharacterCombination.valueOf("P"));
+		menu.getItems().add(pauseMenuItem);
 
 		getMenus().add(menu);
 	}

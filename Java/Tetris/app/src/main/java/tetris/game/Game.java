@@ -18,9 +18,9 @@ import tetris.game_objects.tetrominoes_types.TetrominoOSquare;
 import tetris.game_objects.tetrominoes_types.TetrominoType;
 import tetris.gameboard.Matrix;
 import tetris.gameboard.MatrixCell;
-import tetris.rules.DropSpeed;
 import tetris.rules.GameMode;
 import tetris.rules.MarathonMode;
+import tetris.time.GamePausableOneShotDelayedTask;
 import tetris.time.GamePausablePeriodicDelayedTask;
 
 public class Game {
@@ -39,7 +39,8 @@ public class Game {
 
 	protected boolean paused = false;
 
-	private GamePausablePeriodicDelayedTask dropCurrentMinoTask;
+	private GamePausablePeriodicDelayedTask currentDropMinoPeriodicTask;
+	private GamePausableOneShotDelayedTask currentOneShotTask;
 
 	private List<PauseReason> pauseReasons = new ArrayList<>();
 
@@ -77,16 +78,25 @@ public class Game {
 	}
 
 	public void addPauseReason(PauseReason pauseReason) {
+		LOGGER.info(() -> "addPauseReason " + pauseReason);
 		pauseReasons.add(pauseReason);
 		pause();
+	}
+
+	public void togglePauseReason(PauseReason pauseReason) {
+		if (pauseReasons.indexOf(pauseReason) == -1) {
+			addPauseReason(pauseReason);
+		} else {
+			removePauseReason(pauseReason);
+		}
 	}
 
 	private boolean pause() {
 		if (!paused) {
 			LOGGER.info("Pause game");
 			paused = true;
-			if (dropCurrentMinoTask != null) {
-				cancelDropCurrentMinoTask();
+			if (currentDropMinoPeriodicTask != null) {
+				cancelCurrentDropMinoTask();
 			}
 			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGamePaused(this));
 			return true;
@@ -97,6 +107,7 @@ public class Game {
 	}
 
 	public void removePauseReason(PauseReason pauseReason) {
+		LOGGER.info(() -> "removePauseReason " + pauseReason);
 		pauseReasons.remove(pauseReason);
 		if (pauseReasons.isEmpty()) {
 			resume();
@@ -140,7 +151,20 @@ public class Game {
 			}
 
 			if (!canMoveCurrentTetrominoDown()) {
-				cancelDropCurrentMinoTask();
+				cancelCurrentDropMinoTask();
+
+				int lockDelayInMilliseconds = gameMode.getLockDelayInMilliseconds();
+				if (lockDelayInMilliseconds == 0) {
+					lockCurrentTetromino();
+				} else {
+					currentOneShotTask = new GamePausableOneShotDelayedTask(this, lockDelayInMilliseconds) {
+
+						@Override
+						public void run() {
+							lockCurrentTetromino();
+						}
+					};
+				}
 			}
 		} else {
 			LOGGER.info(() -> "Cannot move tetromino : " + currentMovingTetromino);
@@ -148,13 +172,18 @@ public class Game {
 
 	}
 
-	private void cancelDropCurrentMinoTask() {
-		LOGGER.info(()-> "cancelDropCurrentMinoTask");
-		dropCurrentMinoTask.cancel();
-		dropCurrentMinoTask = null;
+	private void lockCurrentTetromino() {
+		currentMovingTetromino.lock();
+		currentOneShotTask = null;
 	}
 
-	public boolean canMoveCurrentTetrominoDown() {
+	private void cancelCurrentDropMinoTask() {
+		LOGGER.info(() -> "cancelDropCurrentMinoTask");
+		currentDropMinoPeriodicTask.cancel();
+		currentDropMinoPeriodicTask = null;
+	}
+
+	private boolean canMoveCurrentTetrominoDown() {
 		if (currentMovingTetromino == null) {
 			return false;
 		}
@@ -210,7 +239,8 @@ public class Game {
 					.getDropSpeedPerLevelNumber(getCurrentDifficultyLevel())
 					.getNumberOfMillisecondsBetweenEachStepDown();
 			LOGGER.info(() -> "numberOfMillisecondsBetweenEachStepDown: " + numberOfMillisecondsBetweenEachStepDown);
-			dropCurrentMinoTask = new GamePausablePeriodicDelayedTask(this, numberOfMillisecondsBetweenEachStepDown) {
+			currentDropMinoPeriodicTask = new GamePausablePeriodicDelayedTask(this,
+					numberOfMillisecondsBetweenEachStepDown) {
 
 				@Override
 				public void run() {

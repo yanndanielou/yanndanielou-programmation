@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import geometry2d.integergeometry.IntegerPrecisionPoint;
 import tetris.game.Game;
 import tetris.game_objects.Mino;
@@ -12,6 +15,8 @@ import tetris.game_objects.patterns.Pattern;
 import tetris.gameboard.MatrixCell;
 
 public abstract class Tetromino {
+
+	private static final Logger LOGGER = LogManager.getLogger(Tetromino.class);
 
 	private class SortFromBottomToTop implements Comparator<Mino> {
 
@@ -68,7 +73,8 @@ public abstract class Tetromino {
 		return locked;
 	}
 
-	public void setLocked(boolean locked) {
-		this.locked = locked;
+	public void lock() {
+		LOGGER.info(() -> "lock " + this);
+		this.locked = true;
 	}
 }
