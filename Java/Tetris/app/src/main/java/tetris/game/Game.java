@@ -86,8 +86,7 @@ public class Game {
 			LOGGER.info("Pause game");
 			paused = true;
 			if (dropCurrentMinoTask != null) {
-				dropCurrentMinoTask.cancel();
-				dropCurrentMinoTask = null;
+				cancelDropCurrentMinoTask();
 			}
 			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGamePaused(this));
 			return true;
@@ -131,7 +130,7 @@ public class Game {
 
 	public void tryAndMoveCurrentTetromino() {
 		if (currentMovingTetromino != null && canMoveCurrentTetrominoDown()) {
-			LOGGER.info(()->"Move tetromino : " + currentMovingTetromino);
+			LOGGER.info(() -> "Move tetromino : " + currentMovingTetromino);
 			for (Mino mino : currentMovingTetromino.getMinosSortedFromBottomToTop()) {
 				MatrixCell currentLocationOnMatrix = mino.getLocationOnMatrix();
 				MatrixCell futureLocationOnMatrix = (MatrixCell) gameBoard
@@ -139,11 +138,20 @@ public class Game {
 
 				mino.moveTo(futureLocationOnMatrix);
 			}
-		}
-		else {
-			LOGGER.info(()->"Cannot move tetromino : " + currentMovingTetromino);
+
+			if (!canMoveCurrentTetrominoDown()) {
+				cancelDropCurrentMinoTask();
+			}
+		} else {
+			LOGGER.info(() -> "Cannot move tetromino : " + currentMovingTetromino);
 		}
 
+	}
+
+	private void cancelDropCurrentMinoTask() {
+		LOGGER.info(()-> "cancelDropCurrentMinoTask");
+		dropCurrentMinoTask.cancel();
+		dropCurrentMinoTask = null;
 	}
 
 	public boolean canMoveCurrentTetrominoDown() {
@@ -155,12 +163,20 @@ public class Game {
 		}
 		for (Mino mino : currentMovingTetromino.getMinosSortedFromBottomToTop()) {
 			MatrixCell currentLocationOnMatrix = mino.getLocationOnMatrix();
-			MatrixCell futureLocationOnMatrix = (MatrixCell) gameBoard
-					.getNeighbourGameBoardPoint(currentLocationOnMatrix, NeighbourGameBoardPointDirection.SOUTH);
 
-			if (futureLocationOnMatrix.getMino() != null
-					&& futureLocationOnMatrix.getMino().getTetromino() != currentMovingTetromino) {
-				LOGGER.info(()->"Cannot move tetromino : " + currentMovingTetromino +  " because blocked by " + futureLocationOnMatrix.getMino().getTetromino());
+			if (gameBoard.hasNeighbourGameBoardPoint(currentLocationOnMatrix, NeighbourGameBoardPointDirection.SOUTH)) {
+
+				MatrixCell futureLocationOnMatrix = (MatrixCell) gameBoard
+						.getNeighbourGameBoardPoint(currentLocationOnMatrix, NeighbourGameBoardPointDirection.SOUTH);
+
+				if (futureLocationOnMatrix.getMino() != null
+						&& futureLocationOnMatrix.getMino().getTetromino() != currentMovingTetromino) {
+					LOGGER.info(() -> "Cannot move tetromino : " + currentMovingTetromino + " because blocked by "
+							+ futureLocationOnMatrix.getMino().getTetromino());
+					return false;
+				}
+
+			} else {
 				return false;
 			}
 
@@ -190,9 +206,11 @@ public class Game {
 
 			setCurrentMovingTetromino(tetromino);
 
-			dropCurrentMinoTask = new GamePausablePeriodicDelayedTask(this,
-					gameMode.getDropSpeedPerLevelNumber(getCurrentDifficultyLevel())
-							.getNumberOfMillisecondsBetweenEachStepDown()) {
+			int numberOfMillisecondsBetweenEachStepDown = gameMode
+					.getDropSpeedPerLevelNumber(getCurrentDifficultyLevel())
+					.getNumberOfMillisecondsBetweenEachStepDown();
+			LOGGER.info(() -> "numberOfMillisecondsBetweenEachStepDown: " + numberOfMillisecondsBetweenEachStepDown);
+			dropCurrentMinoTask = new GamePausablePeriodicDelayedTask(this, numberOfMillisecondsBetweenEachStepDown) {
 
 				@Override
 				public void run() {

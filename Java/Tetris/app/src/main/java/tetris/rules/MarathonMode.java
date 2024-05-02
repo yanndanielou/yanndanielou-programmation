@@ -20,7 +20,7 @@ public class MarathonMode extends GameMode {
 	
 	@Override
 	public DropSpeed getDropSpeedPerLevelNumber(int levelNumber) {
-		double number = speedInGByLevelNumber.get(levelNumber);
+		double number = speedInGByLevelNumber.get(levelNumber-1);
 		DropSpeed dropSpeed = new DropSpeed((float) number);
 		return dropSpeed;
 	}

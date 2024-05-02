@@ -5,6 +5,10 @@
 	<classpathentry excluding="**/*.java" kind="src" path="app/src/main/resources"/>
 	
 	
+	<classpathentry kind="src" output="target/test-classes" path="app/src/test/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	
+	
 	<classpathentry kind="src" path="/Game"/>
 	<classpathentry kind="src" path="/Common"/>
 	<classpathentry kind="src" path="/Geometry2D"/>

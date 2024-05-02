@@ -105,12 +105,19 @@ public abstract class GenericGameBoard {
 
 	}
 
+	public boolean hasNeighbourGameBoardPoint(GenericIntegerGameBoardPoint referenceGameBoardPoint,
+			NeighbourGameBoardPointDirection direction) {
+		return getNeighbourGameBoardPoint(referenceGameBoardPoint, direction) != null;
+	}
+
 	public GenericIntegerGameBoardPoint getNeighbourGameBoardPoint(GenericIntegerGameBoardPoint referenceGameBoardPoint,
 			NeighbourGameBoardPointDirection direction) {
 		GenericIntegerGameBoardPoint neighbour = null;
 
-		int referenceGameBoardPointColumn = referenceGameBoardPoint.getColumn();
-		int referenceGameBoardPointRow = referenceGameBoardPoint.getRow();
+		/*
+		 * int referenceGameBoardPointColumn = referenceGameBoardPoint.getColumn(); int
+		 * referenceGameBoardPointRow = referenceGameBoardPoint.getRow();
+		 */
 
 		int referenceGameBoardPointX = referenceGameBoardPoint.getXAsInt();
 		int referenceGameBoardPointY = referenceGameBoardPoint.getYAsInt();
