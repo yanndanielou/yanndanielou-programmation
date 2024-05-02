@@ -6,15 +6,21 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import game.gameboard.NeighbourGameBoardPointDirection;
 import geometry2d.integergeometry.IntegerPrecisionPoint;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
+import tetris.core.DifficultyLevelManager;
 import tetris.core.GameManager;
+import tetris.game_objects.Mino;
 import tetris.game_objects.patterns.Pattern;
 import tetris.game_objects.tetrominoes_types.Tetromino;
 import tetris.game_objects.tetrominoes_types.TetrominoOSquare;
 import tetris.game_objects.tetrominoes_types.TetrominoType;
 import tetris.gameboard.Matrix;
 import tetris.gameboard.MatrixCell;
+import tetris.rules.DropSpeed;
+import tetris.rules.GameMode;
+import tetris.rules.MarathonMode;
 import tetris.time.GamePausablePeriodicDelayedTask;
 
 public class Game {
@@ -33,9 +39,14 @@ public class Game {
 
 	protected boolean paused = false;
 
-	private GamePausablePeriodicDelayedTask nextMoveTask;
+	private GamePausablePeriodicDelayedTask dropCurrentMinoTask;
 
 	private List<PauseReason> pauseReasons = new ArrayList<>();
+
+	private int numberOfLinesCleared = 0;
+
+	private GameMode gameMode;
+	private DifficultyLevelManager difficultyLevelManager;
 
 	int level = 0;
 
@@ -43,17 +54,9 @@ public class Game {
 		this.gameManager = gameManager;
 		this.gameBoard = gameBoard;
 		gameBoard.setGame(this);
-	}
-
-	private void start() {
-		nextMoveTask = new GamePausablePeriodicDelayedTask(this, 1000) {
-
-			@Override
-			public void run() {
-				playOneStep();
-			}
-		};
-
+		gameMode = new MarathonMode();
+		difficultyLevelManager = new DifficultyLevelManager(this);
+		tryAndDropNewRandomTetrimino();
 	}
 
 	public void addGameStatusListener(GameStatusListener listener) {
@@ -82,9 +85,9 @@ public class Game {
 		if (!paused) {
 			LOGGER.info("Pause game");
 			paused = true;
-			if (nextMoveTask != null) {
-				nextMoveTask.cancel();
-				nextMoveTask = null;
+			if (dropCurrentMinoTask != null) {
+				dropCurrentMinoTask.cancel();
+				dropCurrentMinoTask = null;
 			}
 			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGamePaused(this));
 			return true;
@@ -126,8 +129,47 @@ public class Game {
 
 	}
 
-	public void playOneStep() {
+	public void tryAndMoveCurrentTetromino() {
+		if (currentMovingTetromino != null && canMoveCurrentTetrominoDown()) {
+			LOGGER.info(()->"Move tetromino : " + currentMovingTetromino);
+			for (Mino mino : currentMovingTetromino.getMinosSortedFromBottomToTop()) {
+				MatrixCell currentLocationOnMatrix = mino.getLocationOnMatrix();
+				MatrixCell futureLocationOnMatrix = (MatrixCell) gameBoard
+						.getNeighbourGameBoardPoint(currentLocationOnMatrix, NeighbourGameBoardPointDirection.SOUTH);
 
+				mino.moveTo(futureLocationOnMatrix);
+			}
+		}
+		else {
+			LOGGER.info(()->"Cannot move tetromino : " + currentMovingTetromino);
+		}
+
+	}
+
+	public boolean canMoveCurrentTetrominoDown() {
+		if (currentMovingTetromino == null) {
+			return false;
+		}
+		if (currentMovingTetromino.isLocked()) {
+			return false;
+		}
+		for (Mino mino : currentMovingTetromino.getMinosSortedFromBottomToTop()) {
+			MatrixCell currentLocationOnMatrix = mino.getLocationOnMatrix();
+			MatrixCell futureLocationOnMatrix = (MatrixCell) gameBoard
+					.getNeighbourGameBoardPoint(currentLocationOnMatrix, NeighbourGameBoardPointDirection.SOUTH);
+
+			if (futureLocationOnMatrix.getMino() != null
+					&& futureLocationOnMatrix.getMino().getTetromino() != currentMovingTetromino) {
+				LOGGER.info(()->"Cannot move tetromino : " + currentMovingTetromino +  " because blocked by " + futureLocationOnMatrix.getMino().getTetromino());
+				return false;
+			}
+
+		}
+		return true;
+	}
+
+	public void tryAndDropNewRandomTetrimino() {
+		tryAndDropNewTetrimino(TetrominoType.O_SQUARE);
 	}
 
 	public void tryAndDropNewTetrimino(TetrominoType tetriminoTypeToDrop) {
@@ -147,6 +189,16 @@ public class Game {
 			}
 
 			setCurrentMovingTetromino(tetromino);
+
+			dropCurrentMinoTask = new GamePausablePeriodicDelayedTask(this,
+					gameMode.getDropSpeedPerLevelNumber(getCurrentDifficultyLevel())
+							.getNumberOfMillisecondsBetweenEachStepDown()) {
+
+				@Override
+				public void run() {
+					tryAndMoveCurrentTetromino();
+				}
+			};
 		}
 	}/*
 		 * private void applyPattern(Pattern pattern, int x, int y) { for
@@ -155,6 +207,10 @@ public class Game {
 		 * gameBoard.getCellByXAndY(x + aliveCellCoordinate.getXAsInt(), y +
 		 * aliveCellCoordinate.getYAsInt()); cellByXAndY.setAlive(); } }
 		 */
+
+	public int getCurrentDifficultyLevel() {
+		return difficultyLevelManager.getCurrentLevel(this);
+	}
 
 	public boolean canNewTetriminoBeDropped(TetrominoType tetrominoType) {
 		return true;
