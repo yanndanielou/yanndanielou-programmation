@@ -42,8 +42,8 @@ public class PausablePeriodicDelayedTaskTest {
 
 		@Override
 		public void run() {
-			System.out.println(new Date() + " PausableTimerTest : run");
 			numberOfTimerRuns++;
+			LOGGER.info(() -> " run, counter:" + numberOfTimerRuns);
 		}
 
 		public int getNumberOfTimerRuns() {
@@ -58,7 +58,7 @@ public class PausablePeriodicDelayedTaskTest {
 
 		@BeforeEach
 		public void before() {
-			System.out.println("before OneSecondTimer");
+			LOGGER.info(() -> "before OneSecondTimer");
 			timerTaskForTests = new PausablePeriodicDelayedTaskForTests(taskDelay);
 		}
 
@@ -171,7 +171,7 @@ public class PausablePeriodicDelayedTaskTest {
 			public void canPauseAndResumeSeveralTimesAndRunAfterGoodDelay() {
 
 				int cumulatedTimeOutsideOfPause = 0;
-				
+
 				@SuppressWarnings("unused")
 				int cumulatedTimeDuringPause = 0;
 
@@ -293,6 +293,21 @@ public class PausablePeriodicDelayedTaskTest {
 				sleepThread(taskDelay * 0.1);
 
 				assertThrows(BadLogicException.class, () -> timerTaskForTests.pause());
+			}
+
+			@Test
+			public void canPauseAndResumeRunAfterGoodDelay() {
+				sleepThread(taskDelay * 0.5);
+				timerTaskForTests.pause();
+				sleepThread(taskDelay * 0.5);
+				timerTaskForTests.resume();
+				assertEquals(1, timerTaskForTests.getNumberOfTimerRuns());
+				sleepThread(taskDelay * 1);
+				assertEquals(2, timerTaskForTests.getNumberOfTimerRuns());
+				sleepThread(taskDelay * 1);
+				assertEquals(3, timerTaskForTests.getNumberOfTimerRuns());
+				sleepThread(taskDelay * 1);
+				assertEquals(4, timerTaskForTests.getNumberOfTimerRuns());
 			}
 
 			@Test
