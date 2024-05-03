@@ -1,29 +1,19 @@
 package tetris.hmi.javafx.views;
 
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import tetris.application.TetrisJavaFxApplication;
 import tetris.core.GameManager;
 import tetris.game.Game;
 import tetris.hmi.TetrisMainViewGeneric;
 import tetris.hmi.javafx.MainBarMenu;
+import tetris.hmi.javafx.logic.HmiController;
+import tetris.hmi.javafx.logic.KeyListener;
 
 public class MainViewPane extends Pane implements TetrisMainViewGeneric {
 
@@ -37,6 +27,10 @@ public class MainViewPane extends Pane implements TetrisMainViewGeneric {
 	ScoreFrame scoreFrame;
 	MatrixView matrixView;
 
+	KeyListener keyListener;
+
+	private HmiController hmiController; 
+	
 	public MainViewPane(Stage primaryStage) {
 
 		this.primaryStage = primaryStage;
@@ -47,12 +41,13 @@ public class MainViewPane extends Pane implements TetrisMainViewGeneric {
 
 		BorderPane mainViewBorderPane = new BorderPane();
 		mainViewBorderPane.setTop(mainBarMenu);
-		
+
 		matrixView = new MatrixView();
 		mainViewBorderPane.setCenter(matrixView);
 
 		Scene scene = new Scene(mainViewBorderPane, APPLICATION_WIDTH, APPLICATION_HEIGHT);
 		scene.getStylesheets().add("application.css");
+
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -61,6 +56,11 @@ public class MainViewPane extends Pane implements TetrisMainViewGeneric {
 
 		scoreFrame = new ScoreFrame();
 		mainViewBorderPane.setLeft(scoreFrame);
+		
+		hmiController = new HmiController(this);
+		keyListener = new KeyListener(scene, hmiController);
+
+
 
 		defineApplicationIcon();
 
@@ -82,7 +82,8 @@ public class MainViewPane extends Pane implements TetrisMainViewGeneric {
 
 	@Override
 	public void registerToGame(Game game) {
-matrixView.initialize(game);
+		matrixView.initialize(game);
+		hmiController.setGame(game);
 	}
 
 }

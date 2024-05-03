@@ -165,13 +165,13 @@ public class Game {
 				if (lockDelayInMilliseconds == 0) {
 					lockCurrentTetromino();
 				} else {
-					currentOneShotTask = new GamePausableOneShotDelayedTask(this, lockDelayInMilliseconds) {
+				/*	currentOneShotTask = new GamePausableOneShotDelayedTask(this, lockDelayInMilliseconds) {
 
 						@Override
 						public void run() {
 							lockCurrentTetromino();
 						}
-					};
+					};*/
 				}
 			}
 		} else {
