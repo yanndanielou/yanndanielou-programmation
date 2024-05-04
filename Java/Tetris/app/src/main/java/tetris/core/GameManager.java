@@ -49,7 +49,7 @@ public class GameManager {
 	
 	public void newGame(Matrix gameBoard) {
 		LOGGER.info("Create gameboard");
-		game = new Game(this, gameBoard);
+		game = new Game(gameBoard);
 		tetrisMainView.registerToGame(game);
 	}
 

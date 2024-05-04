@@ -10,7 +10,6 @@ import game.gameboard.NeighbourGameBoardPointDirection;
 import geometry2d.integergeometry.IntegerPrecisionPoint;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import tetris.core.DifficultyLevelManager;
-import tetris.core.GameManager;
 import tetris.game_objects.Mino;
 import tetris.game_objects.patterns.Pattern;
 import tetris.game_objects.tetrominoes_types.Tetromino;
@@ -31,8 +30,6 @@ public class Game {
 
 	private Matrix gameBoard;
 
-	private GameManager gameManager;
-
 	private Tetromino currentMovingTetromino;
 
 	private List<Tetromino> passedTetrominos = new ArrayList<>();
@@ -51,8 +48,7 @@ public class Game {
 
 	int level = 0;
 
-	public Game(GameManager gameManager, Matrix gameBoard) {
-		this.gameManager = gameManager;
+	public Game(Matrix gameBoard) {
 		this.gameBoard = gameBoard;
 		gameBoard.setGame(this);
 		gameMode = new MarathonMode();
@@ -125,7 +121,7 @@ public class Game {
 			if (currentOneShotTask != null) {
 				currentOneShotTask.resume();
 			}
-			
+
 			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameResumed(this));
 
 			return true;
@@ -147,9 +143,9 @@ public class Game {
 
 	}
 
-	public void tryAndMoveCurrentTetromino() {
-		if (currentMovingTetromino != null && canMoveCurrentTetrominoDown()) {
-			LOGGER.info(() -> "Move tetromino : " + currentMovingTetromino);
+	public void tryAndMoveCurrentTetromino(NeighbourGameBoardPointDirection direction) {
+		if (currentMovingTetromino != null && canMoveCurrentTetromino(direction)) {
+			LOGGER.info(() -> "Move tetromino : " + currentMovingTetromino + " " + direction);
 			for (Mino mino : currentMovingTetromino.getMinosSortedFromBottomToTop()) {
 				MatrixCell currentLocationOnMatrix = mino.getLocationOnMatrix();
 				MatrixCell futureLocationOnMatrix = (MatrixCell) gameBoard
@@ -158,20 +154,19 @@ public class Game {
 				mino.moveTo(futureLocationOnMatrix);
 			}
 
-			if (!canMoveCurrentTetrominoDown()) {
+			if (!canMoveCurrentTetromino(direction)){
 				cancelCurrentDropMinoTask();
 
 				int lockDelayInMilliseconds = gameMode.getLockDelayInMilliseconds();
 				if (lockDelayInMilliseconds == 0) {
 					lockCurrentTetromino();
 				} else {
-				/*	currentOneShotTask = new GamePausableOneShotDelayedTask(this, lockDelayInMilliseconds) {
-
-						@Override
-						public void run() {
-							lockCurrentTetromino();
-						}
-					};*/
+					/*
+					 * currentOneShotTask = new GamePausableOneShotDelayedTask(this,
+					 * lockDelayInMilliseconds) {
+					 * 
+					 * @Override public void run() { lockCurrentTetromino(); } };
+					 */
 				}
 			}
 		} else {
@@ -191,24 +186,24 @@ public class Game {
 		currentDropMinoPeriodicTask = null;
 	}
 
-	private boolean canMoveCurrentTetrominoDown() {
+	private boolean canMoveCurrentTetromino(NeighbourGameBoardPointDirection direction) {
 		if (currentMovingTetromino == null) {
 			return false;
 		}
 		if (currentMovingTetromino.isLocked()) {
 			return false;
 		}
-		for (Mino mino : currentMovingTetromino.getMinosSortedFromBottomToTop()) {
+		for (Mino mino : currentMovingTetromino.getMinos()) {
 			MatrixCell currentLocationOnMatrix = mino.getLocationOnMatrix();
 
-			if (gameBoard.hasNeighbourGameBoardPoint(currentLocationOnMatrix, NeighbourGameBoardPointDirection.SOUTH)) {
+			if (gameBoard.hasNeighbourGameBoardPoint(currentLocationOnMatrix, direction)) {
 
 				MatrixCell futureLocationOnMatrix = (MatrixCell) gameBoard
-						.getNeighbourGameBoardPoint(currentLocationOnMatrix, NeighbourGameBoardPointDirection.SOUTH);
+						.getNeighbourGameBoardPoint(currentLocationOnMatrix, direction);
 
 				if (futureLocationOnMatrix.getMino() != null
 						&& futureLocationOnMatrix.getMino().getTetromino() != currentMovingTetromino) {
-					LOGGER.info(() -> "Cannot move tetromino : " + currentMovingTetromino + " because blocked by "
+					LOGGER.info(() -> "Cannot move tetromino : " + currentMovingTetromino + " " + direction +  " because blocked by "
 							+ futureLocationOnMatrix.getMino().getTetromino());
 					return false;
 				}
@@ -219,7 +214,9 @@ public class Game {
 
 		}
 		return true;
+
 	}
+
 
 	public void tryAndDropNewRandomTetrimino() {
 		tryAndDropNewTetrimino(TetrominoType.O_SQUARE);
@@ -229,11 +226,9 @@ public class Game {
 		MatrixCell upperLeftCornerOfNewTetriminoCenteredOnGameBoard = getUpperLeftCornerOfNewTetriminoCenteredOnGameBoard(
 				tetriminoTypeToDrop);
 		if (canNewTetriminoBeDropped(tetriminoTypeToDrop)) {
-			Pattern pattern = tetriminoTypeToDrop.getPattern();
-
 			Tetromino tetromino = new TetrominoOSquare(tetriminoTypeToDrop, this,
-					upperLeftCornerOfNewTetriminoCenteredOnGameBoard, pattern);
-			for (IntegerPrecisionPoint minoCellCoordinate : pattern.getMinoCellsCoordinates()) {
+					upperLeftCornerOfNewTetriminoCenteredOnGameBoard);
+			for (IntegerPrecisionPoint minoCellCoordinate : tetromino.getPattern().getMinoCellsCoordinates()) {
 				MatrixCell matrixCell = gameBoard.getMatrixCellByXAndY(
 						upperLeftCornerOfNewTetriminoCenteredOnGameBoard.getXAsInt() + minoCellCoordinate.getXAsInt(),
 						upperLeftCornerOfNewTetriminoCenteredOnGameBoard.getYAsInt() + minoCellCoordinate.getYAsInt());
@@ -252,7 +247,7 @@ public class Game {
 
 				@Override
 				public void run() {
-					tryAndMoveCurrentTetromino();
+					tryAndMoveCurrentTetromino(NeighbourGameBoardPointDirection.SOUTH);
 				}
 			};
 		}
@@ -278,6 +273,16 @@ public class Game {
 
 	public void setCurrentMovingTetromino(Tetromino currentMovingTetromino) {
 		this.currentMovingTetromino = currentMovingTetromino;
+	}
+
+	public void tryAndShiftCurrentTetrominoRight() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void tryAndShiftCurrentTetrominoLeft() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

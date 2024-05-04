@@ -28,7 +28,6 @@ public abstract class Tetromino {
 
 	protected TetrominoRotationDirection direction;
 	protected List<Mino> minos = new ArrayList<>();
-	protected Pattern pattern;
 	private boolean locked = false;
 	private TetrominoType tetriminoType;
 	private Game game;
@@ -39,10 +38,10 @@ public abstract class Tetromino {
 	}
 
 	public Tetromino(TetrominoType tetriminoType, Game game,
-			MatrixCell upperLeftCornerOfNewTetriminoCenteredOnGameBoard, Pattern pattern) {
+			MatrixCell upperLeftCornerOfNewTetriminoCenteredOnGameBoard) {
 		this.tetriminoType = tetriminoType;
 		this.game = game;
-		for (IntegerPrecisionPoint minoCellCoordinate : pattern.getMinoCellsCoordinates()) {
+		for (IntegerPrecisionPoint minoCellCoordinate : getPattern().getMinoCellsCoordinates()) {
 			MatrixCell matrixCell = game.getGameBoard().getMatrixCellByXAndY(
 					upperLeftCornerOfNewTetriminoCenteredOnGameBoard.getXAsInt() + minoCellCoordinate.getXAsInt(),
 					upperLeftCornerOfNewTetriminoCenteredOnGameBoard.getYAsInt() + minoCellCoordinate.getYAsInt());
@@ -51,12 +50,8 @@ public abstract class Tetromino {
 		}
 	}
 
-	public void setPattern(Pattern pattern) {
-		this.pattern = pattern;
-	}
-
 	public Pattern getPattern() {
-		return pattern;
+		return tetriminoType.getPattern();
 	}
 
 	public List<Mino> getMinos() {
@@ -65,7 +60,38 @@ public abstract class Tetromino {
 
 	public List<Mino> getMinosSortedFromBottomToTop() {
 		List<Mino> allMinos = new ArrayList<Mino>(minos);
-		Collections.sort(allMinos, new SortFromBottomToTop());
+		Collections.sort(allMinos, new Comparator<Mino>() {
+			@Override
+			public int compare(Mino o1, Mino o2) {
+				return o2.getLocationOnMatrix().getYAsInt() - o1.getLocationOnMatrix().getYAsInt();
+			}
+		});
+
+		return allMinos;
+	}
+	
+
+	public List<Mino> getMinosSortedFromRightToLeft() {
+		List<Mino> allMinos = new ArrayList<Mino>(minos);
+		Collections.sort(allMinos, new Comparator<Mino>() {
+			@Override
+			public int compare(Mino o1, Mino o2) {
+				return o2.getLocationOnMatrix().getXAsInt() - o1.getLocationOnMatrix().getXAsInt();
+			}
+		});
+
+		return allMinos;
+	}
+
+	public List<Mino> getMinosSortedFromLeftToRight() {
+		List<Mino> allMinos = new ArrayList<Mino>(minos);
+		Collections.sort(allMinos, new Comparator<Mino>() {
+			@Override
+			public int compare(Mino o1, Mino o2) {
+				return o1.getLocationOnMatrix().getXAsInt() - o2.getLocationOnMatrix().getXAsInt();
+			}
+		});
+
 		return allMinos;
 	}
 
@@ -77,4 +103,6 @@ public abstract class Tetromino {
 		LOGGER.info(() -> "lock " + this);
 		this.locked = true;
 	}
+
+
 }
