@@ -1,5 +1,6 @@
 package tetris.hmi.generic.logic;
 
+import game.gameboard.NeighbourGameBoardPointDirection;
 import tetris.game.Game;
 import tetris.hmi.javafx.logic.HmiController;
 
@@ -18,11 +19,14 @@ public abstract class KeyboardListener {
 	}
 
 	protected void leftArrowPressed() {
-		game.tryAndShiftCurrentTetrominoLeft();
+		hmiController.leftArrowPressed();
 	}
 
 	protected void rightArrowPressed() {
-		game.tryAndShiftCurrentTetrominoRight();
+		hmiController.rightArrowPressed();
+	}
+	protected void dKeyPressed() {
+		hmiController.dKeyPressed();
 	}
 
 }

@@ -117,6 +117,8 @@ public class Sudoku {
 	/**
 	 * Used to verify with online sudoku solver
 	 */
+	@SuppressWarnings("unused")
+	@Deprecated
 	private String sudokuString(ArrayList<Integer> l) {
 		String sudoku = "";
 		for (int i : l) {

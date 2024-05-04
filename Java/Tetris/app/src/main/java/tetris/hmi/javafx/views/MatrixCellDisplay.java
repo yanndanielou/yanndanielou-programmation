@@ -1,13 +1,8 @@
 package tetris.hmi.javafx.views;
 
-import javafx.geometry.Insets;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
 import tetris.game.CellListener;
 import tetris.game_objects.Mino;
 import tetris.gameboard.MatrixCell;

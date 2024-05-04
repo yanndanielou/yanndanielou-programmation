@@ -6,8 +6,6 @@ import java.lang.reflect.Field;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import common.filesanddirectories.FileHelper;
-
 public class StringToColorConversion {
 	private static final Logger LOGGER = LogManager.getLogger(StringToColorConversionTest.class);
 

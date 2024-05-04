@@ -1,13 +1,8 @@
 package tetris.hmi.javafx;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.CustomMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioMenuItem;
-import javafx.scene.control.Slider;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCharacterCombination;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -15,7 +10,6 @@ import javafx.scene.input.KeyCombination;
 import tetris.application.TetrisJavaFxApplication;
 import tetris.core.GameManager;
 import tetris.game.PauseReason;
-import tetris.game_objects.tetrominoes_types.TetrominoOSquare;
 import tetris.game_objects.tetrominoes_types.TetrominoType;
 import tetris.hmi.javafx.dialogs.NewGameWhileGameIsInProgressPopup;
 

@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import tetris.hmi.generic.logic.KeyboardListener;
@@ -12,7 +13,6 @@ public class JavaFXKeyboardListener extends KeyboardListener implements EventHan
 
 	private static final Logger LOGGER = LogManager.getLogger(JavaFXKeyboardListener.class);
 	private Scene scene;
-	
 
 	public JavaFXKeyboardListener(Scene scene, HmiController hmiController) {
 		super(hmiController);
@@ -23,14 +23,28 @@ public class JavaFXKeyboardListener extends KeyboardListener implements EventHan
 
 	@Override
 	public void handle(KeyEvent event) {
-		LOGGER.info(()-> "Key event character:"  + event.getCharacter() + ", code:" + event.getCode() +  ", text:" + event.getText() +  ", control down:" + event.isControlDown() +  ", shift down:" + event.isControlDown() +  ", event:" + event);
-		
+		LOGGER.info(() -> {
+			EventType<KeyEvent> eventType = event.getEventType();
+			return "Key event character:" + event.getCharacter() + ", code:" + event.getCode() + ", text:"
+					+ event.getText() + ", type:" + eventType + ", control down:" + event.isControlDown()
+					+ ", shift down:" + event.isControlDown() + ", event:" + event;
+		});
+
 		switch (event.getCode()) {
 		case LEFT:
-			leftArrowPressed();
+			if (event.getEventType() == KeyEvent.KEY_PRESSED) {
+				leftArrowPressed();
+			}
 			break;
 		case RIGHT:
-			rightArrowPressed();
+			if (event.getEventType() == KeyEvent.KEY_PRESSED) {
+				rightArrowPressed();
+			}
+			break;
+		case D:
+			if (event.getEventType() == KeyEvent.KEY_PRESSED) {
+				dKeyPressed();
+			}
 			break;
 		default:
 			break;

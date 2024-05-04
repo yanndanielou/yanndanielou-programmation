@@ -5,7 +5,6 @@ import org.apache.logging.log4j.Logger;
 
 import common.builders.JsonDataModelBuilder;
 import tetris.builders.gameboard.GameBoardDataModel;
-import tetris.builders.gameboard.GameBoardModelBuilder;
 import tetris.constants.Constants;
 import tetris.game.Game;
 import tetris.gameboard.Matrix;

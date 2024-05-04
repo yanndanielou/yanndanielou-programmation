@@ -6,9 +6,9 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import tetris.game_objects.Mino;
+import tetris.game_objects.tetrominoes_types.Tetromino;
 import tetris.game_objects.tetrominoes_types.TetrominoOSquare;
 import tetris.game_objects.tetrominoes_types.TetrominoT;
-import tetris.game_objects.tetrominoes_types.Tetromino;
 import tetris.gameboard.MatrixCell;
 
 public class MatrixCellContentManager {

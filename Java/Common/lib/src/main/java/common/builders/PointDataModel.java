@@ -1,7 +1,5 @@
 package common.builders;
 
-import java.awt.Dimension;
-
 public class PointDataModel extends NamedDataModel {
 
 	private Integer x;
