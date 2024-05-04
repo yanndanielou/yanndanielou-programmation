@@ -17,6 +17,7 @@ public abstract class GenericGameBoard {
 	private static final Logger LOGGER = LogManager.getLogger(GenericGameBoard.class);
 
 	private Map<Integer, Map<Integer, GenericIntegerGameBoardPoint>> gameBoardPointPerXAndY = new HashMap<>();
+	private Map<Integer, List<GenericIntegerGameBoardPoint>> gameBoardPointsPerY = new HashMap<>();
 
 	private ArrayList<GenericIntegerGameBoardPoint> allGameBoardPointAsOrderedList = new ArrayList<>();
 
@@ -61,7 +62,13 @@ public abstract class GenericGameBoard {
 				GenericIntegerGameBoardPoint gameBoardPoint = createGameBoardPoint(x, y);
 				gameBoardOfOneXPerY.put(y, gameBoardPoint);
 				allGameBoardPointAsOrderedList.add(gameBoardPoint);
+			
+			if(!gameBoardPointsPerY.containsKey(y)) {
+				gameBoardPointsPerY.put(y, new ArrayList<GenericIntegerGameBoardPoint>());
 			}
+			gameBoardPointsPerY.get(y).add(gameBoardPoint);
+			
+		}
 		}
 
 	}
@@ -86,6 +93,10 @@ public abstract class GenericGameBoard {
 			gameBoardPoints.add(getGameBoardPoint(point));
 		}
 		return gameBoardPoints;
+	}
+
+	public List<GenericIntegerGameBoardPoint> getGameBoardPointsByY(int y) {
+		return gameBoardPointsPerY.get(y);
 	}
 
 	public GenericIntegerGameBoardPoint getGameBoardPointByXAndY(int x, int y) {

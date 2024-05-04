@@ -41,6 +41,11 @@ public class JavaFXKeyboardListener extends KeyboardListener implements EventHan
 				rightArrowPressed();
 			}
 			break;
+		case DOWN:
+			if (event.getEventType() == KeyEvent.KEY_PRESSED) {
+				downArrowPressed();
+			}
+			break;
 		case D:
 			if (event.getEventType() == KeyEvent.KEY_PRESSED) {
 				dKeyPressed();

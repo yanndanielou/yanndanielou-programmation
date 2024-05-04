@@ -3,6 +3,8 @@ package game.gameboard;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.util.List;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -205,6 +207,34 @@ class GenericGameBoardTest {
 				}
 			}
 		}
+	}
+
+	@Nested
+	public class RectangleGameBoard {
+
+		@BeforeEach
+		void setUp() throws Exception {
+			gameBoard = new GenericGameBoardForTest(10, 20);
+		}
+
+		@AfterEach
+		void tearDown() throws Exception {
+		}
+
+		@Test
+		public void GetGameBoardPointsByY() {
+
+			for (int y = 0; y < gameBoard.getTotalHeight(); y++) {
+				List<GenericIntegerGameBoardPoint> gameBoardPointsByY = gameBoard.getGameBoardPointsByY(y);
+				assertEquals(gameBoard.getTotalWidth(), gameBoardPointsByY.size());
+
+				for (GenericIntegerGameBoardPoint gameBoardPointByY : gameBoardPointsByY) {
+					assertEquals(y, gameBoardPointByY.getYAsInt());
+				}
+			}
+
+		}
+
 	}
 
 }

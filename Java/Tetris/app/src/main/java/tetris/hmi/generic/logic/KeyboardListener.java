@@ -25,6 +25,9 @@ public abstract class KeyboardListener {
 	protected void rightArrowPressed() {
 		hmiController.rightArrowPressed();
 	}
+	protected void downArrowPressed() {
+		hmiController.downArrowPressed();
+	}
 	protected void dKeyPressed() {
 		hmiController.dKeyPressed();
 	}

@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import common.exceptions.BadLogicException;
 import geometry2d.integergeometry.IntegerPrecisionPoint;
 import tetris.game.Game;
 import tetris.game_objects.Mino;
@@ -50,6 +51,13 @@ public abstract class Tetromino {
 		}
 	}
 
+	public void removeMino(Mino mino) {
+		boolean removed = minos.remove(mino);
+		if(!removed) {
+			throw new BadLogicException("Could not remove " + mino + " in " + this);
+		}
+	}
+	
 	public Pattern getPattern() {
 		return tetriminoType.getPattern();
 	}

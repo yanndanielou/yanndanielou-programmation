@@ -28,4 +28,8 @@ public class HmiController {
 	public void dKeyPressed() {
 		game.tryAndMoveCurrentTetromino(NeighbourGameBoardPointDirection.SOUTH);
 	}
+
+	public void downArrowPressed() {
+		game.dropCompletelyCurrentTetromino();
+	}
 }
