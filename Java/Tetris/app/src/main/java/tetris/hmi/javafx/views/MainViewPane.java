@@ -13,7 +13,7 @@ import tetris.game.Game;
 import tetris.hmi.TetrisMainViewGeneric;
 import tetris.hmi.javafx.MainBarMenu;
 import tetris.hmi.javafx.logic.HmiController;
-import tetris.hmi.javafx.logic.KeyListener;
+import tetris.hmi.javafx.logic.JavaFXKeyboardListener;
 
 public class MainViewPane extends Pane implements TetrisMainViewGeneric {
 
@@ -27,7 +27,7 @@ public class MainViewPane extends Pane implements TetrisMainViewGeneric {
 	ScoreFrame scoreFrame;
 	MatrixView matrixView;
 
-	KeyListener keyListener;
+	JavaFXKeyboardListener keyListener;
 
 	private HmiController hmiController; 
 	
@@ -58,7 +58,7 @@ public class MainViewPane extends Pane implements TetrisMainViewGeneric {
 		mainViewBorderPane.setLeft(scoreFrame);
 		
 		hmiController = new HmiController(this);
-		keyListener = new KeyListener(scene, hmiController);
+		keyListener = new JavaFXKeyboardListener(scene, hmiController);
 
 
 
