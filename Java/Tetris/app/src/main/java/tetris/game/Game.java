@@ -248,7 +248,7 @@ public class Game {
 		});
 
 		// Moves all lines above, below
-		for (Integer lineNumber = lineNumberToClear-1; lineNumber >= 0; lineNumber--) {
+		for (Integer lineNumber = lineNumberToClear - 1; lineNumber >= 0; lineNumber--) {
 			gameBoard.getGameBoardPointsByY(lineNumber).stream().map(MatrixCell.class::cast).map(MatrixCell::getMino)
 					.filter(Objects::nonNull).forEach(e -> {
 						e.moveTo((MatrixCell) gameBoard.getNeighbourGameBoardPoint(e.getLocationOnMatrix(),
@@ -271,7 +271,7 @@ public class Game {
 		return linesNumberFullOrderdFromTopToBottom.size();
 	}
 
-	public boolean isLineFull(int lineNumber) {
+	private boolean isLineFull(int lineNumber) {
 		List<GenericIntegerGameBoardPoint> gameBoardPointsByY = gameBoard.getGameBoardPointsByY(lineNumber);
 		return gameBoardPointsByY.stream().map(MatrixCell.class::cast).map(MatrixCell::getMino).filter(Objects::isNull)
 				.collect(Collectors.toList()).isEmpty();
@@ -314,7 +314,7 @@ public class Game {
 
 	}
 
-	public void tryAndDropNewRandomTetrimino() {
+	private void tryAndDropNewRandomTetrimino() {
 		LOGGER.info(() -> "tryAndDropNewRandomTetrimino");
 		tryAndDropNewTetrimino(TetrominoType.O_SQUARE);
 	}
@@ -353,23 +353,19 @@ public class Game {
 		 */
 
 	private void gameOver() {
-		cancelCurrentDropMinoTask();		
+		cancelCurrentDropMinoTask();
 	}
 
 	public int getCurrentDifficultyLevel() {
 		return difficultyLevelManager.getCurrentLevel(this);
 	}
 
-	public boolean canNewTetriminoBeDropped(MatrixCell upperLeftCornerOfNewTetriminoCenteredOnGameBoard,
+	private boolean canNewTetriminoBeDropped(MatrixCell upperLeftCornerOfNewTetriminoCenteredOnGameBoard,
 			TetrominoType tetrominoType) {
 		return true;
 	}
 
-	public Tetromino getCurrentMovingTetromino() {
-		return currentMovingTetromino;
-	}
-
-	public void setCurrentMovingTetromino(Tetromino currentMovingTetromino) {
+	private void setCurrentMovingTetromino(Tetromino currentMovingTetromino) {
 		this.currentMovingTetromino = currentMovingTetromino;
 	}
 
@@ -381,6 +377,5 @@ public class Game {
 		}
 		endCurrentTetromino();
 	}
-	
 
 }
