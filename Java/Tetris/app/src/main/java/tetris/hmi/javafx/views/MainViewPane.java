@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import tetris.core.GameManager;
 import tetris.game.Game;
 import tetris.hmi.TetrisMainViewGeneric;
-import tetris.hmi.javafx.MainBarMenu;
+import tetris.hmi.javafx.MainBarMenuManager;
 import tetris.hmi.javafx.logic.HmiController;
 import tetris.hmi.javafx.logic.JavaFXKeyboardListener;
 
@@ -22,7 +22,7 @@ public class MainViewPane extends Pane implements TetrisMainViewGeneric {
 	private static final int APPLICATION_WIDTH = 500;
 	private static final int APPLICATION_HEIGHT = 500;
 
-	MainBarMenu mainBarMenu;
+	MainBarMenuManager mainBarMenuManager;
 	Stage primaryStage;
 	ScoreFrame scoreFrame;
 	MatrixView matrixView;
@@ -37,10 +37,10 @@ public class MainViewPane extends Pane implements TetrisMainViewGeneric {
 	}
 
 	public void initialise() {
-		mainBarMenu = new MainBarMenu(null);
+		mainBarMenuManager = new MainBarMenuManager();
 
-		BorderPane mainViewBorderPane = new BorderPane();
-		mainViewBorderPane.setTop(mainBarMenu);
+		MainViewBorderPane mainViewBorderPane = new MainViewBorderPane();
+		mainBarMenuManager.addToMainFrame(mainViewBorderPane);
 
 		matrixView = new MatrixView();
 		mainViewBorderPane.setCenter(matrixView);

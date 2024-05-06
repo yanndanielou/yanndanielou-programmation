@@ -11,15 +11,16 @@ import tetris.application.TetrisJavaFxApplication;
 import tetris.core.GameManager;
 import tetris.game.PauseReason;
 import tetris.game_objects.tetrominoes_types.TetrominoType;
+import tetris.hmi.generic.menu.MainBarMenu;
+import tetris.hmi.generic.views.MainViewI;
 import tetris.hmi.javafx.dialogs.NewGameWhileGameIsInProgressPopup;
+import tetris.hmi.javafx.views.MainViewBorderPane;
 
-public class MainBarMenu extends MenuBar {
+public class MainBarMenuManager extends MainBarMenu {
 
-	public TetrisJavaFxApplication tetrisApplication;
+	private MenuBar menuBar = new MenuBar(); 
 
-	public MainBarMenu(TetrisJavaFxApplication sudokuApplication) {
-		this.tetrisApplication = sudokuApplication;
-
+	public MainBarMenuManager() {
 		createMenuGame();
 		createMenuTest();
 		createMenuSkill();
@@ -27,31 +28,39 @@ public class MainBarMenu extends MenuBar {
 		createMenuHelp();
 	}
 
-	private void createMenuGame() {
+	@Override
+	public void createMenuGame() {
 
 		Menu menu = new Menu("Game");
-		
+
 		MenuItem newGameMenuItem = new MenuItem("New");
 		newGameMenuItem.setOnAction(e -> {
 			new NewGameWhileGameIsInProgressPopup();
 		});
 		newGameMenuItem.setAccelerator(KeyCharacterCombination.valueOf("F2"));
 		menu.getItems().add(newGameMenuItem);
-		
 
 		MenuItem pauseMenuItem = new MenuItem("Pause");
 		pauseMenuItem.setOnAction(e -> {
-			if(GameManager.hasGameInProgress()) {
-				GameManager.getInstance().getGame().togglePauseReason(PauseReason.PAUSE_REQUESTED_IN_HMI);
-			}
+			onPauseMenuItemAction();
 		});
 		pauseMenuItem.setAccelerator(KeyCharacterCombination.valueOf("P"));
 		menu.getItems().add(pauseMenuItem);
 
-		getMenus().add(menu);
+
+		MenuItem saveGameMenuItem = new MenuItem("Save");
+		saveGameMenuItem.setOnAction(e -> {
+			onSaveGameMenuItemAction(); 
+		});
+		saveGameMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
+		menu.getItems().add(saveGameMenuItem);
+
+		menuBar.getMenus().add(menu);
 	}
 
-	private void createMenuTest() {
+	
+	@Override
+	public void createMenuTest() {
 
 		Menu menu = new Menu("Tests");
 
@@ -70,25 +79,34 @@ public class MainBarMenu extends MenuBar {
 
 		menu.getItems().add(dropNewTetromino);
 
-		getMenus().add(menu);
+		menuBar.getMenus().add(menu);
 	}
 
-	private void createMenuSkill() {
+	@Override
+	public void createMenuSkill() {
 		Menu menu = new Menu("Skill");
 
-		getMenus().add(menu);
+		menuBar.getMenus().add(menu);
 	}
 
-	private void createMenuOptions() {
+	@Override
+	public void createMenuOptions() {
 		Menu menu = new Menu("Options");
 
-		getMenus().add(menu);
+		menuBar.getMenus().add(menu);
 	}
 
-	private void createMenuHelp() {
+	@Override
+	public void createMenuHelp() {
 		Menu menu = new Menu("Help");
 
-		getMenus().add(menu);
+		menuBar.getMenus().add(menu);
+	}
+
+	@Override
+	public void addToMainFrame(MainViewI mainView) {
+		MainViewBorderPane mainViewBorderPane = (MainViewBorderPane) mainView;
+		mainViewBorderPane.setTop(menuBar);
 	}
 
 }

@@ -28,7 +28,7 @@ import tetris.time.GamePausableOneShotDelayedTask;
 import tetris.time.GamePausablePeriodicDelayedTask;
 
 public class Game {
-	private static final Logger LOGGER = LogManager.getLogger(Game.class);
+	private static transient final Logger LOGGER = LogManager.getLogger(Game.class);
 
 	private ArrayList<GameStatusListener> gameStatusListeners = new ArrayList<>();
 	private ArrayList<GameListener> gameListeners = new ArrayList<>();
@@ -41,8 +41,9 @@ public class Game {
 
 	protected boolean paused = false;
 
-	private GamePausablePeriodicDelayedTask currentDropMinoPeriodicTask;
-	private GamePausableOneShotDelayedTask currentOneShotTask;
+	
+	private transient GamePausablePeriodicDelayedTask currentDropMinoPeriodicTask;
+	private transient GamePausableOneShotDelayedTask currentOneShotTask;
 
 	private List<PauseReason> pauseReasons = new ArrayList<>();
 
