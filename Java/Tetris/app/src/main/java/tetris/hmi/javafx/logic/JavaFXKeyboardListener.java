@@ -51,6 +51,11 @@ public class JavaFXKeyboardListener extends KeyboardListener implements EventHan
 				dKeyPressed();
 			}
 			break;
+		case SPACE:
+			if (event.getEventType() == KeyEvent.KEY_PRESSED) {
+				spaceKeyPressed();
+			}
+			break;
 		default:
 			break;
 		}

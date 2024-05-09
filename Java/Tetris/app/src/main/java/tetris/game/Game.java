@@ -171,9 +171,16 @@ public class Game {
 		}
 	}
 
+	public boolean softDrop() {
+		return tryAndMoveCurrentTetromino(NeighbourGameBoardPointDirection.SOUTH);
+	}
+
 	public boolean tryAndMoveCurrentTetromino(NeighbourGameBoardPointDirection direction) {
 		if (currentMovingTetromino != null && canMoveCurrentTetromino(direction)) {
-			cancelLockCurrentTetrominoTaskIfExists();
+			if(direction!=NeighbourGameBoardPointDirection.SOUTH) {
+				cancelLockCurrentTetrominoTaskIfExists();
+			}
+			
 			moveCurrentTetromino(direction);
 
 			if (!canMoveCurrentTetromino(NeighbourGameBoardPointDirection.SOUTH)) {
@@ -318,11 +325,10 @@ public class Game {
 		return true;
 
 	}
-	
+
 	private void planToTryAndDropNewRandomTetrimino() {
 		LOGGER.info(() -> "planToTryAndDropNewRandomTetrimino");
-		int delayBeforeLaunchNewTetrominoInMilliseconds = gameMode
-				.getEntryDelayInMilliseconds();
+		int delayBeforeLaunchNewTetrominoInMilliseconds = gameMode.getEntryDelayInMilliseconds();
 		dropNewRandomDominoDelayedTask = new GamePausableOneShotDelayedTask(this,
 				delayBeforeLaunchNewTetrominoInMilliseconds) {
 
@@ -331,7 +337,7 @@ public class Game {
 				tryAndDropNewRandomTetrimino();
 			}
 		};
-		
+
 	}
 
 	private void tryAndDropNewRandomTetrimino() {
@@ -391,12 +397,30 @@ public class Game {
 		this.currentMovingTetromino = currentMovingTetromino;
 	}
 
-	public void dropCompletelyCurrentTetromino() {
-		LOGGER.info(() -> " dropCompletelyCurrentTetromino");
+	// @formatter:off
+	/**
+	 * https://tetris.wiki/Drop
+	 * Hard drop is an action that causes the piece to land and lock instantly
+	 */
+	// @formatter:on
+	public void hardDrop() {
+		LOGGER.info(() -> " hardDrop");
 		while (canMoveCurrentTetromino(NeighbourGameBoardPointDirection.SOUTH)) {
 			moveCurrentTetromino(NeighbourGameBoardPointDirection.SOUTH);
 		}
 		endCurrentTetromino();
 	}
 
+	/**
+	 * // @formatter:off
+	 * https://tetris.wiki/Drop
+	 * Sonic drop works similarly, but does not lock the piece instantly, giving the player the same lock delay as a soft droppedpiece
+	 * // @formatter:on
+	 */
+	public void sonicDrop() {
+		LOGGER.info(() -> " sonicDrop");
+		while (canMoveCurrentTetromino(NeighbourGameBoardPointDirection.SOUTH)) {
+			tryAndMoveCurrentTetromino(NeighbourGameBoardPointDirection.SOUTH);
+		}
+	}
 }

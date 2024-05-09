@@ -26,10 +26,16 @@ public class HmiController {
 	}
 
 	public void dKeyPressed() {
-		game.tryAndMoveCurrentTetromino(NeighbourGameBoardPointDirection.SOUTH);
+		game.softDrop();
 	}
 
 	public void downArrowPressed() {
-		game.dropCompletelyCurrentTetromino();
+		game.hardDrop();
 	}
+	
+	public void spaceKeyPressed() {
+		game.sonicDrop();
+	}
+	
+	
 }
