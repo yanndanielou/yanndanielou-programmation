@@ -41,9 +41,9 @@ public class Game {
 
 	protected boolean paused = false;
 
-	
 	private transient GamePausablePeriodicDelayedTask currentDropMinoPeriodicTask;
-	private transient GamePausableOneShotDelayedTask currentOneShotTask;
+	private transient GamePausableOneShotDelayedTask lockCurrentDominoDelayedTask;
+	private transient GamePausableOneShotDelayedTask dropNewRandomDominoDelayedTask;
 
 	private List<PauseReason> pauseReasons = new ArrayList<>();
 
@@ -59,12 +59,16 @@ public class Game {
 		gameBoard.setGame(this);
 		gameMode = new MarathonMode();
 		difficultyLevelManager = new DifficultyLevelManager(this);
-		tryAndDropNewRandomTetrimino();
+		planToTryAndDropNewRandomTetrimino();
 	}
 
 	public void addGameStatusListener(GameStatusListener listener) {
 		listener.onListenToGameStatus(this);
 		gameStatusListeners.add(listener);
+	}
+
+	public boolean removeGameStatusListener(GameStatusListener listener) {
+		return gameStatusListeners.remove(listener);
 	}
 
 	public void addGameListener(GameListener listener) {
@@ -97,9 +101,6 @@ public class Game {
 		if (!paused) {
 			LOGGER.info("Pause game");
 			paused = true;
-			if (currentDropMinoPeriodicTask != null) {
-				currentDropMinoPeriodicTask.pause();
-			}
 			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGamePaused(this));
 			return true;
 		} else {
@@ -124,8 +125,8 @@ public class Game {
 			if (currentDropMinoPeriodicTask != null) {
 				currentDropMinoPeriodicTask.resume();
 			}
-			if (currentOneShotTask != null) {
-				currentOneShotTask.resume();
+			if (lockCurrentDominoDelayedTask != null) {
+				lockCurrentDominoDelayedTask.resume();
 			}
 
 			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameResumed(this));
@@ -178,17 +179,17 @@ public class Game {
 
 	public boolean tryAndMoveCurrentTetromino(NeighbourGameBoardPointDirection direction) {
 		if (currentMovingTetromino != null && canMoveCurrentTetromino(direction)) {
+			cancelLockCurrentTetrominoTaskIfExists();
 			moveCurrentTetromino(direction);
 
 			if (!canMoveCurrentTetromino(NeighbourGameBoardPointDirection.SOUTH)) {
-				cancelCurrentDropMinoTask();
 
 				int lockDelayInMilliseconds = gameMode.getLockDelayInMilliseconds();
 				if (lockDelayInMilliseconds == 0) {
 					endCurrentTetromino();
 				} else {
 
-					currentOneShotTask = new GamePausableOneShotDelayedTask(this, lockDelayInMilliseconds) {
+					lockCurrentDominoDelayedTask = new GamePausableOneShotDelayedTask(this, lockDelayInMilliseconds) {
 
 						@Override
 						public void run() {
@@ -200,24 +201,33 @@ public class Game {
 			}
 			return true;
 		} else {
-			LOGGER.info(() -> "Cannot move tetromino : " + currentMovingTetromino);
+			LOGGER.info(() -> "Cannot move tetromino : " + currentMovingTetromino + " " + direction);
 			return false;
 		}
 
 	}
 
+	private void cancelLockCurrentTetrominoTaskIfExists() {
+		if (lockCurrentDominoDelayedTask != null) {
+			LOGGER.info(() -> "Cancel lock current tetromino : " + currentMovingTetromino + " because player action");
+			lockCurrentDominoDelayedTask.cancel();
+			lockCurrentDominoDelayedTask = null;
+		}
+	}
+
 	private void endCurrentTetromino() {
 		LOGGER.info(() -> " endCurrentTetromino");
+		cancelCurrentDropMinoTask();
 		lockCurrentTetromino();
 		clearFullLines();
 		currentMovingTetromino = null;
-		tryAndDropNewRandomTetrimino();
+		planToTryAndDropNewRandomTetrimino();
 	}
 
 	private void lockCurrentTetromino() {
 		LOGGER.info(() -> " lockCurrentTetromino");
 		currentMovingTetromino.lock();
-		currentOneShotTask = null;
+		cancelLockCurrentTetrominoTaskIfExists();
 	}
 
 	private Set<Integer> getCurrentMovingTetrominoLines() {
@@ -314,9 +324,25 @@ public class Game {
 		return true;
 
 	}
+	
+	private void planToTryAndDropNewRandomTetrimino() {
+		LOGGER.info(() -> "planToTryAndDropNewRandomTetrimino");
+		int delayBeforeLaunchNewTetrominoInMilliseconds = gameMode
+				.getDelayBeforeLaunchNewTetrominoInMilliseconds();
+		dropNewRandomDominoDelayedTask = new GamePausableOneShotDelayedTask(this,
+				delayBeforeLaunchNewTetrominoInMilliseconds) {
+
+			@Override
+			public void run() {
+				tryAndDropNewRandomTetrimino();
+			}
+		};
+		
+	}
 
 	private void tryAndDropNewRandomTetrimino() {
 		LOGGER.info(() -> "tryAndDropNewRandomTetrimino");
+		dropNewRandomDominoDelayedTask = null;
 		tryAndDropNewTetrimino(TetrominoType.O_SQUARE);
 	}
 
@@ -372,7 +398,6 @@ public class Game {
 
 	public void dropCompletelyCurrentTetromino() {
 		LOGGER.info(() -> " dropCompletelyCurrentTetromino");
-		cancelCurrentDropMinoTask();
 		while (canMoveCurrentTetromino(NeighbourGameBoardPointDirection.SOUTH)) {
 			moveCurrentTetromino(NeighbourGameBoardPointDirection.SOUTH);
 		}

@@ -110,7 +110,11 @@ public abstract class PausableDelayedTask {
 		if (isCancelled()) {
 			throw new BadLogicException("Cannot pause delayed task if already cancelled");
 		}
-
+		
+		if(!paused) {
+			throw new BadLogicException("Cannot resume delayed task if it is not paused");
+		}
+		
 		paused = false;
 		createTimer();
 	}

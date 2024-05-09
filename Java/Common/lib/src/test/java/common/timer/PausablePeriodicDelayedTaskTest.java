@@ -14,7 +14,7 @@ import common.exceptions.BadLogicException;
 public class PausablePeriodicDelayedTaskTest {
 	static final Logger LOGGER = LogManager.getLogger(PausablePeriodicDelayedTaskTest.class);
 
-	private final static int DELAY_1_SECOND = TimeConstants.ONE_SECOND;
+	private final static int DELAY_200_MILLISECOND = 200 * TimeConstants.ONE_MILLISECOND;
 
 	protected PausablePeriodicDelayedTaskForTests timerTaskForTests;
 
@@ -50,9 +50,9 @@ public class PausablePeriodicDelayedTaskTest {
 	}
 
 	@Nested
-	public class OneSecondTimer {
+	public class TwoHundredsMillisecondsSecondTimer {
 
-		private int taskDelay = DELAY_1_SECOND;
+		private int taskDelay = DELAY_200_MILLISECOND;
 
 		@BeforeEach
 		public void before() {
@@ -160,6 +160,17 @@ public class PausablePeriodicDelayedTaskTest {
 				assertEquals(timerTaskForTests.getNumberOfTimerRuns(), 0);
 
 				timerTaskForTests.pause();
+				sleepThread(taskDelay * 0.1);
+
+				assertThrows(BadLogicException.class, () -> timerTaskForTests.pause());
+			}
+
+			@Test
+			public void cannotResumeIfNotPaused() {
+				sleepThread(taskDelay * 0.1);
+				assertEquals(timerTaskForTests.getNumberOfTimerRuns(), 0);
+
+				timerTaskForTests.resume();
 				sleepThread(taskDelay * 0.1);
 
 				assertThrows(BadLogicException.class, () -> timerTaskForTests.pause());
@@ -288,6 +299,15 @@ public class PausablePeriodicDelayedTaskTest {
 			public void cannotBePausedIfAlreadyPaused() {
 
 				timerTaskForTests.pause();
+				sleepThread(taskDelay * 0.1);
+
+				assertThrows(BadLogicException.class, () -> timerTaskForTests.pause());
+			}
+
+			@Test
+			public void cannotResumeIfNotPaused() {
+
+				timerTaskForTests.resume();
 				sleepThread(taskDelay * 0.1);
 
 				assertThrows(BadLogicException.class, () -> timerTaskForTests.pause());

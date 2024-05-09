@@ -15,6 +15,7 @@ public class PausableTimerTest {
 	static final Logger LOGGER = LogManager.getLogger(PausableTimerTest.class);
 
 	private final static int PERIOD_1_SECOND = 1000;
+	private final static int PERIOD_200_MILLISECOND = 200 * TimeConstants.ONE_MILLISECOND;
 
 	private final static int VERY_SLOW_PERIOD_TO_WAIT_FIRST_RUN_WHEN_NO_DELAY = 10;
 
@@ -59,7 +60,7 @@ public class PausableTimerTest {
 		public class PausableTimerWithDelay {
 
 			protected int taskDelay = PERIOD_1_SECOND;
-			protected int taskPeriod = 5 * PERIOD_1_SECOND;
+			protected int taskPeriod = 3 * PERIOD_1_SECOND;
 
 			@BeforeEach
 			public void before() {
@@ -111,7 +112,7 @@ public class PausableTimerTest {
 
 		@Nested
 		public class PausableTimerWithoutDelay {
-			protected int taskPeriod = 10 * PERIOD_1_SECOND;
+			protected int taskPeriod = 2 * PERIOD_1_SECOND;
 
 			@BeforeEach
 			public void before() {
@@ -162,11 +163,11 @@ public class PausableTimerTest {
 	}
 
 	@Nested
-	public class OneSecondTimer {
+	public class TwoHundredsMillisecondsSecondTimer {
 
 		@Nested
 		public class TimerWithoutDelay {
-			protected int taskPeriod = PERIOD_1_SECOND;
+			protected int taskPeriod = PERIOD_200_MILLISECOND;
 
 			@BeforeEach
 			public void before() {
@@ -219,7 +220,6 @@ public class PausableTimerTest {
 				assertEquals(timerTaskForTests.getNumberOfTimerRuns(), 3);
 
 			}
-
 
 		}
 	}

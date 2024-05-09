@@ -1,14 +1,28 @@
 package tetris.time;
 
 import common.timer.PausableOneShotDelayedTask;
-import game.genericgame.GenericGameStatusListener;
 import tetris.game.Game;
+import tetris.game.GameStatusListener;
 
-public abstract class GamePausableOneShotDelayedTask extends PausableOneShotDelayedTask
-		implements GenericGameStatusListener<Game> {
+public abstract class GamePausableOneShotDelayedTask extends PausableOneShotDelayedTask implements GameStatusListener {
+
+	private Game game;
 
 	public GamePausableOneShotDelayedTask(Game game, long delay) {
 		super(delay);
+		this.game = game;
+		game.addGameStatusListener(this);
+	}
+
+	@Override
+	public void cancel() {
+		super.cancel();
+		game.removeGameStatusListener(this);
+	}
+
+	@Override
+	protected void afterTaskRun() {
+		game.removeGameStatusListener(this);
 	}
 
 	@Override
