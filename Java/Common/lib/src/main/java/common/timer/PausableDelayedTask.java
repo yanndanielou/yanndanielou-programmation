@@ -40,7 +40,7 @@ public abstract class PausableDelayedTask {
 		createTimer();
 	}
 
-	private boolean isCancelled() {
+	public boolean isCancelled() {
 		return cancelled;
 	}
 

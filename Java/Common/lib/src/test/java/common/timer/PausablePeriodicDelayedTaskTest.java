@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -60,6 +61,13 @@ public class PausablePeriodicDelayedTaskTest {
 			timerTaskForTests = new PausablePeriodicDelayedTaskForTests(taskDelay);
 		}
 
+		/*@AfterEach
+		public void after() {
+			if(timerTaskForTests != null && !timerTaskForTests.isCancelled()) {
+				timerTaskForTests.cancel();
+			}
+		}
+		*/
 		@Test
 		public void runAfterFirstDelay() {
 			sleepThread(taskDelay * 0.1);
@@ -170,10 +178,7 @@ public class PausablePeriodicDelayedTaskTest {
 				sleepThread(taskDelay * 0.1);
 				assertEquals(timerTaskForTests.getNumberOfTimerRuns(), 0);
 
-				timerTaskForTests.resume();
-				sleepThread(taskDelay * 0.1);
-
-				assertThrows(BadLogicException.class, () -> timerTaskForTests.pause());
+				assertThrows(BadLogicException.class, () -> timerTaskForTests.resume());
 			}
 
 			@Test
@@ -307,10 +312,7 @@ public class PausablePeriodicDelayedTaskTest {
 			@Test
 			public void cannotResumeIfNotPaused() {
 
-				timerTaskForTests.resume();
-				sleepThread(taskDelay * 0.1);
-
-				assertThrows(BadLogicException.class, () -> timerTaskForTests.pause());
+				assertThrows(BadLogicException.class, () -> timerTaskForTests.resume());
 			}
 
 			@Test
