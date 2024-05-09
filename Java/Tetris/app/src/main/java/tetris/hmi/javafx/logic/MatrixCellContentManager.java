@@ -19,14 +19,16 @@ public class MatrixCellContentManager {
 			return new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY));
 		} else {
 			Tetromino parent = mino.getTetromino();
-
-			if (parent instanceof TetrominoOSquare) {
-				return new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY));
-			} else if (parent instanceof TetrominoT) {
+			switch (parent.getType()) {
+			case I_STRAIGHT_LONG_STICK:
 				return new Background(new BackgroundFill(Color.GREY, CornerRadii.EMPTY, Insets.EMPTY));
+			case O_SQUARE:
+				return new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY));
+			default:
+				return new Background(new BackgroundFill(Color.BROWN, CornerRadii.EMPTY, Insets.EMPTY));
 			}
 
-			return new Background(new BackgroundFill(Color.BROWN, CornerRadii.EMPTY, Insets.EMPTY));
+
 		}
 	}
 }

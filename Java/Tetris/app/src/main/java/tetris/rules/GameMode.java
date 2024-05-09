@@ -4,7 +4,12 @@ public abstract class GameMode {
 	public abstract DropSpeed getDropSpeedPerLevelNumber(int levelNumber);
 
 	public abstract int getLockDelayInMilliseconds();
-	public int getDelayBeforeLaunchNewTetrominoInMilliseconds() {
+	
+	/**
+	 *https://tetris.wiki/ARE 
+	 * @return
+	 */
+	public int getEntryDelayInMilliseconds() {
 		return getLockDelayInMilliseconds();
 	}
 

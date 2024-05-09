@@ -2,6 +2,7 @@ package tetris.game_objects.patterns;
 
 import geometry2d.integergeometry.IntegerPrecisionPoint;
 
+
 public class TetroMinoOSquarePattern extends Pattern {
 	public TetroMinoOSquarePattern() {
 		addMinoPoint(new IntegerPrecisionPoint(0, 0));

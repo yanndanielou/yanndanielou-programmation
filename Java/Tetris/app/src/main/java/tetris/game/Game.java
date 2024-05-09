@@ -17,6 +17,7 @@ import game.gameboard.NeighbourGameBoardPointDirection;
 import geometry2d.integergeometry.IntegerPrecisionRectangle;
 import tetris.core.DifficultyLevelManager;
 import tetris.game_objects.Mino;
+import tetris.game_objects.tetrominoes_types.TetroMinoFactory;
 import tetris.game_objects.tetrominoes_types.Tetromino;
 import tetris.game_objects.tetrominoes_types.TetrominoOSquare;
 import tetris.game_objects.tetrominoes_types.TetrominoType;
@@ -122,14 +123,7 @@ public class Game {
 			LOGGER.info("Resume game");
 			paused = false;
 
-			if (currentDropMinoPeriodicTask != null) {
-				currentDropMinoPeriodicTask.resume();
-			}
-			if (lockCurrentDominoDelayedTask != null) {
-				lockCurrentDominoDelayedTask.resume();
-			}
-
-			gameStatusListeners.forEach((gameStatusListener) -> gameStatusListener.onGameResumed(this));
+			gameStatusListeners.forEach(gameStatusListener -> gameStatusListener.onGameResumed(this));
 
 			return true;
 		} else {
@@ -328,7 +322,7 @@ public class Game {
 	private void planToTryAndDropNewRandomTetrimino() {
 		LOGGER.info(() -> "planToTryAndDropNewRandomTetrimino");
 		int delayBeforeLaunchNewTetrominoInMilliseconds = gameMode
-				.getDelayBeforeLaunchNewTetrominoInMilliseconds();
+				.getEntryDelayInMilliseconds();
 		dropNewRandomDominoDelayedTask = new GamePausableOneShotDelayedTask(this,
 				delayBeforeLaunchNewTetrominoInMilliseconds) {
 
@@ -343,14 +337,15 @@ public class Game {
 	private void tryAndDropNewRandomTetrimino() {
 		LOGGER.info(() -> "tryAndDropNewRandomTetrimino");
 		dropNewRandomDominoDelayedTask = null;
-		tryAndDropNewTetrimino(TetrominoType.O_SQUARE);
+		TetrominoType tetrominoType = TetrominoType.random();
+		tryAndDropNewTetrimino(tetrominoType);
 	}
 
 	public void tryAndDropNewTetrimino(TetrominoType tetriminoTypeToDrop) {
 		MatrixCell upperLeftCornerOfNewTetriminoCenteredOnGameBoard = getUpperLeftCornerOfNewTetriminoCenteredOnGameBoard(
 				tetriminoTypeToDrop);
 		if (canNewTetriminoBeDropped(upperLeftCornerOfNewTetriminoCenteredOnGameBoard, tetriminoTypeToDrop)) {
-			Tetromino tetromino = new TetrominoOSquare(tetriminoTypeToDrop, this,
+			Tetromino tetromino = TetroMinoFactory.createTetromino(tetriminoTypeToDrop, this,
 					upperLeftCornerOfNewTetriminoCenteredOnGameBoard);
 
 			setCurrentMovingTetromino(tetromino);

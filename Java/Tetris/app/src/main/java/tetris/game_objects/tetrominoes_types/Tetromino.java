@@ -19,14 +19,6 @@ public abstract class Tetromino {
 
 	private static final Logger LOGGER = LogManager.getLogger(Tetromino.class);
 
-	private class SortFromBottomToTop implements Comparator<Mino> {
-
-		@Override
-		public int compare(Mino o1, Mino o2) {
-			return o2.getLocationOnMatrix().getYAsInt() - o1.getLocationOnMatrix().getYAsInt();
-		}
-	}
-
 	protected TetrominoRotationDirection direction;
 	protected List<Mino> minos = new ArrayList<>();
 	private boolean locked = false;
@@ -53,11 +45,11 @@ public abstract class Tetromino {
 
 	public void removeMino(Mino mino) {
 		boolean removed = minos.remove(mino);
-		if(!removed) {
+		if (!removed) {
 			throw new BadLogicException("Could not remove " + mino + " in " + this);
 		}
 	}
-	
+
 	public Pattern getPattern() {
 		return tetriminoType.getPattern();
 	}
@@ -77,7 +69,6 @@ public abstract class Tetromino {
 
 		return allMinos;
 	}
-	
 
 	public List<Mino> getMinosSortedFromRightToLeft() {
 		List<Mino> allMinos = new ArrayList<Mino>(minos);
@@ -112,5 +103,8 @@ public abstract class Tetromino {
 		this.locked = true;
 	}
 
+	public TetrominoType getType() {
+		return tetriminoType;
+	}
 
 }
