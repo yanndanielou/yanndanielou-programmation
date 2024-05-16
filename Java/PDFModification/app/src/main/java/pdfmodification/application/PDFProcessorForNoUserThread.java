@@ -15,6 +15,7 @@ import pdfmodification.data.inputpdfdocument.builders.InputPDFsDataModel;
 import pdfmodification.data.users.PDFAllowedUser;
 import pdfmodification.helpers.PDFModificationHelpers;
 
+@Deprecated
 public class PDFProcessorForNoUserThread extends PDFProcessorGenericThread {
 
 	InputPDFAndActionsToPerformDataModel pdfBatch;

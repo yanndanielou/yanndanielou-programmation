@@ -22,6 +22,7 @@ import com.google.common.base.Strings;
 import common.builders.ColorDataModel;
 import common.builders.PointDataModel;
 import common.collection.CollectionUtils;
+import common.compress.ZipFileManager;
 import common.duration.CodeDurationCounter;
 import common.duration.FormatterUtils;
 import common.filesanddirectories.DirectoryHelper;
@@ -147,10 +148,12 @@ public class PDFModificationApplication {
 
 			originalDoc.close();
 		}
+		
+		List<File> outputPdfFiles = new ArrayList<>();
 
 		for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
 			if (MULTITHREAD_STRATEGY == MultiThreadStrategy.ONE_THREAD_PER_OUTPUT_PDF) {
-				threads.add(new PDFProcessorForUneUserThread(pdfAllowedUser, pdfBatch, inputPdf, inputPDFFile));
+				threads.add(new PDFProcessorForOneUserThread(pdfAllowedUser, pdfBatch, inputPdf, inputPDFFile));
 			} else {
 				LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
 
@@ -168,13 +171,23 @@ public class PDFModificationApplication {
 
 				LOGGER.info(() -> "Protect PDF");
 				protectPDF(originalDoc, pdfAllowedUser);
+				
+				String outputPDFFileFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
+				File outputPdfFile = new File(outputPDFFileFullPath);
+				outputPdfFiles.add(outputPdfFile);
 
 				LOGGER.info(() -> "Save output PDF");
 				saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
 
 				originalDoc.close();
 			}
+			
+
 		}
+			ZipFileManager zipFileManager = new ZipFileManager();
+			String zipFileName = PDFModificationHelpers.outputDirectoryName + "/"
+					+ FileNameExtensionAndPathHelper.getFileNameWithoutExtension(inputPDFFile) + ".zip";
+			zipFileManager.createZipFileWithFiles(zipFileName, outputPdfFiles);
 
 		return threads;
 	}
@@ -232,18 +245,7 @@ public class PDFModificationApplication {
 	private static void saveOutputPDF(InputPDFsDataModel inputPdf, File inputPDFFile, PDDocument originalDoc,
 			PDFAllowedUser pdfAllowedUser) throws IOException {
 
-		String fileNameWithoutExtension = inputPdf.getGenericOutputFileName();
-		if (fileNameWithoutExtension == null) {
-			fileNameWithoutExtension = Strings.nullToEmpty(inputPdf.getOutputFilePrefixToAdd())
-					+ FileNameExtensionAndPathHelper.getFileNameWithoutExtension(inputPDFFile.getName());
-		}
-
-		String generatedPersonnalizedProtectedPDFFileNameWithExtension = fileNameWithoutExtension + " "
-				+ pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom()
-				+ PDFModificationHelpers.PDF_EXTENSION_WITH_POINT;
-
-		String generatedPersonnalizedProtectedPDFFullPath = PDFModificationHelpers.outputDirectoryName + "/"
-				+ generatedPersonnalizedProtectedPDFFileNameWithExtension;
+		String generatedPersonnalizedProtectedPDFFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
 
 		FileHelper.removeFileIfExists(generatedPersonnalizedProtectedPDFFullPath);
 
@@ -254,6 +256,34 @@ public class PDFModificationApplication {
 		originalDoc.save(generatedPersonnalizedProtectedPDFFullPath);
 
 		LOGGER.info(() -> "Saved in " + FormatterUtils.GetDurationAsString(saveTimeDurationCounter.getDuration()));
+	}
+	
+
+	protected static String getOutputPDFFileName(InputPDFsDataModel inputPdf, File inputPDFFile, PDDocument originalDoc,
+			PDFAllowedUser pdfAllowedUser) {
+		String fileNameWithoutExtension = inputPdf.getGenericOutputFileName();
+		if (fileNameWithoutExtension == null) {
+			fileNameWithoutExtension = Strings.nullToEmpty(inputPdf.getOutputFilePrefixToAdd())
+					+ FileNameExtensionAndPathHelper.getFileNameWithoutExtension(inputPDFFile.getName());
+		}
+
+		String generatedPersonnalizedProtectedPDFFileNameWithExtension = fileNameWithoutExtension + " "
+				+ pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom()
+				+ PDFModificationHelpers.PDF_EXTENSION_WITH_POINT;
+
+		return generatedPersonnalizedProtectedPDFFileNameWithExtension;
+
+	}
+	
+	protected static String getOutputPDFFileNameWithFullPath(InputPDFsDataModel inputPdf, File inputPDFFile, PDDocument originalDoc,
+			PDFAllowedUser pdfAllowedUser) {
+
+		String generatedPersonnalizedProtectedPDFFullPath = PDFModificationHelpers.outputDirectoryName + "/"
+				+ getOutputPDFFileName(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
+
+
+		return generatedPersonnalizedProtectedPDFFullPath;
+
 	}
 
 	public static void protectPDF(PDDocument documentToProtect, PDFAllowedUser pdfAllowedUser) throws IOException {

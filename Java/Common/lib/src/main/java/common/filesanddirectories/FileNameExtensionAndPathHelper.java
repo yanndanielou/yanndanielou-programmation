@@ -16,6 +16,10 @@ public class FileNameExtensionAndPathHelper {
 		return FilenameUtils.getBaseName(fileNameOrPath);
 	}
 
+	public static String getFileNameWithoutExtension(File file) {
+		return FilenameUtils.getBaseName(file.getName());
+	}
+
 	public static File[] getAllFilesNamesWithExtension(String directoryName, String... extensions) {
 		File dir = new File(directoryName);
 		return dir.listFiles(new FilenameFilter() {

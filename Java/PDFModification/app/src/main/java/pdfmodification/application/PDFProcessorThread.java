@@ -2,6 +2,7 @@ package pdfmodification.application;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -9,7 +10,9 @@ import org.apache.logging.log4j.Logger;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
+import common.compress.ZipFileManager;
 import common.filesanddirectories.DirectoryHelper;
+import common.filesanddirectories.FileNameExtensionAndPathHelper;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformDataModel;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFsDataModel;
 import pdfmodification.data.users.PDFAllowedUser;
@@ -47,8 +50,6 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 		}
 	}
 
-	
-	
 	private void handlePdf() throws IOException {
 		{
 			LOGGER.info(() -> "Load PDF");
@@ -68,6 +69,8 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 
 			originalDoc.close();
 		}
+
+		List<File> outputPdfFiles = new ArrayList<>();
 
 		for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
 			LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
@@ -90,7 +93,17 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 			LOGGER.info(() -> "Save output PDF");
 			saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
 
+			String outputPDFFileFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile, originalDoc,
+					pdfAllowedUser);
+			File outputPdfFile = new File(outputPDFFileFullPath);
+			outputPdfFiles.add(outputPdfFile);
+
 			originalDoc.close();
 		}
+
+		ZipFileManager zipFileManager = new ZipFileManager();
+		String zipFileName = PDFModificationHelpers.outputDirectoryName + "/"
+				+ FileNameExtensionAndPathHelper.getFileNameWithoutExtension(inputPDFFile) + ".zip";
+		zipFileManager.createZipFileWithFiles(zipFileName, outputPdfFiles);
 	}
 }

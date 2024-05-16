@@ -14,7 +14,7 @@ public class FileHelper {
 			LOGGER.info(() -> "Delete previous version of file file:" + myObj.getName() + ":" + fileName);
 			return true;
 		} else {
-			LOGGER.info(() -> "Failed to delete the file:" + fileName);
+			LOGGER.info(() -> "File :" + fileName + " not deleted: probably not present");
 			return false;
 		}
 	}
