@@ -60,7 +60,7 @@ public class PDFProcessorForOneUserThread extends PDFProcessorGenericThread {
 			LOGGER.info(() -> "Protect PDF");
 			protectPDF(originalDoc, pdfAllowedUser);
 
-			String outputPDFFileFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
+			String outputPDFFileFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile, pdfAllowedUser);
 			File outputPdfFile = new File(outputPDFFileFullPath);
 			outputPdfFiles.add(outputPdfFile);
 			

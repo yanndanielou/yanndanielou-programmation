@@ -87,7 +87,9 @@ public class PDFProcessorGenericThread extends Thread {
 		}
 
 	}
-	protected static String getOutputPDFFileName(InputPDFsDataModel inputPdf, File inputPDFFile, PDDocument originalDoc) {
+
+	@Deprecated
+	protected static String getOutputPDFFileName(InputPDFsDataModel inputPdf, File inputPDFFile) {
 		String fileNameWithoutExtension = inputPdf.getGenericOutputFileName();
 		if (fileNameWithoutExtension == null) {
 			fileNameWithoutExtension = Strings.nullToEmpty(inputPdf.getOutputFilePrefixToAdd())
@@ -101,7 +103,7 @@ public class PDFProcessorGenericThread extends Thread {
 
 	}
 
-	protected static String getOutputPDFFileName(InputPDFsDataModel inputPdf, File inputPDFFile, PDDocument originalDoc,
+	protected static String getOutputPDFFileName(InputPDFsDataModel inputPdf, File inputPDFFile, 
 			PDFAllowedUser pdfAllowedUser) {
 		String fileNameWithoutExtension = inputPdf.getGenericOutputFileName();
 		if (fileNameWithoutExtension == null) {
@@ -109,20 +111,24 @@ public class PDFProcessorGenericThread extends Thread {
 					+ FileNameExtensionAndPathHelper.getFileNameWithoutExtension(inputPDFFile.getName());
 		}
 
-		String generatedPersonnalizedProtectedPDFFileNameWithExtension = fileNameWithoutExtension + " "
-				+ pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom()
-				+ PDFModificationHelpers.PDF_EXTENSION_WITH_POINT;
+		String generatedPersonnalizedProtectedPDFFileNameWithExtension = fileNameWithoutExtension;
+
+		if (pdfAllowedUser != null) {
+			generatedPersonnalizedProtectedPDFFileNameWithExtension += " "
+					+ pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom();
+		}
+
+		generatedPersonnalizedProtectedPDFFileNameWithExtension += PDFModificationHelpers.PDF_EXTENSION_WITH_POINT;
 
 		return generatedPersonnalizedProtectedPDFFileNameWithExtension;
 
 	}
-	
-	protected static String getOutputPDFFileNameWithFullPath(InputPDFsDataModel inputPdf, File inputPDFFile, PDDocument originalDoc,
-			PDFAllowedUser pdfAllowedUser) {
+
+	protected static String getOutputPDFFileNameWithFullPath(InputPDFsDataModel inputPdf, File inputPDFFile,
+		 PDFAllowedUser pdfAllowedUser) {
 
 		String generatedPersonnalizedProtectedPDFFullPath = PDFModificationHelpers.outputDirectoryName + "/"
-				+ getOutputPDFFileName(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
-
+				+ getOutputPDFFileName(inputPdf, inputPDFFile, pdfAllowedUser);
 
 		return generatedPersonnalizedProtectedPDFFullPath;
 
@@ -131,7 +137,8 @@ public class PDFProcessorGenericThread extends Thread {
 	protected static void saveOutputPDF(InputPDFsDataModel inputPdf, File inputPDFFile, PDDocument originalDoc,
 			PDFAllowedUser pdfAllowedUser) throws IOException {
 
-		String generatedPersonnalizedProtectedPDFFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
+		String generatedPersonnalizedProtectedPDFFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile,
+				pdfAllowedUser);
 
 		boolean fileRemoved = FileHelper.removeFileIfExists(generatedPersonnalizedProtectedPDFFullPath);
 

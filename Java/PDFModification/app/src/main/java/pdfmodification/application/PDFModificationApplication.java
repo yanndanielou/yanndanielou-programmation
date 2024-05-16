@@ -186,7 +186,8 @@ public class PDFModificationApplication {
 		}
 			ZipFileManager zipFileManager = new ZipFileManager();
 			String zipFileName = PDFModificationHelpers.outputDirectoryName + "/"
-					+ FileNameExtensionAndPathHelper.getFileNameWithoutExtension(inputPDFFile) + ".zip";
+					+ getOutputPDFFileName(inputPdf, inputPDFFile,
+							null) + ".zip";
 			zipFileManager.createZipFileWithFiles(zipFileName, outputPdfFiles);
 
 		return threads;
@@ -259,7 +260,7 @@ public class PDFModificationApplication {
 	}
 	
 
-	protected static String getOutputPDFFileName(InputPDFsDataModel inputPdf, File inputPDFFile, PDDocument originalDoc,
+	protected static String getOutputPDFFileName(InputPDFsDataModel inputPdf, File inputPDFFile,
 			PDFAllowedUser pdfAllowedUser) {
 		String fileNameWithoutExtension = inputPdf.getGenericOutputFileName();
 		if (fileNameWithoutExtension == null) {
@@ -267,9 +268,14 @@ public class PDFModificationApplication {
 					+ FileNameExtensionAndPathHelper.getFileNameWithoutExtension(inputPDFFile.getName());
 		}
 
-		String generatedPersonnalizedProtectedPDFFileNameWithExtension = fileNameWithoutExtension + " "
-				+ pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom()
-				+ PDFModificationHelpers.PDF_EXTENSION_WITH_POINT;
+		String generatedPersonnalizedProtectedPDFFileNameWithExtension = fileNameWithoutExtension;
+
+		if (pdfAllowedUser != null) {
+			generatedPersonnalizedProtectedPDFFileNameWithExtension += " "
+					+ pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom();
+		}
+
+		generatedPersonnalizedProtectedPDFFileNameWithExtension += PDFModificationHelpers.PDF_EXTENSION_WITH_POINT;
 
 		return generatedPersonnalizedProtectedPDFFileNameWithExtension;
 
@@ -279,8 +285,7 @@ public class PDFModificationApplication {
 			PDFAllowedUser pdfAllowedUser) {
 
 		String generatedPersonnalizedProtectedPDFFullPath = PDFModificationHelpers.outputDirectoryName + "/"
-				+ getOutputPDFFileName(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
-
+				+ getOutputPDFFileName(inputPdf, inputPDFFile, pdfAllowedUser);
 
 		return generatedPersonnalizedProtectedPDFFullPath;
 

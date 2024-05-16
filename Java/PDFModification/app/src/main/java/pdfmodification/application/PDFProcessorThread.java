@@ -65,7 +65,7 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 			DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
 
 			LOGGER.info(() -> "Save output PDF");
-			saveOutputPDF(inputPdf, inputPDFFile, originalDoc, new PDFAllowedUser());
+			saveOutputPDF(inputPdf, inputPDFFile, originalDoc, null);
 
 			originalDoc.close();
 		}
@@ -93,7 +93,7 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 			LOGGER.info(() -> "Save output PDF");
 			saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
 
-			String outputPDFFileFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile, originalDoc,
+			String outputPDFFileFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile,
 					pdfAllowedUser);
 			File outputPdfFile = new File(outputPDFFileFullPath);
 			outputPdfFiles.add(outputPdfFile);
@@ -103,7 +103,8 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 
 		ZipFileManager zipFileManager = new ZipFileManager();
 		String zipFileName = PDFModificationHelpers.outputDirectoryName + "/"
-				+ FileNameExtensionAndPathHelper.getFileNameWithoutExtension(inputPDFFile) + ".zip";
+				+ getOutputPDFFileName(inputPdf, inputPDFFile,
+						null) + ".zip";
 		zipFileManager.createZipFileWithFiles(zipFileName, outputPdfFiles);
 	}
 }
