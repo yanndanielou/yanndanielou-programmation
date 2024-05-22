@@ -1,0 +1,8 @@
+/bin/
+.gradle
+gradle
+build
+target
+logs/
+*.7z
+lzma2405/

@@ -70,7 +70,7 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 			originalDoc.close();
 		}
 
-		List<File> outputPdfFiles = new ArrayList<>();
+		List<String> outputPdfFilesFullPaths = new ArrayList<>();
 
 		for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
 			LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
@@ -93,18 +93,15 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 			LOGGER.info(() -> "Save output PDF");
 			saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
 
-			String outputPDFFileFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile,
-					pdfAllowedUser);
-			File outputPdfFile = new File(outputPDFFileFullPath);
-			outputPdfFiles.add(outputPdfFile);
+			String outputPDFFileFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile, pdfAllowedUser);
+			outputPdfFilesFullPaths.add(outputPDFFileFullPath);
 
 			originalDoc.close();
 		}
 
 		ZipFileManager zipFileManager = new ZipFileManager();
 		String zipFileName = PDFModificationHelpers.outputDirectoryName + "/"
-				+ getOutputPDFFileName(inputPdf, inputPDFFile,
-						null) + ".zip";
-		zipFileManager.createZipFileWithFiles(zipFileName, outputPdfFiles);
+				+ getOutputPDFFileName(inputPdf, inputPDFFile, null) + ".zip";
+		zipFileManager.createZipFileWithFilesFullPaths(zipFileName, outputPdfFilesFullPaths);
 	}
 }

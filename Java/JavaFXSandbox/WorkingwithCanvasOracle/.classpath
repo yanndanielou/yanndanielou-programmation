@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="app/src/main/java"/>
+	<classpathentry excluding="**/*.java" kind="src" path="app/src/main/resources"/>
+	
+	
+	<classpathentry kind="src" output="target/test-classes" path="app/src/test/java">
+	<!-- <attributes>
+		<attribute name="test" value="true"/>
+	</attributes>-->
+	</classpathentry>
+
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	
+	
+	
+	<classpathentry kind="src" path="/Game"/>
+	<classpathentry kind="src" path="/Common"/>
+	<classpathentry kind="src" path="/Geometry2D"/>
+	
+	<classpathentry kind="lib" path="../../ExternalLibraries/log4j-api-2.20.0.jar"/>
+	<classpathentry kind="lib" path="../../ExternalLibraries/log4j-core-2.20.0.jar"/>
+	<classpathentry kind="lib" path="../../ExternalLibraries/gson-2.10.1.jar"/>
+
+
+	<!-- For tests -->
+	<classpathentry kind="lib" path="../../ExternalLibraries/mockito-core-5.5.0.jar"/>
+	<classpathentry kind="lib" path="../../ExternalLibraries/mockito-junit-jupiter-5.5.0.jar"/>
+	<classpathentry kind="lib" path="../../ExternalLibraries/byte-buddy-1.14.6.jar"/> <!-- For mockito? -->
+	<classpathentry kind="lib" path="../../ExternalLibraries/byte-buddy-agent-1.14.6.jar"/> <!-- For mockito? -->
+	<classpathentry kind="lib" path="../../ExternalLibraries/objenesis-3.3.jar"/>
+	
+	
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFxOpenJFX21_0_1">
+
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

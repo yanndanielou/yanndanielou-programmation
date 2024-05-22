@@ -36,3 +36,7 @@ set PATH_TO_FX="path\to\javafx-sdk-21.0.1\lib"
 2024-04-24
 Tuto suivi avec succès pour premier projet, ensuite ne marchait plus: https://openjfx.io/openjfx-docs/#install-javafx
 
+
+
+Java FX: tool Scenic View to debug easily
+https://github.com/JonathanGiles/scenic-view

@@ -149,7 +149,7 @@ public class PDFModificationApplication {
 			originalDoc.close();
 		}
 		
-		List<File> outputPdfFiles = new ArrayList<>();
+		List<String> outputPdfFilesFullPaths = new ArrayList<>();
 
 		for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
 			if (MULTITHREAD_STRATEGY == MultiThreadStrategy.ONE_THREAD_PER_OUTPUT_PDF) {
@@ -173,8 +173,7 @@ public class PDFModificationApplication {
 				protectPDF(originalDoc, pdfAllowedUser);
 				
 				String outputPDFFileFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
-				File outputPdfFile = new File(outputPDFFileFullPath);
-				outputPdfFiles.add(outputPdfFile);
+				outputPdfFilesFullPaths.add(outputPDFFileFullPath);
 
 				LOGGER.info(() -> "Save output PDF");
 				saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
@@ -188,7 +187,7 @@ public class PDFModificationApplication {
 			String zipFileName = PDFModificationHelpers.outputDirectoryName + "/"
 					+ getOutputPDFFileName(inputPdf, inputPDFFile,
 							null) + ".zip";
-			zipFileManager.createZipFileWithFiles(zipFileName, outputPdfFiles);
+			zipFileManager.createZipFileWithFilesFullPaths(zipFileName, outputPdfFilesFullPaths);
 
 		return threads;
 	}

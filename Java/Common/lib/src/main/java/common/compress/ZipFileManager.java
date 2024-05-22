@@ -19,6 +19,40 @@ public class ZipFileManager {
 
 	public ZipFileManager() {
 	}
+	
+	public boolean createZipFileWithFilesFullPaths(String outputZipFileName, List<String> filesToIncludeInZipFileFullPaths) {
+	FileHelper.removeFileIfExists(outputZipFileName);
+		
+		FileOutputStream fout;
+		try {
+			fout = new FileOutputStream(outputZipFileName);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			LOGGER.error(() -> "Could not create output zip file:" + outputZipFileName);
+			return false;
+		}
+		ZipOutputStream zipOutputStream = new ZipOutputStream(fout);
+		try {
+
+			for (String fileToIncludeInZipFileFullPath : filesToIncludeInZipFileFullPaths) {
+				ZipEntry zipEntry = new ZipEntry(fileToIncludeInZipFileFullPath);
+				zipOutputStream.putNextEntry(zipEntry);
+				zipOutputStream.closeEntry();
+				LOGGER.info(() -> "File :" + fileToIncludeInZipFileFullPath + " added to zip " + outputZipFileName);
+
+			}
+			zipOutputStream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+
+			LOGGER.error(() -> "Error while processing zip file:" + outputZipFileName);
+			return false;
+		}
+
+		LOGGER.info(() -> "Output zip file:" + outputZipFileName + " created with success");
+		return true;
+	}
+
 
 	public boolean createZipFileWithFiles(String outputZipFileName, List<File> filesToIncludeInZipFile) {
 
@@ -36,7 +70,7 @@ public class ZipFileManager {
 		try {
 
 			for (File file : filesToIncludeInZipFile) {
-				ZipEntry zipEntry = new ZipEntry(file.getName());
+				ZipEntry zipEntry = new ZipEntry(file.getAbsolutePath());
 				zipOutputStream.putNextEntry(zipEntry);
 				zipOutputStream.closeEntry();
 				LOGGER.info(() -> "File :" + file.getName() + " added to zip " + outputZipFileName);
