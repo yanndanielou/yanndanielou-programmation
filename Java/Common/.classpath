@@ -41,6 +41,11 @@
 	<classpathentry kind="lib" path="../ExternalLibraries/ooxml-schemas-1.0.jar"/>
 	
 	
+	<classpathentry kind="lib" path="../ExternalLibraries/passay-1.6.4.jar"/>
+	
+	
+	
+	
 	<classpathentry kind="lib" path="../ExternalLibraries/gson-2.10.1.jar"/>
 	
 	<classpathentry kind="output" path="bin"/>
