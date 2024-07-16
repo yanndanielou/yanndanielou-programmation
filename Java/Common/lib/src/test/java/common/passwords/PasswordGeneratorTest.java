@@ -42,7 +42,7 @@ public class PasswordGeneratorTest {
 
 		
 		@ParameterizedTest
-		@ValueSource(strings = {"Aazz111.", "Aazz111("})
+		@ValueSource(strings = {"Aazz111.", "Aazz111(", "Aazz111(fea'feafeafed3333333Ffeefddd"})
 		void complex(String password) {
 			assertTrue(PasswordValidator.isPasswordComplex(password));
 		}
