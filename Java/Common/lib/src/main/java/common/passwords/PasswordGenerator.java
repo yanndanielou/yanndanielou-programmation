@@ -9,11 +9,10 @@ import org.passay.CharacterData;
 import org.passay.CharacterRule;
 import org.passay.EnglishCharacterData;
 
-public class PasswordGenerator {
+public class PasswordGenerator implements PasswordsConstants{
 
-	private static final Logger LOGGER = LogManager.getLogger(PasswordGeneratorTest.class);
+	private static final Logger LOGGER = LogManager.getLogger(PasswordGenerator.class);
 
-	public static final String SPECIAL_CHARACTERS_STRING = "!@#$%^&*()_+";
 
 	public static final CharacterData SPECIAL_CHARACTERS_CHARACTER_DATA = new CharacterData() {
 		public String getErrorCode() {
@@ -85,5 +84,5 @@ public class PasswordGenerator {
 				+ ", specialCharactersCount:" + specialCharactersCount + ". GeneratedPassword:" + generatedPassword);
 		return generatedPassword;
 	}
-
+	
 }
