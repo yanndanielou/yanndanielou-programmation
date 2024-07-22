@@ -17,6 +17,7 @@ import pdfmodification.data.inputpdfdocument.builders.InputPDFsDataModel;
 import pdfmodification.data.users.PDFAllowedUser;
 import pdfmodification.helpers.PDFModificationConstants;
 import pdfmodification.helpers.PDFModificationHelpers;
+import pdfmodification.helpers.PDFModificationParams;
 
 public class PDFProcessorThread extends PDFProcessorGenericThread {
 
@@ -51,6 +52,7 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 	}
 
 	private void handlePdf() throws IOException {
+		if(PDFModificationParams.GENERATE_ALSO_UNPROTECTED_PDF_FOR_NO_USER)
 		{
 			LOGGER.info(() -> "Load PDF");
 			PDDocument originalDoc = Loader.loadPDF(inputPDFFile);

@@ -13,6 +13,9 @@ public class PDFAllowedUser {
 	@CsvBindByName(column = "prenom")
 	private String prenom;
 
+	@CsvBindByName(column = "entite")
+	private String entite;
+
 	@CsvBindByName(column = "accesHautementConfidentiel")
 	private String accesHautementConfidentiel;
 
@@ -27,6 +30,10 @@ public class PDFAllowedUser {
 
 	public String getNom() {
 		return org.apache.commons.lang3.StringUtils.trim(nom);
+	}
+
+	public String getEntite() {
+		return org.apache.commons.lang3.StringUtils.trim(entite);
 	}
 
 	public String getPrenom() {

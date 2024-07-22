@@ -63,6 +63,8 @@ public class PDFModificationApplication {
 				.filter(PDFAllowedUser::isAllowedToAccessPDF)
 				.filter(e -> PDFModificationParams.ALLOWED_USER_PRENOMS.isEmpty()
 						|| PDFModificationParams.ALLOWED_USER_PRENOMS.contains(e.getPrenom()))
+				.filter(e -> PDFModificationParams.ALLOWED_USER_ENTITES.isEmpty()
+						|| PDFModificationParams.ALLOWED_USER_ENTITES.contains(e.getEntite()))
 				.toList();
 		
 		LOGGER.info(() -> "Number of pdfAllowedUsers:" + pdfAllowedUsers.size());
@@ -134,6 +136,7 @@ public class PDFModificationApplication {
 		if (MULTITHREAD_STRATEGY == MultiThreadStrategy.ONE_THREAD_PER_INPUT_PDF) {
 			return CollectionUtils.asList(new PDFProcessorThread(pdfAllowedUsers, pdfBatch, inputPdf, inputPDFFile));
 		}
+		if(PDFModificationParams.GENERATE_ALSO_UNPROTECTED_PDF_FOR_NO_USER)
 		{
 			LOGGER.info(() -> "Load PDF");
 			PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
