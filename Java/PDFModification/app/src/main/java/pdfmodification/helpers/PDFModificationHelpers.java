@@ -1,126 +1,139 @@
 package pdfmodification.helpers;
 
-import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.pdfbox.Loader;
-import org.apache.pdfbox.multipdf.Overlay;
-import org.apache.pdfbox.multipdf.Overlay.Position;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.PDPageContentStream.AppendMode;
-import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.encryption.AccessPermission;
 import org.apache.pdfbox.pdmodel.encryption.StandardProtectionPolicy;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
-import org.apache.pdfbox.util.Matrix;
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName;
 
-import common.filesanddirectories.DirectoryHelper;
+import com.google.common.base.Strings;
 
-/**
- * https://github.com/topobyte/pdfbox-tools/blob/master/src/main/java/org/apache/pdfbox/tools/OverlayPDF.java
- * 
- */
+import common.builders.ColorDataModel;
+import common.builders.PointDataModel;
+import common.duration.CodeDurationCounter;
+import common.duration.FormatterUtils;
+import common.filesanddirectories.FileHelper;
+import common.filesanddirectories.FileNameExtensionAndPathHelper;
+import pdfmodification.application.PDFModificationApplication;
+import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformDataModel;
+import pdfmodification.data.inputpdfdocument.builders.InputPDFsDataModel;
+import pdfmodification.data.inputpdfdocument.builders.PDFFontDataModel;
+import pdfmodification.data.inputpdfdocument.builders.TextLineToDisplayDataModel;
+import pdfmodification.data.users.PDFAllowedUser;
 
 public class PDFModificationHelpers {
+	
 	protected static final Logger LOGGER = LogManager.getLogger(PDFModificationHelpers.class);
 
-	public static final String outputDirectoryName = "output";
-	public static final String inputDirectoryName = "input";
-	public static final String PDF_EXTENSION_WITH_POINT = ".pdf";
-	public static final String originalPDFDocumentBeforeAnyModificationFileNameWithoutExtension = "SSC3_2_AdminTools_GUMPS_SyReqSpec 02 00";
-	public static final String originalPDFDocumentBeforeAnyModificationFileNameWithExtension = originalPDFDocumentBeforeAnyModificationFileNameWithoutExtension + PDF_EXTENSION_WITH_POINT;
-	public static final String originalPDFDocumentBeforeAnyModificationFullPath = inputDirectoryName + "\\"
-			+ originalPDFDocumentBeforeAnyModificationFileNameWithExtension;
-	public static final String watermarkOnlyPDFFileName = outputDirectoryName + "\\Watermark xx.pdf";
-	public static final String documentWithWatermark = outputDirectoryName + "\\documentWithWatermark.pdf";
 
-	public static PDDocument createWatermarkOnlyDocument() throws IOException {
-
-		PDDocument watermarkOnlyDocument = new PDDocument();
-
-		PDRectangle rectangle = PDRectangle.A4;
-		PDPage watermarkPage = new PDPage(rectangle);
-
-		watermarkOnlyDocument.addPage(watermarkPage);
-
-		PDPageContentStream watermarkPageContentStream = new PDPageContentStream(watermarkOnlyDocument, watermarkPage,
-				AppendMode.APPEND, true);
-
-		watermarkPageContentStream.beginText();
-		watermarkPageContentStream.newLineAtOffset(rectangle.getWidth() / 3, rectangle.getHeight() / 2);
-
-		watermarkPageContentStream.setStrokingColor(Color.blue);
-		watermarkPageContentStream.setNonStrokingColor(Color.gray);
-		watermarkPageContentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 20);
-		watermarkPageContentStream.showText("My watermark");
-		watermarkPageContentStream.setTextMatrix(new Matrix(1, 0, 0, 1.5f, 7, 30));
-		watermarkPageContentStream.showText("Stretched text (size 12, factor 1.5)");
-		watermarkPageContentStream.setTextMatrix(new Matrix(1, 0, 0, 2f, 7, 5));
-		watermarkPageContentStream.showText("Stretched text (size 12, factor 2)");
-		watermarkPageContentStream.endText();
-
-		watermarkPageContentStream.close();
-
-		return watermarkOnlyDocument;
-	}
-
-	public static void allStepsInOneMethodWithoutIntermediateFile() throws IOException {
-
-		PDDocument watermarkOnlyDocument = createWatermarkOnlyDocument();
-
-		// OverlayPDF
-		Overlay overlayer = new Overlay();
-		overlayer.setInputFile(originalPDFDocumentBeforeAnyModificationFileNameWithExtension);
-		overlayer.setAllPagesOverlayFile(watermarkOnlyPDFFileName);
-		overlayer.setOverlayPosition(Position.BACKGROUND);
-
-		overlayer.close();
-
-		DirectoryHelper.createFolderIfNotExists(outputDirectoryName);
-		try (PDDocument result = overlayer.overlay(new HashMap<>())) {
-			result.save(outputDirectoryName + "/" + documentWithWatermark);
+	public static void deletePages(PDDocument originalDoc, List<Integer> allPageNumberToDelete) {
+		int numberOfPagesAlreadyDeleted = 0;
+		int offset = 1;
+		for (Integer pageNumberToDelete : allPageNumberToDelete) {
+			originalDoc.removePage(pageNumberToDelete - offset - numberOfPagesAlreadyDeleted);
+			numberOfPagesAlreadyDeleted++;
 		}
 	}
 
-	/**
-	 * https://stackoverflow.com/questions/32844926/using-overlay-in-pdfbox-2-0
-	 * 
-	 * @throws IOException
-	 */
-	public static void method3() throws IOException {
-		UUID randomUUID = java.util.UUID.randomUUID();
-		String fileName = randomUUID.toString() + ".pdf";
-		FileUtils.copyFile(new File(originalPDFDocumentBeforeAnyModificationFileNameWithExtension), new File(fileName));
+	public static void addWatermarkOnEachPage(PDDocument originalDoc,
+			InputPDFAndActionsToPerformDataModel inputPDFAndActionsToPerformDataModel, PDFAllowedUser pdfAllowedUser)
+			throws IOException {
 
-		PDRectangle rectangle = PDRectangle.A4;
+		for (PDPage originalDocPage : originalDoc.getPages()) {
 
-		File file = new File(fileName);
-		PDDocument originalDoc = Loader.loadPDF(file);
-		for (PDPage page1 : originalDoc.getPages()) {
+			PDPageContentStream pageOfOriginalDocumentWithMatermarkAsContentStream = new PDPageContentStream(
+					originalDoc, originalDocPage, AppendMode.APPEND, true);
 
-			PDPageContentStream contentStream = new PDPageContentStream(originalDoc, page1, AppendMode.APPEND, true);
+			pageOfOriginalDocumentWithMatermarkAsContentStream.beginText();
 
-			// PDColor nonStrokingColor = PDColor.
+			for (TextLineToDisplayDataModel textLinesToDisplay : inputPDFAndActionsToPerformDataModel
+					.getTextLinesToDisplay()) {
 
-			contentStream.setNonStrokingColor(Color.gray);
-			contentStream.beginText();
-			contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 99);
-			contentStream.newLineAtOffset(rectangle.getWidth() / 3, rectangle.getHeight() / 2);
-			contentStream.showText("My watermark");
-			contentStream.endText();
-			contentStream.close();
+				ColorDataModel nonStrokingColorDataModel = textLinesToDisplay.getNonStrokingColor();
+				if (nonStrokingColorDataModel != null) {
+					pageOfOriginalDocumentWithMatermarkAsContentStream
+							.setNonStrokingColor(nonStrokingColorDataModel.getColorAsAwtColor());
+				}
+
+				PDFFontDataModel pdfFont = textLinesToDisplay.getFont();
+
+				if (pdfFont != null) {
+					FontName fontName = pdfFont.getFontName();
+					int fontSize = pdfFont.getFontSize();
+					pageOfOriginalDocumentWithMatermarkAsContentStream.setFont(new PDType1Font(fontName), fontSize);
+				}
+
+				PointDataModel newLineAtOffset = textLinesToDisplay.getNewLineAtOffset();
+				pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(newLineAtOffset.getX(),
+						newLineAtOffset.getY());
+				String computeText = textLinesToDisplay.computeText(pdfAllowedUser);
+				pageOfOriginalDocumentWithMatermarkAsContentStream.showText(computeText);
+
+			}
+			pageOfOriginalDocumentWithMatermarkAsContentStream.endText();
+			pageOfOriginalDocumentWithMatermarkAsContentStream.close();
 		}
 
-		DirectoryHelper.createFolderIfNotExists(outputDirectoryName);
+	}
+
+	public static void saveOutputPDF(InputPDFsDataModel inputPdf, File inputPDFFile, PDDocument originalDoc,
+			PDFAllowedUser pdfAllowedUser) throws IOException {
+
+		String generatedPersonnalizedProtectedPDFFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile,
+				originalDoc, pdfAllowedUser);
+
+		FileHelper.removeFileIfExists(generatedPersonnalizedProtectedPDFFullPath);
+
+		LOGGER.info(() -> "Save generated protected PDF:" + generatedPersonnalizedProtectedPDFFullPath + " for "
+				+ pdfAllowedUser);
+
+		CodeDurationCounter saveTimeDurationCounter = new CodeDurationCounter();
+		originalDoc.save(generatedPersonnalizedProtectedPDFFullPath);
+
+		LOGGER.info(() -> "Saved in " + FormatterUtils.GetDurationAsString(saveTimeDurationCounter.getDuration()));
+	}
+
+	public static String getOutputPDFFileName(InputPDFsDataModel inputPdf, File inputPDFFile,
+			PDFAllowedUser pdfAllowedUser) {
+		String fileNameWithoutExtension = inputPdf.getGenericOutputFileName();
+		if (fileNameWithoutExtension == null) {
+			fileNameWithoutExtension = Strings.nullToEmpty(inputPdf.getOutputFilePrefixToAdd())
+					+ FileNameExtensionAndPathHelper.getFileNameWithoutExtension(inputPDFFile.getName());
+		}
+
+		String generatedPersonnalizedProtectedPDFFileNameWithExtension = fileNameWithoutExtension;
+
+		if (pdfAllowedUser != null) {
+			generatedPersonnalizedProtectedPDFFileNameWithExtension += " " + pdfAllowedUser.getPrenom() + " "
+					+ pdfAllowedUser.getNom();
+		}
+
+		generatedPersonnalizedProtectedPDFFileNameWithExtension += PDFModificationConstants.PDF_EXTENSION_WITH_POINT;
+
+		return generatedPersonnalizedProtectedPDFFileNameWithExtension;
+
+	}
+
+	public static String getOutputPDFFileNameWithFullPath(InputPDFsDataModel inputPdf, File inputPDFFile,
+			PDDocument originalDoc, PDFAllowedUser pdfAllowedUser) {
+
+		String generatedPersonnalizedProtectedPDFFullPath = PDFModificationConstants.OUTPUT_DIRECTORY_NAME + "/"
+				+ getOutputPDFFileName(inputPdf, inputPDFFile, pdfAllowedUser);
+
+		return generatedPersonnalizedProtectedPDFFullPath;
+
+	}
+
+	public static void protectPDF(PDDocument documentToProtect, PDFAllowedUser pdfAllowedUser) throws IOException {
 
 		// Define the length of the encryption key.
 		// Possible values are 40, 128 or 256.
@@ -137,46 +150,13 @@ public class PDFModificationHelpers {
 		// Owner password (to open the file with all permissions) is "12345"
 		// User password (to open the file but with restricted permissions, is empty
 		// here)
-		String ownerPasswordToPrintPDF = "12345";
-		String userPasswordToOpenPDF = "abdde";
+		String ownerPasswordToPrintPDF = pdfAllowedUser.getMotDePasseImpression();
+		String userPasswordToOpenPDF = pdfAllowedUser.getMotDePasseOuverture();
 		StandardProtectionPolicy spp = new StandardProtectionPolicy(ownerPasswordToPrintPDF, userPasswordToOpenPDF, ap);
 		spp.setEncryptionKeyLength(keyLength);
 
 		// Apply protection
-		originalDoc.protect(spp);
-
-		/*
-		 * PDEncryption pdEncryption = new PDEncryption();
-		 * pdEncryption.setOwnerEncryptionKey("OK".getBytes());
-		 * originalDoc.setEncryptionDictionary(pdEncryption);
-		 */
-		originalDoc.save(outputDirectoryName + "/" + "result " + fileName);
-		// Files.createDirectories(Paths.get(outputDirectoryName));
-		// Files.createDirectory(Paths.get(outputDirectoryName), null)
-
-		originalDoc.close();
+		documentToProtect.protect(spp);
 	}
 
-	/**
-	 * https://stackoverflow.com/questions/32844926/using-overlay-in-pdfbox-2-0
-	 */
-	/*
-	 * public void method2() { PDDocument overlayDoc = new PDDocument(); PDPage page
-	 * = new PDPage(); overlayDoc.addPage(page); Overlay overlayObj = new Overlay();
-	 * PDType1Font font = Standard14Fonts.FontName.COURIER_OBLIQUE;
-	 * 
-	 * PDPageContentStream contentStream = new PDPageContentStream(overlayDoc,
-	 * page); contentStream.setFont(font, 50); contentStream.setNonStrokingColor(0);
-	 * contentStream.beginText(); contentStream.moveTextPositionByAmount(200, 200);
-	 * contentStream.drawString("deprecated"); // deprecated. Use showText(String
-	 * text) contentStream.endText(); contentStream.close();
-	 * 
-	 * PDDocument originalDoc = PDDocument.load(new File("...inputfile.pdf"));
-	 * overlayObj.setOverlayPosition(Overlay.Position.FOREGROUND);
-	 * overlayObj.setInputPDF(originalDoc);
-	 * overlayObj.setAllPagesOverlayPDF(overlayDoc); Map<Integer, String> ovmap =
-	 * new HashMap<Integer, String>(); // empty map is a dummy
-	 * overlayObj.setOutputFile("... result-with-overlay.pdf");
-	 * overlayObj.overlay(ovmap); overlayDoc.close(); originalDoc.close(); }
-	 */
 }

@@ -36,7 +36,9 @@ import pdfmodification.data.inputpdfdocument.builders.PDFFontDataModel;
 import pdfmodification.data.inputpdfdocument.builders.TextLineToDisplayDataModel;
 import pdfmodification.data.users.PDFAllowedUser;
 import pdfmodification.data.users.PDFAllowedUsersFromCsvLoader;
+import pdfmodification.helpers.PDFModificationConstants;
 import pdfmodification.helpers.PDFModificationHelpers;
+import pdfmodification.helpers.PDFModificationParams;
 
 /**
  * https://github.com/topobyte/pdfbox-tools/blob/master/src/main/java/org/apache/pdfbox/tools/OverlayPDF.java
@@ -46,7 +48,8 @@ import pdfmodification.helpers.PDFModificationHelpers;
 public class PDFModificationApplication {
 	protected static final Logger LOGGER = LogManager.getLogger(PDFModificationApplication.class);
 
-	//public static final MultiThreadStrategy MULTITHREAD_STRATEGY = MultiThreadStrategy.ONE_THREAD_PER_INPUT_PDF;
+	// public static final MultiThreadStrategy MULTITHREAD_STRATEGY =
+	// MultiThreadStrategy.ONE_THREAD_PER_INPUT_PDF;
 	public static final MultiThreadStrategy MULTITHREAD_STRATEGY = MultiThreadStrategy.MONOTHREAD;
 
 	public static void main(String[] args) throws Exception {
@@ -57,8 +60,11 @@ public class PDFModificationApplication {
 
 		List<PDFAllowedUser> pdfAllowedUsers = PDFAllowedUsersFromCsvLoader
 				.getPDFAllowedUsersFromCsvFile("Input/Password à garder en INTERNE.csv").stream()
-				.filter(PDFAllowedUser::isAllowedToAccessPDF).toList();
-
+				.filter(PDFAllowedUser::isAllowedToAccessPDF)
+				.filter(e -> PDFModificationParams.ALLOWED_USER_PRENOMS.isEmpty()
+						|| PDFModificationParams.ALLOWED_USER_PRENOMS.contains(e.getPrenom()))
+				.toList();
+		
 		LOGGER.info(() -> "Number of pdfAllowedUsers:" + pdfAllowedUsers.size());
 
 		InputPDFAndActionsToPerformModelBuilder inputPDFAndActionsToPerformModelBuilder = new InputPDFAndActionsToPerformModelBuilder(
@@ -108,7 +114,8 @@ public class PDFModificationApplication {
 
 				for (File inputPDFFile : inputPDFFiles) {
 					pdfProcessorThreads.addAll(handlePdf(pdfAllowedUsers, pdfBatch, inputPdf, inputPDFFile));
-					//pdfProcessorThreads.add(new PDFProcessorThread(pdfAllowedUsers, pdfBatch, inputPdf, inputPDFFile));
+					// pdfProcessorThreads.add(new PDFProcessorThread(pdfAllowedUsers, pdfBatch,
+					// inputPdf, inputPDFFile));
 
 				}
 			}
@@ -127,34 +134,29 @@ public class PDFModificationApplication {
 		if (MULTITHREAD_STRATEGY == MultiThreadStrategy.ONE_THREAD_PER_INPUT_PDF) {
 			return CollectionUtils.asList(new PDFProcessorThread(pdfAllowedUsers, pdfBatch, inputPdf, inputPDFFile));
 		}
-
-		if (MULTITHREAD_STRATEGY == MultiThreadStrategy.ONE_THREAD_PER_OUTPUT_PDF) {
-			threads.add(new PDFProcessorForNoUserThread(pdfBatch, inputPdf, inputPDFFile));
-		} else {
+		{
 			LOGGER.info(() -> "Load PDF");
 			PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
 
 			List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
 			LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
-			deletePages(originalDoc, allPageNumberToDelete);
+			PDFModificationHelpers.deletePages(originalDoc, allPageNumberToDelete);
 
 			LOGGER.info(() -> "Add watermark on each page");
-			addWatermarkOnEachPage(originalDoc, pdfBatch, new PDFAllowedUser());
+			PDFModificationHelpers.addWatermarkOnEachPage(originalDoc, pdfBatch, new PDFAllowedUser());
 
-			DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
+			DirectoryHelper.createFolderIfNotExists(PDFModificationConstants.OUTPUT_DIRECTORY_NAME);
 
 			LOGGER.info(() -> "Save output PDF");
-			saveOutputPDF(inputPdf, inputPDFFile, originalDoc, new PDFAllowedUser());
+			PDFModificationHelpers.saveOutputPDF(inputPdf, inputPDFFile, originalDoc, new PDFAllowedUser());
 
 			originalDoc.close();
 		}
-		
+
 		List<String> outputPdfFilesFullPaths = new ArrayList<>();
 
 		for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
-			if (MULTITHREAD_STRATEGY == MultiThreadStrategy.ONE_THREAD_PER_OUTPUT_PDF) {
-				threads.add(new PDFProcessorForOneUserThread(pdfAllowedUser, pdfBatch, inputPdf, inputPDFFile));
-			} else {
+			{
 				LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
 
 				LOGGER.info(() -> "Load PDF");
@@ -162,158 +164,33 @@ public class PDFModificationApplication {
 
 				List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
 				LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
-				deletePages(originalDoc, allPageNumberToDelete);
+				PDFModificationHelpers.deletePages(originalDoc, allPageNumberToDelete);
 
 				LOGGER.info(() -> "Add watermark on each page");
-				addWatermarkOnEachPage(originalDoc, pdfBatch, pdfAllowedUser);
+				PDFModificationHelpers.addWatermarkOnEachPage(originalDoc, pdfBatch, pdfAllowedUser);
 
-				DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
+				DirectoryHelper.createFolderIfNotExists(PDFModificationConstants.OUTPUT_DIRECTORY_NAME);
 
 				LOGGER.info(() -> "Protect PDF");
-				protectPDF(originalDoc, pdfAllowedUser);
-				
-				String outputPDFFileFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
+				PDFModificationHelpers.protectPDF(originalDoc, pdfAllowedUser);
+
+				String outputPDFFileFullPath = PDFModificationHelpers.getOutputPDFFileNameWithFullPath(inputPdf,
+						inputPDFFile, originalDoc, pdfAllowedUser);
 				outputPdfFilesFullPaths.add(outputPDFFileFullPath);
 
 				LOGGER.info(() -> "Save output PDF");
-				saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
+				PDFModificationHelpers.saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
 
 				originalDoc.close();
 			}
-			
 
 		}
-			ZipFileManager zipFileManager = new ZipFileManager();
-			String zipFileName = PDFModificationHelpers.outputDirectoryName + "/"
-					+ getOutputPDFFileName(inputPdf, inputPDFFile,
-							null) + ".zip";
-			zipFileManager.createZipFileWithFilesFullPaths(zipFileName, outputPdfFilesFullPaths);
+		ZipFileManager zipFileManager = new ZipFileManager();
+		String zipFileName = PDFModificationConstants.OUTPUT_DIRECTORY_NAME + "/"
+				+ PDFModificationHelpers.getOutputPDFFileName(inputPdf, inputPDFFile, null) + ".zip";
+		zipFileManager.createZipFileWithFilesFullPaths(zipFileName, outputPdfFilesFullPaths);
 
 		return threads;
-	}
-
-	private static void deletePages(PDDocument originalDoc, List<Integer> allPageNumberToDelete) {
-		int numberOfPagesAlreadyDeleted = 0;
-		int offset = 1;
-		for (Integer pageNumberToDelete : allPageNumberToDelete) {
-			originalDoc.removePage(pageNumberToDelete - offset - numberOfPagesAlreadyDeleted);
-			numberOfPagesAlreadyDeleted++;
-		}
-	}
-
-	private static void addWatermarkOnEachPage(PDDocument originalDoc,
-			InputPDFAndActionsToPerformDataModel inputPDFAndActionsToPerformDataModel, PDFAllowedUser pdfAllowedUser)
-			throws IOException {
-
-		for (PDPage originalDocPage : originalDoc.getPages()) {
-
-			PDPageContentStream pageOfOriginalDocumentWithMatermarkAsContentStream = new PDPageContentStream(
-					originalDoc, originalDocPage, AppendMode.APPEND, true);
-
-			pageOfOriginalDocumentWithMatermarkAsContentStream.beginText();
-
-			for (TextLineToDisplayDataModel textLinesToDisplay : inputPDFAndActionsToPerformDataModel
-					.getTextLinesToDisplay()) {
-
-				ColorDataModel nonStrokingColorDataModel = textLinesToDisplay.getNonStrokingColor();
-				if (nonStrokingColorDataModel != null) {
-					pageOfOriginalDocumentWithMatermarkAsContentStream
-							.setNonStrokingColor(nonStrokingColorDataModel.getColorAsAwtColor());
-				}
-
-				PDFFontDataModel pdfFont = textLinesToDisplay.getFont();
-
-				if (pdfFont != null) {
-					FontName fontName = pdfFont.getFontName();
-					int fontSize = pdfFont.getFontSize();
-					pageOfOriginalDocumentWithMatermarkAsContentStream.setFont(new PDType1Font(fontName), fontSize);
-				}
-
-				PointDataModel newLineAtOffset = textLinesToDisplay.getNewLineAtOffset();
-				pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(newLineAtOffset.getX(),
-						newLineAtOffset.getY());
-				String computeText = textLinesToDisplay.computeText(pdfAllowedUser);
-				pageOfOriginalDocumentWithMatermarkAsContentStream.showText(computeText);
-
-			}
-			pageOfOriginalDocumentWithMatermarkAsContentStream.endText();
-			pageOfOriginalDocumentWithMatermarkAsContentStream.close();
-		}
-
-	}
-
-	private static void saveOutputPDF(InputPDFsDataModel inputPdf, File inputPDFFile, PDDocument originalDoc,
-			PDFAllowedUser pdfAllowedUser) throws IOException {
-
-		String generatedPersonnalizedProtectedPDFFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
-
-		FileHelper.removeFileIfExists(generatedPersonnalizedProtectedPDFFullPath);
-
-		LOGGER.info(() -> "Save generated protected PDF:" + generatedPersonnalizedProtectedPDFFullPath + " for "
-				+ pdfAllowedUser);
-
-		CodeDurationCounter saveTimeDurationCounter = new CodeDurationCounter();
-		originalDoc.save(generatedPersonnalizedProtectedPDFFullPath);
-
-		LOGGER.info(() -> "Saved in " + FormatterUtils.GetDurationAsString(saveTimeDurationCounter.getDuration()));
-	}
-	
-
-	protected static String getOutputPDFFileName(InputPDFsDataModel inputPdf, File inputPDFFile,
-			PDFAllowedUser pdfAllowedUser) {
-		String fileNameWithoutExtension = inputPdf.getGenericOutputFileName();
-		if (fileNameWithoutExtension == null) {
-			fileNameWithoutExtension = Strings.nullToEmpty(inputPdf.getOutputFilePrefixToAdd())
-					+ FileNameExtensionAndPathHelper.getFileNameWithoutExtension(inputPDFFile.getName());
-		}
-
-		String generatedPersonnalizedProtectedPDFFileNameWithExtension = fileNameWithoutExtension;
-
-		if (pdfAllowedUser != null) {
-			generatedPersonnalizedProtectedPDFFileNameWithExtension += " "
-					+ pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom();
-		}
-
-		generatedPersonnalizedProtectedPDFFileNameWithExtension += PDFModificationHelpers.PDF_EXTENSION_WITH_POINT;
-
-		return generatedPersonnalizedProtectedPDFFileNameWithExtension;
-
-	}
-	
-	protected static String getOutputPDFFileNameWithFullPath(InputPDFsDataModel inputPdf, File inputPDFFile, PDDocument originalDoc,
-			PDFAllowedUser pdfAllowedUser) {
-
-		String generatedPersonnalizedProtectedPDFFullPath = PDFModificationHelpers.outputDirectoryName + "/"
-				+ getOutputPDFFileName(inputPdf, inputPDFFile, pdfAllowedUser);
-
-		return generatedPersonnalizedProtectedPDFFullPath;
-
-	}
-
-	public static void protectPDF(PDDocument documentToProtect, PDFAllowedUser pdfAllowedUser) throws IOException {
-
-		// Define the length of the encryption key.
-		// Possible values are 40, 128 or 256.
-		int keyLength = 256;
-
-		AccessPermission ap = new AccessPermission();
-
-		// disable printing,
-		ap.setCanPrint(false);
-		// disable copying
-		ap.setCanExtractContent(false);
-		// Disable other things if needed...
-
-		// Owner password (to open the file with all permissions) is "12345"
-		// User password (to open the file but with restricted permissions, is empty
-		// here)
-		String ownerPasswordToPrintPDF = pdfAllowedUser.getMotDePasseImpression();
-		String userPasswordToOpenPDF = pdfAllowedUser.getMotDePasseOuverture();
-		StandardProtectionPolicy spp = new StandardProtectionPolicy(ownerPasswordToPrintPDF, userPasswordToOpenPDF, ap);
-		spp.setEncryptionKeyLength(keyLength);
-
-		// Apply protection
-		documentToProtect.protect(spp);
 	}
 
 }

@@ -25,23 +25,23 @@ public class PDFAllowedUser {
 	private String motDePasseImpression;
 
 	public String getNom() {
-		return nom;
+		return nom.trim();
 	}
 
 	public String getPrenom() {
-		return prenom;
+		return prenom.trim();
 	}
 
 	public String getAccesHautementConfidentiel() {
-		return accesHautementConfidentiel;
+		return accesHautementConfidentiel.trim();
 	}
 
 	public String getMotDePasseOuverture() {
-		return motDePasseOuverture;
+		return motDePasseOuverture.trim();
 	}
 
 	public String getMotDePasseImpression() {
-		return motDePasseImpression;
+		return motDePasseImpression.trim();
 	}
 
 	public boolean isAllowedToAccessPDF() {

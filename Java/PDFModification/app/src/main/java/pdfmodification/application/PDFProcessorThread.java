@@ -12,10 +12,10 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 
 import common.compress.ZipFileManager;
 import common.filesanddirectories.DirectoryHelper;
-import common.filesanddirectories.FileNameExtensionAndPathHelper;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFAndActionsToPerformDataModel;
 import pdfmodification.data.inputpdfdocument.builders.InputPDFsDataModel;
 import pdfmodification.data.users.PDFAllowedUser;
+import pdfmodification.helpers.PDFModificationConstants;
 import pdfmodification.helpers.PDFModificationHelpers;
 
 public class PDFProcessorThread extends PDFProcessorGenericThread {
@@ -57,15 +57,15 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 
 			List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
 			LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
-			deletePages(originalDoc, allPageNumberToDelete);
+			PDFModificationHelpers.deletePages(originalDoc, allPageNumberToDelete);
 
 			LOGGER.info(() -> "Add watermark on each page");
-			addWatermarkOnEachPage(originalDoc, pdfBatch, new PDFAllowedUser());
+			PDFModificationHelpers.addWatermarkOnEachPage(originalDoc, pdfBatch, new PDFAllowedUser());
 
-			DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
+			DirectoryHelper.createFolderIfNotExists(PDFModificationConstants.OUTPUT_DIRECTORY_NAME);
 
 			LOGGER.info(() -> "Save output PDF");
-			saveOutputPDF(inputPdf, inputPDFFile, originalDoc, null);
+			PDFModificationHelpers.saveOutputPDF(inputPdf, inputPDFFile, originalDoc, null);
 
 			originalDoc.close();
 		}
@@ -80,18 +80,18 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 
 			List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
 			LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
-			deletePages(originalDoc, allPageNumberToDelete);
+			PDFModificationHelpers.deletePages(originalDoc, allPageNumberToDelete);
 
 			LOGGER.info(() -> "Add watermark on each page");
-			addWatermarkOnEachPage(originalDoc, pdfBatch, pdfAllowedUser);
+			PDFModificationHelpers.addWatermarkOnEachPage(originalDoc, pdfBatch, pdfAllowedUser);
 
-			DirectoryHelper.createFolderIfNotExists(PDFModificationHelpers.outputDirectoryName);
+			DirectoryHelper.createFolderIfNotExists(PDFModificationConstants.OUTPUT_DIRECTORY_NAME);
 
 			LOGGER.info(() -> "Protect PDF");
-			protectPDF(originalDoc, pdfAllowedUser);
+			PDFModificationHelpers.protectPDF(originalDoc, pdfAllowedUser);
 
 			LOGGER.info(() -> "Save output PDF");
-			saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
+			PDFModificationHelpers.saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
 
 			String outputPDFFileFullPath = getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile, pdfAllowedUser);
 			outputPdfFilesFullPaths.add(outputPDFFileFullPath);
@@ -100,8 +100,8 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 		}
 
 		ZipFileManager zipFileManager = new ZipFileManager();
-		String zipFileName = PDFModificationHelpers.outputDirectoryName + "/"
-				+ getOutputPDFFileName(inputPdf, inputPDFFile, null) + ".zip";
+		String zipFileName = PDFModificationConstants.OUTPUT_DIRECTORY_NAME + "/"
+				+ PDFModificationHelpers.getOutputPDFFileName(inputPdf, inputPDFFile, null) + ".zip";
 		zipFileManager.createZipFileWithFilesFullPaths(zipFileName, outputPdfFilesFullPaths);
 	}
 }
