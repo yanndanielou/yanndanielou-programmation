@@ -2,6 +2,7 @@ package pdfmodification.data.users;
 
 import com.opencsv.bean.CsvBindByName;
 
+import common.string.utils.StringUtils;
 import pdfmodification.data.ValiditeAcces;
 
 public class PDFAllowedUser {
@@ -25,23 +26,23 @@ public class PDFAllowedUser {
 	private String motDePasseImpression;
 
 	public String getNom() {
-		return nom.trim();
+		return org.apache.commons.lang3.StringUtils.trim(nom);
 	}
 
 	public String getPrenom() {
-		return prenom.trim();
+		return org.apache.commons.lang3.StringUtils.trim(prenom);
 	}
 
 	public String getAccesHautementConfidentiel() {
-		return accesHautementConfidentiel.trim();
+		return org.apache.commons.lang3.StringUtils.trim(accesHautementConfidentiel);
 	}
 
 	public String getMotDePasseOuverture() {
-		return motDePasseOuverture.trim();
+		return org.apache.commons.lang3.StringUtils.trim(motDePasseOuverture);
 	}
 
 	public String getMotDePasseImpression() {
-		return motDePasseImpression.trim();
+		return org.apache.commons.lang3.StringUtils.trim(motDePasseImpression);
 	}
 
 	public boolean isAllowedToAccessPDF() {
