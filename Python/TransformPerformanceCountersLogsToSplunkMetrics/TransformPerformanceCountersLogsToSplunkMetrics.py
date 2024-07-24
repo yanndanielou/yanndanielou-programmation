@@ -89,36 +89,15 @@ def configureLogger():
     #logging.critical
     
     
+def get_metric_file_content_lines_from_metrics(metrics):
+    splunk_ready_file_content_as_list = list()
+    splunk_ready_file_content_as_list.append("metric_timestamp,metric_name,_value")
 
-    
-def transform_time_field_to_splunk_metrics_format(time_field):
-    """ Input  
-        PATH: 11/14/2019 02:02:03.843 
-        PAR1: 08/31/2019 07:52:40.016
+    for metric in metrics:
+        splunk_ready_file_content_as_list.append(metric._time_stamp + "," + metric._name + "," + metric._value_as_string)
 
-        Output
-        [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss][.fff]±[hh]:[mm]
-        Example: 2020-01-06T04:00:00.134+01:00
-    """
-    year_yyyy = time_field[6:10]
-    month_mm = time_field[0:2]
-    day_dd = time_field[3:5]
+    return splunk_ready_file_content_as_list
     
-    hour_hh = time_field[11:13]
-    minute_mm = time_field[14:16]
-    second_ss = time_field[17:19]
-    
-    millisecond_fff = time_field[20:23]
-    
-    time_field_as_splunk_metrics_format = year_yyyy + "-" + month_mm + "-" + day_dd + "T" + hour_hh + ":" + minute_mm + ":" + second_ss + "." + millisecond_fff + param.time_zone
-    return time_field_as_splunk_metrics_format
-
-def add_datapoint_in_output_mesure_file(metric_name,metric_timestamp,value,splunk_ready_file_content_as_list):
-    if len(param.metric_name_fixed_prefix_for_all_mesures) > 0:
-        metric_name = param.metric_name_fixed_prefix_for_all_mesures + "." + metric_name
-    splunk_ready_file_content_as_list.append(metric_timestamp + "," + metric_name + "," + value)
-    
-
 
 def process_input_zip_files(input_zip_files):
     for input_zip_file in input_zip_files:
@@ -175,135 +154,7 @@ def remove_faulty_characters_in_performance_counter_log_converted_to_csv( origin
     
     return original_line
         
-        
-def perform_averages_for_mesure_matching_filters( splunk_ready_file_content_as_list, perflog_mesures_to_average_as_list_by_perflog_name_and_number_of_mesures_to_average, perflog_mesures_to_average_in_progress, column, value_as_string, time_field_splunk_metrics_format):
-    perflog_mesure_to_average_is_in_progress = False
-    current_perflog_must_be_averaged = False
-            
-    for perflog_name_to_average_and_number_of_mesures_to_average in perflog_mesures_to_average_as_list_by_perflog_name_and_number_of_mesures_to_average:
-        perfolg_name_to_average_regex_pattern_as_string = perflog_name_to_average_and_number_of_mesures_to_average[0]
-        perfolg_name_to_average_regex_pattern = perflog_name_to_average_and_number_of_mesures_to_average[1]
-        
-        match_perflog_name_to_average = perfolg_name_to_average_regex_pattern.match(column)
-        
-        if match_perflog_name_to_average != None:
-            current_perflog_must_be_averaged = True
-            number_of_mesures_points_to_average = perflog_name_to_average_and_number_of_mesures_to_average[2]
-            #logging_debug_in_thread( "\t" + column + " must be averaged with coeff:" + str(number_of_mesures_points_to_average)+ ". Value of current perflog line: " + value_as_string)
-            
-            for perflog_mesure_to_average_in_progress in perflog_mesures_to_average_in_progress:
-                if perflog_mesure_to_average_in_progress[0] == column:
-                    perflog_mesure_to_average_is_in_progress = True
-                    current_coeff_for_average = perflog_mesure_to_average_in_progress[1] + 1
-                    new_sum =  perflog_mesure_to_average_in_progress[2] + float(value_as_string)
-                    
-                    if current_coeff_for_average >= number_of_mesures_points_to_average:
-                        average_calculated =  new_sum/current_coeff_for_average
-                        average_calculated_as_str = str(average_calculated)
-                        logging_debug_in_thread( "\t" + column + " has reached the average calculation. Average is:" + average_calculated_as_str)
-                        add_datapoint_in_output_mesure_file(column, time_field_splunk_metrics_format, average_calculated_as_str, splunk_ready_file_content_as_list)
-                        perflog_mesures_to_average_in_progress.remove(perflog_mesure_to_average_in_progress)                                                    
-                    else:                                                                                                            
-                        new_number_of_mesures = perflog_mesure_to_average_in_progress[1] + 1                                                                                                        
-                        logging_debug_in_thread( "\t" + column + " has not reached yet the average calculation. Current sum is:" + str(new_sum) + ", based on:" + str(new_number_of_mesures) + " number of mesures")                                                    
-                        perflog_mesures_to_average_in_progress.remove(perflog_mesure_to_average_in_progress)
-                        perflog_mesures_to_average_in_progress.append((column, new_number_of_mesures, new_sum))
-                        
-                    break
-            
-            if perflog_mesure_to_average_is_in_progress == True:
-                break
-                
-            if perflog_mesure_to_average_is_in_progress == False:
-                if number_of_mesures_points_to_average == 1:                            
-                    logging_debug_in_thread( "\t" + column + " is inserted because must not be averaged (all points indexed)")    
-                    add_datapoint_in_output_mesure_file(column, time_field_splunk_metrics_format, value_as_string, splunk_ready_file_content_as_list)
-                else:
-                    value_as_float = float(value_as_string)
-                    logging_debug_in_thread( "\t" + column + " is inserted to the current averages in progress. Current sum is:" + value_as_string)
-                    perflog_mesures_to_average_in_progress.append((column, 1, value_as_float))
-                    
-                break
-            
-        #else:
-        #    logging_debug_in_thread( "\t" + column + " must not be averaged for regex:" + perfolg_name_to_average_regex_pattern_as_string)
-    
-    if current_perflog_must_be_averaged == False:
-        logging_debug_in_thread( "\t" + column + " must not be averaged. Directly added without transformation")        
-        add_datapoint_in_output_mesure_file(column, time_field_splunk_metrics_format, value_as_string, splunk_ready_file_content_as_list)
-        
-def fill_datapoints_in_output_mesure_file( readerTransp, columns, all_used_machine_names, all_ignore_machine_names, all_used_application_names, all_ignore_application_names,  all_used_mesure_types, all_ignore_mesure_types):
-
-    splunk_ready_file_content_as_list = list()
-    splunk_ready_file_content_as_list.append("metric_timestamp,metric_name,_value")        
-    
-    perflog_mesures_to_average_in_progress = list()
-    
-    # Done before for CPU optimisation
-    machines_to_keep_regex_pattern = re.compile(param.machines_to_keep_regex_pattern_as_string)
-    applications_to_keep_regex_pattern = re.compile(param.applications_to_keep_regex_pattern_as_string)
-    mesure_type_to_keep_regex_pattern = re.compile(param.mesure_type_to_keep_regex_pattern_as_string)
-    
-    #
-    perflog_mesures_to_average_as_list_by_perflog_name_and_number_of_mesures_to_average = list()
-
-    for perflog_name_to_average_and_number_of_mesures_to_average in param.perflog_mesures_to_average_as_list_by_perflog_name_and_number_of_mesures_to_average:
-        perfolg_name_to_average_regex_pattern_as_string = perflog_name_to_average_and_number_of_mesures_to_average[0]
-        perfolg_name_to_average_regex_pattern = re.compile(perfolg_name_to_average_regex_pattern_as_string)
-        number_of_mesures_points_to_average = perflog_name_to_average_and_number_of_mesures_to_average[1]
-        perflog_mesures_to_average_as_list_by_perflog_name_and_number_of_mesures_to_average.append((perfolg_name_to_average_regex_pattern_as_string, perfolg_name_to_average_regex_pattern, number_of_mesures_points_to_average))
-    
-    for row in readerTransp:
-        time_field = (row['Time'])
-        time_field_splunk_metrics_format = transform_time_field_to_splunk_metrics_format(time_field)
-                        
-        for column in columns:        
-            value_as_string = row[column]
-            if value_as_string == " ":
-                logging_debug_in_thread( "\t" + "Filter column:" + column + " that is blank") #in row:" + str(row))
-            else:
-                
-                #if len(column.split(".")) < 3:
-                #    column = column.replace("ATS_ARCH1","ATS_ARCH1.")
-                #    column = column.replace("ATS_ARCH2","ATS_ARCH2.")
-                #    column = column.replace("ATS_CEN1","ATS_CEN1.")
-                #    column = column.replace("ATS_CEN2","ATS_CEN2.")
-            
-                machine_name = column.split(".")[0];
-                application_name = column.split(".")[1];
-                mesure_type = column.split(".")[2];
-                
-                
-                match_machine = machines_to_keep_regex_pattern.match(machine_name)
-                
-                match_application = applications_to_keep_regex_pattern.match(application_name)
-                
-                match_mesure_type = mesure_type_to_keep_regex_pattern.match(mesure_type)
-
-                if match_machine != None:
-                    all_used_machine_names.add(machine_name)
-                else:
-                    all_ignore_machine_names.add(machine_name)
-                    #logging_debug_in_thread( "\t" + machine_name + " did not match machine name pattern. Capture " + column + " is ignored")
-
-                if match_application != None:
-                    all_used_application_names.add(application_name)
-                else:
-                    all_ignore_application_names.add(application_name)
-                    #logging_debug_in_thread( "\t" + application_name + " did not match application name pattern. Capture " + column + " is ignored")
-
-                if match_mesure_type != None:
-                    all_used_mesure_types.add(mesure_type)
-                else:
-                    all_ignore_mesure_types.add(mesure_type)
-                    #logging_debug_in_thread( "\t" + mesure_type + " did not match mesure type pattern. Capture " + column + " is ignored")
-
-                if match_machine != None and match_application != None and match_mesure_type != None:
-                    perform_averages_for_mesure_matching_filters( splunk_ready_file_content_as_list, perflog_mesures_to_average_as_list_by_perflog_name_and_number_of_mesures_to_average, perflog_mesures_to_average_in_progress, column, value_as_string, time_field_splunk_metrics_format)
-                    
-    
-    return splunk_ready_file_content_as_list
-       
+     
 def compute_splunk_ready_file_name(performance_counter_log_file_without_extension, all_used_machine_names, all_ignore_machine_names, all_used_application_names, all_ignore_application_names,  all_used_mesure_types, all_ignore_mesure_types):
     splunk_ready_file_name_without_extension = performance_counter_log_file_without_extension 
     
@@ -409,7 +260,7 @@ def add_new_aggregated_input_values_from_input_perflogs( step_3_file_with_aggreg
             
     step_3_file_with_aggregated_columns_file.close()
 
-def convert_performance_counter_log_file_to_metric_file( performance_counter_log_file_file_name, performance_counter_log_file_full_path, step_1_performance_counter_log_converted_metric_file_name):
+def convert_performance_counter_log_file_to_metric_file( performance_counter_log_file_file_name, performance_counter_log_file_full_path):
     printAndLogInfoInThread( "Convert performance_counter_log file:" + performance_counter_log_file_file_name)  
 
     printAndLogInfoInThread( "Open file to tranform: " + performance_counter_log_file_full_path)        
@@ -419,8 +270,6 @@ def convert_performance_counter_log_file_to_metric_file( performance_counter_log
     performance_counter_log_file_pandas_columns_names = performance_counter_log_file_pandas_data.columns
 
     #metric_name,metric_timestamp,_value
-
-
     metrics = list()
     # Itérer sur les lignes du DataFrame
     for index, row in performance_counter_log_file_pandas_data.iterrows():
@@ -429,7 +278,9 @@ def convert_performance_counter_log_file_to_metric_file( performance_counter_log
         original_time_stamp = row["metric_timestamp"]
         original_value = row["_value"]
         original_metric_name = row['metric_name']
-        metricCreated = metric.Metric(original_time_stamp, original_metric_name, original_value)
+
+        value = str(original_value)
+        metricCreated = metric.Metric(original_time_stamp, original_metric_name, value)
         metrics.append(metricCreated)
 
     return metrics
@@ -460,12 +311,18 @@ def handle_performance_counter_log_file( performance_counter_log_file_full_path,
     performance_counter_log_file_file_name = basename(performance_counter_log_file_full_path)        
     performance_counter_log_file_without_extension = os.path.splitext(performance_counter_log_file_file_name)[0]
     
-    step_1_performance_counter_log_converted_metric_file_name =  performance_counter_log_file_without_extension + "__as_splunk_metric.csv"
-    step_1_performance_counter_log_converted_metric_file_full_path =  temp_folder_full_path_name + "\\" + step_1_performance_counter_log_converted_metric_file_name
+    metrics = convert_performance_counter_log_file_to_metric_file( performance_counter_log_file_file_name, performance_counter_log_file_full_path)
+    printAndLogInfoInThread("Number of metrics created:" + str(len(metrics)))
 
-    step_1_performance_counter_log_converted_csv_file_content = convert_performance_counter_log_file_to_metric_file( performance_counter_log_file_file_name, performance_counter_log_file_full_path, step_1_performance_counter_log_converted_metric_file_name)
+    metric_file_content_lines = get_metric_file_content_lines_from_metrics(metrics)
+    printAndLogInfoInThread("Metric file content computed")
     
-    splunk_ready_file_full_path = create_splunk_ready_metric_file( splunk_ready_file_name, splunk_ready_file_content_as_list)
+
+    splunk_ready_file_name = performance_counter_log_file_without_extension + "_as_splunk_metric.csv"
+    splunk_ready_file_full_path =  temp_folder_full_path_name + "\\" + splunk_ready_file_name
+
+    
+    splunk_ready_file_full_path = create_splunk_ready_metric_file(splunk_ready_file_full_path, metric_file_content_lines)
 
     # add to zip
     add_splunk_ready_metric_file_to_zip(output_zip_file, splunk_ready_file_full_path, splunk_ready_file_name)
@@ -473,11 +330,8 @@ def handle_performance_counter_log_file( performance_counter_log_file_full_path,
     os.remove(splunk_ready_file_full_path)
  
 def create_splunk_ready_metric_file( splunk_ready_file_name, splunk_ready_file_content_as_list):
-    splunk_ready_file_name = splunk_ready_file_name + "_as_splunk_metrics"
-    splunk_ready_file_full_path = param.output_metrics_ready_for_splunk_directory + "\\" + splunk_ready_file_name + ".csv"
-
     printAndLogInfoInThread( "Create final Splunk ready file: " + splunk_ready_file_name)    
-    splunk_ready_file = open(splunk_ready_file_full_path, "w")
+    splunk_ready_file = open(splunk_ready_file_name, "w")
 
     printAndLogInfoInThread( "Fill final Splunk ready file: " + splunk_ready_file_name)    
     splunk_ready_file_content = param.end_line_character_in_text_file.join(splunk_ready_file_content_as_list)
@@ -486,7 +340,7 @@ def create_splunk_ready_metric_file( splunk_ready_file_name, splunk_ready_file_c
     printAndLogInfoInThread( "Close final Splunk ready file:" + splunk_ready_file_name)
     splunk_ready_file.close()
     
-    return splunk_ready_file_full_path
+    return splunk_ready_file_name
  
 
 def add_splunk_ready_metric_file_to_zip(output_zip_file, splunk_ready_file_full_path, splunk_ready_file_name):
