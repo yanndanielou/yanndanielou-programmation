@@ -1,4 +1,5 @@
-package common.passwords;
+package common.authentification.passwords.generation;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 import org.passay.CharacterData;
 import org.passay.CharacterRule;
 import org.passay.EnglishCharacterData;
+
+import common.authentification.passwords.PasswordsConstants;
 
 public class PasswordGenerator implements PasswordsConstants{
 

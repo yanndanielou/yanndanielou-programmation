@@ -1,4 +1,4 @@
-package common.passwords;
+package common.authentification.passwords;
 
 public interface PasswordsConstants {
 

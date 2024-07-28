@@ -1,10 +1,12 @@
-package common.passwords;
+package common.authentification.passwords.validation;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import common.authentification.passwords.PasswordsConstants;
 
 public class PasswordValidator {
 
