@@ -1,4 +1,4 @@
-package common.authentification.loginandpassword;
+package authentification.loginandpassword;
 
 import java.io.FileWriter;
 import java.io.IOException;
