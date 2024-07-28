@@ -1,4 +1,4 @@
-package common.authentification.passwords;
+package authentification.passwords;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,9 +17,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import common.authentification.passwords.PasswordsConstants;
-import common.authentification.passwords.generation.PasswordGenerator;
-import common.authentification.passwords.validation.PasswordValidator;
+import authentification.passwords.PasswordsConstants;
+import authentification.passwords.generation.PasswordGenerator;
+import authentification.passwords.validation.PasswordValidator;
 
 public class PasswordGeneratorTest {
 	static final Logger LOGGER = LogManager.getLogger(PasswordGeneratorTest.class);

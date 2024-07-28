@@ -1,4 +1,4 @@
-package common.authentification.loginandpassword;
+package authentification.loginandpassword;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

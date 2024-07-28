@@ -15,24 +15,9 @@
 	
 	<classpathentry kind="lib" path="../ExternalLibraries/commons-lang3-3.13.0.jar" sourcepath="../ExternalLibraries/commons-lang3-3.13.0-sources.jar"/>
 
-	
-	<!-- Not working <classpathentry kind="lib" path="../ExternalLibraries/spire.xls.free-5.1.0.jar"/> java.lang.IllegalAccessError: class com.spire.xls.packages.sprRFA (in unnamed module @0x48eff760) cannot access class sun.security.action.GetPropertyAction (in module java.base) because module java.base does not export sun.security.action to unnamed module @0x48eff760
-	at com.spire.xls.packages.sprRFA.spr  (Unknown Source)
-	at com.spire.xls.packages.sprRFA.spr  (Unknown Source)
-	at com.spire.xls.packages.sprRFA.<init>(Unknown Source)
-	at com.spire.xls.packages.sprksa.<init>(Unknown Source)
-	at com.spire.xls.packages.sprHTa.<init>(Unknown Source)
-	at com.spire.xls.core.spreadsheet.XlsWorkbook.<init>(Unknown Source)
-	at com.spire.xls.Workbook.<init>(Unknown Source)
-	at common.excel.ExcelToCSVConverter.convertAllWorksheetFromExcelFileToCSV(ExcelToCSVConverter.java:23)
-	at common.excel.ExcelToCSVConverterTest$ConvertAllWorksheetFromExcelFileToCSV$CorrectUsages.basicExampleExcelFile(ExcelToCSVConverterTest.java:31)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	<classpathentry kind="src" path="/Common"/>
 
- -->
+
 	<classpathentry kind="lib" path="../ExternalLibraries/acpoi-5.2.5.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/poi-ooxml-5.2.5.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/commons-compress-1.25.0.jar"/>
@@ -42,7 +27,6 @@
 	
 	
 	<classpathentry kind="lib" path="../ExternalLibraries/passay-1.6.4.jar"/>
-	
 	
 	
 	
