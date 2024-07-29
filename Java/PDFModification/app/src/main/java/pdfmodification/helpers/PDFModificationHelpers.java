@@ -31,9 +31,8 @@ import pdfmodification.data.inputpdfdocument.builders.TextLineToDisplayDataModel
 import pdfmodification.data.users.PDFAllowedUser;
 
 public class PDFModificationHelpers {
-	
-	protected static final Logger LOGGER = LogManager.getLogger(PDFModificationHelpers.class);
 
+	protected static final Logger LOGGER = LogManager.getLogger(PDFModificationHelpers.class);
 
 	public static void deletePages(PDDocument originalDoc, List<Integer> allPageNumberToDelete) {
 		int numberOfPagesAlreadyDeleted = 0;

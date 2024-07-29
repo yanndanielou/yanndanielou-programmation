@@ -17,8 +17,7 @@ public class LoginAndPasswordAuthentificationTest {
 
 	@Test
 	void createAndSaveAndLoadPassword() {
-		LoginAndPasswordAuthentification loginAndPasswordAuthentification = new LoginAndPasswordAuthentification("Yann", "Afeakl1.");
-		loginAndPasswordAuthentification.save("lib/src/test/resources/common/authentification/loginandpassword/createAndSaveAndLoadPassword_test.json");
+		LoginAndPasswordAuthentification loginAndPasswordAuthentification = new LoginAndPasswordAuthentification("lib/src/test/resources/authentification/loginandpassword/createAndSaveAndLoadPassword_test.json", "Yann", "Afeakl1.");
 		
 	}
 	/*

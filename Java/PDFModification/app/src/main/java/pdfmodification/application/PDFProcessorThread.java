@@ -52,8 +52,7 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 	}
 
 	private void handlePdf() throws IOException {
-		if(PDFModificationParams.GENERATE_ALSO_UNPROTECTED_PDF_FOR_NO_USER)
-		{
+		if (PDFModificationParams.GENERATE_ALSO_UNPROTECTED_PDF_FOR_NO_USER) {
 			LOGGER.info(() -> "Load PDF");
 			PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
 
@@ -101,9 +100,11 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 			originalDoc.close();
 		}
 
-		ZipFileManager zipFileManager = new ZipFileManager();
-		String zipFileName = PDFModificationConstants.OUTPUT_DIRECTORY_NAME + "/"
-				+ PDFModificationHelpers.getOutputPDFFileName(inputPdf, inputPDFFile, null) + ".zip";
-		zipFileManager.createZipFileWithFilesFullPaths(zipFileName, outputPdfFilesFullPaths);
+		if (PDFModificationParams.GENERATE_ALSO_ZIP_FILES) {
+			ZipFileManager zipFileManager = new ZipFileManager();
+			String zipFileName = PDFModificationConstants.OUTPUT_DIRECTORY_NAME + "/"
+					+ PDFModificationHelpers.getOutputPDFFileName(inputPdf, inputPDFFile, null) + ".zip";
+			zipFileManager.createZipFileWithFilesFullPaths(zipFileName, outputPdfFilesFullPaths);
+		}
 	}
 }

@@ -16,6 +16,7 @@
 	<classpathentry kind="lib" path="../ExternalLibraries/commons-lang3-3.13.0.jar" sourcepath="../ExternalLibraries/commons-lang3-3.13.0-sources.jar"/>
 
 	<classpathentry kind="src" path="/Common"/>
+	<classpathentry kind="src" path="/Crypto"/>
 
 
 	<classpathentry kind="lib" path="../ExternalLibraries/acpoi-5.2.5.jar"/>

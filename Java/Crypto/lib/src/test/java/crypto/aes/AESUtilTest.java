@@ -20,12 +20,28 @@ public class AESUtilTest {
 
 	@Nested
 	public class AES {
-	//https://www.baeldung.com/java-aes-encryption-decryption
+		// https://www.baeldung.com/java-aes-encryption-decryption
 		@Test
-		void givenString_whenEncrypt_thenSuccess() throws NoSuchAlgorithmException, IllegalBlockSizeException,
+		void encodeAndDecodeStringWithGeneratedKey() throws NoSuchAlgorithmException, IllegalBlockSizeException,
 				InvalidKeyException, BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException {
 
 			String input = "baeldung";
+			SecretKey key = AESUtil.generateKey(128);
+			IvParameterSpec ivParameterSpec = AESUtil.generateIv();
+			String algorithm = "AES/CBC/PKCS5Padding";
+			String cipherText = AESUtil.encrypt(algorithm, input, key, ivParameterSpec);
+			String decryptedPlainText = AESUtil.decrypt(algorithm, cipherText, key, ivParameterSpec);
+			Assertions.assertEquals(input, decryptedPlainText);
+		}
+		
+		// https://www.baeldung.com/java-aes-encryption-decryption
+		@Test
+		void encodeAndDecodeStringWithPassword() throws NoSuchAlgorithmException, IllegalBlockSizeException,
+				InvalidKeyException, BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException {
+
+			String input = "baeldung";
+			
+			
 			SecretKey key = AESUtil.generateKey(128);
 			IvParameterSpec ivParameterSpec = AESUtil.generateIv();
 			String algorithm = "AES/CBC/PKCS5Padding";

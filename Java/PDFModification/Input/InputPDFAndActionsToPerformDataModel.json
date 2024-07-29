@@ -281,39 +281,26 @@
 					"font": {
 						"fontName__": "Standard14Fonts.FontName.HELVETICA",
 						"fontName": "HELVETICA",
-						"fontSize": 30
+						"fontSize": 10
 					},
 					"nonStrokingColor": {
 						"colorName": "gray"
 					},
 					"newLineAtOffset": {
-						"x": 59,
-						"y": 336
+						"x": 10,
+						"y": 30
 					},
 					"textType": "FREE_TEXT",
-					"freeText": "Confidentiel - Propriété Siemens"
+					"freeText": "Confidentiel - Propriété Siemens. Copie réservée à"
 				},
 				{
 					"newLineAtOffset": {
 						"x": 0,
-						"y": -30
-					},
-					"textType": "FREE_TEXT",
-					"freeText": "Copie réservée à"
-				},
-				{
-					"newLineAtOffset": {
-						"x": 0,
-						"y": -30
+						"y": -10
 					},
 					"textType": "FIRST_NAME_SPACE_AND_LAST_NAME"
 				},
 				{
-					"font": {
-						"fontName__": "Standard14Fonts.FontName.HELVETICA",
-						"fontName": "HELVETICA",
-						"fontSize": 10
-					},
 					"newLineAtOffset": {
 						"x": 0,
 						"y": -10

@@ -3,7 +3,13 @@ package authentification.loginandpassword;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.time.Instant;
+
+import javax.crypto.SecretKey;
+
+import com.baeldung.aes.AESUtil;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,10 +21,13 @@ public class LoginAndPasswordAuthentification {
 	String login;
 	Password currentPassword;
 	PasswordHistory passwordHistory;
+	private String outputFilePath;
 
-	public LoginAndPasswordAuthentification(String login, String passwordInClear) {
+	public LoginAndPasswordAuthentification(String outputFilePath, String login, String passwordInClear) {
+		this.outputFilePath = outputFilePath;
 		changeLogin(login);
 		currentPassword = new Password(passwordInClear);
+		save(passwordInClear);
 	}
 
 	private boolean changeLogin(String newLogin) {
@@ -26,7 +35,7 @@ public class LoginAndPasswordAuthentification {
 		return true;
 	}
 
-	public void save(String outputFilePath) {
+	public boolean save(String currentPasswordInClear) {
 
 		/*
 		 * FileOutputStream fileOutputStream; try { fileOutputStream = new
@@ -47,9 +56,13 @@ public class LoginAndPasswordAuthentification {
 			Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(Instant.class, new InstantAdapter())
 					.create();
 			String jsonContent = gson.toJson(this);
-			
-		} catch (IOException e) {
+			String salt = "salt";
+			SecretKey keyFromPassword = AESUtil.getKeyFromPassword(currentPasswordInClear, salt);
+			AESUtil.encryptPasswordBased(salt, keyFromPassword, null)
+			return true;
+		} catch (IOException | NoSuchAlgorithmException | InvalidKeySpecException e) {
 			e.printStackTrace();
+			return false;
 		}
 
 	}
