@@ -61,6 +61,11 @@ public class MD2HashCustomImplementation {
 	 * 141, 51, 159, 17, 131, 20
 	 */
 
+	/**
+	 * 
+	 * TODO: debug comparing with Python
+	 * https://nickthecrypt.medium.com/cryptography-hash-method-md2-message-digest-2-step-by-step-explanation-made-easy-with-python-10faa2e35e85
+	 */
 	private static byte[] hashToBytesArray(byte[] input) {
 		int paddingLength = 16 - (input.length % 16);
 		byte[] paddedInput = Arrays.copyOf(input, input.length + paddingLength);
