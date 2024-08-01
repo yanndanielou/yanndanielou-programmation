@@ -58,7 +58,7 @@ public class LoginAndPasswordAuthentification {
 			String jsonContent = gson.toJson(this);
 			String salt = "salt";
 			SecretKey keyFromPassword = AESUtil.getKeyFromPassword(currentPasswordInClear, salt);
-			AESUtil.encryptPasswordBased(salt, keyFromPassword, null)
+			//AESUtil.encryptPasswordBased(salt, keyFromPassword, null);
 			return true;
 		} catch (IOException | NoSuchAlgorithmException | InvalidKeySpecException e) {
 			e.printStackTrace();
