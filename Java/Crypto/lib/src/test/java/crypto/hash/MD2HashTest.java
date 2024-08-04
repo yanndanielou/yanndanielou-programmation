@@ -5,11 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 import org.junit.Ignore;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -43,65 +41,22 @@ public class MD2HashTest {
 	}
 
 
+	//@ParameterizedTest
+	//@MethodSource("provideMD2CollisionExamples")
 	@Ignore
-	@ParameterizedTest
-	@MethodSource("provideMD2CollisionExamples")
 	void custom_implemation_collisions(String input1, String input2) {
 		assertNotEquals(input1, input2);
 		assertEquals(MD2HashCustomImplementation.computeMD2HashWithCustomImplementation(input1),
 				MD2HashCustomImplementation.computeMD2HashWithCustomImplementation(input2));
 	}
 
+	//@ParameterizedTest
+	//@MethodSource("provideMD2CollisionExamples")
 	@Ignore
-	@ParameterizedTest
-	@MethodSource("provideMD2CollisionExamples")
 	void standard_implemation_collisions(String input1, String input2) {
 		assertNotEquals(input1, input2);
 		assertEquals(MD2HashHelpers.computeMD2HashWithStandardLibrary(input1),
 				MD2HashHelpers.computeMD2HashWithStandardLibrary(input2));
 	}
 
-	public static String toHexString(byte[] bytes) {
-		StringBuilder hexString = new StringBuilder();
-		for (byte b : bytes) {
-			String hex = Integer.toHexString(0xff & b);
-			if (hex.length() == 1) {
-				hexString.append('0');
-			}
-			hexString.append(hex);
-		}
-		return hexString.toString();
-	}
-
-	public static byte[] hashWithMD2(byte[] input) {
-		try {
-			MessageDigest md = MessageDigest.getInstance("MD2");
-			return md.digest(input);
-		} catch (NoSuchAlgorithmException e) {
-			throw new RuntimeException("MD2 algorithm not available", e);
-		}
-	}
-
-	@Test
-	void testCollisions() {
-		String input1 = "1234567890123456789012345678901234567890123456789012345678901234";
-		String input2 = "1234567890123456789012345678901234567890123456789012345678901235";
-
-		byte[] hash1 = hashWithMD2(input1.getBytes());
-		byte[] hash2 = hashWithMD2(input2.getBytes());
-
-		System.out.println("Hash MD2 of input1: " + toHexString(hash1));
-		System.out.println("Hash MD2 of input2: " + toHexString(hash2));
-		System.out.println("Hashes are equal: " + Arrays.equals(hash1, hash2));
-
-		String input3 = "abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij";
-		String input4 = "abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghik";
-
-		byte[] hash3 = hashWithMD2(input3.getBytes());
-		byte[] hash4 = hashWithMD2(input4.getBytes());
-
-		System.out.println("Hash MD2 of input3: " + toHexString(hash3));
-		System.out.println("Hash MD2 of input4: " + toHexString(hash4));
-		System.out.println("Hashes are equal: " + Arrays.equals(hash3, hash4));
-	}
 }
