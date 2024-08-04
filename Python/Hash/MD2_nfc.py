@@ -99,6 +99,8 @@ print('number of 16 bytes blocks: '+str(blocks_number))
 print('padding pattern: '+str(padding_pat))
 print('---')
 print_array_by_block(paddedInput, BLOCK_SIZE,len(paddedInput)-padding_pat, len(paddedInput)-1, bcolors.WARNING)
+print("paddedInput")
+print(paddedInput)
 
 # =========================== STEP 2 - calculate and happen checksum
 # initialize checksum at 0 and last calculated checksum at 0 as well
@@ -121,8 +123,12 @@ for block in range(blocks_number):
 print("Checksum calc 1:")
 print(checksum)
 
-# add the checksum to the processed message
+print("add the checksum to the processed message")
 paddedInput = paddedInput + checksum
+
+print("paddedInput:")
+print(paddedInput)
+
 blocks_number += 1
 
 print_array_by_block(paddedInput, BLOCK_SIZE,len(paddedInput)-BLOCK_SIZE, len(paddedInput)-1, bcolors.WARNING)
@@ -142,6 +148,9 @@ print('---')
 print(bcolors.HEADER+'msg processing by block ==> raw hash:'+bcolors.ENDC)
 for block in range(blocks_number):
     print("block:" + str(block))
+    
+    print('paddedInput length: '+str(len(paddedInput)))
+    print('md_digest length: '+str(len(md_digest)))
     for j in range(BLOCK_SIZE):
         md_digest[BLOCK_SIZE+j] = paddedInput[block*BLOCK_SIZE+j]
         md_digest[2*BLOCK_SIZE+j] = (md_digest[BLOCK_SIZE+j] ^ md_digest[j])
@@ -157,7 +166,7 @@ for block in range(blocks_number):
             print("S[checktmp]:" + str(S[checktmp]))
             checktmp = md_digest[k] ^ S[checktmp]
             md_digest[k] = checktmp
-            print("Block:" + str(block)+ ", j:" + str(j) + ", k:" + str(k) + ", md_digest[k]:" + str(md_digest[k]))
+            print("Block:" + str(block)+ ", j:" + str(j) + ", k:" + str(k) + ", md_digest[" + str(k) + "] = " + str(md_digest[k]))
         checktmp = (checktmp + j) % 256
         print("j:" + str(j) + ", checktmp:" + str(checktmp))
 

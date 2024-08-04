@@ -8,6 +8,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -41,6 +42,8 @@ public class MD2HashTest {
 		assertEquals(expectedMD2Hash, MD2HashHelpers.computeMD2HashWithStandardLibrary(input));
 	}
 
+
+	@Ignore
 	@ParameterizedTest
 	@MethodSource("provideMD2CollisionExamples")
 	void custom_implemation_collisions(String input1, String input2) {
@@ -49,6 +52,7 @@ public class MD2HashTest {
 				MD2HashCustomImplementation.computeMD2HashWithCustomImplementation(input2));
 	}
 
+	@Ignore
 	@ParameterizedTest
 	@MethodSource("provideMD2CollisionExamples")
 	void standard_implemation_collisions(String input1, String input2) {

@@ -11,6 +11,19 @@ public class StringUtils {
 		return formattedTime;
 	}
 
+	public static String transformIntArrayToString(int[] bytesArray) {
+
+		StringBuilder hexString = new StringBuilder();
+		for (int b : bytesArray) {
+			String hex = Integer.toHexString(0xff & b);
+			if (hex.length() == 1) {
+				hexString.append('0');
+			}
+			hexString.append(hex);
+		}
+		return hexString.toString();
+	}
+
 	public static String transformBytesArrayToString(byte[] bytesArray) {
 
 		StringBuilder hexString = new StringBuilder();
