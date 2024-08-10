@@ -6,10 +6,18 @@ SETLOCAL EnableDelayedExpansion
 @set input_video_full_path=%1
 @SET output_format=%2
 @SET preset=%3
+@set move_input_file_after_process=%4%
+
 @echo input_video_full_path:%input_video_full_path%
 @echo output_format:%output_format%
 
+@Title Compress video %input_video_full_path% format %output_format% preset %preset%
+
 @timeout /t 1
+
+if %move_input_file_after_process% == "true" (
+	@if not exist original @MD original
+)
 
 @SET script_full_path=%0
 @set script_full_path=%script_full_path:"=%
@@ -18,7 +26,6 @@ SETLOCAL EnableDelayedExpansion
 @for %%A IN (%script_full_path%) DO (@SET script_folder_path="%%~dpA")
 @set script_folder_path=%script_folder_path:"=%
 @echo script_folder_path:%script_folder_path%
-
 
 @Echo input_video_full_path %input_video_full_path%
 
@@ -61,5 +68,12 @@ rem HandBrakeCLI.exe HandBrakeCLI -Z "Fast 1080p30" -i 20240809_112811.mp4 -o ou
 
 rem echo call "%script_folder_path%\Handbrake\HandBrakeCLI-1.8.2-win-x86_64\HandBrakeCLI.exe" HandBrakeCLI -Z %preset% -i %input_video_full_path% -o "%output_video_full_path%"
 call %script_folder_path%\Handbrake\HandBrakeCLI-1.8.2-win-x86_64\HandBrakeCLI.exe HandBrakeCLI -Z %preset% -i %input_video_full_path% -o "%output_video_full_path%"
+
+
+
+if %move_input_file_after_process% == "true" (
+	move %input_video_full_path% original
+)
+
 rem pause
-@timeout /t 3
+@timeout /t 30
