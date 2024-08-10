@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\ffmpeg-compress]
+@="Compress File w/ FFMPEG"
+
+[HKEY_CLASSES_ROOT\*\shell\ffmpeg-compress\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\CompressVideo\\compress_video.bat\" \"%1\""
+

@@ -37,7 +37,7 @@ public class MD2HashTest {
 	@ParameterizedTest
 	@MethodSource("provideMD2StringExamples")
 	void standard_implemation_encodeAndDecodeStringWithGeneratedKey(String input, String expectedMD2Hash) {
-		assertEquals(expectedMD2Hash, MD2HashHelpers.computeMD2HashWithStandardLibrary(input));
+		assertEquals(expectedMD2Hash, HashHelpers.computeMD2HashWithStandardLibrary(input));
 	}
 
 
@@ -55,8 +55,8 @@ public class MD2HashTest {
 	@Ignore
 	void standard_implemation_collisions(String input1, String input2) {
 		assertNotEquals(input1, input2);
-		assertEquals(MD2HashHelpers.computeMD2HashWithStandardLibrary(input1),
-				MD2HashHelpers.computeMD2HashWithStandardLibrary(input2));
+		assertEquals(HashHelpers.computeMD2HashWithStandardLibrary(input1),
+				HashHelpers.computeMD2HashWithStandardLibrary(input2));
 	}
 
 }

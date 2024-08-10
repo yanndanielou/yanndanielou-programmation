@@ -1,0 +1,15 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\handbrake-compress-1080p]
+@="Compress File w/ HandBrake 1080p"
+
+[HKEY_CLASSES_ROOT\*\shell\handbrake-compress-1080p\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Windows\\CompressVideo\\compress_video_handbrake_1080p.bat\" \"%1\""
+
+
+[HKEY_CLASSES_ROOT\*\shell\handbrake-compress-720p]
+@="Compress File w/ HandBrake 720p"
+
+[HKEY_CLASSES_ROOT\*\shell\handbrake-compress-720p\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Windows\\CompressVideo\\compress_video_handbrake_720p.bat\" \"%1\""
+

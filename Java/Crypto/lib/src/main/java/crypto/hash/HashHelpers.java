@@ -1,14 +1,21 @@
 package crypto.hash;
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.google.common.hash.Hashing;
 
 import common.string.utils.StringUtils;
 
 /***
  * Custom implementation of MD2 (Message Digest 2) Hash
  */
-public class MD2HashHelpers {
+public class HashHelpers {
+	private static final Logger LOGGER = LogManager.getLogger(HashHelpers.class);
 
 	private static byte[] MD2HashToBytesArray(byte[] input) {
 		try {
@@ -31,6 +38,23 @@ public class MD2HashHelpers {
 		byte[] inputAsBytes = input.getBytes();
 		byte[] hashBytes = MD2HashToBytesArray(inputAsBytes);
 		return StringUtils.transformBytesArrayToString(hashBytes);
+	}
+
+	public static String computeSHA512WithStandardLibrary(String input) {
+		return Hashing.sha512().hashString(input, StandardCharsets.UTF_8).toString();
+	}
+
+	public static String computeSHA256WithStandardLibrary(String input) {
+		MessageDigest digest;
+		try {
+			digest = MessageDigest.getInstance("SHA3-256");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			return null;
+		}
+		final byte[] hashbytes = digest.digest(input.getBytes(StandardCharsets.UTF_8));
+		String sha3Hex = StringUtils.transformBytesArrayToString(hashbytes);
+		return sha3Hex;
 	}
 
 }
