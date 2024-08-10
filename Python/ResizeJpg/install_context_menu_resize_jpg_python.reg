@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_50percent]
+@="Compress Jpg 50 percent with python"
+
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_50percent\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_50percent.bat\" \"%1\""
+
