@@ -13,10 +13,10 @@ SETLOCAL EnableDelayedExpansion
 
 @Title Compress video %input_video_full_path% format %output_format% preset %preset%
 
-@timeout /t 1
+@rem @timeout /t 1
 
-if %move_input_file_after_process% == "true" (
-	@if not exist original @MD original
+@if %move_input_file_after_process% == "true" (
+	@if not exist original @@MD original
 )
 
 @SET script_full_path=%0
@@ -36,44 +36,37 @@ if %move_input_file_after_process% == "true" (
 @for %%A IN (%input_video_file_name_with_extension%) DO (@SET input_video_file_extension="%%~xA")
 @echo input_video_file_extension:%input_video_file_extension%
 
-rem @SET input_video_file_name_without_extension=%input_video_file_name_with_extension:%input_video_file_extension% = % 
-rem @for %%A IN (%input_video_file_name_with_extension%) DO (
-rem @ECHO "%%~nA"
-rem SET input_video_file_name_without_extension=!input_video_file_name_without_extension!"%%~nA"
-rem ECHO input_video_file_name_without_extension !input_video_file_name_without_extension!
-rem )
-rem pause
 
 @for %%A IN (%input_video_file_name_with_extension%) DO (@SET input_video_file_name_without_extension=!input_video_file_name_without_extension!" ""%%~nA")
 @set input_video_file_name_without_extension=%input_video_file_name_without_extension:"=%
 @for /f "tokens=* delims= " %%a in ("%input_video_file_name_without_extension%") do set input_video_file_name_without_extension=%%a
 @echo input_video_file_name_without_extension:%input_video_file_name_without_extension%
 
-rem pause
+@rem pause
 
 @for %%A IN (%input_video_full_path%) DO (@SET input_video_folder_path="%%~dpA")
 @echo input_video_folder_path %input_video_folder_path%
 
 @SET output_video_file_name_with_extension=%input_video_file_name_without_extension%_%output_format%.mp4
 @echo output_video_file_name_with_extension %output_video_file_name_with_extension%
-rem pause
+@rem pause
 
 @SET output_video_full_path=%input_video_folder_path%%output_video_file_name_with_extension%
 @set output_video_full_path=%output_video_full_path:"=%
 
 @echo output_video_full_path %output_video_full_path%
 
-@timeout /t 1
+@rem @timeout /t 1
 rem HandBrakeCLI.exe HandBrakeCLI -Z "Fast 1080p30" -i 20240809_112811.mp4 -o out.mp4
 
 rem echo call "%script_folder_path%\Handbrake\HandBrakeCLI-1.8.2-win-x86_64\HandBrakeCLI.exe" HandBrakeCLI -Z %preset% -i %input_video_full_path% -o "%output_video_full_path%"
-call %script_folder_path%\Handbrake\HandBrakeCLI-1.8.2-win-x86_64\HandBrakeCLI.exe HandBrakeCLI -Z %preset% -i %input_video_full_path% -o "%output_video_full_path%"
+@call %script_folder_path%\Handbrake\HandBrakeCLI-1.8.2-win-x86_64\HandBrakeCLI.exe HandBrakeCLI -Z %preset% -i %input_video_full_path% -o "%output_video_full_path%"
 
 
 
-if %move_input_file_after_process% == "true" (
-	move %input_video_full_path% original
+@if %move_input_file_after_process% == "true" (
+	@move %input_video_full_path% original
 )
 
 rem pause
-@timeout /t 30
+@timeout /t 1
