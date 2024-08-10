@@ -19,4 +19,4 @@
 call %script_folder_path%\compress_video_handbrake_generic.bat %input_video_full_path% %output_format% "Fast %output_format%"
 
 
-timeout /t 5
+@timeout /t 5
