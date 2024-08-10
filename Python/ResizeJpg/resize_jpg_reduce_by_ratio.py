@@ -7,7 +7,6 @@ from pathlib import Path
 
 args = sys.argv[1:]
 
-size_ratio_to_apply=0.5
 
 
 print("args size" + str(len(args)))
@@ -15,6 +14,11 @@ print("args:")
 print(str(args))
 
 input_jpg_file_full_path=args[0]
+
+size_ratio_to_apply_str=args[1]
+size_ratio_to_apply_float = float(size_ratio_to_apply_str)
+print("size_ratio_to_apply:" + str(size_ratio_to_apply_float))
+
 
 input_jpg_file_path = Path(input_jpg_file_full_path)
 print("input_jpg_file_path:" + str(input_jpg_file_path))
@@ -34,7 +38,7 @@ print("input_jpg_file_name_without_extension:" + input_jpg_file_name_without_ext
 input_jpg_file_extension = input_jpg_file_path.suffix
 print("input_jpg_file_extension:" + input_jpg_file_extension)
 
-output_file_name_without_extension=str(input_jpg_file_name_without_extension) + "_ratio_" + str(size_ratio_to_apply).replace(".","_")
+output_file_name_without_extension=str(input_jpg_file_name_without_extension) + "_ratio_" + str(size_ratio_to_apply_float).replace(".","_")
 print("output_file_name_without_extension:" + output_file_name_without_extension)
 
 output_file_name_with_extension=output_file_name_without_extension + str(input_jpg_file_extension)
@@ -51,8 +55,8 @@ input_image_height = img.size[1]
 print("input_image_width:" + str(input_image_width))
 print("input_image_height:" + str(input_image_height))
 
-output_image_width = int(input_image_width * size_ratio_to_apply)
-output_image_height = int(input_image_height * size_ratio_to_apply)
+output_image_width = int(input_image_width * size_ratio_to_apply_float)
+output_image_height = int(input_image_height * size_ratio_to_apply_float)
 
 print("output_image_width:" + str(output_image_width))
 print("output_image_height:" + str(output_image_height))

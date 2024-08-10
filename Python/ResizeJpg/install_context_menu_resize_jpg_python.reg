@@ -1,8 +1,28 @@
 Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_50percent]
-@="Compress Jpg 50 percent with python"
+@="Compress Jpg reduce by 50 percent with python"
 
 [HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_50percent\command]
-@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_50percent.bat\" \"%1\""
+@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_50percent.bat\" \"%1\""
+
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_70percent]
+@="Compress Jpg reduce by 70 percent with python"
+
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_70percent\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_70percent.bat\" \"%1\""
+
+
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_80percent]
+@="Compress Jpg reduce by 80 percent with python"
+
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_80percent\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_80percent.bat\" \"%1\""
+
+
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_90percent]
+@="Compress Jpg reduce by 90 percent with python"
+
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_90percent\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_90percent.bat\" \"%1\""
 

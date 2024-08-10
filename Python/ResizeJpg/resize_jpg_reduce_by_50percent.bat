@@ -6,7 +6,9 @@
 @SET input_image_full_path=%*
 @for %%a in (%*) do @set input_image_full_path=%%a
 
+SET size_ratio_to_apply=0.5
+
 @Echo input_image_full_path:%input_image_full_path%
-@call C:\Users\fr232487\AppData\Local\Programs\Python\Python312\python.exe D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_50percent.py %input_image_full_path%
+@call C:\Users\fr232487\AppData\Local\Programs\Python\Python312\python.exe D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_ratio.py %input_image_full_path% %size_ratio_to_apply%
 
 timeout /t 30
