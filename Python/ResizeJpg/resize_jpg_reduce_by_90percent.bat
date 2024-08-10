@@ -11,4 +11,4 @@ SET size_ratio_to_apply=0.1
 @Echo input_image_full_path:%input_image_full_path%
 @call C:\Users\fr232487\AppData\Local\Programs\Python\Python312\python.exe D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_ratio.py %input_image_full_path% %size_ratio_to_apply%
 
-timeout /t 30
+timeout /t 3
