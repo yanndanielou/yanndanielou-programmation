@@ -1,36 +1,49 @@
 Windows Registry Editor Version 5.00
 
 
-[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_30percent]
-@="Compress Jpg reduce by 30 percent with python"
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_7]
+@="Compress Jpg ratio 0.7"
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_7\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_ratio.bat\" \"%1\" \"0.7\" \"false\""
 
-[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_30percent\command]
-@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_30percent.bat\" \"%1\""
-
-
-[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_50percent]
-@="Compress Jpg reduce by 50 percent with python"
-
-[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_50percent\command]
-@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_50percent.bat\" \"%1\""
-
-[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_70percent]
-@="Compress Jpg reduce by 70 percent with python"
-
-[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_70percent\command]
-@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_70percent.bat\" \"%1\""
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_7_and_move]
+@="Compress Jpg ratio 0.7 and move original"
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_7_and_move\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_ratio.bat\" \"%1\" \"0.7\" \"true\""
 
 
-[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_80percent]
-@="Compress Jpg reduce by 80 percent with python"
 
-[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_80percent\command]
-@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_80percent.bat\" \"%1\""
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_5]
+@="Compress Jpg ratio 0.5"
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_5\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_ratio.bat\" \"%1\" \"0.5\" \"false\""
+
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_5_and_move]
+@="Compress Jpg ratio 0.5 and move original"
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_5_and_move\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_ratio.bat\" \"%1\" \"0.5\" \"true\""
 
 
-[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_90percent]
-@="Compress Jpg reduce by 90 percent with python"
 
-[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_90percent\command]
-@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_90percent.bat\" \"%1\""
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_3]
+@="Compress Jpg ratio 0.3"
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_3\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_ratio.bat\" \"%1\" \"0.3\" \"false\""
+
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_3_and_move]
+@="Compress Jpg ratio 0.3 and move original"
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_3_and_move\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_ratio.bat\" \"%1\" \"0.3\" \"true\""
+
+
+
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_2]
+@="Compress Jpg ratio 0.2"
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_2\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_ratio.bat\" \"%1\" \"0.2\" \"false\""
+
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_2_and_move]
+@="Compress Jpg ratio 0.2 and move original"
+[HKEY_CLASSES_ROOT\*\shell\resize_jpg_python_ratio_0_2_and_move\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Python\\ResizeJpg\\resize_jpg_reduce_by_ratio.bat\" \"%1\" \"0.2\" \"true\""
 

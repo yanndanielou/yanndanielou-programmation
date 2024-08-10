@@ -3,23 +3,37 @@ Windows Registry Editor Version 5.00
 
 
 
-[HKEY_CLASSES_ROOT\*\shell\handbrake-compress-480p]
+[HKEY_CLASSES_ROOT\*\shell\handbrake_compress_480p]
 @="Compress File with HandBrake 480p"
-
-[HKEY_CLASSES_ROOT\*\shell\handbrake-compress-480p\command]
-@="\"D:\\GitHub\\yanndanielou-programmation\\Windows\\CompressVideo\\compress_video_handbrake_480p.bat\" \"%1\""
-
+[HKEY_CLASSES_ROOT\*\shell\handbrake_compress_480p\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Windows\\CompressVideo\\compress_video_handbrake_generic.bat\" \"%1\" \"480p30\" \"Fast 480p30\" \"false\""
 
 
-[HKEY_CLASSES_ROOT\*\shell\handbrake-compress-720p]
+[HKEY_CLASSES_ROOT\*\shell\handbrake_compress_480p_and_move]
+@="Compress File with HandBrake 480p and move original"
+[HKEY_CLASSES_ROOT\*\shell\handbrake_compress_480p_and_move\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Windows\\CompressVideo\\compress_video_handbrake_generic.bat\" \"%1\" \"480p30\" \"Fast 480p30\" \"true\""
+
+
+
+[HKEY_CLASSES_ROOT\*\shell\handbrake_compress_720p]
 @="Compress File with HandBrake 720p"
+[HKEY_CLASSES_ROOT\*\shell\handbrake_compress_720p\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Windows\\CompressVideo\\compress_video_handbrake_generic.bat\" \"%1\" \"720p30\" \"Fast 720p30\" \"false\""
 
-[HKEY_CLASSES_ROOT\*\shell\handbrake-compress-720p\command]
-@="\"D:\\GitHub\\yanndanielou-programmation\\Windows\\CompressVideo\\compress_video_handbrake_720p.bat\" \"%1\""
+[HKEY_CLASSES_ROOT\*\shell\handbrake_compress_720p_and_move]
+@="Compress File with HandBrake 720p and move original"
+[HKEY_CLASSES_ROOT\*\shell\handbrake_compress_720p_and_move\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Windows\\CompressVideo\\compress_video_handbrake_generic.bat\" \"%1\" \"720p30\" \"Fast 720p30\" \"true\""
 
 
-[HKEY_CLASSES_ROOT\*\shell\handbrake-compress-1080p]
+[HKEY_CLASSES_ROOT\*\shell\handbrake_compress_1080p]
 @="Compress File with HandBrake 1080p"
+[HKEY_CLASSES_ROOT\*\shell\handbrake_compress_1080p\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Windows\\CompressVideo\\compress_video_handbrake_generic.bat\" \"%1\" \"1080p30\" \"Fast 1080p30\" \"false\""
 
-[HKEY_CLASSES_ROOT\*\shell\handbrake-compress-1080p\command]
-@="\"D:\\GitHub\\yanndanielou-programmation\\Windows\\CompressVideo\\compress_video_handbrake_1080p.bat\" \"%1\""
+
+[HKEY_CLASSES_ROOT\*\shell\handbrake_compress_1080p_and_move]
+@="Compress File with HandBrake 1080p and move"
+[HKEY_CLASSES_ROOT\*\shell\handbrake_compress_1080p_and_move\command]
+@="\"D:\\GitHub\\yanndanielou-programmation\\Windows\\CompressVideo\\compress_video_handbrake_generic.bat\" \"%1\" \"1080p30\" \"Fast 1080p30\" \"true\""
