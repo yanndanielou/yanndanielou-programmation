@@ -1,7 +1,6 @@
 @ECHO %date% %time%
-@SET output_format=1080p30
+@SET output_format=720p30
 @Echo output_format %output_format%
-
 
 @echo ON
 @SET subject=%*
@@ -13,7 +12,12 @@
 @echo script_full_path %script_full_path%
 
 @for %%A IN (%script_full_path%) DO (@SET script_folder_path="%%~dpA")
+@set script_folder_path=%script_folder_path:"=%
 @echo script_folder_path %script_folder_path%
+
+
+call %script_folder_path%\compress_video_handbrake_generic.bat %input_video_full_path% %output_format% "Fast %output_format%"
+exit
 
 @Echo input_video_full_path %input_video_full_path%
 
@@ -41,6 +45,6 @@
 timeout /t 1
 rem HandBrakeCLI.exe HandBrakeCLI -Z "Fast 1080p30" -i 20240809_112811.mp4 -o out.mp4
 
-call "%script_folder_path%\Handbrake\HandBrakeCLI-1.8.2-win-x86_64\HandBrakeCLI.exe" HandBrakeCLI -Z "Fast %output_format%" -i %input_video_full_path% -o "%output_video_full_path%"
+call %script_folder_path%\Handbrake\HandBrakeCLI-1.8.2-win-x86_64\HandBrakeCLI.exe HandBrakeCLI -Z "Fast %output_format%" -i %input_video_full_path% -o "%output_video_full_path%"
 
 timeout /t 30
