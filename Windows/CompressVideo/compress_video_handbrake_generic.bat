@@ -6,9 +6,8 @@
 @SET preset=%3
 @echo input_video_full_path %input_video_full_path%
 @echo output_format %output_format%
-timeout /t 30
 
-
+timeout /t 10
 
 @SET script_full_path=%0
 @set script_full_path=%script_full_path:"=%
@@ -24,6 +23,7 @@ timeout /t 30
 @echo input_video_file_name_with_extension %input_video_file_name_with_extension%
 
 @for %%A IN (%input_video_file_name_with_extension%) DO (@SET input_video_file_name_without_extension="%%~nA")
+@set input_video_file_name_without_extension=%input_video_file_name_without_extension:"=%
 @echo input_video_file_name_without_extension %input_video_file_name_without_extension%
 
 @for %%A IN (%input_video_file_name_with_extension%) DO (@SET input_video_file_extension="%%~xA")
@@ -36,14 +36,14 @@ timeout /t 30
 @echo output_video_file_name_with_extension %output_video_file_name_with_extension%
 
 
-@SET output_video_full_path=%input_video_folder_path%\\%output_video_file_name_with_extension%
+@SET output_video_full_path=%input_video_folder_path%%output_video_file_name_with_extension%
 @set output_video_full_path=%output_video_full_path:"=%
 
 @echo output_video_full_path %output_video_full_path%
 
-@timeout /t 100
+@timeout /t 5
 rem HandBrakeCLI.exe HandBrakeCLI -Z "Fast 1080p30" -i 20240809_112811.mp4 -o out.mp4
 
 call %script_folder_path%\Handbrake\HandBrakeCLI-1.8.2-win-x86_64\HandBrakeCLI.exe HandBrakeCLI -Z %preset% -i %input_video_full_path% -o "%output_video_full_path%"
 
-timeout /t 30
+timeout /t 10
