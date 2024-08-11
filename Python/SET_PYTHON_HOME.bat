@@ -6,8 +6,9 @@
 
 @ECHO PYTHON_HOME %PYTHON_HOME%
 
-timeout /t 30
-exit
+timeout /t 1
+GOTO :END_OF_FILE
+
 
 :CHECK_IF_EXISTS_AND_SET_PYTHON_HOME
 @Echo Check python at %1
@@ -19,3 +20,5 @@ exit
 @ECHO Python not found there
 
 )
+
+:END_OF_FILE

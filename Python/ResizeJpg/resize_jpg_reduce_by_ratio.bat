@@ -1,6 +1,15 @@
 @ECHO %date% %time%
 
-CALL ..\SET_PYTHON_HOME.bat
+@SET script_full_path=%0
+@set script_full_path=%script_full_path:"=%
+@echo script_full_path %script_full_path%
+
+@for %%A IN (%script_full_path%) DO (@SET script_folder_path="%%~dpA")
+@set script_folder_path=%script_folder_path:"=%
+@echo script_folder_path %script_folder_path%
+
+
+CALL %script_folder_path%\..\SET_PYTHON_HOME.bat
 IF NOT DEFINED PYTHON_HOME @Echo Python not found & @pause & @exit
 
 @rem https://dev.to/m4cs/compressing-videos-easily-on-windows-w-ffmpeg-and-registry-files-5fin
