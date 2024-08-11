@@ -27,11 +27,14 @@ SETLOCAL EnableDelayedExpansion
 @set script_folder_path=%script_folder_path:"=%
 @echo script_folder_path:%script_folder_path%
 
+@for /d %%d in (%script_folder_path%\Handbrake\*.*) do @SET HANBRAKE_PATH=%%d
+@IF NOT DEFINED HANBRAKE_PATH @Echo Handrabke not found!! & pause & exit
+@Echo HANBRAKE_PATH:%HANBRAKE_PATH%
+
 @Echo input_video_full_path %input_video_full_path%
 
 @for %%F in (%input_video_full_path%) do SET input_video_file_name_with_extension=%%~nxF
 @echo input_video_file_name_with_extension:%input_video_file_name_with_extension%
-
 
 @for %%A IN (%input_video_file_name_with_extension%) DO (@SET input_video_file_extension="%%~xA")
 @echo input_video_file_extension:%input_video_file_extension%
@@ -57,9 +60,9 @@ SETLOCAL EnableDelayedExpansion
 @echo output_video_full_path %output_video_full_path%
 
 @rem @timeout /t 1
-rem HandBrakeCLI.exe HandBrakeCLI -Z "Fast 1080p30" -i 20240809_112811.mp4 -o out.mp4
+@rem HandBrakeCLI.exe HandBrakeCLI -Z "Fast 1080p30" -i 20240809_112811.mp4 -o out.mp4
 
-rem echo call "%script_folder_path%\Handbrake\HandBrakeCLI-1.8.2-win-x86_64\HandBrakeCLI.exe" HandBrakeCLI -Z %preset% -i %input_video_full_path% -o "%output_video_full_path%"
+@rem echo call "%script_folder_path%\Handbrake\HandBrakeCLI-1.8.2-win-x86_64\HandBrakeCLI.exe" HandBrakeCLI -Z %preset% -i %input_video_full_path% -o "%output_video_full_path%"
 @call %script_folder_path%\Handbrake\HandBrakeCLI-1.8.2-win-x86_64\HandBrakeCLI.exe HandBrakeCLI -Z %preset% -i %input_video_full_path% -o "%output_video_full_path%"
 
 
