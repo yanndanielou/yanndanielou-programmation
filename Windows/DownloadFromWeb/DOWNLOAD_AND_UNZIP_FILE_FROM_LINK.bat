@@ -31,10 +31,10 @@
 
 @echo fileNameWithoutExtension [%fileNameWithoutExtension%]
 
-@timeout /t 30
+@timeout /t 1
 
 @CALL %script_folder_path%\DOWNLOAD_FILE_FROM_LINK %1
-@timeout /t 30
+@timeout /t 1
 
 @ECHO Will Expand-Archive -Force '%fileName%' '%fileNameWithoutExtension%'
 @powershell -command "Expand-Archive -Force '%fileName%' '%fileNameWithoutExtension%'"

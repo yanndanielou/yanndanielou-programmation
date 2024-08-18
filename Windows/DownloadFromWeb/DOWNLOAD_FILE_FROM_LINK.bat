@@ -5,6 +5,6 @@
 @echo Download file %fileName% from %FULL_LINK%
 
 
-powershell -Command "(New-Object Net.WebClient).DownloadFile('%FULL_LINK%', '%fileName%')
+@powershell -Command "(New-Object Net.WebClient).DownloadFile('%FULL_LINK%', '%fileName%')
 
-timeout /t 3
+@timeout /t 1
