@@ -107,7 +107,7 @@ public class SHA512CustomImplementation {
 		return result;
 	}
 
-	public static String computeSHA512Hash(String input) {
+	public static Hash computeSHA512Hash(String input) {
 
 		SHA512CustomImplementation sha512 = new SHA512CustomImplementation();
 		byte[] hash = sha512.hash(input.getBytes());
@@ -116,6 +116,6 @@ public class SHA512CustomImplementation {
 		}
 		String hashAsString = StringUtils.transformBytesArrayToString(hash);
 		System.out.println(hashAsString);
-		return hashAsString;
+		return new Hash(hashAsString, Hash.HashType.SHA_512);
 	}
 }

@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import common.arrays.ArrayUtils;
 import common.string.utils.StringUtils;
+import crypto.hash.Hash.HashType;
 
 /***
  * Custom implementation of MD2 (Message Digest 2) Hash
@@ -124,10 +125,10 @@ public class MD2HashCustomImplementation {
 		return output;
 	}
 
-	public static String computeMD2HashWithCustomImplementation(String input) {
+	static Hash computeMD2HashWithCustomImplementation(String input) {
 		byte[] inputBytes = input.getBytes();
 		int[] hashIntBytes = hashToBytesArray(inputBytes);
-		return StringUtils.transformIntArrayToString(hashIntBytes);
+		return new Hash(StringUtils.transformIntArrayToString(hashIntBytes), HashType.MD2);
 	}
 
 	private static String tableToString(int[] table, String name) {

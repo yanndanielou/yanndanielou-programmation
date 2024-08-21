@@ -12,6 +12,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import crypto.hash.Hash.HashType;
+
 public class MD2HashTest {
 	public static Stream<Arguments> provideMD2StringExamples() {
 		return Stream.of(
@@ -31,13 +33,13 @@ public class MD2HashTest {
 	@ParameterizedTest
 	@MethodSource("provideMD2StringExamples")
 	void custom_implemation_encodeAndDecodeStringWithGeneratedKey(String input, String expectedMD2Hash) {
-		assertEquals(expectedMD2Hash, MD2HashCustomImplementation.computeMD2HashWithCustomImplementation(input));
+		assertEquals(expectedMD2Hash, MD2HashCustomImplementation.computeMD2HashWithCustomImplementation(input).getHashUTF8());
 	}
 
 	@ParameterizedTest
 	@MethodSource("provideMD2StringExamples")
 	void standard_implemation_encodeAndDecodeStringWithGeneratedKey(String input, String expectedMD2Hash) {
-		assertEquals(expectedMD2Hash, HashHelpers.computeMD2HashWithStandardLibrary(input));
+		assertEquals(expectedMD2Hash, HashHelpers.computeHashStandardLibrary(input, HashType.MD2).getHashUTF8());
 	}
 
 
@@ -55,8 +57,8 @@ public class MD2HashTest {
 	@Ignore
 	void standard_implemation_collisions(String input1, String input2) {
 		assertNotEquals(input1, input2);
-		assertEquals(HashHelpers.computeMD2HashWithStandardLibrary(input1),
-				HashHelpers.computeMD2HashWithStandardLibrary(input2));
+		assertEquals(HashHelpers.computeHashStandardLibrary(input1, HashType.MD2),
+				HashHelpers.computeHashStandardLibrary(input2, HashType.MD2));
 	}
 
 }

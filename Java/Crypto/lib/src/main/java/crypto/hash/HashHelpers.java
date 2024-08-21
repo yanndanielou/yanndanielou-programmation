@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import com.google.common.hash.Hashing;
 
 import common.string.utils.StringUtils;
+import crypto.hash.Hash.HashType;
 
 /***
  * Custom implementation of MD2 (Message Digest 2) Hash
@@ -34,17 +35,53 @@ public class HashHelpers {
 		}
 	}
 
-	public static String computeMD2HashWithStandardLibrary(String input) {
+	private static Hash computeMD2HashWithStandardLibrary(String input) {
 		byte[] inputAsBytes = input.getBytes();
 		byte[] hashBytes = MD2HashToBytesArray(inputAsBytes);
-		return StringUtils.transformBytesArrayToString(hashBytes);
+		return new Hash(StringUtils.transformBytesArrayToString(hashBytes), HashType.MD2);
 	}
 
-	public static String computeSHA512WithStandardLibrary(String input) {
-		return Hashing.sha512().hashString(input, StandardCharsets.UTF_8).toString();
+	private static Hash computeSHA512WithStandardLibrary(String input) {
+		MessageDigest digest;
+		try {
+			digest = MessageDigest.getInstance("SHA-512");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			return null;
+		}
+		final byte[] hashbytes = digest.digest(input.getBytes(StandardCharsets.UTF_8));
+		String sha512Hex = StringUtils.transformBytesArrayToString(hashbytes);
+		String withGoogle = Hashing.sha512().hashString(input, StandardCharsets.UTF_8).toString();
+		boolean areEquals = sha512Hex.equals(withGoogle);
+		if (!areEquals) {
+			throw new RuntimeException("Wrong computation of SHA 512 for " + input);
+		}
+		return new Hash(withGoogle, HashType.SHA_512);
 	}
 
-	public static String computeSHA256WithStandardLibrary(String input) {
+	private static Hash computeSHA256WithStandardLibrary(String input) {
+		String hash = Hashing.sha256().hashString(input, StandardCharsets.UTF_8).toString();
+		return new Hash(hash, HashType.SHA2_256);
+	}
+
+	public static Hash computeHashStandardLibrary(String input, Hash.HashType hashType) {
+		switch (hashType) {
+		case MD2:
+			return computeMD2HashWithStandardLibrary(input);
+		case SHA2_256:
+			return computeSHA256WithStandardLibrary(input);
+		case SHA3_256:
+			return computeSHA3_256WithStandardLibrary(input);
+		case SHA_512:
+			return computeSHA512WithStandardLibrary(input);
+		default:
+			break;
+		}
+		return null;
+	}
+
+	private static Hash computeSHA3_256WithStandardLibrary(String input) {
+
 		MessageDigest digest;
 		try {
 			digest = MessageDigest.getInstance("SHA3-256");
@@ -54,7 +91,7 @@ public class HashHelpers {
 		}
 		final byte[] hashbytes = digest.digest(input.getBytes(StandardCharsets.UTF_8));
 		String sha3Hex = StringUtils.transformBytesArrayToString(hashbytes);
-		return sha3Hex;
+		return new Hash(sha3Hex, HashType.SHA3_256);
 	}
 
 }
