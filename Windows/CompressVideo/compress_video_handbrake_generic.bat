@@ -33,7 +33,7 @@ SETLOCAL EnableDelayedExpansion
 
 @Echo input_video_full_path %input_video_full_path%
 
-@for %%F in (%input_video_full_path%) do SET input_video_file_name_with_extension=%%~nxF
+@for %%F in (%input_video_full_path%) do @SET input_video_file_name_with_extension=%%~nxF
 @echo input_video_file_name_with_extension:%input_video_file_name_with_extension%
 
 @for %%A IN (%input_video_file_name_with_extension%) DO (@SET input_video_file_extension="%%~xA")
@@ -42,7 +42,7 @@ SETLOCAL EnableDelayedExpansion
 
 @for %%A IN (%input_video_file_name_with_extension%) DO (@SET input_video_file_name_without_extension=!input_video_file_name_without_extension!" ""%%~nA")
 @set input_video_file_name_without_extension=%input_video_file_name_without_extension:"=%
-@for /f "tokens=* delims= " %%a in ("%input_video_file_name_without_extension%") do set input_video_file_name_without_extension=%%a
+@for /f "tokens=* delims= " %%a in ("%input_video_file_name_without_extension%") do @set input_video_file_name_without_extension=%%a
 @echo input_video_file_name_without_extension:%input_video_file_name_without_extension%
 
 @rem pause
@@ -71,5 +71,5 @@ SETLOCAL EnableDelayedExpansion
 	@move %input_video_full_path% original
 )
 
-rem pause
+@rem pause
 @timeout /t 1
