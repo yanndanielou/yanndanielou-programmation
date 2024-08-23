@@ -2,13 +2,11 @@ package authentification.loginandpassword;
 
 import java.time.Instant;
 
-public class Password {
+public abstract class Password {
 
 	private Instant creationInstant = Instant.now();
-	public String clearText;
-	
-	public Password(String clearText) {
-		this.clearText = clearText;
-		//creationInstant = new Instant
+
+	public Instant getCreationInstant() {
+		return creationInstant;
 	}
 }

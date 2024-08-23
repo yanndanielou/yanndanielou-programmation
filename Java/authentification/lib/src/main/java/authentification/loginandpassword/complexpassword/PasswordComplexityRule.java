@@ -2,7 +2,7 @@ package authentification.loginandpassword.complexpassword;
 
 import java.util.List;
 
-import authentification.loginandpassword.Password;
+import authentification.loginandpassword.ClearTextPassword;
 
 public interface PasswordComplexityRule {
 
@@ -36,12 +36,31 @@ public interface PasswordComplexityRule {
 	 * modification ou création (pour 1ère utilisation) par l'administrateur
 	 * 
 	 */
+
 	public enum PasswordComplexityError {
-		MINIMUM_PASSWORD_LENGTH, MAXIMUM_PASSWORD_LENGTH, COMMON_PASSWORD, PASSWORD_CONTAINS_LOGIN_ERROR, PASSWORD_CONTAINS_MOTIF,
-		UNKNOWN_REASON;
+		MINIMUM_PASSWORD_LENGTH, MAXIMUM_PASSWORD_LENGTH,
+		/** QPWDRQDDIF */
+		PASSWORD_ALREADY_USED_PREVIOUSLY,
+		/** QPWDCHGBLK */
+		PASSWORD_ALREADY_CHANGED_RECENTLY,
+		/**
+		 * QPWDLMTCHR provides additional security by preventing users from using
+		 * specific characters, such as vowels, in a password. Restricting vowels
+		 * prevents users from forming actual words for their passwords.
+		 */
+		PASSWORD_CONTAINS_RESTRICTED_CARACTERS,
+		/**
+		 * QPWDLMTAJC Consecutive Digits for Passwords
+		 */
+		CONSECUTIVE_DIGITS,
+		/**
+		 * QPWDPOSDIF
+		 * Character Position Difference for Passwords
+		 */
+		CHARACTER_POSITION_DIFFERENCE, COMMON_PASSWORD, PASSWORD_CONTAINS_LOGIN_ERROR,
+		PASSWORD_CONTAINS_REPETITIVE_PATTERN, CONTAINS_HALF_OF_PREVIOUS_PASSWORD,
+		PASSWORD_CONTAINS_REPETITIVE_CHARACTERS, UNKNOWN_REASON;
 	}
 
-	public PasswordComplexityError isNewPasswordAllowed(String newPasswordInClear, String login,
-			List<Password> previousPasswordsFromOldestToRecent);
-
+	
 }

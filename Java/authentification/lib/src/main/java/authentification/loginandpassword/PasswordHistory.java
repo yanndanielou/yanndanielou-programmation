@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PasswordHistory {
-	Map<Instant, Password> previousPasswords = new HashMap<Instant, Password>();
+	Map<Instant, ClearTextPassword> previousPasswords = new HashMap<Instant, ClearTextPassword>();
 
 	
 	public PasswordHistory(int length) {

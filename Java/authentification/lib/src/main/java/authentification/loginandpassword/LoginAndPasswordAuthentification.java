@@ -10,7 +10,6 @@ import java.time.Instant;
 import javax.crypto.SecretKey;
 
 import com.baeldung.aes.AESUtil;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -19,14 +18,14 @@ import common.gson.adapter.InstantAdapter;
 public class LoginAndPasswordAuthentification {
 
 	String login;
-	Password currentPassword;
+	ClearTextPassword currentPassword;
 	PasswordHistory passwordHistory;
 	private String outputFilePath;
 
 	public LoginAndPasswordAuthentification(String outputFilePath, String login, String passwordInClear) {
 		this.outputFilePath = outputFilePath;
 		changeLogin(login);
-		currentPassword = new Password(passwordInClear);
+		currentPassword = new ClearTextPassword(passwordInClear);
 		save(passwordInClear);
 	}
 
