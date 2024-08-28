@@ -15,22 +15,22 @@ import compressedarchivefiles.standardjavalibrary.StandardJavaLibraryZipFileMana
 import pdfmodification.helpers.PDFModificationHelpers;
 import secondregard.data.inputpdfdocument.builders.InputPDFAndActionsToPerformDataModel;
 import secondregard.data.inputpdfdocument.builders.InputPDFsDataModel;
-import secondregard.data.users.PDFAllowedUser;
+import secondregard.data.users.SecondRegardAllowedUser;
 import secondregard.helpers.SecondRegardHelpers;
 import secondregard.helpers.SecondRegardConstants;
-import secondregard.helpers.SecondRegardPDFParams;
+import secondregard.helpers.SecondRegardParams;
 import zip4j.Zip4JZipManager;
 
 public class PDFProcessorThread extends PDFProcessorGenericThread {
 
-	List<PDFAllowedUser> pdfAllowedUsers;
+	List<SecondRegardAllowedUser> pdfAllowedUsers;
 	InputPDFAndActionsToPerformDataModel pdfBatch;
 	InputPDFsDataModel inputPdf;
 	File inputPDFFile;
 
 	protected static final Logger LOGGER = LogManager.getLogger(PDFProcessorThread.class);
 
-	public PDFProcessorThread(List<PDFAllowedUser> pdfAllowedUsers, InputPDFAndActionsToPerformDataModel pdfBatch,
+	public PDFProcessorThread(List<SecondRegardAllowedUser> pdfAllowedUsers, InputPDFAndActionsToPerformDataModel pdfBatch,
 			InputPDFsDataModel inputPdf, File inputPDFFile) {
 
 		this.pdfAllowedUsers = pdfAllowedUsers;
@@ -54,7 +54,7 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 	}
 
 	private void handlePdf() throws IOException {
-		if (SecondRegardPDFParams.GENERATE_ALSO_UNPROTECTED_PDF_FOR_NO_USER) {
+		if (SecondRegardParams.GENERATE_ALSO_UNPROTECTED_PDF_FOR_NO_USER) {
 			LOGGER.info(() -> "Load PDF");
 			PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
 
@@ -63,7 +63,7 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 			PDFModificationHelpers.deletePages(originalDoc, allPageNumberToDelete);
 
 			LOGGER.info(() -> "Add watermark on each page");
-			SecondRegardHelpers.addWatermarkOnEachPage(originalDoc, pdfBatch, new PDFAllowedUser());
+			SecondRegardHelpers.addWatermarkOnEachPage(originalDoc, pdfBatch, new SecondRegardAllowedUser());
 
 			DirectoryHelper.createFolderIfNotExists(SecondRegardConstants.OUTPUT_DIRECTORY_NAME);
 
@@ -75,7 +75,7 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 
 		List<String> outputPdfFilesFullPaths = new ArrayList<>();
 
-		for (PDFAllowedUser pdfAllowedUser : pdfAllowedUsers) {
+		for (SecondRegardAllowedUser pdfAllowedUser : pdfAllowedUsers) {
 			LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
 
 			LOGGER.info(() -> "Load PDF");
@@ -102,7 +102,7 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 			originalDoc.close();
 		}
 
-		if (SecondRegardPDFParams.GENERATE_ALSO_ZIP_FILES) {
+		if (SecondRegardParams.GENERATE_ALSO_ZIP_FILES) {
 			// StandardJavaLibraryZipFileManager zipFileManager = new
 			// StandardJavaLibraryZipFileManager();
 			// zipFileManager.createZipFileWithFilesFullPaths(zipFileName,

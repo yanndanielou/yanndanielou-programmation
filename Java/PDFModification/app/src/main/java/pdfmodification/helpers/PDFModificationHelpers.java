@@ -12,6 +12,7 @@ import org.apache.pdfbox.pdmodel.encryption.StandardProtectionPolicy;
 
 import common.duration.CodeDurationCounter;
 import common.duration.FormatterUtils;
+import common.filesanddirectories.FileHelper;
 
 public class PDFModificationHelpers {
 
@@ -29,6 +30,7 @@ public class PDFModificationHelpers {
 	public static void saveOutputPDF(File inputPDFFile, PDDocument originalDoc, String outputPdfFileNameWithFullPath)
 			throws IOException {
 
+		FileHelper.removeFileIfExists(outputPdfFileNameWithFullPath);
 		CodeDurationCounter saveTimeDurationCounter = new CodeDurationCounter();
 		originalDoc.save(outputPdfFileNameWithFullPath);
 

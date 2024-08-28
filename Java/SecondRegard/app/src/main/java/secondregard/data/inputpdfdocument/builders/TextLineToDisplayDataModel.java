@@ -3,7 +3,7 @@ package secondregard.data.inputpdfdocument.builders;
 import common.builders.ColorDataModel;
 import common.builders.PointDataModel;
 import secondregard.data.TextToDisplayType;
-import secondregard.data.users.PDFAllowedUser;
+import secondregard.data.users.SecondRegardAllowedUser;
 
 public class TextLineToDisplayDataModel {
 
@@ -13,7 +13,7 @@ public class TextLineToDisplayDataModel {
 	private PointDataModel newLineAtOffset;
 	private ColorDataModel nonStrokingColor;
 
-	public String computeText(PDFAllowedUser pdfAllowedUser) {
+	public String computeText(SecondRegardAllowedUser pdfAllowedUser) {
 		switch (textType) {
 		case FIRST_NAME_SPACE_AND_LAST_NAME:
 			return pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom();

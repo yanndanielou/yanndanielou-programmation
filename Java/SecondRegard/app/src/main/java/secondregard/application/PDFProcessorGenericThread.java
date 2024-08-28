@@ -6,7 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import secondregard.data.inputpdfdocument.builders.InputPDFsDataModel;
-import secondregard.data.users.PDFAllowedUser;
+import secondregard.data.users.SecondRegardAllowedUser;
 import secondregard.helpers.SecondRegardHelpers;
 import secondregard.helpers.SecondRegardConstants;
 
@@ -19,7 +19,7 @@ public class PDFProcessorGenericThread extends Thread {
 	}
 
 	protected static String getOutputPDFFileNameWithFullPath(InputPDFsDataModel inputPdf, File inputPDFFile,
-			PDFAllowedUser pdfAllowedUser) {
+			SecondRegardAllowedUser pdfAllowedUser) {
 
 		String generatedPersonnalizedProtectedPDFFullPath = SecondRegardConstants.OUTPUT_DIRECTORY_NAME + "/"
 				+ SecondRegardHelpers.getOutputPDFFileName(inputPdf, inputPDFFile, pdfAllowedUser);

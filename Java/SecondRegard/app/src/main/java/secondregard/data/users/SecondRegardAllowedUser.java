@@ -4,7 +4,7 @@ import com.opencsv.bean.CsvBindByName;
 
 import secondregard.data.ValiditeAcces;
 
-public class PDFAllowedUser {
+public class SecondRegardAllowedUser {
 
 	@CsvBindByName(column = "nom")
 	private String nom;

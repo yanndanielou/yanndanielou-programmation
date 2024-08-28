@@ -1,4 +1,15 @@
 {
+	"zipBatchs": [
+		{
+			"zipToCreatePrefix": "NExTEO-250000-04-0316-00 Annexes",
+			"filesToAddFullPath": [
+			],
+			"foldersToAddFullPath": [
+				"PAE RL2B.6 NEXT_PAE_CUCP_V9_1",
+				"PAGS RL2B.5 (CUCP  NEXT_PAGS_CUCP_V3_1)"
+			]
+		}
+	],
 	"pdfBatchs": [
 		{
 			"label": "Gumps pre denali 0 ",

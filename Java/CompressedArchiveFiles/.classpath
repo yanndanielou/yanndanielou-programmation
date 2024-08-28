@@ -18,6 +18,12 @@
 	<classpathentry kind="lib" path="../ExternalLibraries/log4j-core-2.20.0.jar"/>
 	
 	<classpathentry kind="lib" path="../ExternalLibraries/zip4j-2.11.5.jar"/>
+	
+	<!--
+	<classpathentry kind="lib" path="../ExternalLibraries/commons-io-2.15.0.jar"/>
+	-->
+	<classpathentry kind="lib" path="../ExternalLibraries/commons-collections4-4.4.jar"/>
+
 		
 	<classpathentry kind="src" path="/Common"/>
 	

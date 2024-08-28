@@ -2,6 +2,8 @@ package common.filesanddirectories;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.util.Arrays;
+import java.util.List;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
@@ -42,4 +44,12 @@ public class FileNameExtensionAndPathHelper {
 		return listFiles;
 	}
 
+	public static File[] getAllFilesNamesMatchingMask(String directoryName, List<String> masks) {
+		return getAllFilesNamesMatchingMask(directoryName, masks.toArray(new String[0]));
+	}
+
+	public static File getDirectory(String parentDirectoryName, String directoryName) {
+		String directoryFullPath = parentDirectoryName + "\\" + directoryName;
+		return new File (directoryFullPath);
+	}
 }

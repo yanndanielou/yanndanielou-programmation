@@ -11,14 +11,14 @@ import java.util.List;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
-public class PDFAllowedUsersFromCsvLoader {
+public class SecondRegardAllowedUsersFromCsvLoader {
 
-	public static List<PDFAllowedUser> getPDFAllowedUsersFromCsvFile(String pathAsString) {
+	public static List<SecondRegardAllowedUser> getPDFAllowedUsersFromCsvFile(String pathAsString) {
 		Path inputCsvFile = Paths.get(pathAsString);
 
 
 		try (Reader reader = Files.newBufferedReader(inputCsvFile)) {
-			CsvToBean<PDFAllowedUser> cb = new CsvToBeanBuilder<PDFAllowedUser>(reader).withType(PDFAllowedUser.class).withSeparator(';')
+			CsvToBean<SecondRegardAllowedUser> cb = new CsvToBeanBuilder<SecondRegardAllowedUser>(reader).withType(SecondRegardAllowedUser.class).withSeparator(';')
 					.build();
 
 			return cb.parse();
@@ -26,7 +26,7 @@ public class PDFAllowedUsersFromCsvLoader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return new ArrayList<PDFAllowedUser>();
+		return new ArrayList<SecondRegardAllowedUser>();
 	}
 
 }
