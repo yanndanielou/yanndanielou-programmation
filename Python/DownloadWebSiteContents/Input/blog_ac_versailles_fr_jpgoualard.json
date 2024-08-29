@@ -1,0 +1,10 @@
+{
+	"mainPage": "http://blog.ac-versailles.fr/jpgoualard",
+	"pagesToInclude": [
+		"http://blog.ac-versailles.fr/jpgoualard"
+	],
+	"filesExtensionsToDownload": [
+		".tex",
+		".pdf"
+	]
+}
