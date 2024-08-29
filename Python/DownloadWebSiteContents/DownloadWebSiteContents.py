@@ -76,12 +76,16 @@ def dowloadFilesFromURL(urls):
         dowloadFileFromURL(url)
 
 def dowloadFileFromURL(url):
+    if not os.path.exists(param.output_directory):
+        LoggerConfig.printAndLogInfo('Create output directory:' + param.output_directory)
+        os.makedirs(param.output_directory)
+    
     url_parsed = urlparse(url)
     file_path = url_parsed.path
     fileBaseName = os.path.basename(file_path)
     LoggerConfig.printAndLogInfo("Download " + fileBaseName + " from " + url)
     try:
-        urlretrieve(url, fileBaseName)
+        urlretrieve(url, param.output_directory + "/" + fileBaseName)
     except:
         LoggerConfig.printAndLogError("Failed to download " + fileBaseName + " from " + url)
                 
