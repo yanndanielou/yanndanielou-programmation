@@ -5,13 +5,13 @@ import sys
 
 import time
 
+import param
+
 
 # To get line number for logs
 from inspect import currentframe, getframeinfo
 import inspect
 
-
-logger_level = logging.INFO
     
 def printAndLogCriticalAndKill(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
@@ -48,9 +48,9 @@ def configureLogger(log_file_name):
     if not os.path.exists(logger_directory):
         os.makedirs(logger_directory)
     
-    print(time.asctime( time.localtime(time.time())) + '\t' + "Logger level:" +str(logger_level))
+    print(time.asctime( time.localtime(time.time())) + '\t' + "Logger level:" +str(param.logger_level))
     
-    logging.basicConfig(level=logger_level,
+    logging.basicConfig(level=param.logger_level,
                         format='%(asctime)s %(levelname)-8s %(message)s',
                         datefmt='%a, %d %b %Y %H:%M:%S',
                         filename=logger_directory+ '\\' + log_file_name,

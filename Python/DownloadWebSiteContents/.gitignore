@@ -1,3 +1,5 @@
 *.csv
 Thumbs.db
 Output*
+*.tex
+*.pdf

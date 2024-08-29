@@ -1,10 +1,17 @@
 {
-	"mainPage": "http://blog.ac-versailles.fr/jpgoualard",
+	"mainPage": "http://blog.ac-versailles.fr/jpgoualard/index.php/post/10/09/2023/Cours-de-math%C3%A9matiques-de-la-seonde-5#attachments",
+	"__mainPage": "http://blog.ac-versailles.fr/jpgoualard",
 	"pagesToInclude": [
 		"http://blog.ac-versailles.fr/jpgoualard"
+	],
+	"pagesToExclude": [
+		"/index.php/post/Mentions-legales"
 	],
 	"filesExtensionsToDownload": [
 		".tex",
 		".pdf"
+	],
+	"filesToNotDownload": [
+		"apb_eleves_2014_2014-01-09_12-54-15_953.pdf"
 	]
 }
