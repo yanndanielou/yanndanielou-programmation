@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 import LoggerConfig
 
 import jsonInstructions
+import webSiteResults
 
 import logging
 import param
@@ -64,18 +65,20 @@ def processJsonInstructionFile(json_instruction_file_path):
         jsonInstructionsDict = json.loads(fh.read())
         print(jsonInstructionsDict)
 
+        results = webSiteResults.WebSiteResults()
         alreadyProcessedLinksUrls = set()
         filesDownloadedUrls = set()
         initialInstructions = jsonInstructions.JsonInstructions(jsonInstructionsDict)
-        downloadAllFilesFromWebPageLink(initialInstructions._mainPage, initialInstructions, alreadyProcessedLinksUrls,filesDownloadedUrls)
+        downloadAllFilesFromWebPageLink(initialInstructions._mainPage, initialInstructions, results)
 
         LoggerConfig.printAndLogInfo(str(len(filesDownloadedUrls)) + " files to download")
 
-def dowloadFilesFromURL(urls):
+def dowloadFilesFromURL(urls, results):
     for url in urls:
-        dowloadFileFromURL(url)
+        dowloadFileFromURL(url, results)
 
-def dowloadFileFromURL(url):
+@LoggerConfig.execution_time
+def dowloadFileFromURL(url, results):
     if not os.path.exists(param.output_directory):
         LoggerConfig.printAndLogInfo('Create output directory:' + param.output_directory)
         os.makedirs(param.output_directory)
@@ -86,6 +89,8 @@ def dowloadFileFromURL(url):
     LoggerConfig.printAndLogInfo("Download " + fileBaseName + " from " + url)
     try:
         urlretrieve(url, param.output_directory + "/" + fileBaseName)
+        results.recordFileDownloadedUrl(url)
+        
     except:
         LoggerConfig.printAndLogError("Failed to download " + fileBaseName + " from " + url)
                 
@@ -117,19 +122,19 @@ def get_content_type(url):
 def isWebPage(url):
     return 'text/html' in get_content_type(url) 
 
-def fileMustBeDownload(url, initialInstructions, filesToDownloadUrls):
-    if url in filesToDownloadUrls:
+def fileMustBeDownload(url, initialInstructions, results):
+    if url in results._filesDownloadedUrls:
         return False
 
     for filesExtensionToDownload in initialInstructions._filesExtensionsToDownload:
         if url.endswith(filesExtensionToDownload):
             LoggerConfig.printAndLogInfo("Must download:" + url)
-            filesToDownloadUrls.add(url)
+            results._filesDownloadedUrls.add(url)
             return True
         
     return False
 
-def linkMustBeProcessed(url, initialInstructions, alreadyProcessedLinks):
+def linkMustBeProcessed(url, initialInstructions, results):
     
     for pageToExclude in initialInstructions._pagesToExclude:
         if pageToExclude in url:
@@ -143,7 +148,7 @@ def linkMustBeProcessed(url, initialInstructions, alreadyProcessedLinks):
         logging.info(url + " is not a web page but is:" + url_content_type)
         return False
 
-    if url in alreadyProcessedLinks:
+    if url in results._alreadyProcessedLinksUrls:
         logging.info(url + " already processed")
         return False
     
@@ -159,29 +164,29 @@ def linkMustBeProcessed(url, initialInstructions, alreadyProcessedLinks):
 
 
 
-def retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions, filesAlreadedDownloadedUrls):
+def retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions, results):
     newFilesToDownloadUrls = set()
     for aHrefLink in aHrefLinks:
-        if fileMustBeDownload(aHrefLink, initialInstructions, filesAlreadedDownloadedUrls):
+        if fileMustBeDownload(aHrefLink, initialInstructions, results):
             newFilesToDownloadUrls.add(aHrefLink)
 
-    LoggerConfig.printAndLogInfo("After " + url + ", " + str(len(filesAlreadedDownloadedUrls)) + " files to download in total")
+    LoggerConfig.printAndLogInfo("After " + url + ", " + str(len(results._filesDownloadedUrls)) + " files to download in total")
     return newFilesToDownloadUrls
 
 
-def processSubLinks(aHrefLinks, initialInstructions, alreadyProcessedLinks, filesToDownloadUrls):
+def processSubLinks(aHrefLinks, initialInstructions, results):
     
     subLinksToProcess = set()
     for aHrefLink in aHrefLinks:
-        if linkMustBeProcessed(aHrefLink, initialInstructions, alreadyProcessedLinks):
+        if linkMustBeProcessed(aHrefLink, initialInstructions, results):
             subLinksToProcess.add(aHrefLink)
-            downloadAllFilesFromWebPageLink(aHrefLink, initialInstructions, alreadyProcessedLinks, filesToDownloadUrls)
+            downloadAllFilesFromWebPageLink(aHrefLink, initialInstructions, results)
 
     return subLinksToProcess
 
-def downloadAllFilesFromWebPageLink(url, initialInstructions, alreadyProcessedLinks, filesAlreadyDownloadedUrls):
+def downloadAllFilesFromWebPageLink(url, initialInstructions, results):
     LoggerConfig.printAndLogInfo("process link:" + url)
-    alreadyProcessedLinks.add(url)
+    results._alreadyProcessedLinksUrls.add(url)
     
     #page = urllib.request.urlopen(url)
     #data = page.read()
@@ -196,19 +201,19 @@ def downloadAllFilesFromWebPageLink(url, initialInstructions, alreadyProcessedLi
     for linkUrl in aLinks:
         aHrefLinks.add(linkUrl.attrs['href'])
 
-    newFilesToDownloadUrls = retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions, filesAlreadyDownloadedUrls)
-    dowloadFilesFromURL(newFilesToDownloadUrls)
-    filesAlreadyDownloadedUrls.update(newFilesToDownloadUrls)
+    newFilesToDownloadUrls = retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions, results)
+    LoggerConfig.printAndLogInfo(str(len(newFilesToDownloadUrls)) +  " new files to download")
 
-    LoggerConfig.printAndLogInfo("After processing " + url + " (without children), " + str(len(filesAlreadyDownloadedUrls)) + " files already downloaded, and " + str(len(alreadyProcessedLinks)) + " links processed")
+    dowloadFilesFromURL(newFilesToDownloadUrls, results)
+
+    LoggerConfig.printAndLogInfo("After processing " + url + " (without children), " + str(len(results._filesDownloadedUrls)) + " files already downloaded, and " + str(len(results._alreadyProcessedLinksUrls)) + " links processed")
     print('Duration since application start: ' + format(time.time() - application_start_time, '.2f'))
 
-    processSubLinks(aHrefLinks, initialInstructions, alreadyProcessedLinks, filesAlreadyDownloadedUrls)
+    processSubLinks(aHrefLinks, initialInstructions, results)
 
-    LoggerConfig.printAndLogInfo("After processing " + url + ", (with children) " + str(len(filesAlreadyDownloadedUrls)) + " files to already downloaded, and " + str(len(alreadyProcessedLinks)) + " links processed")
+    LoggerConfig.printAndLogInfo("After processing " + url + ", (with children) " + str(len(results._filesDownloadedUrls)) + " files to already downloaded, and " + str(len(results._alreadyProcessedLinksUrls)) + " links processed")
     print('Duration since application start: ' + format(time.time() - application_start_time, '.2f'))
 
-    return filesAlreadyDownloadedUrls
 
 def main(argv):
    
