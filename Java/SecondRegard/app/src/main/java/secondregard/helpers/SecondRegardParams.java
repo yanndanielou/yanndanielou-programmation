@@ -3,8 +3,6 @@ package secondregard.helpers;
 import java.util.ArrayList;
 import java.util.List;
 
-import common.collection.CollectionUtils;
-
 public interface SecondRegardParams {
 
 	// public static final List<String> ALLOWED_USER_PRENOMS =

@@ -19,7 +19,6 @@ import tetris.core.DifficultyLevelManager;
 import tetris.game_objects.Mino;
 import tetris.game_objects.tetrominoes_types.TetroMinoFactory;
 import tetris.game_objects.tetrominoes_types.Tetromino;
-import tetris.game_objects.tetrominoes_types.TetrominoOSquare;
 import tetris.game_objects.tetrominoes_types.TetrominoType;
 import tetris.gameboard.Matrix;
 import tetris.gameboard.MatrixCell;

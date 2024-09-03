@@ -1,9 +1,5 @@
 package authentification.loginandpassword.complexpassword;
 
-import java.util.List;
-
-import authentification.loginandpassword.ClearTextPassword;
-
 public class RepetitiveCharactersRule implements ClearTextCurrentPasswordComplexityRule {
 
 	private QPWDLMTREP_LEVEL level;

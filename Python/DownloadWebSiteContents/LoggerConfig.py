@@ -77,7 +77,7 @@ class execution_time(object):
         ret = self.f(*args)
     
         elapsed_time = time.time() - start_time    
-        logging.info("Exited " +  self.f.__name__ + ". Elapsed:" + format(elapsed_time, '.2f') + " s")
+        printAndLogInfo("Exited " +  self.f.__name__ + ". Elapsed:" + format(elapsed_time, '.2f') + " s")
         return ret
 
 class print_output(object):
@@ -105,3 +105,6 @@ class print_input_and_output(object):
     
         logging.debug("Arguments passed to " + self.f.__name__ + " called with:" + str(args) + " returns:" + str(ret) )
         return ret
+    
+
+    

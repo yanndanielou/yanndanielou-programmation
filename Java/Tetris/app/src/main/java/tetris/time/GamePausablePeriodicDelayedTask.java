@@ -4,8 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import common.timer.PausablePeriodicDelayedTask;
-import game.genericgame.GenericGameStatusListener;
-import net.bytebuddy.asm.Advice.Local;
 import tetris.game.Game;
 import tetris.game.GameStatusListener;
 

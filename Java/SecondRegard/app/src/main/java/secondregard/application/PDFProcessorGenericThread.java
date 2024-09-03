@@ -7,8 +7,8 @@ import org.apache.logging.log4j.Logger;
 
 import secondregard.data.inputpdfdocument.builders.InputPDFsDataModel;
 import secondregard.data.users.SecondRegardAllowedUser;
-import secondregard.helpers.SecondRegardHelpers;
 import secondregard.helpers.SecondRegardConstants;
+import secondregard.helpers.SecondRegardHelpers;
 
 public class PDFProcessorGenericThread extends Thread {
 

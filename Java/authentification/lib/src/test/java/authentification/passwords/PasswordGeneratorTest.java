@@ -17,7 +17,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import authentification.passwords.PasswordsConstants;
 import authentification.passwords.generation.PasswordGenerator;
 import authentification.passwords.validation.PasswordValidator;
 

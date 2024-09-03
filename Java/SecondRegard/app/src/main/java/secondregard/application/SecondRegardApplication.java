@@ -14,18 +14,15 @@ import common.collection.CollectionUtils;
 import common.duration.CodeDurationCounter;
 import common.duration.FormatterUtils;
 import common.filesanddirectories.DirectoryHelper;
-import compressedarchivefiles.standardjavalibrary.StandardJavaLibraryZipFileManager;
 import pdfmodification.helpers.PDFModificationHelpers;
 import secondregard.data.inputpdfdocument.builders.ActionsToPerformDataModel;
-import secondregard.data.inputpdfdocument.builders.FilesToZipDataModel;
 import secondregard.data.inputpdfdocument.builders.InputPDFAndActionsToPerformDataModel;
-import secondregard.data.inputpdfdocument.builders.SecondRegardActionsToPerformModelBuilder;
 import secondregard.data.inputpdfdocument.builders.InputPDFsDataModel;
-import secondregard.data.inputpdfdocument.builders.ListOfPDFBatchesDataModel;
+import secondregard.data.inputpdfdocument.builders.SecondRegardActionsToPerformModelBuilder;
 import secondregard.data.users.SecondRegardAllowedUser;
 import secondregard.data.users.SecondRegardAllowedUsersFromCsvLoader;
-import secondregard.helpers.SecondRegardHelpers;
 import secondregard.helpers.SecondRegardConstants;
+import secondregard.helpers.SecondRegardHelpers;
 import secondregard.helpers.SecondRegardParams;
 import zip4j.Zip4JZipManager;
 
@@ -190,7 +187,10 @@ public class SecondRegardApplication {
 			// outputPdfFilesFullPaths);
 			String zipFileName = SecondRegardConstants.OUTPUT_DIRECTORY_NAME + "/"
 					+ SecondRegardHelpers.getOutputPDFFileName(inputPdf, inputPDFFile, null) + ".zip";
-			boolean zipSuccess = Zip4JZipManager.createZipFileWithFilesFullPaths(zipFileName, outputPdfFilesFullPaths);
+
+			boolean zipSuccess = new Zip4JZipManager.ZipCreationBuilder(zipFileName)
+					.addFilesByFullPaths(outputPdfFilesFullPaths).build().createZip();
+
 			LOGGER.info(() -> "Zip creation result:" + zipSuccess);
 		}
 

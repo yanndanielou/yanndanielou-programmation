@@ -14,23 +14,33 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import common.gson.adapter.InstantAdapter;
+import crypto.hash.Hash;
+import crypto.hash.Hash.HashType;
+import crypto.hash.HashHelpers;
 
 public class LoginAndPasswordAuthentification {
 
 	String login;
-	ClearTextPassword currentPassword;
+	HashedPassword currentPassword;
 	PasswordHistory passwordHistory;
 	private String outputFilePath;
 
 	public LoginAndPasswordAuthentification(String outputFilePath, String login, String passwordInClear) {
 		this.outputFilePath = outputFilePath;
 		changeLogin(login);
-		currentPassword = new ClearTextPassword(passwordInClear);
+		changePassword(null, passwordInClear);
 		save(passwordInClear);
 	}
 
 	private boolean changeLogin(String newLogin) {
 		this.login = newLogin;
+		return true;
+	}
+
+	public boolean changePassword(String previousPasswordClearText, String newPasswordClearText) {
+		Hash newPasswordHash = HashHelpers.computeHashStandardLibrary(newPasswordClearText, HashType.SHA3_256);
+		currentPassword = new HashedPassword(newPasswordHash);
+
 		return true;
 	}
 
@@ -57,7 +67,7 @@ public class LoginAndPasswordAuthentification {
 			String jsonContent = gson.toJson(this);
 			String salt = "salt";
 			SecretKey keyFromPassword = AESUtil.getKeyFromPassword(currentPasswordInClear, salt);
-			//AESUtil.encryptPasswordBased(salt, keyFromPassword, null);
+			// AESUtil.encryptPasswordBased(salt, keyFromPassword, null);
 			return true;
 		} catch (IOException | NoSuchAlgorithmException | InvalidKeySpecException e) {
 			e.printStackTrace();

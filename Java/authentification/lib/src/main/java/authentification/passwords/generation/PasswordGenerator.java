@@ -51,7 +51,7 @@ public class PasswordGenerator implements PasswordsConstants{
 	public static String generatePassayPassword(int length, int lowerCasesCount, int upperCasesCount, int digitsCount,
 			int specialCharactersCount) {
 
-		List<CharacterRule> characterRules = new ArrayList();
+		List<CharacterRule> characterRules = new ArrayList<CharacterRule>();
 
 		if (lowerCasesCount > 0) {
 			CharacterData lowerCaseChars = EnglishCharacterData.LowerCase;

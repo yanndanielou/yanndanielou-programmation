@@ -1,5 +1,6 @@
 package authentification.loginandpassword;
 
+@Deprecated
 public class ClearTextPassword extends Password {
 
 	public String clearTextPassword;

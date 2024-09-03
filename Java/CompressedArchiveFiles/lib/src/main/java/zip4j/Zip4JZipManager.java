@@ -2,9 +2,9 @@ package zip4j;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.collections4.ListUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,123 +21,48 @@ import net.lingala.zip4j.model.enums.EncryptionMethod;
 public class Zip4JZipManager {
 	private static final Logger LOGGER = LogManager.getLogger(Zip4JZipManager.class);
 
-	/**
-	 * https://github.com/srikanth-lingala/zip4j?tab=readme-ov-file#creating-a-zip-file-with-multiple-files--adding-multiple-files-to-an-existing-zip
-	 * 
-	 */
-	public static boolean createEncryptedZipFileWithFilesFullPaths(String outputZipFileFullPath, String password,
-			List<String> filesToIncludeInZipFullPaths) {
-		List<File> filesToIncludeInZip = FileHelper.getFileFromFullPaths(filesToIncludeInZipFullPaths);
-		return createEncryptedZipFileWithFiles(outputZipFileFullPath, password, filesToIncludeInZip);
+	private List<File> filesToIncludeInZip;
+	private List<File> directoriesToIncludeInZip;
+	private String outputZipFileFullPath;
+	private String plainTextPassword;
+
+	private boolean isPasswordEncrypted() {
+		return plainTextPassword != null;
+	}
+
+	public Zip4JZipManager(ZipCreationBuilder zipCreationBuilder) {
+		this.filesToIncludeInZip = zipCreationBuilder.filesToIncludeInZip;
+		this.directoriesToIncludeInZip = zipCreationBuilder.directoriesToIncludeInZip;
+		this.outputZipFileFullPath = zipCreationBuilder.outputZipFileFullPath;
+		this.plainTextPassword = zipCreationBuilder.plainTextPassword;
 	}
 
 	/**
 	 * https://github.com/srikanth-lingala/zip4j?tab=readme-ov-file#creating-a-zip-file-with-multiple-files--adding-multiple-files-to-an-existing-zip
 	 * 
 	 */
-	public static boolean createEncryptedZipFileWithFiles(String outputZipFileFullPath, String password,
-			List<File> filesToIncludeInZipFullPaths) {
+	public boolean createZip() {
 		try {
-			ZipFile zipFile = new ZipFile(outputZipFileFullPath);
-			zipFile.addFiles(filesToIncludeInZipFullPaths);
-			zipFile.close();
-			LOGGER.info(outputZipFileFullPath + " processed for " + filesToIncludeInZipFullPaths.size()
-					+ " files and closed");
-			return true;
-		} catch (ZipException e) {
-			LOGGER.error("could not create " + outputZipFileFullPath);
-			e.printStackTrace();
-			return false;
-		} catch (IOException io) {
-			LOGGER.error("could not create " + outputZipFileFullPath);
-			io.printStackTrace();
-			return false;
-		}
-	}
 
-	public static boolean createZipFileWithFilesFullPaths(String outputZipFileFullPath,
-			List<String> filesToIncludeInZipFullPaths) {
-		return createZipFileWithFiles(outputZipFileFullPath,
-				FileHelper.getFileFromFullPaths(filesToIncludeInZipFullPaths));
-	}
+			ZipParameters zipParameters = new ZipParameters();
+			zipParameters.setEncryptFiles(true);
+			zipParameters.setEncryptionMethod(EncryptionMethod.AES);
+			// Below line is optional. AES 256 is used by default. You can override it to
+			// use AES 128. AES 192 is supported only for extracting.
+			zipParameters.setAesKeyStrength(AesKeyStrength.KEY_STRENGTH_256);
 
-	/**
-	 * https://github.com/srikanth-lingala/zip4j?tab=readme-ov-file#creating-a-zip-file-with-multiple-files--adding-multiple-files-to-an-existing-zip
-	 * 
-	 */
-	public static boolean createZipFileWithFiles(String outputZipFileFullPath,
-			List<File> filesToIncludeInZipFullPaths) {
-		try {
-			ZipFile zipFile = new ZipFile(outputZipFileFullPath);
-			zipFile.addFiles(filesToIncludeInZipFullPaths);
-			zipFile.close();
-			LOGGER.info(outputZipFileFullPath + " processed for " + filesToIncludeInZipFullPaths.size()
-					+ " files and closed");
-			return true;
-		} catch (ZipException e) {
-			LOGGER.error("could not create " + outputZipFileFullPath);
-			e.printStackTrace();
-			return false;
-		} catch (IOException io) {
-			LOGGER.error("could not create " + outputZipFileFullPath);
-			io.printStackTrace();
-			return false;
-		}
-	}
+			ZipFile zipFile = isPasswordEncrypted()
+					? new ZipFile(outputZipFileFullPath, plainTextPassword.toCharArray())
+					: new ZipFile(outputZipFileFullPath);
 
-	public static boolean createZipFileWithFoldersFullPaths(String outputZipFileFullPath,
-			List<String> filesToIncludeInZipFullPaths) {
-		return createZipFileWithFolders(outputZipFileFullPath,
-				FileHelper.getFileFromFullPaths(filesToIncludeInZipFullPaths));
-	}
-
-	/**
-	 * https://github.com/srikanth-lingala/zip4j?tab=readme-ov-file#creating-a-zip-file-by-adding-a-folder-to-it--adding-a-folder-to-an-existing-zip
-	 * 
-	 */
-	public static boolean createZipFileWithFolders(String outputZipFileFullPath, List<File> foldersToIncludeInZip) {
-		try {
-			ZipFile zipFile = new ZipFile(outputZipFileFullPath);
-			foldersToIncludeInZip.forEach(e -> {
+			directoriesToIncludeInZip.forEach(e -> {
 				try {
-					zipFile.addFolder(e);
-				} catch (ZipException e1) {
-					LOGGER.error("could not create " + outputZipFileFullPath + " for " + e);
-					e1.printStackTrace();
-				}
-			});
-			zipFile.close();
-			LOGGER.info(
-					outputZipFileFullPath + " processed for " + foldersToIncludeInZip.size() + " folders and closed");
-			return true;
-		} catch (ZipException e) {
-			LOGGER.error("could not create " + outputZipFileFullPath);
-			e.printStackTrace();
-			return false;
-		} catch (IOException io) {
-			LOGGER.error("could not create " + outputZipFileFullPath);
-			io.printStackTrace();
-			return false;
-		}
-	}
+					if (isPasswordEncrypted()) {
+						zipFile.addFolder(e, zipParameters);
 
-	public static boolean createEncryptedZipFileWithFilesFolders(String outputZipFileFullPath, String password,
-			List<File> foldersToIncludeInZip, List<File> filesToIncludeInZip) {
-		foldersToIncludeInZip = ListUtils.emptyIfNull(foldersToIncludeInZip);
-		filesToIncludeInZip = ListUtils.emptyIfNull(filesToIncludeInZip);
-
-		ZipParameters zipParameters = new ZipParameters();
-		zipParameters.setEncryptFiles(true);
-		zipParameters.setEncryptionMethod(EncryptionMethod.AES);
-		// Below line is optional. AES 256 is used by default. You can override it to
-		// use AES 128. AES 192 is supported only for extracting.
-		zipParameters.setAesKeyStrength(AesKeyStrength.KEY_STRENGTH_256);
-
-		try {
-			ZipFile zipFile = new ZipFile(outputZipFileFullPath, password.toCharArray());
-			foldersToIncludeInZip.forEach(e -> {
-				try {
-					zipFile.addFolder(e, zipParameters);
+					} else {
+						zipFile.addFolder(e);
+					}
 				} catch (ZipException e1) {
 					LOGGER.error("could not create " + outputZipFileFullPath + " for " + e);
 					e1.printStackTrace();
@@ -145,12 +70,18 @@ public class Zip4JZipManager {
 			});
 
 			if (!filesToIncludeInZip.isEmpty()) {
-				zipFile.addFiles(filesToIncludeInZip, zipParameters);
+				if (isPasswordEncrypted()) {
+					zipFile.addFiles(filesToIncludeInZip, zipParameters);
+
+				} else {
+					zipFile.addFiles(filesToIncludeInZip);
+				}
 			}
 
+			LOGGER.info(outputZipFileFullPath + " processed for " + filesToIncludeInZip.size() + " files" + " and "
+					+ directoriesToIncludeInZip.size() + " directories, and closed");
 			zipFile.close();
-			LOGGER.info(outputZipFileFullPath + " processed for " + foldersToIncludeInZip.size() + " folders and "
-					+ filesToIncludeInZip.size() + " files, and closed");
+
 			return true;
 		} catch (ZipException e) {
 			LOGGER.error("could not create " + outputZipFileFullPath);
@@ -163,22 +94,59 @@ public class Zip4JZipManager {
 		}
 	}
 
-	public static boolean createZipFileWithFolders(String outputZipFileFullPath, File folderToIncludeInZip) {
-		try {
-			ZipFile zipFile = new ZipFile(outputZipFileFullPath);
-			zipFile.addFolder(folderToIncludeInZip);
-			zipFile.close();
-			LOGGER.info(outputZipFileFullPath + " processed for " + folderToIncludeInZip.getCanonicalPath()
-					+ " and closed");
-			return true;
-		} catch (ZipException e) {
-			LOGGER.error("could not create " + outputZipFileFullPath);
-			e.printStackTrace();
-			return false;
-		} catch (IOException io) {
-			LOGGER.error("could not create " + outputZipFileFullPath);
-			io.printStackTrace();
-			return false;
+	/**
+	 * https://www.digitalocean.com/community/tutorials/builder-design-pattern-in-java
+	 */
+	public static class ZipCreationBuilder {
+		private List<File> filesToIncludeInZip = new ArrayList<File>();
+		private List<File> directoriesToIncludeInZip = new ArrayList<File>();
+		private String outputZipFileFullPath;
+		private String plainTextPassword;
+
+		public ZipCreationBuilder(String outputZipFileFullPath) {
+			this.outputZipFileFullPath = outputZipFileFullPath;
 		}
+
+		public ZipCreationBuilder addFile(File file) {
+			filesToIncludeInZip.add(file);
+			return this;
+		}
+
+		public ZipCreationBuilder addFiles(List<File> files) {
+			filesToIncludeInZip.addAll(files);
+			return this;
+		}
+
+		public ZipCreationBuilder addFilesByFullPaths(List<String> filesToIncludeInZipFullPaths) {
+			List<File> fileFromFullPaths = FileHelper.getFileFromFullPaths(filesToIncludeInZipFullPaths);
+			addFiles(fileFromFullPaths);
+			return this;
+		}
+
+		public ZipCreationBuilder addDirectory(File directory) {
+			directoriesToIncludeInZip.add(directory);
+			return this;
+		}
+
+		public ZipCreationBuilder addDirectories(List<File> directories) {
+			directoriesToIncludeInZip.addAll(directories);
+			return this;
+		}
+
+		public ZipCreationBuilder addDirectoriesByFullPaths(List<String> directoriesToIncludeInZipFullPaths) {
+			List<File> directoriesFromFullPaths = FileHelper.getFileFromFullPaths(directoriesToIncludeInZipFullPaths);
+			addDirectories(directoriesFromFullPaths);
+			return this;
+		}
+
+		public ZipCreationBuilder encrypt(String plainTextPassword) {
+			this.plainTextPassword = plainTextPassword;
+			return this;
+		}
+
+		public Zip4JZipManager build() {
+			return new Zip4JZipManager(this);
+		}
+
 	}
 }

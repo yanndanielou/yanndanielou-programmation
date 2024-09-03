@@ -11,13 +11,12 @@ import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
 import common.filesanddirectories.DirectoryHelper;
-import compressedarchivefiles.standardjavalibrary.StandardJavaLibraryZipFileManager;
 import pdfmodification.helpers.PDFModificationHelpers;
 import secondregard.data.inputpdfdocument.builders.InputPDFAndActionsToPerformDataModel;
 import secondregard.data.inputpdfdocument.builders.InputPDFsDataModel;
 import secondregard.data.users.SecondRegardAllowedUser;
-import secondregard.helpers.SecondRegardHelpers;
 import secondregard.helpers.SecondRegardConstants;
+import secondregard.helpers.SecondRegardHelpers;
 import secondregard.helpers.SecondRegardParams;
 import zip4j.Zip4JZipManager;
 
@@ -30,8 +29,8 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 
 	protected static final Logger LOGGER = LogManager.getLogger(PDFProcessorThread.class);
 
-	public PDFProcessorThread(List<SecondRegardAllowedUser> pdfAllowedUsers, InputPDFAndActionsToPerformDataModel pdfBatch,
-			InputPDFsDataModel inputPdf, File inputPDFFile) {
+	public PDFProcessorThread(List<SecondRegardAllowedUser> pdfAllowedUsers,
+			InputPDFAndActionsToPerformDataModel pdfBatch, InputPDFsDataModel inputPdf, File inputPDFFile) {
 
 		this.pdfAllowedUsers = pdfAllowedUsers;
 		this.pdfBatch = pdfBatch;
@@ -109,7 +108,10 @@ public class PDFProcessorThread extends PDFProcessorGenericThread {
 			// outputPdfFilesFullPaths);
 			String zipFileName = SecondRegardConstants.OUTPUT_DIRECTORY_NAME + "/"
 					+ SecondRegardHelpers.getOutputPDFFileName(inputPdf, inputPDFFile, null) + ".zip";
-			boolean zipSuccess = Zip4JZipManager.createZipFileWithFilesFullPaths(zipFileName, outputPdfFilesFullPaths);
+
+			boolean zipSuccess = new Zip4JZipManager.ZipCreationBuilder(zipFileName)
+					.addFilesByFullPaths(outputPdfFilesFullPaths).build().createZip();
+
 			LOGGER.info(() -> "Zip creation result:" + zipSuccess);
 		}
 	}

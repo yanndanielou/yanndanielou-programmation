@@ -1,6 +1,5 @@
 package tetris.hmi.generic.logic;
 
-import game.gameboard.NeighbourGameBoardPointDirection;
 import tetris.game.Game;
 import tetris.hmi.javafx.logic.HmiController;
 

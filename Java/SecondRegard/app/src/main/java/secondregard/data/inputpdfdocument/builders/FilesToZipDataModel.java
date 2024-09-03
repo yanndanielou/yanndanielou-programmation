@@ -1,9 +1,6 @@
 package secondregard.data.inputpdfdocument.builders;
 
-import java.io.File;
 import java.util.List;
-
-import common.filesanddirectories.FileNameExtensionAndPathHelper;
 
 public class FilesToZipDataModel {
 

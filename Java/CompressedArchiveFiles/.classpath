@@ -9,8 +9,9 @@
 	
 	
 	<!-- 7zip -->
+	<!-- Unused (deprecated)	
 	<classpathentry kind="src" path="lzma2405/Java"/>
-
+	-->
 	
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>	
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>

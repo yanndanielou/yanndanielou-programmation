@@ -2,8 +2,6 @@ package secondregard.helpers;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.collections4.ListUtils;
@@ -148,8 +146,9 @@ public class SecondRegardHelpers {
 							return new File(SecondRegardConstants.INPUT_DIRECTORY_NAME + "\\" + e);
 						}).toList();
 
-				boolean zipCreationSuccess = Zip4JZipManager.createEncryptedZipFileWithFilesFolders(outputZipFullPath,
-						secondRegardAllowedUser.getMotDePasseOuverture(), foldersToAdd, filesToAdd);
+				boolean zipCreationSuccess = new Zip4JZipManager.ZipCreationBuilder(outputZipFullPath)
+						.addDirectories(foldersToAdd).addFiles(filesToAdd)
+						.encrypt(secondRegardAllowedUser.getMotDePasseOuverture()).build().createZip();
 
 				LOGGER.info(outputZipFileName + " processed. Result:" + zipCreationSuccess);
 

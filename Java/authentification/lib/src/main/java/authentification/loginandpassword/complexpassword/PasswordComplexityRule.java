@@ -1,9 +1,5 @@
 package authentification.loginandpassword.complexpassword;
 
-import java.util.List;
-
-import authentification.loginandpassword.ClearTextPassword;
-
 public interface PasswordComplexityRule {
 
 	/**
