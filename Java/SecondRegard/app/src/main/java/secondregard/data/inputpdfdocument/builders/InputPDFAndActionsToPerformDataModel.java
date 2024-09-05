@@ -5,7 +5,6 @@ import java.util.List;
 public class InputPDFAndActionsToPerformDataModel {
 
 	private List<InputPDFsDataModel> inputPdfs;
-	private boolean encrypt;
 
 	private List<TextLineToDisplayDataModel> textLinesToDisplay;
 
@@ -17,8 +16,5 @@ public class InputPDFAndActionsToPerformDataModel {
 		return inputPdfs;
 	}
 
-	public boolean isEncrypted() {
-		return encrypt;
-	}
 
 }

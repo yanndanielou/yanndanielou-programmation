@@ -13,6 +13,10 @@ public class TextLineToDisplayDataModel {
 	private PointDataModel newLineAtOffset;
 	private ColorDataModel nonStrokingColor;
 
+	public boolean isUserDependant() {
+		return TextToDisplayType.FIRST_NAME_SPACE_AND_LAST_NAME.equals(textType);
+	}
+
 	public String computeText(SecondRegardAllowedUser pdfAllowedUser) {
 		switch (textType) {
 		case FIRST_NAME_SPACE_AND_LAST_NAME:

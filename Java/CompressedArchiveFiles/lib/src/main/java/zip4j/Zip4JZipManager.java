@@ -8,6 +8,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import common.duration.CodeDurationCounter;
+import common.duration.FormatterUtils;
 import common.filesanddirectories.FileHelper;
 import net.lingala.zip4j.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
@@ -42,6 +44,10 @@ public class Zip4JZipManager {
 	 * 
 	 */
 	public boolean createZip() {
+		LOGGER.info(() -> "Begin to create zip" + outputZipFileFullPath);
+
+		CodeDurationCounter saveTimeDurationCounter = new CodeDurationCounter();
+
 		try {
 
 			ZipParameters zipParameters = new ZipParameters();
@@ -80,6 +86,10 @@ public class Zip4JZipManager {
 
 			LOGGER.info(outputZipFileFullPath + " processed for " + filesToIncludeInZip.size() + " files" + " and "
 					+ directoriesToIncludeInZip.size() + " directories, and closed");
+
+			LOGGER.info(() -> "Zip created in "
+					+ FormatterUtils.GetDurationAsString(saveTimeDurationCounter.getDuration()));
+
 			zipFile.close();
 
 			return true;

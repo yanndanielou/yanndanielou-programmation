@@ -49,26 +49,29 @@ public class SecondRegardHelpers {
 			for (TextLineToDisplayDataModel textLinesToDisplay : inputPDFAndActionsToPerformDataModel
 					.getTextLinesToDisplay()) {
 
-				ColorDataModel nonStrokingColorDataModel = textLinesToDisplay.getNonStrokingColor();
-				if (nonStrokingColorDataModel != null) {
-					pageOfOriginalDocumentWithMatermarkAsContentStream
-							.setNonStrokingColor(nonStrokingColorDataModel.getColorAsAwtColor());
+				if (pdfAllowedUser != null || textLinesToDisplay.isUserDependant()) {
+
+					ColorDataModel nonStrokingColorDataModel = textLinesToDisplay.getNonStrokingColor();
+					if (nonStrokingColorDataModel != null) {
+						pageOfOriginalDocumentWithMatermarkAsContentStream
+								.setNonStrokingColor(nonStrokingColorDataModel.getColorAsAwtColor());
+					}
+
+					PDFFontDataModel pdfFont = textLinesToDisplay.getFont();
+
+					if (pdfFont != null) {
+						FontName fontName = pdfFont.getFontName();
+						int fontSize = pdfFont.getFontSize();
+						pageOfOriginalDocumentWithMatermarkAsContentStream.setFont(new PDType1Font(fontName), fontSize);
+					}
+
+					PointDataModel newLineAtOffset = textLinesToDisplay.getNewLineAtOffset();
+					pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(newLineAtOffset.getX(),
+							newLineAtOffset.getY());
+					String computeText = textLinesToDisplay.computeText(pdfAllowedUser);
+					pageOfOriginalDocumentWithMatermarkAsContentStream.showText(computeText);
+
 				}
-
-				PDFFontDataModel pdfFont = textLinesToDisplay.getFont();
-
-				if (pdfFont != null) {
-					FontName fontName = pdfFont.getFontName();
-					int fontSize = pdfFont.getFontSize();
-					pageOfOriginalDocumentWithMatermarkAsContentStream.setFont(new PDType1Font(fontName), fontSize);
-				}
-
-				PointDataModel newLineAtOffset = textLinesToDisplay.getNewLineAtOffset();
-				pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(newLineAtOffset.getX(),
-						newLineAtOffset.getY());
-				String computeText = textLinesToDisplay.computeText(pdfAllowedUser);
-				pageOfOriginalDocumentWithMatermarkAsContentStream.showText(computeText);
-
 			}
 			pageOfOriginalDocumentWithMatermarkAsContentStream.endText();
 			pageOfOriginalDocumentWithMatermarkAsContentStream.close();
@@ -86,24 +89,31 @@ public class SecondRegardHelpers {
 		PDFModificationHelpers.saveOutputPDF(inputPDFFile, originalDoc, generatedPersonnalizedProtectedPDFFullPath);
 	}
 
-	public static String getOutputPDFFileName(InputPDFsDataModel inputPdf, File inputPDFFile,
+	public static String getOutputPDFFileNameWithoutExtension(InputPDFsDataModel inputPdf, File inputPDFFile,
 			SecondRegardAllowedUser pdfAllowedUser) {
+
 		String fileNameWithoutExtension = inputPdf.getGenericOutputFileName();
 		if (fileNameWithoutExtension == null) {
 			fileNameWithoutExtension = Strings.nullToEmpty(inputPdf.getOutputFilePrefixToAdd())
 					+ FileNameExtensionAndPathHelper.getFileNameWithoutExtension(inputPDFFile.getName());
 		}
 
-		String generatedPersonnalizedProtectedPDFFileNameWithExtension = fileNameWithoutExtension;
+		String generatedPersonnalizedProtectedPDFFileNameWithoutExtension = fileNameWithoutExtension;
 
 		if (pdfAllowedUser != null) {
-			generatedPersonnalizedProtectedPDFFileNameWithExtension += " " + pdfAllowedUser.getPrenom() + " "
+			generatedPersonnalizedProtectedPDFFileNameWithoutExtension += " " + pdfAllowedUser.getPrenom() + " "
 					+ pdfAllowedUser.getNom();
 		}
 
-		generatedPersonnalizedProtectedPDFFileNameWithExtension += SecondRegardConstants.PDF_EXTENSION_WITH_POINT;
+		return generatedPersonnalizedProtectedPDFFileNameWithoutExtension;
 
-		return generatedPersonnalizedProtectedPDFFileNameWithExtension;
+	}
+
+	public static String getOutputPDFFileName(InputPDFsDataModel inputPdf, File inputPDFFile,
+			SecondRegardAllowedUser pdfAllowedUser) {
+
+		return getOutputPDFFileNameWithoutExtension(inputPdf, inputPDFFile, pdfAllowedUser)
+				+ SecondRegardConstants.PDF_EXTENSION_WITH_POINT;
 
 	}
 
@@ -163,7 +173,7 @@ public class SecondRegardHelpers {
 
 	public static void generateUnprotectedPdfForNoUserIfNeeded(InputPDFsDataModel inputPdf, File inputPDFFile,
 			InputPDFAndActionsToPerformDataModel pdfBatch) throws IOException {
-		if (pdfBatch.isEncrypted() && SecondRegardParams.GENERATE_ALSO_UNPROTECTED_PDF_FOR_NO_USER) {
+		if (inputPdf.isEncrypted() && SecondRegardParams.GENERATE_ALSO_UNPROTECTED_PDF_FOR_NO_USER) {
 			LOGGER.info(() -> "Load PDF");
 			PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
 
@@ -188,7 +198,7 @@ public class SecondRegardHelpers {
 			throws IOException {
 		List<String> outputPdfFilesFullPaths = new ArrayList<>();
 
-		if (pdfBatch.isEncrypted()) {
+		if (inputPdf.isEncrypted()) {
 
 			for (SecondRegardAllowedUser pdfAllowedUser : pdfAllowedUsers) {
 				{
@@ -222,12 +232,8 @@ public class SecondRegardHelpers {
 			}
 
 			if (SecondRegardParams.GENERATE_ALSO_ZIP_FILES) {
-				// StandardJavaLibraryZipFileManager zipFileManager = new
-				// StandardJavaLibraryZipFileManager();
-				// zipFileManager.createZipFileWithFilesFullPaths(zipFileName,
-				// outputPdfFilesFullPaths);
 				String zipFileName = SecondRegardConstants.OUTPUT_DIRECTORY_NAME + "/"
-						+ SecondRegardHelpers.getOutputPDFFileName(inputPdf, inputPDFFile, null) + ".zip";
+						+ SecondRegardHelpers.getOutputPDFFileNameWithoutExtension(inputPdf, inputPDFFile, null) + ".zip";
 
 				boolean zipSuccess = new Zip4JZipManager.ZipCreationBuilder(zipFileName)
 						.addFilesByFullPaths(outputPdfFilesFullPaths).build().createZip();

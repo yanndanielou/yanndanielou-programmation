@@ -11,6 +11,8 @@ public class InputPDFsDataModel {
 	private List<PageNumberToDeleteDataModel> pageNumberToDelete;
 	private String outputFilePrefixToAdd;
 	private String genericOutputFileName;
+	private boolean personalizeByAllowedUsed;
+	private boolean encrypt;
 
 	public List<File> getInputPDFFiles() {
 		return inputPdfWithFileMaskForMultiplePDF.getResolvedFiles();
@@ -33,5 +35,13 @@ public class InputPDFsDataModel {
 
 	public String getGenericOutputFileName() {
 		return genericOutputFileName;
+	}
+
+	public boolean isEncrypted() {
+		return encrypt;
+	}
+
+	public boolean isPersonalizeByAllowedUsed() {
+		return personalizeByAllowedUsed;
 	}
 }

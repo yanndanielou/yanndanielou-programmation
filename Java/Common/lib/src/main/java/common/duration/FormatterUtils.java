@@ -11,7 +11,7 @@ public class FormatterUtils {
 		long seconds = millis / 1000;
 
 		if (hours > 0) {
-			return hours + "hours" + minutes % 60 + "min";
+			return hours + "hours " + minutes % 60 + "min";
 		}
 
 		if (minutes > 0) {
@@ -19,7 +19,7 @@ public class FormatterUtils {
 		}
 
 		if (seconds > 0) {
-			return seconds + "s" + millis % 1000 + "ms";
+			return seconds + "s " + millis % 1000 + "ms";
 		}
 
 		return millis + "ms";
