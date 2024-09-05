@@ -17,14 +17,4 @@ public class PDFProcessorGenericThread extends Thread {
 	public PDFProcessorGenericThread() {
 
 	}
-
-	protected static String getOutputPDFFileNameWithFullPath(InputPDFsDataModel inputPdf, File inputPDFFile,
-			SecondRegardAllowedUser pdfAllowedUser) {
-
-		String generatedPersonnalizedProtectedPDFFullPath = SecondRegardConstants.OUTPUT_DIRECTORY_NAME + "/"
-				+ SecondRegardHelpers.getOutputPDFFileName(inputPdf, inputPDFFile, pdfAllowedUser);
-
-		return generatedPersonnalizedProtectedPDFFullPath;
-
-	}
 }

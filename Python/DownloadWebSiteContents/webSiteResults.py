@@ -7,6 +7,7 @@ class WebSiteResults:
         self._filesDownloadedUrls = set()
         self._alreadyProcessedLinksUrls = set()
         self._lastFilesDownloadedUrls = set()
+        self._failedDownloadedUrls = set()
 
 
     def recordFilesDownloadedUrls(self, filesDownloadedUrls):

@@ -92,6 +92,7 @@ def dowloadFileFromURL(url, results):
         results.recordFileDownloadedUrl(url)
         
     except:
+        results._failedDownloadedUrls.add(url)
         LoggerConfig.printAndLogError("Failed to download " + fileBaseName + " from " + url)
                 
     print('Duration since application start: ' + format(time.time() - application_start_time, '.2f'))

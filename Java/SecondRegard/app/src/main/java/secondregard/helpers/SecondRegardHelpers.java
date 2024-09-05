@@ -2,11 +2,13 @@ package secondregard.helpers;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.collections4.ListUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -18,6 +20,7 @@ import com.google.common.base.Strings;
 
 import common.builders.ColorDataModel;
 import common.builders.PointDataModel;
+import common.filesanddirectories.DirectoryHelper;
 import common.filesanddirectories.FileNameExtensionAndPathHelper;
 import pdfmodification.helpers.PDFModificationHelpers;
 import secondregard.data.inputpdfdocument.builders.FilesToZipDataModel;
@@ -155,6 +158,105 @@ public class SecondRegardHelpers {
 			}
 		}
 		LOGGER.info("Zips processed");
+
+	}
+
+	public static void generateUnprotectedPdfForNoUserIfNeeded(InputPDFsDataModel inputPdf, File inputPDFFile,
+			InputPDFAndActionsToPerformDataModel pdfBatch) throws IOException {
+		if (pdfBatch.isEncrypted() && SecondRegardParams.GENERATE_ALSO_UNPROTECTED_PDF_FOR_NO_USER) {
+			LOGGER.info(() -> "Load PDF");
+			PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
+
+			List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
+			LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
+			PDFModificationHelpers.deletePages(originalDoc, allPageNumberToDelete);
+
+			LOGGER.info(() -> "Add watermark on each page");
+			SecondRegardHelpers.addWatermarkOnEachPage(originalDoc, pdfBatch, new SecondRegardAllowedUser());
+
+			DirectoryHelper.createFolderIfNotExists(SecondRegardConstants.OUTPUT_DIRECTORY_NAME);
+
+			LOGGER.info(() -> "Save output PDF");
+			SecondRegardHelpers.saveOutputPDF(inputPdf, inputPDFFile, originalDoc, new SecondRegardAllowedUser());
+
+			originalDoc.close();
+		}
+	}
+
+	public static void processPdf(List<SecondRegardAllowedUser> pdfAllowedUsers,
+			InputPDFAndActionsToPerformDataModel pdfBatch, InputPDFsDataModel inputPdf, File inputPDFFile)
+			throws IOException {
+		List<String> outputPdfFilesFullPaths = new ArrayList<>();
+
+		if (pdfBatch.isEncrypted()) {
+
+			for (SecondRegardAllowedUser pdfAllowedUser : pdfAllowedUsers) {
+				{
+					LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
+
+					LOGGER.info(() -> "Load PDF");
+					PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
+
+					List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
+					LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
+					PDFModificationHelpers.deletePages(originalDoc, allPageNumberToDelete);
+
+					LOGGER.info(() -> "Add watermark on each page");
+					SecondRegardHelpers.addWatermarkOnEachPage(originalDoc, pdfBatch, pdfAllowedUser);
+
+					DirectoryHelper.createFolderIfNotExists(SecondRegardConstants.OUTPUT_DIRECTORY_NAME);
+
+					LOGGER.info(() -> "Protect PDF");
+					SecondRegardHelpers.protectPDF(originalDoc, pdfAllowedUser);
+
+					String outputPDFFileFullPath = SecondRegardHelpers.getOutputPDFFileNameWithFullPath(inputPdf,
+							inputPDFFile, originalDoc, pdfAllowedUser);
+					outputPdfFilesFullPaths.add(outputPDFFileFullPath);
+
+					LOGGER.info(() -> "Save output PDF");
+					SecondRegardHelpers.saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
+
+					originalDoc.close();
+				}
+
+			}
+
+			if (SecondRegardParams.GENERATE_ALSO_ZIP_FILES) {
+				// StandardJavaLibraryZipFileManager zipFileManager = new
+				// StandardJavaLibraryZipFileManager();
+				// zipFileManager.createZipFileWithFilesFullPaths(zipFileName,
+				// outputPdfFilesFullPaths);
+				String zipFileName = SecondRegardConstants.OUTPUT_DIRECTORY_NAME + "/"
+						+ SecondRegardHelpers.getOutputPDFFileName(inputPdf, inputPDFFile, null) + ".zip";
+
+				boolean zipSuccess = new Zip4JZipManager.ZipCreationBuilder(zipFileName)
+						.addFilesByFullPaths(outputPdfFilesFullPaths).build().createZip();
+
+				LOGGER.info(() -> "Zip creation result:" + zipSuccess);
+			}
+		} else {
+
+			LOGGER.info(() -> "Load PDF");
+			PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
+
+			List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
+			LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
+			PDFModificationHelpers.deletePages(originalDoc, allPageNumberToDelete);
+
+			LOGGER.info(() -> "Add watermark on each page");
+			SecondRegardHelpers.addWatermarkOnEachPage(originalDoc, pdfBatch, null);
+
+			DirectoryHelper.createFolderIfNotExists(SecondRegardConstants.OUTPUT_DIRECTORY_NAME);
+
+			String outputPDFFileFullPath = SecondRegardHelpers.getOutputPDFFileNameWithFullPath(inputPdf, inputPDFFile,
+					originalDoc, null);
+			outputPdfFilesFullPaths.add(outputPDFFileFullPath);
+
+			LOGGER.info(() -> "Save output PDF");
+			SecondRegardHelpers.saveOutputPDF(inputPdf, inputPDFFile, originalDoc, null);
+
+			originalDoc.close();
+		}
 
 	}
 
