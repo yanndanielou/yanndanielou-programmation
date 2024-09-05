@@ -185,6 +185,15 @@
 				{
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
+						"fileNameMask": "Airlink_R8_4_1_rc2_System_Delivery_Sheet_for_CBTC_V01_00_signed.pdf"
+					},
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
+					"genericOutputFileName": "NExTEO-272500-04-0349-10 Software Delivery Sheet Airlink R8.4.1 V01-00"
+				},
+				{
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
 						"fileNameMask": "TCR3_SFE_PAL_V09_00_8.0 Rev_Valid_V3F3.pdf"
 					},
 					"personalizeByAllowedUsed": true,
@@ -316,15 +325,6 @@
 					"personalizeByAllowedUsed": true,
 					"encrypt": true,
 					"genericOutputFileName": "NExTEO-B-251000-02-0116-02 Dossier de Conception des Invariants Finaux Bord (Partie produit TGMT CBTC V3) V09-01"
-				},
-				{
-					"inputPdfWithFileMaskForMultiplePDF": {
-						"folderPath": "Input",
-						"fileNameMask": "Airlink_R8_4_1_rc2_System_Delivery_Sheet_for_CBTC_V01_00_signed.pdf"
-					},
-					"personalizeByAllowedUsed": false,
-					"encrypt": false,
-					"genericOutputFileName": "NExTEO-272500-04-0349-10 Software Delivery Sheet Airlink R8.4.1 V01-00"
 				}
 			],
 			"textLinesToDisplay": [
@@ -342,7 +342,25 @@
 						"y": 30
 					},
 					"textType": "FREE_TEXT",
-					"freeText": "Confidentiel - Propriété Siemens. Copie réservée à"
+					"freeText": "Confidentiel - Propriété Siemens. Copie réservée à",
+					"onlyForPersonalizedByAllowedUser": true
+				},
+				{
+					"font": {
+						"fontName__": "Standard14Fonts.FontName.HELVETICA",
+						"fontName": "HELVETICA",
+						"fontSize": 10
+					},
+					"nonStrokingColor": {
+						"colorName": "gray"
+					},
+					"newLineAtOffset": {
+						"x": 10,
+						"y": 30
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Confidentiel - Propriété Siemens.",
+					"onlyForNotPersonalized": true
 				},
 				{
 					"newLineAtOffset": {
