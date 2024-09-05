@@ -12,8 +12,23 @@ public class TextLineToDisplayDataModel {
 	private PDFFontDataModel font;
 	private PointDataModel newLineAtOffset;
 	private ColorDataModel nonStrokingColor;
+	private boolean onlyForPersonalizeByAllowedUsed = false;
+	private boolean onlyForNotPersonalized = false;
 
-	public boolean isUserDependant() {
+	public boolean isToValidFor(SecondRegardAllowedUser pdfAllowedUser) {
+		if (isUserDependant()) {
+			return pdfAllowedUser != null;
+		}
+		if (onlyForPersonalizeByAllowedUsed) {
+			return pdfAllowedUser != null;
+		}
+		if (onlyForNotPersonalized) {
+			return pdfAllowedUser == null;
+		}
+		return true;
+	}
+
+	private boolean isUserDependant() {
 		return TextToDisplayType.FIRST_NAME_SPACE_AND_LAST_NAME.equals(textType);
 	}
 
@@ -39,8 +54,12 @@ public class TextLineToDisplayDataModel {
 	public ColorDataModel getNonStrokingColor() {
 		return nonStrokingColor;
 	}
-	/*
-	 * public Color getNonStrokingColor() { if (nonStrokingColor == null) { return
-	 * null; } return nonStrokingColor.getColorAsAwtColor(); }
-	 */
+
+	public boolean isOnlyForPersonalizeByAllowedUsed() {
+		return onlyForPersonalizeByAllowedUsed;
+	}
+
+	public boolean isOnlyForNotPersonalized() {
+		return onlyForNotPersonalized;
+	}
 }
