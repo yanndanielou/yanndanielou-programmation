@@ -21,6 +21,7 @@ import com.google.common.base.Strings;
 import common.builders.ColorDataModel;
 import common.builders.PointDataModel;
 import common.filesanddirectories.DirectoryHelper;
+import common.filesanddirectories.FileHelper;
 import common.filesanddirectories.FileNameExtensionAndPathHelper;
 import pdfmodification.helpers.PDFModificationHelpers;
 import secondregard.data.inputpdfdocument.builders.FilesToZipDataModel;
@@ -49,7 +50,7 @@ public class SecondRegardHelpers {
 			for (TextLineToDisplayDataModel textLinesToDisplay : inputPDFAndActionsToPerformDataModel
 					.getTextLinesToDisplay()) {
 
-				if (pdfAllowedUser != null || textLinesToDisplay.isUserDependant()) {
+				if (textLinesToDisplay.isToValidFor(pdfAllowedUser)) {
 
 					ColorDataModel nonStrokingColorDataModel = textLinesToDisplay.getNonStrokingColor();
 					if (nonStrokingColorDataModel != null) {
@@ -204,19 +205,19 @@ public class SecondRegardHelpers {
 				{
 					LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
 
-					LOGGER.info(() -> "Load PDF");
+					LOGGER.debug(() -> "Load PDF");
 					PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
 
 					List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
-					LOGGER.info(() -> "Delete " + allPageNumberToDelete.size() + " pages");
+					LOGGER.debug(() -> "Delete " + allPageNumberToDelete.size() + " pages");
 					PDFModificationHelpers.deletePages(originalDoc, allPageNumberToDelete);
 
-					LOGGER.info(() -> "Add watermark on each page");
+					LOGGER.debug(() -> "Add watermark on each page");
 					SecondRegardHelpers.addWatermarkOnEachPage(originalDoc, pdfBatch, pdfAllowedUser);
 
 					DirectoryHelper.createFolderIfNotExists(SecondRegardConstants.OUTPUT_DIRECTORY_NAME);
 
-					LOGGER.info(() -> "Protect PDF");
+					LOGGER.debug(() -> "Protect PDF");
 					SecondRegardHelpers.protectPDF(originalDoc, pdfAllowedUser);
 
 					String outputPDFFileFullPath = SecondRegardHelpers.getOutputPDFFileNameWithFullPath(inputPdf,
@@ -233,8 +234,10 @@ public class SecondRegardHelpers {
 
 			if (SecondRegardParams.GENERATE_ALSO_ZIP_FILES) {
 				String zipFileName = SecondRegardConstants.OUTPUT_DIRECTORY_NAME + "/"
-						+ SecondRegardHelpers.getOutputPDFFileNameWithoutExtension(inputPdf, inputPDFFile, null) + ".zip";
+						+ SecondRegardHelpers.getOutputPDFFileNameWithoutExtension(inputPdf, inputPDFFile, null)
+						+ ".zip";
 
+				FileHelper.removeFileIfExists(zipFileName);
 				boolean zipSuccess = new Zip4JZipManager.ZipCreationBuilder(zipFileName)
 						.addFilesByFullPaths(outputPdfFilesFullPaths).build().createZip();
 
