@@ -44,7 +44,7 @@ public class Zip4JZipManager {
 	 * 
 	 */
 	public boolean createZip() {
-		LOGGER.info(() -> "Begin to create zip" + outputZipFileFullPath);
+		LOGGER.info(() -> "Begin to create zip:" + outputZipFileFullPath);
 
 		CodeDurationCounter saveTimeDurationCounter = new CodeDurationCounter();
 
