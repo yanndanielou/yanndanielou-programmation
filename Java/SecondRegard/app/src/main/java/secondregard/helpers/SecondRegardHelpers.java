@@ -202,33 +202,31 @@ public class SecondRegardHelpers {
 		if (inputPdf.isEncrypted()) {
 
 			for (SecondRegardAllowedUser pdfAllowedUser : pdfAllowedUsers) {
-				{
-					LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
+				LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
 
-					LOGGER.debug(() -> "Load PDF");
-					PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
+				LOGGER.debug(() -> "Load PDF");
+				PDDocument originalDoc = Loader.loadPDF(inputPDFFile);
 
-					List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
-					LOGGER.debug(() -> "Delete " + allPageNumberToDelete.size() + " pages");
-					PDFModificationHelpers.deletePages(originalDoc, allPageNumberToDelete);
+				List<Integer> allPageNumberToDelete = inputPdf.getAllPageNumberToDelete();
+				LOGGER.debug(() -> "Delete " + allPageNumberToDelete.size() + " pages");
+				PDFModificationHelpers.deletePages(originalDoc, allPageNumberToDelete);
 
-					LOGGER.debug(() -> "Add watermark on each page");
-					SecondRegardHelpers.addWatermarkOnEachPage(originalDoc, pdfBatch, pdfAllowedUser);
+				LOGGER.debug(() -> "Add watermark on each page");
+				SecondRegardHelpers.addWatermarkOnEachPage(originalDoc, pdfBatch, pdfAllowedUser);
 
-					DirectoryHelper.createFolderIfNotExists(SecondRegardConstants.OUTPUT_DIRECTORY_NAME);
+				DirectoryHelper.createFolderIfNotExists(SecondRegardConstants.OUTPUT_DIRECTORY_NAME);
 
-					LOGGER.debug(() -> "Protect PDF");
-					SecondRegardHelpers.protectPDF(originalDoc, pdfAllowedUser);
+				LOGGER.debug(() -> "Protect PDF");
+				SecondRegardHelpers.protectPDF(originalDoc, pdfAllowedUser);
 
-					String outputPDFFileFullPath = SecondRegardHelpers.getOutputPDFFileNameWithFullPath(inputPdf,
-							inputPDFFile, originalDoc, pdfAllowedUser);
-					outputPdfFilesFullPaths.add(outputPDFFileFullPath);
+				String outputPDFFileFullPath = SecondRegardHelpers.getOutputPDFFileNameWithFullPath(inputPdf,
+						inputPDFFile, originalDoc, pdfAllowedUser);
+				outputPdfFilesFullPaths.add(outputPDFFileFullPath);
 
-					LOGGER.info(() -> "Save output PDF");
-					SecondRegardHelpers.saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
+				LOGGER.info(() -> "Save output PDF");
+				SecondRegardHelpers.saveOutputPDF(inputPdf, inputPDFFile, originalDoc, pdfAllowedUser);
 
-					originalDoc.close();
-				}
+				originalDoc.close();
 
 			}
 

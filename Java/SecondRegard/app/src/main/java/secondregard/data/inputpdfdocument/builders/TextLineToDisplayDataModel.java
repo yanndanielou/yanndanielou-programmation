@@ -12,14 +12,15 @@ public class TextLineToDisplayDataModel {
 	private PDFFontDataModel font;
 	private PointDataModel newLineAtOffset;
 	private ColorDataModel nonStrokingColor;
-	private boolean onlyForPersonalizeByAllowedUsed = false;
+	
+	private boolean onlyForPersonalizedByAllowedUser = false;
 	private boolean onlyForNotPersonalized = false;
 
 	public boolean isToValidFor(SecondRegardAllowedUser pdfAllowedUser) {
 		if (isUserDependant()) {
 			return pdfAllowedUser != null;
 		}
-		if (onlyForPersonalizeByAllowedUsed) {
+		if (onlyForPersonalizedByAllowedUser) {
 			return pdfAllowedUser != null;
 		}
 		if (onlyForNotPersonalized) {
@@ -53,13 +54,5 @@ public class TextLineToDisplayDataModel {
 
 	public ColorDataModel getNonStrokingColor() {
 		return nonStrokingColor;
-	}
-
-	public boolean isOnlyForPersonalizeByAllowedUsed() {
-		return onlyForPersonalizeByAllowedUsed;
-	}
-
-	public boolean isOnlyForNotPersonalized() {
-		return onlyForNotPersonalized;
 	}
 }

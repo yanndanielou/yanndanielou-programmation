@@ -22,7 +22,7 @@ public class FileHelper {
 	public static boolean removeFileIfExists(String fileName) {
 		File myObj = new File(fileName);
 		if (myObj.delete()) {
-			LOGGER.info(() -> "Delete previous version of file file:" + myObj.getName() + ":" + fileName);
+			LOGGER.info(() -> "Delete previous version of file file:" + fileName);
 			return true;
 		} else {
 			LOGGER.info(() -> "File :" + fileName + " not deleted: probably not present");

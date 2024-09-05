@@ -176,20 +176,20 @@
 				{
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
-						"fileNameMask": "TCR3_SFE_PAS_V13_00_8.0 Rev_Valid_V3F3.pdf"
-					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
-					"genericOutputFileName": "NExTEO-S-251000-02-0107-03 Spécification fonctionnelle du PAS V13-00"
-				},
-				{
-					"inputPdfWithFileMaskForMultiplePDF": {
-						"folderPath": "Input",
 						"fileNameMask": "Airlink_R8_4_1_rc2_System_Delivery_Sheet_for_CBTC_V01_00_signed.pdf"
 					},
 					"personalizeByAllowedUsed": false,
 					"encrypt": false,
 					"genericOutputFileName": "NExTEO-272500-04-0349-10 Software Delivery Sheet Airlink R8.4.1 V01-00"
+				},
+				{
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_SFE_PAS_V13_00_8.0 Rev_Valid_V3F3.pdf"
+					},
+					"personalizeByAllowedUsed": true,
+					"encrypt": true,
+					"genericOutputFileName": "NExTEO-S-251000-02-0107-03 Spécification fonctionnelle du PAS V13-00"
 				},
 				{
 					"inputPdfWithFileMaskForMultiplePDF": {

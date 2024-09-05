@@ -30,7 +30,9 @@ public class PDFModificationHelpers {
 	public static void saveOutputPDF(File inputPDFFile, PDDocument originalDoc, String outputPdfFileNameWithFullPath)
 			throws IOException {
 
-		FileHelper.removeFileIfExists(outputPdfFileNameWithFullPath);
+		while (FileHelper.removeFileIfExists(outputPdfFileNameWithFullPath)) {
+
+		}
 		CodeDurationCounter saveTimeDurationCounter = new CodeDurationCounter();
 		originalDoc.save(outputPdfFileNameWithFullPath);
 
