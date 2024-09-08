@@ -99,7 +99,7 @@ def dowloadFilesFromURL(urls, results: webSiteResults.WebSiteResults):
         dowloadFileFromURL(url, results)
 
 @LoggerConfig.execution_time
-def dowloadFileFromURL(url, results: webSiteResults.WebSiteResults):
+def dowloadFileFromURL(url: str, results: webSiteResults.WebSiteResults):
     if not os.path.exists(param.output_directory):
         LoggerConfig.printAndLogInfo('Create output directory:' + param.output_directory)
         os.makedirs(param.output_directory)
@@ -188,7 +188,7 @@ def linkMustBeProcessed(url, initialInstructions: jsonInstructions.JsonInstructi
 
 
 
-def retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
+def retrieveFilesToDownloadURLs(url: str, aHrefLinks: set[str], initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
     newFilesToDownloadUrls = set()
     for aHrefLink in aHrefLinks:
         if fileMustBeDownload(aHrefLink, initialInstructions, results):
