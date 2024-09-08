@@ -83,9 +83,9 @@ class WebSiteResults:
         return fileUrl in self._filesDownloadedUrls
 
 class WebSiteResultsEncoder(JSONEncoder):
-        def default(self, obj):
-            if isinstance(obj, set):
-                return list(obj)
-            #return json.JSONEncoder.default(self, obj)
-            return obj.__dict__
-        
+    def default(self, o):
+        if isinstance(o, set):
+            return list(o)
+        #return json.JSONEncoder.default(self, obj)
+        return o.__dict__
+   
