@@ -126,13 +126,6 @@ def get_content_type(url):
     
     if isLinkToChapterInSamePage(url):
         return linkToChapterInSamePageType
-    
-    if '#blognav' in url:
-        pause = 1
-    if '#search' in url:
-        pause = 1
-    if '#main' in url:
-        pause = 1
 
     response = requests.head(url)
     return response.headers['Content-Type']
