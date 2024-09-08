@@ -176,7 +176,7 @@ def retrieveFilesToDownloadURLs(url: str, aHrefLinks: set[str], initialInstructi
     for aHrefLink in aHrefLinks:
         if is_url_a_file_that_must_be_downloaded(aHrefLink, initialInstructions, results):
             if not is_url_a_file_that_has_already_be_downloaded(url, results):
-                LoggerConfig.printAndLogInfo("Must download:" + url)
+                logging.debug("Must download:" + url)
                 newFilesToDownloadUrls.add(aHrefLink)
             else:
                 logging.debug(aHrefLink + " has already been downloaded")
@@ -215,7 +215,7 @@ def downloadAllFilesFromWebPageLink(url, initialInstructions: jsonInstructions.J
     newFilesToDownloadUrls = set[str](retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions , results))
     dowloadFilesFromURL(newFilesToDownloadUrls, results)
 
-    LoggerConfig.printAndLogInfo("After processing " + url + " (without children)")
+    logging.info("After processing " + url + " (without children)")
     print_current_status(results)
 
     if initialInstructions._exploreLinks:
