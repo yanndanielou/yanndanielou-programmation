@@ -135,8 +135,12 @@ def linkMustBeProcessed(url, initialInstructions: jsonInstructions.JsonInstructi
         if pageToExclude in url:
             logging.info(url + " must be excluded because matches:" + url)
             return False
-        
 
+    # To be tested early to avoid heavy treatment    
+    if url in results._alreadyProcessedLinksUrls:
+        logging.info(url + " already processed")
+        return False
+    
     url_content_type = None
     try:
         url_content_type = get_content_type(url)
@@ -150,10 +154,6 @@ def linkMustBeProcessed(url, initialInstructions: jsonInstructions.JsonInstructi
 
     if not isWebPage(url):
         logging.info(url + " is not a web page but is:" + url_content_type)
-        return False
-
-    if url in results._alreadyProcessedLinksUrls:
-        logging.info(url + " already processed")
         return False
     
     
