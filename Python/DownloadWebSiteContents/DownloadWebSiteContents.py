@@ -187,6 +187,8 @@ def retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions: jsonInstru
     for aHrefLink in aHrefLinks:
         if fileMustBeDownload(aHrefLink, initialInstructions, results):
             newFilesToDownloadUrls.add(aHrefLink)
+        else:
+            results._filesIgnoredUrls.add(aHrefLink)
 
     LoggerConfig.printAndLogInfo("After " + url + ", " + str(len(results._filesDownloadedUrls)) + " files to download in total")
     return newFilesToDownloadUrls
@@ -199,6 +201,9 @@ def processSubLinks(aHrefLinks, initialInstructions: jsonInstructions.JsonInstru
         if linkMustBeProcessed(aHrefLink, initialInstructions, results):
             subLinksToProcess.add(aHrefLink)
             downloadAllFilesFromWebPageLink(aHrefLink, initialInstructions, results)
+        else:
+            results._notProcessedUrls.add(aHrefLink)
+
 
     return subLinksToProcess
 
@@ -227,7 +232,8 @@ def downloadAllFilesFromWebPageLink(url, initialInstructions: jsonInstructions.J
     LoggerConfig.printAndLogInfo("After processing " + url + " (without children), " + str(len(results._filesDownloadedUrls)) + " files already downloaded, and " + str(len(results._alreadyProcessedLinksUrls)) + " links processed")
     print('Duration since application start: ' + format(time.time() - application_start_time, '.2f'))
 
-    #processSubLinks(aHrefLinks, initialInstructions, results)
+    if initialInstructions._exploreLinks:
+        processSubLinks(aHrefLinks, initialInstructions, results)
 
     LoggerConfig.printAndLogInfo("After processing " + url + ", (with children) " + str(len(results._filesDownloadedUrls)) + " files to already downloaded, and " + str(len(results._alreadyProcessedLinksUrls)) + " links processed")
     print('Duration since application start: ' + format(time.time() - application_start_time, '.2f'))

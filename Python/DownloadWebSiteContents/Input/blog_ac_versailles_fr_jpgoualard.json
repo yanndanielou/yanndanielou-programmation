@@ -1,7 +1,8 @@
 {
 	"mainPage": "http://blog.ac-versailles.fr/jpgoualard/index.php/post/10/09/2023/Cours-de-math%C3%A9matiques-de-la-seonde-5#attachments",
-	"outputResultJsonFile":"jpgoualard.json",
+	"outputResultJsonFile":"results_jpgoualard.json",
 	"__mainPage": "http://blog.ac-versailles.fr/jpgoualard",
+	"exploreLinks": true,
 	"pagesToInclude": [
 		"http://blog.ac-versailles.fr/jpgoualard"
 	],

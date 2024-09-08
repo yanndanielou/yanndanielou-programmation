@@ -10,4 +10,5 @@ class JsonInstructions:
         self._pagesToExclude = jsonInstructionsDict['pagesToExclude']
         self._filesExtensionsToDownload = jsonInstructionsDict['filesExtensionsToDownload']
         self._filesToNotDownload = jsonInstructionsDict['filesToNotDownload']
+        self._exploreLinks = bool(jsonInstructionsDict['exploreLinks'])
         
