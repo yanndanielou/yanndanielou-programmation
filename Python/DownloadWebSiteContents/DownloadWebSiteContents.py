@@ -59,6 +59,21 @@ linkToChapterInSamePageType = 'linkToChapterInSamePageType'
 
 application_start_time = time.time()
 
+def saveResultsToJsonFile(initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
+    json_file_full_path = param.output_directory + '/' + initialInstructions._outputResultJsonFile
+
+    json_file = open(json_file_full_path, "w")
+    
+        
+    result_json_dump = json.dumps(results, indent=4, cls=webSiteResults.WebSiteResultsEncoder)
+
+    print(result_json_dump)
+
+    json_file.write(result_json_dump)
+
+    json_file.close()
+    
+
 
 def processJsonInstructionFile(json_instruction_file_path):
     with open(json_instruction_file_path) as fh:
@@ -71,14 +86,16 @@ def processJsonInstructionFile(json_instruction_file_path):
         initialInstructions = jsonInstructions.JsonInstructions(jsonInstructionsDict)
         downloadAllFilesFromWebPageLink(initialInstructions._mainPage, initialInstructions, results)
 
+        saveResultsToJsonFile(initialInstructions, results)
+
         LoggerConfig.printAndLogInfo(str(len(filesDownloadedUrls)) + " files to download")
 
-def dowloadFilesFromURL(urls, results):
+def dowloadFilesFromURL(urls, results: webSiteResults.WebSiteResults):
     for url in urls:
         dowloadFileFromURL(url, results)
 
 @LoggerConfig.execution_time
-def dowloadFileFromURL(url, results):
+def dowloadFileFromURL(url, results: webSiteResults.WebSiteResults):
     if not os.path.exists(param.output_directory):
         LoggerConfig.printAndLogInfo('Create output directory:' + param.output_directory)
         os.makedirs(param.output_directory)
@@ -123,7 +140,7 @@ def get_content_type(url):
 def isWebPage(url):
     return 'text/html' in get_content_type(url) 
 
-def fileMustBeDownload(url, initialInstructions, results):
+def fileMustBeDownload(url, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
     if url in results._filesDownloadedUrls:
         return False
 
@@ -135,7 +152,7 @@ def fileMustBeDownload(url, initialInstructions, results):
         
     return False
 
-def linkMustBeProcessed(url, initialInstructions, results):
+def linkMustBeProcessed(url, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
     
     for pageToExclude in initialInstructions._pagesToExclude:
         if pageToExclude in url:
@@ -165,7 +182,7 @@ def linkMustBeProcessed(url, initialInstructions, results):
 
 
 
-def retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions, results):
+def retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
     newFilesToDownloadUrls = set()
     for aHrefLink in aHrefLinks:
         if fileMustBeDownload(aHrefLink, initialInstructions, results):
@@ -175,7 +192,7 @@ def retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions, results):
     return newFilesToDownloadUrls
 
 
-def processSubLinks(aHrefLinks, initialInstructions, results):
+def processSubLinks(aHrefLinks, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
     
     subLinksToProcess = set()
     for aHrefLink in aHrefLinks:
@@ -185,7 +202,7 @@ def processSubLinks(aHrefLinks, initialInstructions, results):
 
     return subLinksToProcess
 
-def downloadAllFilesFromWebPageLink(url, initialInstructions, results):
+def downloadAllFilesFromWebPageLink(url, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
     LoggerConfig.printAndLogInfo("process link:" + url)
     results._alreadyProcessedLinksUrls.add(url)
     
@@ -202,7 +219,7 @@ def downloadAllFilesFromWebPageLink(url, initialInstructions, results):
     for linkUrl in aLinks:
         aHrefLinks.add(linkUrl.attrs['href'])
 
-    newFilesToDownloadUrls = retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions, results)
+    newFilesToDownloadUrls = retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions , results)
     LoggerConfig.printAndLogInfo(str(len(newFilesToDownloadUrls)) +  " new files to download")
 
     dowloadFilesFromURL(newFilesToDownloadUrls, results)
@@ -210,7 +227,7 @@ def downloadAllFilesFromWebPageLink(url, initialInstructions, results):
     LoggerConfig.printAndLogInfo("After processing " + url + " (without children), " + str(len(results._filesDownloadedUrls)) + " files already downloaded, and " + str(len(results._alreadyProcessedLinksUrls)) + " links processed")
     print('Duration since application start: ' + format(time.time() - application_start_time, '.2f'))
 
-    processSubLinks(aHrefLinks, initialInstructions, results)
+    #processSubLinks(aHrefLinks, initialInstructions, results)
 
     LoggerConfig.printAndLogInfo("After processing " + url + ", (with children) " + str(len(results._filesDownloadedUrls)) + " files to already downloaded, and " + str(len(results._alreadyProcessedLinksUrls)) + " links processed")
     print('Duration since application start: ' + format(time.time() - application_start_time, '.2f'))

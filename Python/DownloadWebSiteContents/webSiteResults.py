@@ -1,4 +1,6 @@
 # -*-coding:Utf-8 -*
+import json
+from json import JSONEncoder
 
 
 class WebSiteResults:
@@ -15,4 +17,12 @@ class WebSiteResults:
 
     def recordFileDownloadedUrl(self, fileDownloadedUrl):
         self._filesDownloadedUrls.add(fileDownloadedUrl)
+        
+
+class WebSiteResultsEncoder(JSONEncoder):
+        def default(self, obj):
+            if isinstance(obj, set):
+                return list(obj)
+            #return json.JSONEncoder.default(self, obj)
+            return obj.__dict__
         

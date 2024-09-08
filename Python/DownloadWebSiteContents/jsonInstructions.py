@@ -5,6 +5,7 @@ class JsonInstructions:
 
     def __init__(self, jsonInstructionsDict):
         self._mainPage = jsonInstructionsDict['mainPage']
+        self._outputResultJsonFile = jsonInstructionsDict['outputResultJsonFile']
         self._pagesToInclude = jsonInstructionsDict['pagesToInclude']
         self._pagesToExclude = jsonInstructionsDict['pagesToExclude']
         self._filesExtensionsToDownload = jsonInstructionsDict['filesExtensionsToDownload']
