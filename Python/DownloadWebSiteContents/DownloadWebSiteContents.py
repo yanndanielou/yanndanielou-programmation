@@ -52,7 +52,11 @@ import shutil
 import time
 
 #import datetime
-import time
+
+import sys
+sys.path.append("..\\Common")
+import date_time_formats
+
 
 mailtoType = 'mailto'
 linkToChapterInSamePageType = 'linkToChapterInSamePageType'
@@ -60,18 +64,15 @@ linkToChapterInSamePageType = 'linkToChapterInSamePageType'
 application_start_time = time.time()
 
 def printCurrentStatus(results: webSiteResults.WebSiteResults):
-    print('Duration since application start: ' + format(time.time() - application_start_time, '.2f') + " s. So far: " + str(len(results._filesDownloadedUrls)) + " files downloaded and " + str(len(results._alreadyProcessedLinksUrls))  + " pages treated")
+    print('Duration since application start: ' + date_time_formats.format_duration_to_string(time.time() - application_start_time) + " s. So far: " + str(len(results._filesDownloadedUrls)) + " files downloaded and " + str(len(results._alreadyProcessedLinksUrls))  + " pages treated")
 
 
 def saveResultsToJsonFile(initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
     json_file_full_path = param.output_directory + '/' + initialInstructions._outputResultJsonFile
 
     json_file = open(json_file_full_path, "w")
-    
-        
+            
     result_json_dump = json.dumps(results, indent=4, cls=webSiteResults.WebSiteResultsEncoder)
-
-    #print(result_json_dump)
 
     json_file.write(result_json_dump)
 
