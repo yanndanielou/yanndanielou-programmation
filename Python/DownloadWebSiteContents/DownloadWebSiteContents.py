@@ -67,7 +67,7 @@ def saveResultsToJsonFile(initialInstructions: jsonInstructions.JsonInstructions
         
     result_json_dump = json.dumps(results, indent=4, cls=webSiteResults.WebSiteResultsEncoder)
 
-    print(result_json_dump)
+    #print(result_json_dump)
 
     json_file.write(result_json_dump)
 
