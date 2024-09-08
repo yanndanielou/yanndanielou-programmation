@@ -59,6 +59,10 @@ linkToChapterInSamePageType = 'linkToChapterInSamePageType'
 
 application_start_time = time.time()
 
+def printCurrentStatus(results: webSiteResults.WebSiteResults):
+    print('Duration since application start: ' + format(time.time() - application_start_time, '.2f') + " s. So far: " + str(len(results._filesDownloadedUrls)) + " files downloaded and " + str(len(results._alreadyProcessedLinksUrls))  + " pages treated")
+
+
 def saveResultsToJsonFile(initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
     json_file_full_path = param.output_directory + '/' + initialInstructions._outputResultJsonFile
 
@@ -112,7 +116,7 @@ def dowloadFileFromURL(url, results: webSiteResults.WebSiteResults):
         results._failedDownloadedUrls.add(url)
         LoggerConfig.printAndLogError("Failed to download " + fileBaseName + " from " + url)
                 
-    print('Duration since application start: ' + format(time.time() - application_start_time, '.2f'))
+    #printCurrentStatus(results)
 
 def isLinkToChapterInSamePage(url):
     patternAsString = '^#[a-zA-Z\\_0-9]*$'
@@ -152,7 +156,16 @@ def linkMustBeProcessed(url, initialInstructions: jsonInstructions.JsonInstructi
             logging.info(url + " must be excluded because matches:" + url)
             return False
         
-    url_content_type = get_content_type(url)
+
+    url_content_type = None
+    try:
+        url_content_type = get_content_type(url)
+    except:
+        LoggerConfig.printAndLogError(url + " could not get content type")
+        results._failedToProcessUrls.add(url)
+        return False
+
+        
     logging.info(url + " is type: " + url_content_type)
 
     if not isWebPage(url):
@@ -183,7 +196,7 @@ def retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions: jsonInstru
         else:
             results._filesIgnoredUrls.add(aHrefLink)
 
-    LoggerConfig.printAndLogInfo("After " + url + ", " + str(len(results._filesDownloadedUrls)) + " files to download in total")
+    LoggerConfig.printAndLogInfo("In " + url + ", " + str(len(newFilesToDownloadUrls)) + " files to download")
     return newFilesToDownloadUrls
 
 
@@ -218,18 +231,16 @@ def downloadAllFilesFromWebPageLink(url, initialInstructions: jsonInstructions.J
         aHrefLinks.add(linkUrl.attrs['href'])
 
     newFilesToDownloadUrls = retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions , results)
-    LoggerConfig.printAndLogInfo(str(len(newFilesToDownloadUrls)) +  " new files to download")
-
     dowloadFilesFromURL(newFilesToDownloadUrls, results)
 
-    LoggerConfig.printAndLogInfo("After processing " + url + " (without children), " + str(len(results._filesDownloadedUrls)) + " files already downloaded, and " + str(len(results._alreadyProcessedLinksUrls)) + " links processed")
-    print('Duration since application start: ' + format(time.time() - application_start_time, '.2f'))
+    LoggerConfig.printAndLogInfo("After processing " + url + " (without children)")
+    printCurrentStatus(results)
 
     if initialInstructions._exploreLinks:
         processSubLinks(aHrefLinks, initialInstructions, results)
 
-    LoggerConfig.printAndLogInfo("After processing " + url + ", (with children) " + str(len(results._filesDownloadedUrls)) + " files to already downloaded, and " + str(len(results._alreadyProcessedLinksUrls)) + " links processed")
-    print('Duration since application start: ' + format(time.time() - application_start_time, '.2f'))
+    LoggerConfig.printAndLogInfo("After processing " + url + ", (with children) ")
+    printCurrentStatus(results)
 
 
 def main(argv):
