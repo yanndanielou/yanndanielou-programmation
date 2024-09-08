@@ -9,62 +9,45 @@
 #metric_timestamp,metric_name,_value
 #2024-06-12T00:43:37.495+00:00,Computer.LogicalDisk_D.Free_Space,73.252541527397269761
 
+import logging
+
+import os
+from urllib.parse import urlparse
+from urllib.request import urlretrieve
+
+import random
+
+import json
+
+import sys
+
+import re
+
+import time
+
+import requests
+
 from bs4 import BeautifulSoup
+
+sys.path.append('.')
+sys.path.append('../Common')
+import date_time_formats
 
 import LoggerConfig
 
 import jsonInstructions
 import webSiteResults
 
-import logging
 import param
 
-import os
-from urllib.parse import urlparse
 
-import random
-
-from urllib.request import urlretrieve
-
-
-import json
-from types import SimpleNamespace
-
-import requests
-import urllib.request
-
-import subprocess
-import glob
-import os
-from os.path import basename
-import sys
-
-import zipfile
-
-import re
-
-import param
-
-import pandas
-
-import shutil
-
-import time
-
-#import datetime
-
-import sys
-sys.path.append("..\\Common")
-import date_time_formats
-
-
-mailtoType = 'mailto'
-linkToChapterInSamePageType = 'linkToChapterInSamePageType'
+MAILTO_TYPE = 'mailto'
+LINK_TO_CHAPTER_IN_SAME_PAGE_TYPE = 'linkToChapterInSamePageType'
 
 application_start_time = time.time()
 
-def printCurrentStatus(results: webSiteResults.WebSiteResults):
-    print('Duration since application start: ' + date_time_formats.format_duration_to_string(time.time() - application_start_time) + " s. So far: " + str(len(results._filesDownloadedUrls)) + " files downloaded and " + str(len(results._alreadyProcessedLinksUrls))  + " pages treated")
+def print_current_status(results: webSiteResults.WebSiteResults):
+    print('Duration since application start: ' + date_time_formats.format_duration_to_string(time.time() - application_start_time) + " s. So far: " + str(len(results.filesDownloadedUrls)) + " files downloaded and " + str(len(results._alreadyProcessedLinksUrls))  + " pages treated")
 
 
 def saveResultsToJsonFile(initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
@@ -80,27 +63,23 @@ def saveResultsToJsonFile(initialInstructions: jsonInstructions.JsonInstructions
     
 
 
-def processJsonInstructionFile(json_instruction_file_path):
+def processJsonInstructionFile(json_instruction_file_path: str):
     with open(json_instruction_file_path) as fh:
         jsonInstructionsDict = json.loads(fh.read())
         print(jsonInstructionsDict)
 
         results = webSiteResults.WebSiteResults()
-        alreadyProcessedLinksUrls = set()
-        filesDownloadedUrls = set()
         initialInstructions = jsonInstructions.JsonInstructions(jsonInstructionsDict)
         downloadAllFilesFromWebPageLink(initialInstructions._mainPage, initialInstructions, results)
 
         saveResultsToJsonFile(initialInstructions, results)
 
-        LoggerConfig.printAndLogInfo(str(len(filesDownloadedUrls)) + " files to download")
-
-def dowloadFilesFromURL(urls, results: webSiteResults.WebSiteResults):
+def dowloadFilesFromURL(urls: set[str], results: webSiteResults.WebSiteResults) -> None:
     for url in urls:
         dowloadFileFromURL(url, results)
 
 @LoggerConfig.execution_time
-def dowloadFileFromURL(url: str, results: webSiteResults.WebSiteResults):
+def dowloadFileFromURL(url: str, results: webSiteResults.WebSiteResults) -> None:
     if not os.path.exists(param.output_directory):
         LoggerConfig.printAndLogInfo('Create output directory:' + param.output_directory)
         os.makedirs(param.output_directory)
@@ -119,27 +98,27 @@ def dowloadFileFromURL(url: str, results: webSiteResults.WebSiteResults):
                 
     #printCurrentStatus(results)
 
-def isLinkToChapterInSamePage(url):
+def isLinkToChapterInSamePage(url: str):
     patternAsString = '^#[a-zA-Z\\_0-9]*$'
     pattern = re.compile(patternAsString)
     match = pattern.match(url)
     return match is not None
 
-def get_content_type(url):
+def get_content_type(url: str):
     if 'mailto:' in url:
-        return mailtoType
+        return MAILTO_TYPE
     
     if isLinkToChapterInSamePage(url):
-        return linkToChapterInSamePageType
+        return LINK_TO_CHAPTER_IN_SAME_PAGE_TYPE
 
     response = requests.head(url)
     return response.headers['Content-Type']
 
-def isWebPage(url):
+def isWebPage(url: str):
     return 'text/html' in get_content_type(url) 
 
-def fileMustBeDownload(url, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
-    if url in results._filesDownloadedUrls:
+def fileMustBeDownload(url: str, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
+    if results.has_already_treated_file(url):
         return False
 
     for filesExtensionToDownload in initialInstructions._filesExtensionsToDownload:
@@ -190,7 +169,7 @@ def linkMustBeProcessed(url, initialInstructions: jsonInstructions.JsonInstructi
 
 
 def retrieveFilesToDownloadURLs(url: str, aHrefLinks: set[str], initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
-    newFilesToDownloadUrls = set()
+    newFilesToDownloadUrls = set[str]()
     for aHrefLink in aHrefLinks:
         if fileMustBeDownload(aHrefLink, initialInstructions, results):
             newFilesToDownloadUrls.add(aHrefLink)
@@ -201,20 +180,15 @@ def retrieveFilesToDownloadURLs(url: str, aHrefLinks: set[str], initialInstructi
     return newFilesToDownloadUrls
 
 
-def processSubLinks(aHrefLinks, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
+def processSubLinks(aHrefLinks, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults) -> None:
     
-    subLinksToProcess = set()
     for aHrefLink in aHrefLinks:
         if linkMustBeProcessed(aHrefLink, initialInstructions, results):
-            subLinksToProcess.add(aHrefLink)
             downloadAllFilesFromWebPageLink(aHrefLink, initialInstructions, results)
         else:
             results._notProcessedUrls.add(aHrefLink)
 
-
-    return subLinksToProcess
-
-def downloadAllFilesFromWebPageLink(url, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
+def downloadAllFilesFromWebPageLink(url, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults) -> None:
     LoggerConfig.printAndLogInfo("process link:" + url)
     results._alreadyProcessedLinksUrls.add(url)
     
@@ -231,17 +205,17 @@ def downloadAllFilesFromWebPageLink(url, initialInstructions: jsonInstructions.J
     for linkUrl in aLinks:
         aHrefLinks.add(linkUrl.attrs['href'])
 
-    newFilesToDownloadUrls = retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions , results)
+    newFilesToDownloadUrls = set[str](retrieveFilesToDownloadURLs(url, aHrefLinks, initialInstructions , results))
     dowloadFilesFromURL(newFilesToDownloadUrls, results)
 
     LoggerConfig.printAndLogInfo("After processing " + url + " (without children)")
-    printCurrentStatus(results)
+    print_current_status(results)
 
     if initialInstructions._exploreLinks:
         processSubLinks(aHrefLinks, initialInstructions, results)
 
     LoggerConfig.printAndLogInfo("After processing " + url + ", (with children) ")
-    printCurrentStatus(results)
+    print_current_status(results)
 
 
 def main(argv):

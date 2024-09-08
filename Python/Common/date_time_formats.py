@@ -1,3 +1,4 @@
+""" Date time formats """
 def format_duration_to_string(duration_in_seconds_as_float: float) -> None:
     """ Formatter for duration """
     milliseconds = int(duration_in_seconds_as_float*1000) % 1000
