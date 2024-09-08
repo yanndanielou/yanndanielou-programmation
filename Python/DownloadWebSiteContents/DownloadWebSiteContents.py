@@ -78,7 +78,7 @@ def dowloadFilesFromURL(urls: set[str], results: webSiteResults.WebSiteResults) 
     for url in urls:
         dowloadFileFromURL(url, results)
 
-@LoggerConfig.execution_time
+#@LoggerConfig.execution_time
 def dowloadFileFromURL(url: str, results: webSiteResults.WebSiteResults) -> None:
     if not os.path.exists(param.output_directory):
         LoggerConfig.printAndLogInfo('Create output directory:' + param.output_directory)
@@ -117,19 +117,18 @@ def get_content_type(url: str):
 def isWebPage(url: str):
     return 'text/html' in get_content_type(url) 
 
-def fileMustBeDownload(url: str, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
-    if results.has_already_treated_file(url):
-        return False
+def is_url_a_file_that_has_already_be_downloaded(url: str, results: webSiteResults.WebSiteResults):
+    return results.has_already_treated_file(url)
+
+def is_url_a_file_that_must_be_downloaded(url: str, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
 
     for filesExtensionToDownload in initialInstructions._filesExtensionsToDownload:
         if url.endswith(filesExtensionToDownload):
-            LoggerConfig.printAndLogInfo("Must download:" + url)
-            results._filesDownloadedUrls.add(url)
             return True
         
     return False
 
-def linkMustBeProcessed(url, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
+def is_url_a_page_that_must_be_parsed(url, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
     
     for pageToExclude in initialInstructions._pagesToExclude:
         if pageToExclude in url:
@@ -140,7 +139,21 @@ def linkMustBeProcessed(url, initialInstructions: jsonInstructions.JsonInstructi
     if url in results._alreadyProcessedLinksUrls:
         logging.info(url + " already processed")
         return False
+
+    if is_url_a_file_that_must_be_downloaded(url, initialInstructions, results) or is_url_a_file_that_has_already_be_downloaded(url, results):
+        logging.info(url + " is a file, not a page!")
+        return False
+
+    page_is_among_those_to_include_in_instructions = False
+    for pageToInclude in initialInstructions._pagesToInclude:
+        if pageToInclude in url:
+            logging.info(url + " must be processed because matchs:" + url)
+            page_is_among_those_to_include_in_instructions = True
     
+    if not page_is_among_those_to_include_in_instructions:
+        logging.info(url + " must not be processed because does not match any allowed link")
+        return False
+
     url_content_type = None
     try:
         url_content_type = get_content_type(url)
@@ -148,7 +161,6 @@ def linkMustBeProcessed(url, initialInstructions: jsonInstructions.JsonInstructi
         LoggerConfig.printAndLogError(url + " could not get content type")
         results._failedToProcessUrls.add(url)
         return False
-
         
     logging.info(url + " is type: " + url_content_type)
 
@@ -156,23 +168,18 @@ def linkMustBeProcessed(url, initialInstructions: jsonInstructions.JsonInstructi
         logging.info(url + " is not a web page but is:" + url_content_type)
         return False
     
-    
-    for pageToInclude in initialInstructions._pagesToInclude:
-        if pageToInclude in url:
-            logging.info(url + " must be processed because matchs:" + url)
-            return True
-        
-    logging.info(url + " must not be processed because does not match any allowed link")
-    return False
-
-
+    return True
 
 
 def retrieveFilesToDownloadURLs(url: str, aHrefLinks: set[str], initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
     newFilesToDownloadUrls = set[str]()
     for aHrefLink in aHrefLinks:
-        if fileMustBeDownload(aHrefLink, initialInstructions, results):
-            newFilesToDownloadUrls.add(aHrefLink)
+        if is_url_a_file_that_must_be_downloaded(aHrefLink, initialInstructions, results):
+            if not is_url_a_file_that_has_already_be_downloaded(url, results):
+                LoggerConfig.printAndLogInfo("Must download:" + url)
+                newFilesToDownloadUrls.add(aHrefLink)
+            else:
+                logging.debug(aHrefLink + " has already been downloaded")
         else:
             results._filesIgnoredUrls.add(aHrefLink)
 
@@ -183,7 +190,7 @@ def retrieveFilesToDownloadURLs(url: str, aHrefLinks: set[str], initialInstructi
 def processSubLinks(aHrefLinks, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults) -> None:
     
     for aHrefLink in aHrefLinks:
-        if linkMustBeProcessed(aHrefLink, initialInstructions, results):
+        if is_url_a_page_that_must_be_parsed(aHrefLink, initialInstructions, results):
             downloadAllFilesFromWebPageLink(aHrefLink, initialInstructions, results)
         else:
             results._notProcessedUrls.add(aHrefLink)
@@ -227,7 +234,7 @@ def main(argv):
     
     processJsonInstructionFile(param.json_instruction_file_path)
     
-    LoggerConfig.printAndLogInfo("End. Nominal end of application")
+    LoggerConfig.printAndLogInfo("End. Nominal end of application in " + date_time_formats.format_duration_to_string(time.time() - application_start_time))
     
 
 if __name__ == "__main__":
