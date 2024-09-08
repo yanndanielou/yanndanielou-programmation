@@ -14,6 +14,17 @@
 		".pdf"
 	],
 	"filesToNotDownload": [
-		"apb_eleves_2014_2014-01-09_12-54-15_953.pdf"
+		"apb_eleves_2014_2014-01-09_12-54-15_953.pdf",
+		"Guide_Apres_le_Bac_2013.pdf",
+		"Affiche_parents_2013.pdf",
+		"Insertionvieactive-2012.pdf",
+		"guide_PACES_tutorat_IDF_2012.pdf",
+		"guide_PAES_tutorat_IDF_2012.pdf",
+		"APB_parents.pdf",
+		"Plaquette_semaine_de_l__orientation.pdf",
+		"calendrier-secteursocial.pdf",
+		"Programme_des_conferences_2014___Admission_Postbac_2014.pdf",
+		"fiche_PrepaScientifiques.pdf",
+		"CEESO_plaquette13.pdf"
 	]
 }
