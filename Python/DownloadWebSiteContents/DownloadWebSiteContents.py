@@ -60,7 +60,6 @@ def saveResultsToJsonFile(initialInstructions: jsonInstructions.JsonInstructions
     json_file.write(result_json_dump)
 
     json_file.close()
-    
 
 
 def processJsonInstructionFile(json_instruction_file_path: str):
