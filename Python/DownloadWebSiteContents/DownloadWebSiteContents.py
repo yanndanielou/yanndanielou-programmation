@@ -47,13 +47,13 @@ LINK_TO_CHAPTER_IN_SAME_PAGE_TYPE = 'linkToChapterInSamePageType'
 application_start_time = time.time()
 
 def print_current_status(results: webSiteResults.WebSiteResults):
-    print('Duration since application start: ' + date_time_formats.format_duration_to_string(time.time() - application_start_time) + " s. So far: " + str(len(results.filesDownloadedUrls)) + " files downloaded and " + str(len(results._alreadyProcessedLinksUrls))  + " pages treated")
+    print('Duration since application start: ' + date_time_formats.format_duration_to_string(time.time() - application_start_time) + " s. So far: " + str(len(results.filesDownloadedUrls)) + " files downloaded and " + str(len(results.alreadyProcessedLinksUrls))  + " pages treated")
 
 
 def saveResultsToJsonFile(initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
-    json_file_full_path = param.output_directory + '/' + initialInstructions._outputResultJsonFile
+    json_file_full_path = param.output_directory + '/' + initialInstructions.outputResultJsonFile
 
-    json_file = open(json_file_full_path, "w")
+    json_file = open(json_file_full_path, "w", encoding="utf-8")
             
     result_json_dump = json.dumps(results, indent=4, cls=webSiteResults.WebSiteResultsEncoder)
 
@@ -70,7 +70,7 @@ def processJsonInstructionFile(json_instruction_file_path: str):
 
         results = webSiteResults.WebSiteResults()
         initialInstructions = jsonInstructions.JsonInstructions(jsonInstructionsDict)
-        downloadAllFilesFromWebPageLink(initialInstructions._mainPage, initialInstructions, results)
+        downloadAllFilesFromWebPageLink(initialInstructions.mainPage, initialInstructions, results)
 
         saveResultsToJsonFile(initialInstructions, results)
 
@@ -93,7 +93,7 @@ def dowloadFileFromURL(url: str, results: webSiteResults.WebSiteResults) -> None
         results.recordFileDownloadedUrl(url)
         
     except:
-        results._failedDownloadedUrls.add(url)
+        results.failedDownloadedUrls.add(url)
         LoggerConfig.printAndLogError("Failed to download " + fileBaseName + " from " + url)
                 
     #printCurrentStatus(results)
@@ -122,7 +122,7 @@ def is_url_a_file_that_has_already_be_downloaded(url: str, results: webSiteResul
 
 def is_url_a_file_that_must_be_downloaded(url: str, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
 
-    for filesExtensionToDownload in initialInstructions._filesExtensionsToDownload:
+    for filesExtensionToDownload in initialInstructions.filesExtensionsToDownload:
         if url.endswith(filesExtensionToDownload):
             return True
         
@@ -130,13 +130,13 @@ def is_url_a_file_that_must_be_downloaded(url: str, initialInstructions: jsonIns
 
 def is_url_a_page_that_must_be_parsed(url, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults):
     
-    for pageToExclude in initialInstructions._pagesToExclude:
+    for pageToExclude in initialInstructions.pagesToExclude:
         if pageToExclude in url:
             logging.info(url + " must be excluded because matches:" + url)
             return False
 
     # To be tested early to avoid heavy treatment    
-    if url in results._alreadyProcessedLinksUrls:
+    if url in results.alreadyProcessedLinksUrls:
         logging.info(url + " already processed")
         return False
 
@@ -145,7 +145,7 @@ def is_url_a_page_that_must_be_parsed(url, initialInstructions: jsonInstructions
         return False
 
     page_is_among_those_to_include_in_instructions = False
-    for pageToInclude in initialInstructions._pagesToInclude:
+    for pageToInclude in initialInstructions.pagesToInclude:
         if pageToInclude in url:
             logging.info(url + " must be processed because matchs:" + url)
             page_is_among_those_to_include_in_instructions = True
@@ -159,7 +159,7 @@ def is_url_a_page_that_must_be_parsed(url, initialInstructions: jsonInstructions
         url_content_type = get_content_type(url)
     except:
         LoggerConfig.printAndLogError(url + " could not get content type")
-        results._failedToProcessUrls.add(url)
+        results.failedToProcessUrls.add(url)
         return False
         
     logging.info(url + " is type: " + url_content_type)
@@ -181,7 +181,7 @@ def retrieveFilesToDownloadURLs(url: str, aHrefLinks: set[str], initialInstructi
             else:
                 logging.debug(aHrefLink + " has already been downloaded")
         else:
-            results._filesIgnoredUrls.add(aHrefLink)
+            results.filesIgnoredUrls.add(aHrefLink)
 
     LoggerConfig.printAndLogInfo("In " + url + ", " + str(len(newFilesToDownloadUrls)) + " files to download")
     return newFilesToDownloadUrls
@@ -193,11 +193,11 @@ def processSubLinks(aHrefLinks, initialInstructions: jsonInstructions.JsonInstru
         if is_url_a_page_that_must_be_parsed(aHrefLink, initialInstructions, results):
             downloadAllFilesFromWebPageLink(aHrefLink, initialInstructions, results)
         else:
-            results._notProcessedUrls.add(aHrefLink)
+            results.notProcessedUrls.add(aHrefLink)
 
 def downloadAllFilesFromWebPageLink(url, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults) -> None:
     LoggerConfig.printAndLogInfo("process link:" + url)
-    results._alreadyProcessedLinksUrls.add(url)
+    results.alreadyProcessedLinksUrls.add(url)
     
     #page = urllib.request.urlopen(url)
     #data = page.read()
@@ -218,7 +218,7 @@ def downloadAllFilesFromWebPageLink(url, initialInstructions: jsonInstructions.J
     logging.info("After processing " + url + " (without children)")
     print_current_status(results)
 
-    if initialInstructions._exploreLinks:
+    if initialInstructions.exploreLinks:
         processSubLinks(aHrefLinks, initialInstructions, results)
 
     LoggerConfig.printAndLogInfo("After processing " + url + ", (with children) ")
