@@ -19,9 +19,10 @@
 						"folderPath": "Input",
 						"fileNameMask": "NExTEO-2A0000-02-0107-00*SSC3_2_AdminTools_GUMPS_SyReqSpec*.pdf"
 					},
-					"pageNumberToDelete": [
+					"pagesToDelete": [
 						{
-							"pageNumber": 110
+							"pageNumber": 110,
+							"comment": ""
 						},
 						{
 							"pageNumber": 304
@@ -40,11 +41,33 @@
 				{
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
+						"fileNameMask": "SSC3_2_AdminTools_GUMPS_SyReqSpec 02 00.pdf"
+					},
+					"pagesToDelete": [
+						{
+							"pageNumbers": [
+								57,
+								61,
+								137,
+								146,
+								147,
+								148
+							],
+							"comment": "référeces à whitelistings et antivirus"
+						}
+					],
+					"personalizeByAllowedUsed": true,
+					"encrypt": true,
+					"genericOutputFileName": "NExTEO-2A0000-02-0107-00 Spécification Fonctionnelle système du produit Gumps (SSC3_2_AdminTools_GUMPS_SyReqSpec) V02-00"
+				},
+				{
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
 						"fileNameMask": "SSC3_2_Admintools_GUMPS_UserManual*.pdf"
 					},
 					"personalizeByAllowedUsed": true,
 					"encrypt": true,
-					"pageNumberToDelete": [
+					"pagesToDelete": [
 					],
 					"outputFilePrefixToAdd": "NExTEO-2A0000-11-1021-06 "
 				},
@@ -55,7 +78,7 @@
 					},
 					"personalizeByAllowedUsed": true,
 					"encrypt": true,
-					"pageNumberToDelete": [
+					"pagesToDelete": [
 						{
 							"pageNumber": 121
 						},
@@ -75,6 +98,29 @@
 							"pageNumber": 236
 						}
 					]
+				},
+				{
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "SSC3_2_AdminTools_GUMPS_SWArchSpec_03_00_DENALI.pdf"
+					},
+					"pagesToDelete": [
+						{
+							"pageNumbers": [
+								108,
+								113,
+								179,
+								213,
+								228,
+								229,
+								230
+							],
+							"comment": "référeces à whitelistings et antivirus"
+						}
+					],
+					"personalizeByAllowedUsed": true,
+					"encrypt": true,
+					"genericOutputFileName": "NExTEO-2A0000-02-0109-00 Spécification architecture logiciel du produit Gumps (SSC3_2_AdminTools_GUMPS_SWArchSpec) V03-00"
 				},
 				{
 					"inputPdfWithFileMaskForMultiplePDF": {

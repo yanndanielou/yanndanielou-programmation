@@ -8,7 +8,7 @@ import common.builders.FileByMaskDataModel;
 
 public class InputPDFsDataModel {
 	private FileByMaskDataModel inputPdfWithFileMaskForMultiplePDF;
-	private List<PageNumberToDeleteDataModel> pageNumberToDelete;
+	private List<PagesToDeleteDataModel> pagesToDelete;
 	private String outputFilePrefixToAdd;
 	private String genericOutputFileName;
 	private boolean personalizeByAllowedUsed;
@@ -19,12 +19,12 @@ public class InputPDFsDataModel {
 	}
 
 	public List<Integer> getAllPageNumberToDelete() {
-		if (pageNumberToDelete == null) {
+		if (pagesToDelete == null) {
 			return new ArrayList<Integer>();
 		}
 		List<Integer> allIntegers = new ArrayList<Integer>();
-		for (PageNumberToDeleteDataModel integersDataModel : pageNumberToDelete) {
-			allIntegers.add(integersDataModel.getPageNumber());
+		for (PagesToDeleteDataModel integersDataModel : pagesToDelete) {
+			allIntegers.addAll(integersDataModel.getPageNumbers());
 		}
 		return allIntegers;
 	}
