@@ -19,6 +19,7 @@
 						"folderPath": "Input",
 						"fileNameMask": "NExTEO-2A0000-02-0107-00*SSC3_2_AdminTools_GUMPS_SyReqSpec*.pdf"
 					},
+					"enabled": false,
 					"pagesToDelete": [
 						{
 							"pageNumber": 110,
@@ -43,6 +44,7 @@
 						"folderPath": "Input",
 						"fileNameMask": "SSC3_2_AdminTools_GUMPS_SyReqSpec 02 00.pdf"
 					},
+					"enabled": false,
 					"pagesToDelete": [
 						{
 							"pageNumbers": [
@@ -65,6 +67,7 @@
 						"folderPath": "Input",
 						"fileNameMask": "SSC3_2_Admintools_GUMPS_UserManual*.pdf"
 					},
+					"enabled": false,
 					"personalizeByAllowedUsed": true,
 					"encrypt": true,
 					"pagesToDelete": [
@@ -76,6 +79,7 @@
 						"folderPath": "Input",
 						"fileNameMask": "NExTEO-2A0000-02-0109-00 SSC3_2_AdminTools_GUMPS_SWArchSpec 02 00*.pdf"
 					},
+					"enabled": false,
 					"personalizeByAllowedUsed": true,
 					"encrypt": true,
 					"pagesToDelete": [
@@ -104,6 +108,7 @@
 						"folderPath": "Input",
 						"fileNameMask": "SSC3_2_AdminTools_GUMPS_SWArchSpec_03_00_DENALI.pdf"
 					},
+					"enabled": false,
 					"pagesToDelete": [
 						{
 							"pageNumbers": [
@@ -127,8 +132,21 @@
 						"folderPath": "Input",
 						"fileNameMask": "NExTEO-2A0000-02-0119-00 SSC3_2_AdminTools_GUMPS_HMISpec*.pdf"
 					},
+					"enabled": true,
 					"personalizeByAllowedUsed": true,
 					"encrypt": true
+				},
+				{
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "SSC3_2_AdminTools_GUMPS_HMISpec.pdf"
+					},
+					"enabled": true,
+					"pagesToDelete": [
+					],
+					"personalizeByAllowedUsed": true,
+					"encrypt": true,
+					"genericOutputFileName": "NExTEO-2A0000-02-0109-00 Spécification architecture logiciel du produit Gumps (SSC3_2_AdminTools_GUMPS_SWArchSpec) V03-00"
 				}
 			],
 			"textLinesToDisplay": [
@@ -224,6 +242,7 @@
 						"folderPath": "Input",
 						"fileNameMask": "Airlink_R8_4_1_rc2_System_Delivery_Sheet_for_CBTC_V01_00_signed.pdf"
 					},
+					"enabled": false,
 					"personalizeByAllowedUsed": false,
 					"encrypt": false,
 					"genericOutputFileName": "NExTEO-272500-04-0349-10 Software Delivery Sheet Airlink R8.4.1 V01-00"

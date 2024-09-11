@@ -13,9 +13,10 @@ public class InputPDFsDataModel {
 	private String genericOutputFileName;
 	private boolean personalizeByAllowedUsed;
 	private boolean encrypt;
+	private boolean enabled = true;
 
 	public List<File> getInputPDFFiles() {
-		return inputPdfWithFileMaskForMultiplePDF.getResolvedFiles();
+		return enabled ? inputPdfWithFileMaskForMultiplePDF.getResolvedFiles() : new ArrayList<>();
 	}
 
 	public List<Integer> getAllPageNumberToDelete() {

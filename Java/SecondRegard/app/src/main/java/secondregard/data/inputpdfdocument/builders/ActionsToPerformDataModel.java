@@ -8,7 +8,7 @@ public class ActionsToPerformDataModel {
 	private List<InputPDFAndActionsToPerformDataModel> pdfBatchs;
 
 	public List<InputPDFAndActionsToPerformDataModel> getPdfBatchs() {
-		return pdfBatchs;
+		return pdfBatchs.stream().filter(InputPDFAndActionsToPerformDataModel::isEnabled).toList();
 	}
 
 	public List<FilesToZipDataModel> getZipBatchs() {

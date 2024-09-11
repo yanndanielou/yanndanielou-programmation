@@ -18,6 +18,6 @@ public interface SecondRegardParams {
 	public static final boolean GENERATE_ALSO_ZIP_FILES = true;
 	
 	public static final boolean PROCESS_PDFS = true;
-	public static final boolean PROCESS_ZIPS = true;
+	public static final boolean PROCESS_ZIPS = false;
 
 }
