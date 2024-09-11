@@ -13,7 +13,7 @@ public class InputPDFsDataModel {
 	private String genericOutputFileName;
 	private boolean personalizeByAllowedUsed;
 	private boolean encrypt;
-	private boolean enabled = true;
+	private boolean enabled;
 
 	public List<File> getInputPDFFiles() {
 		return enabled ? inputPdfWithFileMaskForMultiplePDF.getResolvedFiles() : new ArrayList<>();
