@@ -17,4 +17,9 @@ public class FileByMaskDataModel extends NamedDataModel {
 		return Arrays.asList(allFilesNamesWithExtension);
 	}
 
+	@Override
+	public String toString() {
+		return "FileByMaskDataModel [folderPath=" + folderPath + ", fileNameMask=" + fileNameMask + "]";
+	}
+
 }

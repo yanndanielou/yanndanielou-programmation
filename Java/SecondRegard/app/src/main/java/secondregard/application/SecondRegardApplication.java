@@ -104,14 +104,17 @@ public class SecondRegardApplication {
 		for (InputPDFAndActionsToPerformDataModel pdfBatch : pdfBatchs) {
 
 			for (InputPDFsDataModel inputPdf : pdfBatch.getInputPdfs()) {
-				List<File> inputPDFFiles = inputPdf.getInputPDFFiles();
+				if (inputPdf.isEnabled()) {
+					List<File> inputPDFFiles = inputPdf.getInputPDFFiles();
+					LOGGER.info(inputPdf.getInputPdfWithFileMaskForMultiplePDF() + ": found " + inputPDFFiles.size()
+							+ " files");
 
-				for (File inputPDFFile : inputPDFFiles) {
-					pdfProcessorThreads.addAll(handlePdf(pdfAllowedUsers, pdfBatch, inputPdf, inputPDFFile));
-					// pdfProcessorThreads.add(new PDFProcessorThread(pdfAllowedUsers, pdfBatch,
-					// inputPdf, inputPDFFile));
+					for (File inputPDFFile : inputPDFFiles) {
+						pdfProcessorThreads.addAll(handlePdf(pdfAllowedUsers, pdfBatch, inputPdf, inputPDFFile));
+					}
 
 				}
+
 			}
 		}
 		return pdfProcessorThreads;

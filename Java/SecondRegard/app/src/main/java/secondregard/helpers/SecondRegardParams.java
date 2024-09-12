@@ -15,7 +15,7 @@ public interface SecondRegardParams {
 
 	public static final boolean GENERATE_ALSO_UNPROTECTED_PDF_FOR_NO_USER = false;
 
-	public static final boolean GENERATE_ALSO_ZIP_FILES = true;
+	public static final boolean GENERATE_ALSO_ZIP_FILES = false;
 	
 	public static final boolean PROCESS_PDFS = true;
 	public static final boolean PROCESS_ZIPS = false;

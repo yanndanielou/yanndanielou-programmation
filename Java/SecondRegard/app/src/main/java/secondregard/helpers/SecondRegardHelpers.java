@@ -199,7 +199,7 @@ public class SecondRegardHelpers {
 			throws IOException {
 		List<String> outputPdfFilesFullPaths = new ArrayList<>();
 
-		if (inputPdf.isEncrypted()) {
+		if (inputPdf.isPersonalizeByAllowedUsed()) {
 
 			for (SecondRegardAllowedUser pdfAllowedUser : pdfAllowedUsers) {
 				LOGGER.info(() -> "Handle pdf user:" + pdfAllowedUser.getPrenom() + " " + pdfAllowedUser.getNom());
@@ -216,8 +216,11 @@ public class SecondRegardHelpers {
 
 				DirectoryHelper.createFolderIfNotExists(SecondRegardConstants.OUTPUT_DIRECTORY_NAME);
 
-				LOGGER.debug(() -> "Protect PDF");
-				SecondRegardHelpers.protectPDF(originalDoc, pdfAllowedUser);
+				if (inputPdf.isEncrypted()) {
+
+					LOGGER.debug(() -> "Protect PDF");
+					SecondRegardHelpers.protectPDF(originalDoc, pdfAllowedUser);
+				}
 
 				String outputPDFFileFullPath = SecondRegardHelpers.getOutputPDFFileNameWithFullPath(inputPdf,
 						inputPDFFile, originalDoc, pdfAllowedUser);

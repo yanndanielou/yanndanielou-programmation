@@ -15,6 +15,10 @@ public class InputPDFsDataModel {
 	private boolean encrypt;
 	private boolean enabled;
 
+	public FileByMaskDataModel getInputPdfWithFileMaskForMultiplePDF() {
+		return inputPdfWithFileMaskForMultiplePDF;
+	}
+
 	public List<File> getInputPDFFiles() {
 		return enabled ? inputPdfWithFileMaskForMultiplePDF.getResolvedFiles() : new ArrayList<>();
 	}
@@ -44,5 +48,9 @@ public class InputPDFsDataModel {
 
 	public boolean isPersonalizeByAllowedUsed() {
 		return personalizeByAllowedUsed;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
 	}
 }
