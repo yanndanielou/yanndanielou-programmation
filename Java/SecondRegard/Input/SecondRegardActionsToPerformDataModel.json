@@ -253,11 +253,76 @@
 					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
-						"fileNameMask": "TCR3_AMDE_SYSTEME_Ed_08_03_V3F2_2.pdf"
+						"fileNameMask": "TCR3_AMDE_SYSTEME_Annexes_Ed_09_01_V3F3.pdf",
+						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=68958346&objAction=browse&viewType=1"
 					},
 					"personalizeByAllowedUsed": true,
 					"encrypt": true,
-					"genericOutputFileName": "NExTEO-250000-03-0233-01 TCR3 AMDE Système V08-03"
+					"genericOutputFileName": "NExTEO-250000-03-0233-01 TCR3 AMDE Système V09-01"
+				},
+				{
+					"enabled": true,
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_AMDE_PAE_Ed_07_01_V3F3.pdf",
+						"memo": 1180598,
+						"parentFolderUrl": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=66294598&objAction=browse",
+						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=91337048&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D91334374%26objaction%3Dopen"
+					},
+					"personalizeByAllowedUsed": true,
+					"encrypt": true,
+					"genericOutputFileName": "NExTEO-B-251100-03-0233-02 TCR3 AMDE PAE V07-01"
+				},
+				{
+					"enabled": true,
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_AMDE_MES_Ed_05_03_V3F2.2.pdf",
+						"memo": 1190420,
+						"parentFolderUrl": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=66294595&objAction=browse",
+						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=91332027&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D91333538%26objaction%3Dopen"
+					},
+					"personalizeByAllowedUsed": true,
+					"encrypt": true,
+					"genericOutputFileName": "NExTEO-S-252100-03-0233-04 TCR3 AMDE MES V05-03"
+				},
+				{
+					"enabled": true,
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "148-TCR3_AMDE_PAL_Ed_05_03_V3F2.2.pdf",
+						"memo": 1190529,
+						"parentFolderUrl": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=66294596&objAction=browse",
+						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=91335536&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D91335235%26objaction%3Dopen"
+					},
+					"personalizeByAllowedUsed": true,
+					"encrypt": true,
+					"genericOutputFileName": "NExTEO-S-252100-03-0233-05 TCR3 AMDE PAL V05-03"
+				},
+				{
+					"enabled": true,
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "77-TCR3_AMDE_PAS_Ed_07_01_V3F3.pdf",
+						"memo": 1190529,
+						"parentFolderUrl": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=66294597&objAction=browse&viewType=1",
+						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=91336245&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D91336542%26objaction%3Dopen"
+					},
+					"personalizeByAllowedUsed": true,
+					"encrypt": true,
+					"genericOutputFileName": "NExTEO-S-252100-03-0233-06 TCR3 AMDE PAS V07-01"
+				},
+				{
+					"enabled": true,
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_AMDE_FT_Ed_06_01_V3F2.1.pdf",
+						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=90008042&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D90009137%26objaction%3Dopen",
+						"parentFolderUrl": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=69973119&objAction=browse"
+					},
+					"personalizeByAllowedUsed": true,
+					"encrypt": true,
+					"genericOutputFileName": "NExTEO-021900-03-0233-00 TCR3 AMDE des fonctions techniques V06-01"
 				},
 				{
 					"enabled": false,
