@@ -12,7 +12,7 @@
 	],
 	"pdfBatchs": [
 		{
-			"enabled": false,
+			"enabled": true,
 			"label": "Gumps pre denali 0 ",
 			"inputPdfs": [
 				{
@@ -258,7 +258,19 @@
 					},
 					"personalizeByAllowedUsed": true,
 					"encrypt": true,
-					"genericOutputFileName": "NExTEO-250000-03-0233-01 TCR3 AMDE Système V09-01"
+					"genericOutputFileName": "NExTEO-250000-03-0233-xxx (à créer) TCR3 AMDE Système V09-01"
+				},
+				{
+					"enabled": true,
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_AMDE_FT_Ed_06_01_V3F2.1.pdf",
+						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=90008042&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D90009137%26objaction%3Dopen",
+						"parentFolderUrl": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=69973119&objAction=browse"
+					},
+					"personalizeByAllowedUsed": true,
+					"encrypt": true,
+					"genericOutputFileName": "NExTEO-021900-03-0233-01 TCR3 AMDE des fonctions techniques V06-01"
 				},
 				{
 					"enabled": true,
@@ -311,18 +323,6 @@
 					"personalizeByAllowedUsed": true,
 					"encrypt": true,
 					"genericOutputFileName": "NExTEO-S-252100-03-0233-06 TCR3 AMDE PAS V07-01"
-				},
-				{
-					"enabled": true,
-					"inputPdfWithFileMaskForMultiplePDF": {
-						"folderPath": "Input",
-						"fileNameMask": "TCR3_AMDE_FT_Ed_06_01_V3F2.1.pdf",
-						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=90008042&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D90009137%26objaction%3Dopen",
-						"parentFolderUrl": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=69973119&objAction=browse"
-					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
-					"genericOutputFileName": "NExTEO-021900-03-0233-00 TCR3 AMDE des fonctions techniques V06-01"
 				},
 				{
 					"enabled": false,
