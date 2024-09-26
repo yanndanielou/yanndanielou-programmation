@@ -254,11 +254,12 @@
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_AMDE_SYSTEME_Annexes_Ed_09_01_V3F3.pdf",
-						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=68958346&objAction=browse&viewType=1"
+						"parentUrl": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=68958346&objAction=browse&viewType=1",
+						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=91350227&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D91347038%26objaction%3Dopen"
 					},
 					"personalizeByAllowedUsed": true,
 					"encrypt": true,
-					"genericOutputFileName": "NExTEO-250000-03-0233-xxx (à créer) TCR3 AMDE Système V09-01"
+					"genericOutputFileName": "NExTEO-250000-03-0233-01 TCR3 AMDE Système V09-01"
 				},
 				{
 					"enabled": true,
