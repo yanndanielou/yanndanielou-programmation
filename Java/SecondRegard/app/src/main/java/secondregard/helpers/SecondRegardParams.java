@@ -13,7 +13,7 @@ public interface SecondRegardParams {
 	public static final List<String> ALLOWED_USER_ENTITES = new ArrayList<String>();; // =
 																						// CollectionUtils.asList("SYSTEREL");
 
-	public static final boolean GENERATE_ALSO_UNPROTECTED_PDF_FOR_NO_USER = false;
+	public static final boolean GENERATE_ALSO_UNPROTECTED_PDF_FOR_NO_USER = true;
 
 	public static final boolean GENERATE_ALSO_ZIP_FILES = false;
 	
