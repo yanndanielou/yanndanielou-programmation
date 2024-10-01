@@ -498,7 +498,7 @@
 					"genericOutputFileName": "NExTEO-021900-03-0229-03 TCR3 ASF Assurer les mesures d'odométrie (niveau SFE) V08-01"
 				},
 				{
-					"enabled": true,
+					"enabled": false,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_KCV_V3_ed_06_02_V3-F2.1.pdf"
@@ -525,10 +525,10 @@
 					"genericOutputFileName": "NExTEO-021900-03-0229-20 TCR3 ASF SFE des télécommandes sécurisées V07-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
-						"fileNameMask": "TCR3_ASF_SFE_Suivi_Ed_06_01_V3F2.1.pdf"
+						"fileName": "TCR3_ASF_SFE_Suivi_Ed_06_01_V3F2.1.pdf"
 					},
 					"personalizeByAllowedUsed": true,
 					"encrypt": true,
