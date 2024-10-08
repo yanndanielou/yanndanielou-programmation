@@ -595,10 +595,10 @@
 					"genericOutputFileName": "NExTEO-021900-03-0229-05 TCR3 ASF SFE Commander les mouvements du train V08-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
-						"fileNameMask": "TCR3_ASF_SFE_Configuration_des_zones_Ed_08_01_V3F3.pdf"
+						"fileNameMask": "TCR3_ASF_SFE_LOC_Ed_05_04_V3F1.1.A.pdf"
 					},
 					"personalizeByAllowedUsed": true,
 					"encrypt": true,
