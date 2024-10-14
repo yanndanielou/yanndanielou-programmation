@@ -653,7 +653,7 @@
 					"ref": "SWE RC-FR IC-MOL QS/TCR3/135.0066.12/RAM/RAM",
 					"version": "V08-00",
 					"link": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=91218925&objAction=browse&viewType=1",
-					"genericOutputFileName": "NExTEO-250000-03-0237-01 TCR3_RAPPORT DE VALIDATION DE LA SPECIFICATION DES DONNEES V08-00.pdf"
+					"genericOutputFileName": "NExTEO-250000-03-0237-01 TCR3 RAPPORT DE VALIDATION DE LA SPECIFICATION DES DONNEES V08-00"
 				},
 				{
 					"enabled": false,
