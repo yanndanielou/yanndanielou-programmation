@@ -262,7 +262,7 @@
 					"genericOutputFileName": "NExTEO-250000-03-0233-01 TCR3 AMDE Système V09-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_AMDE_FT_Ed_06_01_V3F2.1.pdf",
