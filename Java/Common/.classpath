@@ -33,7 +33,7 @@
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 
  -->
-	<classpathentry kind="lib" path="../ExternalLibraries/acpoi-5.2.5.jar"/>
+	<classpathentry kind="lib" path="../ExternalLibraries/poi-5.2.5.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/poi-ooxml-5.2.5.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/commons-compress-1.25.0.jar"/>
 	<classpathentry kind="lib" path="../ExternalLibraries/xmlbeans-5.2.0.jar"/>
