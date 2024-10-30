@@ -12,6 +12,7 @@ public class SandboxMain {
 	}
 
 	public static void main(String[] args) {
+		JavaVersion();
 
 		int asInt = 252;
 		byte aAsByte = (byte) asInt;
