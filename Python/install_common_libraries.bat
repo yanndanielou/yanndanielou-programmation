@@ -1,10 +1,23 @@
-CALL SET_PYTHON_HOME.bat
+@CALL SET_PYTHON_HOME.bat
 
-call %PYTHON_HOME%\python.exe -m pip install mypy
-call %PYTHON_HOME%\python.exe -m pip install m3uspiff
-call %PYTHON_HOME%\python.exe -m pip install ffmpeg
-call %PYTHON_HOME%\python.exe -m pip install ffprobe 
-call %PYTHON_HOME%\python.exe -m pip install customtkinter
+@call :INSTALL_PYTHON_LIB mypy
+@call :INSTALL_PYTHON_LIB m3uspiff
+@call :INSTALL_PYTHON_LIB ffmpeg
+@call :INSTALL_PYTHON_LIB ffprobe 
+@call :INSTALL_PYTHON_LIB customtkinter
+@call :INSTALL_PYTHON_LIB matplotlib
+@call :INSTALL_PYTHON_LIB ipywidgets
 
 
-timeout /t 100
+@GOTO :END_OF_FILE
+
+
+:INSTALL_PYTHON_LIB
+@Echo install %1
+@call %PYTHON_HOME%\python.exe -m pip install %1
+@EXIT /B 0
+
+
+:END_OF_FILE
+
+@timeout /t 100

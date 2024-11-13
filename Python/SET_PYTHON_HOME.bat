@@ -9,7 +9,7 @@
 
 @ECHO PYTHON_HOME %PYTHON_HOME%
 
-timeout /t 1
+@rem timeout /t 1
 GOTO :END_OF_FILE
 
 
