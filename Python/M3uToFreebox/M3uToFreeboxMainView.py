@@ -25,8 +25,15 @@ import os
 
 class M3uToFreeboxMainView(tkinter.Tk):
 
+
+
     def __init__(self):
         tkinter.Tk.__init__(self)
+
+        self.m3uToFreeboxApplication = None
+
+
+
 
         self.title("M3U to Freebox")
 
@@ -88,3 +95,9 @@ class M3uToFreeboxMainView(tkinter.Tk):
         except ValueError:
             pass
 
+
+    def get_m3uToFreeboxApplication(self):
+        return self.m3uToFreeboxApplication
+
+    def set_m3uToFreeboxApplication(self, value):
+        self.m3uToFreeboxApplication = value
