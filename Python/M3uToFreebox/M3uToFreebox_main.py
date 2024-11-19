@@ -1,18 +1,11 @@
 """ https://tkdocs.com/tutorial/firstexample.html """
 import random
 
-import tkinter
-from tkinter import (
-    filedialog,
-    simpledialog,
-    messagebox,
-    scrolledtext,
-    Menu,
-    colorchooser,
-    ttk
-)
+import m3uToFreeboxMainView
+
 
 import sys
+import jsonInstructions
 
 sys.path.append('.')
 sys.path.append('../Logger')
@@ -23,7 +16,8 @@ import date_time_formats
 
 import time
 
-from M3uToFreeboxMainView import M3uToFreeboxMainView
+import tkinter
+
 
 import os
 
@@ -41,9 +35,10 @@ def main(argv):
 
     LoggerConfig.printAndLogInfo('Start application')
 
-    mainView = M3uToFreeboxMainView()
-    app: M3uToFreeboxApplication = M3uToFreeboxApplication(mainView)
-    mainView.mainloop()
+    root = tkinter.Tk()
+    main_view = m3uToFreeboxMainView.M3uToFreeboxMainView(root)
+    app: M3uToFreeboxApplication = M3uToFreeboxApplication(main_view)
+    root.mainloop()
 
     LoggerConfig.printAndLogInfo("End. Nominal end of application in " + date_time_formats.format_duration_to_string(
     time.time() - application_start_time))
