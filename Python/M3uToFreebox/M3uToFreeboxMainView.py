@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """ https://tkdocs.com/tutorial/firstexample.html """
 import random
 
