@@ -3,3 +3,6 @@
 *.m3u
 *.txt
 /.mypy_cache/
+Dependencies/Logger
+Dependencies/Common
+Logger
