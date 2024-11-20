@@ -104,6 +104,12 @@ class M3uToFreeboxMainView (tkinter.Tk):
         
     def _create_tree_view(self):
                 
+        options = ['A','B','C','D','E','F','G','H']
+        selected = tkinter.StringVar(self._tab_list_details)
+        selected.set(options[0])
+        
+        combobox = ttk.Combobox(self._tab_list_details, textvariable=selected, values=options,font=('verdana',14))
+                
         self.tree_view = ttk.Treeview(self._tab_list_details, columns=(1,2,3,4), show='headings')
 
 
@@ -117,7 +123,16 @@ class M3uToFreeboxMainView (tkinter.Tk):
         self.tree_view.heading(3, text='Quantity')
         self.tree_view.heading(4, text='Price')
 
-        self.tree_view.pack()
+        #self.tree_view.pack()
+        
+   
+        
+        combobox.grid(row=0, column=0)
+        self.tree_view.grid(row=1, column=0)
+
+        #self._tab_list_details.grid(row=0, column=0)
+        
+        
         # add items to the treeview
 
         
@@ -194,9 +209,9 @@ class M3uToFreeboxMainView (tkinter.Tk):
                 LoggerConfig.printAndLogInfo(str(m3u_entry_number) + " entries filled")
         
         
-        self.tree_view.pack()
+        #self.tree_view.pack()
         
-        self.pack()
+        #self.pack()
         
 
     def calculate(self, *args):
