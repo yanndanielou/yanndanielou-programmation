@@ -2,3 +2,4 @@
 *.zip
 *.m3u
 *.txt
+/.mypy_cache/
