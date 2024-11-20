@@ -62,6 +62,7 @@ class M3uToFreeboxMainView (tkinter.Tk):
         self._tab_list_details = ttk.Frame(self._tab_control) 
         self._tab_control.add(self._tab_list_details, text ='List details') 
         self._create_tree_view()
+        self._create_tree_view_context_menu()
 
     def create_tab_empty(self):
         self._tab_empty = ttk.Frame(self._tab_control) 
@@ -102,6 +103,27 @@ class M3uToFreeboxMainView (tkinter.Tk):
         self.tree_view.pack()
      """
         
+    def selection(self):
+        print(self.tree_view_context_menu.selection)
+        
+    def _create_tree_view_context_menu(self):
+        #Create menu
+        self.tree_view_context_menu = tkinter.Menu(self, tearoff=0)
+        self.tree_view_context_menu.add_command(label="Next", command=self.selection)
+        self.tree_view_context_menu.add_separator()
+
+        def do_popup(event):
+            # display the popup menu
+            try:
+                self.tree_view_context_menu.selection = self.tree_view.set(self.tree_view.identify_row(event.y))
+                self.tree_view_context_menu.post(event.x_root, event.y_root)
+            finally:
+                # make sure to release the grab (Tk 8.0a1 only)
+                self.tree_view_context_menu.grab_release()
+                
+        self.tree_view.bind("<Button-3>", do_popup)
+
+    
     def _create_tree_view(self):
                 
         options = ['A','B','C','D','E','F','G','H']
@@ -129,7 +151,8 @@ class M3uToFreeboxMainView (tkinter.Tk):
         
         combobox.grid(row=0, column=0)
         self.tree_view.grid(row=1, column=0)
-
+        
+        self._tab_control.pack()
         #self._tab_list_details.grid(row=0, column=0)
         
         
