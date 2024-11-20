@@ -3,16 +3,10 @@ import random
 
 import m3uToFreeboxMainView
 
-
 import sys
-import jsonInstructions
 
-sys.path.append('.')
-sys.path.append('../Logger')
-import LoggerConfig
-
-sys.path.append('../Common')
-import date_time_formats
+import Dependencies.Logger.LoggerConfig as LoggerConfig
+import Dependencies.Common.date_time_formats as date_time_formats
 
 import time
 
@@ -35,10 +29,9 @@ def main(argv):
 
     LoggerConfig.printAndLogInfo('Start application')
 
-    root = tkinter.Tk()
-    main_view = m3uToFreeboxMainView.M3uToFreeboxMainView(root)
+    main_view = m3uToFreeboxMainView.M3uToFreeboxMainView()
     app: M3uToFreeboxApplication = M3uToFreeboxApplication(main_view)
-    root.mainloop()
+    main_view.mainloop()
 
     LoggerConfig.printAndLogInfo("End. Nominal end of application in " + date_time_formats.format_duration_to_string(
     time.time() - application_start_time))
