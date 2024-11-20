@@ -3,47 +3,25 @@
 
 import tkinter
 
-class M3uToFreeboxMainView:
+from tkinter import ttk
+
+class M3uToFreeboxMainView (tkinter.Tk):
     """ Main view of application """
 
-    def __init__(self, root:tkinter.Tk):
+
+    def __init__(self):
+        super().__init__()        
 
         self._m3uToFreeboxApplication = None
 
+        self._create_menu()
+        self._create_main_frame()
 
+    def _create_main_frame(self):
 
+        self.title("M3U to Freebox")
 
-        root.title("M3U to Freebox")
-
-        menu_bg = "black"
-        menu_fg = "lightgrey"
-
-
-        submenu_bg = "black"
-        submenu_fg = "lightgrey"
-
-        menu_bar = tkinter.Menu(self)
-        root.config(menu=menu_bar)
-        menu_bar.config(
-            font=("Courier", 11),
-            bg=menu_bg,
-            fg=menu_fg,
-            borderwidth=6,
-            relief=tkinter.RAISED
-        )
-
-        file_menu = tkinter.Menu(
-            menu_bar,
-            tearoff=0,
-            font=("Courier New", 10),
-            bg=submenu_bg,
-            fg=submenu_fg
-        )
-        menu_bar.add_cascade(label="File", menu=file_menu)
-
-        file_menu.add_command(label="Open", command=None)
-
-        self.mainframe = tkinter.ttk.Frame(root, padding="3 3 12 12")
+        self.mainframe = tkinter.ttk.Frame(self, padding="3 3 12 12")
         self.mainframe.grid(column=0, row=0, sticky=(tkinter.N, tkinter.W, tkinter.E, tkinter.S))
         self.mainframe.columnconfigure(0, weight=1)
         self.mainframe.rowconfigure(0, weight=1)
@@ -64,7 +42,38 @@ class M3uToFreeboxMainView:
             child.grid_configure(padx=5, pady=5)
 
         feet_entry.focus()
-        root.bind("<Return>", self.calculate)
+        self.bind("<Return>", self.calculate)
+        
+    def _create_menu(self):
+
+        menu_bg = "black"
+        menu_fg = "lightgrey"
+
+
+        submenu_bg = "black"
+        submenu_fg = "lightgrey"
+
+        menu_bar = tkinter.Menu(self)
+        self.config(menu=menu_bar)
+        menu_bar.config(
+            font=("Courier", 11),
+            bg=menu_bg,
+            fg=menu_fg,
+            borderwidth=6,
+            relief=tkinter.RAISED
+        )
+
+        file_menu = tkinter.Menu(
+            menu_bar,
+            tearoff=0,
+            font=("Courier New", 10),
+            bg=submenu_bg,
+            fg=submenu_fg
+        )
+        menu_bar.add_cascade(label="File", menu=file_menu)
+
+        file_menu.add_command(label="Open", command=None)
+
 
     def calculate(self, *args):
         try:
