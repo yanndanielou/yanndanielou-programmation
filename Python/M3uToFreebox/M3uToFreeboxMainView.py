@@ -1,9 +1,20 @@
 # -*-coding:Utf-8 -*
 
+import Dependencies.Logger.LoggerConfig as LoggerConfig
 
 import tkinter
+import M3uFileParser
 
-from tkinter import ttk
+
+from tkinter import (
+  filedialog, 
+  simpledialog, 
+  messagebox, 
+  scrolledtext, 
+  Menu,
+  colorchooser,
+  ttk
+  )
 
 class M3uToFreeboxMainView (tkinter.Tk):
     """ Main view of application """
@@ -72,8 +83,28 @@ class M3uToFreeboxMainView (tkinter.Tk):
         )
         menu_bar.add_cascade(label="File", menu=file_menu)
 
-        file_menu.add_command(label="Open", command=None)
+        file_menu.add_command(label="Open", command=self.menu_open_file)
 
+
+    def menu_open_file(self):
+        current_widget = self.focus_get()
+        file_path = filedialog.askopenfilename(
+            filetypes=[
+            ("M3u", "*.m3u*"), 
+            ("Python", "*.py*"), 
+            ("CC++", "*.c"),
+            ("Text", "*.txt"),
+            ("CSV", "*.csv")
+            ]
+        )
+        LoggerConfig.printAndLogInfo("Open file:" + file_path)
+        
+        if file_path:
+            with open("last_file.txt", 'w') as file:
+                file.write(f"{file_path}")
+            
+            m3u_file_parser =  M3uFileParser.M3uFileParser()
+            self.m3u_entries = m3u_file_parser.parse_file(file_path)
 
     def calculate(self, *args):
         try:
