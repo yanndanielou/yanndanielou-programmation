@@ -1,5 +1,7 @@
 @CALL SET_PYTHON_HOME.bat
 
+@call :INSTALL_PYTHON_LIB pycairo
+@call :INSTALL_PYTHON_LIB PyGObject
 @call :INSTALL_PYTHON_LIB mypy
 @call :INSTALL_PYTHON_LIB m3uspiff
 @call :INSTALL_PYTHON_LIB ffmpeg
