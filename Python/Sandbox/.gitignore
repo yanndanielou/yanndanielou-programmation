@@ -1,2 +1,3 @@
 last_file.txt
 last*.txt
+/.mypy_cache/
