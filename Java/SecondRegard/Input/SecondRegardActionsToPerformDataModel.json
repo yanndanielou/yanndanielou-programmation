@@ -69,8 +69,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "SSC3_2_Admintools_GUMPS_UserManual*.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"pagesToDelete": [
 					],
 					"outputFilePrefixToAdd": "NExTEO-2A0000-11-1021-06 "
@@ -257,8 +257,8 @@
 						"parentUrl": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=68958346&objAction=browse&viewType=1",
 						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=91350227&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D91347038%26objaction%3Dopen"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-250000-03-0233-01 TCR3 AMDE Système V09-01"
 				},
 				{
@@ -269,8 +269,8 @@
 						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=90008042&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D90009137%26objaction%3Dopen",
 						"parentFolderUrl": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=69973119&objAction=browse"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-021900-03-0233-01 TCR3 AMDE des fonctions techniques V06-01"
 				},
 				{
@@ -282,8 +282,8 @@
 						"parentFolderUrl": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=66294598&objAction=browse",
 						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=91337048&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D91334374%26objaction%3Dopen"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-B-251100-03-0233-02 TCR3 AMDE PAE V07-01"
 				},
 				{
@@ -295,8 +295,8 @@
 						"parentFolderUrl": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=66294595&objAction=browse",
 						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=91332027&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D91333538%26objaction%3Dopen"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-S-252100-03-0233-04 TCR3 AMDE MES V05-03"
 				},
 				{
@@ -308,8 +308,8 @@
 						"parentFolderUrl": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=66294596&objAction=browse",
 						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=91335536&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D91335235%26objaction%3Dopen"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-S-252100-03-0233-05 TCR3 AMDE PAL V05-03"
 				},
 				{
@@ -321,8 +321,8 @@
 						"parentFolderUrl": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=66294597&objAction=browse&viewType=1",
 						"url": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=91336245&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D91336542%26objaction%3Dopen"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-S-252100-03-0233-06 TCR3 AMDE PAS V07-01"
 				},
 				{
@@ -333,7 +333,7 @@
 					},
 					"personalizeByAllowedUsed": true,
 					"encrypt": true,
-					"genericOutputFileName": "NExTEO-S-251000-02-0107-03 Spécification fonctionnelle du PAS V13-00"
+					"genericOutputFileN.ame": "NExTEO-S-251000-02-0107-03 Spécification fonctionnelle du PAS V13-00"
 				},
 				{
 					"enabled": false,
@@ -371,8 +371,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_DDIP_B_RL3F3-a_Ed_7_0.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-B-251100-04-0314-00 Document de Définition des Invariants et des paramètres Bord (Partie produit TGMT CBTC V3) V07-00"
 				},
 				{
@@ -381,8 +381,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_DDIP_S_ed7.7_RL3F2.1-a.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-252000-04-0314-01 Document de Définition des Invariants et des paramètres Sol (Partie produit TGMT CBTC V3) V07-07"
 				},
 				{
@@ -401,8 +401,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_SPS_V11_00_BL_3.0_Rev_Valid V3F3.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-200000-02-0116-07 Spécification des paramètres système (Partie produit TGMT CBTC V3) V11-00"
 				},
 				{
@@ -411,8 +411,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "SDC_V3F3_ed1.0.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-200000-02-0116-06 Spécification des données de configuration système CBTC (Partie produit TGMT CBTC V3) V04-00"
 				},
 				{
@@ -461,8 +461,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "DCIR_Ed12_01.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-200000-02-0116-52 Document de Conception des invariants de Réalisation de l'ATC (Partie produit TGMT CBTC V3) V12-01"
 				},
 				{
@@ -471,8 +471,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "DCIF_S_RL3F21a_Ed11_01.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-S-252000-02-0116-02 Dossier de Conception des Invariants Finaux Sol (Partie produit TGMT CBTC V3) V11-01"
 				},
 				{
@@ -481,8 +481,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "DCIF_B_RL3F3a_Ed09_01.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-B-251000-02-0116-02 Dossier de Conception des Invariants Finaux Bord (Partie produit TGMT CBTC V3) V09-01"
 				},
 				{
@@ -491,8 +491,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_ASS_MES_ODO_V08_01_V3F3.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"memo": 1193513,
 					"link": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=91360677&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D91360274%26objaction%3Dopen",
 					"genericOutputFileName": "NExTEO-021900-03-0229-03 TCR3 ASF Assurer les mesures d'odométrie (niveau SFE) V08-01"
@@ -503,8 +503,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_KCV_V3_ed_06_02_V3-F2.1.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"memo": 1193284,
 					"ref": "DSF/TCR3/32.0441.10/ATR/ATR",
 					"link": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=91361061&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D91360891%26objaction%3Dopen",
@@ -516,8 +516,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_TCS_Ed_07_01_V3F2.1.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"memo": 1165167,
 					"ref": "DSF/TCR3/32.0476.10/ATR/ATR",
 					"version": "V07-01",
@@ -530,8 +530,8 @@
 						"folderPath": "Input",
 						"fileName": "TCR3_ASF_SFE_Suivi_Ed_06_01_V3F2.1.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"memo": 1162194,
 					"ref": "SWE_RC-FR_IC-MOL_RA_RD_SAF/TCR3/32.0240.12/MME/MME",
 					"version": "V06-01",
@@ -544,8 +544,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_Fonctions techniques_05_05_V3F1.1.a.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"memo": 1185883,
 					"ref": "DSF/TCR3/32.0473.10/MME/MME",
 					"version": "V05-05",
@@ -574,8 +574,8 @@
 						"commentSource": "FERCHAUD, MARC (SMO SWE RC-FR CTO RAMS RMP)30/09 09:54",
 						"comment": "Bonjour Yann, c'est la version 06/04  de l'ASF SFE AUTORISER qui a été signée et qui est applicable au dossier NEXTEO"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"memo": 1194908,
 					"Wrongmemo": 1193833,
 					"ref": "SWE_RC-FR_IC-MOL_RA_RD_SAF/TCR3/32.0017.12/TB/TB",
@@ -591,8 +591,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_Commander_Ed_08_01_V3F3.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"memo": 1192236,
 					"ref": "SWE_RC-FR_IC-MOL_RA_RD_SAF/TCR3/32.0092.12/ATR/ATR",
 					"version": "V08-01",
@@ -633,8 +633,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_Configuration des trains_Ed_08.01_V3F3.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"memo": 1185468,
 					"ref": "SWE_RC-FR_IC_MOL_RA_RD_SAF/TCR3/32.0001.12/JPL/JPL",
 					"version": "V08-01",
@@ -647,13 +647,55 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_RAPPORT_DE_VALIDATION_DE_LA_SPECIFICATION_DES_DONNEES_Ed_08_00_V3F3.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"memo": 1193738,
 					"ref": "SWE RC-FR IC-MOL QS/TCR3/135.0066.12/RAM/RAM",
 					"version": "V08-00",
 					"link": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=91218925&objAction=browse&viewType=1",
 					"genericOutputFileName": "NExTEO-250000-03-0237-01 TCR3 RAPPORT DE VALIDATION DE LA SPECIFICATION DES DONNEES V08-00"
+				},
+				{
+					"enabled": true,
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_SF_LOC_V04_02.pdf"
+					},
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
+					"memo": 1132291,
+					"ref": "PCBTC/TCRD/70.0588.08/PCO/PCO",
+					"version": "04-02",
+					"link": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=87681451&objAction=browse&logStopConditionID=659883_739185434_1_loc",
+					"genericOutputFileName": "NExTEO-B-251000-02-0107-06 SPECIFICATION DE LA FONCTION ETABLIR LA POSITION DU TRAIN V04-02"
+				},
+				{
+					"enabled": true,
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "TCR3_SFT_V8_1.pdf"
+					},
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
+					"memo": 1132290,
+					"ref": "SWE_RC-FR_IC-MOL_RA_SPP_SYS/TCR3/129.0118.13/MP/MP",
+					"version": "08-01",
+					"link": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=87679963&objAction=browse&logStopConditionID=659901_584452185_1_loc",
+					"genericOutputFileName": "NExTEO-S-252000-02-0107-07 SPECIFICATION DES FONCTIONS TECHNIQUES TCR3 V08-01"
+				},
+				{
+					"enabled": true,
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "SF_KCV_V03_03.pdf"
+					},
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
+					"memo": 1152074,
+					"ref": "PCBTC/TCRD/70.0150.09/AP/AP",
+					"version": "03-03",
+					"link": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=89333669&objAction=outline&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D89332084%26objaction%3Dopen",
+					"genericOutputFileName": "NExTEO-S-252000-02-0107-08 Spécification Fonctionnelle KCV et Vitesse de Consigne TCR3 V03-03"
 				},
 				{
 					"enabled": false,
