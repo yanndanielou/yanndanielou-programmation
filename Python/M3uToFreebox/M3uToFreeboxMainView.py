@@ -3,7 +3,7 @@
 import Dependencies.Logger.LoggerConfig as LoggerConfig
 
 import tkinter
-import M3uFileParser
+import m3u
 
 
 from tkinter import (
@@ -103,7 +103,7 @@ class M3uToFreeboxMainView (tkinter.Tk):
             with open("last_file.txt", 'w') as file:
                 file.write(f"{file_path}")
             
-            m3u_file_parser =  M3uFileParser.M3uFileParser()
+            m3u_file_parser =  m3u.M3uFileParser()
             self.m3u_entries = m3u_file_parser.parse_file(file_path)
 
     def calculate(self, *args):
