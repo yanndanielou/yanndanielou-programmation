@@ -1,5 +1,7 @@
 @CALL SET_PYTHON_HOME.bat
 
+@call :INSTALL_PYTHON_LIB mysql
+@call :INSTALL_PYTHON_LIB mysql-connector
 @call :INSTALL_PYTHON_LIB pycairo
 @call :INSTALL_PYTHON_LIB PyGObject
 @call :INSTALL_PYTHON_LIB mypy
