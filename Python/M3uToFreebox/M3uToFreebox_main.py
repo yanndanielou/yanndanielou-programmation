@@ -33,7 +33,25 @@ from tkinter import (
   ttk
   )
 
-class TabLlistDetails(ttk.Frame):
+
+class M3uEntryDetailPopup(tkinter.Toplevel):
+    def __init__(self, main_window, m3u_entry: m3u.M3uEntry) -> None:
+        super().__init__(main_window)
+
+        self._m3u_entry = m3u_entry
+        self.geometry("750x250")
+        self.title("M3u entry " + self._m3u_entry._title)
+        tkinter.Label(self, text= self._m3u_entry._title, font=('Mistral 18 bold')).place(x=150,y=80)
+
+    
+
+class DetailsViewTab(ttk.Frame):
+    
+    class DislayedLineToM3uEntry:
+        def __init__(self) -> None:
+            self._lines = list()
+    
+    
     def __init__(self, tab_control):
         super().__init__(tab_control)        
 
@@ -44,11 +62,14 @@ class TabLlistDetails(ttk.Frame):
         self._create_tree_view()
         self._create_tree_view_context_menu()
         
+
         
     def _create_tree_view_context_menu(self):
-        #Create menu
+        #Create context menu
         self.tree_view_context_menu = tkinter.Menu(self, tearoff=0)
         self.tree_view_context_menu.add_command(label="Next", command=self.selection)
+        self.tree_view_context_menu.add_command(label="Show detail", command=self._open_m3u_entry_detail_popup)
+        self.tree_view_context_menu.add_command(label="Reset", command=self._reset_list)
         self.tree_view_context_menu.add_separator()
 
         def do_popup(event):
@@ -62,6 +83,10 @@ class TabLlistDetails(ttk.Frame):
                 
         self.tree_view.bind("<Button-3>", do_popup)
 
+
+    def _open_m3u_entry_detail_popup(self):
+        m3u_entry_line = self.tree_view_context_menu.selection
+        self._parent._open_m3u_entry_detail_popup(m3u_entry)
     
     def _create_tree_view(self):
                 
@@ -111,6 +136,10 @@ class TabLlistDetails(ttk.Frame):
         @parent.setter
         def parent(self, value):
             self._parent = value
+
+
+    def _reset_list(self):
+        self.tree_view.delete(* self.tree_view.get_children())
 
 
     def fill_m3u_entries(self, m3u_entries):
@@ -170,8 +199,8 @@ class M3uToFreeboxMainView (tkinter.Tk):
 
 
     def create_tab_list_details(self):
-        self._tab_list_details = TabLlistDetails(self._tab_control) 
-        self._tab_control.add(self._tab_list_details, text ='List details') 
+        self._tab_list_details = DetailsViewTab(self._tab_control) 
+        self._tab_control.add(self._tab_list_details, text ='List detail') 
         self._tab_list_details._parent = self
 
     def create_tab_empty(self):
@@ -215,7 +244,8 @@ class M3uToFreeboxMainView (tkinter.Tk):
         
                 
         # add items to the treeview
-
+    def open_m3u_entry_detail_popup(self, m3u_entry: m3u.M3uEntry):
+        m3u_entry_detail_popup = M3uEntryDetailPopup(self, m3u_entry)
         
     def _create_menu(self):
 
