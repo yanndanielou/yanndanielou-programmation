@@ -9,6 +9,7 @@ import sys
 import Dependencies.Logger.LoggerConfig as LoggerConfig
 import Dependencies.Common.date_time_formats as date_time_formats
 
+
 import time
 
 import tkinter
@@ -32,9 +33,117 @@ from tkinter import (
   ttk
   )
 
+class TabLlistDetails(ttk.Frame):
+    def __init__(self, tab_control):
+        super().__init__(tab_control)        
+
+    
+        self._parent = None
+
+
+        self._create_tree_view()
+        self._create_tree_view_context_menu()
+        
+        
+    def _create_tree_view_context_menu(self):
+        #Create menu
+        self.tree_view_context_menu = tkinter.Menu(self, tearoff=0)
+        self.tree_view_context_menu.add_command(label="Next", command=self.selection)
+        self.tree_view_context_menu.add_separator()
+
+        def do_popup(event):
+            # display the popup menu
+            try:
+                self.tree_view_context_menu.selection = self.tree_view.set(self.tree_view.identify_row(event.y))
+                self.tree_view_context_menu.post(event.x_root, event.y_root)
+            finally:
+                # make sure to release the grab (Tk 8.0a1 only)
+                self.tree_view_context_menu.grab_release()
+                
+        self.tree_view.bind("<Button-3>", do_popup)
+
+    
+    def _create_tree_view(self):
+                
+        options = ['A','B','C','D','E','F','G','H']
+        selected = tkinter.StringVar(self)
+        selected.set(options[0])
+        
+        combobox = ttk.Combobox(self, textvariable=selected, values=options,font=('verdana',14))
+                
+        self.tree_view = ttk.Treeview(self, columns=(1,2,3,4), show='headings')
+
+
+        self.tree_view.column(1, anchor='center', width=100)
+        self.tree_view.column(2, anchor='center', width=100)
+        self.tree_view.column(3, anchor='center', width=100)
+        self.tree_view.column(4, anchor='center', width=100)
+
+        self.tree_view.heading(1, text='ID')
+        self.tree_view.heading(2, text='Name')
+        self.tree_view.heading(3, text='Quantity')
+        self.tree_view.heading(4, text='Price')
+
+        #self.tree_view.pack()
+        
+   
+        
+        combobox.grid(row=0, column=0)
+        self.tree_view.grid(row=1, column=0)
+        
+        #self._tab_list_details.grid(row=0, column=0)
+        
+        # Create a Scrollbar
+        scrollbar = ttk.Scrollbar(self, orient="vertical", command=self.tree_view.yview)
+
+        # Configure the Treeview to use the scrollbar
+        self.tree_view.configure(yscrollcommand=scrollbar.set)
+
+        # Place the scrollbar on the right side of the Treeview
+        #scrollbar.pack(side="right", fill="y")
+        scrollbar.grid(row=1, column=1)
+
+
+        @property
+        def parent(self):
+            return self._parent
+
+        @parent.setter
+        def parent(self, value):
+            self._parent = value
+
+
+    def fill_m3u_entries(self, m3u_entries):
+        m3u_entry_number = 0
+        
+        """self.tree_view.insert("",'end', iid=1, values=(1,"Product 1",100, 10))
+        self.tree_view.insert("",'end', iid=2, values=(2,"Product 2",200, 20))
+        self.tree_view.insert("",'end', iid=3, values=(3,"Product 3",300, 30))
+        self.tree_view.insert("",'end', iid=4, values=(4,"Product 4",400, 400))
+        self.tree_view.insert("",'end', iid=5, values=(5,"Product 5",500, 50))
+        self.tree_view.insert("",'end', iid=6, values=(6,"Product 6",600, 60))"""
+        
+      
+        
+        for m3u_entry in m3u_entries:
+            m3u_entry_number = m3u_entry_number + 1
+            self.tree_view.insert("",'end', iid=m3u_entry_number, values=(m3u_entry_number,m3u_entry.title,m3u_entry.title, m3u_entry.group_title))
+
+            if m3u_entry_number % 100 == 0:
+                LoggerConfig.printAndLogInfo(str(m3u_entry_number) + " entries filled")
+        
+        
+        #self.tree_view.pack()
+        
+        #self.pack()
+        #self._tab_control.pack()
+
+    def selection(self):
+        print(self.tree_view_context_menu.selection)
+        
+
 class M3uToFreeboxMainView (tkinter.Tk):
     """ Main view of application """
-
 
     def __init__(self):
         super().__init__()        
@@ -49,20 +158,21 @@ class M3uToFreeboxMainView (tkinter.Tk):
         self.create_tab_empty()
         self._tab_control.pack(expand = 1, fill ="both") 
 
+        self._tab_control.pack()
+
         
-        self._tab_control = None
+        """self._tab_control = None
         self._tab_list_details = None
-        self._tab_empty = None
+        self._tab_empty = None"""
         
         #self._create_main_frame()
         self._m3u_entries = None
 
 
     def create_tab_list_details(self):
-        self._tab_list_details = ttk.Frame(self._tab_control) 
+        self._tab_list_details = TabLlistDetails(self._tab_control) 
         self._tab_control.add(self._tab_list_details, text ='List details') 
-        self._create_tree_view()
-        self._create_tree_view_context_menu()
+        self._tab_list_details._parent = self
 
     def create_tab_empty(self):
         self._tab_empty = ttk.Frame(self._tab_control) 
@@ -103,59 +213,7 @@ class M3uToFreeboxMainView (tkinter.Tk):
         self.tree_view.pack()
      """
         
-    def selection(self):
-        print(self.tree_view_context_menu.selection)
-        
-    def _create_tree_view_context_menu(self):
-        #Create menu
-        self.tree_view_context_menu = tkinter.Menu(self, tearoff=0)
-        self.tree_view_context_menu.add_command(label="Next", command=self.selection)
-        self.tree_view_context_menu.add_separator()
-
-        def do_popup(event):
-            # display the popup menu
-            try:
-                self.tree_view_context_menu.selection = self.tree_view.set(self.tree_view.identify_row(event.y))
-                self.tree_view_context_menu.post(event.x_root, event.y_root)
-            finally:
-                # make sure to release the grab (Tk 8.0a1 only)
-                self.tree_view_context_menu.grab_release()
                 
-        self.tree_view.bind("<Button-3>", do_popup)
-
-    
-    def _create_tree_view(self):
-                
-        options = ['A','B','C','D','E','F','G','H']
-        selected = tkinter.StringVar(self._tab_list_details)
-        selected.set(options[0])
-        
-        combobox = ttk.Combobox(self._tab_list_details, textvariable=selected, values=options,font=('verdana',14))
-                
-        self.tree_view = ttk.Treeview(self._tab_list_details, columns=(1,2,3,4), show='headings')
-
-
-        self.tree_view.column(1, anchor='center', width=100)
-        self.tree_view.column(2, anchor='center', width=100)
-        self.tree_view.column(3, anchor='center', width=100)
-        self.tree_view.column(4, anchor='center', width=100)
-
-        self.tree_view.heading(1, text='ID')
-        self.tree_view.heading(2, text='Name')
-        self.tree_view.heading(3, text='Quantity')
-        self.tree_view.heading(4, text='Price')
-
-        #self.tree_view.pack()
-        
-   
-        
-        combobox.grid(row=0, column=0)
-        self.tree_view.grid(row=1, column=0)
-        
-        self._tab_control.pack()
-        #self._tab_list_details.grid(row=0, column=0)
-        
-        
         # add items to the treeview
 
         
@@ -207,43 +265,21 @@ class M3uToFreeboxMainView (tkinter.Tk):
 
             m3u_file_parser =  m3u.M3uFileParser()
             self._m3u_entries = m3u_file_parser.parse_file(file_path)
-            self._fill_m3u_entries()
+            self._tab_list_details.fill_m3u_entries(self._m3u_entries)
             
         else:
             LoggerConfig.printAndLogInfo("Open menu cancelled")
 
-    def _fill_m3u_entries(self):
-        m3u_entry_number = 0
-        
-        """self.tree_view.insert("",'end', iid=1, values=(1,"Product 1",100, 10))
-        self.tree_view.insert("",'end', iid=2, values=(2,"Product 2",200, 20))
-        self.tree_view.insert("",'end', iid=3, values=(3,"Product 3",300, 30))
-        self.tree_view.insert("",'end', iid=4, values=(4,"Product 4",400, 400))
-        self.tree_view.insert("",'end', iid=5, values=(5,"Product 5",500, 50))
-        self.tree_view.insert("",'end', iid=6, values=(6,"Product 6",600, 60))"""
-        
-      
-        
-        for m3u_entry in self._m3u_entries:
-            m3u_entry_number = m3u_entry_number + 1
-            self.tree_view.insert("",'end', iid=m3u_entry_number, values=(m3u_entry_number,m3u_entry.title,m3u_entry.title, m3u_entry.group_title))
-
-            if m3u_entry_number % 100 == 0:
-                LoggerConfig.printAndLogInfo(str(m3u_entry_number) + " entries filled")
-        
-        
-        #self.tree_view.pack()
-        
-        #self.pack()
         
 
+    """
     def calculate(self, *args):
         try:
             value = float(self.feet.get())
             self.mainframe.meters.set(int(0.3048 * value * 10000.0 + 0.5) / 10000.0)
         except ValueError:
             pass
-
+    """
 
     def get_m3uToFreeboxApplication(self):
         return self._m3u_to_freebox_application
