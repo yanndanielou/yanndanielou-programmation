@@ -96,18 +96,14 @@ class DetailsViewTab(ttk.Frame):
         
         combobox = ttk.Combobox(self, textvariable=selected, values=options,font=('verdana',14))
                 
-        self.tree_view = ttk.Treeview(self, columns=(1,2,3,4), show='headings')
+        columns = ('ID','Title', 'Group')
 
+        self.tree_view = ttk.Treeview(self, columns=columns, show='headings')
+        
+        for col in columns:
+            self.tree_view.heading(col, text=col, command=lambda: \
+                     self.treeview_sort_column(self.tree_view, col, False), anchor='center')
 
-        self.tree_view.column(1, anchor='center', width=100)
-        self.tree_view.column(2, anchor='center', width=100)
-        self.tree_view.column(3, anchor='center', width=100)
-        self.tree_view.column(4, anchor='center', width=100)
-
-        self.tree_view.heading(1, text='ID')
-        self.tree_view.heading(2, text='Name')
-        self.tree_view.heading(3, text='Quantity')
-        self.tree_view.heading(4, text='Price')
 
         #self.tree_view.pack()
         
@@ -128,6 +124,17 @@ class DetailsViewTab(ttk.Frame):
         #scrollbar.pack(side="right", fill="y")
         scrollbar.grid(row=1, column=1)
 
+    def treeview_sort_column(self, tv, col, reverse):
+        l = [(tv.set(k, col), k) for k in tv.get_children('')]
+        l.sort(reverse=reverse)
+
+        # rearrange items in sorted positions
+        for index, (val, k) in enumerate(l):
+            tv.move(k, '', index)
+
+        # reverse sort next time
+        tv.heading(col, command=lambda: \
+                self.treeview_sort_column(tv, col, not reverse))
 
         @property
         def parent(self):
@@ -156,7 +163,7 @@ class DetailsViewTab(ttk.Frame):
         
         for m3u_entry in m3u_entries:
             m3u_entry_number = m3u_entry_number + 1
-            self.tree_view.insert("",'end', iid=m3u_entry_number, values=(m3u_entry_number,m3u_entry.title,m3u_entry.title, m3u_entry.group_title))
+            self.tree_view.insert("",'end', iid=m3u_entry_number, values=(m3u_entry_number,m3u_entry.title, m3u_entry.group_title))
 
             if m3u_entry_number % 100 == 0:
                 LoggerConfig.printAndLogInfo(str(m3u_entry_number) + " entries filled")
