@@ -86,7 +86,7 @@ class DetailsViewTab(ttk.Frame):
 
     def _open_m3u_entry_detail_popup(self):
         m3u_entry_line = self.tree_view_context_menu.selection
-        self._parent._open_m3u_entry_detail_popup(m3u_entry)
+        self._parent.open_m3u_entry_detail_popup(None)
     
     def _create_tree_view(self):
                 
