@@ -1,5 +1,8 @@
 # -*-coding:Utf-8 -*
 
+from itertools import count
+
+
 
 import Dependencies.Logger.LoggerConfig as LoggerConfig
 import Dependencies.Common.Constants
@@ -33,8 +36,14 @@ class M3uEntryStringDefinition:
 
 class M3uEntry:
     """ M3u entry"""
+    
+    _ids = count(0)
+
+    
+    
     def __init__(self, current_m3u_entry_lines_definition: M3uEntryStringDefinition) -> None:
         
+        self._id = next(self._ids)
         self._link = current_m3u_entry_lines_definition.line2
         self._line1 = current_m3u_entry_lines_definition.line1
         
@@ -92,6 +101,14 @@ class M3uEntry:
     @tvg_logo.setter
     def tvg_logo(self, value):
         self._tvg_logo = value
+        
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, value):
+        self._id = value
 
     @property
     def group_title(self):
