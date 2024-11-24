@@ -86,7 +86,7 @@ class DetailsViewTab(ttk.Frame):
 
     def _open_m3u_entry_detail_popup(self):
         m3u_entry_line = self.tree_view_context_menu.selection
-        self._parent.open_m3u_entry_detail_popup(None)
+        #self._parent.open_m3u_entry_detail_popup(None)
     
     def _create_tree_view(self):
                 
@@ -94,7 +94,7 @@ class DetailsViewTab(ttk.Frame):
         selected = tkinter.StringVar(self)
         selected.set(options[0])
         
-        combobox = ttk.Combobox(self, textvariable=selected, values=options,font=('verdana',14))
+        filter_input_text = tkinter.Entry(self,font=('verdana',14))
                 
         columns = ('ID','Title', 'Group')
 
@@ -109,9 +109,23 @@ class DetailsViewTab(ttk.Frame):
         
    
         
-        combobox.grid(row=0, column=0)
+        filter_input_text.grid(row=0, column=0)
         self.tree_view.grid(row=1, column=0)
         
+        self.create_scrollbar()
+        
+        # create a StringVar class
+        my_string_var = tkinter.StringVar()
+
+        # set the text
+        my_string_var.set("What should I learn")
+
+        bottom_status_label = tkinter.Label(self,font=('verdana',14),textvariable = my_string_var)
+        bottom_status_label.grid(row=2, column=0)
+
+
+      
+    def create_scrollbar(self):  
         #self._tab_list_details.grid(row=0, column=0)
         
         # Create a Scrollbar
