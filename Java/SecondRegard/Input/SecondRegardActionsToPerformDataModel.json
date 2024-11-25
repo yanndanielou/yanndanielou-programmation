@@ -12,7 +12,7 @@
 	],
 	"pdfBatchs": [
 		{
-			"enabled": false,
+			"enabled": true,
 			"label": "Gumps pre denali 0 ",
 			"inputPdfs": [
 				{
@@ -268,7 +268,7 @@
 			"enabled": true,
 			"inputPdfs": [
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "Airlink_R8_4_1_rc2_System_Delivery_Sheet_for_CBTC_V01_00_signed.pdf"
@@ -278,7 +278,7 @@
 					"genericOutputFileName": "NExTEO-272500-04-0349-10 Software Delivery Sheet Airlink R8.4.1 V01-00"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_AMDE_SYSTEME_Annexes_Ed_09_01_V3F3.pdf",
@@ -302,7 +302,7 @@
 					"genericOutputFileName": "NExTEO-021900-03-0233-01 TCR3 AMDE des fonctions techniques V06-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_AMDE_PAE_Ed_07_01_V3F3.pdf",
@@ -315,7 +315,7 @@
 					"genericOutputFileName": "NExTEO-B-251100-03-0233-02 TCR3 AMDE PAE V07-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_AMDE_MES_Ed_05_03_V3F2.2.pdf",
@@ -328,7 +328,7 @@
 					"genericOutputFileName": "NExTEO-S-252100-03-0233-04 TCR3 AMDE MES V05-03"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "148-TCR3_AMDE_PAL_Ed_05_03_V3F2.2.pdf",
@@ -341,7 +341,7 @@
 					"genericOutputFileName": "NExTEO-S-252100-03-0233-05 TCR3 AMDE PAL V05-03"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "77-TCR3_AMDE_PAS_Ed_07_01_V3F3.pdf",
@@ -354,7 +354,7 @@
 					"genericOutputFileName": "NExTEO-S-252100-03-0233-06 TCR3 AMDE PAS V07-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_SFE_PAS_V13_00_8.0 Rev_Valid_V3F3.pdf"
@@ -364,7 +364,7 @@
 					"genericOutputFileN.ame": "NExTEO-S-251000-02-0107-03 Spécification fonctionnelle du PAS V13-00"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_SFE_PAL_V09_00_8.0 Rev_Valid_V3F3.pdf"
@@ -374,7 +374,7 @@
 					"genericOutputFileName": "NExTEO-S-252200-02-0107-00 Spécification fonctionnelle du PAL V09-00"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_SFE_MES_V09_00_8.0 Rev_Valid_V3F3.pdf"
@@ -384,7 +384,7 @@
 					"genericOutputFileName": "NExTEO-S-252300-02-0107-00 Spécification fonctionnelle du MES V09-00"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_SFE_PAE_V14_0_8.0 Rev_Valid_V3F3.pdf"
@@ -394,7 +394,7 @@
 					"genericOutputFileName": "NExTEO-B-251000-02-0107-00 Spécification fonctionnelle du PAE V14-00"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_DDIP_B_RL3F3-a_Ed_7_0.pdf"
@@ -404,7 +404,7 @@
 					"genericOutputFileName": "NExTEO-B-251100-04-0314-00 Document de Définition des Invariants et des paramètres Bord (Partie produit TGMT CBTC V3) V07-00"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_DDIP_S_ed7.7_RL3F2.1-a.pdf"
@@ -414,7 +414,7 @@
 					"genericOutputFileName": "NExTEO-252000-04-0314-01 Document de Définition des Invariants et des paramètres Sol (Partie produit TGMT CBTC V3) V07-07"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_DSL_PAE_AS_RL3F3a_V6_0.pdf"
@@ -424,7 +424,7 @@
 					"genericOutputFileName": "NExTEO-B-251000-04-0315-03 Document de spécification du logiciel PAE_AS (Partie produit TGMT CBTC V3) V06-00"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_SPS_V11_00_BL_3.0_Rev_Valid V3F3.pdf"
@@ -434,7 +434,7 @@
 					"genericOutputFileName": "NExTEO-200000-02-0116-07 Spécification des paramètres système (Partie produit TGMT CBTC V3) V11-00"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "SDC_V3F3_ed1.0.pdf"
@@ -444,7 +444,7 @@
 					"genericOutputFileName": "NExTEO-200000-02-0116-06 Spécification des données de configuration système CBTC (Partie produit TGMT CBTC V3) V04-00"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_DSL_MES_AS_ed7_1.pdf"
@@ -454,7 +454,7 @@
 					"genericOutputFileName": "NExTEO-S-2523B0-04-0315-00 Document de spécification du logiciel - MES AS (TGMT CBTC V3) V07-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_DSL_PAGS_AS_ed7.6.pdf"
@@ -464,7 +464,7 @@
 					"genericOutputFileName": "NExTEO-S-252000-04-0309-01 Document de spécification du logiciel PAGS AS (Partie produit TGMT CBTC V3) V07-06"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_DSL_PANS_AS_ed7.4_RL3F2.1-a.pdf"
@@ -474,7 +474,7 @@
 					"genericOutputFileName": "NExTEO-S-252000-04-0309-00 Document de spécification du logiciel PAN AS (Partie produit TGMT CBTC V3) V07-04"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "7-TCR3_DSL_DICO_AS_ed7.4_RL3F2.1-a.pdf"
@@ -484,7 +484,7 @@
 					"genericOutputFileName": "NExTEO-S-252000-04-0315-01 Document de spécification du logiciel - dictionnaire EAS AS (TGMT CBTC V3) V07-04"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "DCIR_Ed12_01.pdf"
@@ -494,7 +494,7 @@
 					"genericOutputFileName": "NExTEO-200000-02-0116-52 Document de Conception des invariants de Réalisation de l'ATC (Partie produit TGMT CBTC V3) V12-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "DCIF_S_RL3F21a_Ed11_01.pdf"
@@ -504,7 +504,7 @@
 					"genericOutputFileName": "NExTEO-S-252000-02-0116-02 Dossier de Conception des Invariants Finaux Sol (Partie produit TGMT CBTC V3) V11-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "DCIF_B_RL3F3a_Ed09_01.pdf"
@@ -514,7 +514,7 @@
 					"genericOutputFileName": "NExTEO-B-251000-02-0116-02 Dossier de Conception des Invariants Finaux Bord (Partie produit TGMT CBTC V3) V09-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_ASS_MES_ODO_V08_01_V3F3.pdf"
@@ -526,7 +526,7 @@
 					"genericOutputFileName": "NExTEO-021900-03-0229-03 TCR3 ASF Assurer les mesures d'odométrie (niveau SFE) V08-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_KCV_V3_ed_06_02_V3-F2.1.pdf"
@@ -539,7 +539,7 @@
 					"genericOutputFileName": "NExTEO-021900-03-0229-08 ASF KCV et vitesse de consigne niveau SFE V06-02"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_TCS_Ed_07_01_V3F2.1.pdf"
@@ -553,7 +553,7 @@
 					"genericOutputFileName": "NExTEO-021900-03-0229-20 TCR3 ASF SFE des télécommandes sécurisées V07-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileName": "TCR3_ASF_SFE_Suivi_Ed_06_01_V3F2.1.pdf"
@@ -567,7 +567,7 @@
 					"genericOutputFileName": "NExTEO-021900-03-0229-19 TCR3 ASF SFE - Suivi des trains V06-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_Fonctions techniques_05_05_V3F1.1.a.pdf"
@@ -581,7 +581,7 @@
 					"genericOutputFileName": "NExTEO-021900-03-0229-07 TCR3 ASF SFE Fonctions Techniques V05-05"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_Commander_Ed_08_01_V3F3.pdf"
@@ -595,7 +595,7 @@
 					"genericOutputFileName": "NExTEO-021900-03-0229-18 TCR3 ASF SFE Echanges voyageurs V08-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_Autoriser_le_mouvement_V3-F2.1_Ed_06_04.pdf",
@@ -614,7 +614,7 @@
 					"genericOutputFileName": "NExTEO-021900-03-0229-04 Analyse fonctionnelle de sécurité - Autoriser le mouvement des trains (SFE) - TGMT V3 V06-04"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_Commander_Ed_08_01_V3F3.pdf"
@@ -628,7 +628,7 @@
 					"genericOutputFileName": "NExTEO-021900-03-0229-05 TCR3 ASF SFE Commander les mouvements du train V08-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_LOC_Ed_05_04_V3F1.1.A.pdf"
@@ -642,7 +642,7 @@
 					"genericOutputFileName": "NExTEO-021900-03-0229-09 TCR3 ASF SFE Localiser un train V05-04"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_Configuration_des_zones_Ed_08_01_V3F3.pdf"
@@ -656,7 +656,7 @@
 					"genericOutputFileName": "NExTEO-021900-03-0229-06 TCR3 ASF SFE Configuration des zones et protection des voies V08-01"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_Configuration des trains_Ed_08.01_V3F3.pdf"
@@ -726,7 +726,7 @@
 					"genericOutputFileName": "NExTEO-S-252000-02-0107-08 Spécification Fonctionnelle KCV et Vitesse de Consigne TCR3 V03-03"
 				},
 				{
-					"enabled": false,
+					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
 						"fileNameMask": "xx.pdf"
@@ -781,6 +781,15 @@
 						"y": 30
 					},
 					"textType": "FREE_TEXT",
+					"freeText": "Réservé au projet NExTEO",
+					"onlyForNotPersonalized": false
+				},
+				{
+					"newLineAtOffset": {
+						"x": 10,
+						"y": 30
+					},
+					"textType": "FREE_TEXT",
 					"freeText": "Document nominatif",
 					"onlyForNotPersonalized": false
 				},
@@ -799,7 +808,16 @@
 						"y": 30
 					},
 					"textType": "FREE_TEXT",
-					"freeText": "Annexe 2 – Modalités d’échange de la Documentation Produit",
+					"freeText": "Annexe 2",
+					"onlyForNotPersonalized": false
+				},
+				{
+					"newLineAtOffset": {
+						"x": 10,
+						"y": 30
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Modalités d’échange de la Documentation Produit",
 					"onlyForNotPersonalized": false
 				},
 				{
