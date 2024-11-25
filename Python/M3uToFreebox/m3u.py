@@ -1,8 +1,8 @@
+""" Details view """
+
 # -*-coding:Utf-8 -*
 
 from itertools import count
-
-
 
 import Dependencies.Logger.LoggerConfig as LoggerConfig
 import Dependencies.Common.Constants
@@ -20,6 +20,7 @@ class M3uEntryStringDefinition:
 
     @property
     def line1(self):
+        """ getter """
         return self._line1
 
     @line1.setter
@@ -28,6 +29,7 @@ class M3uEntryStringDefinition:
 
     @property
     def line2(self):
+        """ line2 """
         return self._line2
 
     @line2.setter
@@ -36,32 +38,31 @@ class M3uEntryStringDefinition:
 
 class M3uEntry:
     """ M3u entry"""
-    
+
     _ids = count(0)
-    
+
     def __init__(self, current_m3u_entry_lines_definition: M3uEntryStringDefinition) -> None:
-        
+
         self._id = next(self._ids)
         self._link = current_m3u_entry_lines_definition.line2
         self._line1 = current_m3u_entry_lines_definition.line1
-        
+
         self._tvg_id = self.decode_field(self._line1, "tvg-id")
         self._tvg_name = self.decode_field(self._line1, "tvg-name")
         self._tvg_logo = self.decode_field(self._line1, "tvg-logo")
         self._group_title = self.decode_field(self._line1, "group-title")
         self._title = self._line1.split('"')[len(self._line1.split('"'))-1][1:]
-        
+
         self._m3u_entries = M3uEntriesLibrary()
-        
+
         self._m3u_entries.add(self)
-        
-        
+
+
     def decode_field(self, line, field_name) -> str:
         field_content = line.split(field_name)[1].split('"')[1]
-        pause = 1
-        
+
         return field_content
-        
+
 
     @property
     def link(self):
@@ -134,7 +135,8 @@ class M3uFileParser:
         pass
     
     def parse_file(self,file_path) -> list[M3uEntry]:
-        m3u_entries: list[M3uEntry] = list()
+        """ parse file """
+        m3u_entries: list[M3uEntry] = []
         with open(file_path, "r", encoding="utf-8") as file:
             content = file.read()
 
@@ -167,6 +169,21 @@ class M3uEntriesLibrary:
     def __init__(self) -> None:
         self._m3u_entries: list[M3uEntry] = []
         
-    def add(self, m3uEntry:M3uEntry) -> None:
-        self._m3u_entries.append(m3uEntry)
+    def add(self, m3u_entry:M3uEntry) -> None:
+        """ add m3u to library """
+        self._m3u_entries.append(m3u_entry)
+        
+    def get_m3u_entries_with_filter(self, filter_str: str) -> list[M3uEntry]:
+        """ filter list of m3u """
+        ret: list[M3uEntry] = []
+        
+        if str is None:
+            return self._m3u_entries
+        
+        for m3u_entry in self._m3u_entries:
+            if filter_str in m3u_entry.title:
+                ret.append(m3u_entry)
+        
+        return ret
+        
     

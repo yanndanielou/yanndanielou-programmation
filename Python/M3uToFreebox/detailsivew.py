@@ -35,16 +35,16 @@ from tkinter import (
   ttk
   )
 
+import M3uToFreebox_main
 
 class DetailsViewTab(ttk.Frame):
 
     
-    def __init__(self, parent, tab_control):
+    def __init__(self, parent:M3uToFreebox_main.M3uToFreeboxMainView, tab_control):
         super().__init__(tab_control)
 
     
-        self._parent = parent
-
+        self._parent: M3uToFreebox_main.M3uToFreeboxMainView = parent
 
         self._create_tree_view()
         self._create_tree_view_context_menu()
@@ -127,6 +127,7 @@ class DetailsViewTab(ttk.Frame):
         scrollbar.grid(row=1, column=1)
 
     def treeview_sort_column(self, tv, col, reverse):
+        """ Sort """
         l = [(tv.set(k, col), k) for k in tv.get_children('')]
         l.sort(reverse=reverse)
 
@@ -151,10 +152,11 @@ class DetailsViewTab(ttk.Frame):
         self.tree_view.delete(* self.tree_view.get_children())
 
 
-    def fill_m3u_entries(self, m3u_entries):
+    def fill_m3u_entries(self):
+        """ fill_m3u_entries """
         m3u_entry_number = 0  
         
-        for m3u_entry in m3u_entries:
+        for m3u_entry in self._parent.m3u_to_freebox_application._m3u_library.get_m3u_entries_with_filter():
             m3u_entry_number = m3u_entry_number + 1
             self.tree_view.insert("",'end', iid=m3u_entry_number, values=(m3u_entry_number,m3u_entry.title, m3u_entry.group_title))
 

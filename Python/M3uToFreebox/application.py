@@ -22,6 +22,10 @@ class M3uToFreeboxApplication:
         self._main_view:M3uToFreebox_main.M3uToFreeboxMainView = main_view
         
     def load_file(self, file_path):
+        """ Load file """
+        LoggerConfig.printAndLogInfo("Load file:" + file_path)
+
         m3u_file_parser =  m3u.M3uFileParser()
-        self._m3u_entries = m3u_file_parser.parse_file(file_path)
-        self._tab_list_details.fill_m3u_entries(self._m3u_entries)
+        for m3u_entry in m3u_file_parser.parse_file(file_path):
+            self._m3u_library.add(m3u_entry)
+        
