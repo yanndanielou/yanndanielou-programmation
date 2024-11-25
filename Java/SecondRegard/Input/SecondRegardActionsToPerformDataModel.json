@@ -379,8 +379,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_SFE_MES_V09_00_8.0 Rev_Valid_V3F3.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-S-252300-02-0107-00 Spécification fonctionnelle du MES V09-00"
 				},
 				{
@@ -449,8 +449,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_DSL_MES_AS_ed7_1.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-S-2523B0-04-0315-00 Document de spécification du logiciel - MES AS (TGMT CBTC V3) V07-01"
 				},
 				{
