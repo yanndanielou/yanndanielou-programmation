@@ -20,6 +20,7 @@ import com.google.common.base.Strings;
 
 import common.builders.ColorDataModel;
 import common.builders.PointDataModel;
+import common.exceptions.BadLogicException;
 import common.filesanddirectories.DirectoryHelper;
 import common.filesanddirectories.FileHelper;
 import common.filesanddirectories.FileNameExtensionAndPathHelper;
@@ -67,6 +68,11 @@ public class SecondRegardHelpers {
 					}
 
 					PointDataModel newLineAtOffset = textLinesToDisplay.getNewLineAtOffset();
+					if (newLineAtOffset == null) {
+						pageOfOriginalDocumentWithMatermarkAsContentStream.endText();
+						pageOfOriginalDocumentWithMatermarkAsContentStream.close();
+						throw new BadLogicException("Missing newLineAtOffset for " + textLinesToDisplay);
+					}
 					pageOfOriginalDocumentWithMatermarkAsContentStream.newLineAtOffset(newLineAtOffset.getX(),
 							newLineAtOffset.getY());
 					String computeText = textLinesToDisplay.computeText(pdfAllowedUser);
