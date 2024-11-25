@@ -5,6 +5,7 @@
 	
 	<classpathentry kind="src" path="/Common"/>
 	<classpathentry kind="src" path="/CompressedArchiveFiles"/>
+	<classpathentry kind="src" path="/Authentification"/>
 	<classpathentry kind="src" path="/PDFModification"/>
 
 	
