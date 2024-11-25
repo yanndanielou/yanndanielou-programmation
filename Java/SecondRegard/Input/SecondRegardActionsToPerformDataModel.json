@@ -228,7 +228,7 @@
 						"y": -30
 					},
 					"textType": "FREE_TEXT",
-					"freeText": "Annexe 2 – Modalités d’échange de la Documentation Produit",
+					"freeText": "Annexe 2 Modalités d’échange de la Documentation Produit",
 					"onlyForNotPersonalized": false
 				},
 				{
@@ -752,7 +752,7 @@
 					},
 					"newLineAtOffset": {
 						"x": 10,
-						"y": 30
+						"y": 15
 					},
 					"textType": "FREE_TEXT",
 					"freeText": "Confidentiel - Propriété Siemens. Copie réservée à",
@@ -768,8 +768,8 @@
 						"colorName": "gray"
 					},
 					"newLineAtOffset": {
-						"x": 10,
-						"y": 30
+						"x": 5,
+						"y": 5
 					},
 					"textType": "FREE_TEXT",
 					"freeText": "Confidentiel - Propriété Siemens.",
@@ -777,8 +777,8 @@
 				},
 				{
 					"newLineAtOffset": {
-						"x": 10,
-						"y": 30
+						"x": 0,
+						"y": 10
 					},
 					"textType": "FREE_TEXT",
 					"freeText": "Réservé au projet NExTEO",
@@ -786,8 +786,8 @@
 				},
 				{
 					"newLineAtOffset": {
-						"x": 10,
-						"y": 30
+						"x": 0,
+						"y": 10
 					},
 					"textType": "FREE_TEXT",
 					"freeText": "Document nominatif",
@@ -795,8 +795,8 @@
 				},
 				{
 					"newLineAtOffset": {
-						"x": 10,
-						"y": 30
+						"x": 0,
+						"y": 10
 					},
 					"textType": "FREE_TEXT",
 					"freeText": "Réservé uniquement aux personnes mentionnés dans le document",
@@ -804,8 +804,8 @@
 				},
 				{
 					"newLineAtOffset": {
-						"x": 10,
-						"y": 30
+						"x": 0,
+						"y": 10
 					},
 					"textType": "FREE_TEXT",
 					"freeText": "Annexe 2",
@@ -813,8 +813,8 @@
 				},
 				{
 					"newLineAtOffset": {
-						"x": 10,
-						"y": 30
+						"x": 0,
+						"y": 10
 					},
 					"textType": "FREE_TEXT",
 					"freeText": "Modalités d’échange de la Documentation Produit",
@@ -830,7 +830,7 @@
 				{
 					"newLineAtOffset": {
 						"x": 0,
-						"y": -10
+						"y": 10
 					},
 					"textType": "FREE_TEXT",
 					"freeText": "Ne pas diffuser"
