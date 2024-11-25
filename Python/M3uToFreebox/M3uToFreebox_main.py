@@ -1,14 +1,9 @@
 # -*-coding:Utf-8 -*
 
-""" https://tkdocs.com/tutorial/firstexample.html """
 import random
 
 
-import sys
-
-import Dependencies.Logger.LoggerConfig as LoggerConfig
-import Dependencies.Common.date_time_formats as date_time_formats
-
+#import sys
 
 import time
 
@@ -17,23 +12,20 @@ import tkinter
 
 import os
 
-import Dependencies.Logger.LoggerConfig as LoggerConfig
-
-import tkinter
-import m3u
-import detailsivew
-import application
-
 
 from tkinter import (
   filedialog, 
-  simpledialog, 
-  messagebox, 
-  scrolledtext, 
-  Menu,
-  colorchooser,
   ttk
-  )
+)
+
+
+from Dependencies.Logger import LoggerConfig
+from Dependencies.Common import date_time_formats
+
+
+import m3u
+import detailsivew
+import application
 
 
 
@@ -45,30 +37,28 @@ class M3uToFreeboxMainView (tkinter.Tk):
 
         self.title("M3U to Freebox")
 
-        self._m3u_to_freebox_application = None
-        
-        self._m3u_to_freebox_application
+        self._m3u_to_freebox_application: application.M3uToFreeboxApplication = None
+
 
         self._create_menu()
         self._tab_control = ttk.Notebook(self)
         self.create_tab_list_details()
         self.create_tab_empty()
-        self._tab_control.pack(expand = 1, fill ="both") 
+        self._tab_control.pack(expand = 1, fill ="both")
 
         self._tab_control.pack()
        
         #self._create_main_frame()
-        self._m3u_entries: list[m3u.M3uEntry] = []
 
 
     def create_tab_list_details(self):
-        self._tab_list_details = detailsivew.DetailsViewTab(self._tab_control) 
-        self._tab_control.add(self._tab_list_details, text ='List detail') 
-        self._tab_list_details._parent = self
+        """ Create tab details """
+        self._tab_list_details = detailsivew.DetailsViewTab(self, self._tab_control)
+        self._tab_control.add(self._tab_list_details, text ='List detail')
 
     def create_tab_empty(self):
-        self._tab_empty = ttk.Frame(self._tab_control) 
-        self._tab_control.add(self._tab_empty, text ='Empty') 
+        self._tab_empty = ttk.Frame(self._tab_control)
+        self._tab_control.add(self._tab_empty, text ='Empty')
 
         
     def _create_menu(self):
@@ -117,13 +107,21 @@ class M3uToFreeboxMainView (tkinter.Tk):
         if file_path:
             LoggerConfig.printAndLogInfo("Open file:" + file_path)
 
-            m3u_file_parser =  m3u.M3uFileParser()
-            self._m3u_entries = m3u_file_parser.parse_file(file_path)
-            self._tab_list_details.fill_m3u_entries(self._m3u_entries)
+            self._m3u_to_freebox_application.load_file(file_path)
+
             
         else:
             LoggerConfig.printAndLogInfo("Open menu cancelled")
 
+
+    @property
+    def m3u_to_freebox_application(self):
+        """ Getter for _m3u_to_freebox_application """
+        return self._m3u_to_freebox_application
+
+    @m3u_to_freebox_application.setter
+    def m3u_to_freebox_application(self, value):
+        self._m3u_to_freebox_application = value
 
 def main():
     """ Main function """
@@ -135,6 +133,7 @@ def main():
 
     main_view = M3uToFreeboxMainView()
     app: application.M3uToFreeboxApplication = application.M3uToFreeboxApplication(main_view)
+    main_view.m3u_to_freebox_application = app
     main_view.mainloop()
 
     LoggerConfig.printAndLogInfo("End. Nominal end of application in " + date_time_formats.format_duration_to_string(

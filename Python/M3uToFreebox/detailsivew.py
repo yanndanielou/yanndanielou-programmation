@@ -37,17 +37,13 @@ from tkinter import (
 
 
 class DetailsViewTab(ttk.Frame):
-    
-    class DislayedLineToM3uEntry:
-        def __init__(self) -> None:
-            self._lines = list()
-            pass
-    
-    def __init__(self, tab_control):
-        super().__init__(tab_control)        
 
     
-        self._parent = None
+    def __init__(self, parent, tab_control):
+        super().__init__(tab_control)
+
+    
+        self._parent = parent
 
 
         self._create_tree_view()
