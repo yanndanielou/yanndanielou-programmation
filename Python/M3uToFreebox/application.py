@@ -10,7 +10,7 @@ import Dependencies.Common.date_time_formats as date_time_formats
 
 import m3u
 
-import M3uToFreebox_main
+import main_view
 
 
 class M3uToFreeboxApplication:
@@ -19,7 +19,7 @@ class M3uToFreeboxApplication:
     def __init__(self, main_view):
 
         self._m3u_library: m3u.M3uEntriesLibrary = m3u.M3uEntriesLibrary()
-        self._main_view:M3uToFreebox_main.M3uToFreeboxMainView = main_view
+        self._main_view:main_view.M3uToFreeboxMainView = main_view
         
     def load_file(self, file_path):
         """ Load file """

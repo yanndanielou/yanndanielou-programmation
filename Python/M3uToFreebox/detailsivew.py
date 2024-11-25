@@ -35,15 +35,15 @@ from tkinter import (
   ttk
   )
 
-import M3uToFreebox_main
+import main_view
 
 class DetailsViewTab(ttk.Frame):
 
     
-    def __init__(self, parent:M3uToFreebox_main.M3uToFreeboxMainView, tab_control):
+    def __init__(self, parent:main_view.M3uToFreeboxMainView, tab_control):
         super().__init__(tab_control)
 
-        self._parent: M3uToFreebox_main.M3uToFreeboxMainView = parent
+        self._parent: main_view.M3uToFreeboxMainView = parent
 
         self._create_view()
         self._create_context_menu()
@@ -146,11 +146,11 @@ class DetailsViewTab(ttk.Frame):
                 self.treeview_sort_column(tv, col, not reverse))
 
         @property
-        def parent(self) -> M3uToFreebox_main.M3uToFreeboxMainView:
+        def parent(self) -> main_view.M3uToFreeboxMainView:
             return self._parent
 
         @parent.setter
-        def parent(self, value: M3uToFreebox_main.M3uToFreeboxMainView):
+        def parent(self, value: main_view.M3uToFreeboxMainView):
             self._parent = value
 
 
@@ -165,9 +165,9 @@ class DetailsViewTab(ttk.Frame):
         
         for m3u_entry in self._parent.m3u_to_freebox_application._m3u_library.get_m3u_entries_with_filter(self._filter_input_text.get()):
             m3u_entry_number = m3u_entry_number + 1
-            self.tree_view.insert("",'end', iid=m3u_entry_number, values=(m3u_entry_number,m3u_entry.title, m3u_entry.group_title))
+            self.tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.title, m3u_entry.group_title))
 
-            if m3u_entry_number % 100 == 0:
+            if m3u_entry_number % 10000 == 0:
                 LoggerConfig.printAndLogInfo(str(m3u_entry_number) + " entries filled")
         
         

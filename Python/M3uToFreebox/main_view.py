@@ -26,7 +26,7 @@ from Dependencies.Common import date_time_formats
 import m3u
 import detailsivew
 import application
-import M3uToFreebox_main
+import main_view
 
 
 
@@ -124,24 +124,3 @@ class M3uToFreeboxMainView (tkinter.Tk):
     @m3u_to_freebox_application.setter
     def m3u_to_freebox_application(self, value):
         self._m3u_to_freebox_application = value
-
-def main():
-    """ Main function """
-    application_start_time = time.time()
-    log_file_name = os.path.basename(__file__) + str(random.randrange(100000)) + ".log"
-    LoggerConfig.configureLogger(log_file_name)
-
-    LoggerConfig.printAndLogInfo('Start application')
-
-    main_view = M3uToFreeboxMainView()
-    app: application.M3uToFreeboxApplication = application.M3uToFreeboxApplication(main_view)
-    main_view.m3u_to_freebox_application = app
-    main_view.mainloop()
-
-    LoggerConfig.printAndLogInfo("End. Nominal end of application in " + date_time_formats.format_duration_to_string(
-    time.time() - application_start_time))
-
-
-if __name__ == "__main__":
-    # sys.argv[1:]
-    main()
