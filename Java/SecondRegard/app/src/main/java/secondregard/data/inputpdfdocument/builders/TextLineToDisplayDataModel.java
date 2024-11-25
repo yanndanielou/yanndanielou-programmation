@@ -12,7 +12,7 @@ public class TextLineToDisplayDataModel {
 	private PDFFontDataModel font;
 	private PointDataModel newLineAtOffset;
 	private ColorDataModel nonStrokingColor;
-	
+
 	private boolean onlyForPersonalizedByAllowedUser = false;
 	private boolean onlyForNotPersonalized = false;
 
@@ -55,4 +55,13 @@ public class TextLineToDisplayDataModel {
 	public ColorDataModel getNonStrokingColor() {
 		return nonStrokingColor;
 	}
+
+	@Override
+	public String toString() {
+		return "TextLineToDisplayDataModel [freeText=" + freeText + ", textType=" + textType + ", font=" + font
+				+ ", newLineAtOffset=" + newLineAtOffset + ", nonStrokingColor=" + nonStrokingColor
+				+ ", onlyForPersonalizedByAllowedUser=" + onlyForPersonalizedByAllowedUser + ", onlyForNotPersonalized="
+				+ onlyForNotPersonalized + "]";
+	}
+
 }
