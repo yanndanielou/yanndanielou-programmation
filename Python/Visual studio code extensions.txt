@@ -1,0 +1,41 @@
+Pylance
+v2024.11.3
+Microsoft
+microsoft.com
+A performant, feature-rich language server for Python in VS Code
+
+
+Mypy
+v0.4.0
+Matan Gover
+Type checking for Python using mypy
+
+
+Mypy Type Checker
+v2024.0.0
+Microsoft
+
+
+Pylint
+v2024.0.0
+Microsoft
+microsoft.com
+
+
+Python
+v2024.20.0
+Microsoft
+microsoft.com
+
+Python Debugger
+v2024.12.0
+Microsoft
+microsoft.com
+
+Quick fix
+Pieces for VS Code
+
+Python Getter Setter
+v1.3.0
+Siddharth Verma
+
