@@ -43,15 +43,14 @@ class DetailsViewTab(ttk.Frame):
     def __init__(self, parent:M3uToFreebox_main.M3uToFreeboxMainView, tab_control):
         super().__init__(tab_control)
 
-    
         self._parent: M3uToFreebox_main.M3uToFreeboxMainView = parent
 
-        self._create_tree_view()
-        self._create_tree_view_context_menu()
+        self._create_view()
+        self._create_context_menu()
         
 
         
-    def _create_tree_view_context_menu(self):
+    def _create_context_menu(self):
         #Create context menu
         self.tree_view_context_menu = tkinter.Menu(self, tearoff=0)
         self.tree_view_context_menu.add_command(label="Next", command=self.selection)
@@ -76,13 +75,15 @@ class DetailsViewTab(ttk.Frame):
         m3u_entry_detail_popup = detailspopup.M3uEntryDetailPopup(self, None)
         
     
-    def _create_tree_view(self):
+    def _create_view(self):
                 
         options = ['A','B','C','D','E','F','G','H']
         selected = tkinter.StringVar(self)
         selected.set(options[0])
         
-        filter_input_text = tkinter.Entry(self,font=('verdana',14))
+        self._filter_input_text = tkinter.Entry(self,font=('verdana',14))
+        self._filter_input_text.bind("<KeyRelease>", self.filter_updated)
+
                 
         columns = ('ID','Title', 'Group')
 
@@ -97,7 +98,7 @@ class DetailsViewTab(ttk.Frame):
         
    
         
-        filter_input_text.grid(row=0, column=0)
+        self._filter_input_text.grid(row=0, column=0)
         self.tree_view.grid(row=1, column=0)
         
         self.create_scrollbar()
@@ -126,6 +127,11 @@ class DetailsViewTab(ttk.Frame):
         #scrollbar.pack(side="right", fill="y")
         scrollbar.grid(row=1, column=1)
 
+    def filter_updated(self, *args):
+        filter_text = self._filter_input_text.get()
+        self.fill_m3u_entries()
+
+
     def treeview_sort_column(self, tv, col, reverse):
         """ Sort """
         l = [(tv.set(k, col), k) for k in tv.get_children('')]
@@ -140,11 +146,11 @@ class DetailsViewTab(ttk.Frame):
                 self.treeview_sort_column(tv, col, not reverse))
 
         @property
-        def parent(self):
+        def parent(self) -> M3uToFreebox_main.M3uToFreeboxMainView:
             return self._parent
 
         @parent.setter
-        def parent(self, value):
+        def parent(self, value: M3uToFreebox_main.M3uToFreeboxMainView):
             self._parent = value
 
 
@@ -156,7 +162,7 @@ class DetailsViewTab(ttk.Frame):
         """ fill_m3u_entries """
         m3u_entry_number = 0  
         
-        for m3u_entry in self._parent.m3u_to_freebox_application._m3u_library.get_m3u_entries_with_filter():
+        for m3u_entry in self._parent.m3u_to_freebox_application._m3u_library.get_m3u_entries_with_filter(self._filter_input_text.get()):
             m3u_entry_number = m3u_entry_number + 1
             self.tree_view.insert("",'end', iid=m3u_entry_number, values=(m3u_entry_number,m3u_entry.title, m3u_entry.group_title))
 
