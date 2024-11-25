@@ -160,7 +160,8 @@ class DetailsViewTab(ttk.Frame):
 
     def fill_m3u_entries(self):
         """ fill_m3u_entries """
-        m3u_entry_number = 0  
+        self._reset_list()
+        m3u_entry_number = 0
         
         for m3u_entry in self._parent.m3u_to_freebox_application._m3u_library.get_m3u_entries_with_filter(self._filter_input_text.get()):
             m3u_entry_number = m3u_entry_number + 1

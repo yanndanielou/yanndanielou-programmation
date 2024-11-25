@@ -16,7 +16,7 @@ import M3uToFreebox_main
 class M3uToFreeboxApplication:
     """ Application """
 
-    def __init__(self, main_view:M3uToFreebox_main.M3uToFreeboxMainView):
+    def __init__(self, main_view):
 
         self._m3u_library: m3u.M3uEntriesLibrary = m3u.M3uEntriesLibrary()
         self._main_view:M3uToFreebox_main.M3uToFreeboxMainView = main_view
