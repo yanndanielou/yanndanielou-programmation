@@ -55,7 +55,7 @@ class M3uToFreeboxMainView (tkinter.Tk):
         self._tab_control.pack()
        
         #self._create_main_frame()
-        self._m3u_entries = None
+        self._m3u_entries: list[m3u.M3uEntry] = []
 
 
     def create_tab_list_details(self):
@@ -121,16 +121,6 @@ class M3uToFreeboxMainView (tkinter.Tk):
         else:
             LoggerConfig.printAndLogInfo("Open menu cancelled")
 
-        
-
-    """
-    def calculate(self, *args):
-        try:
-            value = float(self.feet.get())
-            self.mainframe.meters.set(int(0.3048 * value * 10000.0 + 0.5) / 10000.0)
-        except ValueError:
-            pass
-    """
 
     def get_m3uToFreeboxApplication(self):
         return self._m3u_to_freebox_application

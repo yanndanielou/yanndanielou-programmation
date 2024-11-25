@@ -38,8 +38,6 @@ class M3uEntry:
     """ M3u entry"""
     
     _ids = count(0)
-
-    
     
     def __init__(self, current_m3u_entry_lines_definition: M3uEntryStringDefinition) -> None:
         
@@ -53,6 +51,9 @@ class M3uEntry:
         self._group_title = self.decode_field(self._line1, "group-title")
         self._title = self._line1.split('"')[len(self._line1.split('"'))-1][1:]
         
+        self._m3u_entries = M3uEntriesLibrary()
+        
+        self._m3u_entries.add(self)
         
         
     def decode_field(self, line, field_name) -> str:
@@ -159,3 +160,11 @@ class M3uFileParser:
         return m3u_entries
 
 
+
+class M3uEntriesLibrary:
+    """ M3u library"""
+    
+    def __init__(self) -> None:
+        self._m3u_entries: list[M3uEntry] = []
+        
+    
