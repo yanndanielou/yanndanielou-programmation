@@ -59,8 +59,8 @@
 							"comment": "référeces à whitelistings et antivirus"
 						}
 					],
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-2A0000-02-0107-00 Spécification Fonctionnelle système du produit Gumps (SSC3_2_AdminTools_GUMPS_SyReqSpec) V02-00"
 				},
 				{
@@ -81,8 +81,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "NExTEO-2A0000-02-0109-00 SSC3_2_AdminTools_GUMPS_SWArchSpec 02 00*.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"pagesToDelete": [
 						{
 							"pageNumber": 121
@@ -134,8 +134,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "NExTEO-2A0000-02-0119-00 SSC3_2_AdminTools_GUMPS_HMISpec*.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true
+					"personalizeByAllowedUsed": false,
+					"encrypt": false
 				},
 				{
 					"enabled": true,
@@ -145,8 +145,8 @@
 					},
 					"pagesToDelete": [
 					],
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-2A0000-02-0119-00 Spécification IHM du produit Gumps (SSC3_2_AdminTools_GUMPS_HMISpec) V01-00.pdf"
 				}
 			],
@@ -207,10 +207,38 @@
 				{
 					"newLineAtOffset": {
 						"x": 0,
+						"y": -30
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Document nominatif",
+					"onlyForNotPersonalized": false
+				},
+				{
+					"newLineAtOffset": {
+						"x": 0,
+						"y": -30
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Réservé uniquement aux personnes mentionnés dans le document",
+					"onlyForNotPersonalized": false
+				},
+				{
+					"newLineAtOffset": {
+						"x": 0,
+						"y": -30
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Annexe 2 – Modalités d’échange de la Documentation Produit",
+					"onlyForNotPersonalized": false
+				},
+				{
+					"newLineAtOffset": {
+						"x": 0,
 						"y": -25
 					},
 					"textType": "FREE_TEXT",
-					"freeText": "Copie réservée à"
+					"freeText": "Copie réservée à",
+					"onlyForNotPersonalized": true
 				},
 				{
 					"newLineAtOffset": {
@@ -451,8 +479,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "7-TCR3_DSL_DICO_AS_ed7.4_RL3F2.1-a.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-S-252000-04-0315-01 Document de spécification du logiciel - dictionnaire EAS AS (TGMT CBTC V3) V07-04"
 				},
 				{
@@ -558,8 +586,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_Commander_Ed_08_01_V3F3.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"memo": 1167738,
 					"ref": "DSF/TCR3/32.0464.10/JPL/JPL",
 					"version": "V08-01",
@@ -605,8 +633,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_LOC_Ed_05_04_V3F1.1.A.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"memo": 1187517,
 					"ref": "SWE_RC-FR_IC-MOL_RA_RD_SAF/TCR3/32.0201.12/HAM/HAM",
 					"version": "V05-04",
@@ -619,8 +647,8 @@
 						"folderPath": "Input",
 						"fileNameMask": "TCR3_ASF_SFE_Configuration_des_zones_Ed_08_01_V3F3.pdf"
 					},
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"memo": 1191076,
 					"ref": "SWE_RC-FR_IC-MOL_RA_RD_SAF/TCR3/32.0013.12/MME/MME",
 					"version": "V08-01",
@@ -746,6 +774,33 @@
 					"textType": "FREE_TEXT",
 					"freeText": "Confidentiel - Propriété Siemens.",
 					"onlyForNotPersonalized": true
+				},
+				{
+					"newLineAtOffset": {
+						"x": 10,
+						"y": 30
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Document nominatif",
+					"onlyForNotPersonalized": false
+				},
+				{
+					"newLineAtOffset": {
+						"x": 10,
+						"y": 30
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Réservé uniquement aux personnes mentionnés dans le document",
+					"onlyForNotPersonalized": false
+				},
+				{
+					"newLineAtOffset": {
+						"x": 10,
+						"y": 30
+					},
+					"textType": "FREE_TEXT",
+					"freeText": "Annexe 2 – Modalités d’échange de la Documentation Produit",
+					"onlyForNotPersonalized": false
 				},
 				{
 					"newLineAtOffset": {
