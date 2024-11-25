@@ -22,6 +22,7 @@ import Dependencies.Logger.LoggerConfig as LoggerConfig
 import tkinter
 import m3u
 import detailsivew
+import application
 
 
 from tkinter import (
@@ -45,6 +46,8 @@ class M3uToFreeboxMainView (tkinter.Tk):
         self.title("M3U to Freebox")
 
         self._m3u_to_freebox_application = None
+        
+        self._m3u_to_freebox_application
 
         self._create_menu()
         self._tab_control = ttk.Notebook(self)
@@ -102,9 +105,9 @@ class M3uToFreeboxMainView (tkinter.Tk):
 
 
     def menu_open_file(self):
+        """ Open new file """
         LoggerConfig.printAndLogInfo("open menu executed")
 
-        current_widget = self.focus_get()
         file_path = filedialog.askopenfilename(
             filetypes=[
                 ("M3u", "*.m3u*"),
@@ -122,20 +125,8 @@ class M3uToFreeboxMainView (tkinter.Tk):
             LoggerConfig.printAndLogInfo("Open menu cancelled")
 
 
-    def get_m3uToFreeboxApplication(self):
-        return self._m3u_to_freebox_application
-
-    def set_m3uToFreeboxApplication(self, value):
-        self._m3u_to_freebox_application = value
-
-
-class M3uToFreeboxApplication():
-
-    def __init__(self, m3uToFreeboxMainView):
-        self.m3uToFreeboxMainView = m3uToFreeboxMainView
-
-
-def main(argv):
+def main():
+    """ Main function """
     application_start_time = time.time()
     log_file_name = os.path.basename(__file__) + str(random.randrange(100000)) + ".log"
     LoggerConfig.configureLogger(log_file_name)
@@ -143,7 +134,7 @@ def main(argv):
     LoggerConfig.printAndLogInfo('Start application')
 
     main_view = M3uToFreeboxMainView()
-    app: M3uToFreeboxApplication = M3uToFreeboxApplication(main_view)
+    app: application.M3uToFreeboxApplication = application.M3uToFreeboxApplication(main_view)
     main_view.mainloop()
 
     LoggerConfig.printAndLogInfo("End. Nominal end of application in " + date_time_formats.format_duration_to_string(
@@ -151,4 +142,5 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    # sys.argv[1:]
+    main()

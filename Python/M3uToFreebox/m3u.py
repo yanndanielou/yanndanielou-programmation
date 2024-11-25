@@ -167,4 +167,6 @@ class M3uEntriesLibrary:
     def __init__(self) -> None:
         self._m3u_entries: list[M3uEntry] = []
         
+    def add(self, m3uEntry:M3uEntry) -> None:
+        self._m3u_entries.append(m3uEntry)
     
