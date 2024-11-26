@@ -152,7 +152,7 @@ class DetailsViewTab(ttk.Frame):
         def do_popup(event):
             # display the popup menu
             try:
-                self.tree_view_context_menu.selection = self.tree_view.set(self.tree_view.identify_row(event.y))
+                self.tree_view_context_menu.selection = self._tree_view.set(self._tree_view.identify_row(event.y))
                 self.tree_view_context_menu.post(event.x_root, event.y_root)
             finally:
                 # make sure to release the grab (Tk 8.0a1 only)
@@ -171,9 +171,6 @@ class DetailsViewTab(ttk.Frame):
         self._create_filter_frame()
         self._create_tree_view_frame()
         self._create_bottom_frame()
-        #options = ['A','B','C','D','E','F','G','H']
-        #selected = tkinter.StringVar(self)
-        #selected.set(options[0])
         
 
 

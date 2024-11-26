@@ -184,6 +184,7 @@ class M3uEntriesLibrary:
             if filter_str in m3u_entry.title:
                 ret.append(m3u_entry)
         
+        LoggerConfig.printAndLogInfo("Number of entries with filter:" + filter_str + ": " + str(len(ret)))
         return ret
         
     
