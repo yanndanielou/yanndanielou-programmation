@@ -1,3 +1,4 @@
 *.csv
 Thumbs.db
 Output*
+Dependencies/

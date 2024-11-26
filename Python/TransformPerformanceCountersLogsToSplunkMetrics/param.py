@@ -22,6 +22,7 @@ output_files_extension = "zip"
 output_metrics_ready_for_splunk_directory = "D:\\GitHub\\yanndanielou-programmation\\Python\\TransformPerformanceCountersLogsToSplunkMetrics\\Output_Metrics_Ready_For_Splunk"
 
 
+
 #Add possibility to add a fixed prefix of the metric_name in the output file.
 #It can be used to index into the same Splunk index perflogs from different sources
 #For example in Riyadh, we will index perflogs from: the site, the TCM factory, Wildenrath test track, etc. to the same index (to avoid additional work in Splunk configuration)
@@ -43,5 +44,8 @@ metric_name_fixed_prefix_for_all_mesures = ""
 output_files_suffix = ""
 
 input_performance_counter_file_extension = ".csv"
+
+output_splunk_metrics_file_extension = ".csv"
+
 
 input_performance_counter_file_seperator = ","
