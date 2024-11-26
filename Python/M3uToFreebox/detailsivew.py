@@ -22,6 +22,7 @@ import Dependencies.Logger.LoggerConfig as LoggerConfig
 import tkinter
 import m3u
 import detailspopup
+import main
 
 
 
@@ -47,9 +48,46 @@ class DetailsViewTab(ttk.Frame):
 
         self._create_view()
         self._create_context_menu()
+        self.create_filter_option_menu()
+
+
+    def create_filter_option_menu(self):
+        """ Filter """
+        
+        
+        # padding for widgets using the grid layout
+        paddings = {'padx': 5, 'pady': 5}
+        
+        
+        # output label
+        self.filter_option_description_label = ttk.Label(self, foreground='black')
+        self.filter_option_description_label.grid(column=1, row=0, sticky=tkinter.W, **paddings)
+        self.filter_option_description_label['text'] = f'Type of fikter:'
+        
+        # initialize data
+        self.languages = ('Contains', 'Regex', 'Java',
+                        'Swift', 'GoLang', 'C#', 'C++', 'Scala')
+
+        # set up variable
+        self.option_var = tkinter.StringVar(self)
+        # option menu
+        self._filter_option_menu = ttk.OptionMenu(
+            self,
+            self.option_var,
+            self.languages[0],
+            *self.languages,
+            command=self.filter_option_changed)
+        
+        
+        self._filter_option_menu.grid(column=2, row=0, sticky=tkinter.W, **paddings)
         
 
         
+    def filter_option_changed(self, *args):
+        LoggerConfig.printAndLogInfo(f'You selected: {self.option_var.get()}')
+
+        
+    
     def _create_context_menu(self):
         #Create context menu
         self.tree_view_context_menu = tkinter.Menu(self, tearoff=0)
@@ -163,7 +201,7 @@ class DetailsViewTab(ttk.Frame):
         self._reset_list()
         m3u_entry_number = 0
         
-        for m3u_entry in self._parent.m3u_to_freebox_application._m3u_library.get_m3u_entries_with_filter(self._filter_input_text.get()):
+        for m3u_entry in self._parent.m3u_to_freebox_application.m3u_library.get_m3u_entries_with_filter(self._filter_input_text.get()):
             m3u_entry_number = m3u_entry_number + 1
             self.tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.title, m3u_entry.group_title))
 
@@ -174,3 +212,7 @@ class DetailsViewTab(ttk.Frame):
     def selection(self):
         print(self.tree_view_context_menu.selection)
         
+
+if __name__ == "__main__":
+    # sys.argv[1:]
+    main.main()
