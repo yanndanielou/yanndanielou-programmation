@@ -43,12 +43,42 @@ class DetailsViewTab(ttk.Frame):
     
     def __init__(self, parent:main_view.M3uToFreeboxMainView, tab_control):
         super().__init__(tab_control)
+        
+        self._paddings = {'padx': 5, 'pady': 5}
 
         self._parent: main_view.M3uToFreeboxMainView = parent
 
         self._create_view()
         self._create_context_menu()
         self.create_filter_option_menu()
+        
+        self._organize_widgets()
+
+    def _organize_widgets(self):
+        #self.filter_option_description_label.grid(column=1, row=0, sticky=tkinter.W, **paddings)
+
+        self._filter_input_text.pack()
+        self.filter_option_description_label.pack()
+        self._filter_option_menu.pack()
+        #self._filter_option_menu.grid(column=2, row=0, sticky=tkinter.W, ** self._paddings)
+
+
+        
+        
+        self._tree_view.pack()
+        self._tree_scroll.pack(side=tkinter.RIGHT, fill=tkinter.Y)
+
+
+        #self.tree_view.pack()
+        #bottom_status_label.grid(row=2, column=0)
+        self._bottom_status_label.pack()
+
+        
+   
+
+        #self._filter_input_text.grid(row=0, column=0)
+        #self._tree_view.grid(row=1, column=0)*
+
 
 
     def create_filter_option_menu(self):
@@ -61,7 +91,6 @@ class DetailsViewTab(ttk.Frame):
         
         # output label
         self.filter_option_description_label = ttk.Label(self, foreground='black')
-        self.filter_option_description_label.grid(column=1, row=0, sticky=tkinter.W, **paddings)
         self.filter_option_description_label['text'] = f'Type of fikter:'
         
         # initialize data
@@ -79,7 +108,6 @@ class DetailsViewTab(ttk.Frame):
             command=self.filter_option_changed)
         
         
-        self._filter_option_menu.grid(column=2, row=0, sticky=tkinter.W, **paddings)
         
 
         
@@ -105,7 +133,7 @@ class DetailsViewTab(ttk.Frame):
                 # make sure to release the grab (Tk 8.0a1 only)
                 self.tree_view_context_menu.grab_release()
                 
-        self.tree_view.bind("<Button-3>", do_popup)
+        self._tree_view.bind("<Button-3>", do_popup)
 
 
     def _open_m3u_entry_detail_popup(self):
@@ -124,22 +152,29 @@ class DetailsViewTab(ttk.Frame):
 
                 
         columns = ('ID','Title', 'Group')
+        
+        # Treeview Scrollbar
+        self._tree_scroll = tkinter.Scrollbar(self)
 
-        self.tree_view = ttk.Treeview(self, columns=columns, show='headings')
-        
-        for col in columns:
-            self.tree_view.heading(col, text=col, command=lambda: \
-                     self.treeview_sort_column(self.tree_view, col, False), anchor='center')
+        # Create Treeview
+        self._tree_view = ttk.Treeview(self, yscrollcommand=self._tree_scroll.set, selectmode="extended", show='headings')
+        # Pack to the screen
+
+        #Configure the scrollbar
+        self._tree_scroll.config(command=self._tree_view.yview)
+
+        self._tree_view["column"] = columns
+
+        for column in self._tree_view["column"]:
+             self._tree_view.heading(column, text=column)
+      
+        #for col in columns:
+        #    self._tree_view.heading(col, text=col, command=lambda: \
+        #             self.treeview_sort_column(self._tree_view, col, False), anchor='center')
 
 
-        #self.tree_view.pack()
         
-   
-        
-        self._filter_input_text.grid(row=0, column=0)
-        self.tree_view.grid(row=1, column=0)
-        
-        self.create_scrollbar()
+        #self.create_scrollbar()
         
         # create a StringVar class
         my_string_var = tkinter.StringVar()
@@ -147,23 +182,13 @@ class DetailsViewTab(ttk.Frame):
         # set the text
         my_string_var.set("What should I learn")
 
-        bottom_status_label = tkinter.Label(self,font=('verdana',14),textvariable = my_string_var)
-        bottom_status_label.grid(row=2, column=0)
+        self._bottom_status_label = tkinter.Label(self,font=('verdana',14),textvariable = my_string_var)
+
 
 
       
     def create_scrollbar(self):  
-        #self._tab_list_details.grid(row=0, column=0)
-        
-        # Create a Scrollbar
-        scrollbar = ttk.Scrollbar(self, orient="vertical", command=self.tree_view.yview)
-
-        # Configure the Treeview to use the scrollbar
-        self.tree_view.configure(yscrollcommand=scrollbar.set)
-
-        # Place the scrollbar on the right side of the Treeview
-        #scrollbar.pack(side="right", fill="y")
-        scrollbar.grid(row=1, column=1)
+        pass
 
     def filter_updated(self, *args):
         filter_text = self._filter_input_text.get()
