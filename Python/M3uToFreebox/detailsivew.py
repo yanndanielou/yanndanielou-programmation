@@ -115,7 +115,8 @@ class DetailsViewTab(ttk.Frame):
         self._tree_view["column"] = columns
 
         for column in self._tree_view["column"]:
-                self._tree_view.heading(column, text=column)
+                self._tree_view.heading(column, text=column, command=lambda: \
+                   self.treeview_sort_column(self._tree_view, column, False), anchor='center')
 
         self._tree_view.pack()
         self._tree_scroll.pack(side=tkinter.RIGHT, fill=tkinter.Y)
