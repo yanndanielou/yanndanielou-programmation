@@ -39,3 +39,11 @@ Python Getter Setter
 v1.3.0
 Siddharth Verma
 
+Python Indent
+v1.18.0
+Kevin Rose
+
+Flake8
+v2023.10.0
+Microsoft
+
