@@ -50,39 +50,20 @@ class DetailsViewTab(ttk.Frame):
 
         self._create_view()
         self._create_context_menu()
-        self.create_filter_option_menu()
         
-        self._organize_widgets()
-
-    def _organize_widgets(self):
-        #self.filter_option_description_label.grid(column=1, row=0, sticky=tkinter.W, **paddings)
-
-        self._filter_input_text.pack()
-        self.filter_option_description_label.pack()
-        self._filter_option_menu.pack()
-        #self._filter_option_menu.grid(column=2, row=0, sticky=tkinter.W, ** self._paddings)
+        #self._organize_widgets()
 
 
-        
-        
-        self._tree_view.pack()
-        self._tree_scroll.pack(side=tkinter.RIGHT, fill=tkinter.Y)
-
-
-        #self.tree_view.pack()
-        #bottom_status_label.grid(row=2, column=0)
-        self._bottom_status_label.pack()
-
-        
-   
-
-        #self._filter_input_text.grid(row=0, column=0)
-        #self._tree_view.grid(row=1, column=0)*
-
-
-
-    def create_filter_option_menu(self):
+    def _create_filter_frame(self):
         """ Filter """
+
+        self._filter_frame =tkinter.LabelFrame(self, text="Filters")    
+        self._filter_frame.grid(row= 0, column=0, padx=20, pady=10)
+        
+        self._filter_input_text = tkinter.Entry(self._filter_frame,font=('verdana',14))
+        self._filter_input_text.bind("<KeyRelease>", self.filter_updated)
+        self._filter_input_text.grid(row= 0, column=0, padx=20, pady=10)
+        
         
         
         # padding for widgets using the grid layout
@@ -90,8 +71,9 @@ class DetailsViewTab(ttk.Frame):
         
         
         # output label
-        self.filter_option_description_label = ttk.Label(self, foreground='black')
-        self.filter_option_description_label['text'] = f'Type of fikter:'
+        self.filter_option_description_label = ttk.Label(self._filter_frame, foreground='black')
+        self.filter_option_description_label['text'] = f'Type of filter:'
+        self.filter_option_description_label.grid(row= 0, column=1, padx=20, pady=10)
         
         # initialize data
         self.languages = ('Contains', 'Regex', 'Java',
@@ -101,13 +83,54 @@ class DetailsViewTab(ttk.Frame):
         self.option_var = tkinter.StringVar(self)
         # option menu
         self._filter_option_menu = ttk.OptionMenu(
-            self,
+            self._filter_frame,
             self.option_var,
             self.languages[0],
             *self.languages,
             command=self.filter_option_changed)
         
         
+        self._filter_option_menu.grid(row= 0, column=2, padx=5, pady=10)
+
+    def _create_tree_view_frame(self):
+        self._tree_view_frame = tkinter.Frame(self)
+        self._tree_view_frame.grid(row= 1, column=0, padx=20, pady=10)
+
+
+        # Treeview Scrollbar
+        self._tree_scroll = tkinter.Scrollbar(self._tree_view_frame)
+        self._tree_scroll.pack(side=tkinter.RIGHT, fill=tkinter.Y)
+
+
+        # Create Treeview
+        self._tree_view = ttk.Treeview(self._tree_view_frame, yscrollcommand=self._tree_scroll.set, selectmode="extended", show='headings')
+        
+        # Pack to the screen
+
+        #Configure the scrollbar
+        self._tree_scroll.config(command=self._tree_view.yview)
+
+        columns = ('ID','Title', 'Group')
+
+        self._tree_view["column"] = columns
+
+        for column in self._tree_view["column"]:
+                self._tree_view.heading(column, text=column)
+
+        self._tree_view.pack()
+        self._tree_scroll.pack(side=tkinter.RIGHT, fill=tkinter.Y)
+
+    def _create_bottom_frame(self):
+        
+        self._bottom_frame = tkinter.Frame(self)
+        self._bottom_frame.grid(row= 2, column=0, padx=20, pady=10)
+        my_string_var = tkinter.StringVar()
+        # set the text
+        my_string_var.set("What should I learn")
+
+        self._bottom_status_label = tkinter.Label(self,font=('verdana',14),textvariable = my_string_var)  
+        
+
         
 
         
@@ -143,47 +166,13 @@ class DetailsViewTab(ttk.Frame):
     
     def _create_view(self):
                 
-        options = ['A','B','C','D','E','F','G','H']
-        selected = tkinter.StringVar(self)
-        selected.set(options[0])
+        self._create_filter_frame()
+        self._create_tree_view_frame()
+        self._create_bottom_frame()
+        #options = ['A','B','C','D','E','F','G','H']
+        #selected = tkinter.StringVar(self)
+        #selected.set(options[0])
         
-        self._filter_input_text = tkinter.Entry(self,font=('verdana',14))
-        self._filter_input_text.bind("<KeyRelease>", self.filter_updated)
-
-                
-        columns = ('ID','Title', 'Group')
-        
-        # Treeview Scrollbar
-        self._tree_scroll = tkinter.Scrollbar(self)
-
-        # Create Treeview
-        self._tree_view = ttk.Treeview(self, yscrollcommand=self._tree_scroll.set, selectmode="extended", show='headings')
-        # Pack to the screen
-
-        #Configure the scrollbar
-        self._tree_scroll.config(command=self._tree_view.yview)
-
-        self._tree_view["column"] = columns
-
-        for column in self._tree_view["column"]:
-             self._tree_view.heading(column, text=column)
-      
-        #for col in columns:
-        #    self._tree_view.heading(col, text=col, command=lambda: \
-        #             self.treeview_sort_column(self._tree_view, col, False), anchor='center')
-
-
-        
-        #self.create_scrollbar()
-        
-        # create a StringVar class
-        my_string_var = tkinter.StringVar()
-
-        # set the text
-        my_string_var.set("What should I learn")
-
-        self._bottom_status_label = tkinter.Label(self,font=('verdana',14),textvariable = my_string_var)
-
 
 
       
@@ -218,7 +207,7 @@ class DetailsViewTab(ttk.Frame):
 
 
     def _reset_list(self):
-        self.tree_view.delete(* self.tree_view.get_children())
+        self._tree_view.delete(* self._tree_view.get_children())
 
 
     def fill_m3u_entries(self):
@@ -228,7 +217,7 @@ class DetailsViewTab(ttk.Frame):
         
         for m3u_entry in self._parent.m3u_to_freebox_application.m3u_library.get_m3u_entries_with_filter(self._filter_input_text.get()):
             m3u_entry_number = m3u_entry_number + 1
-            self.tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.title, m3u_entry.group_title))
+            self._tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.title, m3u_entry.group_title))
 
             if m3u_entry_number % 10000 == 0:
                 LoggerConfig.printAndLogInfo(str(m3u_entry_number) + " entries filled")
