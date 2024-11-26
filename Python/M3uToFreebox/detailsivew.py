@@ -123,12 +123,13 @@ class DetailsViewTab(ttk.Frame):
     def _create_bottom_frame(self):
         
         self._bottom_frame = tkinter.Frame(self)
-        self._bottom_frame.grid(row= 2, column=0, padx=20, pady=10)
+        self._bottom_frame.grid(row=2, column=0, padx=20, pady=10)
         my_string_var = tkinter.StringVar()
         # set the text
         my_string_var.set("What should I learn")
 
-        self._bottom_status_label = tkinter.Label(self,font=('verdana',14),textvariable = my_string_var)  
+        self._bottom_status_label = tkinter.Label(self._bottom_frame,font=('verdana',14),textvariable = my_string_var)  
+        self._bottom_status_label.pack()
         
 
         
