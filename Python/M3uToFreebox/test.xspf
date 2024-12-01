@@ -1,14 +1,13 @@
-<?xml version="1.0" ?>
-<XspfFileContent>
-	<_title>Whatsapp</_title>
-	<_trackss>
-		<Track>
-			<_location>C:\Users\fr232487\Downloads\WhatsApp Video 2024-11-02 at 08.49.46.mp4</_location>
-			<_duration>9999</_duration>
-			<Extension>
-				<_vlc_id>0</_vlc_id>
-				<_application>http://www.videolan.org/vlc/playlist/0</_application>
-			</Extension>
-		</Track>
-	</_trackss>
-</XspfFileContent>
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
+	<title>Liste de lecture</title>
+	<trackList>
+		<track>
+		<location>file:///C:/Users/fr232487/Downloads/WhatsApp%20Video%202024-11-01%20at%2018.06.53.mp4</location>
+		<duration>8981</duration>
+		<extension application="http://www.videolan.org/vlc/playlist/0">
+			<vlc:id>0</vlc:id>
+		</extension>
+	</track>
+</trackList>
+</playlist>
