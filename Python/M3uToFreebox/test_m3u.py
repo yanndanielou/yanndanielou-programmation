@@ -2,9 +2,10 @@
 
 import m3u
 import unittest
+import Dependencies.Common.unit_tests_helpers
 
 
-class TestM3uFileParser(unittest.TestCase):  
+class TestM3uFileParser(Dependencies.Common.unit_tests_helpers.TestCaseBase):
 
     def __init__(self, methodName='runTest'):  
         super().__init__(methodName)  
@@ -15,12 +16,6 @@ class TestM3uFileParser(unittest.TestCase):
         self.b1 = 10
         self.b2 = 0
         self.checker = m3u.M3uFileParser()  # Creating the object
-
-    def assertEmpty(self, obj):
-        self.assertFalse(obj)
-
-    def assertNotEmpty(self, obj):
-        self.assertTrue(obj)
 
     def test_number_of_results(self):
         """ Number of results """
