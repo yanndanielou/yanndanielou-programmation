@@ -173,6 +173,13 @@ class M3uEntriesLibrary:
         """ add m3u to library """
         self._m3u_entries.append(m3u_entry)
         
+    def get_m3u_entry_by_id(self, id:int):
+        m3u_entries_with_id = [m3u_entry for m3u_entry in self._m3u_entries if m3u_entry.id == id]
+        LoggerConfig.printAndLogInfo("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(id))
+        if(len(m3u_entries_with_id)):
+            raise Exception("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(id))
+        return self._m3u_entries[0]
+        
     def get_m3u_entries_with_filter(self, filter_str: str) -> list[M3uEntry]:
         """ filter list of m3u """
         ret: list[M3uEntry] = []
