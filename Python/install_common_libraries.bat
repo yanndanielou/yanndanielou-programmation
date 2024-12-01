@@ -1,8 +1,8 @@
 @CALL SET_PYTHON_HOME.bat
 
 @call :INSTALL_PYTHON_LIB pyconvert
-@call :INSTALL_PYTHON_LIB utils
-@call :INSTALL_PYTHON_LIB lazyxml
+rem does not fix lazyxml @call :INSTALL_PYTHON_LIB utils
+rem does not work @call :INSTALL_PYTHON_LIB lazyxml
 @call :INSTALL_PYTHON_LIB xspf-lib
 @call :INSTALL_PYTHON_LIB mysql
 @call :INSTALL_PYTHON_LIB mysql-connector
