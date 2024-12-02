@@ -119,7 +119,7 @@ class DetailsViewTab(ttk.Frame):
                    self.treeview_sort_column(self._tree_view, column, False), anchor='center')
         
         
-        self._tree_view.column(self._tree_view["columns"][0],width=20)
+        self._tree_view.column(self._tree_view["columns"][0],width=40)
         
         #print(str(self._tree_view.column("ID")))
         #self._tree_view.column("ID")['minwidth']
