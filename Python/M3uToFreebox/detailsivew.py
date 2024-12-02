@@ -117,6 +117,20 @@ class DetailsViewTab(ttk.Frame):
         for column in self._tree_view["column"]:
                 self._tree_view.heading(column, text=column, command=lambda: \
                    self.treeview_sort_column(self._tree_view, column, False), anchor='center')
+        
+        
+        self._tree_view.column(self._tree_view["columns"][0],width=20)
+        
+        #print(str(self._tree_view.column("ID")))
+        #self._tree_view.column("ID")['minwidth']
+        #print(str(self._tree_view.column("ID")))
+
+        
+        #['width'] = 10
+        #self._tree_view.column("ID")['minwidth'] = 10
+        #column_id.width = 10
+    
+
 
         self._tree_view.pack()
         self._tree_scroll.pack(side=tkinter.RIGHT, fill=tkinter.Y)
@@ -154,7 +168,7 @@ class DetailsViewTab(ttk.Frame):
             # display the popup menu
             try:
                 row_identified = self._tree_view.identify_row(event.y)
-                print("row_identified:" + row_identified)
+                LoggerConfig.print_and_log_info("row_identified:" + row_identified)
                 
                 
                 tree_view_selection = self._tree_view.selection()
