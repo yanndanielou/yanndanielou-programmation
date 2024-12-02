@@ -1,6 +1,6 @@
 # -*-coding:Utf-8 -*
 
-import pyconvert.pyconv
+#import pyconvert.pyconv
 
 
 
@@ -79,11 +79,11 @@ class XspfFileCreator:
         pass
     
     def write(self, xspf_file_content:XspfFileContent, output_file_name: str) -> None:
-        xml_content = pyconvert.pyconv.convert2XML(xspf_file_content)
-        pretty_xml = xml_content.toprettyxml()
-        print(pretty_xml)
+        #xml_content = pyconvert.pyconv.convert2XML(xspf_file_content)
+        #pretty_xml = xml_content.toprettyxml()
+        #print(pretty_xml)
         
-        with open(output_file_name, 'w') as f:
+        with open(output_file_name, 'w', encoding="utf-8") as f:
             f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
             f.write('<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">\n')
             f.write('\t<title>' + xspf_file_content.title + '</title>\n')
