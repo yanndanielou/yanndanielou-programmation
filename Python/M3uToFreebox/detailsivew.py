@@ -143,7 +143,8 @@ class DetailsViewTab(ttk.Frame):
     
     def _create_context_menu(self):
         #Create context menu
-        self.tree_view_context_menu = tkinter.Menu(self, tearoff=0)
+        self.tree_view_context_menu: tkinter.Menu = tkinter.Menu(self, tearoff=0)
+        self.tree_view_context_menu.add_command(label="Create xspf on ...", command=self._select_directory_popup_and_create_xspf)
         self.tree_view_context_menu.add_command(label="Create xspf on freebox", command=self._create_xspf_on_freebox_context_menu_choosen)
         self.tree_view_context_menu.add_command(label="Show detail", command=self._open_m3u_entry_detail_popup)
         self.tree_view_context_menu.add_command(label="Reset", command=self._reset_list)
@@ -152,7 +153,14 @@ class DetailsViewTab(ttk.Frame):
         def do_popup(event):
             # display the popup menu
             try:
-                self.tree_view_context_menu.selection = self._tree_view.set(self._tree_view.identify_row(event.y))
+                row_identified = self._tree_view.identify_row(event.y)
+                print("row_identified:" + row_identified)
+                
+                
+                tree_view_selection = self._tree_view.selection()
+                LoggerConfig.print_and_log_info("tree_view_selection:"  + str(tree_view_selection))
+        
+                self.tree_view_context_menu.selection = self._tree_view.set(row_identified)
                 self.tree_view_context_menu.post(event.x_root, event.y_root)
             finally:
                 # make sure to release the grab (Tk 8.0a1 only)
@@ -165,12 +173,25 @@ class DetailsViewTab(ttk.Frame):
         m3u_entry_line = self.tree_view_context_menu.selection
         m3u_entry_detail_popup = detailspopup.M3uEntryDetailPopup(self, None)
         
+    def _select_directory_popup_and_create_xspf(self):
+        tree_view_selection = self._tree_view.selection()
+        LoggerConfig.print_and_log_info("tree_view_selection:"  + str(tree_view_selection))
+        
+        directory_path = filedialog.askdirectory()
+        LoggerConfig.print_and_log_info("Directory chosen:" + str(directory_path))
+
+        if directory_path != "":
+            m3u_entry_line = self.tree_view_context_menu.selection
+            m3u_entry_id_str = m3u_entry_line['ID']
+            
+            self._parent.m3u_to_freebox_application.create_xspf_file_by_id_str(m3u_entry_id_str)
+        else:
+            LoggerConfig.print_and_log_info("No directory chosen")
+
+            
     def _create_xspf_on_freebox_context_menu_choosen(self):
         m3u_entry_line = self.tree_view_context_menu.selection
         m3u_entry_id_str = m3u_entry_line['ID']
-        m3u_entry_id_int = int(m3u_entry_id_str)
-        m3u_entry_title_str = m3u_entry_line['Title']
-        m3u_entry_group_str = m3u_entry_line['Group']
         
         self._parent.m3u_to_freebox_application.create_xspf_file_by_id_str(m3u_entry_id_str)
 
@@ -213,8 +234,13 @@ class DetailsViewTab(ttk.Frame):
             self._parent = value
 
 
+    def _reset_library(self):
+        self._parent.m3u_to_freebox_application.reset_library()
+        self.filter_updated()
+
     def _reset_list(self):
         self._tree_view.delete(* self._tree_view.get_children())
+
 
 
     def fill_m3u_entries(self):
