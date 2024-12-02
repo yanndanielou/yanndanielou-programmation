@@ -124,8 +124,8 @@
 							"comment": "référeces à whitelistings et antivirus"
 						}
 					],
-					"personalizeByAllowedUsed": true,
-					"encrypt": true,
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
 					"genericOutputFileName": "NExTEO-2A0000-02-0109-00 Spécification architecture logiciel du produit Gumps (SSC3_2_AdminTools_GUMPS_SWArchSpec) V03-00"
 				},
 				{
@@ -361,7 +361,7 @@
 					},
 					"personalizeByAllowedUsed": true,
 					"encrypt": true,
-					"genericOutputFileN.ame": "NExTEO-S-251000-02-0107-03 Spécification fonctionnelle du PAS V13-00"
+					"genericOutputFileName": "NExTEO-S-251000-02-0107-03 Spécification fonctionnelle du PAS V13-00"
 				},
 				{
 					"enabled": true,
