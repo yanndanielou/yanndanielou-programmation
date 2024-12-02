@@ -1,4 +1,4 @@
-ï»¿#For logs
+#For logs
 import param
 #For logs
 import LoggerConfig
@@ -32,10 +32,10 @@ def Lancer_simulations_sur_smt3():
 
     __graphe = GrapheSingleton.Load(GrapheSingleton,"inputs\\Graphe-NG_ReadyForSimu.gme")
 
-    LoggerConfig.printAndLogInfo("Nombre de missions Ã©lÃ©mentaires de rÃ©gulation : " + str(len(__graphe.missionsElementairesRegulation)))
-    LoggerConfig.printAndLogInfo("Nombre de missions Ã©lÃ©mentaires : " + str(len(__graphe.missionsElementaires)))
+    LoggerConfig.print_and_log_info("Nombre de missions élémentaires de régulation : " + str(len(__graphe.missionsElementairesRegulation)))
+    LoggerConfig.print_and_log_info("Nombre de missions élémentaires : " + str(len(__graphe.missionsElementaires)))
 
-    LoggerConfig.printAndLogInfo("Load empty Simulation.sme") 
+    LoggerConfig.print_and_log_info("Load empty Simulation.sme") 
     simuResults = SimulationResultsSingleton.Load(SimulationResultsSingleton, "inputs\\Simulation_empty.sme")
 
 
@@ -43,23 +43,23 @@ def Lancer_simulations_sur_smt3():
     now_as_datetime = datetime.datetime.now()
     now_as_string_for_file_suffix = now_as_datetime.strftime("%Y_%m_%d %H_%M_%S %f")
 
-    LoggerConfig.printAndLogInfo("ProduireSimplesRuns") 
+    LoggerConfig.print_and_log_info("ProduireSimplesRuns") 
     __graphe.ProduireSimplesRuns( now_as_string_for_file_suffix)
   
-    LoggerConfig.printAndLogInfo("End of application") 
+    LoggerConfig.print_and_log_info("End of application") 
 
 
 
 def main(argv):
     
     log_file_name = 'ExtraireListeMissionsElementairesDepuisGraphe-' +  str(random.randrange(100000)) + ".log"
-    LoggerConfig.configureLogger(log_file_name)    
-    LoggerConfig.printAndLogInfo('Start application. Log file name: ' + log_file_name)
+    LoggerConfig.configure_logger(log_file_name)    
+    LoggerConfig.print_and_log_info('Start application. Log file name: ' + log_file_name)
 
     system("title " + " ExtraireListeMissionsElementairesDepuisGraphe ")
     Lancer_simulations_sur_smt3()
 
-    LoggerConfig.printAndLogInfo('End application')
+    LoggerConfig.print_and_log_info('End application')
 
 
 if __name__ == "__main__":

@@ -102,71 +102,71 @@ class Graphe:
     #@execution_time
     def AjouterLigne__disabled_YDA(self, _nom, _numero, _referentiel, _segmentReference, _orientationGauche, _orientationDroite):
         logging.info("Start calling AjouterLigne")
-        LoggerConfig.printAndLogInfo("fonction AjouterLigne")
+        LoggerConfig.print_and_log_info("fonction AjouterLigne")
         self.lignes[_nom] = Ligne(_nom, _numero, _referentiel, _segmentReference, _orientationGauche, _orientationDroite)
 
     #@execution_time 
     def AjouterStation__disabled_YDA(self, _nom):
         logging.info("Start calling AjouterStation")
-        LoggerConfig.printAndLogInfo("fonction AjouterStation")
+        LoggerConfig.print_and_log_info("fonction AjouterStation")
         self.stations[_nom] = Station(_nom)
         return self.stations[_nom]
 
     #@execution_time 
     def AjouterPtA__disabled_YDA(self, _nom, _segment, _abs, _sens):
         logging.info("Start calling AjouterPtA")
-        LoggerConfig.printAndLogInfo("fonction AjouterPtA")
+        LoggerConfig.print_and_log_info("fonction AjouterPtA")
         self.PtAs[_nom] = PtA(_nom, _segment, _sens, _abs)
 
     #@execution_time 
     def AjouterSegment__disabled_YDA(self, _nom, _troncon, _voie, _longueur, _origine, _fin, _segment1VoisinAmont, _segment2VoisinAmont, _segment1VoisinAval, _segment2VoisinAval):
         logging.info("Start calling AjouterSegment")
-        LoggerConfig.printAndLogInfo("fonction AjouterSegment")
+        LoggerConfig.print_and_log_info("fonction AjouterSegment")
         self.segments[_nom] = Segment(_nom, _troncon, _voie, _longueur, _origine, _fin, _segment1VoisinAmont, _segment2VoisinAmont, _segment1VoisinAval, _segment2VoisinAval)
 
     #@execution_time 
     def AjouterVoie__disabled_YDA(self, _nom, _type, _sensNominal, _voieContinuitePK, _segContinuitePK, _sensIncrementationPK, _PKDebut, _PKFin):
         logging.info("Start calling AjouterVoie")
-        LoggerConfig.printAndLogInfo("fonction AjouterVoie")
+        LoggerConfig.print_and_log_info("fonction AjouterVoie")
         self.voies[_nom] = Voie(_nom, _type, _sensNominal, _voieContinuitePK, _segContinuitePK, _sensIncrementationPK, _PKDebut, _PKFin)
 
     #@execution_time    
     def AjouterTroncon__disabled_YDA(self, _nom, _ligne):
         logging.info("Start calling AjouterTroncon")
-        LoggerConfig.printAndLogInfo("fonction AjouterTroncon")
+        LoggerConfig.print_and_log_info("fonction AjouterTroncon")
         self.troncons[_nom] = Troncon(_nom, _ligne)
         return self.troncons[_nom]
 
     #@execution_time 
     def AjouterSignal__disabled_YDA(self, _nom, _type, _sousType, _segment, _abs, _sens):
         logging.info("Start calling AjouterSignal")
-        LoggerConfig.printAndLogInfo("fonction AjouterSignal")
+        LoggerConfig.print_and_log_info("fonction AjouterSignal")
         self.signals[_nom] = Signal(_nom, _type, _sousType, _segment, _abs, _sens)
 
     #@execution_time 
     def AjouterAiguille__disabled_YDA(self, _nom, _posDirecte, _segPointe, _segTalonGauche, _segTalonDroite, _voie, _pk):
         logging.info("Start calling AjouterAiguille")
-        LoggerConfig.printAndLogInfo("fonction AjouterAiguille")
+        LoggerConfig.print_and_log_info("fonction AjouterAiguille")
         self.aiguilles[_nom] = Aiguille(_nom, _posDirecte, _segPointe, _segTalonGauche, _segTalonDroite, _voie, _pk)
 
     #@execution_time 
     def AjouterCDV__disabled_YDA(self, _nom):
         logging.info("Start calling AjouterCDV")
-        LoggerConfig.printAndLogInfo("fonction AjouterCDV")
+        LoggerConfig.print_and_log_info("fonction AjouterCDV")
         self.CDVs[_nom] = CDV(_nom)
         return self.CDVs[_nom]
 
     #@execution_time 
     def AjouterTVD__disabled_YDA(self, _nom, _type, _objet):
         logging.info("Start calling AjouterTVD")
-        LoggerConfig.printAndLogInfo("fonction AjouterTVD")
+        LoggerConfig.print_and_log_info("fonction AjouterTVD")
         self.TVDs[_nom] = TVD(_nom, _type, _objet)
         return self.TVDs[_nom]
 
     #@execution_time 
     def AjouterJointCDV__disabled_YDA(self, _cdv1, _cdv2, _segment, _abs):
         logging.info("Start calling AjouterJointCDV")
-        LoggerConfig.printAndLogInfo("fonction AjouterJointCDV")
+        LoggerConfig.print_and_log_info("fonction AjouterJointCDV")
         if(_cdv1.nom <= _cdv2.nom):
             nomJointCdv = _cdv1.nom + "#" + _cdv2.nom
             self.JointsCDVs[nomJointCdv] = JointCDV(_cdv1, _cdv2, _segment, _abs)
@@ -397,7 +397,7 @@ class Graphe:
         travelTimesRequestTree_as_str = ET.tostring(travelTimesRequestTree, encoding='utf8', method='xml')
         element = ET.XML(travelTimesRequestTree_as_str)
         ET.indent(element)
-        #LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
+        #LoggerConfig.print_and_log_info(ET.tostring(element, encoding='unicode'))
     
         output_txt_file.write("Send to SMT3 \n")
         output_txt_file.write(ET.tostring(element, encoding='unicode'))
@@ -419,7 +419,7 @@ class Graphe:
 
         output_directory = "output"
         if not os.path.exists(output_directory):
-            LoggerConfig.printAndLogInfo('Create output directory:' + output_directory)
+            LoggerConfig.print_and_log_info('Create output directory:' + output_directory)
             os.makedirs(output_directory)
         
         output_txt_file_name = output_directory + "\\ProduireSimplesRuns_xml_inputs_and_output-" + now_as_string_for_file_suffix + ".txt"
@@ -435,14 +435,14 @@ class Graphe:
 
         for mE in self.missionsElementaires.values():
             numero_mission_elementaire_courante = numero_mission_elementaire_courante + 1
-            #LoggerConfig.printAndLogInfo(str(numero_mission_elementaire_courante) + " eme ME " + mE.nom + " sur " + str(nbMissionsElementaires) + " . Avancement:" + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
+            #LoggerConfig.print_and_log_info(str(numero_mission_elementaire_courante) + " eme ME " + mE.nom + " sur " + str(nbMissionsElementaires) + " . Avancement:" + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
             start_time_mission_elementaire = time.time()
             if  True:
                 numero_nature = 0
                 for nature in mE.missionElementaireRegulation.naturesTrains:
                     numero_nature = numero_nature + 1
                     numero_modele = 0
-                    #LoggerConfig.printAndLogInfo(mE.nom = " nature:" + str(nature))
+                    #LoggerConfig.print_and_log_info(mE.nom = " nature:" + str(nature))
                     #nature = self.natures[natureitem]
                     for modele in nature.modeles:
                         
@@ -452,14 +452,14 @@ class Graphe:
                             if((mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM") and simulationResults.FindSimpleRunSimulation(mE.missionElementaireRegulation, modele) != None):
                                 output_txt_file.write(str(numero_mission_elementaire_courante) + " eme mission elementaire " + str(numero_modele) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
                                 output_txt_file.write("\n")
-                                LoggerConfig.printAndLogInfo(str(numero_mission_elementaire_courante) + " eme mission elementaire " + str(numero_modele) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
+                                LoggerConfig.print_and_log_info(str(numero_mission_elementaire_courante) + " eme mission elementaire " + str(numero_modele) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
                             elif(mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM"):
                                 #Envoi de la requête
                                 output_txt_file.write("\n")
                                 start_time_SimulerSimpleRunSimulation = time.time()
                                 nombre_simulations_smt3_effectuees = nombre_simulations_smt3_effectuees + 1
                                 if nombre_simulations_smt3_effectuees%100 == 0:
-                                    LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] "  + " . Avancement:" + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
+                                    LoggerConfig.print_and_log_info("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] "  + " . Avancement:" + str(round(numero_mission_elementaire_courante*100/nbMissionsElementaires,2)) + "%")
                                 output_txt_file.write("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+mE.nom+"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele.nom+"] " +  " : Simulation ["+mE.nom+","+modele.nom+"] \n")
 
                                 self.SimulerSimpleRunSimulation(mE, modele, output_txt_file, output_csv_file_with_simulations_to_perform)
@@ -5291,7 +5291,7 @@ def launchRequest__disabled_YDA(url, xml):
     try:
         r = requests.post(url + '/SMT3-REST-Server/computeTravelTimes', data=ET.tostring(xml), headers=headers)
     except:
-        LoggerConfig.printAndLogError('Erreur de requête au serveur')
+        LoggerConfig.print_and_log_error('Erreur de requête au serveur')
         #print(xml)
         quit()
     r.raise_for_status()
@@ -5300,7 +5300,7 @@ def launchRequest__disabled_YDA(url, xml):
         print(parseString(r.text).toprettyxml())
     print()
     
-    LoggerConfig.printAndLogInfo("Result:" + r.text)
-    #LoggerConfig.printAndLogInfo("Result:" + r)
+    LoggerConfig.print_and_log_info("Result:" + r.text)
+    #LoggerConfig.print_and_log_info("Result:" + r)
     # récupération du résultat en xml
     return(ET.fromstring(r.text))

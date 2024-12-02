@@ -1,4 +1,4 @@
-ï»¿# -*-coding:Utf-8 -*
+# -*-coding:Utf-8 -*
 #
 
 import logging
@@ -38,16 +38,16 @@ def printAndLog(toPrintAndLog):
     printOnly(toPrintAndLog)
     logging.info(toPrintAndLog)
 
-def printAndLogInfo(toPrintAndLog):
+def print_and_log_info(toPrintAndLog):
     printOnly(toPrintAndLog)
     logging.info(toPrintAndLog)
 
-def printAndLogInfoInThread(thread, toPrintAndLog):    
+def print_and_log_infoInThread(thread, toPrintAndLog):    
     if thread != None:
         toPrintAndLog  = thread.name + "\t" + toPrintAndLog
     printAndLog(toPrintAndLog)
     
-def printAndLogWarning(toPrintAndLog):
+def print_and_log_warning(toPrintAndLog):
     printOnly(toPrintAndLog)
     logging.warning(toPrintAndLog)
     
@@ -62,7 +62,7 @@ def logging_info_in_thread(thread, infoMessage):
         debugMessage  = thread.name + "\t" + infoMessage
     logging.info(infoMessage)
 
-def configureLogger():
+def configure_logger():
     logger_directory = "logs"
     
     if not os.path.exists(logger_directory):
@@ -139,7 +139,7 @@ def transform_time_field_to_splunk_metrics_format(time_field):
         PAR1: 08/31/2019 07:52:40.016
 
         Output
-        [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss][.fff]Â±[hh]:[mm]
+        [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss][.fff]±[hh]:[mm]
         Example: 2020-01-06T04:00:00.134+01:00
     """
     year_yyyy = time_field[6:10]
@@ -169,9 +169,9 @@ class myThread (threading.Thread):
         self.queueOfPerflogArchivesToTransform = queueOfPerflogArchivesToTransform
         
     def run(self):
-        printAndLogInfoInThread (self, "Starting " + self.name)
+        print_and_log_infoInThread (self, "Starting " + self.name)
         process_data(self)
-        printAndLogInfoInThread (self, "Exiting " + self.name)
+        print_and_log_infoInThread (self, "Exiting " + self.name)
 
 
 
@@ -181,20 +181,20 @@ def process_csse_covid_19_daily_reports(csse_covid_19_daily_reports):
         
         
 def process_csse_covid_19_daily_report(csse_covid_19_daily_report_path_name):
-    printAndLogInfo("Open file: " + csse_covid_19_daily_report_path_name)        
+    print_and_log_info("Open file: " + csse_covid_19_daily_report_path_name)        
     csse_covid_19_daily_report_file = open(csse_covid_19_daily_report_path_name, "r")
     #csse_covid_19_daily_report_file_content = csse_covid_19_daily_report_file.read()
     readerTransp = csv.DictReader(csse_covid_19_daily_report_file, quoting=csv.QUOTE_ALL)
     columns = readerTransp.fieldnames[1:]
-    printAndLogInfo("Columns: \t" + str(columns))
+    print_and_log_info("Columns: \t" + str(columns))
 
-    printAndLogInfo("Close  file")
+    print_and_log_info("Close  file")
     csse_covid_19_daily_report_file.close()       
     
 
 def remove_faulty_characters_in_blg_converted_to_csv(thread, original_line, line_number):   
     #To avoid exception: UnicodeEncodeError: 'charmap' codec can't encode character '\u2019' in position 7371: character maps to <undefined>
-    original_line_without_forbidden_chararcters =  original_line.replace(u"\u2019", "_") # Example: simple quote in "Longueur de la file dâ€™attente de sortie"
+    original_line_without_forbidden_chararcters =  original_line.replace(u"\u2019", "_") # Example: simple quote in "Longueur de la file d’attente de sortie"
            
     # Some metric name have coma (ex: "\\ATS_CEN1\Processor Information(0,_Total)\% Processor Performance")
     # So replace temporay the coma fields (mesures) separator by another string
@@ -204,7 +204,7 @@ def remove_faulty_characters_in_blg_converted_to_csv(thread, original_line, line
     transformed_line = original_line_without_forbidden_chararcters
 
     if line_number == 1:
-        printAndLogInfoInThread(thread, "Header line to transform:" + original_line_without_forbidden_chararcters)
+        print_and_log_infoInThread(thread, "Header line to transform:" + original_line_without_forbidden_chararcters)
         
         # Find time field
         transformed_line = transformed_line.replace("(PDH-CSV 4.0) (Paris, Madrid)(-60)", "Time")
@@ -218,7 +218,7 @@ def remove_faulty_characters_in_blg_converted_to_csv(thread, original_line, line
         transformed_line = transformed_line.replace(",", "_")
         transformed_line = transformed_line.replace(temporary_fields_separator_to_remove_coma_that_must_not_be_in_initial_file, initial_fields_separator_in_relog_blg)
         
-        transformed_line = transformed_line.replace(", ", "_") # Ex: \\ATS_CEN1\Interfacex\Paquets reÃ§us, inconnus
+        transformed_line = transformed_line.replace(", ", "_") # Ex: \\ATS_CEN1\Interfacex\Paquets reçus, inconnus
         
         transformed_line = transformed_line.replace(".{", "_") # Ex: "ATS_CEN1.Network_Interface_isatap.{0210E056-E9DB-4F55-8389-5EA3D29A7B45}.Bytes_Received_per_sec"
         transformed_line = transformed_line.replace("}", "") # Uusually at the end of the name, so no need to replace by an underscodr. Ex: "ATS_CEN1.Network_Interface_isatap.{0210E056-E9DB-4F55-8389-5EA3D29A7B45}.Bytes_Received_per_sec"
@@ -240,7 +240,7 @@ def remove_faulty_characters_in_blg_converted_to_csv(thread, original_line, line
         transformed_line = transformed_line.replace("]", "_")                        
 
         transformed_line = transformed_line.replace("'", "_") # avoid special french characters. Ex: "\\ATS_CEN1\Interfacex\Longueur de la file d'attente de sortie"
-        transformed_line = transformed_line.replace("Ã©", "e") # avoid special french characters. Ex: "\\ATS_CEN1\Interface rÃ©seau"
+        transformed_line = transformed_line.replace("é", "e") # avoid special french characters. Ex: "\\ATS_CEN1\Interface réseau"
         
     return transformed_line
         
@@ -423,19 +423,19 @@ def handle_blg_file(thread, blg_file, temp_folder_full_path_name, output_zip_fil
     converted_csv_file_name =  blg_file_without_extension + ".csv"
     converted_csv_file_full_path_name =  temp_folder_full_path_name + "\\" + converted_csv_file_name
     
-    printAndLogInfoInThread(thread, "Convert blg file:" + blg_file_file_name)        
+    print_and_log_infoInThread(thread, "Convert blg file:" + blg_file_file_name)        
     return_code = subprocess.call(r'relog "' + blg_file + '" -f CSV -o "' + converted_csv_file_full_path_name + '"')
     
     if(return_code != 0):
-        printAndLogInfoInThread(thread, "!!!!!!!!!!!!        ERROR        !!!!!!!!!!!!")
-        printAndLogInfoInThread(thread, "Could not convert blg file:" + blg_file_file_name + " to " + converted_csv_file_full_path_name)
-        printAndLogInfoInThread(thread, "!!!!!!!!!!!!        ERROR        !!!!!!!!!!!!")
+        print_and_log_infoInThread(thread, "!!!!!!!!!!!!        ERROR        !!!!!!!!!!!!")
+        print_and_log_infoInThread(thread, "Could not convert blg file:" + blg_file_file_name + " to " + converted_csv_file_full_path_name)
+        print_and_log_infoInThread(thread, "!!!!!!!!!!!!        ERROR        !!!!!!!!!!!!")
         subprocess.call(r'timeout /T 10')
     else:
-        printAndLogInfoInThread(thread, "Remove converted blg file:" + blg_file_file_name)
+        print_and_log_infoInThread(thread, "Remove converted blg file:" + blg_file_file_name)
         os.remove(blg_file)
     
-        printAndLogInfoInThread(thread, "Open file to tranform: " + converted_csv_file_name)        
+        print_and_log_infoInThread(thread, "Open file to tranform: " + converted_csv_file_name)        
         converted_csv_file_file = open(converted_csv_file_full_path_name, "r")
         converted_csv_file_content = converted_csv_file_file.read()
         
@@ -447,17 +447,17 @@ def handle_blg_file(thread, blg_file, temp_folder_full_path_name, output_zip_fil
         tranformed_titles_file_name = blg_file_without_extension + "_transformed"
         tranformed_titles_file_full_path = temp_folder_full_path_name + "\\" + tranformed_titles_file_name + ".csv"
         
-        printAndLogInfoInThread(thread, "Create transformed file: " + tranformed_titles_file_name)    
+        print_and_log_infoInThread(thread, "Create transformed file: " + tranformed_titles_file_name)    
         tranformed_titles_file = open(tranformed_titles_file_full_path, "w")
         
-        printAndLogInfoInThread(thread, "Fill transformed csv perflog file: " + tranformed_titles_file_name)    
+        print_and_log_infoInThread(thread, "Fill transformed csv perflog file: " + tranformed_titles_file_name)    
         tranformed_titles_file_content = param.end_line_character_in_text_file.join(tranformed_titles_file_content_as_list)
         tranformed_titles_file.write(tranformed_titles_file_content)
         
-        printAndLogInfoInThread(thread, "Close transformed file:" + tranformed_titles_file_name)
+        print_and_log_infoInThread(thread, "Close transformed file:" + tranformed_titles_file_name)
         tranformed_titles_file.close()
         
-        printAndLogInfoInThread(thread, "Read transformed csv perflog file:" + tranformed_titles_file_name + " and create metrics content")
+        print_and_log_infoInThread(thread, "Read transformed csv perflog file:" + tranformed_titles_file_name + " and create metrics content")
         csvfilePerflog = open(tranformed_titles_file_full_path, 'rt')
         readerTransp = csv.DictReader(csvfilePerflog, quoting=csv.QUOTE_ALL)
         
@@ -477,9 +477,9 @@ def handle_blg_file(thread, blg_file, temp_folder_full_path_name, output_zip_fil
         all_ignore_mesure_types = set()
                 
         splunk_ready_file_content_as_list = fill_datapoints_in_output_mesure_file(thread, readerTransp, columns, all_used_machine_names, all_ignore_machine_names, all_used_application_names, all_ignore_application_names,  all_used_mesure_types, all_ignore_mesure_types)
-        printAndLogInfoInThread(thread, "End of metrics content computation")
+        print_and_log_infoInThread(thread, "End of metrics content computation")
         
-        printAndLogInfoInThread(thread, "Close transformed csv perflog file:" + tranformed_titles_file_name + " and create metrics content")
+        print_and_log_infoInThread(thread, "Close transformed csv perflog file:" + tranformed_titles_file_name + " and create metrics content")
         csvfilePerflog.close()        
         os.remove(tranformed_titles_file_full_path)
                        
@@ -498,14 +498,14 @@ def create_splunk_ready_metric_file(thread, splunk_ready_file_name, splunk_ready
     splunk_ready_file_name = splunk_ready_file_name + "_as_splunk_metrics"
     splunk_ready_file_full_path = param.output_perflogs_ready_for_splunk_directory + "\\" + splunk_ready_file_name + ".csv"
 
-    printAndLogInfoInThread(thread, "Create final Splunk ready file: " + splunk_ready_file_name)    
+    print_and_log_infoInThread(thread, "Create final Splunk ready file: " + splunk_ready_file_name)    
     splunk_ready_file = open(splunk_ready_file_full_path, "w")
 
-    printAndLogInfoInThread(thread, "Fill final Splunk ready file: " + splunk_ready_file_name)    
+    print_and_log_infoInThread(thread, "Fill final Splunk ready file: " + splunk_ready_file_name)    
     splunk_ready_file_content = param.end_line_character_in_text_file.join(splunk_ready_file_content_as_list)
     splunk_ready_file.write(splunk_ready_file_content)
 
-    printAndLogInfoInThread(thread, "Close final Splunk ready file:" + splunk_ready_file_name)
+    print_and_log_infoInThread(thread, "Close final Splunk ready file:" + splunk_ready_file_name)
     splunk_ready_file.close()
     
     return splunk_ready_file_full_path
@@ -515,16 +515,16 @@ def add_splunk_ready_metric_file_to_zip(output_zip_file, splunk_ready_file_full_
     output_zip_file.write(splunk_ready_file_full_path, arcname=splunk_ready_file_name + ".csv", compress_type=zipfile.ZIP_DEFLATED)
             
 def process_input_zip_file(thread, input_zip_file):
-    printAndLogInfoInThread(thread, "processing " + basename(input_zip_file))
+    print_and_log_infoInThread(thread, "processing " + basename(input_zip_file))
 
     input_zip_file_file_name = basename(input_zip_file)
-    printAndLogInfoInThread(thread, "File name:" + input_zip_file_file_name)
+    print_and_log_infoInThread(thread, "File name:" + input_zip_file_file_name)
     
     input_zip_file_directory_name = os.path.dirname(input_zip_file)    
-    printAndLogInfoInThread(thread, "Directory name:" + input_zip_file_directory_name)
+    print_and_log_infoInThread(thread, "Directory name:" + input_zip_file_directory_name)
     
     input_zip_file_file_without_extension = os.path.splitext(input_zip_file_file_name)[0]
-    printAndLogInfoInThread(thread, "File name without extension:" + input_zip_file_file_without_extension)
+    print_and_log_infoInThread(thread, "File name without extension:" + input_zip_file_file_without_extension)
     
     temp_folder_name = "temp_" + input_zip_file_file_without_extension
     
@@ -536,9 +536,9 @@ def process_input_zip_file(thread, input_zip_file):
         
     os.makedirs(temp_folder_full_path_name)
     
-    printAndLogInfoInThread(thread, "extract to temporary folder")
+    print_and_log_infoInThread(thread, "extract to temporary folder")
     subprocess.call(r'"C:\Program Files\7-Zip\7z.exe" e ' + "\"" + input_zip_file + "\"" + ' -o' + "\"" + temp_folder_full_path_name + "\"")
-    printAndLogInfoInThread(thread, "Extraction done")
+    print_and_log_infoInThread(thread, "Extraction done")
     
     output_zip_file_name = input_zip_file_file_without_extension
     if len(param.metric_name_fixed_prefix_for_all_mesures) > 0:
@@ -547,16 +547,16 @@ def process_input_zip_file(thread, input_zip_file):
     output_zip_file_name = output_zip_file_name + "_ready_for_splunk." +  param.output_files_extension
     output_zip_file = zipfile.ZipFile(param.output_perflogs_ready_for_splunk_directory + "\\" + output_zip_file_name,'w')
     
-    printAndLogInfoInThread(thread, "Convert all blg to csv")
+    print_and_log_infoInThread(thread, "Convert all blg to csv")
     
     for blg_file in glob.glob(temp_folder_full_path_name + "\\*.blg"):
         handle_blg_file(thread, blg_file, temp_folder_full_path_name, output_zip_file)
 
     #Close the zip
-    printAndLogInfoInThread(thread, "Zip DONE")
+    print_and_log_infoInThread(thread, "Zip DONE")
     output_zip_file.close()            
         
-    printAndLogInfoInThread(thread, "Remove temporary directory:" + temp_folder_full_path_name)
+    print_and_log_infoInThread(thread, "Remove temporary directory:" + temp_folder_full_path_name)
     shutil.rmtree(temp_folder_full_path_name)
 
 
@@ -564,23 +564,23 @@ def process_data(thread):
     queueOfPerflogArchivesToTransform = thread.queueOfPerflogArchivesToTransform
     threadName = thread.name
     while not exitFlag:
-        printAndLogInfoInThread(thread, "Acquire queueLock")
+        print_and_log_infoInThread(thread, "Acquire queueLock")
         queueLock.acquire()
         if not queueOfPerflogArchivesToTransform.empty():
             input_zip_file = queueOfPerflogArchivesToTransform.get()
-            printAndLogInfoInThread(thread, "Release queueLock")
+            print_and_log_infoInThread(thread, "Release queueLock")
             queueLock.release()
             
             process_input_zip_file(thread, input_zip_file)
         else:
-            printAndLogInfoInThread(thread, "Queue queueOfPerflogArchivesToTransform is empty")
-            printAndLogInfoInThread(thread, "Release queueLock")
+            print_and_log_infoInThread(thread, "Queue queueOfPerflogArchivesToTransform is empty")
+            print_and_log_infoInThread(thread, "Release queueLock")
             queueLock.release()
             time.sleep(1)
 
 def main(argv):
 
-    configureLogger()    
+    configure_logger()    
     
     printAndLog('Start application')
     

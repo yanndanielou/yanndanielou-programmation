@@ -1,4 +1,4 @@
-ï»¿# -*-coding:Utf-8 -*
+# -*-coding:Utf-8 -*
 
 #For logs
 import random
@@ -35,7 +35,7 @@ matlab_structure_operator = "struct"
 matlab_structure_begin = matlab_structure_operator + "("
 matlab_empty_array_field = "[]"
 
-def printAndLogCriticalAndKill(toPrintAndLog):
+def print_and_log_critical_and_kill(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
     
     previous_stack = inspect.stack(1)[1]
@@ -45,7 +45,7 @@ def printAndLogCriticalAndKill(toPrintAndLog):
     logging.critical("line#" + str(line_number) + '\t' +toPrintAndLog)
     sys.exit()
 
-def printAndLogInfo(toPrintAndLog):
+def print_and_log_info(toPrintAndLog):
     
     log_timestamp = time.asctime( time.localtime(time.time()))
 
@@ -56,7 +56,7 @@ def printAndLogInfo(toPrintAndLog):
     logging.info("line#" + str(line_number) + '\t' +toPrintAndLog)
     
     
-def printAndLogWarning(toPrintAndLog):
+def print_and_log_warning(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
 
     previous_stack = inspect.stack(1)[1]
@@ -65,7 +65,7 @@ def printAndLogWarning(toPrintAndLog):
     print(log_timestamp + '\t' + "line#" + str(line_number) + '\t' +toPrintAndLog)
     logging.warning("line#" + str(line_number) + '\t' +toPrintAndLog)
     
-def printAndLogError(toPrintAndLog):
+def print_and_log_error(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
     
     previous_stack = inspect.stack(1)[1]
@@ -77,7 +77,7 @@ def printAndLogError(toPrintAndLog):
     logging.error("line#" + str(line_number) + '\t' +toPrintAndLog)
 
     
-def configureLogger(log_file_name):
+def configure_logger(log_file_name):
     logger_directory = "logs"
     
     if not os.path.exists(logger_directory):
@@ -116,7 +116,7 @@ class print_argument_if_function_returns_true(object):
             function_name = self.f.__name__
             logging.info(self.f.__name__ + " returns true for :" + function_argument)
         
-            #printAndLogInfo(self.f.__name__ + " returns true for :" + str(locals().get("line")))
+            #print_and_log_info(self.f.__name__ + " returns true for :" + str(locals().get("line")))
         return ret        
 
 class execution_time(object):
@@ -152,10 +152,10 @@ class Parsing_sMT2_Data_mE_file_step:
 
     def switch_to_step(self, new_step):
         if self.step != new_step:
-           printAndLogInfo("Switch from state " +  self.step + " to state " + new_step)
+           print_and_log_info("Switch from state " +  self.step + " to state " + new_step)
            self.step = new_step
         else:
-            printAndLogInfo("Trying to switch to state " + new_step + " wich is already the current step")
+            print_and_log_info("Trying to switch to state " + new_step + " wich is already the current step")
 
     def switch_to_step_reading_struct_construction_lines(self):
         self.switch_to_step(self.step_reading_struct_construction_lines)
@@ -199,11 +199,11 @@ def decode_matlab_structure(matlabStruct, remaining_line_to_decode):
                 current_struct_field = MatlabFieldOfStructure()
                 current_struct_field.parent = matlabStruct
                 matlabStruct.fields.append(current_struct_field)
-                printAndLogInfo("Structure: " + matlabStruct.name  + " new field found")
+                print_and_log_info("Structure: " + matlabStruct.name  + " new field found")
                 #parsing_sMT2_Data_mE_struct_file_step.step = parsing_sMT2_Data_mE_struct_file_step.step_reading_field_name
             elif current_struct_field.is_name_complete == False:
                 current_struct_field.is_name_complete = True
-                printAndLogInfo("Structure: " + matlabStruct.name  + " name decoded for field: " + current_struct_field.name)
+                print_and_log_info("Structure: " + matlabStruct.name  + " name decoded for field: " + current_struct_field.name)
                 if remaining_line_to_decode.startswith(","):
                     remaining_line_to_decode = remaining_line_to_decode[len(","):]
                     remaining_line_to_decode = current_struct_field.build_yourself_with_remaining_characters_of_main_struct_definition(remaining_line_to_decode)
@@ -322,7 +322,7 @@ class MatlabFieldOfStructure:
 
 
             elif remaining_characters_of_main_struct_definition_to_parse.startswith(matlab_structure_field_end):
-                printAndLogCriticalAndKill("Structure:" + self.parent.name + " field " + self.name + " unsupported step " + remaining_characters_of_main_struct_definition_to_parse)
+                print_and_log_critical_and_kill("Structure:" + self.parent.name + " field " + self.name + " unsupported step " + remaining_characters_of_main_struct_definition_to_parse)
 
                 #matlabstructureOfFieldOfStructure = MatlabStructureOfFieldOfStructure()
                 #matlabstructureOfFieldOfStructure.parent = self
@@ -347,7 +347,7 @@ class MatlabStructureOfFieldOfStructure:
     def decode_fields_of_structure(self):
         remaining_line_to_decode = decode_matlab_structure(self, self.full_content_as_string)
         if len(remaining_line_to_decode) > 0:
-            printAndLogCriticalAndKill("After decoding sub structure, " + str(len(remaining_line_to_decode)) + " not parsed characters:" + remaining_line_to_decode)
+            print_and_log_critical_and_kill("After decoding sub structure, " + str(len(remaining_line_to_decode)) + " not parsed characters:" + remaining_line_to_decode)
 
 
 
@@ -356,7 +356,7 @@ class MatlabStructureOfFieldOfStructure:
         #Remove last "("
         current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]       
         if current_parsed_character != "(":
-            printAndLogCriticalAndKill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end + ". Remaining to parse: " + remaining_characters_of_main_struct_definition_to_parse)
+            print_and_log_critical_and_kill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end + ". Remaining to parse: " + remaining_characters_of_main_struct_definition_to_parse)
         remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
 
         self.full_content_as_string = remaining_characters_of_main_struct_definition_to_parse.split(")")[0]
@@ -368,11 +368,11 @@ class MatlabStructureOfFieldOfStructure:
         #Remove last ")"
         current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]       
         if current_parsed_character != ")":
-            printAndLogCriticalAndKill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end + ". Remaining to parse: " + remaining_characters_of_main_struct_definition_to_parse)
+            print_and_log_critical_and_kill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end + ". Remaining to parse: " + remaining_characters_of_main_struct_definition_to_parse)
         remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
   
         
-        printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " structure has " + str(len(self.fields)) + " elements")
+        print_and_log_info("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " structure has " + str(len(self.fields)) + " elements")
         logging.debug("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " structure full text content:" + self.full_content_as_string)
 
 
@@ -405,13 +405,13 @@ class MatlabArrayOfFieldOfStructure:
                 if remaining_array_content_as_string_to_parse[0] == matlab_field_separator:
                     remaining_array_content_as_string_to_parse = remaining_array_content_as_string_to_parse[1:]
                 else:
-                    printAndLogCriticalAndKill("Was not expected " + remaining_array_content_as_string_to_parse[0] + " remaining characters to parse:" + remaining_characters_of_main_struct_definition_to_parse[0:100])
+                    print_and_log_critical_and_kill("Was not expected " + remaining_array_content_as_string_to_parse[0] + " remaining characters to parse:" + remaining_characters_of_main_struct_definition_to_parse[0:100])
 
 
         #Remove end of array character    
         current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
         if current_parsed_character != matlab_structure_fields_table_end:
-            printAndLogCriticalAndKill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end + ". Remaining to parse: " + remaining_characters_of_main_struct_definition_to_parse)
+            print_and_log_critical_and_kill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end + ". Remaining to parse: " + remaining_characters_of_main_struct_definition_to_parse)
         
         remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
 
@@ -419,14 +419,14 @@ class MatlabArrayOfFieldOfStructure:
         if len(remaining_characters_of_main_struct_definition_to_parse) > 0:   
             current_parsed_character = remaining_characters_of_main_struct_definition_to_parse[0]
             if current_parsed_character != matlab_field_separator:
-                printAndLogCriticalAndKill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end + ". Remaining to parse: " + remaining_characters_of_main_struct_definition_to_parse)
+                print_and_log_critical_and_kill("Unexpected character " +  current_parsed_character + " while expected " + matlab_structure_fields_table_end + ". Remaining to parse: " + remaining_characters_of_main_struct_definition_to_parse)
 
             remaining_characters_of_main_struct_definition_to_parse = remaining_characters_of_main_struct_definition_to_parse[1:]
 
 
-        printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " array has " + str(len(self.elements)) + " elements")
-        #printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " number of empty fields " + str(sum(elements.is_empty for elements in self.elements)) + " elements")
-        #printAndLogInfo("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " number of not empty fields " + str(sum(not elements.is_empty for elements in self.elements)) + " elements")
+        print_and_log_info("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " array has " + str(len(self.elements)) + " elements")
+        #print_and_log_info("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " number of empty fields " + str(sum(elements.is_empty for elements in self.elements)) + " elements")
+        #print_and_log_info("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " number of not empty fields " + str(sum(not elements.is_empty for elements in self.elements)) + " elements")
         logging.debug("Structure:" + self.parent.parent.name + " field:"  + self.parent.name +  " full text content:" + self.full_content_as_string)
         return remaining_characters_of_main_struct_definition_to_parse
 
@@ -467,7 +467,7 @@ class MatlabFieldOfArrayOfFieldOfStructure:
         elif re.compile("[A-Za-z0-9]+").fullmatch(first_character) or first_character == "-":
             self.type.type = MatlabFieldOfArrayOfFieldOfStructureType.type_float
         else:
-            printAndLogCriticalAndKill("Cannot find type for element starting with " + original_remaining_characters_of_main_struct_definition_to_parse)
+            print_and_log_critical_and_kill("Cannot find type for element starting with " + original_remaining_characters_of_main_struct_definition_to_parse)
 
         logging.debug("Build " + self.__class__.__name__ + " with type :" + self.type.type + " from string " +  original_remaining_characters_of_main_struct_definition_to_parse[0:200])
 
@@ -535,8 +535,8 @@ class SMT2_Data_mE_Content:
         self.structures = list()
 
     def print_stats(self):
-        printAndLogInfo("Nombre de structures Ã  crÃ©er:" + str(len(self.structures_constructions_lines_as_list_by_structure)))
-        printAndLogInfo("Nombre d'affectation de champs:" + str(len(self.filling_one_structure_specific_field_lines)))
+        print_and_log_info("Nombre de structures à créer:" + str(len(self.structures_constructions_lines_as_list_by_structure)))
+        print_and_log_info("Nombre d'affectation de champs:" + str(len(self.filling_one_structure_specific_field_lines)))
 
     def print_structures(self):
         for structure_constructions_lines in self.structures_constructions_lines_as_list_by_structure:
@@ -551,7 +551,7 @@ class SMT2_Data_mE_Content:
 
     #@execution_time
     def create_structure_objects(self):
-        printAndLogInfo("Create structure objects")
+        print_and_log_info("Create structure objects")
 
         for structure_constructions_lines in self.structures_constructions_lines_as_list_by_structure:
             current_matlab_structure_name = get_structure_name_from_struct_creation_line(structure_constructions_lines[0])             
@@ -560,7 +560,7 @@ class SMT2_Data_mE_Content:
             self.structures.append(current_matlab_structure)
             current_matlab_structure.parent = self
 
-            printAndLogInfo("Structure name:" + current_matlab_structure.name)
+            print_and_log_info("Structure name:" + current_matlab_structure.name)
 
             for structure_construction_line in structure_constructions_lines:
                 current_matlab_structure.add_full_definition_line(structure_construction_line)
@@ -574,14 +574,14 @@ class SMT2_Data_mE_Content:
 
     #@execution_time
     def decode_main_structure_objects(self):
-        printAndLogInfo("Decode structure objects")
+        print_and_log_info("Decode structure objects")
 
         for matlab_structure in self.structures:
             matlab_structure.decode_fields()
   
     #@execution_time
     def create_structure_modification_instruction_objects(self):
-        printAndLogInfo("Create structure modification instructions")
+        print_and_log_info("Create structure modification instructions")
         for filling_one_structure_specific_field_line in self.filling_one_structure_specific_field_lines:
 
             # Examples:
@@ -612,7 +612,7 @@ class SMT2_Data_mE_Content:
                     structureModificationInstruction = StructureFieldInMainStructureModificationInstruction(filling_one_structure_specific_field_line, match_structure_field_of_main_structure_modification_instruction)
 
                 else:
-                    printAndLogCriticalAndKill("Could not parse : " + filling_one_structure_specific_field_line)
+                    print_and_log_critical_and_kill("Could not parse : " + filling_one_structure_specific_field_line)
 
 
 
@@ -626,20 +626,20 @@ def open_text_file_and_return_lines(input_file_name):
         logging.critical("Input file:" + input_file_name + " does not exist. Application stopped")
         sys.exit()
 
-    printAndLogInfo('Full path:' + os.path.abspath(input_file_name))
+    print_and_log_info('Full path:' + os.path.abspath(input_file_name))
 
 
-    printAndLogInfo('Opening input file:' + input_file_name)    
+    print_and_log_info('Opening input file:' + input_file_name)    
     input_file = open(input_file_name, "r")
     
-    printAndLogInfo('Read input file:' + input_file_name)
+    print_and_log_info('Read input file:' + input_file_name)
     input_file_read = input_file.read()
     
-    printAndLogInfo('Close input file:' + input_SMT2_Data_mE_file_name)
+    print_and_log_info('Close input file:' + input_SMT2_Data_mE_file_name)
     input_file.close()
 
     input_file_lines = input_file_read.split(end_line_character_in_text_file)
-    printAndLogInfo(input_file_name + " has " + str(len(input_file_lines)) + " lines")
+    print_and_log_info(input_file_name + " has " + str(len(input_file_lines)) + " lines")
 
     return input_file_lines
  
@@ -652,7 +652,7 @@ def is_matlab_new_structure_field_line(line):
     ret = "',"+matlab_structure_fields_table_begin in line or "',"+matlab_structure_begin in line
     
     #if ret:
-    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+    #    print_and_log_info("is_matlab_comment_line returns True for line:" + line)
         
     return ret
     
@@ -661,7 +661,7 @@ def is_matlab_last_structure_field_line(line):
     ret = matlab_structure_fields_table_end in line
     
     #if ret:
-    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+    #    print_and_log_info("is_matlab_comment_line returns True for line:" + line)
         
     return ret
 
@@ -670,7 +670,7 @@ def is_matlab_new_structure_creation_line(line):
     ret = matlab_structure_begin in line and "=" in line and matlab_line_continuation_operator in line
     
     #if ret:
-    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+    #    print_and_log_info("is_matlab_comment_line returns True for line:" + line)
         
     return ret
 
@@ -680,7 +680,7 @@ def is_matlab_structure_last_creation_line(line):
     ret = ");" in line.strip()
     
     #if ret:
-    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+    #    print_and_log_info("is_matlab_comment_line returns True for line:" + line)
         
     return ret
 
@@ -690,7 +690,7 @@ def is_matlab_filling_one_structure_specific_field_line(line):
     ret = "=" in line and ";" in line
 
     #if ret:
-    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+    #    print_and_log_info("is_matlab_comment_line returns True for line:" + line)
         
     return ret
 
@@ -699,7 +699,7 @@ def is_matlab_return_function_line(line):
     ret = matlab_return_operator == line.strip()
     
     #if ret:
-    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+    #    print_and_log_info("is_matlab_comment_line returns True for line:" + line)
         
     return ret
 
@@ -708,7 +708,7 @@ def is_matlab_empty_line(line):
     ret = len(line.strip()) == 0
 
     #if ret:
-    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+    #    print_and_log_info("is_matlab_comment_line returns True for line:" + line)
 
     return ret
     
@@ -724,7 +724,7 @@ def is_matlab_comment_line(line):
         ret = line_stripped[0] == '%'
 
     #if ret:
-    #    printAndLogInfo("is_matlab_comment_line returns True for line:" + line)
+    #    print_and_log_info("is_matlab_comment_line returns True for line:" + line)
     
     return ret 
 
@@ -756,7 +756,7 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
             if is_matlab_new_structure_creation_line(sMT2_Data_mE_file_line):
                 parsing_sMT2_Data_mE_file_current_step.switch_to_step_reading_struct_construction_lines()
 
-                printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": no more reading first lines")
+                print_and_log_info("Line:" + str(sMT2_Data_mE_line_number) + ": no more reading first lines")
             else:
                 sMT2_Data_mE_Content.first_file_lines_to_keep_unchanged.append(sMT2_Data_mE_file_line)
 
@@ -767,41 +767,41 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
 
             else:
                 if current_structure_construction_lines == None and is_matlab_new_structure_creation_line(sMT2_Data_mE_file_line) :
-                    printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": new structure detected")
+                    print_and_log_info("Line:" + str(sMT2_Data_mE_line_number) + ": new structure detected")
                     current_structure_construction_lines = list()
 
                 if current_structure_construction_lines == None:
-                    printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + sMT2_Data_mE_file_line + ": will crash")
+                    print_and_log_info("Line:" + str(sMT2_Data_mE_line_number) + sMT2_Data_mE_file_line + ": will crash")
 
                 else:
                     current_structure_construction_lines.append(sMT2_Data_mE_file_line)
 
                 if is_matlab_structure_last_creation_line(sMT2_Data_mE_file_line):
                     sMT2_Data_mE_Content.structures_constructions_lines_as_list_by_structure.append(current_structure_construction_lines)
-                    printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": end of current structure")
+                    print_and_log_info("Line:" + str(sMT2_Data_mE_line_number) + ": end of current structure")
                     current_structure_construction_lines = None
 
                 if is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line) :
                     
                     if parsing_sMT2_Data_mE_file_current_step.is_step_reading_struct_construction_lines():
                         parsing_sMT2_Data_mE_file_current_step.switch_to_step_filling_struct_cell_by_cell()
-                        printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + ": start filling structure line by line")
+                        print_and_log_info("Line:" + str(sMT2_Data_mE_line_number) + ": start filling structure line by line")
 
         if parsing_sMT2_Data_mE_file_current_step.is_step_filling_struct_cell_by_cell():
             if is_matlab_filling_one_structure_specific_field_line(sMT2_Data_mE_file_line):
                 sMT2_Data_mE_Content.filling_one_structure_specific_field_lines.append(sMT2_Data_mE_file_line.strip())
             elif is_matlab_return_function_line(sMT2_Data_mE_file_line):
                 parsing_sMT2_Data_mE_file_current_step.switch_to_step_has_parsed_last_return_of_file_and_waiting_end_of_file()
-                printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + " is last return of file")
+                print_and_log_info("Line:" + str(sMT2_Data_mE_line_number) + " is last return of file")
         
         if parsing_sMT2_Data_mE_file_current_step.is_step_has_parsed_last_return_of_file_and_waiting_end_of_file():
-                printAndLogInfo("Line:" + str(sMT2_Data_mE_line_number) + " is not considered because waiting end of file")
+                print_and_log_info("Line:" + str(sMT2_Data_mE_line_number) + " is not considered because waiting end of file")
 
     
 
     
 def create_and_fill_output_file(output_directory, input_file_name, file_content_as_list_of_lines):
-    printAndLogInfo('Create output file:' + input_file_name)
+    print_and_log_info('Create output file:' + input_file_name)
     output_file = open(output_directory + "\\" + input_file_name, "w")
     logging.info('Fill output file:' + input_file_name)
 
@@ -831,10 +831,10 @@ def Optimize_SMT2_Data_mE():
 def main():
     log_file_name = 'Optimize_SMT2_Data_mE' + ".log"
     #log_file_name = 'Optimize_SMT2_Data_mE' + "." +  str(random.randrange(10000)) + ".log"
-    configureLogger(log_file_name)    
-    printAndLogInfo('Start application. Log file name: ' + log_file_name)
+    configure_logger(log_file_name)    
+    print_and_log_info('Start application. Log file name: ' + log_file_name)
     Optimize_SMT2_Data_mE()
-    printAndLogInfo('End application')
+    print_and_log_info('End application')
 
 if __name__ == '__main__':
     main()

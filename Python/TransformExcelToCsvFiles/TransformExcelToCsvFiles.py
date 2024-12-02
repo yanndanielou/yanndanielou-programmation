@@ -53,7 +53,7 @@ def printAndLogCriticalAndKill(toPrintAndLog):
     sys.exit()
 
 
-def printAndLogInfo(toPrintAndLog):
+def print_and_log_info(toPrintAndLog):
 
     log_timestamp = time.asctime(time.localtime(time.time()))
 
@@ -124,22 +124,22 @@ def getListOfExcelFilesNames():
 
 def transformExcelFileToCsvFiles(excelFileNameWithExtension):
 
-    printAndLogInfo("Load workbook:" + excelFileNameWithExtension)
+    print_and_log_info("Load workbook:" + excelFileNameWithExtension)
     workbook = load_workbook(filename=excelFileNameWithExtension)
 
     excelFileNameWithoutExtension = excelFileNameWithExtension.split(".")[0]
 
     workbook_sheetnames = workbook.sheetnames 
-    printAndLogInfo("Workbook:" + excelFileNameWithoutExtension + " has following sheets:" + str(workbook_sheetnames))
+    print_and_log_info("Workbook:" + excelFileNameWithoutExtension + " has following sheets:" + str(workbook_sheetnames))
     
     if not os.path.exists(excelFileNameWithoutExtension):
-        printAndLogInfo("Create folder " + excelFileNameWithoutExtension) 
+        print_and_log_info("Create folder " + excelFileNameWithoutExtension) 
         os.makedirs(excelFileNameWithoutExtension)
 
     for workbookSheetName in workbook_sheetnames:
         read_file = pandas.read_excel (excelFileNameWithExtension, sheet_name=workbookSheetName)
         output_csv_file = excelFileNameWithoutExtension + '/' + workbookSheetName + '.csv'
-        printAndLogInfo("Extract sheet " + workbookSheetName + " to " + output_csv_file)
+        print_and_log_info("Extract sheet " + workbookSheetName + " to " + output_csv_file)
         read_file.to_csv (output_csv_file, sep=param.csv_separator, index = None, header=True)
 
 
@@ -147,7 +147,7 @@ def transformAllExcelFilesToCsvFiles(argv):
 
     listOfExcelFileNames = getListOfExcelFilesNames()
 
-    printAndLogInfo("Number of excel files found:" + str(len(listOfExcelFileNames)) + " : " + str(listOfExcelFileNames))
+    print_and_log_info("Number of excel files found:" + str(len(listOfExcelFileNames)) + " : " + str(listOfExcelFileNames))
  
     for excelFileName in listOfExcelFileNames:
         transformExcelFileToCsvFiles(excelFileName)
@@ -162,9 +162,9 @@ def main(argv):
     # log_file_name = 'TransformCodeToCamelCase' + "." +  str(random.randrange(10000)) + ".log"
     configureLogger(log_file_name)
 
-    printAndLogInfo('Start application. Log file name: ' + log_file_name)
+    print_and_log_info('Start application. Log file name: ' + log_file_name)
     transformAllExcelFilesToCsvFiles(argv)
-    printAndLogInfo('End application')
+    print_and_log_info('End application')
 
 
 if __name__ == '__main__':

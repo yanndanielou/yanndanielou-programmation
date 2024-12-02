@@ -80,13 +80,13 @@ def dowloadFilesFromURL(urls: set[str], results: webSiteResults.WebSiteResults) 
 #@LoggerConfig.execution_time
 def dowloadFileFromURL(url: str, results: webSiteResults.WebSiteResults) -> None:
     if not os.path.exists(param.output_directory):
-        LoggerConfig.printAndLogInfo('Create output directory:' + param.output_directory)
+        LoggerConfig.print_and_log_info('Create output directory:' + param.output_directory)
         os.makedirs(param.output_directory)
     
     url_parsed = urlparse(url)
     file_path = url_parsed.path
     fileBaseName = os.path.basename(file_path)
-    LoggerConfig.printAndLogInfo("Download " + fileBaseName + " from " + url)
+    LoggerConfig.print_and_log_info("Download " + fileBaseName + " from " + url)
     try:
         urlretrieve(url, param.output_directory + "/" + fileBaseName)
         results.recordFileDownloadedUrl(url)
@@ -182,7 +182,7 @@ def retrieveFilesToDownloadURLs(url: str, aHrefLinks: set[str], initialInstructi
         else:
             results.filesIgnoredUrls.add(aHrefLink)
 
-    LoggerConfig.printAndLogInfo("In " + url + ", " + str(len(newFilesToDownloadUrls)) + " files to download")
+    LoggerConfig.print_and_log_info("In " + url + ", " + str(len(newFilesToDownloadUrls)) + " files to download")
     return newFilesToDownloadUrls
 
 
@@ -195,7 +195,7 @@ def processSubLinks(aHrefLinks, initialInstructions: jsonInstructions.JsonInstru
             results.notProcessedUrls.add(aHrefLink)
 
 def downloadAllFilesFromWebPageLink(url, initialInstructions: jsonInstructions.JsonInstructions, results: webSiteResults.WebSiteResults) -> None:
-    LoggerConfig.printAndLogInfo("process link:" + url)
+    LoggerConfig.print_and_log_info("process link:" + url)
     results.alreadyProcessedLinksUrls.add(url)
     
     #page = urllib.request.urlopen(url)
@@ -220,20 +220,20 @@ def downloadAllFilesFromWebPageLink(url, initialInstructions: jsonInstructions.J
     if initialInstructions.exploreLinks:
         processSubLinks(aHrefLinks, initialInstructions, results)
 
-    LoggerConfig.printAndLogInfo("After processing " + url + ", (with children) ")
+    LoggerConfig.print_and_log_info("After processing " + url + ", (with children) ")
     print_current_status(results)
 
 
 def main(argv):
    
     log_file_name = os.path.basename(__file__) +  str(random.randrange(100000)) + ".log"
-    LoggerConfig.configureLogger(log_file_name)    
+    LoggerConfig.configure_logger(log_file_name)    
     
-    LoggerConfig.printAndLogInfo('Start application')
+    LoggerConfig.print_and_log_info('Start application')
     
     processJsonInstructionFile(param.json_instruction_file_path)
     
-    LoggerConfig.printAndLogInfo("End. Nominal end of application in " + date_time_formats.format_duration_to_string(time.time() - application_start_time))
+    LoggerConfig.print_and_log_info("End. Nominal end of application in " + date_time_formats.format_duration_to_string(time.time() - application_start_time))
     
 
 if __name__ == "__main__":

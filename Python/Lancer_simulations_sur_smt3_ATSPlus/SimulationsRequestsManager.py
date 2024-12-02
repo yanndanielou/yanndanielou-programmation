@@ -49,7 +49,7 @@ class SimulationsRequestsManager:
 
 
     def createSimulationsToBePerformedFromTextFileContainingAllFullXMLRequest(self, simulationsToBePerformedFullXMLRequestsFileName):
-        LoggerConfig.printAndLogInfo("createSimulationsToBePerformedFromTextFileContainingAllFullXMLRequest begin")
+        LoggerConfig.print_and_log_info("createSimulationsToBePerformedFromTextFileContainingAllFullXMLRequest begin")
 
         simulationsToBePerformedFullXMLRequestsLines = open_text_file_and_return_lines(simulationsToBePerformedFullXMLRequestsFileName)
 
@@ -57,11 +57,11 @@ class SimulationsRequestsManager:
                 simulationToBePerformed = SimulationToBePerformed("None","None", "None","None", simulationsToBePerformedFullXMLRequestsLine)
                 self.simulationsToBePerformed.append(simulationToBePerformed)
 
-        LoggerConfig.printAndLogInfo("createSimulationsToBePerformedFromTextFileContainingAllFullXMLRequest end")
+        LoggerConfig.print_and_log_info("createSimulationsToBePerformedFromTextFileContainingAllFullXMLRequest end")
 
 
     def generateAllMissionElementaireCombinations(self, dwell_time_in_second, all_elementary_missions_names_as_list, all_nom_modele_as_list, all_steps_in_second):
-        LoggerConfig.printAndLogInfo("generateAllMissionElementaireCombinations begin")
+        LoggerConfig.print_and_log_info("generateAllMissionElementaireCombinations begin")
 
         for elementary_mission_name in all_elementary_missions_names_as_list:
             for nom_modele in all_nom_modele_as_list:
@@ -69,11 +69,11 @@ class SimulationsRequestsManager:
                     simulationToBePerformed = SimulationToBePerformed(elementary_mission_name, nom_modele, step_in_second, dwell_time_in_second)
                     self.simulationsToBePerformed.append(simulationToBePerformed)
 
-        LoggerConfig.printAndLogInfo("generateAllMissionElementaireCombinations end")
+        LoggerConfig.print_and_log_info("generateAllMissionElementaireCombinations end")
 
     def onlyKeepSimulationsNumber(self, simulationsNumberToKeep):
         
-        LoggerConfig.printAndLogInfo("onlyKeepSimulationsNumber begin")
+        LoggerConfig.print_and_log_info("onlyKeepSimulationsNumber begin")
         simulationsToKeep = list()
 
         numeroSimulation = 0
@@ -84,7 +84,7 @@ class SimulationsRequestsManager:
 
         self.simulationsToBePerformed.clear()
         self.simulationsToBePerformed = self.simulationsToBePerformed + simulationsToKeep
-        LoggerConfig.printAndLogInfo("onlyKeepSimulationsNumber end. Keep " + str(len(simulationsToKeep)) + " simulations")
+        LoggerConfig.print_and_log_info("onlyKeepSimulationsNumber end. Keep " + str(len(simulationsToKeep)) + " simulations")
 
 
 class SimulationToBePerformed:
@@ -103,20 +103,20 @@ def open_text_file_and_return_lines(input_file_name):
         logging.critical("Input file:" + input_file_name + " does not exist. Application stopped")
         sys.exit()
 
-    LoggerConfig.printAndLogInfo('Full path:' + os.path.abspath(input_file_name))
+    LoggerConfig.print_and_log_info('Full path:' + os.path.abspath(input_file_name))
 
 
-    LoggerConfig.printAndLogInfo('Opening input file:' + input_file_name)    
+    LoggerConfig.print_and_log_info('Opening input file:' + input_file_name)    
     input_file = open(input_file_name, "r")
     
-    LoggerConfig.printAndLogInfo('Read input file:' + input_file_name)
+    LoggerConfig.print_and_log_info('Read input file:' + input_file_name)
     input_file_read = input_file.read()
     
-    LoggerConfig.printAndLogInfo('Close input file:' + input_file_name)
+    LoggerConfig.print_and_log_info('Close input file:' + input_file_name)
     input_file.close()
 
     input_file_lines = input_file_read.split(end_line_character_in_text_file)
-    LoggerConfig.printAndLogInfo(input_file_name + " has " + str(len(input_file_lines)) + " lines")
+    LoggerConfig.print_and_log_info(input_file_name + " has " + str(len(input_file_lines)) + " lines")
 
     return input_file_lines
 
@@ -137,7 +137,7 @@ def retrieve_all_field_string_content(SMT2_Data_file_name_with_path, field_name)
     field_string_content_as_list.sort()
     #field_string_content_as_list.append("okok")
 
-    LoggerConfig.printAndLogInfo(SMT2_Data_file_name_with_path + " has " + str(len(field_string_content_as_list)) + " objects " + field_name)
+    LoggerConfig.print_and_log_info(SMT2_Data_file_name_with_path + " has " + str(len(field_string_content_as_list)) + " objects " + field_name)
 
     return field_string_content_as_list
 
@@ -152,14 +152,14 @@ def Lancer_simulations_sur_smt3_ATSPlus(SMT2_Data_param_for_SMT3_launched_in_Mat
 
 
 
-    LoggerConfig.printAndLogInfo("Nombre de missions élémentaires : " + str(len(all_elementary_missions_names_as_list)))
-    LoggerConfig.printAndLogInfo("Nombre de modeles : " + str(len(all_nom_modele_as_list)))
-    LoggerConfig.printAndLogInfo("Nombre de trains : " + str(len(all_nom_train_as_list)))
+    LoggerConfig.print_and_log_info("Nombre de missions élémentaires : " + str(len(all_elementary_missions_names_as_list)))
+    LoggerConfig.print_and_log_info("Nombre de modeles : " + str(len(all_nom_modele_as_list)))
+    LoggerConfig.print_and_log_info("Nombre de trains : " + str(len(all_nom_train_as_list)))
    
     now_as_datetime = datetime.now()
     now_as_string_for_file_suffix = now_as_datetime.strftime("%Y_%m_%d %H_%M_%S %f")
 
     ignoredMER = ['']
-    LoggerConfig.printAndLogInfo("ignoredMER : " + str(ignoredMER)) 
+    LoggerConfig.print_and_log_info("ignoredMER : " + str(ignoredMER)) 
     
 

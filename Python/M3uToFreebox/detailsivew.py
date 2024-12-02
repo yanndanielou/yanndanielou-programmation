@@ -137,7 +137,7 @@ class DetailsViewTab(ttk.Frame):
 
         
     def filter_option_changed(self, *args):
-        LoggerConfig.printAndLogInfo(f'You selected: {self.option_var.get()}')
+        LoggerConfig.print_and_log_info(f'You selected: {self.option_var.get()}')
 
         
     
@@ -227,7 +227,7 @@ class DetailsViewTab(ttk.Frame):
             self._tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.title, m3u_entry.group_title))
 
             if m3u_entry_number % 10000 == 0:
-                LoggerConfig.printAndLogInfo(str(m3u_entry_number) + " entries filled")
+                LoggerConfig.print_and_log_info(str(m3u_entry_number) + " entries filled")
         
         
     def selection(self):

@@ -147,15 +147,15 @@ def decode_smt3_result(smt3Server, url, received_from_smt3, elapsed_time_simulat
 
         received_from_smt3_element = ET.XML(received_from_smt3_text)
         ET.indent(received_from_smt3_element)
-        #LoggerConfig.printAndLogInfo(ET.tostring(received_from_smt3_element, encoding='unicode'))
+        #LoggerConfig.print_and_log_info(ET.tostring(received_from_smt3_element, encoding='unicode'))
         
         xml_response_from_smt3_response_as_indented_text = ET.tostring(received_from_smt3_element, encoding='unicode')
 
         sMT3SimulationResult = SMT3SimulationResult(smt3Server, received_from_smt3, xml_response_from_smt3_response_as_indented_text, errorMessage_text, totalTravelTimeInSecond_text, numberOfTravelTimeAndSpeedAtControlPointElements, elapsed_time_simulation_SMT3)
     
     if received_from_smt3.status_code != 200:
-        LoggerConfig.printAndLogInfo("status_code:" + str(received_from_smt3.status_code))
-        LoggerConfig.printAndLogInfo(str(received_from_smt3.raw))
+        LoggerConfig.print_and_log_info("status_code:" + str(received_from_smt3.status_code))
+        LoggerConfig.print_and_log_info(str(received_from_smt3.raw))
 
         xml_response_from_smt3_response_as_indented_text = str(received_from_smt3.raw)
         sMT3SimulationResult = SMT3SimulationResult(received_from_smt3, xml_response_from_smt3_response_as_indented_text, str(received_from_smt3.raw), "", "")
@@ -180,7 +180,7 @@ def SimulerSimpleRunSimulation(simulationToBePerformed, smt3Servers, stepInSecon
     element = ET.XML(travelTimesRequestTree_as_str)
     ET.indent(element)
     
-    #LoggerConfig.printAndLogInfo(ET.tostring(element, encoding='unicode'))
+    #LoggerConfig.print_and_log_info(ET.tostring(element, encoding='unicode'))
     
     xml_request_to_SMT3_as_indented_text = ET.tostring(element, encoding='unicode')
 
@@ -192,7 +192,7 @@ def SimulerSimpleRunSimulation(simulationToBePerformed, smt3Servers, stepInSecon
 
     headers = {'Content-Type': 'application/xml'}
     for smt3Server in smt3Servers:
-        LoggerConfig.printAndLogInfo("Smt3 server " + smt3Server.smt3Version + " on port " + str(smt3Server.port))
+        LoggerConfig.print_and_log_info("Smt3 server " + smt3Server.smt3Version + " on port " + str(smt3Server.port))
  
         smt3Server.full_url = smt3Server.url + '/SMT3-REST-Server/computeTravelTimes'
 
@@ -258,7 +258,7 @@ def saveSimulation(sMT3Simulation, result_csv_file, numero_mission_elementaire_c
 
 
     if(not (nombre_simulations_smt3_effectuees % param.pas_sauvegarde)):
-        LoggerConfig.printAndLogInfo("Save output file with partial results")
+        LoggerConfig.print_and_log_info("Save output file with partial results")
         for sMT3SimulationResult in sMT3Simulation.sMT3SimulationResults:
             sMT3SimulationResult.smt3Server.input_output_dump_file.flush()
             # typically the above line would do. however this is used to ensure that the file is written
@@ -271,7 +271,7 @@ def saveSimulation(sMT3Simulation, result_csv_file, numero_mission_elementaire_c
 def create_output_text_file(output_directory, output_file_name):
     
     if not os.path.exists(output_directory):
-        LoggerConfig.printAndLogInfo('Create output directory:' + output_directory)
+        LoggerConfig.print_and_log_info('Create output directory:' + output_directory)
         os.makedirs(output_directory)
 
     output_file_full_path = output_directory +  "\\" + output_file_name
@@ -290,7 +290,7 @@ def ProduireSimplesRuns( smt3Servers, simulationsRequestsManager, now_as_string_
     
     output_directory = "output"
     if not os.path.exists(output_directory):
-        LoggerConfig.printAndLogInfo('Create output directory:' + output_directory)
+        LoggerConfig.print_and_log_info('Create output directory:' + output_directory)
         os.makedirs(output_directory)
 
     for smt3Server in smt3Servers:
@@ -319,7 +319,7 @@ def ProduireSimplesRuns( smt3Servers, simulationsRequestsManager, now_as_string_
             numero_mission_elementaire_courante = numero_mission_elementaire_courante + 1
             numero_modele = 0
 
-        LoggerConfig.printAndLogInfo(str(numero_mission_elementaire_courante) + " eme ME " + elementary_mission_name + " sur " + str(len(simulationsRequestsManager.simulationsToBePerformed)) + " simulations . Avancement:" + str(round(nombre_simulations_smt3_effectuees*100/len(simulationsRequestsManager.simulationsToBePerformed),2)) + "%")
+        LoggerConfig.print_and_log_info(str(numero_mission_elementaire_courante) + " eme ME " + elementary_mission_name + " sur " + str(len(simulationsRequestsManager.simulationsToBePerformed)) + " simulations . Avancement:" + str(round(nombre_simulations_smt3_effectuees*100/len(simulationsRequestsManager.simulationsToBePerformed),2)) + "%")
 
         if previous_modele_name != modele_name:
             numero_modele = numero_modele + 1
@@ -327,10 +327,10 @@ def ProduireSimplesRuns( smt3Servers, simulationsRequestsManager, now_as_string_
         #Envoi de la requête
         start_time_SimulerSimpleRunSimulation = time.time()
         nombre_simulations_smt3_effectuees = nombre_simulations_smt3_effectuees + 1
-        LoggerConfig.printAndLogInfo("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"]  stepInSecondToApply:" + str(step_in_second))
+        LoggerConfig.print_and_log_info("Lancement simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"]  stepInSecondToApply:" + str(step_in_second))
 
         if nombre_simulations_smt3_effectuees in simulationsRequestsManager.simulationsNumbersToIgnore:
-            LoggerConfig.printAndLogInfo("Ignore simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"]  stepInSecondToApply:" + str(step_in_second))
+            LoggerConfig.print_and_log_info("Ignore simulation " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"]  stepInSecondToApply:" + str(step_in_second))
         else:
             if param.listNumerosSimulationsAEffectuer is None or nombre_simulations_smt3_effectuees in param.listNumerosSimulationsAEffectuer:
                 try:
@@ -338,26 +338,26 @@ def ProduireSimplesRuns( smt3Servers, simulationsRequestsManager, now_as_string_
 
 
                     elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
-                    LoggerConfig.printAndLogInfo("Simulation " + str(nombre_simulations_smt3_effectuees) + " [" + elementary_mission_name + "," + modele_name + "]" + ". computed in: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
+                    LoggerConfig.print_and_log_info("Simulation " + str(nombre_simulations_smt3_effectuees) + " [" + elementary_mission_name + "," + modele_name + "]" + ". computed in: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
                 
                     
                     if elapsed_time_SimulerSimpleRunSimulation > 4:
-                        LoggerConfig.printAndLogWarning("SMT3 was slow for mission elementaire " + str(numero_modele) + " [" + elementary_mission_name + "," + modele_name + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
+                        LoggerConfig.print_and_log_warning("SMT3 was slow for mission elementaire " + str(numero_modele) + " [" + elementary_mission_name + "," + modele_name + "]" + ". Elapsed: " + format(elapsed_time_SimulerSimpleRunSimulation, '.2f') + " s")
                     
 
                     saveSimulation(sMT3Simulation, result_csv_file, numero_mission_elementaire_courante, elementary_mission_name, numero_modele, modele_name, nombre_simulations_smt3_effectuees)
 
                 except requests.exceptions.ConnectionError as err:
                     # eg, no internet
-                    LoggerConfig.printAndLogInfo(err)
+                    LoggerConfig.print_and_log_info(err)
                     raise SystemExit(err)
                 except requests.exceptions.HTTPError as err:
                     # eg, url, server and other errors
-                    LoggerConfig.printAndLogInfo(str(err))
+                    LoggerConfig.print_and_log_info(str(err))
                     raise SystemExit(err)
                 # the rest of my code is going here
             else:
-                LoggerConfig.printAndLogInfo("Simulation ignorée (filtrée par paramétrage): " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"]  stepInSecondToApply:" + str(step_in_second))
+                LoggerConfig.print_and_log_info("Simulation ignorée (filtrée par paramétrage): " + str(numero_mission_elementaire_courante) + " eme mission elementaire ["+ elementary_mission_name +"] " + str(nombre_simulations_smt3_effectuees) + " eme simulation "+ str(numero_modele) + " eme modele : ["+modele_name+"]  stepInSecondToApply:" + str(step_in_second))
 
         previous_modele_name = modele_name
         previous_elementary_mission_name = elementary_mission_name
@@ -374,10 +374,10 @@ def launch(smt3_port, numero_premiere_mission_elementaire_a_traiter, numero_dern
 
     
     log_file_name = 'Lancer_simulations_sur_smt3_ATSPlus-' + str(smt3_port) + '' + "." +  str(random.randrange(100)) + ".log"
-    LoggerConfig.configureLogger(log_file_name)    
-    LoggerConfig.printAndLogInfo('Start application. Log file name: ' + log_file_name)
+    LoggerConfig.configure_logger(log_file_name)    
+    LoggerConfig.print_and_log_info('Start application. Log file name: ' + log_file_name)
     Lancer_simulations_sur_smt3_ATSPlus(smt3_port,numero_premiere_mission_elementaire_a_traiter, numero_derniere_mission_elementaire_a_traiter)
-    LoggerConfig.printAndLogInfo('End application')
+    LoggerConfig.print_and_log_info('End application')
     
 
 def Lancer_simulations_sur_smt3_ATSPlus(smt3Servers, simulationsRequestsManager):
@@ -391,14 +391,14 @@ def Lancer_simulations_sur_smt3_ATSPlus(smt3Servers, simulationsRequestsManager)
 
     ProduireSimplesRuns(smt3Servers, simulationsRequestsManager, now_as_string_for_file_suffix)
   
-    LoggerConfig.printAndLogInfo("End of application") 
+    LoggerConfig.print_and_log_info("End of application") 
     
 
 def main(argv):
     
     log_file_name = 'Lancer_simulations_sur_smt3_ATSPlus-' +  str(random.randrange(100000)) + ".log"
-    LoggerConfig.configureLogger(log_file_name)    
-    LoggerConfig.printAndLogInfo('Start application. Log file name: ' + log_file_name)
+    LoggerConfig.configure_logger(log_file_name)    
+    LoggerConfig.print_and_log_info('Start application. Log file name: ' + log_file_name)
 
     root = tk.Tk()
     root.withdraw()
@@ -406,7 +406,7 @@ def main(argv):
     system("title " + " Lancer_simulations_sur_smt3 " )
     Lancer_simulations_sur_smt3_ATSPlus(param.sMT3Servers,param.simulationsRequestsManager)
 
-    LoggerConfig.printAndLogInfo('End application')
+    LoggerConfig.print_and_log_info('End application')
 
 if __name__ == "__main__":
     main(sys.argv[1:])

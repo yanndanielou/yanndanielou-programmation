@@ -26,7 +26,7 @@ import xml.etree.ElementTree as ET
 #from lxml import etree
 
 
-def configureLogger():
+def configure_logger():
 	logger_directory = "logs"
 	
 	if not os.path.exists(logger_directory):
@@ -50,7 +50,7 @@ def configureLogger():
 
 def main(argv):
 
-	configureLogger()	
+	configure_logger()	
 	
 	logging.info('Start application')
 	

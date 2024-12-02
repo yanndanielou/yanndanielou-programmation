@@ -1,4 +1,4 @@
-﻿# -*-coding:Utf-8 -*
+# -*-coding:Utf-8 -*
 
 #For logs
 import random
@@ -35,7 +35,7 @@ matlab_structure_operator = "struct"
 matlab_structure_begin = matlab_structure_operator + "("
 matlab_empty_array_field = "[]"
 
-def printAndLogCriticalAndKill(toPrintAndLog):
+def print_and_log_critical_and_kill(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
     
     previous_stack = inspect.stack(1)[1]
@@ -45,7 +45,7 @@ def printAndLogCriticalAndKill(toPrintAndLog):
     logging.critical("line#" + str(line_number) + '\t' +toPrintAndLog)
     sys.exit()
 
-def printAndLogInfo(toPrintAndLog):
+def print_and_log_info(toPrintAndLog):
     
     log_timestamp = time.asctime( time.localtime(time.time()))
 
@@ -56,7 +56,7 @@ def printAndLogInfo(toPrintAndLog):
     logging.info("line#" + str(line_number) + '\t' +toPrintAndLog)
     
     
-def printAndLogWarning(toPrintAndLog):
+def print_and_log_warning(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
 
     previous_stack = inspect.stack(1)[1]
@@ -65,7 +65,7 @@ def printAndLogWarning(toPrintAndLog):
     print(log_timestamp + '\t' + "line#" + str(line_number) + '\t' +toPrintAndLog)
     logging.warning("line#" + str(line_number) + '\t' +toPrintAndLog)
     
-def printAndLogError(toPrintAndLog):
+def print_and_log_error(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
     
     previous_stack = inspect.stack(1)[1]
@@ -272,7 +272,7 @@ class StructureSpecifcIndex:
                 table.append(list())
 
             #if len(table) != field_index_2 - 1:
-            #    printAndLogCriticalAndKill("Error when assigning " + assingment_instruction.full_content_as_string + " in " + str(table))
+            #    print_and_log_critical_and_kill("Error when assigning " + assingment_instruction.full_content_as_string + " in " + str(table))
 
             table.append(assingment_instruction.new_value)
 
@@ -286,7 +286,7 @@ class FieldOfStructureWithModificationInstruction:
         self.last_index_computed = None
         self.array_items_by_structure_indice = list()
         self.parent = parent
-        printAndLogInfo("Create " + self.__class__.__name__ + " created with name:" + self.name)
+        print_and_log_info("Create " + self.__class__.__name__ + " created with name:" + self.name)
 
     def add_assignment_instructions(self, tableFieldInMainStructureModificationInstruction):
         main_structure_index_starting_at_0 = tableFieldInMainStructureModificationInstruction.main_structure_index - 1
@@ -340,7 +340,7 @@ class FieldOfStructureWithModificationInstruction:
                         #current_item_content_as_string += "]"
                         
                         if assingment_instruction_number > 1:
-                            printAndLogCriticalAndKill("assingment_instruction_number" + str(assingment_instruction_number))
+                            print_and_log_critical_and_kill("assingment_instruction_number" + str(assingment_instruction_number))
 
                     #content_as_string += "]"
 
@@ -414,7 +414,7 @@ class FieldOfStructureWithModificationInstruction:
         file_content_as_list_of_lines.append(content_as_string)
         file_content_as_list_of_lines.append("")
 
-        printAndLogInfo("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string[:60] + ", ...,  etc.")
+        print_and_log_info("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string[:60] + ", ...,  etc.")
         logging.debug("Print content of field " + self.name + " for structure:" + self.parent.name + " = " + content_as_string)
 
         
@@ -424,7 +424,7 @@ class StructureWithModificationInstruction:
     def __init__(self, name):
         self.fields = list()
         self.name = name
-        printAndLogInfo("Create " + self.__class__.__name__ + " created with name:" + self.name)
+        print_and_log_info("Create " + self.__class__.__name__ + " created with name:" + self.name)
 
 class SMT2_Data_mE_Content:
 
@@ -458,46 +458,46 @@ class SMT2_Data_mE_Content:
             fieldOfStructureWithModificationInstruction.add_assignment_instructions(tableFieldInMainStructureModificationInstruction)
 
     def fill_structure_fields_objects(self):
-        printAndLogInfo("fill_structure_fields_objects")
+        print_and_log_info("fill_structure_fields_objects")
         
-        printAndLogInfo("compute_max_dimensions")                
+        print_and_log_info("compute_max_dimensions")                
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
                     array_item.compute_max_dimensions()
 
-        """         printAndLogInfo("create_tables_for_empty_fields_depending_on_dimension")
+        """         print_and_log_info("create_tables_for_empty_fields_depending_on_dimension")
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
                     array_item.create_tables_for_empty_fields_depending_on_dimension() 
         
 
-        printAndLogInfo("compute_fields_old")                
+        print_and_log_info("compute_fields_old")                
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
                     array_item.compute_fields_old()
         """
-        printAndLogInfo("compute_level_1_fields")                
+        print_and_log_info("compute_level_1_fields")                
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
                     array_item.compute_level_1_fields()
 
-        printAndLogInfo("compute_level_2_fields")                
+        print_and_log_info("compute_level_2_fields")                
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
                     array_item.compute_level_2_fields()
 
-        printAndLogInfo("compute_max_dimension_of_level_2_fields")                
+        print_and_log_info("compute_max_dimension_of_level_2_fields")                
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
                     array_item.compute_max_dimension_of_level_2_fields()
 
-        printAndLogInfo("align_all_level_1_field_to_same_dimension_based_on_max_level_2_field")                
+        print_and_log_info("align_all_level_1_field_to_same_dimension_based_on_max_level_2_field")                
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             for fieldWithModificationInstruction in structureWithModificationInstruction.fields:
                 for array_item in fieldWithModificationInstruction.array_items_by_structure_indice:
@@ -509,7 +509,7 @@ class SMT2_Data_mE_Content:
         #             array_item.fill_fields_until_size(7042)
 
     def save_results(self, file_content_as_list_of_lines):
-        printAndLogInfo("save_results")
+        print_and_log_info("save_results")
 
         for structureWithModificationInstruction in self.structuresWithModificationInstructions:
             file_content_as_list_of_lines.append("Structure:" + structureWithModificationInstruction.name)
@@ -537,20 +537,20 @@ def open_text_file_and_return_lines(input_file_name):
         logging.critical("Input file:" + input_file_name + " does not exist. Application stopped")
         sys.exit()
 
-    printAndLogInfo('Full path:' + os.path.abspath(input_file_name))
+    print_and_log_info('Full path:' + os.path.abspath(input_file_name))
 
 
-    printAndLogInfo('Opening input file:' + input_file_name)    
+    print_and_log_info('Opening input file:' + input_file_name)    
     input_file = open(input_file_name, "r")
     
-    printAndLogInfo('Read input file:' + input_file_name)
+    print_and_log_info('Read input file:' + input_file_name)
     input_file_read = input_file.read()
     
-    printAndLogInfo('Close input file:' + input_file_name)
+    print_and_log_info('Close input file:' + input_file_name)
     input_file.close()
 
     input_file_lines = input_file_read.split(end_line_character_in_text_file)
-    printAndLogInfo(input_file_name + " has " + str(len(input_file_lines)) + " lines")
+    print_and_log_info(input_file_name + " has " + str(len(input_file_lines)) + " lines")
 
     return input_file_lines
  
@@ -587,10 +587,10 @@ def load_SMT2_Data_mE(sMT2_Data_mE_file_name, sMT2_Data_mE_Content):
 def create_and_fill_output_file(output_directory, input_file_name, file_content_as_list_of_lines):
 
     if not os.path.exists(output_directory):
-        printAndLogInfo('Create output directory:' + output_directory)
+        print_and_log_info('Create output directory:' + output_directory)
         os.makedirs(output_directory)
 
-    printAndLogInfo('Create output file:' + input_file_name)
+    print_and_log_info('Create output file:' + input_file_name)
     output_file = open(output_directory + "\\" + input_file_name, "w")
     logging.info('Fill output file:' + input_file_name)
 
@@ -620,9 +620,9 @@ def main():
     log_file_name = 'Generate_SMT2_Data_mE_fields_contents_from_field_post_assignment_lines' + ".log"
     #log_file_name = 'Generate_SMT2_Data_mE_fields_contents_from_field_post_assignment_lines' + "." +  str(random.randrange(10000)) + ".log"
     configureLogger(log_file_name)    
-    printAndLogInfo('Start application. Log file name: ' + log_file_name)
+    print_and_log_info('Start application. Log file name: ' + log_file_name)
     Generate_SMT2_Data_mE_fields_contents_from_field_post_assignment_lines()
-    printAndLogInfo('End application')
+    print_and_log_info('End application')
 
 if __name__ == '__main__':
     main()

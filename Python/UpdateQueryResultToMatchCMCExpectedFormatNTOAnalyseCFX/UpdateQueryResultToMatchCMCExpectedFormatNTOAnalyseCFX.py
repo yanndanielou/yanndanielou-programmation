@@ -45,7 +45,7 @@ def printAndLogCriticalAndKill(toPrintAndLog):
     sys.exit()
 
 
-def printAndLogInfo(toPrintAndLog):
+def print_and_log_info(toPrintAndLog):
 
     log_timestamp = time.asctime(time.localtime(time.time()))
 
@@ -143,7 +143,7 @@ def getUnderscoreContainingCodeWordTransformedIntoCamelCase(initialWordWithUnder
         else:
             codeWordTransformedIntoCamelCase += letter
 
-    printAndLogInfo(initialWordWithUnderscore +
+    print_and_log_info(initialWordWithUnderscore +
                     " transformed to camel case is:" + codeWordTransformedIntoCamelCase)
     return codeWordTransformedIntoCamelCase
 
@@ -198,7 +198,7 @@ def transformTextToValidExcelDate(initialText):
     return transformedText
 
 def transformTextInColumnToValidExcelDate(sheet, columnName):
-    printAndLogInfo("transformTextInColumnToValidExcelDate for column:" + columnName)
+    print_and_log_info("transformTextInColumnToValidExcelDate for column:" + columnName)
 
     submitDateColumnCells = sheet[columnName]
     for submitDateColumnCell in submitDateColumnCells:
@@ -217,13 +217,13 @@ def UpdateQueryResultToMatchCMCExpectedFormatNTOAnalyseCFX(argv):
     print(workbook_sheetnames)
 
     sheet = workbook.active
-    printAndLogInfo("sheet:" + str(sheet))
+    print_and_log_info("sheet:" + str(sheet))
 
     #print(sheet)
     #sheet
 
     sheet_title = sheet.title
-    printAndLogInfo("sheet title:"+ sheet_title)
+    print_and_log_info("sheet title:"+ sheet_title)
 
     submitDateColumnName = 'G'
     transformTextInColumnToValidExcelDate(sheet, submitDateColumnName)
@@ -232,7 +232,7 @@ def UpdateQueryResultToMatchCMCExpectedFormatNTOAnalyseCFX(argv):
     transformTextInColumnToValidExcelDate(sheet, historyOfLastActionHistoryActionTimestampColumnName)
        
     
-    printAndLogInfo("Save workbook")
+    print_and_log_info("Save workbook")
     workbook.save(filename="output.xlsx")
 
 
@@ -244,9 +244,9 @@ def main(argv):
     # log_file_name = 'TransformCodeToCamelCase' + "." +  str(random.randrange(10000)) + ".log"
     configureLogger(log_file_name)
 
-    printAndLogInfo('Start application. Log file name: ' + log_file_name)
+    print_and_log_info('Start application. Log file name: ' + log_file_name)
     UpdateQueryResultToMatchCMCExpectedFormatNTOAnalyseCFX(argv)
-    printAndLogInfo('End application')
+    print_and_log_info('End application')
 
 
 if __name__ == '__main__':

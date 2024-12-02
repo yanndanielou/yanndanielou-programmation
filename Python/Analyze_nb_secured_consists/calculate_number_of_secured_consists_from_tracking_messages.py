@@ -59,7 +59,7 @@ def printActionsDependingOnArguments_onlyForDebugPurpose(input_archive_extract_f
 	logging.debug(" input_archive_extract_file_name:%s", input_archive_extract_file_name)
 	logging.debug(" output_files_prefix:%s", output_files_prefix)
 	
-def configureLogger():
+def configure_logger():
 	logger_directory = "logs"
 	
 	if not os.path.exists(logger_directory):
@@ -82,7 +82,7 @@ def configureLogger():
 
 def main(argv):
 
-	configureLogger()	
+	configure_logger()	
 	
 	logging.info('Start application')
 			

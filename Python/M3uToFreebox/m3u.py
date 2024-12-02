@@ -158,7 +158,7 @@ class M3uFileParser:
 
                   
                
-        LoggerConfig.printAndLogInfo("File " + file_path + " parsed. " + str(len(m3u_entries)) + " M3u entries found")
+        LoggerConfig.print_and_log_info("File " + file_path + " parsed. " + str(len(m3u_entries)) + " M3u entries found")
         return m3u_entries
 
 
@@ -175,12 +175,12 @@ class M3uEntriesLibrary:
         
     def get_m3u_entry_by_id(self, id:int):
         m3u_entries_with_id = [m3u_entry for m3u_entry in self._m3u_entries if m3u_entry.id == id]
-        LoggerConfig.printAndLogInfo("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(id))
+        LoggerConfig.print_and_log_info("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(id))
         if(len(m3u_entries_with_id)):
             raise Exception("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(id))
         
         m3u_entry = self._m3u_entries[0]
-        LoggerConfig.printAndLogInfo("M3u entry for id:" + str(id) + " : " + str (m3u_entry))
+        LoggerConfig.print_and_log_info("M3u entry for id:" + str(id) + " : " + str (m3u_entry))
         return m3u_entry
         
     def get_m3u_entries_with_filter(self, filter_str: str) -> list[M3uEntry]:
@@ -194,7 +194,7 @@ class M3uEntriesLibrary:
             if filter_str in m3u_entry.title:
                 ret.append(m3u_entry)
         
-        LoggerConfig.printAndLogInfo("Number of entries with filter:" + filter_str + ": " + str(len(ret)))
+        LoggerConfig.print_and_log_info("Number of entries with filter:" + filter_str + ": " + str(len(ret)))
         return ret
         
     

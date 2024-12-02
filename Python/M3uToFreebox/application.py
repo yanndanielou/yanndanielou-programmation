@@ -39,7 +39,7 @@ class M3uToFreeboxApplication:
         
     def load_file(self, file_path):
         """ Load file """
-        LoggerConfig.printAndLogInfo("Load file:" + file_path)
+        LoggerConfig.print_and_log_info("Load file:" + file_path)
 
         m3u_file_parser =  m3u.M3uFileParser()
         for m3u_entry in m3u_file_parser.parse_file(file_path):

@@ -1,4 +1,4 @@
-﻿# -*-coding:Utf-8 -*
+# -*-coding:Utf-8 -*
 import logging
 import os
 import sys
@@ -13,13 +13,13 @@ import inspect
 
 logger_level = logging.INFO
     
-def printAndLogCriticalAndKill(toPrintAndLog):
+def print_and_log_critical_and_kill(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
     print(log_timestamp + '\t' + toPrintAndLog)
     logging.critical(toPrintAndLog)
     sys.exit()
 
-def printAndLogInfo(toPrintAndLog):
+def print_and_log_info(toPrintAndLog):
     
     log_timestamp = time.asctime( time.localtime(time.time()))
 
@@ -30,19 +30,19 @@ def printAndLogInfo(toPrintAndLog):
     logging.info("line#" + str(line_number) + '\t' +toPrintAndLog)
     
     
-def printAndLogWarning(toPrintAndLog):
+def print_and_log_warning(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
     print(log_timestamp + '\t' + toPrintAndLog)
     logging.warning(toPrintAndLog)
     
-def printAndLogError(toPrintAndLog):
+def print_and_log_error(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
     print(log_timestamp + '\t' + "!!ERROR!!")
     print(log_timestamp + '\t' + toPrintAndLog)
     logging.error(toPrintAndLog)
 
     
-def configureLogger(log_file_name):
+def configure_logger(log_file_name):
     logger_directory = "logs"
     
     if not os.path.exists(logger_directory):

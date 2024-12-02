@@ -64,7 +64,7 @@ def printAndLogCriticalAndKill(toPrintAndLog):
     sys.exit()
 
 
-def printAndLogInfo(toPrintAndLog):
+def print_and_log_info(toPrintAndLog):
 
     log_timestamp = time.asctime(time.localtime(time.time()))
 
@@ -162,7 +162,7 @@ def getUnderscoreContainingCodeWordTransformedIntoCamelCase(initialWordWithUnder
         else:
             codeWordTransformedIntoCamelCase += letter
 
-    printAndLogInfo(initialWordWithUnderscore +
+    print_and_log_info(initialWordWithUnderscore +
                     " transformed to camel case is:" + codeWordTransformedIntoCamelCase)
     return codeWordTransformedIntoCamelCase
 
@@ -234,7 +234,7 @@ def TransformCodeToCamelCase(argv):
     noOperation = args_parsed.nop
     if noOperation is None:
         noOperation = False
-        printAndLogInfo(
+        print_and_log_info(
             "Argument noOperation is not defined. Use default value:" + str(noOperation))
 
     codeExtensionConsideredList = codeExtensionConsideredSplitByComa.split(",")
@@ -245,7 +245,7 @@ def TransformCodeToCamelCase(argv):
             fileExtension = fileNameWithExtension.split(".")[1]
             if fileExtension in codeExtensionConsideredList:
                 fileFullPath = os.path.join(path, fileNameWithExtension)
-                printAndLogInfo("Must treat file " + fileFullPath)
+                print_and_log_info("Must treat file " + fileFullPath)
                 replaceAllTextByCamelCaseInFile(
                     fileFullPath, path, fileNameWithoutExtension, fileExtension, noOperation)
 
@@ -261,9 +261,9 @@ def main(argv):
     # log_file_name = 'TransformCodeToCamelCase' + "." +  str(random.randrange(10000)) + ".log"
     configureLogger(log_file_name)
 
-    printAndLogInfo('Start application. Log file name: ' + log_file_name)
+    print_and_log_info('Start application. Log file name: ' + log_file_name)
     TransformCodeToCamelCase(argv)
-    printAndLogInfo('End application')
+    print_and_log_info('End application')
 
 
 if __name__ == '__main__':

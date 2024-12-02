@@ -43,41 +43,41 @@ def testAdonfImport():
 
     __graphe = GrapheSingleton.Load(GrapheSingleton,"D:\\SMT3_generation\\SMT3\\Graphe-NG_ReadyForSimu.gme")
 
-    LoggerConfig.printAndLogInfo("Nombre de missions élémentaires de régulation : " + str(len(__graphe.missionsElementairesRegulation)))
-    LoggerConfig.printAndLogInfo("Nombre de missions élémentaires : " + str(len(__graphe.missionsElementaires)))
+    LoggerConfig.print_and_log_info("Nombre de missions élémentaires de régulation : " + str(len(__graphe.missionsElementairesRegulation)))
+    LoggerConfig.print_and_log_info("Nombre de missions élémentaires : " + str(len(__graphe.missionsElementaires)))
 
-    LoggerConfig.printAndLogInfo("Load empty Simulation.sme") 
+    LoggerConfig.print_and_log_info("Load empty Simulation.sme") 
     simuResults = SimulationResultsSingleton.Load(SimulationResultsSingleton, "D:\\SMT3_generation\\SMT3\\Simulation_empty.sme")
 
 
 #      simuResults = SimulationResultsSingleton.Load(SimulationResultsSingleton, "D:\\SMT3_generation\\SMT3\\Simulation.sme")
 
     ignoredMER = ['TRAMTRAIN_P27_1TER_INOUT|NOISY_K_P27_1RN_INOUT']
-    LoggerConfig.printAndLogInfo("ignoredMER : " + str(ignoredMER)) 
+    LoggerConfig.print_and_log_info("ignoredMER : " + str(ignoredMER)) 
 
-    LoggerConfig.printAndLogInfo("ProduireSimplesRuns") 
+    LoggerConfig.print_and_log_info("ProduireSimplesRuns") 
     pas_sauvegarde = 10
     __graphe.ProduireSimplesRuns("http://127.0.0.1:8080", 0.4, 30.0, "D:\\SMT3_generation\\SMT3\\Simulation_output.sme",pas_sauvegarde,1.1,ignoredMER)
   
-    LoggerConfig.printAndLogInfo("ExporterSimplesRunsSimulations") 
+    LoggerConfig.print_and_log_info("ExporterSimplesRunsSimulations") 
     simuResults.ExporterSimplesRunsSimulations("D:\\SMT3_generation\\SMT3\\SimplesRunsSimulationsResults.csv")
  
     #__graphe.EstimerNombreDeSimulation()
 
-    LoggerConfig.printAndLogInfo("Liste des points de contrôle")
+    LoggerConfig.print_and_log_info("Liste des points de contrôle")
     for i in sorted (__graphe.pointsDeControle.keys()) :
-        LoggerConfig.printAndLogInfo(i)
+        LoggerConfig.print_and_log_info(i)
 
-    LoggerConfig.printAndLogInfo("Liste des transitions")
+    LoggerConfig.print_and_log_info("Liste des transitions")
     for i in __graphe.transitions.values():
         i.print()
 
 def main():
     log_file_name = 'GenerateME-LoadGraphe-SimuSMT' + "." +  str(random.randrange(10000)) + ".log"
     LoggerConfig.configureLogger(log_file_name)    
-    LoggerConfig.printAndLogInfo('Start application. Log file name: ' + log_file_name)
+    LoggerConfig.print_and_log_info('Start application. Log file name: ' + log_file_name)
     testAdonfImport()
-    LoggerConfig.printAndLogInfo('End application')
+    LoggerConfig.print_and_log_info('End application')
 
 if __name__ == '__main__':
     main()

@@ -13,7 +13,7 @@ def printAndLogCriticalAndKill(toPrintAndLog):
     logging.critical(toPrintAndLog)
     sys.exit()
 
-def printAndLogInfo(toPrintAndLog):
+def print_and_log_info(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
     print(log_timestamp + '\t' + toPrintAndLog)
     logging.info(toPrintAndLog)

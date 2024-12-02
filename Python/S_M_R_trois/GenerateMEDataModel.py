@@ -438,11 +438,11 @@ class Graphe:
                         if(modele.aSimuler):
                             if((mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM") and simulationResults.FindSimpleRunSimulation(mE.missionElementaireRegulation, modele) != None):
                                 i = i + 1
-                                LoggerConfig.printAndLogInfo(str(i) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
+                                LoggerConfig.print_and_log_info(str(i) + " : " + str(datetime.now()) + " : Already Exist ["+mE.nom+","+modele.nom+"]")
                             elif(mE.compositionTrain == nature.composition or mE.compositionTrain == "US+UM"):
                                 #Envoi de la requête
                                 i = i + 1
-                                LoggerConfig.printAndLogInfo(str(i) + " : " + str(datetime.now()) + " : Simulation ["+mE.nom+","+modele.nom+"] " + str(round(numero_mission_elementaire_courante*100/nbSimu,2)) + "%")
+                                LoggerConfig.print_and_log_info(str(i) + " : " + str(datetime.now()) + " : Simulation ["+mE.nom+","+modele.nom+"] " + str(round(numero_mission_elementaire_courante*100/nbSimu,2)) + "%")
                                 start_time_SimulerSimpleRunSimulation = time.time()
                                 self.SimulerSimpleRunSimulation(_url, _stepInSecond, _dwellTimeInSecond, _coeffOnRunTime, mE, modele, _ignoredMER)
                                 elapsed_time_SimulerSimpleRunSimulation = time.time() - start_time_SimulerSimpleRunSimulation 
@@ -453,7 +453,7 @@ class Graphe:
                                 
                                 if(not (i % _PasSauvegarde)):
                                     simulationResults.Save(_nomFichier)
-                                    LoggerConfig.printAndLogInfo("Sauvegarde !")
+                                    LoggerConfig.print_and_log_info("Sauvegarde !")
             else:
                 logging.info(str(numero_mission_elementaire_courante) + " eme mission elementaire a ignorer: " + str(round(numero_mission_elementaire_courante*100/nbSimu,2)) + "%")
             #elapsed_time_mission_elementaire = time.time() - start_time_mission_elementaire 
@@ -462,14 +462,14 @@ class Graphe:
             #elif elapsed_time_mission_elementaire > 3:
             #    LoggerConfig.printAndLogWarning("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
             #elif elapsed_time_mission_elementaire >= 1:
-            #   LoggerConfig.printAndLogInfo("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
+            #   LoggerConfig.print_and_log_info("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
             #else:
             #    logging.debug("ProduireSimplesRuns for mission elementaire " + str(i) + " [" + mE.nom + "," + modele.nom + "]" + ". Elapsed: " + format(elapsed_time_mission_elementaire, '.2f') + " s")
         
         simulationResults.Save(_nomFichier)
-        LoggerConfig.printAndLogInfo("Sauvegarde !")
+        LoggerConfig.print_and_log_info("Sauvegarde !")
         elapsed_time_ProduireSimplesRuns = time.time() - start_time_ProduireSimplesRuns  
-        LoggerConfig.printAndLogInfo("ProduireSimplesRuns ended. Elapsed: " + format(elapsed_time_ProduireSimplesRuns, '.2f') + " s" + " " + str(timedelta(seconds=elapsed_time_ProduireSimplesRuns)))
+        LoggerConfig.print_and_log_info("ProduireSimplesRuns ended. Elapsed: " + format(elapsed_time_ProduireSimplesRuns, '.2f') + " s" + " " + str(timedelta(seconds=elapsed_time_ProduireSimplesRuns)))
 
     def SimulerIntervalTheorique(self, _url, _stepInSecond, _dwellTimeInSecond, _coeffOnIntervals, mE1, mE2, modtrain1, modtrain2, _Delta_Espacement, intervalTrainAheadSupp):
         print(str(datetime.now()) + " Simulation ["+mE1.nom+","+modtrain1.nom+"],["+mE2.nom+","+modtrain2.nom+"]")
