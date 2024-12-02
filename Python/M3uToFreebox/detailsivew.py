@@ -24,7 +24,6 @@ import m3u
 import detailspopup
 import main
 
-import xspf
 
 
 from tkinter import (
@@ -173,12 +172,8 @@ class DetailsViewTab(ttk.Frame):
         m3u_entry_title_str = m3u_entry_line['Title']
         m3u_entry_group_str = m3u_entry_line['Group']
         
-        m3u_entry = self._parent.m3u_to_freebox_application._m3u_library.get_m3u_entry_by_id(m3u_entry_id_int)
+        self._parent.m3u_to_freebox_application.create_xspf_file_by_id_str(m3u_entry_id_str)
 
-        xspf_file_content = xspf.XspfFileContent(m3u_entry.title, m3u_entry.link)
-        xsp_file_creator = xspf.XspfFileCreator()
-        xsp_file_creator.write(xspf_file_content,m3u_entry.title + ".xspf")
-    
     def _create_view(self):
                 
         self._create_filter_frame()
