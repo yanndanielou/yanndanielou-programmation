@@ -12,6 +12,7 @@ import m3u
 import xspf
 
 import main_view
+import main
 
 
 class M3uToFreeboxApplication:
@@ -34,8 +35,10 @@ class M3uToFreeboxApplication:
         xspf_file_content = xspf.XspfFileContent(m3u_entry.title, m3u_entry.link)
         xsp_file_creator = xspf.XspfFileCreator()
         xsp_file_creator.write(xspf_file_content,m3u_entry.title + ".xspf")
+        
+    def reset_library(self):
+        self._m3u_library = m3u.M3uEntriesLibrary()
     
-        pass
         
     def load_file(self, file_path):
         """ Load file """
@@ -52,3 +55,7 @@ class M3uToFreeboxApplication:
     @m3u_library.setter
     def m3u_library(self, value:m3u.M3uEntriesLibrary):
         self._m3u_library = value
+
+if __name__ == "__main__":
+    # sys.argv[1:]
+    main.main()
