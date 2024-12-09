@@ -715,6 +715,31 @@
 					"enabled": true,
 					"inputPdfWithFileMaskForMultiplePDF": {
 						"folderPath": "Input",
+						"fileNameMask": "manuel_utilisateur_3.6.pdf"
+					},
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
+					"parentFolderLink": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=4149027&objAction=browse&logStopConditionID=663587_1352516220_1_loc",
+					"link": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=4149044&objAction=Open&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objId%3D4149027%26objAction%3Dbrowse%26logStopConditionID%3D663587_1352516220_1_loc",
+					"genericOutputFileName": "NExtEO-01900-03-0238-00 Documentation associée à l'atelier de méthodes formelles - manuel utilisateur V01-00"
+				},
+				{
+					"enabled": true,
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
+						"fileNameMask": "manuel_utilisateur_prouveur_3.6.pdf"
+					},
+					"personalizeByAllowedUsed": false,
+					"encrypt": false,
+					"parentFolderLink": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=4149027&objAction=browse&logStopConditionID=663587_1352516220_1_loc",
+					"link": "https://rhapsody.siemens.net/livelink/livelink.exe?func=ll&objId=4148160&objAction=Open&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objId%3D4149027%26objAction%3Dbrowse%26logStopConditionID%3D663587_1352516220_1_loc",
+					"genericOutputFileName": "NExtEO-01900-03-0238-00 Documentation associée à l'atelier de méthodes formelles - manuel prouveur V01-00"
+				},
+				
+				{
+					"enabled": true,
+					"inputPdfWithFileMaskForMultiplePDF": {
+						"folderPath": "Input",
 						"fileNameMask": "SF_KCV_V03_03.pdf"
 					},
 					"personalizeByAllowedUsed": false,
