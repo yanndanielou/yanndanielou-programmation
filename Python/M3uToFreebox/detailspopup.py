@@ -6,7 +6,7 @@ import random
 
 import sys
 
-import Dependencies.Logger.LoggerConfig as LoggerConfig
+import Dependencies.Logger.logger_config as logger_config
 import Dependencies.Common.date_time_formats as date_time_formats
 
 
@@ -16,8 +16,6 @@ import tkinter
 
 
 import os
-
-import Dependencies.Logger.LoggerConfig as LoggerConfig
 
 import tkinter
 import m3u

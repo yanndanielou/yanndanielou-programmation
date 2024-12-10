@@ -6,7 +6,7 @@ import random
 
 import sys
 
-import Dependencies.Logger.LoggerConfig as LoggerConfig
+import Dependencies.Logger.logger_config as logger_config
 import Dependencies.Common.date_time_formats as date_time_formats
 
 
@@ -16,8 +16,6 @@ import tkinter
 
 
 import os
-
-import Dependencies.Logger.LoggerConfig as LoggerConfig
 
 import tkinter
 import m3u
@@ -151,7 +149,7 @@ class DetailsViewTab(ttk.Frame):
 
         
     def filter_option_changed(self, *args):
-        LoggerConfig.print_and_log_info(f'You selected: {self.option_var.get()}')
+        logger_config.print_and_log_info(f'You selected: {self.option_var.get()}')
 
         
     
@@ -168,11 +166,11 @@ class DetailsViewTab(ttk.Frame):
             # display the popup menu
             try:
                 row_identified = self._tree_view.identify_row(event.y)
-                LoggerConfig.print_and_log_info("row_identified:" + row_identified)
+                logger_config.print_and_log_info("row_identified:" + row_identified)
                 
                 
                 tree_view_selection = self._tree_view.selection()
-                LoggerConfig.print_and_log_info("tree_view_selection:"  + str(tree_view_selection))
+                logger_config.print_and_log_info("tree_view_selection:"  + str(tree_view_selection))
         
                 self.tree_view_context_menu.selection = self._tree_view.set(row_identified)
                 self.tree_view_context_menu.post(event.x_root, event.y_root)
@@ -189,10 +187,10 @@ class DetailsViewTab(ttk.Frame):
         
     def _select_directory_popup_and_create_xspf(self):
         tree_view_selection = self._tree_view.selection()
-        LoggerConfig.print_and_log_info("tree_view_selection:"  + str(tree_view_selection))
+        logger_config.print_and_log_info("tree_view_selection:"  + str(tree_view_selection))
         
         directory_path = filedialog.askdirectory()
-        LoggerConfig.print_and_log_info("Directory chosen:" + str(directory_path))
+        logger_config.print_and_log_info("Directory chosen:" + str(directory_path))
 
         if directory_path != "":
             m3u_entry_line = self.tree_view_context_menu.selection
@@ -200,7 +198,7 @@ class DetailsViewTab(ttk.Frame):
             
             self._parent.m3u_to_freebox_application.create_xspf_file_by_id_str(m3u_entry_id_str)
         else:
-            LoggerConfig.print_and_log_info("No directory chosen")
+            logger_config.print_and_log_info("No directory chosen")
 
             
     def _create_xspf_on_freebox_context_menu_choosen(self):
@@ -267,7 +265,7 @@ class DetailsViewTab(ttk.Frame):
             self._tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.title_as_valid_file_name, m3u_entry.group_title))
 
             if m3u_entry_number % 10000 == 0:
-                LoggerConfig.print_and_log_info(str(m3u_entry_number) + " entries filled")
+                logger_config.print_and_log_info(str(m3u_entry_number) + " entries filled")
         
         
     def selection(self):

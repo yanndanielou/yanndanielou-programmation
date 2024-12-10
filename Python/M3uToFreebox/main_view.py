@@ -19,7 +19,7 @@ from tkinter import (
 )
 
 
-from Dependencies.Logger import LoggerConfig
+from Dependencies.Logger import logger_config
 from Dependencies.Common import date_time_formats
 
 
@@ -97,7 +97,7 @@ class M3uToFreeboxMainView (tkinter.Tk):
 
     def menu_open_file(self):
         """ Open new file """
-        LoggerConfig.print_and_log_info("open menu executed")
+        logger_config.print_and_log_info("open menu executed")
 
         file_path = filedialog.askopenfilename(
             filetypes=[
@@ -106,14 +106,14 @@ class M3uToFreeboxMainView (tkinter.Tk):
         )
         
         if file_path:
-            LoggerConfig.print_and_log_info("Open file:" + file_path)
+            logger_config.print_and_log_info("Open file:" + file_path)
 
             self._m3u_to_freebox_application.load_file(file_path)
             self._tab_list_details.fill_m3u_entries()
             
             
         else:
-            LoggerConfig.print_and_log_info("Open menu cancelled")
+            logger_config.print_and_log_info("Open menu cancelled")
 
 
     @property

@@ -6,7 +6,7 @@ from itertools import count
 import importlib
 
 
-import Dependencies.Logger.LoggerConfig as LoggerConfig
+import Dependencies.Logger.logger_config as logger_config
 import Dependencies.Common.Constants
 
 MRU_FIRST_LINE = "#EXTM3U"
@@ -175,11 +175,11 @@ class M3uFileParser:
                     current_m3u_entry_string_definition.line2 = line
                     m3u_entry = M3uEntry(current_m3u_entry_string_definition)
                     m3u_entries.append(m3u_entry)
-                    LoggerConfig.logging.debug("M3u entry created: " + str(m3u_entry))
+                    logger_config.logging.debug("M3u entry created: " + str(m3u_entry))
 
                   
                
-        LoggerConfig.print_and_log_info("File " + file_path + " parsed. " + str(len(m3u_entries)) + " M3u entries found")
+        logger_config.print_and_log_info("File " + file_path + " parsed. " + str(len(m3u_entries)) + " M3u entries found")
         return m3u_entries
 
 
@@ -196,12 +196,12 @@ class M3uEntriesLibrary:
         
     def get_m3u_entry_by_id(self, id:int):
         m3u_entries_with_id = [m3u_entry for m3u_entry in self._m3u_entries if m3u_entry.id == id]
-        LoggerConfig.print_and_log_info("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(id))
+        logger_config.print_and_log_info("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(id))
         if(len(m3u_entries_with_id) != 1):
             raise Exception("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(id))
         
         m3u_entry = self._m3u_entries[0]
-        LoggerConfig.print_and_log_info("M3u entry for id:" + str(id) + " : " + str (m3u_entry))
+        logger_config.print_and_log_info("M3u entry for id:" + str(id) + " : " + str (m3u_entry))
         return m3u_entry
         
     def get_m3u_entries_with_filter(self, filter_str: str) -> list[M3uEntry]:
@@ -215,7 +215,7 @@ class M3uEntriesLibrary:
             if filter_str in m3u_entry.title:
                 ret.append(m3u_entry)
         
-        LoggerConfig.print_and_log_info("Number of entries with filter:" + filter_str + ": " + str(len(ret)))
+        logger_config.print_and_log_info("Number of entries with filter:" + filter_str + ": " + str(len(ret)))
         return ret
         
     

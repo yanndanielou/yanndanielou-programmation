@@ -7,7 +7,7 @@ import random
 
 import sys
 
-import Dependencies.Logger.LoggerConfig as LoggerConfig
+import Dependencies.Logger.logger_config as logger_config
 import Dependencies.Common.date_time_formats as date_time_formats
 
 import m3u
@@ -43,7 +43,7 @@ class M3uToFreeboxApplication:
         
     def load_file(self, file_path):
         """ Load file """
-        LoggerConfig.print_and_log_info("Load file:" + file_path)
+        logger_config.print_and_log_info("Load file:" + file_path)
 
         m3u_file_parser =  m3u.M3uFileParser()
         for m3u_entry in m3u_file_parser.parse_file(file_path):
