@@ -3,12 +3,11 @@
 # -*-coding:Utf-8 -*
 
 from itertools import count
+import importlib
+
 
 import Dependencies.Logger.LoggerConfig as LoggerConfig
 import Dependencies.Common.Constants
-
-import main
-
 
 MRU_FIRST_LINE = "#EXTM3U"
 M3U_ENTRY_FIRST_LINE_BEGIN = "#EXTINF"
@@ -55,10 +54,18 @@ class M3uEntry:
         self._group_title = self.decode_field(self._line1, "group-title")
         self._title = self._line1.split('"')[len(self._line1.split('"'))-1][1:]
 
+        self._compute_title_as_valid_file_name()
+
         self._m3u_entries = M3uEntriesLibrary()
 
         self._m3u_entries.add(self)
+        
 
+    def _compute_title_as_valid_file_name(self):
+        """ Remove special caracters """
+        self._title_as_valid_file_name:str = self._title
+        self._title_as_valid_file_name = self._title_as_valid_file_name.replace("|", "")
+        
 
     def decode_field(self, line, field_name) -> str:
         field_content = line.split(field_name)[1].split('"')[1]
@@ -76,6 +83,7 @@ class M3uEntry:
 
     @property
     def line1(self):
+        """ getter _line1 """
         return self._line1
 
     @line1.setter
@@ -84,6 +92,7 @@ class M3uEntry:
 
     @property
     def tvg_id(self):
+        """ getter _tvg_id """
         return self._tvg_id
 
     @tvg_id.setter
@@ -92,6 +101,7 @@ class M3uEntry:
 
     @property
     def tvg_name(self):
+        """ getter tvg_name """
         return self._tvg_name
 
     @tvg_name.setter
@@ -100,6 +110,7 @@ class M3uEntry:
 
     @property
     def tvg_logo(self):
+        """ getter _tvg_logo """
         return self._tvg_logo
 
     @tvg_logo.setter
@@ -108,6 +119,7 @@ class M3uEntry:
         
     @property
     def id(self):
+        """ getter _id """
         return self._id
 
     @id.setter
@@ -116,6 +128,7 @@ class M3uEntry:
 
     @property
     def group_title(self):
+        """ getter _group_title """
         return self._group_title
 
     @group_title.setter
@@ -124,11 +137,17 @@ class M3uEntry:
 
     @property
     def title(self):
+        """ getter _title """
         return self._title
 
     @title.setter
     def title(self, value):
         self._title = value
+        
+    @property
+    def title_as_valid_file_name(self):
+        """ getter _title_as_valid_file_name """
+        return self._title_as_valid_file_name
 
 
 class M3uFileParser:
@@ -202,5 +221,6 @@ class M3uEntriesLibrary:
     
 if __name__ == "__main__":
     # sys.argv[1:]
+    main = importlib.import_module("main")
     main.main()
 
