@@ -79,13 +79,14 @@ class XspfFileCreator:
     def __init__(self) -> None:
         pass
     
-    def write(self, xspf_file_content:XspfFileContent, output_file_name: str) -> bool:
+    def write(self, xspf_file_content:XspfFileContent, output_file_name: str, print_result:bool) -> bool:
         #xml_content = pyconvert.pyconv.convert2XML(xspf_file_content)
         #pretty_xml = xml_content.toprettyxml()
         #print(pretty_xml)
         
         with open(output_file_name, 'w', encoding="utf-8") as f:
-            logger_config.print_and_log_info("File created: " + output_file_name)
+            if print_result:
+                logger_config.print_and_log_info("File created: " + output_file_name)
             
             f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
             f.write('<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">\n')

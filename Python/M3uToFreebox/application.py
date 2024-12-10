@@ -23,17 +23,17 @@ class M3uToFreeboxApplication:
 
         self._main_view:m3u_to_freebox_main_view.M3uToFreeboxMainView = m3u_to_freebox_main_view
         
-    def create_xspf_file_by_id_str(self, directory_path_name:str, m3u_entry_id:str) -> bool:
+    def create_xspf_file_by_id_str(self, directory_path_name:str, m3u_entry_id:str, print_result:bool=True) -> bool:
         m3u_entry_id_int = int(m3u_entry_id)
-        return self.create_xspf_file_by_id(directory_path_name, m3u_entry_id_int)
+        return self.create_xspf_file_by_id(directory_path_name, m3u_entry_id_int, print_result)
         
-    def create_xspf_file_by_id(self, directory_path_name:str, m3u_entry_id:int) -> bool:
+    def create_xspf_file_by_id(self, directory_path_name:str, m3u_entry_id:int, print_result:bool= True) -> bool:
         
         m3u_entry = self.m3u_library.get_m3u_entry_by_id(m3u_entry_id)
 
         xspf_file_content = xspf.XspfFileContent(m3u_entry.title, m3u_entry.link)
         xsp_file_creator = xspf.XspfFileCreator()
-        return xsp_file_creator.write(xspf_file_content, directory_path_name + "/" + m3u_entry.title_as_valid_file_name + ".xspf")
+        return xsp_file_creator.write(xspf_file_content, directory_path_name + "/" + m3u_entry.title_as_valid_file_name + ".xspf", print_result)
         
     def reset_library(self):
         self._m3u_library = m3u.M3uEntriesLibrary()
