@@ -5,33 +5,64 @@ import sys
 
 import time
 
+
+# To get line number for logs
+#from inspect import currentframe, getframeinfo
+import inspect
+
 logger_level = logging.INFO
     
+def __get_calling_file_name_and_line_number():
+    previous_stack = inspect.stack(1)[2]
+    file_name = previous_stack.filename
+    line_number = previous_stack.lineno
+    return file_name  + ", line " + str(line_number)
+    
+def __get_calling_file_name():
+    previous_stack = inspect.stack(1)[1]
+    file_name = previous_stack.filename
+    return file_name
+    
+def __get_calling_line_number():
+    previous_stack = inspect.stack(1)[1]
+    line_number = previous_stack.lineno
+    return line_number
+
 def print_and_log_critical_and_kill(toPrintAndLog):
     log_timestamp = time.asctime( time.localtime(time.time()))
+    
+    previous_stack = inspect.stack(1)[1]
+    line_number = previous_stack.lineno
+    file_name = previous_stack.filename
+    
     print(log_timestamp + '\t' + toPrintAndLog)
     logging.critical(toPrintAndLog)
     sys.exit()
 
-def print_and_log_info(toPrintAndLog):
+def print_and_log_info(to_print_and_log):
+    """ Print in standard output and log in file as info level"""
     log_timestamp = time.asctime( time.localtime(time.time()))
-    print(log_timestamp + '\t' + toPrintAndLog)
-    logging.info(toPrintAndLog)
+
+    print(log_timestamp + '\t' + __get_calling_file_name_and_line_number() + '\t' + str() + to_print_and_log)
+    logging.info(__get_calling_file_name_and_line_number() + '\t' +to_print_and_log)
     
     
-def print_and_log_warning(toPrintAndLog):
+def print_and_log_warning(to_print_and_log):
+    """ Print in standard output and log in file as info level"""
     log_timestamp = time.asctime( time.localtime(time.time()))
-    print(log_timestamp + '\t' + toPrintAndLog)
-    logging.warning(toPrintAndLog)
-    
-def print_and_log_error(toPrintAndLog):
+
+    print(log_timestamp + '\t' + __get_calling_file_name_and_line_number() + '\t' + str() + to_print_and_log)
+    logging.warning(__get_calling_file_name_and_line_number() + '\t' +to_print_and_log)
+
+def print_and_log_error(to_print_and_log):
+    """ Print in standard output and log in file as error level"""
     log_timestamp = time.asctime( time.localtime(time.time()))
     print(log_timestamp + '\t' + "!!ERROR!!")
-    print(log_timestamp + '\t' + toPrintAndLog)
-    logging.error(toPrintAndLog)
+    print(log_timestamp + '\t' + __get_calling_file_name_and_line_number() + '\t' + str() + to_print_and_log)
+    logging.error(__get_calling_file_name_and_line_number() + '\t' +to_print_and_log)
 
-    
 def configure_logger(log_file_name):
+    """ Configure the logger """
     logger_directory = "logs"
     
     if not os.path.exists(logger_directory):
@@ -83,6 +114,7 @@ class print_output(object):
         return ret
         
 class print_input_and_output(object):
+    """ print input and output of function"""
 
     def __init__(self, f):
         self.f = f
