@@ -24,7 +24,7 @@ from Dependencies.Common import date_time_formats
 
 
 import m3u
-import detailsivew
+from detailsivew import DetailsViewTab
 import application
 import main_view
 
@@ -54,7 +54,7 @@ class M3uToFreeboxMainView (tkinter.Tk):
 
     def create_tab_list_details(self):
         """ Create tab details """
-        self._tab_list_details = detailsivew.DetailsViewTab(self, self._tab_control)
+        self._tab_list_details = DetailsViewTab(self, self._tab_control)
         self._tab_control.add(self._tab_list_details, text ='List detail')
 
     def create_tab_empty(self):

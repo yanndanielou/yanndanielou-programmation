@@ -13,8 +13,6 @@ import Dependencies.Common.date_time_formats as date_time_formats
 import m3u
 import xspf
 
-import main_view
-
 
 class M3uToFreeboxApplication:
     """ Application """
@@ -25,17 +23,17 @@ class M3uToFreeboxApplication:
 
         self._main_view:m3u_to_freebox_main_view.M3uToFreeboxMainView = m3u_to_freebox_main_view
         
-    def create_xspf_file_by_id_str(self, m3u_entry_id:str):
+    def create_xspf_file_by_id_str(self, directory_path_name:str, m3u_entry_id:str):
         m3u_entry_id_int = int(m3u_entry_id)
-        self.create_xspf_file_by_id(m3u_entry_id_int)
+        self.create_xspf_file_by_id(directory_path_name, m3u_entry_id_int)
         
-    def create_xspf_file_by_id(self, m3u_entry_id:int):
+    def create_xspf_file_by_id(self, directory_path_name:str, m3u_entry_id:int):
         
         m3u_entry = self.m3u_library.get_m3u_entry_by_id(m3u_entry_id)
 
         xspf_file_content = xspf.XspfFileContent(m3u_entry.title, m3u_entry.link)
         xsp_file_creator = xspf.XspfFileCreator()
-        xsp_file_creator.write(xspf_file_content,m3u_entry.title_as_valid_file_name + ".xspf")
+        xsp_file_creator.write(xspf_file_content, directory_path_name + "/" + m3u_entry.title_as_valid_file_name + ".xspf")
         
     def reset_library(self):
         self._m3u_library = m3u.M3uEntriesLibrary()

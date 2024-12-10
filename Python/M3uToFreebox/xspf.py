@@ -2,6 +2,7 @@
 
 #import pyconvert.pyconv
 
+import Dependencies.Logger.logger_config as logger_config
 
 
 class XspfFileContent:
@@ -78,12 +79,14 @@ class XspfFileCreator:
     def __init__(self) -> None:
         pass
     
-    def write(self, xspf_file_content:XspfFileContent, output_file_name: str) -> None:
+    def write(self, xspf_file_content:XspfFileContent, output_file_name: str) -> bool:
         #xml_content = pyconvert.pyconv.convert2XML(xspf_file_content)
         #pretty_xml = xml_content.toprettyxml()
         #print(pretty_xml)
         
         with open(output_file_name, 'w', encoding="utf-8") as f:
+            logger_config.print_and_log_info("File created: " + output_file_name)
+            
             f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
             f.write('<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">\n')
             f.write('\t<title>' + xspf_file_content.title + '</title>\n')
@@ -97,6 +100,10 @@ class XspfFileCreator:
             f.write('\t\t</track>\n')
             f.write('\t</trackList>\n')
             f.write('</playlist>\n')
+            
+            return True
+        
+        return False
 
                   
     

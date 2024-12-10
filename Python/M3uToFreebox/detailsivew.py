@@ -34,17 +34,18 @@ from tkinter import (
   ttk
   )
 
-import main_view
+
 
 class DetailsViewTab(ttk.Frame):
 
     
-    def __init__(self, parent:main_view.M3uToFreeboxMainView, tab_control):
+    def __init__(self, parent, tab_control):
         super().__init__(tab_control)
         
         self._paddings = {'padx': 5, 'pady': 5}
 
-        self._parent: main_view.M3uToFreeboxMainView = parent
+        import main_view
+        self._parent:main_view.M3uToFreeboxMainView = parent
 
         self._create_view()
         self._create_context_menu()
@@ -189,14 +190,15 @@ class DetailsViewTab(ttk.Frame):
         tree_view_selection = self._tree_view.selection()
         logger_config.print_and_log_info("tree_view_selection:"  + str(tree_view_selection))
         
-        directory_path = filedialog.askdirectory()
-        logger_config.print_and_log_info("Directory chosen:" + str(directory_path))
+        directory_path:filedialog.Directory = filedialog.askdirectory()
+        directory_path_name = str(directory_path)
+        logger_config.print_and_log_info("Directory chosen:" + str(directory_path_name))
 
-        if directory_path != "":
+        if directory_path_name != "":
             m3u_entry_line = self.tree_view_context_menu.selection
             m3u_entry_id_str = m3u_entry_line['ID']
             
-            self._parent.m3u_to_freebox_application.create_xspf_file_by_id_str(m3u_entry_id_str)
+            self._parent.m3u_to_freebox_application.create_xspf_file_by_id_str(directory_path_name, m3u_entry_id_str)
         else:
             logger_config.print_and_log_info("No directory chosen")
 
@@ -238,11 +240,11 @@ class DetailsViewTab(ttk.Frame):
                 self.treeview_sort_column(tv, col, not reverse))
 
         @property
-        def parent(self) -> main_view.M3uToFreeboxMainView:
+        def parent(self) -> M3uToFreeboxMainView:
             return self._parent
 
         @parent.setter
-        def parent(self, value: main_view.M3uToFreeboxMainView):
+        def parent(self, value: M3uToFreeboxMainView):
             self._parent = value
 
 

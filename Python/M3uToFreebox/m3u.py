@@ -5,6 +5,7 @@
 from itertools import count
 import importlib
 
+import Dependencies.Common.string_utils as string_utils
 
 import Dependencies.Logger.logger_config as logger_config
 import Dependencies.Common.Constants
@@ -63,9 +64,8 @@ class M3uEntry:
 
     def _compute_title_as_valid_file_name(self):
         """ Remove special caracters """
-        self._title_as_valid_file_name:str = self._title
-        self._title_as_valid_file_name = self._title_as_valid_file_name.replace("|", "")
-        
+        self._title_as_valid_file_name:str = string_utils.format_filename(self._title, True)
+               
 
     def decode_field(self, line, field_name) -> str:
         field_content = line.split(field_name)[1].split('"')[1]
@@ -149,6 +149,8 @@ class M3uEntry:
         """ getter _title_as_valid_file_name """
         return self._title_as_valid_file_name
 
+    def __str__(self):
+        return "M3u Entry id:" + str(self.id) +  ", title:" + self.title
 
 class M3uFileParser:
     """ Parse m3u file """
@@ -189,19 +191,24 @@ class M3uEntriesLibrary:
     
     def __init__(self) -> None:
         self._m3u_entries: list[M3uEntry] = []
+    
+    @property
+    def m3u_entries(self) -> list[M3uEntry]:
+        """ Getter """
+        return self._m3u_entries
         
     def add(self, m3u_entry:M3uEntry) -> None:
         """ add m3u to library """
         self._m3u_entries.append(m3u_entry)
         
-    def get_m3u_entry_by_id(self, id:int):
-        m3u_entries_with_id = [m3u_entry for m3u_entry in self._m3u_entries if m3u_entry.id == id]
-        logger_config.print_and_log_info("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(id))
+    def get_m3u_entry_by_id(self, m3u_entry_id:int):
+        m3u_entries_with_id = [m3u_entry for m3u_entry in self._m3u_entries if m3u_entry.id == m3u_entry_id]
+        logger_config.logging.debug("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(m3u_entry_id))
         if(len(m3u_entries_with_id) != 1):
-            raise Exception("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(id))
+            raise Exception("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(m3u_entry_id))
         
-        m3u_entry = self._m3u_entries[0]
-        logger_config.print_and_log_info("M3u entry for id:" + str(id) + " : " + str (m3u_entry))
+        m3u_entry = m3u_entries_with_id[0]
+        logger_config.logging.debug("M3u entry for id:" + str(m3u_entry_id) + " : " + str (m3u_entry))
         return m3u_entry
         
     def get_m3u_entries_with_filter(self, filter_str: str) -> list[M3uEntry]:
