@@ -29,7 +29,7 @@ class TestApplicationWithoutHmi(Dependencies.Common.unit_tests_helpers.TestCaseB
         
         self.checker.load_file("tv_channels_412910643GRB_plus_2024-10-08.m3u")
         for m3u_entry in self.checker.m3u_library.m3u_entries:
-            self.checker.create_xspf_file_by_id(xspf_output_files_directory + "/",m3u_entry.id)
+            self.assertTrue(self.checker.create_xspf_file_by_id(xspf_output_files_directory + "/",m3u_entry.id))
         
         
         
