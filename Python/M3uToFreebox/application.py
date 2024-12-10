@@ -1,5 +1,7 @@
 # -*-coding:Utf-8 -*
 
+import importlib
+
 import random
 
 
@@ -12,17 +14,16 @@ import m3u
 import xspf
 
 import main_view
-import main
 
 
 class M3uToFreeboxApplication:
     """ Application """
 
-    def __init__(self, main_view):
+    def __init__(self, m3u_to_freebox_main_view):
 
         self._m3u_library: m3u.M3uEntriesLibrary = m3u.M3uEntriesLibrary()
 
-        self._main_view:main_view.M3uToFreeboxMainView = main_view
+        self._main_view:m3u_to_freebox_main_view.M3uToFreeboxMainView = m3u_to_freebox_main_view
         
     def create_xspf_file_by_id_str(self, m3u_entry_id:str):
         m3u_entry_id_int = int(m3u_entry_id)
@@ -34,7 +35,7 @@ class M3uToFreeboxApplication:
 
         xspf_file_content = xspf.XspfFileContent(m3u_entry.title, m3u_entry.link)
         xsp_file_creator = xspf.XspfFileCreator()
-        xsp_file_creator.write(xspf_file_content,m3u_entry.title + ".xspf")
+        xsp_file_creator.write(xspf_file_content,m3u_entry.title_as_valid_file_name + ".xspf")
         
     def reset_library(self):
         self._m3u_library = m3u.M3uEntriesLibrary()
@@ -58,4 +59,6 @@ class M3uToFreeboxApplication:
 
 if __name__ == "__main__":
     # sys.argv[1:]
+    
+    main = importlib.import_module("main")
     main.main()
