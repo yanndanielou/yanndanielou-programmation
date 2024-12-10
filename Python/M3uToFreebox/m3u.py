@@ -7,6 +7,8 @@ from itertools import count
 import Dependencies.Logger.LoggerConfig as LoggerConfig
 import Dependencies.Common.Constants
 
+import main
+
 
 MRU_FIRST_LINE = "#EXTM3U"
 M3U_ENTRY_FIRST_LINE_BEGIN = "#EXTINF"
@@ -176,7 +178,7 @@ class M3uEntriesLibrary:
     def get_m3u_entry_by_id(self, id:int):
         m3u_entries_with_id = [m3u_entry for m3u_entry in self._m3u_entries if m3u_entry.id == id]
         LoggerConfig.print_and_log_info("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(id))
-        if(len(m3u_entries_with_id)):
+        if(len(m3u_entries_with_id) != 1):
             raise Exception("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(id))
         
         m3u_entry = self._m3u_entries[0]
@@ -198,3 +200,7 @@ class M3uEntriesLibrary:
         return ret
         
     
+if __name__ == "__main__":
+    # sys.argv[1:]
+    main.main()
+
