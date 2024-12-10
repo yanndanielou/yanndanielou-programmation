@@ -22,7 +22,7 @@ rem does not work @call :INSTALL_PYTHON_LIB lazyxml
 
 :INSTALL_PYTHON_LIB
 @Echo install %1
-@call %PYTHON_HOME%\python.exe -m pip install %1
+@start %PYTHON_HOME%\python.exe -m pip install %1
 @EXIT /B 0
 
 
