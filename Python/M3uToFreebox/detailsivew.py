@@ -21,7 +21,7 @@ import Dependencies.Logger.LoggerConfig as LoggerConfig
 
 import tkinter
 import m3u
-import detailspopup
+#import detailspopup
 import main
 
 
@@ -185,7 +185,7 @@ class DetailsViewTab(ttk.Frame):
 
     def _open_m3u_entry_detail_popup(self):
         m3u_entry_line = self.tree_view_context_menu.selection
-        m3u_entry_detail_popup = detailspopup.M3uEntryDetailPopup(self, None)
+        #m3u_entry_detail_popup = detailspopup.M3uEntryDetailPopup(self, None)
         
     def _select_directory_popup_and_create_xspf(self):
         tree_view_selection = self._tree_view.selection()
@@ -264,7 +264,7 @@ class DetailsViewTab(ttk.Frame):
         
         for m3u_entry in self._parent.m3u_to_freebox_application.m3u_library.get_m3u_entries_with_filter(self._filter_input_text.get()):
             m3u_entry_number = m3u_entry_number + 1
-            self._tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.title, m3u_entry.group_title))
+            self._tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.title_as_valid_file_name, m3u_entry.group_title))
 
             if m3u_entry_number % 10000 == 0:
                 LoggerConfig.print_and_log_info(str(m3u_entry_number) + " entries filled")
