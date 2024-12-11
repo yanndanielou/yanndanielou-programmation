@@ -53,7 +53,7 @@ class M3uEntry:
         self._tvg_name = self.decode_field(self._line1, "tvg-name")
         self._tvg_logo = self.decode_field(self._line1, "tvg-logo")
         self._group_title = self.decode_field(self._line1, "group-title")
-        self._title = self._line1.split('"')[len(self._line1.split('"'))-1][1:]
+        self._title:str = self._line1.split('"')[len(self._line1.split('"'))-1][1:]
 
         self._compute_title_as_valid_file_name()
 

@@ -22,6 +22,8 @@ import m3u
 #import detailspopup
 import main
 
+import m3u_search_filters
+
 
 
 from tkinter import (
@@ -68,6 +70,7 @@ class DetailsViewTab(ttk.Frame):
         # padding for widgets using the grid layout
         paddings = {'padx': 5, 'pady': 5}
         
+        self._filters:list[m3u_search_filters.M3uEntryByTitleFilter] = []
         
         # output label
         self.filter_option_description_label = ttk.Label(self._filter_frame, foreground='black')
@@ -239,12 +242,13 @@ class DetailsViewTab(ttk.Frame):
         tv.heading(col, command=lambda: \
                 self.treeview_sort_column(tv, col, not reverse))
 
+        import main_view
         @property
-        def parent(self) -> M3uToFreeboxMainView:
+        def parent(self) -> main_view.M3uToFreeboxMainView:
             return self._parent
 
         @parent.setter
-        def parent(self, value: M3uToFreeboxMainView):
+        def parent(self, value: main_view.M3uToFreeboxMainView):
             self._parent = value
 
 

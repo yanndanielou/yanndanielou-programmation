@@ -13,6 +13,8 @@ import Dependencies.Common.date_time_formats as date_time_formats
 import m3u
 import xspf
 
+import m3u_search_filters
+
 
 class M3uToFreeboxApplication:
     """ Application """
@@ -20,8 +22,13 @@ class M3uToFreeboxApplication:
     def __init__(self, m3u_to_freebox_main_view):
 
         self._m3u_library: m3u.M3uEntriesLibrary = m3u.M3uEntriesLibrary()
-
         self._main_view:m3u_to_freebox_main_view.M3uToFreeboxMainView = m3u_to_freebox_main_view
+        self._create_filters()
+        
+    def _create_filters(self):
+        self._fiters:list[m3u_search_filters.M3uEntryByTitleFilter] = []
+        self._fiters.append(m3u_search_filters.TitleContainsExactlyFilter(True, "Contains Exactly (case sensitive)"))
+        self._fiters.append(m3u_search_filters.TitleContainsExactlyFilter(False, "Contains Exactly (case NOT sensitive)"))
         
     def create_xspf_file_by_id_str(self, directory_path_name:str, m3u_entry_id:str, print_result:bool=True) -> bool:
         m3u_entry_id_int = int(m3u_entry_id)

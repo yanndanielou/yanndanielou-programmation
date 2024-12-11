@@ -21,14 +21,14 @@ class TestApplicationWithoutHmi(Dependencies.Common.unit_tests_helpers.TestCaseB
 
     def test_create_all_xspf_light_m3u(self):
         """ Number of results """
-        self.test_create_all_xspf_m3u("output_light", "light.m3u")
+        self.__test_create_all_xspf_m3u("output_light", "light.m3u")
         
     def test_create_all_xspf_zfull_m3u(self):
         """ Number of results """                
-        self.test_create_all_xspf_m3u("output_tv_channels_412910643GRB_plus_2024", "tv_channels_412910643GRB_plus_2024-10-08.m3u")
+        self.__test_create_all_xspf_m3u("output_tv_channels_412910643GRB_plus_2024", "tv_channels_412910643GRB_plus_2024-10-08.m3u")
 
         
-    def test_create_all_xspf_m3u(self, output_directory_name, m3u_file_name):
+    def __test_create_all_xspf_m3u(self, output_directory_name, m3u_file_name):
         """ Number of results """
         # Positive test case
         
