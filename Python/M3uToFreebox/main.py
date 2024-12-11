@@ -22,10 +22,8 @@ from tkinter import (
 from Dependencies.Logger import logger_config
 from Dependencies.Common import date_time_formats
 
-
-import m3u
-import application
-import main_view
+from application import M3uToFreeboxApplication
+from main_view import M3uToFreeboxMainView
 
 
 
@@ -37,8 +35,8 @@ def main():
 
     logger_config.print_and_log_info('Start application')
 
-    mainview = main_view.M3uToFreeboxMainView()
-    app: application.M3uToFreeboxApplication = application.M3uToFreeboxApplication(mainview)
+    mainview = M3uToFreeboxMainView()
+    app: M3uToFreeboxApplication = M3uToFreeboxApplication(mainview)
     mainview.m3u_to_freebox_application = app
     mainview.mainloop()
 

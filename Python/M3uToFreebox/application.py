@@ -10,7 +10,7 @@ import sys
 import Dependencies.Logger.logger_config as logger_config
 import Dependencies.Common.date_time_formats as date_time_formats
 
-import m3u
+from m3u import M3uEntriesLibrary, M3uFileParser
 import xspf
 
 import m3u_search_filters
@@ -21,14 +21,8 @@ class M3uToFreeboxApplication:
 
     def __init__(self, m3u_to_freebox_main_view):
 
-        self._m3u_library: m3u.M3uEntriesLibrary = m3u.M3uEntriesLibrary()
+        self._m3u_library: M3uEntriesLibrary = M3uEntriesLibrary()
         self._main_view:m3u_to_freebox_main_view.M3uToFreeboxMainView = m3u_to_freebox_main_view
-        self._create_filters()
-        
-    def _create_filters(self):
-        self._fiters:list[m3u_search_filters.M3uEntryByTitleFilter] = []
-        self._fiters.append(m3u_search_filters.TitleContainsExactlyFilter(True, "Contains Exactly (case sensitive)"))
-        self._fiters.append(m3u_search_filters.TitleContainsExactlyFilter(False, "Contains Exactly (case NOT sensitive)"))
         
     def create_xspf_file_by_id_str(self, directory_path_name:str, m3u_entry_id:str, print_result:bool=True) -> bool:
         m3u_entry_id_int = int(m3u_entry_id)
@@ -43,23 +37,23 @@ class M3uToFreeboxApplication:
         return xsp_file_creator.write(xspf_file_content, directory_path_name + "/" + m3u_entry.title_as_valid_file_name + ".xspf", print_result)
         
     def reset_library(self):
-        self._m3u_library = m3u.M3uEntriesLibrary()
+        self._m3u_library = M3uEntriesLibrary()
     
         
     def load_file(self, file_path):
         """ Load file """
         logger_config.print_and_log_info("Load file:" + file_path)
 
-        m3u_file_parser =  m3u.M3uFileParser()
+        m3u_file_parser =  M3uFileParser()
         for m3u_entry in m3u_file_parser.parse_file(file_path):
             self._m3u_library.add(m3u_entry)
         
     @property
-    def m3u_library(self) -> m3u.M3uEntriesLibrary :
+    def m3u_library(self) -> M3uEntriesLibrary :
         return self._m3u_library
 
     @m3u_library.setter
-    def m3u_library(self, value:m3u.M3uEntriesLibrary):
+    def m3u_library(self, value:M3uEntriesLibrary):
         self._m3u_library = value
 
 if __name__ == "__main__":

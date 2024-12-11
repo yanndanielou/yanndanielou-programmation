@@ -10,6 +10,8 @@ import Dependencies.Common.string_utils as string_utils
 import Dependencies.Logger.logger_config as logger_config
 import Dependencies.Common.Constants
 
+#from m3u_search_filters import M3uEntryByTitleFilter
+
 MRU_FIRST_LINE = "#EXTM3U"
 M3U_ENTRY_FIRST_LINE_BEGIN = "#EXTINF"
 
@@ -211,7 +213,7 @@ class M3uEntriesLibrary:
         logger_config.logging.debug("M3u entry for id:" + str(m3u_entry_id) + " : " + str (m3u_entry))
         return m3u_entry
         
-    def get_m3u_entries_with_filter(self, filter_str: str) -> list[M3uEntry]:
+    def get_m3u_entries_with_filter(self, filter_str: str, selected_filter) -> list[M3uEntry]:
         """ filter list of m3u """
         ret: list[M3uEntry] = []
         
@@ -219,7 +221,7 @@ class M3uEntriesLibrary:
             return self._m3u_entries
         
         for m3u_entry in self._m3u_entries:
-            if filter_str in m3u_entry.title:
+            if selected_filter.match_m3u(m3u_entry, filter_str):
                 ret.append(m3u_entry)
         
         logger_config.print_and_log_info("Number of entries with filter:" + filter_str + ": " + str(len(ret)))

@@ -10,19 +10,16 @@ import Dependencies.Logger.logger_config as logger_config
 import Dependencies.Common.date_time_formats as date_time_formats
 
 
-import time
 
 import tkinter
 
 
-import os
 
 import tkinter
-import m3u
 #import detailspopup
-import main
+#from main import main
 
-import m3u_search_filters
+from m3u_search_filters import M3uEntryByTitleFilter, TitleContainsExactlyFilter
 
 
 
@@ -48,12 +45,13 @@ class DetailsViewTab(ttk.Frame):
 
         import main_view
         self._parent:main_view.M3uToFreeboxMainView = parent
+        
+        self._filters:list[M3uEntryByTitleFilter] = []
 
         self._create_view()
         self._create_context_menu()
         
         #self._organize_widgets()
-
 
     def _create_filter_frame(self):
         """ Filter """
@@ -70,16 +68,17 @@ class DetailsViewTab(ttk.Frame):
         # padding for widgets using the grid layout
         paddings = {'padx': 5, 'pady': 5}
         
-        self._filters:list[m3u_search_filters.M3uEntryByTitleFilter] = []
         
         # output label
         self.filter_option_description_label = ttk.Label(self._filter_frame, foreground='black')
         self.filter_option_description_label['text'] = f'Type of filter:'
         self.filter_option_description_label.grid(row= 0, column=1, padx=20, pady=10)
-        
-        # initialize data
-        self.languages = ('Contains', 'Regex', 'Java',
-                        'Swift', 'GoLang', 'C#', 'C++', 'Scala')
+
+        self._filters.append(TitleContainsExactlyFilter(True, "Contains Exactly (case sensitive)"))
+        self._filters.append(TitleContainsExactlyFilter(False, "Contains Exactly (case NOT sensitive)"))
+
+
+        filters_texts = [o.label for o in self._filters]
 
         # set up variable
         self.option_var = tkinter.StringVar(self)
@@ -87,8 +86,8 @@ class DetailsViewTab(ttk.Frame):
         self._filter_option_menu = ttk.OptionMenu(
             self._filter_frame,
             self.option_var,
-            self.languages[0],
-            *self.languages,
+            filters_texts[0],
+            *filters_texts,
             command=self.filter_option_changed)
         
         
@@ -154,6 +153,7 @@ class DetailsViewTab(ttk.Frame):
         
     def filter_option_changed(self, *args):
         logger_config.print_and_log_info(f'You selected: {self.option_var.get()}')
+        self.fill_m3u_entries()
 
         
     
@@ -266,7 +266,11 @@ class DetailsViewTab(ttk.Frame):
         self._reset_list()
         m3u_entry_number = 0
         
-        for m3u_entry in self._parent.m3u_to_freebox_application.m3u_library.get_m3u_entries_with_filter(self._filter_input_text.get()):
+        selected_filter_name = self.option_var.get()
+        
+        selected_filter = [filter for filter in self._filters if filter.label == selected_filter_name][0]
+        
+        for m3u_entry in self._parent.m3u_to_freebox_application.m3u_library.get_m3u_entries_with_filter(self._filter_input_text.get(), selected_filter):
             m3u_entry_number = m3u_entry_number + 1
             self._tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.title_as_valid_file_name, m3u_entry.group_title))
 
@@ -280,4 +284,4 @@ class DetailsViewTab(ttk.Frame):
 
 if __name__ == "__main__":
     # sys.argv[1:]
-    main.main()
+    main()
