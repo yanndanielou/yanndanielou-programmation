@@ -42,6 +42,18 @@ def print_and_log_critical_and_kill(to_print_and_log):
     logging.critical(f"{__get_calling_file_name_and_line_number()} '\t' {to_print_and_log}")
     sys.exit()
 
+
+def print_and_log_info_if(condition, to_print_and_log):
+    """ Print in standard output and log in file as info level"""
+    
+    if condition:
+        log_timestamp = time.asctime( time.localtime(time.time()))
+
+        # pylint: disable=line-too-long
+        print(log_timestamp + '\t' + __get_calling_file_name_and_line_number() + '\t' + to_print_and_log)
+        logging.info(f"{__get_calling_file_name_and_line_number()} \t {to_print_and_log}")
+
+
 def print_and_log_info(to_print_and_log):
     """ Print in standard output and log in file as info level"""
     log_timestamp = time.asctime( time.localtime(time.time()))
