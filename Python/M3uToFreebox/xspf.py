@@ -75,11 +75,12 @@ class XspfFileContent:
 
 
 class XspfFileCreator:
-    """  """
+    """ Creator of xspf file """
     def __init__(self) -> None:
         pass
     
     def write(self, xspf_file_content:XspfFileContent, output_file_name: str, print_result:bool) -> bool:
+        """ Create xspf file """
         #xml_content = pyconvert.pyconv.convert2XML(xspf_file_content)
         #pretty_xml = xml_content.toprettyxml()
         #print(pretty_xml)
