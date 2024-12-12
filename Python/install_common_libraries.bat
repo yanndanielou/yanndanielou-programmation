@@ -1,5 +1,7 @@
 @CALL SET_PYTHON_HOME.bat
 
+call %PYTHON_HOME%\python.exe -m pip install --upgrade nltk
+@call :INSTALL_PYTHON_LIB numpy
 @call :INSTALL_PYTHON_LIB pyconvert
 rem does not fix lazyxml @call :INSTALL_PYTHON_LIB utils
 rem does not work @call :INSTALL_PYTHON_LIB lazyxml
@@ -21,8 +23,9 @@ rem does not work @call :INSTALL_PYTHON_LIB lazyxml
 
 
 :INSTALL_PYTHON_LIB
-@Echo install %1
-@start %PYTHON_HOME%\python.exe -m pip install %1
+@Title install python library %1
+@Echo install python library %1
+call %PYTHON_HOME%\python.exe -m pip install %1
 @EXIT /B 0
 
 
