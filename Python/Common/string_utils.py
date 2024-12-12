@@ -13,7 +13,7 @@ an invalid filename.
 Taken from https://gist.github.com/seanh/93666#file-formatfilename-py
  
 """
-    valid_chars = "àäâéêèëç@+-_.() %s%s" % (string.ascii_letters, string.digits)
+    valid_chars = "'àäâéêèëç@+-_.() %s%s" % (string.ascii_letters, string.digits)
     filename = ''.join(c for c in input_original_string if c in valid_chars)
     if not allow_spaces:
         filename = filename.replace(' ','_') # I don't like spaces in filenames.
