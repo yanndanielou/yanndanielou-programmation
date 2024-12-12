@@ -19,7 +19,7 @@ import tkinter
 #import detailspopup
 #from main import main
 
-from m3u_search_filters import M3uEntryByTitleFilter, TitleContainsExactlyFilter
+from m3u_search_filters import M3uEntryByTitleFilter, TitleContainsExactlyFilter, M3uFiltersManager
 
 
 
@@ -46,7 +46,7 @@ class DetailsViewTab(ttk.Frame):
         import main_view
         self._parent:main_view.M3uToFreeboxMainView = parent
         
-        self._filters:list[M3uEntryByTitleFilter] = []
+        self._filters:list[M3uEntryByTitleFilter] = M3uFiltersManager().filters
 
         self._create_view()
         self._create_context_menu()
@@ -73,9 +73,6 @@ class DetailsViewTab(ttk.Frame):
         self.filter_option_description_label = ttk.Label(self._filter_frame, foreground='black')
         self.filter_option_description_label['text'] = f'Type of filter:'
         self.filter_option_description_label.grid(row= 0, column=1, padx=20, pady=10)
-
-        self._filters.append(TitleContainsExactlyFilter(True, "Contains Exactly (case sensitive)"))
-        self._filters.append(TitleContainsExactlyFilter(False, "Contains Exactly (case NOT sensitive)"))
 
 
         filters_texts = [o.label for o in self._filters]

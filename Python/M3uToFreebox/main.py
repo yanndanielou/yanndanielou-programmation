@@ -7,16 +7,7 @@ import random
 
 import time
 
-import tkinter
-
-
 import os
-
-
-from tkinter import (
-  filedialog, 
-  ttk
-)
 
 
 from Dependencies.Logger import logger_config
