@@ -34,11 +34,12 @@ class M3uToFreeboxApplication:
         
         m3u_entry = self.m3u_library.get_m3u_entry_by_id(m3u_entry_id)
 
-        xspf_file_content = xspf.XspfFileContent(m3u_entry.title, m3u_entry.link)
+        xspf_file_content = xspf.XspfFileContent(m3u_entry.original_raw_title, m3u_entry.link)
         xsp_file_creator = xspf.XspfFileCreator()
         return xsp_file_creator.write(xspf_file_content, directory_path_name + "/" + m3u_entry.title_as_valid_file_name + ".xspf", print_result)
         
     def reset_library(self):
+        """ clear library """
         self._m3u_library = M3uEntriesLibrary()
     
         
@@ -52,14 +53,14 @@ class M3uToFreeboxApplication:
             
         if param.LIST_ALL_TITLES_CHANGED:
             logger_config.print_and_log_info("List titles changed")
-            m3u_entries_with_title_changed_from_comprehensive = [x for x in self._m3u_library.m3u_entries if x.title != x.title_as_valid_file_name]
+            m3u_entries_with_title_changed_from_comprehensive = [x for x in self._m3u_library.m3u_entries if x.original_raw_title != x.title_as_valid_file_name]
             logger_config.print_and_log_info("m3u_entries_with_title_changed_from_comprehensive:" + str(len(m3u_entries_with_title_changed_from_comprehensive)))
 
-            m3u_entries_with_title_changed_from_lambda = list(filter(lambda d : d.title != d.title_as_valid_file_name, self._m3u_library.m3u_entries))
+            m3u_entries_with_title_changed_from_lambda = list(filter(lambda d : d.original_raw_title != d.title_as_valid_file_name, self._m3u_library.m3u_entries))
             logger_config.print_and_log_info("m3u_entries_with_title_changed:" + str(len(m3u_entries_with_title_changed_from_lambda)))
             
             with open(param.ALL_TITLES_CHANGED_FILE_NAME_BEFORE, "w", encoding="utf-8") as file:
-                attr=(o.title for o in m3u_entries_with_title_changed_from_lambda)
+                attr=(o.original_raw_title for o in m3u_entries_with_title_changed_from_lambda)
                 list_original_title = list(attr)
                 list_original_title = list(map(lambda x: x + Dependencies.Common.Constants.end_line_character_in_text_file, list_original_title))
                 file.writelines(list_original_title)
@@ -73,10 +74,11 @@ class M3uToFreeboxApplication:
                 file.writelines(list_title_changed)
                 logger_config.print_and_log_info(param.ALL_TITLES_CHANGED_FILE_NAME_AFTER + " filled")
 
-  
+
         
     @property
     def m3u_library(self) -> M3uEntriesLibrary :
+        """ getter """
         return self._m3u_library
 
     @m3u_library.setter

@@ -39,7 +39,7 @@ class TestM3uFileParser(Dependencies.Common.unit_tests_helpers.TestCaseBase):
         self.assertEqual(first_m3u_entry.tvg_name, "|FR| TF1 SD")
         self.assertEqual(first_m3u_entry.tvg_logo, "https://i.imgur.com/LMxTAzY.png")
         self.assertEqual(first_m3u_entry.group_title, "FR TV SD (FRANCE)")
-        self.assertEqual(first_m3u_entry.title, "|FR| TF1 SD")
+        self.assertEqual(first_m3u_entry.original_raw_title, "|FR| TF1 SD")
         
         self.assertEqual(first_m3u_entry.link, "http://vevoxtv.top:80/412910643GRB/dn5QFp3/12071")
 

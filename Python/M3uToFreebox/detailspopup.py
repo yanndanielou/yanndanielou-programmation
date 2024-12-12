@@ -39,6 +39,6 @@ class M3uEntryDetailPopup(tkinter.Toplevel):
 
     self._m3u_entry = m3u_entry
     self.geometry("750x250")
-    self.title("M3u entry " + self._m3u_entry._title)
-    tkinter.Label(self, text= self._m3u_entry._title, font=('Mistral 18 bold')).place(x=150,y=80)
+    self.title("M3u entry " + self._m3u_entry._original_raw_title)
+    tkinter.Label(self, text= self._m3u_entry._original_raw_title, font=('Mistral 18 bold')).place(x=150,y=80)
 

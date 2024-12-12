@@ -55,9 +55,10 @@ class M3uEntry:
         self._tvg_name = self.decode_field(self._line1, "tvg-name")
         self._tvg_logo = self.decode_field(self._line1, "tvg-logo")
         self._group_title = self.decode_field(self._line1, "group-title")
-        self._title:str = self._line1.split('"')[len(self._line1.split('"'))-1][1:]
+        self._original_raw_title:str = self._line1.split('"')[len(self._line1.split('"'))-1][1:]
 
         self._compute_title_as_valid_file_name()
+        self._compute_cleaned_title()
 
         self._m3u_entries = M3uEntriesLibrary()
 
@@ -66,12 +67,17 @@ class M3uEntry:
 
     def _compute_title_as_valid_file_name(self):
         """ Remove special caracters """
-        self._title_as_valid_file_name:str = string_utils.format_filename(self._title, True)
+        self._title_as_valid_file_name:str = string_utils.format_filename(self._original_raw_title, True)
+               
+    def _compute_cleaned_title(self):
+        """ Remove special caracters """
+        self._cleaned_title:str = self._original_raw_title
+        self._cleaned_title = self._cleaned_title.replace(chr(9600),"")
+        self._cleaned_title = self._cleaned_title.replace(chr(9604),"")
                
 
     def decode_field(self, line, field_name) -> str:
         field_content = line.split(field_name)[1].split('"')[1]
-
         return field_content
 
 
@@ -82,6 +88,12 @@ class M3uEntry:
     @link.setter
     def link(self, value):
         self._link = value
+
+    @property
+    def cleaned_title(self):
+        """ getter _cleaned_title """
+        return self._cleaned_title
+
 
     @property
     def line1(self):
@@ -138,13 +150,13 @@ class M3uEntry:
         self._group_title = value
 
     @property
-    def title(self):
+    def original_raw_title(self):
         """ getter _title """
-        return self._title
+        return self._original_raw_title
 
-    @title.setter
-    def title(self, value):
-        self._title = value
+    @original_raw_title.setter
+    def original_raw_title(self, value):
+        self._original_raw_title = value
         
     @property
     def title_as_valid_file_name(self):
@@ -152,7 +164,7 @@ class M3uEntry:
         return self._title_as_valid_file_name
 
     def __str__(self):
-        return "M3u Entry id:" + str(self.id) +  ", title:" + self.title
+        return "M3u Entry id:" + str(self.id) +  ", title:" + self.original_raw_title
 
 class M3uFileParser:
     """ Parse m3u file """

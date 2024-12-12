@@ -67,8 +67,8 @@ class TitleContainsExactlyFilter(M3uEntryByTitleFilter):
     
     def match_m3u(self, m3u_entry, filter_text):
         if self._case_sensitive:
-            return filter_text in m3u_entry.title
-        return filter_text.lower() in m3u_entry.title.lower()
+            return filter_text in m3u_entry.original_raw_title
+        return filter_text.lower() in m3u_entry.original_raw_title.lower()
         
 
     

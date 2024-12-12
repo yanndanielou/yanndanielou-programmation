@@ -110,7 +110,7 @@ class DetailsViewTab(ttk.Frame):
         #Configure the scrollbar
         self._tree_scroll.config(command=self._tree_view.yview)
 
-        columns = ('ID','Title', 'Group')
+        columns = ('ID','Cleaned title','Original title', 'File name', 'Group')
 
         self._tree_view["column"] = columns
 
@@ -284,7 +284,7 @@ class DetailsViewTab(ttk.Frame):
         
         for m3u_entry in self._parent.m3u_to_freebox_application.m3u_library.get_m3u_entries_with_filter(self._filter_input_text.get(), selected_filter):
             m3u_entry_number = m3u_entry_number + 1
-            self._tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.title_as_valid_file_name, m3u_entry.group_title))
+            self._tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.cleaned_title,m3u_entry.original_raw_title,m3u_entry.title_as_valid_file_name, m3u_entry.group_title))
 
             if m3u_entry_number % 10000 == 0:
                 logger_config.print_and_log_info(str(m3u_entry_number) + " entries filled (in progress)")
