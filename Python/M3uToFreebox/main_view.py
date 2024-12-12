@@ -24,7 +24,7 @@ from Dependencies.Common import date_time_formats
 
 
 import m3u
-from detailsivew import DetailsViewTab
+from detailsview import DetailsViewTab
 import application
 import main_view
 

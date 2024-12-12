@@ -164,6 +164,8 @@ class DetailsViewTab(ttk.Frame):
         self.tree_view_context_menu.add_command(label="Create xspf on ...", command=self._select_directory_popup_and_create_xspf)
         
         for destination_folder in DestinationsFolders().destinations_folders :
+            print(destination_folder[0])
+            print(destination_folder)
             self.tree_view_context_menu.add_command(label="Create xspf on " + destination_folder[0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destination_folder))
             
         self.tree_view_context_menu.add_command(label="Show detail", command=self._open_m3u_entry_detail_popup)
@@ -210,20 +212,20 @@ class DetailsViewTab(ttk.Frame):
             logger_config.print_and_log_info("No directory chosen")
 
     def _create_xspf_on_destination_context_menu_choosen(self, destination):
+        logger_config.print_and_log_info("destination chosen" + str(destination))
         m3u_entry_line = self.tree_view_context_menu.selection
+        
+        if len(m3u_entry_line) == 0:
+            logger_config.print_and_log_info("No line selected")
+            return
+
+
         m3u_entry_id_str = m3u_entry_line['ID']
         
         directory = destination[1]
         
         self._parent.m3u_to_freebox_application.create_xspf_file_by_id_str(directory, m3u_entry_id_str)
-
-    
-    def _create_xspf_on_freebox_context_menu_choosen(self):
-        m3u_entry_line = self.tree_view_context_menu.selection
-        m3u_entry_id_str = m3u_entry_line['ID']
-        
-        self._parent.m3u_to_freebox_application.create_xspf_file_by_id_str(m3u_entry_id_str)
-
+  
     def _create_view(self):
                 
         self._create_filter_frame()
