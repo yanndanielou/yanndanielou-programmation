@@ -46,6 +46,12 @@ class TestApplicationWithoutHmi(unit_tests_helpers.TestCaseBase):
         self.__assert_format_filename_returns_entry("@.txt")
         self.__assert_format_filename_returns_entry("+.txt")
         self.__assert_format_filename_returns_entry("'.txt")
+        self.__assert_format_filename_returns_entry("ô.txt")
+        self.__assert_format_filename_returns_entry("ö.txt")
+        self.__assert_format_filename_returns_entry("û.txt")
+        self.__assert_format_filename_returns_entry("ü.txt")
+        self.__assert_format_filename_returns_entry("ï.txt")
+        self.__assert_format_filename_returns_entry("î.txt")
         self.__assert_format_filename_returns_entry("ââäâaaàèéêë.txt")
 
     

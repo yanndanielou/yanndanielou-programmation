@@ -9,12 +9,14 @@ import sys
 
 import Dependencies.Logger.logger_config as logger_config
 import Dependencies.Common.date_time_formats as date_time_formats
+import Dependencies.Common.Constants
 
 from m3u import M3uEntriesLibrary, M3uFileParser
 import xspf
 
 import m3u_search_filters
 
+import param
 
 class M3uToFreeboxApplication:
     """ Application """
@@ -47,6 +49,31 @@ class M3uToFreeboxApplication:
         m3u_file_parser =  M3uFileParser()
         for m3u_entry in m3u_file_parser.parse_file(file_path):
             self._m3u_library.add(m3u_entry)
+            
+        if param.LIST_ALL_TITLES_CHANGED:
+            logger_config.print_and_log_info("List titles changed")
+            m3u_entries_with_title_changed_from_comprehensive = [x for x in self._m3u_library.m3u_entries if x.title != x.title_as_valid_file_name]
+            logger_config.print_and_log_info("m3u_entries_with_title_changed_from_comprehensive:" + str(len(m3u_entries_with_title_changed_from_comprehensive)))
+
+            m3u_entries_with_title_changed_from_lambda = list(filter(lambda d : d.title != d.title_as_valid_file_name, self._m3u_library.m3u_entries))
+            logger_config.print_and_log_info("m3u_entries_with_title_changed:" + str(len(m3u_entries_with_title_changed_from_lambda)))
+            
+            with open(param.ALL_TITLES_CHANGED_FILE_NAME_BEFORE, "w", encoding="utf-8") as file:
+                attr=(o.title for o in m3u_entries_with_title_changed_from_lambda)
+                list_original_title = list(attr)
+                list_original_title = list(map(lambda x: x + Dependencies.Common.Constants.end_line_character_in_text_file, list_original_title))
+                file.writelines(list_original_title)
+                logger_config.print_and_log_info(param.ALL_TITLES_CHANGED_FILE_NAME_BEFORE + " filled")
+
+    
+            with open(param.ALL_TITLES_CHANGED_FILE_NAME_AFTER, "w", encoding="utf-8") as file:
+                attr=(o.title_as_valid_file_name for o in m3u_entries_with_title_changed_from_lambda)
+                list_title_changed = list(attr)
+                list_title_changed = list(map(lambda x: x + Dependencies.Common.Constants.end_line_character_in_text_file, list_title_changed))
+                file.writelines(list_title_changed)
+                logger_config.print_and_log_info(param.ALL_TITLES_CHANGED_FILE_NAME_AFTER + " filled")
+
+  
         
     @property
     def m3u_library(self) -> M3uEntriesLibrary :

@@ -287,8 +287,9 @@ class DetailsViewTab(ttk.Frame):
             self._tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.title_as_valid_file_name, m3u_entry.group_title))
 
             if m3u_entry_number % 10000 == 0:
-                logger_config.print_and_log_info(str(m3u_entry_number) + " entries filled")
+                logger_config.print_and_log_info(str(m3u_entry_number) + " entries filled (in progress)")
         
+        logger_config.print_and_log_info(str(m3u_entry_number) + " entries filled (end)")
         
     def selection(self):
         print(self.tree_view_context_menu.selection)
