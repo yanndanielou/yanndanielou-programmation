@@ -1,6 +1,6 @@
 import string
 
-def format_filename(s, allow_spaces:bool):
+def format_filename(input_original_string:str, allow_spaces:bool = True):
     """Take a string and return a valid filename constructed from the string.
 Uses a whitelist approach: any characters not present in valid_chars are
 removed. Also spaces are replaced with underscores.
@@ -13,8 +13,8 @@ an invalid filename.
 Taken from https://gist.github.com/seanh/93666#file-formatfilename-py
  
 """
-    valid_chars = "-_.() %s%s" % (string.ascii_letters, string.digits)
-    filename = ''.join(c for c in s if c in valid_chars)
+    valid_chars = "àäâéêèëç@+-_.() %s%s" % (string.ascii_letters, string.digits)
+    filename = ''.join(c for c in input_original_string if c in valid_chars)
     if not allow_spaces:
         filename = filename.replace(' ','_') # I don't like spaces in filenames.
     return filename
