@@ -98,17 +98,17 @@ class DetailsViewTab(ttk.Frame):
 
 
         # Treeview Scrollbar
-        self._tree_scroll = tkinter.Scrollbar(self._tree_view_frame)
-        self._tree_scroll.pack(side=tkinter.RIGHT, fill=tkinter.Y)
+        self._tree_scroll_vertical = tkinter.Scrollbar(self._tree_view_frame)
+        self._tree_scroll_vertical.pack(side=tkinter.RIGHT, fill=tkinter.Y)
 
 
         # Create Treeview
-        self._tree_view = ttk.Treeview(self._tree_view_frame, yscrollcommand=self._tree_scroll.set, selectmode="extended", show='headings')
+        self._tree_view = ttk.Treeview(self._tree_view_frame, yscrollcommand=self._tree_scroll_vertical.set, selectmode="extended", show='headings')
         
         # Pack to the screen
 
         #Configure the scrollbar
-        self._tree_scroll.config(command=self._tree_view.yview)
+        self._tree_scroll_vertical.config(command=self._tree_view.yview)
 
         columns = ('ID','Cleaned title','Original title', 'File name', 'Group')
 
@@ -133,7 +133,7 @@ class DetailsViewTab(ttk.Frame):
 
 
         self._tree_view.pack()
-        self._tree_scroll.pack(side=tkinter.RIGHT, fill=tkinter.Y)
+        self._tree_scroll_vertical.pack(side=tkinter.RIGHT, fill=tkinter.Y)
 
     def _create_bottom_frame(self):
         
