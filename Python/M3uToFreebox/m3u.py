@@ -224,7 +224,7 @@ class M3uEntriesLibrary:
             if selected_filter.match_m3u(m3u_entry, filter_str):
                 ret.append(m3u_entry)
         
-        logger_config.print_and_log_info("Number of entries with filter:" + filter_str + ": " + str(len(ret)))
+        logger_config.print_and_log_info("Number of entries with typed text:" + filter_str + ": " + str(len(ret)))
         return ret
         
     
