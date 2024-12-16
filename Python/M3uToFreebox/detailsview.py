@@ -163,10 +163,21 @@ class DetailsViewTab(ttk.Frame):
         
         self.tree_view_context_menu.add_command(label="Create xspf on ...", command=self._select_directory_popup_and_create_xspf)
         
+        destinations_folders  = DestinationsFolders().destinations_folders
+        self.tree_view_context_menu.add_command(label="Create xspf on " + destinations_folders[0][0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destinations_folders[0][1]))
+        self.tree_view_context_menu.add_command(label="Create xspf on " + destinations_folders[1][0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destinations_folders[1][1]))
+        
+        #for i, destination_folder in enumerate (DestinationsFolders().destinations_folders):
+        #    self.tree_view_context_menu.add_command(label="Create xspf on " + destination_folder[0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destination_folder[1]))
+        
+        #        
+        #self.tree_view_context_menu.add_command(label="Create xspf on " + destinations_folders[1][0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destinations_folders[1][1]))
+        
         for destination_folder in DestinationsFolders().destinations_folders :
             print(destination_folder[0])
             print(destination_folder)
-            self.tree_view_context_menu.add_command(label="Create xspf on " + destination_folder[0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destination_folder))
+            #destination_folder_path = str(destination_folder[1)])
+            #self.tree_view_context_menu.add_command(label="Create xspf on " + destination_folder[0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destination_folder[1]))
             
         self.tree_view_context_menu.add_command(label="Show detail", command=self._open_m3u_entry_detail_popup)
         self.tree_view_context_menu.add_command(label="Reset", command=self._reset_list)
@@ -212,7 +223,7 @@ class DetailsViewTab(ttk.Frame):
             logger_config.print_and_log_info("No directory chosen")
 
     def _create_xspf_on_destination_context_menu_choosen(self, destination):
-        logger_config.print_and_log_info("destination chosen" + str(destination))
+        logger_config.print_and_log_info("destination chosen: " + str(destination))
         m3u_entry_line = self.tree_view_context_menu.selection
         
         if len(m3u_entry_line) == 0:
@@ -222,7 +233,7 @@ class DetailsViewTab(ttk.Frame):
 
         m3u_entry_id_str = m3u_entry_line['ID']
         
-        directory = destination[1]
+        directory = destination
         
         self._parent.m3u_to_freebox_application.create_xspf_file_by_id_str(directory, m3u_entry_id_str)
   
