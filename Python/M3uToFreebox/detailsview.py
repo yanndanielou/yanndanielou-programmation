@@ -11,9 +11,12 @@ import Dependencies.Common.date_time_formats as date_time_formats
 
 from destinations import DestinationsFolders
 
-
+import urllib.request
+from urllib.error import URLError, HTTPError
 
 import tkinter
+
+import param
 
 
 
@@ -115,7 +118,11 @@ class DetailsViewTab(ttk.Frame):
         #Configure the scrollbar
         self._tree_scroll_vertical.config(command=self._tree_view.yview)
 
-        columns = ('ID','Cleaned title','Original title', 'File name', 'Group', 'type')
+        columns = ['ID','Cleaned title','Original title', 'File name', 'Group', 'type']
+        
+        if param.DISPLAY_FILES_SIZE:
+            columns.append("Size")
+            #column.p
 
         self._tree_view["column"] = columns
 
@@ -324,7 +331,25 @@ class DetailsViewTab(ttk.Frame):
         
         for m3u_entry in self._parent.m3u_to_freebox_application.m3u_library.get_m3u_entries_with_filter(self._filter_input_text.get(), selected_filter):
             m3u_entry_number = m3u_entry_number + 1
-            self._tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.cleaned_title,m3u_entry.original_raw_title,m3u_entry.title_as_valid_file_name, m3u_entry.group_title, m3u_entry._type.value))
+            tree_view_entry_values = [m3u_entry.id,m3u_entry.cleaned_title,m3u_entry.original_raw_title,m3u_entry.title_as_valid_file_name, m3u_entry.group_title, m3u_entry._type.value]
+            if param.DISPLAY_FILES_SIZE and m3u_entry.can_be_downloaded():
+                try:
+                    with urllib.request.urlopen(m3u_entry.link) as url_open:
+                        tree_view_entry_values.append(f'{url_open.length}')
+                        #logger_config.print_and_log_info(f'File to download size {url_open.length}')
+                except HTTPError as e:
+                    # do something
+                    logger_config.print_and_log_error(f'Error code: {e.code} for {m3u_entry}')
+                    tree_view_entry_values.append(f'Error! {e}')
+                except URLError as e:
+                    # do something
+                    logger_config.print_and_log_error(f'Error code: {e.code} for {m3u_entry}')
+                    tree_view_entry_values.append(f'Error! {e}')
+
+            else:
+                tree_view_entry_values.append('NA')
+
+            self._tree_view.insert("",'end', iid=m3u_entry.id, values=tree_view_entry_values)
 
             if m3u_entry_number % 10000 == 0:
                 logger_config.print_and_log_info(str(m3u_entry_number) + " entries filled (in progress)")
