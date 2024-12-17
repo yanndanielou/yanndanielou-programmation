@@ -35,3 +35,7 @@ Taken from https://gist.github.com/seanh/93666#file-formatfilename-py
         
         
     return input_original_string
+
+def right_part_after_last_occurence(input_string:str, separator:str) -> str:
+    splitted_tab =input_string.split(separator)
+    return splitted_tab[len(splitted_tab)-1]

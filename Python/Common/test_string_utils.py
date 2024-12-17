@@ -5,7 +5,13 @@ import unittest
 import unit_tests_helpers
 import string_utils
 
+class Separators(unit_tests_helpers.TestCaseBase):
+    def __init__(self, methodName='runTest'):  
+        super().__init__(methodName)  
 
+
+    def test_right_part_after_last_occurence(self):
+        self.assertEqual(string_utils.right_part_after_last_occurence("abcde" , "d"), "e")
 
 class TestApplicationWithoutHmi(unit_tests_helpers.TestCaseBase):
 
