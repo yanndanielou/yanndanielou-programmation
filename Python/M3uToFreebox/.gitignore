@@ -3,6 +3,8 @@
 *.zip
 *.m3u
 *.txt
+*.mkv
+*.mp4
 /.mypy_cache/
 Dependencies/
 Logger

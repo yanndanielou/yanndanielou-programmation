@@ -8,7 +8,11 @@ import importlib
 import Dependencies.Common.string_utils as string_utils
 
 import Dependencies.Logger.logger_config as logger_config
+import Dependencies.Common.file_name_utils as file_name_utils
+import Dependencies.Common.string_utils as string_utils
 import Dependencies.Common.Constants
+
+from enum import Enum
 
 #from m3u_search_filters import M3uEntryByTitleFilter
 
@@ -37,18 +41,24 @@ class M3uEntryStringDefinition:
         return self._line2
 
     @line2.setter
-    def line2(self, value):
+    def line2(self, value)->str:
         self._line2 = value
 
 class M3uEntry:
     """ M3u entry"""
+
+    class EntryType(Enum):
+        DOWNLOADABLE = "File"
+        CHANNEL = "Channel"
+    
 
     _ids = count(0)
 
     def __init__(self, current_m3u_entry_lines_definition: M3uEntryStringDefinition) -> None:
 
         self._id = next(self._ids)
-        self._link = current_m3u_entry_lines_definition.line2
+        self._link:str = current_m3u_entry_lines_definition.line2
+
         self._line1 = current_m3u_entry_lines_definition.line1
 
         self._tvg_id = self.decode_field(self._line1, "tvg-id")
@@ -59,11 +69,29 @@ class M3uEntry:
 
         self._compute_title_as_valid_file_name()
         self._compute_cleaned_title()
+        self._compute_extension()
+        self._compute_type()
 
         self._m3u_entries = M3uEntriesLibrary()
 
         self._m3u_entries.add(self)
         
+    def _compute_type(self):
+        if self._file_extension is not None:
+            self._type = M3uEntry.EntryType.DOWNLOADABLE
+        else:
+            self._type = M3uEntry.EntryType.CHANNEL
+
+    def _compute_extension(self):
+        """ Compute extension """
+        
+        #http://vdevoxtv.top:2103/movie/412910643GRB/dn5QFp3/24950.mp4
+        #http://veavoxtv.top:2103/412910643GRB/dn5QFp3/37744
+        #http://vedvoxtv.top:2103/series/412910643GRB/dn5QFp3/57996.mkv
+        self._file_extension:str = file_name_utils.file_extension_from_full_path(self._link)
+        
+
+
 
     def _compute_title_as_valid_file_name(self):
         """ Remove special caracters """
@@ -80,10 +108,19 @@ class M3uEntry:
         field_content = line.split(field_name)[1].split('"')[1]
         return field_content
 
+    def can_be_downloaded(self)->bool:
+        return self._type == M3uEntry.EntryType.DOWNLOADABLE
 
+    @property
+    def type(self) -> EntryType:
+        return self._type
     @property
     def link(self):
         return self._link
+    
+    @property
+    def file_extension(self):
+        return self._file_extension
 
     @link.setter
     def link(self, value):
@@ -215,7 +252,7 @@ class M3uEntriesLibrary:
         """ add m3u to library """
         self._m3u_entries.append(m3u_entry)
         
-    def get_m3u_entry_by_id(self, m3u_entry_id:int):
+    def get_m3u_entry_by_id(self, m3u_entry_id:int) -> M3uEntry:
         m3u_entries_with_id = [m3u_entry for m3u_entry in self._m3u_entries if m3u_entry.id == m3u_entry_id]
         logger_config.logging.debug("Found " + str(len(m3u_entries_with_id)) + " entries matching id:" + str(m3u_entry_id))
         if(len(m3u_entries_with_id) != 1):

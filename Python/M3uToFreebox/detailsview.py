@@ -115,7 +115,7 @@ class DetailsViewTab(ttk.Frame):
         #Configure the scrollbar
         self._tree_scroll_vertical.config(command=self._tree_view.yview)
 
-        columns = ('ID','Cleaned title','Original title', 'File name', 'Group')
+        columns = ('ID','Cleaned title','Original title', 'File name', 'Group', 'type')
 
         self._tree_view["column"] = columns
 
@@ -125,18 +125,7 @@ class DetailsViewTab(ttk.Frame):
         
 
         self._tree_view.column(self._tree_view["columns"][0],width=40)
-        
-        #print(str(self._tree_view.column("ID")))
-        #self._tree_view.column("ID")['minwidth']
-        #print(str(self._tree_view.column("ID")))
-
-        
-        #['width'] = 10
-        #self._tree_view.column("ID")['minwidth'] = 10
-        #column_id.width = 10
-    
-
-
+ 
         self._tree_view.pack()
         self._tree_scroll_vertical.pack(side=tkinter.RIGHT, fill=tkinter.Y)
 
@@ -169,9 +158,20 @@ class DetailsViewTab(ttk.Frame):
         self.tree_view_context_menu.add_command(label="Create xspf on ...", command=self._select_directory_popup_and_create_xspf)
         
         destinations_folders  = DestinationsFolders().destinations_folders
-        self.tree_view_context_menu.add_command(label="Create xspf on " + destinations_folders[0][0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destinations_folders[0]))
-        self.tree_view_context_menu.add_command(label="Create xspf on " + destinations_folders[1][0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destinations_folders[1]))
+        #self.tree_view_context_menu.add_command(label="Create xspf on " + destinations_folders[0][0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destinations_folders[0]))
+        #self.tree_view_context_menu.add_command(label="Create xspf on " + destinations_folders[1][0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destinations_folders[1]))
         
+        
+        action = Action.DONWLOAD_MOVIE
+        self.tree_view_context_menu.add_command(label=action.value + " on " + destinations_folders[0][0], command=lambda: self._perform_action_on_destination_context_menu_choosen(Action.DONWLOAD_MOVIE, destinations_folders[0]))
+        self.tree_view_context_menu.add_command(label=action.value + " on " + destinations_folders[1][0], command=lambda: self._perform_action_on_destination_context_menu_choosen(Action.DONWLOAD_MOVIE, destinations_folders[1]))
+
+        action = Action.CREATE_XSPF_FILE
+        self.tree_view_context_menu.add_command(label=action.value + " on " + destinations_folders[0][0], command=lambda: self._perform_action_on_destination_context_menu_choosen(Action.CREATE_XSPF_FILE, destinations_folders[0]))
+        self.tree_view_context_menu.add_command(label=action.value + " on " + destinations_folders[1][0], command=lambda: self._perform_action_on_destination_context_menu_choosen(Action.CREATE_XSPF_FILE, destinations_folders[1]))
+        
+        
+
         #for i, destination_folder in enumerate (DestinationsFolders().destinations_folders):
         #    self.tree_view_context_menu.add_command(label="Create xspf on " + destination_folder[0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destination_folder[1]))
         
@@ -228,8 +228,7 @@ class DetailsViewTab(ttk.Frame):
 
         match action:
             case Action.DONWLOAD_MOVIE:
-                action-1
-                self._parent.m3u_to_freebox_application.download_move_file_by_id_str(destination_directory, m3u_entry_id_str)
+                self._parent.m3u_to_freebox_application.download_movie_file_by_id_str(destination_directory, m3u_entry_id_str)
 
             case Action.CREATE_XSPF_FILE:
                 self._parent.m3u_to_freebox_application.create_xspf_file_by_id_str(destination_directory, m3u_entry_id_str)
@@ -325,7 +324,7 @@ class DetailsViewTab(ttk.Frame):
         
         for m3u_entry in self._parent.m3u_to_freebox_application.m3u_library.get_m3u_entries_with_filter(self._filter_input_text.get(), selected_filter):
             m3u_entry_number = m3u_entry_number + 1
-            self._tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.cleaned_title,m3u_entry.original_raw_title,m3u_entry.title_as_valid_file_name, m3u_entry.group_title))
+            self._tree_view.insert("",'end', iid=m3u_entry.id, values=(m3u_entry.id,m3u_entry.cleaned_title,m3u_entry.original_raw_title,m3u_entry.title_as_valid_file_name, m3u_entry.group_title, m3u_entry._type.value))
 
             if m3u_entry_number % 10000 == 0:
                 logger_config.print_and_log_info(str(m3u_entry_number) + " entries filled (in progress)")

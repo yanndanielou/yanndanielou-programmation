@@ -1,4 +1,19 @@
+import importlib.util, sys
+
+import os
+cwd = os.getcwd()
+
+sys.path.insert(1, os.getcwd())
+sys.path.insert(1, "Dependencies/Common")
 import string_utils
+
+#importlib.util.spec_from_loader
+#string_utils = importlib.util.spec_from_file_location("string_utils", "string_utils.py")
+
+#import string_utils
+#import Dependencies.Common.string_utils
+
+importlib.machinery.FileFinder
 
 def file_extension_from_full_path(full_path:str)->str:
     """ returns the file extension if any"""
@@ -9,3 +24,4 @@ def file_extension_from_full_path(full_path:str)->str:
     
     after_point = string_utils.right_part_after_last_occurence(last_part_of_path, ".")
     return "." + after_point
+    
