@@ -36,8 +36,12 @@ from tkinter import (
   ttk
   )
 
+from enum import Enum
 
-
+class Action(Enum):
+    CREATE_XSPF_FILE = "Create xspf file"
+    DONWLOAD_MOVIE= "Download movie"
+    
 class DetailsViewTab(ttk.Frame):
 
     
@@ -206,7 +210,30 @@ class DetailsViewTab(ttk.Frame):
     def _open_m3u_entry_detail_popup(self):
         m3u_entry_line = self.tree_view_context_menu.selection
         #m3u_entry_detail_popup = detailspopup.M3uEntryDetailPopup(self, None)
-        
+    
+    def _perform_action_on_destination_context_menu_choosen(self, action:Action, destination):
+
+        logger_config.print_and_log_info("destination chosen: " + str(destination))
+        logger_config.print_and_log_info("action chosen: " + str(action))
+
+        m3u_entry_line = self.tree_view_context_menu.selection        
+        if len(m3u_entry_line) == 0:
+            logger_config.print_and_log_info("No line selected")
+            return
+
+
+        m3u_entry_id_str = m3u_entry_line['ID']        
+        destination_directory = destination[1]        
+  
+
+        match action:
+            case Action.DONWLOAD_MOVIE:
+                action-1
+                self._parent.m3u_to_freebox_application.download_move_file_by_id_str(destination_directory, m3u_entry_id_str)
+
+            case Action.CREATE_XSPF_FILE:
+                self._parent.m3u_to_freebox_application.create_xspf_file_by_id_str(destination_directory, m3u_entry_id_str)
+
     def _select_directory_popup_and_create_xspf(self):
         tree_view_selection = self._tree_view.selection()
         logger_config.print_and_log_info("tree_view_selection:"  + str(tree_view_selection))
