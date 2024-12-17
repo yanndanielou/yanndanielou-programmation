@@ -1,3 +1,5 @@
+# -*-coding:Utf-8 -*
+
 import string
 
 def format_filename(input_original_string:str, allow_spaces:bool = True):

@@ -1,6 +1,9 @@
 @CALL SET_PYTHON_HOME.bat
 
-call %PYTHON_HOME%\python.exe -m pip install --upgrade nltk
+
+@call :INSTALL_PYTHON_LIB requests
+@call :INSTALL_PYTHON_LIB tqdm
+@call %PYTHON_HOME%\python.exe -m pip install --upgrade nltk
 @call :INSTALL_PYTHON_LIB numpy
 @call :INSTALL_PYTHON_LIB pyconvert
 rem does not fix lazyxml @call :INSTALL_PYTHON_LIB utils

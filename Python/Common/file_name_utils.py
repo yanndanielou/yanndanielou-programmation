@@ -1,3 +1,5 @@
+# -*-coding:Utf-8 -*
+
 import importlib.util, sys
 
 import os
@@ -5,7 +7,8 @@ cwd = os.getcwd()
 
 sys.path.insert(1, os.getcwd())
 sys.path.insert(1, "Dependencies/Common")
-import string_utils
+
+
 
 #importlib.util.spec_from_loader
 #string_utils = importlib.util.spec_from_file_location("string_utils", "string_utils.py")
