@@ -5,7 +5,7 @@ import random
 
 import sys
 
-import Dependencies.Logger.LoggerConfig as LoggerConfig
+import Dependencies.Logger.logger_config as logger_config
 import Dependencies.Common.date_time_formats as date_time_formats
 
 import m3u
@@ -24,6 +24,10 @@ class M3uToFreeboxApplication:
 
         self._main_view:main_view.M3uToFreeboxMainView = main_view
         
+    def download_move_file_by_id_str(self, m3u_entry_id:str):
+        m3u_entry_id_int = int(m3u_entry_id)
+        self.download_move_file_by_id(m3u_entry_id_int)
+
     def create_xspf_file_by_id_str(self, m3u_entry_id:str):
         m3u_entry_id_int = int(m3u_entry_id)
         self.create_xspf_file_by_id(m3u_entry_id_int)
@@ -42,7 +46,7 @@ class M3uToFreeboxApplication:
         
     def load_file(self, file_path):
         """ Load file """
-        LoggerConfig.print_and_log_info("Load file:" + file_path)
+        logger_config.print_and_log_info("Load file:" + file_path)
 
         
 
