@@ -20,6 +20,7 @@ import tkinter
 import tkinter
 #import detailspopup
 #from main import main
+import importlib
 
 from m3u_search_filters import M3uEntryByTitleFilter, TitleContainsExactlyFilter, M3uFiltersManager
 
@@ -164,8 +165,8 @@ class DetailsViewTab(ttk.Frame):
         self.tree_view_context_menu.add_command(label="Create xspf on ...", command=self._select_directory_popup_and_create_xspf)
         
         destinations_folders  = DestinationsFolders().destinations_folders
-        self.tree_view_context_menu.add_command(label="Create xspf on " + destinations_folders[0][0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destinations_folders[0][1]))
-        self.tree_view_context_menu.add_command(label="Create xspf on " + destinations_folders[1][0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destinations_folders[1][1]))
+        self.tree_view_context_menu.add_command(label="Create xspf on " + destinations_folders[0][0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destinations_folders[0]))
+        self.tree_view_context_menu.add_command(label="Create xspf on " + destinations_folders[1][0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destinations_folders[1]))
         
         #for i, destination_folder in enumerate (DestinationsFolders().destinations_folders):
         #    self.tree_view_context_menu.add_command(label="Create xspf on " + destination_folder[0], command=lambda: self._create_xspf_on_destination_context_menu_choosen(destination_folder[1]))
@@ -233,7 +234,7 @@ class DetailsViewTab(ttk.Frame):
 
         m3u_entry_id_str = m3u_entry_line['ID']
         
-        directory = destination
+        directory = destination[1]
         
         self._parent.m3u_to_freebox_application.create_xspf_file_by_id_str(directory, m3u_entry_id_str)
   
@@ -309,5 +310,5 @@ class DetailsViewTab(ttk.Frame):
         
 
 if __name__ == "__main__":
-    # sys.argv[1:]
-    main()
+    main = importlib.import_module("main")
+    main.main()
