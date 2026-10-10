@@ -953,3 +953,14 @@ class UnisigS98Simulation:
             [unisig_s98_packet for unisig_s98_packet in self.unisig_s98_packets if not isinstance(unisig_s98_packet, UnisigS98DtDataWiresharkPacket)],
             json_file_full_path="output" + "\\" + self.label + " packets except dt data dump",
         )
+
+    def save_all_protocolar_or_invalid_mac_packets(self) -> None:
+
+        json_encoders.JsonEncodersUtils.serialize_list_objects_in_json(
+            [
+                unisig_s98_packet
+                for unisig_s98_packet in self.unisig_s98_packets
+                if not isinstance(unisig_s98_packet, UnisigS98DtDataWiresharkPacket) or unisig_s98_packet.recomputed_mac_and_transmitted_mac_are_equals == False
+            ],
+            json_file_full_path="output" + "\\" + self.label + " all protocolar or invalid mac packets dump",
+        )
