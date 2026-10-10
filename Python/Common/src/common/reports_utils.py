@@ -1,10 +1,9 @@
 import csv
 import inspect
-import textwrap
 import time
 from datetime import datetime
 from enum import Enum
-from typing import Any, Dict, List
+from typing import Any, cast
 
 import numpy
 import pandas
@@ -22,8 +21,8 @@ def _normalize_table_value(value: Any) -> Any:
     return str(value)
 
 
-def _get_fieldnames(rows_as_list_dict: List[Dict[str, Any]]) -> List[str]:
-    fieldnames: List[str] = []
+def _get_fieldnames(rows_as_list_dict: list[dict[str, Any]]) -> list[str]:
+    fieldnames: list[str] = []
     seen_fields: set[str] = set()
     for row in rows_as_list_dict:
         for field_name in row.keys():
@@ -33,7 +32,7 @@ def _get_fieldnames(rows_as_list_dict: List[Dict[str, Any]]) -> List[str]:
     return fieldnames
 
 
-def _write_delimited_file_improved(rows_as_list_dict: List[Dict[str, Any]], output_file_full_path: str, delimiter: str) -> None:
+def _write_delimited_file_improved(rows_as_list_dict: list[dict[str, Any]], output_file_full_path: str, delimiter: str) -> None:
     with open(output_file_full_path, "w", newline="", encoding="utf-8") as output_file:
         if not rows_as_list_dict:
             return
@@ -46,7 +45,7 @@ def _write_delimited_file_improved(rows_as_list_dict: List[Dict[str, Any]], outp
             writer.writerow({field: _normalize_table_value(row.get(field)) for field in fieldnames})
 
 
-def _write_xlsx_file_improved(rows_as_list_dict: List[Dict[str, Any]], xlsx_file_full_path: str) -> None:
+def _write_xlsx_file_improved(rows_as_list_dict: list[dict[str, Any]], xlsx_file_full_path: str) -> None:
     workbook = Workbook(write_only=True)
     worksheet = workbook.active
 
@@ -82,8 +81,22 @@ def save_rows_to_output_files(
     do_if_no_data: bool = False,
 ) -> bool:
     if suffix_file_name_by_date == SuffixFileNameByDate.DO_BOTH:
-        return save_rows_to_output_files(rows_as_list_dict, file_base_name, output_directory_path, SuffixFileNameByDate.NO) and save_rows_to_output_files(
-            rows_as_list_dict, file_base_name, output_directory_path, SuffixFileNameByDate.YES
+        return cast(
+            bool,
+            save_rows_to_output_files(rows_as_list_dict, file_base_name, output_directory_path, SuffixFileNameByDate.NO)
+            and save_rows_to_output_files(
+                rows_as_list_dict,
+                file_base_name,
+                output_directory_path,
+                SuffixFileNameByDate.YES,
+                split_big_files=split_big_files,
+                chunk_size=chunk_size,
+                create_json_file=create_json_file,
+                create_xlsx_file=create_xlsx_file,
+                create_csv_file=create_csv_file,
+                create_txt_file=create_txt_file,
+                do_if_no_data=do_if_no_data,
+            ),
         )
 
     if suffix_file_name_by_date == SuffixFileNameByDate.YES:
@@ -91,7 +104,7 @@ def save_rows_to_output_files(
 
     if not rows_as_list_dict and not do_if_no_data:
         logger_config.print_and_log_info(f"No data to save in {file_base_name}: do not create empty file")
-        return
+        return False
 
     with logger_config.stopwatch_alert_if_exceeds_duration(f"{inspect.stack(0)[0].function} for {len(rows_as_list_dict)} lines to {file_base_name}", duration_threshold_to_alert_info_in_s=1):
         file_utils.create_folder_if_not_exist(output_directory_path)
