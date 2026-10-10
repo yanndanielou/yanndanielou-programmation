@@ -79,8 +79,8 @@ def save_rows_to_output_files(
     create_xlsx_file: bool = True,
     create_csv_file: bool = True,
     create_txt_file: bool = True,
+    do_if_no_data: bool = False,
 ) -> bool:
-
     if suffix_file_name_by_date == SuffixFileNameByDate.DO_BOTH:
         return save_rows_to_output_files(rows_as_list_dict, file_base_name, output_directory_path, SuffixFileNameByDate.NO) and save_rows_to_output_files(
             rows_as_list_dict, file_base_name, output_directory_path, SuffixFileNameByDate.YES
@@ -88,6 +88,10 @@ def save_rows_to_output_files(
 
     if suffix_file_name_by_date == SuffixFileNameByDate.YES:
         file_base_name += file_name_utils.get_file_suffix_with_current_datetime(include_underscore=True)
+
+    if not rows_as_list_dict and not do_if_no_data:
+        logger_config.print_and_log_info(f"No data to save in {file_base_name}: do not create empty file")
+        return
 
     with logger_config.stopwatch_alert_if_exceeds_duration(f"{inspect.stack(0)[0].function} for {len(rows_as_list_dict)} lines to {file_base_name}", duration_threshold_to_alert_info_in_s=1):
         file_utils.create_folder_if_not_exist(output_directory_path)
