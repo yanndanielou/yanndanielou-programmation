@@ -6,126 +6,6 @@ from collections.abc import Sequence
 
 MAC_SIZE_IN_BYTES = 8
 
-# ------------------------------------------------------------------------------------
-# Arithmétique modulaire et classe Redond
-# ------------------------------------------------------------------------------------
-
-
-A1: int = 12970357
-A2: int = 12239417
-
-
-class Redond:
-    """
-    Représente un élément de redondance arithmétique sur le double anneau Z/A1 x Z/A2.
-    """
-
-    def __init__(self, c1: int = 0, c2: int = 0) -> None:
-        self._c1: int = c1
-        self._c2: int = c2
-        self.recadrer()
-
-    def recadrer(self) -> None:
-        self._c1 = self._c1 % A1
-        if self._c1 < 0:
-            self._c1 += A1
-
-        self._c2 = self._c2 % A2
-        if self._c2 < 0:
-            self._c2 += A2
-
-    def C1(self) -> int:
-        return self._c1
-
-    def C2(self) -> int:
-        return self._c2
-
-    def afficher(self) -> None:
-        print(f"({self._c1} , {self._c2} )", end="")
-
-    def ajouter(self, r: Redond) -> None:
-        self._c1 += r.C1()
-        self._c2 += r.C2()
-        self.recadrer()
-
-    def multiplier(self, r: Redond) -> None:
-        self._c1 *= r.C1()
-        self._c2 *= r.C2()
-        self.recadrer()
-
-    def clone(self) -> Redond:
-        return Redond(self._c1, self._c2)
-
-
-Bx14_cnx1: Redond = Redond(1762325, 8853225)  # ligne 14 sec_gen_cst_es_tfh_fem_3des_res_connection_1.car
-Bx14_cnx2: Redond = Redond(5980613, 5938493)  # ligne 14 sec_gen_cst_es_tfh_fem_3des_res_connection_2.car
-
-
-class const_PSC:
-    """
-    Constantes et fonctions de redondance précalculées (Subset-098 / Euroradio).
-    """
-
-    def __init__(self) -> None:
-        self._Fi_A1: list[int] = [8963117, 11615768, 8834825, 4229672, 5015549, 8741366, 4176911, 3182013, 8674420, 9502541, 4591249, 2936130, 10821750, 4640236, 11498060, 7126637]
-        self._Fi_A2: list[int] = [9019133, 6729379, 1155050, 4779184, 7436604, 9339690, 1053442, 5442112, 9016832, 11911906, 9959282, 3503273, 8194484, 9060941, 8337535, 5940019]
-        self.moinsRk: Redond = Redond(2726071, 6444477)
-        self.tau0: Redond = Redond(4691298, 10686154)
-        self.deux_p32: Redond = Redond(1779129, 11171346)  # 2**32
-        self.deux_p196: Redond = Redond(280108, 10053949)  # 2**(32*8)
-
-        self._unisig_98_hard: list[Redond] = [
-            Redond(3035900, 8152819),  # indice : 0
-            Redond(11284085, 7686153),  # indice : 1
-            Redond(5454991, 51769),  # indice : 2
-            Redond(3885828, 8486416),  # indice : 3
-            Redond(7671359, 4549372),  # indice : 4
-            Redond(8782678, 8649429),  # indice : 5
-            Redond(6826558, 6742661),  # indice : 6
-            Redond(2895994, 9987983),  # indice : 7
-            Redond(10725748, 7033477),  # indice : 8
-            Redond(730811, 5567194),  # indice : 9
-            Redond(12151965, 1447932),  # indice : 10
-            Redond(7339716, 6245186),  # indice : 11
-            Redond(11290486, 6632403),  # indice : 12
-            Redond(2398841, 2843654),  # indice : 13
-            Redond(11929462, 2392309),  # indice : 14
-            Redond(11285806, 8701977),  # indice : 15
-            Redond(2023425, 5531246),  # indice : 16
-            Redond(8664429, 1183804),  # indice : 17
-            Redond(7739424, 8700726),  # indice : 18
-            Redond(1050582, 459863),  # indice : 19
-        ]
-
-        self.Somme_Fi: list[Redond] = []
-        self.Fi: list[Redond] = []
-        sum_f: Redond = Redond(0, 0)
-        for i in range(16):
-            f_val: Redond = Redond(self._Fi_A1[i], self._Fi_A2[i])
-            self.Fi.append(f_val)
-            sum_f.ajouter(f_val)
-            self.Somme_Fi.append(sum_f.clone())
-
-    def tau_i(self, i: int) -> Redond:
-        tau: Redond = self.tau0.clone()
-        for _ in range(1, i + 1):
-            tau.multiplier(self.deux_p32)
-        return tau
-
-    def Unisig_98_Hard(self, indice: int) -> Redond:
-        assert 0 <= indice < 20
-        return self._unisig_98_hard[indice].clone()
-
-    def calculer_redond_tableau8(self, Tab: Sequence[int], Bx_Tab: Redond, reverse: bool = False) -> Redond:
-        r: Redond = Bx_Tab.clone()
-        for i in range(8):
-            j: int = 7 - i if reverse else i
-            r_temp: Redond = Redond(Tab[j], Tab[j])
-            r_temp.multiplier(self.tau_i(i))
-            r_temp.multiplier(self.moinsRk)
-            r.ajouter(r_temp)
-        return r
-
 
 # ------------------------------------------------------------------------------------
 # Tables S-BOX pour le chiffrement DES standard (FIPS PUB 46-3)
@@ -723,7 +603,7 @@ class ConnectionUnisig98:
 
         logger_config.print_and_log_info(f"Build connection initiator_etcs_id:{initiator_etcs_id}, responder_etcs_id:{responder_etcs_id}")
 
-        self.cst_PSC: const_PSC = const_PSC()
+        # self.cst_PSC: const_PSC = const_PSC()
         self.authentication_key_kmac_1: bytearray = bytearray(authentication_key_kmac_1[:8])
         self.authentication_key_kmac_2: bytearray = bytearray(authentication_key_kmac_2[:8])
         self.authentication_key_kmac_3: bytearray = bytearray(authentication_key_kmac_3[:8])
@@ -773,40 +653,9 @@ class ConnectionUnisig98:
         self.compute_session_key(ra_r_rb_r, self.session_key_2, False)
         self.compute_session_key(ral_l_rb_l, self.session_key_3, True)
 
-        bx_r: Redond
-        if self.is_connnection1:
-            if verbose:
-                print("Connection numero 1 :")
-            bx_r = self.cst_PSC.Unisig_98_Hard(3)
-        else:
-            if verbose:
-                print("Connection numero 2 :")
-            bx_r = self.cst_PSC.Unisig_98_Hard(13)
+        logger_config.print_and_log_info(f"start_session random_number_a:{random_number_a}, random_number_b:{random_number_b}")
 
-        if verbose:
-            print()
-            afficher_64bits("Session Key1        : ", self.session_key_1)
-            afficher_64bits("Session Key2        : ", self.session_key_2)
-            afficher_64bits("Session Key3        : ", self.session_key_3)
-            print()
-
-        r1_redond: Redond = self.cst_PSC.calculer_redond_tableau8(ral_l_rb_l, bx_r, True)
-        r2_redond: Redond = self.cst_PSC.calculer_redond_tableau8(ra_r_rb_r, bx_r, True)
-
-        if verbose:
-            afficher_hexa("Random number 1 :", ral_l_rb_l)
-            print(" Redond Random1 = ", end="")
-            r1_redond.afficher()
-            print()
-            afficher_hexa("Random number 2 :", ra_r_rb_r)
-            print(" Redond Random2 = ", end="")
-            r2_redond.afficher()
-            print()
-            afficher_hexa("Random number 3 :", ral_l_rb_l)  # r3 = r1
-            print(" Redond Random3 = ", end="")
-            r1_redond.afficher()
-            print()
-            print("\nconnection etablie ...\n")
+        return
 
     def get_blocks_for_mac_au2(self, verbose: bool = False) -> bytearray:
         if verbose:
