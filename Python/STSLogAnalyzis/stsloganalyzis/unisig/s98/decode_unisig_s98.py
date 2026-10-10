@@ -946,3 +946,10 @@ class UnisigS98Simulation:
         )
 
         json_encoders.JsonEncodersUtils.serialize_list_objects_in_json(unisig_s98_packet_with_bad_macs, json_file_full_path="output" + "\\" + self.label + " packets with bad macs dump")
+
+    def save_all_but_dt_packets(self) -> None:
+
+        json_encoders.JsonEncodersUtils.serialize_list_objects_in_json(
+            unisig_s98_packet_with_bad_macs=[unisig_s98_packet for unisig_s98_packet in self.unisig_s98_packets if not isinstance(unisig_s98_packet, UnisigS98DtDataWiresharkPacket)],
+            json_file_full_path="output" + "\\" + self.label + " packets except dt data dump",
+        )
