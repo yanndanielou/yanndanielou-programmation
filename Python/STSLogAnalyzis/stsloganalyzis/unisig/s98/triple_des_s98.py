@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from logger import logger_config
-
 from collections.abc import Sequence
+
+from logger import logger_config
 
 MAC_SIZE_IN_BYTES = 8
 
@@ -619,6 +619,14 @@ class ConnectionUnisig98:
 
         self.random_a: bytearray = bytearray(8)
         self.random_b: bytearray = bytearray(8)
+
+    @property
+    def random_a_string_base_16(self) -> str:
+        return byte_array_to_string_base_16(self.random_a)
+
+    @property
+    def random_b_string_base_16(self) -> str:
+        return byte_array_to_string_base_16(self.random_a)
 
     def compute_session_key(self, random_number: Sequence[int], session_key: bytearray, reverse: bool) -> None:
         if reverse:
