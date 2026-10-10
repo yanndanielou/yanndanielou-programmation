@@ -33,7 +33,10 @@ class ListOfObjectsEncoder(JSONEncoder):
 class JsonEncodersUtils(metaclass=singleton.Singleton):
 
     @staticmethod
-    def serialize_list_objects_in_json(list_objects: list[Any], json_file_full_path: str, split_big_files: bool = True, chunk_size: int = 20000) -> None:
+    def serialize_list_objects_in_json(list_objects: list[Any], json_file_full_path: str, split_big_files: bool = True, chunk_size: int = 20000, do_if_no_data: bool = False) -> None:
+        if not list_objects and not do_if_no_data:
+            logger_config.print_and_log_info(f"No data to serialize in {json_file_full_path}: do not create empty file")
+            return
 
         if not json_file_full_path.endswith(".json"):
             json_file_full_path += ".json"
