@@ -836,6 +836,7 @@ class UnisigS98Simulation:
                             if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
                             else None
                         ),
+                        "File full path": unisig_s98_packet.file_full_path,
                     }
                 )
                 for unisig_s98_packet in unisig_s98_packets
