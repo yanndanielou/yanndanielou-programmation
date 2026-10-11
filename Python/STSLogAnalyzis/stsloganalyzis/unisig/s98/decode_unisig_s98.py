@@ -1000,6 +1000,8 @@ def save_all_disconnections_that_have_known_connection_with_context(all_unisig_p
         packets_to_save_with_their_context=cast(list[UnisigS98WiresharkPacket], disconnection_packets),
         library_label=library_label,
         label=" disconnections that have connection",
+        number_of_next_packets_to_include=1,
+        number_of_previous_packets_to_include=30,
     )
 
 
