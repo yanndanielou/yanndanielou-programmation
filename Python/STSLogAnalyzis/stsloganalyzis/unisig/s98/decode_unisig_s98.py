@@ -327,24 +327,20 @@ class UnisigS98Au3WiresharkPacket(UnisigS98WiresharkPacketWithMac):
         pass
 
     def has_context_to_compute_mac(self) -> bool:
-        logger_config.print_and_log_error("Not implemented")
-        assert False
+        raise NotImplementedError()
 
     def recompute_mac(self) -> None:
-        logger_config.print_and_log_error("Not implemented")
-        assert False
+        raise NotImplementedError()
 
 
 @dataclass
 class UnisigS98AuthenticationResponseWiresharkPacket(UnisigS98WiresharkPacketWithMac):
 
     def has_context_to_compute_mac(self) -> bool:
-        logger_config.print_and_log_error("Not implemented")
-        assert False
+        raise NotImplementedError()
 
     def recompute_mac(self) -> None:
-        logger_config.print_and_log_error("Not implemented")
-        assert False
+        raise NotImplementedError()
 
 
 @dataclass
@@ -728,6 +724,9 @@ class UnisigS98Simulation:
                 if isinstance(unisig_s98_packet, UnisigS98WiresharkPacketWithMac) and unisig_s98_packet.has_context_to_compute_mac():
                     unisig_s98_packet.recompute_mac()
                     mac_computed += 1
+            except NotImplementedError as not_impl:
+                logger_config.print_and_log_exception(not_impl)
+                errors += 1
             except AssertionError as ass_err:
                 logger_config.print_and_log_exception(ass_err)
                 errors += 1
