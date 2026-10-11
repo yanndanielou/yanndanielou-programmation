@@ -3,7 +3,7 @@ from collections import OrderedDict
 from dataclasses import dataclass
 from datetime import datetime
 from enum import IntEnum
-from typing import cast, Any
+from typing import cast
 
 import pyshark
 import pyshark.packet.packet
@@ -293,7 +293,7 @@ class UnisigS98Au2WiresharkPacket(UnisigS98WiresharkPacketWithMac):
         ra_random_number_a_as_8_bytes = self.random_number_a_ra.as_byte_array
         rb_random_number_b_as_8_bytes = self.last_au1_packet.random_number_b_rb.as_byte_array
 
-        padding = bytearray(int(0).to_bytes(3, byteorder="big"))
+        padding = bytearray((0).to_bytes(3, byteorder="big"))
         return UnisigS98Au2WiresharkPacket.DataToComputeMac(
             length_bytearray=length_da_and_message_as_2_bytes_byte_array,
             da_bytearray=da_initiator_etcsid_etcsid_as_3_bytes_byte_array,
@@ -318,6 +318,9 @@ class UnisigS98Au2WiresharkPacket(UnisigS98WiresharkPacketWithMac):
 
 @dataclass
 class UnisigS98Au3WiresharkPacket(UnisigS98WiresharkPacketWithMac):
+    last_au1_packet: UnisigS98Au1WiresharkPacket | None
+    last_au2_packet: UnisigS98Au2WiresharkPacket | None
+    connexion_zc_pai: triple_des_s98.ConnectionUnisig98 | None
 
     def get_data_to_compute_mac(self) -> None:
         """
@@ -335,6 +338,9 @@ class UnisigS98Au3WiresharkPacket(UnisigS98WiresharkPacketWithMac):
 
 @dataclass
 class UnisigS98AuthenticationResponseWiresharkPacket(UnisigS98WiresharkPacketWithMac):
+    last_au1_packet: UnisigS98Au1WiresharkPacket | None
+    last_au2_packet: UnisigS98Au2WiresharkPacket | None
+    connexion_zc_pai: triple_des_s98.ConnectionUnisig98 | None
 
     def has_context_to_compute_mac(self) -> bool:
         raise NotImplementedError()
@@ -430,6 +436,9 @@ class UnisigS98DtDataWiresharkPacket(UnisigS98WiresharkPacketWithMac):
 @dataclass
 class UnisigS98PaiDisconnectRequest(UnisigS98WiresharkPacket):
     remaining_data: HexaValueSplitBySemiColonInWireshark
+    last_au1_packet: UnisigS98Au1WiresharkPacket | None
+    last_au2_packet: UnisigS98Au2WiresharkPacket | None
+    connexion_zc_pai: triple_des_s98.ConnectionUnisig98 | None
 
 
 @dataclass
@@ -638,18 +647,79 @@ class UnisigS98Simulation:
             )
             self.register_au2_packet(au2)
             return au2
-        elif packet_type == UnisigS98PacketType.AU_3_OR_AR_OR_DT_DATA_PACKET_TYPE_3:
+
+        else:
+
             last_au1_packet = self.last_au1_packet_by_interlocutors.get((ip_src_str, ip_dst_str))
             last_au2_packet = self.last_au2_packet_by_interlocutors.get((ip_src_str, ip_dst_str))
             last_connexion = self.last_connexion_by_interlocutors.get((ip_src_str, ip_dst_str))
-            if emd_byte.mti == UnisigS98EmdMti.DT_DATA_SAPDU:
-                return UnisigS98DtDataWiresharkPacket(
+            if packet_type == UnisigS98PacketType.AU_3_OR_AR_OR_DT_DATA_PACKET_TYPE_3:
+                if emd_byte.mti == UnisigS98EmdMti.DT_DATA_SAPDU:
+                    return UnisigS98DtDataWiresharkPacket(
+                        file_full_path=pcap_file_full_path,
+                        sniff_time=sniff_time,
+                        sniff_timestamp_str=sniff_timestamp_str,
+                        last_au1_packet=last_au1_packet,
+                        last_au2_packet=last_au2_packet,
+                        connexion_zc_pai=last_connexion,
+                        tcp_payload=tcp_payload,
+                        tcp_payload_without_ale_header=tcp_payload_without_ale_header,
+                        ip_dst_str=ip_dst_str,
+                        ip_src_str=ip_src_str,
+                        number=number,
+                        ale_header=ale_header,
+                        emd_byte=emd_byte,
+                        sai_user_data=(
+                            HexaValueSplitBySemiColonInWireshark(wireshark_packet.ss098.get_field_value("ss098.sai.user_data"))
+                            if wireshark_packet.ss098.get_field_value("ss098.sai.user_data")
+                            else None
+                        ),
+                        transmitted_mac=HexaValueSplitBySemiColonInWireshark(wireshark_packet.ss098.get_field_value("ss098.sai.mac")),
+                    )
+
+                elif emd_byte.mti == UnisigS98EmdMti.AU3_THIRD_AUTHENTICATION_SAPDU:
+                    return UnisigS98Au3WiresharkPacket(
+                        last_au1_packet=last_au1_packet,
+                        last_au2_packet=last_au2_packet,
+                        connexion_zc_pai=last_connexion,
+                        file_full_path=pcap_file_full_path,
+                        sniff_time=sniff_time,
+                        sniff_timestamp_str=sniff_timestamp_str,
+                        tcp_payload=tcp_payload,
+                        tcp_payload_without_ale_header=tcp_payload_without_ale_header,
+                        ip_dst_str=ip_dst_str,
+                        ip_src_str=ip_src_str,
+                        number=number,
+                        ale_header=ale_header,
+                        emd_byte=emd_byte,
+                        transmitted_mac=HexaValueSplitBySemiColonInWireshark(wireshark_packet.ss098.get_field_value("ss098.auth.mac")),
+                    )
+                elif emd_byte.mti == UnisigS98EmdMti.AR_AUTHENTIFICATION_RESPONSE_TO_THIRD_AUTHENTICATION_SAPDU:
+                    return UnisigS98AuthenticationResponseWiresharkPacket(
+                        last_au1_packet=last_au1_packet,
+                        last_au2_packet=last_au2_packet,
+                        connexion_zc_pai=last_connexion,
+                        file_full_path=pcap_file_full_path,
+                        sniff_time=sniff_time,
+                        sniff_timestamp_str=sniff_timestamp_str,
+                        tcp_payload=tcp_payload,
+                        tcp_payload_without_ale_header=tcp_payload_without_ale_header,
+                        ip_dst_str=ip_dst_str,
+                        ip_src_str=ip_src_str,
+                        number=number,
+                        ale_header=ale_header,
+                        emd_byte=emd_byte,
+                        transmitted_mac=HexaValueSplitBySemiColonInWireshark(wireshark_packet.ss098.get_field_value("ss098.auth.mac")),
+                    )
+                assert False, f"Unsupported emd_byte.mti {emd_byte.mti} in {wireshark_packet.frame_info}"
+            elif packet_type == UnisigS98PacketType.DISCONNECT_PACKET_TYPE_4:
+                disconnect_request = UnisigS98PaiDisconnectRequest(
                     file_full_path=pcap_file_full_path,
-                    sniff_time=sniff_time,
-                    sniff_timestamp_str=sniff_timestamp_str,
                     last_au1_packet=last_au1_packet,
                     last_au2_packet=last_au2_packet,
                     connexion_zc_pai=last_connexion,
+                    sniff_time=sniff_time,
+                    sniff_timestamp_str=sniff_timestamp_str,
                     tcp_payload=tcp_payload,
                     tcp_payload_without_ale_header=tcp_payload_without_ale_header,
                     ip_dst_str=ip_dst_str,
@@ -657,63 +727,14 @@ class UnisigS98Simulation:
                     number=number,
                     ale_header=ale_header,
                     emd_byte=emd_byte,
-                    sai_user_data=(
-                        HexaValueSplitBySemiColonInWireshark(wireshark_packet.ss098.get_field_value("ss098.sai.user_data")) if wireshark_packet.ss098.get_field_value("ss098.sai.user_data") else None
+                    remaining_data=HexaValueSplitBySemiColonInWireshark(
+                        wireshark_packet.ss098.get_field_value("ss098.data"),
                     ),
-                    transmitted_mac=HexaValueSplitBySemiColonInWireshark(wireshark_packet.ss098.get_field_value("ss098.sai.mac")),
                 )
+                self.register_disconnect_request_packet(disconnect_request)
+                return disconnect_request
 
-            elif emd_byte.mti == UnisigS98EmdMti.AU3_THIRD_AUTHENTICATION_SAPDU:
-                return UnisigS98Au3WiresharkPacket(
-                    last_au1_packet=last_au1_packet,
-                    file_full_path=pcap_file_full_path,
-                    sniff_time=sniff_time,
-                    sniff_timestamp_str=sniff_timestamp_str,
-                    tcp_payload=tcp_payload,
-                    tcp_payload_without_ale_header=tcp_payload_without_ale_header,
-                    ip_dst_str=ip_dst_str,
-                    ip_src_str=ip_src_str,
-                    number=number,
-                    ale_header=ale_header,
-                    emd_byte=emd_byte,
-                    transmitted_mac=HexaValueSplitBySemiColonInWireshark(wireshark_packet.ss098.get_field_value("ss098.auth.mac")),
-                )
-            elif emd_byte.mti == UnisigS98EmdMti.AR_AUTHENTIFICATION_RESPONSE_TO_THIRD_AUTHENTICATION_SAPDU:
-                return UnisigS98AuthenticationResponseWiresharkPacket(
-                    last_au1_packet=last_au1_packet,
-                    file_full_path=pcap_file_full_path,
-                    sniff_time=sniff_time,
-                    sniff_timestamp_str=sniff_timestamp_str,
-                    tcp_payload=tcp_payload,
-                    tcp_payload_without_ale_header=tcp_payload_without_ale_header,
-                    ip_dst_str=ip_dst_str,
-                    ip_src_str=ip_src_str,
-                    number=number,
-                    ale_header=ale_header,
-                    emd_byte=emd_byte,
-                    transmitted_mac=HexaValueSplitBySemiColonInWireshark(wireshark_packet.ss098.get_field_value("ss098.auth.mac")),
-                )
-            assert False, f"Unsupported emd_byte.mti {emd_byte.mti} in {wireshark_packet.frame_info}"
-        elif packet_type == UnisigS98PacketType.DISCONNECT_PACKET_TYPE_4:
-            disconnect_request = UnisigS98PaiDisconnectRequest(
-                file_full_path=pcap_file_full_path,
-                sniff_time=sniff_time,
-                sniff_timestamp_str=sniff_timestamp_str,
-                tcp_payload=tcp_payload,
-                tcp_payload_without_ale_header=tcp_payload_without_ale_header,
-                ip_dst_str=ip_dst_str,
-                ip_src_str=ip_src_str,
-                number=number,
-                ale_header=ale_header,
-                emd_byte=emd_byte,
-                remaining_data=HexaValueSplitBySemiColonInWireshark(
-                    wireshark_packet.ss098.get_field_value("ss098.data"),
-                ),
-            )
-            self.register_disconnect_request_packet(disconnect_request)
-            return disconnect_request
-
-        assert False, f"Unsupported packet_type {packet_type} in {wireshark_packet.frame_info}"
+            assert False, f"Unsupported packet_type {packet_type} in {wireshark_packet.frame_info}"
 
     @logger_config.stopwatch_decorator(monitor_ram_usage=True, inform_beginning=True)
     def recompute_all_mac(self) -> tuple[int, int]:
@@ -738,181 +759,220 @@ class UnisigS98Simulation:
         json_encoders.JsonEncodersUtils.serialize_list_objects_in_json(self.unisig_s98_packets, json_file_full_path=output_directory + "\\" + self.label + " json dump", split_big_files=False)
 
     def save_all_packets_as_reports(self) -> None:
-        self.save_packets_as_reports(self.unisig_s98_packets, " all packets")
-
-    @logger_config.stopwatch_decorator(monitor_ram_usage=True, inform_beginning=True)
-    def save_packets_as_reports(self, unisig_s98_packets: list[UnisigS98WiresharkPacket], label: str) -> None:
-
-        reports_utils.save_rows_to_output_files(
-            rows_as_list_dict=[
-                OrderedDict(
-                    {
-                        "File name": file_name_utils.get_file_name_without_extension_from_full_path(unisig_s98_packet.file_full_path),
-                        "Number": unisig_s98_packet.number,
-                        "sniff_time": unisig_s98_packet.sniff_time,
-                        "sniff_timestamp_str": unisig_s98_packet.sniff_timestamp_str,
-                        "class": unisig_s98_packet.__class__.__name__,
-                        "ip_src_str": unisig_s98_packet.ip_src_str,
-                        "ip_dst_str": unisig_s98_packet.ip_dst_str,
-                        "emd_byte": unisig_s98_packet.emd_byte.value,
-                        "emb ety": unisig_s98_packet.emd_byte.ety,
-                        "emb mti": unisig_s98_packet.emd_byte.mti,
-                        "emb df": unisig_s98_packet.emd_byte.df,
-                        "ale length": unisig_s98_packet.ale_header.length,
-                        "ale packet type": unisig_s98_packet.ale_header.packet_type,
-                        "tcp_payload (base 16)": unisig_s98_packet.tcp_payload.raw_str_value_base_16,
-                        "tcp_payload_without_ale_header  (base 16)": unisig_s98_packet.tcp_payload_without_ale_header.raw_str_value_base_16,
-                        "transmitted mac (base 16)": (
-                            unisig_s98_packet.transmitted_mac.raw_str_value_base_16 if isinstance(unisig_s98_packet, UnisigS98WiresharkPacketWithMac) and unisig_s98_packet.transmitted_mac else None
-                        ),
-                        "recomputed mac as str base 10": (
-                            bytes_utils.byte_array_to_string_base_10(unisig_s98_packet.recomputed_mac_as_bytearray)
-                            if isinstance(unisig_s98_packet, UnisigS98WiresharkPacketWithMac) and unisig_s98_packet.recomputed_mac_as_bytearray
-                            else None
-                        ),
-                        "recomputed mac as str base 16": (
-                            bytes_utils.byte_array_to_string_base_16(unisig_s98_packet.recomputed_mac_as_bytearray)
-                            if isinstance(unisig_s98_packet, UnisigS98WiresharkPacketWithMac) and unisig_s98_packet.recomputed_mac_as_bytearray
-                            else None
-                        ),
-                        "recomputed_mac_and_transmitted_mac_are_equals": (
-                            unisig_s98_packet.recomputed_mac_and_transmitted_mac_are_equals if isinstance(unisig_s98_packet, UnisigS98WiresharkPacketWithMac) else None
-                        ),
-                        "data to compute mac explanations": (
-                            unisig_s98_packet.get_data_to_compute_mac().explanations_for_debug
-                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
-                            else None
-                        ),
-                        "Last AU1 packet file full path": (
-                            unisig_s98_packet.last_au1_packet.file_full_path
-                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.last_au1_packet
-                            else None
-                        ),
-                        "Last AU1 packet frame number": (
-                            unisig_s98_packet.last_au1_packet.number
-                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.last_au1_packet
-                            else None
-                        ),
-                        "Last AU1 packet called_etcs_id": (
-                            unisig_s98_packet.last_au1_packet.called_etcs_id if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au1_packet else None
-                        ),
-                        "Last AU1 packet calling_etcs_id": (
-                            unisig_s98_packet.last_au1_packet.calling_etcs_id if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au1_packet else None
-                        ),
-                        "Last AU1 packet file random_number_b_rb": (
-                            unisig_s98_packet.last_au1_packet.random_number_b_rb if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au1_packet else None
-                        ),
-                        "Last AU2 packet file full path": (
-                            unisig_s98_packet.last_au2_packet.file_full_path if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au2_packet else None
-                        ),
-                        "Last AU2 packet file number": (
-                            unisig_s98_packet.last_au2_packet.number if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au2_packet else None
-                        ),
-                        "Last AU2 packet responding_etcs_id": (
-                            unisig_s98_packet.last_au2_packet.responding_etcs_id if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au2_packet else None
-                        ),
-                        "Last AU2 packet file random_number_a_ra": (
-                            unisig_s98_packet.last_au2_packet.random_number_a_ra if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au2_packet else None
-                        ),
-                        "data to compute mac random a": (
-                            unisig_s98_packet.connexion_zc_pai.random_a_string_base_16
-                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.connexion_zc_pai
-                            else None
-                        ),
-                        "data to compute mac random b": (
-                            unisig_s98_packet.connexion_zc_pai.random_b_string_base_16
-                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.connexion_zc_pai
-                            else None
-                        ),
-                        "data to compute mac: length_bytearray (base 10)": (
-                            bytes_utils.byte_array_to_string_base_10(unisig_s98_packet.get_data_to_compute_mac().length_bytearray)
-                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
-                            else None
-                        ),
-                        "data to compute mac all_blocks_byte_array_to_string_base_10": (
-                            unisig_s98_packet.get_data_to_compute_mac().all_blocks_byte_array_to_string_base_10
-                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
-                            else None
-                        ),
-                        "data to compute mac all_blocks_byte_array_to_string_base_16": (
-                            unisig_s98_packet.get_data_to_compute_mac().all_blocks_byte_array_to_string_base_16
-                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
-                            else None
-                        ),
-                        "data to compute mac: da_bytearray (base 10)": (
-                            bytes_utils.byte_array_to_string_base_10(unisig_s98_packet.get_data_to_compute_mac().da_bytearray)
-                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
-                            else None
-                        ),
-                        "data to compute mac: message_bytearray (base 10)": (
-                            bytes_utils.byte_array_to_string_base_10(unisig_s98_packet.get_data_to_compute_mac().message_bytearray)
-                            if isinstance(unisig_s98_packet, UnisigS98DtDataWiresharkPacket) and unisig_s98_packet.has_context_to_compute_mac()
-                            else None
-                        ),
-                        "data to compute mac: padding_bytearray (base 10)": (
-                            bytes_utils.byte_array_to_string_base_10(unisig_s98_packet.get_data_to_compute_mac().padding_bytearray)
-                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
-                            else None
-                        ),
-                        "data to compute mac: length_bytearray (base 16)": (
-                            bytes_utils.byte_array_to_string_base_16(unisig_s98_packet.get_data_to_compute_mac().length_bytearray)
-                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
-                            else None
-                        ),
-                        "data to compute mac: da_bytearray (base 16)": (
-                            bytes_utils.byte_array_to_string_base_16(unisig_s98_packet.get_data_to_compute_mac().da_bytearray)
-                            if isinstance(unisig_s98_packet, UnisigS98DtDataWiresharkPacket) and unisig_s98_packet.has_context_to_compute_mac()
-                            else None
-                        ),
-                        "data to compute mac: message_bytearray (base 16)": (
-                            bytes_utils.byte_array_to_string_base_16(unisig_s98_packet.get_data_to_compute_mac().message_bytearray)
-                            if isinstance(unisig_s98_packet, UnisigS98DtDataWiresharkPacket) and unisig_s98_packet.has_context_to_compute_mac()
-                            else None
-                        ),
-                        "data to compute mac: padding_bytearray (base 16)": (
-                            bytes_utils.byte_array_to_string_base_16(unisig_s98_packet.get_data_to_compute_mac().padding_bytearray)
-                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
-                            else None
-                        ),
-                        "File full path": unisig_s98_packet.file_full_path,
-                    }
-                )
-                for unisig_s98_packet in unisig_s98_packets
-            ],
-            file_base_name=self.label + label,
-            create_csv_file=False,
-            create_txt_file=False,
-            split_big_files=False,
-            chunk_size=200000,
-        )
-
-        if len(unisig_s98_packets) < 10000:
-            json_encoders.JsonEncodersUtils.serialize_list_objects_in_json(unisig_s98_packets, json_file_full_path="output" + "\\" + self.label + label + " dump", split_big_files=False)
+        save_packets_as_reports(self.unisig_s98_packets, self.label)
 
     def save_all_packets_with_bad_mac_with_history_as_reports(self) -> None:
-
-        # rows_as_list_dict: list[dict[str, Any]] = []
-
-        unisig_s98_packet_with_bad_macs = [
-            unisig_s98_packet
-            for unisig_s98_packet in self.unisig_s98_packets
-            if isinstance(unisig_s98_packet, UnisigS98WiresharkPacketWithMac) and unisig_s98_packet.recomputed_mac_and_transmitted_mac_are_equals == False
-        ]
-
-        self.save_packets_as_reports(cast(list[UnisigS98WiresharkPacket], unisig_s98_packet_with_bad_macs), " all packets with bad macs")
+        save_all_packets_with_bad_mac_with_history_as_reports(self.unisig_s98_packets, self.label)
 
     def save_all_but_dt_packets(self) -> None:
-        self.save_packets_as_reports(
-            [unisig_s98_packet for unisig_s98_packet in self.unisig_s98_packets if not isinstance(unisig_s98_packet, UnisigS98DtDataWiresharkPacket)], " packets except dt data"
-        )
+        save_all_but_dt_packets(self.unisig_s98_packets, self.label)
 
     def save_all_protocolar_or_invalid_mac_packets(self) -> None:
+        save_all_protocolar_or_invalid_mac_packets(self.unisig_s98_packets, self.label)
 
-        self.save_packets_as_reports(
-            [
-                unisig_s98_packet
-                for unisig_s98_packet in self.unisig_s98_packets
-                if not isinstance(unisig_s98_packet, UnisigS98DtDataWiresharkPacket) or unisig_s98_packet.recomputed_mac_and_transmitted_mac_are_equals == False
-            ],
-            " all protocolar or invalid mac packets",
-        )
+    def save_all_disconnections_with_context(self) -> None:
+        save_all_disconnections_with_context(self.unisig_s98_packets, self.label)
+
+
+def save_all_packets_as_reports(unisig_s98_packets_to_save: list[UnisigS98WiresharkPacket], library_label: str) -> None:
+    save_packets_as_reports(unisig_s98_packets_to_save, library_label, " all packets")
+
+
+@logger_config.stopwatch_decorator(monitor_ram_usage=True, inform_beginning=True)
+def save_packets_as_reports(unisig_s98_packets_to_save: list[UnisigS98WiresharkPacket], library_label: str, extract_label: str) -> None:
+
+    reports_utils.save_rows_to_output_files(
+        rows_as_list_dict=[
+            OrderedDict(
+                {
+                    "File name": file_name_utils.get_file_name_without_extension_from_full_path(unisig_s98_packet.file_full_path),
+                    "Number": unisig_s98_packet.number,
+                    "sniff_time": unisig_s98_packet.sniff_time,
+                    "sniff_timestamp_str": unisig_s98_packet.sniff_timestamp_str,
+                    "class": unisig_s98_packet.__class__.__name__,
+                    "ip_src_str": unisig_s98_packet.ip_src_str,
+                    "ip_dst_str": unisig_s98_packet.ip_dst_str,
+                    "emd_byte": unisig_s98_packet.emd_byte.value,
+                    "emb ety": unisig_s98_packet.emd_byte.ety,
+                    "emb mti": unisig_s98_packet.emd_byte.mti,
+                    "emb df": unisig_s98_packet.emd_byte.df,
+                    "ale length": unisig_s98_packet.ale_header.length,
+                    "ale packet type": unisig_s98_packet.ale_header.packet_type,
+                    "tcp_payload (base 16)": unisig_s98_packet.tcp_payload.raw_str_value_base_16,
+                    "tcp_payload_without_ale_header  (base 16)": unisig_s98_packet.tcp_payload_without_ale_header.raw_str_value_base_16,
+                    "transmitted mac (base 16)": (
+                        unisig_s98_packet.transmitted_mac.raw_str_value_base_16 if isinstance(unisig_s98_packet, UnisigS98WiresharkPacketWithMac) and unisig_s98_packet.transmitted_mac else None
+                    ),
+                    "recomputed mac as str base 10": (
+                        bytes_utils.byte_array_to_string_base_10(unisig_s98_packet.recomputed_mac_as_bytearray)
+                        if isinstance(unisig_s98_packet, UnisigS98WiresharkPacketWithMac) and unisig_s98_packet.recomputed_mac_as_bytearray
+                        else None
+                    ),
+                    "recomputed mac as str base 16": (
+                        bytes_utils.byte_array_to_string_base_16(unisig_s98_packet.recomputed_mac_as_bytearray)
+                        if isinstance(unisig_s98_packet, UnisigS98WiresharkPacketWithMac) and unisig_s98_packet.recomputed_mac_as_bytearray
+                        else None
+                    ),
+                    "recomputed_mac_and_transmitted_mac_are_equals": (
+                        unisig_s98_packet.recomputed_mac_and_transmitted_mac_are_equals if isinstance(unisig_s98_packet, UnisigS98WiresharkPacketWithMac) else None
+                    ),
+                    "data to compute mac explanations": (
+                        unisig_s98_packet.get_data_to_compute_mac().explanations_for_debug
+                        if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
+                        else None
+                    ),
+                    "Last AU1 packet file full path": (
+                        unisig_s98_packet.last_au1_packet.file_full_path
+                        if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.last_au1_packet
+                        else None
+                    ),
+                    "Last AU1 packet frame number": (
+                        unisig_s98_packet.last_au1_packet.number
+                        if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.last_au1_packet
+                        else None
+                    ),
+                    "Last AU1 packet called_etcs_id": (
+                        unisig_s98_packet.last_au1_packet.called_etcs_id if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au1_packet else None
+                    ),
+                    "Last AU1 packet calling_etcs_id": (
+                        unisig_s98_packet.last_au1_packet.calling_etcs_id if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au1_packet else None
+                    ),
+                    "Last AU1 packet file random_number_b_rb": (
+                        unisig_s98_packet.last_au1_packet.random_number_b_rb if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au1_packet else None
+                    ),
+                    "Last AU2 packet file full path": (
+                        unisig_s98_packet.last_au2_packet.file_full_path if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au2_packet else None
+                    ),
+                    "Last AU2 packet file number": (
+                        unisig_s98_packet.last_au2_packet.number if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au2_packet else None
+                    ),
+                    "Last AU2 packet responding_etcs_id": (
+                        unisig_s98_packet.last_au2_packet.responding_etcs_id if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au2_packet else None
+                    ),
+                    "Last AU2 packet file random_number_a_ra": (
+                        unisig_s98_packet.last_au2_packet.random_number_a_ra if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au2_packet else None
+                    ),
+                    "data to compute mac random a": (
+                        unisig_s98_packet.connexion_zc_pai.random_a_string_base_16
+                        if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.connexion_zc_pai
+                        else None
+                    ),
+                    "data to compute mac random b": (
+                        unisig_s98_packet.connexion_zc_pai.random_b_string_base_16
+                        if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.connexion_zc_pai
+                        else None
+                    ),
+                    "data to compute mac: length_bytearray (base 10)": (
+                        bytes_utils.byte_array_to_string_base_10(unisig_s98_packet.get_data_to_compute_mac().length_bytearray)
+                        if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
+                        else None
+                    ),
+                    "data to compute mac all_blocks_byte_array_to_string_base_10": (
+                        unisig_s98_packet.get_data_to_compute_mac().all_blocks_byte_array_to_string_base_10
+                        if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
+                        else None
+                    ),
+                    "data to compute mac all_blocks_byte_array_to_string_base_16": (
+                        unisig_s98_packet.get_data_to_compute_mac().all_blocks_byte_array_to_string_base_16
+                        if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
+                        else None
+                    ),
+                    "data to compute mac: da_bytearray (base 10)": (
+                        bytes_utils.byte_array_to_string_base_10(unisig_s98_packet.get_data_to_compute_mac().da_bytearray)
+                        if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
+                        else None
+                    ),
+                    "data to compute mac: message_bytearray (base 10)": (
+                        bytes_utils.byte_array_to_string_base_10(unisig_s98_packet.get_data_to_compute_mac().message_bytearray)
+                        if isinstance(unisig_s98_packet, UnisigS98DtDataWiresharkPacket) and unisig_s98_packet.has_context_to_compute_mac()
+                        else None
+                    ),
+                    "data to compute mac: padding_bytearray (base 10)": (
+                        bytes_utils.byte_array_to_string_base_10(unisig_s98_packet.get_data_to_compute_mac().padding_bytearray)
+                        if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
+                        else None
+                    ),
+                    "data to compute mac: length_bytearray (base 16)": (
+                        bytes_utils.byte_array_to_string_base_16(unisig_s98_packet.get_data_to_compute_mac().length_bytearray)
+                        if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
+                        else None
+                    ),
+                    "data to compute mac: da_bytearray (base 16)": (
+                        bytes_utils.byte_array_to_string_base_16(unisig_s98_packet.get_data_to_compute_mac().da_bytearray)
+                        if isinstance(unisig_s98_packet, UnisigS98DtDataWiresharkPacket) and unisig_s98_packet.has_context_to_compute_mac()
+                        else None
+                    ),
+                    "data to compute mac: message_bytearray (base 16)": (
+                        bytes_utils.byte_array_to_string_base_16(unisig_s98_packet.get_data_to_compute_mac().message_bytearray)
+                        if isinstance(unisig_s98_packet, UnisigS98DtDataWiresharkPacket) and unisig_s98_packet.has_context_to_compute_mac()
+                        else None
+                    ),
+                    "data to compute mac: padding_bytearray (base 16)": (
+                        bytes_utils.byte_array_to_string_base_16(unisig_s98_packet.get_data_to_compute_mac().padding_bytearray)
+                        if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
+                        else None
+                    ),
+                    "File full path": unisig_s98_packet.file_full_path,
+                }
+            )
+            for unisig_s98_packet in unisig_s98_packets_to_save
+        ],
+        file_base_name=library_label + extract_label,
+        create_csv_file=False,
+        create_txt_file=False,
+        split_big_files=False,
+        chunk_size=200000,
+    )
+
+    if len(unisig_s98_packets_to_save) < 10000:
+        json_encoders.JsonEncodersUtils.serialize_list_objects_in_json(unisig_s98_packets_to_save, json_file_full_path="output" + "\\" + library_label + extract_label + " dump", split_big_files=False)
+
+
+def save_all_packets_with_bad_mac_with_history_as_reports(all_unisig_packets: list[UnisigS98WiresharkPacket], library_label: str) -> None:
+
+    # rows_as_list_dict: list[dict[str, Any]] = []
+
+    unisig_s98_packet_with_bad_macs = [
+        unisig_s98_packet
+        for unisig_s98_packet in all_unisig_packets
+        if isinstance(unisig_s98_packet, UnisigS98WiresharkPacketWithMac) and unisig_s98_packet.recomputed_mac_and_transmitted_mac_are_equals == False
+    ]
+
+    save_packets_as_reports(cast(list[UnisigS98WiresharkPacket], unisig_s98_packet_with_bad_macs), library_label, " all packets with bad macs")
+
+
+def save_all_but_dt_packets(all_unisig_packets: list[UnisigS98WiresharkPacket], library_label: str) -> None:
+    save_packets_as_reports(
+        [unisig_s98_packet for unisig_s98_packet in all_unisig_packets if not isinstance(unisig_s98_packet, UnisigS98DtDataWiresharkPacket)], library_label, " packets except dt data"
+    )
+
+
+def save_all_protocolar_or_invalid_mac_packets(all_unisig_packets: list[UnisigS98WiresharkPacket], library_label: str) -> None:
+
+    save_packets_as_reports(
+        [
+            unisig_s98_packet
+            for unisig_s98_packet in all_unisig_packets
+            if not isinstance(unisig_s98_packet, UnisigS98DtDataWiresharkPacket) or unisig_s98_packet.recomputed_mac_and_transmitted_mac_are_equals == False
+        ],
+        library_label,
+        " all protocolar or invalid mac packets",
+    )
+
+
+def save_all_disconnections_with_context(all_unisig_packets: list[UnisigS98WiresharkPacket], library_label: str) -> None:
+
+    disconnection_packets = [unisig_s98_packet for unisig_s98_packet in all_unisig_packets if isinstance(unisig_s98_packet, UnisigS98PaiDisconnectRequest)]
+
+    unisig_s98_packets_to_save: list[UnisigS98WiresharkPacket] = []
+
+    for disconnection_packet in disconnection_packets:
+        index_in_library = all_unisig_packets.index(disconnection_packet)
+        previous_packets = all_unisig_packets[index_in_library - 20 : index_in_library + 10]
+        unisig_s98_packets_to_save += previous_packets
+
+    save_packets_as_reports(
+        unisig_s98_packets_to_save,
+        library_label,
+        f"{unisig_s98_packets_to_save} all disconnections with context",
+    )
