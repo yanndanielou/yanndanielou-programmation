@@ -740,6 +740,7 @@ class UnisigS98Simulation:
     def save_all_packets_as_reports(self) -> None:
         self.save_packets_as_reports(self.unisig_s98_packets, " all packets")
 
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True, inform_beginning=True)
     def save_packets_as_reports(self, unisig_s98_packets: list[UnisigS98WiresharkPacket], label: str) -> None:
 
         reports_utils.save_rows_to_output_files(
@@ -885,7 +886,8 @@ class UnisigS98Simulation:
             chunk_size=200000,
         )
 
-        json_encoders.JsonEncodersUtils.serialize_list_objects_in_json(unisig_s98_packets, json_file_full_path="output" + "\\" + self.label + label + " dump")
+        if len(unisig_s98_packets) < 10000:
+            json_encoders.JsonEncodersUtils.serialize_list_objects_in_json(unisig_s98_packets, json_file_full_path="output" + "\\" + self.label + label + " dump", split_big_files=False)
 
     def save_all_packets_with_bad_mac_with_history_as_reports(self) -> None:
 
