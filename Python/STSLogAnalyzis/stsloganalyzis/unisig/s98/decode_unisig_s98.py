@@ -853,6 +853,9 @@ def save_packets_as_reports(unisig_s98_packets_to_save: list[UnisigS98WiresharkP
                         "Last AU2 packet file random_number_a_ra": (
                             unisig_s98_packet.last_au2_packet.random_number_a_ra if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au2_packet else None
                         ),
+                        "Existing context (connexion)": (
+                            unisig_s98_packet.connexion_zc_pai if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket, UnisigS98PaiDisconnectRequest)) else None
+                        ),
                         "data to compute mac random a": (
                             unisig_s98_packet.connexion_zc_pai.random_a_string_base_16
                             if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.connexion_zc_pai
@@ -980,5 +983,5 @@ def save_all_disconnections_with_context(all_unisig_packets: list[UnisigS98Wires
     save_packets_as_reports(
         unisig_s98_packets_to_save,
         library_label,
-        f"len{disconnection_packets} all disconnections with context",
+        f"{len(disconnection_packets)} all disconnections with context",
     )
