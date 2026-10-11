@@ -37,7 +37,7 @@ def main() -> None:
         handle_directory(r"C:\Users\fr232487\Downloads\tcp dump 2026_10_02_PAS_PAI_2\2026_10_02_PAS_PAI_2")
         handle_directory(r"C:\Users\fr232487\Downloads\tg13zc1-pas3-cucp-a-m_pai+deconnexion+21h34")
         handle_directory(r"C:\Users\fr232487\Downloads\2026-09-14 wiresharks pas pai raoul OneDrive_1_14-09-2026")
-        handle_directory(r"C:\Users\fr232487\Downloads\2026_10_02_PAS_PAI_2")
+        # handle_directory(r"C:\Users\fr232487\Downloads\2026_10_02_PAS_PAI_2") disabled because no data
         handle_file(r"C:\Users\fr232487\Downloads\logs_wsk_PAI75_22.09.2026\log_PAS_PAI_22.09_00002_20260922145856.2026.pcap")
         # handle_directory(r"C:\Users\fr232487\Downloads\2026_10_02_PAS_PAI_2\wireshark")
         handle_directory(r"C:\Users\fr232487\Downloads\logs_wsk_PAI75_22.09.2026", "*.pcap")
@@ -45,4 +45,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-/
