@@ -773,6 +773,9 @@ class UnisigS98Simulation:
     def save_all_disconnections_with_context(self) -> None:
         save_all_disconnections_with_context(self.unisig_s98_packets, self.label)
 
+    def save_all_packets_with_invalid_mac_with_context(self) -> None:
+        save_all_packets_with_invalid_mac_with_context(self.unisig_s98_packets, self.label)
+
 
 def save_all_packets_as_reports(unisig_s98_packets_to_save: list[UnisigS98WiresharkPacket], library_label: str) -> None:
     save_packets_as_reports(unisig_s98_packets_to_save, library_label, " all packets")
@@ -980,8 +983,44 @@ def save_all_disconnections_with_context(all_unisig_packets: list[UnisigS98Wires
         previous_packets = all_unisig_packets[index_in_library - 20 : index_in_library + 10]
         unisig_s98_packets_to_save += previous_packets
 
+    save_packets_with_surounding_packets_for_context(
+        all_unisig_packets=all_unisig_packets,
+        packets_to_save_with_their_context=unisig_s98_packets_to_save,
+        library_label=library_label,
+        label=" disconnections",
+    )
+
+
+def save_all_packets_with_invalid_mac_with_context(all_unisig_packets: list[UnisigS98WiresharkPacket], library_label: str) -> None:
+
+    # rows_as_list_dict: list[dict[str, Any]] = []
+
+    unisig_s98_packet_with_bad_macs = [
+        unisig_s98_packet
+        for unisig_s98_packet in all_unisig_packets
+        if isinstance(unisig_s98_packet, UnisigS98WiresharkPacketWithMac) and unisig_s98_packet.recomputed_mac_and_transmitted_mac_are_equals == False
+    ]
+    save_packets_with_surounding_packets_for_context(
+        all_unisig_packets=all_unisig_packets,
+        packets_to_save_with_their_context=cast(list[UnisigS98WiresharkPacket], unisig_s98_packet_with_bad_macs),
+        library_label=library_label,
+        label=" packets with invalid mac",
+    )
+
+
+def save_packets_with_surounding_packets_for_context(
+    all_unisig_packets: list[UnisigS98WiresharkPacket], packets_to_save_with_their_context: list[UnisigS98WiresharkPacket], library_label: str, label: str
+) -> None:
+
+    unisig_s98_packets_to_save: list[UnisigS98WiresharkPacket] = []
+
+    for packet_to_save_with_its_surounding in packets_to_save_with_their_context:
+        index_in_library = all_unisig_packets.index(packet_to_save_with_its_surounding)
+        previous_packets = all_unisig_packets[index_in_library - 20 : index_in_library + 10]
+        unisig_s98_packets_to_save += previous_packets
+
     save_packets_as_reports(
         unisig_s98_packets_to_save,
         library_label,
-        f"{len(disconnection_packets)} all disconnections with context",
+        f"{label} {len(all_unisig_packets)} all with context",
     )
