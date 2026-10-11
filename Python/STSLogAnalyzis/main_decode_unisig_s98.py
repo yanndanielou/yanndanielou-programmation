@@ -29,6 +29,7 @@ def common_actions(unisig_simulation: decode_unisig_s98.UnisigS98Simulation) -> 
     unisig_simulation.save_all_packets_with_bad_mac_with_history_as_reports()
     unisig_simulation.save_all_but_dt_packets()
     unisig_simulation.save_all_protocolar_or_invalid_mac_packets()
+    unisig_simulation.save_all_disconnections_with_context()
 
 
 def main() -> None:
