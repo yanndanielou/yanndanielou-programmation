@@ -626,7 +626,7 @@ class ConnectionUnisig98:
 
     @property
     def random_b_string_base_16(self) -> str:
-        return byte_array_to_string_base_16(self.random_a)
+        return byte_array_to_string_base_16(self.random_b)
 
     def compute_session_key(self, random_number: Sequence[int], session_key: bytearray, reverse: bool) -> None:
         if reverse:
