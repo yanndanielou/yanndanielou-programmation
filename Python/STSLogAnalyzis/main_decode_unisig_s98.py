@@ -23,7 +23,8 @@ def handle_file(file_full_path: str) -> None:
 
 def common_actions(unisig_simulation: decode_unisig_s98.UnisigS98Simulation) -> None:
     unisig_simulation.recompute_all_mac()
-    unisig_simulation.dump_packets_as_json(output_directory=OUTPUT_DIRECTORY)
+    if len(unisig_simulation.unisig_s98_packets) < 10000:
+        unisig_simulation.dump_packets_as_json(output_directory=OUTPUT_DIRECTORY)
     unisig_simulation.save_all_packets_as_reports()
     unisig_simulation.save_all_packets_with_bad_mac_with_history_as_reports()
     unisig_simulation.save_all_but_dt_packets()
