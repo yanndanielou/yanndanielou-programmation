@@ -773,6 +773,9 @@ class UnisigS98Simulation:
     def save_all_disconnections_with_context(self) -> None:
         save_all_disconnections_with_context(self.unisig_s98_packets, self.label)
 
+    def save_all_disconnections_that_have_known_connection_with_context(self) -> None:
+        save_all_disconnections_that_have_known_connection_with_context(self.unisig_s98_packets, self.label)
+
     def save_all_packets_with_invalid_mac_with_context(self) -> None:
         save_all_packets_with_invalid_mac_with_context(self.unisig_s98_packets, self.label)
 
@@ -857,7 +860,9 @@ def save_packets_as_reports(unisig_s98_packets_to_save: list[UnisigS98WiresharkP
                             unisig_s98_packet.last_au2_packet.random_number_a_ra if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au2_packet else None
                         ),
                         "Existing context (connexion)": (
-                            unisig_s98_packet.connexion_zc_pai if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket, UnisigS98PaiDisconnectRequest)) else None
+                            unisig_s98_packet.connexion_zc_pai is not None
+                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket, UnisigS98PaiDisconnectRequest))
+                            else None
                         ),
                         "data to compute mac random a": (
                             unisig_s98_packet.connexion_zc_pai.random_a_string_base_16
@@ -981,6 +986,20 @@ def save_all_disconnections_with_context(all_unisig_packets: list[UnisigS98Wires
         packets_to_save_with_their_context=cast(list[UnisigS98WiresharkPacket], disconnection_packets),
         library_label=library_label,
         label=" disconnections",
+    )
+
+
+def save_all_disconnections_that_have_known_connection_with_context(all_unisig_packets: list[UnisigS98WiresharkPacket], library_label: str) -> None:
+
+    disconnection_packets = [
+        unisig_s98_packet for unisig_s98_packet in all_unisig_packets if isinstance(unisig_s98_packet, UnisigS98PaiDisconnectRequest) and unisig_s98_packet.connexion_zc_pai is not None
+    ]
+
+    save_packets_with_surounding_packets_for_context(
+        all_unisig_packets=all_unisig_packets,
+        packets_to_save_with_their_context=cast(list[UnisigS98WiresharkPacket], disconnection_packets),
+        library_label=library_label,
+        label=" disconnections that have connection",
     )
 
 
