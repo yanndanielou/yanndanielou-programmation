@@ -349,6 +349,7 @@ class UnisigS98AuthenticationResponseWiresharkPacket(UnisigS98WiresharkPacketWit
 
 @dataclass
 class UnisigS98DtDataWiresharkPacket(UnisigS98WiresharkPacketWithMac):
+    last_au2_packet: "UnisigS98Au2WiresharkPacket | None"
     connexion_zc_pai: triple_des_s98.ConnectionUnisig98 | None
     sai_user_data: HexaValueSplitBySemiColonInWireshark | None
 
@@ -443,6 +444,7 @@ class UnisigS98Simulation:
         self.equipments: list[Unisig98Equipment] = []
         self.communications: list[Unisig98Communication] = []
         self.last_au1_packet_by_interlocutors: dict[tuple[str, str], UnisigS98Au1WiresharkPacket] = {}
+        self.last_au2_packet_by_interlocutors: dict[tuple[str, str], UnisigS98Au2WiresharkPacket] = {}
         self.last_connexion_by_interlocutors: dict[tuple[str, str], triple_des_s98.ConnectionUnisig98] = {}
         self.directories_parsed: list[str] = []
         self.files_full_paths_parsed: list[str] = []
@@ -474,6 +476,9 @@ class UnisigS98Simulation:
             return
         self.last_connexion_by_interlocutors[(packet.ip_src_str, packet.ip_dst_str)] = packet.connexion_zc_pai
         self.last_connexion_by_interlocutors[(packet.ip_dst_str, packet.ip_src_str)] = packet.connexion_zc_pai
+
+        self.last_au2_packet_by_interlocutors[(packet.ip_src_str, packet.ip_dst_str)] = packet
+        self.last_au2_packet_by_interlocutors[(packet.ip_dst_str, packet.ip_src_str)] = packet
 
     def register_disconnect_request_packet(self, packet: UnisigS98PaiDisconnectRequest) -> None:
         logger_config.print_and_log_info(f"Disconnect request packet detected from {packet.ip_src_str} to {packet.ip_dst_str}")
@@ -639,6 +644,7 @@ class UnisigS98Simulation:
             return au2
         elif packet_type == UnisigS98PacketType.AU_3_OR_AR_OR_DT_DATA_PACKET_TYPE_3:
             last_au1_packet = self.last_au1_packet_by_interlocutors.get((ip_src_str, ip_dst_str))
+            last_au2_packet = self.last_au2_packet_by_interlocutors.get((ip_src_str, ip_dst_str))
             last_connexion = self.last_connexion_by_interlocutors.get((ip_src_str, ip_dst_str))
             if emd_byte.mti == UnisigS98EmdMti.DT_DATA_SAPDU:
                 return UnisigS98DtDataWiresharkPacket(
@@ -646,6 +652,7 @@ class UnisigS98Simulation:
                     sniff_time=sniff_time,
                     sniff_timestamp_str=sniff_timestamp_str,
                     last_au1_packet=last_au1_packet,
+                    last_au2_packet=last_au2_packet,
                     connexion_zc_pai=last_connexion,
                     tcp_payload=tcp_payload,
                     tcp_payload_without_ale_header=tcp_payload_without_ale_header,
@@ -775,6 +782,37 @@ class UnisigS98Simulation:
                             unisig_s98_packet.get_data_to_compute_mac().explanations_for_debug
                             if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.has_context_to_compute_mac()
                             else None
+                        ),
+                        "Last AU1 packet file full path": (
+                            unisig_s98_packet.last_au1_packet.file_full_path
+                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.last_au1_packet
+                            else None
+                        ),
+                        "Last AU1 packet frame number": (
+                            unisig_s98_packet.last_au1_packet.number
+                            if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket, UnisigS98Au2WiresharkPacket)) and unisig_s98_packet.last_au1_packet
+                            else None
+                        ),
+                        "Last AU1 packet called_etcs_id": (
+                            unisig_s98_packet.last_au1_packet.called_etcs_id if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au1_packet else None
+                        ),
+                        "Last AU1 packet calling_etcs_id": (
+                            unisig_s98_packet.last_au1_packet.calling_etcs_id if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au1_packet else None
+                        ),
+                        "Last AU1 packet file random_number_b_rb": (
+                            unisig_s98_packet.last_au1_packet.random_number_b_rb if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au1_packet else None
+                        ),
+                        "Last AU2 packet file full path": (
+                            unisig_s98_packet.last_au2_packet.file_full_path if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au2_packet else None
+                        ),
+                        "Last AU2 packet file number": (
+                            unisig_s98_packet.last_au2_packet.number if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au2_packet else None
+                        ),
+                        "Last AU2 packet responding_etcs_id": (
+                            unisig_s98_packet.last_au2_packet.responding_etcs_id if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au2_packet else None
+                        ),
+                        "Last AU2 packet file random_number_a_ra": (
+                            unisig_s98_packet.last_au2_packet.random_number_a_ra if isinstance(unisig_s98_packet, (UnisigS98DtDataWiresharkPacket)) and unisig_s98_packet.last_au2_packet else None
                         ),
                         "data to compute mac random a": (
                             unisig_s98_packet.connexion_zc_pai.random_a_string_base_16
