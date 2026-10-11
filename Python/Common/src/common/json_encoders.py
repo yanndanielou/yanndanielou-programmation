@@ -11,7 +11,7 @@ from typing import Any
 
 from logger import logger_config
 
-from common import singleton, bytes_utils
+from common import bytes_utils, singleton
 
 
 class ListOfObjectsEncoder(JSONEncoder):
@@ -60,7 +60,7 @@ class JsonEncodersUtils(metaclass=singleton.Singleton):
                 json_file.write("\n]" if not first_item else "]")
 
         if len(list_objects) > chunk_size and split_big_files:
-            with logger_config.stopwatch_with_label(f"Serialize {len(list_objects)} in {json_file_full_path}* chunks files"):
+            with logger_config.stopwatch_with_label(f"Serialize {len(list_objects)} in {json_file_full_path.rstrip(".json")}*.json chunks files"):
                 # Split into chunks and create multiple files
                 base_path = Path(json_file_full_path)
                 stem = base_path.stem
