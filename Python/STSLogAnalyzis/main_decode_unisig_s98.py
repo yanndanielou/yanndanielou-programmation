@@ -73,6 +73,15 @@ def main() -> None:
             library_label="all libraries",
         )
 
+        decode_unisig_s98.save_all_disconnections_with_context(
+            all_unisig_packets=all_unisig_packets,
+            library_label="all libraries",
+        )
+        decode_unisig_s98.save_all_packets_with_invalid_mac_with_context(
+            all_unisig_packets=all_unisig_packets,
+            library_label="all libraries",
+        )
+
 
 if __name__ == "__main__":
     main()
