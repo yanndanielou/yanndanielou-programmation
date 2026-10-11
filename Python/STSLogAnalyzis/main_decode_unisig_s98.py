@@ -6,19 +6,21 @@ OUTPUT_DIRECTORY = "output"
 
 
 @logger_config.stopwatch_decorator(monitor_ram_usage=True)
-def handle_directory(directory_full_path: str, filename_pattern: str = "*") -> None:
+def handle_directory(directory_full_path: str, filename_pattern: str = "*") -> decode_unisig_s98.UnisigS98Simulation:
     unisig_simulation = decode_unisig_s98.UnisigS98Simulation()
     unisig_simulation.build_unisig_s98_packets_from_load_pcap_files_in_directory(directory_full_path, filename_pattern)
     common_actions(unisig_simulation)
     logger_config.print_and_log_error_if(not unisig_simulation.unisig_s98_packets, f"No packet found in {directory_full_path}")
+    return unisig_simulation
 
 
 @logger_config.stopwatch_decorator(monitor_ram_usage=True)
-def handle_file(file_full_path: str) -> None:
+def handle_file(file_full_path: str) -> decode_unisig_s98.UnisigS98Simulation:
     unisig_simulation = decode_unisig_s98.UnisigS98Simulation()
     unisig_simulation.build_unisig_s98_packets_from_load_pcap_file(file_full_path)
     common_actions(unisig_simulation)
     logger_config.print_and_log_error_if(not unisig_simulation.unisig_s98_packets, f"No packet found in {file_full_path}")
+    return unisig_simulation
 
 
 def common_actions(unisig_simulation: decode_unisig_s98.UnisigS98Simulation) -> None:
