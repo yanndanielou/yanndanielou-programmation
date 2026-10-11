@@ -313,7 +313,7 @@ class UnisigS98Au2WiresharkPacket(UnisigS98WiresharkPacketWithMac):
 
         data_to_compute_mac = self.get_data_to_compute_mac()
 
-        self.set_recomputed_mac(self.connexion_zc_pai.compute_mac_n_blocks(data_to_compute_mac.all_blocks_bytearray, verbose=True))
+        self.set_recomputed_mac(self.connexion_zc_pai.compute_mac_n_blocks(data_to_compute_mac.all_blocks_bytearray, verbose=False))
 
 
 @dataclass
@@ -735,7 +735,7 @@ class UnisigS98Simulation:
         return mac_computed, errors
 
     def dump_packets_as_json(self, output_directory: str) -> None:
-        json_encoders.JsonEncodersUtils.serialize_list_objects_in_json(self.unisig_s98_packets, json_file_full_path=output_directory + "\\" + self.label + " json dump")
+        json_encoders.JsonEncodersUtils.serialize_list_objects_in_json(self.unisig_s98_packets, json_file_full_path=output_directory + "\\" + self.label + " json dump", split_big_files=False)
 
     def save_all_packets_as_reports(self) -> None:
         self.save_packets_as_reports(self.unisig_s98_packets, " all packets")
