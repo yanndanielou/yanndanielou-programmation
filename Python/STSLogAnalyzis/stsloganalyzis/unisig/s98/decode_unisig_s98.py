@@ -976,16 +976,9 @@ def save_all_disconnections_with_context(all_unisig_packets: list[UnisigS98Wires
 
     disconnection_packets = [unisig_s98_packet for unisig_s98_packet in all_unisig_packets if isinstance(unisig_s98_packet, UnisigS98PaiDisconnectRequest)]
 
-    unisig_s98_packets_to_save: list[UnisigS98WiresharkPacket] = []
-
-    for disconnection_packet in disconnection_packets:
-        index_in_library = all_unisig_packets.index(disconnection_packet)
-        previous_packets = all_unisig_packets[index_in_library - 20 : index_in_library + 10]
-        unisig_s98_packets_to_save += previous_packets
-
     save_packets_with_surounding_packets_for_context(
         all_unisig_packets=all_unisig_packets,
-        packets_to_save_with_their_context=unisig_s98_packets_to_save,
+        packets_to_save_with_their_context=cast(list[UnisigS98WiresharkPacket], disconnection_packets),
         library_label=library_label,
         label=" disconnections",
     )
@@ -1005,20 +998,29 @@ def save_all_packets_with_invalid_mac_with_context(all_unisig_packets: list[Unis
         packets_to_save_with_their_context=cast(list[UnisigS98WiresharkPacket], unisig_s98_packet_with_bad_macs),
         library_label=library_label,
         label=" packets with invalid mac",
+        number_of_next_packets_to_include=30,
     )
 
 
 def save_packets_with_surounding_packets_for_context(
-    all_unisig_packets: list[UnisigS98WiresharkPacket], packets_to_save_with_their_context: list[UnisigS98WiresharkPacket], library_label: str, label: str
+    all_unisig_packets: list[UnisigS98WiresharkPacket],
+    packets_to_save_with_their_context: list[UnisigS98WiresharkPacket],
+    library_label: str,
+    label: str,
+    number_of_previous_packets_to_include: int = 20,
+    number_of_next_packets_to_include: int = 10,
 ) -> None:
 
     unisig_s98_packets_to_save: list[UnisigS98WiresharkPacket] = []
 
     for packet_to_save_with_its_surounding in packets_to_save_with_their_context:
         index_in_library = all_unisig_packets.index(packet_to_save_with_its_surounding)
-        previous_packets = all_unisig_packets[index_in_library - 20 : index_in_library + 10]
+        previous_packets = all_unisig_packets[index_in_library - number_of_previous_packets_to_include : index_in_library + number_of_next_packets_to_include]
         unisig_s98_packets_to_save += previous_packets
 
+    logger_config.print_and_log_info(
+        f"save_packets_with_surounding_packets_for_context: {len(all_unisig_packets)} packets in total. {len(packets_to_save_with_their_context)} packets to save with context. {len(unisig_s98_packets_to_save)} packets to save (when surrounding added) "
+    )
     save_packets_as_reports(
         unisig_s98_packets_to_save,
         library_label,
