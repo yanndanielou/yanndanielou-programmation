@@ -396,16 +396,77 @@ class UnisigS98Au3WiresharkPacket(UnisigS98WiresharkPacketWithMac):
 
 
 @dataclass
-class UnisigS98AuthenticationResponseWiresharkPacket(UnisigS98WiresharkPacketWithMac):
+class UnisigS98ArAuthenticationResponseWiresharkPacket(UnisigS98WiresharkPacketWithMac):
     last_au1_packet: UnisigS98Au1WiresharkPacket | None
     last_au2_packet: UnisigS98Au2WiresharkPacket | None
     connexion_zc_pai: triple_des_s98.ConnectionUnisig98 | None
 
+    @dataclass
+    class DataToComputeMac(UnisigS98WiresharkPacketWithMac.DataToComputeMac):
+        da_bytearray: bytearray
+        message_bytearray: bytearray
+
+        def __post_init__(self) -> None:
+            super().__post_init__()
+
+            # l | DA | m + padding
+            self.all_blocks_bytearray = self.length_bytearray + self.da_bytearray + self.message_bytearray + self.padding_bytearray
+
+            self.all_blocks_byte_array_to_string_base_16 = bytes_utils.byte_array_to_string_base_16(self.all_blocks_bytearray)
+            self.all_blocks_byte_array_to_string_base_10 = bytes_utils.byte_array_to_string_base_10(self.all_blocks_bytearray)
+
+            self.explanations_for_debug = f"length: {bytes_utils.byte_array_to_string_base_16(self.length_bytearray)}"
+            self.explanations_for_debug += f", da: {bytes_utils.byte_array_to_string_base_16(self.da_bytearray)}"
+            self.explanations_for_debug += f", message: {bytes_utils.byte_array_to_string_base_16(self.message_bytearray)}"
+            self.explanations_for_debug += f", padding: {bytes_utils.byte_array_to_string_base_16(self.padding_bytearray)}"
+
     def has_context_to_compute_mac(self) -> bool:
-        raise NotImplementedError()
+        return self.last_au1_packet is not None and self.connexion_zc_pai is not None
+
+    def get_data_to_compute_mac(self) -> DataToComputeMac:
+        """In the case of the AR SaPDU the message m = ‘000’ | MTI | DF consists of the
+        message type identifier (MTI) indicating the AR SaPDU and the direction flag (DF)."""
+
+        assert self.has_context_to_compute_mac()
+        assert self.last_au1_packet
+        assert self.last_au2_packet
+        assert self.connexion_zc_pai
+
+        message_receiver_etcsid = self.last_au1_packet.get_etcs_id_from_ip_address(self.ip_dst_str)
+        message_receiver_etcsid_as_3_bytes = bytearray(message_receiver_etcsid.to_bytes(3, byteorder="big"))
+
+        assert len(message_receiver_etcsid_as_3_bytes) == 3
+
+        ety_mti_df_as_int = self.emd_byte.value
+        assert self.emd_byte.ety.value == 0
+        ety_mti_df_as_1_byte_byte_array = bytearray(ety_mti_df_as_int.to_bytes(1, byteorder="big"))
+
+        message_bytearray = ety_mti_df_as_1_byte_byte_array
+
+        length_da_and_message = len(message_receiver_etcsid_as_3_bytes) + len(message_bytearray)
+        length_da_and_message_as_2_bytes_bytearray = bytearray(length_da_and_message.to_bytes(2, byteorder="big"))
+
+        l_da_message = length_da_and_message_as_2_bytes_bytearray + message_receiver_etcsid_as_3_bytes + message_bytearray
+
+        l_da_message_with_padding = l_da_message
+
+        padding = bytearray()
+        while len(l_da_message_with_padding) % 8 != 0:
+            padding += bytearray.fromhex("00")
+            l_da_message_with_padding = l_da_message + padding
+
+        return UnisigS98ArAuthenticationResponseWiresharkPacket.DataToComputeMac(
+            da_bytearray=message_receiver_etcsid_as_3_bytes,
+            length_bytearray=length_da_and_message_as_2_bytes_bytearray,
+            message_bytearray=message_bytearray,
+            padding_bytearray=padding,
+        )
 
     def recompute_mac(self) -> None:
-        raise NotImplementedError()
+        assert self.last_au1_packet
+        assert self.connexion_zc_pai
+        data_to_compute_mac = self.get_data_to_compute_mac()
+        self.set_recomputed_mac(self.connexion_zc_pai.compute_mac_n_blocks(data_to_compute_mac.all_blocks_bytearray))
 
 
 @dataclass
@@ -759,7 +820,7 @@ class UnisigS98Simulation:
                         transmitted_mac=HexaValueSplitBySemiColonInWireshark(wireshark_packet.ss098.get_field_value("ss098.auth.mac")),
                     )
                 elif emd_byte.mti == UnisigS98EmdMti.AR_AUTHENTIFICATION_RESPONSE_TO_THIRD_AUTHENTICATION_SAPDU:
-                    return UnisigS98AuthenticationResponseWiresharkPacket(
+                    return UnisigS98ArAuthenticationResponseWiresharkPacket(
                         last_au1_packet=last_au1_packet,
                         last_au2_packet=last_au2_packet,
                         connexion_zc_pai=last_connexion,
