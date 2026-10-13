@@ -1,5 +1,8 @@
 @CALL SET_PYTHON_HOME.bat
 
+@ECHO PYTHON_HOME %PYTHON_HOME%  >> install_external_common_libraries.log
+
+
 @call :UPDATE_PYTHON_LIB pip
 
 @call :INSTALL_AND_UPDATE_PYTHON_LIB line_profiler
@@ -73,23 +76,23 @@ rem does not work @call :INSTALL_AND_UPDATE_PYTHON_LIB lazyxml
 
 :INSTALL_AND_UPDATE_PYTHON_LIB
 @Title install and update python library %1
-@Echo install and update python library %1 - %DATE% %TIME% 
-call %PYTHON_HOME%\python.exe -m pip install %1
-call %PYTHON_HOME%\python.exe -m pip install --upgrade %1
+@Echo install and update python library %1 - %DATE% %TIME%  >> install_external_common_libraries.log
+call %PYTHON_HOME%\python.exe -m pip install %1 >> install_external_common_libraries.log
+call %PYTHON_HOME%\python.exe -m pip install --upgrade %1 >> install_external_common_libraries.log
 @EXIT /B 0
 
 
 :INSTALL_PYTHON_LIB
 @Title install python library %1
-@Echo install python library %1 - %DATE% %TIME% 
-call %PYTHON_HOME%\python.exe -m pip install %1
+@Echo install python library %1 - %DATE% %TIME%  >> install_external_common_libraries.log
+call %PYTHON_HOME%\python.exe -m pip install %1 >> install_external_common_libraries.log
 @EXIT /B 0
 
 
 :UPDATE_PYTHON_LIB
 @Title Update python library %1
-@Echo Update python library %1 - %DATE% %TIME%
-call %PYTHON_HOME%\python.exe -m pip install --upgrade %1
+@Echo Update python library %1 - %DATE% %TIME% >> install_external_common_libraries.log
+call %PYTHON_HOME%\python.exe -m pip install --upgrade %1 >> install_external_common_libraries.log
 @EXIT /B 0
 
 
