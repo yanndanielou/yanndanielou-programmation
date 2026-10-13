@@ -2,6 +2,7 @@
 import datetime
 import inspect
 import os
+import shutil
 from dataclasses import dataclass
 
 import pywintypes
@@ -184,7 +185,7 @@ class DownloadAndCleanDMLApplication:
         today_copy_file_full_path = f"{final_excel_file_directory}/{today_copy_file_name}"
         logger_config.print_and_log_info(f"Copy final {dml_file_path} to today copy {today_copy_file_full_path}")
 
-        file_utils.rename_file_and_wait_if_is_locked(dml_file_path, today_copy_file_full_path)
+        shutil.copyfile(dml_file_path, today_copy_file_full_path)
 
     @logger_config.stopwatch_decorator(inform_beginning=True, monitor_ram_usage=True)
     def download_dml_file(self) -> str:
