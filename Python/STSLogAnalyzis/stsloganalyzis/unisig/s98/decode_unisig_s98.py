@@ -358,7 +358,7 @@ class UnisigS98Au3WiresharkPacket(UnisigS98WiresharkPacketWithMac):
         assert len(message_receiver_etcsid_as_3_bytes) == 3
 
         ety_mti_df_as_int = self.emd_byte.value
-        # assert ety_mti_df_as_int == 197
+        assert self.emd_byte.ety.value == 0
         ety_mti_df_as_1_byte_byte_array = bytearray(ety_mti_df_as_int.to_bytes(1, byteorder="big"))
 
         rb_random_number_b_as_8_bytes = self.last_au1_packet.random_number_b_rb.as_byte_array
