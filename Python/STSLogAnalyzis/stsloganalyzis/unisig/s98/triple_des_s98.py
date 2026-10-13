@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 
+from common import bytes_utils
 from logger import logger_config
 
 MAC_SIZE_IN_BYTES = 8
@@ -661,9 +662,9 @@ class ConnectionUnisig98:
         self.compute_session_key(ra_r_rb_r, self.session_key_2, False)
         self.compute_session_key(ral_l_rb_l, self.session_key_3, True)
 
-        logger_config.print_and_log_info(f"start_session random_number_a:{random_number_a}, random_number_b:{random_number_b}")
-
-        return
+        logger_config.print_and_log_info(
+            f"start_session random_number_a:{bytes_utils.byte_array_to_string_base_16(random_number_a)}, random_number_b:{bytes_utils.byte_array_to_string_base_16(random_number_b)}"
+        )
 
     def get_blocks_for_mac_au2(self, verbose: bool = False) -> bytearray:
         if verbose:
