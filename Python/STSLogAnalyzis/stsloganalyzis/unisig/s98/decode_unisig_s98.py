@@ -288,7 +288,7 @@ class UnisigS98Au2WiresharkPacket(UnisigS98WiresharkPacketWithMac):
         sa_responder_etcsid_as_3_bytes = bytearray(sa_responder_etcsid.to_bytes(3, byteorder="big"))
         assert len(sa_responder_etcsid_as_3_bytes) == 3
 
-        unknwown_value_1_as_1_byte = bytearray(self.safety_feature_saf.to_bytes(1, byteorder="big"))
+        safety_feature_saf_as_1_byte = bytearray(self.safety_feature_saf.to_bytes(1, byteorder="big"))
 
         ra_random_number_a_as_8_bytes = self.random_number_a_ra.as_byte_array
         rb_random_number_b_as_8_bytes = self.last_au1_packet.random_number_b_rb.as_byte_array
@@ -299,7 +299,7 @@ class UnisigS98Au2WiresharkPacket(UnisigS98WiresharkPacketWithMac):
             da_bytearray=da_initiator_etcsid_etcsid_as_3_bytes_byte_array,
             ety_mti_df_as_byte_array=ety_mti_df_as_1_byte_byte_array,
             sa_responder_etcsid_as_3_bytes=sa_responder_etcsid_as_3_bytes,
-            safety_feature_saf_as_1_byte=unknwown_value_1_as_1_byte,
+            safety_feature_saf_as_1_byte=safety_feature_saf_as_1_byte,
             ra_random_number_a_as_8_bytes=ra_random_number_a_as_8_bytes,
             rb_random_number_b_as_8_bytes=rb_random_number_b_as_8_bytes,
             da_b_as_8_bytes=da_initiator_etcsid_etcsid_as_3_bytes_byte_array,
@@ -1045,5 +1045,5 @@ def save_packets_with_surounding_packets_for_context(
     save_packets_as_reports(
         unisig_s98_packets_to_save,
         library_label,
-        f"{label} {len(all_unisig_packets)} all with context",
+        f"{label} {len(packets_to_save_with_their_context)} all with context",
     )
