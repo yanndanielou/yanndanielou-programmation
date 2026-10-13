@@ -51,7 +51,7 @@ class TestComputeMacFromWiresharkCapture:
 
             simulation = decode_unisig_s98.UnisigS98Simulation()
             simulation.build_unisig_s98_packets_from_load_pcap_file(pcap_file_full_path)
-            au3_packet = simulation.unisig_s98_packets[1]
+            au3_packet = simulation.unisig_s98_packets[2]
             assert isinstance(au3_packet, decode_unisig_s98.UnisigS98Au3WiresharkPacket)
             au3_packet.recompute_mac()
             assert au3_packet.recomputed_mac_and_transmitted_mac_are_equals

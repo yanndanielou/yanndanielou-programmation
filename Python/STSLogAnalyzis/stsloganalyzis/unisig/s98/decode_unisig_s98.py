@@ -322,18 +322,77 @@ class UnisigS98Au3WiresharkPacket(UnisigS98WiresharkPacketWithMac):
     last_au2_packet: UnisigS98Au2WiresharkPacket | None
     connexion_zc_pai: triple_des_s98.ConnectionUnisig98 | None
 
-    def get_data_to_compute_mac(self) -> None:
+    @dataclass
+    class DataToComputeMac(UnisigS98WiresharkPacketWithMac.DataToComputeMac):
+        da_bytearray: bytearray
+        message_bytearray: bytearray
+
+        def __post_init__(self) -> None:
+            super().__post_init__()
+
+            # l | DA | m + padding
+            self.all_blocks_bytearray = self.length_bytearray + self.da_bytearray + self.message_bytearray + self.padding_bytearray
+
+            self.all_blocks_byte_array_to_string_base_16 = bytes_utils.byte_array_to_string_base_16(self.all_blocks_bytearray)
+            self.all_blocks_byte_array_to_string_base_10 = bytes_utils.byte_array_to_string_base_10(self.all_blocks_bytearray)
+
+            self.explanations_for_debug = f"length: {bytes_utils.byte_array_to_string_base_16(self.length_bytearray)}"
+            self.explanations_for_debug += f", da: {bytes_utils.byte_array_to_string_base_16(self.da_bytearray)}"
+            self.explanations_for_debug += f", message: {bytes_utils.byte_array_to_string_base_16(self.message_bytearray)}"
+            self.explanations_for_debug += f", padding: {bytes_utils.byte_array_to_string_base_16(self.padding_bytearray)}"
+
+    def get_data_to_compute_mac(self) -> DataToComputeMac:
         """
         6.2.3.2.1.10 Concerning the AU3 SaPDU, the message m = 000 | MTI | DF | auth3
         auth3 = Rb | Ra.
         """
-        pass
+
+        assert self.has_context_to_compute_mac()
+        assert self.last_au1_packet
+        assert self.last_au2_packet
+        assert self.connexion_zc_pai
+
+        message_receiver_etcsid = self.last_au1_packet.get_etcs_id_from_ip_address(self.ip_dst_str)
+        message_receiver_etcsid_as_3_bytes = bytearray(message_receiver_etcsid.to_bytes(3, byteorder="big"))
+
+        assert len(message_receiver_etcsid_as_3_bytes) == 3
+
+        ety_mti_df_as_int = self.emd_byte.value
+        # assert ety_mti_df_as_int == 197
+        ety_mti_df_as_1_byte_byte_array = bytearray(ety_mti_df_as_int.to_bytes(1, byteorder="big"))
+
+        rb_random_number_b_as_8_bytes = self.last_au1_packet.random_number_b_rb.as_byte_array
+        ra_random_number_a_as_8_bytes = self.last_au2_packet.random_number_a_ra.as_byte_array
+
+        message_bytearray = ety_mti_df_as_1_byte_byte_array + rb_random_number_b_as_8_bytes + ra_random_number_a_as_8_bytes
+
+        length_da_and_message = len(message_receiver_etcsid_as_3_bytes) + len(message_bytearray)
+        length_da_and_message_as_2_bytes_bytearray = bytearray(length_da_and_message.to_bytes(2, byteorder="big"))
+
+        l_da_message = length_da_and_message_as_2_bytes_bytearray + message_receiver_etcsid_as_3_bytes + message_bytearray
+
+        l_da_message_with_padding = l_da_message
+
+        padding = bytearray()
+        while len(l_da_message_with_padding) % 8 != 0:
+            padding += bytearray.fromhex("00")
+            l_da_message_with_padding = l_da_message + padding
+
+        return UnisigS98Au3WiresharkPacket.DataToComputeMac(
+            da_bytearray=message_receiver_etcsid_as_3_bytes,
+            length_bytearray=length_da_and_message_as_2_bytes_bytearray,
+            message_bytearray=message_bytearray,
+            padding_bytearray=padding,
+        )
 
     def has_context_to_compute_mac(self) -> bool:
-        raise NotImplementedError()
+        return self.last_au1_packet is not None and self.last_au2_packet is not None
 
     def recompute_mac(self) -> None:
-        raise NotImplementedError()
+        assert self.last_au1_packet
+        assert self.connexion_zc_pai
+        data_to_compute_mac = self.get_data_to_compute_mac()
+        self.set_recomputed_mac(self.connexion_zc_pai.compute_mac_n_blocks(data_to_compute_mac.all_blocks_bytearray))
 
 
 @dataclass
@@ -388,6 +447,11 @@ class UnisigS98DtDataWiresharkPacket(UnisigS98WiresharkPacketWithMac):
         return self.get_data_to_compute_mac_knowing_message_receiver_etcsid(message_receiver_etcsid)
 
     def get_data_to_compute_mac_knowing_message_receiver_etcsid(self, message_receiver_etcsid: int) -> DataToComputeMac:
+
+        # 6.2.3.2.1.8 In the case of a DT SaPDU the message m = ‘000’ | MTI | DF | SaUD consists of the
+        # message type identifier (MTI) indicating a DT SaPDU, the direction flag (DF), and the
+        # Safety-User Data SaUD.
+
         message_receiver_etcsid_as_3_bytes = bytearray(message_receiver_etcsid.to_bytes(3, byteorder="big"))
 
         assert len(message_receiver_etcsid_as_3_bytes) == 3
