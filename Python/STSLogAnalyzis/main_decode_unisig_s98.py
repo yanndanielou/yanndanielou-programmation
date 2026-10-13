@@ -38,6 +38,8 @@ def common_actions(unisig_simulation: decode_unisig_s98.UnisigS98Simulation) -> 
 def main() -> None:
     with logger_config.application_logger():
         simulations: list[decode_unisig_s98.UnisigS98Simulation] = []
+        simulations.append(handle_directory(r"C:\Users\fr232487\Downloads\test_nuit_20261012\PAS_01", "*"))  # contains mac errors
+        simulations.append(handle_directory(r"C:\Users\fr232487\Downloads\test_nuit_20261012\PAS_02", "*"))  # contains mac errors
         simulations.append(handle_directory(r"C:\Users\fr232487\Downloads\logs_wsk_PAI75_22.09.2026", "*.pcap"))  # contains mac errors
         simulations.append(handle_file(r"D:\Github\yanndanielou-programmation\Python\STSLogAnalyzis\test\resources\unisig_s98\small_capture_started_after_connexion.pcapng"))
         simulations.append(handle_file(r"C:\Users\fr232487\Downloads\tg13zc1-pas3-cucp-a-m_pai+deconnexion+21h34\tg13zc1-pas3-cucp-a-m_pai deconnexion 21h34.pcap"))
