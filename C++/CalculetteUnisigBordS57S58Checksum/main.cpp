@@ -340,16 +340,16 @@ int main()
     // [99:33 <= 10:33] Received PROFIBUS message [num:657][mode:SDA][len:8] 84 86 d7 bc 6b 68 c5 30
     // [CbtcMessage][bim:33210][ack:41][id:13][from:110][to:5] 00 1e 1c 01 08 63 0a 21 21 00 00 00 84 86 00 7c 7d ef 00 04 0b c2 00 20 d2 d2 00 05 24 6f
     test_idle_data[0]= 0x08; // Data Length (implicit) // 10 - 8 donnee implicites + 6 bits de CRC = 8 = 0x08
-    test_idle_data[1]= 0x63; // ?? Receiver_address (implicit)
-    test_idle_data[2]= 0x0A; // ?? Sender_address (implicit)
-    test_idle_data[3]= 0x21; // DSAP (implicit)
-    test_idle_data[4]= 0x21; // SSAP (implicit)
+    test_idle_data[1]= 0x63; // 99 Receiver_address / Receive_address (implicit)  
+    test_idle_data[2]= 0x0A; // 10 Sender_address / Send_address (implicit)
+    test_idle_data[3]= 0x21; // DSAP / Partner_SAP (implicit)
+    test_idle_data[4]= 0x21; // SSAP / Local_SAP (implicit)
     // Connect Confirm Telegram (pour avoir le num�ro de sequence initial)
     // [99:33 <= 10:33] Received PROFIBUS message [num:499][mode:SDA][len:29] 7a 82 7a 05 06 f2 88 13 03 00 00 00 03 00 00 e8 03 00 00 0a 00 00 00 ac e1 db cd 53 b7
     // [=> 239.192.112.101:61440] Sending CBTC message  [num:263][rt:624][CbtcMessage][bim:33030][ack:5][id:13][from:110][to:5] 00 33 18 01 1d 63 0a 21 21 00 00 00 7a 82 7a 05 06 f2 88 13 03 00 00 00 03 00 00 e8 03 00 00 0a 00 00 00 00 7c 86 58 00 04 0a 27 00 20 d9 d5 00 05 19 44
-    test_idle_data[5]= 0x05; // "Higher_order_24bits_of_sequence_number (low word, high byte)" (implicit)
-    test_idle_data[6]= 0x06; // "Higher_order_24bits_of_sequence_number (high word, low byte)" (implicit)
-    test_idle_data[7]= 0xF2; // "Higher_order_24bits_of_sequence_number (high word, high byte)" (implicit)
+    test_idle_data[5]= 0x05; // "Higher_order_24bits_of_sequence_number (low word, high byte) / Authentication number (low word, low byte)" (implicit)
+    test_idle_data[6]= 0x06; // "Higher_order_24bits_of_sequence_number (high word, low byte) / Authentication number (low word, high byte)" (implicit)
+    test_idle_data[7]= 0xF2; // "Higher_order_24bits_of_sequence_number (high word, high byte) / Authentication number (high word, low byte) " (implicit)
     test_idle_data[8]= 0x84; // lowest order byte sequence number
     test_idle_data[9]= 0x86; // Command (idle message) 86h [SIL4] or 06h [SIL2] or C6h [SIL0]
 
