@@ -410,7 +410,10 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
 
     def __post_init__(self) -> None:
         super().__post_init__()
-        self.random_number_representing_sequence_number = self.byte_message_decoded.get_next_bytes_as_single_int_unsigned(size_bytes=4)
+        self.higher_order_24_bits_of_sequence_number_low_word_high_byte = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
+        self.higher_order_24_bits_of_sequence_number_high_word_low_byte = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
+        self.higher_order_24_bits_of_sequence_number_high_word_high_byte = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
+        self.higher_order_24_bits_of_sequence_number_low_word_low_byte = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
         self.idle_cycle_timeout_in_100ms = self.byte_message_decoded.get_next_bytes_as_single_int_unsigned(size_bytes=2)
         self.configuration_data_prefix_x = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
         # assert self.configuration_data_prefix_x == 3
