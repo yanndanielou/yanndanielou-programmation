@@ -15,3 +15,4 @@ main_sandbox*
 main_atc_temps_cycle_reports_test*
 secret_kmac_keys.py
 secret_equipment_name_from_ip_address.py
+unisig_s58.json
