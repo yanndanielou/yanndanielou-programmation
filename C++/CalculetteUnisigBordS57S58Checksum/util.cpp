@@ -1,4 +1,5 @@
 #include "util.h"
+#include "secrets.h"
 using namespace std;
 
 uint32_t calculer_tag_passerelle(int id_passerelle, const uint32_t Bx, const uint32_t tau, const uint32_t Rk, const uint32_t A){
