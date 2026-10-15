@@ -388,6 +388,8 @@ class ProfibusLogLine:
     timestamp: datetime
     source: str
     target: str
+    source_address: int
+    target_address: int
     interlocutors: str
     sequence: int
     mode: SendingMode
@@ -512,6 +514,8 @@ class ProfibusLogLine:
         if mode in ("SDA", "SDN"):
             return ProfibusLogLine(
                 timestamp=timestamp,
+                source_address=source_address,
+                target_address=target_address,
                 source=f"{ProfibusLogLine.get_equipment_name_from_address(source_address)}/{ProfibusLogLine.get_function_name_from_sap(source_sap)}",
                 target=f"{ProfibusLogLine.get_equipment_name_from_address(target_address)}/{ProfibusLogLine.get_function_name_from_sap(target_sap)}",
                 interlocutors=interlocutors,
