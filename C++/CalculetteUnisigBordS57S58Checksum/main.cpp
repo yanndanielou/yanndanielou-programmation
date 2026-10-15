@@ -353,6 +353,15 @@ int main()
     test_idle_data[8]= 0x84; // lowest order byte sequence number
     test_idle_data[9]= 0x86; // Command (idle message) 86h [SIL4] or 06h [SIL2] or C6h [SIL0]
 
+    uint64_t test_idle_data_crc48_computed= crc48_custom(
+        test_idle_data, // reinterpret_cast<const uint8_t*>(msg_ref.data()),
+        test_idle_data_size, //msg_ref.size()
+        false // debug
+    );
+
+    cout << "CRC48(test_idle_data) = 0x" << std::hex << std::uppercase << test_idle_data_crc48_computed << std::endl;
+    cout << "CRC48 attendu = d7 bc 6b 68 c5 30" << endl;
+
 
     const int test_sn_data_size = 10;
     uint8_t* test_sn_data = new uint8_t[test_sn_data_size];
