@@ -144,7 +144,7 @@ def produce_line_graphs_number_of_cfx_by_state_per_date_line_graphs(
     else:
         generation_label += "All "
 
-    with logger_config.stopwatch_with_label(label=f"{generation_label} Gather state counts for each date", inform_beginning=True):
+    with logger_config.stopwatch_with_label(label=f"{generation_label} Gather state counts for each date", inform_beginning=False):
         all_results_to_display: AllResultsPerDatesWithDebugDetails = cfx_library.gather_state_counts_for_each_date(
             cfx_filters=generation_instructions.cfx_filters, dates_generator=generation_instructions.dates_generator
         )
@@ -177,13 +177,13 @@ def produce_line_graphs_number_of_cfx_by_state_per_date_line_graphs(
         return
 
     if generation_instructions.create_excel_file:
-        with logger_config.stopwatch_with_label(label=f"produce_excel_output_file, {generation_label}", inform_beginning=True):
+        with logger_config.stopwatch_with_label(label=f"produce_excel_output_file, {generation_label}", inform_beginning=False):
             produce_excel_output_file_results_number_of_cfx_by_state_per_date(
                 output_excel_file_without_extension=f"{generic_output_files_path_without_suffix_and_extension}", all_results_to_display=all_results_to_display
             )
 
     if display_with_cumulative_eras:
-        with logger_config.stopwatch_with_label(label=f"produce_displays cumulative, {generation_label}", inform_beginning=True, monitor_ram_usage=True):
+        with logger_config.stopwatch_with_label(label=f"produce_displays cumulative, {generation_label}", inform_beginning=False, monitor_ram_usage=True):
             produce_displays_and_create_graph_files_number_of_cfx_by_state_per_date(
                 generation_instructions=generation_instructions,
                 use_cumulative=True,
@@ -193,7 +193,7 @@ def produce_line_graphs_number_of_cfx_by_state_per_date_line_graphs(
                 generation_label_for_valid_file_name=generation_label_for_valid_file_name,
             )
     if display_without_cumulative_eras:
-        with logger_config.stopwatch_with_label(label=f"produce_displays numbers, filter {generation_label} library {cfx_library.label}", inform_beginning=True, monitor_ram_usage=True):
+        with logger_config.stopwatch_with_label(label=f"produce_displays numbers, filter {generation_label} library {cfx_library.label}", inform_beginning=False, monitor_ram_usage=True):
             produce_displays_and_create_graph_files_number_of_cfx_by_state_per_date(
                 generation_instructions=generation_instructions,
                 use_cumulative=False,
@@ -278,7 +278,7 @@ def produce_displays_and_create_graph_files_number_of_cfx_by_state_per_date(
     if generation_instructions.create_html_file:
         output_html_file = generation_instructions.output_directory_name + "/" + generation_label_for_valid_file_name + " cumulative " + str(use_cumulative) + ".html"
 
-        with logger_config.stopwatch_with_label(label=f"html {output_html_file} creation", inform_beginning=True):
+        with logger_config.stopwatch_with_label(label=f"html {output_html_file} creation", inform_beginning=False):
             html_content = mpld3.fig_to_html(fig)
             with open(output_html_file, "w", encoding="utf8") as html_file:
                 html_file.write(html_content)
@@ -461,7 +461,7 @@ def produce_number_of_cfx_by_state_per_date_line_graphs_for_library(
             generation_instructions_copy.cfx_filters = generation_instructions_copy.cfx_filters + [
                 ChampFxFilter(role_depending_on_date_filter=ChampFXRoleDependingOnDateFilter(roles_at_date_allowed=[subsystem]))
             ]
-            with logger_config.stopwatch_with_label(label=f"{cfx_library.label} produce_results_and_displays for {subsystem.name}", inform_beginning=True, monitor_ram_usage=True):
+            with logger_config.stopwatch_with_label(label=f"{cfx_library.label} produce_results_and_displays for {subsystem.name}", inform_beginning=False, monitor_ram_usage=True):
                 produce_line_graphs_number_of_cfx_by_state_per_date_line_graphs(
                     cfx_library=cfx_library,
                     generation_instructions=generation_instructions_copy,
@@ -471,7 +471,7 @@ def produce_number_of_cfx_by_state_per_date_line_graphs_for_library(
 
     if generation_instructions.for_each_subsystem:
         for subsystem in SubSystem:
-            with logger_config.stopwatch_with_label(label=f"{cfx_library.label} produce_results_and_displays for {subsystem.name}", inform_beginning=True, monitor_ram_usage=True):
+            with logger_config.stopwatch_with_label(label=f"{cfx_library.label} produce_results_and_displays for {subsystem.name}", inform_beginning=False, monitor_ram_usage=True):
                 generation_instructions_copy = copy.deepcopy(generation_instructions)
                 generation_instructions_copy.cfx_filters = generation_instructions_copy.cfx_filters + [ChampFxFilter(field_filters=[ChampFxFilterFieldSubsystem(field_accepted_values=[subsystem])])]
 

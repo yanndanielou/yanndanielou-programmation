@@ -6,7 +6,6 @@ from dataclasses import dataclass
 
 from logger import logger_config
 
-
 CURRENT_OWNER_FIELD_MODIFICATION_ID = "CurrentOwner"
 
 ONE_LINE_FIELDS_TO_RETRIVE_ON_CFX_SUBMIT = [
@@ -111,7 +110,7 @@ class AllCFXCompleteHistoryExport:
                         all_cfx_complete_history.append(cfx_complete_history)
                         cfx_processed.add(cfx_id)
 
-                        if len(cfx_processed) % 200 == 0:
+                        if len(cfx_processed) % 1000 == 0:
                             logger_config.print_and_log_info(f"Number of CFX processed:{len(cfx_processed)}/{len(all_cfx_complete_extended_histories_text_files_contents)}. Just processed {cfx_id}")
 
         logger_config.print_and_log_info(f"cfx_extended_history_text_file_content_split_by_cfx:{len(all_cfx_complete_history)}")
