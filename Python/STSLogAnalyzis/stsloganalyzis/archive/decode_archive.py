@@ -67,6 +67,7 @@ class SqlArchLineSignalType:
                 "TCS",
                 "CI",
                 "HMI_NAVIGATION",
+                "RTV",
             ]:
                 self.all_types.append(SqlArchLineSignalType(type_str))
 
