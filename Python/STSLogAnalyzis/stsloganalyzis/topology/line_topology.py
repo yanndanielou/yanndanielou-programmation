@@ -142,7 +142,7 @@ class Segment(TopologyElement):
         return consistency_errors
 
     @classmethod
-    @logger_config.stopwatch_decorator(inform_beginning=True, monitor_ram_usage=True)
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True)
     def load_from_csv(cls, csv_file_path: str | Path) -> list[Segment]:
         """
         Charge une liste de segments depuis un fichier CSV.
@@ -573,7 +573,7 @@ class Line:
 
         return cast(VirtualCanton, matches[0].virtual_canton)
 
-    @logger_config.stopwatch_decorator(inform_beginning=True)
+    @logger_config.stopwatch_decorator(inform_beginning=False)
     def compute_consistency_errors(self) -> list[ConsistencyError]:
         consistency_errors: list[ConsistencyError] = []
         for segment in self.segments:
@@ -581,7 +581,7 @@ class Line:
         return consistency_errors
 
     @classmethod
-    @logger_config.stopwatch_decorator(inform_beginning=True, monitor_ram_usage=True)
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True)
     def load_from_csv(
         cls,
         segments_csv_full_path: str | Path,
@@ -659,7 +659,7 @@ class VirtualCanton(TopologyElement):
         self.cantons_on_segment: list[VirtualCantonOnSegment] = []
 
     @classmethod
-    @logger_config.stopwatch_decorator(inform_beginning=True, monitor_ram_usage=True)
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True)
     def load_from_csv(
         cls,
         csv_file_path: str | Path,
@@ -702,7 +702,7 @@ class VirtualCantonExtremity:
     extremity_pk: float
 
     @classmethod
-    @logger_config.stopwatch_decorator(inform_beginning=True, monitor_ram_usage=True)
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True)
     def load_from_csv(
         cls,
         csv_file_path: str | Path,
@@ -757,7 +757,7 @@ class VirtualCantonOnSegment:
     highest_extremity_in_cm: int
 
     @classmethod
-    @logger_config.stopwatch_decorator(inform_beginning=True, monitor_ram_usage=True)
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True)
     def compute_all(
         cls,
         line: Line,
@@ -835,7 +835,7 @@ class TrackingCircuit(TopologyElement):
         return str(self)
 
     @classmethod
-    @logger_config.stopwatch_decorator(inform_beginning=True, monitor_ram_usage=True)
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True)
     def load_from_csv(cls, csv_file_path: str | Path) -> list[TrackingCircuit]:
         """
         Charge une liste de circuits de detection depuis un fichier CSV.
@@ -1010,7 +1010,7 @@ class TrackingBlock(TopologyElement):
         return blocks, ignored_tracking_blocks_ids_because_no_track_circuit_defined
 
     @classmethod
-    @logger_config.stopwatch_decorator(inform_beginning=True, monitor_ram_usage=True)
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True)
     def load_from_csv(cls, csv_file_path: str | Path) -> list[TrackingBlock]:
         """
         Charge une liste de blocs de détection depuis un fichier CSV.
@@ -1104,8 +1104,8 @@ class Switch(TopologyElement):
         return switches
 
     @classmethod
-    @logger_config.stopwatch_decorator(inform_beginning=True, monitor_ram_usage=True)
-    def load_from_csv(cls, csv_file_path: str | Path) -> list["Switch"]:
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True)
+    def load_from_csv(cls, csv_file_path: str | Path) -> list[Switch]:
         """
         Charge une liste d'aiguillages depuis un fichier CSV.
 
