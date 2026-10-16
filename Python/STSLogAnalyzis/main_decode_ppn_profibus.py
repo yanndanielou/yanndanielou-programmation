@@ -21,7 +21,7 @@ def main() -> None:
         for child_directory in all_sub_directories:
 
             logger_config.print_and_log_info(f"Handling directory {child_directory}")
-            library = ppn_profibus_log.ProfibusLogLibrary(
+            library = ppn_profibus_log.ProfibusLogLibrary.from_directory(
                 directory_path=root_path + "\\" + child_directory,
                 label=child_directory,
             )

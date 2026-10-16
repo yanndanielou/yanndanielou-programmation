@@ -3,13 +3,13 @@ from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
-from typing import cast
+from typing import Self, cast
 
-from common import file_utils, reports_utils, string_utils
+from common import file_name_utils, file_utils, reports_utils, string_utils
 from logger import logger_config
 
-from stsloganalyzis.unisig.s5758 import decode_unisig_s57_s58
 from stsloganalyzis.unisig import upper_layer_libraries
+from stsloganalyzis.unisig.s5758 import decode_unisig_s57_s58
 
 
 class SendingMode(Enum):
@@ -24,7 +24,7 @@ class ServiceAccessPoint:
 
 
 @dataclass
-class PpnConnection:
+class PpnConnectionSession:
     connect_telegram_source_address: int
     connect_telegram_target_address: int
     connect_request_random_number_byte_1_of_4: int | None
@@ -33,7 +33,7 @@ class PpnConnection:
     connect_request_random_number_byte_4_of_4: int | None
 
     def __post_init__(self) -> None:
-        self.last_step = PpnConnection.Step.CONNECT_REQUEST_RECEIVED
+        self.last_step = PpnConnectionSession.Step.CONNECT_REQUEST_RECEIVED
         self.connect_confirm_random_number_byte_1_of_4: int = -1
         self.connect_confirm_random_number_byte_2_of_4: int = -1
         self.connect_confirm_random_number_byte_3_of_4: int = -1
@@ -44,10 +44,10 @@ class PpnConnection:
         self.connect_confirm_random_number_byte_2_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_2_of_4
         self.connect_confirm_random_number_byte_3_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_3_of_4
         self.connect_confirm_random_number_byte_4_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_4_of_4
-        self.last_step = PpnConnection.Step.CONNECT_CONFIRM_RECEIVED
+        self.last_step = PpnConnectionSession.Step.CONNECT_CONFIRM_RECEIVED
 
     def register_disconnect_telegram(self, disconnect_telegram: decode_unisig_s57_s58.SdaDisconnectTelegram) -> None:
-        self.last_step = PpnConnection.Step.DISCONNECT_RECEIVED
+        self.last_step = PpnConnectionSession.Step.DISCONNECT_RECEIVED
 
     class Step(Enum):
         CONNECT_REQUEST_RECEIVED = "CONNECT_REQUEST_RECEIVED"
@@ -58,10 +58,10 @@ class PpnConnection:
 class PpnConnectionsLibrary:
 
     def __init__(self) -> None:
-        self.ppn_connections: list[PpnConnection] = []
-        self.current_ppn_connections_by_source_and_target_addresses: dict[tuple[int, int], PpnConnection] = {}
+        self.all_ppn_connections_sessions: list[PpnConnectionSession] = []
+        self.current_ppn_connections_by_source_and_target_addresses: dict[tuple[int, int], PpnConnectionSession] = {}
 
-    def get_current_connection_by_source_and_target_addresses(self, source_address: int, target_address: int) -> PpnConnection | None:
+    def get_current_connection_by_source_and_target_addresses(self, source_address: int, target_address: int) -> PpnConnectionSession | None:
         existing_connection_found = self.current_ppn_connections_by_source_and_target_addresses.get((source_address, target_address))
         if existing_connection_found:
             return existing_connection_found
@@ -69,7 +69,7 @@ class PpnConnectionsLibrary:
 
     def register_connect_request_telegram(self, connect_request_telegram: decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram) -> None:
         assert connect_request_telegram.profibus_log_line
-        connection = PpnConnection(
+        connection = PpnConnectionSession(
             connect_telegram_source_address=connect_request_telegram.profibus_log_line.source_address,
             connect_telegram_target_address=connect_request_telegram.profibus_log_line.target_address,
             connect_request_random_number_byte_1_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_1_of_4,
@@ -77,7 +77,7 @@ class PpnConnectionsLibrary:
             connect_request_random_number_byte_3_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_3_of_4,
             connect_request_random_number_byte_4_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_4_of_4,
         )
-        self.ppn_connections.append(connection)
+        self.all_ppn_connections_sessions.append(connection)
         self.current_ppn_connections_by_source_and_target_addresses[(connection.connect_telegram_source_address, connection.connect_telegram_target_address)] = connection
         self.current_ppn_connections_by_source_and_target_addresses[(connection.connect_telegram_target_address, connection.connect_telegram_source_address)] = connection
 
@@ -86,7 +86,7 @@ class PpnConnectionsLibrary:
         connection = self.get_existing_current_connection_by_profibus_log_line(connect_confirm_telegram.profibus_log_line)
         if not connection:
             logger_config.print_and_log_error(f"Connect confirm telegram {connect_confirm_telegram} without previous connect telegram")
-            connection = PpnConnection(
+            connection = PpnConnectionSession(
                 connect_telegram_source_address=connect_confirm_telegram.profibus_log_line.target_address,
                 connect_telegram_target_address=connect_confirm_telegram.profibus_log_line.source_address,
                 connect_request_random_number_byte_1_of_4=None,
@@ -94,7 +94,7 @@ class PpnConnectionsLibrary:
                 connect_request_random_number_byte_3_of_4=None,
                 connect_request_random_number_byte_4_of_4=None,
             )
-            self.ppn_connections.append(connection)
+            self.all_ppn_connections_sessions.append(connection)
             self.current_ppn_connections_by_source_and_target_addresses[(connection.connect_telegram_source_address, connection.connect_telegram_target_address)] = connection
             self.current_ppn_connections_by_source_and_target_addresses[(connection.connect_telegram_target_address, connection.connect_telegram_source_address)] = connection
 
@@ -110,7 +110,7 @@ class PpnConnectionsLibrary:
         self.current_ppn_connections_by_source_and_target_addresses.pop((connection.connect_telegram_source_address, connection.connect_telegram_target_address), None)
         self.current_ppn_connections_by_source_and_target_addresses.pop((connection.connect_telegram_target_address, connection.connect_telegram_source_address), None)
 
-    def get_existing_current_connection_by_profibus_log_line(self, profibus_log_line: "ProfibusLogLine") -> PpnConnection | None:
+    def get_existing_current_connection_by_profibus_log_line(self, profibus_log_line: "ProfibusLogLine") -> PpnConnectionSession | None:
         existing_connection_found = self.get_current_connection_by_source_and_target_addresses(profibus_log_line.source_address, profibus_log_line.target_address)
         if existing_connection_found:
             return existing_connection_found
@@ -119,10 +119,45 @@ class PpnConnectionsLibrary:
 
 @dataclass
 class ProfibusLogLibrary:
-    directory_path: str
+    all_ppn_logs_paths: list[str]
     label: str
-    filename_pattern: str = "profibus*"
     upper_layer_decoding_library: upper_layer_libraries.UpperLayerDecodingLibrary | None = None
+
+    @classmethod
+    def from_directory(
+        cls,
+        directory_path: str,
+        filename_pattern: str = "profibus*",
+        label: str | None = None,
+        upper_layer_decoding_library: upper_layer_libraries.UpperLayerDecodingLibrary | None = None,
+    ) -> "ProfibusLogLibrary":
+        all_ppn_logs_paths = file_utils.get_files_by_directory_and_file_name_mask(
+            directory_path=directory_path,
+            file_sort_order=file_utils.FileSortOrder.TIMESTAMP_OLDER_TO_NEWER,
+            filename_pattern=filename_pattern,
+        )
+        if label is None:
+            label = file_name_utils.get_directory_name_from_directory_full_path(directory_path)
+        return ProfibusLogLibrary(
+            all_ppn_logs_paths=all_ppn_logs_paths,
+            label=label,
+            upper_layer_decoding_library=upper_layer_decoding_library,
+        )
+
+    @classmethod
+    def from_file_full_path(
+        cls,
+        ppn_log_full_path: str,
+        label: str | None = None,
+        upper_layer_decoding_library: upper_layer_libraries.UpperLayerDecodingLibrary | None = None,
+    ) -> "ProfibusLogLibrary":
+        if label is None:
+            label = file_name_utils.get_file_name_with_extension_from_full_path(ppn_log_full_path)
+        return ProfibusLogLibrary(
+            all_ppn_logs_paths=[ppn_log_full_path],
+            label=label,
+            upper_layer_decoding_library=upper_layer_decoding_library,
+        )
 
     def __post_init__(self) -> None:
 
@@ -132,12 +167,6 @@ class ProfibusLogLibrary:
             self.upper_layer_decoding_library = upper_layer_libraries.UpperLayerDecodingLibrary.from_next_json_file_full_path(
                 json_file_full_path=r"D:\temp\GenTel\0.1-0-Original_Edition\GenTel\rom\unisig_s58.json"
             )
-
-        self.all_ppn_logs_paths = file_utils.get_files_by_directory_and_file_name_mask(
-            directory_path=self.directory_path,
-            file_sort_order=file_utils.FileSortOrder.TIMESTAMP_OLDER_TO_NEWER,
-            filename_pattern=self.filename_pattern,
-        )
 
         self.decoded_files: list[ProfibusLogFile] = []
         self.decoded_lines: list[ProfibusLogLine] = []
@@ -407,7 +436,7 @@ class ProfibusLogLibrary:
                     decoded_line.decode_sdn_or_sda(self.ppn_connections_library)
 
     def _print_stats(self) -> None:
-        logger_config.print_and_log_info(f"Stats of {self.directory_path}")
+        logger_config.print_and_log_info(f"Stats of {self.label}")
         logger_config.print_and_log_info(f"{len(self.decoded_files)} files")
         logger_config.print_and_log_info(f"{len([log_line for log_file in self.decoded_files for log_line in log_file.decoded_lines])} lines")
         logger_config.print_and_log_info(f"{len(self.all_unisig_messages)} unisig_messages")
@@ -550,7 +579,7 @@ class ProfibusLogLine:
             return None
 
         # Extract time: 1970-01-01 02:18:14:652
-        timestamp = datetime.strptime(f"{fields[0]} {fields[1]}", "%Y-%m-%d %H:%M:%S:%f")  # noqa: DTZ007
+        timestamp = datetime.strptime(f"{fields[0]} {fields[1]}", "%Y-%m-%d %H:%M:%S:%f")
 
         # Extract source and target: [99:37 <= 2:37]
         sap_pattern = re.compile(r"\[(\d+):(\d+) (<=|=>) (\d+):(\d+)\]")

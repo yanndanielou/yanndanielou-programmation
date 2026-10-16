@@ -12,7 +12,20 @@ def next_unisig_58_library() -> upper_layer_libraries.UpperLayerDecodingLibrary:
     return ret
 
 
-class TestDecodeOnePpnLogLine:
+class TestDecodeOnePpnProfibusLogFile:
+
+    class TestRecomputeChecksum:
+
+        class TestIdleMessage:
+            def test_checksum_for_file_with_connect_confirm_and_idle_lines(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+                ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
+                    ppn_log_full_path=r"test\resources\ppn\sl4_connect_confirm_and_idle_next_evc.log_ppn",
+                    upper_layer_decoding_library=next_unisig_58_library_fixture,
+                )
+                pass
+
+
+class TestDecodeOnePpnProfibusLogLine:
 
     class TestSda:
 
