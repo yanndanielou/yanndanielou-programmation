@@ -24,6 +24,100 @@ class ServiceAccessPoint:
 
 
 @dataclass
+class PpnConnection:
+    connect_telegram_source_address: int
+    connect_telegram_target_address: int
+    connect_request_random_number_byte_1_of_4: int | None
+    connect_request_random_number_byte_2_of_4: int | None
+    connect_request_random_number_byte_3_of_4: int | None
+    connect_request_random_number_byte_4_of_4: int | None
+
+    def __post_init__(self) -> None:
+        self.last_step = PpnConnection.Step.CONNECT_REQUEST_RECEIVED
+        self.connect_confirm_random_number_byte_1_of_4: int = -1
+        self.connect_confirm_random_number_byte_2_of_4: int = -1
+        self.connect_confirm_random_number_byte_3_of_4: int = -1
+        self.connect_confirm_random_number_byte_4_of_4: int = -1
+
+    def register_connect_confirm_telegram(self, connect_confirm_telegram: decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram) -> None:
+        self.connect_confirm_random_number_byte_1_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_1_of_4
+        self.connect_confirm_random_number_byte_2_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_2_of_4
+        self.connect_confirm_random_number_byte_3_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_3_of_4
+        self.connect_confirm_random_number_byte_4_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_4_of_4
+        self.last_step = PpnConnection.Step.CONNECT_CONFIRM_RECEIVED
+
+    def register_disconnect_telegram(self, disconnect_telegram: decode_unisig_s57_s58.SdaDisconnectTelegram) -> None:
+        self.last_step = PpnConnection.Step.DISCONNECT_RECEIVED
+
+    class Step(Enum):
+        CONNECT_REQUEST_RECEIVED = "CONNECT_REQUEST_RECEIVED"
+        CONNECT_CONFIRM_RECEIVED = "CONNECT_CONFIRM_RECEIVED"
+        DISCONNECT_RECEIVED = "DISCONNECT_RECEIVED"
+
+
+class PpnConnectionsLibrary:
+
+    def __init__(self) -> None:
+        self.ppn_connections: list[PpnConnection] = []
+        self.current_ppn_connections_by_source_and_target_addresses: dict[tuple[int, int], PpnConnection] = {}
+
+    def get_current_connection_by_source_and_target_addresses(self, source_address: int, target_address: int) -> PpnConnection | None:
+        existing_connection_found = self.current_ppn_connections_by_source_and_target_addresses.get((source_address, target_address))
+        if existing_connection_found:
+            return existing_connection_found
+        return None
+
+    def register_connect_request_telegram(self, connect_request_telegram: decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram) -> None:
+        assert connect_request_telegram.profibus_log_line
+        connection = PpnConnection(
+            connect_telegram_source_address=connect_request_telegram.profibus_log_line.source_address,
+            connect_telegram_target_address=connect_request_telegram.profibus_log_line.target_address,
+            connect_request_random_number_byte_1_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_1_of_4,
+            connect_request_random_number_byte_2_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_2_of_4,
+            connect_request_random_number_byte_3_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_3_of_4,
+            connect_request_random_number_byte_4_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_4_of_4,
+        )
+        self.ppn_connections.append(connection)
+        self.current_ppn_connections_by_source_and_target_addresses[(connection.connect_telegram_source_address, connection.connect_telegram_target_address)] = connection
+        self.current_ppn_connections_by_source_and_target_addresses[(connection.connect_telegram_target_address, connection.connect_telegram_source_address)] = connection
+
+    def register_connect_confirm_telegram(self, connect_confirm_telegram: decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram) -> None:
+        assert connect_confirm_telegram.profibus_log_line
+        connection = self.get_existing_current_connection_by_profibus_log_line(connect_confirm_telegram.profibus_log_line)
+        if not connection:
+            logger_config.print_and_log_error(f"Connect confirm telegram {connect_confirm_telegram} without previous connect telegram")
+            connection = PpnConnection(
+                connect_telegram_source_address=connect_confirm_telegram.profibus_log_line.target_address,
+                connect_telegram_target_address=connect_confirm_telegram.profibus_log_line.source_address,
+                connect_request_random_number_byte_1_of_4=None,
+                connect_request_random_number_byte_2_of_4=None,
+                connect_request_random_number_byte_3_of_4=None,
+                connect_request_random_number_byte_4_of_4=None,
+            )
+            self.ppn_connections.append(connection)
+            self.current_ppn_connections_by_source_and_target_addresses[(connection.connect_telegram_source_address, connection.connect_telegram_target_address)] = connection
+            self.current_ppn_connections_by_source_and_target_addresses[(connection.connect_telegram_target_address, connection.connect_telegram_source_address)] = connection
+
+        connection.register_connect_confirm_telegram(connect_confirm_telegram)
+
+    def register_disconnect_telegram(self, disconnect_telegram: decode_unisig_s57_s58.SdaDisconnectTelegram) -> None:
+        assert disconnect_telegram.profibus_log_line
+        connection = self.get_existing_current_connection_by_profibus_log_line(disconnect_telegram.profibus_log_line)
+        if not connection:
+            logger_config.print_and_log_warning(f"No connection found before disconnect telegram {disconnect_telegram}")
+            return
+        connection.register_disconnect_telegram(disconnect_telegram)
+        self.current_ppn_connections_by_source_and_target_addresses.pop((connection.connect_telegram_source_address, connection.connect_telegram_target_address), None)
+        self.current_ppn_connections_by_source_and_target_addresses.pop((connection.connect_telegram_target_address, connection.connect_telegram_source_address), None)
+
+    def get_existing_current_connection_by_profibus_log_line(self, profibus_log_line: "ProfibusLogLine") -> PpnConnection | None:
+        existing_connection_found = self.get_current_connection_by_source_and_target_addresses(profibus_log_line.source_address, profibus_log_line.target_address)
+        if existing_connection_found:
+            return existing_connection_found
+        return self.get_current_connection_by_source_and_target_addresses(profibus_log_line.target_address, profibus_log_line.source_address)
+
+
+@dataclass
 class ProfibusLogLibrary:
     directory_path: str
     label: str
@@ -31,6 +125,9 @@ class ProfibusLogLibrary:
     upper_layer_decoding_library: upper_layer_libraries.UpperLayerDecodingLibrary | None = None
 
     def __post_init__(self) -> None:
+
+        self.ppn_connections_library = PpnConnectionsLibrary()
+
         if self.upper_layer_decoding_library is None:
             self.upper_layer_decoding_library = upper_layer_libraries.UpperLayerDecodingLibrary.from_next_json_file_full_path(
                 json_file_full_path=r"D:\temp\GenTel\0.1-0-Original_Edition\GenTel\rom\unisig_s58.json"
@@ -139,8 +236,8 @@ class ProfibusLogLibrary:
                 OrderedDict(
                     {
                         "timestamp": interesting_stm_message.upper_layer_telegram.profibus_log_line.timestamp if interesting_stm_message.upper_layer_telegram.profibus_log_line else None,
-                        "Line Source": interesting_stm_message.upper_layer_telegram.profibus_log_line.source if interesting_stm_message.upper_layer_telegram.profibus_log_line else None,
-                        "Line Target": interesting_stm_message.upper_layer_telegram.profibus_log_line.target if interesting_stm_message.upper_layer_telegram.profibus_log_line else None,
+                        "Line Source": interesting_stm_message.upper_layer_telegram.profibus_log_line.source_name if interesting_stm_message.upper_layer_telegram.profibus_log_line else None,
+                        "Line Target": interesting_stm_message.upper_layer_telegram.profibus_log_line.target_name if interesting_stm_message.upper_layer_telegram.profibus_log_line else None,
                         "interlocutors": interesting_stm_message.upper_layer_telegram.profibus_log_line.interlocutors if interesting_stm_message.upper_layer_telegram.profibus_log_line else None,
                         "Line Mode": interesting_stm_message.upper_layer_telegram.profibus_log_line.mode.name if interesting_stm_message.upper_layer_telegram.profibus_log_line else None,
                         "Line length": interesting_stm_message.upper_layer_telegram.profibus_log_line.length if interesting_stm_message.upper_layer_telegram.profibus_log_line else None,
@@ -189,8 +286,8 @@ class ProfibusLogLibrary:
                 OrderedDict(
                     {
                         "timestamp": sdn_sync_and_reference_time_message.profibus_log_line.timestamp if sdn_sync_and_reference_time_message.profibus_log_line else None,
-                        "Line Source": sdn_sync_and_reference_time_message.profibus_log_line.source if sdn_sync_and_reference_time_message.profibus_log_line else None,
-                        "Line Target": sdn_sync_and_reference_time_message.profibus_log_line.target if sdn_sync_and_reference_time_message.profibus_log_line else None,
+                        "Line Source": sdn_sync_and_reference_time_message.profibus_log_line.source_name if sdn_sync_and_reference_time_message.profibus_log_line else None,
+                        "Line Target": sdn_sync_and_reference_time_message.profibus_log_line.target_name if sdn_sync_and_reference_time_message.profibus_log_line else None,
                         "interlocutors": sdn_sync_and_reference_time_message.profibus_log_line.interlocutors if sdn_sync_and_reference_time_message.profibus_log_line else None,
                         "Line length": sdn_sync_and_reference_time_message.profibus_log_line.length if sdn_sync_and_reference_time_message.profibus_log_line else None,
                         "file path": sdn_sync_and_reference_time_message.profibus_log_line.file_path if sdn_sync_and_reference_time_message.profibus_log_line else None,
@@ -220,8 +317,8 @@ class ProfibusLogLibrary:
                 OrderedDict(
                     {
                         "timestamp": sdn_safe_time_layer_startup_message.profibus_log_line.timestamp if sdn_safe_time_layer_startup_message.profibus_log_line else None,
-                        "Line Source": sdn_safe_time_layer_startup_message.profibus_log_line.source if sdn_safe_time_layer_startup_message.profibus_log_line else None,
-                        "Line Target": sdn_safe_time_layer_startup_message.profibus_log_line.target if sdn_safe_time_layer_startup_message.profibus_log_line else None,
+                        "Line Source": sdn_safe_time_layer_startup_message.profibus_log_line.source_name if sdn_safe_time_layer_startup_message.profibus_log_line else None,
+                        "Line Target": sdn_safe_time_layer_startup_message.profibus_log_line.target_name if sdn_safe_time_layer_startup_message.profibus_log_line else None,
                         "interlocutors": sdn_safe_time_layer_startup_message.profibus_log_line.interlocutors if sdn_safe_time_layer_startup_message.profibus_log_line else None,
                         "Line length": sdn_safe_time_layer_startup_message.profibus_log_line.length if sdn_safe_time_layer_startup_message.profibus_log_line else None,
                         "file path": sdn_safe_time_layer_startup_message.profibus_log_line.file_path if sdn_safe_time_layer_startup_message.profibus_log_line else None,
@@ -262,8 +359,8 @@ class ProfibusLogLibrary:
                     OrderedDict(
                         {
                             "timestamp": unisig_message.profibus_log_line.timestamp if unisig_message.profibus_log_line else None,
-                            "Line Source": unisig_message.profibus_log_line.source if unisig_message.profibus_log_line else None,
-                            "Line Target": unisig_message.profibus_log_line.target if unisig_message.profibus_log_line else None,
+                            "Line Source": unisig_message.profibus_log_line.source_name if unisig_message.profibus_log_line else None,
+                            "Line Target": unisig_message.profibus_log_line.target_name if unisig_message.profibus_log_line else None,
                             "interlocutors": unisig_message.profibus_log_line.interlocutors if unisig_message.profibus_log_line else None,
                             "Line Mode": unisig_message.profibus_log_line.mode.name if unisig_message.profibus_log_line else None,
                             "Line length": unisig_message.profibus_log_line.length if unisig_message.profibus_log_line else None,
@@ -307,7 +404,7 @@ class ProfibusLogLibrary:
                     logger_config.print_and_log_info_if(
                         decoded_line.line_number and decoded_line.line_number % 50000 == 0, f"{decoded_line.line_number} lines decoded SDA/SDN in {decoded_file.file_full_path}", print_ram_usage=True
                     )
-                    decoded_line.decode_sdn_or_sda()
+                    decoded_line.decode_sdn_or_sda(self.ppn_connections_library)
 
     def _print_stats(self) -> None:
         logger_config.print_and_log_info(f"Stats of {self.directory_path}")
@@ -386,8 +483,8 @@ class ProfibusLogFile:
 @dataclass
 class ProfibusLogLine:
     timestamp: datetime
-    source: str
-    target: str
+    source_name: str
+    target_name: str
     source_address: int
     target_address: int
     interlocutors: str
@@ -516,8 +613,8 @@ class ProfibusLogLine:
                 timestamp=timestamp,
                 source_address=source_address,
                 target_address=target_address,
-                source=f"{ProfibusLogLine.get_equipment_name_from_address(source_address)}/{ProfibusLogLine.get_function_name_from_sap(source_sap)}",
-                target=f"{ProfibusLogLine.get_equipment_name_from_address(target_address)}/{ProfibusLogLine.get_function_name_from_sap(target_sap)}",
+                source_name=f"{ProfibusLogLine.get_equipment_name_from_address(source_address)}/{ProfibusLogLine.get_function_name_from_sap(source_sap)}",
+                target_name=f"{ProfibusLogLine.get_equipment_name_from_address(target_address)}/{ProfibusLogLine.get_function_name_from_sap(target_sap)}",
                 interlocutors=interlocutors,
                 sequence=sequence,
                 mode=SendingMode[mode],
@@ -530,13 +627,14 @@ class ProfibusLogLine:
         else:
             return None
 
-    def decode_sdn_or_sda(self) -> None:
+    def decode_sdn_or_sda(self, ppn_connections_library: PpnConnectionsLibrary = PpnConnectionsLibrary()) -> None:
         if self.mode == SendingMode.SDA:
             try:
                 self.unisig_message = decode_unisig_s57_s58.OnboardSdaUnisigMessage.from_sda_hexa_bytes_str(
                     profibus_log_line=self,
                     bytes_hexa_str=self.bytes_hexa_str,
                     upper_layer_decoding_library=self.upper_layer_decoding_library,
+                    ppn_connections_library=ppn_connections_library,
                 )
 
                 assert cast(
@@ -557,6 +655,7 @@ class ProfibusLogLine:
                     profibus_log_line=self,
                     bytes_hexa=self.bytes_hexa_str,
                     upper_layer_decoding_library=self.upper_layer_decoding_library,
+                    ppn_connections_library=ppn_connections_library,
                 )
             except (AssertionError, ValueError) as ass_err:
                 logger_config.print_and_log_exception(ass_err)

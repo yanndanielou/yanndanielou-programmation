@@ -124,6 +124,7 @@ class SdnOnboardUnisigMessage(OnboardUnisigMessage):
         profibus_log_line: "ppn_profibus_log.ProfibusLogLine",
         bytes_hexa: str,
         upper_layer_decoding_library: upper_layer_libraries.UpperLayerDecodingLibrary,
+        ppn_connections_library: "ppn_profibus_log.PpnConnectionsLibrary",
     ) -> OnboardUnisigMessage | None:
         byte_message_decoded = bytes_messages.DecodedBytesMessage.from_hex_string(bytes_hexa)
         header = SdnOnboardUnisigMessage.Header(byte_message_decoded)
@@ -289,15 +290,16 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
         profibus_log_line: "ppn_profibus_log.ProfibusLogLine",
         bytes_hexa_str: str,
         upper_layer_decoding_library: upper_layer_libraries.UpperLayerDecodingLibrary,
+        ppn_connections_library: "ppn_profibus_log.PpnConnectionsLibrary",
     ) -> OnboardUnisigMessage:
         byte_message_decoded = bytes_messages.DecodedBytesMessage.from_hex_string(bytes_hexa_str)
         sda_header = OnboardSdaUnisigMessage.Header(byte_message_decoded)
 
-        if (
-            sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_DISCONNECT_TELEGRAM
-            or sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_DISCONNECT_TELEGRAM
-        ):
-            return SdaDisconnectTelegram(
+        if sda_header.command_type in [
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_DISCONNECT_TELEGRAM,
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_DISCONNECT_TELEGRAM,
+        ]:
+            disconnect_telegram = SdaDisconnectTelegram(
                 profibus_log_line=profibus_log_line,
                 command_type=sda_header.command_type,
                 safety_level=sda_header.safety_level,
@@ -306,7 +308,13 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
                 lowest_order_byte_sequence_number=sda_header.lowest_order_byte_sequence_number,
             )
 
-        elif sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_IDLE_TELEGRAM or sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_IDLE_TELEGRAM:
+            ppn_connections_library.register_disconnect_telegram(disconnect_telegram)
+            return disconnect_telegram
+
+        elif sda_header.command_type in [
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_IDLE_TELEGRAM,
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_IDLE_TELEGRAM,
+        ]:
             return SdaIdleTelegram(
                 profibus_log_line=profibus_log_line,
                 command_type=sda_header.command_type,
@@ -316,13 +324,13 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
                 lowest_order_byte_sequence_number=sda_header.lowest_order_byte_sequence_number,
             )
 
-        elif (
-            sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_CONNECT_REQUEST_TELEGRAM
-            or sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_REQUEST_TELEGRAM
-            or sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_CONNECT_CONFIRM_TELEGRAM
-            or sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_CONFIRM_TELEGRAM
-        ):
-            return SdaConnectRequestOrConfirmTelegram(
+        elif sda_header.command_type in [
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_CONNECT_REQUEST_TELEGRAM,
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_REQUEST_TELEGRAM,
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_CONNECT_CONFIRM_TELEGRAM,
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_CONFIRM_TELEGRAM,
+        ]:
+            connect_request_or_connect_confirm_telegram = SdaConnectRequestOrConfirmTelegram(
                 profibus_log_line=profibus_log_line,
                 command_type=sda_header.command_type,
                 safety_level=sda_header.safety_level,
@@ -330,10 +338,18 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
                 byte_message_decoded=byte_message_decoded,
                 lowest_order_byte_sequence_number=sda_header.lowest_order_byte_sequence_number,
             )
-        elif (
-            sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_AUTHENTICATION_TELEGRAM
-            or sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_AUTHENTICATION_ACKNOWLEDGEMENT_TELEGRAM
-        ):
+            if sda_header.command_type in [OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_CONNECT_REQUEST_TELEGRAM, OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_REQUEST_TELEGRAM]:
+                ppn_connections_library.register_connect_request_telegram(connect_request_or_connect_confirm_telegram)
+            elif sda_header.command_type in [OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_CONNECT_CONFIRM_TELEGRAM, OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_CONFIRM_TELEGRAM]:
+                ppn_connections_library.register_connect_confirm_telegram(connect_request_or_connect_confirm_telegram)
+            # if sda_header.command_type in [SL0_CONNECT_REQUEST_TELEGRAM]
+            # connect_request_or_connect_confirm_telegram.
+
+            return connect_request_or_connect_confirm_telegram
+        elif sda_header.command_type in [
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_AUTHENTICATION_TELEGRAM,
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_AUTHENTICATION_ACKNOWLEDGEMENT_TELEGRAM,
+        ]:
             return SdaAuthenticationOrAuthenticationAcknowledgementTelegram(
                 profibus_log_line=profibus_log_line,
                 command_type=sda_header.command_type,
@@ -343,12 +359,12 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
                 lowest_order_byte_sequence_number=sda_header.lowest_order_byte_sequence_number,
             )
 
-        elif (
-            sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_READY_TO_RUN
-            or sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_READY_TO_RUN
-            or sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_RUN
-            or sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_RUN
-        ):
+        elif sda_header.command_type in [
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_READY_TO_RUN,
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_READY_TO_RUN,
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_RUN,
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_RUN,
+        ]:
             return SdaRunOrReadyToRunTelegram(
                 profibus_log_line=profibus_log_line,
                 command_type=sda_header.command_type,
@@ -358,10 +374,10 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
                 lowest_order_byte_sequence_number=sda_header.lowest_order_byte_sequence_number,
             )
 
-        elif (
-            sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_TELEGRAM_FOR_UPPER_LAYER
-            or sda_header.command_type == OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_TELEGRAM_FOR_UPPER_LAYER
-        ):
+        elif sda_header.command_type in [
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_TELEGRAM_FOR_UPPER_LAYER,
+            OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_TELEGRAM_FOR_UPPER_LAYER,
+        ]:
             return SdaForUpperLayerTelegram(
                 profibus_log_line=profibus_log_line,
                 safety_level=sda_header.safety_level,
@@ -410,10 +426,10 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
 
     def __post_init__(self) -> None:
         super().__post_init__()
-        self.higher_order_24_bits_of_sequence_number_low_word_high_byte = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        self.higher_order_24_bits_of_sequence_number_high_word_low_byte = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        self.higher_order_24_bits_of_sequence_number_high_word_high_byte = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        self.higher_order_24_bits_of_sequence_number_low_word_low_byte = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
+        self.random_number_representing_sequence_number_byte_1_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
+        self.random_number_representing_sequence_number_byte_2_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
+        self.random_number_representing_sequence_number_byte_3_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
+        self.random_number_representing_sequence_number_byte_4_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
         self.idle_cycle_timeout_in_100ms = self.byte_message_decoded.get_next_bytes_as_single_int_unsigned(size_bytes=2)
         self.configuration_data_prefix_x = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
         # assert self.configuration_data_prefix_x == 3
