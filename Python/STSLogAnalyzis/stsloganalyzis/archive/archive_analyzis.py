@@ -401,7 +401,13 @@ class ArchiveAnalyzis:
 
     @logger_config.stopwatch_decorator(inform_beginning=True, monitor_ram_usage=True)
     def handle_lines(self) -> None:
-        for sql_arch_line in self.archive_library.all_sqlarch_lines:
+        for line_number_starting_0, sql_arch_line in enumerate(self.archive_library.all_sqlarch_lines):
+            line_number_starting_1 = line_number_starting_0 + 1
+            logger_config.print_and_log_info_if(
+                line_number_starting_1 % 5000 == 0 or line_number_starting_1 == len(self.archive_library.all_sqlarch_lines),
+                f"Handling line number {line_number_starting_1}/{len(self.archive_library.all_sqlarch_lines)}",
+                print_ram_usage=True,
+            )
             previous_line_for_this_id = self.current_latest_line_by_id.get(sql_arch_line.id_field)
             all_fields_changed = self.update_latest_raw_fields_for_line(sql_arch_line=sql_arch_line)
 
