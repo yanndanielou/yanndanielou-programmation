@@ -7,11 +7,11 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from stsloganalyzis.ppn import ppn_profibus_log
 
-from common import bytes_messages, date_time_formats
+from common import bytes_messages, bytes_utils, date_time_formats
 from logger import logger_config
 
-from stsloganalyzis.unisig.s5758 import additional_fields_decoder_s5758
 from stsloganalyzis.unisig import upper_layer_libraries
+from stsloganalyzis.unisig.s5758 import additional_fields_decoder_s5758
 
 SL4_CRC_SIZE_IN_BYTES = 6
 
@@ -27,43 +27,52 @@ UPPER_LAYER_STM_NID_STM_FIELD_SIZE_IN_BYTES = 1
 UPPER_LAYER_STM_NID_STM_FIELD_SIZE_IN_BITS = UPPER_LAYER_STM_NID_STM_FIELD_SIZE_IN_BYTES * bytes_messages.NUMBER_OF_BITS_IN_BYTE
 UPPER_LAYER_STM_L_MESSAGE_FIELD_SIZE_IN_BITS = 13
 
+from typing import Union
 
-def compute_crc_unisig_32(data: bytes, poly: int = 0x04C11DB7, init: int = 0xFFFFFFFF, xor_out: int = 0xFFFFFFFF) -> int:
-    """
-    Calcule le CRC 32 bits conforme aux spécifications types des couches UNISIG.
-    Par défaut, utilise les paramètres standards (Non-réfléchi).
-    """
-    crc = init
 
-    for byte in data:
-        # Traitement bit à bit (MSB first pour UNISIG)
-        crc ^= byte << 24
-        for _ in range(8):
-            if crc & 0x80000000:
-                crc = ((crc << 1) ^ poly) & 0xFFFFFFFF
+def crc48_unisig_s57(data: Union[bytes, bytearray], debug: bool = False) -> int:
+    """Calcule un CRC-4
+
+    Paramètres:
+        data : Les données d'entrée sous forme de bytes ou bytearray.
+        debug : Si True, affiche les étapes intermédiaires (équivalent aux
+          couts).
+
+    Retourne:
+        int : La valeur du CRC sur 48 bits.
+    """
+    POLY: int = 0x0000D28DB3FA4AAD
+    MASK: int = 0x0000FFFFFFFFFFFF
+
+    crc: int = 0
+
+    if debug:
+        print(f"crc_init={crc}")
+
+    for i, byte in enumerate(data):
+        # Aligner l'octet sur le MSB (bit 40 de l'espace 48-bit avant décalage/traitement)
+        crc ^= (byte & 0xFF) << 40
+
+        if debug:
+            print(f"data[{i}]={byte}")
+            print(f"crc_temp_pre={crc}")
+
+        for bit in range(8):
+            if crc & 0x0000800000000000:  # Test du bit 47
+                if debug:
+                    print(f"crc_temp0(bit{bit})={crc}")
+                crc = (crc << 1) ^ POLY
             else:
-                crc = (crc << 1) & 0xFFFFFFFF
+                crc <<= 1
 
-    return crc ^ xor_out
+            crc &= MASK  # Forcer à 48 bits
+            if debug:
+                print(f"crc_temp(bit{bit})={crc}")
 
+        if debug:
+            print(f"crc_temp_new={crc}")
 
-def compute_crc_unisig_64(data: bytes, poly: int = 0x6CE707E26B6F9977, init: int = 0xFFFFFFFFFFFFFFFF, xor_out: int = 0x0000000000000000) -> int:
-    """
-    Calcule le CRC 64 bits parfois requis par les structures de contrôle d'intégrité SLL.
-    """
-    crc = init
-    mask_msb = 1 << 63
-    mask_64 = (1 << 64) - 1
-
-    for byte in data:
-        crc ^= byte << 56
-        for _ in range(8):
-            if crc & mask_msb:
-                crc = ((crc << 1) ^ poly) & mask_64
-            else:
-                crc = (crc << 1) & mask_64
-
-    return crc ^ xor_out
+    return crc
 
 
 class SafetyLevel(IntEnum):
@@ -80,9 +89,25 @@ class OnboardUnisigMessage(ABC):
     def __post_init__(self) -> None:
         self.creational_and_decoding_errors: list[str] = []
         self.crc: UnisigCrc | None = None
+        self.recomputed_crc_as_bytearray: bytearray | None = None
+        self.recomputed_crc_and_transmitted_mac_are_equals: bool | None = None
+        self.recomputed_crc_as_string_base_16: str | None = None
 
     def add_error(self, error: str) -> None:
         self.creational_and_decoding_errors.append(error)
+
+    def set_recomputed_mac(self, recomputed_crc: bytearray) -> None:
+        self.recomputed_crc_as_bytearray = recomputed_crc
+
+        self.recomputed_crc_as_string_base_16 = bytes_utils.byte_array_to_string_base_16(self.recomputed_crc_as_bytearray)
+
+        if self.crc:
+            compare_as_byte_array = self.recomputed_crc_as_bytearray == self.crc.as_bytearray
+            self.recomputed_crc_and_transmitted_mac_are_equals = compare_as_byte_array
+            logger_config.print_and_log_error_if(
+                not self.recomputed_crc_and_transmitted_mac_are_equals,
+                f"{self} transmitted CRC is incorrect. Is {self.crc.as_base_16_str}, should be {self.recomputed_crc_as_string_base_16}",
+            )
 
 
 @dataclass
@@ -235,7 +260,17 @@ class UnisigCrc:
     crc_bits_as_string: str
 
     def __post_init__(self) -> None:
-        pass
+        assert len(self.crc_bits_as_string) == 48
+        # as_temp_decoded_bytes_message = bytes_messages.DecodedBytesMessage.from_bit_string(self.crc_bits_as_string)
+        # self.byte_1_of_6 = as_temp_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
+        # self.byte_2_of_6 = as_temp_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
+        # self.byte_3_of_6 = as_temp_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
+        # self.byte_4_of_6 = as_temp_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
+        # self.byte_5_of_6 = as_temp_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
+        # self.byte_6_of_6 = as_temp_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
+        self.as_bytearray = bytearray(bytes_messages.DecodedBytesMessage.from_bit_string(self.crc_bits_as_string).get_remaining_bits_as_unsigned_int().to_bytes(6, byteorder="big"))
+        self.as_base_16_str = bytes_utils.byte_array_to_string_base_16(self.as_bytearray)
+        self.as_base_10_str = bytes_utils.byte_array_to_string_base_10(self.as_bytearray)
 
 
 @dataclass
