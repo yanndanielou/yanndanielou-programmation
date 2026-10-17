@@ -90,7 +90,7 @@ class OnboardUnisigMessage(ABC):
         self.creational_and_decoding_errors: list[str] = []
         self.crc: UnisigCrc | None = None
         self.recomputed_crc_as_bytearray: bytearray | None = None
-        self.recomputed_crc_and_transmitted_mac_are_equals: bool | None = None
+        self.recomputed_crc_and_transmitted_crc_are_equals: bool | None = None
         self.recomputed_crc_as_string_base_16: str | None = None
 
     def add_error(self, error: str) -> None:
@@ -103,9 +103,9 @@ class OnboardUnisigMessage(ABC):
 
         if self.crc:
             compare_as_byte_array = self.recomputed_crc_as_bytearray == self.crc.as_bytearray
-            self.recomputed_crc_and_transmitted_mac_are_equals = compare_as_byte_array
+            self.recomputed_crc_and_transmitted_crc_are_equals = compare_as_byte_array
             logger_config.print_and_log_error_if(
-                not self.recomputed_crc_and_transmitted_mac_are_equals,
+                not self.recomputed_crc_and_transmitted_crc_are_equals,
                 f"{self} transmitted CRC is incorrect. Is {self.crc.as_base_16_str}, should be {self.recomputed_crc_as_string_base_16}",
             )
 
@@ -271,6 +271,20 @@ class UnisigCrc:
         self.as_bytearray = bytearray(bytes_messages.DecodedBytesMessage.from_bit_string(self.crc_bits_as_string).get_remaining_bits_as_unsigned_int().to_bytes(6, byteorder="big"))
         self.as_base_16_str = bytes_utils.byte_array_to_string_base_16(self.as_bytearray)
         self.as_base_10_str = bytes_utils.byte_array_to_string_base_10(self.as_bytearray)
+
+    @dataclass 
+    class ImplicitData:
+        data_length:int
+        receiver_address:int
+        sender_address :int
+        dsap:int
+        ssap:int
+        higher_order_24bits_of_sequence_number_byte_1:int
+        higher_order_24bits_of_sequence_number_byte_2:int
+        higher_order_24bits_of_sequence_number_byte_3:int
+
+        def __post_init__(self) -> None:
+            pass
 
 
 @dataclass
@@ -529,6 +543,10 @@ class SdaIdleTelegram(OnboardSdaUnisigMessage):
         super().__post_init__()
         if self.safety_level == SafetyLevel.SL4:
             self.crc = UnisigCrc(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+
+    def recompute_crc(self) -> None:
+        
+        
 
 
 @dataclass
