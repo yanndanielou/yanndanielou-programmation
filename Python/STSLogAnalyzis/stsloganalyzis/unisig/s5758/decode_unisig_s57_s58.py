@@ -268,7 +268,7 @@ class SdnSyncAndReferenceTimeMulticastMessage(SdnOnboardUnisigMessage):
 
         self.reference_time_n_minus_1_utc = UnisigTimeStamp.from_next_bytes_in_byte_message_decoded(self.byte_message_decoded)
 
-        self.crc = UnisigCrc(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+        self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
         assert self.byte_message_decoded.is_correctly_and_completely_decoded
         pass
 
