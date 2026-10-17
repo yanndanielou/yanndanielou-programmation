@@ -1,5 +1,5 @@
 import datetime
-from abc import ABC
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from enum import IntEnum
 from typing import TYPE_CHECKING
@@ -27,10 +27,13 @@ UPPER_LAYER_STM_NID_STM_FIELD_SIZE_IN_BYTES = 1
 UPPER_LAYER_STM_NID_STM_FIELD_SIZE_IN_BITS = UPPER_LAYER_STM_NID_STM_FIELD_SIZE_IN_BYTES * bytes_messages.NUMBER_OF_BITS_IN_BYTE
 UPPER_LAYER_STM_L_MESSAGE_FIELD_SIZE_IN_BITS = 13
 
-from typing import Union
+
+def crc48_unisig_s57_as_bytes(data: bytes | bytearray, verbose: bool = False) -> bytes:
+    as_int = crc48_unisig_s57_as_int(data, verbose)
+    return as_int.to_bytes(length=6)
 
 
-def crc48_unisig_s57(data: Union[bytes, bytearray], debug: bool = False) -> int:
+def crc48_unisig_s57_as_int(data: bytes | bytearray, verbose: bool = False) -> int:
     """Calcule un CRC-4
 
     Paramètres:
@@ -46,30 +49,30 @@ def crc48_unisig_s57(data: Union[bytes, bytearray], debug: bool = False) -> int:
 
     crc: int = 0
 
-    if debug:
+    if verbose:
         print(f"crc_init={crc}")
 
     for i, byte in enumerate(data):
         # Aligner l'octet sur le MSB (bit 40 de l'espace 48-bit avant décalage/traitement)
         crc ^= (byte & 0xFF) << 40
 
-        if debug:
+        if verbose:
             print(f"data[{i}]={byte}")
             print(f"crc_temp_pre={crc}")
 
         for bit in range(8):
             if crc & 0x0000800000000000:  # Test du bit 47
-                if debug:
+                if verbose:
                     print(f"crc_temp0(bit{bit})={crc}")
                 crc = (crc << 1) ^ POLY
             else:
                 crc <<= 1
 
             crc &= MASK  # Forcer à 48 bits
-            if debug:
+            if verbose:
                 print(f"crc_temp(bit{bit})={crc}")
 
-        if debug:
+        if verbose:
             print(f"crc_temp_new={crc}")
 
     return crc
@@ -89,25 +92,49 @@ class OnboardUnisigMessage(ABC):
     def __post_init__(self) -> None:
         self.creational_and_decoding_errors: list[str] = []
         self.crc: UnisigCrc | None = None
-        self.recomputed_crc_as_bytearray: bytearray | None = None
+        self.recomputed_crc: RecomputedUnisigCrc | None = None
         self.recomputed_crc_and_transmitted_crc_are_equals: bool | None = None
         self.recomputed_crc_as_string_base_16: str | None = None
+        self.current_connection_session_before_this_message = (
+            self.ppn_connections_library.get_existing_current_connection_by_profibus_log_line(self.profibus_log_line) if self.profibus_log_line else None
+        )
 
     def add_error(self, error: str) -> None:
         self.creational_and_decoding_errors.append(error)
 
-    def set_recomputed_mac(self, recomputed_crc: bytearray) -> None:
-        self.recomputed_crc_as_bytearray = recomputed_crc
+    def get_crc_implicit_data_except_length(self) -> "UnisigCrc.ImplicitDataExceptLength":
+        assert self.profibus_log_line
+        assert self.current_connection_session_before_this_message
+        implicit_data = UnisigCrc.ImplicitDataExceptLength(
+            receiver_address=self.profibus_log_line.target_address,  # Receiver_address / Receive_address (implicit)
+            sender_address=self.profibus_log_line.source_address,  # Receiver_address / Receive_address (implicit)
+            dsap=self.profibus_log_line.target_sap,
+            ssap=self.profibus_log_line.source_sap,
+            higher_order_24bits_of_sequence_number_byte_1=self.current_connection_session_before_this_message.connect_confirm_random_number_representing_sequence_number_byte_2_of_4,
+            higher_order_24bits_of_sequence_number_byte_2=self.current_connection_session_before_this_message.connect_confirm_random_number_representing_sequence_number_byte_3_of_4,
+            higher_order_24bits_of_sequence_number_byte_3=self.current_connection_session_before_this_message.connect_confirm_random_number_representing_sequence_number_byte_4_of_4,
+        )
+        return implicit_data
 
-        self.recomputed_crc_as_string_base_16 = bytes_utils.byte_array_to_string_base_16(self.recomputed_crc_as_bytearray)
+    def recompute_crc_from_data_as_bytes_except_length(
+        self, implicit_data_except_length: "UnisigCrc.ImplicitDataExceptLength", telegram_header: "UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection", net_data: bytes | None = None
+    ) -> None:
+
+        self.recomputed_crc = RecomputedUnisigCrc.compute_from_data(implicit_data_except_length, telegram_header, net_data)
+
+        self.recomputed_crc_as_string_base_16 = self.recomputed_crc.as_base_16_str
 
         if self.crc:
-            compare_as_byte_array = self.recomputed_crc_as_bytearray == self.crc.as_bytearray
+            compare_as_byte_array = self.recomputed_crc.as_bytearray == self.crc.as_bytearray
             self.recomputed_crc_and_transmitted_crc_are_equals = compare_as_byte_array
             logger_config.print_and_log_error_if(
                 not self.recomputed_crc_and_transmitted_crc_are_equals,
                 f"{self} transmitted CRC is incorrect. Is {self.crc.as_base_16_str}, should be {self.recomputed_crc_as_string_base_16}",
             )
+
+    @abstractmethod
+    def can_src_be_computed(self) -> bool:
+        pass
 
 
 @dataclass
@@ -207,6 +234,9 @@ class SdnSafeTimeLayerStartupForMulticast(SdnOnboardUnisigMessage):
         # assert self.byte_message_decoded.is_correctly_and_completely_decoded
         pass
 
+    def can_src_be_computed(self) -> bool:
+        raise NotImplementedError()
+
 
 @dataclass
 class SdnApplicationDataMulticastForUpperLayerTelegram(SdnOnboardUnisigMessage):
@@ -217,6 +247,9 @@ class SdnApplicationDataMulticastForUpperLayerTelegram(SdnOnboardUnisigMessage):
         self.number_remaining_undecoded_bits = len(self.remaining_undecoded_bits)
         # assert self.byte_message_decoded.is_correctly_and_completely_decoded
         pass
+
+    def can_src_be_computed(self) -> bool:
+        raise NotImplementedError()
 
 
 @dataclass
@@ -239,6 +272,9 @@ class SdnSyncAndReferenceTimeMulticastMessage(SdnOnboardUnisigMessage):
         assert self.byte_message_decoded.is_correctly_and_completely_decoded
         pass
 
+    def can_src_be_computed(self) -> bool:
+        raise NotImplementedError()
+
 
 @dataclass
 class Unisig32BitsIntWithUnisigBytesOrder:
@@ -256,35 +292,96 @@ class Unisig32BitsIntWithUnisigBytesOrder:
 
 
 @dataclass
+class Unisig16BitsIntWithUnisigBytesOrder:
+
+    def __init__(self, byte_message_decoded: bytes_messages.DecodedBytesMessage) -> None:
+
+        low_byte = byte_message_decoded.get_next_byte_as_single_int_unsigned()
+        high_byte = byte_message_decoded.get_next_byte_as_single_int_unsigned()
+
+        self.value_in_decimal_format = bytes_messages.DecodedBytesMessage.from_bytes_as_list_int([high_byte, low_byte]).get_remaining_bits_as_unsigned_int()
+
+
+@dataclass
 class UnisigCrc:
-    crc_bits_as_string: str
+    as_int: int
 
     def __post_init__(self) -> None:
-        assert len(self.crc_bits_as_string) == 48
-        # as_temp_decoded_bytes_message = bytes_messages.DecodedBytesMessage.from_bit_string(self.crc_bits_as_string)
-        # self.byte_1_of_6 = as_temp_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
-        # self.byte_2_of_6 = as_temp_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
-        # self.byte_3_of_6 = as_temp_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
-        # self.byte_4_of_6 = as_temp_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
-        # self.byte_5_of_6 = as_temp_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
-        # self.byte_6_of_6 = as_temp_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
-        self.as_bytearray = bytearray(bytes_messages.DecodedBytesMessage.from_bit_string(self.crc_bits_as_string).get_remaining_bits_as_unsigned_int().to_bytes(6, byteorder="big"))
+        self.as_bytes = self.as_int.to_bytes(6, byteorder="big")
+        self.as_bytearray = bytearray(self.as_bytes)
         self.as_base_16_str = bytes_utils.byte_array_to_string_base_16(self.as_bytearray)
         self.as_base_10_str = bytes_utils.byte_array_to_string_base_10(self.as_bytearray)
 
-    @dataclass 
-    class ImplicitData:
-        data_length:int
-        receiver_address:int
-        sender_address :int
-        dsap:int
-        ssap:int
-        higher_order_24bits_of_sequence_number_byte_1:int
-        higher_order_24bits_of_sequence_number_byte_2:int
-        higher_order_24bits_of_sequence_number_byte_3:int
+    @classmethod
+    def from_bits_as_string(cls, bits_as_string: str) -> "UnisigCrc":
+        assert len(bits_as_string) == 48
+        as_int = bytes_messages.DecodedBytesMessage.from_bit_string(bits_as_string).get_remaining_bits_as_unsigned_int()
+        return UnisigCrc(as_int)
+
+    @dataclass
+    class ImplicitDataExceptLength:
+        receiver_address: int
+        sender_address: int
+        dsap: int
+        ssap: int
+        higher_order_24bits_of_sequence_number_byte_1: int
+        higher_order_24bits_of_sequence_number_byte_2: int
+        higher_order_24bits_of_sequence_number_byte_3: int
 
         def __post_init__(self) -> None:
+            self.all_bytes = (
+                self.receiver_address.to_bytes()
+                + self.sender_address.to_bytes()
+                + self.dsap.to_bytes()
+                + self.ssap.to_bytes()
+                + self.higher_order_24bits_of_sequence_number_byte_1.to_bytes()
+                + self.higher_order_24bits_of_sequence_number_byte_2.to_bytes()
+                + self.higher_order_24bits_of_sequence_number_byte_3.to_bytes()
+            )
+            self.all_bytes_as_base_16 = bytes_utils.byte_array_to_string_base_16(self.all_bytes)
+
+    @dataclass
+    class TelegramHeaderForDataTransmissionWithErrorDetection:  # stelegram header for data transmission with error detection
+        lowest_order_byte_of_sequence_number_least_significant_data_lsd: int  # (least significant data, LSD)
+        command_number: int
+
+        def __post_init__(self) -> None:
+            self.all_bytes = self.lowest_order_byte_of_sequence_number_least_significant_data_lsd.to_bytes() + self.command_number.to_bytes()
+            self.all_bytes_as_base_16 = bytes_utils.byte_array_to_string_base_16(self.all_bytes)
             pass
+
+
+@dataclass
+class RecomputedUnisigCrc(UnisigCrc):
+    implicit_data_except_length: UnisigCrc.ImplicitDataExceptLength
+    telegram_header: UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection
+    implicit_data_length_int: int
+    net_data_bytes: bytes | None
+    all_data_for_checksum_computation_bytes: bytes
+    all_data_for_checksum_computation_base_16: str
+
+    @classmethod
+    def compute_from_data(
+        cls, implicit_data_except_length: "UnisigCrc.ImplicitDataExceptLength", telegram_header: "UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection", net_data_bytes: bytes | None = None
+    ) -> "RecomputedUnisigCrc":
+        net_data_length = len(net_data_bytes) if net_data_bytes else 0
+
+        implicit_data_length_int = net_data_length + len(telegram_header.all_bytes) + SL4_CRC_SIZE_IN_BYTES
+        implicit_data_length_bytes = implicit_data_length_int.to_bytes()
+
+        data_for_checksum_bytes = implicit_data_length_bytes + implicit_data_except_length.all_bytes + telegram_header.all_bytes
+        if net_data_bytes:
+            data_for_checksum_bytes += net_data_bytes
+        as_int = crc48_unisig_s57_as_int(data=data_for_checksum_bytes)
+        return RecomputedUnisigCrc(
+            as_int=as_int,
+            implicit_data_except_length=implicit_data_except_length,
+            telegram_header=telegram_header,
+            net_data_bytes=net_data_bytes,
+            all_data_for_checksum_computation_bytes=data_for_checksum_bytes,
+            all_data_for_checksum_computation_base_16=bytes_utils.byte_array_to_string_base_16(data_for_checksum_bytes),
+            implicit_data_length_int=implicit_data_length_int,
+        )
 
 
 @dataclass
@@ -319,6 +416,14 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
     def __post_init__(self) -> None:
         super().__post_init__()
         self.stl_time_stamp: UnisigTimeStamp | None = None
+
+    def get_crc_telegram_header(self) -> "UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection":
+
+        header = UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection(
+            lowest_order_byte_of_sequence_number_least_significant_data_lsd=self.lowest_order_byte_sequence_number,
+            command_number=self.command_type.value,
+        )
+        return header
 
     class Header:
         def __init__(self, byte_message_decoded: bytes_messages.DecodedBytesMessage) -> None:
@@ -473,6 +578,9 @@ class SdaDisconnectTelegram(OnboardSdaUnisigMessage):
 
         self.ppn_connections_library.register_disconnect_telegram(self)
 
+    def can_src_be_computed(self) -> bool:
+        raise NotImplementedError()
+
 
 @dataclass
 class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
@@ -483,7 +591,7 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
         self.random_number_representing_sequence_number_byte_2_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
         self.random_number_representing_sequence_number_byte_3_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
         self.random_number_representing_sequence_number_byte_4_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        self.idle_cycle_timeout_in_100ms = self.byte_message_decoded.get_next_bytes_as_single_int_unsigned(size_bytes=2)
+        self.idle_cycle_timeout_in_100ms = Unisig16BitsIntWithUnisigBytesOrder(self.byte_message_decoded).value_in_decimal_format
         self.configuration_data_prefix_x = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
         # assert self.configuration_data_prefix_x == 3
         self.configuration_data_prefix_y = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
@@ -491,7 +599,7 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
         self.configuration_data_prefix_z = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
 
         if self.safety_level == SafetyLevel.SL4:
-            self.crc = UnisigCrc(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+            self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
 
         # assert self.configuration_data_prefix_z == 0
         dual_bus_length_in_bits = self.byte_message_decoded.number_of_bits_remaining_to_decode
@@ -515,6 +623,9 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
         # if sda_header.command_type in [SL0_CONNECT_REQUEST_TELEGRAM]
         # connect_request_or_connect_confirm_telegram.
 
+    def can_src_be_computed(self) -> bool:
+        raise NotImplementedError()
+
 
 @dataclass
 class SdaAuthenticationOrAuthenticationAcknowledgementTelegram(OnboardSdaUnisigMessage):
@@ -523,7 +634,10 @@ class SdaAuthenticationOrAuthenticationAcknowledgementTelegram(OnboardSdaUnisigM
         super().__post_init__()
         self.authentication_number = self.byte_message_decoded.get_next_bytes_as_single_int_unsigned(size_bytes=4)
         if self.safety_level == SafetyLevel.SL4:
-            self.crc = UnisigCrc(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+            self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+
+    def can_src_be_computed(self) -> bool:
+        raise NotImplementedError()
 
 
 @dataclass
@@ -533,7 +647,10 @@ class SdaRunOrReadyToRunTelegram(OnboardSdaUnisigMessage):
         super().__post_init__()
         self.stl_time_stamp = UnisigTimeStamp.from_next_bytes_in_byte_message_decoded(self.byte_message_decoded)
         if self.safety_level == SafetyLevel.SL4:
-            self.crc = UnisigCrc(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+            self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+
+    def can_src_be_computed(self) -> bool:
+        raise NotImplementedError()
 
 
 @dataclass
@@ -542,11 +659,18 @@ class SdaIdleTelegram(OnboardSdaUnisigMessage):
     def __post_init__(self) -> None:
         super().__post_init__()
         if self.safety_level == SafetyLevel.SL4:
-            self.crc = UnisigCrc(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+            self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
 
-    def recompute_crc(self) -> None:
-        
-        
+    def can_src_be_computed(self) -> bool:
+        return self.safety_level == SafetyLevel.SL4 and self.current_connection_session_before_this_message is not None
+
+    def prepare_data_and_recompute_crc(self) -> None:
+        assert self.current_connection_session_before_this_message
+        assert self.profibus_log_line
+
+        implicit_data_except_length = self.get_crc_implicit_data_except_length()
+        header = self.get_crc_telegram_header()
+        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header)
 
 
 @dataclass
@@ -766,7 +890,7 @@ class SdaForUpperLayerTelegram(OnboardSdaUnisigMessage):
         self.stl_time_stamp = UnisigTimeStamp.from_last_bytes_in_byte_message_decoded(self.byte_message_decoded)
 
         if self.safety_level == SafetyLevel.SL4:
-            self.crc = UnisigCrc(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+            self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
 
         self.upper_layer_decoded_stms: list[UpperLayerStm] = []
 
@@ -796,3 +920,6 @@ class SdaForUpperLayerTelegram(OnboardSdaUnisigMessage):
                 # f"RemainingBitsUndecodedAtEndOfSdaDelegate number_of_undecoded_bits={self.byte_message_decoded.number_of_bits_remaining_to_decode}, undecoded_bits_as_str={self.byte_message_decoded.extract_next_bits_to_str_of_bit(number_of_bits=self.byte_message_decoded.number_of_bits_remaining_to_decode)}, upper_layer_already_decoded_stms_ids={','.join([str(stm.nid_stm) for stm in self.upper_layer_decoded_stms])}",
                 f"RemainingBitsUndecodedAtEndOfSdaDelegate number_of_undecoded_bits={self.number_remaining_undecoded_bits}, upper_layer_already_decoded_stms_ids={','.join([str(stm.nid_stm) for stm in self.upper_layer_decoded_stms])}",
             )
+
+    def can_src_be_computed(self) -> bool:
+        raise NotImplementedError()

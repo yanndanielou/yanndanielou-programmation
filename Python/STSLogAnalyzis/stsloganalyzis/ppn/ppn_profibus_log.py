@@ -27,23 +27,23 @@ class ServiceAccessPoint:
 class PpnConnectionSession:
     connect_telegram_source_address: int
     connect_telegram_target_address: int
-    connect_request_random_number_byte_1_of_4: int | None
-    connect_request_random_number_byte_2_of_4: int | None
-    connect_request_random_number_byte_3_of_4: int | None
-    connect_request_random_number_byte_4_of_4: int | None
+    connect_request_random_number_representing_sequence_number_byte_1_of_4: int | None
+    connect_request_random_number_representing_sequence_number_byte_2_of_4: int | None
+    connect_request_random_number_representing_sequence_number_byte_3_of_4: int | None
+    connect_request_random_number_representing_sequence_number_byte_4_of_4: int | None
 
     def __post_init__(self) -> None:
         self.last_step = PpnConnectionSession.Step.CONNECT_REQUEST_RECEIVED
-        self.connect_confirm_random_number_byte_1_of_4: int = -1
-        self.connect_confirm_random_number_byte_2_of_4: int = -1
-        self.connect_confirm_random_number_byte_3_of_4: int = -1
-        self.connect_confirm_random_number_byte_4_of_4: int = -1
+        self.connect_confirm_random_number_representing_sequence_number_byte_1_of_4: int = -1
+        self.connect_confirm_random_number_representing_sequence_number_byte_2_of_4: int = -1
+        self.connect_confirm_random_number_representing_sequence_number_byte_3_of_4: int = -1
+        self.connect_confirm_random_number_representing_sequence_number_byte_4_of_4: int = -1
 
     def register_connect_confirm_telegram(self, connect_confirm_telegram: decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram) -> None:
-        self.connect_confirm_random_number_byte_1_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_1_of_4
-        self.connect_confirm_random_number_byte_2_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_2_of_4
-        self.connect_confirm_random_number_byte_3_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_3_of_4
-        self.connect_confirm_random_number_byte_4_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_4_of_4
+        self.connect_confirm_random_number_representing_sequence_number_byte_1_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_1_of_4
+        self.connect_confirm_random_number_representing_sequence_number_byte_2_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_2_of_4
+        self.connect_confirm_random_number_representing_sequence_number_byte_3_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_3_of_4
+        self.connect_confirm_random_number_representing_sequence_number_byte_4_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_4_of_4
         self.last_step = PpnConnectionSession.Step.CONNECT_CONFIRM_RECEIVED
 
     def register_disconnect_telegram(self, disconnect_telegram: decode_unisig_s57_s58.SdaDisconnectTelegram) -> None:
@@ -72,10 +72,10 @@ class PpnConnectionsLibrary:
         connection = PpnConnectionSession(
             connect_telegram_source_address=connect_request_telegram.profibus_log_line.source_address,
             connect_telegram_target_address=connect_request_telegram.profibus_log_line.target_address,
-            connect_request_random_number_byte_1_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_1_of_4,
-            connect_request_random_number_byte_2_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_2_of_4,
-            connect_request_random_number_byte_3_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_3_of_4,
-            connect_request_random_number_byte_4_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_4_of_4,
+            connect_request_random_number_representing_sequence_number_byte_1_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_1_of_4,
+            connect_request_random_number_representing_sequence_number_byte_2_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_2_of_4,
+            connect_request_random_number_representing_sequence_number_byte_3_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_3_of_4,
+            connect_request_random_number_representing_sequence_number_byte_4_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_4_of_4,
         )
         self.all_ppn_connections_sessions.append(connection)
         self.current_ppn_connections_by_source_and_target_addresses[(connection.connect_telegram_source_address, connection.connect_telegram_target_address)] = connection
@@ -89,10 +89,10 @@ class PpnConnectionsLibrary:
             connection = PpnConnectionSession(
                 connect_telegram_source_address=connect_confirm_telegram.profibus_log_line.target_address,
                 connect_telegram_target_address=connect_confirm_telegram.profibus_log_line.source_address,
-                connect_request_random_number_byte_1_of_4=None,
-                connect_request_random_number_byte_2_of_4=None,
-                connect_request_random_number_byte_3_of_4=None,
-                connect_request_random_number_byte_4_of_4=None,
+                connect_request_random_number_representing_sequence_number_byte_1_of_4=None,
+                connect_request_random_number_representing_sequence_number_byte_2_of_4=None,
+                connect_request_random_number_representing_sequence_number_byte_3_of_4=None,
+                connect_request_random_number_representing_sequence_number_byte_4_of_4=None,
             )
             self.all_ppn_connections_sessions.append(connection)
             self.current_ppn_connections_by_source_and_target_addresses[(connection.connect_telegram_source_address, connection.connect_telegram_target_address)] = connection
@@ -516,6 +516,8 @@ class ProfibusLogLine:
     target_name: str
     source_address: int
     target_address: int
+    source_sap: int
+    target_sap: int
     interlocutors: str
     sequence: int
     mode: SendingMode
@@ -642,6 +644,8 @@ class ProfibusLogLine:
                 timestamp=timestamp,
                 source_address=source_address,
                 target_address=target_address,
+                source_sap=source_sap,
+                target_sap=target_sap,
                 source_name=f"{ProfibusLogLine.get_equipment_name_from_address(source_address)}/{ProfibusLogLine.get_function_name_from_sap(source_sap)}",
                 target_name=f"{ProfibusLogLine.get_equipment_name_from_address(target_address)}/{ProfibusLogLine.get_function_name_from_sap(target_sap)}",
                 interlocutors=interlocutors,

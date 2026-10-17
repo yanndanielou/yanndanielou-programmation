@@ -1,8 +1,9 @@
 import pytest
+from common import bytes_messages, bytes_utils
 
 from stsloganalyzis.ppn import ppn_profibus_log
-from stsloganalyzis.unisig.s5758 import decode_unisig_s57_s58
 from stsloganalyzis.unisig import upper_layer_libraries
+from stsloganalyzis.unisig.s5758 import decode_unisig_s57_s58
 
 
 @pytest.fixture(scope="session", name="next_unisig_58_library_fixture")
@@ -17,12 +18,72 @@ class TestDecodeOnePpnProfibusLogFile:
     class TestRecomputeChecksum:
 
         class TestIdleMessage:
-            def test_checksum_for_file_with_connect_confirm_and_idle_lines(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
-                ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
-                    ppn_log_full_path=r"test\resources\ppn\sl4_connect_confirm_and_idle_next_evc.log_ppn",
-                    upper_layer_decoding_library=next_unisig_58_library_fixture,
-                )
-                pass
+
+            class TestFromFileWithOnlyConnectConfirmAndIdleLines:
+                def test_site_example(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+                    library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
+                        ppn_log_full_path=r"test\resources\ppn\sl4_connect_confirm_and_idle_next_evc.log_ppn",
+                        upper_layer_decoding_library=next_unisig_58_library_fixture,
+                    )
+                    connect_confirm_telegram = library.all_unisig_messages[0]
+                    assert isinstance(connect_confirm_telegram, decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram)
+                    idle_telegram = library.all_unisig_messages[1]
+                    assert isinstance(idle_telegram, decode_unisig_s57_s58.SdaIdleTelegram)
+                    assert idle_telegram.safety_level == decode_unisig_s57_s58.SafetyLevel.SL4
+                    idle_telegram.prepare_data_and_recompute_crc()
+                    assert idle_telegram.recomputed_crc
+                    assert idle_telegram.recomputed_crc_and_transmitted_crc_are_equals
+
+                def test_example_sent_by_jja_in_his_calculator(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+                    library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
+                        ppn_log_full_path=r"test\resources\ppn\sl4_connect_confirm_and_idle_next_evc_2_from_jja.log_ppn",
+                        upper_layer_decoding_library=next_unisig_58_library_fixture,
+                    )
+                    connect_confirm_telegram = library.all_unisig_messages[0]
+                    assert isinstance(connect_confirm_telegram, decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram)
+                    idle_telegram = library.all_unisig_messages[1]
+                    assert isinstance(idle_telegram, decode_unisig_s57_s58.SdaIdleTelegram)
+                    assert idle_telegram.safety_level == decode_unisig_s57_s58.SafetyLevel.SL4
+                    idle_telegram.prepare_data_and_recompute_crc()
+                    assert idle_telegram.recomputed_crc
+                    expected_crc_result_base_16 = bytes_utils.byte_array_to_string_base_16(
+                        bytearray(
+                            [
+                                int(x, 16)
+                                for x in [
+                                    "0xd7",
+                                    "0xbc",
+                                    "0x6b",
+                                    "0x68",
+                                    "0xc5",
+                                    "0x30",
+                                ]
+                            ]
+                        )
+                    )
+                    expected_crc_inputs_base_16 = bytes_utils.byte_array_to_string_base_16(
+                        bytearray(
+                            [
+                                int(x, 16)
+                                for x in [
+                                    "0x08",
+                                    "0x63",
+                                    "0x0A",
+                                    "0x21",
+                                    "0x21",
+                                    "0x05",
+                                    "0x06",
+                                    "0xF2",
+                                    "0x84",
+                                    "0x86",
+                                ]
+                            ]
+                        )
+                    )
+
+                    assert idle_telegram.recomputed_crc.all_data_for_checksum_computation_base_16 == expected_crc_inputs_base_16
+                    assert idle_telegram.recomputed_crc.as_base_16_str == expected_crc_result_base_16
+                    assert idle_telegram.recomputed_crc_and_transmitted_crc_are_equals
 
 
 class TestDecodeOnePpnProfibusLogLine:
@@ -60,6 +121,7 @@ class TestDecodeOnePpnProfibusLogLine:
                 assert not unisig_message.creational_and_decoding_errors
                 # assert unisig_message.stl_time_stamp_ms is not None
                 assert unisig_message.crc is not None
+                assert unisig_message.idle_cycle_timeout_in_100ms == 3000
 
         class TestConnectRequestTelegram:
             def test_decode_one_sl0(self) -> None:
@@ -571,7 +633,7 @@ class TestDecodeOnePpnProfibusLogLine:
             assert isinstance(ppn_log_line.unisig_message, decode_unisig_s57_s58.SdnApplicationDataMulticastForUpperLayerTelegram)
 
 
-class TestNextUnisigS58Library:
+class TestNextUnisigS58UpperLayerDecodingLibrary:
     def test_load_json(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
         assert next_unisig_58_library_fixture is not None
         assert next_unisig_58_library_fixture.enum_attributes_type_definitions
