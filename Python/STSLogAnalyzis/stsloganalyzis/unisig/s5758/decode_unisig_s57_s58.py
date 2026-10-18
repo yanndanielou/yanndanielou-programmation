@@ -140,6 +140,10 @@ class OnboardUnisigMessage(ABC):
     def can_src_be_computed(self) -> bool:
         pass
 
+    @abstractmethod
+    def prepare_data_and_recompute_crc(self) -> None:
+        pass
+
 
 @dataclass
 class SdnOnboardUnisigMessage(OnboardUnisigMessage):
@@ -241,6 +245,9 @@ class SdnSafeTimeLayerStartupForMulticast(SdnOnboardUnisigMessage):
     def can_src_be_computed(self) -> bool:
         raise NotImplementedError()
 
+    def prepare_data_and_recompute_crc(self) -> None:
+        raise NotImplementedError()
+
 
 @dataclass
 class SdnApplicationDataMulticastForUpperLayerTelegram(SdnOnboardUnisigMessage):
@@ -253,6 +260,9 @@ class SdnApplicationDataMulticastForUpperLayerTelegram(SdnOnboardUnisigMessage):
         pass
 
     def can_src_be_computed(self) -> bool:
+        raise NotImplementedError()
+
+    def prepare_data_and_recompute_crc(self) -> None:
         raise NotImplementedError()
 
 
@@ -277,6 +287,9 @@ class SdnSyncAndReferenceTimeMulticastMessage(SdnOnboardUnisigMessage):
         pass
 
     def can_src_be_computed(self) -> bool:
+        raise NotImplementedError()
+
+    def prepare_data_and_recompute_crc(self) -> None:
         raise NotImplementedError()
 
 
@@ -585,6 +598,9 @@ class SdaDisconnectTelegram(OnboardSdaUnisigMessage):
     def can_src_be_computed(self) -> bool:
         raise NotImplementedError()
 
+    def prepare_data_and_recompute_crc(self) -> None:
+        raise NotImplementedError()
+
 
 @dataclass
 class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
@@ -597,10 +613,11 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
         self.random_number_representing_sequence_number_byte_4_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
         self.idle_cycle_timeout_in_100ms = Unisig16BitsIntWithUnisigBytesOrder(self.byte_message_decoded).value_in_decimal_format
         self.configuration_data_prefix_x = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        # assert self.configuration_data_prefix_x == 3
+        assert self.configuration_data_prefix_x == 3
         self.configuration_data_prefix_y = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        # assert self.configuration_data_prefix_y == 0
+        assert self.configuration_data_prefix_y == 0
         self.configuration_data_prefix_z = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
+        assert self.configuration_data_prefix_z == 0
 
         if self.safety_level == SafetyLevel.SL4:
             self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
@@ -624,10 +641,11 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
             self.ppn_connections_library.register_connect_request_telegram(self)
         elif self.command_type in [OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_CONNECT_CONFIRM_TELEGRAM, OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_CONFIRM_TELEGRAM]:
             self.ppn_connections_library.register_connect_confirm_telegram(self)
-        # if sda_header.command_type in [SL0_CONNECT_REQUEST_TELEGRAM]
-        # connect_request_or_connect_confirm_telegram.
 
     def can_src_be_computed(self) -> bool:
+        return self.safety_level == SafetyLevel.SL4
+
+    def prepare_data_and_recompute_crc(self) -> None:
         raise NotImplementedError()
 
 
@@ -643,6 +661,9 @@ class SdaAuthenticationOrAuthenticationAcknowledgementTelegram(OnboardSdaUnisigM
     def can_src_be_computed(self) -> bool:
         raise NotImplementedError()
 
+    def prepare_data_and_recompute_crc(self) -> None:
+        raise NotImplementedError()
+
 
 @dataclass
 class SdaRunOrReadyToRunTelegram(OnboardSdaUnisigMessage):
@@ -654,6 +675,9 @@ class SdaRunOrReadyToRunTelegram(OnboardSdaUnisigMessage):
             self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
 
     def can_src_be_computed(self) -> bool:
+        raise NotImplementedError()
+
+    def prepare_data_and_recompute_crc(self) -> None:
         raise NotImplementedError()
 
 
@@ -926,4 +950,7 @@ class SdaForUpperLayerTelegram(OnboardSdaUnisigMessage):
             )
 
     def can_src_be_computed(self) -> bool:
+        raise NotImplementedError()
+
+    def prepare_data_and_recompute_crc(self) -> None:
         raise NotImplementedError()
