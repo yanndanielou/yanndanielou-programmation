@@ -198,6 +198,12 @@ class ProfibusLogLibrary:
         self._decode_sdn_or_sda()
 
         self.all_unisig_messages = [log_line.unisig_message for decoded_file in self.decoded_files for log_line in decoded_file.decoded_lines if log_line.unisig_message is not None]
+        self.all_sda_unisig_messages = [
+            log_line.unisig_message
+            for decoded_file in self.decoded_files
+            for log_line in decoded_file.decoded_lines
+            if log_line.unisig_message is not None and isinstance(log_line.unisig_message, decode_unisig_s57_s58.OnboardSdaUnisigMessage)
+        ]
 
         self.all_upper_layer_telegram = [upper_layer_telegram for upper_layer_telegram in self.all_unisig_messages if isinstance(upper_layer_telegram, decode_unisig_s57_s58.SdaForUpperLayerTelegram)]
         self.all_sl4_upper_layer_telegram = [
@@ -236,6 +242,8 @@ class ProfibusLogLibrary:
         for stm_message in self.all_upper_layer_stms:
             for error in stm_message.creational_and_decoding_errors:
                 self.occurences_by_creational_error_type[error].append(stm_message.upper_layer_telegram.profibus_log_line.timestamp if stm_message.upper_layer_telegram.profibus_log_line else None)
+
+        self._recalculate_all_crcs()
 
         self._print_stats()
 
@@ -491,6 +499,14 @@ class ProfibusLogLibrary:
 
         number_of_errors_occurences = sum([len(values) for values in self.occurences_by_creational_error_type.values()])
         logger_config.print_and_log_error_if(number_of_errors_occurences, f"{number_of_errors_occurences}: errors occurences")
+
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True)
+    def _recalculate_all_crcs(self) -> None:
+
+        sda_unisig_messages_to_compute_crc = [unisig_message for unisig_message in self.all_sda_unisig_messages if unisig_message.can_src_be_computed()]
+        logger_config.print_and_log_info(f"Recompute CRC of {len(sda_unisig_messages_to_compute_crc)}/{len(self.all_sda_unisig_messages)} SDA messages")
+        for sda_unisig_message_to_compute_crc in sda_unisig_messages_to_compute_crc:
+            sda_unisig_message_to_compute_crc.prepare_data_and_recompute_crc()
 
     @logger_config.stopwatch_decorator(monitor_ram_usage=True)
     def save_errors(self) -> None:
