@@ -537,7 +537,7 @@ class ProfibusLogLine:
             2: "EVC",
             3: "JRU",
             5: "DMI",
-            99: "STM",
+            99: "STM NExT",
             127: "MCast",
         }
 
