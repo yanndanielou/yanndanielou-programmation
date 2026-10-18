@@ -456,7 +456,7 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
     def __post_init__(self) -> None:
         super().__post_init__()
         self.stl_time_stamp: UnisigTimeStamp | None = None
-        self.net_data: OnboardSdaUnisigMessage.NetData | None = None
+        self.all_data_aka_net_data: OnboardSdaUnisigMessage.NetData | None = None
 
     def get_crc_telegram_header(self) -> "UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection":
 
@@ -670,8 +670,8 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
         if self.safety_level == SafetyLevel.SL4:
             self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
 
-        self.net_data = OnboardSdaUnisigMessage.NetData.from_remaining_bits_in_decoded_message(self.byte_message_decoded)
-        net_data_byte_message = bytes_messages.DecodedBytesMessage.from_bytes(self.net_data.as_bytes)
+        self.all_data_aka_net_data = OnboardSdaUnisigMessage.NetData.from_remaining_bits_in_decoded_message(self.byte_message_decoded)
+        net_data_byte_message = bytes_messages.DecodedBytesMessage.from_bytes(self.all_data_aka_net_data.as_bytes)
 
         self.random_number_representing_sequence_number_byte_1_of_4 = net_data_byte_message.get_next_byte_as_single_int_unsigned()
         self.random_number_representing_sequence_number_byte_2_of_4 = net_data_byte_message.get_next_byte_as_single_int_unsigned()
@@ -702,7 +702,7 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
 
         implicit_data_except_length = self.get_crc_implicit_data_except_length()
         header = self.get_crc_telegram_header()
-        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.net_data)
+        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.all_data_aka_net_data)
 
     def get_crc_implicit_data_except_length(self) -> "UnisigCrc.ImplicitDataExceptLength":
         assert self.profibus_log_line
@@ -723,7 +723,7 @@ class SdaAuthenticationOrAuthenticationAcknowledgementTelegram(OnboardSdaUnisigM
         super().__post_init__()
 
         self.authentication_number = Unisig32BitsIntWithUnisigBytesOrder(self.byte_message_decoded)
-        self.net_data = OnboardSdaUnisigMessage.NetData.from_bytes(self.authentication_number.value_as_bytes_ordered_in_unisig_way)
+        self.all_data_aka_net_data = OnboardSdaUnisigMessage.NetData.from_bytes(self.authentication_number.value_as_bytes_ordered_in_unisig_way)
         if self.safety_level == SafetyLevel.SL4:
             self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
 
@@ -735,7 +735,7 @@ class SdaAuthenticationOrAuthenticationAcknowledgementTelegram(OnboardSdaUnisigM
 
         implicit_data_except_length = self.get_crc_implicit_data_except_length()
         header = self.get_crc_telegram_header()
-        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.net_data)
+        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.all_data_aka_net_data)
 
 
 @dataclass
@@ -744,7 +744,7 @@ class SdaRunOrReadyToRunTelegram(OnboardSdaUnisigMessage):
     def __post_init__(self) -> None:
         super().__post_init__()
         self.stl_time_stamp = UnisigTimeStamp.from_next_bytes_in_byte_message_decoded(self.byte_message_decoded)
-        self.net_data = OnboardSdaUnisigMessage.NetData.from_bytes(self.stl_time_stamp.as_unisig_32_bits.value_as_bytes_ordered_in_unisig_way)
+        self.all_data_aka_net_data = OnboardSdaUnisigMessage.NetData.from_bytes(self.stl_time_stamp.as_unisig_32_bits.value_as_bytes_ordered_in_unisig_way)
 
         if self.safety_level == SafetyLevel.SL4:
             self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
@@ -757,7 +757,7 @@ class SdaRunOrReadyToRunTelegram(OnboardSdaUnisigMessage):
 
         implicit_data_except_length = self.get_crc_implicit_data_except_length()
         header = self.get_crc_telegram_header()
-        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.net_data)
+        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.all_data_aka_net_data)
 
 
 @dataclass
@@ -1036,4 +1036,4 @@ class SdaForUpperLayerTelegram(OnboardSdaUnisigMessage):
 
         implicit_data_except_length = self.get_crc_implicit_data_except_length()
         header = self.get_crc_telegram_header()
-        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.net_data)
+        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.all_data_aka_net_data)
