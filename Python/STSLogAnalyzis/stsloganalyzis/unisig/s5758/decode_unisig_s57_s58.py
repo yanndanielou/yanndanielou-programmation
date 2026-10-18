@@ -105,14 +105,18 @@ class OnboardUnisigMessage(ABC):
     def get_crc_implicit_data_except_length(self) -> "UnisigCrc.ImplicitDataExceptLength":
         assert self.profibus_log_line
         assert self.current_connection_session_before_this_message
+
+        transmitter = self.current_connection_session_before_this_message.get_interlocutor_by_address(self.profibus_log_line.source_address)
+        assert transmitter
+
         implicit_data = UnisigCrc.ImplicitDataExceptLength(
             receiver_address=self.profibus_log_line.target_address,  # Receiver_address / Receive_address (implicit)
             sender_address=self.profibus_log_line.source_address,  # Receiver_address / Receive_address (implicit)
             dsap=self.profibus_log_line.target_sap,
             ssap=self.profibus_log_line.source_sap,
-            higher_order_24bits_of_sequence_number_byte_1=self.current_connection_session_before_this_message.connect_confirm_random_number_representing_sequence_number_byte_2_of_4,
-            higher_order_24bits_of_sequence_number_byte_2=self.current_connection_session_before_this_message.connect_confirm_random_number_representing_sequence_number_byte_3_of_4,
-            higher_order_24bits_of_sequence_number_byte_3=self.current_connection_session_before_this_message.connect_confirm_random_number_representing_sequence_number_byte_4_of_4,
+            higher_order_24bits_of_sequence_number_byte_1=transmitter.random_number_representing_sequence_number_byte_2_of_4,
+            higher_order_24bits_of_sequence_number_byte_2=transmitter.random_number_representing_sequence_number_byte_3_of_4,
+            higher_order_24bits_of_sequence_number_byte_3=transmitter.random_number_representing_sequence_number_byte_4_of_4,
         )
         return implicit_data
 

@@ -3,7 +3,7 @@ from collections import OrderedDict, defaultdict
 from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
-from typing import Self, cast
+from typing import cast
 
 from common import file_name_utils, file_utils, reports_utils, string_utils
 from logger import logger_config
@@ -23,30 +23,55 @@ class ServiceAccessPoint:
     name: str
 
 
-@dataclass
 class PpnConnectionSession:
-    connect_telegram_source_address: int
-    connect_telegram_target_address: int
-    connect_request_random_number_representing_sequence_number_byte_1_of_4: int | None
-    connect_request_random_number_representing_sequence_number_byte_2_of_4: int | None
-    connect_request_random_number_representing_sequence_number_byte_3_of_4: int | None
-    connect_request_random_number_representing_sequence_number_byte_4_of_4: int | None
 
-    def __post_init__(self) -> None:
+    @dataclass
+    class SessionInterlocutor:
+        random_number_representing_sequence_number_byte_1_of_4: int
+        random_number_representing_sequence_number_byte_2_of_4: int
+        random_number_representing_sequence_number_byte_3_of_4: int
+        random_number_representing_sequence_number_byte_4_of_4: int
+        address: int
+        sap: int
+
+    def __init__(self) -> None:
         self.last_step = PpnConnectionSession.Step.CONNECT_REQUEST_RECEIVED
-        self.connect_confirm_random_number_representing_sequence_number_byte_1_of_4: int = -1
-        self.connect_confirm_random_number_representing_sequence_number_byte_2_of_4: int = -1
-        self.connect_confirm_random_number_representing_sequence_number_byte_3_of_4: int = -1
-        self.connect_confirm_random_number_representing_sequence_number_byte_4_of_4: int = -1
+        self.connection_initiator: PpnConnectionSession.SessionInterlocutor | None = None
+        self.connection_responder: PpnConnectionSession.SessionInterlocutor | None = None
 
-    def register_connect_confirm_telegram(self, connect_confirm_telegram: decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram) -> None:
-        self.connect_confirm_random_number_representing_sequence_number_byte_1_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_1_of_4
-        self.connect_confirm_random_number_representing_sequence_number_byte_2_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_2_of_4
-        self.connect_confirm_random_number_representing_sequence_number_byte_3_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_3_of_4
-        self.connect_confirm_random_number_representing_sequence_number_byte_4_of_4 = connect_confirm_telegram.random_number_representing_sequence_number_byte_4_of_4
+    def get_interlocutor_by_address(self, address: int) -> "PpnConnectionSession.SessionInterlocutor | None":
+        for interlocutor in [self.connection_initiator, self.connection_responder]:
+            if interlocutor and interlocutor.address == address:
+                return interlocutor
+        return None
+
+    def register_connect_request_telegram(self, connect_request_telegram: decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram) -> None:
+        if connect_request_telegram.profibus_log_line:
+            self.connection_initiator = PpnConnectionSession.SessionInterlocutor(
+                address=connect_request_telegram.profibus_log_line.source_address,
+                sap=connect_request_telegram.profibus_log_line.source_sap,
+                random_number_representing_sequence_number_byte_1_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_1_of_4,
+                random_number_representing_sequence_number_byte_2_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_2_of_4,
+                random_number_representing_sequence_number_byte_3_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_3_of_4,
+                random_number_representing_sequence_number_byte_4_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_4_of_4,
+            )
+
         self.last_step = PpnConnectionSession.Step.CONNECT_CONFIRM_RECEIVED
 
-    def register_disconnect_telegram(self, disconnect_telegram: decode_unisig_s57_s58.SdaDisconnectTelegram) -> None:
+    def register_connect_confirm_telegram(self, connect_confirm_telegram: decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram) -> None:
+        if connect_confirm_telegram.profibus_log_line:
+            self.connection_responder = PpnConnectionSession.SessionInterlocutor(
+                address=connect_confirm_telegram.profibus_log_line.source_address,
+                sap=connect_confirm_telegram.profibus_log_line.source_sap,
+                random_number_representing_sequence_number_byte_1_of_4=connect_confirm_telegram.random_number_representing_sequence_number_byte_1_of_4,
+                random_number_representing_sequence_number_byte_2_of_4=connect_confirm_telegram.random_number_representing_sequence_number_byte_2_of_4,
+                random_number_representing_sequence_number_byte_3_of_4=connect_confirm_telegram.random_number_representing_sequence_number_byte_3_of_4,
+                random_number_representing_sequence_number_byte_4_of_4=connect_confirm_telegram.random_number_representing_sequence_number_byte_4_of_4,
+            )
+
+        self.last_step = PpnConnectionSession.Step.CONNECT_CONFIRM_RECEIVED
+
+    def register_disconnect_telegram(self, _: decode_unisig_s57_s58.SdaDisconnectTelegram) -> None:
         self.last_step = PpnConnectionSession.Step.DISCONNECT_RECEIVED
 
     class Step(Enum):
@@ -69,46 +94,38 @@ class PpnConnectionsLibrary:
 
     def register_connect_request_telegram(self, connect_request_telegram: decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram) -> None:
         assert connect_request_telegram.profibus_log_line
-        connection = PpnConnectionSession(
-            connect_telegram_source_address=connect_request_telegram.profibus_log_line.source_address,
-            connect_telegram_target_address=connect_request_telegram.profibus_log_line.target_address,
-            connect_request_random_number_representing_sequence_number_byte_1_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_1_of_4,
-            connect_request_random_number_representing_sequence_number_byte_2_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_2_of_4,
-            connect_request_random_number_representing_sequence_number_byte_3_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_3_of_4,
-            connect_request_random_number_representing_sequence_number_byte_4_of_4=connect_request_telegram.random_number_representing_sequence_number_byte_4_of_4,
-        )
+        connection = PpnConnectionSession()
+        connection.register_connect_request_telegram(connect_request_telegram)
         self.all_ppn_connections_sessions.append(connection)
-        self.current_ppn_connections_by_source_and_target_addresses[(connection.connect_telegram_source_address, connection.connect_telegram_target_address)] = connection
-        self.current_ppn_connections_by_source_and_target_addresses[(connection.connect_telegram_target_address, connection.connect_telegram_source_address)] = connection
+        self.current_ppn_connections_by_source_and_target_addresses[(connect_request_telegram.profibus_log_line.source_address, connect_request_telegram.profibus_log_line.target_address)] = connection
+        self.current_ppn_connections_by_source_and_target_addresses[(connect_request_telegram.profibus_log_line.target_address, connect_request_telegram.profibus_log_line.source_address)] = connection
 
     def register_connect_confirm_telegram(self, connect_confirm_telegram: decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram) -> None:
         assert connect_confirm_telegram.profibus_log_line
         connection = self.get_existing_current_connection_by_profibus_log_line(connect_confirm_telegram.profibus_log_line)
         if not connection:
             logger_config.print_and_log_error(f"Connect confirm telegram {connect_confirm_telegram} without previous connect telegram")
-            connection = PpnConnectionSession(
-                connect_telegram_source_address=connect_confirm_telegram.profibus_log_line.target_address,
-                connect_telegram_target_address=connect_confirm_telegram.profibus_log_line.source_address,
-                connect_request_random_number_representing_sequence_number_byte_1_of_4=None,
-                connect_request_random_number_representing_sequence_number_byte_2_of_4=None,
-                connect_request_random_number_representing_sequence_number_byte_3_of_4=None,
-                connect_request_random_number_representing_sequence_number_byte_4_of_4=None,
-            )
+            connection = PpnConnectionSession()
+            connection.register_connect_confirm_telegram(connect_confirm_telegram)
             self.all_ppn_connections_sessions.append(connection)
-            self.current_ppn_connections_by_source_and_target_addresses[(connection.connect_telegram_source_address, connection.connect_telegram_target_address)] = connection
-            self.current_ppn_connections_by_source_and_target_addresses[(connection.connect_telegram_target_address, connection.connect_telegram_source_address)] = connection
+            self.current_ppn_connections_by_source_and_target_addresses[(connect_confirm_telegram.profibus_log_line.source_address, connect_confirm_telegram.profibus_log_line.target_address)] = (
+                connection
+            )
+            self.current_ppn_connections_by_source_and_target_addresses[(connect_confirm_telegram.profibus_log_line.target_address, connect_confirm_telegram.profibus_log_line.source_address)] = (
+                connection
+            )
 
         connection.register_connect_confirm_telegram(connect_confirm_telegram)
 
     def register_disconnect_telegram(self, disconnect_telegram: decode_unisig_s57_s58.SdaDisconnectTelegram) -> None:
         assert disconnect_telegram.profibus_log_line
         connection = self.get_existing_current_connection_by_profibus_log_line(disconnect_telegram.profibus_log_line)
-        if not connection:
+        if not connection or not connection.connection_initiator or not connection.connection_responder:
             logger_config.print_and_log_warning(f"No connection found before disconnect telegram {disconnect_telegram}")
             return
         connection.register_disconnect_telegram(disconnect_telegram)
-        self.current_ppn_connections_by_source_and_target_addresses.pop((connection.connect_telegram_source_address, connection.connect_telegram_target_address), None)
-        self.current_ppn_connections_by_source_and_target_addresses.pop((connection.connect_telegram_target_address, connection.connect_telegram_source_address), None)
+        self.current_ppn_connections_by_source_and_target_addresses.pop((connection.connection_initiator.address, connection.connection_responder.address), None)
+        self.current_ppn_connections_by_source_and_target_addresses.pop((connection.connection_responder.address, connection.connection_initiator.address), None)
 
     def get_existing_current_connection_by_profibus_log_line(self, profibus_log_line: "ProfibusLogLine") -> PpnConnectionSession | None:
         existing_connection_found = self.get_current_connection_by_source_and_target_addresses(profibus_log_line.source_address, profibus_log_line.target_address)
@@ -282,7 +299,7 @@ class ProfibusLogLibrary:
                         ),
                         "STM messages decoded in this line": ",".join([str(stm_message.nid_stm) for stm_message in interesting_stm_message.upper_layer_telegram.upper_layer_decoded_stms]),
                         "lowest_order_byte_sequence_number": interesting_stm_message.upper_layer_telegram.lowest_order_byte_sequence_number,
-                        "CRC": interesting_stm_message.upper_layer_telegram.crc.crc_bits_as_string if interesting_stm_message.upper_layer_telegram.crc else None,
+                        "CRC": interesting_stm_message.upper_layer_telegram.crc.as_base_16_str if interesting_stm_message.upper_layer_telegram.crc else None,
                         "Safe time layer timestamp (ms)": interesting_stm_message.upper_layer_telegram.stl_time_stamp.in_ms if interesting_stm_message.upper_layer_telegram.stl_time_stamp else None,
                         "Safe time layer timestamp (human_format)": (
                             interesting_stm_message.upper_layer_telegram.stl_time_stamp.human_format if interesting_stm_message.upper_layer_telegram.stl_time_stamp else None
@@ -326,7 +343,7 @@ class ProfibusLogLibrary:
                         "reference_time_n_minus_1_bytes_reordered_in_ms": sdn_sync_and_reference_time_message.reference_time_n_minus_1_utc.in_ms,
                         "reference_time_n_minus_1_bytes_reordered": sdn_sync_and_reference_time_message.reference_time_n_minus_1_utc.human_format,
                         "Number of errors (unisig message)": len(sdn_sync_and_reference_time_message.creational_and_decoding_errors),
-                        "CRC": sdn_sync_and_reference_time_message.crc.crc_bits_as_string if sdn_sync_and_reference_time_message.crc else None,
+                        "CRC": sdn_sync_and_reference_time_message.crc.as_base_16_str if sdn_sync_and_reference_time_message.crc else None,
                     }
                 )
                 for sdn_sync_and_reference_time_message in self.sdn_sync_and_reference_time_messages
@@ -361,7 +378,7 @@ class ProfibusLogLibrary:
                         "remaining_undecoded_bits": sdn_safe_time_layer_startup_message.remaining_undecoded_bits,
                         "number_remaining_undecoded_bits": sdn_safe_time_layer_startup_message.number_remaining_undecoded_bits,
                         "Number of errors (unisig message)": len(sdn_safe_time_layer_startup_message.creational_and_decoding_errors),
-                        "CRC": sdn_safe_time_layer_startup_message.crc.crc_bits_as_string if sdn_safe_time_layer_startup_message.crc else None,
+                        "CRC": sdn_safe_time_layer_startup_message.crc.as_base_16_str if sdn_safe_time_layer_startup_message.crc else None,
                     }
                 )
                 for sdn_safe_time_layer_startup_message in self.sdn_safe_time_layer_startup_messages
@@ -399,7 +416,7 @@ class ProfibusLogLibrary:
                             "lowest_order_byte_sequence_number": (
                                 unisig_message.lowest_order_byte_sequence_number if isinstance(unisig_message, decode_unisig_s57_s58.OnboardSdaUnisigMessage) else None
                             ),
-                            "CRC": unisig_message.crc.crc_bits_as_string if isinstance(unisig_message, decode_unisig_s57_s58.OnboardSdaUnisigMessage) and unisig_message.crc else None,
+                            "CRC": unisig_message.crc.as_base_16_str if isinstance(unisig_message, decode_unisig_s57_s58.OnboardSdaUnisigMessage) and unisig_message.crc else None,
                             "Safe time layer timestamp (ms)": (
                                 unisig_message.stl_time_stamp.in_ms if isinstance(unisig_message, decode_unisig_s57_s58.OnboardSdaUnisigMessage) and unisig_message.stl_time_stamp else None
                             ),
@@ -660,7 +677,10 @@ class ProfibusLogLine:
         else:
             return None
 
-    def decode_sdn_or_sda(self, ppn_connections_library: PpnConnectionsLibrary = PpnConnectionsLibrary()) -> None:
+    def decode_sdn_or_sda(self, ppn_connections_library: PpnConnectionsLibrary | None = None) -> None:
+        if ppn_connections_library is None:
+            ppn_connections_library = PpnConnectionsLibrary()
+
         if self.mode == SendingMode.SDA:
             try:
                 self.unisig_message = decode_unisig_s57_s58.OnboardSdaUnisigMessage.from_sda_hexa_bytes_str(
