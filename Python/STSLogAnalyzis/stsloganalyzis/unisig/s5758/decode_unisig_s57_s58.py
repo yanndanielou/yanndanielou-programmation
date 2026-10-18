@@ -492,6 +492,7 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
             assert self.length_in_bits % 8 == 0
             self.length_in_bytes = int(self.length_in_bits / 8)
             self.as_base_16 = bytes_utils.byte_array_to_string_base_16(self.as_bytes)
+            self.as_decoded_bytes_message = bytes_messages.DecodedBytesMessage.from_bytes(self.as_bytes)
 
         @classmethod
         def from_remaining_bits_in_decoded_message(cls, byte_message_decoded: bytes_messages.DecodedBytesMessage) -> "OnboardSdaUnisigMessage.NetData":
@@ -671,23 +672,22 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
             self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
 
         self.all_data_aka_net_data = OnboardSdaUnisigMessage.NetData.from_remaining_bits_in_decoded_message(self.byte_message_decoded)
-        net_data_byte_message = bytes_messages.DecodedBytesMessage.from_bytes(self.all_data_aka_net_data.as_bytes)
 
-        self.random_number_representing_sequence_number_byte_1_of_4 = net_data_byte_message.get_next_byte_as_single_int_unsigned()
-        self.random_number_representing_sequence_number_byte_2_of_4 = net_data_byte_message.get_next_byte_as_single_int_unsigned()
-        self.random_number_representing_sequence_number_byte_3_of_4 = net_data_byte_message.get_next_byte_as_single_int_unsigned()
-        self.random_number_representing_sequence_number_byte_4_of_4 = net_data_byte_message.get_next_byte_as_single_int_unsigned()
-        self.idle_cycle_timeout_in_100ms = Unisig16BitsIntWithUnisigBytesOrder(net_data_byte_message)
-        self.configuration_data_prefix_x = net_data_byte_message.get_next_byte_as_single_int_unsigned()
+        self.random_number_representing_sequence_number_byte_1_of_4 = self.all_data_aka_net_data.as_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
+        self.random_number_representing_sequence_number_byte_2_of_4 = self.all_data_aka_net_data.as_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
+        self.random_number_representing_sequence_number_byte_3_of_4 = self.all_data_aka_net_data.as_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
+        self.random_number_representing_sequence_number_byte_4_of_4 = self.all_data_aka_net_data.as_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
+        self.idle_cycle_timeout_in_100ms = Unisig16BitsIntWithUnisigBytesOrder(self.all_data_aka_net_data.as_decoded_bytes_message)
+        self.configuration_data_prefix_x = self.all_data_aka_net_data.as_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
         assert self.configuration_data_prefix_x == 3
-        self.configuration_data_prefix_y = net_data_byte_message.get_next_byte_as_single_int_unsigned()
+        self.configuration_data_prefix_y = self.all_data_aka_net_data.as_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
         assert self.configuration_data_prefix_y == 0
-        self.configuration_data_prefix_z = net_data_byte_message.get_next_byte_as_single_int_unsigned()
+        self.configuration_data_prefix_z = self.all_data_aka_net_data.as_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
         assert self.configuration_data_prefix_y == 0
 
-        self.dual_bus = OnboardSdaUnisigMessage.ConnectTelegramDualBusType(net_data_byte_message.get_next_byte_as_single_int_unsigned())
+        self.dual_bus = OnboardSdaUnisigMessage.ConnectTelegramDualBusType(self.all_data_aka_net_data.as_decoded_bytes_message.get_next_byte_as_single_int_unsigned())
 
-        self.net_data_inside_net_data = OnboardSdaUnisigMessage.NetData.from_remaining_bits_in_decoded_message(net_data_byte_message)
+        self.net_data_inside_net_data = OnboardSdaUnisigMessage.NetData.from_remaining_bits_in_decoded_message(self.all_data_aka_net_data.as_decoded_bytes_message)
 
         if self.command_type in [OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_CONNECT_REQUEST_TELEGRAM, OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_REQUEST_TELEGRAM]:
             self.ppn_connections_library.register_connect_request_telegram(self)
@@ -722,10 +722,13 @@ class SdaAuthenticationOrAuthenticationAcknowledgementTelegram(OnboardSdaUnisigM
     def __post_init__(self) -> None:
         super().__post_init__()
 
-        self.authentication_number = Unisig32BitsIntWithUnisigBytesOrder(self.byte_message_decoded)
-        self.all_data_aka_net_data = OnboardSdaUnisigMessage.NetData.from_bytes(self.authentication_number.value_as_bytes_ordered_in_unisig_way)
         if self.safety_level == SafetyLevel.SL4:
-            self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+            self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+
+        self.all_data_aka_net_data = OnboardSdaUnisigMessage.NetData.from_remaining_bits_in_decoded_message(self.byte_message_decoded)
+        self.authentication_number = Unisig32BitsIntWithUnisigBytesOrder(self.all_data_aka_net_data.as_decoded_bytes_message)
+
+        assert self.all_data_aka_net_data.as_decoded_bytes_message.is_correctly_and_completely_decoded
 
     def can_src_be_computed(self) -> bool:
         return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None
@@ -743,11 +746,12 @@ class SdaRunOrReadyToRunTelegram(OnboardSdaUnisigMessage):
 
     def __post_init__(self) -> None:
         super().__post_init__()
-        self.stl_time_stamp = UnisigTimeStamp.from_next_bytes_in_byte_message_decoded(self.byte_message_decoded)
-        self.all_data_aka_net_data = OnboardSdaUnisigMessage.NetData.from_bytes(self.stl_time_stamp.as_unisig_32_bits.value_as_bytes_ordered_in_unisig_way)
-
         if self.safety_level == SafetyLevel.SL4:
-            self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+            self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+
+        self.all_data_aka_net_data = OnboardSdaUnisigMessage.NetData.from_remaining_bits_in_decoded_message(self.byte_message_decoded)
+        self.stl_time_stamp = UnisigTimeStamp.from_next_bytes_in_byte_message_decoded(self.all_data_aka_net_data.as_decoded_bytes_message)
+        assert self.all_data_aka_net_data.as_decoded_bytes_message.is_correctly_and_completely_decoded
 
     def can_src_be_computed(self) -> bool:
         return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None and self.current_connection_session_before_this_message is not None
@@ -992,39 +996,46 @@ class SdaForUpperLayerTelegram(OnboardSdaUnisigMessage):
 
     def __post_init__(self) -> None:
         super().__post_init__()
-        self.header = OnboardSdaUnisigMessage.Header(self.byte_message_decoded)
 
         if self.safety_level == SafetyLevel.SL4:
             self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
 
-        self.stl_time_stamp = UnisigTimeStamp.from_last_bytes_in_byte_message_decoded(self.byte_message_decoded)
+        self.all_data_aka_net_data = OnboardSdaUnisigMessage.NetData.from_remaining_bits_in_decoded_message(self.byte_message_decoded)
+
+        self.header = OnboardSdaUnisigMessage.Header(self.all_data_aka_net_data.as_decoded_bytes_message)
+
+        self.stl_time_stamp = UnisigTimeStamp.from_last_bytes_in_byte_message_decoded(self.all_data_aka_net_data.as_decoded_bytes_message)
 
         self.upper_layer_decoded_stms: list[UpperLayerStm] = []
 
-        while self.byte_message_decoded.number_of_bits_remaining_to_decode > MAXIMUM_PADDING_SIZE_IN_BITS_SUBSET_58:
+        while self.all_data_aka_net_data.as_decoded_bytes_message.number_of_bits_remaining_to_decode > MAXIMUM_PADDING_SIZE_IN_BITS_SUBSET_58:
 
-            if self.byte_message_decoded.number_of_bits_remaining_to_decode >= UPPER_LAYER_STM_NID_STM_FIELD_SIZE_IN_BITS + UPPER_LAYER_STM_L_MESSAGE_FIELD_SIZE_IN_BITS:
-                upper_layer_decoded_stm = UpperLayerStm(self, byte_message_decoded=self.byte_message_decoded)
+            if self.all_data_aka_net_data.as_decoded_bytes_message.number_of_bits_remaining_to_decode >= UPPER_LAYER_STM_NID_STM_FIELD_SIZE_IN_BITS + UPPER_LAYER_STM_L_MESSAGE_FIELD_SIZE_IN_BITS:
+                upper_layer_decoded_stm = UpperLayerStm(self, byte_message_decoded=self.all_data_aka_net_data.as_decoded_bytes_message)
                 self.upper_layer_decoded_stms.append(upper_layer_decoded_stm)
                 assert len(self.upper_layer_decoded_stms) < 100
             else:
                 self.add_error(
-                    f"NotEnoughBitsToDecodeUpperLayerStm nid_content_length_in_bits={upper_layer_decoded_stm.data_without_header_size_in_bits}, byte_message_number_of_remaining_bits_to_decode={self.byte_message_decoded.number_of_bits_remaining_to_decode}, upper_layer_already_decoded_stms_ids={','.join([str(stm.nid_stm) for stm in self.upper_layer_decoded_stms])}",
+                    f"NotEnoughBitsToDecodeUpperLayerStm nid_content_length_in_bits={upper_layer_decoded_stm.data_without_header_size_in_bits}, byte_message_number_of_remaining_bits_to_decode={self.all_data_aka_net_data.as_decoded_bytes_message.number_of_bits_remaining_to_decode}, upper_layer_already_decoded_stms_ids={','.join([str(stm.nid_stm) for stm in self.upper_layer_decoded_stms])}",
                 )
                 break
 
         self.padding = (
-            self.byte_message_decoded.get_next_bits_as_single_int_unsigned(self.byte_message_decoded.number_of_bits_remaining_to_decode)
-            if self.byte_message_decoded.number_of_bits_remaining_to_decode > 0 and self.byte_message_decoded.number_of_bits_remaining_to_decode < 8
-            else None if self.byte_message_decoded.number_of_bits_remaining_to_decode == 0 else f"Error, too many bits ({self.byte_message_decoded.number_of_bits_remaining_to_decode}) for padding"
+            self.all_data_aka_net_data.as_decoded_bytes_message.get_next_bits_as_single_int_unsigned(self.all_data_aka_net_data.as_decoded_bytes_message.number_of_bits_remaining_to_decode)
+            if self.all_data_aka_net_data.as_decoded_bytes_message.number_of_bits_remaining_to_decode > 0 and self.all_data_aka_net_data.as_decoded_bytes_message.number_of_bits_remaining_to_decode < 8
+            else (
+                None
+                if self.all_data_aka_net_data.as_decoded_bytes_message.number_of_bits_remaining_to_decode == 0
+                else f"Error, too many bits ({self.all_data_aka_net_data.as_decoded_bytes_message.number_of_bits_remaining_to_decode}) for padding"
+            )
         )
 
-        self.remaining_undecoded_bits = self.byte_message_decoded.get_remaining_bits_as_str_of_bit()
+        self.remaining_undecoded_bits = self.all_data_aka_net_data.as_decoded_bytes_message.get_remaining_bits_as_str_of_bit()
         self.number_remaining_undecoded_bits = len(self.remaining_undecoded_bits)
 
         if self.number_remaining_undecoded_bits >= 8:
             self.add_error(
-                # f"RemainingBitsUndecodedAtEndOfSdaDelegate number_of_undecoded_bits={self.byte_message_decoded.number_of_bits_remaining_to_decode}, undecoded_bits_as_str={self.byte_message_decoded.extract_next_bits_to_str_of_bit(number_of_bits=self.byte_message_decoded.number_of_bits_remaining_to_decode)}, upper_layer_already_decoded_stms_ids={','.join([str(stm.nid_stm) for stm in self.upper_layer_decoded_stms])}",
+                # f"RemainingBitsUndecodedAtEndOfSdaDelegate number_of_undecoded_bits={self.all_data_aka_net_data.as_decoded_bytes_message.number_of_bits_remaining_to_decode}, undecoded_bits_as_str={self.all_data_aka_net_data.as_decoded_bytes_message.extract_next_bits_to_str_of_bit(number_of_bits=self.all_data_aka_net_data.as_decoded_bytes_message.number_of_bits_remaining_to_decode)}, upper_layer_already_decoded_stms_ids={','.join([str(stm.nid_stm) for stm in self.upper_layer_decoded_stms])}",
                 f"RemainingBitsUndecodedAtEndOfSdaDelegate number_of_undecoded_bits={self.number_remaining_undecoded_bits}, upper_layer_already_decoded_stms_ids={','.join([str(stm.nid_stm) for stm in self.upper_layer_decoded_stms])}",
             )
 
