@@ -79,6 +79,32 @@ class TestDecodeOnePpnProfibusLogFile:
                 assert authentication_acknowledgment_telegram.recomputed_crc
                 assert authentication_acknowledgment_telegram.recomputed_crc_and_transmitted_crc_are_equals
 
+            def test_data_for_upper_layer_next_to_evc(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+                library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    upper_layer_decoding_library=next_unisig_58_library_fixture,
+                )
+                next_evc_idle_telegram = library.all_unisig_messages[6]
+                assert isinstance(next_evc_idle_telegram, decode_unisig_s57_s58.UpperLayerStm)
+                assert next_evc_idle_telegram.profibus_log_line
+                assert "next" in next_evc_idle_telegram.profibus_log_line.source_name.lower()
+                next_evc_idle_telegram.prepare_data_and_recompute_crc()
+                assert next_evc_idle_telegram.recomputed_crc
+                assert next_evc_idle_telegram.recomputed_crc_and_transmitted_crc_are_equals
+
+            def test_data_for_upper_layer_evc_to_next(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+                library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    upper_layer_decoding_library=next_unisig_58_library_fixture,
+                )
+                evc_next_idle_telegram = library.all_unisig_messages[7]
+                assert isinstance(evc_next_idle_telegram, decode_unisig_s57_s58.UpperLayerStm)
+                assert evc_next_idle_telegram.profibus_log_line
+                assert "EVC" in evc_next_idle_telegram.profibus_log_line.source_name.upper()
+                evc_next_idle_telegram.prepare_data_and_recompute_crc()
+                assert evc_next_idle_telegram.recomputed_crc
+                assert evc_next_idle_telegram.recomputed_crc_and_transmitted_crc_are_equals
+
             def test_idle_next_to_evc(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                 library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
                     ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
