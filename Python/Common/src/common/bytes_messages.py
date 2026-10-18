@@ -148,7 +148,7 @@ class DecodedBytesMessage:
     def get_remaining_bits_as_unsigned_int(self) -> int:
         return self.get_next_bits_as_single_int_unsigned(size_bits=self.number_of_bits_remaining_to_decode)
 
-    def get_remaining_bits_as_bytes(self) -> int:
+    def get_remaining_bits_as_bytes(self) -> bytes:
         assert self.number_of_bits_remaining_to_decode % 8 == 0
         bytes_found: list[int] = []
         while not self.is_correctly_and_completely_decoded:
