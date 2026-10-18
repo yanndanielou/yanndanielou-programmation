@@ -666,24 +666,28 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
 
     def __post_init__(self) -> None:
         super().__post_init__()
-        self.random_number_representing_sequence_number_byte_1_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        self.random_number_representing_sequence_number_byte_2_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        self.random_number_representing_sequence_number_byte_3_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        self.random_number_representing_sequence_number_byte_4_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        self.idle_cycle_timeout_in_100ms = Unisig16BitsIntWithUnisigBytesOrder(self.byte_message_decoded)
-        self.configuration_data_prefix_x = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        assert self.configuration_data_prefix_x == 3
-        self.configuration_data_prefix_y = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        assert self.configuration_data_prefix_y == 0
-        self.configuration_data_prefix_z = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        assert self.configuration_data_prefix_y == 0
 
         if self.safety_level == SafetyLevel.SL4:
             self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
 
-        self.dual_bus = OnboardSdaUnisigMessage.ConnectTelegramDualBusType(self.byte_message_decoded.get_next_byte_as_single_int_unsigned())
-
         self.net_data = OnboardSdaUnisigMessage.NetData.from_remaining_bits_in_decoded_message(self.byte_message_decoded)
+        net_data_byte_message = bytes_messages.DecodedBytesMessage.from_bytes(self.net_data.as_bytes)
+
+        self.random_number_representing_sequence_number_byte_1_of_4 = net_data_byte_message.get_next_byte_as_single_int_unsigned()
+        self.random_number_representing_sequence_number_byte_2_of_4 = net_data_byte_message.get_next_byte_as_single_int_unsigned()
+        self.random_number_representing_sequence_number_byte_3_of_4 = net_data_byte_message.get_next_byte_as_single_int_unsigned()
+        self.random_number_representing_sequence_number_byte_4_of_4 = net_data_byte_message.get_next_byte_as_single_int_unsigned()
+        self.idle_cycle_timeout_in_100ms = Unisig16BitsIntWithUnisigBytesOrder(net_data_byte_message)
+        self.configuration_data_prefix_x = net_data_byte_message.get_next_byte_as_single_int_unsigned()
+        assert self.configuration_data_prefix_x == 3
+        self.configuration_data_prefix_y = net_data_byte_message.get_next_byte_as_single_int_unsigned()
+        assert self.configuration_data_prefix_y == 0
+        self.configuration_data_prefix_z = net_data_byte_message.get_next_byte_as_single_int_unsigned()
+        assert self.configuration_data_prefix_y == 0
+
+        self.dual_bus = OnboardSdaUnisigMessage.ConnectTelegramDualBusType(net_data_byte_message.get_next_byte_as_single_int_unsigned())
+
+        self.net_data_inside_net_data = OnboardSdaUnisigMessage.NetData.from_remaining_bits_in_decoded_message(net_data_byte_message)
 
         if self.command_type in [OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_CONNECT_REQUEST_TELEGRAM, OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_REQUEST_TELEGRAM]:
             self.ppn_connections_library.register_connect_request_telegram(self)
