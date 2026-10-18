@@ -405,7 +405,7 @@ class RecomputedUnisigCrc(UnisigCrc):
         telegram_header: "UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection",
         net_data: "OnboardSdaUnisigMessage.NetData | None" = None,
     ) -> "RecomputedUnisigCrc":
-        net_data_length = net_data.length_in_bits if net_data else 0
+        net_data_length = net_data.length_in_bytes if net_data else 0
 
         implicit_data_length_int = net_data_length + len(telegram_header.all_bytes) + SL4_CRC_SIZE_IN_BYTES
         implicit_data_length_bytes = implicit_data_length_int.to_bytes()
@@ -489,6 +489,10 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
         length_in_bits: int
         as_bytes: bytes
 
+        def __post_init__(self) -> None:
+            assert self.length_in_bits % 8 == 0
+            self.length_in_bytes = self.length_in_bits / 8
+
         @classmethod
         def from_remaining_bits_in_decoded_message(cls, byte_message_decoded: bytes_messages.DecodedBytesMessage) -> "OnboardSdaUnisigMessage.NetData":
 
@@ -504,7 +508,6 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
         def from_bytes(cls, as_bytes: bytes) -> "OnboardSdaUnisigMessage.NetData":
 
             net_data_length_in_bits = len(as_bytes) * 8
-            assert net_data_length_in_bits % 8 == 0
 
             return OnboardSdaUnisigMessage.NetData(
                 length_in_bits=net_data_length_in_bits,
@@ -716,7 +719,7 @@ class SdaAuthenticationOrAuthenticationAcknowledgementTelegram(OnboardSdaUnisigM
         super().__post_init__()
 
         self.authentication_number = Unisig32BitsIntWithUnisigBytesOrder(self.byte_message_decoded)
-        # self.net_data = OnboardSdaUnisigMessage.NetData.from_bytes(self.authentication_number.value_as_bytes_ordered_in_usinig_way)
+        self.net_data = OnboardSdaUnisigMessage.NetData.from_bytes(self.authentication_number.value_as_bytes_ordered_in_usinig_way)
         if self.safety_level == SafetyLevel.SL4:
             self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
 
@@ -981,10 +984,10 @@ class SdaForUpperLayerTelegram(OnboardSdaUnisigMessage):
         super().__post_init__()
         self.header = OnboardSdaUnisigMessage.Header(self.byte_message_decoded)
 
-        self.stl_time_stamp = UnisigTimeStamp.from_last_bytes_in_byte_message_decoded(self.byte_message_decoded)
-
         if self.safety_level == SafetyLevel.SL4:
             self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+
+        self.stl_time_stamp = UnisigTimeStamp.from_last_bytes_in_byte_message_decoded(self.byte_message_decoded)
 
         self.upper_layer_decoded_stms: list[UpperLayerStm] = []
 
@@ -1016,7 +1019,11 @@ class SdaForUpperLayerTelegram(OnboardSdaUnisigMessage):
             )
 
     def can_src_be_computed(self) -> bool:
-        raise NotImplementedError()
+        return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None and self.current_connection_session_before_this_message is not None
 
     def prepare_data_and_recompute_crc(self) -> None:
-        raise NotImplementedError()
+        assert self.profibus_log_line
+
+        implicit_data_except_length = self.get_crc_implicit_data_except_length()
+        header = self.get_crc_telegram_header()
+        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.net_data)
