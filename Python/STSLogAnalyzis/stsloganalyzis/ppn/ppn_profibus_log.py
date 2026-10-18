@@ -531,7 +531,7 @@ class ProfibusLogLibrary:
         number_of_errors_occurences = sum([len(values) for values in self.occurences_by_creational_error_type.values()])
         logger_config.print_and_log_error_if(number_of_errors_occurences, f"{number_of_errors_occurences}: errors occurences")
 
-    @logger_config.stopwatch_decorator(monitor_ram_usage=True)
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True, inform_beginning=True)
     def _recalculate_all_crcs(self) -> None:
 
         sda_unisig_messages_to_compute_crc = [unisig_message for unisig_message in self.all_sda_unisig_messages if unisig_message.can_src_be_computed()]
