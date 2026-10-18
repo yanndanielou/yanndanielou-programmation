@@ -467,7 +467,7 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
         @classmethod
         def from_remaining_bits_in_decoded_message(cls, byte_message_decoded: bytes_messages.DecodedBytesMessage) -> "OnboardSdaUnisigMessage.NetData":
 
-            net_data_length_in_bits = byte_message_decoded.byte_message_decoded.number_of_bits_remaining_to_decode
+            net_data_length_in_bits = byte_message_decoded.number_of_bits_remaining_to_decode
             assert net_data_length_in_bits % 8 == 0
 
             return OnboardSdaUnisigMessage.NetData(
@@ -644,7 +644,7 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
 
         self.dual_bus = OnboardSdaUnisigMessage.ConnectTelegramDualBusType(self.byte_message_decoded.get_next_byte_as_single_int_unsigned())
 
-        self.net_data = OnboardSdaUnisigMessage.NetData.from_remaining_bits_in_decoded_message(self.byte_message_decoded.number_of_bits_remaining_to_decode)
+        self.net_data = OnboardSdaUnisigMessage.NetData.from_remaining_bits_in_decoded_message(self.byte_message_decoded)
 
         if self.command_type in [OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_CONNECT_REQUEST_TELEGRAM, OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_REQUEST_TELEGRAM]:
             self.ppn_connections_library.register_connect_request_telegram(self)
