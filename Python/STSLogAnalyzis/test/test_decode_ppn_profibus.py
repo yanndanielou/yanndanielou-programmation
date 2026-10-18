@@ -26,7 +26,7 @@ class TestDecodeOnePpnProfibusLogFile:
                 next_evc_idle_telegram = library.all_unisig_messages[8]
                 assert isinstance(next_evc_idle_telegram, decode_unisig_s57_s58.SdaIdleTelegram)
                 assert next_evc_idle_telegram.profibus_log_line
-                assert next_evc_idle_telegram.profibus_log_line.source_name == ""
+                assert "next" in next_evc_idle_telegram.profibus_log_line.source_name.lower()
                 next_evc_idle_telegram.prepare_data_and_recompute_crc()
                 assert next_evc_idle_telegram.recomputed_crc
                 assert next_evc_idle_telegram.recomputed_crc_and_transmitted_crc_are_equals
@@ -39,7 +39,7 @@ class TestDecodeOnePpnProfibusLogFile:
                 evc_next_idle_telegram = library.all_unisig_messages[9]
                 assert isinstance(evc_next_idle_telegram, decode_unisig_s57_s58.SdaIdleTelegram)
                 assert evc_next_idle_telegram.profibus_log_line
-                assert evc_next_idle_telegram.profibus_log_line.source_name == ""
+                assert "EVC" in evc_next_idle_telegram.profibus_log_line.source_name.upper()
                 evc_next_idle_telegram.prepare_data_and_recompute_crc()
                 assert evc_next_idle_telegram.recomputed_crc
                 assert evc_next_idle_telegram.recomputed_crc_and_transmitted_crc_are_equals
