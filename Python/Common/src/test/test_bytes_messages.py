@@ -130,3 +130,12 @@ class TestConstructors:
         decoded_message = bytes_messages.DecodedBytesMessage.from_bytes_as_list_int(bytes_as_list_int)
         remaining_bits_as_unsigned_int = decoded_message.get_remaining_bits_as_unsigned_int()
         assert remaining_bits_as_unsigned_int == content_as_unsigned_int
+
+
+class TestGetRemainingBits:
+    def test_get_remaining_bits_as_bytes(self) -> None:
+        bytes_as_list_int = [1, 2, 3, 4, 10, 50, 100, 250]
+        decoded_message = bytes_messages.DecodedBytesMessage.from_bytes_as_list_int(bytes_as_list_int)
+        remaining_bits_as_bytes = decoded_message.get_remaining_bits_as_bytes()
+        assert remaining_bits_as_bytes[0] == 1
+        assert remaining_bits_as_bytes[-1] == 250
