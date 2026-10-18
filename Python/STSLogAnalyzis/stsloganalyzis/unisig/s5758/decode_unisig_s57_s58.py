@@ -392,12 +392,17 @@ class UnisigCrc:
 
 @dataclass
 class RecomputedUnisigCrc(UnisigCrc):
+    implicit_data_bytes: bytes
     implicit_data_except_length: UnisigCrc.ImplicitDataExceptLength
     telegram_header: UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection
-    implicit_data_length_int: int
+    implicit_data_length_field_as_int: int
     net_data: "OnboardSdaUnisigMessage.NetData | None"
     all_data_for_checksum_computation_bytes: bytes
     all_data_for_checksum_computation_base_16: str
+
+    def __post_init__(self) -> None:
+        super().__post_init__()
+        self.explanations_for_debug = f"All data for checksum computation:{self.all_data_for_checksum_computation_base_16}, implicit data:{bytes_utils.byte_array_to_string_base_16(self.implicit_data_bytes)}, header:{self.telegram_header.all_bytes_as_base_16}, net_data:{self.net_data.as_base_16 if self.net_data else 'NA'}"
 
     @classmethod
     def compute_from_data(
@@ -411,18 +416,21 @@ class RecomputedUnisigCrc(UnisigCrc):
         implicit_data_length_int = net_data_length + len(telegram_header.all_bytes) + SL4_CRC_SIZE_IN_BYTES
         implicit_data_length_bytes = implicit_data_length_int.to_bytes()
 
-        data_for_checksum_bytes = implicit_data_length_bytes + implicit_data_except_length.all_bytes + telegram_header.all_bytes
+        implicit_data_bytes = implicit_data_length_bytes + implicit_data_except_length.all_bytes
+
+        data_for_checksum_bytes = implicit_data_bytes + telegram_header.all_bytes
         if net_data:
             data_for_checksum_bytes += net_data.as_bytes
         as_int = crc48_unisig_s57_as_int(data=data_for_checksum_bytes)
         return RecomputedUnisigCrc(
             as_int=as_int,
+            implicit_data_bytes=implicit_data_bytes,
             implicit_data_except_length=implicit_data_except_length,
             telegram_header=telegram_header,
             net_data=net_data,
             all_data_for_checksum_computation_bytes=data_for_checksum_bytes,
             all_data_for_checksum_computation_base_16=bytes_utils.byte_array_to_string_base_16(data_for_checksum_bytes),
-            implicit_data_length_int=implicit_data_length_int,
+            implicit_data_length_field_as_int=implicit_data_length_int,
         )
 
 

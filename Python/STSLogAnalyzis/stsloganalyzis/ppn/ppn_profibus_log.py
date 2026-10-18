@@ -122,7 +122,7 @@ class PpnConnectionsLibrary:
         connection = self.get_existing_current_connection_by_profibus_log_line(disconnect_telegram.profibus_log_line)
         if not connection or not connection.connection_initiator or not connection.connection_responder:
             logger_config.print_and_log_warning(
-                f"No connection found before disconnect telegram at {disconnect_telegram.profibus_log_line.timestamp} in {disconnect_telegram.profibus_log_line.file_path} line  {disconnect_telegram.profibus_log_line.line_number} between {disconnect_telegram.profibus_log_line.source_name} and {disconnect_telegram.profibus_log_line.target_address}"
+                f"No connection found before disconnect telegram at {disconnect_telegram.profibus_log_line.timestamp} in {disconnect_telegram.profibus_log_line.file_path} line  {disconnect_telegram.profibus_log_line.line_number} between {disconnect_telegram.profibus_log_line.source_name} and {disconnect_telegram.profibus_log_line.target_name}"
             )
             return
         connection.register_disconnect_telegram(disconnect_telegram)
@@ -341,6 +341,9 @@ class ProfibusLogLibrary:
                         ),
                         "STM messages decoded in this line": ",".join([str(stm_message.nid_stm) for stm_message in interesting_stm_message.upper_layer_telegram.upper_layer_decoded_stms]),
                         "lowest_order_byte_sequence_number": interesting_stm_message.upper_layer_telegram.lowest_order_byte_sequence_number,
+                        "Unisig message: all_data_aka_net_data": (
+                            interesting_stm_message.upper_layer_telegram.all_data_aka_net_data.as_base_16 if interesting_stm_message.upper_layer_telegram.all_data_aka_net_data else None
+                        ),
                         "Transmitted CRC": interesting_stm_message.upper_layer_telegram.crc.as_base_16_str if interesting_stm_message.upper_layer_telegram.crc else None,
                         "Recomputed CRC: base 16": (
                             interesting_stm_message.upper_layer_telegram.recomputed_crc.as_base_16_str if interesting_stm_message.upper_layer_telegram.recomputed_crc else None
@@ -349,6 +352,9 @@ class ProfibusLogLibrary:
                             interesting_stm_message.upper_layer_telegram.recomputed_crc.all_data_for_checksum_computation_base_16
                             if interesting_stm_message.upper_layer_telegram.recomputed_crc
                             else None
+                        ),
+                        "Recomputed CRC: explanations_for_debug": (
+                            interesting_stm_message.upper_layer_telegram.recomputed_crc.explanations_for_debug if interesting_stm_message.upper_layer_telegram.recomputed_crc else None
                         ),
                         "recomputed_crc_and_transmitted_crc_are_equals": interesting_stm_message.upper_layer_telegram.recomputed_crc_and_transmitted_crc_are_equals,
                         "Safe time layer timestamp (ms)": interesting_stm_message.upper_layer_telegram.stl_time_stamp.in_ms if interesting_stm_message.upper_layer_telegram.stl_time_stamp else None,
@@ -471,6 +477,9 @@ class ProfibusLogLibrary:
                             "Line length": unisig_message.profibus_log_line.length if unisig_message.profibus_log_line else None,
                             "file path": unisig_message.profibus_log_line.file_path if unisig_message.profibus_log_line else None,
                             "line number": unisig_message.profibus_log_line.line_number if unisig_message.profibus_log_line else None,
+                            "Unisig message: all_data_aka_net_data": (
+                                unisig_message.upper_layer_telegram.all_data_aka_net_data.as_base_16 if unisig_message.upper_layer_telegram.all_data_aka_net_data else None
+                            ),
                             "Number of errors": len(unisig_message.creational_and_decoding_errors),
                             "lowest_order_byte_sequence_number": (
                                 unisig_message.lowest_order_byte_sequence_number if isinstance(unisig_message, decode_unisig_s57_s58.OnboardSdaUnisigMessage) else None
@@ -479,6 +488,7 @@ class ProfibusLogLibrary:
                             "recomputed_crc_and_transmitted_crc_are_equals": unisig_message.recomputed_crc_and_transmitted_crc_are_equals,
                             "Recomputed CRC (base 16)": unisig_message.recomputed_crc.as_base_16_str if unisig_message.recomputed_crc else None,
                             "Data to compute CRC (base 16)": unisig_message.recomputed_crc.all_data_for_checksum_computation_base_16 if unisig_message.recomputed_crc else None,
+                            "Recomputed CRC: explanations_for_debug": unisig_message.recomputed_crc.explanations_for_debug if unisig_message.recomputed_crc else None,
                             "Safe time layer timestamp (ms)": (
                                 unisig_message.stl_time_stamp.in_ms if isinstance(unisig_message, decode_unisig_s57_s58.OnboardSdaUnisigMessage) and unisig_message.stl_time_stamp else None
                             ),
