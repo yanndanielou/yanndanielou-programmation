@@ -491,7 +491,7 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
 
         def __post_init__(self) -> None:
             assert self.length_in_bits % 8 == 0
-            self.length_in_bytes = self.length_in_bits / 8
+            self.length_in_bytes = int(self.length_in_bits / 8)
 
         @classmethod
         def from_remaining_bits_in_decoded_message(cls, byte_message_decoded: bytes_messages.DecodedBytesMessage) -> "OnboardSdaUnisigMessage.NetData":
