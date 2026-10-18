@@ -20,9 +20,30 @@ class TestDecodeOnePpnProfibusLogFile:
         class TestIdleMessage:
 
             class TestFromFileWithOnlyConnectConfirmAndIdleLines:
-                def test_site_example(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+                def test_idle_next_to_evc(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                     library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
                         ppn_log_full_path=r"test\resources\ppn\sl4_connect_confirm_and_idle_next_evc.log_ppn",
+                        upper_layer_decoding_library=next_unisig_58_library_fixture,
+                    )
+                    connect_confirm_telegram = library.all_unisig_messages[0]
+                    assert isinstance(connect_confirm_telegram, decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram)
+                    idle_telegram = library.all_unisig_messages[1]
+                    assert isinstance(idle_telegram, decode_unisig_s57_s58.SdaIdleTelegram)
+                    assert idle_telegram.safety_level == decode_unisig_s57_s58.SafetyLevel.SL4
+                    idle_telegram.prepare_data_and_recompute_crc()
+                    assert idle_telegram.recomputed_crc
+                    assert idle_telegram.recomputed_crc_and_transmitted_crc_are_equals
+
+                @pytest.mark.parametrize(
+                    "ppn_log_full_path",
+                    [
+                        r"test\resources\ppn\sl4_connect_confirm_and_idle_evc_next.log_ppn",
+                        r"test\resources\ppn\sl4_connect_confirm_and_idle_next_evc.log_ppn",
+                    ],
+                )
+                def test_idle_evc_to_next(self, ppn_log_full_path: str, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+                    library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
+                        ppn_log_full_path=ppn_log_full_path,
                         upper_layer_decoding_library=next_unisig_58_library_fixture,
                     )
                     connect_confirm_telegram = library.all_unisig_messages[0]
