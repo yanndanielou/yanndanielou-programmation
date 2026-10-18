@@ -18,6 +18,21 @@ class TestDecodeOnePpnProfibusLogFile:
     class TestRecomputeChecksum:
 
         class TestFromFileWithNextEvcAllConnectionMessagesFollowedByUpperLayerAndIdle:
+
+            def test_connect_request_crc(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+                library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    upper_layer_decoding_library=next_unisig_58_library_fixture,
+                )
+                connect_request_telegram = library.all_unisig_messages[0]
+                assert isinstance(connect_request_telegram, decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram)
+                assert connect_request_telegram.profibus_log_line
+                assert "next" in connect_request_telegram.profibus_log_line.source_name.lower()
+                assert connect_request_telegram.can_src_be_computed()
+                connect_request_telegram.prepare_data_and_recompute_crc()
+                assert connect_request_telegram.recomputed_crc
+                assert connect_request_telegram.recomputed_crc_and_transmitted_crc_are_equals
+
             def test_idle_next_to_evc(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                 library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
                     ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
@@ -57,6 +72,7 @@ class TestDecodeOnePpnProfibusLogFile:
                     idle_telegram = library.all_unisig_messages[1]
                     assert isinstance(idle_telegram, decode_unisig_s57_s58.SdaIdleTelegram)
                     assert idle_telegram.safety_level == decode_unisig_s57_s58.SafetyLevel.SL4
+                    assert idle_telegram.can_src_be_computed()
                     idle_telegram.prepare_data_and_recompute_crc()
                     assert idle_telegram.recomputed_crc
                     assert idle_telegram.recomputed_crc_and_transmitted_crc_are_equals
@@ -73,6 +89,7 @@ class TestDecodeOnePpnProfibusLogFile:
                     idle_telegram = library.all_unisig_messages[1]
                     assert isinstance(idle_telegram, decode_unisig_s57_s58.SdaIdleTelegram)
                     assert idle_telegram.safety_level == decode_unisig_s57_s58.SafetyLevel.SL4
+                    assert idle_telegram.can_src_be_computed()
                     idle_telegram.prepare_data_and_recompute_crc()
                     assert idle_telegram.recomputed_crc
                     expected_crc_result_base_16 = bytes_utils.byte_array_to_string_base_16(
