@@ -30,7 +30,7 @@ class TestMultipleDecodings:
         # 00
         assert not decoded_message.get_next_bits_as_bool_0_or_1(size_bits=8)
 
-        assert not decoded_message.is_correctly_and_completely_decoded()
+        assert not decoded_message.is_correctly_and_completely_decoded
 
         # AA
         assert decoded_message.get_next_bits_as_int_table_signed_and_unsigned(table_dim=2, size_bits=1)[0] == bytes_messages.DecodedIntResult(-1, 1)
@@ -39,7 +39,7 @@ class TestMultipleDecodings:
 
         # 41 6E 74
         assert decoded_message.get_next_bits_as_ascii_char(number_of_chars=3) == "Ant"
-        assert decoded_message.is_correctly_and_completely_decoded()
+        assert decoded_message.is_correctly_and_completely_decoded
 
     def test_decode_bits_message(self) -> None:
         decoded_message = bytes_messages.DecodedBytesMessage.from_bit_string("1010 1010  01001000  0000 0000".replace(" ", ""))
@@ -50,7 +50,7 @@ class TestMultipleDecodings:
 
         assert decoded_message.get_next_bits_as_ascii_char(1) == "H"
         assert decoded_message.get_next_bits_as_single_int_unsigned(8) == 0
-        assert decoded_message.is_correctly_and_completely_decoded()
+        assert decoded_message.is_correctly_and_completely_decoded
 
 
 class TestDecodeMessageFromBothEnds:
