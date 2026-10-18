@@ -278,7 +278,7 @@ class SdnSyncAndReferenceTimeMulticastMessage(SdnOnboardUnisigMessage):
         self.configuration_data_prefix_z = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
         assert self.configuration_data_prefix_z == 0
 
-        self.reference_sync_n = Unisig32BitsIntWithUnisigBytesOrder(self.byte_message_decoded).value_as_int
+        self.reference_sync_n = Unisig32BitsIntWithUnisigBytesOrder(self.byte_message_decoded)
 
         self.reference_time_n_minus_1_utc = UnisigTimeStamp.from_next_bytes_in_byte_message_decoded(self.byte_message_decoded)
 
@@ -428,23 +428,22 @@ class RecomputedUnisigCrc(UnisigCrc):
 @dataclass
 class UnisigTimeStamp:
 
-    in_ms: int
+    as_unisig_32_bits: Unisig32BitsIntWithUnisigBytesOrder
 
     def __post_init__(self) -> None:
+        self.in_ms = self.as_unisig_32_bits.value_as_int
         self.human_format = date_time_formats.format_duration_to_string(self.in_ms / 1000)
 
     @classmethod
     def from_next_bytes_in_byte_message_decoded(cls, byte_message_decoded: bytes_messages.DecodedBytesMessage) -> "UnisigTimeStamp":
-        in_ms = Unisig32BitsIntWithUnisigBytesOrder(byte_message_decoded).value_as_int
-        return UnisigTimeStamp(in_ms)
+        return UnisigTimeStamp(Unisig32BitsIntWithUnisigBytesOrder(byte_message_decoded))
 
     @classmethod
     def from_last_bytes_in_byte_message_decoded(cls, byte_message_decoded: bytes_messages.DecodedBytesMessage) -> "UnisigTimeStamp":
         byte_message_extracted = bytes_messages.DecodedBytesMessage.from_bit_string(
             byte_message_decoded.extract_and_remove_last_next_bits_to_str_of_bit(number_of_bits=STL_TIME_STAMP_SUBSET_56_LENGTH_IN_BITS)
         )
-        in_ms = Unisig32BitsIntWithUnisigBytesOrder(byte_message_extracted).value_as_int
-        return UnisigTimeStamp(in_ms)
+        return UnisigTimeStamp(Unisig32BitsIntWithUnisigBytesOrder(byte_message_extracted))
 
 
 @dataclass
@@ -492,6 +491,7 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
         def __post_init__(self) -> None:
             assert self.length_in_bits % 8 == 0
             self.length_in_bytes = int(self.length_in_bits / 8)
+            self.as_base_16 = bytes_utils.byte_array_to_string_base_16(self.as_bytes)
 
         @classmethod
         def from_remaining_bits_in_decoded_message(cls, byte_message_decoded: bytes_messages.DecodedBytesMessage) -> "OnboardSdaUnisigMessage.NetData":
@@ -670,7 +670,7 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
         self.random_number_representing_sequence_number_byte_2_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
         self.random_number_representing_sequence_number_byte_3_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
         self.random_number_representing_sequence_number_byte_4_of_4 = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        self.idle_cycle_timeout_in_100ms = Unisig16BitsIntWithUnisigBytesOrder(self.byte_message_decoded).value_in_decimal_format
+        self.idle_cycle_timeout_in_100ms = Unisig16BitsIntWithUnisigBytesOrder(self.byte_message_decoded)
         self.configuration_data_prefix_x = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
         assert self.configuration_data_prefix_x == 3
         self.configuration_data_prefix_y = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()

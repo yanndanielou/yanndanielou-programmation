@@ -269,7 +269,7 @@ class TestDecodeOnePpnProfibusLogLine:
                 assert not unisig_message.creational_and_decoding_errors
                 # assert unisig_message.stl_time_stamp_ms is not None
                 assert unisig_message.crc is not None
-                assert unisig_message.idle_cycle_timeout_in_100ms == 3000
+                assert unisig_message.idle_cycle_timeout_in_100ms.value_in_decimal_format == 3000
 
         class TestConnectRequestTelegram:
             def test_decode_one_sl0(self) -> None:
