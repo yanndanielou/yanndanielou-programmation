@@ -261,6 +261,31 @@ class ProfibusLogLibrary:
             file_base_name=f"{self.label} {label} stm messages {' '.join(str(interesting_stm_id) for interesting_stm_id in allowed_stm_ids)}",
         )
 
+    def save_all_usual_reports(self) -> None:
+
+        self.save_all_stm_messages_with_bad_crc()
+        self.save_sdn_safe_time_layer_startup_messages()
+        self.save_sdn_sync_and_reference_time_messages()
+        self.save_all_stm_messages_with_errors()
+
+        self.save_all_unisig_messages_with_bad_crc()
+
+        self.save_all_sda_messages_with_timestamp()
+        self.save_all_stm_messages()
+        self.save_all_unisig_messages()
+        self.save_stm_messages_for_each_interlocutor()
+
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True)
+    def save_all_sda_messages_with_timestamp(self) -> None:
+
+        self.save_selected_unisig_messages(
+            file_base_name=f"{self.label} SDA messages with timestamp",
+            selected_unisig_messages=[
+                unisig_message for unisig_message in self.all_unisig_messages if isinstance(unisig_message, decode_unisig_s57_s58.OnboardSdaUnisigMessage) and unisig_message.stl_time_stamp is not None
+            ],
+        )
+
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True)
     def save_stm_messages_for_each_interlocutor(self) -> None:
         for interlocutors in self.all_interlocutors:
             self.save_selected_stm_messages(
@@ -316,7 +341,7 @@ class ProfibusLogLibrary:
                         ),
                         "STM messages decoded in this line": ",".join([str(stm_message.nid_stm) for stm_message in interesting_stm_message.upper_layer_telegram.upper_layer_decoded_stms]),
                         "lowest_order_byte_sequence_number": interesting_stm_message.upper_layer_telegram.lowest_order_byte_sequence_number,
-                        "CRC": interesting_stm_message.upper_layer_telegram.crc.as_base_16_str if interesting_stm_message.upper_layer_telegram.crc else None,
+                        "Transmitted CRC": interesting_stm_message.upper_layer_telegram.crc.as_base_16_str if interesting_stm_message.upper_layer_telegram.crc else None,
                         "Recomputed CRC: base 16": (
                             interesting_stm_message.upper_layer_telegram.recomputed_crc.as_base_16_str if interesting_stm_message.upper_layer_telegram.recomputed_crc else None
                         ),
@@ -369,7 +394,7 @@ class ProfibusLogLibrary:
                         "reference_time_n_minus_1_bytes_reordered_in_ms": sdn_sync_and_reference_time_message.reference_time_n_minus_1_utc.in_ms,
                         "reference_time_n_minus_1_bytes_reordered": sdn_sync_and_reference_time_message.reference_time_n_minus_1_utc.human_format,
                         "Number of errors (unisig message)": len(sdn_sync_and_reference_time_message.creational_and_decoding_errors),
-                        "CRC": sdn_sync_and_reference_time_message.crc.as_base_16_str if sdn_sync_and_reference_time_message.crc else None,
+                        "Transmitted CRC": sdn_sync_and_reference_time_message.crc.as_base_16_str if sdn_sync_and_reference_time_message.crc else None,
                     }
                 )
                 for sdn_sync_and_reference_time_message in self.sdn_sync_and_reference_time_messages
@@ -404,7 +429,7 @@ class ProfibusLogLibrary:
                         "remaining_undecoded_bits": sdn_safe_time_layer_startup_message.remaining_undecoded_bits,
                         "number_remaining_undecoded_bits": sdn_safe_time_layer_startup_message.number_remaining_undecoded_bits,
                         "Number of errors (unisig message)": len(sdn_safe_time_layer_startup_message.creational_and_decoding_errors),
-                        "CRC": sdn_safe_time_layer_startup_message.crc.as_base_16_str if sdn_safe_time_layer_startup_message.crc else None,
+                        "Transmitted CRC": sdn_safe_time_layer_startup_message.crc.as_base_16_str if sdn_safe_time_layer_startup_message.crc else None,
                     }
                 )
                 for sdn_safe_time_layer_startup_message in self.sdn_safe_time_layer_startup_messages
@@ -416,6 +441,7 @@ class ProfibusLogLibrary:
             chunk_size=200000,
         )
 
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True)
     def save_all_unisig_messages(self) -> None:
         logger_config.print_and_log_info(f"save_all_unisig_messages {len(self.all_unisig_messages)} unisig messages")
         self.save_selected_unisig_messages(
@@ -449,7 +475,10 @@ class ProfibusLogLibrary:
                             "lowest_order_byte_sequence_number": (
                                 unisig_message.lowest_order_byte_sequence_number if isinstance(unisig_message, decode_unisig_s57_s58.OnboardSdaUnisigMessage) else None
                             ),
-                            "CRC": unisig_message.crc.as_base_16_str if isinstance(unisig_message, decode_unisig_s57_s58.OnboardSdaUnisigMessage) and unisig_message.crc else None,
+                            "Transmitted CRC": unisig_message.crc.as_base_16_str if isinstance(unisig_message, decode_unisig_s57_s58.OnboardSdaUnisigMessage) and unisig_message.crc else None,
+                            "recomputed_crc_and_transmitted_crc_are_equals": unisig_message.recomputed_crc_and_transmitted_crc_are_equals,
+                            "Recomputed CRC (base 16)": unisig_message.recomputed_crc.as_base_16_str if unisig_message.recomputed_crc else None,
+                            "Data to compute CRC (base 16)": unisig_message.recomputed_crc.all_data_for_checksum_computation_base_16 if unisig_message.recomputed_crc else None,
                             "Safe time layer timestamp (ms)": (
                                 unisig_message.stl_time_stamp.in_ms if isinstance(unisig_message, decode_unisig_s57_s58.OnboardSdaUnisigMessage) and unisig_message.stl_time_stamp else None
                             ),
