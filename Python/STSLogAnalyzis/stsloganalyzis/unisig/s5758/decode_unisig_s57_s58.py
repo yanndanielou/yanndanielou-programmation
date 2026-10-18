@@ -459,6 +459,22 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
         def telegram_name(self) -> str:
             return self.command_type.name[4:]
 
+    @dataclass
+    class NetData:
+        length_in_bits: int
+        as_bytes: bytes
+
+        @classmethod
+        def from_remaining_bits_in_decoded_message(cls, byte_message_decoded: bytes_messages.DecodedBytesMessage) -> "OnboardSdaUnisigMessage.NetData":
+
+            net_data_length_in_bits = byte_message_decoded.byte_message_decoded.number_of_bits_remaining_to_decode
+            assert net_data_length_in_bits % 8 == 0
+
+            return OnboardSdaUnisigMessage.NetData(
+                length_in_bits=net_data_length_in_bits,
+                as_bytes=byte_message_decoded.get_remaining_bits_as_bytes(),
+            )
+
     @classmethod
     def from_sda_hexa_bytes_str(
         cls,
@@ -581,6 +597,10 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
         SL4_TELEGRAM_FOR_UPPER_LAYER = int("0x89", 16)
         SL0_TELEGRAM_FOR_UPPER_LAYER = int("0xC9", 16)
 
+    class ConnectTelegramDualBusType(IntEnum):  # 5.2.1 Connect Request Telegram
+        THE_NODE_IS_NOT_EQUIPPED_WITH_DUAL_BUSSES = 0
+        THE_NODE_IS_EQUIPPED_WITH_DUAL_BUSSES = 1
+
 
 @dataclass
 class SdaDisconnectTelegram(OnboardSdaUnisigMessage):
@@ -617,25 +637,14 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
         self.configuration_data_prefix_y = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
         assert self.configuration_data_prefix_y == 0
         self.configuration_data_prefix_z = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
-        assert self.configuration_data_prefix_z == 0
+        assert self.configuration_data_prefix_y == 0
 
         if self.safety_level == SafetyLevel.SL4:
             self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
 
-        # assert self.configuration_data_prefix_z == 0
-        dual_bus_length_in_bits = self.byte_message_decoded.number_of_bits_remaining_to_decode
+        self.dual_bus = OnboardSdaUnisigMessage.ConnectTelegramDualBusType(self.byte_message_decoded.get_next_byte_as_single_int_unsigned())
 
-        # if dual_bus_length_in_bits < 0:
-        #    self.add_error(
-        #        f"{self.telegram_name} {self.command_type} Invalid dual_bus_length_in_bits {dual_bus_length_in_bits}",
-        #    )
-        # else:
-
-        self.dual_bus = (
-            self.byte_message_decoded.get_next_bits_as_single_int_unsigned(size_bits=dual_bus_length_in_bits)
-            if self.byte_message_decoded.number_of_bits_remaining_to_decode >= dual_bus_length_in_bits
-            else None
-        )
+        self.net_data = OnboardSdaUnisigMessage.NetData.from_remaining_bits_in_decoded_message(self.byte_message_decoded.number_of_bits_remaining_to_decode)
 
         if self.command_type in [OnboardSdaUnisigMessage.CommandTypeSubset57.SL0_CONNECT_REQUEST_TELEGRAM, OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_REQUEST_TELEGRAM]:
             self.ppn_connections_library.register_connect_request_telegram(self)
