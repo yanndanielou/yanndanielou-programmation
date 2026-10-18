@@ -307,8 +307,8 @@ class Unisig32BitsIntWithUnisigBytesOrder:
             [high_word_high_byte, high_word_low_byte, low_word_high_byte, low_word_low_byte]
         ).get_remaining_bits_as_unsigned_int()
 
-        self.value_as_byte_table_ordered_in_usinig_way = [low_word_low_byte, low_word_high_byte, high_word_low_byte, high_word_high_byte]
-        self.value_as_bytes_ordered_in_usinig_way = bytes(self.value_as_byte_table_ordered_in_usinig_way)
+        self.value_as_byte_table_ordered_in_unisig_way = [low_word_low_byte, low_word_high_byte, high_word_low_byte, high_word_high_byte]
+        self.value_as_bytes_ordered_in_unisig_way = bytes(self.value_as_byte_table_ordered_in_unisig_way)
 
 
 @dataclass
@@ -719,7 +719,7 @@ class SdaAuthenticationOrAuthenticationAcknowledgementTelegram(OnboardSdaUnisigM
         super().__post_init__()
 
         self.authentication_number = Unisig32BitsIntWithUnisigBytesOrder(self.byte_message_decoded)
-        self.net_data = OnboardSdaUnisigMessage.NetData.from_bytes(self.authentication_number.value_as_bytes_ordered_in_usinig_way)
+        self.net_data = OnboardSdaUnisigMessage.NetData.from_bytes(self.authentication_number.value_as_bytes_ordered_in_unisig_way)
         if self.safety_level == SafetyLevel.SL4:
             self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
 
@@ -740,14 +740,20 @@ class SdaRunOrReadyToRunTelegram(OnboardSdaUnisigMessage):
     def __post_init__(self) -> None:
         super().__post_init__()
         self.stl_time_stamp = UnisigTimeStamp.from_next_bytes_in_byte_message_decoded(self.byte_message_decoded)
+        self.net_data = OnboardSdaUnisigMessage.NetData.from_bytes(self.stl_time_stamp.as_unisig_32_bits.value_as_bytes_ordered_in_unisig_way)
+
         if self.safety_level == SafetyLevel.SL4:
             self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
 
     def can_src_be_computed(self) -> bool:
-        raise NotImplementedError()
+        return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None and self.current_connection_session_before_this_message is not None
 
     def prepare_data_and_recompute_crc(self) -> None:
-        raise NotImplementedError()
+        assert self.profibus_log_line
+
+        implicit_data_except_length = self.get_crc_implicit_data_except_length()
+        header = self.get_crc_telegram_header()
+        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.net_data)
 
 
 @dataclass
