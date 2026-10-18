@@ -121,7 +121,9 @@ class PpnConnectionsLibrary:
         assert disconnect_telegram.profibus_log_line
         connection = self.get_existing_current_connection_by_profibus_log_line(disconnect_telegram.profibus_log_line)
         if not connection or not connection.connection_initiator or not connection.connection_responder:
-            logger_config.print_and_log_warning(f"No connection found before disconnect telegram {disconnect_telegram}")
+            logger_config.print_and_log_warning(
+                f"No connection found before disconnect telegram at {disconnect_telegram.profibus_log_line.timestamp} in {disconnect_telegram.profibus_log_line.file_path} line  {disconnect_telegram.profibus_log_line.line_number} between {disconnect_telegram.profibus_log_line.source_name} and {disconnect_telegram.profibus_log_line.target_address}"
+            )
             return
         connection.register_disconnect_telegram(disconnect_telegram)
         self.current_ppn_connections_by_source_and_target_addresses.pop((connection.connection_initiator.address, connection.connection_responder.address), None)
