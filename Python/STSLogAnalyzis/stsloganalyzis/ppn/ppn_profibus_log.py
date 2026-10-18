@@ -339,7 +339,7 @@ class ProfibusLogLibrary:
                         "file path": sdn_sync_and_reference_time_message.profibus_log_line.file_path if sdn_sync_and_reference_time_message.profibus_log_line else None,
                         "line number": sdn_sync_and_reference_time_message.profibus_log_line.line_number if sdn_sync_and_reference_time_message.profibus_log_line else None,
                         "header sequence_number": sdn_sync_and_reference_time_message.header.sequence_number,
-                        "reference_sync_n": sdn_sync_and_reference_time_message.reference_sync_n,
+                        "reference_sync_n": sdn_sync_and_reference_time_message.reference_sync_n.value_as_int,
                         "reference_time_n_minus_1_bytes_reordered_in_ms": sdn_sync_and_reference_time_message.reference_time_n_minus_1_utc.in_ms,
                         "reference_time_n_minus_1_bytes_reordered": sdn_sync_and_reference_time_message.reference_time_n_minus_1_utc.human_format,
                         "Number of errors (unisig message)": len(sdn_sync_and_reference_time_message.creational_and_decoding_errors),
