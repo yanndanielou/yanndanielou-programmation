@@ -270,6 +270,13 @@ class ProfibusLogLibrary:
         )
 
     @logger_config.stopwatch_decorator(monitor_ram_usage=True)
+    def save_all_stm_messages_with_bad_crc(self) -> None:
+        self.save_selected_stm_messages(
+            [stm_message for stm_message in self.all_upper_layer_stms if stm_message.upper_layer_telegram.recomputed_crc_and_transmitted_crc_are_equals == False],
+            file_base_name=f"{self.label} all STM messages with bad crc",
+        )
+
+    @logger_config.stopwatch_decorator(monitor_ram_usage=True)
     def save_all_stm_messages(self) -> None:
         self.save_selected_stm_messages(self.all_upper_layer_stms, file_base_name=f"{self.label} all STM messages")
 
@@ -300,6 +307,15 @@ class ProfibusLogLibrary:
                         "STM messages decoded in this line": ",".join([str(stm_message.nid_stm) for stm_message in interesting_stm_message.upper_layer_telegram.upper_layer_decoded_stms]),
                         "lowest_order_byte_sequence_number": interesting_stm_message.upper_layer_telegram.lowest_order_byte_sequence_number,
                         "CRC": interesting_stm_message.upper_layer_telegram.crc.as_base_16_str if interesting_stm_message.upper_layer_telegram.crc else None,
+                        "Recomputed CRC: base 16": (
+                            interesting_stm_message.upper_layer_telegram.recomputed_crc.as_base_16_str if interesting_stm_message.upper_layer_telegram.recomputed_crc else None
+                        ),
+                        "Recomputed CRC: all_data_for_checksum_computation_base_16": (
+                            interesting_stm_message.upper_layer_telegram.recomputed_crc.all_data_for_checksum_computation_base_16
+                            if interesting_stm_message.upper_layer_telegram.recomputed_crc
+                            else None
+                        ),
+                        "recomputed_crc_and_transmitted_crc_are_equals": interesting_stm_message.upper_layer_telegram.recomputed_crc_and_transmitted_crc_are_equals,
                         "Safe time layer timestamp (ms)": interesting_stm_message.upper_layer_telegram.stl_time_stamp.in_ms if interesting_stm_message.upper_layer_telegram.stl_time_stamp else None,
                         "Safe time layer timestamp (human_format)": (
                             interesting_stm_message.upper_layer_telegram.stl_time_stamp.human_format if interesting_stm_message.upper_layer_telegram.stl_time_stamp else None
@@ -395,6 +411,13 @@ class ProfibusLogLibrary:
         self.save_selected_unisig_messages(
             selected_unisig_messages=self.all_unisig_messages,
             file_base_name=f"{self.label} all unisig messages",
+        )
+
+    @logger_config.stopwatch_decorator()
+    def save_all_unisig_messages_with_bad_crc(self) -> None:
+        self.save_selected_unisig_messages(
+            selected_unisig_messages=[unisig_message for unisig_message in self.all_unisig_messages if unisig_message.recomputed_crc_and_transmitted_crc_are_equals == False],
+            file_base_name=f"{self.label} all unisig messages with bad crc",
         )
 
     def save_selected_unisig_messages(self, selected_unisig_messages: list[decode_unisig_s57_s58.OnboardUnisigMessage], file_base_name: str) -> None:

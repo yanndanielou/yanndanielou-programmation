@@ -26,6 +26,7 @@ def main() -> None:
                 label=child_directory,
             )
 
+            library.save_all_stm_messages_with_bad_crc()
             library.save_sdn_safe_time_layer_startup_messages()
             library.save_sdn_sync_and_reference_time_messages()
             library.save_all_stm_messages_with_errors()
@@ -33,6 +34,7 @@ def main() -> None:
             library.save_upper_layer_stms_by_stm_ids([161])
             library.save_upper_layer_stms_by_stm_ids([178])
 
+            library.save_all_unisig_messages_with_bad_crc()
             library.save_selected_unisig_messages(
                 file_base_name=f"{library.label} SDA messages with timestamp",
                 selected_unisig_messages=[
