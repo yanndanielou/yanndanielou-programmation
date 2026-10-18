@@ -26,12 +26,58 @@ class TestDecodeOnePpnProfibusLogFile:
                 )
                 connect_request_telegram = library.all_unisig_messages[0]
                 assert isinstance(connect_request_telegram, decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram)
+                assert connect_confirm_telegram.command_type.name == decode_unisig_s57_s58.OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_REQUEST_TELEGRAM
                 assert connect_request_telegram.profibus_log_line
                 assert "next" in connect_request_telegram.profibus_log_line.source_name.lower()
                 assert connect_request_telegram.can_src_be_computed()
                 connect_request_telegram.prepare_data_and_recompute_crc()
                 assert connect_request_telegram.recomputed_crc
                 assert connect_request_telegram.recomputed_crc_and_transmitted_crc_are_equals
+
+            def test_connect_confirm_crc(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+                library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    upper_layer_decoding_library=next_unisig_58_library_fixture,
+                )
+                connect_confirm_telegram = library.all_unisig_messages[1]
+                assert isinstance(connect_confirm_telegram, decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram)
+                assert connect_confirm_telegram.command_type.name == decode_unisig_s57_s58.OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_CONFIRM_TELEGRAM
+                assert connect_confirm_telegram.profibus_log_line
+                assert "next" in connect_confirm_telegram.profibus_log_line.source_name.lower()
+                assert connect_confirm_telegram.can_src_be_computed()
+                connect_confirm_telegram.prepare_data_and_recompute_crc()
+                assert connect_confirm_telegram.recomputed_crc
+                assert connect_confirm_telegram.recomputed_crc_and_transmitted_crc_are_equals
+
+            def test_authentication_telegram(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+                library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    upper_layer_decoding_library=next_unisig_58_library_fixture,
+                )
+                connect_confirm_telegram = library.all_unisig_messages[2]
+                assert isinstance(connect_confirm_telegram, decode_unisig_s57_s58.SdaAuthenticationOrAuthenticationAcknowledgementTelegram)
+                assert connect_confirm_telegram.command_type.name == decode_unisig_s57_s58.OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_AUTHENTICATION_ACKNOWLEDGEMENT_TELEGRAM
+                assert connect_confirm_telegram.profibus_log_line
+                assert "next" in connect_confirm_telegram.profibus_log_line.source_name.lower()
+                assert connect_confirm_telegram.can_src_be_computed()
+                connect_confirm_telegram.prepare_data_and_recompute_crc()
+                assert connect_confirm_telegram.recomputed_crc
+                assert connect_confirm_telegram.recomputed_crc_and_transmitted_crc_are_equals
+
+            def test_authentication_acknowledgment_telegram(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+                library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    upper_layer_decoding_library=next_unisig_58_library_fixture,
+                )
+                authentication_acknowledgment_telegram = library.all_unisig_messages[2]
+                assert isinstance(authentication_acknowledgment_telegram, decode_unisig_s57_s58.SdaAuthenticationOrAuthenticationAcknowledgementTelegram)
+                assert authentication_acknowledgment_telegram.command_type.name == decode_unisig_s57_s58.OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_AUTHENTICATION_ACKNOWLEDGEMENT_TELEGRAM
+                assert authentication_acknowledgment_telegram.profibus_log_line
+                assert "next" in authentication_acknowledgment_telegram.profibus_log_line.source_name.lower()
+                assert authentication_acknowledgment_telegram.can_src_be_computed()
+                authentication_acknowledgment_telegram.prepare_data_and_recompute_crc()
+                assert authentication_acknowledgment_telegram.recomputed_crc
+                assert authentication_acknowledgment_telegram.recomputed_crc_and_transmitted_crc_are_equals
 
             def test_idle_next_to_evc(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                 library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
