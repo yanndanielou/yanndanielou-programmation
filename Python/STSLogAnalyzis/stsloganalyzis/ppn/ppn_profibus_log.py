@@ -507,7 +507,8 @@ class ProfibusLogLibrary:
 
         sda_unisig_messages_to_compute_crc = [unisig_message for unisig_message in self.all_sda_unisig_messages if unisig_message.can_src_be_computed()]
         logger_config.print_and_log_info(f"Recompute CRC of {len(sda_unisig_messages_to_compute_crc)}/{len(self.all_sda_unisig_messages)} SDA messages")
-        for sda_unisig_message_to_compute_crc in sda_unisig_messages_to_compute_crc:
+        for sda_unisig_message_index, sda_unisig_message_to_compute_crc in enumerate(sda_unisig_messages_to_compute_crc):
+            logger_config.print_and_log_error_if(sda_unisig_message_index + 1 % 1000 == 0, f"{sda_unisig_message_index}/{len(sda_unisig_messages_to_compute_crc)} CRC computed")
             sda_unisig_message_to_compute_crc.prepare_data_and_recompute_crc()
 
     @logger_config.stopwatch_decorator(monitor_ram_usage=True)

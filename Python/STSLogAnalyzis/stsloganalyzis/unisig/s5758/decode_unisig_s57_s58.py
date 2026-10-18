@@ -131,9 +131,10 @@ class OnboardUnisigMessage(ABC):
         if self.crc:
             compare_as_byte_array = self.recomputed_crc.as_bytearray == self.crc.as_bytearray
             self.recomputed_crc_and_transmitted_crc_are_equals = compare_as_byte_array
+            assert self.profibus_log_line
             logger_config.print_and_log_error_if(
                 not self.recomputed_crc_and_transmitted_crc_are_equals,
-                f"{self} transmitted CRC is incorrect. Is {self.crc.as_base_16_str}, should be {self.recomputed_crc_as_string_base_16}",
+                f"At {self.profibus_log_line.timestamp} transmitted CRC is incorrect ({self.profibus_log_line.file_path}:{self.profibus_log_line.line_number}) between {self.profibus_log_line.source_name} and {self.profibus_log_line.target_address}. Is {self.crc.as_base_16_str}, should be {self.recomputed_crc_as_string_base_16}",
             )
 
     @abstractmethod
@@ -656,7 +657,8 @@ class SdaDisconnectTelegram(OnboardSdaUnisigMessage):
         self.ppn_connections_library.register_disconnect_telegram(self)
 
     def can_src_be_computed(self) -> bool:
-        raise NotImplementedError()
+        logger_config.print_and_log_error("Not implemented")
+        return False
 
     def prepare_data_and_recompute_crc(self) -> None:
         raise NotImplementedError()
