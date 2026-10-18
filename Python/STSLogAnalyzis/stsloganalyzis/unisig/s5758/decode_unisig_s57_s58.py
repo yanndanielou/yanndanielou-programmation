@@ -733,7 +733,7 @@ class SdaAuthenticationOrAuthenticationAcknowledgementTelegram(OnboardSdaUnisigM
         assert self.all_data_aka_net_data.as_decoded_bytes_message.is_correctly_and_completely_decoded
 
     def can_src_be_computed(self) -> bool:
-        return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None
+        return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None and self.current_connection_session_before_this_message is not None
 
     def prepare_data_and_recompute_crc(self) -> None:
         assert self.profibus_log_line
