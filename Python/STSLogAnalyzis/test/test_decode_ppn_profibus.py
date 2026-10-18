@@ -26,7 +26,7 @@ class TestDecodeOnePpnProfibusLogFile:
                 )
                 connect_request_telegram = library.all_unisig_messages[0]
                 assert isinstance(connect_request_telegram, decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram)
-                assert connect_request_telegram.command_type.name == decode_unisig_s57_s58.OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_REQUEST_TELEGRAM
+                assert connect_request_telegram.command_type == decode_unisig_s57_s58.OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_REQUEST_TELEGRAM
                 assert connect_request_telegram.profibus_log_line
                 assert "next" in connect_request_telegram.profibus_log_line.source_name.lower()
                 assert connect_request_telegram.can_src_be_computed()
@@ -41,7 +41,7 @@ class TestDecodeOnePpnProfibusLogFile:
                 )
                 connect_confirm_telegram = library.all_unisig_messages[1]
                 assert isinstance(connect_confirm_telegram, decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram)
-                assert connect_confirm_telegram.command_type.name == decode_unisig_s57_s58.OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_CONFIRM_TELEGRAM
+                assert connect_confirm_telegram.command_type == decode_unisig_s57_s58.OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_CONNECT_CONFIRM_TELEGRAM
                 assert connect_confirm_telegram.profibus_log_line
                 assert "next" in connect_confirm_telegram.profibus_log_line.source_name.lower()
                 assert connect_confirm_telegram.can_src_be_computed()
@@ -56,7 +56,7 @@ class TestDecodeOnePpnProfibusLogFile:
                 )
                 authentication_telegram = library.all_unisig_messages[2]
                 assert isinstance(authentication_telegram, decode_unisig_s57_s58.SdaAuthenticationOrAuthenticationAcknowledgementTelegram)
-                assert authentication_telegram.command_type.name == decode_unisig_s57_s58.OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_AUTHENTICATION_TELEGRAM
+                assert authentication_telegram.command_type == decode_unisig_s57_s58.OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_AUTHENTICATION_TELEGRAM
                 assert authentication_telegram.profibus_log_line
                 assert "next" in authentication_telegram.profibus_log_line.source_name.lower()
                 assert authentication_telegram.can_src_be_computed()
@@ -71,7 +71,7 @@ class TestDecodeOnePpnProfibusLogFile:
                 )
                 authentication_acknowledgment_telegram = library.all_unisig_messages[3]
                 assert isinstance(authentication_acknowledgment_telegram, decode_unisig_s57_s58.SdaAuthenticationOrAuthenticationAcknowledgementTelegram)
-                assert authentication_acknowledgment_telegram.command_type.name == decode_unisig_s57_s58.OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_AUTHENTICATION_ACKNOWLEDGEMENT_TELEGRAM
+                assert authentication_acknowledgment_telegram.command_type == decode_unisig_s57_s58.OnboardSdaUnisigMessage.CommandTypeSubset57.SL4_AUTHENTICATION_ACKNOWLEDGEMENT_TELEGRAM
                 assert authentication_acknowledgment_telegram.profibus_log_line
                 assert "next" in authentication_acknowledgment_telegram.profibus_log_line.source_name.lower()
                 assert authentication_acknowledgment_telegram.can_src_be_computed()

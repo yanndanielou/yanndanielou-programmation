@@ -109,11 +109,8 @@ class OnboardUnisigMessage(ABC):
         transmitter = self.current_connection_session_before_this_message.get_interlocutor_by_address(self.profibus_log_line.source_address)
         assert transmitter
 
-        implicit_data = UnisigCrc.ImplicitDataExceptLength(
-            receiver_address=self.profibus_log_line.target_address,  # Receiver_address / Receive_address (implicit)
-            sender_address=self.profibus_log_line.source_address,  # Receiver_address / Receive_address (implicit)
-            dsap=self.profibus_log_line.target_sap,
-            ssap=self.profibus_log_line.source_sap,
+        implicit_data = UnisigCrc.ImplicitDataExceptLength.from_profibus_log_line(
+            profibus_log_line=self.profibus_log_line,
             higher_order_24bits_of_sequence_number_byte_1=transmitter.random_number_representing_sequence_number_byte_2_of_4,
             higher_order_24bits_of_sequence_number_byte_2=transmitter.random_number_representing_sequence_number_byte_3_of_4,
             higher_order_24bits_of_sequence_number_byte_3=transmitter.random_number_representing_sequence_number_byte_4_of_4,
@@ -121,7 +118,10 @@ class OnboardUnisigMessage(ABC):
         return implicit_data
 
     def recompute_crc_from_data_as_bytes_except_length(
-        self, implicit_data_except_length: "UnisigCrc.ImplicitDataExceptLength", telegram_header: "UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection", net_data: bytes | None = None
+        self,
+        implicit_data_except_length: "UnisigCrc.ImplicitDataExceptLength",
+        telegram_header: "UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection",
+        net_data: "OnboardSdaUnisigMessage.NetData | None" = None,
     ) -> None:
 
         self.recomputed_crc = RecomputedUnisigCrc.compute_from_data(implicit_data_except_length, telegram_header, net_data)
@@ -278,7 +278,7 @@ class SdnSyncAndReferenceTimeMulticastMessage(SdnOnboardUnisigMessage):
         self.configuration_data_prefix_z = self.byte_message_decoded.get_next_byte_as_single_int_unsigned()
         assert self.configuration_data_prefix_z == 0
 
-        self.reference_sync_n = Unisig32BitsIntWithUnisigBytesOrder(self.byte_message_decoded).value_in_human_format
+        self.reference_sync_n = Unisig32BitsIntWithUnisigBytesOrder(self.byte_message_decoded).value_as_int
 
         self.reference_time_n_minus_1_utc = UnisigTimeStamp.from_next_bytes_in_byte_message_decoded(self.byte_message_decoded)
 
@@ -303,9 +303,12 @@ class Unisig32BitsIntWithUnisigBytesOrder:
         high_word_low_byte = byte_message_decoded.get_next_byte_as_single_int_unsigned()
         high_word_high_byte = byte_message_decoded.get_next_byte_as_single_int_unsigned()
 
-        self.value_in_human_format = bytes_messages.DecodedBytesMessage.from_bytes_as_list_int(
+        self.value_as_int = bytes_messages.DecodedBytesMessage.from_bytes_as_list_int(
             [high_word_high_byte, high_word_low_byte, low_word_high_byte, low_word_low_byte]
         ).get_remaining_bits_as_unsigned_int()
+
+        self.value_as_byte_table_ordered_in_usinig_way = [low_word_low_byte, low_word_high_byte, high_word_low_byte, high_word_high_byte]
+        self.value_as_bytes_ordered_in_usinig_way = bytes(self.value_as_byte_table_ordered_in_usinig_way)
 
 
 @dataclass
@@ -357,6 +360,24 @@ class UnisigCrc:
             )
             self.all_bytes_as_base_16 = bytes_utils.byte_array_to_string_base_16(self.all_bytes)
 
+        @classmethod
+        def from_profibus_log_line(
+            cls,
+            profibus_log_line: "ppn_profibus_log.ProfibusLogLine",
+            higher_order_24bits_of_sequence_number_byte_1: int,
+            higher_order_24bits_of_sequence_number_byte_2: int,
+            higher_order_24bits_of_sequence_number_byte_3: int,
+        ) -> "UnisigCrc.ImplicitDataExceptLength":
+            return UnisigCrc.ImplicitDataExceptLength(
+                receiver_address=profibus_log_line.target_address,  # Receiver_address / Receive_address (implicit)
+                sender_address=profibus_log_line.source_address,  # Receiver_address / Receive_address (implicit)
+                dsap=profibus_log_line.target_sap,
+                ssap=profibus_log_line.source_sap,
+                higher_order_24bits_of_sequence_number_byte_1=higher_order_24bits_of_sequence_number_byte_1,
+                higher_order_24bits_of_sequence_number_byte_2=higher_order_24bits_of_sequence_number_byte_2,
+                higher_order_24bits_of_sequence_number_byte_3=higher_order_24bits_of_sequence_number_byte_3,
+            )
+
     @dataclass
     class TelegramHeaderForDataTransmissionWithErrorDetection:  # stelegram header for data transmission with error detection
         lowest_order_byte_of_sequence_number_least_significant_data_lsd: int  # (least significant data, LSD)
@@ -373,28 +394,31 @@ class RecomputedUnisigCrc(UnisigCrc):
     implicit_data_except_length: UnisigCrc.ImplicitDataExceptLength
     telegram_header: UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection
     implicit_data_length_int: int
-    net_data_bytes: bytes | None
+    net_data: "OnboardSdaUnisigMessage.NetData | None"
     all_data_for_checksum_computation_bytes: bytes
     all_data_for_checksum_computation_base_16: str
 
     @classmethod
     def compute_from_data(
-        cls, implicit_data_except_length: "UnisigCrc.ImplicitDataExceptLength", telegram_header: "UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection", net_data_bytes: bytes | None = None
+        cls,
+        implicit_data_except_length: "UnisigCrc.ImplicitDataExceptLength",
+        telegram_header: "UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection",
+        net_data: "OnboardSdaUnisigMessage.NetData | None" = None,
     ) -> "RecomputedUnisigCrc":
-        net_data_length = len(net_data_bytes) if net_data_bytes else 0
+        net_data_length = net_data.length_in_bits if net_data else 0
 
         implicit_data_length_int = net_data_length + len(telegram_header.all_bytes) + SL4_CRC_SIZE_IN_BYTES
         implicit_data_length_bytes = implicit_data_length_int.to_bytes()
 
         data_for_checksum_bytes = implicit_data_length_bytes + implicit_data_except_length.all_bytes + telegram_header.all_bytes
-        if net_data_bytes:
-            data_for_checksum_bytes += net_data_bytes
+        if net_data:
+            data_for_checksum_bytes += net_data.as_bytes
         as_int = crc48_unisig_s57_as_int(data=data_for_checksum_bytes)
         return RecomputedUnisigCrc(
             as_int=as_int,
             implicit_data_except_length=implicit_data_except_length,
             telegram_header=telegram_header,
-            net_data_bytes=net_data_bytes,
+            net_data=net_data,
             all_data_for_checksum_computation_bytes=data_for_checksum_bytes,
             all_data_for_checksum_computation_base_16=bytes_utils.byte_array_to_string_base_16(data_for_checksum_bytes),
             implicit_data_length_int=implicit_data_length_int,
@@ -411,7 +435,7 @@ class UnisigTimeStamp:
 
     @classmethod
     def from_next_bytes_in_byte_message_decoded(cls, byte_message_decoded: bytes_messages.DecodedBytesMessage) -> "UnisigTimeStamp":
-        in_ms = Unisig32BitsIntWithUnisigBytesOrder(byte_message_decoded).value_in_human_format
+        in_ms = Unisig32BitsIntWithUnisigBytesOrder(byte_message_decoded).value_as_int
         return UnisigTimeStamp(in_ms)
 
     @classmethod
@@ -419,7 +443,7 @@ class UnisigTimeStamp:
         byte_message_extracted = bytes_messages.DecodedBytesMessage.from_bit_string(
             byte_message_decoded.extract_and_remove_last_next_bits_to_str_of_bit(number_of_bits=STL_TIME_STAMP_SUBSET_56_LENGTH_IN_BITS)
         )
-        in_ms = Unisig32BitsIntWithUnisigBytesOrder(byte_message_extracted).value_in_human_format
+        in_ms = Unisig32BitsIntWithUnisigBytesOrder(byte_message_extracted).value_as_int
         return UnisigTimeStamp(in_ms)
 
 
@@ -433,6 +457,7 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
     def __post_init__(self) -> None:
         super().__post_init__()
         self.stl_time_stamp: UnisigTimeStamp | None = None
+        self.net_data: OnboardSdaUnisigMessage.NetData | None = None
 
     def get_crc_telegram_header(self) -> "UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection":
 
@@ -473,6 +498,17 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
             return OnboardSdaUnisigMessage.NetData(
                 length_in_bits=net_data_length_in_bits,
                 as_bytes=byte_message_decoded.get_remaining_bits_as_bytes(),
+            )
+
+        @classmethod
+        def from_bytes(cls, as_bytes: bytes) -> "OnboardSdaUnisigMessage.NetData":
+
+            net_data_length_in_bits = len(as_bytes) * 8
+            assert net_data_length_in_bits % 8 == 0
+
+            return OnboardSdaUnisigMessage.NetData(
+                length_in_bits=net_data_length_in_bits,
+                as_bytes=as_bytes,
             )
 
     @classmethod
@@ -652,10 +688,25 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
             self.ppn_connections_library.register_connect_confirm_telegram(self)
 
     def can_src_be_computed(self) -> bool:
-        return self.safety_level == SafetyLevel.SL4
+        return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None
 
     def prepare_data_and_recompute_crc(self) -> None:
-        raise NotImplementedError()
+        assert self.profibus_log_line
+
+        implicit_data_except_length = self.get_crc_implicit_data_except_length()
+        header = self.get_crc_telegram_header()
+        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.net_data)
+
+    def get_crc_implicit_data_except_length(self) -> "UnisigCrc.ImplicitDataExceptLength":
+        assert self.profibus_log_line
+
+        implicit_data = UnisigCrc.ImplicitDataExceptLength.from_profibus_log_line(
+            profibus_log_line=self.profibus_log_line,
+            higher_order_24bits_of_sequence_number_byte_1=self.random_number_representing_sequence_number_byte_2_of_4,
+            higher_order_24bits_of_sequence_number_byte_2=self.random_number_representing_sequence_number_byte_3_of_4,
+            higher_order_24bits_of_sequence_number_byte_3=self.random_number_representing_sequence_number_byte_4_of_4,
+        )
+        return implicit_data
 
 
 @dataclass
@@ -663,15 +714,21 @@ class SdaAuthenticationOrAuthenticationAcknowledgementTelegram(OnboardSdaUnisigM
 
     def __post_init__(self) -> None:
         super().__post_init__()
-        self.authentication_number = self.byte_message_decoded.get_next_bytes_as_single_int_unsigned(size_bytes=4)
+
+        self.authentication_number = Unisig32BitsIntWithUnisigBytesOrder(self.byte_message_decoded)
+        # self.net_data = OnboardSdaUnisigMessage.NetData.from_bytes(self.authentication_number.value_as_bytes_ordered_in_usinig_way)
         if self.safety_level == SafetyLevel.SL4:
             self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.extract_next_bytes_to_str_of_bit(size_bytes=SL4_CRC_SIZE_IN_BYTES))
 
     def can_src_be_computed(self) -> bool:
-        raise NotImplementedError()
+        return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None
 
     def prepare_data_and_recompute_crc(self) -> None:
-        raise NotImplementedError()
+        assert self.profibus_log_line
+
+        implicit_data_except_length = self.get_crc_implicit_data_except_length()
+        header = self.get_crc_telegram_header()
+        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.net_data)
 
 
 @dataclass
