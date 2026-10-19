@@ -268,6 +268,7 @@ class ProfibusLogLibrary:
         self.save_sdn_sync_and_reference_time_messages()
         self.save_all_stm_messages_with_errors()
 
+        self.save_all_unisig_messages_that_have_context_to_compute_crc()
         self.save_all_unisig_messages_with_bad_crc()
 
         self.save_all_sda_messages_with_timestamp()
@@ -454,6 +455,13 @@ class ProfibusLogLibrary:
         self.save_selected_unisig_messages(
             selected_unisig_messages=self.all_unisig_messages,
             file_base_name=f"{self.label} all unisig messages",
+        )
+
+    @logger_config.stopwatch_decorator()
+    def save_all_unisig_messages_that_have_context_to_compute_crc(self) -> None:
+        self.save_selected_unisig_messages(
+            selected_unisig_messages=[unisig_message for unisig_message in self.all_unisig_messages if unisig_message.recomputed_crc_and_transmitted_crc_are_equals is not None],
+            file_base_name=f"{self.label} all unisig messages that have context to compute crc",
         )
 
     @logger_config.stopwatch_decorator()
