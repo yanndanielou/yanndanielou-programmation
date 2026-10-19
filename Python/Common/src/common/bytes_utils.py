@@ -6,7 +6,7 @@ def byte_array_to_string_base_10(as_byte_array: bytearray) -> str:
     return ret
 
 
-def byte_array_to_string_base_16(as_byte_array: bytearray) -> str:
+def byte_array_to_string_base_16(as_byte_array: bytearray | bytes) -> str:
     ret = ""
     for i in range(len(as_byte_array)):
         ret += f"{hex(int(as_byte_array[i]))[2:]}:"
