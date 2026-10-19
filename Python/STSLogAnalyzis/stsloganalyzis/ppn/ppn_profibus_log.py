@@ -332,6 +332,7 @@ class ProfibusLogLibrary:
                         "file path": interesting_stm_message.upper_layer_telegram.profibus_log_line.file_path if interesting_stm_message.upper_layer_telegram.profibus_log_line else None,
                         "line number": interesting_stm_message.upper_layer_telegram.profibus_log_line.line_number if interesting_stm_message.upper_layer_telegram.profibus_log_line else None,
                         "nid stm": interesting_stm_message.nid_stm,
+                        "message type": interesting_stm_message.upper_layer_telegram.__class__.__name__,
                         "stm l_message": interesting_stm_message.l_message,
                         "stm data_without_header_size_in_bits": interesting_stm_message.data_without_header_size_in_bits,
                         "Number of errors (only this STM message)": len(interesting_stm_message.creational_and_decoding_errors),
@@ -477,8 +478,11 @@ class ProfibusLogLibrary:
                             "Line length": unisig_message.profibus_log_line.length if unisig_message.profibus_log_line else None,
                             "file path": unisig_message.profibus_log_line.file_path if unisig_message.profibus_log_line else None,
                             "line number": unisig_message.profibus_log_line.line_number if unisig_message.profibus_log_line else None,
+                            "message type": unisig_message.__class__.__name__,
                             "Unisig message: all_data_aka_net_data": (
-                                unisig_message.upper_layer_telegram.all_data_aka_net_data.as_base_16 if unisig_message.upper_layer_telegram.all_data_aka_net_data else None
+                                unisig_message.all_data_aka_net_data.as_base_16
+                                if isinstance(unisig_message, decode_unisig_s57_s58.OnboardSdaUnisigMessage) and unisig_message.all_data_aka_net_data
+                                else None
                             ),
                             "Number of errors": len(unisig_message.creational_and_decoding_errors),
                             "lowest_order_byte_sequence_number": (
@@ -547,8 +551,14 @@ class ProfibusLogLibrary:
         sda_unisig_messages_to_compute_crc = [unisig_message for unisig_message in self.all_sda_unisig_messages if unisig_message.can_src_be_computed()]
         logger_config.print_and_log_info(f"Recompute CRC of {len(sda_unisig_messages_to_compute_crc)}/{len(self.all_sda_unisig_messages)} SDA messages")
         for sda_unisig_message_index, sda_unisig_message_to_compute_crc in enumerate(sda_unisig_messages_to_compute_crc):
-            logger_config.print_and_log_error_if(sda_unisig_message_index + 1 % 1000 == 0, f"{sda_unisig_message_index}/{len(sda_unisig_messages_to_compute_crc)} CRC computed")
-            sda_unisig_message_to_compute_crc.prepare_data_and_recompute_crc()
+            logger_config.print_and_log_info_if(sda_unisig_message_index + 1 % 1000 == 0, f"{sda_unisig_message_index}/{len(sda_unisig_messages_to_compute_crc)} CRC computed")
+            try:
+                sda_unisig_message_to_compute_crc.prepare_data_and_recompute_crc()
+            except AssertionError as ass_err:
+                logger_config.print_and_log_exception(ass_err)
+                logger_config.print_and_log_info(
+                    f"Could not compute CRC of {sda_unisig_message_to_compute_crc.command_type} {sda_unisig_message_to_compute_crc.profibus_log_line.file_path if sda_unisig_message_to_compute_crc.profibus_log_line else 'NA'}:{sda_unisig_message_to_compute_crc.profibus_log_line.line_number if sda_unisig_message_to_compute_crc.profibus_log_line else 'NA'}"
+                )
 
     @logger_config.stopwatch_decorator(monitor_ram_usage=True)
     def save_errors(self) -> None:
