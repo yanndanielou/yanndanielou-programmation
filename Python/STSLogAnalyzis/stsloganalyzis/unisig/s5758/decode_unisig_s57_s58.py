@@ -98,34 +98,18 @@ class OnboardUnisigMessage(ABC):
         self.current_connection_session_before_this_message = (
             self.ppn_connections_library.get_existing_current_connection_by_profibus_log_line(self.profibus_log_line) if self.profibus_log_line else None
         )
-        transmitter = (
+        self.transmitter_interlocutor = (
             self.current_connection_session_before_this_message.get_interlocutor_by_address(self.profibus_log_line.source_address)
             if self.current_connection_session_before_this_message and self.profibus_log_line
             else None
         )
 
-        logger_config.print_and_log_error_if(self.current_connection_session_before_this_message is not None and transmitter is None, f"No transmitter but connection session for {self}")
-
-        self.random_number_representing_sequence_number_byte_2_of_4_for_crc = transmitter.random_number_representing_sequence_number_byte_2_of_4 if transmitter else None
-        self.random_number_representing_sequence_number_byte_3_of_4_for_crc = transmitter.random_number_representing_sequence_number_byte_3_of_4 if transmitter else None
-        self.random_number_representing_sequence_number_byte_4_of_4_for_crc = transmitter.random_number_representing_sequence_number_byte_4_of_4 if transmitter else None
+        logger_config.print_and_log_error_if(
+            self.current_connection_session_before_this_message is not None and self.transmitter_interlocutor is None, f"No transmitter but connection session for {self}"
+        )
 
     def add_error(self, error: str) -> None:
         self.creational_and_decoding_errors.append(error)
-
-    def get_crc_implicit_data_except_length(self) -> "UnisigCrc.ImplicitDataExceptLength":
-        assert self.profibus_log_line
-        assert self.random_number_representing_sequence_number_byte_2_of_4_for_crc is not None
-        assert self.random_number_representing_sequence_number_byte_3_of_4_for_crc is not None
-        assert self.random_number_representing_sequence_number_byte_4_of_4_for_crc is not None
-
-        implicit_data = UnisigCrc.ImplicitDataExceptLength.from_profibus_log_line(
-            profibus_log_line=self.profibus_log_line,
-            higher_order_24bits_of_sequence_number_byte_1=self.random_number_representing_sequence_number_byte_2_of_4_for_crc,
-            higher_order_24bits_of_sequence_number_byte_2=self.random_number_representing_sequence_number_byte_3_of_4_for_crc,
-            higher_order_24bits_of_sequence_number_byte_3=self.random_number_representing_sequence_number_byte_4_of_4_for_crc,
-        )
-        return implicit_data
 
     def recompute_crc_from_data_as_bytes_except_length(
         self,
@@ -147,6 +131,10 @@ class OnboardUnisigMessage(ABC):
                 f"At {self.profibus_log_line.timestamp} transmitted CRC is incorrect ({self.profibus_log_line.file_path}:{self.profibus_log_line.line_number}) between {self.profibus_log_line.source_name} and {self.profibus_log_line.target_name}. Is {self.crc.as_base_16_str}, should be {self.recomputed_crc_as_string_base_16}",
                 do_not_print=True,
             )
+
+    @abstractmethod
+    def get_crc_implicit_data_except_length(self) -> "UnisigCrc.ImplicitDataExceptLength":
+        pass
 
     @abstractmethod
     def can_src_be_computed(self) -> bool:
@@ -190,6 +178,9 @@ class SdnOnboardUnisigMessage(OnboardUnisigMessage):
         @property
         def telegram_name(self) -> str:
             return self.command_type.name[4:]
+
+    def get_crc_implicit_data_except_length(self) -> "UnisigCrc.ImplicitDataExceptLength":
+        raise NotImplementedError()
 
     @classmethod
     def decode_sdn_bytes_hexa(
@@ -478,11 +469,23 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
         self.stl_time_stamp: UnisigTimeStamp | None = None
         self.all_data_aka_net_data: OnboardSdaUnisigMessage.NetData | None = None
 
+        if self.transmitter_interlocutor:
+            self.transmitter_interlocutor.update_lowest_order_byte_sequence_number(self.lowest_order_byte_sequence_number)
+
+        self.random_number_representing_sequence_number_byte_2_of_4_for_crc = (
+            self.transmitter_interlocutor.random_number_representing_sequence_number_byte_2_of_4 if self.transmitter_interlocutor else None
+        )
+        self.random_number_representing_sequence_number_byte_3_of_4_for_crc = (
+            self.transmitter_interlocutor.random_number_representing_sequence_number_byte_3_of_4 if self.transmitter_interlocutor else None
+        )
+        self.random_number_representing_sequence_number_byte_4_of_4_for_crc = (
+            self.transmitter_interlocutor.random_number_representing_sequence_number_byte_4_of_4 if self.transmitter_interlocutor else None
+        )
+
     def get_crc_telegram_header(self) -> "UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection":
 
         header = UnisigCrc.TelegramHeaderForDataTransmissionWithErrorDetection(
-            lowest_order_byte_of_sequence_number_least_significant_data_lsd=self.lowest_order_byte_sequence_number,
-            command_number=self.command_type.value,
+            lowest_order_byte_of_sequence_number_least_significant_data_lsd=self.lowest_order_byte_sequence_number, command_number=self.command_type.value
         )
         return header
 
@@ -492,6 +495,20 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
         implicit_data_except_length = self.get_crc_implicit_data_except_length()
         header = self.get_crc_telegram_header()
         self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.all_data_aka_net_data)
+
+    def get_crc_implicit_data_except_length(self) -> "UnisigCrc.ImplicitDataExceptLength":
+        assert self.profibus_log_line
+        assert self.random_number_representing_sequence_number_byte_2_of_4_for_crc is not None
+        assert self.random_number_representing_sequence_number_byte_3_of_4_for_crc is not None
+        assert self.random_number_representing_sequence_number_byte_4_of_4_for_crc is not None
+
+        implicit_data = UnisigCrc.ImplicitDataExceptLength.from_profibus_log_line(
+            profibus_log_line=self.profibus_log_line,
+            higher_order_24bits_of_sequence_number_byte_1=self.random_number_representing_sequence_number_byte_2_of_4_for_crc,
+            higher_order_24bits_of_sequence_number_byte_2=self.random_number_representing_sequence_number_byte_3_of_4_for_crc,
+            higher_order_24bits_of_sequence_number_byte_3=self.random_number_representing_sequence_number_byte_4_of_4_for_crc,
+        )
+        return implicit_data
 
     class Header:
         def __init__(self, byte_message_decoded: bytes_messages.DecodedBytesMessage) -> None:
@@ -733,6 +750,20 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
 
     def can_src_be_computed(self) -> bool:
         return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None
+
+    def get_crc_implicit_data_except_length(self) -> "UnisigCrc.ImplicitDataExceptLength":
+        assert self.profibus_log_line
+        assert self.random_number_representing_sequence_number_byte_2_of_4_for_crc is not None
+        assert self.random_number_representing_sequence_number_byte_3_of_4_for_crc is not None
+        assert self.random_number_representing_sequence_number_byte_4_of_4_for_crc is not None
+
+        implicit_data = UnisigCrc.ImplicitDataExceptLength.from_profibus_log_line(
+            profibus_log_line=self.profibus_log_line,
+            higher_order_24bits_of_sequence_number_byte_1=self.random_number_representing_sequence_number_byte_2_of_4_for_crc,
+            higher_order_24bits_of_sequence_number_byte_2=self.random_number_representing_sequence_number_byte_3_of_4_for_crc,
+            higher_order_24bits_of_sequence_number_byte_3=self.random_number_representing_sequence_number_byte_4_of_4_for_crc,
+        )
+        return implicit_data
 
 
 @dataclass
