@@ -17,11 +17,21 @@ class TestDecodeOnePpnProfibusLogFile:
 
     class TestRecomputeChecksum:
 
+        class TestFromFileWithFullCommunication:
+            def test_all_crcs_are_valid(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+                library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
+                    r"test\resources\ppn\sl4_next_evc_full_communication.log_ppn",
+                    upper_layer_decoding_library=next_unisig_58_library_fixture,
+                )
+                # library.save_all_usual_reports()
+                for unisig_message_index, unisig_message in enumerate(library.all_unisig_messages):
+                    assert unisig_message.recomputed_crc_and_transmitted_crc_are_equals, f"Invalid CRC in {unisig_message_index+1}th unisig message, {unisig_message.__class__.__name__}"
+
         class TestFromFileWithNextEvcAllConnectionMessagesFollowedByUpperLayerAndIdle:
 
             def test_connect_request_next_evc_crc(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                 library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
-                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_from_connect_to_disconnect_with_data_and_idle_telgrams.log_ppn",
                     upper_layer_decoding_library=next_unisig_58_library_fixture,
                 )
                 connect_request_telegram = library.all_unisig_messages[0]
@@ -36,7 +46,7 @@ class TestDecodeOnePpnProfibusLogFile:
 
             def test_connect_confirm_evc_next_crc(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                 library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
-                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_from_connect_to_disconnect_with_data_and_idle_telgrams.log_ppn",
                     upper_layer_decoding_library=next_unisig_58_library_fixture,
                 )
                 connect_confirm_telegram = library.all_unisig_messages[1]
@@ -51,7 +61,7 @@ class TestDecodeOnePpnProfibusLogFile:
 
             def test_authentication_next_evc_telegram(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                 library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
-                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_from_connect_to_disconnect_with_data_and_idle_telgrams.log_ppn",
                     upper_layer_decoding_library=next_unisig_58_library_fixture,
                 )
                 authentication_telegram = library.all_unisig_messages[2]
@@ -66,7 +76,7 @@ class TestDecodeOnePpnProfibusLogFile:
 
             def test_authentication_acknowledgment_evc_next_telegram(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                 library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
-                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_from_connect_to_disconnect_with_data_and_idle_telgrams.log_ppn",
                     upper_layer_decoding_library=next_unisig_58_library_fixture,
                 )
                 authentication_acknowledgment_telegram = library.all_unisig_messages[3]
@@ -81,7 +91,7 @@ class TestDecodeOnePpnProfibusLogFile:
 
             def test_ready_to_run_evc_next_telegram(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                 library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
-                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_from_connect_to_disconnect_with_data_and_idle_telgrams.log_ppn",
                     upper_layer_decoding_library=next_unisig_58_library_fixture,
                 )
                 ready_to_run_telegram = library.all_unisig_messages[4]
@@ -96,7 +106,7 @@ class TestDecodeOnePpnProfibusLogFile:
 
             def test_run_next_evc_telegram(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                 library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
-                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_from_connect_to_disconnect_with_data_and_idle_telgrams.log_ppn",
                     upper_layer_decoding_library=next_unisig_58_library_fixture,
                 )
                 run_telegram = library.all_unisig_messages[5]
@@ -111,7 +121,7 @@ class TestDecodeOnePpnProfibusLogFile:
 
             def test_data_for_upper_layer_next_to_evc(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                 library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
-                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_from_connect_to_disconnect_with_data_and_idle_telgrams.log_ppn",
                     upper_layer_decoding_library=next_unisig_58_library_fixture,
                 )
                 next_evc_data_for_upper_layer_telegram = library.all_unisig_messages[6]
@@ -124,7 +134,7 @@ class TestDecodeOnePpnProfibusLogFile:
 
             def test_data_for_upper_layer_evc_to_next(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                 library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
-                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_from_connect_to_disconnect_with_data_and_idle_telgrams.log_ppn",
                     upper_layer_decoding_library=next_unisig_58_library_fixture,
                 )
                 evc_next_data_for_upper_layer_telegram = library.all_unisig_messages[7]
@@ -135,12 +145,25 @@ class TestDecodeOnePpnProfibusLogFile:
                 assert evc_next_data_for_upper_layer_telegram.recomputed_crc
                 assert evc_next_data_for_upper_layer_telegram.recomputed_crc_and_transmitted_crc_are_equals
 
-            def test_idle_next_to_evc(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+            def test_idle_evc_to_next(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                 library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
-                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_from_connect_to_disconnect_with_data_and_idle_telgrams.log_ppn",
                     upper_layer_decoding_library=next_unisig_58_library_fixture,
                 )
-                next_evc_idle_telegram = library.all_unisig_messages[8]
+                evc_next_idle_telegram = library.all_unisig_messages[14]
+                assert isinstance(evc_next_idle_telegram, decode_unisig_s57_s58.SdaIdleTelegram)
+                assert evc_next_idle_telegram.profibus_log_line
+                assert "EVC" in evc_next_idle_telegram.profibus_log_line.source_name.upper()
+                evc_next_idle_telegram.prepare_data_and_recompute_crc()
+                assert evc_next_idle_telegram.recomputed_crc
+                assert evc_next_idle_telegram.recomputed_crc_and_transmitted_crc_are_equals
+
+            def test_idle_next_to_evc(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+                library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_from_connect_to_disconnect_with_data_and_idle_telgrams.log_ppn",
+                    upper_layer_decoding_library=next_unisig_58_library_fixture,
+                )
+                next_evc_idle_telegram = library.all_unisig_messages[15]
                 assert isinstance(next_evc_idle_telegram, decode_unisig_s57_s58.SdaIdleTelegram)
                 assert next_evc_idle_telegram.profibus_log_line
                 assert "next" in next_evc_idle_telegram.profibus_log_line.source_name.lower()
@@ -148,18 +171,18 @@ class TestDecodeOnePpnProfibusLogFile:
                 assert next_evc_idle_telegram.recomputed_crc
                 assert next_evc_idle_telegram.recomputed_crc_and_transmitted_crc_are_equals
 
-            def test_idle_evc_to_next(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+            def test_disconnect_evc_to_next(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                 library = ppn_profibus_log.ProfibusLogLibrary.from_file_full_path(
-                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_full_connections_followed_by_stm_and_idle.log_ppn",
+                    ppn_log_full_path=r"test\resources\ppn\sl4_next_evc_from_connect_to_disconnect_with_data_and_idle_telgrams.log_ppn",
                     upper_layer_decoding_library=next_unisig_58_library_fixture,
                 )
-                evc_next_idle_telegram = library.all_unisig_messages[9]
-                assert isinstance(evc_next_idle_telegram, decode_unisig_s57_s58.SdaIdleTelegram)
-                assert evc_next_idle_telegram.profibus_log_line
-                assert "EVC" in evc_next_idle_telegram.profibus_log_line.source_name.upper()
-                evc_next_idle_telegram.prepare_data_and_recompute_crc()
-                assert evc_next_idle_telegram.recomputed_crc
-                assert evc_next_idle_telegram.recomputed_crc_and_transmitted_crc_are_equals
+                disconnect_telegram = library.all_unisig_messages[-1]
+                assert isinstance(disconnect_telegram, decode_unisig_s57_s58.SdaDisconnectTelegram)
+                assert disconnect_telegram.profibus_log_line
+                assert "EVC" in disconnect_telegram.profibus_log_line.source_name.upper()
+                disconnect_telegram.prepare_data_and_recompute_crc()
+                assert disconnect_telegram.recomputed_crc
+                assert disconnect_telegram.recomputed_crc_and_transmitted_crc_are_equals
 
         class TestIdleMessage:
 
@@ -420,7 +443,7 @@ class TestDecodeOnePpnProfibusLogLine:
                 assert isinstance(unisig_message, decode_unisig_s57_s58.SdaDisconnectTelegram)
                 assert not unisig_message.creational_and_decoding_errors
                 assert unisig_message.byte_message_decoded.is_correctly_and_completely_decoded
-                print(unisig_message.disconnect_reason_text)
+                assert unisig_message.disconnect_reason_text == "idle cycle time-out"
 
             def test_decode_one_disconnect_sl4(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
                 ppn_log_line = ppn_profibus_log.ProfibusLogLine.decode_raw_log_line(
@@ -434,7 +457,7 @@ class TestDecodeOnePpnProfibusLogLine:
                 assert isinstance(unisig_message, decode_unisig_s57_s58.SdaDisconnectTelegram)
                 assert not unisig_message.creational_and_decoding_errors
                 assert unisig_message.byte_message_decoded.is_correctly_and_completely_decoded
-                print(unisig_message.disconnect_reason_text)
+                assert unisig_message.disconnect_reason_text == "idle cycle time-out"
 
         class TestStmMessagesInUpperLayer:
 
