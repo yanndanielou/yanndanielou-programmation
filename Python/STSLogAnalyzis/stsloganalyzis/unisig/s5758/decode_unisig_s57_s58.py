@@ -98,22 +98,32 @@ class OnboardUnisigMessage(ABC):
         self.current_connection_session_before_this_message = (
             self.ppn_connections_library.get_existing_current_connection_by_profibus_log_line(self.profibus_log_line) if self.profibus_log_line else None
         )
+        transmitter = (
+            self.current_connection_session_before_this_message.get_interlocutor_by_address(self.profibus_log_line.source_address)
+            if self.current_connection_session_before_this_message and self.profibus_log_line
+            else None
+        )
+
+        logger_config.print_and_log_error_if(self.current_connection_session_before_this_message is not None and transmitter is None, f"No transmitter but connection session for {self}")
+
+        self.random_number_representing_sequence_number_byte_2_of_4_for_crc = transmitter.random_number_representing_sequence_number_byte_2_of_4 if transmitter else None
+        self.random_number_representing_sequence_number_byte_3_of_4_for_crc = transmitter.random_number_representing_sequence_number_byte_3_of_4 if transmitter else None
+        self.random_number_representing_sequence_number_byte_4_of_4_for_crc = transmitter.random_number_representing_sequence_number_byte_4_of_4 if transmitter else None
 
     def add_error(self, error: str) -> None:
         self.creational_and_decoding_errors.append(error)
 
     def get_crc_implicit_data_except_length(self) -> "UnisigCrc.ImplicitDataExceptLength":
         assert self.profibus_log_line
-        assert self.current_connection_session_before_this_message
-
-        transmitter = self.current_connection_session_before_this_message.get_interlocutor_by_address(self.profibus_log_line.source_address)
-        assert transmitter
+        assert self.random_number_representing_sequence_number_byte_2_of_4_for_crc is not None
+        assert self.random_number_representing_sequence_number_byte_3_of_4_for_crc is not None
+        assert self.random_number_representing_sequence_number_byte_4_of_4_for_crc is not None
 
         implicit_data = UnisigCrc.ImplicitDataExceptLength.from_profibus_log_line(
             profibus_log_line=self.profibus_log_line,
-            higher_order_24bits_of_sequence_number_byte_1=transmitter.random_number_representing_sequence_number_byte_2_of_4,
-            higher_order_24bits_of_sequence_number_byte_2=transmitter.random_number_representing_sequence_number_byte_3_of_4,
-            higher_order_24bits_of_sequence_number_byte_3=transmitter.random_number_representing_sequence_number_byte_4_of_4,
+            higher_order_24bits_of_sequence_number_byte_1=self.random_number_representing_sequence_number_byte_2_of_4_for_crc,
+            higher_order_24bits_of_sequence_number_byte_2=self.random_number_representing_sequence_number_byte_3_of_4_for_crc,
+            higher_order_24bits_of_sequence_number_byte_3=self.random_number_representing_sequence_number_byte_4_of_4_for_crc,
         )
         return implicit_data
 
@@ -699,6 +709,11 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
         self.random_number_representing_sequence_number_byte_2_of_4 = self.all_data_aka_net_data.as_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
         self.random_number_representing_sequence_number_byte_3_of_4 = self.all_data_aka_net_data.as_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
         self.random_number_representing_sequence_number_byte_4_of_4 = self.all_data_aka_net_data.as_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
+
+        self.random_number_representing_sequence_number_byte_2_of_4_for_crc = self.random_number_representing_sequence_number_byte_2_of_4
+        self.random_number_representing_sequence_number_byte_3_of_4_for_crc = self.random_number_representing_sequence_number_byte_3_of_4
+        self.random_number_representing_sequence_number_byte_4_of_4_for_crc = self.random_number_representing_sequence_number_byte_4_of_4
+
         self.idle_cycle_timeout_in_100ms = Unisig16BitsIntWithUnisigBytesOrder(self.all_data_aka_net_data.as_decoded_bytes_message)
         self.configuration_data_prefix_x = self.all_data_aka_net_data.as_decoded_bytes_message.get_next_byte_as_single_int_unsigned()
         assert self.configuration_data_prefix_x == 3
