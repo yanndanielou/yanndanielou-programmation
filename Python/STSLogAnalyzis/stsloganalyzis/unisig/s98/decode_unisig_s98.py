@@ -663,15 +663,19 @@ class UnisigS98Simulation:
 
         self.files_full_paths_parsed.append(pcap_file_full_path)
         try:
-            capture = pyshark.FileCapture(pcap_file_full_path, tshark_path=TSHARK_FULL_PATH, display_filter="ss098")
+            with logger_config.stopwatch_with_label(f"Load (pyshark.FileCapture) file {pcap_file_full_path}", monitor_ram_usage=True):
+                capture = pyshark.FileCapture(pcap_file_full_path, tshark_path=TSHARK_FULL_PATH, display_filter="ss098")
+
+            with logger_config.stopwatch_with_label(f"Parse capture from file {pcap_file_full_path}", monitor_ram_usage=True):
+                all_raw_wireshark_packets = [cast(pyshark.packet.packet.Packet, packet) for packet in capture]
+            logger_config.print_and_log_info(f"{len(all_raw_wireshark_packets)} unisig packets found in {pcap_file_full_path}", print_ram_usage=True)
 
             number_of_packets_parsed = 0
             number_of_errors = 0
             unisig_s98_packets_found: list[UnisigS98WiresharkPacket] = []
 
-            for number_of_packets_parsed, packet in enumerate(capture):
+            for number_of_packets_parsed, packet in enumerate(all_raw_wireshark_packets):
 
-                packet = cast(pyshark.packet.packet.Packet, packet)
                 try:
                     if packet.transport_layer == UNISIG_TRANSPORT_LAYER and int(packet.tcp.port) in UNISIG_S98_PORTS and "payload" in packet.tcp.field_names and packet.get_multiple_layers("ss098"):
                         unisig_s98_packets_found.append(self.build_unisig_s98_packet_from_wireshark_packet(packet, pcap_file_full_path))
@@ -682,8 +686,8 @@ class UnisigS98Simulation:
                     number_of_errors += 1
 
                 logger_config.print_and_log_info_if(
-                    (number_of_packets_parsed + 1) % 1000 == 0,
-                    f"{number_of_packets_parsed+1} packets parsed, {len(unisig_s98_packets_found)} unisig packets found so far in {pcap_file_full_path}",
+                    (number_of_packets_parsed + 1) % 5000 == 0 or number_of_packets_parsed + 1 == len(all_raw_wireshark_packets),
+                    f"{number_of_packets_parsed+1} packets parsed, {len(unisig_s98_packets_found)}/{len(all_raw_wireshark_packets)} ({round(len(unisig_s98_packets_found)/len(all_raw_wireshark_packets)*100,2)}%) unisig packets processed so far in {pcap_file_full_path}",
                     print_ram_usage=True,
                 )
             self.unisig_s98_packets += unisig_s98_packets_found
@@ -691,10 +695,7 @@ class UnisigS98Simulation:
                 not unisig_s98_packets_found,
                 f"File {file_name_utils.get_file_name_with_extension_from_full_path(pcap_file_full_path)} {number_of_packets_parsed} packets parsed, {len(unisig_s98_packets_found)} unisig packets found",
             )
-            logger_config.print_and_log_info(
-                f"File {file_name_utils.get_file_name_with_extension_from_full_path(pcap_file_full_path)} {number_of_packets_parsed} packets parsed, {len(unisig_s98_packets_found)} unisig packets found",
-                print_ram_usage=True,
-            )
+
         except FileNotFoundError as exc:
             logger_config.print_and_log_exception(exc)
 
@@ -865,11 +866,17 @@ class UnisigS98Simulation:
     def recompute_all_mac(self) -> tuple[int, int]:
         mac_computed = 0
         errors = 0
-        for unisig_s98_packet in self.unisig_s98_packets:
+        for number_of_packets_processed_starting_0, unisig_s98_packet in enumerate(self.unisig_s98_packets):
+            number_of_packets_processed = number_of_packets_processed_starting_0 + 1
             try:
                 if isinstance(unisig_s98_packet, UnisigS98WiresharkPacketWithMac) and unisig_s98_packet.has_context_to_compute_mac():
                     unisig_s98_packet.recompute_mac()
                     mac_computed += 1
+                    logger_config.print_and_log_info_if(
+                        number_of_packets_processed % 5000 or number_of_packets_processed == len(self.unisig_s98_packets),
+                        f"{number_of_packets_processed}/{len(self.unisig_s98_packets)} ({round(number_of_packets_processed/len(self.unisig_s98_packets)*100,2)}%) packets processed, {mac_computed} MAC computed.",
+                    )
+
             except NotImplementedError as not_impl:
                 logger_config.print_and_log_exception(not_impl)
                 errors += 1
