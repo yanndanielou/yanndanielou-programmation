@@ -486,6 +486,13 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
         )
         return header
 
+    def prepare_data_and_recompute_crc(self) -> None:
+        assert self.profibus_log_line
+
+        implicit_data_except_length = self.get_crc_implicit_data_except_length()
+        header = self.get_crc_telegram_header()
+        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.all_data_aka_net_data)
+
     class Header:
         def __init__(self, byte_message_decoded: bytes_messages.DecodedBytesMessage) -> None:
             self.lowest_order_byte_sequence_number = byte_message_decoded.get_next_byte_as_single_int_unsigned()
@@ -686,13 +693,6 @@ class SdaDisconnectTelegram(OnboardSdaUnisigMessage):
     def can_src_be_computed(self) -> bool:
         return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None
 
-    def prepare_data_and_recompute_crc(self) -> None:
-        assert self.profibus_log_line
-
-        implicit_data_except_length = self.get_crc_implicit_data_except_length()
-        header = self.get_crc_telegram_header()
-        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.all_data_aka_net_data)
-
 
 @dataclass
 class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
@@ -734,24 +734,6 @@ class SdaConnectRequestOrConfirmTelegram(OnboardSdaUnisigMessage):
     def can_src_be_computed(self) -> bool:
         return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None
 
-    def prepare_data_and_recompute_crc(self) -> None:
-        assert self.profibus_log_line
-
-        implicit_data_except_length = self.get_crc_implicit_data_except_length()
-        header = self.get_crc_telegram_header()
-        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.all_data_aka_net_data)
-
-    def get_crc_implicit_data_except_length(self) -> "UnisigCrc.ImplicitDataExceptLength":
-        assert self.profibus_log_line
-
-        implicit_data = UnisigCrc.ImplicitDataExceptLength.from_profibus_log_line(
-            profibus_log_line=self.profibus_log_line,
-            higher_order_24bits_of_sequence_number_byte_1=self.random_number_representing_sequence_number_byte_2_of_4,
-            higher_order_24bits_of_sequence_number_byte_2=self.random_number_representing_sequence_number_byte_3_of_4,
-            higher_order_24bits_of_sequence_number_byte_3=self.random_number_representing_sequence_number_byte_4_of_4,
-        )
-        return implicit_data
-
 
 @dataclass
 class SdaAuthenticationOrAuthenticationAcknowledgementTelegram(OnboardSdaUnisigMessage):
@@ -770,13 +752,6 @@ class SdaAuthenticationOrAuthenticationAcknowledgementTelegram(OnboardSdaUnisigM
     def can_src_be_computed(self) -> bool:
         return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None and self.current_connection_session_before_this_message is not None
 
-    def prepare_data_and_recompute_crc(self) -> None:
-        assert self.profibus_log_line
-
-        implicit_data_except_length = self.get_crc_implicit_data_except_length()
-        header = self.get_crc_telegram_header()
-        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.all_data_aka_net_data)
-
 
 @dataclass
 class SdaRunOrReadyToRunTelegram(OnboardSdaUnisigMessage):
@@ -793,13 +768,6 @@ class SdaRunOrReadyToRunTelegram(OnboardSdaUnisigMessage):
     def can_src_be_computed(self) -> bool:
         return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None and self.current_connection_session_before_this_message is not None
 
-    def prepare_data_and_recompute_crc(self) -> None:
-        assert self.profibus_log_line
-
-        implicit_data_except_length = self.get_crc_implicit_data_except_length()
-        header = self.get_crc_telegram_header()
-        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.all_data_aka_net_data)
-
 
 @dataclass
 class SdaIdleTelegram(OnboardSdaUnisigMessage):
@@ -811,14 +779,6 @@ class SdaIdleTelegram(OnboardSdaUnisigMessage):
 
     def can_src_be_computed(self) -> bool:
         return self.safety_level == SafetyLevel.SL4 and self.current_connection_session_before_this_message is not None
-
-    def prepare_data_and_recompute_crc(self) -> None:
-        assert self.current_connection_session_before_this_message
-        assert self.profibus_log_line
-
-        implicit_data_except_length = self.get_crc_implicit_data_except_length()
-        header = self.get_crc_telegram_header()
-        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header)
 
 
 @dataclass
@@ -1078,10 +1038,3 @@ class SdaForUpperLayerTelegram(OnboardSdaUnisigMessage):
 
     def can_src_be_computed(self) -> bool:
         return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None and self.current_connection_session_before_this_message is not None
-
-    def prepare_data_and_recompute_crc(self) -> None:
-        assert self.profibus_log_line
-
-        implicit_data_except_length = self.get_crc_implicit_data_except_length()
-        header = self.get_crc_telegram_header()
-        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.all_data_aka_net_data)
