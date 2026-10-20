@@ -658,19 +658,30 @@ class SdaDisconnectTelegram(OnboardSdaUnisigMessage):
     def __post_init__(self) -> None:
         super().__post_init__()
 
-        self.new_setup_desired = self.byte_message_decoded.get_next_bits_as_bool_0_or_1(size_bits=bytes_messages.NUMBER_OF_BITS_IN_BYTE)
-        self.disconnect_reason_raw = self.byte_message_decoded.get_next_bits_as_single_int_unsigned(size_bits=bytes_messages.NUMBER_OF_BITS_IN_BYTE)
-        disconnect_reason_text_length_in_bits = self.byte_message_decoded.number_of_bits_remaining_to_decode
-        self.disconnect_reason_text = self.byte_message_decoded.get_next_bits_as_ascii_char(number_of_chars=disconnect_reason_text_length_in_bits // bytes_messages.NUMBER_OF_BITS_IN_BYTE)
+        if self.safety_level == SafetyLevel.SL4:
+            self.crc = UnisigCrc.from_bits_as_string(self.byte_message_decoded.get_and_remove_last_bytes_as_bitset_str(size_bytes=SL4_CRC_SIZE_IN_BYTES))
+
+        self.all_data_aka_net_data = OnboardSdaUnisigMessage.NetData.from_remaining_bits_in_decoded_message(self.byte_message_decoded)
+
+        self.new_setup_desired = self.all_data_aka_net_data.as_decoded_bytes_message.get_next_bits_as_bool_0_or_1(size_bits=bytes_messages.NUMBER_OF_BITS_IN_BYTE)
+        self.disconnect_reason_raw = self.all_data_aka_net_data.as_decoded_bytes_message.get_next_bits_as_single_int_unsigned(size_bits=bytes_messages.NUMBER_OF_BITS_IN_BYTE)
+        disconnect_reason_text_length_in_bits = self.all_data_aka_net_data.as_decoded_bytes_message.number_of_bits_remaining_to_decode
+        assert disconnect_reason_text_length_in_bits % 8 == 0
+        self.disconnect_reason_text = self.all_data_aka_net_data.as_decoded_bytes_message.get_next_bits_as_ascii_char(
+            number_of_chars=disconnect_reason_text_length_in_bits // bytes_messages.NUMBER_OF_BITS_IN_BYTE
+        )
 
         self.ppn_connections_library.register_disconnect_telegram(self)
 
     def can_src_be_computed(self) -> bool:
-        logger_config.print_and_log_error("Not implemented")
-        return False
+        return self.safety_level == SafetyLevel.SL4 and self.profibus_log_line is not None
 
     def prepare_data_and_recompute_crc(self) -> None:
-        raise NotImplementedError()
+        assert self.profibus_log_line
+
+        implicit_data_except_length = self.get_crc_implicit_data_except_length()
+        header = self.get_crc_telegram_header()
+        self.recompute_crc_from_data_as_bytes_except_length(implicit_data_except_length, header, self.all_data_aka_net_data)
 
 
 @dataclass
