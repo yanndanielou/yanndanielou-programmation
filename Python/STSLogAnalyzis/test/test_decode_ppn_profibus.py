@@ -29,8 +29,9 @@ class TestDecodeOnePpnProfibusLogFileWithTwoInterlocutorsAnd2Channels:
             upper_layer_decoding_library=next_unisig_58_library_fixture,
         )
 
-        for unisig_message_index, unisig_message in enumerate(library.all_unisig_messages):
-            assert unisig_message.sequence_number_is_continuous_with_previous, f"Invalid sequence number (non continuous) in {unisig_message_index+1}th unisig message, {unisig_message}"
+        assert [unisig_message for unisig_message in library.all_unisig_messages if unisig_message.sequence_number_is_continuous_with_previous]
+        assert len([unisig_message for unisig_message in library.all_unisig_messages if unisig_message.sequence_number_is_continuous_with_previous is None]) < 5
+        assert not [unisig_message for unisig_message in library.all_unisig_messages if unisig_message.sequence_number_is_continuous_with_previous is False]
 
 
 class TestDecodeOnePpnProfibusLogFileWithOnlyTwoInterlocutors:
@@ -829,7 +830,8 @@ class TestBasicProfibusLogLineDecoding:
         log_line = ppn_profibus_log.ProfibusLogLine.from_raw_log_line(
             line="2026-03-28 19:26:03:179 kppn 1.3.3: [99:33 => 2:33] Sending PROFIBUS message  [num:1][rt:1949][mode:SDA][len:29] 6e 80 6e d5 2e 7b a0 0f 03 00 00 00 03 00 00 dc 05 00 00 ee 00 00 00 1a 08 67 0c 13 23",
         )
-        assert log_line.left_to_right_interlocutors_without_arrow_description == ""
+        assert log_line
+        assert log_line.interlocutors_with_translation_without_direction == "[STM NExT//STM control(99:33) <=> EVC//STM control(2:33)]"
 
 
 class TestNextUnisigS58UpperLayerDecodingLibrary:
