@@ -50,7 +50,6 @@ class PpnConnectionSession:
             if self.random_number_representing_sequence_number_byte_1_of_4 > lowest_order_byte_sequence_number:
                 logger_config.print_and_log_info(
                     f"{self.session.left_to_right_interlocutors_without_arrow_description}: overflow of lower order byte sequence number from {self.random_number_representing_sequence_number_byte_1_of_4} to {lowest_order_byte_sequence_number}",
-                    do_not_print=True,
                 )
 
                 self.random_number_representing_sequence_number_byte_2_of_4 += 1
