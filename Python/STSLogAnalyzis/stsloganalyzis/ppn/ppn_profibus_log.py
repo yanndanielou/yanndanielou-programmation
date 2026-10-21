@@ -25,7 +25,7 @@ class ServiceAccessPoint:
 
 @dataclass
 class PpnConnectionSession:
-    interlocutors_description: str
+    left_to_right_interlocutors_without_arrow_description: str
 
     @dataclass
     class SessionInterlocutor:
@@ -37,35 +37,42 @@ class PpnConnectionSession:
         sap: int
         session: "PpnConnectionSession"
 
-        def update_lowest_order_byte_sequence_number(self, lowest_order_byte_sequence_number: int) -> None:
-            logger_config.print_and_log_error_if(
-                lowest_order_byte_sequence_number != self.random_number_representing_sequence_number_byte_1_of_4 + 1
-                and lowest_order_byte_sequence_number != 0
-                and self.random_number_representing_sequence_number_byte_1_of_4 != 255,
-                f"{self.session.interlocutors_description}: non continuous sequence. From {self.random_number_representing_sequence_number_byte_1_of_4} to {lowest_order_byte_sequence_number}",
-            )
+        def update_lowest_order_byte_sequence_number(self, lowest_order_byte_sequence_number: int) -> str | None:
+            """Returns none or error description"""
 
+            error = (
+                f"{self.session.left_to_right_interlocutors_without_arrow_description}: non continuous sequence. From {self.random_number_representing_sequence_number_byte_1_of_4} to {lowest_order_byte_sequence_number}"
+                if lowest_order_byte_sequence_number != self.random_number_representing_sequence_number_byte_1_of_4 + 1
+                and lowest_order_byte_sequence_number != 0
+                and self.random_number_representing_sequence_number_byte_1_of_4 != 255
+                else None
+            )
             if self.random_number_representing_sequence_number_byte_1_of_4 > lowest_order_byte_sequence_number:
                 logger_config.print_and_log_info(
-                    f"{self.session.interlocutors_description}: overflow of lower order byte sequence number from {self.random_number_representing_sequence_number_byte_1_of_4} to {lowest_order_byte_sequence_number}"
+                    f"{self.session.left_to_right_interlocutors_without_arrow_description}: overflow of lower order byte sequence number from {self.random_number_representing_sequence_number_byte_1_of_4} to {lowest_order_byte_sequence_number}",
+                    do_not_print=True,
                 )
 
                 self.random_number_representing_sequence_number_byte_2_of_4 += 1
                 if self.random_number_representing_sequence_number_byte_2_of_4 == 256:
                     self.random_number_representing_sequence_number_byte_2_of_4 = 0
-                    logger_config.print_and_log_info(f"{self.session.interlocutors_description}: overflow of new_random_number_representing_sequence_number_byte_2_of_4")
+                    logger_config.print_and_log_info(f"{self.session.left_to_right_interlocutors_without_arrow_description}: overflow of new_random_number_representing_sequence_number_byte_2_of_4")
 
                     self.random_number_representing_sequence_number_byte_3_of_4 += 1
                     if self.random_number_representing_sequence_number_byte_3_of_4 == 256:
                         self.random_number_representing_sequence_number_byte_3_of_4 = 0
-                        logger_config.print_and_log_info(f"{self.session.interlocutors_description}: overflow of random_number_representing_sequence_number_byte_3_of_4")
+                        logger_config.print_and_log_info(f"{self.session.left_to_right_interlocutors_without_arrow_description}: overflow of random_number_representing_sequence_number_byte_3_of_4")
 
                         self.random_number_representing_sequence_number_byte_4_of_4 += 1
                         if self.random_number_representing_sequence_number_byte_4_of_4 == 256:
                             self.random_number_representing_sequence_number_byte_4_of_4 = 0
-                            logger_config.print_and_log_info(f"{self.session.interlocutors_description}: overflow of random_number_representing_sequence_number_byte_4_of_4")
+                            logger_config.print_and_log_info(
+                                f"{self.session.left_to_right_interlocutors_without_arrow_description}: overflow of random_number_representing_sequence_number_byte_4_of_4"
+                            )
 
             self.random_number_representing_sequence_number_byte_1_of_4 = lowest_order_byte_sequence_number
+
+            return error
 
     def __post_init__(self) -> None:
         self.last_step = PpnConnectionSession.Step.CONNECT_REQUEST_RECEIVED
@@ -129,18 +136,17 @@ class PpnConnectionsLibrary:
 
     def register_connect_request_telegram(self, connect_request_telegram: decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram) -> None:
         assert connect_request_telegram.profibus_log_line
-        connection = PpnConnectionSession(connect_request_telegram.profibus_log_line.interlocutors_description)
+        connection = PpnConnectionSession(connect_request_telegram.profibus_log_line.left_to_right_interlocutors_without_arrow_description)
         connection.register_connect_request_telegram(connect_request_telegram)
         self.all_ppn_connections_sessions.append(connection)
         self.current_ppn_connections_by_source_and_target_addresses[(connect_request_telegram.profibus_log_line.source_address, connect_request_telegram.profibus_log_line.target_address)] = connection
-        self.current_ppn_connections_by_source_and_target_addresses[(connect_request_telegram.profibus_log_line.target_address, connect_request_telegram.profibus_log_line.source_address)] = connection
 
     def register_connect_confirm_telegram(self, connect_confirm_telegram: decode_unisig_s57_s58.SdaConnectRequestOrConfirmTelegram) -> None:
         assert connect_confirm_telegram.profibus_log_line
         connection = self.get_existing_current_connection_by_profibus_log_line(connect_confirm_telegram.profibus_log_line)
         if not connection:
             logger_config.print_and_log_error(f"Connect confirm telegram {connect_confirm_telegram} without previous connect telegram")
-            connection = PpnConnectionSession(connect_confirm_telegram.profibus_log_line.interlocutors_description)
+            connection = PpnConnectionSession(connect_confirm_telegram.profibus_log_line.alphabetically_sorted_interlocutors_description)
             connection.register_connect_confirm_telegram(connect_confirm_telegram)
             self.all_ppn_connections_sessions.append(connection)
             self.current_ppn_connections_by_source_and_target_addresses[(connect_confirm_telegram.profibus_log_line.source_address, connect_confirm_telegram.profibus_log_line.target_address)] = (
@@ -268,7 +274,7 @@ class ProfibusLogLibrary:
         self.stm_messages_errors = [error for stm_message in self.all_upper_layer_stms for error in stm_message.creational_and_decoding_errors]
         self.all_creational_errors = self.unisig_messages_errors + self.stm_messages_errors
 
-        self.all_interlocutors = {log_line.interlocutors_description for log_line in self.decoded_lines}
+        self.all_interlocutors = {log_line.alphabetically_sorted_interlocutors_description for log_line in self.decoded_lines}
 
         self.occurences_by_creational_error_type: dict[str, list[datetime | None]] = defaultdict(list)
 
@@ -328,7 +334,8 @@ class ProfibusLogLibrary:
                 interesting_stm_messages=[
                     interesting_stm_message
                     for interesting_stm_message in self.all_upper_layer_stms
-                    if interesting_stm_message.upper_layer_telegram.profibus_log_line and interesting_stm_message.upper_layer_telegram.profibus_log_line.interlocutors_description == interlocutors
+                    if interesting_stm_message.upper_layer_telegram.profibus_log_line
+                    and interesting_stm_message.upper_layer_telegram.profibus_log_line.alphabetically_sorted_interlocutors_description == interlocutors
                 ],
                 file_base_name=string_utils.format_filename(f"{self.label} {interlocutors}"),
             )
@@ -363,7 +370,9 @@ class ProfibusLogLibrary:
                         "Line Source": interesting_stm_message.upper_layer_telegram.profibus_log_line.source_name if interesting_stm_message.upper_layer_telegram.profibus_log_line else None,
                         "Line Target": interesting_stm_message.upper_layer_telegram.profibus_log_line.target_name if interesting_stm_message.upper_layer_telegram.profibus_log_line else None,
                         "interlocutors": (
-                            interesting_stm_message.upper_layer_telegram.profibus_log_line.interlocutors_description if interesting_stm_message.upper_layer_telegram.profibus_log_line else None
+                            interesting_stm_message.upper_layer_telegram.profibus_log_line.alphabetically_sorted_interlocutors_description
+                            if interesting_stm_message.upper_layer_telegram.profibus_log_line
+                            else None
                         ),
                         "Line Mode": interesting_stm_message.upper_layer_telegram.profibus_log_line.mode.name if interesting_stm_message.upper_layer_telegram.profibus_log_line else None,
                         "Line length": interesting_stm_message.upper_layer_telegram.profibus_log_line.length if interesting_stm_message.upper_layer_telegram.profibus_log_line else None,
@@ -430,7 +439,9 @@ class ProfibusLogLibrary:
                         "timestamp": sdn_sync_and_reference_time_message.profibus_log_line.timestamp if sdn_sync_and_reference_time_message.profibus_log_line else None,
                         "Line Source": sdn_sync_and_reference_time_message.profibus_log_line.source_name if sdn_sync_and_reference_time_message.profibus_log_line else None,
                         "Line Target": sdn_sync_and_reference_time_message.profibus_log_line.target_name if sdn_sync_and_reference_time_message.profibus_log_line else None,
-                        "interlocutors": sdn_sync_and_reference_time_message.profibus_log_line.interlocutors_description if sdn_sync_and_reference_time_message.profibus_log_line else None,
+                        "interlocutors": (
+                            sdn_sync_and_reference_time_message.profibus_log_line.alphabetically_sorted_interlocutors_description if sdn_sync_and_reference_time_message.profibus_log_line else None
+                        ),
                         "Line length": sdn_sync_and_reference_time_message.profibus_log_line.length if sdn_sync_and_reference_time_message.profibus_log_line else None,
                         "file path": sdn_sync_and_reference_time_message.profibus_log_line.file_path if sdn_sync_and_reference_time_message.profibus_log_line else None,
                         "line number": sdn_sync_and_reference_time_message.profibus_log_line.line_number if sdn_sync_and_reference_time_message.profibus_log_line else None,
@@ -461,7 +472,9 @@ class ProfibusLogLibrary:
                         "timestamp": sdn_safe_time_layer_startup_message.profibus_log_line.timestamp if sdn_safe_time_layer_startup_message.profibus_log_line else None,
                         "Line Source": sdn_safe_time_layer_startup_message.profibus_log_line.source_name if sdn_safe_time_layer_startup_message.profibus_log_line else None,
                         "Line Target": sdn_safe_time_layer_startup_message.profibus_log_line.target_name if sdn_safe_time_layer_startup_message.profibus_log_line else None,
-                        "interlocutors": sdn_safe_time_layer_startup_message.profibus_log_line.interlocutors_description if sdn_safe_time_layer_startup_message.profibus_log_line else None,
+                        "interlocutors": (
+                            sdn_safe_time_layer_startup_message.profibus_log_line.alphabetically_sorted_interlocutors_description if sdn_safe_time_layer_startup_message.profibus_log_line else None
+                        ),
                         "Line length": sdn_safe_time_layer_startup_message.profibus_log_line.length if sdn_safe_time_layer_startup_message.profibus_log_line else None,
                         "file path": sdn_safe_time_layer_startup_message.profibus_log_line.file_path if sdn_safe_time_layer_startup_message.profibus_log_line else None,
                         "line number": sdn_safe_time_layer_startup_message.profibus_log_line.line_number if sdn_safe_time_layer_startup_message.profibus_log_line else None,
@@ -518,7 +531,7 @@ class ProfibusLogLibrary:
                             "timestamp": unisig_message.profibus_log_line.timestamp if unisig_message.profibus_log_line else None,
                             "Line Source": unisig_message.profibus_log_line.source_name if unisig_message.profibus_log_line else None,
                             "Line Target": unisig_message.profibus_log_line.target_name if unisig_message.profibus_log_line else None,
-                            "interlocutors": unisig_message.profibus_log_line.interlocutors_description if unisig_message.profibus_log_line else None,
+                            "interlocutors": unisig_message.profibus_log_line.alphabetically_sorted_interlocutors_description if unisig_message.profibus_log_line else None,
                             "Line Mode": unisig_message.profibus_log_line.mode.name if unisig_message.profibus_log_line else None,
                             "Line length": unisig_message.profibus_log_line.length if unisig_message.profibus_log_line else None,
                             "file path": unisig_message.profibus_log_line.file_path if unisig_message.profibus_log_line else None,
@@ -671,7 +684,9 @@ class ProfibusLogLine:
     target_address: int
     source_sap: int
     target_sap: int
-    interlocutors_description: str
+    raw_interlocutors_description: str
+    left_to_right_interlocutors_without_arrow_description: str
+    alphabetically_sorted_interlocutors_description: str
     sequence: int
     mode: SendingMode
     length: int
@@ -740,11 +755,22 @@ class ProfibusLogLine:
         sap_pattern = re.compile(r"\[(\d+):(\d+) (<=|=>) (\d+):(\d+)\]")
         match = sap_pattern.search(line)
         if match:
+
             left_part_address = int(match.group(1))
             left_part_sap = int(match.group(2))
 
+            left_part_with_translation = (
+                f"{ProfibusLogLine.get_equipment_name_from_address(left_part_address)}/{ProfibusLogLine.get_function_name_from_sap(left_part_sap)}{left_part_address}:{left_part_sap}"
+            )
+
             right_part_address = int(match.group(4))
             right_part_sap = int(match.group(5))
+
+            right_part_with_translation = (
+                f"{ProfibusLogLine.get_equipment_name_from_address(right_part_address)}/{ProfibusLogLine.get_function_name_from_sap(right_part_sap)}{right_part_address}:{right_part_sap}"
+            )
+
+            raw_interlocutors_description = f"{left_part_with_translation} {match.group(3)} {right_part_with_translation}"
 
             if match.group(3) == "=>":
                 source_address = left_part_address
@@ -756,9 +782,11 @@ class ProfibusLogLine:
                 source_sap = right_part_sap
                 target_address = left_part_address
                 target_sap = left_part_sap
+
         else:
             source_address = target_address = -1
             source_sap = target_sap = -1
+            raw_interlocutors_description = "Unknwown raw_interlocutors_description"
 
         # Extract sequence: [num:43548]
         seq_pattern = re.compile(r"\[num:(\d+)\]")
@@ -787,10 +815,10 @@ class ProfibusLogLine:
         # Extract trailing bytes
         bytes_hexa = line.split("]")[-1].strip()
 
-        source = f"{ProfibusLogLine.get_equipment_name_from_address(source_address)}/{ProfibusLogLine.get_function_name_from_sap(source_sap)}"
-        target = f"{ProfibusLogLine.get_equipment_name_from_address(target_address)}/{ProfibusLogLine.get_function_name_from_sap(target_sap)}"
+        translated_source = f"{ProfibusLogLine.get_equipment_name_from_address(source_address)}/{ProfibusLogLine.get_function_name_from_sap(source_sap)}"
+        translated_target = f"{ProfibusLogLine.get_equipment_name_from_address(target_address)}/{ProfibusLogLine.get_function_name_from_sap(target_sap)}"
 
-        interlocutors = min([source, target]) + " <=> " + max([source, target])
+        alphabetically_sorted_interlocutors_description = min([translated_source, translated_target]) + " <=> " + max([translated_source, translated_target])
 
         if mode in ("SDA", "SDN"):
             return ProfibusLogLine(
@@ -799,9 +827,11 @@ class ProfibusLogLine:
                 target_address=target_address,
                 source_sap=source_sap,
                 target_sap=target_sap,
-                source_name=f"{ProfibusLogLine.get_equipment_name_from_address(source_address)}/{ProfibusLogLine.get_function_name_from_sap(source_sap)}",
-                target_name=f"{ProfibusLogLine.get_equipment_name_from_address(target_address)}/{ProfibusLogLine.get_function_name_from_sap(target_sap)}",
-                interlocutors_description=interlocutors,
+                source_name=translated_source,
+                target_name=translated_target,
+                raw_interlocutors_description=raw_interlocutors_description,
+                alphabetically_sorted_interlocutors_description=alphabetically_sorted_interlocutors_description,
+                left_to_right_interlocutors_without_arrow_description=raw_interlocutors_description.replace("<=", "").replace("=>", ""),
                 sequence=sequence,
                 mode=SendingMode[mode],
                 length=length,
@@ -835,7 +865,7 @@ class ProfibusLogLine:
             except (AssertionError, ValueError) as ass_err:
                 logger_config.print_and_log_exception(ass_err)
                 logger_config.print_and_log_error(
-                    f"Could not decode SDA message at {self.timestamp} between {self.interlocutors_description} in file {self.file_path} line {self.line_number}, bytes_hexa_str:{self.bytes_hexa_str}"
+                    f"Could not decode SDA message at {self.timestamp} between {self.alphabetically_sorted_interlocutors_description} in file {self.file_path} line {self.line_number}, bytes_hexa_str:{self.bytes_hexa_str}"
                 )
 
         else:
