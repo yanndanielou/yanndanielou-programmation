@@ -82,18 +82,22 @@ def get_files_by_directory_and_file_name_mask(
     file_sort_order: FileSortOrder = FileSortOrder.NO_SORTING,
 ) -> list[str]:
     files_paths: list[str] = []
-    for file in os.listdir(directory_path):
-        if fnmatch.fnmatch(file, filename_pattern):
-            file_path = os.path.join(directory_path, file)
-            if not Path(file).is_dir():
-                files_paths.append(file_path)
+    try:
+        for file in os.listdir(directory_path):
+            if fnmatch.fnmatch(file, filename_pattern):
+                file_path = os.path.join(directory_path, file)
+                if not Path(file).is_dir():
+                    files_paths.append(file_path)
 
-    if file_sort_order == FileSortOrder.ALPHABETICAL:
-        return natsort.natsorted(files_paths)
-    elif file_sort_order == FileSortOrder.TIMESTAMP_OLDER_TO_NEWER:
-        return sorted(files_paths, key=os.path.getmtime)
-    else:
-        return files_paths
+        if file_sort_order == FileSortOrder.ALPHABETICAL:
+            return natsort.natsorted(files_paths)
+        elif file_sort_order == FileSortOrder.TIMESTAMP_OLDER_TO_NEWER:
+            return sorted(files_paths, key=os.path.getmtime)
+        else:
+            return files_paths
+    except NotADirectoryError as err:
+        logger_config.print_and_log_exception(err)
+        return []
 
 
 def get_files_modification_time(files_paths: list[str]) -> list[tuple[str, datetime]]:
