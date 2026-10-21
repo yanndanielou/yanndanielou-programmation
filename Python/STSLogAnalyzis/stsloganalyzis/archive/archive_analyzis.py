@@ -481,7 +481,7 @@ class ArchiveAnalyzis:
 
     @logger_config.stopwatch_decorator(inform_beginning=True, monitor_ram_usage=True)
     def create_reports_all_sqlarch_changes_since_previous(
-        self, output_directory_path: str | None = None, file_base_name: str | None = None, begin_time_to_put_in_reports: str | datetime | None = None
+        self, output_directory_path: str | None = "output", file_base_name: str | None = None, begin_time_to_put_in_reports: str | datetime | None = None
     ) -> int:
 
         if begin_time_to_put_in_reports is None:
