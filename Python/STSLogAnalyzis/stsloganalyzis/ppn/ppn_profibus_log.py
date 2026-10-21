@@ -657,7 +657,7 @@ class ProfibusLogFile:
             lines = f.readlines()
             for line_number, line in enumerate(lines):
                 try:
-                    decoded_line = ProfibusLogLine.decode_raw_log_line(
+                    decoded_line = ProfibusLogLine.from_raw_log_line(
                         line=line,
                         upper_layer_decoding_library=self.upper_layer_decoding_library,
                         file_path=self.file_full_path,
@@ -695,6 +695,9 @@ class ProfibusLogLine:
     file_path: str | None
     line_number: int | None
 
+    def __str__(self) -> str:
+        return f"At {self.timestamp} between {self.left_to_right_interlocutors_without_arrow_description} in {self.file_path}:{self.line_number}"
+
     def __post_init__(self) -> None:
         self.unisig_message: decode_unisig_s57_s58.OnboardUnisigMessage | None = None
 
@@ -728,7 +731,7 @@ class ProfibusLogLine:
         return function_name_dictionnary_by_sap.get(sap) or f"Unknown {sap}"
 
     @staticmethod
-    def decode_raw_log_line(
+    def from_raw_log_line(
         line: str,
         upper_layer_decoding_library: upper_layer_libraries.UpperLayerDecodingLibrary | None = None,
         file_path: str | None = None,

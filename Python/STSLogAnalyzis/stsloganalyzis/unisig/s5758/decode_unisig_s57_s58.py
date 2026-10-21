@@ -95,6 +95,7 @@ class OnboardUnisigMessage(ABC):
         self.recomputed_crc: RecomputedUnisigCrc | None = None
         self.recomputed_crc_and_transmitted_crc_are_equals: bool | None = None
         self.recomputed_crc_as_string_base_16: str | None = None
+        self.sequence_number_is_continuous_with_previous: bool | None = None
         self.current_connection_session_before_this_message = (
             self.ppn_connections_library.get_existing_current_connection_by_profibus_log_line(self.profibus_log_line) if self.profibus_log_line else None
         )
@@ -463,6 +464,9 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
     command_type: "OnboardSdaUnisigMessage.CommandTypeSubset57"
     lowest_order_byte_sequence_number: int
 
+    def __str__(self) -> str:
+        return f"{self.__class__.__name__} {self.command_type} {self.profibus_log_line}"
+
     def __post_init__(self) -> None:
         super().__post_init__()
         self.stl_time_stamp: UnisigTimeStamp | None = None
@@ -470,9 +474,8 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
 
         if self.transmitter_interlocutor:
             sequence_error = self.transmitter_interlocutor.update_lowest_order_byte_sequence_number(self.lowest_order_byte_sequence_number)
-            logger_config.print_and_log_error_if(
-                sequence_error, f"{self.__class__.__name__} {self.command_type} {self.profibus_log_line.timestamp if self.profibus_log_line else 'NA'} {sequence_error}"
-            )
+            self.sequence_number_is_continuous_with_previous = sequence_error == None
+            logger_config.print_and_log_error_if(sequence_error, f"{self} {sequence_error}")
 
         self.random_number_representing_sequence_number_byte_2_of_4_for_crc = (
             self.transmitter_interlocutor.random_number_representing_sequence_number_byte_2_of_4 if self.transmitter_interlocutor else None
