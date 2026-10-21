@@ -469,7 +469,8 @@ class OnboardSdaUnisigMessage(OnboardUnisigMessage):
         self.all_data_aka_net_data: OnboardSdaUnisigMessage.NetData | None = None
 
         if self.transmitter_interlocutor:
-            self.transmitter_interlocutor.update_lowest_order_byte_sequence_number(self.lowest_order_byte_sequence_number)
+            sequence_error = self.transmitter_interlocutor.update_lowest_order_byte_sequence_number(self.lowest_order_byte_sequence_number)
+            logger_config.print_and_log_error_if(sequence_error, f"{self.__class__.__name__} {self.command_type} {self.profibus_log_line.timestamp} {sequence_error}")
 
         self.random_number_representing_sequence_number_byte_2_of_4_for_crc = (
             self.transmitter_interlocutor.random_number_representing_sequence_number_byte_2_of_4 if self.transmitter_interlocutor else None
