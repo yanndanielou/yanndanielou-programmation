@@ -134,11 +134,17 @@ class XlWingsOpenWorkbookOperation:
 
     @staticmethod
     def open_workbook(input_excel_file_path: str, excel_visibility: bool) -> xlwings.Book:
-        with logger_config.stopwatch_with_label(label=f"Open {input_excel_file_path}", inform_beginning=True, monitor_ram_usage=True):
-            xlwings.App(visible=excel_visibility)
-            workbook_dml = xlwings.Book(input_excel_file_path)
+        while True:
+            try:
+                with logger_config.stopwatch_with_label(label=f"Open {input_excel_file_path}", inform_beginning=True, monitor_ram_usage=True):
+                    xlwings.App(visible=excel_visibility)
+                    workbook_dml = xlwings.Book(input_excel_file_path)
 
-        return workbook_dml
+                return workbook_dml
+            except pywintypes.com_error as com_err:
+                logger_config.print_and_log_exception(com_err)
+                logger_config.print_and_log_error(f"Retry open_workbook {input_excel_file_path}")
+                time.sleep(10)
 
 
 @dataclass
