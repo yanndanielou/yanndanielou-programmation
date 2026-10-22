@@ -45,12 +45,12 @@ class RamUsageMonitor:
 
     @dataclass
     class Measure:
-        timestamp: datetime.datetime | str
+        timestamp: datetime.datetime
         as_bytes_int: int
-        label: str
+        label: str | None
 
         def __post_init__(self) -> None:
-            self.as_human_readable = humanize.naturalsize(self.as_bytes_int)
+            self.value_as_human_readable = humanize.naturalsize(self.as_bytes_int)
 
     def __init__(self) -> None:
         self.output_file_path_with_extension = ""
@@ -80,9 +80,10 @@ class RamUsageMonitor:
                     OrderedDict(
                         {
                             "date": mesure_to_write.timestamp,
+                            "date (iso format string)": mesure_to_write.timestamp.isoformat(),
                             "RAM usage, bytes": mesure_to_write.as_bytes_int,
                             "RAM usage, Mo": mesure_to_write.as_bytes_int / 1024 / 1024,
-                            "RAM usage, human readable": mesure_to_write.as_human_readable,
+                            "RAM usage, human readable": mesure_to_write.value_as_human_readable,
                             "label": mesure_to_write.label,
                         }
                     )
@@ -166,7 +167,7 @@ def print_and_log_info_if(
 
         if print_ram_usage:
             measure = ram_usage_monitor.measure_now(measure_label=to_print_and_log)
-            to_print_and_log += f". Current ram usage: {measure.as_human_readable}"
+            to_print_and_log += f". Current ram usage: {measure.value_as_human_readable}"
 
         # pylint: disable=line-too-long
         if not do_not_print:
@@ -180,7 +181,7 @@ def print_and_log_info(to_print_and_log: str, do_not_print: bool = False, print_
 
     if print_ram_usage:
         measure = ram_usage_monitor.measure_now(measure_label=to_print_and_log)
-        to_print_and_log += f". Current ram usage: {measure.as_human_readable}"
+        to_print_and_log += f". Current ram usage: {measure.value_as_human_readable}"
 
     # pylint: disable=line-too-long
     if not do_not_print:
@@ -303,7 +304,7 @@ def application_logger(
     calling_file_name_and_line_number = file_name + ":" + str(line_number)
 
     at_beginning_log_timestamp = time.asctime(time.localtime(time.time()))
-    to_print_and_log = f"{application_name} : application begin. Ram usage: {ram_usage_monitor.measure_now(measure_label=f"{application_name} : application begin").as_human_readable}"
+    to_print_and_log = f"{application_name} : application begin. Ram usage: {ram_usage_monitor.measure_now(measure_label=f"{application_name} : application begin").value_as_human_readable}"
     print(at_beginning_log_timestamp + "\t" + calling_file_name_and_line_number + "\t" + to_print_and_log)
     logging.info(f"{calling_file_name_and_line_number} \t {to_print_and_log}")
 
@@ -338,7 +339,7 @@ def application_logger(
     to_print_and_log_lines.append(f"{application_name} : application end.")
     to_print_and_log_lines.append(f"Elapsed: {date_time_formats.format_duration_to_string(elapsed_time)} s.")
     to_print_and_log_lines.append(
-        f"Final ram usage: {ram_usage_monitor.measure_now("Final ram usage").as_human_readable}."
+        f"Final ram usage: {ram_usage_monitor.measure_now("Final ram usage").value_as_human_readable}."
     )
     to_print_and_log_lines.append(
         f"Logger stats: \t{'\t'.join(str(item[0])+ ':' + str(item[1]) for item in list(log_counts_occurrences_per_level.items()))}"
@@ -516,7 +517,7 @@ def stopwatch_with_label(
             at_beginning_log_timestamp = time.asctime(time.localtime(time.time()))
 
             if monitor_ram_usage:
-                to_print_and_log = f"{label} : begin. Initial ram usage {initial_ram.as_human_readable}"
+                to_print_and_log = f"{label} : begin. Initial ram usage {initial_ram.value_as_human_readable}"
             else:
                 to_print_and_log = f"{label} : begin"
 
@@ -536,7 +537,7 @@ def stopwatch_with_label(
         end_log_timestamp = time.asctime(time.localtime(time.time()))
 
         if monitor_ram_usage:
-            to_print_and_log = f"{label} Elapsed: {date_time_formats.format_duration_to_string(elapsed_time_seconds)}. Final ram {final_ram.as_human_readable}. Delta ram : {humanize.naturalsize(delta_rss_since_reference)}"
+            to_print_and_log = f"{label} Elapsed: {date_time_formats.format_duration_to_string(elapsed_time_seconds)}. Final ram {final_ram.value_as_human_readable}. Delta ram : {humanize.naturalsize(delta_rss_since_reference)}"
         else:
             to_print_and_log = f"{label} Elapsed: {date_time_formats.format_duration_to_string(elapsed_time_seconds)}"
 
@@ -687,7 +688,7 @@ def print_and_log_current_ram_usage(
             f". Evolution since {previous_reference_rss_label} : {humanize.naturalsize(delta_rss_since_reference)}"
         )
 
-    to_print_and_log = f"{prefix} current ram:{current_ram.as_human_readable} {comparison_text} {suffix}"
+    to_print_and_log = f"{prefix} current ram:{current_ram.value_as_human_readable} {comparison_text} {suffix}"
 
     log_timestamp = time.asctime(time.localtime(time.time()))
 
