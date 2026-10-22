@@ -537,9 +537,11 @@ def stopwatch_with_label(
         end_log_timestamp = time.asctime(time.localtime(time.time()))
 
         if monitor_ram_usage:
-            to_print_and_log = f"{label} Elapsed: {date_time_formats.format_duration_to_string(elapsed_time_seconds)}. Final ram {final_ram.value_as_human_readable}. Delta ram : {humanize.naturalsize(delta_rss_since_reference)}"
+            to_print_and_log = f"{label} : done. Elapsed: {date_time_formats.format_duration_to_string(elapsed_time_seconds)}. Final ram {final_ram.value_as_human_readable}. Delta ram : {humanize.naturalsize(delta_rss_since_reference)}"
         else:
-            to_print_and_log = f"{label} Elapsed: {date_time_formats.format_duration_to_string(elapsed_time_seconds)}"
+            to_print_and_log = (
+                f"{label} : done. Elapsed: {date_time_formats.format_duration_to_string(elapsed_time_seconds)}"
+            )
 
         # pylint: disable=line-too-long
         if enable_print:
