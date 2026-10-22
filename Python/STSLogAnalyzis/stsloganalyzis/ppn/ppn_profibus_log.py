@@ -248,6 +248,7 @@ class ProfibusLogLibrary:
             )
 
         self.decoded_files: list[ProfibusLogFile] = []
+        self.decoded_files_sorted_by_line_timestamp: list[ProfibusLogFile] = []
         self.decoded_lines: list[ProfibusLogLine] = []
         for ppn_log_path in self.all_ppn_logs_paths:
             decoded_file = ProfibusLogFile(
@@ -581,18 +582,32 @@ class ProfibusLogLibrary:
     def _process_files(self) -> None:
 
         for decoded_file in self.decoded_files:
-            with logger_config.stopwatch_with_label(f"Process {decoded_file.file_full_path}", monitor_ram_usage=True):
+            with logger_config.stopwatch_with_label(f"{self.label} Process {decoded_file.file_name_with_extension}", monitor_ram_usage=True):
                 decoded_file.process()
                 self.decoded_lines += decoded_file.decoded_lines
+
+        files_sorted_by_earlieast_timestamp = sorted(self.decoded_files, key=lambda file: file.earliest_line_timestamp_except_bad_timestamp)
+        files_sorted_by_latest_timestamp = sorted(self.decoded_files, key=lambda file: file.latest_valid_line_timestamp)
+
+        logger_config.print_and_log_error_if(
+            files_sorted_by_earlieast_timestamp != files_sorted_by_latest_timestamp,
+            f"{self.label} Sorting files by earliest date {[file.file_name_with_extension for file in files_sorted_by_earlieast_timestamp]} is not equal to sorting files by latest date {[file.file_name_with_extension for file in files_sorted_by_latest_timestamp]}",
+        )
+        if files_sorted_by_earlieast_timestamp == files_sorted_by_latest_timestamp and files_sorted_by_earlieast_timestamp != self.decoded_files:
+            logger_config.print_and_log_warning(
+                f"{self.label} Sorting files by modification date {[file.file_name_with_extension for file in self.decoded_files]} is not equal to sorting files by earliest and latest date {[file.file_name_with_extension for file in files_sorted_by_latest_timestamp]}"
+            )
+            logger_config.print_and_log_info(f"{self.label} New files sorting : {[file.file_name_with_extension for file in self.decoded_files]}")
+            self.decoded_files = files_sorted_by_earlieast_timestamp
 
     @logger_config.stopwatch_decorator()
     def _decode_sdn_or_sda(self) -> None:
         for decoded_file in self.decoded_files:
-            with logger_config.stopwatch_with_label(f"Decode SDN or SDA for {len(decoded_file.decoded_lines)} lines of {decoded_file.file_full_path}", monitor_ram_usage=True):
+            with logger_config.stopwatch_with_label(f"{self.label} Decode SDN or SDA for {len(decoded_file.decoded_lines)} lines of {decoded_file.file_name_with_extension}", monitor_ram_usage=True):
                 for decoded_line in decoded_file.decoded_lines:
                     logger_config.print_and_log_info_if(
                         decoded_line.line_number and decoded_line.line_number % 50000 == 0,
-                        f"{decoded_line.line_number}/{len(decoded_file.decoded_lines)} ({round(decoded_line.line_number/len(decoded_file.decoded_lines)*100,2)}%) lines decoded SDA/SDN in {decoded_file.file_full_path}",
+                        f"{self.label} {decoded_line.line_number}/{len(decoded_file.decoded_lines)} ({round(decoded_line.line_number/len(decoded_file.decoded_lines)*100,2)}%) lines decoded SDA/SDN in {decoded_file.file_name_with_extension}",
                         print_ram_usage=True,
                     )
                     decoded_line.decode_sdn_or_sda(self.ppn_connections_library)
@@ -672,22 +687,27 @@ class ProfibusLogFile:
             self.upper_layer_decoding_library = upper_layer_libraries.UpperLayerDecodingLibrary.from_next_json_file_full_path(
                 json_file_full_path=r"D:\temp\GenTel\0.1-0-Original_Edition\GenTel\rom\unisig_s58.json"
             )
+        self.file_name_with_extension = file_name_utils.get_file_name_with_extension_from_full_path(self.file_full_path)
 
     @property
-    def lines_sorted_by_timestamp(self) -> list["ProfibusLogLine"]:
+    def lines_with_valid_timestamp_sorted_by_timestamp(self) -> list["ProfibusLogLine"]:
         return sorted(self.decoded_lines, key=lambda state: state.timestamp)
 
     @property
-    def earliest_valid_line_timestamp(self) -> datetime:
+    def earliest_line_timestamp_except_bad_timestamp(self) -> datetime:
         assert self.decoded_lines
-        earliest_valid_line = self.lines_sorted_by_timestamp[0]
-        return earliest_valid_line.timestamp
+        earliest_valid_line = self.lines_with_valid_timestamp_sorted_by_timestamp[0]
+        ret = earliest_valid_line.timestamp
+        logger_config.print_and_log_info(f"File {self.file_full_path}: earliest timestamp is {ret}")
+        return ret
 
     @property
     def latest_valid_line_timestamp(self) -> datetime:
         assert self.decoded_lines
-        earliest_valid_line = self.lines_sorted_by_timestamp[-1]
-        return earliest_valid_line.timestamp
+        earliest_valid_line = self.lines_with_valid_timestamp_sorted_by_timestamp[-1]
+        ret = earliest_valid_line.timestamp
+        logger_config.print_and_log_info(f"File {self.file_full_path}: latest timestamp is {ret}")
+        return ret
 
     def process(self) -> None:
 
