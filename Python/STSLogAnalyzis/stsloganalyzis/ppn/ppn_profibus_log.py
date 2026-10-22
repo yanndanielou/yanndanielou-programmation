@@ -11,6 +11,8 @@ from logger import logger_config
 from stsloganalyzis.unisig import upper_layer_libraries
 from stsloganalyzis.unisig.s5758 import decode_unisig_s57_s58
 
+EARLIEST_VALID_PPN_LOG_TIMESTAMP = datetime(year=2023, month=1, day=1)
+
 
 class SendingMode(Enum):
     SDA = "SDA"
@@ -683,6 +685,7 @@ class ProfibusLogFile:
 
     def __post_init__(self) -> None:
         self.decoded_lines: list[ProfibusLogLine] = []
+        self._lines_with_valid_timestamp_sorted_by_timestamp: list[ProfibusLogLine] = []
         if self.upper_layer_decoding_library is None:
             self.upper_layer_decoding_library = upper_layer_libraries.UpperLayerDecodingLibrary.from_next_json_file_full_path(
                 json_file_full_path=r"D:\temp\GenTel\0.1-0-Original_Edition\GenTel\rom\unisig_s58.json"
@@ -692,7 +695,7 @@ class ProfibusLogFile:
     @property
     def lines_with_valid_timestamp_sorted_by_timestamp(self) -> list["ProfibusLogLine"]:
         return sorted(
-            [decoded_line_with_valid_timestamp for decoded_line_with_valid_timestamp in self.decoded_lines if decoded_line_with_valid_timestamp.timestamp.year > 2000],
+            [decoded_line_with_valid_timestamp for decoded_line_with_valid_timestamp in self.decoded_lines if decoded_line_with_valid_timestamp.timestamp >= EARLIEST_VALID_PPN_LOG_TIMESTAMP],
             key=lambda state: state.timestamp,
         )
 
