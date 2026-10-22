@@ -691,7 +691,10 @@ class ProfibusLogFile:
 
     @property
     def lines_with_valid_timestamp_sorted_by_timestamp(self) -> list["ProfibusLogLine"]:
-        return sorted(self.decoded_lines, key=lambda state: state.timestamp)
+        return sorted(
+            [decoded_line_with_valid_timestamp for decoded_line_with_valid_timestamp in self.decoded_lines if decoded_line_with_valid_timestamp.timestamp.year > 2000],
+            key=lambda state: state.timestamp,
+        )
 
     @property
     def earliest_line_timestamp_except_bad_timestamp(self) -> datetime:
