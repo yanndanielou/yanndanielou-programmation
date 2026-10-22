@@ -305,9 +305,9 @@ class ProfibusLogLibrary:
             for error in stm_message.creational_and_decoding_errors:
                 self.occurences_by_creational_error_type[error].append(stm_message.upper_layer_telegram.profibus_log_line.timestamp if stm_message.upper_layer_telegram.profibus_log_line else None)
 
-        self._recalculate_all_crcs()
-
         self._print_stats()
+
+        self._recalculate_all_crcs()
 
         self.save_errors()
 
