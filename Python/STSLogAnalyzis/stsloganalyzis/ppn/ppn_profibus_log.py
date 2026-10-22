@@ -48,10 +48,10 @@ class PpnConnectionSession:
                 else None
             )
             if self.random_number_representing_sequence_number_byte_1_of_4 > lowest_order_byte_sequence_number:
-                logger_config.print_and_log_info(
-                    f"{self.session.left_to_right_interlocutors_without_arrow_description}: overflow of lower order byte sequence number from {self.random_number_representing_sequence_number_byte_1_of_4} to {lowest_order_byte_sequence_number}",
-                    do_not_print=True,
-                )
+                # logger_config.print_and_log_info(
+                #    f"{self.session.left_to_right_interlocutors_without_arrow_description}: overflow of lower order byte sequence number from {self.random_number_representing_sequence_number_byte_1_of_4} to {lowest_order_byte_sequence_number}",
+                #    do_not_print=True,
+                # )
 
                 self.random_number_representing_sequence_number_byte_2_of_4 += 1
                 if self.random_number_representing_sequence_number_byte_2_of_4 == 256:
@@ -601,7 +601,9 @@ class ProfibusLogLibrary:
             with logger_config.stopwatch_with_label(f"Decode SDN or SDA for {len(decoded_file.decoded_lines)} lines of {decoded_file.file_full_path}", monitor_ram_usage=True):
                 for decoded_line in decoded_file.decoded_lines:
                     logger_config.print_and_log_info_if(
-                        decoded_line.line_number and decoded_line.line_number % 50000 == 0, f"{decoded_line.line_number} lines decoded SDA/SDN in {decoded_file.file_full_path}", print_ram_usage=True
+                        decoded_line.line_number and decoded_line.line_number % 50000 == 0,
+                        f"{decoded_line.line_number}/{len(decoded_file.decoded_lines)} ({round(decoded_line.line_number/len(decoded_file.decoded_lines)*100,2)}%) lines decoded SDA/SDN in {decoded_file.file_full_path}",
+                        print_ram_usage=True,
                     )
                     decoded_line.decode_sdn_or_sda(self.ppn_connections_library)
 
