@@ -295,20 +295,9 @@ class ProfibusLogLibrary:
 
         self.all_interlocutors = {log_line.interlocutors_with_translation_without_direction for log_line in self.decoded_lines}
 
-        self.occurences_by_creational_error_type: dict[str, list[datetime | None]] = defaultdict(list)
-
-        for unisig_message in self.all_unisig_messages:
-            for error in unisig_message.creational_and_decoding_errors:
-                self.occurences_by_creational_error_type[error].append(unisig_message.profibus_log_line.timestamp if unisig_message.profibus_log_line else None)
-
-        for stm_message in self.all_upper_layer_stms:
-            for error in stm_message.creational_and_decoding_errors:
-                self.occurences_by_creational_error_type[error].append(stm_message.upper_layer_telegram.profibus_log_line.timestamp if stm_message.upper_layer_telegram.profibus_log_line else None)
-
+        self.compute_errors_stats()
         self._print_stats()
-
         self._recalculate_all_crcs()
-
         self.save_errors()
 
     def get_upper_layer_stms_by_stm_ids(self, allowed_stm_ids: list[int]) -> list[decode_unisig_s57_s58.UpperLayerStm]:
@@ -606,6 +595,17 @@ class ProfibusLogLibrary:
                         print_ram_usage=True,
                     )
                     decoded_line.decode_sdn_or_sda(self.ppn_connections_library)
+
+    def compute_errors_stats(self) -> None:
+        self.occurences_by_creational_error_type: dict[str, list[datetime | None]] = defaultdict(list)
+
+        for unisig_message in self.all_unisig_messages:
+            for error in unisig_message.creational_and_decoding_errors:
+                self.occurences_by_creational_error_type[error].append(unisig_message.profibus_log_line.timestamp if unisig_message.profibus_log_line else None)
+
+        for stm_message in self.all_upper_layer_stms:
+            for error in stm_message.creational_and_decoding_errors:
+                self.occurences_by_creational_error_type[error].append(stm_message.upper_layer_telegram.profibus_log_line.timestamp if stm_message.upper_layer_telegram.profibus_log_line else None)
 
     def _print_stats(self) -> None:
         logger_config.print_and_log_info(f"Stats of {self.label}")
