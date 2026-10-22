@@ -1,4 +1,5 @@
 import os
+import time
 from enum import Enum, auto
 from typing import cast
 
@@ -10,6 +11,11 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.remote.remote_connection import RemoteConnection
+
+
+from selenium.common.exceptions import (
+    WebDriverException,
+)
 
 DEFAULT_DOWNLOAD_DIRECTORY = os.path.expandvars(r"%userprofile%\downloads")
 
@@ -59,14 +65,21 @@ def create_webdriver_chrome(browser_visibility_type: BrowserVisibilityType, down
     return driver
 
 
+@logger_config.stopwatch_decorator(inform_beginning=True, monitor_ram_usage=True)
 def create_webdriver_firefox(browser_visibility_type: BrowserVisibilityType) -> webdriver.Firefox:
-    logger_config.print_and_log_info("create_webdriver_firefox")
 
-    firefox_options = FirefoxOptions()
-    if browser_visibility_type == BrowserVisibilityType.NOT_VISIBLE_AKA_HEADLESS:
-        firefox_options.add_argument("--headless")
-    driver = webdriver.Firefox(options=firefox_options)
-    if browser_visibility_type == BrowserVisibilityType.MINIMIZED:
-        driver.minimize_window()
+    try:
+        firefox_options = FirefoxOptions()
+        if browser_visibility_type == BrowserVisibilityType.NOT_VISIBLE_AKA_HEADLESS:
+            firefox_options.add_argument("--headless")
+        driver = webdriver.Firefox(options=firefox_options)
+        if browser_visibility_type == BrowserVisibilityType.MINIMIZED:
+            driver.minimize_window()
 
-    return driver
+        return driver
+
+    except WebDriverException as exc:
+        logger_config.print_and_log_exception(exc)
+        logger_config.print_and_log_error(f"Failed to create firefow webdriver: retry")
+        time.sleep(5)
+        return create_webdriver_firefox(browser_visibility_type)
