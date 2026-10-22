@@ -579,6 +579,7 @@ class ProfibusLogLibrary:
 
     @logger_config.stopwatch_decorator()
     def _process_files(self) -> None:
+
         for decoded_file in self.decoded_files:
             with logger_config.stopwatch_with_label(f"Process {decoded_file.file_full_path}", monitor_ram_usage=True):
                 decoded_file.process()
@@ -671,6 +672,22 @@ class ProfibusLogFile:
             self.upper_layer_decoding_library = upper_layer_libraries.UpperLayerDecodingLibrary.from_next_json_file_full_path(
                 json_file_full_path=r"D:\temp\GenTel\0.1-0-Original_Edition\GenTel\rom\unisig_s58.json"
             )
+
+    @property
+    def lines_sorted_by_timestamp(self) -> list["ProfibusLogLine"]:
+        return sorted(self.decoded_lines, key=lambda state: state.timestamp)
+
+    @property
+    def earliest_valid_line_timestamp(self) -> datetime:
+        assert self.decoded_lines
+        earliest_valid_line = self.lines_sorted_by_timestamp[0]
+        return earliest_valid_line.timestamp
+
+    @property
+    def latest_valid_line_timestamp(self) -> datetime:
+        assert self.decoded_lines
+        earliest_valid_line = self.lines_sorted_by_timestamp[-1]
+        return earliest_valid_line.timestamp
 
     def process(self) -> None:
 
