@@ -129,7 +129,7 @@ class OnboardUnisigMessage(ABC):
             assert self.profibus_log_line
             logger_config.print_and_log_error_if(
                 not self.recomputed_crc_and_transmitted_crc_are_equals,
-                f"At {self.profibus_log_line.timestamp} transmitted CRC is incorrect ({self.profibus_log_line.file_path}:{self.profibus_log_line.line_number}) between {self.profibus_log_line.source_name} and {self.profibus_log_line.target_name}. Is {self.crc.as_base_16_str}, should be {self.recomputed_crc_as_string_base_16}",
+                f"{self} : transmitted CRC is incorrect ({self.profibus_log_line.file_path}:{self.profibus_log_line.line_number}) {self.profibus_log_line.interlocutors_with_translation}. Is {self.crc.as_base_16_str}, should be {self.recomputed_crc_as_string_base_16}",
             )
 
     @abstractmethod
