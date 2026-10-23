@@ -11,7 +11,7 @@ from logger import logger_config
 from stsloganalyzis.unisig import upper_layer_libraries
 from stsloganalyzis.unisig.s5758 import decode_unisig_s57_s58
 
-EARLIEST_VALID_PPN_LOG_TIMESTAMP = datetime(year=2023, month=1, day=1)
+EARLIEST_VALID_PPN_LOG_TIMESTAMP = datetime(year=2000, month=1, day=1)
 
 
 class SendingMode(Enum):
