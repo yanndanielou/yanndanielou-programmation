@@ -1,4 +1,4 @@
-# import os
+import os
 
 from logger import logger_config
 
@@ -10,11 +10,7 @@ def main() -> None:
     with logger_config.application_logger():
 
         root_path = r"D:\temp\2026-09-20 logs PPN we mars 26"
-        # all_sub_directories = os.listdir(root_path)
-        all_sub_directories = [
-            "log_cab1_PPN_A NEXT-16708 2026-03-29 2236",
-            "ppn_cab2_log.tar",
-        ]  # + os.listdir(root_path)
+        all_sub_directories = os.listdir(root_path)
 
         logger_config.print_and_log_info(f"{len(all_sub_directories)} child directories")
         for child_directory in all_sub_directories:
@@ -27,12 +23,12 @@ def main() -> None:
 
             library.save_all_usual_reports()
 
-            library.save_upper_layer_stms_by_stm_ids([161])
-            library.save_upper_layer_stms_by_stm_ids([178])
+            # library.save_upper_layer_stms_by_stm_ids([161])
+            # library.save_upper_layer_stms_by_stm_ids([178])
 
-            library.save_upper_layer_stms_by_stm_ids([179, 184, 175, 176, 14, 177, 178])
-            library.save_upper_layer_stms_by_stm_ids([15, 14])
-            library.save_upper_layer_stms_by_stm_ids([161, 177])
+            # library.save_upper_layer_stms_by_stm_ids([179, 184, 175, 176, 14, 177, 178])
+            # library.save_upper_layer_stms_by_stm_ids([15, 14])
+            # library.save_upper_layer_stms_by_stm_ids([161, 177])
 
 
 # Exemple d'utilisation
