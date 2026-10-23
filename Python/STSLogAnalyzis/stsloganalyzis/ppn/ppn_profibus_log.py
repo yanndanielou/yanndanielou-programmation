@@ -547,6 +547,7 @@ class ProfibusLogLibrary:
                             "Line length": unisig_message.profibus_log_line.length if unisig_message.profibus_log_line else None,
                             "file path": unisig_message.profibus_log_line.file_path if unisig_message.profibus_log_line else None,
                             "line number": unisig_message.profibus_log_line.line_number if unisig_message.profibus_log_line else None,
+                            "excessive duration since previous line": unisig_message.profibus_log_line.excessive_duration_since_previous_line if unisig_message.profibus_log_line else None,
                             "message type": unisig_message.__class__.__name__,
                             "Unisig message: all_data_aka_net_data": (
                                 unisig_message.all_data_aka_net_data.as_base_16
@@ -586,7 +587,6 @@ class ProfibusLogLibrary:
         for decoded_file in self.decoded_files:
             with logger_config.stopwatch_with_label(f"{self.label} Process {decoded_file.file_name_with_extension}", monitor_ram_usage=True):
                 decoded_file.process()
-                self.decoded_lines += decoded_file.decoded_lines
 
         files_sorted_by_earlieast_timestamp = sorted(self.decoded_files, key=lambda file: file.earliest_line_timestamp_except_bad_timestamp)
         files_sorted_by_latest_timestamp = sorted(self.decoded_files, key=lambda file: file.latest_valid_line_timestamp)
@@ -609,7 +609,7 @@ class ProfibusLogLibrary:
                 for decoded_line in decoded_file.decoded_lines:
                     logger_config.print_and_log_info_if(
                         decoded_line.line_number and decoded_line.line_number % 50000 == 0,
-                        f"{self.label} {decoded_line.line_number}/{len(decoded_file.decoded_lines)} ({round(decoded_line.line_number/len(decoded_file.decoded_lines)*100,2)}%) lines decoded SDA/SDN in {decoded_file.file_name_with_extension}",
+                        f"{self.label} {decoded_line.line_number}/{len(decoded_file.decoded_lines)} ({round(cast(int,decoded_line.line_number)/len(decoded_file.decoded_lines)*100,2)}%) lines decoded SDA/SDN in {decoded_file.file_name_with_extension}",
                         print_ram_usage=True,
                     )
                     decoded_line.decode_sdn_or_sda(self.ppn_connections_library)
@@ -656,6 +656,15 @@ class ProfibusLogLibrary:
                 logger_config.print_and_log_info(
                     f"Could not compute CRC of {sda_unisig_message_to_compute_crc.command_type} {sda_unisig_message_to_compute_crc.profibus_log_line.file_path if sda_unisig_message_to_compute_crc.profibus_log_line else 'NA'}:{sda_unisig_message_to_compute_crc.profibus_log_line.line_number if sda_unisig_message_to_compute_crc.profibus_log_line else 'NA'}"
                 )
+
+        for file in self.decoded_files:
+            recomputed_crc_and_transmitted_crc_comparison_result: dict[bool | None, int] = defaultdict(int)
+
+            for unisig_message in file.unisig_messages:
+                recomputed_crc_and_transmitted_crc_comparison_result[unisig_message.recomputed_crc_and_transmitted_crc_are_equals] += 1
+
+            logger_config.print_and_log_info(f"Statistics of CRC recomputed in {file.file_full_path}: {recomputed_crc_and_transmitted_crc_comparison_result}")
+            pass
 
     @logger_config.stopwatch_decorator(monitor_ram_usage=True)
     def save_errors(self) -> None:
@@ -715,7 +724,7 @@ class ProfibusLogFile:
         logger_config.print_and_log_info(f"File {self.file_full_path}: latest timestamp is {ret}")
         return ret
 
-    def process(self) -> None:
+    def process(self, library: ProfibusLogLibrary | None = None) -> None:
 
         with logger_config.stopwatch_with_label(f"Process {self.file_full_path}", monitor_ram_usage=True, inform_beginning=True) and open(self.file_full_path, "r", encoding=self.encoding) as f:
             lines = f.readlines()
@@ -726,9 +735,12 @@ class ProfibusLogFile:
                         upper_layer_decoding_library=self.upper_layer_decoding_library,
                         file_path=self.file_full_path,
                         line_number=line_number + 1,
+                        previous_line_timestamp=library.decoded_lines[-1].timestamp if library and library.decoded_lines else self.decoded_lines[-1].timestamp if self.decoded_lines else None,
                     )
                     if decoded_line is not None:
                         self.decoded_lines.append(decoded_line)
+                        if library:
+                            library.decoded_lines.append(decoded_line)
 
                 except ValueError as val_err:
                     logger_config.print_and_log_exception(val_err)
@@ -759,12 +771,16 @@ class ProfibusLogLine:
     upper_layer_decoding_library: upper_layer_libraries.UpperLayerDecodingLibrary
     file_path: str | None
     line_number: int | None
+    previous_line_timestamp: datetime | None
 
     def __str__(self) -> str:
-        return f"At {self.timestamp} between {self.interlocutors_with_translation_without_direction} in {self.file_path}:{self.line_number}"
+        return f"At {self.timestamp} between {self.interlocutors_with_translation_without_direction} in {self.file_path}:{self.line_number} ({(self.previous_line_timestamp-self.timestamp).total_seconds if self.previous_line_timestamp else 'NA'} since previous line)"
 
     def __post_init__(self) -> None:
         self.unisig_message: decode_unisig_s57_s58.OnboardUnisigMessage | None = None
+        self.excessive_duration_since_previous_line = (
+            self.previous_line_timestamp is not None and (max(self.previous_line_timestamp, self.timestamp) - min(self.previous_line_timestamp, self.timestamp)).seconds > 120
+        )
 
     @staticmethod
     def get_equipment_name_from_address(address: int) -> str:
@@ -801,6 +817,7 @@ class ProfibusLogLine:
         upper_layer_decoding_library: upper_layer_libraries.UpperLayerDecodingLibrary | None = None,
         file_path: str | None = None,
         line_number: int | None = None,
+        previous_line_timestamp: datetime | None = None,
     ) -> "ProfibusLogLine|None":
         if upper_layer_decoding_library is None:
             upper_layer_decoding_library = upper_layer_libraries.UpperLayerDecodingLibrary.from_next_json_file_full_path(
@@ -908,6 +925,7 @@ class ProfibusLogLine:
                 upper_layer_decoding_library=upper_layer_decoding_library,
                 file_path=file_path,
                 line_number=line_number,
+                previous_line_timestamp=previous_line_timestamp,
             )
         else:
             return None
