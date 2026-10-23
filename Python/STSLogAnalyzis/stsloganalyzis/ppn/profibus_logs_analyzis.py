@@ -6,7 +6,7 @@ import gzip
 import logging
 import os
 from dataclasses import dataclass, field
-from typing import list, Optional, cast
+from typing import Optional, cast
 
 from logger import logger_config
 
