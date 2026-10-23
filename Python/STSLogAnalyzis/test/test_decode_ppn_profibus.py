@@ -1,5 +1,8 @@
+import importlib
+
 import pytest
-from common import bytes_messages, bytes_utils
+from common import bytes_utils
+from logger import logger_config
 
 from stsloganalyzis.ppn import ppn_profibus_log
 from stsloganalyzis.unisig import upper_layer_libraries
@@ -346,6 +349,18 @@ class TestDecodeOnePpnProfibusLogLine:
                 assert not unisig_message.creational_and_decoding_errors
                 # assert unisig_message.stl_time_stamp_ms is not None
                 assert unisig_message.crc is not None
+
+            def test_no_error_sl4(self, next_unisig_58_library_fixture: upper_layer_libraries.UpperLayerDecodingLibrary) -> None:
+                importlib.reload(logger_config)
+                with logger_config.application_logger():
+                    ppn_log_line = ppn_profibus_log.ProfibusLogLine.from_raw_log_line(
+                        line="2026-03-29 22:46:16:615 kppn 1.3.3: [99:33 => 2:33] Sending PROFIBUS message  [num:1][rt:1970][mode:SDA][len:29] 6e 80 6e d5 2e 7b a0 0f 03 00 00 00 03 00 00 dc 05 00 00 ee 00 00 00 1a 08 67 0c 13 23",
+                        upper_layer_decoding_library=None,
+                    )
+                    assert ppn_log_line
+                    ppn_log_line.decode_sdn_or_sda()
+
+                assert not logger_config.log_counts_errors_occurrences_per_file_and_line
 
         class TestReadyToRunTelegram:
             def test_decode_one_sl0(self) -> None:
